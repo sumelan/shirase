@@ -15,7 +15,7 @@ let
     );
 in
 {
-  grub-theme = callPackage ./grub-theme { };
+  grub-theme = callPackage ./distro-grub-themes-nixos { };
 
   tela-dynamic-icon-theme = callPackage ./tela-dynamic-icon-theme { };
 
