@@ -54,8 +54,6 @@
         # required to be set, for some reason nix.nixPath does not write to nix.conf
         nix-path = nixPath;
         warn-dirty = false;
-        # removes ~/.nix-profile and ~/.nix-defexpr
-        use-xdg-base-directories = true;
 
         experimental-features = [
           "nix-command"
