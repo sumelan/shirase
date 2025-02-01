@@ -46,6 +46,7 @@ let
               imports = [
                 ./${host}/home.nix # host specific home-manager configuration
                 ../home
+                inputs.nvf.homeManagerModules.default
               ];
             };
           };

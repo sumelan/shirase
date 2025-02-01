@@ -5,7 +5,6 @@
 }:
 {
   imports = [
-    inputs.nvf.homeManagerModules.default
     ./keymaps.nix
   ];
 
