@@ -56,6 +56,10 @@ in
           # exit hyprland
           "$mod_ALT, F4, exit,"
 
+          # without the rounding, the blur shows up around the corners
+          "CTRL_ALT, Delete, exec, rofi-power-menu"
+          "$mod_CTRL, v, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
+
           # reset monitors
           "CTRL_SHIFT, Escape, exec, hypr-monitors"
 

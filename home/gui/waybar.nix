@@ -147,6 +147,8 @@ in
                 {
                   format = "    {essid}";
                   format-ethernet = " ";
+                  # rofi wifi script
+                  on-click = lib.getExe pkgs.custom.rofi-wifi-menu;
                   on-click-right = "${config.custom.terminal.exec} nmtui";
                 }
               else

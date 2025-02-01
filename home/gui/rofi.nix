@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.custom.rofi;
+  rofiThemes = pkgs.custom.rofi-themes;
 in
 {
   options.custom = with lib; {
@@ -45,8 +45,15 @@ in
   config = {
     programs.rofi = {
       enable = true;
-      package = pkgs.rofi-wayland;
+      package = pkgs.rofi-wayland.override {
+        plugins = [ rofiThemes ];
     };
+    theme = "${config.xdg.cacheHome}/wallust/rofi.rasi";
+    };
+    # NOTE: rofi-power-menu only works for powermenuType = 4!
+    home.packages = (lib.optionals config.custom.wifi.enable [
+      pkgs.custom.rofi-wifi-menu
+    ]);
 
     # add blur for rofi shutdown
     wayland.windowManager.hyprland.settings = {
