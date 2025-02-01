@@ -20,6 +20,7 @@
     ./hyprland.nix
     ./keyd.nix
     ./nix.nix
+    ./opentabletdriver.nix
     ./printing.nix
     ./qmk.nix
     ./specialisations.nix

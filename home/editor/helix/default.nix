@@ -8,7 +8,7 @@
     helix.enable = mkEnableOption "helix";
   };
 
-  confif = lib.mkIf config.custom.helix.enable {
+  config = lib.mkIf config.custom.helix.enable {
     programs.helix = {
       enable = true;
       settings = {

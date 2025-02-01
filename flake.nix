@@ -33,7 +33,11 @@
         inherit system;
         config.allowUnfree = true;
       };
-      lib = nixpkgs.lib;
+      lib = import ./lib.nix {
+        inherit (nixpkgs) lib;
+        inherit pkgs;
+        inherit (inputs) home-manager;
+      };
       createCommonArgs = system: {
         inherit
           self
@@ -48,10 +52,21 @@
         };
       };
       commonArgs = createCommonArgs system;
+      # call with forAllSystems (commonArgs: function body)
+      forAllSystems =
+        fn:
+        lib.genAttrs [
+          "x86_64-linux"
+          "aarch64-linux"
+          "x86_64-darwin"
+          "aarch64-darwin"
+        ] (system: fn (createCommonArgs system));
     in
     {
       nixosConfigurations = (import ./hosts/nixos.nix commonArgs);
 
       inherit lib self;
+
+      packages = forAllSystems (commonArgs': (import ./packages commonArgs'));
     };
 }

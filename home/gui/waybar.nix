@@ -14,6 +14,11 @@ in
       enable = mkEnableOption "waybar" // {
         default = config.custom.hyprland.enable;
       };
+      config = mkOption {
+        type = types.submodule { freeformType = (pkgs.formats.json { }).type; };
+        default = { };
+        description = "Additional waybar config";
+      };
       idleInhibitor = mkEnableOption "Idle inhibitor" // {
         default = true;
       };

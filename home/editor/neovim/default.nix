@@ -14,13 +14,13 @@
   programs.nvf = {
     enable = true;
     settings = {
-      viAlias = true;
-      vimAlias = true;
+      vim.viAlias = true;
+      vim.vimAlias = true;
       vim.lsp.enable = true;
       vim.theme = {
         enable = true;
         name = "catppuccin";
-        style = "dark";
+        style = "mocha";
       };
 
       vim.withNodeJs = true;

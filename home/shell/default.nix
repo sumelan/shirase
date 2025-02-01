@@ -12,9 +12,7 @@
     ./eza.nix
     ./fish.nix
     ./git.nix
-    ./helix.nix
     ./jujutsu.nix
-    ./neovim.nix
     ./nix.nix
     ./ripgrep.nix
     ./starship.nix
@@ -65,22 +63,18 @@
   };
 
   config = {
-    home.packages =
-      with pkgs;
-      [
-        # dysk # better disk info
-        ets # add timestamp to beginning of each line
-        fd # better find
-        fx # terminal json viewer and processor
-        htop
-        jq
-        just
-        sd # better sed
-        # grep, with boolean query patterns, e.g. ug --files -e "A" --and "B"
-        ugrep
-      ]
-      # add custom user created shell packages
-      ++ (lib.attrValues config.custom.shell.packages);
+    home.packages = with pkgs; [
+      # dysk # better disk info
+      ets # add timestamp to beginning of each line
+      fd # better find
+      fx # terminal json viewer and processor
+      htop
+      jq
+      just
+      sd # better sed
+      # grep, with boolean query patterns, e.g. ug --files -e "A" --and "B"
+      ugrep
+    ];
 
     programs = {
       bat = {

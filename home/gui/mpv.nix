@@ -6,7 +6,7 @@
 }:
 {
   options.custom = with lib; {
-    mpv.enable = mkEnable option "mpv";
+    mpv.enable = mkEnableOption "mpv";
   };
 
   config = lib.mkIf config.custom.mpv.enable {

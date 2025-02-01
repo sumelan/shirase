@@ -6,7 +6,7 @@
 {
   options.custom = with lib; {
     bluetooth.enable = mkEnableOption "Bluetooth" // {
-      default = isLaptop;
+      default = true;
     };
   };
 
@@ -33,6 +33,11 @@
     hm = hmCfg: {
       # control media player over bluetooth
       services.mpris-proxy.enable = true;
+
+      # add bluetooth audio icon to waybar
+      custom.waybar.config.pulseaudio = lib.mkIf hmCfg.config.programs.waybar.enable {
+        format-bluetooth = "  {volume}%";
+      };
     };
   };
 }

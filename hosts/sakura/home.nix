@@ -46,7 +46,6 @@
     };
     inkscape.enable = true;
     krita.enable = true;
-    rclip.enable = true;
     rustdesk.enable = true;
     thunderbird.enable = true;
     vlc.enable = true;
