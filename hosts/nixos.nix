@@ -9,11 +9,8 @@ let
   # provide an optional { pkgs } 2nd argument to override the pkgs
   mkNixosConfiguration =
     host:
-    {
-      pkgs ? args.pkgs,
-    }:
     lib.nixosSystem {
-      inherit pkgs;
+      pkgs = args.pkgs;
 
       specialArgs = specialArgs // {
         inherit host user;

@@ -25,21 +25,24 @@
 
     nixcord.url = "github:kaylorben/nixcord";
   };
-  outputs =
+  outputs = 
     inputs@{ nixpkgs, self, ... }:
     let
       system = "x86_64-linux";
+
       pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
+
       lib = import ./lib.nix {
         inherit (nixpkgs) lib;
         inherit pkgs;
         inherit (inputs) home-manager;
       };
-      createCommonArgs = system: {
-        inherit
+
+      mkCommonArgs = system: {
+        inherit 
           self
           inputs
           nixpkgs
@@ -51,22 +54,13 @@
           inherit self inputs;
         };
       };
-      commonArgs = createCommonArgs system;
-      # call with forAllSystems (commonArgs: function body)
-      forAllSystems =
-        fn:
-        lib.genAttrs [
-          "x86_64-linux"
-          "aarch64-linux"
-          "x86_64-darwin"
-          "aarch64-darwin"
-        ] (system: fn (createCommonArgs system));
+      commonArgs = mkCommonArgs system;
     in
     {
       nixosConfigurations = (import ./hosts/nixos.nix commonArgs);
 
       inherit lib self;
 
-      packages = forAllSystems (commonArgs': (import ./packages commonArgs'));
+      packages = (import ./packages commonArgs);
     };
 }
