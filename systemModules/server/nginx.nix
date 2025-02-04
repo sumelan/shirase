@@ -3,10 +3,10 @@
   config,
   ...
 }:
-with lib; let
-  cfg = config.custom.server.nginx;
+let
+  cfg = config.custom.nginx;
 in {
-  options.custom.server.nginx = {
+  options.custom.nginx = with lib; {
     enable = mkEnableOption "Enable nginx and acme";
     domain = mkOption {
       type = types.str;
@@ -18,7 +18,7 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     services.nginx.virtualHosts = {
       "nextcloud.${cfg.domain}" = {
         useACMEHost = "${cfg.domain}";

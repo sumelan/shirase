@@ -1,66 +1,55 @@
 {
-  description = "My flake: BathyScarf";
+  description = "Wolborg";
 
   inputs = {
+    # nixpkgs links
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
+    # hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    # Home-manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=918d8340afd652b011b937d29d5eea0be08467f5";
+    # Niri
+    niri.url = "github:sodiboo/niri-flake";
 
+    # impermanence
     impermanence.url = "github:nix-community/impermanence";
 
+    # theming
+    stylix.url = "github:danth/stylix";
+
+    # Secrets
     agenix.url = "github:yaxitech/ragenix";
 
+    # Neovim
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # discord
     nixcord.url = "github:kaylorben/nixcord";
   };
   outputs = 
-    inputs@{ nixpkgs, self, ... }:
+    inputs@{ nixpkgs, self, home-manager, ... }:
     let
       system = "x86_64-linux";
+      user = "sumelan";
 
-      pkgs = import inputs.nixpkgs {
+      mkSystem = system: {
         inherit system;
-        config.allowUnfree = true;
-      };
-
-      lib = import ./lib.nix {
-        inherit (nixpkgs) lib;
-        inherit pkgs;
-        inherit (inputs) home-manager;
-      };
-
-      mkCommonArgs = system: {
-        inherit 
-          self
-          inputs
-          nixpkgs
-          lib
-          pkgs
-          system
-          ;
         specialArgs = {
-          inherit self inputs;
+          inherit self inputs user;
         };
       };
-      commonArgs = mkCommonArgs system;
     in
     {
-      nixosConfigurations = (import ./hosts/nixos.nix commonArgs);
-
-      inherit lib self;
-
-      packages = (import ./packages commonArgs);
+      nixosConfigurations = import ./hosts/nixos.nix (mkSystem system);
     };
-}
+  }

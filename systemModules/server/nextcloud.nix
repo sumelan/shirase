@@ -4,14 +4,12 @@
   pkgs,
   ...
 }: 
-with lib; let
-  cfg = config.custom.server.nextcloud;
-in {
-  options.custom.server.nextcloud = {
-    enable = mkEnableOption "Enable nextcloud";
+{
+  options.custom = with lib; {
+    nextcloud.enable = mkEnableOption "Enable nextcloud";
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf config.custom.nextcloud.enable {
     services.nextcloud = {
       enable = true;
       hostName = "nextcloud.${config.custom.server.nginx.domain}";

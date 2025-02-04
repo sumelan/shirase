@@ -1,60 +1,57 @@
 {
-  inputs,
   lib,
-  specialArgs,
-  user ? "sumelan",
-  ...
-}@args:
+  system,
+  nixpkgs,
+  inputs,
+  user,
+}:
 let
-  # provide an optional { pkgs } 2nd argument to override the pkgs
-  mkNixosConfiguration =
+  mkNixosConfiguration = 
     host:
-    lib.nixosSystem {
-      pkgs = args.pkgs;
-
-      specialArgs = specialArgs // {
-        inherit host user;
-        isNixOS = true;
-        isLaptop = host == "acer";
-        isDesktop = host == "sakura";
-        flake = "/home/${user}/projects/Wolborg";
-      };
-
-      modules = [
-        ./${host} # host specific configuration
-        ./${host}/hardware.nix # host specific hardware configuration
-        ../system
-        ../overlays
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-
-            extraSpecialArgs = specialArgs // {
-              inherit host user;
-              isNixOS = true;
-              isLaptop = host == "acer";
-              isDesktop = host == "sakura";
-              flake = "/home/${user}/projects/Wolborg";
-            };
-
-            users.${user} = {
-              imports = [
-                ./${host}/home.nix # host specific home-manager configuration
-                ../home
-                inputs.nvf.homeManagerModules.default
-              ];
-            };
-          };
-        }
-        # alias for home-manager
-        (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" user ])
-        inputs.agenix.nixosModules.default
-      ];
+    nixpkgs.lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit host user;
+      isNixos = true;
+      isLaptop = host == "acer";
+      home = /home/${user};
+      dotfile = /home/${user}/prejects/Wolborg;
     };
+    modules = [
+      ./${host} # host specific configuration
+      ./${host}/hardware.nix  # host specific hardware configuration
+      ../systemModules
+      inputs.home-manager.nixosModules.home-manager
+      {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = {
+            inherit host user inputs;
+            isNixos = true;
+            isLaptop = host == "acer";
+            dotfile = /home/${user}/projects/Wolborg;
+          };
+          users.${user} = {
+            imports = [
+              ./${host}/home.nix  # host specific home-manager configuration
+              ../homeModules
+              inputs.nixcord.homeManagerModules.nixcord
+              inputs.nvf.homeManagerModules.default
+            ];
+          };
+        };
+      }
+      # alias for home-manager
+      (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" user ])
+      inputs.niri.nixosModules.niri
+      inputs.stylix.nixosModules.stylix
+      inputs.impermanence.nixosModules.impermanence
+      inputs.agenix.nixosModules.default
+    ];
+  };
 in
 {
   acer = mkNixosConfiguration "acer" { };
-  sakura = mkNixosConfiguration "sakura" { };
+  sakura = mkNixosConfiguration "sakura"{ };
 }
