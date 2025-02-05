@@ -5,11 +5,12 @@
 }:
 let
   cfg = config.custom.nginx;
-in {
+in
+{
   options.custom = {
     nginx = with lib; {
       enable = mkEnableOption "Enable nginx and acme" // {
-        default = config.custom.abs.enable || config.custon.nc.enable;
+        default = config.custom.audiobookshelf.enable || config.custon.nextcloud.enable;
       };
       domain = mkOption {
         type = types.str;

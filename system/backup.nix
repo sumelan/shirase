@@ -9,7 +9,7 @@ let
 in
 {
   options.custom.backup = {
-    enable = mkEnableOption "Enable borgbackupjob";
+    enable = mkEnableOption "backup";
     include = mkOption {
       type = with types; listOf str;
       default = [

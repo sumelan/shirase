@@ -6,10 +6,10 @@
 }: 
 {
   options.custom = with lib; {
-    nc.enable = mkEnableOption "Enable nextcloud";
+    nextcloud.enable = mkEnableOption "Enable nextcloud";
   };
 
-  config = lib.mkIf config.custom.nc.enable {
+  config = lib.mkIf config.custom.nextcloud.enable {
     services.nextcloud = {
       enable = true;
       hostName = "nextcloud.${config.custom.server.nginx.domain}";

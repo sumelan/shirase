@@ -5,10 +5,10 @@
 }:
 {
   options.custom = with lib; {
-    abs.enable = mkEnableOption "Enable audiobookshelf";
+    audiobookshelf.enable = mkEnableOption "Enable audiobookshelf";
   };
 
-  config = lib.mkIf config.custom.abs.enable {
+  config = lib.mkIf config.custom.audiobookshelf.enable {
     services.audiobookshelf = {
       enable = true;
       port = 8234;

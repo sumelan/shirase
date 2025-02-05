@@ -3,16 +3,12 @@
   config,
   ...
 }:
-with lib;
-let
-  cfg = config.custom.usb-audio;
-in
 {
-  options.custom.usb-audio = {
-    enable = mkEnableOption "Enable using usb-audio";
+  options.custom = with lib; {
+    usb-audio.enable = mkEnableOption "usb-dac and speaker";
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf config.custom.usb-audio.enable {
     services.pipewire.extraConfig = {
       pipewire = {
         "10-clock-rate" = {
@@ -29,6 +25,7 @@ in
             ];
           };
         };
+        # device specific config
         "98-jbl-pebbles" = {
           "device.rules" = [
             {
@@ -60,6 +57,7 @@ in
           ];
         };
       };
+      # disbale resampling
       client = {
         "10-no-resampling" = {
           "stream.properties" = {

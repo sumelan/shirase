@@ -5,16 +5,12 @@
   inputs,
   ...
 }:
-with lib;
-let
-  cfg = config.custom.agenix;
-in
 {
-  options.custom.agenix = {
-    enable = mkEnableOption "Enable encryption using agenix";
+  options.custom = with lib; {
+    agenix.enable = mkEnableOption "agenix";
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf config.custom.agenix.enable {
     environment.systemPackages = [ inputs.agenix.packages."${pkgs.system}".default ];
     age.secrets.nextcloud = {
       file = ../secrets/nextcloud.age;

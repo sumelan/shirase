@@ -3,6 +3,7 @@
   config,
   ...
 }:
+# NOTE: partitions and subvolumes are created via install.sh
 let
   cfg = config.custom.btrfs;
 in
@@ -10,29 +11,23 @@ in
   options.custom = {
     btrfs = with lib; {
       enable = mkEnableOption "btrfs filesystem";
-      wipeRootOnBoot = mkEnableOption "wipe the rot volume on boot" // {
+      wipeRootOnBoot = mkEnableOption "wipe the root volume on boot" // {
         default = false;
       };
     };
   };
 
   config = lib.mkIf cfg.enable (lib.mkMerge [ 
-    {
-      services.btrfs.autoScrub.enable = true;
-    }
-
     { 
       # nixos-generate-config --show-hardware-config doesn't detect mount options automatically,
       # so to enable compression, you must specify it and other mount options in a persistent configuration:
       fileSystems = {
+        # root volume, wiped on boot if enable
         "/".options = [ "compress=zstd" "noatime" ];
 
         "/nix".options = [ "compress=zstd" "noatime" ];
-        
-        "/home" = {
-          options = [ "compress=zstd" "noatime" ];
-          neededForBoot = true;
-        };
+
+        "/home".options = [ "compress=zstd" ];
 
         "/persist" = {
           options = [ "compress=zstd" "noatime" ];
@@ -49,6 +44,11 @@ in
           neededForBoot = true;
         };
       };
+    }
+
+    {
+      # auto-scrubbing
+      services.btrfs.autoScrub.enable = true;
     }
 
     (lib.mkIf cfg.wipeRootOnBoot {
