@@ -11,7 +11,8 @@
             ESP = {
               priority = 1;
               name = "ESP";
-              size = "512M";
+              start = "1M";
+              end = "1G";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -43,16 +44,12 @@
                     mountpoint = "/persist";
                     mountOptions = [ "compress=zstd" "noatime" ];
                   };
-                  "/var-lib" = {
+                  "/lib" = {
                     mountpoint = "/var/lib";
                     mountOptions = [ "compress=zstd" "noatime" ];
                   };
-                  "/var-log" = {
+                  "/log" = {
                     mountpoint = "/var/log";
-                    mountOptions = [ "compress=zstd" "noatime" ];
-                  };
-                  "/var-tmp" = {
-                    mountpoint = "/var/tmp";
                     mountOptions = [ "compress=zstd" "noatime" ];
                   };
                 };
