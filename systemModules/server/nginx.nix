@@ -6,15 +6,19 @@
 let
   cfg = config.custom.nginx;
 in {
-  options.custom.nginx = with lib; {
-    enable = mkEnableOption "Enable nginx and acme";
-    domain = mkOption {
-      type = types.str;
-      default = "";
-    };
-    provider = mkOption {
-      type = types.str;
-      default = "";
+  options.custom = {
+    nginx = with lib; {
+      enable = mkEnableOption "Enable nginx and acme" // {
+        default = config.custom.abs.enable || config.custon.nc.enable;
+      };
+      domain = mkOption {
+        type = types.str;
+        default = "";
+      };
+      provider = mkOption {
+        type = types.str;
+        default = "";
+      };
     };
   };
 
