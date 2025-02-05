@@ -39,17 +39,9 @@ in
       systemd.enable = true;
     };
 
-    # toggle / launch waybar
-    wayland.windowManager.hyprland.settings = {
-      layerrule = [
-        "blur,waybar"
-        "ignorealpha 0,waybar"
-      ];
-
-      bind = [
-        ''$mod, a, exec, ${lib.getExe' pkgs.procps "pkill"} -SIGUSR1 waybar''
-        "$mod_SHIFT, a, exec, systemctl --user restart waybar.service"
-      ];
+    # wait for colorscheme to be ready on boot
+    systemd.user.services.waybar = {
+      Unit.AssertPathExists = [ "${config.xdg.configHome}/waybar/config.jsonc" ];
     };
 
     custom = {
@@ -120,15 +112,14 @@ in
           };
         };
 
-        "hyprland/workspaces" = {
-          layer = "top";
-          margin = "0";
+        layer = "top";
+        margin = "0";
 
-          modules-center = [ "hyprland/workspaces" ];
+        modules-center = [  ];
 
-          modules-left = [ "custom/nix" ] ++ (lib.optional cfg.idleInhibitor "idle_inhibitor");
+        modules-left = [ "custom/nix" ] ++ (lib.optional cfg.idleInhibitor "idle_inhibitor");
 
-          modules-right =
+        modules-right =
             [
               "network"
               "pulseaudio"
@@ -137,42 +128,41 @@ in
             ++ (lib.optional config.custom.battery.enable "battery")
             ++ [ "clock" ];
 
-          network =
-            {
-              format-disconnected = "󰖪    Offline";
-              tooltip = false;
-            }
-            // (
-              if config.custom.wifi.enable then
-                {
-                  format = "    {essid}";
-                  format-ethernet = " ";
-                  # rofi wifi script
-                  on-click = lib.getExe pkgs.custom.rofi-wifi-menu;
-                  on-click-right = "${config.custom.terminal.exec} nmtui";
-                }
-              else
-                { format-ethernet = ""; }
-            );
-
-          position = "top";
-
-          pulseaudio = {
-            format = "{icon}  {volume}%";
-            format-icons = [
-              "󰕿"
-              "󰖀"
-              "󰕾"
-            ];
-            format-muted = "󰖁  Muted";
-            on-click = "${lib.getExe pkgs.pamixer} -t";
-            on-click-right = "pwvucontrol";
-            scroll-step = 1;
+        network =
+          {
+            format-disconnected = "󰖪    Offline";
             tooltip = false;
-          };
+          }
+          // (
+            if config.custom.wifi.enable then
+              {
+                format = "    {essid}";
+                format-ethernet = " ";
+                # rofi wifi script
+                on-click = lib.getExe pkgs.custom.rofi-wifi-menu;
+                on-click-right = "${config.custom.terminal.exec} nmtui";
+              }
+            else
+              { format-ethernet = ""; }
+          );
 
-          start_hidden = cfg.hidden;
+        position = "top";
+
+        pulseaudio = {
+          format = "{icon}  {volume}%";
+          format-icons = [
+            "󰕿"
+            "󰖀"
+            "󰕾"
+          ];
+          format-muted = "󰖁  Muted";
+          on-click = "${lib.getExe pkgs.pamixer} -t";
+          on-click-right = "pwvucontrol";
+          scroll-step = 1;
+          tooltip = false;
         };
+
+        start_hidden = cfg.hidden;
       };
     };
   };

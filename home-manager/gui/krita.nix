@@ -12,4 +12,11 @@
   config = lib.mkIf config.custom.krita.enable {
     home.packages = [ pkgs.krita ];
   };
+
+  custom.persist = {
+    home.files = [
+      ".config/kritadisplayrc"
+      ".config/kritarc"
+    ];
+  };
 }

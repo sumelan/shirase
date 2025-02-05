@@ -9,20 +9,20 @@
     # hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     
-    # Home-manager
+    # home-manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Niri
+    # windows manager
     niri.url = "github:sodiboo/niri-flake";
+
+    # style
+    stylix.url = "github:danth/stylix";
 
     # impermanence
     impermanence.url = "github:nix-community/impermanence";
-
-    # theming
-    stylix.url = "github:danth/stylix";
 
     # Secrets
     agenix.url = "github:yaxitech/ragenix";

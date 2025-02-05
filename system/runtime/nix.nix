@@ -107,4 +107,13 @@
   # enable man-db cache for fish to be able to find manpages
   # https://discourse.nixos.org/t/fish-shell-and-manual-page-completion-nixos-home-manager/15661
   documentation.man.generateCaches = true;
+
+  hm.custom.persist = {
+    home = {
+      cache.directories = [
+        ".cache/nix"
+        ".cache/nixpkgs-review"
+      ];
+    };
+  };
 }

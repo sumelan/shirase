@@ -40,7 +40,7 @@
     in
     [
       "file://${homeDir}/Downloads"
-      "file://${homeDir}/projects/Wolborg"
+      "file://${homeDir}/projects/wolborg"
       "file://${homeDir}/Documents"
       "file://${homeDir}/Pictures/Wallpapers"
     ];
@@ -72,8 +72,16 @@
     };
   };
 
-  wayland.windowManager.hyprland.settings = {
-    # disable transparency for file delete dialog
-    windowrulev2 = [ "forcergbx,floating:1,class:(nemo)" ];
+  custom.persist = {
+    home = {
+      directories = [
+        # folder preferences such as view mode and sort order
+        ".local/share/gvfs-metadata"
+      ];
+      cache.directories = [
+        # thumbnail cache
+        ".cache/thumbnails"
+      ];
+    };
   };
 }

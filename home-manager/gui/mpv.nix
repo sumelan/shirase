@@ -10,6 +10,15 @@
   };
 
   config = lib.mkIf config.custom.mpv.enable {
-    home.packages = [ pkgs.mpv ];
+    home.packages = with pkgs; [ 
+      mpv
+      ffmpeg
+    ];
+
+    custom.persist = {
+      home.directories = [
+        ".local/state/mpv" # watch later
+      ];
+    };
   };
 }

@@ -62,5 +62,11 @@
         "opcache.interned_strings_buffer" = "16";
       };
     };
+
+    custom.persist = {
+      root.directories = [
+        "/var/lib/nextcloud"
+      ];
+    };
   };
 }

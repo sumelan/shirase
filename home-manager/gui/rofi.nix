@@ -47,29 +47,12 @@ in
       enable = true;
       package = pkgs.rofi-wayland.override {
         plugins = [ rofiThemes ];
+      };
     };
-    theme = "${config.xdg.cacheHome}/wallust/rofi.rasi";
-    };
-    # NOTE: rofi-power-menu only works for powermenuType = 4!
-    home.packages = (lib.optionals config.custom.wifi.enable [
-      pkgs.custom.rofi-wifi-menu
-    ]);
 
-    # add blur for rofi shutdown
-    wayland.windowManager.hyprland.settings = {
-      layerrule = [
-        "blur,rofi"
-        "dimaround,rofi"
-        "ignorealpha 0,rofi"
-      ];
-
-      # force center rofi on monitor
-      windowrulev2 = [
-        "float,class:(Rofi)"
-        "center,class:(Rofi)"
-        "rounding 12,class:(Rofi)"
-        "dimaround,class:(Rofi)"
-      ];
-    };
+    home.packages = [
+      # NOTE: rofi-power-menu only works for powermenuType = 4!
+      (pkgs.custom.rofi-power-menu.override { hasWindows = config.custom.mswindows; })
+    ] ++ (lib.optionals config.custom.wifi.enable [ pkgs.custom.rofi-wifi-menu ]);
   };
 }

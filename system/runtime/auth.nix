@@ -27,7 +27,6 @@ lib.mkMerge [
     security = {
       polkit.enable = true;
       sudo.wheelNeedsPassword = false;
-      pam.services.hyprland.enableGnomeKeyring = true;
       pam.services.hyprlock = { };
     };
 
@@ -40,6 +39,26 @@ lib.mkMerge [
     programs.gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
+    };
+
+    # persist keyring and misc other secrets
+    custom.persist = {
+      root = {
+        files = [
+          "/etc/ssh/ssh_host_rsa_key"
+          "/etc/ssh/ssh_host_rsa_key.pub"
+          "/etc/ssh/ssh_host_ed25519_key"
+          "/etc/ssh/ssh_host_ed25519_key.pub"
+        ];
+      };
+      home = {
+        directories = [
+          ".pki"
+          ".ssh"
+          ".local/share/.gnupg"
+          ".local/share/keyrings"
+        ];
+      };
     };
   }
 ]

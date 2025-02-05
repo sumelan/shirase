@@ -11,5 +11,11 @@
 
   config = lib.mkIf config.custom.thunderbird.enable {
     home.packages = [ pkgs.thunderbird ];
+
+    custom.persist = {
+      home.directories = [
+        ".thunderbrd"
+      ];
+    };
   };
 }

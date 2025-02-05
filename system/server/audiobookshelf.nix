@@ -14,5 +14,11 @@
       port = 8234;
       openFirewall = true;
     };
+
+    custom.persist = {
+      root.directories = [
+        "/var/lib/audiobookshelf"
+      ];
+    };
   };
 }

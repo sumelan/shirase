@@ -5,6 +5,15 @@
   ...
 }:
 {
+  imports = [
+    ./audio.nix
+    ./auth.nix
+    ./bluetooth.nix
+    ./keyd.nix
+    ./nix.nix
+    ./users.nix
+  ];
+
   networking.hostName = "${user}-${host}"; # Define your hostname.
 
   networking = {

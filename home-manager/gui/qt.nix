@@ -8,17 +8,6 @@
   config,
   ...
 }:
-let
-  qtctConf = {
-    Appearance = {
-      custom_palette = false;
-      icon_theme = config.gtk.iconTheme.name;
-      standard_dialogs = "xdgdesktopportal";
-      style = "kvantum";
-    };
-  };
-  defaultFont = "${config.gtk.font.name},${builtins.toString config.gtk.font.size}";
-in
 {
   options.custom = with lib; {
     qtStyleFix = mkEnableOption "fix styling for qt applications" // {

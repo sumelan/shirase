@@ -1,10 +1,12 @@
 {
-  config,
   lib,
+  config,
   ...
 }:
 let
   opacity = "E5"; # 90%
+  # NOTE: real dunst config is read from here
+  actualDunstConfig = "${config.xdg.cacheHome}/wallust/dunstrc";
 in
 (lib.mkMerge [
   {
@@ -52,6 +54,11 @@ in
           timeout = 10;
         };
       };
+    };
+
+    # wait for colorscheme to be ready on boot
+    systemd.user.services.dunst = {
+      Unit.AssertPathExists = [ actualDunstConfig ];
     };
   }
 

@@ -6,36 +6,28 @@
 }:
 {
   imports = [
+    ./boot/boot.nix
+    ./boot/specialisations.nix
+    ./disk/btrfs.nix
+    ./disk/impermanence.nix
+    ./extra/opentabletdriver.nix
+    ./extra/printing.nix
+    ./extra/qmk.nix
+    ./extra/usb-audio.nix
+    ./runtime
     ./server
+
     ./agenix.nix
-    ./audio.nix
-    ./auth.nix
     ./backup.nix
-    ./bluetooth.nix
-    ./boot.nix
-    ./btrfs.nix
-    ./configuration.nix
     ./docker.nix
     ./gh.nix
-    ./hyprland.nix
-    ./keyd.nix
-    ./nix.nix
-    ./opentabletdriver.nix
-    ./printing.nix
-    ./qmk.nix
-    ./specialisations.nix
-    ./usb-audio.nix
-    ./users.nix
+    ./niri.nix
   ];
 
   services = {
     # don’t shutdown when power button is short-pressed
-    logind.extraConfig = ''
-      HandlePowerKey=ignore
-    '';
+    logind.extraConfig = "HandlePowerKey=ignore";
 
-    # automount disks
-    gvfs.enable = true;
     # devmon.enable = true;
   };
 
@@ -114,8 +106,6 @@
     # use same config as home-manager
     bash.interactiveShellInit = config.hm.programs.bash.initExtra;
 
-    file-roller.enable = true;
-
     # disable nano
     nano.enable = lib.mkForce false;
   };
@@ -146,6 +136,17 @@
       settings = {
         default = [ "${config.hm.custom.terminal.package.pname}.desktop" ];
       };
+    };
+
+    custom.persist = {
+      root.directories = lib.optionals config.hm.custom.wifi.enable [
+      "/etc/NetworkManager"
+      ];
+      root.cache.directories = [
+        "/var/lib/systemd/coredump"
+      ];
+
+      home.directories = [ ".local/state/wireplumber" ];
     };
   };
 }

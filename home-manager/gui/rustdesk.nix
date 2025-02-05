@@ -1,6 +1,6 @@
 {
-  config,
   lib,
+  config,
   pkgs,
   ...
 }:
@@ -11,5 +11,14 @@
 
   config = lib.mkIf config.custom.rustdesk.enable {
     home.packages = [ pkgs.rustdesk-flutter ];
+
+    custom.persist = {
+      home.directories = [
+        ".config/rustdesk"
+      ];
+      cache.directories = [
+        ".local/share/logs/RustDesk"
+      ];
+    };
   };
 }

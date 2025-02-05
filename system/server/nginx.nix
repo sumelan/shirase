@@ -10,7 +10,7 @@ in
   options.custom = {
     nginx = with lib; {
       enable = mkEnableOption "Enable nginx and acme" // {
-        default = config.custom.audiobookshelf.enable || config.custon.nextcloud.enable;
+        default = config.custom.audiobookshelf.enable || config.custom.nextcloud.enable;
       };
       domain = mkOption {
         type = types.str;

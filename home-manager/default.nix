@@ -10,17 +10,13 @@
   imports = [
     ./editor
     ./gui
-    ./hyprland
+    ./niri
     ./shell
     ./hardware.nix
+    ./impermanence.nix # only contains options
   ];
 
   options.custom = with lib; {
-    autologinCommand = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-      description = "Command to run after autologin";
-    };
     fonts = {
       regular = mkOption {
         type = types.str;
@@ -40,7 +36,6 @@
   };
 
   config = {
-    # setup fonts for other distros, run "fc-cache -f" to refresh fonts
     fonts.fontconfig.enable = true;
 
     home = {
@@ -86,6 +81,14 @@
         noto-fonts-emoji
         nerd-fonts.jetbrains-mono
       ];
+
+      persist = {
+        home.directories = [
+          "Desktop"
+          "Documents"
+          "Pictures"
+        ];
+      };
     };
   };
 }

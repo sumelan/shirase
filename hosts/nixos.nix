@@ -14,8 +14,6 @@ let
       inherit host user;
       isNixos = true;
       isLaptop = host == "acer";
-      home = /home/${user};
-      dotfile = /home/${user}/prejects/Wolborg;
     };
     modules = [
       ./${host} # host specific configuration
@@ -30,7 +28,6 @@ let
             inherit host user;
             isNixos = true;
             isLaptop = host == "acer";
-            dotfile = /home/${user}/projects/Wolborg;
           };
           users.${user} = {
             imports = [
