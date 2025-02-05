@@ -43,13 +43,30 @@
     nixcord.url = "github:kaylorben/nixcord";
   };
   outputs = 
-    inputs@{ nixpkgs, self, home-manager, ... }:
+    inputs@{ nixpkgs, self, ... }:
     let
       system = "x86_64-linux";
       user = "sumelan";
 
-      mkSystem = system: {
+      pkgs = import inputs.nixpkgs {
         inherit system;
+        config.allowUnfree = true;
+      };
+
+      lib = nixpkgs.lib {
+        inherit pkgs;
+        inherit (inputs) home-manager;
+      };
+
+      mkSystem = system: {
+        inherit
+          self
+          inputs
+          nixpkgs
+          lib
+          pkgs
+          system
+          ;
         specialArgs = {
           inherit self inputs user;
         };

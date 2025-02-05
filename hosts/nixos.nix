@@ -1,16 +1,16 @@
 {
   lib,
-  system,
-  nixpkgs,
+  pkgs,
   inputs,
+  specialArgs,
   user,
 }:
 let
   mkNixosConfiguration = 
     host:
-    nixpkgs.lib.nixosSystem {
-    inherit system;
-    specialArgs = {
+    lib.nixosSystem {
+      inherit pkgs;
+    specialArgs = specialArgs // {
       inherit host user;
       isNixos = true;
       isLaptop = host == "acer";
@@ -20,14 +20,14 @@ let
     modules = [
       ./${host} # host specific configuration
       ./${host}/hardware.nix  # host specific hardware configuration
-      ../systemModules
+      ../system # system modules
       inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = {
-            inherit host user inputs;
+          extraSpecialArgs = specialArgs // {
+            inherit host user;
             isNixos = true;
             isLaptop = host == "acer";
             dotfile = /home/${user}/projects/Wolborg;
@@ -35,7 +35,7 @@ let
           users.${user} = {
             imports = [
               ./${host}/home.nix  # host specific home-manager configuration
-              ../homeModules
+              ../home-manager # home-manager modules
               inputs.nixcord.homeManagerModules.nixcord
               inputs.nvf.homeManagerModules.default
             ];
