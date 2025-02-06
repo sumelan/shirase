@@ -22,6 +22,7 @@
     ./docker.nix
     ./gh.nix
     ./niri.nix
+    ./stylix.nix
   ];
 
   services = {

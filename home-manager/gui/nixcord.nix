@@ -28,6 +28,7 @@
     custom.persist = {
       home.directories = [
         ".config/discord"
+        ".config/Vencord"
         ".config/vesktop"
       ];
     };

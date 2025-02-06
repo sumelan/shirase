@@ -5,11 +5,25 @@
   pkgs,
   host,
   user,
-  flake,
+  dotfiles,
   inputs,
+  isLaptop,
   ...
 }:
 {
+  # execute shebangs that assume hardcoded shell paths
+  services.envfs.enable = true;
+  system = {
+    # envfs sets usrbinenv activation script to "" with mkForce
+    activationScripts.usrbinenv = lib.mkOverride (50 - 1) ''
+      mkdir -p /usr/bin
+      chmod 0755 /usr/bin || true
+    '';
+
+    # make a symlink of flake within the generation (e.g. /run/current-system/src)
+    extraSystemBuilderCmds = "ln -s ${self.sourceInfo.outPath} $out/src";
+  };
+
   # run unpatched binaries on nixos
   programs.nix-ld.enable = true;
 
@@ -21,6 +35,86 @@
       nixfmt-rfc-style
     ];
   };
+
+  systemd.tmpfiles.rules = [
+    # cleanup nixpkgs-review cache on boot
+    "D! ${config.hm.xdg.cacheHome}/nixpkgs-review 1755 ${user} users 5d"
+    # cleanup channels so nix stops complaining
+    "D! /nix/var/nix/profiles/per-user/root 1755 root root 1d"
+  ];
+
+  custom.shell.packages =
+    {
+      # set the current generation or given generation number as default to boot
+      ndefault = {
+        text = ''
+          if [ "$#" -eq 0 ]; then
+            sudo /run/current-system/bin/switch-to-configuration boot
+          else
+            sudo "/nix/var/nix/profiles/system-$1-link/bin/switch-to-configuration" boot
+          fi
+        '';
+        bashCompletion = ''
+          _ndefault() {
+              local profile_dir="/nix/var/nix/profiles"
+              local profiles=$(command ls -1 "$profile_dir" | \
+                  grep -E '^system-[0-9]+-link$' | \
+                  sed -E 's/^system-([0-9]+)-link$/\1/' | \
+                  sort -rnu)
+              COMPREPLY=($(compgen -W "$profiles" -- "''${COMP_WORDS[COMP_CWORD]}"))
+          }
+
+          complete -F _ndefault ndefault
+        '';
+        fishCompletion = ''
+          function _ndefault
+              set -l profile_dir "/nix/var/nix/profiles"
+              command ls -1 "$profile_dir" | \
+                string match -r '^system-([0-9]+)-link$' | \
+                string replace -r '^system-([0-9]+)-link$' '$1' | \
+                sort -ru
+          end
+
+          complete --keep-order -c ndefault -f -a "(_ndefault)"
+        '';
+      };
+      # build iso images
+      nbuild-iso = {
+        runtimeInputs = [ pkgs.nixos-generators ];
+        text = ''
+          pushd ${dotfiles} > /dev/null
+          nix build ".#nixosConfigurations.$1.config.system.build.isoImage"
+          popd > /dev/null
+        '';
+        fishCompletion = ''
+          function _nbuild_iso
+            nix eval --impure --json --expr \
+              'with builtins.getFlake (toString ./.); builtins.attrNames nixosConfigurations' | \
+              ${lib.getExe pkgs.jq} -r '.[]' | grep iso
+            end
+            complete -c nbuild-iso -f -a '(_nbuild_iso)'
+        '';
+      };
+      # list all installed packages
+      nix-list-packages = {
+        text =
+          let
+            allPkgs = map (p: p.name) (
+              config.environment.systemPackages ++ config.users.users.${user}.packages ++ config.hm.home.packages
+            );
+          in
+          ''sort -ui <<< "${lib.concatLines allPkgs}"'';
+      };
+    }
+    // lib.optionalAttrs (!isLaptop) {
+      # build and push config for laptop
+      nsw-remote = ''
+        pushd ${dotfiles} > /dev/null
+        nixos-rebuild switch --target-host "root@''${1:-${user}-framework}" --flake ".#''${2:-framework}"
+        popd > /dev/null
+      '';
+    };
+
   nix =
     let
       nixPath = [
@@ -32,9 +126,16 @@
       channel.enable = false;
       # required for nix-shell -p to work
       inherit nixPath;
+      gc = {
+        # Automatic garbage collection
+        automatic = true;
+        dates = "daily";
+        options = "--delete-older-than 7d";
+      };
       package = pkgs.nixVersions.latest;
       registry = {
-        nixpkgs-master = {
+        n.flake = inputs.nixpkgs-stable;
+        master = {
           from = {
             type = "indirect";
             id = "nixpkgs-master";
@@ -45,7 +146,7 @@
             repo = "nixpkgs";
           };
         };
-        nixpkgs-stable.flake = inputs.nixpkgs-stable;
+        stable.flake = inputs.nixpkgs-stable;
       };
       settings = {
         auto-optimise-store = true; # Optimise symlinks
@@ -54,20 +155,21 @@
         # required to be set, for some reason nix.nixPath does not write to nix.conf
         nix-path = nixPath;
         warn-dirty = false;
+        # removes ~/.nix-profile and ~/.nix-defexpr
+        use-xdg-base-directories = true;
 
         experimental-features = [
           "nix-command"
           "flakes"
           "pipe-operators"
+          # "repl-flake"
         ];
         substituters = [
-          "https://hyprland.cachix.org"
           "https://nix-community.cachix.org"
         ];
         # allow building and pushing of laptop config from desktop
         trusted-users = [ user ];
         trusted-public-keys = [
-          "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         ];
       };
@@ -92,7 +194,7 @@
             rev = "12c64ca55c1014cdc1b16ed5a804aa8576601ff2";
             hash = "sha256-hY8g6H2KFL8ownSiFeMOjwPC8P0ueXpCVEbxgda3pko=";
           };
-          prefix = ''(import ${flake-compat} { src = ${flake}; }).defaultNix.nixosConfigurations.${host}'';
+          prefix = ''(import ${flake-compat} { src = ${dotfiles}; }).defaultNix.nixosConfigurations.${host}'';
         in
         prev.runCommandNoCC "nixos-option" { buildInputs = [ prev.makeWrapper ]; } ''
           makeWrapper ${lib.getExe prev.nixos-option} $out/bin/nixos-option \

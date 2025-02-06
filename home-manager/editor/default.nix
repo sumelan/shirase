@@ -1,4 +1,8 @@
-{ ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./helix
@@ -12,6 +16,14 @@
   };
 
   xdg = {
+    desktopEntries.nvim = {
+      name = "Neovim";
+      genericName = "Text Editor";
+      icon = "nvim";
+      terminal = true;
+      exec = "${lib.getExe pkgs.neovim} %f";
+    };
+
     mimeApps = {
       defaultApplications = {
         "text/plain" = "nvim.desktop";
@@ -22,5 +34,14 @@
         "text/csv" = "nvim.desktop";
       };
     };
+  };
+
+  custom.persist = {
+    home.directories = [
+      ".local/share/nvim" # data directory
+      ".local/state/nvim" # persistent session info
+      ".supermaven"
+      ".local/share/supermaven"
+    ];
   };
 }

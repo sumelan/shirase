@@ -35,18 +35,6 @@
         description = "Terminal command to execute other programs.";
       };
 
-      font = mkOption {
-        type = types.str;
-        default = config.custom.fonts.monospace;
-        description = "Font for the terminal.";
-      };
-
-      size = mkOption {
-        type = types.int;
-        default = 10;
-        description = "Font size for the terminal.";
-      };
-
       padding = mkOption {
         type = types.int;
         default = 12;
@@ -105,6 +93,11 @@
         enable = true;
         enableBashIntegration = true;
         enableFishIntegration = true;
+      };
+    };
+    custom.persist = {
+      home = {
+        cache.directories = [ ".local/share/zoxide" ];
       };
     };
   };

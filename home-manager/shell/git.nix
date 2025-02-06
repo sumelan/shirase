@@ -55,6 +55,7 @@
         };
       };
     };
+
     lazygit.enable = true;
   };
 
@@ -87,5 +88,12 @@
       # cleanup leftover files from merges
       mergeclean = "find . -type f -name '*.orig' -exec rm -f {} ;";
     };
+  };
+
+  custom.persist = {
+    home.directories = [
+      ".config/lazygit"
+      ".config/systemd" # git maintenance systemd timers
+    ];
   };
 }

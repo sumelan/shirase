@@ -36,4 +36,10 @@ in
     };
     nix-index.enable = true;
   };
+
+  custom.persist = {
+    home = {
+      cache.directories = [ ".cache/nix-index" ];
+    };
+  };
 }

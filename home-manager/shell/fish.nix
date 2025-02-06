@@ -4,6 +4,9 @@
   pkgs,
   ...
 }:
+let
+  fishPath = lib.getExe config.programs.fish.package;
+in
 {
   programs = {
     fish = {
@@ -44,6 +47,19 @@
   ];
 
   # set as default interactive shell
-  programs.kitty.settings.shell = lib.mkForce (lib.getExe pkgs.fish);
-  programs.ghostty.settings.command = lib.mkForce (lib.getExe pkgs.fish);
+  programs = {
+    kitty.settings = {
+      env = "SHELL=${fishPath}";
+      shell = lib.mkForce (lib.getExe config.programs.fish.package);
+    };
+    ghostty.settings={
+      command = lib.mkForce "SHELL=${fishPath} ${fishPath}";
+    };
+  };
+
+  custom.persist = {
+    home = {
+      cache.directories = [ ".local/share/fish" ];
+    };
+  };
 }
