@@ -1,25 +1,15 @@
-{
-  config,
-  lib,
-  pkgs,
-  user,
-  ...
-}:
-lib.mkMerge [
-  {
-    hm = {
-      programs.gh = {
-        enable = true;
+_:{
+  hm = {
+    programs.gh = {
+      enable = true;
 
-        # https://github.com/nix-community/home-manager/issues/4744#issuecomment-1849590426
-        settings = {
-          version = 1;
-        };
-
-        custom.persist = {
-          home.directories = [ ".config/gh" ];
-        };
+      # https://github.com/nix-community/home-manager/issues/4744#issuecomment-1849590426
+      settings = {
+        version = 1;
       };
     };
-  }
-]
+    custom.persist = {
+      home.directories = [ ".config/gh" ];
+    };
+  };
+}

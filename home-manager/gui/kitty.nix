@@ -1,17 +1,15 @@
 {
   config,
-  isNixOS,
   lib,
   ...
 }:
 let
   cfg = config.custom.kitty;
-  inherit (config.custom) terminal;
 in
 {
   options.custom = with lib; {
     kitty.enable = mkEnableOption "kitty" // {
-      default = isNixOS;
+      default = true;
     };
   };
 
@@ -19,10 +17,6 @@ in
     programs.kitty = {
       enable = true;
       themeFile = "Catppuccin-Mocha";
-      font = {
-        name = terminal.font;
-        inherit (terminal) size;
-      };
       settings = {
         enable_audio_bell = false;
         copy_on_select = "clipboard";
@@ -30,21 +24,13 @@ in
         cursor_trail_start_threshold = 10;
         scrollback_lines = 10000;
         update_check_interval = 0;
-        window_padding_width = terminal.padding;
         tab_bar_edge = "top";
-        background_opacity = terminal.opacity;
         confirm_os_window_close = 0;
         # for removing kitty padding when in neovim
         allow_remote_control = "password";
         remote_control_password = ''"" set-spacing''; # only allow setting of padding
         listen_on = "unix:/tmp/kitty-socket";
       };
-      extraConfig = lib.mkIf (lib.hasPrefix "JetBrains" terminal.font) ''
-        font_features JetBrainsMonoNF-Regular +zero
-        font_features JetBrainsMonoNF-Bold +zero
-        font_features JetBrainsMonoNF-Italic +zero
-        font_features JetBrainsMonoNF-BoldItalic +zero
-      '';
     };
 
     home.shellAliases = {

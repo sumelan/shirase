@@ -11,11 +11,11 @@
 
   config = lib.mkIf config.custom.inkscape.enable {
     home.packages = [ pkgs.inkscape ];
-  };
 
-  custom.persist = {
-    home.directories = [
-    ".config/inkscape"
-    ];
+    custom.persist = {
+      home.directories = [
+        ".config/inkscape"
+      ];
+    };
   };
 }

@@ -9,7 +9,6 @@
     ./audio.nix
     ./bluetooth.nix
     ./keyd.nix
-    ./niri.nix
     ./stylix.nix
   ];
 

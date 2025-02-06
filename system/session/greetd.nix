@@ -6,7 +6,7 @@
   ...
 }:
 {
-  services = lib.mkIf config.hm.custom.niri.enbale {
+  services = lib.mkIf config.hm.custom.niri.enable {
     displayManager.autoLogin = {
       enable = true;
       user = "${user}";

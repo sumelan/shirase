@@ -42,7 +42,7 @@
     nano.enable = lib.mkForce false;
   };
 
-  systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
         curl
         eza
         (lib.hiPrio procps) # for uptime
@@ -72,16 +72,16 @@
         default = [ "${config.hm.custom.terminal.package.pname}.desktop" ];
       };
     };
+  };
 
-    custom.persist = {
-      root.directories = lib.optionals config.hm.custom.wifi.enable [
+  custom.persist = {
+    root.directories = lib.optionals config.hm.custom.wifi.enable [
       "/etc/NetworkManager"
-      ];
-      root.cache.directories = [
-        "/var/lib/systemd/coredump"
-      ];
+    ];
+    root.cache.directories = [
+      "/var/lib/systemd/coredump"
+    ];
 
-      home.directories = [ ".local/state/wireplumber" ];
-    };
+    home.directories = [ ".local/state/wireplumber" ];
   };
 }

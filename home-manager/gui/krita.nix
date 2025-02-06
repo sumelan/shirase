@@ -11,19 +11,19 @@
 
   config = lib.mkIf config.custom.krita.enable {
     home.packages = [ pkgs.krita ];
-  };
 
-  custom.persist = {
-    home = {
-      directories = [
-        ".local/share/krita"
-      ];
+    custom.persist = {
+      home = {
+        directories = [
+          ".local/share/krita"
+        ];
 
-      files = [
-        ".config/kritadisplayrc"
-        ".config/kritarc"
-        ".config/kritashortcutsrc"
-      ];
+        files = [
+          ".config/kritadisplayrc"
+          ".config/kritarc"
+          ".config/kritashortcutsrc"
+        ];
+      };
     };
   };
 }

@@ -9,8 +9,8 @@
     ./nextcloud.nix
     ./nginx.nix
   ];
-
-  firewall= lib.mkIf config.nginx.enable {
+  
+  networking.firewall= lib.mkIf config.custom.nginx.enable {
     allowedTCPPorts = [
       80
       443

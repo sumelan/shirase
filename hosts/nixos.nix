@@ -1,15 +1,19 @@
 {
   lib,
-  pkgs,
   inputs,
   specialArgs,
   user,
-}:
+  ...
+}@args:
 let
   mkNixosConfiguration = 
     host:
+    {
+      pkgs ? args.pkgs,
+    }:
     lib.nixosSystem {
       inherit pkgs;
+
     specialArgs = specialArgs // {
       inherit host user;
       isNixos = true;
@@ -25,6 +29,7 @@ let
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
+
           extraSpecialArgs = specialArgs // {
             inherit host user;
             isNixos = true;

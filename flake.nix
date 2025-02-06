@@ -47,10 +47,7 @@
         config.allowUnfree = true;
       };
 
-      lib = nixpkgs.lib {
-        inherit pkgs;
-        inherit (inputs) home-manager;
-      };
+      inherit (nixpkgs) lib;
 
       mkSystem = system: {
         inherit
@@ -59,14 +56,21 @@
           nixpkgs
           lib
           pkgs
+          user
           system
           ;
         specialArgs = {
-          inherit self inputs user;
+          inherit self inputs;
         };
       };
     in
     {
       nixosConfigurations = import ./hosts/nixos.nix (mkSystem system);
+
+      inherit lib self;
+
+      packages = import ./packages {
+        inherit pkgs system;
+      };
     };
   }

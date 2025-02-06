@@ -1,5 +1,5 @@
 {
-  flake,
+  dotfiles,
   pkgs,
   ...
 }:
@@ -32,7 +32,7 @@ in
         enable = true;
         extraArgs = "--keep-since 1w --keep 5";
       };
-      inherit flake;
+      flake = dotfiles;
     };
     nix-index.enable = true;
   };

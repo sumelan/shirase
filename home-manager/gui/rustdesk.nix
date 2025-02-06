@@ -13,12 +13,14 @@
     home.packages = [ pkgs.rustdesk-flutter ];
 
     custom.persist = {
-      home.directories = [
+      home = {
+        directories = [
         ".config/rustdesk"
-      ];
-      cache.directories = [
-        ".local/share/logs/RustDesk"
-      ];
+        ];
+        cache.directories = [
+          ".local/share/logs/RustDesk"
+        ];
+      };
     };
   };
 }

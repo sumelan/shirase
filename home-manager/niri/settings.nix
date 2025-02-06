@@ -4,74 +4,72 @@
   ...
 }:
 let
-  inherit (config.custom) outputs;
+  cfg = config.custom.outputs;
   makeCommand = command: {
     command = [command];
   };
 in 
 {
   options.custom = with lib; {
-    niri = {
-      enable = mkEnableOption "Niri";
-      outputs = mkOption {
-        type = 
-          with types;
+    niri.enable = mkEnableOption "Niri";
+    outputs = mkOption {
+      type = 
+        with types;
           nonEmptyListOf (
-          submodule (
-            { config, ... }:
-            {
-              options = {
-                name = mkOption {
-                  type = str;
-                  description = "The name of the display, e.g. eDP-1";
-                };
-                width = mkOption {
-                  type = int;
-                  description = "Pixel width of the display";
-                };
-                height = mkOption {
-                  type = int;
-                  description = "Pixel width of the display";
-                };
-                refreshRate = mkOption {
-                  type = int;
-                  default = 60;
-                  description = "Refresh rate of the display";
-                };
-                position = {
-                  x = mkOption {
-                    type = int;
-                    default = 0;
-                    description = "Position of x-axis on the display";
+            submodule (
+              { ... }:
+              {
+                options = {
+                  name = mkOption {
+                    type = str;
+                    description = "The name of the display, e.g. eDP-1";
                   };
-                  y = mkOption {
+                  width = mkOption {
                     type = int;
+                    description = "Pixel width of the display";
+                  };
+                  height = mkOption {
+                    type = int;
+                    description = "Pixel width of the display";
+                  };
+                  refresh = mkOption {
+                    type = int;
+                    default = 60;
+                    description = "Refresh rate of the display";
+                  };
+                  position = {
+                    x = mkOption {
+                      type = int;
+                      default = 0;
+                      description = "Position of x-axis on the display";
+                    };
+                    y = mkOption {
+                      type = int;
+                      default = 0;
+                      description = "Position of y-axis on the display";
+                    };
+                  };
+                  scale = mkOption {
+                    type = float;
+                    default = 1.0;
+                  };
+                  vrr = mkEnableOption "Variable Refresh Rate";
+                  transform.rotation = mkOption {
+                    type = oneOf [ 0 90 180 270 ];
+                    description = "Is the display vertical?";
                     default = 0;
-                    description = "Position of y-axis on the display";
                   };
                 };
-                scale = mkOption {
-                  type = float;
-                  default = 1.0;
-                };
-                vrr = mkEnableOption "Variable Refresh Rate";
-                transform.rotation = mkOption {
-                  type = oneOf [ 0 90 180 270 ];
-                  description = "Is the display vertical?";
-                  default = 0;
-                };
-              };
-            }
-          )
-        );
+              }
+            )
+          );
       default = [ ];
       description = "Config for monitors";
-    };
   };
 
-  config = lib.mkIf config.custom.niri.enable {
+  config = {
     programs.niri = {
-      enable = true;
+      enable = config.custom.niri.enable;
       settings = {
         environment = {
           CLUTTER_BACKEND = "wayland";
@@ -111,7 +109,20 @@ in
           workspace-auto-back-and-forth = true;
         };
 
-        inherit outputs;
+        outputs = {
+          "${cfg.name}" = {
+              mode = {
+                width = cfg.width;
+                height = cfg.height;
+                refresh = cfg.refresh;
+              };
+              scale = cfg.scale;
+              position = {
+                x = cfg.x;
+                y = cfg.y;
+              };
+            };
+          };
 
         layout = {
           focus-ring.enable = false;

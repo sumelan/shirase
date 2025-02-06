@@ -1,6 +1,5 @@
 {
   config,
-  isNixOS,
   lib,
   pkgs,
   ...
@@ -12,7 +11,7 @@ in
   options.custom = with lib; {
     waybar = {
       enable = mkEnableOption "waybar" // {
-        default = config.custom.hyprland.enable;
+        default = config.custom.niri.enable;
       };
       config = mkOption {
         type = types.submodule { freeformType = (pkgs.formats.json { }).type; };
@@ -34,14 +33,9 @@ in
 
   config = lib.mkIf config.custom.waybar.enable {
     programs.waybar = {
-      enable = isNixOS;
+      enable = true;
       package = pkgs.waybar.override { cavaSupport = false; };
       systemd.enable = true;
-    };
-
-    # wait for colorscheme to be ready on boot
-    systemd.user.services.waybar = {
-      Unit.AssertPathExists = [ "${config.xdg.configHome}/waybar/config.jsonc" ];
     };
 
     custom = {

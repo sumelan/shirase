@@ -7,14 +7,12 @@
     ./easyeffects.nix
     ./foliate.nix
     ./ghostty.nix
-    ./gtk.nix
     ./inkscape.nix
     ./kitty.nix
     ./krita.nix
     ./mpv.nix
     ./nixcord.nix
     ./obs-studio.nix
-    ./qt.nix
     ./rofi.nix
     ./rustdesk.nix
     ./swayimg.nix

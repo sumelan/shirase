@@ -1,9 +1,11 @@
 { pkgs, ... }:
 {
   imports = [
-    ./settings.nix
     ./binds.nix
+    ./idle.nix
+    ./lock.nix
     ./rules.nix
+    ./settings.nix
   ];
 
   home = {

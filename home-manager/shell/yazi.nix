@@ -2,7 +2,7 @@
   lib,
   config,
   pkgs,
-  flake,
+  dotfiles,
   ...
 }:
 let
@@ -16,12 +16,6 @@ lib.mkMerge [
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = true;
-
-      plugins = {
-        full-border = "${pkgs.custom.yazi-plugins.src}/full-border.yazi";
-        git = "${pkgs.custom.yazi-plugins.src}/git.yazi";
-        time-travel = pkgs.custom.yazi-time-travel.src;
-      };
 
       initLua = ''
         require("full-border"):setup({ type = ui.Border.ROUNDED })
@@ -91,7 +85,7 @@ lib.mkMerge [
           homeDir = "${config.home.homeDirectory}";
           shortcuts = {
             h = homeDir;
-            inherit flake;
+            inherit dotfiles;
             cfg = "${homeDir}/.config";
             vd = "${homeDir}/Videos";
             vaa = "${homeDir}/Videos/Anime";

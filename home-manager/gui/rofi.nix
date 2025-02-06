@@ -21,9 +21,8 @@
       package = pkgs.rofi-wayland;
     };
 
-    home.packages = [
-      # NOTE: rofi-power-menu only works for powermenuType = 4!
-      (pkgs.custom.rofi-power-menu.override { hasWindows = config.custom.mswindows; })
-    ] ++ (lib.optionals config.custom.wifi.enable [ pkgs.custom.rofi-wifi-menu ]);
+    home.packages = lib.mkIf config.custom.wifi.enable [
+      pkgs.rofi-wifi-menu
+    ];
   };
 }

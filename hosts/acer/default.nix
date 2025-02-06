@@ -75,6 +75,7 @@
 
   # SystemModule Options
   custom = {
+    btrfs.enable = false;
     distrobox.enable = true;
   };
 }

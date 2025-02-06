@@ -27,7 +27,7 @@
       pkgs.bign-handheld-thumbnailer
     ];
 
-    xdg = {
+    hm.xdg = {
       mimeApps.defaultApplications = {
         "inode/directory" = "thunar.desktop";
       };
