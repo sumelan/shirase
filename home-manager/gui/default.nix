@@ -12,7 +12,6 @@
     ./kitty.nix
     ./krita.nix
     ./mpv.nix
-    ./nemo.nix
     ./nixcord.nix
     ./obs-studio.nix
     ./qt.nix

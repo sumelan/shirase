@@ -33,5 +33,14 @@
     environment.variables = {
       NIXOS_OZONE_WL = "1";
     };
+
+    programs.uwsm = {
+      enable = true;
+      waylandCompositors.niri = {
+        binPath = "/run/current-system/sw/bin/niri-session";
+        comment = "Niri compositor managed by uwsm";
+        prettyName = "Niri";
+      };
+    };
   };
 }

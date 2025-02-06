@@ -11,9 +11,7 @@ in
   options.custom = {
     btrfs = with lib; {
       enable = mkEnableOption "btrfs filesystem";
-      wipeRootOnBoot = mkEnableOption "wipe the root volume on boot" // {
-        default = false;
-      };
+      wipeRootOnBoot = mkEnableOption "wipe the root volume on each boot";
     };
   };
 
