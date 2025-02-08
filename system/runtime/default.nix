@@ -9,7 +9,6 @@
     ./audio.nix
     ./bluetooth.nix
     ./keyd.nix
-    ./stylix.nix
   ];
 
   networking.hostName = "${user}-${host}"; # Define your hostname.

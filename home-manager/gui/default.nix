@@ -11,6 +11,7 @@
     ./kitty.nix
     ./krita.nix
     ./mpv.nix
+    ./nemo.nix
     ./nixcord.nix
     ./obs-studio.nix
     ./rofi.nix
@@ -18,7 +19,6 @@
     ./swayimg.nix
     ./thuderbird.nix
     ./vlc.nix
-    ./waybar.nix
     ./webapp.nix
     ./zathura.nix
   ];

@@ -35,6 +35,18 @@
         description = "Terminal command to execute other programs.";
       };
 
+      font = mkOption {
+        type = types.str;
+        default = config.custom.fonts.monospace;
+        description = "Font for the terminal.";
+      };
+
+      size = mkOption {
+        type = types.int;
+        default = 10;
+        description = "Font size for the terminal.";
+      };
+
       padding = mkOption {
         type = types.int;
         default = 12;
@@ -62,7 +74,9 @@
       sd # better sed
       # grep, with boolean query patterns, e.g. ug --files -e "A" --and "B"
       ugrep
-    ];
+    ]
+    # add custom user created shell packages
+      ++ (lib.attrValues config.custom.shell.packages);
 
     programs = {
       bat = {

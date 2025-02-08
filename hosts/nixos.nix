@@ -16,7 +16,6 @@ let
 
     specialArgs = specialArgs // {
       inherit host user;
-      isNixos = true;
       isLaptop = host == "acer";
       dotfiles = "/persist/home/${user}/projects/wolborg";
     };
@@ -32,7 +31,6 @@ let
 
           extraSpecialArgs = specialArgs // {
             inherit host user;
-            isNixos = true;
             isLaptop = host == "acer";
             dotfiles = "/persist/home/${user}/projects/wolborg";
           };

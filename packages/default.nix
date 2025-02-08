@@ -13,13 +13,13 @@ let
     _callPackage (path + "/default.nix") (
       extraOverrides // { source = lib.filterAttrs (k: _: !(lib.hasPrefix "override" k)) firstSource; }
     );
-  repo_url = "https://raw.githubusercontent.com/iynaix/dotfiles";
+  repo_url = "https://raw.githubusercontent.com/Sumelan/wolborg";
 in
 rec {
   default = install;
 
   install = pkgs.writeShellApplication {
-    name = "iynaixos-install";
+    name = "sumelan-install";
     runtimeInputs = [ pkgs.curl ];
     text = "sh <(curl -L ${repo_url}/main/install.sh)";
   };

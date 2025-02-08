@@ -42,8 +42,7 @@ in
 
   # fish plugins, home-manager's programs.fish.plugins has a weird format
   home.packages = with pkgs.fishPlugins; [
-    # do not add failed commands to history
-    sponge
+    sponge  # do not add failed commands to history
   ];
 
   # set as default interactive shell

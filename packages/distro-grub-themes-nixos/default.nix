@@ -1,10 +1,12 @@
-{ stdenvNoCC, fetchurl, ... }:
+{ stdenvNoCC, fetchFromGithub, ... }:
 stdenvNoCC.mkDerivation {
-  pname = "distro-grub-themes-nixos";
-  version = "3.2";
-  src = fetchurl {
-    url = "https://github.com/AdisonCavani/distro-grub-themes/releases/download/v3.2/nixos.tar";
-    hash = "sha256-oW5DxujStieO0JsFI0BBl+4Xk9xe+8eNclkq6IGlIBY";
+  pname = "hyperfluent-grub-theme";
+  version = "1.0.1";
+  src = pkgs.fetchFromGitHub {
+    owner = "Coopydood";
+    repo = "HyperFluent-GRUB-Theme";
+    rev = "v1.0.1";
+    hash = "sha256-Als4Tp6VwzwHjUyC62mYyiej1pZL9Tzj4uhTRoL+U9Q=";
   };
-  unpackPhase = "mkdir $out && tar -xvf $src -C $out";
+  installPhase = "cp -r $src/nixos $out";
 }

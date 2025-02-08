@@ -5,6 +5,7 @@
 }:
 let
   cfg = config.custom.kitty;
+  inherit (config.custom) terminal;
 in
 {
   options.custom = with lib; {
@@ -17,6 +18,10 @@ in
     programs.kitty = {
       enable = true;
       themeFile = "Catppuccin-Mocha";
+      font = {
+        name = terminal.font;
+        inherit (terminal) size;
+      };
       settings = {
         enable_audio_bell = false;
         copy_on_select = "clipboard";
@@ -31,6 +36,12 @@ in
         remote_control_password = ''"" set-spacing''; # only allow setting of padding
         listen_on = "unix:/tmp/kitty-socket";
       };
+      extraConfig = lib.mkIf (lib.hasPrefix "JetBrains" terminal.font) ''
+        font_features JetBrainsMonoNF-Regular +zero
+        font_features JetBrainsMonoNF-Bold +zero
+        font_features JetBrainsMonoNF-Italic +zero
+        font_features JetBrainsMonoNF-BoldItalic +zero
+      '';
     };
 
     home.shellAliases = {
