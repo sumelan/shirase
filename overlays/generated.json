@@ -1,0 +1,127 @@
+{
+    "path-of-building": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "path-of-building",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "PathOfBuildingCommunity",
+            "repo": "PathOfBuilding",
+            "rev": "v2.49.3",
+            "sha256": "sha256-ZpvSI3W2pWPy37PDT4T4NpgFSoS7bk5d59vvCL2nWnM=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v2.49.3"
+    },
+    "swww": {
+        "cargoLocks": null,
+        "date": "2025-01-17",
+        "extract": null,
+        "name": "swww",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "LGFae",
+            "repo": "swww",
+            "rev": "3e2e2ba8f44469a1446138ee97d2988e22b093bf",
+            "sha256": "sha256-XBwgv80YfLZ70XYVEnR0nA7Rz5jP241D5FiwrTg7tDk=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "3e2e2ba8f44469a1446138ee97d2988e22b093bf"
+    },
+    "wallust": {
+        "cargoLocks": null,
+        "date": "2025-02-02",
+        "extract": null,
+        "name": "wallust",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "94e5f76b5101dd1f9b98c1631e23a84a3e38be44",
+            "sha256": "sha256-Nw769wePmW9uG03N/N7nhvcnCvx1odfOQtq2iCTY2/Q=",
+            "sparseCheckout": [],
+            "type": "git",
+            "url": "https://codeberg.org/explosion-mental/wallust"
+        },
+        "version": "94e5f76b5101dd1f9b98c1631e23a84a3e38be44"
+    },
+    "yazi-plugins": {
+        "cargoLocks": null,
+        "date": "2025-01-30",
+        "extract": null,
+        "name": "yazi-plugins",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "yazi-rs",
+            "repo": "plugins",
+            "rev": "02d18be03812415097e83c6a912924560e4cec6d",
+            "sha256": "sha256-1FZ8wcf2VVp6ZWY27vm1dUU1KAL32WwoYbNA/8RUAog=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "02d18be03812415097e83c6a912924560e4cec6d"
+    },
+    "yazi-time-travel": {
+        "cargoLocks": null,
+        "date": "2024-12-13",
+        "extract": null,
+        "name": "yazi-time-travel",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "iynaix",
+            "repo": "time-travel.yazi",
+            "rev": "85baafd0b18515ccf0851e8d35f9306ec98f3c40",
+            "sha256": "sha256-kOpj/GJ7xIFfJDsuTvced5MYiC4ZLA0TgsqvcRnyALI=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "85baafd0b18515ccf0851e8d35f9306ec98f3c40"
+    },
+    "yt-dlp": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "yt-dlp",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "yt-dlp",
+            "repo": "yt-dlp",
+            "rev": "2025.01.26",
+            "sha256": "sha256-bjvyyCvUpZNGxkFz2ce6pXDSKXJROKZphs9RV4CBs5M=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "2025.01.26"
+    }
+}

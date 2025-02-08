@@ -44,7 +44,11 @@
         config.allowUnfree = true;
       };
 
-      inherit (nixpkgs) lib;
+      lib = import ./lib.nix {
+        inherit (nixpkgs) lib;
+        inherit pkgs;
+        inherit (inputs) home-manager;
+      };
 
       mkSystem = system: {
         inherit
@@ -60,10 +64,22 @@
           inherit self inputs;
         };
       };
+      commonSysytem = mkSystem system;
+      # call with forAllSystems (commonArgs: function body)
+      forAllSystems =
+        fn:
+        lib.genAttrs [
+          "x86_64-linux"
+          "aarch64-linux"
+          "x86_64-darwin"
+          "aarch64-darwin"
+        ] (system: fn (mkSystem system));
     in
     {
-      nixosConfigurations = import ./hosts/nixos.nix (mkSystem system);
+      nixosConfigurations = (import ./hosts/nixos.nix commonSysytem);
 
       inherit lib self;
+
+      packages = forAllSystems (commonSystem': (import ./packages commonSystem'));
     };
   }
