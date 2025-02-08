@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (config.custom.niri) monitors;
+  cfg name: outputs.name = config.custom.niri.outputs.name;
 in
 {
   imports = [
@@ -17,8 +17,9 @@ in
       enable = mkEnableOption "niri" // {
         default = true;
       };
-      monitors = with types; 
-        nonEmptyListOf (
+      outputs = {
+        name = with types; 
+          nonEmptyListOf (
           submodule (
             { config, ... }:
             {
@@ -78,6 +79,7 @@ in
             }
           )
         );
+      };
       default = [ ];
       description = "Config for monitors";
     };
@@ -123,27 +125,9 @@ in
           };
         };
 
-        outputs = {
-          "${monitors.name}" = {
-            enable = true;
-            inherit (monitors) scale;
-            inherit (monitors) background-color;
-            variable-refresh-rate = monitors.vrr;
-            mode = {
-              inherit (monitors) width;
-              inherit (monitors) height;
-              inherit (monitors) refresh;
-            };
-            position = {
-              x = monitors.X-position;
-              y = monitors.Y-position;
-            };
-            transform = {
-              inherit (monitors) flipped;
-              inherit (monitors) rotation;
-            };
-          };
-        };
+        outputs."HDMI-A-1".mode.width = 100;
+
+        outputs."DP-1".mode.height = 100;
 
         # Environmental Variables
         environment = {

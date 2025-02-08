@@ -1,14 +1,14 @@
 { ... }:
 {
   custom = {
-    niri.monitors = {
-      nameA = {
+    niri.monitors = [
+      name = "HDMI-A-1"
         width = 2560;
         height = 1440;
         x-position = 0;
         y-position = 0;
       };
-      nameB = {
+      name =
         width = 2560;
         height = 1440;
         x-position = 0;
