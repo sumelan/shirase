@@ -75,18 +75,10 @@
   services.dbus.implementation = "broker";
 
   # enable opengl
-  hardware.graphics = {
-    enable = true;
-  };
+  hardware.graphics.enable = true;
 
   # zram
-  zramSwap = {
-    enable = true;
-    algorithm = "zstd";
-    memoryPercent = 100;
-    priority = 100;
-    swapDevices = 1;
-  };
+  zramSwap.enable = true;
 
   # do not change this value
   system.stateVersion = "24.05";

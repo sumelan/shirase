@@ -18,9 +18,6 @@
     # windows manager
     niri.url = "github:sodiboo/niri-flake";
 
-    # style
-    stylix.url = "github:danth/stylix";
-
     # impermanence
     impermanence.url = "github:nix-community/impermanence";
 
@@ -68,9 +65,5 @@
       nixosConfigurations = import ./hosts/nixos.nix (mkSystem system);
 
       inherit lib self;
-
-      packages = import ./packages {
-        inherit pkgs system;
-      };
     };
   }

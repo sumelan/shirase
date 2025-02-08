@@ -12,7 +12,7 @@
   config = lib.mkIf config.custom.nextcloud.enable {
     services.nextcloud = {
       enable = true;
-      hostName = "nextcloud.${config.custom.server.nginx.domain}";
+      hostName = if config.custom.nginx.enable then "nextcloud.${config.custom.nginx.domain}" else "localhost";
       ## Need to manually increment with every major upgrade.
       package = pkgs.nextcloud30;
       # Let NixOS install and configure the database automatically.

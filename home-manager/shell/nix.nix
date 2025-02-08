@@ -28,10 +28,6 @@ in
   programs = {
     nh = {
       enable = true;
-      clean = {
-        enable = true;
-        extraArgs = "--keep-since 1w --keep 5";
-      };
       flake = dotfiles;
     };
     nix-index.enable = true;

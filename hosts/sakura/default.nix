@@ -24,15 +24,14 @@
       cycle = "daily";
     };
     agenix.enable = true;
-    server = {
-      audiobookshelf.enable = true;
-      nextcloud.enable = true;
-      nginx = {
-        enable = true;
-        domain = "sakurairo.ddnsfree.com";
-        provider = "dynu";
-      };
+    audiobookshelf.enable = true;
+    nextcloud.enable = true;
+    nginx = {
+      enable = true;
+      domain = "sakurairo.ddnsfree.com";
+      provider = "dynu";
     };
+    btrfs.enable = false;
     distrobox.enable = true;
     qmk.enable = true;
     opentabletdriver.enable = true;

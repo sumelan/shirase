@@ -49,7 +49,6 @@ let
       # alias for home-manager
       (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" user ])
       inputs.niri.nixosModules.niri
-      inputs.stylix.nixosModules.stylix
       inputs.impermanence.nixosModules.impermanence
       inputs.agenix.nixosModules.default
     ];

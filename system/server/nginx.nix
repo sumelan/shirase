@@ -29,7 +29,7 @@ in
           forceSSL = true;
         };
       })
-      (lib.mkIf config.custom.audiobookshelf.enbale {
+      (lib.mkIf config.custom.audiobookshelf.enable {
         "audiobookshelf.${cfg.domain}" = {
           useACMEHost = "${cfg.domain}";
           forceSSL = true;
@@ -50,18 +50,25 @@ in
       defaults.email = "bathys@proton.me";
       certs."${cfg.domain}" = {
         domain = "${cfg.domain}";
-        extraDomainNames = 
-          lib.optional config.custom.nextcloud.enable [
+        extraDomainNames = [
+          (lib.mkIf config.custom.nextcloud.enable
             "nextcloud.${cfg.domain}"
-          ]
-          ++ lib.optional config.custom.audiobookshelf.enable [
-            "audiobookshelf.${cfg.domain}"
-          ];
+          )
+          (lib.mkIf config.custom.nextcloud.enable
+              "audiobookshelf.${cfg.domain}"
+          )
+        ];
         dnsProvider = "${cfg.provider}";
         dnsPropagationCheck = true;
         credentialsFile = config.age.secrets.dns-token.path;
       };
     };
     users.users.nginx.extraGroups = ["acme"];
+
+    custom.persist = {
+      root.directories = [
+        "/var/lib/acme"
+      ];
+    };
   };
 }

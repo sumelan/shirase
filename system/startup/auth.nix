@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  user,
   ...
 }:
 lib.mkMerge [
@@ -8,12 +9,23 @@ lib.mkMerge [
   {
     services.openssh = {
       enable = true;
-      # authorizedKeys.keys = [ ];
+      # disable password auth
       settings = {
-        PermitRootLogin = "no";
         PasswordAuthentication = true;
+        KbdInteractiveAuthentication = false;
       };
     };
+
+    users.users =
+      let
+        keyFiles = [
+          ../home-manager/id_rsa.pub
+        ];
+      in
+      {
+        root.openssh.authorizedKeys.keyFiles = keyFiles;
+        ${user}.openssh.authorizedKeys.keyFiles = keyFiles;
+      };
   }
 
   # keyring settings
@@ -26,8 +38,10 @@ lib.mkMerge [
   {
     security = {
       polkit.enable = true;
-      sudo.wheelNeedsPassword = false;
-      pam.services.hyprlock = { };
+      sudo = {
+        wheelNeedsPassword = false;
+        extraConfig = "Defaults passwd_tries=10";
+      } // lib.optionalAttrs config.hm.programs.hyprlock.enable { pam.services.hyprlock = { }; };
     };
 
     # Some programs need SUID wrappers, can be configured further or are

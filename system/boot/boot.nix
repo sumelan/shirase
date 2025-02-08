@@ -20,7 +20,17 @@
         enable = true;
         devices = [ "nodev" ];
         efiSupport = true;
-        theme = pkgs.custom.distro-grub-themes-nixos;
+        theme = pkgs.stdenv.mkDerivation {
+          pname = "HyperFluent-GRUB-Theme";
+          version = "1.0.1";
+          src = pkgs.fetchFromGitHub {
+            owner = "Coopydood";
+            repo = "HyperFluent-GRUB-Theme";
+            rev = "v1.0.1";
+            hash = "sha256-Als4Tp6VwzwHjUyC62mYyiej1pZL9Tzj4uhTRoL+U9Q=";
+          };
+          installPhase = "cp -r $src/nixos $out";
+        };
       };
       timeout = 3;
     };

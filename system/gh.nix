@@ -13,3 +13,5 @@ _:{
     };
   };
 }
+
+# TODO setup auth token for gh if sops/agenix is enabled

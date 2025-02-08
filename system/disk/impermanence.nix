@@ -59,6 +59,7 @@ in
   };
 
   config = {
+    # setup persistence
     environment.persistence = {
       "/persist" = {
         hideMounts = true;

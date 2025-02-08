@@ -19,7 +19,7 @@
     services.easyeffects = {
       enable = true;
       package = pkgs.easyeffects;
-      preset = config.cudtom.easyEffects.preset;
+      preset = config.custom.easyEffects.preset;
     };
 
     xdg.configFile."easyeffects/output".source = pkgs.fetchFromGitHub {
