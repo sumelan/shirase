@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ErikReider/SwayNotificationCenter/refs/heads/main/src/configSchema.json",
+  "positionX": "left",
+  "positionY": "top",
+  "cssPriority": "user",
+
+  "control-center-width": 495,
+  "control-center-height": 860,
+  "control-center-margin-top": 4,
+  "control-center-margin-bottom": 2,
+  "control-center-margin-right": 2,
+  "control-center-margin-left": 0,
+
+  "notification-window-width": 400,
+  "notification-icon-size": 48,
+  "notification-body-image-height": 160,
+  "notification-body-image-width": 200,
+
+  "timeout": 4,
+  "timeout-low": 2,
+  "timeout-critical": 6,
+
+  "fit-to-screen": true,
+  "keyboard-shortcuts": true,
+  "image-visibility": "when-available",
+  "notification-visibility": {
+    "example-name": {
+      "state": "muted",
+      "urgency": "Low",
+      "app-name": "Spotify"
+    }
+  },
+  "transition-time": 200,
+  "hide-on-clear": false,
+  "hide-on-action": false,
+  "script-fail-notify": true,
+  "widgets": [
+    "buttons-grid",
+    "mpris",
+    "inhibitors",
+    "title",
+    "notifications"
+  ],
+  "widget-config": {
+    "inhibitors": {
+      "text": "Inhibitors",
+      "button-text": "Clear All",
+      "clear-all-button": true
+    },
+    "title": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "󰎟"
+    },
+    "dnd": {
+      "text": "Do Not Disturb"
+    },
+    "label": {
+      "max-lines": 5,
+      "text": "Label Text"
+    },
+    "mpris": {
+      "image-size": 96,
+      "image-radius": 12,
+      "blur": false
+    },
+    "volume": {
+      "label": "󰕾",
+      "show-per-app": true,
+      "show-per-app-icon": false,
+      "show-per-app-label": true
+    },
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "󰍃",
+          "type": "normal",
+          "command": "niri msg action quit"
+        },
+        {
+          "label": "󰜉",
+          "type": "normal",
+          "command": "loginctl reboot"
+        },
+        {
+          "label": "󰐥",
+          "type": "normal",
+          "command": "loginctl poweroff now"
+        }
+      ]
+    }
+  }
+}

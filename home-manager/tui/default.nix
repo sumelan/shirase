@@ -6,11 +6,13 @@
 }:
 {
   imports = [
-    ./bash.nix
+    ./shell/bash.nix
+    ./shell/fish.nix
+    ./shell/nushell.nix
+    ./shell/shell.nix
     ./btop.nix
     ./cava.nix
     ./eza.nix
-    ./fish.nix
     ./git.nix
     ./jujutsu.nix
     ./nix.nix
@@ -107,6 +109,7 @@
         enable = true;
         enableBashIntegration = true;
         enableFishIntegration = true;
+        enableNushellIntegration = true;
       };
     };
     custom.persist = {

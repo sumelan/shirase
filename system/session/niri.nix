@@ -32,15 +32,9 @@
 
     environment.variables = {
       NIXOS_OZONE_WL = "1";
-    };
-
-    programs.uwsm = {
-      enable = true;
-      waylandCompositors.niri = {
-        binPath = "/run/current-system/sw/bin/niri-session";
-        comment = "Niri compositor managed by uwsm";
-        prettyName = "Niri";
-      };
+      # Display is for xwayland-satellite, and it doesn't work here.
+      # But if this variable is set in niri config it seems to work
+      DISPLAY = ":0";
     };
   };
 }

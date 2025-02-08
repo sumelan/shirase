@@ -16,6 +16,13 @@ lib.mkMerge [
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = true;
+      enableNushellIntegration = true;
+
+      plugins = {
+        full-border = "${pkgs.custom.yazi-plugins.src}/full-border.yazi";
+        git = "${pkgs.custom.yazi-plugins.src}/git.yazi";
+        time-travel = pkgs.custom.yazi-time-travel.src;
+      };
 
       initLua = ''
         require("full-border"):setup({ type = ui.Border.ROUNDED })
@@ -211,7 +218,7 @@ lib.mkMerge [
       plugins = mkYaziPlugin "smart-enter" ''
         --- @sync entry
         return {
-        	entry = function()
+        	      entry = function()
             local h = cx.active.current.hovered
             ya.manager_emit(h and h.cha.is_dir and "enter" or "open", { hovered = true })
           end,

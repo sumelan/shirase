@@ -7,10 +7,10 @@
 }:
 {
   imports = [
+    ./desktop
     ./editor
     ./gui
-    ./niri
-    ./shell
+    ./tui
     ./hardware.nix
     ./impermanence.nix # only contains options
   ];
@@ -91,6 +91,7 @@
         noto-fonts-cjk-serif
         noto-fonts-emoji
         nerd-fonts.jetbrains-mono
+        nerd-fonts.fira-code
       ];
 
       persist = {

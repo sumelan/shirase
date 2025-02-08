@@ -3,7 +3,6 @@
   imports = [
     ./amberol.nix
     ./brave.nix
-    ./dunst.nix
     ./easyeffects.nix
     ./foliate.nix
     ./ghostty.nix
@@ -14,7 +13,6 @@
     ./nemo.nix
     ./nixcord.nix
     ./obs-studio.nix
-    ./rofi.nix
     ./rustdesk.nix
     ./swayimg.nix
     ./thuderbird.nix
