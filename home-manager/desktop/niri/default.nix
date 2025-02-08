@@ -8,7 +8,7 @@ let
   inherit (config.custom.niri) monitors;
 in
 {
-  import = [
+  imports = [
     ./keybinds.nix
   ];
 
@@ -17,59 +17,69 @@ in
       enable = mkEnableOption "niri" // {
         default = true;
       };
-      monitors = {
-        name = mkOption {
-          type = str;
-          description = "The name of the display, e.g. eDP-1";
-        };
-        background-color = mkOption {
-          type = str;
-          description = "The background color of this output";
-        };
-        height = mkOption {
-          type = int;
-          description = "Pixel width of this output";
-        };
-        width = mkOption {
-          type = int;
-          description = "Pixel width of this output";
-        };
-        refresh = mkOption {
-          type = int;
-          default = 60;
-          description = "Refresh rate of this output";
-        };
-        x-position = mkOption {
-          type = int;
-          default = "0";
-          description = "X-position of this output";
-        };
-        y-position = mkOption {
-          type = str;
-          default = "0";
-          description = "Y-position of this output";
-        };
-        scale = mkOption {
-          type = float;
-          default = 1.0;
-          description = "The scale of this output";
-        };
-        flipped = mkEnableOption "Whether to flip this output vertically" // {
-          default = false;
-        };
-        rotation = mkOption {
-          type = int;
-          default = 0;
-          description = 
-            "Counter-clockwise rotation of this output in degrees. one of [0, 90, 180, 270]";
-        };
-        vrr = mkOption {
-          type = either bool str;
-          default = false;
-          description = 
-            "Whether to enable variable refresh rate (VRR) on this output. one of [false, "on-demand" true]";
-        };
-      };
+      monitors = with types; 
+        nonEmptyListOf (
+          submodule (
+            { config, ... }:
+            {
+              options = {
+                name = mkOption {
+                  type = str;
+                  description = "The name of the display, e.g. eDP-1";
+                };
+                background-color = mkOption {
+                  type = str;
+                  description = "The background color of this output";
+                };
+                width = mkOption {
+                  type = int;
+                  description = "Pixel width of this output";
+                };
+                height = mkOption {
+                  type = int;
+                  description = "Pixel height of this output";
+                };
+                refresh = mkOption {
+                  type = int;
+                  default = 60;
+                  description = "Refresh rate of this output";
+                };
+                x-position = mkOption {
+                  type = int;
+                  default = "0";
+                  description = "X-position of this output";
+                };
+                y-position = mkOption {
+                  type = str;
+                  default = "0";
+                  description = "Y-position of this output";
+                };
+                scale = mkOption {
+                  type = float;
+                  default = 1.0;
+                  description = "The scale of this output";
+                };
+                flipped = mkEnableOption "Whether to flip this output vertically" // {
+                  default = false;
+                };
+                rotation = mkOption {
+                  type = int;
+                  default = 0;
+                  description = 
+                    "Counter-clockwise rotation of this output in degrees. one of [0, 90, 180, 270]";
+                };
+                vrr = mkOption {
+                  type = either bool str;
+                  default = false;
+                  description = 
+                    "Whether to enable variable refresh rate (VRR) on this output. one of [false, "on-demand" true]";
+                };
+              };
+            }
+          )
+        );
+      default = [ ];
+      description = "Config for monitors";
     };
   };
 
@@ -120,8 +130,8 @@ in
             inherit (monitors) background-color;
             variable-refresh-rate = monitors.vrr;
             mode = {
-              inherit (monitors) height;
               inherit (monitors) width;
+              inherit (monitors) height;
               inherit (monitors) refresh;
             };
             position = {

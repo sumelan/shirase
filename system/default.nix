@@ -21,7 +21,6 @@
     ./backup.nix
     ./docker.nix
     ./gh.nix
-    ./repl-overlays.nix
   ];
 
   options.custom = with lib; {
@@ -163,7 +162,7 @@
     };
 
      # use gtk theme on qt apps
-    qt = lib.mkIf (!config.hm.custom.headless) {
+    qt = {
       enable = true;
       platformTheme = "qt5ct";
       style = "kvantum";

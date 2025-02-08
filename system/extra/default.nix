@@ -1,7 +1,7 @@
 _:{
   imports = [
     ./opentabletdriver.nix
-    ./printhing.nix
+    ./printing.nix
     ./qmk.nix
     ./usb-audio.nix
   ];

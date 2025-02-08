@@ -7,7 +7,7 @@
 {
   options.custom = with lib; {
     eww.enable = mkEnableOption "eww" // {
-      default = config.custom.niri.ebable;
+      default = config.custom.niri.enable;
     };
   };
 

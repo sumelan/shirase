@@ -1,6 +1,21 @@
 { ... }:
 {
   custom = {
+    niri.monitors = {
+      nameA = {
+        width = 2560;
+        height = 1440;
+        x-position = 0;
+        y-position = 0;
+      };
+      nameB = {
+        width = 2560;
+        height = 1440;
+        x-position = 0;
+        y-position = 1440;
+      };
+    };
+
     amberol.enable = true;
     easyEffects = {
       enable = true;
@@ -13,11 +28,6 @@
     rustdesk.enable = true;
     thunderbird.enable = true;
     vlc.enable = true;
-    waybar = {
-      enable = true;
-      hidden = false;
-      # waybar.persistentWorkspaces = true;
-    };
   };
 
   # build package for testing, but it isn't used
