@@ -2,39 +2,87 @@
 default:
   @$EDITOR .justfile
 
-# Build and activate the new configuration, and make it the boot default.
-[group('nh')]
+# outputs the current nixos generation
+[group('nix')]
+current:
+  nix-current-generation
+
+# nixos-rebuild switch, use different package for home-manager standalone
+[group('nix')]
 switch:
-  nh os switch
+  nsw
 
-# Update flake inputs before building specified configuration.
-[group('nh')]
+# update all nvfetcher overlays and packages
+[group('nix')]
+update-all:
+  nv-update
+
+# update via nix flake
+[group('nix')]
 update:
-  nh os switch --update
+  upd8
 
-# Cleans root profiles and calls a store gc.
-[group('nh')]
+# nix garbage collection
+[group('nix')]
 clean:
-  nh clean all
+  ngc
 
-# Build and activate the new configuration.
-[group('nh')]
-test:
-  nh os test
-
-# Enter a Nix REPL with the target installable.
-[group('nh')]
+# utility for creating a nix repl, allows editing within the repl.nix
+[group('nix')]
 repl:
-  nh os repl
+  nrepl
 
-# Updates the index using the current content found in the working tree.
-[group('github')]
-add:
-  git add --all
+# build local package if possible, otherwise build config
+[group('nix')]
+build-local:
+  nb
 
-# Incorporates changes from a remote repository into the current branch.
-[group('github')]
-pull:
-  git pull origin main
+# test all packages that depend on this change, used for nixpkgs and copied from the PR template
+[group('nix')]
+test-pkgs:
+  nb-dependents
 
+# build and run local package if possible, otherwise run from nixpkgs
+[group('nix')]
+run-local:
+  nr
 
+# show path
+[group('nix')]
+path:
+  npath
+
+# creates a file with the symlink contents and renames the original symlink to .orig
+[group('nix')]
+symlink:
+  nsymlink
+
+# show path in yazi
+[group('nix')]
+path-yazi:
+  ynpath
+
+# what depends on the given package in the current nixos install?
+[group('nix')]
+show-dependents:
+  ndepends
+
+# see json
+[group('nix')]
+json:
+  json2nix
+
+# see yaml
+[group('nix')]
+yaml:
+  yaml2nix
+
+# nixos-rebuild boot
+[group('nix')]
+boot:
+  nsb
+
+# nixos-rebuild test
+[group('nix')]
+test:
+  nst
