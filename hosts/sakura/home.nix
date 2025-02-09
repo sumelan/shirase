@@ -1,35 +1,51 @@
-{ ... }:
 {
-  custom = {
-    niri.monitors = [
-      name = "HDMI-A-1"
-        width = 2560;
-        height = 1440;
-        x-position = 0;
-        y-position = 0;
-      };
-      name =
-        width = 2560;
-        height = 1440;
-        x-position = 0;
-        y-position = 1440;
+  lib,
+  config,
+  ...
+}:
+lib.mkMerge [
+  (lib.mkIf config.custom.niri.enable {
+    programs.niri.settings = {
+      outputs = {
+        "HDMI-A-1" = {
+          mode = {
+            width = 2560;
+            height = 1440;
+          };
+          position = {
+            x = 0;
+            y = 0;
+          };
+          scale = 1.0;
+        };
+        "DP-1" = {
+          mode = {
+            width = 2560;
+            height = 1440;
+          };
+          position = {
+            x = 0;
+            y = -1440;
+          };
+          scale = 1.0;
+        };
       };
     };
-
-    amberol.enable = true;
-    easyEffects = {
-      enable = true;
-      preset = "Bass Enhancing + Perfect EQ";
+  })
+  {
+    custom = {
+      amberol.enable = true;
+      easyEffects = {
+        enable = true;
+        preset = "Bass Enhancing + Perfect EQ";
+      };
+      foliate.enable = true;
+      ghostty.enable = false;
+      inkscape.enable = true;
+      krita.enable = true;
+      rustdesk.enable = true;
+      thunderbird.enable = true;
+      vlc.enable = true;
     };
-    foliate.enable = true;
-    ghostty.enable = false;
-    inkscape.enable = true;
-    krita.enable = true;
-    rustdesk.enable = true;
-    thunderbird.enable = true;
-    vlc.enable = true;
-  };
-
-  # build package for testing, but it isn't used
-  # home.packages = [ pkgs.hyprlock ];
-}
+  }
+]

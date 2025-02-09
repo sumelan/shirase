@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }:
 # NOTE When installing niri by this flake:
@@ -12,29 +13,23 @@
 # - - If you prefer a different polkit authentication agent, you can set systemd.user.services.niri-flake-polkit.enable = false;
 # - It enables various other features that Wayland compositors may need, such as dconf, opengl and default fonts. It also adds a pam entry for swaylock, which is necessary if you wish to use swaylock.
 {
-  options.custom = with lib; {
-    niri.enable = mkEnableOption "niri" // {
-      default = config.hm.custom.niri.enable;
-    };
+  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+
+  programs.niri = lib.mkIf config.hm.custom.niri.enable {
+    enable = true;
+    package = pkgs.niri-stable;
   };
+  niri-flake.cache.enable = true;
 
-  config = lib.mkIf config.custom.niri.enable {
-    programs.niri = {
-      enable = true;
-      package = pkgs.niri-stable;
-    };
-    niri-flake.cache.enable = true;
+  environment.systemPackages = with pkgs; [
+    xwayland-satellite
+    brightnessctl
+  ];
 
-    environment.systemPackages = with pkgs; [
-      xwayland-satellite
-      brightnessctl
-    ];
-
-    environment.variables = {
-      NIXOS_OZONE_WL = "1";
-      # Display is for xwayland-satellite, and it doesn't work here.
-      # But if this variable is set in niri config it seems to work
-      DISPLAY = ":0";
-    };
+  environment.variables = {
+    NIXOS_OZONE_WL = "1";
+    # Display is for xwayland-satellite, and it doesn't work here.
+    # But if this variable is set in niri config it seems to work
+    DISPLAY = ":0";
   };
 }

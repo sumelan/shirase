@@ -1,6 +1,5 @@
 {
   lib,
-  config,
   pkgs,
   ...
 }:
@@ -52,12 +51,6 @@ lib.mkMerge [
       BROWSER = lib.getExe pkgs.brave;
     };
   }
-
-  (lib.mkIf config.custom.niri.enable {
-    programs.niri.settings.binds = with config.lib.niri.actions; {
-      "Mod+B".action = spawn "brave";
-    };
-  })
 
   {
     xdg.mimeApps.defaultApplications = {

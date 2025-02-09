@@ -1,16 +1,34 @@
-{ ... }:
 {
-  custom = {
-    niri.monitors = {
-      name = "eDP-1";
-      width = 1920;
-      height = 1200;
+  lib,
+  config,
+  ...
+}:
+lib.mkMerge [
+  (lib.mkIf config.custom.niri.enable {
+    programs.niri.settings = {
+      outputs = {
+        "eDP-1" = {
+          mode = {
+            width = 1920;
+            height = 1200;
+          };
+          position = {
+            x = 0;
+            y = 0;
+          };
+          scale = 1.0;
+        };
+      };
     };
-    easyEffects = {
-      enable = true;
-      preset = "Loudness+Autogain";
+  })
+  {
+    custom = {
+      easyEffects = {
+        enable = true;
+        preset = "Loudness+Autogain";
+      };
+      foliate.enable = true;
+      thunderbird.enable = true;
     };
-    foliate.enable = true;
-    thunderbird.enable = true;
-  };
-}
+  }
+]

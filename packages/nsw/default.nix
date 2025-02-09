@@ -5,7 +5,7 @@
   stdenvNoCC,
   makeWrapper,
   # variables
-  dots ? "$HOME/projects/dotfiles",
+  dotfiles ? "$HOME/projects/wolborg",
   name ? "nsw",
   host ? "desktop",
 }:
@@ -19,7 +19,7 @@ stdenvNoCC.mkDerivation {
 
   postPatch = ''
     substituteInPlace nsw.sh \
-      --replace-fail "@dots@" "${dots}" \
+      --replace-fail "@dots@" "${dotfiles}" \
       --replace-fail "@host@" "${host}"
   '';
 

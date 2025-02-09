@@ -6,6 +6,7 @@
     ./easyeffects.nix
     ./foliate.nix
     ./ghostty.nix
+    ./gtk.nix
     ./inkscape.nix
     ./kitty.nix
     ./krita.nix

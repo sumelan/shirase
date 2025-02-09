@@ -3,7 +3,8 @@
   config,
   ...
 }:
-lib.mkIf config.custom.niri.enable {
+lib.mkIf config.custom.niri.enable
+{
   programs.niri.settings.binds = with config.lib.niri.actions; {
     # shows a list of important hotkeys.
     "Mod+Shift+F1".action = show-hotkey-overlay;
