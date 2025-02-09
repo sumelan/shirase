@@ -119,11 +119,10 @@ sudo mount --mkdir "$BOOTDISK" /mnt/boot
 
 echo "Mounting subvolumes"
 sudo mount -o subvol=root,compress=zstd,noatime "$BTRFSDISK" /mnt
-sudo mkdir /mnt/{home,nix,persist,cache}
-sudo mount -o subvol=home,compress=zstd "$BTRFSDISK" /mnt/home
-sudo mount -o subvol=nix,compress=zstd,noatime "$BTRFSDISK" /mnt/nix
-sudo mount -o subvol=persist,compress=zstd,noatime "$BTRFSDISK" /mnt/persist
-sudo mount -o subvol=log,compress=zstd,noatime "$BTRFSDISK" /mnt/cache
+sudo mount --mkdir -o subvol=home,compress=zstd "$BTRFSDISK" /mnt/home
+sudo mount --mkdir -o subvol=nix,compress=zstd,noatime "$BTRFSDISK" /mnt/nix
+sudo mount --mkdir -o subvol=persist,compress=zstd,noatime "$BTRFSDISK" /mnt/persist
+sudo mount --mkdir -o subvol=log,compress=zstd,noatime "$BTRFSDISK" /mnt/cache
 
 # Get repo to install from
 read -rp "Enter flake URL (default: github:Sumelan/wolborg): " repo
