@@ -22,7 +22,7 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # Secrets
-    agenix.url = "github:yaxitech/ragenix";
+    agenix.url = "github:ryantm/agenix";
 
     # Neovim
     nvf = {
