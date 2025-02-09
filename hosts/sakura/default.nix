@@ -14,7 +14,7 @@
   # SystemModule Options.
   custom = {
     backup = {
-      enable = true;
+      enable = false;
       include = [
         "/var/lib/nextcloud"
         "/var/lib/audiobookshelf"
@@ -36,6 +36,4 @@
     opentabletdriver.enable = true;
     usb-audio.enable = true;
   };
-
-  services.displayManager.autoLogin.user = user;
 }
