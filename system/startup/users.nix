@@ -24,7 +24,6 @@
             inherit (config.hm.custom) autologinCommand;
           in
           {
-            enable = true;
             settings = {
               default_session = {
                 command = autologinCommand;
