@@ -118,7 +118,7 @@ echo "Mounting /boot (efi)"
 sudo mount --mkdir "$BOOTDISK" /mnt/boot
 
 echo "Mounting subvolumes"
-sudo mkdir /mnt{home,nix,persist,cache}
+sudo mkdir /mnt/{home,nix,persist,cache}
 sudo mount -o subvol=root,compress=zstd,noatime "$BTRFSDISK" /mnt
 sudo mount -o subvol=home,compress=zstd "$BTRFSDISK" /mnt/home
 sudo mount -o subvol=nix,compress=zstd,noatime "$BTRFSDISK" /mnt/nix
