@@ -10,12 +10,11 @@ in
 {
   options.custom = {
     btrfs = with lib; {
-      enable = mkEnableOption "btrfs filesystem";
       wipeRootOnBoot = mkEnableOption "wipe the root volume on each boot";
     };
   };
 
-  config = lib.mkIf cfg.enable (lib.mkMerge [ 
+  config = (lib.mkMerge [ 
     { 
       # nixos-generate-config --show-hardware-config doesn't detect mount options automatically,
       # so to enable compression, you must specify it and other mount options in a persistent configuration:
