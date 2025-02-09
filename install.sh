@@ -122,7 +122,7 @@ sudo mount -o subvol=root,compress=zstd,noatime "$BTRFSDISK" /mnt
 sudo mount --mkdir -o subvol=home,compress=zstd "$BTRFSDISK" /mnt/home
 sudo mount --mkdir -o subvol=nix,compress=zstd,noatime "$BTRFSDISK" /mnt/nix
 sudo mount --mkdir -o subvol=persist,compress=zstd,noatime "$BTRFSDISK" /mnt/persist
-sudo mount --mkdir -o subvol=log,compress=zstd,noatime "$BTRFSDISK" /mnt/cache
+sudo mount --mkdir -o subvol=cache,compress=zstd,noatime "$BTRFSDISK" /mnt/cache
 
 # Get repo to install from
 read -rp "Enter flake URL (default: github:Sumelan/wolborg): " repo
