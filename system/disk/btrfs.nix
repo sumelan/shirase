@@ -20,13 +20,32 @@ in
       # so to enable compression, you must specify it and other mount options in a persistent configuration:
       fileSystems = {
         # root volume, wiped on boot if enable
-        "/".options = [ "compress=zstd" "noatime" ];
+        "/" = {
+          device = "/root";
+          fsType = "btrfs";
+          options = [ "compress=zstd" "noatime" ];
+        };
 
-        "/nix".options = [ "compress=zstd" "noatime" ];
+        "/boot" = {
+          device = "/dev/disk/by-label/NIXBOOT";
+          fsType = "vfat";
+        };
 
-        "/home".options = [ "compress=zstd" ];
+        "/nix" = {
+          device = "/nix";
+          fsType = "btrfs";
+          options = [ "compress=zstd" "noatime" ];
+        };
+
+        "/home" = {
+          device = "/home";
+          fsType = "btrfs";
+          options = [ "compress=zstd" ];
+        };
 
         "/persist" = {
+          device = "/persist";
+          fsType = "btrfs";
           options = [ "compress=zstd" "noatime" ];
           neededForBoot = true;
         };
@@ -34,6 +53,8 @@ in
         # cache are files that should be persisted, but not to snapshot
         # e.g. npm, cargo cache etc, that could always be redownloaded
         "/var/cache" = {
+          device = "/cache";
+          fsType = "btrfs";
           options = [ "compress=zstd" "noatime" ];
           neededForBoot = true;
         };
