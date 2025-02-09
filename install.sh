@@ -114,11 +114,11 @@ echo "Taking snapshot of the empty volume"
 sudo btrfs subvolume snapshot -r /mnt/root /mnt/root-blank
 
 # create the boot parition after creating root
+sudo mount -o subvol=root,compress=zstd,noatime "$BTRFSDISK" /mnt
 echo "Mounting /boot (efi)"
 sudo mount --mkdir "$BOOTDISK" /mnt/boot
 
 echo "Mounting subvolumes"
-sudo mount -o subvol=root,compress=zstd,noatime "$BTRFSDISK" /mnt
 sudo mount --mkdir -o subvol=home,compress=zstd "$BTRFSDISK" /mnt/home
 sudo mount --mkdir -o subvol=nix,compress=zstd,noatime "$BTRFSDISK" /mnt/nix
 sudo mount --mkdir -o subvol=persist,compress=zstd,noatime "$BTRFSDISK" /mnt/persist
