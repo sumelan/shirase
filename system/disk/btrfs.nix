@@ -33,7 +33,7 @@ in
 
         # cache are files that should be persisted, but not to snapshot
         # e.g. npm, cargo cache etc, that could always be redownloaded
-        "/var/cache" = {
+        "/cache" = {
           options = [ "compress=zstd" "noatime" ];
           neededForBoot = true;
         };
