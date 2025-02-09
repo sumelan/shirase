@@ -26,7 +26,7 @@ The following BTRFS subvolume will be created:
     - /nix (mounted at /nix)
     - /home (mounted at /home)
     - /persist (mounted at /persist)
-    - /cache (mounted at /cache)
+    - /cache (mounted at /var/cache)
 
 ** IMPORTANT **
 This script assumes that the relevant "fileSystems" are declared within the
