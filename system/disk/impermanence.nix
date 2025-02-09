@@ -88,7 +88,7 @@ in
 
         # cache are files that should be persisted, but not to snapshot
         # e.g. npm, cargo cache etc, that could always be redownloaded
-        "/var/cache" = {
+        "/cache" = {
           hideMounts = true;
           files = lib.unique cfg.root.cache.files;
           directories = lib.unique cfg.root.cache.directories;
