@@ -1,8 +1,9 @@
 _:{
   imports = [
-    ./eww
-    ./fuzzel
     ./niri
-    ./swaync
+    ./walls
+    ./dunst.nix
+    ./rofi.nix
+    ./waybar.nix
   ];
 }

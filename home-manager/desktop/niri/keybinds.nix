@@ -7,11 +7,11 @@ lib.mkIf config.custom.niri.enable
 {
   programs.niri.settings.binds = with config.lib.niri.actions; {
     # shows a list of important hotkeys.
-    "Mod+Shift+F1".action = show-hotkey-overlay;
+    "Mod+Shift+BackSlash".action = show-hotkey-overlay;
 
     # base apps
     "Mod+Return".action = spawn "kitty";
-    "Mod+D".action = spawn "fuzzel" "--list-executables-in-path";
+    "Mod+D".action = spawn "rofi" "-drun";
     "Mod+E".action = spawn "nemo";
     "Mod+Shift+E".action = spawn "kitty" "yazi";
     "Mod+B".action = spawn "brave";

@@ -21,6 +21,9 @@
     # impermanence
     impermanence.url = "github:nix-community/impermanence";
 
+    # theming
+    stylix.url = "github:danth/stylix";
+
     # database
     nix-index-database = {
       url = "github:nix-community/nix-index-database";

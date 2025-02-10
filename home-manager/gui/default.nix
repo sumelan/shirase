@@ -6,7 +6,6 @@
     ./easyeffects.nix
     ./foliate.nix
     ./ghostty.nix
-    ./gtk.nix
     ./inkscape.nix
     ./kitty.nix
     ./krita.nix
@@ -15,6 +14,7 @@
     ./nixcord.nix
     ./obs-studio.nix
     ./rustdesk.nix
+    ./style.nix
     ./swayimg.nix
     ./thuderbird.nix
     ./vlc.nix

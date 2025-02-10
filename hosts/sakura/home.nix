@@ -44,8 +44,8 @@ lib.mkMerge [
       inkscape.enable = true;
       krita.enable = true;
       rustdesk.enable = true;
-      thunderbird.enable = true;
-      vlc.enable = true;
+      thunderbird.enable = false;
+      vlc.enable = false;
     };
   }
 ]

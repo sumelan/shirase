@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -28,19 +27,6 @@
         "mimeapps.list".force = true;
     };
   };
-
-  gtk.gtk3.bookmarks =
-    let
-      homeDir = config.home.homeDirectory;
-    in
-    [
-      "file://${homeDir}/Downloads"
-      "file://${homeDir}/projects"
-      "file://${homeDir}/projects/wolborg"
-      "file://${homeDir}/Documents"
-      "file://${homeDir}/Pictures/Wallpapers"
-      "file:///persist Persist"
-    ];
 
   dconf.settings = {
     # fix open in terminal

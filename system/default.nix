@@ -21,6 +21,7 @@
     ./docker.nix
     ./gh.nix
     ./nix.nix
+    ./style.nix
   ];
 
   options.custom = with lib; {
@@ -71,9 +72,6 @@
       etc = {
         # universal git settings
         "gitconfig".text = config.hm.xdg.configFile."git/config".text;
-        # get gparted to use system theme
-        "xdg/gtk-3.0/settings.ini".text = config.hm.xdg.configFile."gtk-3.0/settings.ini".text;
-        "xdg/gtk-4.0/settings.ini".text = config.hm.xdg.configFile."gtk-4.0/settings.ini".text;
       };
 
       # install fish completions for fish
@@ -114,15 +112,9 @@
         yazi
         zoxide
       ]
-      ++
-          # install gtk theme for root, some apps like gparted only run as root
-          (with config.hm.gtk; [
-            theme.package
-            iconTheme.package
-          ])
-        # add custom user created shell packages
-        ++ (lib.attrValues config.custom.shell.packages)
-        ++ (lib.optional config.hm.custom.helix.enable helix);
+      # add custom user created shell packages
+      ++ (lib.attrValues config.custom.shell.packages)
+      ++ (lib.optional config.hm.custom.helix.enable helix);
     };
 
     # add custom user created shell packages to pkgs.custom.shell
@@ -159,13 +151,6 @@
 
       # remove nano
       nano.enable = lib.mkForce false;
-    };
-
-     # use gtk theme on qt apps
-    qt = {
-      enable = true;
-      platformTheme = "qt5ct";
-      style = "kvantum";
     };
 
     xdg = {
