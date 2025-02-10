@@ -8,7 +8,7 @@
   imports = [
     ./boot/boot.nix
     ./boot/specialisations.nix
-    ./disk/btrfs.nix
+    ./disk/zfs.nix
     ./disk/impermanence.nix
     ./extra
     ./runtime
@@ -16,11 +16,11 @@
     ./session/niri.nix
     ./startup/agenix.nix
     ./startup/auth.nix
-    ./startup/nix.nix
     ./startup/users.nix
     ./backup.nix
     ./docker.nix
     ./gh.nix
+    ./nix.nix
   ];
 
   options.custom = with lib; {
