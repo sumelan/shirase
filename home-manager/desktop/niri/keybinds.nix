@@ -11,7 +11,7 @@ lib.mkIf config.custom.niri.enable
 
     # base apps
     "Mod+Return".action = spawn "kitty";
-    "Mod+D".action = spawn "rofi -show drun";
+    "Mod+D".action = spawn "fuzzel" "--list-executables-in-path";
     "Mod+E".action = spawn "nemo";
     "Mod+Shift+E".action = spawn "kitty" "yazi";
     "Mod+B".action = spawn "brave";

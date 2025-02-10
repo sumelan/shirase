@@ -97,6 +97,7 @@
         home.directories = [
           "Desktop"
           "Documents"
+          "Downloads"
           "Pictures"
         ];
       };

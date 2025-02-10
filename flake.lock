@@ -246,6 +246,26 @@
         "type": "github"
       }
     },
+    "nix-index-database": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1739071773,
+        "narHash": "sha256-/Ak+Quinhmdxa9m3shjm4lwwwqmzG8zzGhhhhgR1k9I=",
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "rev": "895d81b6228bbd50a6ef22f5a58a504ca99763ea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "type": "github"
+      }
+    },
     "nixcord": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -3313,6 +3333,7 @@
         "home-manager": "home-manager_2",
         "impermanence": "impermanence",
         "niri": "niri",
+        "nix-index-database": "nix-index-database",
         "nixcord": "nixcord",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",

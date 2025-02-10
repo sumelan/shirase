@@ -28,6 +28,7 @@ lib.mkIf config.custom.niri.enable
         (makeCommand "hyprlock")
         (makeCommand "swww-daemon")
         (makeCommand "swaync")
+        (makeCommand "eww daemon")
         (makeCommand "eww open --config ~/.config/eww/statusbar/ statusbar --arg stacking=overlay")
         (makeCommand "wl-paste --type image --watch cliphist store")
         (makeCommand "wl-paste --type text --watch cliphist store")

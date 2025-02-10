@@ -7,7 +7,7 @@
 }:
 let
   mkYaziPlugin = name: text: {
-    "${name}" = toString (pkgs.writeTextDir "${name}.yazi/init.lua" text) + "/${name}.yazi";
+    "${name}" = toString (pkgs.writeTextDir "${name}.yazi/main.lua" text) + "/${name}.yazi";
   };
 in
 lib.mkMerge [

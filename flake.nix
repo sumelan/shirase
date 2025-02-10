@@ -21,6 +21,12 @@
     # impermanence
     impermanence.url = "github:nix-community/impermanence";
 
+    # database
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Secrets
     agenix.url = "github:ryantm/agenix";
 

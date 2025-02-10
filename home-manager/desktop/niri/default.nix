@@ -26,6 +26,7 @@
     home.packages = with pkgs; [
       swww
       # clipboard history
+      cliphist
       wl-clipboard
     ];
   };

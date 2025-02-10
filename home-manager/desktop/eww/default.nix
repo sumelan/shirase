@@ -23,5 +23,11 @@
         socat
       ];
     };
+
+    custom.persist = {
+      home.cache.directories = [
+        ".cache/eww"
+      ];
+    };
   };
 }

@@ -33,10 +33,6 @@ rec {
   hsw = callPackage ./hsw { };
   nsw = callPackage ./nsw { };
 
-  rofi-themes = w callPackage ./rofi-themes { };
-  rofi-power-menu = callPackage ./rofi-power-menu { };
-  rofi-wifi-menu = callPackage ./rofi-wifi-menu { };
-
   vv =
     assert (lib.assertMsg (!(pkgs ? "vv")) "vv: vv is in nixpkgs");
     (w callPackage ./vv { });

@@ -82,8 +82,8 @@
           };
         };
         iconTheme = {
-          name = "Papirus Icon Theme";
-          package = pkgs.papirus-icon-theme.override {color = "black";};
+          name = "Tela-${defaultAccent}-dark";
+          package = pkgs.custom.tela-dynamic-icon-theme.override { colors = accents; };
         };
         font = {
           name = config.custom.fonts.regular;
