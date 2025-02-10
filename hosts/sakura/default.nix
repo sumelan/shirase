@@ -1,4 +1,5 @@
 _:{
+  networking.hostId = "b0e5d98e";
 
   # SystemModule Options.
   custom = {
