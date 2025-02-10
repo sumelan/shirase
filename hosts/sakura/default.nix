@@ -13,7 +13,7 @@ _:{
       repo = "rhq681sk@rhq681sk.repo.borgbase.com:repo";
       cycle = "daily";
     };
-    agenix.enable = true;
+    agenix.enable = false;
     audiobookshelf.enable = false;
     nextcloud.enable = false;
     nginx = {

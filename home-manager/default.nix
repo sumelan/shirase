@@ -62,7 +62,6 @@
           gzip
           trash-cli
           xdg-utils
-          home-manager
         ]
         ++ (lib.optional config.custom.helix.enable helix);
     };

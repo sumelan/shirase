@@ -70,7 +70,7 @@
   # enable sysrq in case for kernel panic
   # boot.kernel.sysctl."kernel.sysrq" = 1;
 
-  # use dbus broker as the default implementation
+  # use dbus broker as default implementation
   services.dbus.implementation = "broker";
 
   # enable opengl

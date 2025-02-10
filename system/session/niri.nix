@@ -28,8 +28,6 @@
 
   environment.variables = {
     NIXOS_OZONE_WL = "1";
-    # Display is for xwayland-satellite, and it doesn't work here.
-    # But if this variable is set in niri config it seems to work
-    DISPLAY = ":0";
   };
+  systemd.user.services.niri-flake-polkit.enable = false;
 }
