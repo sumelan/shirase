@@ -22,7 +22,7 @@
 
   config = lib.mkIf config.custom.niri.enable {
     # start niri-session
-    custom.autologinCommand = "${lib.getExe pkgs.niri-stable}/bin/niri-session";
+    custom.autologinCommand = "${lib.getExe pkgs.niri-stable}";
     home.packages = with pkgs; [
       swww
       # clipboard history
