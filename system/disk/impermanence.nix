@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   user,
   ...
 }:
@@ -79,31 +78,6 @@ in
 
     # shut sudo up
     security.sudo.extraConfig = "Defaults lecture=never";
-
-    custom.shell.packages = {
-      # show all files stored on tmpfs, useful for finding files to persist
-      show-tmpfs = {
-        runtimeInputs = [ pkgs.fd ];
-        text =
-          let
-            wallustExcludes = lib.pipe config.hm.custom.wallust.templates [
-              lib.attrValues
-              (map (a: a.target))
-              (lib.filter (t: !(lib.hasInfix "wallust" t)))
-              (map (t: ''--exclude "${t}" \''))
-              lib.concatLines
-            ];
-          in
-          ''
-            sudo fd --one-file-system --base-directory / --type f --hidden \
-              --exclude "/etc/{ssh,passwd,shadow}" \
-              --exclude "*.timer" \
-              --exclude "/var/lib/NetworkManager" \
-              --exclude "${config.hm.xdg.cacheHome}/{bat,fontconfig,mpv,nvidia,nvim/catppuccin,pre-commit,swww,wallust}" \
-              ${wallustExcludes}  --exec ls -lS | sort -rn -k5 | awk '{print $5, $9}'
-          '';
-      };
-    };
 
     # setup persistence
     environment.persistence = {
