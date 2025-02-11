@@ -35,16 +35,16 @@ let
             isLaptop = host == "acer";
             wallpapers = {
               "HDMI-A-1" = {
-                path = ./wallpaper.png;
+                path = ./sakura/wallpaper-1.jpg;
                 convertMethod = "lutgen"; # gonord, lutgen, none
               };
               "DP-1" = {
-                path = ./wallpaper.png;
-                convertMethod = "gonord"; # gonord, lutgen, none
+                path = ./sakura/wallpaper-2.png;
+                convertMethod = "lutgen"; # gonord, lutgen, none
               };
               "eDP-1" = {
-                path = ./wallpaper.png;
-                convertMethod = "lutgen";
+                path = ./acer/wallpaper.jpg;
+                convertMethod = "gonord"; # gonord, lutgen, none
               };
             };
             dotfiles = "/persist/home/${user}/projects/wolborg";
