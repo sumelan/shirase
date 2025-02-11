@@ -1,50 +1,15 @@
 {
-lib,
-config,
-pkgs,
-...
+  lib,
+  config,
+  pkgs,
+  user,
+  ...
 }:
 {
-  home = {
-    file.".config/rofi/scripts/powermenu.fish" = {
-      text = with config.lib.stylix.colors.withHashtag; ''
-        #!/usr/bin/env fish
-
-        if not test -z $argv
-            switch $argv
-                case Lock
-                    hyprlock; pkill rofi
-                case Suspend
-                    systemctl suspend
-                case Exit
-                    pkill niri
-                case Reboot
-                    systemctl reboot
-                case Poweroff
-                    systemctl poweroff
-            end
-            exit 0
-        end
-
-        echo -e "Lock\0icon\x1f<span color='${base05}'></span>\x1fmeta\x1flock"
-        echo -e "Suspend\0icon\x1f<span color='${base05}'></span>\x1fmeta\x1fsuspend"
-        echo -e "Exit\0icon\x1f<span color='${base05}'>󰿅</span>\x1fmeta\x1flogout"
-        echo -e "Reboot\0icon\x1f<span color='${base05}'></span>\x1fmeta\x1frestart"
-        echo -e "Poweroff\0icon\x1f<span color='${base05}'></span>\x1fmeta\x1fshutdown"
-      '';
-      executable = true;
-    };
-
-    file.".config/rofi/scripts/cliphist-rofi-img" = let
-      cliphist-rofi-img = pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/sentriz/cliphist/master/contrib/cliphist-rofi-img";
-        hash = "sha256-ph7tgLT9CUwWZqI7TMVCXPsuj088TlrqsQgnYN/axDc=";
-      };
-    in {
-      source = cliphist-rofi-img;
-      executable = true;
-    };
-  };
+  home.packages = [
+    pkgs.custom.rofi-wifi-menu
+    pkgs.rofi-power-menu
+  ];
 
   programs.rofi = {
     enable = true;
@@ -70,7 +35,7 @@ pkgs,
       "// lol" = config.lib.formats.rasi.mkLiteral ''
 
           filebrowser {
-            directory: "/home/karun";
+            directory: "/home/${user}";
           }
         // '';
     };

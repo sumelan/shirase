@@ -24,14 +24,11 @@ rec {
     text = "sh <(curl -L ${repo_url}/main/install.sh)";
   };
 
-  # custom tela built with catppucin variant colors
-  tela-dynamic-icon-theme = callPackage ./tela-dynamic-icon-theme { };
-
-  distro-grub-themes-nixos = callPackage ./distro-grub-themes-nixos { };
-
   # for nixos-rebuild
   hsw = callPackage ./hsw { };
   nsw = callPackage ./nsw { };
+
+  rofi-wifi-menu = callPackage ./rofi-wifi-menu { };
 
   vv =
     assert (lib.assertMsg (!(pkgs ? "vv")) "vv: vv is in nixpkgs");

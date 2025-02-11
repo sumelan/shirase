@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 lib.mkMerge [
@@ -31,6 +32,20 @@ lib.mkMerge [
         };
       };
     };
+    # run when activating a Home Manager generation
+    home.activation = {
+      reload-swww = let
+        swww = "${pkgs.swww}/bin/swww";
+      in
+        lib.hm.dag.entryAfter ["writeBoundary"]
+        /*
+        bash
+        */
+        ''
+          run --quiet ${swww} img -o HDMI-A-1 "$HOME/Pictures/Wallpapers/HDMI-A-1.jpg" \
+            && run --quiet ${swww} img -o DP-1 "$HOME/Pictures/Wallpapers/DP-1.jpg"
+        '';
+      };
   })
   {
     custom = {

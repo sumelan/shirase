@@ -23,7 +23,6 @@
         enable = true;
         devices = [ "nodev" ];
         efiSupport = true;
-        theme = pkgs.custom.distro-grub-themes-nixos;
       };
       timeout = 3;
     };

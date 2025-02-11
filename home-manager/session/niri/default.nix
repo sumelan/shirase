@@ -7,7 +7,9 @@
 {
   imports = [
     ./animations.nix
+    ./idle.nix
     ./keybinds.nix
+    ./lock.nix
     ./rules.nix
     ./settings.nix
   ];
@@ -29,5 +31,9 @@
       cliphist
       wl-clipboard
     ];
+
+    home.file.".config/niri/scripts" = {
+      source = ./scripts;
+    };
   };
 }

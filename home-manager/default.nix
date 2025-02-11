@@ -95,6 +95,7 @@
           "Documents"
           "Downloads"
           "Pictures"
+          "Videos"
         ];
       };
     };

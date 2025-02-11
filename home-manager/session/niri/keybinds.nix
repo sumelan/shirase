@@ -11,7 +11,7 @@ lib.mkIf config.custom.niri.enable
 
     # base apps
     "Mod+Return".action = spawn "kitty";
-    "Mod+D".action = spawn "rofi" "-drun";
+    "Mod+D".action = spawn "rofi" "-show" "drun";
     "Mod+E".action = spawn "nemo";
     "Mod+Shift+E".action = spawn "kitty" "yazi";
     "Mod+B".action = spawn "brave";
@@ -20,7 +20,7 @@ lib.mkIf config.custom.niri.enable
     "Mod+Ctrl+V".action = spawn "cliphist" "list" "rofi" "-dmenu" "cliphist" "decode" "wl-copy";
 
     #window and colum management
-    "Mod+Q".action = close-window;
+    "Mod+Backspace".action = close-window;
 
     "Mod+Alt+F".action = maximize-column;
     "Mod+Alt+C".action = center-column;
@@ -92,11 +92,11 @@ lib.mkIf config.custom.niri.enable
 
     # audio
     "XF86AudioRaiseVolume" = {
-      action  = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.5+";
+      action  = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+";
       allow-when-locked = true; # work even when the session is locked
     };
     "XF86AudioLowerVolume" = {
-      action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.5-";
+      action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-";
       allow-when-locked = true;
     };
     "XF86AudioMute" = {

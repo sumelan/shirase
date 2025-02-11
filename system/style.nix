@@ -17,7 +17,7 @@
   config = {
     stylix = {
       enable = true;
-      image = ../home-manager/desktop/walls/wallpaper.png;
+      image = ../hosts/wallpaper.png;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.custom.stylix.theme}.yaml";
       polarity = "dark";
 

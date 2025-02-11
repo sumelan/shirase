@@ -33,6 +33,20 @@ let
           extraSpecialArgs = specialArgs // {
             inherit host user;
             isLaptop = host == "acer";
+            wallpapers = {
+              "HDMI-A-1" = {
+                path = ./wallpaper.png;
+                convertMethod = "lutgen"; # gonord, lutgen, none
+              };
+              "DP-1" = {
+                path = ./wallpaper.png;
+                convertMethod = "gonord"; # gonord, lutgen, none
+              };
+              "eDP-1" = {
+                path = ./wallpaper.png;
+                convertMethod = "lutgen";
+              };
+            };
             dotfiles = "/persist/home/${user}/projects/wolborg";
           };
           users.${user} = {

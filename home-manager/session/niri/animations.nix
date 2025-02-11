@@ -9,13 +9,13 @@ lib.mkIf config.custom.niri.enable
     window-open = {
       easing = {
         curve = "ease-out-expo";
-        duration-ms = 800;
+        duration-ms = 500;
       };
     };
     window-close = {
       easing = {
         curve = "ease-out-quad";
-        duration-ms = 800;
+        duration-ms = 500;
       };
     };
     shaders = {

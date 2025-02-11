@@ -8,7 +8,6 @@
   imports = [
     ./shell/bash.nix
     ./shell/fish.nix
-    ./shell/nushell.nix
     ./shell/shell.nix
     ./btop.nix
     ./cava.nix

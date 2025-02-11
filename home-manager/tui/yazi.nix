@@ -16,7 +16,6 @@ lib.mkMerge [
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = true;
-      enableNushellIntegration = true;
 
       plugins = {
         full-border = "${pkgs.custom.yazi-plugins.src}/full-border.yazi";
@@ -95,17 +94,11 @@ lib.mkMerge [
             inherit dotfiles;
             cfg = "${homeDir}/.config";
             vd = "${homeDir}/Videos";
-            vaa = "${homeDir}/Videos/Anime";
-            vm = "${homeDir}/Videos/Movies";
-            vt = "${homeDir}/Videos/TV";
-            vtn = "${homeDir}/Videos/TV/New";
             pp = "${homeDir}/projects";
             pc = "${homeDir}/Pictures";
             ps = "${homeDir}/Pictures/Screenshots";
             pw = "${homeDir}/Pictures/Wallpapers";
             dd = "${homeDir}/Downloads";
-            dp = "${homeDir}/Downloads/pending";
-            dus = "${homeDir}/Downloads/pending/Unsorted";
           };
         in
         {

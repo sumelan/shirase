@@ -24,14 +24,6 @@
     baseRule // floatingRule;
 
   openFloatingAppIds = [
-    "^(pwvucontrol)"
-    "^(Volume Control)"
-    "^(dialog)"
-    "^(file_progress)"
-    "^(confirm)"
-    "^(download)"
-    "^(error)"
-    "^(notification)"
   ];
 
   floatingRules = builtins.map (appId:
