@@ -40,12 +40,10 @@ lib.mkMerge [
         preset = "Bass Enhancing + Perfect EQ";
       };
       foliate.enable = true;
-      ghostty.enable = false;
       inkscape.enable = true;
       krita.enable = true;
       rustdesk.enable = true;
-      thunderbird.enable = false;
-      vlc.enable = false;
+      thunderbird.enable = true;
     };
   }
 ]

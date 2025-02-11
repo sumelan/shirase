@@ -17,7 +17,7 @@
 
   programs.niri = lib.mkIf config.hm.custom.niri.enable {
     enable = true;
-    package = pkgs.niri-stable;
+    package = pkgs.niri-unstable;
   };
   niri-flake.cache.enable = true;
 

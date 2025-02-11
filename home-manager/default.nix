@@ -7,9 +7,9 @@
 }:
 {
   imports = [
-    ./desktop
     ./editor
     ./gui
+    ./session
     ./tui
     ./hardware.nix
     ./impermanence.nix # only contains options

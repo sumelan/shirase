@@ -1,4 +1,4 @@
-{config, ...}: let
+{ config, ...}: let
   moduleConfiguration =
     /*
     jsonc

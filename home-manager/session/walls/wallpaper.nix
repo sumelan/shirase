@@ -81,10 +81,6 @@
     };
   };
 in {
-  imports = [
-    ./blur.nix
-  ];
-
   home.file =
     builtins.mapAttrs setWallpaper generatedWallpapers
     // lib.attrsets.mapAttrs' blurWallpaper generatedWallpapers;

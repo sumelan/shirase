@@ -10,7 +10,7 @@ let
     import os
     import subprocess
     import json
-    wallpapers_path = "/home/${user}/Pictures/Wallpapers/"
+    wallpapers_path = "/home/${user}/Pictures/wallpapers/"
     wallpapers_cache_path = "/home/${user}/.cache/swww/"
     events_of_interest = ["Workspace focused", "Window opened", "Window closed"]
     def get_niri_msg_output(msg):
@@ -73,5 +73,12 @@ lib.mkIf config.custom.niri.enable {
   programs.niri.settings.spawn-at-startup = [
     {command = ["${niri-blur-wallpaper}/bin/niri-blur-wallpaper"];
   }];
-}
 
+  custom.persist = {
+    home = {
+      cache.directories = [
+        ".cache/swww"
+      ];
+    };
+  };
+}
