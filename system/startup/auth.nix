@@ -37,11 +37,12 @@ lib.mkMerge [
   # misc
   {
     security = {
-      polkit.enable = true;
       sudo = {
         wheelNeedsPassword = false;
         extraConfig = "Defaults passwd_tries=10";
-      } // lib.optionalAttrs config.hm.programs.hyprlock.enable { pam.services.hyprlock = { }; };
+      };
+      polkit.enable = true;
+      pam.services.hyprlock = { };
     };
 
     # Some programs need SUID wrappers, can be configured further or are

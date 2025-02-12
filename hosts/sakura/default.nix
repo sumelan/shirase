@@ -32,6 +32,5 @@
     distrobox.enable = true;
     qmk.enable = true;
     opentabletdriver.enable = true;
-    usb-audio.enable = true;
   };
 }

@@ -24,7 +24,7 @@
 
   config = lib.mkIf config.custom.niri.enable {
     # start niri-session
-    custom.autologinCommand = "${lib.getExe pkgs.niri-stable}-session";
+    custom.autologinCommand = "${lib.getExe pkgs.niri-unstable}-session";
     home.packages = with pkgs; [
       swww
       # clipboard history
@@ -32,6 +32,7 @@
       wl-clipboard
     ];
 
+    # for hyprlock
     home.file.".config/niri/scripts" = {
       source = ./scripts;
     };

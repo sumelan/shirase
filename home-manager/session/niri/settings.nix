@@ -23,11 +23,13 @@ lib.mkIf config.custom.niri.enable
         QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
         SDL_VIDEODRIVER = "wayland";
       };
+
       spawn-at-startup = [
+        (makeCommand "dbus-update-activation-environment --all --systemd")
+        (makeCommand "wl-paste --watch cliphist store")
         (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
-        (makeCommand "wl-paste --type image --watch cliphist store")
-        (makeCommand "wl-paste --type text --watch cliphist store")
       ];
+
       input = {
         keyboard.xkb.layout = "us";
         touchpad = {

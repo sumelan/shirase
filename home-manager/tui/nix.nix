@@ -1,6 +1,7 @@
 {
   pkgs,
   host,
+  inputs,
   dotfiles,
   ...
 }:
@@ -333,6 +334,10 @@ in
     };
 
   programs.nix-index.enable = true;
+
+  nixpkgs.overlays = [
+    inputs.nix-webapps.overlays.lib
+  ];
 
   custom.persist = {
     home = {

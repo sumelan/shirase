@@ -1,12 +1,9 @@
 {
-  config,
   lib,
+  config,
+  pkgs,
   ...
 }:
-let
-  cfg = config.custom.kitty;
-  inherit (config.custom) terminal;
-in
 {
   options.custom = with lib; {
     kitty.enable = mkEnableOption "kitty" // {
@@ -14,13 +11,14 @@ in
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf config.custom.kitty.enable {
     programs.kitty = {
       enable = true;
       themeFile = "Catppuccin-Mocha";
       font = {
-        name = terminal.font;
-        inherit (terminal) size;
+        name = "Maple Mono NF";
+        package = pkgs.maple-mono-NF;
+        size = 12;
       };
       settings = {
         enable_audio_bell = false;
@@ -36,12 +34,6 @@ in
         remote_control_password = ''"" set-spacing''; # only allow setting of padding
         listen_on = "unix:/tmp/kitty-socket";
       };
-      extraConfig = lib.mkIf (lib.hasPrefix "JetBrains" terminal.font) ''
-        font_features JetBrainsMonoNF-Regular +zero
-        font_features JetBrainsMonoNF-Bold +zero
-        font_features JetBrainsMonoNF-Italic +zero
-        font_features JetBrainsMonoNF-BoldItalic +zero
-      '';
     };
 
     home.shellAliases = {

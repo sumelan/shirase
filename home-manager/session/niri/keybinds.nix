@@ -7,7 +7,7 @@ lib.mkIf config.custom.niri.enable
 {
   programs.niri.settings.binds = with config.lib.niri.actions; {
     # shows a list of important hotkeys.
-    "Mod+Shift+BackSlash".action = show-hotkey-overlay;
+    "Mod+Shift+Home".action = show-hotkey-overlay;
 
     # base apps
     "Mod+Return".action = spawn "kitty";
@@ -16,8 +16,13 @@ lib.mkIf config.custom.niri.enable
     "Mod+Shift+E".action = spawn "kitty" "yazi";
     "Mod+B".action = spawn "brave";
 
+    # screenshot
+    "Mod+Backslash".action = screenshot;
+    "Mod+Shift+Backslash".action = screenshot-screen;
+    "Mod+Alt+Backslash".action = screenshot-window;
+
     # clipboard
-    "Mod+Ctrl+V".action = spawn "cliphist" "list" "rofi" "-dmenu" "cliphist" "decode" "wl-copy";
+    "Mod+Ctrl+V".action = spawn "cliphist" "list" "|" "rofi" "-dmenu" "|" "cliphist" "decode" "|" "wl-copy";
 
     #window and colum management
     "Mod+Backspace".action = close-window;
@@ -54,10 +59,6 @@ lib.mkIf config.custom.niri.enable
     "Mod+Shift+2".action.move-column-to-workspace = 2;
     "Mod+Shift+3".action.move-column-to-workspace = 3;
 
-    # scripts
-    "Mod+W".action = spawn "create_or_focus_workspace";
-    "Mod+R".action = spawn "rename_workspace";
-    
     # mouse scroll
     "Mod+WheelScrollDown" = {
       action = focus-workspace-down;

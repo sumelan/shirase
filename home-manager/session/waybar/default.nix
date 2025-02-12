@@ -2,9 +2,11 @@
   pkgs,
   lib,
   config,
+  user,
   isLaptop,
   ...
-}: {
+}:
+{
   imports = [
     ./style.nix
   ];
@@ -81,7 +83,7 @@
         };
 
         mpris = {
-          player = "firefox";
+          player = "spotify";
           format = "{player_icon} {status_icon} <b>{title}</b> by <i>{artist}</i>";
           tooltip-format = "Album: {album}";
           artist-len = 12;
@@ -89,6 +91,8 @@
           ellipsis = "...";
           player-icons = {
             default = "";
+            spotify = "󰓇";
+            kdeconnect = "";
           };
           status-icons = {
             paused = "󰏤";
@@ -203,7 +207,8 @@
         };
 
         disk = {
-          format = "󰋊 {percentage_free}%";
+          format = "󰋊 HOME {percentage_used}%";
+          path = "/persist/home/${user}";
         };
 
         cpu = {

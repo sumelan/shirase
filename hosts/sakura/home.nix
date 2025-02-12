@@ -50,6 +50,8 @@ lib.mkMerge [
   {
     custom = {
       amberol.enable = true;
+      brave.enable = true;
+      discord.enable = true;
       easyEffects = {
         enable = true;
         preset = "Bass Enhancing + Perfect EQ";

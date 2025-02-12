@@ -3,6 +3,5 @@ _:{
     ./opentabletdriver.nix
     ./printing.nix
     ./qmk.nix
-    ./usb-audio.nix
   ];
 }

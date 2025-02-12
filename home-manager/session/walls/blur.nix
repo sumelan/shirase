@@ -10,7 +10,7 @@ let
     import os
     import subprocess
     import json
-    wallpapers_path = "/home/${user}/Pictures/wallpapers/"
+    wallpapers_path = "/home/${user}/Pictures/Wallpapers/"
     wallpapers_cache_path = "/home/${user}/.cache/swww/"
     events_of_interest = ["Workspace focused", "Window opened", "Window closed"]
     def get_niri_msg_output(msg):

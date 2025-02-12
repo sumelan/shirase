@@ -162,9 +162,16 @@
   };
 
   custom.persist = {
-    home.directories = [
-      ".config/lazygit"
-      ".config/systemd" # git maintenance systemd timers
-    ];
+    home = {
+      directories = [
+        ".config/lazygit"
+        ".config/systemd" # git maintenance systemd timers
+      ];
+      cache = {
+        directories = [
+          ".local/state/lazygit"
+        ];
+      };
+    };
   };
 }

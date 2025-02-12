@@ -1,6 +1,6 @@
 {
   config,
-  home,
+  user,
   ...
 }: {
   programs.hyprlock = {
@@ -34,7 +34,7 @@
         valign = "center";
       };
       image = {
-        path = "${home}/.face.icon";
+        path = "/home/${user}/.face.icon";
         size = 150;
         border_color = "rgb(${config.lib.stylix.colors.base0D})";
         position = "0, 75";
@@ -84,6 +84,7 @@
   home.file = {
     ".face.icon".source = ./../../../hosts/pfp.png;
     ".config/face.png".source = ./../../../hosts/pfp.png;
+    ".config/niri/scripts".source = ./scripts;
   };
 }
 

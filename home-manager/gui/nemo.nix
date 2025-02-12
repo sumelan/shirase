@@ -38,8 +38,8 @@
     };
     "org/nemo/preferences" = {
       default-folder-viewer = "list-view";
-      show-hidden-files = true;
-      start-with-dual-pane = true;
+      show-hidden-files = false;
+      start-with-dual-pane = false;
       date-format-monospace = true;
       # needs to be a uint64!
       thumbnail-limit = lib.hm.gvariant.mkUint64 (100 * 1024 * 1024); # 100 mb
@@ -54,6 +54,15 @@
       selection-menu-move-to = true;
     };
   };
+
+  programs.niri.settings.window-rules = [
+    {
+      matches = [
+        { app-id = "^(nemo)$"; }
+      ];
+      open-floating = true;
+    }
+  ];
 
   custom.persist = {
     home = {

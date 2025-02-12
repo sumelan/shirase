@@ -54,7 +54,7 @@ let
               ./${host}/home.nix  # host specific home-manager configuration
               ../home-manager # home-manager modules
               inputs.nix-index-database.hmModules.nix-index
-              inputs.nixcord.homeManagerModules.nixcord
+              inputs.spicetify-nix.homeManagerModules.default
               inputs.nvf.homeManagerModules.default
             ];
           };

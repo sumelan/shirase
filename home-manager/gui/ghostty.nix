@@ -1,39 +1,31 @@
 {
-  config,
   lib,
+  config,
   ...
 }:
-let
-  cfg = config.custom.ghostty;
-  inherit (config.custom) terminal;
-in
 {
   options.custom = with lib; {
     ghostty = {
-      enable = mkEnableOption "ghostty" // {
-        default = true;
-      };
+      enable = mkEnableOption "ghostty";
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf config.custom.ghostty.enable {
     programs.ghostty = {
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = true;
       settings = {
-        background-opacity = terminal.opacity;
+        background-opacity = config.stylix.opacity.terminal;
         confirm-close-surface = false;
         copy-on-select = true;
         cursor-style = "bar";
-        font-family = terminal.font;
+        font-family = config.stylix.fonts.monospace;
         font-feature = "zero";
-        font-size = terminal.size;
+        font-size = config.stylix.fonts.size.terminal;
         font-style = "Medium";
         minimum-contrast = 1.1;
         window-decoration = false;
-        window-padding-x = terminal.padding;
-        window-padding-y = terminal.padding;
       };
     };
   };

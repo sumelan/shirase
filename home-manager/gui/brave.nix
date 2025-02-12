@@ -1,14 +1,20 @@
 {
   lib,
+  config,
   pkgs,
   ...
 }:
-lib.mkMerge [
-  {
+{
+  options.custom = with lib; {
+    brave.enable = mkEnableOption "brave";
+  };
+
+  config = lib.mkIf config.custom.brave.enable {
     programs.chromium = {
       enable = true;
       package = pkgs.brave;
       commandLineArgs = [ "--enable-features=TouchpadOverscrollHistoryNavigation" ];
+
       extensions = [
         # AutoPagerize
         { id = "igiofjhpmpihnifddepnpngfjhkfenbp"; }
@@ -45,29 +51,31 @@ lib.mkMerge [
       ];
     };
 
-    # set default browser
-    home.sessionVariables = {
-      DEFAULT_BROWSER = lib.getExe pkgs.brave;
-      BROWSER = lib.getExe pkgs.brave;
-    };
-  }
+    programs.niri.settings.window-rules = [
+      {
+        matches = [
+          {
+            app-id = "^(brave)$";
+            title = "^(Picture-in-Picture)$";
+          }
+          {
+            app-id = "^(brave)$";
+            title = "^(Save File)$";
+          }
+          {
+            app-id = "^(brave)$";
+            title = "(.*)(wants to save)$";
+          }
+        ];
+        open-floating = true;
+      }
+    ];
 
-  {
-    xdg.mimeApps.defaultApplications = {
-      "text/html" = "brave.desktop";
-      "x-scheme-handler/http" = "brave.desktop";
-      "x-scheme-handler/https" = "brave.desktop";
-      "x-scheme-handler/about" = "brave.desktop";
-      "x-scheme-handler/unknown" = "brave.desktop";
-    };
-  }
-
-  {
     custom.persist = {
       home.directories = [
         ".cache/BraveSoftware"
         ".config/BraveSoftware"
       ];
     };
-  }
-]
+  };
+}

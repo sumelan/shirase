@@ -65,8 +65,10 @@
     # automount disks
     services.gvfs.enable = true;
     # services.devmon.enable = true;
-    programs.dconf.enable = true;
-
+    programs = {
+      dconf.enable = true;
+      seahorse.enable = true;
+    };
 
     environment = {
       etc = {

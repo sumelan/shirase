@@ -21,7 +21,7 @@
       modi = "run,drun,window,filebrowser";
       show-icons = true;
       hover-select = true;
-      run-command = "uwsm app -- {cmd}";
+      run-command = "{cmd}";
       display-run = "  Run ";
       display-drun = "  Apps ";
       display-window = "  Windows ";
