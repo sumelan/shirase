@@ -16,7 +16,6 @@
       enable = true;
       package = pkgs.librewolf;
       languagePacks = ["ja" "en-US"];
-      
       policies = {
         DontCheckDefaultBrowser = true;
         DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
