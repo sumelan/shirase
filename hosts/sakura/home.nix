@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }:
 lib.mkMerge [
@@ -19,7 +18,7 @@ lib.mkMerge [
           };
           scale = 1.0;
         };
-        "DP-1" = {
+        "HDMI-A-2" = {
           mode = {
             width = 2560;
             height = 1440;
@@ -32,21 +31,8 @@ lib.mkMerge [
         };
       };
     };
-    # run when activating a Home Manager generation
-    home.activation = {
-      reload-swww = let
-        swww = "${pkgs.swww}/bin/swww";
-      in
-        lib.hm.dag.entryAfter ["writeBoundary"]
-        /*
-        bash
-        */
-        ''
-          run --quiet ${swww} img -o HDMI-A-1 "$HOME/Pictures/Wallpapers/HDMI-A-1.png" \
-            && run --quiet ${swww} img -o DP-1 "$HOME/Pictures/Wallpapers/DP-1.png"
-        '';
-      };
   })
+
   {
     custom = {
       amberol.enable = true;
@@ -57,8 +43,6 @@ lib.mkMerge [
         preset = "Bass Enhancing + Perfect EQ";
       };
       foliate.enable = true;
-      inkscape.enable = true;
-      krita.enable = true;
       rustdesk.enable = true;
       thunderbird.enable = true;
     };

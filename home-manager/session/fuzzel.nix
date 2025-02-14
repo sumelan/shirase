@@ -13,14 +13,15 @@
         icon-theme = "Papirus";
         match-counter = true;
         terminal = "${pkgs.kitty}/bin/kitty";
-        lines = 8;
+        width = 22;
+        lines = 10;
         horizontal-pad = 40;
         vertical-pad = 20;
         inner-pad = 15;
       };
       border = {
         width = 2;
-        radius = 7;
+        radius = 8;
       };
     };
   };

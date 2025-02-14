@@ -34,13 +34,13 @@
         ];
 
         modules-right = [
+          "custom/niricast"
           "privacy"
           "backlight"
           "wireplumber"
           "group/power"
           "group/hardware"
           "tray"
-          "custom/fnott"
         ];
 
         "custom/actions" = {
@@ -99,6 +99,15 @@
           };
           on-scroll-up = "playerctl volume 0.1+";
           on-scroll-down = "playerctl volume 0.1-";
+        };
+
+        "custom/niricast" = {
+          exec = "hyprcast -w";
+          return-type = "json";
+          hide-empty-text = true;
+          on-click = "niricast";
+          interval = "once";
+          signal = 1;
         };
 
         backlight = {
@@ -232,17 +241,6 @@
         tray = {
           spacing = 5;
         };
-
-        "custom/fnott" = {
-          return-type = "json";
-          exec = "fnott-dnd -w";
-          exec-if = "which fnott-dnd";
-          interval = "once";
-          signal = 2;
-
-          on-click = "fnottctl dismiss";
-          on-click-right = "fnott-dnd";
-        };
       };
     };
   };
@@ -253,10 +251,5 @@
     if ${lib.getExe' pkgs.procps "pgrep"} waybar > /dev/null; then
       ${lib.getExe' pkgs.procps "pkill"} -SIGUSR2 waybar
     fi '';
-
-  home.file.".config/waybar/scripts" = {
-    source = ./scripts;
-    executable = true;
-  };
 }
 

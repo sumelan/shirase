@@ -121,6 +121,17 @@
           background: @base01;
         }
 
+        #custom-niricast {
+          color: @base00;
+          background: @base08;
+
+          animation-name: blink;
+          animation-duration: 1s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
+
         #privacy {
           /* Because waybar does not set the module class */
           color: @base05;
@@ -216,11 +227,6 @@
         #tray > .needs-attention {
           -gtk-icon-effect: highlight;
           background-color: @base0A;
-        }
-
-        #custom-fnott.dnd-on {
-          color: @base00;
-          background: @base0A;
         }
       '';
 }

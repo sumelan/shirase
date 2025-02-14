@@ -25,16 +25,26 @@
   config = lib.mkIf config.custom.niri.enable {
     # start niri-session
     custom.autologinCommand = "${lib.getExe pkgs.niri-unstable}-session";
-    home.packages = with pkgs; [
-      swww
-      # clipboard history
-      cliphist
-      wl-clipboard
-    ];
 
-    # for hyprlock
-    home.file.".config/niri/scripts" = {
-      source = ./scripts;
+    home = {
+      packages = [
+        # wallpaper
+        pkgs.swww
+
+        # clipboard history
+        pkgs.cliphist
+        pkgs.wl-clipboard
+
+        # screencast
+        pkgs.wl-screenrec
+        pkgs.custom.niricast
+        pkgs.procps
+      ];
+
+      # hyprlock scripts
+      file.".config/niri/scripts" = {
+        source = ./scripts;
+      };
     };
   };
 }

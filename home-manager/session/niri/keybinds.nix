@@ -23,15 +23,13 @@ lib.mkIf config.custom.niri.enable
     "Mod+Period".action = spawn "fuzzel-icons";
     "Mod+Semicolon".action = spawn "fuzzel-vpnc";
 
-    #notifications
-    "Mod+N".action = spawn "fnottctl" "actions";
-    "Mod+Shift+N".action = spawn "fnottctl" "dismiss";
-    "Mod+Ctrl+N".action = spawn "fnot-dnd";
-
     # screenshot
     "Mod+Backslash".action = screenshot;
     "Mod+Shift+Backslash".action = screenshot-screen;
     "Mod+Alt+Backslash".action = screenshot-window;
+
+    # Screencast
+    "Mod+R".action = spawn "niricast";
 
     # clipboard
     "Mod+V".action = spawn "fuzzel-clipboard";
@@ -106,29 +104,29 @@ lib.mkIf config.custom.niri.enable
 
     # audio
     "XF86AudioRaiseVolume" = {
-      action  = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+";
+      action = spawn "swayosd-client" "--output-volume" "raise";
       allow-when-locked = true; # work even when the session is locked
     };
     "XF86AudioLowerVolume" = {
-      action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-";
+      action = spawn "swayosd-client" "--output-volume" "lower";
       allow-when-locked = true;
     };
     "XF86AudioMute" = {
-      action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
+      action = spawn "swayosd-client" "--output-volume" "mute-toggle";
       allow-when-locked = true;
     };
     "XF86AudioMicMute" = {
-      action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
+      action = spawn "swayosd-client" "--input-volume" "mute-toggle";
       allow-when-locked = true;
     };
 
-    # brightnes
+    # brightness
     "XF86MonBrightnessUp" = {
-      action = spawn "brightnessctl" "set" "10%+";    
+      action = spawn "swayosd-client" "--brightness" "raise";
       allow-when-locked = true;
     };
     "XF86MonBrightnessDown" = {
-      action = spawn "brightnessctl" "set" "10%-";
+      action = spawn "swayosd-client" "--brightness" "lower";
       allow-when-locked = true;
     };
   };

@@ -27,8 +27,8 @@
     upower = {
       enable = true;
       percentageLow = 20;
-      percentageCritical = 5;
-      percentageAction = 3;
+      percentageCritical = 8;
+      percentageAction = 5;
       criticalPowerAction = "PowerOff";
     };
     tlp.settings = {
@@ -42,7 +42,7 @@
       CPU_HWP_DYN_BOOST_ON_BAT = 1;
 
       PLATFORM_PROFILE_ON_AC = "performance";
-      PLATFORM_PROFILE_ON_BAT = "performance";
+      PLATFORM_PROFILE_ON_BAT = "power";
 
       INTEL_GPU_MIN_FREQ_ON_AC = 500;
       INTEL_GPU_MIN_FREQ_ON_BAT = 500;

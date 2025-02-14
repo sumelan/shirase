@@ -24,23 +24,32 @@
             "loginctl lock-session"
             "playerctl pause"
           ];
-          after_sleep_cmd = "niri msg action power-on-monitors"; # to avoid having to press a key twice to run on the display.
+          # to avoid having to press a key twice to run on the display.
+          after_sleep_cmd = "niri msg action power-on-monitors";
         };
+
         listener = [
           {
             timeout = 60*5;
-            on-timeout = "brightnessctl -s set 10"; # set monitor backlight to minomum, avoid 0 on OLED monitor.
+            # set monitor backlight to minomum, avoid 0 on OLED monitor.
+            on-timeout = "brightnessctl -s set 10";
             on-resume = "brightnessctl -r"; # monitor backlight restor.
           }
+
           {
             timeout = 60*8;
-            on-timeout = "loginctl lock-session"; # lock screen when timeout has passed.
+            # lock screen when timeout has passed.
+            on-timeout = "loginctl lock-session";
           }
+
           {
             timeout = 60*10;
-            on-timeout = "niri msg action power-off-monitors"; # screen off when timeout has passed.
-            on-resume = "niri msg action power-on-monitors"; # screen on when activity is detected after timeout has fired.
+            # screen off when timeout has passed.
+            on-timeout = "niri msg action power-off-monitors";
+            # screen on when activity is detected after timeout has fired.
+            on-resume = "niri msg action power-on-monitors";
           }
+
           {
             timeout = 60*15;
             on-timeout = "systemctl suspend"; # suspend pc.
@@ -48,7 +57,8 @@
         ];
       };
     };
-    systemd.user.services.hypridle.Unit.After = lib.mkForce "graphical-session.target";
+    systemd.user.services.hypridle = {
+      Unit.After = lib.mkForce "graphical-session.target";
+    };
   };
 }
-

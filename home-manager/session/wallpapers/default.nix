@@ -85,11 +85,23 @@ in {
     ./blur.nix
   ];
 
-  home.file =
-    builtins.mapAttrs setWallpaper generatedWallpapers
-    // lib.attrsets.mapAttrs' blurWallpaper generatedWallpapers;
+  home = {
+    file = builtins.mapAttrs setWallpaper generatedWallpapers
+      // lib.attrsets.mapAttrs' blurWallpaper generatedWallpapers;
+      
+    activation = {
+      reload-swww = let
+        swww = "${pkgs.swww}/bin/swww";
+      in
+        # bash, reload wallpaper at home-manager switch
+        lib.hm.dag.entryAfter ["writeBoundary"] '' 
+          run --quiet ${swww} img -o HDMI-A-1 "$HOME/Pictures/Wallpapers/HDMI-A-1.png" \
+            && run --quiet ${swww} img -o HDMI-A-2 "$HOME/Pictures/Wallpapers/HDMI-A-2.png"
+          '';
+    };
+  };
 
   programs.niri.settings.spawn-at-startup = [
-    {command = ["swww-daemon"];}
+    { command = ["swww-daemon"]; }
   ];
 }

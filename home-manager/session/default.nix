@@ -1,9 +1,10 @@
 _:{
   imports = [
-    ./fnott
     ./niri
     ./wallpapers
     ./waybar
+    ./dunst.nix
     ./fuzzel.nix
+    ./swayosd.nix
   ];
 }

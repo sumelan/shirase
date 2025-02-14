@@ -24,7 +24,6 @@ lib.mkMerge [
 
   {
     custom = {
-      discord.enable = false;
       easyEffects = {
         enable = true;
         preset = "Loudness+Autogain";

@@ -35,6 +35,8 @@ rec {
 
   fuzzel-scripts = callPackage ./fuzzel-scripts { };
 
+  niricast = callPackage ./niricast { };
+
   vv =
     assert (lib.assertMsg (!(pkgs ? "vv")) "vv: vv is in nixpkgs");
     (w callPackage ./vv { });
