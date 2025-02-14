@@ -1,8 +1,8 @@
 { config, ... }:
 {
   programs.waybar.style = let
-    radius = "7";
     border-size = "2";
+    radius = "7";
   in
     with config.lib.stylix.colors.withHashtag; # css
     
@@ -74,7 +74,7 @@
         }
 
         #custom-actions {
-          color: @base0D;
+          color: @base0B;
           font-size: 1.3em;
         }
 
@@ -111,11 +111,6 @@
           background: transparent;
         }
 
-        #systemd-failed-units {
-          color: @base00;
-          background: @base08;
-        }
-
         #mpris {
           color: @base00;
           background: @base0C;
@@ -124,17 +119,6 @@
         #mpris.paused {
           color: @base05;
           background: @base01;
-        }
-
-        #custom-hyprcast {
-          color: @base00;
-          background: @base08;
-
-          animation-name: blink;
-          animation-duration: 1s;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-          animation-direction: alternate;
         }
 
         #privacy {
@@ -234,13 +218,7 @@
           background-color: @base0A;
         }
 
-        #custom-swaync.dnd-notification,
-        #custom-swaync.dnd-inhibited-notification {
-          background: @base02;
-        }
-
-        #custom-swaync.notification,
-        #custom-swaync.inhibited-notification {
+        #custom-fnott.dnd-on {
           color: @base00;
           background: @base0A;
         }

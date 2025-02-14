@@ -35,7 +35,7 @@ let
             isLaptop = host == "acer";
             wallpapers = {
               "HDMI-A-1" = {
-                path = ./sakura/wallpaper-1.jpg;
+                path = ./sakura/wallpaper-1.png;
                 convertMethod = "lutgen"; # gonord, lutgen, none
               };
               "DP-1" = {
@@ -43,7 +43,7 @@ let
                 convertMethod = "lutgen"; # gonord, lutgen, none
               };
               "eDP-1" = {
-                path = ./acer/wallpaper.jpg;
+                path = ./acer/wallpaper.png;
                 convertMethod = "gonord"; # gonord, lutgen, none
               };
             };

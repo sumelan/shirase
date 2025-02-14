@@ -26,7 +26,10 @@ lib.mkIf config.custom.niri.enable
 
       spawn-at-startup = [
         (makeCommand "dbus-update-activation-environment --all --systemd")
-        (makeCommand "wl-paste --watch cliphist store")
+        (makeCommand "wpctl set-mute @DEFAULT_AUDIO_SINK@ 1")
+        (makeCommand "nm-applet")
+        (makeCommand "blueman-applet")
+        (makeCommand "fcitx5")
         (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
       ];
 

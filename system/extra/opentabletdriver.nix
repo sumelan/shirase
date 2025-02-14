@@ -13,5 +13,11 @@
       enable = true;
       daemon.enable = true;
     };
+
+    custom.persist = {
+      home.directories = [
+        ".config/OpenTabletDriver"
+      ];
+    };
   };
 }

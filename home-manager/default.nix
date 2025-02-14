@@ -13,6 +13,7 @@
     ./tui
     ./hardware.nix
     ./impermanence.nix # only contains options
+    ./style.nix
   ];
 
   options.custom = with lib; {
@@ -94,6 +95,7 @@
           "Desktop"
           "Documents"
           "Downloads"
+          "Music"
           "Pictures"
           "Videos"
         ];

@@ -11,10 +11,22 @@ lib.mkIf config.custom.niri.enable
 
     # base apps
     "Mod+Return".action = spawn "kitty";
-    "Mod+D".action = spawn "rofi" "-show" "drun";
     "Mod+E".action = spawn "nemo";
     "Mod+Shift+E".action = spawn "kitty" "yazi";
-    "Mod+B".action = spawn "brave";
+    "Mod+B".action = spawn "librewolf";
+
+    # launcher
+    "Mod+D".action = spawn "fuzzel";
+    "Mod+Space".action = spawn "fuzzel-files";
+    "Mod+Tab".action = spawn "fuzzel-windows";
+    "Mod+Ctrl+Q".action = spawn "fuzzel-actions";
+    "Mod+Period".action = spawn "fuzzel-icons";
+    "Mod+Semicolon".action = spawn "fuzzel-vpnc";
+
+    #notifications
+    "Mod+N".action = spawn "fnottctl" "actions";
+    "Mod+Shift+N".action = spawn "fnottctl" "dismiss";
+    "Mod+Ctrl+N".action = spawn "fnot-dnd";
 
     # screenshot
     "Mod+Backslash".action = screenshot;
@@ -22,7 +34,8 @@ lib.mkIf config.custom.niri.enable
     "Mod+Alt+Backslash".action = screenshot-window;
 
     # clipboard
-    "Mod+Ctrl+V".action = spawn "cliphist" "list" "|" "rofi" "-dmenu" "|" "cliphist" "decode" "|" "wl-copy";
+    "Mod+V".action = spawn "fuzzel-clipboard";
+    "Mod+Ctrl+V".action = spawn "rm" "$XDG_CACHE_HOME/cliphist/db";
 
     #window and colum management
     "Mod+Backspace".action = close-window;

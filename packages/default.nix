@@ -28,7 +28,12 @@ rec {
   hsw = callPackage ./hsw { };
   nsw = callPackage ./nsw { };
 
-  rofi-wifi-menu = callPackage ./rofi-wifi-menu { };
+  # custom tela built with catppucin variant colors
+  tela-dynamic-icon-theme = callPackage ./tela-dynamic-icon-theme { };
+
+  distro-grub-themes-nixos = callPackage ./distro-grub-themes-nixos { };
+
+  fuzzel-scripts = callPackage ./fuzzel-scripts { };
 
   vv =
     assert (lib.assertMsg (!(pkgs ? "vv")) "vv: vv is in nixpkgs");

@@ -42,8 +42,8 @@ lib.mkMerge [
         bash
         */
         ''
-          run --quiet ${swww} img -o HDMI-A-1 "$HOME/Pictures/Wallpapers/HDMI-A-1.jpg" \
-            && run --quiet ${swww} img -o DP-1 "$HOME/Pictures/Wallpapers/DP-1.jpg"
+          run --quiet ${swww} img -o HDMI-A-1 "$HOME/Pictures/Wallpapers/HDMI-A-1.png" \
+            && run --quiet ${swww} img -o DP-1 "$HOME/Pictures/Wallpapers/DP-1.png"
         '';
       };
   })

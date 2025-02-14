@@ -14,12 +14,6 @@
   config = lib.mkIf config.custom.kitty.enable {
     programs.kitty = {
       enable = true;
-      themeFile = "Catppuccin-Mocha";
-      font = {
-        name = "Maple Mono NF";
-        package = pkgs.maple-mono-NF;
-        size = 12;
-      };
       settings = {
         enable_audio_bell = false;
         copy_on_select = "clipboard";

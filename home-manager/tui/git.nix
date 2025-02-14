@@ -167,11 +167,6 @@
         ".config/lazygit"
         ".config/systemd" # git maintenance systemd timers
       ];
-      cache = {
-        directories = [
-          ".local/state/lazygit"
-        ];
-      };
     };
   };
 }

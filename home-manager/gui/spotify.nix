@@ -58,5 +58,14 @@
         radio-btn-active = config.lib.stylix.colors.base0E;
       };
     };
+
+    custom.persist = {
+      home = {
+        directories = [
+          ".config/spotify"
+          ".cache/spotify"
+        ];
+      };
+    };
   };
 }

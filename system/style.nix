@@ -9,7 +9,7 @@
     stylix = {
       theme = mkOption {
         type = types.str;
-        default = "everforest-dark-hard";
+        default = "rose-pine";
       };
     };
   };
@@ -56,11 +56,12 @@
         applications = 0.95;
         terminal = 0.95;
         desktop = 0.95;
-        popups = 0.75;
+        popups = 0.85;
       };
 
       targets = {
         fish.enable = false;
+        grub.enable = false;
       };
     };
 

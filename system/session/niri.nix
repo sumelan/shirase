@@ -22,7 +22,7 @@
   niri-flake.cache.enable = true;
 
   environment.systemPackages = with pkgs; [
-    xwayland-satellite
+    xwayland-satellite # need for discord
     brightnessctl
   ];
 

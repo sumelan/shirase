@@ -40,13 +40,13 @@
           "group/power"
           "group/hardware"
           "tray"
-          "custom/swaync"
+          "custom/fnott"
         ];
 
         "custom/actions" = {
           format = "";
           tooltip-format = "System Actions";
-          on-click = "rofi -show power-menu -modi power-menu:rofi-power-menu";
+          on-click = "fuzzel-actions";
         };
 
         "niri/workspaces" = {
@@ -233,27 +233,15 @@
           spacing = 5;
         };
 
-        "custom/swaync" = {
-          tooltip = false;
-          format = "{} {icon}";
-
-          format-icons = {
-            notification = "󱅫";
-            none = "󰂚";
-            dnd-notification = "󰂛";
-            dnd-none = "󰂛";
-            inhibited-notification = "󰂛";
-            inhibited-none = "󰂛";
-            dnd-inhibited-notification = "󰂛";
-            dnd-inhibited-none = "󰂛";
-          };
+        "custom/fnott" = {
           return-type = "json";
-          exec-if = "which swaync-client";
-          exec = "swaync-client -swb";
-          on-click = "swaync-client -t -sw";
-          on-click-middle = "swaync-client -C";
-          on-click-right = "swaync-client -d -sw";
-          escape = true;
+          exec = "fnott-dnd -w";
+          exec-if = "which fnott-dnd";
+          interval = "once";
+          signal = 2;
+
+          on-click = "fnottctl dismiss";
+          on-click-right = "fnott-dnd";
         };
       };
     };
