@@ -6,9 +6,8 @@
 }:
 {
   imports = [
-    ./shell/bash.nix
-    ./shell/fish.nix
-    ./shell/shell.nix
+    ./rmpc
+    ./shell
     ./btop.nix
     ./cava.nix
     ./eza.nix
