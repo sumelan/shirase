@@ -11,7 +11,7 @@
     inputs.nixos-hardware.nixosModules.common-cpu-intel
   ];
 
-  networking.hostId = "";
+  networking.hostId = "66c5a2c0";
 
   # Laptop Modules.
   environment.systemPackages = with pkgs; [

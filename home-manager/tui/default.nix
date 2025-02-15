@@ -6,7 +6,6 @@
 }:
 {
   imports = [
-    ./rmpc
     ./shell
     ./btop.nix
     ./cava.nix
