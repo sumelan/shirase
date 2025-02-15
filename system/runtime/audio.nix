@@ -49,5 +49,7 @@
     XDG_RUNTIME_DIR = "/run/user/${builtins.toString config.users.users.${user}.uid}";
   };
 
-  environment.systemPackages = with pkgs; [ pwvucontrol ];
+  environment.systemPackages = with pkgs; [
+    pwvucontrol
+  ];
 }

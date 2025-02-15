@@ -19,6 +19,7 @@ lib.mkMerge [
     users.users =
       let
         keyFiles = [
+          ../../hosts/acer/acer.pub
           ../../hosts/sakura/sakura.pub
         ];
       in

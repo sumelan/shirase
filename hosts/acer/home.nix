@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   ...
 }:
@@ -19,6 +20,16 @@ lib.mkMerge [
           scale = 1.0;
         };
       };
+    };
+
+    home.activation = {
+      reload-swww = let
+        swww = "${pkgs.swww}/bin/swww";
+      in
+        # bash, reload wallpaper at home-manager switch
+        lib.hm.dag.entryAfter ["writeBoundary"] '' 
+          run --quiet ${swww} img -o eDP-1 "$HOME/Pictures/Wallpapers/eDP-1.png"
+        '';
     };
   })
 

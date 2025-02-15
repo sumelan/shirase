@@ -14,7 +14,6 @@
   config = lib.mkIf config.custom.mpv.enable {
     home.packages = with pkgs; [ 
       mpv
-      ffmpeg
     ];
 
     custom.persist = {

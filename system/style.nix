@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  isLaptop,
   ...
 }:
 {
@@ -48,7 +49,7 @@
           applications = 13;
           terminal = 12;
           desktop = 13;
-          popups = 14;
+          popups = if isLaptop then 9 else 14;
         };
       };
 
