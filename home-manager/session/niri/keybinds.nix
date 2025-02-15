@@ -35,6 +35,10 @@ lib.mkIf config.custom.niri.enable
     "Mod+V".action = spawn "fuzzel-clipboard";
     "Mod+Ctrl+V".action = spawn "rm" "$XDG_CACHE_HOME/cliphist/db";
 
+    # notification
+    "Mod+N".action = spawn "dunstctl" "history-pop";
+    "Mod+Shift+N".action = spawn "dunstctl" "close-all";
+
     #window and colum management
     "Mod+Backspace".action = close-window;
 

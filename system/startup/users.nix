@@ -55,6 +55,7 @@
           };
           ${user} = {
             isNormalUser = true;
+            uid = 1000;
             initialPassword = "password";
             hashedPasswordFile = "/persist/etc/shadow/${user}";
             extraGroups = [
