@@ -102,7 +102,7 @@
         };
 
         "custom/niricast" = {
-          exec = "hyprcast -w";
+          exec = "niricast -w";
           return-type = "json";
           hide-empty-text = true;
           on-click = "niricast";

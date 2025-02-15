@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  user,
-  ...
-}:
+{ pkgs, ... }:
 {
   # setup pipewire for audio
   security.rtkit.enable = true;
@@ -29,24 +24,6 @@
       };
     };
     pulseaudio.enable = false;
-
-    mpd = {
-      enable = true;
-      user = "${user}";
-      musicDirectory = "/home/${user}/Music";
-      extraConfig = ''
-        audio_output {
-          type "pipewire"
-          name "My PipeWire Output"
-        }
-      '';
-    };
-  };
-  systemd.services.mpd.environment = {
-    # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
-    # User-id must match above user. MPD will look inside this directory
-    # for the PipeWire socket.
-    XDG_RUNTIME_DIR = "/run/user/${builtins.toString config.users.users.${user}.uid}";
   };
 
   environment.systemPackages = with pkgs; [

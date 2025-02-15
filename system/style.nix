@@ -49,7 +49,7 @@
           applications = 13;
           terminal = 12;
           desktop = 13;
-          popups = if isLaptop then 9 else 14;
+          popups = if isLaptop then 10 else 14;
         };
       };
 

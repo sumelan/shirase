@@ -18,15 +18,22 @@
 
   services.mpd = {
     enable = true;
+    musicDirectory = "/home/${user}/Music";
     dataDir = "/home/${user}/.config/mpd";
     dbFile = "/home/${user}/.config/mpd/tag_cache";
     extraConfig = ''
-      bind_to_address	"/home/sumelan/.config/mpd/mpd_socket"
+      audio_output {
+        type            "pipewire"
+        name            "PipeWire Sound Server"
+      }
+
+      bind_to_address	"/home/${user}/.config/mpd/mpd_socket"
     '';
   };
 
   custom.persist = {
     home.directories = [
+      ".config/mpd"
       # yt-dlp cache
       ".cache/rmpc"
     ];
