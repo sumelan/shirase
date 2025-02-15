@@ -96,7 +96,8 @@ in {
         # bash, reload wallpaper at home-manager switch
         lib.hm.dag.entryAfter ["writeBoundary"] '' 
           run --quiet ${swww} img -o HDMI-A-1 "$HOME/Pictures/Wallpapers/HDMI-A-1.png" \
-            && run --quiet ${swww} img -o HDMI-A-2 "$HOME/Pictures/Wallpapers/HDMI-A-2.png"
+            && run --quiet ${swww} img -o HDMI-A-2 "$HOME/Pictures/Wallpapers/HDMI-A-2.png" \
+              && run --quiet ${swww} img -o eDP-1 "$HOME/Pictures/Wallpapers/eDP-1.png"
           '';
     };
   };
