@@ -11,7 +11,7 @@ lib.mkMerge [
       enable = true;
       # disable password auth
       settings = {
-        PasswordAuthentication = true;
+        PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
       };
     };
@@ -19,11 +19,10 @@ lib.mkMerge [
     users.users =
       let
         keyFiles = [
-          ../../home-manager/id_ed25519.pub
+          ../../hosts/sakura/sakura.pub
         ];
       in
       {
-        root.openssh.authorizedKeys.keyFiles = keyFiles;
         ${user}.openssh.authorizedKeys.keyFiles = keyFiles;
       };
   }
