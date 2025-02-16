@@ -86,7 +86,7 @@ with config.lib.stylix.colors.withHashtag;
                     ),
                 ),
                 (
-                    size = "1",
+                    size: "1",
                     pane: Pane(ProgressBar),
                 ),
             ],

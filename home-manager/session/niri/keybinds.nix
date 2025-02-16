@@ -7,13 +7,14 @@ lib.mkIf config.custom.niri.enable
 {
   programs.niri.settings.binds = with config.lib.niri.actions; {
     # shows a list of important hotkeys.
-    "Mod+Shift+Home".action = show-hotkey-overlay;
+    "Mod+Shift+Slash".action = show-hotkey-overlay;
 
     # base apps
     "Mod+Return".action = spawn "kitty";
     "Mod+E".action = spawn "nemo";
     "Mod+Shift+E".action = spawn "kitty" "yazi";
     "Mod+B".action = spawn "librewolf";
+    "Mod+R".action = spawn "rmpc";
 
     # launcher
     "Mod+D".action = spawn "fuzzel";
@@ -29,7 +30,7 @@ lib.mkIf config.custom.niri.enable
     "Mod+Alt+Backslash".action = screenshot-window;
 
     # Screencast
-    "Mod+R".action = spawn "niricast";
+    "Mod+Shift+Home".action = spawn "niricast";
 
     # clipboard
     "Mod+V".action = spawn "fuzzel-clipboard";

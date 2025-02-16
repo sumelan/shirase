@@ -26,6 +26,26 @@
     '';
   };
 
+  programs.niri.settings.window-rules = [
+    {
+      matches = [
+        { app-id = "^(rmpc)$"; }
+      ];
+      default-column-width = {
+        proportion = 0.3;
+      };
+      default-window-height = {
+        proportion = 0.35;
+      };
+      open-floating = true;
+      default-floating-position = {
+        x = 10;
+        y = 10;
+        relative-to = "bottom-right";
+      };
+    }
+  ];
+
   custom.persist = {
     home.directories = [
       ".config/mpd"
