@@ -1,19 +1,15 @@
 { pkgs, user, ... }:
 {
-  home = {
-    packages = with pkgs; [ rmpc ];
-    file = {
-      ".config/rmpc/config.ron" = {
-        source = ./config.ron;
-      };
-      ".config/rmpc/themes/custom.ron" = {
-        source = ./theme.ron;
-      };
-      ".config/rmpc/notify" = {
-        source = ./notify.fish;
-        executable = true;
-      };
-    };
+  imports = [
+    ./config.nix
+    ./theme.nix
+  ];
+
+  home.packages = with pkgs; [ rmpc ];
+
+  xdg.configFile."rmpc/notify" = {
+    source = ./notify.fish;
+    executable = true;
   };
 
   services.mpd = {
@@ -26,7 +22,6 @@
         type            "pipewire"
         name            "PipeWire Sound Server"
       }
-
       bind_to_address	"/home/${user}/.config/mpd/mpd_socket"
     '';
   };
