@@ -117,7 +117,7 @@
                 border_type: None,
                 pane: Split(
                     direction: Horizontal,
-                    panes: [(size: "40%", pane: Pane(Queue)), (size: "60%", pane: Pane(AlbumArt))],
+                    panes: [(size: "60%", pane: Pane(Queue)), (size: "40%", pane: Pane(AlbumArt))],
                 ),
             ),
             (

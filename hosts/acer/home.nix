@@ -40,6 +40,7 @@ lib.mkMerge [
         preset = "Loudness+Autogain";
       };
       foliate.enable = true;
+      ghostty.enable = true;
       thunderbird.enable = true;
     };
   }

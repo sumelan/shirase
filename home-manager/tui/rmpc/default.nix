@@ -7,11 +7,6 @@
 
   home.packages = with pkgs; [ rmpc ];
 
-  xdg.configFile."rmpc/notify" = {
-    source = ./notify.fish;
-    executable = true;
-  };
-
   services.mpd = {
     enable = true;
     musicDirectory = "/home/${user}/Music";
@@ -26,10 +21,17 @@
     '';
   };
 
+  xdg.configFile."rmpc/notify" = {
+    source = ./notify.fish;
+    executable = true;
+  };
+
   programs.niri.settings.window-rules = [
     {
       matches = [
-        { app-id = "^(rmpc)$"; }
+        {
+          app-id = "^(com.mitchellh.ghostty)$";
+        }
       ];
       default-column-width = {
         proportion = 0.3;

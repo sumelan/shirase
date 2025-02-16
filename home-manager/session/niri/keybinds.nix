@@ -14,7 +14,7 @@ lib.mkIf config.custom.niri.enable
     "Mod+E".action = spawn "nemo";
     "Mod+Shift+E".action = spawn "kitty" "yazi";
     "Mod+B".action = spawn "librewolf";
-    "Mod+R".action = spawn "rmpc";
+    "Mod+R".action = spawn "ghostty rmpc";
 
     # launcher
     "Mod+D".action = spawn "fuzzel";
@@ -43,10 +43,11 @@ lib.mkIf config.custom.niri.enable
     #window and colum management
     "Mod+Backspace".action = close-window;
 
-    "Mod+Alt+F".action = maximize-column;
-    "Mod+Alt+C".action = center-column;
     "Mod+F".action = fullscreen-window;
+    "Mod+Alt+F".action = maximize-column;
+    "Mod+Shift+F".action = toggle-window-floating;
     "Mod+Shift+C".action = switch-preset-column-width;
+    "Mod+Alt+C".action = center-column;
 
     "Mod+H".action = focus-column-left;
     "Mod+J".action = focus-window-down;
@@ -61,7 +62,6 @@ lib.mkIf config.custom.niri.enable
     "Mod+Shift+U".action = consume-or-expel-window-left;
     "Mod+Shift+I".action = consume-or-expel-window-right;
 
-    "Mod+Alt+Semicolon".action = switch-preset-column-width;
     "Mod+Alt+H".action = set-column-width "-10%";
     "Mod+Alt+L".action = set-column-width "+10%";
     "Mod+Alt+J".action = set-window-height "-10%";

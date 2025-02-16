@@ -50,13 +50,14 @@ lib.mkMerge [
       amberol.enable = true;
       brave.enable = true;
       discord.enable = true;
+      foliate.enable = true;
+      ghostty.enable = true;
+      rustdesk.enable = true;
+      thunderbird.enable = true;
       easyEffects = {
         enable = true;
         preset = "Bass Enhancing + Perfect EQ";
       };
-      foliate.enable = true;
-      rustdesk.enable = true;
-      thunderbird.enable = true;
     };
   }
 ]
