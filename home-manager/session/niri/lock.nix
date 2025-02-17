@@ -12,7 +12,7 @@
       };
       background = {
         blur_size = 4;
-        blur_passes = 0;
+        blur_passes = 2;
       };
       input-field = {
         size = "300, 50";

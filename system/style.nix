@@ -10,7 +10,7 @@
     stylix = {
       theme = mkOption {
         type = types.str;
-        default = "rose-pine";
+        default = "catppuccin-frappe";
       };
     };
   };

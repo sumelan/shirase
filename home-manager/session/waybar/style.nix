@@ -2,7 +2,7 @@
 {
   programs.waybar.style = let
     border-size = "2";
-    radius = "7";
+    radius = "8";
   in
     with config.lib.stylix.colors.withHashtag; # css
     
@@ -74,12 +74,12 @@
         }
 
         #custom-actions {
-          color: @base0B;
+          color: @base0D;
           font-size: 1.3em;
         }
 
         #workspaces button {
-          color: @base05;
+          color: @base06;
 
           padding: 0.05rem;
           margin: 0.2rem 0.3rem;
@@ -99,7 +99,7 @@
         }
 
         #workspaces button.active {
-          color: @base0D;
+          color: @base0E;
         }
 
         #workspaces button:hover {
@@ -113,7 +113,7 @@
 
         #mpris {
           color: @base00;
-          background: @base0C;
+          background: @base0F;
         }
 
         #mpris.paused {
@@ -191,12 +191,12 @@
         }
 
         #idle_inhibitor {
-          background: @base02;
+          background: @base09;
         }
 
         #idle_inhibitor.activated {
           color: @base00;
-          background: @base09;
+          background: @base07;
         }
 
         #disk,

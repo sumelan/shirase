@@ -7,7 +7,7 @@ with config.lib.stylix.colors.withHashtag;
     #![enable(unwrap_variant_newtypes)]
     (
         default_album_art_path: None,
-        draw_borders: false,
+        draw_borders: true,
         show_song_table_header: false,
         symbols: (song: "🎵", dir: "📁", marker: ""),
         progress_bar: (

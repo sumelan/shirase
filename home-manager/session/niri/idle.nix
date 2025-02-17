@@ -32,7 +32,7 @@
           {
             timeout = 60*5;
             # set monitor backlight to minomum, avoid 0 on OLED monitor.
-            on-timeout = "brightnessctl -s set 10";
+            on-timeout = "brightnessctl -s set 5";
             on-resume = "brightnessctl -r"; # monitor backlight restor.
           }
 

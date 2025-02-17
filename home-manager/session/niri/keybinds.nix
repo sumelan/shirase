@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  dotfiles,
   ...
 }:
 lib.mkIf config.custom.niri.enable
@@ -14,7 +15,7 @@ lib.mkIf config.custom.niri.enable
     "Mod+E".action = spawn "nemo";
     "Mod+Shift+E".action = spawn "kitty" "yazi";
     "Mod+B".action = spawn "librewolf";
-    "Mod+R".action = spawn "ghostty rmpc";
+    "Mod+R".action = spawn "ghostty"  "-e" "rmpc";
 
     # launcher
     "Mod+D".action = spawn "fuzzel";
@@ -23,6 +24,9 @@ lib.mkIf config.custom.niri.enable
     "Mod+Ctrl+Q".action = spawn "fuzzel-actions";
     "Mod+Period".action = spawn "fuzzel-icons";
     "Mod+Semicolon".action = spawn "fuzzel-vpnc";
+
+    # neovim
+    "Mod+Shift+Return".action = spawn "kitty" "nvim" "${dotfiles}";
 
     # screenshot
     "Mod+Backslash".action = screenshot;
@@ -40,7 +44,7 @@ lib.mkIf config.custom.niri.enable
     "Mod+N".action = spawn "dunstctl" "history-pop";
     "Mod+Shift+N".action = spawn "dunstctl" "close-all";
 
-    #window and colum management
+    # window and colum management
     "Mod+Backspace".action = close-window;
 
     "Mod+F".action = fullscreen-window;
@@ -122,6 +126,22 @@ lib.mkIf config.custom.niri.enable
     };
     "XF86AudioMicMute" = {
       action = spawn "swayosd-client" "--input-volume" "mute-toggle";
+      allow-when-locked = true;
+    };
+    "XF86AudioPlay" = {
+      action = spawn "playerctl" "play-pause";
+      allow-when-locked = true;
+    };
+    "XF86AudioPause" = {
+      action = spawn "playerctl" "play-pause";
+      allow-when-locked = true;
+    };
+    "XF86AudioNext" = {
+      action = spawn "playerctl" "next";
+      allow-when-locked = true;
+    };
+    "XF86AudioPrev" = {
+      action = spawn "playerctl" "previous";
       allow-when-locked = true;
     };
 

@@ -31,6 +31,8 @@ lib.mkIf config.custom.niri.enable {
           { app-id = "^(download)$"; }
           { app-id = "^(error)$"; }
           { app-id = "^(notification)$"; }
+
+          { title = "^(Picture-in-Picture)$"; }
         ];
         open-floating = true;
       }
