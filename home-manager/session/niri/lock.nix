@@ -61,7 +61,7 @@
           valign = "top";
         }
         {
-          text = "cmd[update:1000] ~/.config/hypr/scripts/get_battery_info.fish";
+          text = "cmd[update:1000] ~/.config/niri/scripts/get_battery_info.fish";
           color = "rgb(${config.lib.stylix.colors.base01})";
           font_size = 18;
           font_family = config.stylix.fonts.sansSerif.name;
@@ -70,7 +70,7 @@
           valign = "top";
         }
         {
-          text = "cmd[update:1000] ~/.config/hypr/scripts/get_media_info.fish";
+          text = "cmd[update:1000] ~/.config/niri/scripts/get_media_info.fish";
           color = "rgb(${config.lib.stylix.colors.base01})";
           font_size = 18;
           font_family = config.stylix.fonts.sansSerif.name;

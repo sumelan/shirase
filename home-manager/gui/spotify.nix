@@ -7,11 +7,10 @@
 }:
 {
   options.custom = with lib; {
-    spotify.enable = mkEnableOption "spotify powered with spicetify" // {
-      default = true;
-    };
+    spotify.enable = mkEnableOption "spotify powered with spicetify";
   };
-  config = {
+
+  config = lib.mkIf config.custom.spotify.enable {
     programs.spicetify = let
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
     in

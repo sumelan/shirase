@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  user,
   ...
 }:
 let
@@ -226,7 +225,7 @@ in
           "custom/btop" = {
             format = "";
             tooltip = false;
-            on-click = "kitty btop";
+            on-click = "kitty --app-id btop btop";
           };
 
           disk = {

@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  isLaptop,
   ...
 }:
 {
@@ -50,10 +51,10 @@
             on-resume = "niri msg action power-on-monitors";
           }
 
-          {
+          (lib.mkIf isLaptop {
             timeout = 60*15;
             on-timeout = "systemctl suspend"; # suspend pc.
-          }
+          })
         ];
       };
     };

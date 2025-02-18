@@ -9,7 +9,7 @@
         password: None,
         theme: "custom",
         cache_dir: "/home/${user}/.cache/rmpc",
-        on_song_change: ["/home/${user}/.config/rmpc/notify"],
+        on_song_change: None,
         volume_step: 5,
         scrolloff: 0,
         wrap_navigation: false,

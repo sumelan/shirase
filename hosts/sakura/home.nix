@@ -47,11 +47,8 @@ lib.mkMerge [
 
   {
     custom = {
-      amberol.enable = true;
       brave.enable = true;
-      discord.enable = true;
       foliate.enable = true;
-      ghostty.enable = true;
       rustdesk.enable = true;
       thunderbird.enable = true;
 

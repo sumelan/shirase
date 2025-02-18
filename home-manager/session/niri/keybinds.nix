@@ -15,7 +15,7 @@ lib.mkIf config.custom.niri.enable
     "Mod+E".action = spawn "nemo";
     "Mod+Shift+E".action = spawn "kitty" "yazi";
     "Mod+B".action = spawn "librewolf";
-    "Mod+R".action = spawn "ghostty"  "-e" "rmpc";
+    "Mod+R".action = spawn "kitty" "--app-id" "rmpc" "rmpc";
 
     # launcher
     "Mod+D".action = spawn "fuzzel";

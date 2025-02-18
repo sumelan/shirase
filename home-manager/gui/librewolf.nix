@@ -60,7 +60,7 @@
         matches = [
           { 
             app-id = "^(librewolf)$";
-            title = "^(Picture-in-Picture)$";
+            title = "^(ピクチャーインピクチャー)$"; # obey language settings?
           }
           {
             app-id = "^(librewolf)$";
@@ -69,6 +69,10 @@
           {
             app-id = "^(librewolf)$";
             title = "(.*)(wants to save)$"; # save image diaslog
+          }
+          {
+            app-id = "^(librewolf)$";
+            title = "^(拡張機能: (Bitwarden パスワードマネージャー) - Bitwarden — Mozilla Firefox)$";
           }
         ];
         open-floating = true;

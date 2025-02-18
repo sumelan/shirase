@@ -1,7 +1,6 @@
 { ... }:
 {
   imports = [
-    ./amberol.nix
     ./brave.nix
     ./easyeffects.nix
     ./foliate.nix
@@ -13,6 +12,7 @@
     ./mpv.nix
     ./nemo.nix
     ./obs-studio.nix
+    ./picard.nix
     ./rustdesk.nix
     ./spotify.nix
     ./swayimg.nix

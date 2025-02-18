@@ -32,8 +32,8 @@ lib.mkIf config.custom.niri.enable
         (makeCommand "blueman-applet")
         (makeCommand "brightnessctl -s set 10")
         (makeCommand "fcitx5")
-        (makeCommand "wl-paste --watch cliphist store")
         (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
+        (makeCommand "wl-paste --watch cliphist store")
       ];
 
       input = {
@@ -63,11 +63,11 @@ lib.mkIf config.custom.niri.enable
 
       layout = {
         focus-ring.enable = false;
-        border = {
+        border = with config.lib.stylix.colors.withHashtag; {
           enable = true;
           width = 1;
-          active.color = "#16aff1";
-          inactive.color = "#245b89";
+          active.color = "${base0D}";
+          inactive.color = "${base00}";
         };
 
         preset-column-widths = [

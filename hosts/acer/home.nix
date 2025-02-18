@@ -35,13 +35,12 @@ lib.mkMerge [
 
   {
     custom = {
+      foliate.enable = true;
+      thunderbird.enable = true;
       easyEffects = {
         enable = true;
         preset = "Loudness+Autogain";
       };
-      foliate.enable = true;
-      ghostty.enable = true;
-      thunderbird.enable = true;
     };
   }
 ]
