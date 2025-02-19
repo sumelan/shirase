@@ -68,14 +68,19 @@
           }
           {
             app-id = "^(librewolf)$";
-            title = "(.*)(wants to save)$"; # save image diaslog
+            title = "^(.*)(wants to save)$"; # save image diaslog
           }
           {
             app-id = "^(librewolf)$";
-            title = "^(拡張機能: (Bitwarden パスワードマネージャー) - Bitwarden — Mozilla Firefox)$";
+            title = "^(拡張機能:(.*))$";
           }
         ];
         open-floating = true;
+        default-floating-position = {
+          x = 10;
+          y = 10;
+          relative-to = "top-right";
+        };
       }
     ];
 

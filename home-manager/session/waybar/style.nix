@@ -191,12 +191,12 @@
         }
 
         #idle_inhibitor {
-          background: @base09;
+          background: @base01;
         }
 
         #idle_inhibitor.activated {
           color: @base00;
-          background: @base07;
+          background: @base09;
         }
 
         #disk,

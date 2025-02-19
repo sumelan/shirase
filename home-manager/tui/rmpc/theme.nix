@@ -100,24 +100,6 @@ with config.lib.stylix.colors.withHashtag;
                         (kind: Text("]"), style: (fg: "${base07}", modifiers: "Bold"))
                     ],
                     center: [
-                        (kind: Text("Rusty Music Player Client"), style: (fg: "${base06}", modifiers: "Italic"))
-                    ],
-                    right: [
-                        (kind: Text("Vol: "), style: (fg: "${base07}", modifiers: "Bold")),
-                        (kind: Property(Status(Volume)), style: (fg: "${base07}", modifiers: "Bold")),
-                        (kind: Text("% "), style: (fg: "${base07}", modifiers: "Bold"))
-                    ]
-                ),
-                (
-                    left: [
-                        (kind: Property(Status(Elapsed))),
-                        (kind: Text(" / ")),
-                        (kind: Property(Status(Duration))),
-                        (kind: Text(" (")),
-                        (kind: Property(Status(Bitrate))),
-                        (kind: Text(" kbps)"))
-                    ],
-                    center: [
                         (kind: Property(Song(Artist)), style: (fg: "${base09}", modifiers: "Bold"),
                             default: (kind: Text("Unknown"), style: (fg: "${base09}", modifiers: "Bold"))
                         ),
@@ -127,15 +109,11 @@ with config.lib.stylix.colors.withHashtag;
                         )
                     ],
                     right: [
-                        (
-                            kind: Property(Widget(States(
-                                active_style: (fg: "${base07}", modifiers: "Bold"),
-                                separator_style: (fg: "${base05}")))
-                            ),
-                            style: (fg: "${base03}")
-                        ),
+                        (kind: Text("Vol: "), style: (fg: "${base07}", modifiers: "Bold")),
+                        (kind: Property(Status(Volume)), style: (fg: "${base07}", modifiers: "Bold")),
+                        (kind: Text("% "), style: (fg: "${base07}", modifiers: "Bold"))
                     ]
-                ),
+                )
             ],
         ),
     )

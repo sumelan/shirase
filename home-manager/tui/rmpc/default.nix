@@ -58,10 +58,10 @@
           }
         ];
         default-column-width = {
-          proportion = 0.45;
+          proportion = 0.35;
         };
         default-window-height = {
-          proportion = 0.4;
+          proportion = 0.3;
         };
         open-floating = true;
         default-floating-position = {
