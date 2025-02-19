@@ -38,7 +38,7 @@ let
                 path = ./sakura/wallpaper-1.png;
                 convertMethod = "lutgen"; # gonord, lutgen, none
               };
-              "HDMI-A-2" = {
+              "DP-1" = {
                 path = ./sakura/wallpaper-2.png;
                 convertMethod = "lutgen"; # gonord, lutgen, none
               };
