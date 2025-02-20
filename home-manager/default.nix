@@ -25,7 +25,7 @@
     fonts = {
       regular = mkOption {
         type = types.str;
-        default = "Geist Regular";
+        default = "Ubuntu Nerd Font";
         description = "The font to use for regular text";
       };
       monospace = mkOption {
@@ -86,8 +86,8 @@
 
     custom = {
       fonts.packages = with pkgs; [
+        # noto-fonts-cjk is already installed in system-wide
         nerd-fonts.jetbrains-mono
-        nerd-fonts.fira-code
       ];
 
       persist = {
