@@ -48,6 +48,7 @@ lib.mkMerge [
   {
     custom = {
       brave.enable = true;
+      cyanrip.enable = true;
       foliate.enable = true;
       rustdesk.enable = true;
       thunderbird.enable = true;

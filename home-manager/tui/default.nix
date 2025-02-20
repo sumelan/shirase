@@ -10,6 +10,7 @@
     ./shell
     ./btop.nix
     ./cava.nix
+    ./cyanrip.nix
     ./eza.nix
     ./git.nix
     ./jujutsu.nix

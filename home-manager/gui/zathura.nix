@@ -5,7 +5,9 @@
 }:
 {
   options.custom = with lib; {
-    zathura.enable = mkEnableOption "zathura";
+    zathura.enable = mkEnableOption "zathura"// {
+      default = true;
+    };
   };
 
   config = lib.mkIf config.custom.zathura.enable {
