@@ -14,11 +14,9 @@
     ./obs-studio.nix
     ./picard.nix
     ./rustdesk.nix
-    ./spotify.nix
     ./swayimg.nix
     ./thuderbird.nix
     ./vlc.nix
-    ./webapp.nix
     ./webcord.nix
     ./zathura.nix
   ];

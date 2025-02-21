@@ -23,7 +23,6 @@ lib.mkIf config.custom.niri.enable
     "Mod+Tab".action = spawn "fuzzel-windows";
     "Mod+Ctrl+Q".action = spawn "fuzzel-actions";
     "Mod+Period".action = spawn "fuzzel-icons";
-    "Mod+Semicolon".action = spawn "fuzzel-vpnc";
 
     # neovim
     "Mod+Shift+Return".action = spawn "kitty" "nvim" "${dotfiles}";

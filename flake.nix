@@ -38,15 +38,6 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
-    # spotify
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # webapp
-    nix-webapps.url = "github:TLATER/nix-webapps";
   };
   outputs = 
     inputs@{ nixpkgs, self, ... }:
