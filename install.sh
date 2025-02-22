@@ -100,7 +100,7 @@ echo "Creating Boot Disk"
 sudo mkfs.fat -F 32 "$BOOTDISK" -n NIXBOOT
 
 echo "Creating Btrfs disk"
-sudo mkfs.btrfs "$BRTFSDISK"
+sudo mkfs.btrfs "$BTRFSDISK"
 
 echo "Mounting Btrfs disk"
 sudo mount "$BTRFSDISK" /mnt
