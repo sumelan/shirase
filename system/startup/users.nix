@@ -23,7 +23,7 @@
           let
             inherit (config.hm.custom) autologinCommand;
           in
-          {
+          lib.mkIf (autologinCommand != null) {
             enable = true;
 
             settings = {
