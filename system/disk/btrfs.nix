@@ -10,14 +10,14 @@ in
 {
   options.custom = {
     btrfs = with lib; {
-      wipeRootOnBoot = mkEnableOption "wipe the root volume on each boot";
+      wipeRootOnBoot = mkEnableOption "wipe the root volume on each boot"// {
+        default = true;
+      };
     };
   };
 
   config = (lib.mkMerge [ 
     { 
-      # nixos-generate-config --show-hardware-config doesn't detect mount options automatically,
-      # so to enable compression, you must specify it and other mount options in a persistent configuration:
       fileSystems = {
         # root volume, wiped on boot if enable
         "/" = {
@@ -51,7 +51,7 @@ in
           neededForBoot = true;
         };
 
-        # cache are files that should be persisted, but not to snapshot
+        # /var/cache are files that should be persisted, but not to snapshot
         # e.g. npm, cargo cache etc, that could always be redownloaded
         "/var/cache" = {
           device = "/cache";
@@ -70,7 +70,8 @@ in
     (lib.mkIf cfg.wipeRootOnBoot {
       # https://discourse.nixos.org/t/impermanence-vs-systemd-initrd-w-tpm-unlocking/25167/3
       # https://guekka.github.io/nixos-server-1/
-      boot.initrd.systemd.enable = true;
+      boot.initrd.enable = true;
+      boot.initrd.supportedFilesystems = [ "btrfs" ];
       boot.initrd.systemd.services.rollback = 
           let
             device = "/dev/disk/by-partlabel/disk-disk0-root";

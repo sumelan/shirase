@@ -8,7 +8,7 @@
   imports = [
     ./boot/boot.nix
     ./boot/specialisations.nix
-    ./disk/zfs.nix
+    ./disk/btrfs.nix
     ./disk/impermanence.nix
     ./extra
     ./runtime

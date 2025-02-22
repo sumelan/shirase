@@ -59,10 +59,24 @@ in
   };
 
   config = {
-    # clear /tmp on boot
+    # clear /tmp on boot, since it's a zfs dataset
     boot.tmp.cleanOnBoot = true;
 
-    # rollback results in sudo lectures after each reboot
+    # root and home on tmpfs
+    # neededForBoot is required, so there won't be permission errors creating directories or symlinks
+    # https://github.com/nix-community/impermanence/issues/149#issuecomment-1806604102
+    fileSystems."/" = lib.mkForce {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      neededForBoot = true;
+      options = [
+        "defaults"
+        "size=1G"
+        "mode=755"
+      ];
+    };
+
+    # shut sudo up
     security.sudo.extraConfig = "Defaults lecture=never";
 
     # setup persistence
@@ -94,7 +108,7 @@ in
 
       # cache are files that should be persisted, but not to snapshot
       # e.g. npm, cargo cache etc, that could always be redownloaded
-      "/var/cache" = {
+      "/cache" = {
         hideMounts = true;
         files = lib.unique cfg.root.cache.files;
         directories = lib.unique cfg.root.cache.directories;
@@ -111,15 +125,15 @@ in
         getDirPath = prefix: d: "${prefix}${d.dirPath}";
         getFilePath = prefix: f: "${prefix}${f.filePath}";
         persistCfg = config.environment.persistence."/persist";
-        persistCacheCfg = config.environment.persistence."/var/cache";
+        persistCacheCfg = config.environment.persistence."/cache";
         allDirectories =
           map (getDirPath "/persist") (persistCfg.directories ++ persistCfg.users.${user}.directories)
-          ++ map (getDirPath "/var/cache") (
+          ++ map (getDirPath "/cache") (
             persistCacheCfg.directories ++ persistCacheCfg.users.${user}.directories
           );
         allFiles =
           map (getFilePath "/persist") (persistCfg.files ++ persistCfg.users.${user}.files)
-          ++ map (getFilePath "/var/cache") (persistCacheCfg.files ++ persistCacheCfg.users.${user}.files);
+          ++ map (getFilePath "/cache") (persistCacheCfg.files ++ persistCacheCfg.users.${user}.files);
         sort-uniq = arr: lib.sort lib.lessThan (lib.unique arr);
       in
       lib.strings.toJSON {

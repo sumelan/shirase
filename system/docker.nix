@@ -36,7 +36,7 @@ with lib;
       };
     };
 
-    # store docker images on zroot/cache
+    # store docker images on /var/cache
     hm.custom.persist = {
       home.cache = {
         directories = [ ".local/share/containers" ];
