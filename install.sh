@@ -26,7 +26,7 @@ The following BTRFS subvolumes will be created:
     - /nix (mounted at /nix)
     - /home (mounted at /home)
     - /persist (mounted at /persist)
-    - /cache (mounted at /var/cache)
+    - /cache (mounted at /cache)
 
 ** IMPORTANT **
 This script assumes that the relevant "fileSystems" are declared within the
@@ -131,7 +131,7 @@ sudo mount -o subvol=root,compress=zstd,noatime "$BTRFSDISK" /mnt
 sudo mount --mkdir -o subvol=nix,compress=zstd,noatime "$BTRFSDISK" /mnt/nix
 sudo mount --mkdir -o subvol=home,compress=zstd "$BTRFSDISK" /mnt/home
 sudo mount --mkdir -o subvol=persist,compress=zstd,noatime "$BTRFSDISK" /mnt/persist
-sudo mount --mkdir -o subvol=cache,compress=zstd,noatime "$BTRFSDISK" /mnt/var/cache
+sudo mount --mkdir -o subvol=cache,compress=zstd,noatime "$BTRFSDISK" /mnt/cache
 
 echo "Mounting /boot (efi)"
 sudo mount --mkdir "$BOOTDISK" /mnt/boot

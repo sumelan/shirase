@@ -51,9 +51,9 @@ in
           neededForBoot = true;
         };
 
-        # /var/cache are files that should be persisted, but not to snapshot
+        # cache are files that should be persisted, but not to snapshot
         # e.g. npm, cargo cache etc, that could always be redownloaded
-        "/var/cache" = {
+        "/cache" = {
           device = "/cache";
           fsType = "btrfs";
           options = [ "subvol=cache" "compress=zstd" "noatime" ];
