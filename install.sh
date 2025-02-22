@@ -24,7 +24,7 @@ The *entire* disk will be formatted with a 1GB boot partition
 The following BTRFS subvolumes will be created:
     - /root (mounted at / with blank snapshot)
     - /nix (mounted at /nix)
-    - /home (mounted at /home)
+    - /tmp (mounted at /tmp)
     - /persist (mounted at /persist)
     - /cache (mounted at /cache)
 
@@ -111,8 +111,8 @@ sudo btrfs subvolume create /mnt/root
 echo "Creating /nix"
 sudo btrfs subvolume create /mnt/nix
 
-echo "Creating /home"
-sudo btrfs subvolume create /mnt/home
+echo "Creating /tmp"
+sudo btrfs subvolume create /mnt/tmp
 
 echo "Creating /persist"
 sudo btrfs subvolume create /mnt/persist
@@ -129,8 +129,8 @@ sudo umount /mnt
 echo "Mounting the subvolumes"
 sudo mount -o subvol=root,compress=zstd,noatime "$BTRFSDISK" /mnt
 sudo mount --mkdir -o subvol=nix,compress=zstd,noatime "$BTRFSDISK" /mnt/nix
-sudo mount --mkdir -o subvol=home,compress=zstd "$BTRFSDISK" /mnt/home
-sudo mount --mkdir -o subvol=persist,compress=zstd,noatime "$BTRFSDISK" /mnt/persist
+sudo mount --mkdir -o subvol=tmp,compress=zstd,noatime "$BTRFSDISK" /mnt/tmp
+sudo mount --mkdir -o subvol=persist,compress=zstd "$BTRFSDISK" /mnt/persist
 sudo mount --mkdir -o subvol=cache,compress=zstd,noatime "$BTRFSDISK" /mnt/cache
 
 echo "Mounting /boot (efi)"
