@@ -14,9 +14,6 @@
   # kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  # plymouth
-  boot.plymouth.enable = true;
-
   # faster boot times
   systemd.services.NetworkManager-wait-online.wantedBy = lib.mkForce [ ];
 
