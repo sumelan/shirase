@@ -2,37 +2,66 @@
 # NOTE: partitions and subvolumes are created via install.sh
 { 
   fileSystems."/" = {
-    device = "/root";
+    device = "/dev/disk/by-label/NIXROOT";
     fsType = "btrfs";
     options = [ "subvol=root" "compress=zstd" "noatime" ];
   };
 
+  # https://discourse.nixos.org/t/impermanence-vs-systemd-initrd-w-tpm-unlocking/25167/3
+  # https://guekka.github.io/nixos-server-1/
   boot.initrd.enable = true;
   boot.initrd.supportedFilesystems = [ "btrfs" ];
-  boot.initrd.postResumeCommands = lib.mkAfter ''
-    mkdir /btrfs_tmp
-    mount /dev/root_vg/root /btrfs_tmp
-    if [[ -e /btrfs_tmp/root ]]; then
-        mkdir -p /btrfs_tmp/old_roots
-        timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
-        mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp"
-    fi
+  boot.initrd.systemd.services.rollback =
+    let
+      device = "/dev/disk/by-label/NIXROOT";
+      # unitName should be like
+      # "dev-disk-by\\x2dlabel-NIXROOT.device"
+      unitName =
+        lib.removePrefix "-" (
+          lib.replaceStrings
+            [
+              "-"
+              "/"
+            ]
+            [
+              "\\x2d"
+              "-"
+            ]
+            device
+        )
+        + ".device";         
+    in
+    {
+      description = "Rollback BTRFS root subvolume";
+      wantedBy = [ "initrd.target" ];
+      requires = [ unitName ];
+      after = [ unitName ];
+      before = [ "sysroot.mount" ];
+      unitConfig.DefaultDependencies = "no";
+      serviceConfig.Type = "oneshot";
+      script = ''
+          mkdir -p /mnt
 
-    delete_subvolume_recursively() {
-        IFS=$'\n'
-        for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
-            delete_subvolume_recursively "/btrfs_tmp/$i"
-        done
-        btrfs subvolume delete "$1"
-    }
+          # mount the btrfs root to /mnt to manipulate btrfs subvolume
+          mount -o subvol=/ -t btrfs ${device} /mnt
 
-    for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +30); do
-        delete_subvolume_recursively "$i"
-    done
+          # remove some subvlumes in /root
+          btrfs subvolume list -o /mnt/root |
+          cut -f9 -d' ' |
+          while read subvolume; do
+              echo "deleting /$subvolume subvolume..."
+              btrfs subvolume delete "/mnt/$subvolume"
+          done &&
+          echo "deleting /root subvolume..." &&
+          btrfs subvolume delete /mnt/root
 
-    btrfs subvolume create /btrfs_tmp/root
-    umount /btrfs_tmp
-  '';
+          echo "restoring blank /root subvolume..."
+          btrfs subvolume snapshot /mnt/root-blank /mnt/root
+
+          # unmount /mnt and continue on the boot process
+          umount /mnt
+      '';
+    };
 
   fileSystems = {
     "/nix" = {

@@ -19,7 +19,7 @@ function yesno() {
 
 cat << Introduction
 The *entire* disk will be formatted with a 1GB boot partition
-(labelled NIXBOOT), and the rest allocated to BTRFS.
+(labelled NIXBOOT), and the rest allocated to BTRFS (labelled NIXROOT).
 
 The following BTRFS subvolumes will be created:
     - /root (mounted at / with blank snapshot)
@@ -100,7 +100,7 @@ echo "Creating Boot Disk"
 sudo mkfs.fat -F 32 "$BOOTDISK" -n NIXBOOT
 
 echo "Creating Btrfs disk"
-sudo mkfs.btrfs "$BTRFSDISK"
+sudo mkfs.btrfs -L NIXROOT "$BTRFSDISK"
 
 echo "Mounting Btrfs disk"
 sudo mount "$BTRFSDISK" /mnt
