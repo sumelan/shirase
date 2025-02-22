@@ -23,7 +23,7 @@ in
         "/" = {
           device = "/root";
           fsType = "btrfs";
-          options = [ "compress=zstd" "noatime" ];
+          options = [ "subvol=root" "compress=zstd" "noatime" ];
         };
 
         "/boot" = {
@@ -35,19 +35,19 @@ in
         "/nix" = {
           device = "/nix";
           fsType = "btrfs";
-          options = [ "compress=zstd" "noatime" ];
+          options = [ "subvol=nix" "compress=zstd" "noatime" ];
         };
 
         "/home" = {
           device = "/home";
           fsType = "btrfs";
-          options = [ "compress=zstd" ];
+          options = [ "subvol=home" "compress=zstd" ];
         };
 
         "/persist" = {
           device = "/persist";
           fsType = "btrfs";
-          options = [ "compress=zstd" "noatime" ];
+          options = [ "subvol=persist" "compress=zstd" "noatime" ];
           neededForBoot = true;
         };
 
@@ -56,7 +56,7 @@ in
         "/var/cache" = {
           device = "/cache";
           fsType = "btrfs";
-          options = [ "compress=zstd" "noatime" ];
+          options = [ "subvol=cache" "compress=zstd" "noatime" ];
           neededForBoot = true;
         };
       };
