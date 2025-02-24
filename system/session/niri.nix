@@ -13,9 +13,7 @@
 # - - If you prefer a different polkit authentication agent, you can set systemd.user.services.niri-flake-polkit.enable = false;
 # - It enables various other features that Wayland compositors may need, such as dconf, opengl and default fonts. It also adds a pam entry for swaylock, which is necessary if you wish to use swaylock.
 {
-  nixpkgs.overlays = [
-    inputs.niri.overlays.niri
-  ];
+  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 
   programs.niri = lib.mkIf config.hm.custom.niri.enable {
     enable = true;

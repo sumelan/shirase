@@ -68,7 +68,7 @@ in
     # setup persistence
     environment.persistence = {
       "/persist" = {
-        hideMounts = true;
+        hideMounts = false;
         files = lib.unique cfg.root.files;
         directories = lib.unique (
           [

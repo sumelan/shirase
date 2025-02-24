@@ -24,7 +24,7 @@
 
   config = lib.mkIf config.custom.niri.enable {
     # start niri-session
-    custom.autologinCommand = "${lib.getExe pkgs.niri-unstable}-session";
+    custom.autologinCommand = "niri-session";
 
     home = {
       packages = [

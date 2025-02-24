@@ -30,10 +30,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Secrets
+    # secrets
     agenix.url = "github:ryantm/agenix";
 
-    # Neovim
+    # neovim
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";

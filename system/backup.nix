@@ -8,23 +8,18 @@ let
   cfg = config.custom.backup;
 in
 {
+  # https://xeiaso.net/blog/borg-backup-2021-01-09/
   options.custom.backup = {
     enable = mkEnableOption "backup";
     include = mkOption {
       type = with types; listOf str;
       default = [
-        "/var/lib"
-        "/srv"
-        "/home"
+        "/persist/home"
       ];
     };
     exclude = mkOption {
       type = with types; listOf str;
       default = [
-        # very large paths
-        "/var/lib/docker"
-        "/var/lib/systemd"
-        "/var/lib/libvirt"
       ];
     };
     repo = mkOption {
@@ -44,11 +39,17 @@ in
       repo = "${cfg.repo}";
       encryption = {
         mode = "repokey-blake2";
-        passCommand = "cat /root/borgbackup/passphrase";
+        passCommand = "cat /persist/root/borgbackup/passphrase";
       };
-      environment.BORG_RSH = "ssh -i /root/borgbackup/ssh_key";
+      environment.BORG_RSH = "ssh -i /persist/root/borgbackup/ssh_key";
       compression = "auto,lzma";
       startAt = "${cfg.cycle}";
+    };
+
+    custom.persist = {
+      root.directories = [
+        "/root/borgbackup"
+      ];
     };
   };
 }

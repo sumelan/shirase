@@ -29,4 +29,11 @@
   environment.systemPackages = with pkgs; [
     pwvucontrol
   ];
+
+  custom.persist = {
+    root.directories = [
+      # save alsamixer settings
+      "/var/lib/alsa"
+    ];
+  };
 }
