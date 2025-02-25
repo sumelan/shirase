@@ -14,7 +14,7 @@
 
     custom.persist = {
       home.directories = [
-        ".thunderbrd"
+        ".thunderbird"
       ];
     };
   };

@@ -25,14 +25,7 @@ lib.mkIf config.custom.niri.enable {
         # floating apps
         matches = [
           { app-id = "^(com.saivert.pwvucontrol)$"; }
-          { app-id = "^(dialog)$"; }
-          { app-id = "^(file_progress)$"; }
-          { app-id = "^(confirm)$"; }
-          { app-id = "^(download)$"; }
-          { app-id = "^(error)$"; }
-          { app-id = "^(notification)$"; }
-
-          { title = "^(Picture-in-Picture)$"; }
+          { app-id = "^(com.github.wwmm.easyeffects)$"; }
         ];
         open-floating = true;
       }

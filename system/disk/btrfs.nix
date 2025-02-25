@@ -11,36 +11,28 @@
     enable = true;
     supportedFilesystems = [ "btrfs" ];
 
-    # remove roots that are older than 30 days
     postResumeCommands = lib.mkAfter ''
-      mkdir -p /btrfs_tmp
-      # mount btrfs root volume to manipulate subvolumes inside
-      mount -o subvol=/ /dev/disk/by-label/NIXROOT /btrfs_tmp
+      mkdir -p /mnt
 
-      if [[ -e /btrfs_tmp/root ]]; then
-          mkdir -p /btrfs_tmp/old_roots
-          timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
-          mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp"
-      fi
+      # mount btrfs root(/) to /mnt and manipulate btrfs subvolume
+      mount -o subvol=/ /dev/disk/by-label/NIXROOT /mnt
 
-      delete_subvolume_recursively() {
-          IFS=$'\n'
-          for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
-              delete_subvolume_recursively "/btrfs_tmp/$i"
-          done
-          btrfs subvolume delete "$1"
-      }
+      # show and remove subvolumes below /mnt/root
+      btrfs subvolume list -o /mnt/root |
+      cut -f9 -d' ' |
+      while read subvolume; do
+          echo "deleting /$subvolume subvolume..."
+          btrfs subvolume delete "/mnt/$subvolume"
+      done &&
+      echo "deleting /root subvolume..." &&
+      btrfs subvolume delete /mnt/root
 
-      for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +30); do
-          delete_subvolume_recursively "$i"
-      done
+      echo "restoring blank /root subvolume..."
+      btrfs subvolume snapshot /mnt/root-blank /mnt/root
 
-      btrfs subvolume create /btrfs_tmp/root
-      umount /btrfs_tmp
+      umount /mnt
     '';
   };
-  # for rollback to blank state on each boot,
-  # https://guekka.github.io/nixos-server-1/
 
   fileSystems = {
     "/nix" = {
