@@ -19,12 +19,11 @@ function yesno() {
 
 cat << Introduction
 The *entire* disk will be formatted with a 1GB boot partition
-(labelled NIXBOOT), and the rest allocated to BTRFS (labelled NIXROOT).
+(labelled NIXBOOT), and the rest allocated to BTRFS (labelled NIXOS).
 
 The following BTRFS subvolumes will be created:
-    - /root (mounted at / with blank snapshot)
+    - root(/) (mounted at / with blank snapshot)
     - /nix (mounted at /nix)
-    - /tmp (mounted at /tmp)
     - /persist (mounted at /persist)
     - /cache (mounted at /cache)
 
@@ -100,7 +99,7 @@ echo "Creating Boot Disk"
 sudo mkfs.fat -F 32 "$BOOTDISK" -n NIXBOOT
 
 echo "Creating Btrfs disk"
-sudo mkfs.btrfs -L NIXROOT "$BTRFSDISK"
+sudo mkfs.btrfs -L NIXOS "$BTRFSDISK"
 
 echo "Mounting Btrfs disk"
 sudo mount "$BTRFSDISK" /mnt
@@ -110,9 +109,6 @@ sudo btrfs subvolume create /mnt/root
 
 echo "Creating /nix"
 sudo btrfs subvolume create /mnt/nix
-
-echo "Creating /tmp"
-sudo btrfs subvolume create /mnt/tmp
 
 echo "Creating /persist"
 sudo btrfs subvolume create /mnt/persist
@@ -129,8 +125,7 @@ sudo umount /mnt
 echo "Mounting the subvolumes"
 sudo mount -o subvol=root,compress=zstd,noatime "$BTRFSDISK" /mnt
 sudo mount --mkdir -o subvol=nix,compress=zstd,noatime "$BTRFSDISK" /mnt/nix
-sudo mount --mkdir -o subvol=tmp,compress=zstd,noatime "$BTRFSDISK" /mnt/tmp
-sudo mount --mkdir -o subvol=persist,compress=zstd "$BTRFSDISK" /mnt/persist
+sudo mount --mkdir -o subvol=persist,compress=zstd,noatime "$BTRFSDISK" /mnt/persist
 sudo mount --mkdir -o subvol=cache,compress=zstd,noatime "$BTRFSDISK" /mnt/cache
 
 echo "Mounting /boot (efi)"
