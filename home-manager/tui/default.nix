@@ -49,9 +49,7 @@
       sd # better sed
       # grep, with boolean query patterns, e.g. ug --files -e "A" --and "B"
       ugrep
-    ]
-    # add custom user created shell packages
-      ++ (lib.attrValues config.custom.shell.packages);
+    ];
 
     programs = {
       bat = {

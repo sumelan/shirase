@@ -50,11 +50,7 @@
         config.allowUnfree = true;
       };
 
-      lib = import ./lib.nix {
-        inherit (nixpkgs) lib;
-        inherit pkgs;
-        inherit (inputs) home-manager;
-      };
+      inherit (nixpkgs) lib;
 
       mkSystem = system: {
         inherit

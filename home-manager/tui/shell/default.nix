@@ -13,36 +13,6 @@ in
     ./fish.nix
   ];
 
-  options.custom = with lib; {
-    shell = {
-      packages = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            str
-            attrs
-            package
-          ]);
-        default = { };
-        apply = custom.mkShellPackages;
-        description = ''
-          Attrset of shell packages to install and add to pkgs.custom overlay (for compatibility across multiple shells).
-          Both string and attr values will be passed as arguments to writeShellApplicationCompletions
-        '';
-        example = ''
-          shell.packages = {
-            myPackage1 = "echo 'Hello, World!'";
-            myPackage2 = {
-              runtimeInputs = [ pkgs.hello ];
-              text = "hello --greeting 'Hi'";
-            };
-          }
-        '';
-      };
-    };
-  };
-
-  config = {
     home = {
       shellAliases = {
         ":e" = "nvim";
@@ -57,7 +27,6 @@ in
         mime = "xdg-mime query filetype";
         mkdir = "mkdir -p";
         mount = "mount --mkdir";
-        np = "cd ${proj_dir}/nixpkgs";
         open = "xdg-open";
         py = "python";
         w = "watch -cn1 -x cat";
@@ -69,71 +38,7 @@ in
       };
     };
 
-    custom.shell.packages =
-      let
-        binariesCompletion = binaryName: {
-          bashCompletion = ''
-            _complete_path_binaries()
-            {
-                local cur prev words cword
-                _init_completion || return
-
-                local IFS=:
-                local binaries=()
-                for path in $PATH; do
-                    for bin in "$path"/*; do
-                        if [[ -x "$bin" && -f "$bin" ]]; then
-                            binaries+=("$(basename "$bin")")
-                        fi
-                    done
-                done
-
-                COMPREPLY=($(compgen -W "''${binaries[*]}" -- "$cur"))
-            }
-
-            complete -F _complete_path_binaries ${binaryName}
-          '';
-          fishCompletion = ''
-            function __complete_path_binaries
-                for path in $PATH
-                    for bin in $path/*
-                        if test -x $bin -a -f $bin
-                            set -l bin_name (basename $bin)
-                            echo $bin_name
-                        end
-                    end
-                end
-            end
-
-            complete -c ${binaryName} -f -a "(__complete_path_binaries)"
-          '';
-        };
-      in
-      {
-        fdnix = {
-          runtimeInputs = [ pkgs.fd ];
-          text = ''fd "$@" /nix/store'';
-        };
-        md = ''[[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1"'';
-        # improved which for nix
-        where = {
-          text = ''readlink -f "$(which "$1")"'';
-        } // binariesCompletion "where";
-        cwhere = {
-          text = ''cat "$(where "$1")"'';
-        } // binariesCompletion "cwhere";
-        ywhere = {
-          runtimeInputs = with pkgs; [
-            yazi
-            custom.shell.where
-          ];
-          text = ''yazi "$(dirname "$(dirname "$(where "$1")")")"'';
-        } // binariesCompletion "ywhere";
-        # uniq but maintain original order
-        uuniq = "awk '!x[$0]++'";
-      };
-
-    # pj cannot be implemented as script as it needs to change the directory of the shell
+   # pj cannot be implemented as script as it needs to change the directory of the shell
     # bash function and completion for pj
     programs.bash.initExtra = ''
       function pj() {
@@ -162,5 +67,4 @@ in
       end
       complete -c pj -f -a "(_pj)"
     '';
-  };
 }

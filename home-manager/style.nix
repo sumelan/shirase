@@ -4,7 +4,6 @@
       fish.enable = false;
       waybar.enable = false;
       rofi.enable = false;
-      spicetify.enable = false;
     };
     iconTheme = {
       enable = true;

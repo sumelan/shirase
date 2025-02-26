@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  self,
   pkgs,
   ...
 }:
@@ -27,19 +28,23 @@
     custom.autologinCommand = "niri-session";
 
     home = {
-      packages = [
+      packages = with pkgs; [
         # wallpaper
-        pkgs.swww
+        swww
 
         # clipboard history
-        pkgs.cliphist
-        pkgs.wl-clipboard
+        cliphist
+        wl-clipboard
 
         # screencast
-        pkgs.wl-screenrec
-        pkgs.custom.niricast
-        pkgs.procps
-      ];
+        wl-screenrec
+        procps
+      ]
+      ++ (
+        with self.packages.${pkgs.system}; [
+          niricast
+        ]
+      );
 
       # hyprlock scripts
       file.".config/niri/scripts" = {

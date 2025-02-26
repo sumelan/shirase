@@ -1,7 +1,7 @@
-{ pkgs, ...}:
+{ self, pkgs, ...}:
 {
   home.packages = [
-    pkgs.custom.fuzzel-scripts
+    self.packages.${pkgs.system}.fuzzel-scripts
   ];
 
   programs.fuzzel = {

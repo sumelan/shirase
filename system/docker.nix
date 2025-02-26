@@ -26,14 +26,6 @@ with lib;
         # required for containers under podman-compose to be able to talk to each other.
         defaultNetwork.settings.dns_enabled = true;
       };
-
-      containers.storage.settings = lib.mkIf (config.fileSystems."/".fsType == "zfs") {
-        storage = {
-          driver = "zfs";
-          graphroot = "/var/lib/containers/storage";
-          runroot = "/run/containers/storage";
-        };
-      };
     };
 
     # store docker images on /cache

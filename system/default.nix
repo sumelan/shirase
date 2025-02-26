@@ -25,32 +25,6 @@
   ];
 
   options.custom = with lib; {
-    shell = {
-      packages = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            str
-            attrs
-            package
-          ]);
-        apply = custom.mkShellPackages;
-        default = { };
-        description = ''
-          Attrset of shell packages to install and add to pkgs.custom overlay (for compatibility across multiple shells).
-          Both string and attr values will be passed as arguments to writeShellApplicationCompletions
-        '';
-        example = ''
-          shell.packages = {
-            myPackage1 = "echo 'Hello, World!'";
-            myPackage2 = {
-              runtimeInputs = [ pkgs.hello ];
-              text = "hello --greeting 'Hi'";
-            };
-          }
-        '';
-      };
-    };
     symlinks = mkOption {
       type = types.attrsOf types.str;
       default = { };
@@ -114,35 +88,12 @@
         yazi
         zoxide
       ]
-      # add custom user created shell packages
-      ++ (lib.attrValues config.custom.shell.packages)
       ++ (lib.optional config.hm.custom.helix.enable helix);
     };
-
-    # add custom user created shell packages to pkgs.custom.shell
-    nixpkgs.overlays = [
-      (_: prev: {
-        custom = prev.custom // {
-          shell = config.custom.shell.packages // config.hm.custom.shell.packages;
-        };
-      })
-    ];
 
     # create symlink to dotfiles from default /etc/nixos
     custom.symlinks = {
       "/etc/nixos" = "/persist${config.hm.home.homeDirectory}/projects/wolborg";
-    };
-
-    # create symlinks
-    systemd.tmpfiles.rules = [
-      # cleanup systemd coredumps once a week
-      "D! /var/lib/systemd/coredump root root 7d"
-    ] ++ (lib.mapAttrsToList (dest: src: "L+ ${dest} - - - - ${src}") config.custom.symlinks);
-
-    # setup fonts
-    fonts = {
-      enableDefaultPackages = true;
-      inherit (config.hm.custom.fonts) packages;
     };
 
     programs = {
