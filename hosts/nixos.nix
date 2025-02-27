@@ -45,7 +45,6 @@ let
             dotfiles = "/persist/home/${user}/projects/wolborg";
           };
           users.${user} = {
-            nixpkgs.config.allowUnfree = true;
             imports = [
               ./${host}/home.nix  # host specific home-manager configuration
               ../home-manager # home-manager modules
