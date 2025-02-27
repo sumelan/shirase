@@ -35,12 +35,6 @@ lib.mkMerge [
 
   {
     custom = {
-      brave.enable = true;
-      cyanrip.enable = true;
-      foliate.enable = true;
-      rustdesk.enable = true;
-      thunderbird.enable = true;
-
       waybar.hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
       easyEffects = {
         enable = true;
