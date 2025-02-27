@@ -46,15 +46,15 @@
           { app-id = "btop"; }
         ];
         default-column-width = {
-          proportion = 0.4;
+          proportion = 0.5;
         };
         default-window-height = {
-          proportion = 0.4;
+          proportion = 0.5;
         };
         open-floating = true;
         default-floating-position = {
-          x = 10;
-          y = 10;
+          x = 8;
+          y = 8;
           relative-to = "top-right";
         };
       }
