@@ -18,11 +18,14 @@ in
 
   config = lib.mkIf cfg.enable {
     fileSystems = {
-      "/media/wdelem4" = lib.mkIf cfg.wdelem4 {
+      "/media/acer-backups" = lib.mkIf cfg.wdelem4 {
         device = "/dev/disk/by-uuid/ec8537bb-a73a-4ea5-8282-dcc6e6af1d95";
         fsType = "btrfs";
         options = [ "nofail" "x-systemd.automount" ];
       };
     };
+
+    hm.custom.btop.disks =
+      lib.optional cfg.wdelem4 "/media/acer-backups";
   };
 }
