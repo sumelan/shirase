@@ -28,7 +28,7 @@ lib.mkMerge [
       in
         # bash, reload wallpaper at home-manager switch
         lib.hm.dag.entryAfter ["writeBoundary"] '' 
-          run --quiet ${swww} img -o DP-1 "$HOME/Pictures/Wallpapers/HDMI-DP-1.png"
+          run --quiet ${swww} img -o DP-1 "$HOME/Pictures/Wallpapers/DP-1.png"
         '';
     };
   })
