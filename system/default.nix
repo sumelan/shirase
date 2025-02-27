@@ -9,6 +9,7 @@
     ./boot/boot.nix
     ./boot/specialisations.nix
     ./disk/btrfs.nix
+    ./disk/hdds.nix
     ./disk/impermanence.nix
     ./extra
     ./runtime

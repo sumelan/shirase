@@ -9,6 +9,7 @@
 
   # SystemModule Options.
   custom = {
+    hdds.enable = true;
     distrobox.enable = true;
     opentabletdriver.enable = true;
   };
