@@ -26,24 +26,20 @@ let
       inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
-          useGlobalPkgs = false;
+          useGlobalPkgs = true;
           useUserPackages = true;
 
           extraSpecialArgs = specialArgs // {
             inherit host user;
             isLaptop = host == "acer";
             wallpapers = {
-              "HDMI-A-1" = {
-                path = ./sakura/wallpaper-1.png;
-                convertMethod = "lutgen"; # gonord, lutgen, none
-              };
               "DP-1" = {
                 path = ./sakura/wallpaper-2.png;
                 convertMethod = "lutgen"; # gonord, lutgen, none
               };
               "eDP-1" = {
                 path = ./acer/wallpaper.png;
-                convertMethod = "gonord"; # gonord, lutgen, none
+                convertMethod = "lutgen"; # gonord, lutgen, none
               };
             };
             dotfiles = "/persist/home/${user}/projects/wolborg";

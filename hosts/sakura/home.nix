@@ -8,17 +8,6 @@ lib.mkMerge [
   (lib.mkIf config.custom.niri.enable {
     programs.niri.settings = {
       outputs = {
-        "HDMI-A-1" = {
-          mode = {
-            width = 2560;
-            height = 1440;
-          };
-          position = {
-            x = 0;
-            y = 0;
-          };
-          scale = 1.0;
-        };
         "DP-1" = {
           mode = {
             width = 2560;
@@ -26,7 +15,7 @@ lib.mkMerge [
           };
           position = {
             x = 0;
-            y = 1440;
+            y = 0;
           };
           scale = 1.0;
         };
@@ -39,8 +28,7 @@ lib.mkMerge [
       in
         # bash, reload wallpaper at home-manager switch
         lib.hm.dag.entryAfter ["writeBoundary"] '' 
-          run --quiet ${swww} img -o HDMI-A-1 "$HOME/Pictures/Wallpapers/HDMI-A-1.png" \
-            && run --quiet ${swww} img -o DP-1 "$HOME/Pictures/Wallpapers/DP-1.png"
+          run --quiet ${swww} img -o DP-1 "$HOME/Pictures/Wallpapers/HDMI-DP-1.png"
         '';
     };
   })
