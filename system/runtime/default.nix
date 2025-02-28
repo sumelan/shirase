@@ -1,4 +1,4 @@
-{ pkgs, host, ... }:
+{ pkgs, user, host, ... }:
 {
   imports = [
     ./bluetooth.nix
@@ -7,7 +7,7 @@
   ];
 
   # Define your hostname
-  networking.hostName = "${host}";
+  networking.hostName = "${user}-${host}";
 
   networking = {
     networkmanager.enable = true;
@@ -15,7 +15,6 @@
       enable = true;
     };
   };
-  services.avahi.enable = true;
 
   environment.systemPackages = with pkgs; [ networkmanagerapplet ];
 

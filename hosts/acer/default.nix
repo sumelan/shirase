@@ -15,6 +15,7 @@
 
   # SystemModule Options
   custom = {
+    btrbk.enable = true;
     distrobox.enable = true;
     printing.enable = true;
   };

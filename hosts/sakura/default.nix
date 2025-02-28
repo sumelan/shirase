@@ -9,6 +9,7 @@
 
   # SystemModule Options.
   custom = {
+    btrbk.enable = true;
     hdds.enable = true;
     distrobox.enable = true;
     opentabletdriver.enable = true;

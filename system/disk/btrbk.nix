@@ -3,6 +3,7 @@
   config,
   pkgs,
   host,
+  user,
   isLaptop,
   isServer,
   ...
@@ -30,11 +31,11 @@ in
             snapshot_preserve_min = "2d";
             snapshot_preserve = "14d";
             # NOTE: must be readable by user/group btrbk
-            ssh_identity = "/etc/btrbk_key";
+            ssh_identity = "/home/${user}/.ssh/${host}";
             ssh_user = "btrbk";
             stream_compress = "lz4";
             volume."/" = {
-              target = "btrbk@${host}.local:/mnt/wdelem4";
+              target = "btrbk@192.168.68.62:/mnt/wdelem4";
               subvolume = "persist";
             };
           };
