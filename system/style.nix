@@ -46,8 +46,8 @@
           name = "Noto Color Emoji";
         };
         sizes = {
-          applications = 13;
-          terminal = 12;
+          applications = 12;
+          terminal = 11;
           desktop = 12;
           popups = if isLaptop then 9 else 14;
         };
