@@ -35,7 +35,7 @@ in
             ssh_user = "btrbk";
             stream_compress = "lz4";
             volume."/" = {
-              target = "btrbk@192.168.68.62:/mnt/wdelem4";
+              target = "btrbk@192.168.68.62:/media/wdelem4";
               subvolume = "persist";
             };
           };
