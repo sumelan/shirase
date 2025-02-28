@@ -2,10 +2,8 @@
   lib,
   config,
   pkgs,
-  host,
   user,
   isLaptop,
-  isServer,
   ...
 }:
 let
@@ -17,7 +15,7 @@ in
       enable = mkEnableOption "filesystem snapshots using Btrbk";
       calendar = mkOption {
         type = types.str;
-        default = "daily";
+        default = "2h";
       };
     };
   };
@@ -25,17 +23,18 @@ in
   config = lib.mkMerge [
     (lib.mkIf (cfg.enable && isLaptop) {
       services.btrbk = {
-        instances."remote_${host}" = {
+        instances."remote_sakura" = {
           onCalendar = cfg.calendar;
           settings = {
             snapshot_preserve_min = "2d";
-            snapshot_preserve = "14d";
+            snapshot_preserve = "2d 1w";
+            target_preserve = "2d 1w";
             # NOTE: must be readable by user/group btrbk
-            ssh_identity = "/home/${user}/.ssh/${host}";
+            ssh_identity = "/home/${user}/.ssh/sakura";
             ssh_user = "btrbk";
             stream_compress = "lz4";
             volume."/" = {
-              target = "btrbk@192.168.68.62:/media/wdelem4";
+              target = "ssh://192.168.68.62/media/acer-backups";
               subvolume = "persist";
             };
           };
@@ -43,7 +42,7 @@ in
       };
     })
 
-    (lib.mkIf (cfg.enable && isServer) {
+    (lib.mkIf (cfg.enable && isLaptop) {
       security.sudo = {
         extraRules = [{
           commands = [
