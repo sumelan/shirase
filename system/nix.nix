@@ -101,9 +101,6 @@
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         ];
       };
-      # // lib.optionalAttrs (config.nix.package.pname == "lix") {
-      #   repl-overlays = [ ./repl-overlays.nix ];
-      # };
     };
 
   # better nixos generation label

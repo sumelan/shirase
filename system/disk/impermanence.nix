@@ -63,7 +63,10 @@ in
     boot.tmp.cleanOnBoot = true;
 
     # rollback results in sudo lectures after each reboot
-    security.sudo.extraConfig = "Defaults lecture=never";
+    security.sudo = {
+      enable = true;
+      extraConfig = "Defaults lecture=never";
+    };
 
     # setup persistence
     environment.persistence = {

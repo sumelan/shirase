@@ -1,9 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}:
+{ config, ... }:
 let
   proj_dir = "/persist${config.home.homeDirectory}/projects";
 in
@@ -38,7 +33,7 @@ in
       };
     };
 
-   # pj cannot be implemented as script as it needs to change the directory of the shell
+    # pj cannot be implemented as script as it needs to change the directory of the shell
     # bash function and completion for pj
     programs.bash.initExtra = ''
       function pj() {
@@ -67,4 +62,8 @@ in
       end
       complete -c pj -f -a "(_pj)"
     '';
+
+  stylix.targets = {
+    fish.enable = false;
+  };
 }

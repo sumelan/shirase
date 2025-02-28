@@ -1,17 +1,13 @@
-{
-  pkgs,
-  user,
-  host,
-  ...
-}:
+{ pkgs, host, ... }:
 {
   imports = [
-    ./audio.nix
     ./bluetooth.nix
     ./keyd.nix
+    ./pipewire.nix
   ];
 
-  networking.hostName = "${user}-${host}"; # Define your hostname.
+  # Define your hostname
+  networking.hostName = "${host}";
 
   networking = {
     networkmanager.enable = true;
@@ -19,6 +15,7 @@
       enable = true;
     };
   };
+  services.avahi.enable = true;
 
   environment.systemPackages = with pkgs; [ networkmanagerapplet ];
 

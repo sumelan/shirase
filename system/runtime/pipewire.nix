@@ -28,16 +28,5 @@
 
   environment.systemPackages = with pkgs; [
     pwvucontrol
-    alsa-utils
   ];
-
-  custom.persist = {
-    root.directories = [
-      # save alsamixer settings
-      "/var/lib/alsa"
-    ];
-    home.files = [
-      ".config/pulse/cookie"
-    ];
-  };
 }

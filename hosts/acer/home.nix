@@ -35,6 +35,7 @@ lib.mkMerge [
 
   {
     custom = {
+      brave.enable = true;
       foliate.enable = true;
       thunderbird.enable = true;
       easyEffects = {

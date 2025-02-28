@@ -8,20 +8,20 @@
   imports = [
     ./boot/boot.nix
     ./boot/specialisations.nix
-    ./disk/btrfs.nix
-    ./disk/hdds.nix
-    ./disk/impermanence.nix
-    ./extra
+    ./disk
     ./runtime
     ./server
     ./session/niri.nix
     ./startup/agenix.nix
     ./startup/auth.nix
     ./startup/users.nix
-    ./backup.nix
+    ./usb/audio.nix
     ./docker.nix
     ./gh.nix
     ./nix.nix
+    ./opentabletdriver.nix
+    ./printing.nix
+    ./qmk.nix
     ./style.nix
   ];
 

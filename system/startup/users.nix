@@ -59,7 +59,6 @@
             hashedPasswordFile = "/persist/etc/shadow/${user}";
             extraGroups = [
               "networkmanager"
-              "audio" # for alsa
               "wheel"
             ];
           };

@@ -17,6 +17,7 @@ let
     specialArgs = specialArgs // {
       inherit host user;
       isLaptop = host == "acer";
+      isServer = host == "sakura";
       dotfiles = "/persist/home/${user}/projects/wolborg";
     };
     modules = [
@@ -32,6 +33,7 @@ let
           extraSpecialArgs = specialArgs // {
             inherit host user;
             isLaptop = host == "acer";
+            isServer = host == "sakura";
             wallpapers = {
               "DP-1" = {
                 path = ./sakura/wallpaper.png;

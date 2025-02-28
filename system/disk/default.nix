@@ -1,6 +1,13 @@
 { lib, ... }:
 # NOTE: partitions and subvolumes are created via install.sh
 { 
+  imports = [
+    ./borgbase.nix
+    ./btrbk.nix
+    ./hdds.nix
+    ./impermanence.nix
+  ];
+
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXOS";
     fsType = "btrfs";

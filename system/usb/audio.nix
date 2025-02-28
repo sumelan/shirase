@@ -1,16 +1,32 @@
 {
   lib,
   config,
+  pkgs,
+  user,
   ...
 }:
+let
+  cfg = config.custom.usb-audio;
+in
 {
   options.custom = with lib; {
-    usb-audio.enable = mkEnableOption "usb-dac and speaker";
+    usb-audio = {
+      enable = mkEnableOption "usb-dac and speaker";
+      ifi-uno = mkEnableOption "ifi-uno";
+    };
   };
 
-  config = lib.mkIf config.custom.usb-audio.enable {
-    services.pipewire.extraConfig = {
+  config = lib.mkIf cfg.enable {
+    # ALSA settings
+    environment.systemPackages = with pkgs; [
+      alsa-utils
+    ];
+    users.users.${user}.extraGroups = [ "audio" ];
+
+    # device specific pipewire config
+    services.pipewire.extraConfig = lib.mkIf cfg.ifi-uno {
       pipewire = {
+      # NOTE:spotify refuse to play when above 192 kHz
         "10-clock-rate" = {
           "context.properties" = {
             "default.clock.allowed-rates" = [
@@ -19,27 +35,11 @@
               88200
               96000
               176400
-              192000 # spotify refuses to play when above 192 kHz.
+              192000
               352800
               384000
             ];
           };
-        };
-        # device specific config
-        "98-jbl-pebbles" = {
-          "device.rules" = [
-            {
-              matches = [
-                { "device.name" = "alsa_card.usb-Harman_International_Industries_JBL_Pebbles_1.0.0-01"; }
-              ];
-              actions = {
-                update-props = {
-                  "alsa.format" = "S16_LE";
-                  "audio.format" = "S16LE";
-                };
-              };
-            }
-          ];
         };
         "98-ifi-audio-uno" = {
           "device.rules" = [
@@ -79,6 +79,12 @@
           };
         };
       };
+    };
+
+    custom.persist = {
+      root.directories = [
+        "/var/lib/alsa"
+      ];
     };
   };
 }
