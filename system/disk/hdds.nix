@@ -26,6 +26,6 @@ in
     };
 
     hm.custom.btop.disks =
-      lib.optional cfg.wdelem4 "/media/acer-backups";
+      lib.optional cfg.wdelem4 "/hdds/acer-backups";
   };
 }
