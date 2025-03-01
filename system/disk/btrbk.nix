@@ -76,6 +76,6 @@ in
         ]}:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
       '';
     };
-    environment.systemPackages = lib.mkIf isServer [ pkgs.lz4 ];
+    environment.systemPackages = [ pkgs.lz4 ];
   };
 }
