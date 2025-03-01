@@ -45,7 +45,7 @@ in
           target_preserve = cfg.target_preserve;
           stream_compress = "lz4";
           volume."/" = {
-            target = "ssh://192.168.68.62/media/${host}-backups";
+            target = "ssh://sakura/media/${host}-backups";
             subvolume = "persist";
           };
         };
