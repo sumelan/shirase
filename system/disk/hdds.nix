@@ -19,7 +19,7 @@ in
   config = lib.mkIf cfg.enable {
     fileSystems = {
       "/media/acer-backups" = lib.mkIf cfg.wdelem4 {
-        device = "/dev/disk/by-uuid/ec8537bb-a73a-4ea5-8282-dcc6e6af1d95";
+        device = "/dev/disk/by-uuid/0769e0fe-da50-4eab-9ee8-b08e9dddcfe7";
         fsType = "btrfs";
         options = [ "nofail" "x-systemd.automount" ];
       };
