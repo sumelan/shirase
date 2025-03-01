@@ -2,7 +2,8 @@
   lib,
   config,
   user,
-...
+  isServer,
+  ...
 }:
 {
   # silence warning about setting multiple user password options
@@ -15,44 +16,44 @@
     };
   };
 
-  config = lib.mkMerge [
-    {
-      # autologin
-      services = {
-        greetd =
-          let
-            inherit (config.hm.custom) autologinCommand;
-          in
-          lib.mkIf (autologinCommand != null) {
-            enable = true;
+  config = {
+    # autologin
+    services = {
+      greetd =
+        let
+          inherit (config.hm.custom) autologinCommand;
+        in
+        lib.mkIf (autologinCommand != null) {
+          enable = true;
 
-            settings = {
-              default_session = {
-                command = autologinCommand;
-              };
+          settings = {
+            default_session = {
+              command = autologinCommand;
+            };
 
-              initial_session = {
-                inherit user;
-                command = autologinCommand;
-              };
+            initial_session = {
+              inherit user;
+              command = autologinCommand;
             };
           };
-
+        };
         getty.autologinUser = config.services.displayManager.autoLogin.user;
-      };
+    };
 
-
-      users = {
-        mutableUsers = false;
-        # setup users with persistent passwords
-        # https://reddit.com/r/NixOS/comments/o1er2p/tmpfs_as_root_but_without_hardcoding_your/h22f1b9/
-        # create a password with for root and $user with:
-        # mkpasswd -m sha-512 'PASSWORD' | sudo tee -a /persist/etc/shadow/root
-        users = {
+    users = {
+      mutableUsers = false;
+      # setup users with persistent passwords
+      # https://reddit.com/r/NixOS/comments/o1er2p/tmpfs_as_root_but_without_hardcoding_your/h22f1b9/
+      # create a password with for root and $user with:
+      # mkpasswd -m sha-512 'PASSWORD' | sudo tee -a /persist/etc/shadow/root
+      users = lib.mkMerge [
+        {
           root = {
             initialPassword = "password";
             hashedPasswordFile = "/persist/etc/shadow/root";
           };
+        }
+        {
           ${user} = {
             isNormalUser = true;
             initialPassword = "password";
@@ -62,19 +63,18 @@
               "wheel"
             ];
           };
+        }
+        (lib.mkIf isServer {
           btrbk = {
             description = "backup user using btrbk";
-            isNormalUser = false;
+            isNormalUser = true;
             initialPassword = "password";
             hashedPasswordFile = "/persit/etc/shadow/btrbk";
             group = "btrbk";
           };
-        };
-        groups.btrbk = { };
-      };
-    }
-
-    # TODO use agenix/sops for user passwords if enabled
-
-  ];
+        })
+      ];
+      groups.btrbk = { };
+    };
+  };
 }
