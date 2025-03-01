@@ -1,5 +1,4 @@
-{ ... }:
-{
+_:{
   imports = [
     ./brave.nix
     ./easyeffects.nix

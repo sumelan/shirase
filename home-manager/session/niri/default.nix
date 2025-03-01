@@ -13,6 +13,7 @@
     ./lock.nix
     ./rules.nix
     ./settings.nix
+    ./startup.nix
   ];
 
   options.custom = with lib; {

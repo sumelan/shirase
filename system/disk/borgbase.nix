@@ -14,7 +14,7 @@ in
     include = mkOption {
       type = with types; listOf str;
       default = [
-        "/persist/home"
+        "/persist"
       ];
     };
     exclude = mkOption {
@@ -39,9 +39,9 @@ in
       repo = "${cfg.repo}";
       encryption = {
         mode = "repokey-blake2";
-        passCommand = "cat /persist/root/borgbackup/passphrase";
+        passCommand = "cat /root/borgbackup/passphrase";
       };
-      environment.BORG_RSH = "ssh -i /persist/root/borgbackup/ssh_key";
+      environment.BORG_RSH = "ssh -i /root/borgbackup/ssh_key";
       compression = "auto,lzma";
       startAt = "${cfg.cycle}";
     };

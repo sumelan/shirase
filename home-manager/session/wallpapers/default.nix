@@ -87,8 +87,4 @@ in {
 
   home.file = builtins.mapAttrs setWallpaper generatedWallpapers
               // lib.attrsets.mapAttrs' blurWallpaper generatedWallpapers;
-
-  programs.niri.settings.spawn-at-startup = [
-    { command = ["swww-daemon"]; }
-  ];
 }

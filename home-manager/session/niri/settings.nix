@@ -1,14 +1,8 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }:
-let
-  makeCommand = command: {
-    command = [command];
-  };
-in
 lib.mkIf config.custom.niri.enable
 {
   programs.niri = {
@@ -23,17 +17,6 @@ lib.mkIf config.custom.niri.enable
         QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
         SDL_VIDEODRIVER = "wayland";
       };
-
-      spawn-at-startup = [
-        (makeCommand "dbus-update-activation-environment --all --systemd")
-        (makeCommand "sleep 0.5")
-        (makeCommand "nm-applet")
-        (makeCommand "blueman-applet")
-        (makeCommand "brightnessctl -s set 10")
-        (makeCommand "fcitx5")
-        (makeCommand "wl-paste --watch cliphist store")
-        (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
-      ];
 
       input = {
         keyboard.xkb.layout = "us";

@@ -7,7 +7,7 @@
 {
   options.custom = with lib; {
     picard.enable = mkEnableOption "picard"// {
-      default = config.custom.rmpc.enable;
+      default = config.custom.cyanrip.enable;
     };
   };
 

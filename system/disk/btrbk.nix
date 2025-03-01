@@ -16,7 +16,19 @@ in
       enable = mkEnableOption "snapshots using btrbk";
       calendar = mkOption {
         type = types.str;
-        default = "3h";
+        default = "daily";
+      };
+      preserve_min = mkOption {
+        type = types.str;
+        default = "3d";
+      };
+      preserve = mkOption {
+        type = types.str;
+        default = "7d";
+      };
+      target_preserve = mkOption {
+        type = types.str;
+        default = "7d";
       };
     };
   };
@@ -35,9 +47,9 @@ in
       instances."remote_sakura" = {
         onCalendar = cfg.calendar;
         settings = {
-          snapshot_preserve_min = "2d";
-          snapshot_preserve = "2d 2w";
-          target_preserve = "2d 2w";
+          snapshot_preserve_min = cfg.preserve_min;
+          snapshot_preserve = cfg.preserve;
+          target_preserve = cfg.target_preserve;
           stream_compress = "lz4";
           volume."/" = {
             target = "ssh://192.168.68.62/media/${host}-backups";
