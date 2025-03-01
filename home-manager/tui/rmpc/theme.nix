@@ -66,28 +66,16 @@ with config.lib.stylix.colors.withHashtag;
             direction: Vertical,
             panes: [
                 (
-                    size: "2",
                     pane: Pane(Header),
+                    size: "2",
                 ),
                 (
+                    pane: Pane(TabContent),
                     size: "100%",
-                    pane: Split(
-                        direction: Horizontal,
-                        panes: [
-                            (
-                                size: "21",
-                                pane:(TabContent),
-                            ),
-                            (
-                                size: "100%",
-                                pane: Pane(AlbumArt),
-                            ),
-                        ],
-                    ),
                 ),
                 (
-                    size: "1",
                     pane: Pane(ProgressBar),
+                    size: "1",
                 ),
             ],
         ),

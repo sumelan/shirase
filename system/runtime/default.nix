@@ -1,4 +1,9 @@
-{ pkgs, user, host, ... }:
+{
+  pkgs,
+  user,
+  host,
+  ...
+}:
 {
   imports = [
     ./bluetooth.nix

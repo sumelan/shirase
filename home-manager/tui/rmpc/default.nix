@@ -12,8 +12,10 @@
   ];
 
   options.custom = with lib; {
-    rmpc.enable = mkEnableOption "rmpc" // {
-      default = true;
+    rmpc = {
+      enable = mkEnableOption "rmpc" // {
+        default = true;
+      };
     };
   };
 
@@ -31,10 +33,10 @@
         dbFile = "/home/${user}/.config/mpd/tag_cache";
         extraConfig = ''
           audio_output {
-            type            "pipewire"
-            name            "PipeWire Sound Server"
+            type  "pipewire"
+            name  "PipeWire Sound Server"
           }
-          bind_to_address	"/home/${user}/.config/mpd/mpd_socket"
+          bind_to_address "/home/${user}/.config/mpd/mpd_socket"
         '';
       };
       # mpd to mpris2 bridge
@@ -61,19 +63,23 @@
         default-window-height.proportion = 0.3;
         open-floating = true;
         default-floating-position = {
-          x = 10;
-          y = 10;
+          x = 8;
+          y = 8;
           relative-to = "bottom-right";
         };
       }
     ];
 
     custom.persist = {
-      home.directories = [
+      home = {
+        directories = [
         ".config/mpd"
-        # yt-dlp cache
-        ".cache/rmpc"
-      ];
+        ];
+        cache.directories = [
+          # yt-dlp cache
+          ".cache/rmpc"
+        ];
+      };
     };
   };
 }

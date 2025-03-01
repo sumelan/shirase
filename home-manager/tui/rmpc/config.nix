@@ -1,4 +1,7 @@
-{ user, ... }:
+{
+  user,
+  ...
+}:
 {
   xdg.configFile."rmpc/config.ron".text = ''
     #![enable(implicit_some)]
