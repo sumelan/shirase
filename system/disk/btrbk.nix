@@ -5,6 +5,7 @@
   host,
   user,
   isLaptop,
+  isServer,
   ...
 }:
 let
@@ -33,8 +34,8 @@ in
     };
   };
 
-  config = lib.mkIf (cfg.enable && isLaptop) {
-    services.btrbk = {
+  config = lib.mkIf cfg.enable {
+    services.btrbk = lib.mkIf isLaptop {
       instances."remote_sakura" = {
         onCalendar = cfg.calendar;
         settings = {
@@ -51,6 +52,8 @@ in
         };
       };
     };
-    environment.systemPackages = [ pkgs.lz4 ];
+    environment.systemPackages = lib.mkIf isServer [
+      pkgs.lz4
+    ];
   };
 }
