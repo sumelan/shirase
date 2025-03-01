@@ -3,6 +3,7 @@
   config,
   pkgs,
   host,
+  user,
   isLaptop,
   isServer,
   ...
@@ -38,9 +39,8 @@ in
       instances."remote_sakura" = {
         onCalendar = cfg.calendar;
         settings = {
-          ssh_user = "btrbk";
-          # NOTE: must be readable by user/group btrbk
-          ssh_identity = "/etc/btrbk_key";
+          ssh_user = "${user}";
+          ssh_identity = "/home/${user}/.ssh/sakura";
           snapshot_preserve_min = cfg.preserve_min;
           snapshot_preserve = cfg.preserve;
           target_preserve = cfg.target_preserve;
@@ -68,7 +68,7 @@ in
             options = [ "NOPASSWD" ];
           }
         ];
-        users = [ "btrbk" ];
+        users = [ "${user}" ];
       }];
       extraConfig = with pkgs; ''
         Defaults:picloud secure_path="${lib.makeBinPath [
