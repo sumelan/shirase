@@ -64,13 +64,13 @@
           };
           btrbk = {
             description = "backup user using btrbk";
+            isNormalUser = true;
             initialPassword = "password";
             hashedPasswordFile = "/persit/etc/shadow/btrbk";
-            extraGroups = [
-              "btrbk"
-            ];
+            group = "btrbk";
           };
         };
+        groups.btrbk = {};
       };
     }
 
