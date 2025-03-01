@@ -62,6 +62,14 @@
               "wheel"
             ];
           };
+          btrbk = {
+            description = "backup user using btrbk";
+            initialPassword = "password";
+            hashedPasswordFile = "/persit/etc/shadow/btrbk";
+            extraGroups = [
+              "btrbk"
+            ];
+          };
         };
       };
     }
