@@ -16,16 +16,12 @@ lib.mkMerge [
       };
     };
 
-    users.users =
-      let
-        keyFiles = [
-          ../../home-manager/id_ed25519.pub
-        ];
-      in
-      {
-        root.openssh.authorizedKeys.keyFiles = keyFiles;
-        ${user}.openssh.authorizedKeys.keyFiles = keyFiles;
-      };
+    users.users = {
+      ${user}.openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA90FlIi09fQX3QfmscjCGLLwrL1z8xnnxXRhZ4pjHU3 sumelan
+"
+      ];
+    };
   }
 
   # keyring settings
