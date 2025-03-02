@@ -3,7 +3,6 @@
   config,
   pkgs,
   host,
-  user,
   isLaptop,
   isServer,
   ...
@@ -35,12 +34,12 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.btrbk = lib.mkIf isLaptop {
+    services.btrbk = {
       instances."remote_sakura" = {
         onCalendar = cfg.calendar;
         settings = {
-          ssh_user = "${user}";
-          ssh_identity = "/home/${user}/.ssh/sakura";
+          ssh_user = "btrbk";
+          ssh_identity = "/etc/btrbk_key";
           snapshot_preserve_min = cfg.preserve_min;
           snapshot_preserve = cfg.preserve;
           target_preserve = cfg.target_preserve;
@@ -52,7 +51,7 @@ in
         };
       };
     };
-    security.sudo = lib.mkIf isServer {
+    security.sudo = {
       extraRules = [{
         commands = [
           {
@@ -68,7 +67,7 @@ in
             options = [ "NOPASSWD" ];
           }
         ];
-        users = [ "${user}" ];
+        users = [ "btrbk" ];
       }];
       extraConfig = with pkgs; ''
         Defaults:picloud secure_path="${lib.makeBinPath [
