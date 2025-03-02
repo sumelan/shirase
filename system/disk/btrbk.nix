@@ -3,8 +3,6 @@
   config,
   pkgs,
   host,
-  isLaptop,
-  isServer,
   ...
 }:
 let
@@ -39,7 +37,7 @@ in
         onCalendar = cfg.calendar;
         settings = {
           ssh_user = "btrbk";
-          ssh_identity = "/etc/btrbk_key";
+          ssh_identity = "/var/lib/btrbk/.ssh/btrbk_key";
           snapshot_preserve_min = cfg.preserve_min;
           snapshot_preserve = cfg.preserve;
           target_preserve = cfg.target_preserve;
@@ -76,5 +74,19 @@ in
       '';
     };
     environment.systemPackages = [ pkgs.lz4 ];
+
+    users.users = {
+      btrbk = {
+        isSystemUser = true;
+        initialPassword = "password";
+        hashedPasswordFile = "/persist/etc/shadow/btrbk";
+      };
+    };
+
+    custom.persist = {
+      root.directories = [
+        "/var/lib/btrbk"
+      ];
+    };
   };
 }
