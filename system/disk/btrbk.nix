@@ -77,11 +77,16 @@ in
     };
     environment.systemPackages = [ pkgs.lz4 ];
 
-    users.users = {
-      btrbk = {
+    users = {
+      groups.btrbk = {};
+      users.btrbk = {
         isSystemUser = true;
+        shell = pkgs.bash;
+        createHome = true;
+        home = "/var/lib/btrbk";
         initialPassword = "password";
         hashedPasswordFile = "/persist/etc/shadow/btrbk";
+        group = "btrbk";
       };
     };
 
