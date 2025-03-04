@@ -42,4 +42,4 @@ sh <(curl -L https://raw.githubusercontent.com/Sumelan/wolborg/main/install.sh)
 
   Wallpaper lutgen and blur feature is from this gist.
 
-  ### and many form /unixporn!
+  ### and many from /unixporn!
