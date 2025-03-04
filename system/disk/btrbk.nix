@@ -3,6 +3,8 @@
   config,
   pkgs,
   host,
+  isLaptop,
+  isServer,
   ...
 }:
 let
@@ -32,7 +34,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.btrbk = {
+    services.btrbk = lib.mkIf isLaptop {
       instances."remote_sakura" = {
         onCalendar = cfg.calendar;
         settings = {
@@ -49,7 +51,7 @@ in
         };
       };
     };
-    security.sudo = {
+    security.sudo = lib.mkIf isServer {
       extraRules = [{
         commands = [
           {

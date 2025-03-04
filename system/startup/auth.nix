@@ -11,7 +11,7 @@ lib.mkMerge [
       enable = true;
       # disable password auth
       settings = {
-        PasswordAuthentication = false;
+        PasswordAuthentication = true;
         KbdInteractiveAuthentication = false;
       };
     };
