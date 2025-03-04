@@ -11,21 +11,54 @@ lib.mkIf config.custom.niri.enable
     "Mod+Shift+Slash".action = show-hotkey-overlay;
 
     # base apps
-    "Mod+Return".action = spawn "kitty";
-    "Mod+E".action = spawn "nemo";
-    "Mod+Shift+E".action = spawn "kitty" "yazi";
-    "Mod+B".action = spawn "librewolf";
-    "Mod+R".action = spawn "kitty" "--app-id" "rmpc" "rmpc";
+    "Mod+Return" = {
+      action = spawn "kitty";
+      hotkey-overlay.title = "Kitty";
+    };
+    "Mod+E" = {
+      action = spawn "nemo";
+      hotkey-overlay.title = "Nemo";
+    };
+    "Mod+Shift+E" = {
+      action = spawn "kitty" "yazi";
+      hotkey-overlay.title = "Yazi";
+    };
+    "Mod+B" = {
+      action = spawn "librewolf";
+      hotkey-overlay.title = "Librewolf";
+    };
+    "Mod+R" = {
+      action = spawn "kitty" "--app-id" "rmpc" "rmpc";
+      hotkey-overlay.title = "rmpc";
+    };
 
     # launcher
-    "Mod+D".action = spawn "fuzzel";
-    "Mod+Space".action = spawn "fuzzel-files";
-    "Mod+Tab".action = spawn "fuzzel-windows";
-    "Mod+Ctrl+Q".action = spawn "fuzzel-actions";
-    "Mod+Period".action = spawn "fuzzel-icons";
+    "Mod+D" = {
+      action = spawn "fuzzel";
+      hotkey-overlay.title = "Fuzzel";
+    };
+    "Mod+Space" = {
+      action = spawn "fuzzel-files";
+      hotkey-overlay.title = "File Search";
+    };
+    "Mod+Tab" = {
+      action = spawn "fuzzel-windows";
+      hotkey-overlay.title = "Windows Search";
+    };
+    "Mod+Ctrl+Q" = {
+      action = spawn "fuzzel-actions";
+      hotkey-overlay.title = "System Actions";
+    };
+    "Mod+Period" = {
+      action = spawn "fuzzel-icons";
+      hotkey-overlay.title = "Icon Search";
+    };
 
     # neovim
-    "Mod+Shift+Return".action = spawn "kitty" "nvim" "${dotfiles}";
+    "Mod+Shift+Return" = {
+      action = spawn "kitty" "nvim" "${dotfiles}";
+      hotkey-overlay.title = "Edit Config";
+    };
 
     # screenshot
     "Mod+Backslash".action = screenshot;
@@ -33,15 +66,30 @@ lib.mkIf config.custom.niri.enable
     "Mod+Alt+Backslash".action = screenshot-window;
 
     # Screencast
-    "Mod+Shift+Home".action = spawn "niricast";
+    "Mod+Shift+Home" = {
+      action = spawn "screencast";
+      hotkey-overlay.title = "Screen Record";
+    };
 
     # clipboard
-    "Mod+V".action = spawn "fuzzel-clipboard";
-    "Mod+Ctrl+V".action = spawn "rm" "$XDG_CACHE_HOME/cliphist/db";
+    "Mod+V" = {
+      action = spawn "fuzzel-clipboard";
+      hotkey-overlay.title = "Show Clipboard History";
+    };
+    "Mod+Ctrl+V" = {
+      action = spawn "rm" "$XDG_CACHE_HOME/cliphist/db";
+      hotkey-overlay.title = "Clear Clipboard History";
+    };
 
     # notification
-    "Mod+N".action = spawn "dunstctl" "history-pop";
-    "Mod+Shift+N".action = spawn "dunstctl" "close-all";
+    "Mod+N" = {
+      action = spawn "dunstctl" "history-pop";
+      hotkey-overlay.title = "Show Notification History";
+    };
+    "Mod+Shift+N" = {
+      action = spawn "dunstctl" "close-all";
+      hotkey-overlay.title = "Dismiss Notification";
+    };
 
     # window and colum management
     "Mod+Backspace".action = close-window;

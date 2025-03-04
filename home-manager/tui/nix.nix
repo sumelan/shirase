@@ -1,10 +1,4 @@
-{
-  pkgs,
-  host,
-  inputs,
-  dotfiles,
-  ...
-}:
+{ pkgs, ... }:
 let
   nixpkgs-review = pkgs.nixpkgs-review.override { withNom = true; };
 in

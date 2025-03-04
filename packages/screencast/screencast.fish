@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 function print_help
-    echo "Usage: niricast.fish [flags]"
+    echo "Usage: screencast.fish [flags]"
     echo
     echo "Start a screen recording or stop a running one"
     echo
@@ -11,7 +11,7 @@ function print_help
 end
 
 function notify
-    notify-send -a niricast $argv
+    notify-send -a screencast $argv
 end
 
 set options h/help
@@ -25,31 +25,31 @@ if set -ql _flag_help
 end
 
 if set -ql _flag_waybar
-    if test -e ~/.niricast
-        echo "{\"text\": \"\", \"tooltip\": \"Recording screen with niricast\"}"
+    if test -e ~/.screencast
+        echo "{\"text\": \"\", \"tooltip\": \"Recording screen with screencast\"}"
     end
     return
 end
 
-if test -e ~/.nirircast
+if test -e ~/.screencast
     if pidof wl-screenrec
         echo wl-screenrec running
         pkill -SIGINT wl-screenrec
     else
-        kill (head -1 ~/.niricast) &&
-            notify -e -r (tail -1 ~/.niricast) -t 3000 "Screencast cancelled successfully"
+        kill (head -1 ~/.screencast) &&
+            notify -e -r (tail -1 ~/.screencast) -t 3000 "Screencast cancelled successfully"
     end
-    rm ~/.niricast
+    rm ~/.screencast
     exit
 end
 
 set file_name ~/Videos/Screencasts/$(date +%Y-%m-%d-%H%M%S).mp4
-echo $fish_pid >~/.niricast
+echo $fish_pid >~/.screencast
 
 set notif_id 0
 for i in (seq 5 -1 1)
     set notif_id (notify -e -p -r $notif_id -t (math $i x 1000) "Screencast will start in $i")
-    echo $notif_id >>~/.niricast
+    echo $notif_id >>~/.screencast
     sleep 1
 end
 

@@ -47,7 +47,7 @@ in
           ];
 
           modules-right = [
-            "custom/niricast"
+            "custom/screencast"
             "privacy"
             "backlight"
             "wireplumber"
@@ -114,11 +114,11 @@ in
             on-scroll-down = "playerctl volume 0.1-";
           };
 
-          "custom/niricast" = {
-            exec = "niricast -w";
+          "custom/screencast" = {
+            exec = "screencast -w";
             return-type = "json";
             hide-empty-text = true;
-            on-click = "niricast";
+            on-click = "screencast";
             interval = "once";
             signal = 1;
           };

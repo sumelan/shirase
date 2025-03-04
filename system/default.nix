@@ -12,10 +12,10 @@
     ./runtime
     ./server
     ./session/niri.nix
-    ./startup/agenix.nix
     ./startup/auth.nix
     ./startup/users.nix
     ./usb/audio.nix
+    ./agenix.nix
     ./docker.nix
     ./gh.nix
     ./nix.nix

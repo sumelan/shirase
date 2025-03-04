@@ -36,7 +36,7 @@ lib.mkIf config.custom.niri.enable
         workspace-auto-back-and-forth = true;
       };
 
-      # NOTE outputs setting is in hosts specific home
+      # NOTE outputs setting is written in host/*/home.nix
 
       cursor = {
         size = 20;

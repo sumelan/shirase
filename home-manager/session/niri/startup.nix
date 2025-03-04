@@ -32,9 +32,8 @@
       {
         command = [
           "brightnessctl"
-          "-s"
           "set"
-          "10"
+          "5%"
         ];
       }
       {

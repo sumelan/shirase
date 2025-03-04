@@ -121,7 +121,7 @@
           background: @base01;
         }
 
-        #custom-niricast {
+        #custom-screencast {
           color: @base00;
           background: @base08;
 

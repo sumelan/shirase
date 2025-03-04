@@ -8,7 +8,7 @@
   procps,
 }:
 stdenv.mkDerivation {
-  pname = "niricast";
+  pname = "screencast";
   version = "1.0.0";
 
   src = ./.;
@@ -16,11 +16,11 @@ stdenv.mkDerivation {
   nativeBuildInputs = [makeWrapper];
 
   installPhase = ''
-    install -Dm755 $src/niricast.fish $out/bin/niricast
+    install -Dm755 $src/screencast.fish $out/bin/screencast
   '';
 
   postInstall = ''
-    wrapProgram $out/bin/niricast --set PATH ${
+    wrapProgram $out/bin/screencast --set PATH ${
       lib.makeBinPath [
         fish
         libnotify

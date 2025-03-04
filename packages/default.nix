@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   fuzzel-scripts = pkgs.callPackage ./fuzzel-scripts { };
-
-  niricast = pkgs.callPackage ./niricast { };
+  hypr-scripts = pkgs.callPackage ./hypr-scripts { };
+  screencast = pkgs.callPackage ./screencast { };
 }
