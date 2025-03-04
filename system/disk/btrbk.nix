@@ -34,6 +34,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+
     services.btrbk = lib.mkIf isLaptop {
       instances."remote_sakura" = {
         onCalendar = cfg.calendar;
@@ -52,28 +53,25 @@ in
       };
     };
     security.sudo = lib.mkIf isServer {
-      extraRules = [{
-        commands = [
-          {
-            command = "${pkgs.coreutils-full}/bin/test";
-            options = [ "NOPASSWD" ];
-          }
-          {
-            command = "${pkgs.coreutils-full}/bin/readlink";
-            options = [ "NOPASSWD" ];
-          }
-          {
-            command = "${pkgs.btrfs-progs}/bin/btrfs";
-            options = [ "NOPASSWD" ];
-          }
-        ];
-        users = [ "btrbk" ];
-      }];
-      extraConfig = with pkgs; ''
-        Defaults:picloud secure_path="${lib.makeBinPath [
-          btrfs-progs coreutils-full
-        ]}:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
-      '';
+      extraRules = [
+        {
+          users = [ "btrbk" ];
+          commands = [
+            {
+              command = "${config.system.path}/bin/test";
+              options = [ "NOPASSWD" ];
+            }
+            {
+              command = "${config.system.path}/bin/readlink";
+              options = [ "NOPASSWD" ];
+            }
+            {
+              command = "${config.system.path}/bin/btrfs";
+              options = [ "NOPASSWD" ];
+            }
+          ];
+        }
+      ];
     };
     environment.systemPackages = [ pkgs.lz4 ];
 
@@ -81,7 +79,7 @@ in
       groups.btrbk = {};
       users.btrbk = {
         isSystemUser = true;
-        shell = pkgs.bash;
+        shell = lib.mkIf isServer pkgs.bash;
         createHome = true;
         home = "/var/lib/btrbk";
         initialPassword = "password";
