@@ -11,15 +11,16 @@ lib.mkMerge [
       enable = true;
       # disable password auth
       settings = {
+        # set true if you test ssh-connection, 
+        # set false for better security
         PasswordAuthentication = true;
         KbdInteractiveAuthentication = false;
       };
     };
 
     users.users = {
-      ${user}.openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA9COFmbT1ntXEV7iyKc32Bf/1FmBbXHchy0kiGBkjR2 sumelan"
-      ];
+      # path of remote host's authorized_keys file
+      ${user}.openssh.authorizedKeys.keyFiles = [ ];
     };
   }
 

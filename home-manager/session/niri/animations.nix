@@ -5,11 +5,12 @@
 }:
 lib.mkIf config.custom.niri.enable 
 {
-  programs.niri.settings.animations  = {
+  programs.niri.settings.animations = {
     window-open = {
-      easing = {
-        curve = "ease-out-expo";
-        duration-ms = 500;
+      spring = {
+        damping-ratio = 0.7;
+        stiffness = 300;
+        epsilon = 0.001;
       };
     };
     window-close = {
@@ -18,11 +19,31 @@ lib.mkIf config.custom.niri.enable
         duration-ms = 500;
       };
     };
+    workspace-switch = {
+      spring = {
+        damping-ratio = 0.8;
+        stiffness = 600;
+        epsilon = 0.001;
+      };
+    };
+    horizontal-view-movement = {
+      spring = {
+        damping-ratio = 1.0;
+        stiffness = 600;
+        epsilon = 0.001;
+      };
+    };
+    window-movement = {
+      spring = {
+        damping-ratio = 1.0;
+        stiffness = 600;
+        epsilon = 0.001;
+      };
+    };
+
     shaders = {
       window-open =
-        /*
-        glsl
-        */
+        # glsl
         ''
           // Example: fill the current geometry with a solid vertical gradient and
           // gradually make opaque.
@@ -72,9 +93,7 @@ lib.mkIf config.custom.niri.enable
           }
         '';
       window-resize =
-        /*
-        glsl
-        */
+        # glsl
         ''
           // Example: fill the current geometry with a solid vertical gradient.
           vec4 solid_gradient(vec3 coords_curr_geo, vec3 size_curr_geo) {

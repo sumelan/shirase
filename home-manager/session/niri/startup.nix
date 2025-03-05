@@ -22,6 +22,7 @@
       {
         command = [
           "fcitx5"
+          "-d"
         ];
       }
       {

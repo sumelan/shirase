@@ -85,6 +85,7 @@ in
         initialPassword = "password";
         hashedPasswordFile = "/persist/etc/shadow/btrbk";
         group = "btrbk";
+        openssh.authorizedKeys.keyFiles = [ ];
       };
     };
 
