@@ -7,13 +7,8 @@
 }:
 {
   imports = [
-    ./desktop
-    ./editor
-    ./gui
-    ./tui
-    ./hardware.nix
-    ./impermanence.nix # only contains options
-    ./style.nix
+    ./common
+    ./optional
   ];
 
   options.custom = with lib; {
@@ -49,6 +44,15 @@
           xdg-utils
         ]
         ++ (lib.optional config.custom.helix.enable helix);
+
+      activation = {
+        reload-waybar =
+          lib.hm.dag.entryAfter [ "niri-transition" ]
+            # bash
+            ''
+              run --quiet ${pkgs.systemd}/bin/systemctl --user restart waybar.service
+            '';
+      };
     };
 
     # Let Home Manager install and manage itself.

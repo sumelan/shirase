@@ -1,0 +1,30 @@
+_:{
+  imports = [
+    ./desktop
+    ./neovim
+    ./rmpc
+    ./shell
+    ./btop.nix
+    ./cava.nix
+    ./eza.nix
+    ./git.nix
+    ./impermanence.nix
+    ./jujutsu.nix
+    ./kitty.nix
+    ./librewolf.nix
+    ./mpv.nix
+    ./nemo.nix
+    ./nix.nix
+    ./pwvucontrol.nix
+    ./ripgrep.nix
+    ./starship.nix
+    ./style.nix
+    ./swayimg.nix
+    ./terminal.nix
+    ./webcord.nix
+    ./yazi.nix
+    ./yt-dlp.nix
+    ./zathura.nix
+    ./zoxide.nix
+  ];
+}

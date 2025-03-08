@@ -6,22 +6,8 @@
 }:
 {
   imports = [
-    ./boot/boot.nix
-    ./disk
-    ./runtime
-    ./server
-    ./session/niri.nix
-    ./startup/auth.nix
-    ./startup/users.nix
-    ./usb/audio.nix
-    ./agenix.nix
-    ./docker.nix
-    ./gh.nix
-    ./nix.nix
-    ./opentabletdriver.nix
-    ./printing.nix
-    ./qmk.nix
-    ./style.nix
+    ./common
+    ./optional
   ];
 
   options.custom = with lib; {
@@ -33,9 +19,6 @@
   };
 
   config = {
-    # don’t shutdown when power button is short-pressed
-    services.logind.extraConfig = "HandlePowerKey=ignore";
-
     # automount disks
     services.gvfs.enable = true;
     # services.devmon.enable = true;
