@@ -6,7 +6,7 @@
 }:
 {
   options.custom = with lib; {
-    discord.enable = mkEnableOption "discord client" //{
+    discord.enable = mkEnableOption "discord client" // {
       default = true;
     };
   };

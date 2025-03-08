@@ -11,6 +11,7 @@
         grace = 0;
       };
       background = {
+        path = "/home/${user}/.config/hypr/hyprlock.pkg";
         blur_size = 4;
         blur_passes = 2;
       };
@@ -81,5 +82,11 @@
       ];
     };
   };
+
+  xdg.configFile.".hypr/hyprlock.png" = {
+    source = ../../../hosts/lock.png;
+  };
+
+  stylix.targets.hyprlock.enable = true;
 }
 

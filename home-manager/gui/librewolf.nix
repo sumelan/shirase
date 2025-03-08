@@ -55,26 +55,23 @@
     };
 
     # niri window-rules
+    # NOTE: bitwarden window cannot be floated on this method
+    # https://github.com/hyprwm/Hyprland/issues/3835
     programs.niri.settings.window-rules = [
       {
+        matches = [{ app-id = "^(librewolf)$"; }];
+        default-column-width = {
+          proportion = 1.0;
+        };
+      }
+      {
         matches = [
-          # NOTE: bitwarden window cannot be floated on this method
-          # https://github.com/hyprwm/Hyprland/issues/3835
-          { 
-            app-id = "^(librewolf)$";
-            title = "^(ピクチャーインピクチャー)$"; # obey language settings?
-          }
-          {
-            app-id = "^(librewolf)$";
-            title = "^(Save File)$"; # save file dialog
-          }
-          {
-            app-id = "^(librewolf)$";
-            title = "^(.*)(wants to save)$"; # save image diaslog
-          }
+          { app-id = "^(librewolf)$"; title = "^(ピクチャーインピクチャー)$"; }
+          { app-id = "^(librewolf)$"; title = "^(Save File)$"; }
+          { app-id = "^(librewolf)$"; title = "^(.*)(wants to save)$"; }
         ];
-        default-column-width.proportion = 0.3;
-        default-window-height.proportion = 0.3;
+        default-column-width.proportion = 0.4;
+        default-window-height.proportion = 0.4;
         open-floating = true;
       }
     ];
@@ -85,6 +82,10 @@
       "x-scheme-handler/https" = "librewolf.desktop";
       "x-scheme-handler/about" = "librewolf.desktop";
       "x-scheme-handler/unknown" = "librewolf.desktop";
+    };
+    stylix.targets.librewolf = {
+      enable = true;
+      firefoxGnomeTheme.enable = true;
     };
 
     custom.persist = {

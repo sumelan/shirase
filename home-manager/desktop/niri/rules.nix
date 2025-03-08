@@ -16,7 +16,6 @@ _:{
         # floating apps
         matches = [
           { app-id = "^(com.saivert.pwvucontrol)$"; }
-          { app-id = "^(com.github.wwmm.easyeffects)$"; }
         ];
         open-floating = true;
       }

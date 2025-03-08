@@ -10,7 +10,7 @@
     };
   };
 
-  config = lib.mkIf config.custom.kitty.enable {
+config = lib.mkIf config.custom.kitty.enable {
     programs.kitty = {
       enable = true;
       settings = {
@@ -34,23 +34,15 @@
       ssh = "kitten ssh --kitten=color_scheme=Dracula";
     };
 
-    # remove padding while in neovim
-    # programs.nixvim.extraConfigLua = ''
-    #   vim.api.nvim_create_autocmd("VimEnter", {
-    #     callback = function()
-    #       if vim.env.TERM == "xterm-kitty" then
-    #         vim.fn.system(string.format('kitty @ --to %s set-spacing padding=0', vim.env.KITTY_LISTEN_ON))
-    #       end
-    #     end
-    #   })
+    programs.niri.settings.window-rules = [
+      {
+        matches = [{ app-id = "^(kitty)$"; }];
+        default-column-width = {
+          proportion = 1.0;
+        };
+      }
+    ];
 
-    #   vim.api.nvim_create_autocmd("VimLeave", {
-    #     callback = function()
-    #       if vim.env.TERM == "xterm-kitty" then
-    #         vim.fn.system(string.format('kitty @ --to %s set-spacing padding=${toString terminal.padding}', vim.env.KITTY_LISTEN_ON))
-    #       end
-    #     end
-    #   })
-    # '';
+    stylix.targets.kitty.enable = true;
   };
 }

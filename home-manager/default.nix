@@ -7,9 +7,9 @@
 }:
 {
   imports = [
+    ./desktop
     ./editor
     ./gui
-    ./session
     ./tui
     ./hardware.nix
     ./impermanence.nix # only contains options
@@ -21,22 +21,6 @@
       type = types.nullOr types.str;
       default = null;
       description = "Command to run after autologin";
-    };
-    fonts = {
-      regular = mkOption {
-        type = types.str;
-        default = "Ubuntu Nerd Font";
-        description = "The font to use for regular text";
-      };
-      monospace = mkOption {
-        type = types.str;
-        default = "JetBrainsMono Nerd Font";
-        description = "The font to use for monospace text";
-      };
-      packages = mkOption {
-        type = types.listOf types.package;
-        description = "The packages to install for the fonts";
-      };
     };
     symlinks = mkOption {
       type = types.attrsOf types.str;
@@ -84,22 +68,15 @@
       mimeApps.enable = true;
     };
 
-    custom = {
-      fonts.packages = with pkgs; [
-        # noto-fonts-cjk is already installed in system-wide
-        nerd-fonts.jetbrains-mono
+    custom.persist = {
+      home.directories = [
+        "Desktop"
+        "Documents"
+        "Downloads"
+        "Music"
+        "Pictures"
+        "Videos"
       ];
-
-      persist = {
-        home.directories = [
-          "Desktop"
-          "Documents"
-          "Downloads"
-          "Music"
-          "Pictures"
-          "Videos"
-        ];
-      };
     };
   };
 }

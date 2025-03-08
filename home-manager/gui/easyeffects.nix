@@ -29,6 +29,13 @@
       hash = "sha256-nXVtX0ju+Ckauo0o30Y+sfNZ/wrx3HXNCK05z7dLaFc=";
     };
 
+    programs.niri.settings.window-rules = [
+      {
+        matches = [{ app-id = "^(com.github.wwmm.easyeffects)$"; }];
+        open-floating = true;
+      }
+    ];
+
     custom.persist = {
       home.directories = [
       ".config/easyeffects"

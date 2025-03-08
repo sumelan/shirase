@@ -53,19 +53,16 @@
 
     programs.niri.settings.window-rules = [
       {
+        matches = [{ app-id = "^(brave)$"; }];
+        default-column-width = {
+          proportion = 1.0;
+        };
+      }
+      {
         matches = [
-          {
-            app-id = "^(brave)$";
-            title = "^(Picture-in-Picture)$";
-          }
-          {
-            app-id = "^(brave)$";
-            title = "^(Save File)$";
-          }
-          {
-            app-id = "^(brave)$";
-            title = "(.*)(wants to save)$";
-          }
+          { app-id = "^(brave)$"; title = "^(Picture-in-Picture)$"; }
+          { app-id = "^(brave)$"; title = "^(Save File)$"; }
+          { app-id = "^(brave)$"; title = "(.*)(wants to save)$"; }
         ];
         open-floating = true;
       }

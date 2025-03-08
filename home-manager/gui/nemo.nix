@@ -64,6 +64,8 @@
     }
   ];
 
+  stylix.targets.gnome.enable = true;
+
   custom.persist = {
     home = {
       directories = [
