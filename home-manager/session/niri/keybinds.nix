@@ -1,10 +1,8 @@
 {
-  lib,
   config,
   dotfiles,
   ...
 }:
-lib.mkIf config.custom.niri.enable
 {
   programs.niri.settings.binds = with config.lib.niri.actions; {
     # shows a list of important hotkeys.

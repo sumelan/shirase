@@ -1,6 +1,4 @@
 {
-  lib,
-  config,
   pkgs,
   user,
   ...
@@ -69,7 +67,7 @@ let
         main()
   '';
 in
-lib.mkIf config.custom.niri.enable {
+{
   programs.niri.settings.spawn-at-startup = [
     {command = ["${niri-blur-wallpaper}/bin/niri-blur-wallpaper"];
   }];

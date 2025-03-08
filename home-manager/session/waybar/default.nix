@@ -14,7 +14,7 @@ in
   options.custom = with lib; {
     waybar = {
       enable = mkEnableOption "waybar" // {
-        default = config.custom.niri.enable;
+        default = true;
       };
       hwmon-path = mkOption {
         type = types.str;

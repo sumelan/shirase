@@ -1,26 +1,17 @@
-{
-  lib,
-  config,
-  ...
-}:
-lib.mkIf config.custom.niri.enable {
+_:{
   programs.niri.settings = {
     window-rules = [
       {
-        # common rules
-        geometry-corner-radius = let
-          radius = 14.0;
-        in
-        {
-          bottom-left = radius;
-          bottom-right = radius;
-          top-left = radius;
-          top-right = radius;
+        # global rules
+        geometry-corner-radius = {
+          bottom-left = 10.0;
+          bottom-right = 10.0;
+          top-left = 10.0;
+          top-right = 10.0;
         };
         clip-to-geometry = true;
         draw-border-with-background = false;
       }
-
       {
         # floating apps
         matches = [
@@ -29,11 +20,23 @@ lib.mkIf config.custom.niri.enable {
         ];
         open-floating = true;
       }
+      {
+        matches = [
+          { is-focused = true; }
+        ];
+        opacity = 0.95;
+      }
+      {
+        matches = [
+          { is-focused = false; }
+        ];
+        opacity = 0.85;
+      }
     ];
 
     switch-events = {
       lid-close.action.spawn =
-        [ "niri"  "msg" "action"  "power-off-monitors"  ];
+        [ "niri"  "msg" "action"  "power-off-monitors" ];
       lid-open.action.spawn =
         [ "niri"  "msg" "action"  "power-on-monitors" ];
     };

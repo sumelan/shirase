@@ -37,11 +37,11 @@ let
             wallpapers = {
               "DP-1" = {
                 path = ./sakura/wallpaper.png;
-                convertMethod = "lutgen"; # gonord, lutgen, none
+                convertMethod = "none"; # gonord, lutgen, none
               };
               "eDP-1" = {
                 path = ./acer/wallpaper.png;
-                convertMethod = "lutgen"; # gonord, lutgen, none
+                convertMethod = "none"; # gonord, lutgen, none
               };
             };
             dotfiles = "/persist/home/${user}/projects/wolborg";

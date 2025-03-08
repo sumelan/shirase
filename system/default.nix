@@ -7,7 +7,6 @@
 {
   imports = [
     ./boot/boot.nix
-    ./boot/specialisations.nix
     ./disk
     ./runtime
     ./server

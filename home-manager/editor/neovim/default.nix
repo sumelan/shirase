@@ -14,8 +14,6 @@
       vim.lsp.enable = true;
       vim.theme = {
         enable = true;
-        name = "catppuccin";
-        style = "mocha";
         transparent = false;
       };
 
