@@ -41,7 +41,7 @@
     };
     iconTheme = {
       enable = true;
-      package = pkgs.papirus-icon-theme.override {color = "black";};
+      package = pkgs.papirus-icon-theme.override { color = "black"; };
       light = "Papirus-Light";
       dark = "Papirus-Dark";
     };
@@ -49,6 +49,7 @@
 
   # user font package used without stylix
   home.packages = [
+    # waybar
     pkgs.nerd-fonts.comic-shanns-mono
     # pkgs.maple-mono-NF
   ];

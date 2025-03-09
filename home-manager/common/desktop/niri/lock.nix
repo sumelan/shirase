@@ -1,6 +1,7 @@
 {
   config,
   user,
+  host,
   ...
 }: {
   programs.hyprlock = {
@@ -12,8 +13,8 @@
       };
       background = {
         path = "/home/${user}/.config/hypr/hyprlock.png";
-        blur_size = 2;
-        blur_passes = 2;
+        blur_size = 4;
+        blur_passes = 0; # disable blurring
       };
       input-field = {
         size = "300, 50";
@@ -84,7 +85,7 @@
   };
 
   xdg.configFile."hypr/hyprlock.png" = {
-    source = ../../../../hosts/lock.png;
+    source = ../../../../hosts/${host}/lock.png;
   };
 
   stylix.targets.hyprlock.enable = true;

@@ -1,84 +1,284 @@
-{ ... }:
-{
+_: {
   programs.nvf = {
     settings.vim.keymaps = [
+      # disable arrow keys in normal mode
       {
-        key = "jk";
+        mode = [ "n" ];
+        key = "<up>";
+        action = "<nop>";
+      }
+      {
+        mode = [ "n" ];
+        key = "<down>";
+        action = "<nop>";
+      }
+      {
+        mode = [ "n" ];
+        key = "<left>";
+        action = "<nop>";
+      }
+      {
+        mode = [ "n" ];
+        key = "<right>";
+        action = "<nop>";
+      }
+      # fix page up and page down so the cursor doesn't move
+      {
+        mode = [ "n" ];
+        key = "<PageUp>";
+        action = ":<C-U>";
+      }
+      {
+        mode = [ "n" ];
+        key = "<PageDown>";
+        action = "<C-D>";
+      }
+      {
         mode = [ "i" ];
-        action = "<ESC>";
-        silent = true;
-        desc = "Exit insert mode with jk";
+        key = "<PageUp>";
+        action = "<C-O><C-U>";
       }
       {
-        key = "<leader>nh";
+        mode = [ "i" ];
+        key = "<PageDown>";
+        action = "<C-O><C-D>";
+      }
+      # ctrl-s to save
+      {
         mode = [ "n" ];
-        action = ":nohl<CR>";
-        silent = true;
-        desc = "Clear search highlights";
+        key = "<C-S>";
+        action = ":w<CR>";
       }
       {
-        key = "<leader>sv";
-        mode = [ "n" ];
-        action = "<C-w>v";
-        silent = true;
-        desc = "Split window vertically";
+        mode = [ "i" ];
+        key = "<C-S>";
+        action = "<C-O>:up<CR>";
       }
       {
-        key = "<leader>sh";
+        mode = [ "v" ];
+        key = "<C-S>";
+        action = "<C-C>:up<CR>";
+      }
+      # L to go to the end of the line
+      {
         mode = [ "n" ];
-        action = "<C-w>s";
-        silent = true;
-        desc = "Split window horizontally";
+        key = "L";
+        action = "$";
+      }
+      # Y copies to end of line
+      {
+        mode = [ "n" ];
+        key = "Y";
+        action = "y$";
+      }
+      # keep cursor in place when joining lines
+      {
+        mode = [ "n" ];
+        key = "J";
+        action = "mzJ`z";
+      }
+      # visual shifting (does not exit visual mode)
+      {
+        mode = [ "v" ];
+        key = "<";
+        action = "<gv";
       }
       {
-        key = "<leader>se";
-        mode = [ "n" ];
-        action = "<C-w>=";
-        silent = true;
-        desc = "Make splits equal size";
+        mode = [ "v" ];
+        key = ">";
+        action = ">gv";
+      }
+      # copy and paste to clipboard
+      {
+        mode = [ "v" ];
+        key = "<C-C>";
+        action = ''"+y'';
       }
       {
-        key = "<leader>sx";
         mode = [ "n" ];
-        action = "<cmd>close<CR>";
-        silent = true;
-        desc = "Close current split";
+        key = "<C-V>";
+        action = ''"+P'';
       }
       {
-        key = "<leader>to";
-        mode = [ "n" ];
-        action = "<cmd>tabnew<CR>";
+        mode = [ "i" ];
+        key = "<C-V>";
+        action = ''<C-O>"+P'';
+      }
+      # replace highlighted text when pasting
+      {
+        mode = [ "v" ];
+        key = "<C-V>";
+        action = ''"+P'';
+      }
+      # automatically jump to end of text pasted
+      {
+        mode = [ "v" ];
+        key = "y";
+        action = "y`]";
         silent = true;
-        desc = "Open new tab";
       }
       {
-        key = "<leader>tx";
-        mode = [ "n" ];
-        action = "<cmd>tabclose<CR>";
+        mode = [ "v" ];
+        key = "p";
+        action = "p`]";
         silent = true;
-        desc = "Close current tab";
       }
       {
-        key = "<leader>tn";
         mode = [ "n" ];
-        action = "<cmd>tabn<CR>";
+        key = "p";
+        action = "p`]";
         silent = true;
-        desc = "Go to next tab";
+      }
+      # reselect text
+      {
+        mode = [ "v" ];
+        key = "gV";
+        action = "`[v`]";
+      }
+      # disable F1 key
+      {
+        mode = [ "n" ];
+        key = "<F1>";
+        action = "<Esc>";
       }
       {
-        key = "<leader>tp";
-        mode = [ "n" ];
-        action = "<cmd>tabp<CR>";
-        silent = true;
-        desc = "Go to previous tab";
+        mode = [ "i" ];
+        key = "<F1>";
+        action = "<Esc>";
       }
       {
-        key = "<leader>tf";
-        mode = [ "n" ];
-        action = "<cmd>tabnew %<CR>";
-        silent = true;
-        desc = "Open current buffer in new tab";
+        mode = [ "v" ];
+        key = "<F1>";
+        action = "<Esc>";
       }
+      # jk or kj to escape insert mode
+      {
+        mode = [ "i" ];
+        key = "jk";
+        action = "<Esc>";
+      }
+      {
+        mode = [ "i" ];
+        key = "kj";
+        action = "<Esc>";
+      }
+      # center display after searches
+      {
+        mode = [ "n" ];
+        key = "n";
+        action = "nzzzv";
+      }
+      {
+        mode = [ "n" ];
+        key = "N";
+        action = "Nzzzv";
+      }
+      {
+        mode = [ "n" ];
+        key = "*";
+        action = "*zzzv";
+      }
+      {
+        mode = [ "n" ];
+        key = "#";
+        action = "#zzzv";
+      }
+      {
+        mode = [ "n" ];
+        key = "g*";
+        action = "g*zzzv";
+      }
+      {
+        mode = [ "n" ];
+        key = "g#";
+        action = "g#zzzv";
+      }
+      # only jumps of more than 5 lines are added to the jumplist
+      {
+        mode = [ "n" ];
+        key = "k";
+        action = "(v:count > 5 ? \"m'\" . v:count : \"\") . 'k'";
+        expr = true;
+      }
+      {
+        mode = [ "n" ];
+        key = "j";
+        action = "(v:count > 5 ? \"m'\" . v:count : \"\") . 'j'";
+        expr = true;
+      }
+      # vv enter visual block mode
+      {
+        mode = [ "n" ];
+        key = "vv";
+        action = "<C-V>";
+      }
+      # ; is an alias for :
+      {
+        mode = [ "n" ];
+        key = ";";
+        action = ":";
+      }
+      # better command line editing
+      {
+        mode = [ "c" ];
+        key = "<C-A>";
+        action = "<Home>";
+      }
+      {
+        mode = [ "c" ];
+        key = "<C-E>";
+        action = "<End>";
+      }
+      # easier buffer navigation
+      {
+        mode = [ "n" ];
+        key = "<Tab>";
+        action = ":bnext<CR>";
+      }
+      {
+        mode = [ "n" ];
+        key = "<S-Tab>";
+        action = ":bprevious<CR>";
+      }
+      # swap functionality of gj and gk
+      {
+        mode = [ "n" ];
+        key = "j";
+        action = "gj";
+      }
+      {
+        mode = [ "n" ];
+        key = "k";
+        action = "gk";
+      }
+      {
+        mode = [ "n" ];
+        key = "gj";
+        action = "j";
+      }
+      {
+        mode = [ "n" ];
+        key = "gk";
+        action = "k";
+      }
+      # better quickfix navigation
+      {
+        mode = [ "n" ];
+        key = "<C-J>";
+        action = ":cnext<CR>";
+      }
+      {
+        mode = [ "n" ];
+        key = "<C-K>";
+        action = ":cprevious<CR>";
+      }
+      # vim fugitive
+      {
+        mode = [ "n" ];
+        key = "<leader>gs";
+        action = ":G<CR>";
+      }
+      # nvim spectre
     ];
   };
 }

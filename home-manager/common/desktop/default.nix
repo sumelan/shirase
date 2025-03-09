@@ -29,11 +29,5 @@
         screencast
       ]
     );
-
-    file = {
-      # add icon image used in hyprlock
-      ".face.icon".source = ../../../hosts/pfp.png;
-      ".config/face.png".source = ../../../hosts/pfp.png;
-    };
   };
 }

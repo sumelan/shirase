@@ -72,6 +72,10 @@
       mimeApps.enable = true;
     };
 
+    home.file.".face.icon" = {
+      source = ../hosts/pfp.png;
+    };
+
     custom.persist = {
       home.directories = [
         "Desktop"

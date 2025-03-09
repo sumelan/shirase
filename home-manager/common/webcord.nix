@@ -9,7 +9,7 @@
 
   programs.niri.settings.window-rules = [
     {
-      matches = [{ app-id = "^(webcord)$"; }];
+      matches = [{ app-id = "^(WebCord)$"; }];
       default-column-width = {
         proportion = 1.0;
       };
