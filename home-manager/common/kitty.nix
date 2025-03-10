@@ -1,4 +1,4 @@
-_:{
+_: {
   programs.kitty = {
     enable = true;
     settings = {
@@ -24,9 +24,9 @@ _:{
 
   programs.niri.settings.window-rules = [
     {
-      matches = [{ app-id = "^(kitty)$"; }];
+      matches = [ { app-id = "^(kitty)$"; } ];
       default-column-width = {
-        proportion = 1.0;
+        proportion = 0.8;
       };
     }
   ];

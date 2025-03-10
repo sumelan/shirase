@@ -53,12 +53,6 @@
       channel.enable = false;
       # required for nix-shell -p to work
       inherit nixPath;
-      gc = {
-        # Automatic garbage collection
-        automatic = true;
-        dates = "daily";
-        options = "--delete-older-than 7d";
-      };
       package = pkgs.nixVersions.latest;
       registry = {
         n.flake = inputs.nixpkgs-stable;

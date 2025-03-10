@@ -81,7 +81,10 @@ in
           desc = "Maximize or restore the preview pane";
         }
         {
-          on = ["c" "m"];
+          on = [
+            "c"
+            "m"
+          ];
           run = "plugin chmod";
           desc = "Chmod on selected files";
         }
@@ -92,5 +95,15 @@ in
       ];
     };
   };
+
+  programs.niri.settings.window-rules = [
+    {
+      matches = [ { app-id = "^(yazi)"; } ];
+      default-column-width.proportion = 0.5;
+      default-window-height.proportion = 0.5;
+      open-floating = true;
+    }
+  ];
+
   stylix.targets.yazi.enable = true;
 }

@@ -20,5 +20,5 @@ switch (string split -f 2 " " $choice)
     case Poweroff
         systemctl poweroff
     case Update
-        niri msg spawn "kitty" "-T" "NixOS Update" "--app-id" "nix-snowflake" "nh" "os" "switch" "-au"
+        niri msg spawn "kitty" "-T" "NixOS Update" "--app-id" "nh" "nh" "os" "switch" "-au"
 end

@@ -30,11 +30,9 @@
     };
 
     # install cjk fonts on system-wide
-    fonts.packages = with pkgs; [
-      noto-fonts-cjk-serif
-      noto-fonts-cjk-sans
+    fonts.packages = [
+      pkgs.noto-fonts-cjk-sans
+      pkgs.noto-fonts-cjk-serif
     ];
   };
 }
-
-

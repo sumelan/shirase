@@ -1,10 +1,11 @@
-_:{
+_: {
   imports = [
     ./desktop
     ./neovim
     ./rmpc
     ./shell
     ./btop.nix
+    ./blueman-applet.nix
     ./cava.nix
     ./eza.nix
     ./git.nix

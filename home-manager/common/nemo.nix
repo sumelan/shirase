@@ -24,7 +24,7 @@
     };
 
     configFile = {
-        "mimeapps.list".force = true;
+      "mimeapps.list".force = true;
     };
   };
 
@@ -57,9 +57,7 @@
 
   programs.niri.settings.window-rules = [
     {
-      matches = [
-        { app-id = "^(nemo)$"; }
-      ];
+      matches = [ { app-id = "^(nemo)$"; } ];
       open-floating = true;
     }
   ];

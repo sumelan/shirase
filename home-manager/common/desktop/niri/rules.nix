@@ -1,4 +1,4 @@
-_:{
+_: {
   programs.niri.settings = {
     window-rules = [
       {
@@ -27,10 +27,18 @@ _:{
     ];
 
     switch-events = {
-      lid-close.action.spawn =
-        [ "niri"  "msg" "action"  "power-off-monitors" ];
-      lid-open.action.spawn =
-        [ "niri"  "msg" "action"  "power-on-monitors" ];
+      lid-close.action.spawn = [
+        "niri"
+        "msg"
+        "action"
+        "power-off-monitors"
+      ];
+      lid-open.action.spawn = [
+        "niri"
+        "msg"
+        "action"
+        "power-on-monitors"
+      ];
     };
   };
 }

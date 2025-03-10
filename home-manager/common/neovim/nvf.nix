@@ -144,7 +144,6 @@
             liveGrep = "<leader>/";
           };
         };
-        terminal.toggleterm.lazygit.enable = true;
         treesitter.autotagHtml = true;
         ui = {
           colorizer.enable = true;

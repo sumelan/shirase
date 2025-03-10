@@ -65,7 +65,6 @@
       in
       lib.mapAttrsToList (dest: src: "L+ ${normalizeHome dest} - - - - ${src}") config.custom.symlinks;
 
-
     xdg = {
       enable = true;
       userDirs.enable = true;
@@ -73,7 +72,10 @@
     };
 
     home.file.".face.icon" = {
-      source = ../hosts/pfp.png;
+      source = pkgs.fetchurl {
+        url = "https://avatars.githubusercontent.com/${user}";
+        sha256 = "sha256-RY8R8iRkFn74ql1TceWmZNf/LsRI7hUheLN2G7aPEFc=";
+      };
     };
 
     custom.persist = {

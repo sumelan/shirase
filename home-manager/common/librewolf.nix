@@ -7,7 +7,10 @@
   programs.firefox = {
     enable = true;
     package = pkgs.librewolf;
-    languagePacks = ["ja" "en-US"];
+    languagePacks = [
+      "ja"
+      "en-US"
+    ];
     policies = {
       DontCheckDefaultBrowser = true;
       DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
@@ -23,7 +26,7 @@
           installation_mode = "force_installed";
         };
         # darkreader
-        "addon@darkreader.org"= {
+        "addon@darkreader.org" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
           installation_mode = "force_installed";
         };
@@ -51,16 +54,25 @@
   # https://github.com/hyprwm/Hyprland/issues/3835
   programs.niri.settings.window-rules = [
     {
-      matches = [{ app-id = "^(librewolf)$"; }];
+      matches = [ { app-id = "^(librewolf)$"; } ];
       default-column-width = {
-        proportion = 1.0;
+        proportion = 0.8;
       };
     }
     {
       matches = [
-        { app-id = "^(librewolf)$"; title = "^(ピクチャーインピクチャー)$"; }
-        { app-id = "^(librewolf)$"; title = "^(Save File)$"; }
-        { app-id = "^(librewolf)$"; title = "^(.*)(wants to save)$"; }
+        {
+          app-id = "^(librewolf)$";
+          title = "^(ピクチャーインピクチャー)$";
+        }
+        {
+          app-id = "^(librewolf)$";
+          title = "^(Save File)$";
+        }
+        {
+          app-id = "^(librewolf)$";
+          title = "^(.*)(wants to save)$";
+        }
       ];
       default-column-width.proportion = 0.4;
       default-window-height.proportion = 0.4;

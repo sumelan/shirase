@@ -1,9 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}:
-{
+_: {
   imports = [
     ./keymaps.nix
     ./nvf.nix
@@ -21,7 +16,7 @@
       genericName = "Text Editor";
       icon = "nvim";
       terminal = true;
-      exec = "${lib.getExe pkgs.neovim} %f";
+      exec = "nvim";
     };
 
     mimeApps = {

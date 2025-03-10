@@ -1,23 +1,16 @@
-#!/usr/bin/env fish
+#!/bin/bash
 
-set clients (hyprctl clients -j)
-set classes (echo $clients | jq -r '.[] | .class')
-set titles (echo $clients | jq -r '.[] | .title')
-set addresses (echo $clients | jq -r '.[] | .address')
-set choices ""
+window_ids=()
+window_titles=()
 
-for i in (seq (count $classes))
-    if string match "*.*.*" $classes[$i]
-        set choices "$choices$titles[$i]\t$classes[$i]\0icon\x1f$classes[$i]\n"
-    else
-        set class (string lower (string replace "jetbrains-" "" $classes[$i]))
-        set class (string lower (string replace "footclient" "foot" $classes[$i]))
-        set choices "$choices$titles[$i]\t$classes[$i]\0icon\x1f$class\n"
-    end
-end
+while read i; do
+  declare -a line_array="($i)"
+  window_ids+=(${line_array[0]})
+  window_titles+=("${line_array[1]} - ${line_array[2]} \0icon\x1f${line_array[1]}")
+done <<<$(niri msg --json windows | jq -r '.[] | [ .id, .app_id, .title] | "\""+join ("\" \"")+"\""')
 
-set choices (string trim -c "\n" $choices)
+result=$(printf "%b\n" "${window_titles[@]}" | fuzzel --counter --dmenu --index)
 
-# EXTREMELY hacky workaround for hidden text but idc it works :)
-set choice (echo -e $choices | fuzzel --dmenu --prompt " " --placeholder "Search for windows..." --index --tabs 200 || exit)
-hyprctl dispatch focuswindow address:$addresses[(math $choice + 1)]
+if [ "x$result" != "x" ] && [ $result != -1 ]; then
+  niri msg action focus-window --id ${window_ids[result]}
+fi

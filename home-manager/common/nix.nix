@@ -1,11 +1,14 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  dotfiles,
+  ...
+}:
 let
   nixpkgs-review = pkgs.nixpkgs-review.override { withNom = true; };
 in
 {
   home = {
     packages = with pkgs; [
-      nh
       nixd
       nix-output-monitor
       nix-tree
@@ -22,7 +25,18 @@ in
     };
   };
 
-  programs.nix-index.enable = true;
+  programs = {
+    nix-index.enable = true;
+    nh = {
+      enable = true;
+      flake = dotfiles;
+      clean = {
+        enable = true;
+        dates = "daily";
+        extraArgs = "--keep 5 --keep-since 3d";
+      };
+    };
+  };
 
   custom.persist = {
     home = {

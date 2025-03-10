@@ -19,9 +19,12 @@
   };
 
   config = {
-    # automount disks
-    services.gvfs.enable = true;
-    # services.devmon.enable = true;
+    services = {
+      # automount disks
+      gvfs.enable = true;
+      # fn+space on acer somewhat binds powerkey
+      logind.powerKey = "ignore";
+    };
     programs = {
       dconf.enable = true;
       seahorse.enable = true;
@@ -62,16 +65,18 @@
             y # yazi
             ;
         };
-      systemPackages = with pkgs; [
-        curl
-        eza
-        (lib.hiPrio procps) # for uptime
-        neovim
-        ripgrep
-        yazi
-        zoxide
-      ]
-      ++ (lib.optional config.hm.custom.helix.enable helix);
+      systemPackages =
+        with pkgs;
+        [
+          curl
+          eza
+          (lib.hiPrio procps) # for uptime
+          neovim
+          ripgrep
+          yazi
+          zoxide
+        ]
+        ++ (lib.optional config.hm.custom.helix.enable helix);
     };
 
     # create symlink to dotfiles from default /etc/nixos

@@ -1,6 +1,5 @@
 {
   config,
-  dotfiles,
   ...
 }:
 {
@@ -18,7 +17,7 @@
       hotkey-overlay.title = "Nemo";
     };
     "Mod+Shift+E" = {
-      action = spawn "kitty" "yazi";
+      action = spawn "kitty" "--app-id" "yazi" "yazi";
       hotkey-overlay.title = "Yazi";
     };
     "Mod+B" = {
@@ -58,8 +57,8 @@
 
     # neovim
     "Mod+Shift+Return" = {
-      action = spawn "kitty" "nvim" "${dotfiles}";
-      hotkey-overlay.title = "Edit Config";
+      action = spawn "kitty" "nvim";
+      hotkey-overlay.title = "Neovim";
     };
 
     # screenshot
@@ -68,7 +67,7 @@
     "Mod+Alt+Backslash".action = screenshot-window;
 
     # Screencast
-    "Mod+Shift+Home" = {
+    "Mod+Shift+R" = {
       action = spawn "screencast";
       hotkey-overlay.title = "Screen Record";
     };
@@ -112,8 +111,9 @@
     "Mod+Shift+K".action = move-window-up-or-to-workspace-up;
     "Mod+Shift+L".action = move-column-right;
 
-    "Mod+Shift+U".action = consume-or-expel-window-left;
-    "Mod+Shift+I".action = consume-or-expel-window-right;
+    # acer fn+F3 binds Mod+P
+    "Mod+P".action = consume-or-expel-window-left;
+    "Mod+Shift+P".action = consume-or-expel-window-right;
 
     "Mod+Alt+H".action = set-column-width "-10%";
     "Mod+Alt+L".action = set-column-width "+10%";

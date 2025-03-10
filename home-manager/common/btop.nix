@@ -40,21 +40,6 @@
       };
     };
 
-    programs.niri.settings.window-rules = [
-      {
-        matches = [
-          { app-id = "btop"; }
-        ];
-        default-column-width = {
-          proportion = 0.5;
-        };
-        default-window-height = {
-          proportion = 0.5;
-        };
-        open-floating = true;
-      }
-    ];
-
     stylix.targets.btop.enable = true;
   };
 }

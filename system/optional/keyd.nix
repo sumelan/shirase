@@ -18,6 +18,7 @@
         ids = [ "*" ];
         settings.main = {
           capslock = "overload(meta, esc)";
+          menu = "overload(shift)";
         };
       };
     };

@@ -7,12 +7,21 @@
   stylix = {
     enable = true;
     autoEnable = false;
-    targets.gtk.enable = true;
-    targets.gtk.flatpakSupport.enable = true;
+
+    targets = {
+      gtk = {
+        enable = true;
+        flatpakSupport.enable = true;
+      };
+      qt = {
+        enable = true;
+      };
+    };
+
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
-      size = 24;
+      size = 20;
     };
 
     fonts = {
@@ -36,21 +45,21 @@
         applications = 12;
         terminal = 11;
         desktop = 12;
-        popups = if isLaptop then 9 else 14;
+        popups = if isLaptop then 10 else 14;
       };
     };
+
     iconTheme = {
       enable = true;
-      package = pkgs.papirus-icon-theme.override { color = "black"; };
-      light = "Papirus-Light";
-      dark = "Papirus-Dark";
+      package = pkgs.zafiro-icons;
+      dark = "Zafiro-icons-Dark";
+      light = "Zafiro-icons-Light";
     };
   };
 
-  # user font package used without stylix
+  # home font package used without stylix
   home.packages = [
-    # waybar
+    # waybar and hyprlock
     pkgs.nerd-fonts.comic-shanns-mono
-    # pkgs.maple-mono-NF
   ];
 }
