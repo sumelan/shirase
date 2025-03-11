@@ -24,7 +24,7 @@ in
         match-counter = true;
         terminal = "${pkgs.kitty}/bin/kitty";
         width = 30;
-        lines = 10;
+        lines = 8;
         horizontal-pad = 40;
         vertical-pad = 8;
         inner-pad = 15;

@@ -29,8 +29,13 @@
       hotkey-overlay.title = "cava";
     };
     "Mod+R" = {
-      action = spawn "kitty" "--app-id" "rmpc" "rmpc";
-      hotkey-overlay.title = "rmpc";
+      action =
+        spawn "kitty" "-T" "󱘗 Rusty Music Player Client" "-o" "font_family=Maple Mono NF" "-o"
+          "font_size=12"
+          "--app-id"
+          "rmpc"
+          "rmpc";
+      hotkey-overlay.title = "Rusty Music Player Client";
     };
 
     # launcher
@@ -63,7 +68,7 @@
 
     # screenshot
     "Mod+Backslash".action = screenshot;
-    "Mod+Shift+Backslash".action = screenshot-screen;
+    # "Mod+Shift+Backslash".action = screenshot-screen;
     "Mod+Alt+Backslash".action = screenshot-window;
 
     # Screencast

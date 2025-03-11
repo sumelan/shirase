@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+check() {
+	if nmcli dev wifi con "$2" password "$1"; then
+		notify-send "Password succeeded for $2"
+	else
+		notify-send -u critical "Password failed for $2"
+		nmcli con delete "$2"
+	fi >/dev/null 2>&1
+}
+
+connect() {
+	saved=$(nmcli -g name con show | rg "$1")
+	if [ -z "$saved" ] && [ -n "$security" ]; then
+		password=$(fuzzel -l 0 -w 50 --password -dip "Password: ") || exit 0
+		check "$password" "$1"
+	else
+		nmcli dev wifi con "$1" && notify-send "$1" "Connected"
+	fi >/dev/null 2>&1
+}
+
+networks=$(nmcli -g active,ssid,security,signal dev wifi)
+[ -z "$networks" ] && {
+	notify-send -u critical "Failed to obtain networks"
+	exit 1
+}
+
+connected=$(echo "$networks" | rg '^yes' | awk -F: '{print $4, $2}')
+
+[ -n "$networks" ] && {
+	list=$(echo "$networks" | awk -F: '{print $4, $2}')
+	choice=$(
+		echo "$list" | fuzzel --placeholder="$connected" -l 5 -w 40 -di
+	) || exit 0
+	ssid=$(echo "$choice" | cut -c4-)
+
+	if [ "$choice" = "$connected" ]; then
+		nmcli con down id "$ssid" >/dev/null 2>&1
+		notify-send "$ssid" "Disconnected"
+	else
+		security=$(
+			echo "$networks" | awk -F: -v \
+				ssid="$(echo "$choice" | cut -d' ' -f2)" '$2 == ssid {print $3}'
+		)
+		connect "$ssid"
+	fi
+}

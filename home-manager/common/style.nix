@@ -61,5 +61,6 @@
   home.packages = [
     # waybar and hyprlock
     pkgs.nerd-fonts.comic-shanns-mono
+    pkgs.maple-mono-NF
   ];
 }
