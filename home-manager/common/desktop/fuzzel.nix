@@ -19,7 +19,7 @@ in
       main = {
         placeholder = "Type to search...";
         prompt = "'❯ '";
-        font = "ComicShannsMono Nerd Font:size=${toString config.stylix.fonts.sizes.popups}";
+        font = "Maple Mono NF:size=${toString config.stylix.fonts.sizes.popups}";
         icon-theme = "${config.stylix.iconTheme.dark}";
         match-counter = true;
         terminal = "${pkgs.kitty}/bin/kitty";
