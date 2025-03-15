@@ -28,15 +28,14 @@
       in
       # bash, reload wallpaper at home-manager switch
       lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        run --quiet ${swww} img -o DP-1 "$HOME/Pictures/Wallpapers/DP-1.png"
+        run --quiet ${swww} img -o HDMI-A-1 "$HOME/Pictures/Wallpapers/HDMI-A-1.png"
       '';
   };
 
   custom = {
-    waybar.hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
     easyEffects = {
       enable = true;
-      preset = "Bass Enhancing + Perfect EQ";
+      preset = "Loudness+Autogain";
     };
   };
 }
