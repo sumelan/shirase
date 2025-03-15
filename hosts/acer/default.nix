@@ -41,7 +41,10 @@
 
   # SystemModule Options
   custom = {
-    btrbk.enable = true;
+    btrbk = {
+      enable = true;
+      relationShip = "client";
+    };
     distrobox.enable = true;
   };
 }

@@ -14,6 +14,12 @@ in
   options.custom = with lib; {
     btrbk = {
       enable = mkEnableOption "snapshots using btrbk";
+      relationShip = mkOption {
+        type = types.enum [
+          "host"
+          "client"
+        ];
+      };
       calendar = mkOption {
         type = types.str;
         default = "daily";
@@ -34,8 +40,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-
-    services.btrbk = lib.mkIf isLaptop {
+    # clinet side settings
+    services.btrbk = lib.mkIf (cfg.relationShip == "client") {
       instances."remote_sakura" = {
         onCalendar = cfg.calendar;
         settings = {
@@ -46,13 +52,14 @@ in
           target_preserve = cfg.target_preserve;
           stream_compress = "lz4";
           volume."/" = {
-            target = "ssh://sakura/media/${host}-backups";
+            target = "ssh://sakura/media/acer-backups";
             subvolume = "persist";
           };
         };
       };
     };
-    security.sudo = lib.mkIf isServer {
+    # host side settings
+    security.sudo = lib.mkIf (cfg.relationShip == "host") {
       extraRules = [
         {
           users = [ "btrbk" ];
@@ -73,20 +80,21 @@ in
         }
       ];
     };
-    environment.systemPackages = [ pkgs.lz4 ];
 
+    # common side settings
+    environment.systemPackages = [ pkgs.lz4 ];
     users = {
-      groups.btrbk = {};
+      groups.btrbk = { };
       users.btrbk = {
         isSystemUser = true;
-        shell = lib.mkIf isServer pkgs.bash;
+        shell = lib.mkForce pkgs.bash;
         createHome = true;
         home = "/var/lib/btrbk";
         initialPassword = "password";
         hashedPasswordFile = "/persist/etc/shadow/btrbk";
         group = "btrbk";
         openssh.authorizedKeys.keyFiles = [
-          ../../hosts/sakura/btrbk_key.pub
+          ../../hosts/btrbk_key.pub
         ];
       };
     };

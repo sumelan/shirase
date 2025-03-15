@@ -9,7 +9,10 @@
 
   # SystemModule Options.
   custom = {
-    btrbk.enable = true;
+    btrbk = {
+      enable = true;
+      relationShip = "host";
+    };
     hdds.enable = true;
     distrobox.enable = true;
     opentabletdriver.enable = true;

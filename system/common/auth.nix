@@ -11,7 +11,7 @@ lib.mkMerge [
       enable = true;
       # disable password auth
       settings = {
-        # set true if you test ssh-connection, 
+        # set true if you test ssh-connection,
         # set false for better security
         PasswordAuthentication = true;
         KbdInteractiveAuthentication = false;
@@ -21,7 +21,7 @@ lib.mkMerge [
     users.users = {
       # path of remote host's authorized_keys file
       ${user}.openssh.authorizedKeys.keyFiles = [
-        ../../hosts/sakura/sakura.pub
+        ../../hosts/sakura.pub
       ];
     };
   }

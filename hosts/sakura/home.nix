@@ -5,7 +5,7 @@
 }:
 {
   monitors = {
-    "DP-1" = {
+    "HDMI-A-1" = {
       isMain = true;
       scale = 1.0;
       mode = {
@@ -22,11 +22,12 @@
   };
 
   home.activation = {
-    reload-swww = let
-      swww = "${pkgs.swww}/bin/swww";
-    in
+    reload-swww =
+      let
+        swww = "${pkgs.swww}/bin/swww";
+      in
       # bash, reload wallpaper at home-manager switch
-      lib.hm.dag.entryAfter ["writeBoundary"] '' 
+      lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         run --quiet ${swww} img -o DP-1 "$HOME/Pictures/Wallpapers/DP-1.png"
       '';
   };
