@@ -4,6 +4,12 @@ let
     # jsonc
     ''
       // Modules configuration
+      "image": {
+        "path": "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg",
+        "size": 22,
+        "tooltip": false,
+        "on-click": "fuzzel-actions"
+      },
       "niri/workspaces": {
         "format": "{icon}",
           "format-icons": {
@@ -32,7 +38,8 @@ let
         "format-icons": [
           "",
           ""
-        ]
+        ],
+        "tooltip": false
       },
       "tray": {
         "icon-size": 16,
@@ -168,6 +175,7 @@ in
             "layer": "top",
             "output": "${config.mainMonitorName}",
             "modules-left": [
+              "image",
               "niri/workspaces",
               "tray",
               "niri/window"
@@ -228,6 +236,7 @@ in
           border-color: @base07;
         }
 
+        #image,
         #network,
         #clock,
         #battery,

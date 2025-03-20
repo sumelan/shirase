@@ -26,7 +26,7 @@ _: {
     {
       matches = [ { app-id = "^(kitty)$"; } ];
       default-column-width = {
-        proportion = 0.8;
+        proportion = 0.6;
       };
     }
   ];

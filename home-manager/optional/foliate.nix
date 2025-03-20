@@ -19,7 +19,7 @@ in
       {
         matches = [ { app-id = "^(${foliate})$"; } ];
         default-column-width = {
-          proportion = 0.8;
+          proportion = 0.9;
         };
       }
     ];

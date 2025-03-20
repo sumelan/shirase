@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   user,
   ...
 }:
@@ -27,16 +28,20 @@
 
           settings = {
             default_session = {
-              command = autologinCommand;
-            };
-
-            initial_session = {
-              inherit user;
-              command = autologinCommand;
+              command = # bash
+                let
+                  inherit (config.services.displayManager.sessionData) desktops;
+                in
+                ''
+                  ${pkgs.greetd.tuigreet}/bin/tuigreet --time \
+                    --sessions ${desktops}/share/xsessions:${desktops}/share/wayland-sessions \
+                      --remember --remember-user-session --asterisks --cmd ${autologinCommand} \
+                        --user-menu --greeting "Who are you?" --window-padding 2
+                '';
+              user = "greeter";
             };
           };
         };
-        getty.autologinUser = config.services.displayManager.autoLogin.user;
     };
 
     users = {
