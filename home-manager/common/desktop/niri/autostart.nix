@@ -32,6 +32,11 @@
       }
       {
         command = [
+          "wallsetter"
+        ];
+      }
+      {
+        command = [
           "brightnessctl"
           "set"
           "5%"

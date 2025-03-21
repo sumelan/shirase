@@ -1,7 +1,6 @@
 {
   config,
   user,
-  host,
   ...
 }:
 {
@@ -14,9 +13,9 @@
       };
       background = with config.lib.stylix.colors; {
         color = "rgb(${base00})";
-        path = "/home/${user}/.config/hypr/hyprlock.png";
+        path = "screenshot";
         blur_size = 4;
-        blur_passes = 0; # disable blurring
+        blur_passes = 4; # disable blurring
       };
       input-field = with config.lib.stylix.colors; {
         size = "300, 50";
@@ -89,9 +88,5 @@
         }
       ];
     };
-  };
-
-  xdg.configFile."hypr/hyprlock.png" = {
-    source = ../../../../hosts/${host}/lock.png;
   };
 }

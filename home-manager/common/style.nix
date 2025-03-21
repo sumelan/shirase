@@ -45,15 +45,15 @@
         applications = 12;
         terminal = 11;
         desktop = 12;
-        popups = if isLaptop then 10 else 14;
+        popups = if isLaptop then 11 else 14;
       };
     };
 
     iconTheme = {
       enable = true;
-      package = pkgs.zafiro-icons;
-      dark = "Zafiro-icons-Dark";
-      light = "Zafiro-icons-Light";
+      package = pkgs.fluent-icon-theme;
+      dark = "Fluent-dark";
+      light = "Fluent-light";
     };
   };
 

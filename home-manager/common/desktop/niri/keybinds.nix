@@ -40,24 +40,12 @@
 
     # launcher
     "Mod+D" = {
-      action = spawn "fuzzel";
-      hotkey-overlay.title = "Fuzzel";
-    };
-    "Mod+Space" = {
-      action = spawn "fuzzel-files";
-      hotkey-overlay.title = "File Search";
-    };
-    "Mod+Tab" = {
-      action = spawn "fuzzel-windows";
-      hotkey-overlay.title = "Windows Search";
+      action = spawn "rofi" "-show" "drun";
+      hotkey-overlay.title = "Rofi";
     };
     "Mod+Ctrl+Q" = {
-      action = spawn "fuzzel-actions";
-      hotkey-overlay.title = "System Actions";
-    };
-    "Mod+Period" = {
-      action = spawn "fuzzel-icons";
-      hotkey-overlay.title = "Icon Search";
+      action = spawn "rofi-powermenu";
+      hotkey-overlay.title = "Power Menu";
     };
 
     # neovim
@@ -79,7 +67,7 @@
 
     # clipboard
     "Mod+V" = {
-      action = spawn "fuzzel-clipboard";
+      action = spawn "sh" "-c" "cliphist list | rofi -dmenu | cliphist decode | wl-copy";
       hotkey-overlay.title = "Show Clipboard History";
     };
     "Mod+Ctrl+V" = {

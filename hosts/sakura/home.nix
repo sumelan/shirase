@@ -21,17 +21,6 @@
     };
   };
 
-  home.activation = {
-    reload-swww =
-      let
-        swww = "${pkgs.swww}/bin/swww";
-      in
-      # bash, reload wallpaper at home-manager switch
-      lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        run --quiet ${swww} img -o HDMI-A-1 "$HOME/Pictures/Wallpapers/HDMI-A-1.png"
-      '';
-  };
-
   custom = {
     easyEffects = {
       enable = true;

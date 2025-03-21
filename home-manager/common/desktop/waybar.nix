@@ -8,7 +8,7 @@ let
         "path": "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg",
         "size": 22,
         "tooltip": false,
-        "on-click": "fuzzel-actions"
+        "on-click": "rofi-powermenu"
       },
       "niri/workspaces": {
         "format": "{icon}",
@@ -78,7 +78,6 @@ let
         "format-linked": "{ifname} (No IP) 󱚵",
         "format-disconnected": "<span size='13000' foreground='#${config.lib.stylix.colors.base06}'> </span>Disconnected",
         "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
-        "on-click": "fuzzel-wifi"
       },
       "pulseaudio": {
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",

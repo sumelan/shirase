@@ -34,16 +34,6 @@ let
               inherit host user;
               isLaptop = host == "acer";
               isServer = host == "sakura";
-              wallpapers = {
-                "HDMI-A-1" = {
-                  path = ./sakura/wallpaper.png;
-                  convertMethod = "none"; # gonord, lutgen, none
-                };
-                "eDP-1" = {
-                  path = ./acer/wallpaper.png;
-                  convertMethod = "none"; # gonord, lutgen, none
-                };
-              };
               dotfiles = "/persist/home/${user}/projects/wolborg";
             };
             users.${user} = {

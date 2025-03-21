@@ -2,32 +2,34 @@
 {
   imports = [
     ./niri
-    ./wallpapers
+    ./rofi
     ./dunst.nix
-    ./fuzzel.nix
     ./swayosd.nix
     ./waybar.nix
   ];
 
   home = {
-    packages = with pkgs; [
-      # wallpaper
-      swww
+    packages =
+      with pkgs;
+      [
+        # wallpaper
+        swww
 
-      # clipboard history
-      cliphist
-      wl-clipboard
+        # clipboard history
+        cliphist
+        wl-clipboard
 
-      # screencast
-      wl-screenrec
-      procps
-    ]
-    ++ (
-      with self.packages.${pkgs.system}; [
+        # screencast
+        wl-screenrec
+        procps
+      ]
+      ++ [
+        (import ./wallsetter.nix { inherit pkgs; })
+      ]
+      ++ (with self.packages.${pkgs.system}; [
         # show info in hyprlock
         hypr-scripts
         screencast
-      ]
-    );
+      ]);
   };
 }

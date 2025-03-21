@@ -10,7 +10,7 @@
       global = {
         browser = "librewolf -new-tab";
         corner_radius = 8;
-        dmenu = "fuzzel -d dunst";
+        dmenu = "rofi -dmenu -p dunst";
         enable_recursive_icon_lookup = true;
         ellipsize = "end";
         follow = "mouse";
