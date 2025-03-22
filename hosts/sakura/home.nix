@@ -1,9 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}:
-{
+_: {
   monitors = {
     "HDMI-A-1" = {
       isMain = true;

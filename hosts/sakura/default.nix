@@ -9,11 +9,13 @@
 
   # SystemModule Options.
   custom = {
+    alvr.enable = true;
     btrbk = {
       enable = true;
       relationShip = "host";
     };
     hdds.enable = true;
     distrobox.enable = true;
+    steam.enable = true;
   };
 }

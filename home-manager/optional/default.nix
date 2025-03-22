@@ -1,4 +1,4 @@
-_:{
+_: {
   imports = [
     ./helix
     ./brave.nix

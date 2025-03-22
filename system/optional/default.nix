@@ -1,6 +1,7 @@
-_:{
+_: {
   imports = [
     ./agenix.nix
+    ./alvr.nix
     ./audiobookshelf.nix
     ./borgbase.nix
     ./btrbk.nix
@@ -13,6 +14,7 @@ _:{
     ./opentabletdriver.nix
     ./printing.nix
     ./qmk.nix
+    ./steam.nix
     ./usb-audio.nix
   ];
 }
