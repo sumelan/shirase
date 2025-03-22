@@ -2,9 +2,6 @@
   lib,
   config,
   pkgs,
-  host,
-  isLaptop,
-  isServer,
   ...
 }:
 let
@@ -41,7 +38,7 @@ in
 
   config = lib.mkIf cfg.enable {
     # clinet side settings
-    services.btrbk = lib.mkIf (cfg.relationShip == "client") {
+    services.btrbk = {
       instances."remote_sakura" = {
         onCalendar = cfg.calendar;
         settings = {
@@ -51,7 +48,7 @@ in
           snapshot_preserve = cfg.preserve;
           target_preserve = cfg.target_preserve;
           stream_compress = "lz4";
-          volume."/" = {
+          volume."/" = lib.mkIf (cfg.relationShip == "client") {
             target = "ssh://sakura/media/acer-backups";
             subvolume = "persist";
           };

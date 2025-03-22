@@ -6,17 +6,17 @@ let
       // Modules configuration
       "image": {
         "path": "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg",
-        "size": 22,
+        "size": 24,
         "tooltip": false,
         "on-click": "rofi-powermenu"
       },
       "niri/workspaces": {
         "format": "{icon}",
-          "format-icons": {
+        "format-icons": {
           // "default": "󱄅 ",
           // "default": " ",
           // "active": " "
-          "default": ""
+        "default": ""
         },
       },
       "niri/window": {
@@ -72,6 +72,14 @@ let
         "tooltip-format": "{time}",
         "interval": 5
       },
+      "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+          "activated": " 󱂟",
+          "deactivated": " 󱠛"
+        },
+        "tooltip": true
+      },
       "network": {
         "format-wifi": "<span size='13000' foreground='#${config.lib.stylix.colors.base06}'>󰖩  </span>{essid}",
         "format-ethernet": "<span size='13000' foreground='#${config.lib.stylix.colors.base06}'>󰤭</span> Disconnected",
@@ -84,19 +92,18 @@ let
         "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01-",
         "format": "<span size='13000' foreground='#${config.lib.stylix.colors.base0A}'>{icon}  </span>{volume}%",
-        "format-muted": "<span size='13000' foreground='#${config.lib.stylix.colors.base0A}'>  </span>Muted",
+        "format-muted": "<span size='13000' foreground='#${config.lib.stylix.colors.base0A}'>  </span>Muted",
         "format-icons": {
           "headphone": "󱡏",
           "hands-free": "",
-          "headset": "󱡏",
+          "headset": "",
           "phone": "",
           "portable": "",
           "car": "",
           "default": [
-            "󰕿",
+            "",
             "󰖀",
-            "󰕾",
-            "󰕾"
+            ""
           ]
         }
       },
@@ -184,6 +191,7 @@ in
               "memory"
             ],
             "modules-right": [
+              "idle_inhibitor",
               "network",
               "pulseaudio",
               "backlight",
@@ -217,7 +225,7 @@ in
           /* all: unset; */
           font-family: "Maple Mono NF";
           font-weight: bold;
-          font-size: 16px;
+          font-size: 18px;
           min-height: 0;
         }
 
@@ -236,6 +244,7 @@ in
         }
 
         #image,
+        #idle_inhibitor,
         #network,
         #clock,
         #battery,
@@ -255,6 +264,15 @@ in
           margin-right: 5px;
           box-shadow: 1px 2px 2px #101010;
           border-radius: 10px;
+        }
+
+        #idle_inhibitor {
+          background: shade(alpha(@base00, 0.9), 1);
+        }
+
+        #idle_inhibitor.activated {
+          color: @base00;
+          background: radial-gradient(circle, @base05 0%, @base0F 100%);
         }
 
         #workspaces {
