@@ -15,5 +15,11 @@
       package = pkgs.alvr;
       openFirewall = true;
     };
+
+    custom.persist = {
+      home.directories = [
+        ".config/alvr"
+      ];
+    };
   };
 }

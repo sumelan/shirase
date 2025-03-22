@@ -94,6 +94,10 @@
             gaps-between-tabs = 2;
           };
         };
+        environment = {
+          QT_QPA_PLATFORM = "wayland";
+          DISPLAY = ":0";
+        };
       };
   };
 }

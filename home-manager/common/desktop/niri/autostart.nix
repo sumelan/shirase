@@ -21,6 +21,11 @@
       }
       {
         command = [
+          "xwayland-satellite"
+        ];
+      }
+      {
+        command = [
           "fcitx5"
           "-d"
         ];
