@@ -1,6 +1,6 @@
 (defpoll network_status
     :interval "15s"
-    :initial '{ "icon": "󰌸", "connected": true, "online": false }'
+    :initial '{ "icon": "󱔻", "connected": true, "online": false }'
     "./widgets/get_network_status.nu"
 )
 

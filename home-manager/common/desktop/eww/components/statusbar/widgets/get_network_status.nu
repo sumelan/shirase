@@ -1,18 +1,18 @@
 #!/usr/bin/env nu
 
 def main [] {
-    mut state = { "icon": "󰌸", "connected": false, "online": false }
+    mut state = { "icon": "󱔑", "connected": false, "online": false }
 
     let id = (ip link | awk "/state UP/ {print $2}")
     if $id == "" {
         return $state
     }
 
-    $state.icon = "󰪎"
+    $state.icon = "󱔻"
     $state.connected = true
 
     if (get_online_status) {
-        $state.icon = "󰖟"
+        $state.icon = "󱔸"
         $state.online = true
     }
 

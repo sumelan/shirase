@@ -29,13 +29,13 @@
             :valign "start"
             :space-evenly false
             (box
-                :width 14
+                :width 10
             )
             (box
                 :orientation "vertical"
                 :class "top"
                 :halign "fill"
-                :width 24
+                :width 25
                 :space-evenly false
             )
         )
@@ -45,13 +45,13 @@
             :valign "end"
             :space-evenly false
             (box
-                :width 14
+                :width 10
             )
             (box
                 :orientation "vertical"
                 :class "bottom"
                 :halign "fill"
-                :width 24
+                :width 25
                 :space-evenly false
                 (box
                     :orientation "vertical"

@@ -55,3 +55,33 @@
   font-family: AurulentSansM Nerd Font;
   font-size: 1.2em;
 }
+
+.full {
+  color: #a6e3a1;
+  font-size: 1.2em;
+}
+
+.error {
+  opacity: 0;
+  font-size: 1.2em;
+}
+
+.charging {
+  color: #fab387;
+  font-size: 1.2em;
+}
+
+.normal {
+  color: #94e2d5;
+  font-size: 1.2em;
+}
+
+.medium {
+  color: #f9e2af;
+  font-size: 1.2em;
+}
+
+.low {
+  color: #f38ba8;
+  font-size: 1.2em;
+}
