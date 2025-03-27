@@ -50,8 +50,10 @@
       {
         command = [
           "wl-paste"
+          "-t"
+          "text"
           "--watch"
-          "cliphist"
+          "clipman"
           "store"
         ];
       }

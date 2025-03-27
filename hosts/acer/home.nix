@@ -1,9 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}:
-{
+_: {
   monitors = {
     "eDP-1" = {
       isMain = true;
@@ -25,6 +20,7 @@
     brave.enable = true;
     foliate.enable = true;
     cyanrip.enable = true;
+    psst.enable = true;
     thunderbird.enable = true;
     easyEffects = {
       enable = true;

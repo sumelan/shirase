@@ -59,20 +59,10 @@
     # "Mod+Shift+Backslash".action = screenshot-screen;
     "Mod+Alt+Backslash".action = screenshot-window;
 
-    # Screencast
-    "Mod+Shift+R" = {
-      action = spawn "screencast";
-      hotkey-overlay.title = "Screen Record";
-    };
-
     # clipboard
     "Mod+V" = {
-      action = spawn "sh" "-c" "cliphist list | rofi -dmenu | cliphist decode | wl-copy";
+      action = spawn "clipman" "pick" "-t" "rofi";
       hotkey-overlay.title = "Show Clipboard History";
-    };
-    "Mod+Ctrl+V" = {
-      action = spawn "rm" "$XDG_CACHE_HOME/cliphist/db";
-      hotkey-overlay.title = "Clear Clipboard History";
     };
 
     # notification

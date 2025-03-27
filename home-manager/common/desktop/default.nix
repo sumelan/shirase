@@ -1,6 +1,7 @@
 { pkgs, self, ... }:
 {
   imports = [
+    ./eww
     ./niri
     ./rofi
     ./dunst.nix
@@ -8,28 +9,22 @@
     ./waybar.nix
   ];
 
-  home = {
-    packages =
-      with pkgs;
-      [
-        # wallpaper
-        swww
+  home.packages =
+    with pkgs;
+    [
+      # wallpaper
+      swww
 
-        # clipboard history
-        cliphist
-        wl-clipboard
+      # clipboard history
+      clipman
+      wl-clipboard
 
-        # screencast
-        wl-screenrec
-        procps
-      ]
-      ++ [
-        (import ./wallsetter.nix { inherit pkgs; })
-      ]
-      ++ (with self.packages.${pkgs.system}; [
-        # show info in hyprlock
-        hypr-scripts
-        screencast
-      ]);
-  };
+    ]
+    ++ [
+      (import ./wallsetter.nix { inherit pkgs; })
+    ]
+    ++ (with self.packages.${pkgs.system}; [
+      # show info in hyprlock
+      hypr-scripts
+    ]);
 }

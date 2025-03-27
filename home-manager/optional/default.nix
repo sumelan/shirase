@@ -11,6 +11,7 @@ _: {
     ./krita.nix
     ./obs-studio.nix
     ./picard.nix
+    ./psst.nix
     ./rustdesk.nix
     ./thunderbird.nix
     ./vlc.nix

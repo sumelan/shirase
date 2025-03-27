@@ -22,7 +22,6 @@ in
   home = {
     packages = with pkgs; [
       jellyfin-ffmpeg
-      (python313Packages.python.withPackages (p: [ p.mutagen ]))
     ];
 
     shellAliases = {

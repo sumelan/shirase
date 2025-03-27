@@ -13,7 +13,7 @@
       (import ./rofi-powermenu.nix { inherit lib pkgs; })
     ];
     file.".local/share/rofi/background.png" = {
-      source = ./logo.svg;
+      source = ./bonfire.jpg;
     };
   };
 
@@ -25,7 +25,7 @@
         modi = "drun,filebrowser,run";
         show-icons = true;
         icon-theme = config.stylix.iconTheme.dark;
-        font = "Maple Mono NF ${toString (config.stylix.fonts.sizes.popups * 1.2)}";
+        font = "AurulentSansM Nerd Font ${toString (config.stylix.fonts.sizes.popups * 1.2)}";
         drun-display-format = "{icon} {name}";
         display-drun = " Apps";
         display-run = " Run";

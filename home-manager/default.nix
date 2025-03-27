@@ -44,15 +44,6 @@
           xdg-utils
         ]
         ++ (lib.optional config.custom.helix.enable helix);
-
-      activation = {
-        reload-waybar =
-          lib.hm.dag.entryAfter [ "niri-transition" ]
-            # bash
-            ''
-              run --quiet ${pkgs.systemd}/bin/systemctl --user restart waybar.service
-            '';
-      };
     };
 
     # Let Home Manager install and manage itself.
@@ -74,7 +65,7 @@
     home.file.".face.icon" = {
       source = pkgs.fetchurl {
         url = "https://avatars.githubusercontent.com/${user}";
-        sha256 = "sha256-MRbMLxJlUKvNF8eFqPbcFoknKX3JtHF9TdfsB8hpB/Q=";
+        sha256 = "sha256-DQUW7lM6q5uHDV8ZY6tasDFpLHQ7dz3gaVNrCh4R16U=";
       };
     };
 

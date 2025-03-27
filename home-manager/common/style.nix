@@ -20,8 +20,8 @@
 
     cursor = {
       package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
-      size = 20;
+      name = "Bibata-Original-Amber";
+      size = 24;
     };
 
     fonts = {
@@ -60,7 +60,7 @@
   # home font package used without stylix
   home.packages = [
     # waybar and hyprlock
-    pkgs.nerd-fonts.comic-shanns-mono
+    pkgs.nerd-fonts.aurulent-sans-mono
     pkgs.maple-mono-NF
   ];
 }

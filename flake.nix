@@ -8,7 +8,7 @@
 
     # hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    
+
     # home-manager
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -39,7 +39,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = 
+  outputs =
     inputs@{ nixpkgs, self, ... }:
     let
       system = "x86_64-linux";
@@ -84,4 +84,4 @@
 
       packages = forAllSystems (commonSystem': (import ./packages commonSystem'));
     };
-  }
+}

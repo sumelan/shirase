@@ -69,6 +69,8 @@
             })
           '';
 
+        startPlugins = [ pkgs.vimPlugins.yuck-vim ];
+
         dashboard.startify = {
           enable = true;
           changeToVCRoot = true;
@@ -80,6 +82,7 @@
           enableTreesitter = true;
 
           bash.enable = true;
+          nu.enable = true;
           html.enable = true;
           lua.enable = true;
           markdown = {

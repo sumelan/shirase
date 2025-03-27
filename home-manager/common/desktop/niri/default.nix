@@ -30,17 +30,25 @@
       {
         hotkey-overlay.skip-at-startup = true;
         prefer-no-csd = true;
+
         input = {
           focus-follows-mouse.enable = true;
           touchpad.natural-scroll = true;
           # niri will take over the power button to make it sleep by default
           power-key-handling.enable = false;
         };
+
+        cursor = {
+          theme = config.stylix.cursor.name;
+          size = config.stylix.cursor.size;
+        };
+
         outputs = builtins.mapAttrs (name: value: {
           inherit (value) scale mode position;
           transform.rotation = value.rotation;
           background-color = base01;
         }) config.monitors;
+
         gestures = {
           dnd-edge-view-scroll = {
             trigger-width = 60;
@@ -48,15 +56,16 @@
             max-speed = 1500;
           };
         };
+
         layout = {
           gaps = 12;
           border = {
             enable = true;
-            width = 4;
+            width = 3;
             active = {
               gradient = {
-                from = base07;
-                to = base0E;
+                from = base08;
+                to = base09;
                 angle = 45;
                 in' = "oklab";
                 # relative-to = "workspace-view";
@@ -65,13 +74,16 @@
             # inactive.color = "#585b70";
             inactive.color = base02;
           };
+
           focus-ring.enable = false;
+
           struts = {
             left = 2;
             right = 2;
             top = 0;
             bottom = 2;
           };
+
           insert-hint = {
             enable = true;
             display = {
@@ -84,7 +96,9 @@
               };
             };
           };
+
           shadow = shadowConfig;
+
           tab-indicator = {
             hide-when-single-tab = true;
             gap = 5;
@@ -94,6 +108,7 @@
             gaps-between-tabs = 2;
           };
         };
+
         environment = {
           QT_QPA_PLATFORM = "wayland";
           DISPLAY = ":0";
