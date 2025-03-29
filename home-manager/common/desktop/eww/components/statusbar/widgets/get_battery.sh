@@ -3,25 +3,25 @@
 percentage10() {
 	local val=$(echo $1 | tr '%' ' ' | awk '{print $1}')
 	if [ "$val" -le 15 ]; then
-		echo "󰁺󰚦"
+		echo "󰁺"
 	elif [ "$val" -le 25 ]; then
-		echo "󰁻󰚦"
+		echo "󰁻"
 	elif [ "$val" -le 35 ]; then
-		echo "󰁼󰚦"
+		echo "󰁼"
 	elif [ "$val" -le 45 ]; then
-		echo "󰁽󰚦"
+		echo "󰁽"
 	elif [ "$val" -le 55 ]; then
-		echo "󰁾󰚦"
+		echo "󰁾"
 	elif [ "$val" -le 65 ]; then
-		echo "󰁿󰚦"
+		echo "󰁿"
 	elif [ "$val" -le 75 ]; then
-		echo "󰂀󰚦"
+		echo "󰂀"
 	elif [ "$val" -le 85 ]; then
-		echo "󰂁󰚦"
+		echo "󰂁"
 	elif [ "$val" -le 95 ]; then
-		echo "󰂂󰚦"
+		echo "󰂂"
 	else
-		echo "󰁹󰚦"
+		echo "󰁹"
 	fi
 }
 
@@ -48,18 +48,18 @@ percentage() {
 get_icon() {
 	# local br=$(get_percent)
 	if [ "$state" == "fully-charged" ]; then
-		echo "󱟢󰚥"
+		echo "󱟢"
 	elif [ "$state" == "charging" ]; then
-		echo "󰂄󰚥"
+		echo "󰂄"
 	elif [ "$state" == "pending-charge" ]; then
-		echo "󱧥󰚥"
+		echo "󱧥"
 	elif [ "$state" == "unknown" ]; then
 		echo "󰂑"
 	elif [ "$state" == "nobattery" ]; then
 		echo ""
 	else
 		# echo $(percentage "$PERCENTAGE" "" "" "" ""
-		echo $(percentage10 "$PERCENTAGE")
+		percentage10 "$PERCENTAGE"
 	fi
 }
 

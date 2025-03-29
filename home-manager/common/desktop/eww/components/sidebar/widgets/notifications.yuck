@@ -22,7 +22,7 @@
 
 (defwidget notifications []
     (box
-        :class "${ arraylength(notifications['data'][0]) == 0 ? 'container-disabled' : 'container' }"
+        :class "${ arraylength(notifications['data'][0]) == 0 ? 'container-disabled' : 'container-notification' }"
         :orientation "vertical"
         :spacing 10
         :space-evenly false

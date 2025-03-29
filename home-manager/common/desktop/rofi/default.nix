@@ -49,7 +49,7 @@
           };
           "window" = {
             transparency = "real";
-            width = mkLiteral "750px";
+            width = mkLiteral "770px";
             location = mkLiteral "center";
             anchor = mkLiteral "center";
             fullscreen = false;

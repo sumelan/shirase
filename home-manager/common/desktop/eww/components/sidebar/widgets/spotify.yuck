@@ -13,7 +13,7 @@
 
 (defwidget spotify []
     (box
-        :class "${ status == 'Playing' ? 'container' : 'container-disabled' }"
+        :class "${ status == 'Playing' ? 'container-spotify' : 'container-disabled' }"
         :orientation "vertical"
         :halign "end"
         :spacing 5

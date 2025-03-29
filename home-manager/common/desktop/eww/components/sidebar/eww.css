@@ -14,10 +14,19 @@
   text-shadow: 2px 2px 2px #000000;
 }
 
-.container {
+.container-spotify {
   padding: 8px;
   padding-right: 20px;
-  box-shadow: inset -3px 0 #fab387;
+  box-shadow: inset -3px 0 #a6e3a1;
+
+  font-family: Inter;
+  font-size: 1rem;
+}
+
+.container-notification {
+  padding: 8px;
+  padding-right: 20px;
+  box-shadow: inset -3px 0 #89b4fa;
 
   font-family: Inter;
   font-size: 1rem;
