@@ -6,7 +6,7 @@ _: {
       mode = {
         width = 2560;
         height = 1440;
-        refresh = 60.0;
+        refresh = 59.951;
       };
       position = {
         x = 0;
@@ -17,9 +17,15 @@ _: {
   };
 
   custom = {
+    brave.enable = true;
+    foliate.enable = true;
+    cyanrip.enable = true;
+    psst.enable = true;
+    thunderbird.enable = true;
     easyEffects = {
       enable = true;
-      preset = "Loudness+Autogain";
+      preset = "Bass Enhancing + Perfect EQ";
     };
   };
+
 }

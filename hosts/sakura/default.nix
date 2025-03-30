@@ -17,5 +17,7 @@
     hdds.enable = true;
     distrobox.enable = true;
     steam.enable = true;
+    qmk.enable = true;
+    usb-audio.enable = true;
   };
 }

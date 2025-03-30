@@ -45,7 +45,7 @@
         applications = 12;
         terminal = 11;
         desktop = 12;
-        popups = if isLaptop then 11 else 14;
+        popups = 11;
       };
     };
 
@@ -61,6 +61,6 @@
   home.packages = [
     # waybar and hyprlock
     pkgs.nerd-fonts.aurulent-sans-mono
-    pkgs.maple-mono-NF
+    pkgs.maple-mono.NF
   ];
 }

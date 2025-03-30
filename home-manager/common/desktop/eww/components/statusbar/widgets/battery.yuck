@@ -7,7 +7,7 @@
 (defwidget battery []
   (eventbox
     (label
-      :class { battery.state == "nobattery" ? "error" : (battery.state == "fully-charged") ? "full" : battery.state == "charging" ? "charging" : (battery.percentage < 25 ? `low` : (battery.percentage < 50 ? `medium` : `normal`))}
+      :class { battery.state == "" ? "error" : (battery.state == "fully-charged") ? "full" : battery.state == "charging" ? "charging" : (battery.percentage < 25 ? `low` : (battery.percentage < 50 ? `medium` : `normal`))}
       :text {battery.icon})
   )
 )
