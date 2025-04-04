@@ -109,7 +109,7 @@
           "textbox-prompt-colon" = {
             enabled = true;
             expand = false;
-            str = "";
+            str = " ";
             background-color = mkLiteral "inherit";
             text-color = mkLiteral "inherit";
           };
