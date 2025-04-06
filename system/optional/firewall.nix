@@ -4,7 +4,7 @@
   ...
 }:
 {
-  networking.firewall= lib.mkIf config.custom.nginx.enable {
+  networking.firewall = lib.mkIf config.custom.audiobookshelf.nginx.enable {
     allowedTCPPorts = [
       80
       443

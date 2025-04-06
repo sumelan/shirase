@@ -9,8 +9,6 @@ _: {
     ./firewall.nix
     ./hdds.nix
     ./keyd.nix
-    ./nextcloud.nix
-    ./nginx.nix
     ./opentabletdriver.nix
     ./printing.nix
     ./qmk.nix
