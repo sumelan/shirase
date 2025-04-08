@@ -19,6 +19,11 @@ test:
   nh os test
 
 [group('nh')]
+[doc('Cleans root profiles and calls a store gc')]
+clean:
+  nh clean all
+
+[group('nh')]
 [doc('Update flake inputs and activate the new configuration, make it the boot default')]
 update:
   nh os switch -u
