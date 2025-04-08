@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -21,11 +22,17 @@ in
       "/media/acer-backups" = lib.mkIf cfg.wdelem4 {
         device = "/dev/disk/by-uuid/0769e0fe-da50-4eab-9ee8-b08e9dddcfe7";
         fsType = "btrfs";
-        options = [ "nofail" "x-systemd.automount" ];
+        options = [
+          "nofail"
+          "x-systemd.automount"
+        ];
       };
     };
 
-    hm.custom.btop.disks =
-      lib.optional cfg.wdelem4 "/media/acer-backups";
+    environment.systemPackages = with pkgs; [
+      borgbackup
+    ];
+
+    hm.custom.btop.disks = lib.optional cfg.wdelem4 "/media/acer-backups";
   };
 }

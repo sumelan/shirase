@@ -41,6 +41,7 @@
 
   # SystemModule Options
   custom = {
+    borg.enable = true;
     distrobox.enable = true;
   };
 }
