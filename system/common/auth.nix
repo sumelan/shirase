@@ -18,12 +18,17 @@ lib.mkMerge [
       };
     };
 
-    users.users = {
-      # path of remote host's authorized_keys file
-      ${user}.openssh.authorizedKeys.keyFiles = [
-        ../../hosts/sakura.pub
-      ];
-    };
+    users.users =
+      let
+        keyFiles = [
+          ../../hosts/sakura.pub
+        ];
+      in
+      {
+        # path of remote host's authorized_keys file
+        root.openssh.authorizedKeys.keyFiles = keyFiles;
+        ${user}.openssh.authorizedKeys.keyFiles = keyFiles;
+      };
   }
 
   # keyring settings
