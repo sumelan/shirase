@@ -25,6 +25,7 @@ in
         options = [
           "nofail"
           "x-systemd.automount"
+          "uid=1000"
         ];
       };
     };

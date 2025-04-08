@@ -8,12 +8,12 @@
 # https://wiki.nixos.org/wiki/Borg_backup
 let
   # exclude files inside /persist/home/sumelan
-  home-excludes = [
+  common-excludes = [
+    ".cache"
     "Downloads"
   ];
-  # exclude files inside whole disks
-  root-excludes = [
-    "/persist/var/log"
+  projects-dirs = [
+    "/persist/home/${user}/projects/wolborg"
   ];
 
   basicBorgJob = remote: {
@@ -81,8 +81,8 @@ in
   config = lib.mkIf config.custom.borg.enable {
     services.borgbackup.jobs = {
       "${host}-persist" = basicBorgJob "sakura" // rec {
-        paths = "/persist";
-        exclude = root-excludes ++ map (x: paths + "/home/${user}/" + x) home-excludes;
+        paths = "/persist/home/${user}";
+        exclude = projects-dirs ++ map (x: paths + "/" + x) common-excludes;
       };
     };
   };
