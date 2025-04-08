@@ -1,8 +1,6 @@
 {
   lib,
   config,
-  pkgs,
-  inputs,
   ...
 }:
 {
@@ -13,10 +11,10 @@
   };
 
   config = lib.mkIf config.custom.agenix.enable {
-    environment.systemPackages = [ inputs.agenix.packages."${pkgs.system}".default ];
-
-    age.secrets.audiobookshelf = {
-      file = ../../secrets/dynu-token.age;
+    age.secrets.api-key = {
+      file = ../../secrets/api-key.age;
+      owner = "nginx";
+      group = config.services.nginx.group;
     };
   };
 }

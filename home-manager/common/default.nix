@@ -1,6 +1,7 @@
 _: {
   imports = [
     ./desktop
+    ./fastfetch
     ./neovim
     ./rmpc
     ./shell
@@ -19,7 +20,6 @@ _: {
     ./pwvucontrol.nix
     ./ripgrep.nix
     ./starship.nix
-    ./style.nix
     ./swayimg.nix
     ./terminal.nix
     ./webcord.nix

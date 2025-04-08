@@ -61,8 +61,8 @@
       {
         matches = [
           {
-            app-id = "^(brave)$";
-            title = "^(Picture-in-Picture)$";
+            app-id = "";
+            title = "^(ピクチャー イン ピクチャー)$";
           }
           {
             app-id = "^(brave)$";
@@ -73,9 +73,13 @@
             title = "(.*)(wants to save)$";
           }
         ];
+        default-column-width.proportion = 0.4;
+        default-window-height.proportion = 0.4;
         open-floating = true;
       }
     ];
+
+    #NOTE: stylix.targets.chromium.enable is only available as NioxOS Options
 
     custom.persist = {
       home.directories = [

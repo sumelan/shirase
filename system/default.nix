@@ -8,6 +8,7 @@
   imports = [
     ./common
     ./optional
+    ./style.nix
   ];
 
   options.custom = with lib; {

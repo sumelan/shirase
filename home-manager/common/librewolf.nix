@@ -49,6 +49,14 @@
     BROWSER = lib.getExe pkgs.librewolf;
   };
 
+  xdg.mimeApps.defaultApplications = {
+    "text/html" = "librewolf.desktop";
+    "x-scheme-handler/http" = "librewolf.desktop";
+    "x-scheme-handler/https" = "librewolf.desktop";
+    "x-scheme-handler/about" = "librewolf.desktop";
+    "x-scheme-handler/unknown" = "librewolf.desktop";
+  };
+
   # niri window-rules
   # NOTE: bitwarden window cannot be floated on this method
   # https://github.com/hyprwm/Hyprland/issues/3835
@@ -80,13 +88,6 @@
     }
   ];
 
-  xdg.mimeApps.defaultApplications = {
-    "text/html" = "librewolf.desktop";
-    "x-scheme-handler/http" = "librewolf.desktop";
-    "x-scheme-handler/https" = "librewolf.desktop";
-    "x-scheme-handler/about" = "librewolf.desktop";
-    "x-scheme-handler/unknown" = "librewolf.desktop";
-  };
   stylix.targets.librewolf = {
     enable = true;
     firefoxGnomeTheme.enable = true;

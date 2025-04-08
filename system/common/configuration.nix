@@ -1,6 +1,7 @@
 {
   pkgs,
   host,
+  inputs,
   ...
 }:
 {
@@ -16,7 +17,10 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ networkmanagerapplet ];
+  environment.systemPackages = [
+    pkgs.networkmanagerapplet
+    inputs.agenix.packages."${pkgs.system}".default
+  ];
 
   # Set your time zone
   time.timeZone = "Asia/Tokyo";

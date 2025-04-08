@@ -1,4 +1,4 @@
-_:{
+_: {
   imports = [
     ./auth.nix
     ./bluetooth.nix
@@ -10,7 +10,6 @@ _:{
     ./niri.nix
     ./nix.nix
     ./pipewire.nix
-    ./style.nix
     ./users.nix
   ];
 }

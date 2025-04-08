@@ -27,8 +27,8 @@
         icon-theme = config.stylix.iconTheme.dark;
         font = "AurulentSansM Nerd Font ${toString (config.stylix.fonts.sizes.popups * 1.2)}";
         drun-display-format = "{icon} {name}";
-        display-drun = " Apps";
-        display-run = " Run";
+        display-drun = "󱄅 App";
+        display-run = " Run";
         display-filebrowser = " File";
       };
       theme =

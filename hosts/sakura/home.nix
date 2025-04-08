@@ -2,11 +2,11 @@ _: {
   monitors = {
     "HDMI-A-1" = {
       isMain = true;
-      scale = 1.0;
+      scale = 1.25;
       mode = {
-        width = 2560;
-        height = 1440;
-        refresh = 59.951;
+        width = 3840;
+        height = 2160;
+        refresh = 60.000;
       };
       position = {
         x = 0;

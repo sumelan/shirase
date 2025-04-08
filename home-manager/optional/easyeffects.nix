@@ -31,17 +31,17 @@
 
     programs.niri.settings.window-rules = [
       {
-        matches = [{ app-id = "^(com.github.wwmm.easyeffects)$"; }];
+        matches = [ { app-id = "^(com.github.wwmm.easyeffects)$"; } ];
+        default-column-width.proportion = 0.4;
+        default-window-height.proportion = 0.4;
         open-floating = true;
       }
     ];
 
     custom.persist = {
       home.directories = [
-      ".config/easyeffects"
+        ".config/easyeffects"
       ];
     };
   };
 }
-
-
