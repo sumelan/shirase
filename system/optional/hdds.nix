@@ -23,9 +23,8 @@ in
         device = "/dev/disk/by-uuid/0769e0fe-da50-4eab-9ee8-b08e9dddcfe7";
         fsType = "btrfs";
         options = [
-          "nofail"
           "x-systemd.automount"
-          "uid=1000"
+          "nofail"
         ];
       };
     };
