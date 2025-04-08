@@ -14,10 +14,6 @@
       enable = true;
       nginx.enable = true;
     };
-    btrbk = {
-      enable = true;
-      relationShip = "host";
-    };
     distrobox.enable = true;
     hdds.enable = true;
     steam.enable = true;
