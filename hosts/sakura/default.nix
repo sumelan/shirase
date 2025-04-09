@@ -14,6 +14,7 @@
       enable = true;
       nginx.enable = true;
     };
+    btrbk.enable = true;
     distrobox.enable = true;
     hdds.enable = true;
     steam.enable = true;

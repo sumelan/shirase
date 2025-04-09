@@ -41,9 +41,7 @@
 
   # SystemModule Options
   custom = {
-    btrbk = {
-      enable = true;
-    };
+    btrbk.enable = true;
     distrobox.enable = true;
   };
 }
