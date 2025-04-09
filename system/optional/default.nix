@@ -3,7 +3,7 @@ _: {
     ./agenix.nix
     ./alvr.nix
     ./audiobookshelf.nix
-    ./borg.nix
+    ./btrbk.nix
     ./docker.nix
     ./firewall.nix
     ./hdds.nix

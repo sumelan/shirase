@@ -41,7 +41,9 @@
 
   # SystemModule Options
   custom = {
-    borg.enable = true;
+    btrbk = {
+      enable = true;
+    };
     distrobox.enable = true;
   };
 }
