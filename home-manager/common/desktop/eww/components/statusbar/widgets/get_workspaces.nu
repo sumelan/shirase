@@ -2,13 +2,9 @@
 
 let workspace_icons = [
     [name icon];
-    ["dots" "󰟒"]
+    ["mini" "󱧐"]
     ["focused" "󰪥"]
-    ["gaming" "󰖹"]
-    ["notes" "󰛿"]
-    ["social" "󰀉"]
     ["urgent" "󰵚"]
-    ["work" "󰸥"]
 ]
 
 def main [monitor: number = 0] {

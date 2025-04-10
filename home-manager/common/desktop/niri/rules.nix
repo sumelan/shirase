@@ -1,5 +1,13 @@
 _: {
   programs.niri.settings = {
+    workspaces = {
+      "default" = { };
+      "01-mini" = {
+        open-on-output = "HDMI-A-2";
+        name = "mini";
+      };
+    };
+
     window-rules = [
       {
         # global rules
