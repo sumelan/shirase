@@ -31,7 +31,5 @@ update:
 [group('eww')]
 [doc('Relaod statusbar and sidebar configured using eww')]
 eww:
-  eww kill --config ~/.config/eww/statusbar && \
-    eww kill --config ~/.config/eww/sidebar && \
-      eww open --config ~/.config/eww/statusbar statusbar --arg stacking=overlay --screen 1 && \
-        eww open --config ~/.config/eww/sidebar sidebar --screen 0
+  eww reload --config ~/.config/eww/statusbar && \
+    eww reload --config ~/.config/eww/sidebar

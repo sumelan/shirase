@@ -6,7 +6,7 @@
 {
   options.custom = with lib; {
     opentabletdriver.enable = mkEnableOption "Enable opentabletdriver" // {
-      default = hm.config.custom.krita.enable;
+      default = config.hm.custom.krita.enable;
     };
   };
 

@@ -1,11 +1,12 @@
 {
   lib,
   config,
+  isLaptop,
   ...
 }:
 {
   programs.niri.settings = {
-    workspaces = {
+    workspaces = lib.mkIf (!isLaptop) {
       "01-huion" = {
         name = "huion";
         open-on-output = "DP-1";
