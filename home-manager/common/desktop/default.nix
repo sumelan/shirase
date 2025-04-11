@@ -6,7 +6,6 @@
     ./rofi
     ./dunst.nix
     ./swayosd.nix
-    ./waybar.nix
   ];
 
   home.packages =

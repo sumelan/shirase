@@ -107,12 +107,12 @@
     "Mod+1".action.focus-workspace = 1;
     "Mod+2".action.focus-workspace = 2;
     "Mod+3".action.focus-workspace = 3;
-    "Mod+0".action.focus-workspace = "mini";
+    "Mod+0".action.focus-workspace = "huion";
 
     "Mod+Shift+1".action.move-column-to-workspace = 1;
     "Mod+Shift+2".action.move-column-to-workspace = 2;
     "Mod+Shift+3".action.move-column-to-workspace = 3;
-    "mod+Shift+0".action.move-column-to-workspace = "mini";
+    "mod+Shift+0".action.move-column-to-workspace = "huion";
 
     # mouse scroll
     "Mod+WheelScrollDown" = {

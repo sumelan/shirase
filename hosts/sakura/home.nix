@@ -14,12 +14,12 @@ _: {
       };
       rotation = 0;
     };
-    "HDMI-A-2" = {
-      scale = 1.30;
+    "DP-1" = {
+      scale = 1.0;
       mode = {
         width = 2560;
-        height = 1600;
-        refresh = 60.000;
+        height = 1440;
+        refresh = 59.951;
       };
       position = {
         x = 0;
@@ -33,11 +33,13 @@ _: {
     brave.enable = true;
     foliate.enable = true;
     cyanrip.enable = true;
+    inkscape.enable = true;
+    krita.enable = true;
     psst.enable = true;
     thunderbird.enable = true;
     easyEffects = {
       enable = true;
-      preset = "Bass Enhancing + Perfect EQ";
+      preset = "Bass Enhancing + Perfect EQ.json";
     };
   };
 }

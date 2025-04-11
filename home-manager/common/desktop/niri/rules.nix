@@ -1,9 +1,14 @@
-_: {
+{
+  lib,
+  config,
+  ...
+}:
+{
   programs.niri.settings = {
     workspaces = {
-      "01-mini" = {
-        open-on-output = "HDMI-A-2";
-        name = "mini";
+      "01-huion" = {
+        name = "huion";
+        open-on-output = "DP-1";
       };
     };
 
@@ -20,14 +25,26 @@ _: {
         draw-border-with-background = false;
       }
       {
-        matches = [
-          { is-focused = true; }
+        matches = [ { is-focused = true; } ];
+        excludes = lib.mkIf config.custom.krita.enable [
+          {
+            app-id = "^(krita)$";
+          }
+          {
+            app-id = "^(org.inkscape.Inkscape)$";
+          }
         ];
         opacity = 0.95;
       }
       {
-        matches = [
-          { is-focused = false; }
+        matches = [ { is-focused = false; } ];
+        excludes = lib.mkIf config.custom.krita.enable [
+          {
+            app-id = "^(krita)$";
+          }
+          {
+            app-id = "^(org.inkscape.Inkscape)$";
+          }
         ];
         opacity = 0.85;
       }

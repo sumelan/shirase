@@ -33,5 +33,5 @@ update:
 eww:
   eww kill --config ~/.config/eww/statusbar && \
     eww kill --config ~/.config/eww/sidebar && \
-      eww open --config ~/.config/eww/statusbar statusbar --arg stacking=overlay && \
-        eww open --config ~/.config/eww/sidebar sidebar
+      eww open --config ~/.config/eww/statusbar statusbar --arg stacking=overlay --screen 1 && \
+        eww open --config ~/.config/eww/sidebar sidebar --screen 0

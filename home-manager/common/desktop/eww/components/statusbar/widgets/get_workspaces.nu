@@ -2,7 +2,7 @@
 
 let workspace_icons = [
     [name icon];
-    ["mini" "󱧐"]
+    ["huion" "󱧐"]
     ["focused" "󰪥"]
     ["urgent" "󰵚"]
 ]
@@ -14,7 +14,7 @@ def main [monitor: number = 0] {
     }
 
     ($workspaces
-        | sort-by --natural output order
+        | sort-by --reverse output order
         | insert icon {|rw| icon $rw.name}
         | to json -r
         | print

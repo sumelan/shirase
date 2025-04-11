@@ -24,7 +24,7 @@ _: {
     thunderbird.enable = true;
     easyEffects = {
       enable = true;
-      preset = "Loudness+Autogain";
+      preset = "Loudness+Autogain.json";
     };
   };
 }

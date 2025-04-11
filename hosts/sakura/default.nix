@@ -17,6 +17,7 @@
     btrbk.enable = true;
     distrobox.enable = true;
     hdds.enable = true;
+    opentabletdriver.enable = true;
     steam.enable = true;
     qmk.enable = true;
     usb-audio.enable = true;
