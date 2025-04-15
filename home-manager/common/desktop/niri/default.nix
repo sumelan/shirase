@@ -111,6 +111,7 @@
 
         environment = {
           QT_QPA_PLATFORM = "wayland";
+          NIXOS_OZONE_WL = "1";
           DISPLAY = ":0";
         };
       };

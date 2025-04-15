@@ -10,26 +10,21 @@
   };
 
   config = lib.mkIf config.custom.krita.enable {
-    home.packages = [ pkgs.krita ];
+    home.packages = with pkgs; [
+      krita
+    ];
 
     programs.niri.settings.window-rules = [
       {
         matches = [ { app-id = "^(krita)$"; } ];
-        open-maximized = true;
+        open-floating = true;
         open-on-output = "DP-1";
+        border.enable = false;
+        shadow.enable = false;
         opacity = 1.0;
       }
-      {
-        matches = [
-          {
-            app-id = "^(krita)$";
-            title = "^(.* Krita)$";
-          }
-        ];
-        open-floating = true;
-      }
     ];
-    # python plugins
+    # py-menu plugins
     home.file.".local/share/krita/pykrita" = {
       source = pkgs.fetchFromGitHub {
         owner = "wojtryb";
@@ -44,11 +39,6 @@
       home = {
         directories = [
           ".local/share/krita"
-        ];
-        files = [
-          ".config/kritadisplayrc"
-          ".config/kritarc"
-          ".config/kritashortcutsrc"
         ];
       };
     };
