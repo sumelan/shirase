@@ -1,10 +1,17 @@
 {
   config,
+  pkgs,
+  self,
   user,
   ...
 }:
 {
-  home.file.".config/hypr/hyprlock.png".source = ./lock.png;
+  home = {
+    file = {
+      ".config/hypr/hyprlock.png".source = ./lock.png;
+    };
+    packages = [ self.packages.${pkgs.system}.hypr-scripts ];
+  };
 
   programs.hyprlock = {
     enable = true;

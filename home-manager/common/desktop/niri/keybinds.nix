@@ -40,12 +40,24 @@
 
     # launcher
     "Mod+D" = {
-      action = spawn "rofi" "-show" "drun";
-      hotkey-overlay.title = "Rofi";
+      action = spawn "fuzzel";
+      hotkey-overlay.title = "Fuzzel";
+    };
+    "Mod+Space" = {
+      action = spawn "fuzzel-files";
+      hotkey-overlay.title = "File Search";
+    };
+    "Mod+Tab" = {
+      action = spawn "fuzzel-windows";
+      hotkey-overlay.title = "Windows Search";
     };
     "Mod+Ctrl+Q" = {
-      action = spawn "rofi-powermenu";
-      hotkey-overlay.title = "Power Menu";
+      action = spawn "fuzzel-actions";
+      hotkey-overlay.title = "System Actions";
+    };
+    "Mod+Period" = {
+      action = spawn "fuzzel-icons";
+      hotkey-overlay.title = "Icon Search";
     };
 
     # neovim
@@ -59,10 +71,20 @@
     # "Mod+Shift+Backslash".action = screenshot-screen;
     "Mod+Alt+Backslash".action = screenshot-window;
 
+    # Screencast
+    "Mod+Shift+R" = {
+      action = spawn "screencast";
+      hotkey-overlay.title = "Screen Record";
+    };
+
     # clipboard
     "Mod+V" = {
-      action = spawn "clipman" "pick" "-t" "rofi";
+      action = spawn "fuzzel-clipboard";
       hotkey-overlay.title = "Show Clipboard History";
+    };
+    "Mod+Ctrl+V" = {
+      action = spawn "rm" "$XDG_CACHE_HOME/cliphist/db";
+      hotkey-overlay.title = "Clear Clipboard History";
     };
 
     # notification

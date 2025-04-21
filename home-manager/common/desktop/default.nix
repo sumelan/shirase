@@ -1,11 +1,11 @@
-{ pkgs, self, ... }:
+{ pkgs, ... }:
 {
   imports = [
-    ./eww
     ./niri
-    ./rofi
     ./dunst.nix
+    ./fuzzel.nix
     ./swayosd.nix
+    ./waybar.nix
   ];
 
   home.packages =
@@ -15,15 +15,14 @@
       swww
 
       # clipboard history
-      clipman
+      cliphist
       wl-clipboard
 
+      # screencast
+      wl-screenrec
+      procps
     ]
     ++ [
       (import ./wallsetter.nix { inherit pkgs; })
-    ]
-    ++ (with self.packages.${pkgs.system}; [
-      # show info in hyprlock
-      hypr-scripts
-    ]);
+    ];
 }
