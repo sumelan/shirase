@@ -9,7 +9,7 @@
 
   # SystemModule Options.
   custom = {
-    alvr.enable = true;
+    alvr.enable = false;
     audiobookshelf = {
       enable = true;
       nginx.enable = true;
@@ -18,7 +18,7 @@
     distrobox.enable = true;
     hdds.enable = true;
     opentabletdriver.enable = true;
-    steam.enable = true;
+    steam.enable = false;
     qmk.enable = true;
     usb-audio.enable = true;
   };
