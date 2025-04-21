@@ -20,7 +20,7 @@ _: {
     brave.enable = true;
     foliate.enable = true;
     cyanrip.enable = true;
-    psst.enable = true;
+    spot.enable = true;
     thunderbird.enable = true;
     easyEffects = {
       enable = true;

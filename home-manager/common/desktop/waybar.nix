@@ -8,7 +8,7 @@ let
         "path": "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg",
         "size": 24,
         "tooltip": false,
-        "on-click": "rofi-powermenu"
+        "on-click": "fuzzel-actions"
       },
       "niri/workspaces": {
         "format": "{icon}",

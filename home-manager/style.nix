@@ -45,19 +45,19 @@
         applications = 12;
         terminal = 11;
         desktop = 12;
-        popups = 11;
+        popups = 12;
       };
     };
 
     iconTheme = {
       enable = true;
-      package = pkgs.fluent-icon-theme;
-      dark = "Fluent-dark";
-      light = "Fluent-light";
+      package = pkgs.kora-icon-theme;
+      dark = "kora-pgrey";
+      light = "kora-light";
     };
   };
 
-  # home font package used without stylix
+  # other non-default font package
   home.packages = [
     # waybar and hyprlock
     pkgs.nerd-fonts.aurulent-sans-mono

@@ -30,7 +30,7 @@ in
         inner-pad = 15;
       };
       border = {
-        width = 4;
+        width = 2;
         radius = 10;
       };
       colors = with config.lib.stylix.colors; {
