@@ -6,7 +6,7 @@
 
   programs.niri.settings.window-rules = [
     {
-      matches = [{ app-id = "^(com.saivert.pwvucontrol)$"; }];
+      matches = [ { app-id = "^(pwvucontrol)$"; } ];
       open-floating = true;
     }
   ];

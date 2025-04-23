@@ -44,8 +44,8 @@
         urgency_normal = {
           background = base01 + dunstOpacity;
           foreground = base05;
-          frame_color = base0E;
-          timeout = 10;
+          frame_color = base09;
+          timeout = 8;
         };
         urgency_critical = {
           background = base01 + dunstOpacity;
@@ -56,8 +56,8 @@
         urgency_low = {
           background = base01 + dunstOpacity;
           foreground = base05;
-          frame_color = base0B;
-          timeout = 10;
+          frame_color = base0C;
+          timeout = 8;
         };
 
       };
