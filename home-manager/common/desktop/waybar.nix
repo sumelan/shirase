@@ -55,13 +55,13 @@ let
           "warning": 30,
           "critical": 15,
         },
-        "format": "<span size='13000' foreground='#${config.lib.stylix.colors.base0E}'>{icon}  </span>{capacity}%",
-        "format-warning": "<span size='13000' foreground='#${config.lib.stylix.colors.base0E}'>{icon}  </span>{capacity}%",
+        "format": "<span size='13000' foreground='#${config.lib.stylix.colors.base0B}'>{icon}  </span>{capacity}%",
+        "format-warning": "<span size='13000' foreground='#${config.lib.stylix.colors.base0B}'>{icon}  </span>{capacity}%",
         "format-critical": "<span size='13000' foreground='#${config.lib.stylix.colors.base08}'>{icon}  </span>{capacity}%",
-        "format-charging": "<span size='13000' foreground='#${config.lib.stylix.colors.base0E}'>  </span>{capacity}%",
-        "format-plugged": "<span size='13000' foreground='#${config.lib.stylix.colors.base0E}'>  </span>{capacity}%",
-        "format-alt": "<span size='13000' foreground='#${config.lib.stylix.colors.base0E}'>{icon} </span>{time}",
-        "format-full": "<span size='13000' foreground='#${config.lib.stylix.colors.base0E}'>  </span>{capacity}%",
+        "format-charging": "<span size='13000' foreground='#${config.lib.stylix.colors.base0B}'>  </span>{capacity}%",
+        "format-plugged": "<span size='13000' foreground='#${config.lib.stylix.colors.base0B}'>  </span>{capacity}%",
+        "format-alt": "<span size='13000' foreground='#${config.lib.stylix.colors.base0B}'>{icon} </span>{time}",
+        "format-full": "<span size='13000' foreground='#${config.lib.stylix.colors.base0B}'>  </span>{capacity}%",
         "format-icons": [
           "",
           "",
@@ -75,8 +75,8 @@ let
       "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-          "activated": " 󱂟",
-          "deactivated": " 󱠛"
+          "activated": "",
+          "deactivated": ""
         },
         "tooltip": true
       },
@@ -87,25 +87,23 @@ let
         "format-disconnected": "<span size='13000' foreground='#${config.lib.stylix.colors.base06}'> </span>Disconnected",
         "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
       },
-      "pulseaudio": {
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01-",
+      "wireplumber": {
         "format": "<span size='13000' foreground='#${config.lib.stylix.colors.base0A}'>{icon}  </span>{volume}%",
         "format-muted": "<span size='13000' foreground='#${config.lib.stylix.colors.base0A}'>  </span>Muted",
-        "format-icons": {
-          "headphone": "󱡏",
-          "hands-free": "",
-          "headset": "",
-          "phone": "",
-          "portable": "",
-          "car": "",
-          "default": [
+        "on-click": "pwvucontrol",
+        "format-icons": [
             "",
             "󰖀",
             ""
-          ]
-        }
+        ]
+      },
+      "custom/screencast": {
+        "exec": "screencast -w",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "screencast",
+        "interval": "once",
+        "signal": 1,
       },
       "group/meters": {
         "orientation": "inherit",
@@ -117,7 +115,7 @@ let
           "battery",
           "memory",
           "network",
-          "pulseaudio",
+          "wireplumber",
           "backlight"
         ]
       }
@@ -132,7 +130,10 @@ let
       base06
       base07
       base08
+      base09
       base0A
+      base0B
+      base0C
       base0D
       base0E
       base0F
@@ -192,8 +193,9 @@ in
             ],
             "modules-right": [
               "idle_inhibitor",
+              "custom/screencast",
               "network",
-              "pulseaudio",
+              "wireplumber",
               "backlight",
               "battery",
             ],
@@ -245,10 +247,11 @@ in
 
         #image,
         #idle_inhibitor,
+        #custom-screencast,
         #network,
         #clock,
         #battery,
-        #pulseaudio,
+        #wireplumber,
         #workspaces,
         #backlight,
         #memory,
@@ -266,13 +269,15 @@ in
           border-radius: 10px;
         }
 
-        #idle_inhibitor {
-          background: shade(alpha(@base00, 0.9), 1);
+        #custom-screencast {
+          color: @base05;
+          background: @base08;
+          animation: blink 1s linear infinite alternate;
         }
 
         #idle_inhibitor.activated {
           color: @base00;
-          background: radial-gradient(circle, @base05 0%, @base0F 100%);
+          background: shade(alpha(@base09, 0.9), 1);
         }
 
         #workspaces {
@@ -325,28 +330,6 @@ in
           /* background: linear-gradient(118deg, @base07 5%, @base0F 5%, @base0F 20%, @base07 20%, @base07 40%, @base0F 40%, @base0F 60%, @base07 60%, @base07 80%, @base0F 80%, @base0F 95%, @base07 95%);  */
           background: linear-gradient(
             118deg,
-            @base0B 5%,
-            @base0F 5%,
-            @base0F 20%,
-            @base0B 20%,
-            @base0B 40%,
-            @base0F 40%,
-            @base0F 60%,
-            @base0B 60%,
-            @base0B 80%,
-            @base0F 80%,
-            @base0F 95%,
-            @base0B 95%
-          );
-          background-size: 200% 300%;
-          animation: gradient_f_nh 4s linear infinite;
-          color: @base01;
-        }
-
-        #battery.charging,
-        #battery.plugged {
-          background: linear-gradient(
-            118deg,
             @base0E 5%,
             @base0D 5%,
             @base0D 20%,
@@ -359,6 +342,28 @@ in
             @base0D 80%,
             @base0D 95%,
             @base0E 95%
+          );
+          background-size: 200% 300%;
+          animation: gradient_f_nh 6s linear infinite;
+          color: @base01;
+        }
+
+        #battery.charging,
+        #battery.plugged {
+          background: linear-gradient(
+            118deg,
+            @base0B 5%,
+            @base0C 5%,
+            @base0C 20%,
+            @base0B 20%,
+            @base0B 40%,
+            @base0C 40%,
+            @base0C 60%,
+            @base0B 60%,
+            @base0B 80%,
+            @base0C 80%,
+            @base0C 95%,
+            @base0B 95%
           );
           background-size: 200% 300%;
           animation: gradient_rv 4s linear infinite;
@@ -367,18 +372,18 @@ in
         #battery.full {
           background: linear-gradient(
             118deg,
-            @base0E 5%,
-            @base0D 5%,
-            @base0D 20%,
-            @base0E 20%,
-            @base0E 40%,
-            @base0D 40%,
-            @base0D 60%,
-            @base0E 60%,
-            @base0E 80%,
-            @base0D 80%,
-            @base0D 95%,
-            @base0E 95%
+            @base0B 5%,
+            @base0C 5%,
+            @base0C 20%,
+            @base0B 20%,
+            @base0B 40%,
+            @base0C 40%,
+            @base0C 60%,
+            @base0B 60%,
+            @base0B 80%,
+            @base0C 80%,
+            @base0C 95%,
+            @base0B 95%
           );
           background-size: 200% 300%;
           animation: gradient_rv 20s linear infinite;
@@ -395,6 +400,13 @@ in
     ".config/waybar/animation.css".text =
       # css
       ''
+        @keyframes blink {
+          to {
+            color: @base00;
+            background: @base01;
+          }
+        }
+
         @keyframes gradient {
           0% {
             background-position: 0% 50%;

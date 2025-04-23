@@ -1,6 +1,5 @@
 {
   pkgs,
-  isLaptop,
   ...
 }:
 {
@@ -51,16 +50,15 @@
 
     iconTheme = {
       enable = true;
-      package = pkgs.kora-icon-theme;
-      dark = "kora-pgrey";
-      light = "kora-light";
+      package = pkgs.reversal-icon-theme;
+      dark = "Reversal";
+      light = "Reversal-dark";
     };
   };
 
   # other non-default font package
   home.packages = [
     # waybar and hyprlock
-    pkgs.nerd-fonts.aurulent-sans-mono
     pkgs.maple-mono.NF
   ];
 }

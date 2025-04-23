@@ -53,9 +53,9 @@
 
     programs.niri.settings.window-rules = [
       {
-        matches = [ { app-id = "^(brave)$"; } ];
+        matches = [ { app-id = "^(brave-browser)$"; } ];
         default-column-width = {
-          proportion = 0.6;
+          proportion = 0.5;
         };
       }
       {

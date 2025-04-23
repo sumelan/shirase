@@ -18,9 +18,9 @@
 
     programs.niri.settings.window-rules = [
       {
-        matches = [ { app-id = "^(psst-gui)$"; } ];
+        matches = [ { app-id = "^(Psst-gui)$"; } ];
         default-column-width = {
-          proportion = 0.6;
+          proportion = 0.5;
         };
       }
     ];
