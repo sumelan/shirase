@@ -28,11 +28,5 @@
         chromium.enable = true;
       };
     };
-
-    # install cjk fonts on system-wide
-    fonts.packages = [
-      pkgs.noto-fonts-cjk-sans
-      pkgs.noto-fonts-cjk-serif
-    ];
   };
 }

@@ -29,6 +29,20 @@ _: {
         proportion = 0.5;
       };
     }
+    {
+      matches = [ { app-id = "^(tty-clock)$"; } ];
+      open-floating = true;
+      default-column-width = {
+        proportion = 0.3;
+      };
+      default-window-height = {
+        proportion = 0.2;
+      };
+    }
+    {
+      matches = [ { app-id = "^(htop)$"; } ];
+      open-floating = true;
+    }
   ];
 
   stylix.targets.kitty = {

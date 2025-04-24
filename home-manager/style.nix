@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, isLaptop, ... }:
 {
   stylix = {
     enable = true;
@@ -40,7 +40,7 @@
         applications = 12;
         terminal = 11;
         desktop = 12;
-        popups = 12;
+        popups = if isLaptop then 11 else 12;
       };
     };
 
@@ -53,8 +53,10 @@
   };
 
   # other non-default font package
-  home.packages = [
+  home.packages = with pkgs; [
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
     # waybar and hyprlock
-    pkgs.maple-mono.NF
+    maple-mono.NF
   ];
 }

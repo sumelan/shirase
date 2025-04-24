@@ -30,7 +30,7 @@
         hotkey-overlay.title = "Librewolf";
       };
       "Mod+Y" = {
-        action = sh ''GDK_BACKEND=x11 librewolf https://www.youtube.com/'';
+        action = sh ''GDK_BACKEND=x11 librewolf https://music.youtube.com/'';
         hotkey-overlay.title = "Launch YouTube on Librewolf(x11)";
       };
       "Mod+C" = {

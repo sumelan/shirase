@@ -28,7 +28,7 @@ let
       "memory": {
         "interval": 30,
         "format": "<span foreground='#${config.lib.stylix.colors.base0E}'>  </span>  {used:0.1f}G/{total:0.1f}G",
-        "on-click": "kitty --class=htop,htop -e htop"
+        "on-click": "kitty --class=htop --title=htop -e htop"
       },
       "backlight": {
         "device": "intel_backlight",
@@ -48,7 +48,7 @@ let
       "clock": {
         "format": "<span foreground='#${config.lib.stylix.colors.base0E}'>  </span>  {:%a %d %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "on-click": "kitty --class=clock,clock --title=clock -o remember_window_size=no -o initial_window_width=600 -o initial_window_height=200 -e ${pkgs.tty-clock}/bin/tty-clock -s -c -C 5"
+        "on-click": "kitty --class=tty-clock --title=tty-clock -e ${pkgs.tty-clock}/bin/tty-clock -s -c -C 5"
       },
       "battery": {
         "states": {

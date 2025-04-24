@@ -24,7 +24,7 @@
 
   programs.niri.settings.window-rules = [
     {
-      matches = [ { app-id = "^(thunar)$"; } ];
+      matches = [ { app-id = "^(Thunar)$"; } ];
       open-floating = true;
     }
   ];
