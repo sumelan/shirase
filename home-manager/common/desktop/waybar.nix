@@ -16,8 +16,8 @@ let
           // "default": "󱄅 ",
           // "default": " ",
           // "active": " "
-        "default": ""
-        },
+          "default": ""
+        }
       },
       "niri/window": {
         "format": "{}",
@@ -53,7 +53,7 @@ let
       "battery": {
         "states": {
           "warning": 30,
-          "critical": 15,
+          "critical": 15
         },
         "format": "<span size='13000' foreground='#${config.lib.stylix.colors.base0B}'>{icon}  </span>{capacity}%",
         "format-warning": "<span size='13000' foreground='#${config.lib.stylix.colors.base0B}'>{icon}  </span>{capacity}%",
@@ -85,7 +85,7 @@ let
         "format-ethernet": "<span size='13000' foreground='#${config.lib.stylix.colors.base06}'>󰤭</span> Disconnected",
         "format-linked": "{ifname} (No IP) 󱚵",
         "format-disconnected": "<span size='13000' foreground='#${config.lib.stylix.colors.base06}'> </span>Disconnected",
-        "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
+        "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
       },
       "wireplumber": {
         "format": "<span size='13000' foreground='#${config.lib.stylix.colors.base0A}'>{icon}  </span>{volume}%",
@@ -103,13 +103,13 @@ let
         "hide-empty-text": true,
         "on-click": "screencast",
         "interval": "once",
-        "signal": 1,
+        "signal": 1
       },
       "group/meters": {
         "orientation": "inherit",
         "drawer": {
           "transition-duration": 500,
-          "transition-left-to-right": false,
+          "transition-left-to-right": false
         },
         "modules": [
           "battery",
@@ -197,18 +197,19 @@ in
               "network",
               "wireplumber",
               "backlight",
-              "battery",
+              "battery"
             ],
             ${moduleConfiguration}
           }
         ]
-
       '';
+
     ".config/waybar/colors.css".text =
       # css
       (builtins.mapAttrs (name: value: "@define-color ${name} ${value};") colors)
       |> builtins.attrValues
       |> builtins.concatStringsSep "\n";
+
     ".config/waybar/tray.css".text =
       # css
       ''
@@ -397,6 +398,7 @@ in
           -gtk-icon-effect: highlight;
         }
       '';
+
     ".config/waybar/animation.css".text =
       # css
       ''
