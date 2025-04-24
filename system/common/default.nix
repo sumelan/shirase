@@ -10,6 +10,7 @@ _: {
     ./niri.nix
     ./nix.nix
     ./pipewire.nix
+    ./thunar.nix
     ./users.nix
   ];
 }

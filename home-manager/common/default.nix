@@ -15,13 +15,13 @@ _: {
     ./kitty.nix
     ./librewolf.nix
     ./mpv.nix
-    ./nemo.nix
     ./nix.nix
     ./pwvucontrol.nix
     ./ripgrep.nix
     ./starship.nix
     ./swayimg.nix
     ./terminal.nix
+    ./thunar.nix
     ./webcord.nix
     ./yazi.nix
     ./yt-dlp.nix

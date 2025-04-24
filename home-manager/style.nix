@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   stylix = {
     enable = true;
@@ -12,9 +9,8 @@
         enable = true;
         flatpakSupport.enable = true;
       };
-      qt = {
-        enable = true;
-      };
+      qt.enable = true;
+      gnome.enable = true;
     };
 
     cursor = {

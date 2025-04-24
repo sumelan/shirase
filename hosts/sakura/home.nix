@@ -35,7 +35,6 @@ _: {
     cyanrip.enable = true;
     inkscape.enable = true;
     krita.enable = true;
-    psst.enable = true;
     thunderbird.enable = true;
     easyEffects = {
       enable = true;

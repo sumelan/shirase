@@ -57,7 +57,7 @@
           background = base01 + dunstOpacity;
           foreground = base05;
           frame_color = base0C;
-          timeout = 8;
+          timeout = 5;
         };
 
       };
