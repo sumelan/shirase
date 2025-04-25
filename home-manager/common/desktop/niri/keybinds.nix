@@ -72,6 +72,14 @@
         hotkey-overlay.title = "Neovim";
       };
 
+      # screenlock
+      "Mod+Shift+Escape" = {
+        action = spawn "hyprlock";
+        hotkey-overlay.title = "Screenlock";
+        # usefull when screen-locker crashed
+        allow-when-locked = true;
+      };
+
       # screenshot
       "Mod+Backslash".action = screenshot;
       # "Mod+Shift+Backslash".action = screenshot-screen;
