@@ -1,4 +1,4 @@
-{
+_: {
   programs.niri.settings.animations = {
     window-open = {
       spring = {

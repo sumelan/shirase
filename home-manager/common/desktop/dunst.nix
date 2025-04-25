@@ -45,7 +45,7 @@
           background = base01 + dunstOpacity;
           foreground = base05;
           frame_color = base09;
-          timeout = 8;
+          timeout = 6;
         };
         urgency_critical = {
           background = base01 + dunstOpacity;
@@ -57,7 +57,7 @@
           background = base01 + dunstOpacity;
           foreground = base05;
           frame_color = base0C;
-          timeout = 5;
+          timeout = 4;
         };
 
       };

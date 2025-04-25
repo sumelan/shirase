@@ -31,14 +31,15 @@ _: {
 
   custom = {
     brave.enable = true;
-    foliate.enable = true;
     cyanrip.enable = true;
-    inkscape.enable = true;
-    krita.enable = true;
-    thunderbird.enable = true;
     easyEffects = {
       enable = true;
       preset = "Bass Enhancing + Perfect EQ.json";
     };
+    foliate.enable = true;
+    inkscape.enable = true;
+    krita.enable = true;
+    thunderbird.enable = true;
+    youtube-music.enable = true;
   };
 }

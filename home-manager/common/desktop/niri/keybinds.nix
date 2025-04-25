@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}:
+{ config, ... }:
 {
   programs.niri.settings.binds =
     with config.lib.niri.actions;
@@ -29,13 +26,9 @@
         action = spawn "librewolf";
         hotkey-overlay.title = "Librewolf";
       };
-      "Mod+Y" = {
-        action = sh ''GDK_BACKEND=x11 librewolf https://music.youtube.com/'';
-        hotkey-overlay.title = "Launch YouTube on Librewolf(x11)";
-      };
       "Mod+C" = {
         action = spawn "kitty" "--app-id" "cava" "cava";
-        hotkey-overlay.title = "cava";
+        hotkey-overlay.title = "Cava";
       };
       "Mod+R" = {
         action =
@@ -45,6 +38,10 @@
             "rmpc"
             "rmpc";
         hotkey-overlay.title = "Rusty Music Player Client";
+      };
+      "Mod+Y" = {
+        action = spawn "youtube-music";
+        hotkey-overlay.title = "YouTube Music";
       };
 
       # launcher
@@ -83,7 +80,7 @@
       # Screencast
       "Mod+Shift+R" = {
         action = spawn "screencast";
-        hotkey-overlay.title = "Screen Record";
+        hotkey-overlay.title = "Screencast";
       };
 
       # clipboard

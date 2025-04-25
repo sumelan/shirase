@@ -1,8 +1,8 @@
 # hardware related options that are referenced within home-manager need to be defined here
 # for home-manager to be able to access them
 {
-  isLaptop,
   lib,
+  isLaptop,
   ...
 }:
 {

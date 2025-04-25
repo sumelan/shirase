@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     swayimg
@@ -16,7 +13,7 @@
 
   programs.niri.settings.window-rules = [
     {
-      matches = [{ app-id = "^(swayimg)$"; }];
+      matches = [ { app-id = "^(swayimg)$"; } ];
       default-column-width.proportion = 0.7;
       default-window-height.proportion = 0.7;
       open-floating = true;
