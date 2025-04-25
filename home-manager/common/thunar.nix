@@ -24,8 +24,10 @@
 
   programs.niri.settings.window-rules = [
     {
-      matches = [ { app-id = "^(Thunar)$"; } ];
+      matches = [ { app-id = "^(thunar)$"; } ];
       open-floating = true;
+      default-column-width.proportion = 0.4;
+      default-window-height.proportion = 0.4;
     }
   ];
 

@@ -14,7 +14,7 @@ in
       nix-tree
       nixfmt-rfc-style
       nixpkgs-review
-      nvfetcher
+      nurl
     ];
 
     shellAliases = {
@@ -30,11 +30,6 @@ in
     nh = {
       enable = true;
       flake = dotfiles;
-      clean = {
-        enable = true;
-        dates = "daily";
-        extraArgs = "--keep 5 --keep-since 3d";
-      };
     };
   };
 

@@ -1,45 +1,67 @@
 {
   lib,
+  config,
   pkgs,
+  inputs,
+  user,
   ...
 }:
+let
+  configPath = ".config/.librewolf";
+in
 {
-  programs.firefox = {
+  programs.librewolf = {
     enable = true;
-    package = pkgs.librewolf;
     languagePacks = [
-      "ja"
       "en-US"
+      "ja-JP"
     ];
-    policies = {
-      DontCheckDefaultBrowser = true;
-      DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
-      DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
-      SearchBar = "unified"; # alternative: "separate"
+    package = pkgs.librewolf.overrideAttrs (o: {
+      # launch librewolf with user profile
+      buildCommand =
+        o.buildCommand
+        + ''
+          wrapProgram "$out/bin/librewolf" \
+            --set 'HOME' '${config.xdg.configHome}' \
+            --append-flags "${
+              lib.concatStringsSep " " [
+                "--name librewolf"
+                # load librewolf profile with same name as user
+                "--profile ${config.home.homeDirectory}/${configPath}/${user}"
+              ]
+            }"
+        '';
+    });
 
-      ExtensionSettings = {
-        # blocks all addons except the ones specified below
-        "*".installation_mode = "blocked";
-        # bitwarden
-        "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
-          installation_mode = "force_installed";
-        };
-        # darkreader
-        "addon@darkreader.org" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
-          installation_mode = "force_installed";
-        };
-        # sponsorblock
-        "sponsorBlocker@ajay.app" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
-          installation_mode = "force_installed";
-        };
-        "uBlock0@raymondhill.net" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-          installation_mode = "force_installed";
-        };
+    inherit configPath;
+
+    profiles.${user} = {
+      extensions.packages = with inputs.firefox-addons.packages.${pkgs.system}; [
+        bitwarden
+        darkreader
+        screenshot-capture-annotate
+        sponsorblock
+        ublock-origin
+      ];
+
+      settings = {
+        "extensions.autoDisableScopes" = 0; # enable extensions immediately upon new install
+        "privacy.clearOnShutdown_v2.cache" = false;
+        "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
+
+      userChrome = # css
+        ''
+          /* remove useless urlbar padding */
+          #customizableui-special-spring1 { display:none }
+          #customizableui-special-spring2 { display:none }
+
+          /* remove all tabs button and window controls */
+          #alltabs-button { display:none }
+          .titlebar-spacer { display:none }
+          .titlebar-buttonbox-container { display:none }
+        '';
     };
   };
 
@@ -82,21 +104,21 @@
           title = "^(.*)(wants to save)$";
         }
       ];
+      open-floating = true;
       default-column-width.proportion = 0.4;
       default-window-height.proportion = 0.4;
-      open-floating = true;
     }
   ];
 
   stylix.targets.librewolf = {
     enable = true;
-    firefoxGnomeTheme.enable = true;
+    profileNames = [ "${user}" ];
   };
 
   custom.persist = {
     home.directories = [
       ".cache/librewolf"
-      ".librewolf"
+      configPath
     ];
   };
 }

@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  isLaptop,
   ...
 }:
 {
@@ -23,9 +24,10 @@
     services = {
       # automount disks
       gvfs.enable = true;
-      # fn+space on acer somewhat binds powerkey
-      logind.powerKey = "ignore";
+      # disable accidentary push powerkey
+      logind.powerKey = lib.mkIf isLaptop "ignore";
     };
+
     programs = {
       dconf.enable = true;
       seahorse.enable = true;
@@ -71,6 +73,7 @@
         [
           curl
           eza
+          killall
           (lib.hiPrio procps) # for uptime
           neovim
           ripgrep
@@ -85,11 +88,18 @@
       "/etc/nixos" = "/persist${config.hm.home.homeDirectory}/projects/wolborg";
     };
 
+    # create symlinks
+    systemd.tmpfiles.rules = [
+      # cleanup systemd coredumps once a week
+      "D! /var/lib/systemd/coredump root root 7d"
+    ] ++ (lib.mapAttrsToList (dest: src: "L+ ${dest} - - - - ${src}") config.custom.symlinks);
+
     programs = {
       # use same config as home-manager
       bash.interactiveShellInit = config.hm.programs.bash.initExtra;
 
       file-roller.enable = true;
+      git.enable = true;
 
       # remove nano
       nano.enable = lib.mkForce false;
@@ -118,9 +128,7 @@
     };
 
     custom.persist = {
-      root.directories = lib.optionals config.hm.custom.wifi.enable [
-        "/etc/NetworkManager"
-      ];
+      root.directories = lib.optionals config.hm.custom.wifi.enable [ "/etc/NetworkManager" ];
       root.cache.directories = [
         "/var/lib/systemd/coredump"
       ];

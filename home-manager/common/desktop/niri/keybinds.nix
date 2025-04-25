@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, user, ... }:
 {
   programs.niri.settings.binds =
     with config.lib.niri.actions;
@@ -68,27 +68,34 @@
 
       # neovim
       "Mod+Shift+Return" = {
-        action = spawn "kitty" "nvim";
-        hotkey-overlay.title = "Neovim";
+        action = sh "cd /home/${user}/projects/wolborg && kitty nvim";
+        hotkey-overlay.title = "Edit Config";
       };
 
       # screenlock
-      "Mod+Shift+Escape" = {
+      "Mod+Escape" = {
         action = spawn "hyprlock";
         hotkey-overlay.title = "Screenlock";
         # usefull when screen-locker crashed
         allow-when-locked = true;
       };
 
+      # exit niri
+      "Mod+Shift+Escape" = {
+        action = quit { skip-confirmation = false; };
+      };
+
       # screenshot
-      "Mod+Backslash".action = screenshot;
-      # "Mod+Shift+Backslash".action = screenshot-screen;
-      "Mod+Alt+Backslash".action = screenshot-window;
+      "Mod+Backslash".action = screenshot { show-pointer = false; };
+      "Mod+Alt+Backslash".action = screenshot-window { write-to-disk = true; };
+
+      # overview
+      "Mod+Shift+Tab".action = toggle-overview;
 
       # Screencast
       "Mod+Shift+R" = {
         action = spawn "screencast";
-        hotkey-overlay.title = "Screencast";
+        hotkey-overlay.title = "Record Screen";
       };
 
       # clipboard

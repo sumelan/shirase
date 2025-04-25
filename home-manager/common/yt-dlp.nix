@@ -21,7 +21,7 @@ in
 
   home = {
     packages = with pkgs; [
-      jellyfin-ffmpeg
+      ffmpeg
     ];
 
     shellAliases = {

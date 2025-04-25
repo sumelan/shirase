@@ -33,9 +33,17 @@
     # secrets
     agenix.url = "github:ryantm/agenix";
 
+    # nur
+    nur.url = "github:nix-community/NUR";
     # neovim
     nvf = {
       url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # librewolf addon
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

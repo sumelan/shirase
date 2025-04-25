@@ -1,7 +1,5 @@
 {
   config,
-  dotfiles,
-  host,
   inputs,
   lib,
   pkgs,
@@ -15,8 +13,10 @@
   system = {
     # envfs sets usrbinenv activation script to "" with mkForce
     activationScripts.usrbinenv = lib.mkOverride (50 - 1) ''
-      mkdir -p /usr/bin
-      chmod 0755 /usr/bin || true
+      if [ ! -d "/usr/bin" ]; then
+        mkdir -p /usr/bin
+        chmod 0755 /usr/bin
+      fi
     '';
 
     # make a symlink of flake within the generation (e.g. /run/current-system/src)
@@ -42,20 +42,30 @@
     "D! /nix/var/nix/profiles/per-user/root 1755 root root 1d"
   ];
 
+  # never going to read html docs locally
+  documentation = {
+    enable = true;
+    doc.enable = true;
+    man.enable = true;
+    dev.enable = false;
+  };
+
   nix =
     let
-      nixPath = [
-        "nixpkgs=flake:nixpkgs"
-        # "/nix/var/nix/profiles/per-user/root/channels"
-      ];
+      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
     in
     {
       channel.enable = false;
       # required for nix-shell -p to work
       inherit nixPath;
-      package = pkgs.nixVersions.latest;
-      registry = {
-        n.flake = inputs.nixpkgs-stable;
+      gc = {
+        # Automatic garbage collection
+        automatic = true;
+        dates = "daily";
+        options = "--delete-older-than 7d";
+      };
+      package = pkgs.lixPackageSets.latest.lix;
+      registry = (lib.mapAttrs (_: flake: { inherit flake; }) inputs) // {
         master = {
           from = {
             type = "indirect";
@@ -67,12 +77,12 @@
             repo = "nixpkgs";
           };
         };
-        stable.flake = inputs.nixpkgs-stable;
       };
       settings = {
         auto-optimise-store = true; # Optimise symlinks
         # re-evaluate on every rebuild instead of "cached failure of attribute" error
         # eval-cache = false;
+        flake-registry = ""; # don't use the global flake registry, define everything explicitly
         # required to be set, for some reason nix.nixPath does not write to nix.conf
         nix-path = nixPath;
         warn-dirty = false;
@@ -83,8 +93,7 @@
         experimental-features = [
           "nix-command"
           "flakes"
-          "pipe-operators"
-          # "repl-flake"
+          "pipe-operator"
         ];
         substituters = [
           "https://cache.nixos.org"
@@ -101,36 +110,17 @@
       };
     };
 
-  # better nixos generation label
-  # https://reddit.com/r/NixOS/comments/16t2njf/small_trick_for_people_using_nixos_with_flakes/k2d0sxx/
-  system.nixos.label = lib.concatStringsSep "-" (
-    (lib.sort (x: y: x < y) config.system.nixos.tags)
-    ++ [ "${config.system.nixos.version}.${self.sourceInfo.shortRev or "dirty"}" ]
-  );
+  system = {
+    # use nixos-rebuild-ng to rebuild the system
+    rebuild.enableNg = true;
 
-  # add nixos-option workaround for flakes
-  # https://github.com/NixOS/nixpkgs/issues/97855#issuecomment-1075818028
-  nixpkgs.overlays = [
-    (_: prev: {
-      nixos-option =
-        let
-          flake-compat = prev.fetchFromGitHub {
-            owner = "edolstra";
-            repo = "flake-compat";
-            rev = "12c64ca55c1014cdc1b16ed5a804aa8576601ff2";
-            hash = "sha256-hY8g6H2KFL8ownSiFeMOjwPC8P0ueXpCVEbxgda3pko=";
-          };
-          prefix = ''(import ${flake-compat} { src = ${dotfiles}; }).defaultNix.nixosConfigurations.${host}'';
-        in
-        prev.runCommandNoCC "nixos-option" { buildInputs = [ prev.makeWrapper ]; } ''
-          makeWrapper ${lib.getExe prev.nixos-option} $out/bin/nixos-option \
-            --add-flags --config_expr \
-            --add-flags "\"${prefix}.config\"" \
-            --add-flags --options_expr \
-            --add-flags "\"${prefix}.options\""
-        '';
-    })
-  ];
+    # better nixos generation label
+    # https://reddit.com/r/NixOS/comments/16t2njf/small_trick_for_people_using_nixos_with_flakes/k2d0sxx/
+    nixos.label = lib.concatStringsSep "-" (
+      (lib.sort (x: y: x < y) config.system.nixos.tags)
+      ++ [ "${config.system.nixos.version}.${self.sourceInfo.shortRev or "dirty"}" ]
+    );
+  };
 
   # enable man-db cache for fish to be able to find manpages
   # https://discourse.nixos.org/t/fish-shell-and-manual-page-completion-nixos-home-manager/15661
