@@ -9,7 +9,6 @@
 
   # SystemModule Options.
   custom = {
-    alvr.enable = false;
     audiobookshelf = {
       enable = true;
       nginx.enable = true;

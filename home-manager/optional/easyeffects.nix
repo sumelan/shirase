@@ -7,10 +7,8 @@
 {
   options.custom = with lib; {
     easyEffects = {
-      enable = mkEnableOption "easy effects";
-      preset = mkOption {
-        type = types.str;
-        default = "";
+      enable = mkEnableOption "easy effects" // {
+        default = true;
       };
     };
   };
@@ -19,7 +17,6 @@
     services.easyeffects = {
       enable = true;
       package = pkgs.easyeffects;
-      preset = config.custom.easyEffects.preset;
     };
 
     xdg.configFile."easyeffects/output" = {
@@ -35,9 +32,9 @@
     programs.niri.settings.window-rules = [
       {
         matches = [ { app-id = "^(com.github.wwmm.easyeffects)$"; } ];
+        open-floating = true;
         default-column-width.proportion = 0.4;
         default-window-height.proportion = 0.4;
-        open-floating = true;
       }
     ];
 

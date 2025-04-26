@@ -1,6 +1,8 @@
 {
   lib,
   config,
+  pkgs,
+  inputs,
   ...
 }:
 {
@@ -10,8 +12,9 @@
     };
   };
 
-  config = lib.mkIf config.custom.agenix.enable {
-    age.secrets.api-key = {
+  config = {
+    environment.systemPackages = [ inputs.agenix.packages."${pkgs.system}".default ];
+    age.secrets.api-key = lib.mkIf config.custom.agenix.enable {
       file = ../../secrets/api-key.age;
       owner = "nginx";
       group = config.services.nginx.group;

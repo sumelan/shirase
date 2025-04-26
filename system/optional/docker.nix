@@ -4,19 +4,16 @@
   config,
   ...
 }:
-with lib;
 {
-  options.custom = {
+  options.custom = with lib; {
     distrobox.enable = mkEnableOption "Enable distrobox";
     docker.enable = mkEnableOption "Enable docker" // {
       default = config.custom.distrobox.enable;
     };
   };
 
-  config = mkIf (config.custom.docker.enable || config.custom.distrobox.enable) {
-    environment.systemPackages = mkIf config.custom.distrobox.enable [
-      pkgs.distrobox
-    ];
+  config = lib.mkIf config.custom.docker.enable {
+    environment.systemPackages = lib.mkIf config.custom.distrobox.enable [ pkgs.distrobox ];
 
     virtualisation = {
       podman = {

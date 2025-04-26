@@ -32,10 +32,6 @@ _: {
   custom = {
     brave.enable = true;
     cyanrip.enable = true;
-    easyEffects = {
-      enable = true;
-      preset = "Bass Enhancing + Perfect EQ.json";
-    };
     foliate.enable = true;
     inkscape.enable = true;
     krita.enable = true;

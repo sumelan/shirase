@@ -19,10 +19,6 @@ _: {
   custom = {
     brave.enable = true;
     cyanrip.enable = true;
-    easyEffects = {
-      enable = true;
-      preset = "Loudness+Autogain.json";
-    };
     foliate.enable = true;
     thunderbird.enable = true;
     youtube-music.enable = true;

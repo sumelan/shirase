@@ -1,41 +1,24 @@
 {
   pkgs,
   host,
-  inputs,
   ...
 }:
 {
   # Define your hostname
-  networking.hostName = "${host}";
-
   networking = {
-    networkmanager = {
-      enable = true;
-    };
-    firewall = {
-      enable = true;
-    };
+    hostName = "${host}";
+    networkmanager.enable = true;
+    firewall.enable = true;
   };
-
-  environment.systemPackages = [
-    pkgs.networkmanagerapplet
-    inputs.agenix.packages."${pkgs.system}".default
-  ];
+  environment.systemPackages = with pkgs; [ networkmanagerapplet ];
 
   # Set your time zone
   time.timeZone = "Asia/Tokyo";
 
-  # Select internationalisation properties
-  i18n.defaultLocale = "ja_JP.UTF-8";
-  console = {
-    # seems to break virtual-console service because it can't find the font
-    # https://github.com/NixOS/nixpkgs/issues/257904
-    # font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
-    useXkbConfig = true; # use xkb.options in tty.
-  };
-
-  # Select internationalisation properties
   i18n = {
+    # Select internationalisation properties
+    defaultLocale = "ja_JP.UTF-8";
+    # Select internationalisation properties
     extraLocaleSettings = {
       LC_ADDRESS = "ja_JP.UTF-8";
       LC_IDENTIFICATION = "ja_JP.UTF-8";
@@ -47,16 +30,20 @@
       LC_TELEPHONE = "ja_JP.UTF-8";
       LC_TIME = "ja_JP.UTF-8";
     };
-
     # Japanese Input
     inputMethod = {
       enable = true;
       type = "fcitx5";
-      fcitx5.addons = with pkgs; [
-        fcitx5-mozc
-      ];
+      fcitx5.addons = with pkgs; [ fcitx5-mozc ];
       fcitx5.waylandFrontend = true;
     };
+  };
+
+  console = {
+    # seems to break virtual-console service because it can't find the font
+    # https://github.com/NixOS/nixpkgs/issues/257904
+    # font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
+    useXkbConfig = true; # use xkb.options in tty.
   };
 
   # Configure keymap in X11
