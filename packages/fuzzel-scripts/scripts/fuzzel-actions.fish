@@ -5,7 +5,8 @@ set choices " Lock
 󰿅 Exit
  Reboot
  Poweroff
-󱄅 Update"
+󱄅 Switch
+󰚰 Update"
 set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Search for system actions..." --lines 5)
 
 switch (string split -f 2 " " $choice)
@@ -19,6 +20,8 @@ switch (string split -f 2 " " $choice)
         systemctl reboot
     case Poweroff
         systemctl poweroff
+    case Switch
+        niri msg action spawn -- kitty -T 'NixOS Switch' --app-id nh-switch nh os switch -a
     case Update
-        niri msg spawn "kitty" "-T" "NixOS Update" "--app-id" "nh" "nh" "os" "switch" "-au"
+        niri msg action spawn -- kitty -T 'NixOS Update' --app-id nh-update nh os switch -au
 end

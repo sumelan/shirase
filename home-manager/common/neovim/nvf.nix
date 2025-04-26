@@ -126,6 +126,12 @@
         };
         git.enable = true;
         lazy.enable = true;
+        terminal.toggleterm = {
+          enable = true;
+          lazygit = {
+            enable = true;
+          };
+        };
         notes.todo-comments.enable = true;
         projects.project-nvim.enable = true;
         snippets.luasnip.enable = true;
