@@ -8,6 +8,7 @@ _: {
     ./firewall.nix
     ./hdds.nix
     ./keyd.nix
+    ./logitech.nix
     ./opentabletdriver.nix
     ./printing.nix
     ./qmk.nix
