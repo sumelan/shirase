@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }:
 let
@@ -28,10 +27,6 @@ in
         ];
       };
     };
-
-    environment.systemPackages = with pkgs; [
-      borgbackup
-    ];
 
     hm.custom.btop.disks = lib.optional cfg.wdelem4 "/media/acer-backups";
   };

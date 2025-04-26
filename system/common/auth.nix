@@ -13,7 +13,7 @@ lib.mkMerge [
       settings = {
         # set true if you test ssh-connection,
         # set false for better security
-        PasswordAuthentication = true;
+        PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
       };
     };
