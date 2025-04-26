@@ -13,7 +13,7 @@
   niri-flake.cache.enable = true;
 
   environment.systemPackages = with pkgs; [
-    xwayland-satellite # need for discord
+    xwayland-satellite
   ];
 
   xdg.portal = {

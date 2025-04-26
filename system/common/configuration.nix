@@ -1,6 +1,4 @@
 {
-  lib,
-  config,
   pkgs,
   host,
   inputs,
@@ -59,14 +57,6 @@
       ];
       fcitx5.waylandFrontend = true;
     };
-  };
-  environment.sessionVariables = {
-    NIX_PROFILES = "${lib.strings.concatStringsSep " " (
-      lib.lists.reverseList config.environment.profiles
-    )}";
-    GTK_IM_MODULE = "fcitx";
-    QT_IM_MODULE = "fcitx";
-    XMODIFIERS = "@im=fcitx";
   };
 
   # Configure keymap in X11
