@@ -166,25 +166,32 @@
         action = focus-workspace-up;
         cooldown-ms = 150;
       };
-      "Mod+Ctrl+WheelScrollDown" = {
+      "Mod+WheelScrollRight" = {
+        action = focus-column-right;
+        cooldown-ms = 150;
+      };
+      "Mod+WheelScrollLeft" = {
+        action = focus-column-left;
+        cooldown-ms = 150;
+      };
+
+      "Mod+Shift+WheelScrollDown" = {
         action = move-column-to-workspace-down;
         cooldown-ms = 150;
       };
-      "Mod+Ctrl+WheelScrollUp" = {
+      "Mod+Shift+WheelScrollUp" = {
         action = move-column-to-workspace-up;
         cooldown-ms = 150;
       };
-      "Mod+Shift+WheelScrollDown".action = focus-column-right;
-      "Mod+Shift+WheelScrollUp".action = focus-column-left;
 
       # Touchpad gestures
-      "Mod+Shift+TouchpadScrollUp".action = move-column-to-workspace-up;
-      "Mod+Shift+TouchpadScrollDown".action = move-column-to-workspace-down;
       "Mod+TouchpadScrollUp".action = focus-workspace-up;
       "Mod+TouchpadScrollDown".action = focus-workspace-down;
-
       "Mod+TouchpadScrollRight".action = focus-column-right;
       "Mod+TouchpadScrollLeft".action = focus-column-left;
+
+      "Mod+Shift+TouchpadScrollUp".action = move-column-to-workspace-up;
+      "Mod+Shift+TouchpadScrollDown".action = move-column-to-workspace-down;
 
       "Mod+Shift+TouchpadScrollRight".action = move-column-right;
       "Mod+Shift+TouchpadScrollLeft".action = move-column-left;

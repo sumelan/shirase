@@ -16,7 +16,7 @@
     btrbk.enable = true;
     distrobox.enable = true;
     hdds.enable = true;
-    logitech.enable = false;
+    logitech.enable = true;
     opentabletdriver.enable = true;
     steam.enable = false;
     qmk.enable = true;

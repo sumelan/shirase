@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  user,
   ...
 }:
 {
@@ -12,11 +13,17 @@
   };
 
   config = lib.mkIf config.custom.alvr.enable {
-    programs.alvr = {
-      enable = true;
-      package = pkgs.alvr;
-      openFirewall = true;
+    programs = {
+      alvr = {
+        enable = true;
+        package = pkgs.alvr;
+        openFirewall = true;
+      };
+      adb = {
+        enable = true;
+      };
     };
+    users.users.${user}.extraGroups = [ "adbusers" ];
 
     custom.persist = {
       home.directories = [
