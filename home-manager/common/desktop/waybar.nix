@@ -176,7 +176,6 @@ in
       # json
       ''
         [
-          ${otherMonitorsConfig}
           {
             "position": "top",
             "layer": "top",

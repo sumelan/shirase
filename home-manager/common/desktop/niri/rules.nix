@@ -9,7 +9,7 @@
     workspaces = lib.mkIf (!isLaptop) {
       "01-huion" = {
         name = "huion";
-        open-on-output = "DP-1";
+        open-on-output = "HDMI-A-2";
       };
     };
 

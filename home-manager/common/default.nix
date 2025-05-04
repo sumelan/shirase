@@ -10,6 +10,7 @@ _: {
     ./cava.nix
     ./eza.nix
     ./git.nix
+    ./goofcord.nix
     ./impermanence.nix
     ./jujutsu.nix
     ./kitty.nix
@@ -22,7 +23,6 @@ _: {
     ./swayimg.nix
     ./terminal.nix
     ./thunar.nix
-    ./webcord.nix
     ./yazi.nix
     ./yt-dlp.nix
     ./zathura.nix

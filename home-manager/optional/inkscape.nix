@@ -22,7 +22,7 @@
           }
         ];
         open-fullscreen = true;
-        open-on-output = "DP-1";
+        open-on-output = "HDMI-A-2";
         opacity = 1.00;
       }
     ];

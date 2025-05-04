@@ -66,7 +66,7 @@
     home.file.".face.icon" = {
       source = pkgs.fetchurl {
         url = "https://avatars.githubusercontent.com/${user}";
-        sha256 = "sha256-DQUW7lM6q5uHDV8ZY6tasDFpLHQ7dz3gaVNrCh4R16U=";
+        sha256 = "sha256-LwDWTjMNZRegUfXnZUqCVCfbHJ0EuNn4toufwC5dgP8=";
       };
     };
 

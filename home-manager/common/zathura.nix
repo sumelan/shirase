@@ -1,4 +1,4 @@
-_:{
+_: {
   programs = {
     zathura = {
       enable = true;
@@ -18,10 +18,17 @@ _:{
         statusbar-v-padding = 0;
         page-padding = 1;
         adjust-open = "best-fit";
-        recolor = true; # invert by default
+        recolor = false;
       };
     };
   };
+
+  programs.niri.settings.window-rules = [
+    {
+      matches = [ { app-id = "^(org.pwmt.zathura)$"; } ];
+      default-column-width.proportion = 0.9;
+    }
+  ];
 
   xdg.mimeApps.defaultApplications = {
     "application/pdf" = "org.pwmt.zathura.desktop";

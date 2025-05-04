@@ -13,7 +13,10 @@
     programs.chromium = {
       enable = true;
       package = pkgs.brave;
-      commandLineArgs = [ "--enable-features=TouchpadOverscrollHistoryNavigation" ];
+      commandLineArgs = [
+        "--enable-features=TouchpadOverscrollHistoryNavigation"
+        "--gtk-version=4"
+      ];
 
       extensions = [
         # AutoPagerize

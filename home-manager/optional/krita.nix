@@ -18,7 +18,7 @@
       {
         matches = [ { app-id = "^(krita)$"; } ];
         open-floating = true;
-        open-on-output = "DP-1";
+        open-on-output = "HDMI-A-2";
         border.enable = false;
         shadow.enable = false;
         opacity = 1.0;

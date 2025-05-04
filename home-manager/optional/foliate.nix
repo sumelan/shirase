@@ -18,9 +18,7 @@ in
     programs.niri.settings.window-rules = [
       {
         matches = [ { app-id = "^(${foliate})$"; } ];
-        default-column-width = {
-          proportion = 0.9;
-        };
+        default-column-width.proportion = 0.9;
       }
     ];
 
