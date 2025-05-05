@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    swayimg
-  ];
+  home.packages = with pkgs; [ swayimg ];
 
   xdg.mimeApps.defaultApplications = {
     "image/jpeg" = "swayimg.desktop";

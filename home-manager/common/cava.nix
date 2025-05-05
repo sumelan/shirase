@@ -1,11 +1,6 @@
 _: {
   programs.cava.enable = true;
 
-  stylix.targets.cava = {
-    enable = true;
-    rainbow.enable = true;
-  };
-
   programs.niri.settings.window-rules = [
     {
       # Mod+C launch cava with app-id
@@ -15,4 +10,9 @@ _: {
       open-floating = true;
     }
   ];
+
+  stylix.targets.cava = {
+    enable = true;
+    rainbow.enable = true;
+  };
 }

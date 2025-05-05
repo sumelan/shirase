@@ -10,7 +10,7 @@
   };
 
   config = lib.mkIf config.custom.vlc.enable {
-    home.packages = [ pkgs.vlc ];
+    home.packages = with pkgs; [ vlc ];
 
     custom.persist = {
       home.directories = [ ".config/vlc" ];

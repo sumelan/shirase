@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    pwvucontrol
-  ];
+  home.packages = with pkgs; [ pwvucontrol ];
 
   programs.niri.settings.window-rules = [
     {

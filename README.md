@@ -1,15 +1,17 @@
 <div align="center">
 
-## Wolborg
+# Wolborg
 
-This is my personal nixos config.  always wip.
+This is my personal nixos config, always wip.
 
 </div>
 
-## Feature
+## Features
+
 ### Btrfs + impermanence
 
-I set 1GB boot and rest is btrfs root(/) volume. My subvolumes under root is like this.
+My config contains 1 GB boot and the rest is btrfs root(/) volumes. Whole
+volumes is like below.
 
 ```sh
 NIXOS
@@ -19,15 +21,21 @@ NIXOS
 ───NIXBOOT
 ```
 
-Btrfs root volume is wiped at each boot via [the scripts](https://guekka.github.io/nixos-server-1/), but /perisit and /cache are remained by [impermanence module](https://github.com/nix-community/impermanence).
+Btrfs root volume is wiped at each boot via
+[the scripts](https://guekka.github.io/nixos-server-1/), but /perisit and /cache
+are remained by
+[impermanence module](https://github.com/nix-community/impermanence).
 
-Plus, my laptop(acer)'s /persist is transferred to my mini pc(sakura)'s hdd over ssh using [btrbk](https://github.com/digint/btrbk).
+Plus, /persist volume of laptop (acer) is transferred to hdd connected to mini
+pc (sakura) over ssh using [btrbk](https://github.com/digint/btrbk).
 
+## Automatic Install Script
 
-## How to Install
-Run the following commands from a terminal on a NixOS live iso / from a tty on the minimal iso.
+Run the following commands from a terminal on a NixOS live iso / from a tty on
+the minimal iso.
 
 From a standard ISO,
+
 ```sh
 sh <(curl -L https://raw.githubusercontent.com/Sumelan/wolborg/main/install.sh)
 ```
@@ -36,10 +44,14 @@ sh <(curl -L https://raw.githubusercontent.com/Sumelan/wolborg/main/install.sh)
 
 - [iynaix/dotfiles](https://github.com/iynaix/dotfiles)
 
-  I shamelessly copied impermanence, install-scripts, and many config from his dotfiles.
+  Shamelessly copied impermanence, install-scripts, and many config from his
+  dotfiles.
 
 - [EdenQwQ's gists](https://gist.github.com/EdenQwQ)
 
-  Wallpaper lutgen and blur feature is from this gist.
+  Desktop config is from this gist.
 
-  ### and many from /unixporn!
+- [MrSom3body/dotfiles](https://github.com/MrSom3body/dotfiles)
+- [Tyler Kelley/ZaneyOS](https://gitlab.com/Zaney/zaneyos)
+
+  Their configs are for hyprland, but should be mantioned.

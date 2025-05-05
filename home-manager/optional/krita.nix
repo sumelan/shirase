@@ -10,9 +10,7 @@
   };
 
   config = lib.mkIf config.custom.krita.enable {
-    home.packages = with pkgs; [
-      krita
-    ];
+    home.packages = with pkgs; [ krita ];
 
     programs.niri.settings.window-rules = [
       {

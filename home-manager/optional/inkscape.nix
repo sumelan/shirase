@@ -12,15 +12,11 @@
   };
 
   config = lib.mkIf config.custom.inkscape.enable {
-    home.packages = [ pkgs.inkscape ];
+    home.packages = with pkgs; [ inkscape ];
 
     programs.niri.settings.window-rules = [
       {
-        matches = [
-          {
-            app-id = "^(org.inkscape.Inkscape)$";
-          }
-        ];
+        matches = [ { app-id = "^(org.inkscape.Inkscape)$"; } ];
         open-fullscreen = true;
         open-on-output = "HDMI-A-2";
         opacity = 1.00;

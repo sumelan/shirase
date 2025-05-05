@@ -21,8 +21,8 @@
           in
           {
             ignore_dbus_inhibit = false;
-            lock_cmd = "hyprlock";
-            # kill hyprlock and change wallpaper
+            lock_cmd = "pidof hyprlock || hyprlock";
+            # kill hyprlock
             unlock_cmd = "pkill -SIGUSR1 hyprlock";
             before_sleep_cmd = beforeSleep [
               "loginctl lock-session"
