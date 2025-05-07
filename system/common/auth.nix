@@ -40,7 +40,10 @@ lib.mkMerge [
   # misc
   {
     security = {
-      sudo = {
+      # Use sudo-rs in place of regular sudo
+      sudo-rs = {
+        enable = true;
+        execWheelOnly = true;
         wheelNeedsPassword = false;
         extraConfig = "Defaults passwd_tries=10";
       };

@@ -35,6 +35,11 @@
 
     custom.persist = {
       home = {
+        files = [
+          ".config/kritadisplayrc"
+          ".config/kritarc"
+          ".config/kritashortcutsrc"
+        ];
         directories = [
           ".local/share/krita"
         ];

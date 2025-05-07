@@ -107,7 +107,7 @@ in
     };
 
     # remote settings
-    security.sudo = lib.mkIf isServer {
+    security.sudo-rs = lib.mkIf isServer {
       extraRules = [
         {
           users = [ "btrbk" ];
