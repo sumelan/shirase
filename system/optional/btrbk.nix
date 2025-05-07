@@ -28,9 +28,9 @@ let
 
   backupMonitor =
     {
+      lib,
       config,
       pkgs,
-      lib,
       ...
     }:
     with lib;
@@ -82,8 +82,7 @@ in
       instances = lib.mkIf isLaptop {
         "${host}_backup" = btrbkRemote "${host}";
       };
-
-      # remote-host settings
+      # remote side ssh command
       sshAccess = lib.mkIf isServer [
         {
           key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINLTwKMBXY3yeYvtgMfFnE2ZJXWGKSyiR/Bx7NVXZqS4 btrbk";

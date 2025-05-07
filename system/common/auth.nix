@@ -17,18 +17,12 @@ lib.mkMerge [
         KbdInteractiveAuthentication = false;
       };
     };
-
-    users.users =
-      let
-        keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA9COFmbT1ntXEV7iyKc32Bf/1FmBbXHchy0kiGBkjR2 sumelan"
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINLTwKMBXY3yeYvtgMfFnE2ZJXWGKSyiR/Bx7NVXZqS4 btrbk"
-        ];
-      in
-      {
-        # path of remote host's authorized_keys
-        ${user}.openssh.authorizedKeys.keys = keys;
-      };
+    users.users = {
+      # path of remote host's authorized_keys
+      ${user}.openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA9COFmbT1ntXEV7iyKc32Bf/1FmBbXHchy0kiGBkjR2 sumelan"
+      ];
+    };
   }
 
   # keyring settings
