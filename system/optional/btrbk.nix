@@ -12,16 +12,18 @@ let
   btrbkRemote = name: {
     onCalendar = "daily";
     settings = {
+      # ssh setup
       ssh_user = "btrbk";
-      ssh_identity = "/var/lib/btrbk/.ssh/btrbk_key";
-      snapshot_preserve_min = "3d";
-      snapshot_preserve = "3d";
-      target_preserve = "3d";
-      stream_compress = "lz4";
+      ssh_identity = "/var/lib/btrbk/.ssh/btrbk_key"; # must be readable by user/group btrbk
       volume."/" = {
         target = "ssh://sakura/media/${name}-backups";
         subvolume = "persist";
       };
+      stream_compress = "lz4";
+      # Retention policy
+      snapshot_preserve_min = "3d";
+      snapshot_preserve = "3d";
+      target_preserve = "3d";
     };
   };
 
@@ -58,7 +60,6 @@ let
             '';
           }
         );
-
       # optional, but this actually forces backup after boot in case laptop was powered off during scheduled event
       # for example, if you scheduled backups daily, your laptop should be powered on at 00:00
       config.systemd.timers = flip mapAttrs' config.services.btrbk.instances (
@@ -68,62 +69,44 @@ let
         }
       );
     };
-
 in
 {
   imports = [ backupMonitor ];
 
   options.custom = with lib; {
-    btrbk = {
-      enable = mkEnableOption "snapshots using btrbk";
-    };
+    btrbk.enable = mkEnableOption "snapshots using btrbk";
   };
 
   config = lib.mkIf config.custom.btrbk.enable {
-    # common settings
-    environment.systemPackages = [ pkgs.lz4 ];
-
+    # define user/group btrbk
     users = {
-      groups.btrbk = { };
       users.btrbk = {
         isSystemUser = true;
+        group = "btrbk";
         shell = lib.mkForce pkgs.bash;
         createHome = true;
         home = "/var/lib/btrbk";
         initialPassword = "password";
         hashedPasswordFile = "/persist/etc/shadow/btrbk";
-        group = "btrbk";
-        openssh.authorizedKeys.keyFiles = [
-          ../../hosts/btrbk_key.pub
-        ];
+        openssh.authorizedKeys.keyFiles = [ ../../hosts/btrbk_key.pub ];
       };
+      groups.btrbk = { };
     };
 
-    # client settings
-    services.btrbk = lib.mkIf isLaptop {
-      instances = {
+    services.btrbk = {
+      # client settings
+      instances = lib.mkIf isLaptop {
         "remote_backup" = btrbkRemote "${host}";
       };
-    };
 
-    # remote settings
-    security.sudo-rs = lib.mkIf isServer {
-      extraRules = [
+      # remote-host settings
+      sshAccess = lib.mkIf isServer [
         {
-          users = [ "btrbk" ];
-          commands = [
-            {
-              command = "${config.system.path}/bin/test";
-              options = [ "NOPASSWD" ];
-            }
-            {
-              command = "${config.system.path}/bin/readlink";
-              options = [ "NOPASSWD" ];
-            }
-            {
-              command = "${config.system.path}/bin/btrfs";
-              options = [ "NOPASSWD" ];
-            }
+          key = import ../../hosts/btrbk_key.pub;
+          roles = [
+            "target"
+            "info"
+            "receive"
           ];
         }
       ];
