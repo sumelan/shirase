@@ -13,7 +13,7 @@ let
     settings = {
       # ssh setup
       ssh_user = "btrbk";
-      ssh_identity = "/etc/btrbk/ssh/sakura"; # must be readable by user/group btrbk
+      ssh_identity = "/var/lib/btrbk/.ssh/btrbk_key"; # must be readable by user/group btrbk
       volume."/" = {
         target = "ssh://sakura/media/${name}-backups";
         subvolume = "persist";
@@ -85,7 +85,7 @@ in
       # remote side ssh command
       sshAccess = lib.mkIf isServer [
         {
-          key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMhQKn6O4EdbFWMHLDohqJEVMnfTi7w1i2Gvj6wVot6I btrbk";
+          key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGww+bXaeTXj6s10G4V8Kz2PqGfI6tU4rd8KfxxoQj9 btrbk";
           roles = [
             "target"
             "info"
@@ -98,7 +98,7 @@ in
     # only client side
     custom.persist = lib.mkIf isLaptop {
       root.directories = [
-        "/etc/btrbk/ssh"
+        "/var/lib/btrbk"
       ];
     };
   };
