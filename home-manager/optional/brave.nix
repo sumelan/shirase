@@ -14,8 +14,11 @@
       enable = true;
       package = pkgs.brave;
       commandLineArgs = [
+        "--enable-features=UseOzonePlatform"
         "--enable-features=TouchpadOverscrollHistoryNavigation"
-        "--gtk-version=4"
+        "--ozone-platform=wayland"
+        "--enable-wayland-ime"
+        "--wayland-text-input-version=3"
       ];
 
       extensions = [

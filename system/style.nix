@@ -9,7 +9,7 @@
     stylix = {
       theme = mkOption {
         type = types.str;
-        default = "catppuccin-mocha";
+        default = "everforest-dark-hard";
       };
     };
   };

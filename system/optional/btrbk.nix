@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   user,
   host,
   isLaptop,
@@ -78,11 +79,15 @@ in
 
   config = lib.mkIf config.custom.btrbk.enable {
     services.btrbk = {
-      # client side
+      # common setting
+      extraPackages = [ pkgs.lz4 ];
+
+      # set remote instance on client side
       instances = lib.mkIf isLaptop {
         "${host}_backup" = btrbkRemote "${host}";
       };
-      # remote side ssh command
+
+      # set ssh command on remote side
       sshAccess = lib.mkIf isServer [
         {
           key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGww+bXaeTXj6s10G4V8Kz2PqGfI6tU4rd8KfxxoQj9 btrbk";
