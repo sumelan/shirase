@@ -85,7 +85,7 @@ in
       # remote side ssh command
       sshAccess = lib.mkIf isServer [
         {
-          key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINLTwKMBXY3yeYvtgMfFnE2ZJXWGKSyiR/Bx7NVXZqS4 btrbk";
+          key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMhQKn6O4EdbFWMHLDohqJEVMnfTi7w1i2Gvj6wVot6I btrbk";
           roles = [
             "target"
             "info"
@@ -95,7 +95,8 @@ in
       ];
     };
 
-    custom.persist = {
+    # only client side
+    custom.persist = lib.mkIf isLaptop {
       root.directories = [
         "/etc/btrbk/ssh"
       ];

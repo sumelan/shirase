@@ -2,6 +2,7 @@
   lib,
   config,
   user,
+  isServer,
   ...
 }:
 lib.mkMerge [
@@ -17,12 +18,16 @@ lib.mkMerge [
         KbdInteractiveAuthentication = false;
       };
     };
-    users.users = {
-      # path of remote host's authorized_keys
-      ${user}.openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA9COFmbT1ntXEV7iyKc32Bf/1FmBbXHchy0kiGBkjR2 sumelan"
-      ];
-    };
+    users.users =
+      let
+        keyFiles = [
+          ../../hosts/sakura/sakura.pub
+        ];
+      in
+      {
+        # path of remote host's authorized_keys
+        ${user}.openssh.authorizedKeys.keyFiles = lib.mkIf isServer keyFiles;
+      };
   }
 
   # keyring settings
@@ -37,7 +42,6 @@ lib.mkMerge [
       # Use sudo-rs in place of regular sudo
       sudo-rs = {
         enable = true;
-        execWheelOnly = true;
         wheelNeedsPassword = false;
         extraConfig = "Defaults passwd_tries=10";
       };
