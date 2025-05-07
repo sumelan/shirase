@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   user,
   host,
   isLaptop,
@@ -14,7 +13,7 @@ let
     settings = {
       # ssh setup
       ssh_user = "btrbk";
-      ssh_identity = "/var/lib/btrbk/.ssh/btrbk_key"; # must be readable by user/group btrbk
+      ssh_identity = "/etc/btrbk/ssh/sakura"; # must be readable by user/group btrbk
       volume."/" = {
         target = "ssh://sakura/media/${name}-backups";
         subvolume = "persist";
@@ -78,31 +77,16 @@ in
   };
 
   config = lib.mkIf config.custom.btrbk.enable {
-    # define user/group btrbk
-    users = {
-      users.btrbk = {
-        isSystemUser = true;
-        group = "btrbk";
-        shell = lib.mkForce pkgs.bash;
-        createHome = true;
-        home = "/var/lib/btrbk";
-        initialPassword = "password";
-        hashedPasswordFile = "/persist/etc/shadow/btrbk";
-        openssh.authorizedKeys.keyFiles = [ ../../hosts/btrbk_key.pub ];
-      };
-      groups.btrbk = { };
-    };
-
     services.btrbk = {
-      # client settings
+      # client side
       instances = lib.mkIf isLaptop {
-        "remote_backup" = btrbkRemote "${host}";
+        "${host}_backup" = btrbkRemote "${host}";
       };
 
       # remote-host settings
       sshAccess = lib.mkIf isServer [
         {
-          key = import ../../hosts/btrbk_key.pub;
+          key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINLTwKMBXY3yeYvtgMfFnE2ZJXWGKSyiR/Bx7NVXZqS4 btrbk";
           roles = [
             "target"
             "info"
@@ -114,7 +98,7 @@ in
 
     custom.persist = {
       root.directories = [
-        "/var/lib/btrbk"
+        "/etc/btrbk/ssh"
       ];
     };
   };

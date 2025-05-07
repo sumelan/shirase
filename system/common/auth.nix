@@ -13,21 +13,21 @@ lib.mkMerge [
       settings = {
         # set true if you test ssh-connection,
         # set false for better security
-        PasswordAuthentication = false;
+        PasswordAuthentication = true;
         KbdInteractiveAuthentication = false;
       };
     };
 
     users.users =
       let
-        keyFiles = [
-          ../../hosts/sakura.pub
+        keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA9COFmbT1ntXEV7iyKc32Bf/1FmBbXHchy0kiGBkjR2 sumelan"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINLTwKMBXY3yeYvtgMfFnE2ZJXWGKSyiR/Bx7NVXZqS4 btrbk"
         ];
       in
       {
-        # path of remote host's authorized_keys file
-        root.openssh.authorizedKeys.keyFiles = keyFiles;
-        ${user}.openssh.authorizedKeys.keyFiles = keyFiles;
+        # path of remote host's authorized_keys
+        ${user}.openssh.authorizedKeys.keys = keys;
       };
   }
 
