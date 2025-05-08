@@ -31,6 +31,12 @@
 
   # SystemModule Options
   custom = {
+    stylix = {
+      colorTheme = "catppuccin-mocha";
+      polarity = "dark";
+    };
+
+    # common
     btrbk.enable = true;
     distrobox.enable = true;
   };

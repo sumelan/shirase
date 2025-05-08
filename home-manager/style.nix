@@ -40,23 +40,24 @@
         applications = 12;
         terminal = 11;
         desktop = 12;
-        popups = if isLaptop then 11 else 12;
+        popups = if isLaptop then 10 else 12;
       };
     };
 
     iconTheme = {
       enable = true;
-      package = pkgs.reversal-icon-theme;
-      dark = "Reversal";
-      light = "Reversal-dark";
+      package = pkgs.tela-icon-theme;
+      light = "Tela-orange-light";
+      dark = "Tela-orange-dark";
     };
   };
 
-  # other non-default font package
+  # other font packages
   home.packages = with pkgs; [
+    # japanese
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
-    # waybar and hyprlock
+    # other nerd fonts
     maple-mono.NF
   ];
 }

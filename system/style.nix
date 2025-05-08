@@ -7,9 +7,13 @@
 {
   options.custom = with lib; {
     stylix = {
-      theme = mkOption {
+      colorTheme = mkOption {
         type = types.str;
-        default = "everforest-dark-hard";
+        default = "catppuccin-mocha";
+      };
+      polarity = mkOption {
+        type = types.str;
+        default = "dark";
       };
     };
   };
@@ -18,8 +22,8 @@
     stylix = {
       enable = true;
       autoEnable = false;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.custom.stylix.theme}.yaml";
-      polarity = "dark";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.custom.stylix.colorTheme}.yaml";
+      polarity = config.custom.stylix.polarity;
 
       targets = {
         console.enable = true;
