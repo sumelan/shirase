@@ -9,6 +9,8 @@
         viAlias = true;
         vimAlias = true;
 
+        lsp.enable = true;
+
         theme = {
           enable = true;
           transparent = false;
@@ -77,7 +79,6 @@
         };
 
         languages = {
-          enableLSP = true;
           enableFormat = true;
           enableTreesitter = true;
 
