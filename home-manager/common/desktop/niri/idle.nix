@@ -17,14 +17,16 @@
       settings = {
         general =
           let
-            beforeSleep = l: lib.concatStringsSep "; " l;
+            multiCommands = l: lib.concatStringsSep "; " l;
           in
           {
             ignore_dbus_inhibit = false;
+            # exec hyprlock unless already running
             lock_cmd = "pidof hyprlock || hyprlock";
             # kill hyprlock
             unlock_cmd = "pkill -SIGUSR1 hyprlock";
-            before_sleep_cmd = beforeSleep [
+            # stop playing when lock-session
+            before_sleep_cmd = multiCommands [
               "loginctl lock-session"
               "playerctl pause"
             ];
