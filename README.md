@@ -8,21 +8,24 @@ This is my personal nixos config, always wip.
 
 ## Features
 
-### Btrfs + impermanence
+### Btrfs + Impermanence
 
-My config contains 1 GB boot and the rest is btrfs root(/) volumes. Whole
-volumes is like below.
+My nixos has 1 GB for boot and the rest is btrfs root volumes. Whole volumes is
+like below.
 
 ```sh
-NIXOS
-├── nix
-├── persist
-└── cache
-───NIXBOOT
+nvme0n1
+  ├── NIXOS
+  │     ├── /nix
+  │     ├── /persist
+  │     ├── /cache
+  │     ├── /root
+  │     └── /root-blank
+  └── NIXBOOT
 ```
 
 Btrfs root volume is wiped at each boot via
-[the scripts](https://guekka.github.io/nixos-server-1/), but /perisit and /cache
+[the script](https://guekka.github.io/nixos-server-1/), but /perisit and /cache
 are remained by
 [impermanence module](https://github.com/nix-community/impermanence).
 
@@ -51,7 +54,7 @@ sh <(curl -L https://raw.githubusercontent.com/Sumelan/wolborg/main/install.sh)
 
   Desktop config is from this gist.
 
-- [MrSom3body/dotfiles](https://github.com/MrSom3body/dotfiles)
-- [Tyler Kelley/ZaneyOS](https://gitlab.com/Zaney/zaneyos)
+- [MrSom3body/dotfiles](https://github.com/MrSom3body/dotfiles) and
+  [Tyler Kelley/ZaneyOS](https://gitlab.com/Zaney/zaneyos)
 
-  Their configs are for hyprland, but should be mantioned.
+  Their configs are for hyprland, but should be mentioned.
