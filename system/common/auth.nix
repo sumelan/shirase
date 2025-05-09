@@ -19,7 +19,7 @@
   users.users =
     let
       pubKeys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA9COFmbT1ntXEV7iyKc32Bf/1FmBbXHchy0kiGBkjR2 sumelan"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM0zoNZpdcUfZ/Nf8Nj248D3wGlQCLld3LjPGrA6zzXs sumelan"
       ];
     in
     {
