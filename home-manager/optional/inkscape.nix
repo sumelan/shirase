@@ -19,7 +19,7 @@
         matches = [ { app-id = "^(org.inkscape.Inkscape)$"; } ];
         open-fullscreen = true;
         open-on-output = "HDMI-A-2";
-        opacity = 1.00;
+        opacity = 1.0;
       }
     ];
 

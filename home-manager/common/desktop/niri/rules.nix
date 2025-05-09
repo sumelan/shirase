@@ -35,7 +35,7 @@
             app-id = "^(org.inkscape.Inkscape)$";
           }
         ];
-        opacity = 0.95;
+        opacity = config.stylix.opacity.desktop;
       }
       {
         matches = [ { is-focused = false; } ];
@@ -47,7 +47,7 @@
             app-id = "^(org.inkscape.Inkscape)$";
           }
         ];
-        opacity = 0.85;
+        opacity = config.stylix.opacity.desktop * 0.9;
       }
     ];
 

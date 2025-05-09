@@ -214,19 +214,19 @@
         allow-when-locked = true;
       };
       "XF86AudioPlay" = {
-        action = spawn "playerctl" "play-pause";
+        action = spawn "swayosd-client" "--playerctl=play-pause";
         allow-when-locked = true;
       };
       "XF86AudioPause" = {
-        action = spawn "playerctl" "play-pause";
+        action = spawn "swayosd-client" "--playerctl=play-pause";
         allow-when-locked = true;
       };
       "XF86AudioNext" = {
-        action = spawn "playerctl" "next";
+        action = spawn "swayosd-client" "--playerctl=next";
         allow-when-locked = true;
       };
       "XF86AudioPrev" = {
-        action = spawn "playerctl" "previous";
+        action = spawn "swayosd-client" "--playerctl=previous";
         allow-when-locked = true;
       };
 
@@ -238,6 +238,11 @@
       "XF86MonBrightnessDown" = {
         action = spawn "swayosd-client" "--brightness" "lower";
         allow-when-locked = true;
+      };
+
+      # fcitx5
+      "Ctrl+Space" = {
+        action = sh "fcitx5-remote -t && swayosd-client --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard";
       };
     };
 }

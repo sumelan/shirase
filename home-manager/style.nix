@@ -50,6 +50,12 @@
       light = "Tela-orange-light";
       dark = "Tela-orange-dark";
     };
+
+    opacity = {
+      desktop = 0.95;
+      popups = 0.85;
+      terminal = 1.0;
+    };
   };
 
   # other font packages

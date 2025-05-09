@@ -10,13 +10,20 @@
     ".config/swayosd/style.scss".text = with config.lib.stylix.colors.withHashtag; ''
       window {
         border-radius: 999px;
-        border: none;
+        border: 2px solid alpha(${base09}, ${toString config.stylix.opacity.popups});
         background: alpha(${base00}, ${toString config.stylix.opacity.popups});
       }
 
       image,
       label {
         color: ${base05};
+      }
+
+      progressbar {
+        min-height: 6px;
+        border-radius: 999px;
+        background: transparent;
+        border: none;
       }
 
       progressbar:disabled,

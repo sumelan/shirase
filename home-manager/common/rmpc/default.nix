@@ -9,12 +9,9 @@
     ./theme.nix
   ];
 
-  home.packages = with pkgs; [
-    rmpc
-    playerctl
-  ];
+  home.packages = with pkgs; [ rmpc ];
 
-  services= {
+  services = {
     mpd = {
       enable = true;
       musicDirectory = "/home/${user}/Music";
@@ -33,10 +30,6 @@
       enable = true;
       # enable song change notifications
       notifications = true;
-    };
-    playerctld = {
-      enable = true;
-      package = pkgs.playerctl;
     };
   };
 
@@ -62,7 +55,7 @@
   custom.persist = {
     home = {
       directories = [
-      ".config/mpd"
+        ".config/mpd"
       ];
       cache.directories = [
         # yt-dlp cache

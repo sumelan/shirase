@@ -33,7 +33,7 @@
       }
       {
         command = [
-          "swww-daemon"
+          "${pkgs.swww}/bin/swww-daemon"
         ];
       }
       {

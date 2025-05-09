@@ -6,7 +6,7 @@
   ...
 }:
 let
-  opacity = lib.toHexString (builtins.ceil (0.85 * 255));
+  opacity = lib.toHexString (builtins.ceil (config.stylix.opacity.popups * 255));
 in
 {
   home.packages = [
