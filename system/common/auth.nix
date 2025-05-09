@@ -12,7 +12,7 @@
     # disable password auth
     settings = {
       # NOTE: set false for better security
-      PasswordAuthentication = false;
+      PasswordAuthentication = true;
       KbdInteractiveAuthentication = false;
     };
   };

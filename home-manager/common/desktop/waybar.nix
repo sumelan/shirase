@@ -242,7 +242,7 @@ in
           border-radius: 5px;
           border-width: 2px;
           border-style: solid;
-          border-color: @base07;
+          border-color: @base09;
         }
 
         #image,
@@ -289,7 +289,7 @@ in
 
         #workspaces button {
           font-size: 0px;
-          background-color: @base07;
+          background-color: @base06;
           padding: 0px 1px;
           margin: 0px 4px;
           border-radius: 20px;
@@ -298,7 +298,7 @@ in
 
         #workspaces button.active {
           font-size: 1px;
-          background-color: @base0E;
+          background-color: @base09;
           border-radius: 20px;
           min-width: 30px;
           background-size: 400% 400%;
@@ -311,7 +311,7 @@ in
 
         #window {
           color: @base00;
-          background: radial-gradient(circle, @base05 0%, @base07 100%);
+          background: radial-gradient(circle, @base05 0%, @base09 100%);
           background-size: 400% 400%;
           animation: gradient_f 40s ease-in-out infinite;
           transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
