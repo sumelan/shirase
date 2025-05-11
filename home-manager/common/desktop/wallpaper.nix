@@ -19,7 +19,6 @@
       };
       Timer = {
         Persistent = true;
-        OnBootSec = "10 sec";
         OnCalendar = "*:00/12";
       };
     };
@@ -43,9 +42,12 @@
               ] ++ (lib.optional (!isLaptop) (builtins.toString config.lib.monitors.otherMonitorsNames));
             in
             wallMap nameList;
+
           # possible race condition, introduce a small delay before starting
           # https://github.com/LGFae/swww/issues/317#issuecomment-2131282832
           ExecStartPre = "${lib.getExe' pkgs.coreutils "sleep"} 1";
+          # wait transitioning ends
+          ExecStartPost = "${lib.getExe' pkgs.coreutils "sleep"} 1";
         };
       };
     };
