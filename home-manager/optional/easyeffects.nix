@@ -15,6 +15,7 @@
 
   config = lib.mkIf config.custom.easyEffects.enable {
     services.easyeffects = {
+      # NOTE: 'programs.dconf.enable = true' is necessary for theb daemon to work correctly
       enable = true;
       package = pkgs.easyeffects;
     };

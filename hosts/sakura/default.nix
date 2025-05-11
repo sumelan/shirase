@@ -7,7 +7,7 @@
     common-gpu-amd
   ];
 
-  # SystemModule Options.
+  # SystemModule Options
   custom = {
     # style
     stylix = {

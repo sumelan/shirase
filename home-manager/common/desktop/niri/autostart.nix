@@ -33,16 +33,6 @@
       }
       {
         command = [
-          "${pkgs.swww}/bin/swww-daemon"
-        ];
-      }
-      {
-        command = [
-          "wallsetter"
-        ];
-      }
-      {
-        command = [
           "brightnessctl"
           "set"
           "5%"
@@ -59,6 +49,12 @@
       {
         command = [
           "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+        ];
+      }
+      {
+        command = [
+          "waypaper"
+          "--restore"
         ];
       }
     ];

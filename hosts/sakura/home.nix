@@ -14,7 +14,7 @@ _: {
       };
       rotation = 0;
     };
-    "HDMI-A-2" = {
+    "DP-1" = {
       scale = 1.0;
       mode = {
         width = 2560;
@@ -22,8 +22,8 @@ _: {
         refresh = 59.951;
       };
       position = {
-        x = 0;
-        y = 1440;
+        x = 2560;
+        y = 0;
       };
       rotation = 0;
     };

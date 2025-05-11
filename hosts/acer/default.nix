@@ -31,6 +31,7 @@
 
   # SystemModule Options
   custom = {
+    # style
     stylix = {
       colorTheme = "catppuccin-mocha";
       polarity = "dark";
