@@ -19,6 +19,7 @@
       };
       Timer = {
         Persistent = true;
+        OnBootSec = "10 sec";
         OnCalendar = "*:00/12";
       };
     };
@@ -35,13 +36,13 @@
           Type = "oneshot";
           ExecStart =
             let
-              wallCommand =
-                map (x: "${lib.getExe' pkgs.waypaper "waypaper"} --random --monitor " + x) [
-                  config.lib.monitors.mainMonitorName
-                ]
-                ++ (lib.optional (!isLaptop) (builtins.toString config.lib.monitors.otherMonitorsNames));
+              wallMap =
+                nameList: map (x: "${lib.getExe' pkgs.waypaper "waypaper"} --random --monitor " + x) nameList;
+              nameList = [
+                config.lib.monitors.mainMonitorName
+              ] ++ (lib.optional (!isLaptop) (builtins.toString config.lib.monitors.otherMonitorsNames));
             in
-            wallCommand;
+            wallMap nameList;
           # possible race condition, introduce a small delay before starting
           # https://github.com/LGFae/swww/issues/317#issuecomment-2131282832
           ExecStartPre = "${lib.getExe' pkgs.coreutils "sleep"} 1";
