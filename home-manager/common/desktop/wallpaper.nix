@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  isLaptop,
   ...
 }:
 {
@@ -34,10 +35,11 @@
           Type = "oneshot";
           ExecStart =
             let
-              wallCommand = map (x: "${lib.getExe' pkgs.waypaper "waypaper"} --random --monitor " + x) [
-                config.lib.monitors.mainMonitorName
-                (builtins.toString config.lib.monitors.otherMonitorsNames)
-              ];
+              wallCommand =
+                map (x: "${lib.getExe' pkgs.waypaper "waypaper"} --random --monitor " + x) [
+                  config.lib.monitors.mainMonitorName
+                ]
+                ++ (lib.optional (!isLaptop) (builtins.toString config.lib.monitors.otherMonitorsNames));
             in
             wallCommand;
           # possible race condition, introduce a small delay before starting
