@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, self, ... }:
 {
   imports = [
     ./niri
@@ -10,16 +10,22 @@
   ];
 
   home.packages = with pkgs; [
+    #backlight
+    brightnessctl
+
     # music
     playerctl
 
-    # clipboard history
-    cliphist
+    # clipboard
     wl-clipboard
+    cliphist
 
-    # screencast
+    #xwayland
+    xwayland-satellite
+
+    #screen-record
     wl-screenrec
-    procps
+    self.packages.${system}.screencast
   ];
 
   services.playerctld = {

@@ -4,6 +4,7 @@
     with config.lib.niri.actions;
     let
       sh = spawn "sh" "-c";
+      osdCommand = "swayosd-client --monitor $(niri msg -j outputs | jq -r '.[] | .name')";
     in
     {
       # shows a list of important hotkeys.
@@ -198,51 +199,51 @@
 
       # audio
       "XF86AudioRaiseVolume" = {
-        action = spawn "swayosd-client" "--output-volume" "raise";
+        action = sh "${osdCommand} --output-volume raise";
         allow-when-locked = true; # work even when the session is locked
       };
       "XF86AudioLowerVolume" = {
-        action = spawn "swayosd-client" "--output-volume" "lower";
+        action = sh "${osdCommand} --output-volume lower";
         allow-when-locked = true;
       };
       "XF86AudioMute" = {
-        action = spawn "swayosd-client" "--output-volume" "mute-toggle";
+        action = sh "${osdCommand} --output-volume mute-toggle";
         allow-when-locked = true;
       };
       "XF86AudioMicMute" = {
-        action = spawn "swayosd-client" "--input-volume" "mute-toggle";
+        action = sh "${osdCommand} --input-volume mute-toggle";
         allow-when-locked = true;
       };
       "XF86AudioPlay" = {
-        action = spawn "swayosd-client" "--playerctl=play-pause";
+        action = sh "${osdCommand} --playerctl=play-pause";
         allow-when-locked = true;
       };
       "XF86AudioPause" = {
-        action = spawn "swayosd-client" "--playerctl=play-pause";
+        action = sh "${osdCommand} --playerctl=play-pause";
         allow-when-locked = true;
       };
       "XF86AudioNext" = {
-        action = spawn "swayosd-client" "--playerctl=next";
+        action = sh "${osdCommand} --playerctl=next";
         allow-when-locked = true;
       };
       "XF86AudioPrev" = {
-        action = spawn "swayosd-client" "--playerctl=previous";
+        action = sh "${osdCommand} --playerctl=previous";
         allow-when-locked = true;
       };
 
       # brightness
       "XF86MonBrightnessUp" = {
-        action = spawn "swayosd-client" "--brightness" "raise";
+        action = sh "${osdCommand} --brightness raise";
         allow-when-locked = true;
       };
       "XF86MonBrightnessDown" = {
-        action = spawn "swayosd-client" "--brightness" "lower";
+        action = sh "${osdCommand} --brightness lower";
         allow-when-locked = true;
       };
 
       # fcitx5
       "Ctrl+Space" = {
-        action = sh "fcitx5-remote -t && swayosd-client --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard";
+        action = sh "fcitx5-remote -t && ${osdCommand} --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard";
       };
     };
 }

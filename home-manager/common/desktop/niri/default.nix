@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  self,
-  ...
-}:
+{ config, ... }:
 {
   imports = [
     ./animations.nix
@@ -14,8 +9,6 @@
     ./monitors.nix
     ./rules.nix
   ];
-
-  home.packages = [ self.packages.${pkgs.system}.screencast ];
 
   # start niri-session
   custom.autologinCommand = "niri-session";

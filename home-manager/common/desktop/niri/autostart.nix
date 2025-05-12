@@ -10,13 +10,16 @@
         ];
       }
       {
-        command = [
-          "nm-applet"
-        ];
+        command = [ "nm-applet" ];
+      }
+      {
+        command = [ "blueman-applet" ];
       }
       {
         command = [
-          "blueman-applet"
+          "fcitx5"
+          "-d"
+          "-r"
         ];
       }
       {
@@ -26,16 +29,7 @@
         ];
       }
       {
-        command = [
-          "xwayland-satellite"
-        ];
-      }
-      {
-        command = [
-          "fcitx5"
-          "-d"
-          "-r"
-        ];
+        command = [ "xwayland-satellite" ];
       }
       {
         command = [

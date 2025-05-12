@@ -12,10 +12,6 @@
   };
   niri-flake.cache.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    xwayland-satellite
-  ];
-
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];

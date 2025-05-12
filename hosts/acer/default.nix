@@ -1,17 +1,9 @@
-{
-  pkgs,
-  inputs,
-  ...
-}:
+{ inputs, ... }:
 {
   imports = with inputs.nixos-hardware.nixosModules; [
     common-pc-laptop
     common-pc-laptop-ssd
     common-cpu-intel
-  ];
-
-  environment.systemPackages = with pkgs; [
-    brightnessctl
   ];
 
   services = {
