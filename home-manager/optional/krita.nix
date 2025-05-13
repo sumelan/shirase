@@ -16,7 +16,7 @@
       {
         matches = [ { app-id = "^(krita)$"; } ];
         open-floating = true;
-        open-on-output = "HDMI-A-2";
+        open-on-output = builtins.toString config.lib.monitors.otherMonitorsNames;
         border.enable = false;
         shadow.enable = false;
         opacity = 1.0;

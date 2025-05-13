@@ -3,8 +3,8 @@ let
   plugins-repo = pkgs.fetchFromGitHub {
     owner = "yazi-rs";
     repo = "plugins";
-    rev = "4b027c79371af963d4ae3a8b69e42177aa3fa6ee";
-    sha256 = "sha256-auGNSn6tX72go7kYaH16hxRng+iZWw99dKTTUN91Cow=";
+    rev = "55bf6996ada3df4cbad331ce3be0c1090769fc7c";
+    hash = "sha256-v/C+ZBrF1ghDt1SXpZcDELmHMVAqfr44iWxzUWynyRk=";
   };
 in
 {
@@ -52,13 +52,13 @@ in
       chmod = "${plugins-repo}/chmod.yazi";
       full-border = "${plugins-repo}/full-border.yazi";
       git = "${plugins-repo}/git.yazi";
-      max-preview = "${plugins-repo}/max-preview.yazi";
+      toggle-pane = "${plugins-repo}/toggle-pane.yazi";
       mount = "${plugins-repo}/mount.yazi";
       starship = pkgs.fetchFromGitHub {
         owner = "Rolv-Apneseth";
         repo = "starship.yazi";
-        rev = "f6939fbdbc3fdfcdc2a80251841e429e0cd5cf3c";
-        sha256 = "sha256-5QQsFozbulgLY/Gl6QuKSOTtygULveoRD49V00e0WOw=";
+        rev = "6fde3b2d9dc9a12c14588eb85cf4964e619842e6";
+        hash = "sha256-+CSdghcIl50z0MXmFwbJ0koIkWIksm3XxYvTAwoRlDY=";
       };
     };
 
@@ -77,7 +77,7 @@ in
         }
         {
           on = "T";
-          run = "plugin --sync max-preview";
+          run = "plugin toggle-pane max-preview";
           desc = "Maximize or restore the preview pane";
         }
         {

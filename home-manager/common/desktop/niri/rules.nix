@@ -9,7 +9,7 @@
     workspaces = lib.mkIf (!isLaptop) {
       "01-huion" = {
         name = "huion";
-        open-on-output = "HDMI-A-2";
+        open-on-output = builtins.toString config.lib.monitors.otherMonitorsNames;
       };
     };
 

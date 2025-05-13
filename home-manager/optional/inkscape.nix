@@ -18,7 +18,7 @@
       {
         matches = [ { app-id = "^(org.inkscape.Inkscape)$"; } ];
         open-fullscreen = true;
-        open-on-output = "HDMI-A-2";
+        open-on-output = builtins.toString config.lib.monitors.otherMonitorsNames;
         opacity = 1.0;
       }
     ];
