@@ -20,7 +20,7 @@
     ];
 
     custom.persist = {
-      home.directories = [
+      home.cache.directories = [
         ".cache/com.github.johnfactotum.Foliate"
       ];
     };

@@ -62,9 +62,6 @@ in
     # clear /tmp on boot
     boot.tmp.cleanOnBoot = true;
 
-    # rollback results in sudo lectures after each reboot
-    # security.sudo.extraConfig = "Defaults lecture=never";
-
     # setup persistence
     environment.persistence = {
       "/persist" = {

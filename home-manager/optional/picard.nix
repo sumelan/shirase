@@ -15,10 +15,14 @@
     home.packages = with pkgs; [ picard ];
 
     custom.persist = {
-      home.directories = [
-        ".config/MusicBrainz"
-        ".cache/MusicBrainz"
-      ];
+      home = {
+        directories = [
+          ".config/MusicBrainz"
+        ];
+        cache.directories = [
+          ".cache/MusicBrainz"
+        ];
+      };
     };
   };
 }
