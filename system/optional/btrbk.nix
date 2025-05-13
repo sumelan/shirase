@@ -26,12 +26,12 @@
             volume."/" = {
               target = "ssh://sakura/media/${host}-backups";
               subvolume = "persist";
-              snapshot_dir = "btrbk_snapshots";
             };
             # ssh setup
             ssh_user = "btrbk";
             ssh_identity = "/var/lib/btrbk/.ssh/btrbk_key"; # must be readable by user/group btrbk
             stream_compress = "lz4";
+            snapshot_dir = "btrbk_snapshots";
             # retention policy
             snapshot_preserve_min = "3d";
             snapshot_preserve = "3d";
@@ -47,9 +47,9 @@
             volume."/" = {
               target = "/media/${host}-backups";
               subvolume = "persist";
-              snapshot_dir = "btrbk_snapshots";
             };
             stream_compress = "lz4";
+            snapshot_dir = "btrbk_snapshots";
             # retention policy
             snapshot_preserve_min = "3d";
             snapshot_preserve = "3d";
