@@ -10,7 +10,10 @@
         vimAlias = true;
 
         lsp.enable = true;
-
+        clipboard = {
+          enable = true;
+          registers = "unnamedplus";
+        };
         theme = {
           enable = true;
           transparent = false;
@@ -23,7 +26,6 @@
           tabstop = 2;
           shiftwidth = 2;
         };
-        useSystemClipboard = true;
         preventJunkFiles = true;
         filetree.nvimTree.setupOpts = {
           view = {
