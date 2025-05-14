@@ -46,9 +46,9 @@
 
     iconTheme = {
       enable = true;
-      package = pkgs.tela-icon-theme;
-      light = "Tela-orange-light";
-      dark = "Tela-orange-dark";
+      package = pkgs.qogir-icon-theme;
+      light = "Qogir-Ubuntu-Light";
+      dark = "Qogir-Ubuntu-Dark";
     };
 
     opacity = {

@@ -35,7 +35,7 @@ _: {
     foliate.enable = true;
     inkscape.enable = true;
     krita.enable = true;
-    thunderbird.enable = true;
+    thunderbird.enable = false;
     youtube-music.enable = true;
   };
 }

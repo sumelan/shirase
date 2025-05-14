@@ -8,9 +8,9 @@ _: {
     ./btop.nix
     ./blueman-applet.nix
     ./cava.nix
+    ./discord.nix
     ./eza.nix
     ./git.nix
-    ./goofcord.nix
     ./impermanence.nix
     ./jujutsu.nix
     ./kitty.nix

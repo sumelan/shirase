@@ -25,7 +25,7 @@
     opentabletdriver.enable = true;
     steam.enable = false;
     qmk.enable = true;
-    usb-audio.enable = true;
+    alsa.enable = true;
 
     # server
     audiobookshelf = {

@@ -6,30 +6,28 @@
   ...
 }:
 let
-  cfg = config.custom.usb-audio;
+  cfg = config.custom.alsa;
 in
 {
   options.custom = with lib; {
-    usb-audio = {
-      enable = mkEnableOption "usb-dac and speaker";
-      ifi-uno = {
-        enable = mkEnableOption "using ifi-uno";
+    alsa = {
+      enable = mkEnableOption "Advanced Linux Sound Architecture";
+      devices = {
+        ifi-uno.enable = mkEnableOption "using ifi-uno";
       };
     };
   };
 
   config = lib.mkIf cfg.enable {
     # ALSA settings
-    environment.systemPackages = with pkgs; [
-      alsa-utils
-    ];
-
+    environment.systemPackages = with pkgs; [ alsa-utils ];
     users.users.${user}.extraGroups = [ "audio" ];
 
     # device specific pipewire config
-    # services.pipewire.extraConfig = lib.mkIf cfg.ifi-uno.enable {
+    # NOTE:spotify refuse to play when above 192 kHz
+
+    # services.pipewire.extraConfig = lib.mkIf cfg.devices.ifi-uno.enable {
     # pipewire = {
-    # NOTE:spotify refuse to play when above 192 kHz\
 
     # "10-clock-rate" = {
     #  "context.properties" = {
