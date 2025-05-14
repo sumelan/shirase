@@ -43,7 +43,7 @@
                 subvolume = {
                   persist = {
                     group = "remote-persist"; # for command line filtering
-                    snapshot_dir = "btrbk";
+                    snapshot_dir = "snapshots";
                     snapshot_name = "presist";
                   };
                 };
@@ -60,7 +60,7 @@
                 subvolume = {
                   persist = {
                     group = "local-persist";
-                    snapshot_dir = "btrbk";
+                    snapshot_dir = "snapshots";
                     snapshot_name = "persist";
                   };
                 };
@@ -125,7 +125,7 @@
           "/var/lib/btrbk/.ssh"
         ];
         cache.directories = [
-          "/btrbk"
+          "/snapshots"
         ];
       };
     };
