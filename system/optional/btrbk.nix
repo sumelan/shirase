@@ -14,64 +14,74 @@
   };
 
   config = lib.mkIf config.custom.btrbk.enable {
-    services.btrbk = {
-      # common setting
-      extraPackages = [ pkgs.lz4 ];
+    services.btrbk =
+      let
+        basicBtrbk = {
+          stream_compress = "lz4";
+          incremental_resolve = "directory";
+          snapshot_create = "onchange";
+          # retention policy
+          snapshot_preserve_min = "3d";
+          snapshot_preserve = "3d";
+          target_preserve_min = "no";
+          target_preserve = "3d";
+        };
+      in
+      {
+        # common setting
+        extraPackages = [ pkgs.lz4 ];
 
-      # set instance on client side
-      instances = {
-        "remote_backup" = lib.mkIf isLaptop {
-          onCalendar = "daily";
-          settings = {
-            volume."/" = {
-              target = "ssh://sakura/media/${host}-backups";
-              subvolume = "persist";
+        # set instance on client side
+        instances = {
+          "remote-backup" = lib.mkIf isLaptop {
+            onCalendar = "daily";
+            settings = basicBtrbk // {
+              ssh_user = "btrbk";
+              ssh_identity = "/var/lib/btrbk/.ssh/btrbk_key"; # must be readable by user/group btrbk
+              volume."/" = {
+                group = "remote";
+                subvolume = {
+                  persist = {
+                    group = "remote-persist"; # for command line filtering
+                    snapshot_dir = "btrbk";
+                    snapshot_name = "presist";
+                  };
+                };
+                target = "ssh://sakura/media/${host}-backups";
+              };
             };
-            # ssh setup
-            ssh_user = "btrbk";
-            ssh_identity = "/var/lib/btrbk/.ssh/btrbk_key"; # must be readable by user/group btrbk
-            stream_compress = "lz4";
-            snapshot_dir = "btrbk_snapshots";
-            # retention policy
-            snapshot_preserve_min = "3d";
-            snapshot_preserve = "3d";
-            snapshot_create = "ondemand"; # create snapshots only if the backup disk is attached
-            target_preserve_min = "no";
-            target_preserve = "3d";
+          };
+
+          "local-backup" = lib.mkIf isServer {
+            onCalendar = "daily";
+            settings = basicBtrbk // {
+              volume."/" = {
+                group = "local";
+                subvolume = {
+                  persist = {
+                    group = "local-persist";
+                    snapshot_dir = "btrbk";
+                    snapshot_name = "persist";
+                  };
+                };
+                target = "/media/${host}-backups";
+              };
+            };
           };
         };
 
-        "local_backup" = lib.mkIf isServer {
-          onCalendar = "daily";
-          settings = {
-            volume."/" = {
-              target = "/media/${host}-backups";
-              subvolume = "persist";
-            };
-            stream_compress = "lz4";
-            snapshot_dir = "btrbk_snapshots";
-            # retention policy
-            snapshot_preserve_min = "3d";
-            snapshot_preserve = "3d";
-            snapshot_create = "ondemand"; # create snapshots only if the backup disk is attached
-            target_preserve_min = "no";
-            target_preserve = "3d";
-          };
-        };
+        # set ssh command on server side
+        sshAccess = lib.mkIf isServer [
+          {
+            key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGww+bXaeTXj6s10G4V8Kz2PqGfI6tU4rd8KfxxoQj9 btrbk";
+            roles = [
+              "target"
+              "info"
+              "receive"
+            ];
+          }
+        ];
       };
-
-      # set ssh command on server side
-      sshAccess = lib.mkIf isServer [
-        {
-          key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGww+bXaeTXj6s10G4V8Kz2PqGfI6tU4rd8KfxxoQj9 btrbk";
-          roles = [
-            "target"
-            "info"
-            "receive"
-          ];
-        }
-      ];
-    };
 
     # notify when service fails
     systemd.services =
@@ -115,7 +125,7 @@
           "/var/lib/btrbk/.ssh"
         ];
         cache.directories = [
-          "/btrbk_snapshots"
+          "/btrbk"
         ];
       };
     };
