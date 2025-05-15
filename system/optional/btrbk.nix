@@ -18,7 +18,6 @@
       let
         basicBtrbk = {
           stream_compress = "lz4";
-          incremental_resolve = "directory";
           snapshot_create = "onchange";
           # retention policy
           snapshot_preserve_min = "3d";
@@ -43,7 +42,7 @@
                 subvolume = {
                   persist = {
                     group = "remote-persist"; # for command line filtering
-                    snapshot_dir = "snapshots";
+                    snapshot_dir = "/cache/snapshots";
                     snapshot_name = "persist";
                   };
                 };
@@ -60,7 +59,7 @@
                 subvolume = {
                   persist = {
                     group = "local-persist";
-                    snapshot_dir = "snapshots";
+                    snapshot_dir = "/cache/snapshots";
                     snapshot_name = "persist";
                   };
                 };
@@ -123,9 +122,6 @@
       root = {
         directories = lib.mkIf isLaptop [
           "/var/lib/btrbk/.ssh"
-        ];
-        cache.directories = [
-          "/snapshots"
         ];
       };
     };
