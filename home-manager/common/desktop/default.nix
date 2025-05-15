@@ -4,6 +4,7 @@
     ./niri
     ./dunst.nix
     ./fuzzel.nix
+    ./nautilus.nix
     ./swayosd.nix
     ./wallpaper.nix
     ./waybar.nix

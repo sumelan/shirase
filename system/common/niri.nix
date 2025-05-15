@@ -4,7 +4,34 @@
   ...
 }:
 {
-  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+  # NOTE: nautilus is installed on system-wide
+  nixpkgs.overlays = [
+    inputs.niri.overlays.niri
+
+    (final: prev: {
+      nautilus = prev.nautilus.overrideAttrs (nprev: {
+        buildInputs =
+          nprev.buildInputs
+          ++ (with pkgs.gst_all_1; [
+            gst-plugins-good
+            gst-plugins-bad
+          ]);
+      });
+    })
+  ];
+
+  environment = {
+    systemPackages = with pkgs; [
+      nautilus
+      ffmpegthumbnailer
+      p7zip-rar # support for encrypted archives
+      webp-pixbuf-loader # for webp thumbnails
+      xdg-terminal-exec
+      libheif
+      libheif.out
+    ];
+    pathsToLink = [ "share/thumbnailers" ];
+  };
 
   programs.niri = {
     enable = true;
@@ -12,9 +39,20 @@
   };
   niri-flake.cache.enable = true;
 
+  # https://github.com/YaLTeR/niri/wiki/Important-Software
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    xdgOpenUsePortal = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+    ];
+    config = {
+      niri."org.freedesktop.impl.portal.FileChooser" = "gtk";
+      niri.default = "gnome";
+      common.default = "gnome";
+      obs.default = "gnome";
+    };
   };
 
   # use gnome-polkit instead

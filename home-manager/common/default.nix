@@ -22,7 +22,6 @@ _: {
     ./starship.nix
     ./swayimg.nix
     ./terminal.nix
-    ./thunar.nix
     ./yazi.nix
     ./yt-dlp.nix
     ./zathura.nix

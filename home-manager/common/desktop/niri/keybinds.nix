@@ -4,7 +4,6 @@
     with config.lib.niri.actions;
     let
       sh = spawn "sh" "-c";
-      osdCommand = "swayosd-client --monitor $(niri msg -j outputs | jq -r '.[] | .name')";
     in
     {
       # shows a list of important hotkeys.
@@ -16,8 +15,8 @@
         hotkey-overlay.title = "Kitty";
       };
       "Mod+E" = {
-        action = spawn "thunar";
-        hotkey-overlay.title = "Thunar";
+        action = spawn "nautilus";
+        hotkey-overlay.title = "Nautilus";
       };
       "Mod+Shift+E" = {
         action = spawn "kitty" "--app-id" "yazi" "yazi";
@@ -197,53 +196,6 @@
       "Mod+Shift+TouchpadScrollRight".action = move-column-right;
       "Mod+Shift+TouchpadScrollLeft".action = move-column-left;
 
-      # audio
-      "XF86AudioRaiseVolume" = {
-        action = sh "${osdCommand} --output-volume raise";
-        allow-when-locked = true; # work even when the session is locked
-      };
-      "XF86AudioLowerVolume" = {
-        action = sh "${osdCommand} --output-volume lower";
-        allow-when-locked = true;
-      };
-      "XF86AudioMute" = {
-        action = sh "${osdCommand} --output-volume mute-toggle";
-        allow-when-locked = true;
-      };
-      "XF86AudioMicMute" = {
-        action = sh "${osdCommand} --input-volume mute-toggle";
-        allow-when-locked = true;
-      };
-      "XF86AudioPlay" = {
-        action = sh "${osdCommand} --playerctl=play-pause";
-        allow-when-locked = true;
-      };
-      "XF86AudioPause" = {
-        action = sh "${osdCommand} --playerctl=play-pause";
-        allow-when-locked = true;
-      };
-      "XF86AudioNext" = {
-        action = sh "${osdCommand} --playerctl=next";
-        allow-when-locked = true;
-      };
-      "XF86AudioPrev" = {
-        action = sh "${osdCommand} --playerctl=previous";
-        allow-when-locked = true;
-      };
-
-      # brightness
-      "XF86MonBrightnessUp" = {
-        action = sh "${osdCommand} --brightness raise";
-        allow-when-locked = true;
-      };
-      "XF86MonBrightnessDown" = {
-        action = sh "${osdCommand} --brightness lower";
-        allow-when-locked = true;
-      };
-
-      # fcitx5
-      "Ctrl+Space" = {
-        action = sh "fcitx5-remote -t && ${osdCommand} --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard";
-      };
+      #NOTE: mediakey binds is written in swayosd.nix
     };
 }

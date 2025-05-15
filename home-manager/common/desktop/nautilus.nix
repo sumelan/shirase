@@ -1,15 +1,8 @@
-{ pkgs, ... }:
-{
-  home.packages = with pkgs; [
-    p7zip-rar # support for encrypted archives
-    webp-pixbuf-loader # for webp thumbnails
-    xdg-terminal-exec
-  ];
-
+_: {
   xdg = {
     # fix mimetype associations
     mimeApps.defaultApplications = {
-      "inode/directory" = "thunar.desktop";
+      "inode/directory" = "org.gnome.Nautilus.desktop";
       "application/zip" = "org.gnome.FileRoller.desktop";
       "application/vnd.rar" = "org.gnome.FileRoller.desktop";
       "application/x-7z-compressed" = "org.gnome.FileRoller.desktop";
@@ -24,7 +17,7 @@
 
   programs.niri.settings.window-rules = [
     {
-      matches = [ { app-id = "^(thunar)$"; } ];
+      matches = [ { app-id = "^(org.gnome.Nautilus)$"; } ];
       open-floating = true;
       default-column-width.proportion = 0.4;
       default-window-height.proportion = 0.4;
