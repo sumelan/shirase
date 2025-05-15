@@ -10,12 +10,6 @@
         ];
       }
       {
-        command = [ "nm-applet" ];
-      }
-      {
-        command = [ "blueman-applet" ];
-      }
-      {
         command = [
           "fcitx5"
           "-d"

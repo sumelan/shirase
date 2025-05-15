@@ -15,5 +15,15 @@
       enable = true;
       enableGraphical = true;
     };
+
+    hm.programs.niri.settings.spawn-at-startup = [
+      {
+        command = [
+          "solaar"
+          "-w"
+          "hide"
+        ];
+      }
+    ];
   };
 }

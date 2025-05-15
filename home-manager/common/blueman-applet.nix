@@ -3,10 +3,17 @@ _: {
     enable = true;
   };
 
-  programs.niri.settings.window-rules = [
-    {
-      matches = [ { app-id = "^(.blueman-manager-wrapped)$"; } ];
-      open-floating = true;
-    }
-  ];
+  programs.niri.settings = {
+    window-rules = [
+      {
+        matches = [ { app-id = "^(.blueman-manager-wrapped)$"; } ];
+        open-floating = true;
+      }
+    ];
+    spawn-at-startup = [
+      {
+        command = [ "blueman-applet" ];
+      }
+    ];
+  };
 }
