@@ -44,7 +44,7 @@
                   persist = {
                     group = "remote-persist"; # for command line filtering
                     snapshot_dir = "snapshots";
-                    snapshot_name = "presist";
+                    snapshot_name = "persist";
                   };
                 };
                 target = "ssh://sakura/media/${host}-backups";
