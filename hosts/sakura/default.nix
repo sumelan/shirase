@@ -23,7 +23,8 @@
     hdds.enable = true;
     logitech.enable = true;
     opentabletdriver.enable = true;
-    steam.enable = false;
+    steam.enable = true;
+    alvr.enable = false;
     qmk.enable = true;
     alsa.enable = true;
 

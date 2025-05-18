@@ -12,6 +12,11 @@
       localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
     };
 
+    hardware.amdgpu.amdvlk = {
+      enable = true;
+      support32Bit.enable = true;
+    };
+
     custom.persist = {
       home.directories = [
         ".steam"
