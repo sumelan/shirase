@@ -6,13 +6,23 @@
 }:
 {
   options.custom = with lib; {
-    youtube-music = {
-      enable = mkEnableOption "Electron wrapper around YouTube Music";
-    };
+    youtube-music.enable = mkEnableOption "Electron wrapper around YouTube Music";
   };
 
   config = lib.mkIf config.custom.youtube-music.enable {
     home.packages = [ pkgs.youtube-music ];
+
+    xdg.desktopEntries = {
+      "com.github.th_ch.youtube_music" = {
+        name = "YouTube Music";
+        icon = "youtube-music";
+        exec = "youtube-music %U --enable-wayland-ime --wayland-text-input-version=3";
+        categories = [
+          "AudioVideo"
+        ];
+        type = "Application";
+      };
+    };
 
     custom.persist = {
       home.directories = [

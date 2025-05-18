@@ -40,7 +40,7 @@
         hotkey-overlay.title = "Rusty Music Player Client";
       };
       "Mod+Y" = {
-        action = spawn "youtube-music";
+        action = spawn "youtube-music" "%U" "--enable-wayland-ime" "--wayland-text-input-version=3";
         hotkey-overlay.title = "YouTube Music";
       };
 
