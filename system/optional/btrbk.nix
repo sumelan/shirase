@@ -77,6 +77,7 @@
               "target"
               "info"
               "receive"
+              "delete"
             ];
           }
         ];

@@ -19,9 +19,7 @@
         package = pkgs.alvr;
         openFirewall = true;
       };
-      adb = {
-        enable = true;
-      };
+      adb.enable = true;
     };
     users.users.${user}.extraGroups = [ "adbusers" ];
 
