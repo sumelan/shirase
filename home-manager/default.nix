@@ -69,6 +69,11 @@
         };
       };
       ".justfile".text = ''
+        alias nhs := nh-switch
+        alias nhu := nh-update
+        alias nht := nh-test
+        alias nhc := nh-clean
+
         [group('default')]
         [doc('Listing available recipes')]
         @default:

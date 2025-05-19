@@ -6,7 +6,7 @@ set choices " Lock
  Reboot
  Poweroff
 󱄅 Switch
-󰚰 Update"
+ Update"
 set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Search for system actions..." --lines 5)
 
 switch (string split -f 2 " " $choice)

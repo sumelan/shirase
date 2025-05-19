@@ -12,7 +12,7 @@ _: {
     ];
     spawn-at-startup = [
       {
-        command = [ "blueman-applet" ];
+        command = [ "blueman-tray" ];
       }
     ];
   };

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   programs.niri.settings = {
     spawn-at-startup = [
@@ -10,6 +10,9 @@
         ];
       }
       {
+        command = [ "nm-applet" ];
+      }
+      {
         command = [
           "fcitx5"
           "-d"
@@ -17,13 +20,7 @@
         ];
       }
       {
-        command = [
-          "waypaper"
-          "--restore"
-        ];
-      }
-      {
-        command = [ "xwayland-satellite" ];
+        command = [ "${lib.getExe' pkgs.xwayland-satellite "xwayland-satellite"}" ];
       }
       {
         command = [

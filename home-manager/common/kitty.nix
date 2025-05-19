@@ -19,15 +19,13 @@ _: {
 
   home.shellAliases = {
     # change color on ssh
-    ssh = "kitten ssh --kitten=color_scheme=Dracula";
+    ssh = "kitten ssh --kitten=color_scheme='Gruvbox Material Dark Medium'";
   };
 
   programs.niri.settings.window-rules = [
     {
       matches = [ { app-id = "^(kitty)$"; } ];
-      default-column-width = {
-        proportion = 0.5;
-      };
+      default-column-width.proportion = 0.5;
     }
     {
       # from waybar
@@ -38,7 +36,7 @@ _: {
     }
     {
       matches = [ { app-id = "^(htop)$"; } ];
-      open-maximized = true;
+      default-column-width.proportion = 0.5;
     }
     {
       # from fuzzel-actions

@@ -23,9 +23,6 @@
       wl-clipboard
       cliphist
 
-      #xwayland
-      xwayland-satellite
-
       #screen-record
       wl-screenrec
     ]
