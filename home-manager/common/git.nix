@@ -50,8 +50,6 @@ _: {
         };
       };
     };
-
-    lazygit.enable = true;
   };
 
   home = {
@@ -82,14 +80,6 @@ _: {
       github = "open `git remote -v | grep github.com | grep fetch | head -1 | awk '{print $2}' | sed 's/git:/http:/git'`";
       # cleanup leftover files from merges
       mergeclean = "find . -type f -name '*.orig' -exec rm -f {} ;";
-    };
-  };
-
-  custom.persist = {
-    home = {
-      directories = [
-        ".config/lazygit"
-      ];
     };
   };
 }

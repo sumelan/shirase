@@ -10,24 +10,29 @@
     ./waybar.nix
   ];
 
-  home.packages = with pkgs; [
-    #backlight
-    brightnessctl
+  home.packages =
+    with pkgs;
+    [
+      #backlight
+      brightnessctl
 
-    # music
-    playerctl
+      # music
+      playerctl
 
-    # clipboard
-    wl-clipboard
-    cliphist
+      # clipboard
+      wl-clipboard
+      cliphist
 
-    #xwayland
-    xwayland-satellite
+      #xwayland
+      xwayland-satellite
 
-    #screen-record
-    wl-screenrec
-    self.packages.${system}.screencast
-  ];
+      #screen-record
+      wl-screenrec
+    ]
+    ++ [
+      self.packages.${pkgs.system}.screencast
+      self.packages.${pkgs.system}.update-checker
+    ];
 
   services.playerctld = {
     enable = true;

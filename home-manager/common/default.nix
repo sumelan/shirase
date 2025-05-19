@@ -5,15 +5,17 @@ _: {
     ./neovim
     ./rmpc
     ./shell
-    ./btop.nix
     ./blueman-applet.nix
+    ./btop.nix
     ./cava.nix
     ./discord.nix
+    ./easyeffects.nix
     ./eza.nix
     ./git.nix
     ./impermanence.nix
     ./jujutsu.nix
     ./kitty.nix
+    ./lazygit.nix
     ./librewolf.nix
     ./mpv.nix
     ./nix.nix
@@ -23,6 +25,7 @@ _: {
     ./swayimg.nix
     ./terminal.nix
     ./yazi.nix
+    ./youtube-music.nix
     ./yt-dlp.nix
     ./zathura.nix
     ./zoxide.nix

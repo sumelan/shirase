@@ -1,4 +1,4 @@
-_:{
+_: {
   home.shellAliases = {
     z = "zoxide query -i";
   };

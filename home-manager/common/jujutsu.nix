@@ -1,4 +1,4 @@
-_:{
+_: {
   programs = {
     git.ignores = [ ".jj" ];
     jujutsu = {

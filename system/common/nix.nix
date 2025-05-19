@@ -31,6 +31,7 @@
     systemPackages = with pkgs; [
       nix-init
       nix-update
+      nvd
       nixfmt-rfc-style
     ];
   };
@@ -53,6 +54,7 @@
   nix =
     let
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
+      registry = lib.mapAttrs (_: flake: { inherit flake; }) inputs;
     in
     {
       channel.enable = false;
@@ -65,7 +67,8 @@
         options = "--delete-older-than 7d";
       };
       package = pkgs.lixPackageSets.latest.lix;
-      registry = (lib.mapAttrs (_: flake: { inherit flake; }) inputs) // {
+      registry = registry // {
+        n = registry.nixpkgs;
         master = {
           from = {
             type = "indirect";
@@ -88,11 +91,11 @@
         warn-dirty = false;
         # removes ~/.nix-profile and ~/.nix-defexpr
         use-xdg-base-directories = true;
-
-        # use flakes
         experimental-features = [
           "nix-command"
           "flakes"
+          # NOTE: 'pipe-operators' in nix but 'pipe-operator' in lix
+          # https://discourse.nixos.org/t/lix-mismatch-in-feature-name-compared-to-nix/59879
           "pipe-operator"
         ];
         substituters = [

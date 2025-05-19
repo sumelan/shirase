@@ -36,6 +36,5 @@ _: {
     inkscape.enable = true;
     krita.enable = true;
     thunderbird.enable = false;
-    youtube-music.enable = true;
   };
 }

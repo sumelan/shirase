@@ -19,14 +19,15 @@
     btrbk.enable = true;
     distrobox.enable = true;
 
-    # specific
+    # hardware
     hdds.enable = true;
-    logitech.enable = true;
-    opentabletdriver.enable = true;
-    steam.enable = true;
-    alvr.enable = false;
-    qmk.enable = true;
     alsa.enable = true;
+    logitech.enable = true;
+    qmk.enable = true;
+    opentabletdriver.enable = true;
+
+    # steam
+    steam.enable = false;
 
     # server
     audiobookshelf = {

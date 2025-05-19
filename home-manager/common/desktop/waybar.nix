@@ -10,6 +10,20 @@ let
         "tooltip": false,
         "on-click": "fuzzel-actions"
       },
+      "custom/nix-updates": {
+        "exec": "update-checker",
+        "signal": 12,
+        "on-click": "", // refresh on click
+        "on-click-right": "rm ~/.cache/update-checker/nix-update-last-run", // force an update
+        "interval": 3600, // refresh every hour
+        "tooltip": true,
+        "return-type": "json",
+        "format": "{} {icon}",
+        "format-icons": {
+          "has-updates": "", // icon when updates needed
+          "updated": "" // icon when all packages updated
+        },
+      },
       "niri/workspaces": {
         "format": "{icon}",
         "format-icons": {
@@ -182,6 +196,7 @@ in
             "output": "${config.lib.monitors.mainMonitorName}",
             "modules-left": [
               "image",
+              "custom/nix-updates",
               "niri/workspaces",
               "tray",
               "niri/window"
@@ -246,6 +261,7 @@ in
         }
 
         #image,
+        #custom-nix-updates,
         #idle_inhibitor,
         #custom-screencast,
         #network,
@@ -450,5 +466,11 @@ in
           }
         }
       '';
+  };
+
+  custom.persist = {
+    home.cache.directories = [
+      ".cache/update-checker"
+    ];
   };
 }

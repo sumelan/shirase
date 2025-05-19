@@ -22,7 +22,10 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # theming
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # database
     nix-index-database = {

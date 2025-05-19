@@ -21,6 +21,5 @@ _: {
     cyanrip.enable = true;
     foliate.enable = true;
     thunderbird.enable = true;
-    youtube-music.enable = true;
   };
 }
