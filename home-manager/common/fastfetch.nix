@@ -1,4 +1,5 @@
-_: {
+{ user, ... }:
+{
   programs.fastfetch = {
     enable = true;
     settings = {
@@ -10,7 +11,7 @@ _: {
         separator = " ➜  ";
       };
       logo = {
-        source = ./logo.svg;
+        source = "/home/${user}/.themed-logo.png";
         type = "kitty-icat";
         height = 35;
         width = 35;

@@ -1,11 +1,16 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  user,
+  ...
+}:
 let
   moduleConfiguration =
     # jsonc
     ''
       // Modules configuration
       "image": {
-        "path": "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg",
+        "path": "/home/${user}/.themed-logo.png",
         "size": 24,
         "tooltip": false,
         "on-click": "fuzzel-actions"

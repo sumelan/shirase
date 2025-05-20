@@ -1,7 +1,6 @@
 _: {
   imports = [
     ./desktop
-    ./fastfetch
     ./neovim
     ./rmpc
     ./shell
@@ -11,6 +10,7 @@ _: {
     ./discord.nix
     ./easyeffects.nix
     ./eza.nix
+    ./fastfetch.nix
     ./git.nix
     ./impermanence.nix
     ./jujutsu.nix
