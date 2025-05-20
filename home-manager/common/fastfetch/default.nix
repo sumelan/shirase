@@ -1,7 +1,6 @@
 _: {
   programs.fastfetch = {
     enable = true;
-
     settings = {
       display = {
         color = {
@@ -10,7 +9,6 @@ _: {
         };
         separator = " ➜  ";
       };
-
       logo = {
         source = ./logo.svg;
         type = "kitty-icat";
@@ -21,7 +19,6 @@ _: {
           left = 2;
         };
       };
-
       modules = [
         "break"
         {

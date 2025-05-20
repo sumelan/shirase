@@ -1,16 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env fish
 
-window_ids=()
-window_titles=()
+set windows (niri msg -j windows)
+set ids (echo $windows | jq -r '.[] | .id')
+set app_ids (echo $windows | jq -r '.[] | .app_id' )
+set titles (echo $windows | jq -r '.[] | .title' )
+set choices ""
 
-while read i; do
-  declare -a line_array="($i)"
-  window_ids+=(${line_array[0]})
-  window_titles+=("${line_array[1]} - ${line_array[2]} \0icon\x1f${line_array[1]}")
-done <<<$(niri msg --json windows | jq -r '.[] | [ .id, .app_id, .title] | "\""+join ("\" \"")+"\""')
+for i in (seq (count $ids))
+  set choices "$choices$titles[$i]\t$app_ids[$i]\0icon\x1f$app_ids[$i]\n"
+end
 
-result=$(printf "%b\n" "${window_titles[@]}" | fuzzel --counter --dmenu --index)
+set choices (string trim -c "\n" $choices)
 
-if [ "x$result" != "x" ] && [ $result != -1 ]; then
-  niri msg action focus-window --id ${window_ids[result]}
-fi
+set choice (echo -e $choices | fuzzel --counter --dmenu --prompt " " --placeholder "Search for windows..." --index --tabs 200 || exit)
+if [ "x$choice" != "x" ] && [ $choice != -1 ]
+  niri msg action focus-window --id $ids[(math $choice + 1)]
+end

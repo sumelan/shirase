@@ -27,6 +27,7 @@
       wl-screenrec
     ]
     ++ [
+      # custom packages
       self.packages.${pkgs.system}.screencast
       self.packages.${pkgs.system}.update-checker
     ];
