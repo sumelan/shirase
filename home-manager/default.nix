@@ -3,7 +3,6 @@
   config,
   pkgs,
   user,
-  host,
   ...
 }:
 {
@@ -69,6 +68,7 @@
         };
       };
       ".justfile".text = ''
+        set shell := ["fish", "-c"]
         alias nhs := nh-switch
         alias nhu := nh-update
         alias nht := nh-test
@@ -87,18 +87,15 @@
 
         [group('Update')]
         [doc('Update your lock file')]
-        [no-cd]
         checkup:
-          nix flake update nixpkgs nixpkgs-stable
-          nix build .#nixosConfigurations.'${host}'.config.system.build.toplevel
-          nvd diff /run/current-system ./result | tee >(if grep -qe '[U'; then touch "$HOME/.cache/update-checker/nix-update-update-flag"; else rm -f "$HOME/.cache/update-checker/nix-update-update-flag"; fi)
+          @echo "Updating your lock file..."
+          nh os switch --dry --update | tee | if grep -qe '\[U.]'; touch "$HOME/.cache/update-checker/nix-update-update-flag"; else; rm -f "$HOME/.cache/update-checker/nix-update-update-flag"; end
 
         [group('Update')]
         [doc('Update flake inputs and activate the new configuration, make it the boot default')]
-        [no-cd]
         nixup:
-          echo "NixOS rebuilding..."
-          sudo nixos-rebuild switch --upgrade --flake .#${host}
+          @echo "NixOS rebuilding..."
+          nh os switch --update
           touch $HOME/.cache/update-checker/nix-update-rebuild-flag
           pkill -x -RTMIN+12 .waybar-wrapped
 
@@ -110,7 +107,7 @@
         [group('Helper')]
         [doc('Update flake inputs and activate the new configuration, make it the boot default')]
         nh-update:
-          nh os switch -u
+          nh os switch --update
 
         [group('Helper')]
         [doc('Build and activate the new configuration')]

@@ -1,55 +1,30 @@
 {
   lib,
-  fetchFromGitHub,
-  stdenvNoCC,
+  stdenv,
   makeWrapper,
+  fish,
   libnotify,
-  nix,
-  nvd,
-  # variables
-  dots ? "/home/sumelan/projects/wolborg",
-  cache ? "/home/sumelan/.cache/update-checker",
+  nh,
 }:
-stdenvNoCC.mkDerivation rec {
+stdenv.mkDerivation {
   pname = "update-checker";
-  version = "1.0";
+  version = "1.0.0";
 
-  src = fetchFromGitHub {
-    owner = "guttermonk";
-    repo = "waybar-nixos-updates";
-    rev = "v${version}";
-    hash = "sha256-x2PiNXt4bAVf2AMcctXUJ7XA59LO6nEPoyj7Q8Tvl4c=";
-  };
+  src = ./.;
 
   nativeBuildInputs = [ makeWrapper ];
 
-  postPatch = # sh
-    ''
-      substituteInPlace update-checker \
-        --replace-fail "\$HOME/.config/nixos" "${dots}" \
-        --replace-fail "\$HOME/.cache" "${cache}"
-    '';
+  installPhase = ''
+    install -Dm755 $src/update-checker.fish $out/bin/update-checker
+  '';
 
-  postInstall = # sh
-    ''
-      install -D ./update-checker $out/bin/update-checker
-
-      wrapProgram $out/bin/update-checker \
-        --prefix PATH : ${
-          lib.makeBinPath [
-            libnotify
-            nix
-            nvd
-          ]
-        }
-    '';
-
-  meta = {
-    description = "A Waybar update checking script for NixOS";
-    homepage = "https://github.com/guttermonk/waybar-nixos-updates";
-    license = lib.licenses.gpl3Only;
-    maintainers = [ lib.maintainers.sumelan ];
-    mainProgram = "update-checker";
-    platforms = lib.platforms.all;
-  };
+  postInstall = ''
+    wrapProgram $out/bin/update-checker --set PATH ${
+      lib.makeBinPath [
+        fish
+        libnotify
+        nh
+      ]
+    }
+  '';
 }

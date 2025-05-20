@@ -10,6 +10,15 @@ let
         "tooltip": false,
         "on-click": "fuzzel-actions"
       },
+      "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+          // "default": "󱄅 ",
+          // "default": " ",
+          // "active": " "
+          "default": ""
+        }
+      },
       "custom/nix-updates": {
         "exec": "update-checker",
         "signal": 12,
@@ -23,15 +32,6 @@ let
           "has-updates": "", // icon when updates needed
           "updated": "" // icon when all packages updated
         },
-      },
-      "niri/workspaces": {
-        "format": "{icon}",
-        "format-icons": {
-          // "default": "󱄅 ",
-          // "default": " ",
-          // "active": " "
-          "default": ""
-        }
       },
       "niri/window": {
         "format": "{}",
@@ -95,10 +95,10 @@ let
         "tooltip": true
       },
       "network": {
-        "format-wifi": "<span size='13000' foreground='#${config.lib.stylix.colors.base06}'>󰖩  </span>{essid}",
-        "format-ethernet": "<span size='13000' foreground='#${config.lib.stylix.colors.base06}'>󰤭</span> Disconnected",
+        "format-wifi": "<span size='13000' foreground='#${config.lib.stylix.colors.base0B}'>󰖩  </span>{essid}",
+        "format-ethernet": "<span size='13000' foreground='#${config.lib.stylix.colors.base0B}'>󰈀</span> Connected",
         "format-linked": "{ifname} (No IP) 󱚵",
-        "format-disconnected": "<span size='13000' foreground='#${config.lib.stylix.colors.base06}'> </span>Disconnected",
+        "format-disconnected": "<span size='13000' foreground='#${config.lib.stylix.colors.base0B}'> </span>Disconnected",
         "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
       },
       "wireplumber": {
@@ -126,12 +126,29 @@ let
           "transition-left-to-right": false
         },
         "modules": [
-          "battery",
-          "memory",
-          "network",
-          "wireplumber",
-          "backlight"
+          "custom/monitor",
+          "disk",
+          "cpu",
+          "temperature"
         ]
+      },
+      "custom/monitor": {
+        "format": "",
+        "tooltip": false
+      },
+      "disk": {
+        "format": "󰋊 {percentage_used}%"
+      },
+      "cpu": {
+        "format": "  {usage}%",
+        "interval": 2
+      },
+      "temperature": {
+        "format": "  {temperatureC}°C",
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "interval": 2,
+        "critical-format": "󰸁 {temperatureC}°C",
+        "critical-threshold": 90
       }
     '';
   trayBackgroundColor = if config.stylix.polarity == "dark" then "@base00" else "@base05";
@@ -179,7 +196,6 @@ in
                   "niri/window"
                 ],
                 "modules-right": [
-                  "tray",
                   "group/meters"
                 ],
                 ${moduleConfiguration}
@@ -190,14 +206,15 @@ in
       # json
       ''
         [
+          ${otherMonitorsConfig}
           {
             "position": "top",
             "layer": "top",
             "output": "${config.lib.monitors.mainMonitorName}",
             "modules-left": [
               "image",
-              "custom/nix-updates",
               "niri/workspaces",
+              "custom/nix-updates",
               "tray",
               "niri/window"
             ],
@@ -272,6 +289,10 @@ in
         #backlight,
         #memory,
         #tray,
+        #custom-monitor,
+        #disk,
+        #cpu,
+        #temperature,
         #window {
           padding: 4px 10px;
           background: shade(alpha(@base00, 0.9), 1);
@@ -411,6 +432,10 @@ in
 
         #tray > .needs-attention {
           -gtk-icon-effect: highlight;
+        }
+
+        #temperature.critical {
+          color: @base08;
         }
       '';
 

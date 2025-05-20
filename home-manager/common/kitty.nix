@@ -41,8 +41,8 @@ _: {
     {
       # from fuzzel-actions
       matches = [
-        { app-id = "^(nh-switch)$"; }
-        { app-id = "^(nh-update)$"; }
+        { app-id = "^(checkup)$"; }
+        { app-id = "^(nixup)$"; }
       ];
       open-floating = true;
     }
