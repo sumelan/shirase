@@ -108,16 +108,6 @@
         hotkey-overlay.title = "Clear Clipboard History";
       };
 
-      # notification
-      "Mod+N" = {
-        action = spawn "dunstctl" "history-pop";
-        hotkey-overlay.title = "Show Notification History";
-      };
-      "Mod+Shift+N" = {
-        action = spawn "dunstctl" "close-all";
-        hotkey-overlay.title = "Dismiss Notification";
-      };
-
       # window and colum management
       "Mod+Backspace".action = close-window;
 

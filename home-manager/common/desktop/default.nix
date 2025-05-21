@@ -2,7 +2,7 @@
 {
   imports = [
     ./niri
-    ./dunst.nix
+    ./fnott.nix
     ./fuzzel.nix
     ./image.nix
     ./nautilus.nix

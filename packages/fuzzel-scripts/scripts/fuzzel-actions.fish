@@ -5,8 +5,8 @@ set choices " Lock
 󰿅 Exit
  Reboot
  Poweroff
-󰚰 Check Update
-󱄅 Run Update"
+󰚰 Restart Waybar
+󱄅 Fastfetch"
 set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Search for system actions..." --lines 5)
 
 switch (string split -f 2 " " $choice)
@@ -20,8 +20,8 @@ switch (string split -f 2 " " $choice)
         systemctl reboot
     case Poweroff
         systemctl poweroff
-    case Check Update
-        niri msg action spawn -- kitty -T '󰚰 Check Update' --app-id checkup just checkup
-    case Run Update
-        niri msg action spawn -- kitty -T '󱄅 Run Update' --app-id nixup just nixup
+    case Restart Waybar
+        niri msg action spawn -- kitty -T '󰚰 Restart Waybar' --app-id waybar systemctl --user restart waybar.service
+    case Fastfetch
+        niri msg action spawn -- kitty -T '󱄅 Fastfetch' --app-id fastfetch fastfetch
 end

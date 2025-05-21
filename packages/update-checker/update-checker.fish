@@ -101,10 +101,12 @@ function check_for_updates
     set --local updates 0
     set --local tooltip ""
 
-        # Use the config directory directly
+    # Use the config directory directly
     cd "$NIXOS_CONFIG_PATH" || return 1
     set updates (nh os switch --dry --update | grep -e '\[U.]' | wc -l)
-    set tooltip (nh os switch --dry --update | grep -e '\[U.]' | awk '{ for (i=3; i<NF; i++) printf $i " "; if (NF >= 3) print $NF; }' ORS='\\n')
+    set tmp (nh os switch --dry --update | grep -e '\[U.]' | awk '{ for (i=3; i<NF; i++) printf $i "_"; if (NF >= 3) print $NF; }')
+    set tmp2 (echo $tmp | string replace --all ' ' \\n)
+    set tooltip (echo $tmp2 | string replace --all _ ' ')
 
     # Save results
     echo "$updates" > "$STATE_FILE"

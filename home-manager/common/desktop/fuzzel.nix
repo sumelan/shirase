@@ -20,7 +20,7 @@ in
         placeholder = "Type to search...";
         prompt = "'❯ '";
         font = "Maple Mono NF:size=${toString config.stylix.fonts.sizes.popups}";
-        icon-theme = "${config.stylix.iconTheme.dark}";
+        icon-theme = config.stylix.iconTheme.dark;
         match-counter = true;
         terminal = "${pkgs.kitty}/bin/kitty";
         width = 30;
