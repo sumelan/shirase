@@ -1,4 +1,4 @@
-{ pkgs, isLaptop, ... }:
+{ pkgs, ... }:
 {
   stylix = {
     enable = true;
@@ -40,7 +40,7 @@
         applications = 12;
         terminal = 11;
         desktop = 12;
-        popups = if isLaptop then 10 else 12;
+        popups = 12;
       };
     };
 

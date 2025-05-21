@@ -29,7 +29,7 @@ let
         "signal": 12,
         "on-click": "", // refresh on click
         "on-click-right": "rm ~/.cache/update-checker/nix-update-last-run", // force an update
-        "interval": 3600, // refresh every hour
+        "interval": 86400, // refresh every day
         "tooltip": true,
         "return-type": "json",
         "format": "{} {icon}",

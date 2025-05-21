@@ -37,9 +37,46 @@ alias nhc := nh-clean
 [group('Flag')]
 [doc('Add update flag')]
 uflag:
-  touch $HOME/.cache/nix-update-update-flag
+  touch $HOME/.cache/update-checker/nix-update-update-flag && pkill -x -RTMIN+12 .waybar-wrapped
 
 [group('Flag')]
 [doc('Add updtate and rebuild flag')]
 rflag:
   touch $HOME/.cache/update-checker/nix-update-rebuild-flag && pkill -x -RTMIN+12 .waybar-wrapped
+
+[group('Btrfs')]
+[doc('List the differences between current / and blank state')]
+diff:
+  #!/usr/bin/env fish
+
+  function try
+      if ! $argv
+          echo "ERROR ($argv)"
+          exit 1
+      end
+  end
+
+  sudo mkdir /mnt
+  sudo mount -o subvol=/ /dev/nvme0n1p1 /mnt
+
+  set OLD_TRANSID (sudo btrfs subvolume find-new /mnt/root-blank 9999999)
+  set OLD_TRANSID (echo $OLD_TRANSID | string replace 'transid marker was ' '')
+
+  try sudo btrfs subvolume find-new "/mnt/root" "$OLD_TRANSID" |
+  sed '$d' |
+  cut -f17- -d' ' |
+  sort |
+  uniq |
+  while read path
+      set path "/$path"
+      if [ -L "$path" ]
+          : # The path is a symbolic link, so is probably handled by NixOS already
+      else if [ -d "$path" ]
+          : # The path is a directory, ignore
+      else
+          echo "$path"
+      end
+  end
+
+  sudo umount /mnt
+  sudo rm -r /mnt

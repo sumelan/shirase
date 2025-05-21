@@ -28,7 +28,7 @@ _: {
       default-column-width.proportion = 0.5;
     }
     {
-      # from waybar
+      # waybar
       matches = [ { app-id = "^(tty-clock)$"; } ];
       open-floating = true;
       default-column-width.proportion = 0.3;
@@ -37,14 +37,6 @@ _: {
     {
       matches = [ { app-id = "^(htop)$"; } ];
       default-column-width.proportion = 0.5;
-    }
-    {
-      # from fuzzel-actions
-      matches = [
-        { app-id = "^(checkup)$"; }
-        { app-id = "^(nixup)$"; }
-      ];
-      open-floating = true;
     }
   ];
 

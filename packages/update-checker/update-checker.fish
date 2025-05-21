@@ -52,7 +52,7 @@ end
 function send_notification -a 1 2
     set --local title "$1"
     set --local message "$2"
-    notify-send "$title" "$message" -e
+    notify-send -a "Update Checker" -i "nix" "$title" "$message" -e
 end
 
 function check_network_connectivity
