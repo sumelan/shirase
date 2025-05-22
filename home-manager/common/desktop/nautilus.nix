@@ -1,4 +1,5 @@
-_: {
+{ config, ... }:
+{
   xdg = {
     # fix mimetype associations
     mimeApps.defaultApplications = {
@@ -15,14 +16,22 @@ _: {
     };
   };
 
-  programs.niri.settings.window-rules = [
-    {
-      matches = [ { app-id = "^(org.gnome.Nautilus)$"; } ];
-      open-floating = true;
-      default-column-width.proportion = 0.4;
-      default-window-height.proportion = 0.4;
-    }
-  ];
+  programs.niri.settings = {
+    binds = with config.lib.niri.actions; {
+      "Mod+E" = {
+        action = spawn "nautilus";
+        hotkey-overlay.title = "Nautilus";
+      };
+    };
+    window-rules = [
+      {
+        matches = [ { app-id = "^(org.gnome.Nautilus)$"; } ];
+        open-floating = true;
+        default-column-width.proportion = 0.4;
+        default-window-height.proportion = 0.4;
+      }
+    ];
+  };
 
   custom.persist = {
     home = {

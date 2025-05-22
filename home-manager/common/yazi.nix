@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   plugins-repo = pkgs.fetchFromGitHub {
     owner = "yazi-rs";
@@ -96,14 +96,22 @@ in
     };
   };
 
-  programs.niri.settings.window-rules = [
-    {
-      matches = [ { app-id = "^(yazi)"; } ];
-      default-column-width.proportion = 0.5;
-      default-window-height.proportion = 0.5;
-      open-floating = true;
-    }
-  ];
+  programs.niri.settings = {
+    binds = with config.lib.niri.actions; {
+      "Mod+Shift+E" = {
+        action = spawn "kitty" "--app-id" "yazi" "yazi";
+        hotkey-overlay.title = "Yazi";
+      };
+    };
+    window-rules = [
+      {
+        matches = [ { app-id = "^(yazi)"; } ];
+        default-column-width.proportion = 0.5;
+        default-window-height.proportion = 0.5;
+        open-floating = true;
+      }
+    ];
+  };
 
   stylix.targets.yazi.enable = true;
 }

@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   user,
   ...
@@ -33,24 +34,37 @@
     };
   };
 
-  programs.niri.settings.window-rules = [
-    {
-      matches = [
-        {
-          # Mod+R launch rmpc with app-id
-          app-id = "^(rmpc)$";
-        }
-      ];
-      default-column-width.proportion = 0.4;
-      default-window-height.proportion = 0.35;
-      open-floating = true;
-      default-floating-position = {
-        x = 8;
-        y = 8;
-        relative-to = "bottom-right";
+  programs.niri.settings = {
+    binds = with config.lib.niri.actions; {
+      "Mod+R" = {
+        action =
+          spawn "kitty" "-T" "󱘗 Rusty Music Player Client" "-o" "font_family=Maple Mono NF" "-o"
+            "font_size=12"
+            "--app-id"
+            "rmpc"
+            "rmpc";
+        hotkey-overlay.title = "Rusty Music Player Client";
       };
-    }
-  ];
+    };
+    window-rules = [
+      {
+        matches = [
+          {
+            # Mod+R launch rmpc with app-id
+            app-id = "^(rmpc)$";
+          }
+        ];
+        default-column-width.proportion = 0.4;
+        default-window-height.proportion = 0.35;
+        open-floating = true;
+        default-floating-position = {
+          x = 8;
+          y = 8;
+          relative-to = "bottom-right";
+        };
+      }
+    ];
+  };
 
   custom.persist = {
     home = {

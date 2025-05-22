@@ -1,4 +1,5 @@
-_: {
+{ config, ... }:
+{
   programs.kitty = {
     enable = true;
     settings = {
@@ -22,23 +23,31 @@ _: {
     ssh = "kitten ssh --kitten=color_scheme='Gruvbox Material Dark Medium'";
   };
 
-  programs.niri.settings.window-rules = [
-    {
-      matches = [ { app-id = "^(kitty)$"; } ];
-      default-column-width.proportion = 0.5;
-    }
-    {
-      # waybar
-      matches = [ { app-id = "^(tty-clock)$"; } ];
-      open-floating = true;
-      default-column-width.proportion = 0.3;
-      default-window-height.proportion = 0.2;
-    }
-    {
-      matches = [ { app-id = "^(htop)$"; } ];
-      default-column-width.proportion = 0.5;
-    }
-  ];
+  programs.niri.settings = {
+    binds = with config.lib.niri.actions; {
+      "Mod+Return" = {
+        action = spawn "kitty";
+        hotkey-overlay.title = "Kitty";
+      };
+    };
+    window-rules = [
+      {
+        matches = [ { app-id = "^(kitty)$"; } ];
+        default-column-width.proportion = 0.5;
+      }
+      {
+        # waybar
+        matches = [ { app-id = "^(tty-clock)$"; } ];
+        open-floating = true;
+        default-column-width.proportion = 0.3;
+        default-window-height.proportion = 0.2;
+      }
+      {
+        matches = [ { app-id = "^(htop)$"; } ];
+        default-column-width.proportion = 0.5;
+      }
+    ];
+  };
 
   stylix.targets.kitty = {
     enable = true;

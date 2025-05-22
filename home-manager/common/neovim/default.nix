@@ -1,4 +1,5 @@
-_: {
+{ config, user, ... }:
+{
   imports = [
     ./keymaps.nix
     ./nvf.nix
@@ -30,6 +31,19 @@ _: {
       };
     };
   };
+
+  programs.niri.settings.binds =
+    with config.lib.niri.actions;
+    let
+      sh = spawn "sh" "-c";
+    in
+    {
+      # neovim
+      "Mod+Shift+Return" = {
+        action = sh "cd /home/${user}/projects/wolborg && kitty nvim";
+        hotkey-overlay.title = "Edit Config";
+      };
+    };
 
   custom.persist = {
     home.directories = [

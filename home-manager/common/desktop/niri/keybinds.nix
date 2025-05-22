@@ -1,112 +1,25 @@
-{ config, user, ... }:
+{ config, ... }:
 {
   programs.niri.settings.binds =
     with config.lib.niri.actions;
-    let
-      sh = spawn "sh" "-c";
-    in
+    # let
+    # sh = spawn "sh" "-c";
+    # in
     {
+      # NOTE: application binds are written in each app.nix
+
       # shows a list of important hotkeys.
       "Mod+Shift+Slash".action = show-hotkey-overlay;
-
-      # applications
-      "Mod+Return" = {
-        action = spawn "kitty";
-        hotkey-overlay.title = "Kitty";
-      };
-      "Mod+E" = {
-        action = spawn "nautilus";
-        hotkey-overlay.title = "Nautilus";
-      };
-      "Mod+Shift+E" = {
-        action = spawn "kitty" "--app-id" "yazi" "yazi";
-        hotkey-overlay.title = "Yazi";
-      };
-      "Mod+B" = {
-        action = spawn "librewolf";
-        hotkey-overlay.title = "Librewolf";
-      };
-      "Mod+C" = {
-        action = spawn "kitty" "--app-id" "cava" "cava";
-        hotkey-overlay.title = "Cava";
-      };
-      "Mod+R" = {
-        action =
-          spawn "kitty" "-T" "󱘗 Rusty Music Player Client" "-o" "font_family=Maple Mono NF" "-o"
-            "font_size=12"
-            "--app-id"
-            "rmpc"
-            "rmpc";
-        hotkey-overlay.title = "Rusty Music Player Client";
-      };
-      "Mod+Y" = {
-        action = spawn "youtube-music" "%U" "--enable-wayland-ime" "--wayland-text-input-version=3";
-        hotkey-overlay.title = "YouTube Music";
-      };
-
-      # launcher
-      "Mod+D" = {
-        action = spawn "fuzzel";
-        hotkey-overlay.title = "Fuzzel";
-      };
-      "Mod+Space" = {
-        action = spawn "fuzzel-files";
-        hotkey-overlay.title = "File Search";
-      };
-      "Mod+Tab" = {
-        action = spawn "fuzzel-windows";
-        hotkey-overlay.title = "Windows Search";
-      };
-      "Mod+Ctrl+Q" = {
-        action = spawn "fuzzel-actions";
-        hotkey-overlay.title = "System Actions";
-      };
-      "Mod+Period" = {
-        action = spawn "fuzzel-icons";
-        hotkey-overlay.title = "Icon Search";
-      };
-
-      # neovim
-      "Mod+Shift+Return" = {
-        action = sh "cd /home/${user}/projects/wolborg && kitty nvim";
-        hotkey-overlay.title = "Edit Config";
-      };
-
-      # screenlock
-      "Mod+Escape" = {
-        action = spawn "hyprlock";
-        hotkey-overlay.title = "Screenlock";
-        # usefull when screen-locker crashed
-        allow-when-locked = true;
-      };
-
-      # exit niri
-      "Mod+Shift+Escape" = {
-        action = quit { skip-confirmation = false; };
-      };
-
-      # screenshot
-      "Mod+Backslash".action = screenshot { show-pointer = false; };
-      "Mod+Alt+Backslash".action = screenshot-window { write-to-disk = true; };
 
       # overview
       "Mod+Shift+Tab".action = toggle-overview;
 
-      # Screencast
-      "Mod+Shift+R" = {
-        action = spawn "screencast";
-        hotkey-overlay.title = "Record Screen";
-      };
+      # exit niri
+      "Mod+Shift+Escape".action = quit { skip-confirmation = false; };
 
-      # clipboard
-      "Mod+V" = {
-        action = spawn "fuzzel-clipboard";
-        hotkey-overlay.title = "Show Clipboard History";
-      };
-      "Mod+Ctrl+V" = {
-        action = spawn "rm" "$XDG_CACHE_HOME/cliphist/db";
-        hotkey-overlay.title = "Clear Clipboard History";
-      };
+      # screenshot
+      "Mod+Backslash".action = screenshot { show-pointer = false; };
+      "Mod+Alt+Backslash".action = screenshot-window { write-to-disk = true; };
 
       # window and colum management
       "Mod+Backspace".action = close-window;
@@ -186,6 +99,6 @@
       "Mod+Shift+TouchpadScrollRight".action = move-column-right;
       "Mod+Shift+TouchpadScrollLeft".action = move-column-left;
 
-      #NOTE: mediakey binds is written in swayosd.nix
+      #NOTE: mediakey binds are written in swayosd.nix
     };
 }

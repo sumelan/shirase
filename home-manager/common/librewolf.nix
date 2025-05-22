@@ -79,36 +79,43 @@ in
     "x-scheme-handler/unknown" = "librewolf.desktop";
   };
 
-  # niri window-rules
-  # NOTE: bitwarden window cannot be floated on this method
-  # https://github.com/hyprwm/Hyprland/issues/3835
-  programs.niri.settings.window-rules = [
-    {
-      matches = [ { app-id = "^(librewolf)$"; } ];
-      default-column-width = {
-        proportion = 0.5;
+  programs.niri.settings = {
+    binds = with config.lib.niri.actions; {
+      "Mod+B" = {
+        action = spawn "librewolf";
+        hotkey-overlay.title = "Librewolf";
       };
-    }
-    {
-      matches = [
-        {
-          app-id = "^(librewolf)$";
-          title = "^(ピクチャーインピクチャー)$";
-        }
-        {
-          app-id = "^(librewolf)$";
-          title = "^(Save File)$";
-        }
-        {
-          app-id = "^(librewolf)$";
-          title = "^(.*)(wants to save)$";
-        }
-      ];
-      open-floating = true;
-      default-column-width.proportion = 0.4;
-      default-window-height.proportion = 0.4;
-    }
-  ];
+    };
+    # NOTE: bitwarden window cannot be floated on this method
+    # https://github.com/hyprwm/Hyprland/issues/3835
+    window-rules = [
+      {
+        matches = [ { app-id = "^(librewolf)$"; } ];
+        default-column-width = {
+          proportion = 0.5;
+        };
+      }
+      {
+        matches = [
+          {
+            app-id = "^(librewolf)$";
+            title = "^(ピクチャーインピクチャー)$";
+          }
+          {
+            app-id = "^(librewolf)$";
+            title = "^(Save File)$";
+          }
+          {
+            app-id = "^(librewolf)$";
+            title = "^(.*)(wants to save)$";
+          }
+        ];
+        open-floating = true;
+        default-column-width.proportion = 0.4;
+        default-window-height.proportion = 0.4;
+      }
+    ];
+  };
 
   stylix.targets.librewolf = {
     enable = true;
