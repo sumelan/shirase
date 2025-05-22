@@ -1,4 +1,5 @@
 {
+  lib,
   config,
   pkgs,
   user,
@@ -31,7 +32,7 @@ let
         "signal": 12,
         "on-click": "", // refresh on click
         "on-click-right": "rm ~/.cache/update-checker/nix-update-last-run", // force an update
-        "interval": 86400, // refresh every day
+        "interval": 3600, // refresh every hour
         "tooltip": true,
         "return-type": "json",
         "format": "{} {icon}",
@@ -53,8 +54,8 @@ let
       },
       "backlight": {
         "device": "intel_backlight",
-        "on-scroll-up": "light -A 1",
-        "on-scroll-down": "light -U 1",
+        "on-scroll-up": "${lib.getExe' pkgs.light "light"} -A 1",
+        "on-scroll-down": "${lib.getExe' pkgs.light "light"} -U 1",
         "format": "<span size='13000' foreground='#${config.lib.stylix.colors.base0D}'>{icon} </span>  {percent}%",
         "format-icons": [
           "",
@@ -184,6 +185,7 @@ in
             {
               "position": "top",
               "layer": "top",
+              "reload_style_on_change": true,
               "output": "${name}",
               "modules-left": [
                 "niri/workspaces",
@@ -204,6 +206,7 @@ in
         {
           "position": "top",
           "layer": "top",
+          "reload_style_on_change": true,
           "output": "${config.lib.monitors.mainMonitorName}",
           "modules-left": [
             "image",

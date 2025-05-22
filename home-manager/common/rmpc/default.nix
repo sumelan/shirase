@@ -48,14 +48,9 @@
     };
     window-rules = [
       {
-        matches = [
-          {
-            # Mod+R launch rmpc with app-id
-            app-id = "^(rmpc)$";
-          }
-        ];
-        default-column-width.proportion = 0.4;
-        default-window-height.proportion = 0.35;
+        matches = [ { app-id = "^(rmpc)$"; } ];
+        default-column-width.proportion = 0.38;
+        default-window-height.proportion = 0.38;
         open-floating = true;
         default-floating-position = {
           x = 8;
