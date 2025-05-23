@@ -42,7 +42,7 @@ in
 
   # fish plugins, home-manager's programs.fish.plugins has a weird format
   home.packages = with pkgs.fishPlugins; [
-    sponge  # do not add failed commands to history
+    sponge # do not add failed commands to history
   ];
 
   # set as default interactive shell
@@ -51,7 +51,7 @@ in
       env = "SHELL=${fishPath}";
       shell = lib.mkForce (lib.getExe config.programs.fish.package);
     };
-    ghostty.settings={
+    ghostty.settings = {
       command = lib.mkForce "SHELL=${fishPath} ${fishPath}";
     };
   };
