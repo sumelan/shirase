@@ -32,7 +32,7 @@ _: {
   custom = {
     brave.enable = true;
     cyanrip.enable = true;
-    foliate.enable = true;
+    ebook.enable = true;
     inkscape.enable = true;
     krita.enable = true;
     thunderbird.enable = false;

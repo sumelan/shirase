@@ -19,7 +19,7 @@ _: {
   custom = {
     brave.enable = true;
     cyanrip.enable = true;
-    foliate.enable = true;
+    ebook.enable = true;
     thunderbird.enable = true;
   };
 }
