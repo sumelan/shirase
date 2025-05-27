@@ -128,7 +128,7 @@
         font-size: 1px;
         background-color: ${base09};
         border-radius: 20px;
-        min-width: 30px;
+        min-height: 30px;
         background-size: 400% 400%;
       }
 
