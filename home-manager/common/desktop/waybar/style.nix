@@ -74,7 +74,7 @@
         /* all: unset; */
         font-family: "Maple Mono NF";
         font-weight: bold;
-        font-size: 18px;
+        font-size: 14px;
         min-height: 0;
       }
 
@@ -91,45 +91,27 @@
       }
 
       #image,
-      #custom-nix-updates,
-      #idle_inhibitor,
-      #custom-screencast,
-      #network,
       #clock,
       #battery,
+      #network,
       #wireplumber,
       #workspaces,
-      #backlight,
-      #memory,
-      #tray,
-      #window {
-        padding: 4px 10px;
+      #backlight {
+        padding: 2px 2px;
         background: shade(alpha(${base00}, 0.9), 1);
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.377);
         color: ${base05};
-        margin-top: 10px;
-        margin-bottom: 5px;
+        margin-top: 6px;
+        margin-bottom: 6px;
         margin-left: 5px;
-        margin-right: 5px;
+        margin-right: 2px;
         box-shadow: 1px 2px 2px #101010;
         border-radius: 10px;
       }
 
-      #custom-screencast {
-        color: ${base05};
-        background: ${base08};
-        animation: blink 1s linear infinite alternate;
-      }
-
-      #idle_inhibitor.activated {
-        color: ${base00};
-        background: shade(alpha(${base09}, 0.9), 1);
-      }
-
       #workspaces {
-        margin-left: 15px;
         font-size: 0px;
-        padding: 6px 3px;
+        padding: 4px 4px;
         border-radius: 20px;
       }
 
@@ -155,22 +137,7 @@
         background-color: ${base04};
       }
 
-      #window {
-        color: ${base00};
-        background: radial-gradient(circle, ${base05} 0%, ${base09} 100%);
-        background-size: 400% 400%;
-        animation: gradient_f 40s ease-in-out infinite;
-        transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
-      }
-
-      window#waybar.empty #window {
-        background: none;
-        background-color: transparent;
-        box-shadow: none;
-      }
-
       #battery {
-        margin-right: 15px;
         background: ${base0F};
         background: linear-gradient(
           118deg,

@@ -34,16 +34,6 @@ nh-clean:
   nh clean all --keep 5
 alias nhc := nh-clean
 
-[group('Flag')]
-[doc('Add update flag')]
-uflag:
-  touch $HOME/.cache/update-checker/nix-update-update-flag && pkill -x -RTMIN+12 .waybar-wrapped
-
-[group('Flag')]
-[doc('Add updtate and rebuild flag')]
-rflag:
-  touch $HOME/.cache/update-checker/nix-update-rebuild-flag && pkill -x -RTMIN+12 .waybar-wrapped
-
 [group('Btrfs')]
 [doc('List the differences between current / and blank state')]
 diff:
