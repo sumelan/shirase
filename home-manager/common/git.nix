@@ -50,6 +50,7 @@ _: {
         };
       };
     };
+    lazygit.enable = true;
   };
 
   home = {

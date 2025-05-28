@@ -32,5 +32,8 @@
     # common
     btrbk.enable = true;
     distrobox.enable = true;
+
+    # hardware
+    logitech.enable = true;
   };
 }

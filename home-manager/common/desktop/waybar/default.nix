@@ -38,7 +38,7 @@
             device = "intel_backlight";
             on-scroll-up = "${lib.getExe' pkgs.light "light"} -A 1";
             on-scroll-down = "${lib.getExe' pkgs.light "light"} -U 1";
-            format = "<span size='12000' foreground='#${config.lib.stylix.colors.base0D}'>{icon} </span> {percent}%";
+            format = "<span size='12000' foreground='#${config.lib.stylix.colors.base0F}'>{icon} </span> {percent}%";
             format-icons = [
               ""
               ""
@@ -72,15 +72,22 @@
             tooltip-format = "{time}";
             interval = 5;
           };
+          "bluetooth" = {
+            format = "<span size='12000' foreground='#${config.lib.stylix.colors.base0D}'> </span> {status}";
+            format-disabled = "";
+            format-connected-battery = "<span size='12000' foreground='#${config.lib.stylix.colors.base0D}'>󰂱 </span> {device_battery_percentage}%";
+            tooltip-format-connected = "{device_alias} - {num_connections} connected";
+          };
           "network" = {
             format-wifi = "<span size='12000' foreground='#${config.lib.stylix.colors.base0B}'>󰖩 </span> {signalStrength}%";
             format-ethernet = "<span size='12000' foreground='#${config.lib.stylix.colors.base0B}'>󰈀 </span>";
             format-linked = "{ifname} (No IP) 󱚵";
             format-disconnected = "<span size='12000' foreground='#${config.lib.stylix.colors.base0B}'> </span>";
+            tooltip-format = "{ifname}: {essid} - {frequency} MHz";
           };
           "wireplumber" = {
-            format = "<span size='12000' foreground='#${config.lib.stylix.colors.base0A}'>{icon} </span> {volume}%";
-            format-muted = "<span size='12000' foreground='#${config.lib.stylix.colors.base0A}'> </span>";
+            format = "<span size='12000' foreground='#${config.lib.stylix.colors.base06}'>{icon} </span> {volume}%";
+            format-muted = "<span size='12000' foreground='#${config.lib.stylix.colors.base06}'> </span>";
             on-click = "pwvucontrol";
             format-icons = [
               ""
@@ -99,6 +106,7 @@
             "niri/workspaces"
           ];
           modules-right = [
+            "bluetooth"
             "network"
             "wireplumber"
             "backlight"

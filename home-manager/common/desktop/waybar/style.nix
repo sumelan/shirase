@@ -94,6 +94,7 @@
       #clock,
       #battery,
       #network,
+      #bluetooth,
       #wireplumber,
       #workspaces,
       #backlight {

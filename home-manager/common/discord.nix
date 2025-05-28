@@ -191,7 +191,7 @@
   programs.niri.settings.window-rules = [
     {
       matches = [ { app-id = "^(discord)$"; } ];
-      default-column-width.proportion = 0.6;
+      default-column-width.proportion = 0.7;
     }
   ];
 

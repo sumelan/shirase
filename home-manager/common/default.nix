@@ -15,7 +15,6 @@ _: {
     ./impermanence.nix
     ./jujutsu.nix
     ./kitty.nix
-    ./lazygit.nix
     ./librewolf.nix
     ./mpv.nix
     ./nix.nix

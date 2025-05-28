@@ -33,7 +33,7 @@
     window-rules = [
       {
         matches = [ { app-id = "^(kitty)$"; } ];
-        default-column-width.proportion = 0.5;
+        default-column-width.proportion = 0.6;
       }
       {
         # waybar
@@ -44,7 +44,7 @@
       }
       {
         matches = [ { app-id = "^(htop)$"; } ];
-        default-column-width.proportion = 0.5;
+        default-column-width.proportion = 0.6;
       }
     ];
   };
