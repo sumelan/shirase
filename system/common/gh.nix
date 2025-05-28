@@ -1,4 +1,4 @@
-_:{
+_: {
   hm = {
     programs.gh = {
       enable = true;

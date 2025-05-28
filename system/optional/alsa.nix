@@ -5,6 +5,7 @@
   user,
   ...
 }:
+# NOTE:spotify refuse to play when above 192 kHz
 let
   cfg = config.custom.alsa;
 in
@@ -24,11 +25,9 @@ in
     users.users.${user}.extraGroups = [ "audio" ];
 
     # device specific pipewire config
-    # NOTE:spotify refuse to play when above 192 kHz
 
     # services.pipewire.extraConfig = lib.mkIf cfg.devices.ifi-uno.enable {
     # pipewire = {
-
     # "10-clock-rate" = {
     #  "context.properties" = {
     #     "default.clock.allowed-rates" = [

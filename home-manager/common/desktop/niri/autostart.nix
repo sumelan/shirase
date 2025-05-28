@@ -24,16 +24,16 @@
       }
       {
         command = [
-          "brightnessctl"
+          "${lib.getExe' pkgs.brightnessctl "brightnessctl"}"
           "set"
           "5%"
         ];
       }
       {
         command = [
-          "wl-paste"
+          "${lib.getExe' pkgs.wl-clipboard "wl-paste"}"
           "--watch"
-          "cliphist"
+          "${lib.getExe' pkgs.cliphist "cliphist"}"
           "store"
         ];
       }

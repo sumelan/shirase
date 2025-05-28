@@ -25,7 +25,6 @@
         in
         lib.mkIf (autologinCommand != null) {
           enable = true;
-
           settings = {
             default_session = {
               command = # bash

@@ -24,7 +24,7 @@
         moduleConfiguration = {
           "image" = {
             path = "/home/${user}/.themed-logo.png";
-            size = 47;
+            size = 50;
             tooltip = false;
             on-click = "fuzzel-actions";
           };
@@ -34,10 +34,31 @@
               default = "";
             };
           };
+          "mpris" = {
+            player = "YoutubeMusic"; # to acquire player list, run 'playerctl --list-all'
+            ignored-players = [ "firefox" ];
+            format = "<span size='12000' foreground='#${config.lib.stylix.colors.base08}'>{player_icon} </span>MPRIS\n<span size='12000' foreground='#${config.lib.stylix.colors.base05}'>{status_icon} </span>{length}";
+            player-icons = {
+              mpd = "";
+              YoutubeMusic = "";
+            };
+            status-icons = {
+              playing = "";
+              paused = "";
+              stopped = "";
+
+            };
+            tooltip-format = "{title}\nby {artist}";
+            artist-len = 10;
+            title-len = 10;
+            ellipsis = "...";
+            on-scroll-up = "${lib.getExe' pkgs.playerctl "playerctl"} volume 0.1+";
+            on-scroll-down = "${lib.getExe' pkgs.playerctl "playerctl"} volume 0.1-";
+          };
           "backlight" = {
             device = "intel_backlight";
-            on-scroll-up = "${lib.getExe' pkgs.light "light"} -A 1";
-            on-scroll-down = "${lib.getExe' pkgs.light "light"} -U 1";
+            on-scroll-up = "${lib.getExe' pkgs.brightnessctl "brightnessctl"} set +5";
+            on-scroll-down = "${lib.getExe' pkgs.brightnessctl "brightnessctl"} set 5-";
             format = "<span size='12000' foreground='#${config.lib.stylix.colors.base0F}'>{icon} </span> {percent}%";
             format-icons = [
               ""
@@ -48,7 +69,7 @@
           "clock" = {
             format = "<span size='12000' foreground='#${config.lib.stylix.colors.base0E}'>󰥔 </span>{:%H:%M}";
             tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-            on-click = "kitty --class=tty-clock --title=tty-clock -e ${pkgs.tty-clock}/bin/tty-clock -s -c -C 5";
+            on-click = "kitty --class=tty-clock --title=tty-clock -e ${lib.getExe' pkgs.tty-clock "tty-clock"} -s -c -C 5";
           };
           "battery" = {
             states = {
@@ -80,15 +101,15 @@
           };
           "network" = {
             format-wifi = "<span size='12000' foreground='#${config.lib.stylix.colors.base0B}'>󰖩 </span> {signalStrength}%";
-            format-ethernet = "<span size='12000' foreground='#${config.lib.stylix.colors.base0B}'>󰈀 </span>";
-            format-linked = "{ifname} (No IP) 󱚵";
+            tooltip-format-wifi = "{ifname}: {essid} - {frequency} MHz";
+            format-ethernet = "<span size='12000' foreground='#${config.lib.stylix.colors.base0B}'>󰈀 {ifname}</span>";
+            format-linked = "(No IP) 󱚵";
             format-disconnected = "<span size='12000' foreground='#${config.lib.stylix.colors.base0B}'> </span>";
-            tooltip-format = "{ifname}: {essid} - {frequency} MHz";
           };
           "wireplumber" = {
             format = "<span size='12000' foreground='#${config.lib.stylix.colors.base06}'>{icon} </span> {volume}%";
             format-muted = "<span size='12000' foreground='#${config.lib.stylix.colors.base06}'> </span>";
-            on-click = "pwvucontrol";
+            on-click = "${lib.getExe' pkgs.pwvucontrol "pwvucontrol"}";
             format-icons = [
               ""
               ""
@@ -105,6 +126,9 @@
             "image"
             "niri/workspaces"
           ];
+          modules-center = [
+            "mpris"
+          ];
           modules-right = [
             "bluetooth"
             "network"
@@ -118,11 +142,5 @@
       {
         "mainBar" = mainMonitorsConfig // moduleConfiguration;
       };
-  };
-
-  custom.persist = {
-    home.cache.directories = [
-      ".cache/update-checker"
-    ];
   };
 }

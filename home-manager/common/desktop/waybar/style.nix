@@ -97,7 +97,8 @@
       #bluetooth,
       #wireplumber,
       #workspaces,
-      #backlight {
+      #backlight,
+      #mpris {
         padding: 2px 2px;
         background: shade(alpha(${base00}, 0.9), 1);
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.377);

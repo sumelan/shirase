@@ -27,7 +27,7 @@ in
           font = "Maple Mono NF:size=${toString (config.stylix.fonts.sizes.popups - 2)}";
           icon-theme = config.stylix.iconTheme.dark;
           match-counter = true;
-          terminal = "${pkgs.kitty}/bin/kitty";
+          terminal = "${lib.getExe' pkgs.kitty "kitty"}";
           width = 30;
           lines = 8;
           horizontal-pad = 40;
