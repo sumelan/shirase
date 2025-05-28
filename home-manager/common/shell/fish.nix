@@ -56,6 +56,8 @@ in
     };
   };
 
+  stylix.targets.fish.enable = true;
+
   custom.persist = {
     home = {
       cache.directories = [ ".local/share/fish" ];

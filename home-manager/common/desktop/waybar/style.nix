@@ -74,7 +74,7 @@
         /* all: unset; */
         font-family: "Maple Mono NF";
         font-weight: bold;
-        font-size: 14px;
+        font-size: 15px;
         min-height: 0;
       }
 
@@ -99,21 +99,21 @@
       #workspaces,
       #backlight,
       #mpris {
-        padding: 2px 2px;
+        padding: 8px 8px;
         background: shade(alpha(${base00}, 0.9), 1);
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.377);
         color: ${base05};
-        margin-top: 6px;
-        margin-bottom: 6px;
-        margin-left: 5px;
-        margin-right: 2px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 4px;
+        margin-right: 1px;
         box-shadow: 1px 2px 2px #101010;
         border-radius: 10px;
       }
 
       #workspaces {
         font-size: 0px;
-        padding: 4px 4px;
+        padding: 8px 8px;
         border-radius: 20px;
       }
 

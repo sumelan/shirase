@@ -61,7 +61,7 @@
       {
         matches = [ { app-id = "^(brave-browser)$"; } ];
         default-column-width = {
-          proportion = 0.5;
+          proportion = 0.6;
         };
       }
       {

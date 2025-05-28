@@ -20,7 +20,7 @@
 
   home.shellAliases = {
     # change color on ssh
-    ssh = "kitten ssh --kitten=color_scheme='Gruvbox Material Dark Medium'";
+    ssh = "kitten ssh --kitten=color_scheme='Rosé Pine Moon'";
   };
 
   programs.niri.settings = {

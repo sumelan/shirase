@@ -21,7 +21,7 @@
     };
     settings =
       let
-        moduleConfiguration = {
+        moduleConfiguration = with config.lib.stylix.colors.withHashtag; {
           "image" = {
             path = "/home/${user}/.themed-logo.png";
             size = 50;
@@ -37,29 +37,28 @@
           "mpris" = {
             player = "YoutubeMusic"; # to acquire player list, run 'playerctl --list-all'
             ignored-players = [ "firefox" ];
-            format = "<span size='12000' foreground='#${config.lib.stylix.colors.base08}'>{player_icon} </span>MPRIS\n<span size='12000' foreground='#${config.lib.stylix.colors.base05}'>{status_icon} </span>{length}";
+            format = "<span size='24000' foreground='${base08}'>{player_icon}</span>\n<span size='28000' foreground='${base05}'>{status_icon}</span>";
             player-icons = {
-              mpd = "";
-              YoutubeMusic = "";
+              default = "";
+              YoutubeMusic = "";
             };
             status-icons = {
               playing = "";
               paused = "";
               stopped = "";
-
             };
-            tooltip-format = "{title}\nby {artist}";
+            tooltip-format = "{title}\n - by {artist}";
             artist-len = 10;
             title-len = 10;
             ellipsis = "...";
-            on-scroll-up = "${lib.getExe' pkgs.playerctl "playerctl"} volume 0.1+";
-            on-scroll-down = "${lib.getExe' pkgs.playerctl "playerctl"} volume 0.1-";
+            on-scroll-up = "${lib.getExe' pkgs.playerctl "playerctl"} volume +1";
+            on-scroll-down = "${lib.getExe' pkgs.playerctl "playerctl"} volume 1-";
           };
           "backlight" = {
             device = "intel_backlight";
             on-scroll-up = "${lib.getExe' pkgs.brightnessctl "brightnessctl"} set +5";
             on-scroll-down = "${lib.getExe' pkgs.brightnessctl "brightnessctl"} set 5-";
-            format = "<span size='12000' foreground='#${config.lib.stylix.colors.base0F}'>{icon} </span> {percent}%";
+            format = "<span size='12000' foreground='${base0F}'>{icon} </span> {percent}%";
             format-icons = [
               ""
               ""
@@ -67,7 +66,7 @@
             tooltip = false;
           };
           "clock" = {
-            format = "<span size='12000' foreground='#${config.lib.stylix.colors.base0E}'>󰥔 </span>{:%H:%M}";
+            format = "<span size='12000' foreground='${base0E}'>󰥔 </span>{:%H:%M}";
             tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
             on-click = "kitty --class=tty-clock --title=tty-clock -e ${lib.getExe' pkgs.tty-clock "tty-clock"} -s -c -C 5";
           };
@@ -76,13 +75,13 @@
               warning = 30;
               critical = 15;
             };
-            format = "<span size='12000' foreground='#${config.lib.stylix.colors.base0B}'>{icon} </span> {capacity}%";
-            format-warning = "<span size='12000' foreground='#${config.lib.stylix.colors.base0B}'>{icon} </span> {capacity}%";
-            format-critical = "<span size='12000' foreground='#${config.lib.stylix.colors.base08}'>{icon} </span> {capacity}%";
-            format-charging = "<span size='12000' foreground='#${config.lib.stylix.colors.base0B}'> </span> {capacity}%";
-            format-plugged = "<span size='12000' foreground='#${config.lib.stylix.colors.base0B}'> </span> {capacity}%";
-            format-alt = "<span size='12000' foreground='#${config.lib.stylix.colors.base0B}'>{icon} </span> {time}";
-            format-full = "<span size='12000' foreground='#${config.lib.stylix.colors.base0B}'> </span> {capacity}%";
+            format = "<span size='12000' foreground='${base0B}'>{icon} </span> {capacity}%";
+            format-warning = "<span size='12000' foreground='${base0B}'>{icon} </span> {capacity}%";
+            format-critical = "<span size='12000' foreground='${base08}'>{icon} </span> {capacity}%";
+            format-charging = "<span size='12000' foreground='${base0B}'> </span> {capacity}%";
+            format-plugged = "<span size='12000' foreground='${base0B}'> </span> {capacity}%";
+            format-alt = "<span size='12000' foreground='${base0B}'>{icon} </span> {time}";
+            format-full = "<span size='12000' foreground='${base0B}'> </span> {capacity}%";
             format-icons = [
               ""
               ""
@@ -94,21 +93,22 @@
             interval = 5;
           };
           "bluetooth" = {
-            format = "<span size='12000' foreground='#${config.lib.stylix.colors.base0D}'> </span> {status}";
+            format = "<span size='12000' foreground='${base0D}'> </span> {status}";
             format-disabled = "";
-            format-connected-battery = "<span size='12000' foreground='#${config.lib.stylix.colors.base0D}'>󰂱 </span> {device_battery_percentage}%";
+            format-connected = "<span size='12000' foreground='${base0D}'>󰂱 </span>";
+            format-connected-battery = "<span size='12000' foreground='${base0D}'>󰂱 </span> {device_battery_percentage}%";
             tooltip-format-connected = "{device_alias} - {num_connections} connected";
           };
           "network" = {
-            format-wifi = "<span size='12000' foreground='#${config.lib.stylix.colors.base0B}'>󰖩 </span> {signalStrength}%";
+            format-wifi = "<span size='12000' foreground='${base0B}'>󰖩 </span> {signalStrength}%";
             tooltip-format-wifi = "{ifname}: {essid} - {frequency} MHz";
-            format-ethernet = "<span size='12000' foreground='#${config.lib.stylix.colors.base0B}'>󰈀 {ifname}</span>";
+            format-ethernet = "<span size='12000' foreground='${base0B}'>󰈀 {ifname}</span>";
             format-linked = "(No IP) 󱚵";
-            format-disconnected = "<span size='12000' foreground='#${config.lib.stylix.colors.base0B}'> </span>";
+            format-disconnected = "<span size='12000' foreground='${base0B}'> </span>";
           };
           "wireplumber" = {
-            format = "<span size='12000' foreground='#${config.lib.stylix.colors.base06}'>{icon} </span> {volume}%";
-            format-muted = "<span size='12000' foreground='#${config.lib.stylix.colors.base06}'> </span>";
+            format = "<span size='12000' foreground='${base06}'>{icon} </span> {volume}%";
+            format-muted = "<span size='12000' foreground='${base06}'> </span>";
             on-click = "${lib.getExe' pkgs.pwvucontrol "pwvucontrol"}";
             format-icons = [
               ""

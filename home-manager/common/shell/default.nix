@@ -62,8 +62,4 @@ in
     end
     complete -c pj -f -a "(_pj)"
   '';
-
-  stylix.targets = {
-    fish.enable = false;
-  };
 }

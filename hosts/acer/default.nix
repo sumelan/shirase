@@ -25,7 +25,7 @@
   custom = {
     # style
     stylix = {
-      colorTheme = "catppuccin-mocha";
+      colorTheme = "gruvbox-material-dark-soft";
       polarity = "dark";
     };
 
