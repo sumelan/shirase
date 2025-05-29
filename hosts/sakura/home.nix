@@ -40,7 +40,7 @@
       };
     };
 
-    brave.enable = true;
+    brave.enable = false;
     cyanrip.enable = true;
     ebook.enable = true;
     inkscape.enable = true;
