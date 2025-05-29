@@ -93,12 +93,10 @@
       #image,
       #clock,
       #battery,
-      #network,
-      #bluetooth,
       #wireplumber,
       #workspaces,
       #backlight,
-      #mpris {
+      #tray {
         padding: 8px 8px;
         background: shade(alpha(${base00}, 0.9), 1);
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.377);
