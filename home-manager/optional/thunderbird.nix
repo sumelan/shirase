@@ -24,7 +24,7 @@
       {
         matches = [ { app-id = "^(thunderbird)$"; } ];
         default-column-width = {
-          proportion = 0.5;
+          proportion = 0.7;
         };
       }
     ];

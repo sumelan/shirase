@@ -1,10 +1,11 @@
 {
-  pkgs,
   lib,
+  pkgs,
   flake,
   host,
   ...
-}: {
+}:
+{
   programs.helix.languages = {
     language = [
       {
@@ -12,7 +13,10 @@
         auto-format = true;
         formatter = {
           command = lib.getExe pkgs.shfmt;
-          args = ["-i" "2"];
+          args = [
+            "-i"
+            "2"
+          ];
         };
       }
       {
@@ -20,12 +24,15 @@
         auto-format = true;
         formatter = {
           command = lib.getExe pkgs.nodePackages.prettier;
-          args = ["--parser" "css"];
+          args = [
+            "--parser"
+            "css"
+          ];
         };
       }
       {
         name = "git-commit";
-        language-servers = ["ltex"];
+        language-servers = [ "ltex" ];
       }
       {
         name = "go";
@@ -35,7 +42,10 @@
         name = "html";
         formatter = {
           command = lib.getExe pkgs.nodePackages.prettier;
-          args = ["--parser" "html"];
+          args = [
+            "--parser"
+            "html"
+          ];
         };
       }
       {
@@ -44,33 +54,46 @@
         soft-wrap.enable = true;
         formatter = {
           command = lib.getExe pkgs.nodePackages.prettier;
-          args = ["--parser" "markdown"];
+          args = [
+            "--parser"
+            "markdown"
+          ];
         };
-        language-servers = ["marksman" "ltex"];
+        language-servers = [
+          "marksman"
+          "ltex"
+        ];
       }
       {
         name = "nix";
         auto-format = true;
-        language-servers = ["nixd"];
+        language-servers = [ "nixd" ];
       }
       {
         name = "python";
-        language-servers = ["basedpyright" "ruff"];
+        language-servers = [
+          "basedpyright"
+          "ruff"
+        ];
         auto-format = true;
         formatter = {
           command = lib.getExe pkgs.ruff;
-          args = ["format" "--line-length=80" "-"];
+          args = [
+            "format"
+            "--line-length=80"
+            "-"
+          ];
         };
       }
       {
         name = "sql";
-        language-servers = ["sqls"];
+        language-servers = [ "sqls" ];
       }
     ];
     language-server = {
       basedpyright = {
         command = "${pkgs.basedpyright}/bin/basedpyright-langserver";
-        args = ["--stdio"];
+        args = [ "--stdio" ];
       };
       bash-language-server = {
         command = lib.getExe pkgs.bash-language-server;
@@ -91,7 +114,7 @@
         command = lib.getExe pkgs.nil;
         config.nil = {
           formatting = {
-            command = ["${lib.getExe pkgs.alejandra}"];
+            command = [ "${lib.getExe pkgs.alejandra}" ];
           };
           nix = {
             flake = {
@@ -106,7 +129,7 @@
         command = lib.getExe pkgs.nixd;
         config.nixd = {
           nixpkgs.expr = "import (builtins.getFlake \"${flake}\").inputs.nixpkgs { }";
-          formatting.command = ["${lib.getExe pkgs.alejandra}"];
+          formatting.command = [ "${lib.getExe pkgs.alejandra}" ];
           options.nixos.expr = "(builtins.getFlake \"${flake}\").nixosConfigurations.${host}.options";
         };
       };

@@ -18,7 +18,7 @@
       in
       {
         global = {
-          origin = "top-center";
+          origin = "top-right";
           separator_color = base02;
           font = "${fonts.sansSerif.name} ${toString fonts.sizes.popups}";
           offset = "(20, 20)";

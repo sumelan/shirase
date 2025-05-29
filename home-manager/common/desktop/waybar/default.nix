@@ -40,7 +40,7 @@
             device = "intel_backlight";
             on-scroll-up = "${lib.getExe' pkgs.brightnessctl "brightnessctl"} set +5";
             on-scroll-down = "${lib.getExe' pkgs.brightnessctl "brightnessctl"} set 5-";
-            format = "<span size='${icon_size}' foreground='${base0F}'>{icon}</span>\n{percent}%";
+            format = "<span size='${icon_size}' foreground='${base0A}'>{icon}</span>\n{percent}%";
             format-icons = [
               ""
               ""

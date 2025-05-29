@@ -140,7 +140,7 @@
       #battery {
         background: ${base0F};
         background: linear-gradient(
-          118deg,
+          124deg,
           ${base0E} 5%,
           ${base0D} 5%,
           ${base0D} 20%,
@@ -162,7 +162,7 @@
       #battery.charging,
       #battery.plugged {
         background: linear-gradient(
-          118deg,
+          124deg,
           ${base0B} 5%,
           ${base0C} 5%,
           ${base0C} 20%,
@@ -182,7 +182,7 @@
 
       #battery.full {
         background: linear-gradient(
-          118deg,
+          124deg,
           ${base0B} 5%,
           ${base0C} 5%,
           ${base0C} 20%,

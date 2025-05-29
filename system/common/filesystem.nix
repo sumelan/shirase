@@ -1,10 +1,14 @@
 { lib, ... }:
 # NOTE: partitions and subvolumes are created via install.sh
-{ 
+{
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXOS";
     fsType = "btrfs";
-    options = [ "subvol=root" "compress=zstd" "noatime" ];
+    options = [
+      "subvol=root"
+      "compress=zstd"
+      "noatime"
+    ];
   };
 
   boot.initrd = {
@@ -38,13 +42,21 @@
     "/nix" = {
       device = "/dev/disk/by-label/NIXOS";
       fsType = "btrfs";
-      options = [ "subvol=nix" "compress=zstd" "noatime" ];
+      options = [
+        "subvol=nix"
+        "compress=zstd"
+        "noatime"
+      ];
     };
 
     "/persist" = {
       device = "/dev/disk/by-label/NIXOS";
       fsType = "btrfs";
-      options = [ "subvol=persist" "compress=zstd" "noatime" ];
+      options = [
+        "subvol=persist"
+        "compress=zstd"
+        "noatime"
+      ];
       neededForBoot = true;
     };
 
@@ -53,14 +65,21 @@
     "/cache" = {
       device = "/dev/disk/by-label/NIXOS";
       fsType = "btrfs";
-      options = [ "subvol=cache" "compress=zstd" "noatime" ];
+      options = [
+        "subvol=cache"
+        "compress=zstd"
+        "noatime"
+      ];
       neededForBoot = true;
     };
 
     "/boot" = {
       device = "/dev/disk/by-label/NIXBOOT";
       fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
+      options = [
+        "fmask=0022"
+        "dmask=0022"
+      ];
     };
   };
   # auto-scrubbing

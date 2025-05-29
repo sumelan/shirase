@@ -63,7 +63,7 @@
     # japanese
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
-    # other nerd fonts
+    # nerd fonts
     maple-mono.NF
   ];
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   home.packages = with pkgs; [
     (discord.override {
@@ -67,7 +67,7 @@
             --custom-dms-background: off; /* off to disable, image to use a background image (must set url variable below), color to use a custom color/gradient */
             --dms-background-image-url: url(""); /* url of the background image */
             --dms-background-image-size: cover; /* size of the background image (css background-size property) */
-            --dms-background-color: linear-gradient(70deg, var(--blue-2), var(--purple-2), var(--peach-2)); /* fixed color/gradient (css background property) */
+            --dms-background-color: linear-gradient(70deg, var(--blue-2), var(--purple-2), var(--orange-2)); /* fixed color/gradient (css background property) */
 
             /* background image options */
             --background-image: off; /* off: no background image, on: enable background image (must set url variable below) */
@@ -122,11 +122,11 @@
 
 
             /* accent colors */
-            --accent-1: var(--peach-1); /* links and other accent text */
-            --accent-2: var(--peach-2); /* small accent elements */
-            --accent-3: var(--peach-3); /* accent buttons */
-            --accent-4: var(--peach-4); /* accent buttons when hovered */
-            --accent-5: var(--peach-5); /* accent buttons when clicked */
+            --accent-1: var(--orange-1); /* links and other accent text */
+            --accent-2: var(--orange-2); /* small accent elements */
+            --accent-3: var(--orange-3); /* accent buttons */
+            --accent-4: var(--orange-4); /* accent buttons when hovered */
+            --accent-5: var(--orange-5); /* accent buttons when clicked */
             --accent-new: var(--accent-2); /* stuff that's normally red like mute/deafen buttons */
             --mention: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 90%) 40%, transparent); /* background of messages that mention you */
             --mention-hover: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 95%) 40%, transparent); /* background of messages that mention you when hovered */
@@ -138,7 +138,7 @@
             --online: var(--green-2); /* change to #40a258 for default */
             --dnd: var(--purple-2); /* change to #d83a41 for default */
             --idle: var(--yellow-2); /* change to #cc954c for default */
-            --streaming: var(--peach-2); /* change to ##9147ff for default */
+            --streaming: var(--orange-2); /* change to ##9147ff for default */
             --offline: var(--text-4); /* change to #82838b for default offline color */
 
             /* border colors */
@@ -154,11 +154,11 @@
             --red-4: hsl(343deg, 81%, 70%);
             --red-5: hsl(343deg, 81%, 65%);
 
-            --peach-1: hsl(23deg, 92%, 80%);
-            --peach-2: hsl(23deg, 92%, 75%);
-            --peach-3: hsl(23deg, 92%, 75%);
-            --peach-4: hsl(23deg, 92%, 70%);
-            --peach-5: hsl(23deg, 92%, 65%);
+            --orange-1: hsl(23deg, 92%, 80%);
+            --orange-2: hsl(23deg, 92%, 75%);
+            --orange-3: hsl(23deg, 92%, 75%);
+            --orange-4: hsl(23deg, 92%, 70%);
+            --orange-5: hsl(23deg, 92%, 65%);
 
             --green-1: hsl(115deg, 54%, 81%);
             --green-2: hsl(115deg, 54%, 76%);
@@ -188,12 +188,20 @@
     };
   };
 
-  programs.niri.settings.window-rules = [
-    {
-      matches = [ { app-id = "^(discord)$"; } ];
-      default-column-width.proportion = 0.7;
-    }
-  ];
+  programs.niri.settings = {
+    binds = with config.lib.niri.actions; {
+      "Mod+O" = {
+        action = spawn "discord";
+        hotkey-overlay.title = "Discord";
+      };
+    };
+    window-rules = [
+      {
+        matches = [ { app-id = "^(discord)$"; } ];
+        default-column-width.proportion = 0.7;
+      }
+    ];
+  };
 
   custom.persist = {
     home.directories = [
