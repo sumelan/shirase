@@ -1,4 +1,5 @@
-_: {
+{ pkgs, ... }:
+{
   monitors = {
     "HDMI-A-1" = {
       isMain = true;
@@ -30,6 +31,15 @@ _: {
   };
 
   custom = {
+    # theme
+    stylix = {
+      icon = {
+        package = pkgs.magnetic-catppuccin-gtk;
+        darkName = "Catppuccin-GTK-Dark";
+        lightName = "Catppuccin-GTK-Dark"; # seems not contain light-theme icons;
+      };
+    };
+
     brave.enable = true;
     cyanrip.enable = true;
     ebook.enable = true;

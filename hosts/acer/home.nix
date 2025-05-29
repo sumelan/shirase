@@ -1,4 +1,5 @@
-_: {
+{ pkgs, ... }:
+{
   monitors = {
     "eDP-1" = {
       isMain = true;
@@ -17,6 +18,17 @@ _: {
   };
 
   custom = {
+    # theme
+    stylix = {
+      icon = {
+        package = pkgs.papirus-icon-theme.override {
+          color = "orange";
+        };
+        darkName = "Papirus-Dark";
+        lightName = "Papirus-Light";
+      };
+    };
+
     brave.enable = true;
     cyanrip.enable = true;
     ebook.enable = true;
