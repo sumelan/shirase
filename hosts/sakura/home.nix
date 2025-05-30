@@ -34,9 +34,12 @@
     # theme
     stylix = {
       icon = {
-        package = pkgs.magnetic-catppuccin-gtk;
-        darkName = "Catppuccin-GTK-Dark";
-        lightName = "Catppuccin-GTK-Dark"; # seems not contain light-theme icons;
+        package = pkgs.catppuccin-papirus-folders.override {
+          flavor = "frappe";
+          accent = "peach";
+        };
+        darkName = "Papirus-Dark";
+        lightName = "Papirus-Light";
       };
     };
 
