@@ -26,7 +26,7 @@
         moduleConfiguration = with config.lib.stylix.colors.withHashtag; {
           "image" = {
             path = "/home/${user}/.themed-logo.png";
-            size = 30;
+            size = 32;
             tooltip = false;
             on-click = "fuzzel-actions";
           };

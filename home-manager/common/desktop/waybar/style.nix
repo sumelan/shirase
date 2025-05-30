@@ -15,13 +15,6 @@
       animation-css =
         # css
         ''
-          @keyframes blink {
-            to {
-              color: ${base00};
-              background: ${base01};
-            }
-          }
-
           @keyframes gradient {
             0% {
               background-position: 0% 50%;
@@ -67,7 +60,6 @@
     in
     # css
     ''
-      ${tray-css}
       ${animation-css}
 
       * {
@@ -101,12 +93,17 @@
         background: shade(alpha(${base00}, 0.9), 1);
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.377);
         color: ${base05};
-        margin-top: 5px;
-        margin-bottom: 5px;
+        margin-top: 6px;
+        margin-bottom: 6px;
         margin-left: 4px;
         margin-right: 1px;
         box-shadow: 1px 2px 2px #101010;
         border-radius: 10px;
+      }
+
+      #image {
+        padding: 6px 6px;
+        border-radius: 20px;
       }
 
       #workspaces {
@@ -199,6 +196,8 @@
         background-size: 200% 300%;
         animation: gradient_rv 20s linear infinite;
       }
+
+      ${tray-css}
 
       #tray > .passive {
         -gtk-icon-effect: dim;
