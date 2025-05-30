@@ -23,8 +23,8 @@
         refresh = 59.951;
       };
       position = {
-        x = 2560;
-        y = 0;
+        x = 0;
+        y = 1440;
       };
       rotation = 0;
     };
