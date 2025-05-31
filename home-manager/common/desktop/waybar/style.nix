@@ -96,7 +96,7 @@
         margin-top: 6px;
         margin-bottom: 6px;
         margin-left: 4px;
-        margin-right: 1px;
+        margin-right: 2px;
         box-shadow: 1px 2px 2px #101010;
         border-radius: 10px;
       }
@@ -104,6 +104,11 @@
       #image {
         padding: 6px 6px;
         border-radius: 20px;
+        background: radial-gradient(circle, ${base00} 0%, ${base0C} 100%);
+        background-size: 400% 400%;
+        animation: gradient_f 40s ease-in-out infinite;
+        transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+
       }
 
       #workspaces {
