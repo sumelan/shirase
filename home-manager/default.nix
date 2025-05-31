@@ -58,6 +58,22 @@
       enable = true;
       userDirs.enable = true;
       mimeApps.enable = true;
+      # hide unnecessary desktopItems
+      desktopEntries =
+        let
+          hideList = [
+            "fcitx5-configtool"
+            "kcm_fcitx5"
+            "org.fcitx.Fcitx5"
+            "org.fcitx.fcitx5-migrator"
+            "nixos-manual"
+            "fish"
+          ];
+        in
+        lib.attrsets.genAttrs hideList (name': {
+          name = name';
+          noDisplay = true;
+        });
     };
 
     custom.persist = {

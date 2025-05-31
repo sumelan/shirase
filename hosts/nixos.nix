@@ -24,6 +24,7 @@ let
         ./${host} # host specific configuration
         ./${host}/hardware.nix # host specific hardware configuration
         ../system # system modules
+        ../overlays # overlay
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
