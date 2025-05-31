@@ -66,7 +66,7 @@
         /* all: unset; */
         font-family: "Maple Mono NF";
         font-weight: bold;
-        font-size: 15px;
+        font-size: ${builtins.toString (config.stylix.fonts.sizes.desktop + 3)}px;
         min-height: 0;
       }
 
@@ -104,7 +104,7 @@
       #image {
         padding: 6px 6px;
         border-radius: 20px;
-        background: radial-gradient(circle, ${base00} 0%, ${base0C} 100%);
+        background: radial-gradient(circle, ${base00} 0%, ${base08} 100%);
         background-size: 400% 400%;
         animation: gradient_f 40s ease-in-out infinite;
         transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);

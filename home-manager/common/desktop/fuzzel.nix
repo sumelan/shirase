@@ -24,15 +24,15 @@ in
         main = {
           placeholder = "Type to search...";
           prompt = "'❯ '";
-          font = "Maple Mono NF:size=${toString (config.stylix.fonts.sizes.popups - 2)}";
+          font = "Maple Mono NF:size=${builtins.toString (config.stylix.fonts.sizes.popups)}";
           icon-theme = config.stylix.iconTheme.dark;
           match-counter = true;
           terminal = "${lib.getExe' pkgs.kitty "kitty"}";
           width = 30;
           lines = 8;
-          horizontal-pad = 40;
-          vertical-pad = 8;
-          inner-pad = 15;
+          horizontal-pad = 38;
+          vertical-pad = 14;
+          inner-pad = 12;
         };
         border = {
           width = 2;
