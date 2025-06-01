@@ -102,6 +102,7 @@ in
       noto-fonts-cjk-serif
       # nerd fonts
       maple-mono.NF
+      nerd-fonts.aurulent-sans-mono
     ];
   };
 }

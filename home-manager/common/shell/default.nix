@@ -16,17 +16,7 @@ in
       ":wq" = "exit";
       c = "clear";
       cat = "bat";
-      ccat = "command cat";
-      crate = "cargo";
-      isodate = ''date -u "+%Y-%m-%dT%H:%M:%SZ"'';
       man = "batman";
-      mime = "xdg-mime query filetype";
-      mkdir = "mkdir -p";
-      mount = "mount --mkdir";
-      open = "xdg-open";
-      py = "python";
-      w = "watch -cn1 -x cat";
-      coinfc = "pj coinfc";
 
       # cd aliases
       ".." = "cd ..";

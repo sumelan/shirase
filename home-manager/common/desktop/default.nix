@@ -2,9 +2,10 @@ _: {
   imports = [
     ./eww
     ./niri
-    ./waybar
+    ./rofi
+    # ./waybar
     ./dunst.nix
-    ./fuzzel.nix
+    # ./fuzzel.nix
     ./image.nix
     ./nautilus.nix
     ./swayosd.nix

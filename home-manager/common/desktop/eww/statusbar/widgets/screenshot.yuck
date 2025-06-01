@@ -1,0 +1,14 @@
+(defwidget screenshot []
+    (eventbox
+        :onclick {
+          "niri msg action screenshot"
+        }
+        :onmiddleclick {
+          "niri msg action screenshot-window"
+        }
+        (label
+            :class "nerd-icon"
+            :text "󰹑"
+        )
+    )
+)

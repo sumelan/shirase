@@ -2,7 +2,7 @@ _: {
   programs = {
     nushell = {
       enable = true;
-      configFile.source = ./config.nu;
+      configFile.source = ./config/config.nu;
       shellAliases = {
         vi = "nvim";
         vim = "nvim";
@@ -20,4 +20,6 @@ _: {
       };
     };
   };
+
+  stylix.targets.nushell.enable = true;
 }

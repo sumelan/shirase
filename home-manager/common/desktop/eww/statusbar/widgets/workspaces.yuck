@@ -1,0 +1,35 @@
+(deflisten workspaces
+    :initial "[]"
+    "
+    ./widgets/get_workspaces.nu
+
+    if [ $XDG_CURRENT_DESKTOP == 'niri' ]; then
+        niri msg --json event-stream |
+            stdbuf -o0 awk -e '/^.*(Window|Workspace)/' |
+            while read -r line; do ./widgets/get_workspaces.nu; done
+    fi
+    "
+)
+
+(defwidget workspaces []
+    (box
+        :orientation "vertical"
+        :space-evenly false
+        :class "center"
+        (for workspace in workspaces
+            (eventbox
+                (box
+                    :class "workspace ${workspace.focused
+                        ? "current"
+                        : workspace.on_current_output
+                        ? ""
+                        : "disabled"}"
+                    (label
+                        :halign "end"
+                        :text "${workspace.icon}"
+                    )
+                )
+            )
+        )
+    )
+)

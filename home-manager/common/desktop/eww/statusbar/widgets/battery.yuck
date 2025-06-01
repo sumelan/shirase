@@ -1,0 +1,13 @@
+(defpoll battery
+    :interval "250ms"
+    :initial '{"percentage":"0", "icon":"?"}'
+    "./widgets/get_battery.sh"
+)
+
+(defwidget battery []
+  (eventbox
+    (label
+      :class { battery.state == "" ? "error" : (battery.state == "fully-charged") ? "full" : battery.state == "charging" ? "charging" : (battery.percentage < 25 ? `low` : (battery.percentage < 50 ? `medium` : `normal`))}
+      :text {battery.icon})
+  )
+)
