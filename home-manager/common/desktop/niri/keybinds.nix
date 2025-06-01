@@ -6,7 +6,7 @@
     # sh = spawn "sh" "-c";
     # in
     {
-      # NOTE: application binds are written in each app.nix
+      # application binds are written in each app.nix
 
       # shows a list of important hotkeys.
       "Mod+Shift+Slash".action = show-hotkey-overlay;
@@ -17,7 +17,7 @@
       # exit niri
       "Mod+Shift+Escape".action = quit { skip-confirmation = false; };
 
-      # screenshot
+      # screenshot NOTE: 'screenshot-screen' is valid only on niri-stable
       "Mod+Backslash".action = screenshot { show-pointer = false; };
       "Mod+Alt+Backslash".action = screenshot-window { write-to-disk = true; };
 
@@ -99,6 +99,6 @@
       "Mod+Shift+TouchpadScrollRight".action = move-column-right;
       "Mod+Shift+TouchpadScrollLeft".action = move-column-left;
 
-      #NOTE: mediakey binds are written in swayosd.nix
+      # mediakey binds are written in swayosd.nix
     };
 }

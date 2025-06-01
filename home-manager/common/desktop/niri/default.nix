@@ -31,7 +31,7 @@
         input = {
           focus-follows-mouse.enable = true;
           touchpad.natural-scroll = true;
-          # niri will take over the power button to make it sleep by default
+          # niri handle power button as sleep by default
           power-key-handling.enable = false;
         };
 
@@ -65,10 +65,8 @@
                 to = base09;
                 angle = 45;
                 in' = "oklab";
-                # relative-to = "workspace-view";
               };
             };
-            # inactive.color = "#585b70";
             inactive.color = base02;
           };
 
@@ -85,9 +83,7 @@
             enable = true;
             display = {
               gradient = {
-                # from = "#f9e2af";
                 from = base0A;
-                # to = "#eba0ac";
                 to = base09;
                 angle = 45;
               };
@@ -104,6 +100,11 @@
             position = "right";
             gaps-between-tabs = 2;
           };
+        };
+
+        overview = {
+          zoom = 0.7;
+          backdrop-color = base00;
         };
 
         environment = {
