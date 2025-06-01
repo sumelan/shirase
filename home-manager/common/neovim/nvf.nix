@@ -84,7 +84,6 @@
             enableFormat = true;
             enableTreesitter = true;
             bash.enable = true;
-            nu.enable = true;
             html.enable = true;
             lua.enable = true;
             markdown = {
@@ -108,6 +107,11 @@
             ts = {
               enable = true;
               extensions.ts-error-translator.enable = true;
+            };
+            nu = {
+              enable = true;
+              lsp.enable = true;
+              treesitter.enable = true;
             };
           };
 

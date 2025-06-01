@@ -1,5 +1,3 @@
-set shell := ["fish", "-c"]
-
 [group('default')]
 [doc('Listing available recipes')]
 @default:

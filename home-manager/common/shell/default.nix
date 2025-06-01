@@ -4,6 +4,7 @@ let
 in
 {
   imports = [
+    ./nushell
     ./bash.nix
     ./fish.nix
   ];
