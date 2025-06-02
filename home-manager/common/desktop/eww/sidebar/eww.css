@@ -16,7 +16,7 @@
 
 .container-youtubemusic {
   padding: 8px;
-  padding-right: 20px;
+  padding-right: 22px;
   box-shadow: inset -3px 0 #a6e3a1;
 
   color: #DC143C;
@@ -26,7 +26,7 @@
 
 .container-notification {
   padding: 8px;
-  padding-right: 20px;
+  padding-right: 22px;
   box-shadow: inset -3px 0 #89b4fa;
 
   color: #89b4fa;
@@ -36,7 +36,7 @@
 
 .container-disabled {
   padding: 8px;
-  padding-right: 20px;
+  padding-right: 22px;
   box-shadow: inset -3px 0 #abb2bf;
 
   font-family: Inter;
