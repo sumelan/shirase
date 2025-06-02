@@ -43,17 +43,12 @@ let
                 ./${host}/home.nix # host specific home-manager configuration
                 ../home-manager # home-manager modules
                 inputs.nix-index-database.hmModules.nix-index
-                inputs.nvf.homeManagerModules.default
               ];
             };
           };
         }
         # alias for home-manager
         (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" user ])
-        inputs.stylix.nixosModules.stylix
-        inputs.niri.nixosModules.niri
-        inputs.impermanence.nixosModules.impermanence
-        inputs.agenix.nixosModules.default
       ];
     };
 in

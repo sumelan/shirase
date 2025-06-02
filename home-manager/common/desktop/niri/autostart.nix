@@ -30,21 +30,21 @@
         ];
       }
       {
-        # command = [
-        #   "${lib.getExe' pkgs.wl-clipboard "wl-paste"}"
-        #   "--watch"
-        # "${lib.getExe' pkgs.cliphist "cliphist"}"
-        # "store"
-        #  ];
-
         command = [
-          "wl-paste"
-          "-t"
-          "text"
+          "${lib.getExe' pkgs.wl-clipboard "wl-paste"}"
           "--watch"
-          "clipman"
+          "${lib.getExe' pkgs.cliphist "cliphist"}"
           "store"
         ];
+
+        # command = [
+        # "wl-paste"
+        # "-t"
+        # "text"
+        # "--watch"
+        # "clipman"
+        # "store"
+        # ];
       }
     ];
   };

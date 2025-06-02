@@ -38,6 +38,12 @@
 
     # nur
     nur.url = "github:nix-community/NUR";
+
+    way-edges = {
+      url = "github:way-edges/way-edges";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # neovim
     nvf = {
       url = "github:notashelf/nvf";

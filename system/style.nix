@@ -2,9 +2,14 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }:
 {
+  imports = [
+    inputs.stylix.nixosModules.stylix
+  ];
+
   options.custom = with lib; {
     stylix = {
       colorTheme = mkOption {

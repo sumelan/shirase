@@ -2,6 +2,7 @@
   lib,
   config,
   user,
+  inputs,
   ...
 }:
 let
@@ -13,6 +14,10 @@ let
     paths;
 in
 {
+  imports = [
+    inputs.impermanence.nixosModules.impermanence
+  ];
+
   options.custom = with lib; {
     persist = {
       root = {

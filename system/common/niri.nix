@@ -1,6 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
-  # NOTE: nautilus is installed on system-wide
+  imports = [
+    inputs.niri.nixosModules.niri
+  ];
+
   environment = {
     systemPackages = with pkgs; [
       nautilus

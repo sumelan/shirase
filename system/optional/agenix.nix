@@ -6,6 +6,10 @@
   ...
 }:
 {
+  imports = [
+    inputs.agenix.nixosModules.default
+  ];
+
   options.custom = with lib; {
     agenix.enable = mkEnableOption "agenix" // {
       default = config.custom.audiobookshelf.nginx.enable;
