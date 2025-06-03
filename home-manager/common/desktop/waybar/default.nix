@@ -10,9 +10,6 @@
   imports = [
     ./style.nix
   ];
-
-  home.packages = with pkgs; [ brightnessctl ];
-
   programs.waybar = {
     enable = true;
     systemd = {
@@ -22,7 +19,6 @@
     settings =
       let
         icon_size = builtins.toString 15000;
-
         moduleConfiguration = with config.lib.stylix.colors.withHashtag; {
           "image" = {
             path = "/home/${user}/.themed-logo.png";
@@ -30,17 +26,17 @@
             tooltip = false;
             on-click = "fuzzel-actions";
           };
-          "niri/workspaces" = {
-            format = "{icon}";
-            format-icons = {
-              default = "";
-            };
+          "niri/window" = {
+            format = "{}";
+            separate-outputs = true;
+            icon = true;
+            icon-size = 24;
           };
           "backlight" = {
             device = "intel_backlight";
             on-scroll-up = "${lib.getExe' pkgs.brightnessctl "brightnessctl"} set +5";
             on-scroll-down = "${lib.getExe' pkgs.brightnessctl "brightnessctl"} set 5-";
-            format = "<span size='${icon_size}' foreground='${base0A}'>{icon}</span>\n{percent}%";
+            format = "<span size='${icon_size}' foreground='${base0A}'>{icon} </span> {percent}%";
             format-icons = [
               ""
               ""
@@ -52,34 +48,21 @@
             spacing = 10;
           };
           "clock" = {
-            format = "<span size='${icon_size}' foreground='${base0E}'>󰥔</span>\n{:%H\n%M}";
+            format = "<span size='${icon_size}' foreground='${base0E}'> </span> {:%a %d %H:%M}";
             tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
             on-click = "kitty --class=tty-clock --title=tty-clock -e ${lib.getExe' pkgs.tty-clock "tty-clock"} -s -c -C 5";
           };
-          "battery" = {
-            states = {
-              warning = 30;
-              critical = 15;
+          "idle_inhibitor" = {
+            format = "{icon}";
+            format-icons = {
+              activated = "<span size='${icon_size}' foreground='${base05}'></span>";
+              deactivated = "<span size='${icon_size}' foreground='${base03}'></span>";
             };
-            format = "<span size='${icon_size}' foreground='${base0B}'>{icon}</span>\n{capacity}%";
-            format-warning = "<span size='${icon_size}' foreground='${base0B}'>{icon}</span>\n{capacity}%";
-            format-critical = "<span size='${icon_size}' foreground='${base08}'>{icon}</span>\n{capacity}%";
-            format-charging = "<span size='${icon_size}' foreground='${base0B}'></span>\n{capacity}%";
-            format-plugged = "<span size='${icon_size}' foreground='${base0B}'></span>\n{capacity}%";
-            format-full = "<span size='${icon_size}' foreground='${base0B}'></span>\n{capacity}%";
-            format-icons = [
-              ""
-              ""
-              ""
-              ""
-              ""
-            ];
-            tooltip-format = "{time}";
-            interval = 5;
+            tooltip = true;
           };
           "wireplumber" = {
-            format = "<span size='${icon_size}' foreground='${base06}'>{icon}</span>\n{volume}%";
-            format-muted = "<span size='${icon_size}' foreground='${base06}'></span>";
+            format = "<span size='${icon_size}' foreground='${base06}'>{icon} </span>{volume}%";
+            format-muted = "<span size='${icon_size}' foreground='${base06}'> </span>Muted";
             on-click = "${lib.getExe' pkgs.pwvucontrol "pwvucontrol"}";
             format-icons = [
               ""
@@ -89,21 +72,22 @@
         };
 
         mainMonitorsConfig = {
-          position = "left";
+          position = "top";
           layer = "top";
           reload_style_on_change = true;
           output = "${config.lib.monitors.mainMonitorName}";
           modules-left = [
             "image"
-            "niri/workspaces"
+            "niri/window"
           ];
-          modules-center = [ ];
+          modules-center = [
+            "clock"
+          ];
           modules-right = [
+            "idle_inhibitor"
             "tray"
             "wireplumber"
             "backlight"
-            "battery"
-            "clock"
           ];
         };
       in

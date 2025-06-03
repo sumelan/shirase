@@ -36,15 +36,6 @@
           "${lib.getExe' pkgs.cliphist "cliphist"}"
           "store"
         ];
-
-        # command = [
-        # "wl-paste"
-        # "-t"
-        # "text"
-        # "--watch"
-        # "clipman"
-        # "store"
-        # ];
       }
     ];
   };

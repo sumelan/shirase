@@ -55,8 +55,8 @@
             valign = "center";
           };
           image = {
-            path = "/home/${user}/.face.icon";
-            size = 150;
+            path = "/home/${user}/.themed-logo.png";
+            size = 200;
             border_color = "rgb(${config.lib.stylix.colors.base09})";
             position = "0, 180";
             halign = "center";

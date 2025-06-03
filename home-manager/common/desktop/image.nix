@@ -35,13 +35,5 @@ let
     '';
 in
 {
-  home.file = {
-    ".face.icon" = {
-      source = pkgs.fetchurl {
-        url = "https://avatars.githubusercontent.com/${user}";
-        sha256 = "sha256-LwDWTjMNZRegUfXnZUqCVCfbHJ0EuNn4toufwC5dgP8=";
-      };
-    };
-    ".themed-logo.png".source = changeColor logo;
-  };
+  home.file.".themed-logo.png".source = changeColor logo;
 }

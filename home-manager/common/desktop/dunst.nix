@@ -21,7 +21,7 @@
           origin = "top-right";
           separator_color = base02;
           font = "${fonts.sansSerif.name} ${toString fonts.sizes.popups}";
-          offset = "(20, 20)";
+          offset = "(50, 20)";
           alignment = "center";
           browser = "librewolf -new-tab";
           corner_radius = 8;

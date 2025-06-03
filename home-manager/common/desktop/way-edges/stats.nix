@@ -14,11 +14,11 @@ let
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
     extra_trigger_size = 0;
-    preview_size = "30%";
+    preview_size = "38%";
     animation_curve = "ease-expo";
     transition_duration = 300;
-    margins.top = "8%";
-    ignore_exclusive = false;
+    margins.top = "5%";
+    ignore_exclusive = true;
     pinnable = true;
     pin-with-key = true;
     pin_key = right-click;
@@ -27,12 +27,12 @@ let
   commonWrap-box = {
     type = "wrap-box";
     align = "center_right";
-    gap = 10;
+    gap = 8;
     outlook = {
       type = "window";
       color = "${base02}";
-      border_radius = 5;
-      border_width = 8;
+      border_radius = 8;
+      border_width = 5;
       margins = {
         left = 5;
         right = 5;
@@ -126,15 +126,13 @@ let
             widget = commonRing // diskConfig;
           }
         ]
-        ++ (lib.optional config.custom.battery.enable [
-          {
-            index = [
-              (-1)
-              (-1)
-            ];
-            widget = commonRing // batteryConfig;
-          }
-        ]);
+        ++ (lib.optional config.custom.battery.enable {
+          index = [
+            (-1)
+            (-1)
+          ];
+          widget = commonRing // batteryConfig;
+        });
     };
   };
 in

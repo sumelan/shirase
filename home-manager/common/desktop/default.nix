@@ -1,10 +1,8 @@
 _: {
   imports = [
-    # ./eww
     ./niri
-    # ./rofi
     ./way-edges
-    # ./waybar
+    ./waybar
     ./dunst.nix
     ./fuzzel.nix
     ./image.nix

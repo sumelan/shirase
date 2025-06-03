@@ -14,11 +14,11 @@ let
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
     extra_trigger_size = 0;
-    preview_size = "20%";
+    preview_size = "24%";
     animation_curve = "ease-expo";
     transition_duration = 300;
     margins.${direction} = "15%";
-    ignore_exclusive = false;
+    ignore_exclusive = true;
     pinnable = true;
     pin-with-key = true;
     pin_key = right-click;

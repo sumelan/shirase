@@ -46,7 +46,7 @@ let
     edge = "left";
     position = "top";
     extra_trigger_size = 0;
-    preview_size = "10%";
+    preview_size = "15%";
     margins.top = "40%";
     widget = {
       type = "workspace";
