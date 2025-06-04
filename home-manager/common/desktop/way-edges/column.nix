@@ -1,4 +1,9 @@
-{ config, ... }:
+{
+  lib,
+  config,
+  isLaptop,
+  ...
+}:
 with config.lib.stylix.colors.withHashtag;
 let
   left-click = 272;
@@ -102,7 +107,7 @@ let
 in
 [
   columnWorkspaceDown
-  columnMonitorDown
   columnWorkspaceUp
-  columnMonitorUp
 ]
+++ (lib.optional (!isLaptop) columnMonitorDown)
+++ (lib.optional (!isLaptop) columnMonitorUp)

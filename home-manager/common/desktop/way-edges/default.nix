@@ -3,6 +3,7 @@
   config,
   pkgs,
   inputs,
+  isLaptop,
   ...
 }:
 {
@@ -24,7 +25,9 @@
         groups = [
           {
             name = "niri";
-            widgets = (import ./column.nix { inherit config; }) ++ (import ./workspace.nix { inherit config; });
+            widgets =
+              (import ./column.nix { inherit lib config isLaptop; })
+              ++ (import ./workspace.nix { inherit config; });
           }
           #  {
           #    name = "tray";
