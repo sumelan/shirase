@@ -29,7 +29,7 @@
         prefer-no-csd = true;
 
         input = {
-          focus-follows-mouse.enable = true;
+          focus-follows-mouse.enable = false;
           touchpad.natural-scroll = true;
           # niri handle power button as sleep by default
           power-key-handling.enable = false;

@@ -9,7 +9,9 @@ let
 
   commonConfiguration = {
     layer = "overlay";
-    monitor = config.lib.monitors.mainMonitorName;
+    monitor = [
+      config.lib.monitors.mainMonitorName
+    ] ++ config.lib.monitors.otherMonitorsNames;
     animation_curve = "ease-expo";
     transition_duration = 300;
     ignore_exclusive = false;
@@ -53,10 +55,10 @@ let
       thickness = 20;
       length = "20%";
       active_increase = 0.3;
-      active_color = "${base0E}";
+      active_color = "${base0E}90"; # second monitor color
       default_color = "${base00}";
       focus_color = "${base0B}90";
-      hover_color = "${base0B}80";
+      hover_color = "${base05}80";
       gap = 5;
       invert_direction = false;
       pop_duration = 500;
@@ -64,13 +66,13 @@ let
       focused_only = false;
       preset = {
         type = "niri";
-        filter_empty = true;
+        filter_empty = false;
       };
     };
   };
 in
 [
-  (workspaceTransition "top" "${base0D}" "focus-window-or-workspace-up")
-  (workspaceTransition "bottom" "${base0E}" "focus-window-or-workspace-down")
+  # (workspaceTransition "top" "${base0D}" "focus-window-or-workspace-up")
+  # (workspaceTransition "bottom" "${base0E}" "focus-window-or-workspace-down")
   workspaceIndicator
 ]

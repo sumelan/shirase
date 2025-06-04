@@ -53,11 +53,23 @@
           opacity = config.stylix.opacity.desktop;
         }
       ];
-      spawn-at-startup = [
-        {
-          command = [ "way-edges" ];
-        }
-      ];
+    };
+  };
+  systemd.user.services = {
+    "way-edges" = {
+      Install.WantedBy = [ "graphical-session.target" ];
+      Unit = {
+        Description = "Run way-edges";
+        After = [ "graphical-session.target" ];
+        Wants = [ "graphical-session.target" ];
+      };
+      Service = {
+        ExecStart = "${lib.getExe' inputs.way-edges.packages."${pkgs.system}".default "way-edges"}";
+        Restart = "on-failure";
+        ExecStartPre = "${lib.getExe' pkgs.coreutils "sleep"} 1";
+        ExecStartPost = "${lib.getExe' pkgs.coreutils "sleep"} 1";
+        RestartSec = 3;
+      };
     };
   };
 }

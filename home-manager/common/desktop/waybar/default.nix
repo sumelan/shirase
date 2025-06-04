@@ -58,7 +58,7 @@
               activated = "<span size='${icon_size}' foreground='${base05}'></span>";
               deactivated = "<span size='${icon_size}' foreground='${base03}'></span>";
             };
-            tooltip = true;
+            tooltip = false;
           };
           "wireplumber" = {
             format = "<span size='${icon_size}' foreground='${base06}'>{icon} </span>{volume}%";
@@ -87,8 +87,7 @@
             "idle_inhibitor"
             "tray"
             "wireplumber"
-            "backlight"
-          ];
+          ] ++ (lib.optional config.custom.backlight.enable "backlight");
         };
       in
       {
