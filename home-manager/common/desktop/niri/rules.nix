@@ -51,13 +51,6 @@
       }
     ];
 
-    layer-rules = [
-      {
-        matches = [ { namespace = "^(waybar)$"; } ];
-        opacity = config.stylix.opacity.desktop;
-      }
-    ];
-
     switch-events = {
       lid-close.action.spawn = [
         "niri"

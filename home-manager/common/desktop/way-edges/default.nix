@@ -50,6 +50,12 @@
     };
 
     niri.settings = {
+      binds = with config.lib.niri.actions; {
+        "Mod+S" = {
+          action = spawn "way-edges" "togglepin" "stats:stats";
+          hotkey-overlay.title = "Toggle Stats Widgets";
+        };
+      };
       layer-rules = [
         {
           matches = [ { namespace = "^(way-edges-widget)$"; } ];
