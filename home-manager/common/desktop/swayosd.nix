@@ -101,5 +101,11 @@
       "Ctrl+Space" = {
         action = sh "fcitx5-remote -t && ${osdCommand} --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard";
       };
+
+      # clear clipboard cache
+      "Mod+Ctrl+V" = {
+        action = sh "rm $XDG_CACHE_HOME/cliphist/db && ${osdCommand} --custom-message='Clipboard Cleared' --custom-icon=edit-paste";
+        hotkey-overlay.title = "Clear Clipboard History";
+      };
     };
 }

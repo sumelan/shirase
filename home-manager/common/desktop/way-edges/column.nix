@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  isLaptop,
   ...
 }:
 with config.lib.stylix.colors.withHashtag;
@@ -12,9 +11,9 @@ let
   side-click-1 = 275;
   side-click-2 = 276;
 
-  commonConfig = {
+  commonConfig = edge: {
     name = "move_column";
-    edge = "left";
+    edge = "${edge}";
     layer = "overlay";
     extra_trigger_size = 0;
     preview_size = "25%";
@@ -35,37 +34,37 @@ let
     border_width = 2;
   };
 
-  workspaceDown = {
-    position = "bottom";
+  workspaceDown = position: {
+    position = "${position}";
     monitor = [
       config.lib.monitors.mainMonitorName
     ] ++ config.lib.monitors.otherMonitorsNames;
-    margins.bottom = "10%";
+    margins.${position} = "10%";
   };
 
-  monitorDown = {
-    position = "bottom";
-    monitor = config.lib.monitors.mainMonitorName;
-    margins.bottom = 0;
-  };
-
-  workspaceUp = {
-    position = "top";
-    monitor = [
-      config.lib.monitors.mainMonitorName
-    ] ++ config.lib.monitors.otherMonitorsNames;
-    margins.top = "10%";
-  };
-
-  monitorUp = {
-    position = "top";
+  monitorDown = position: {
+    position = "${position}";
     monitor = config.lib.monitors.otherMonitorsNames;
-    margins.top = 0;
+    margins.${position} = 0;
+  };
+
+  workspaceUp = position: {
+    position = "${position}";
+    monitor = [
+      config.lib.monitors.mainMonitorName
+    ] ++ config.lib.monitors.otherMonitorsNames;
+    margins.${position} = "10%";
+  };
+
+  monitorUp = position: {
+    position = "${position}";
+    monitor = config.lib.monitors.mainMonitorName;
+    margins.${position} = 0;
   };
 
   columnWorkspaceDown =
-    commonConfig
-    // workspaceDown
+    commonConfig "left"
+    // workspaceDown "bottom"
     // {
       widget = btnConfig "${base07}" "${base0A}" // {
         event_map = {
@@ -74,8 +73,8 @@ let
       };
     };
   columnMonitorDown =
-    commonConfig
-    // monitorDown
+    commonConfig "left"
+    // monitorDown "bottom"
     // {
       widget = btnConfig "${base0E}" "${base0A}" // {
         event_map = {
@@ -85,8 +84,8 @@ let
     };
 
   columnWorkspaceUp =
-    commonConfig
-    // workspaceUp
+    commonConfig "left"
+    // workspaceUp "top"
     // {
       widget = btnConfig "${base0F}" "${base0A}" // {
         event_map = {
@@ -95,8 +94,8 @@ let
       };
     };
   columnMonitorUp =
-    commonConfig
-    // monitorUp
+    commonConfig "left"
+    // monitorUp "top"
     // {
       widget = btnConfig "${base08}" "${base0A}" // {
         event_map = {
@@ -109,5 +108,5 @@ in
   columnWorkspaceDown
   columnWorkspaceUp
 ]
-++ (lib.optional (!isLaptop) columnMonitorDown)
-++ (lib.optional (!isLaptop) columnMonitorUp)
+++ (lib.optional (config.lib.monitors.otherMonitorsNames != [ ]) columnMonitorDown)
+++ (lib.optional (config.lib.monitors.otherMonitorsNames != [ ]) columnMonitorUp)

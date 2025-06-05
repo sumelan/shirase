@@ -20,7 +20,10 @@
       # screenshot
       "Mod+Backslash".action = screenshot { show-pointer = false; };
       # NOTE: 'screenshot-screen' is valid only on niri-stable
-      "Mod+Shift+Backslash".action = spawn "niri" "msg" "action" "screenshot-screen";
+      "Mod+Shift+Backslash" = {
+        action = spawn "niri" "msg" "action" "screenshot-screen";
+        hotkey-overlay.title = "Take a Screenshot of focused Output";
+      };
       "Mod+Alt+Backslash".action = screenshot-window { write-to-disk = true; };
 
       # window and colum management

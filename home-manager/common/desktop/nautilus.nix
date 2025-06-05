@@ -25,7 +25,14 @@
     };
     window-rules = [
       {
-        matches = [ { app-id = "^(org.gnome.Nautilus)$"; } ];
+        matches = [
+          {
+            app-id = "^(org.gnome.Nautilus)$";
+          }
+          {
+            app-id = "^(xdg-desktop-portal-gtk)$";
+          }
+        ];
         open-floating = true;
         default-column-width.proportion = 0.4;
         default-window-height.proportion = 0.4;

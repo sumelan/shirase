@@ -78,10 +78,6 @@ in
         action = spawn "fuzzel-clipboard";
         hotkey-overlay.title = "Show Clipboard History";
       };
-      "Mod+Ctrl+V" = {
-        action = spawn "rm" "$XDG_CACHE_HOME/cliphist/db";
-        hotkey-overlay.title = "Clear Clipboard History";
-      };
     };
   };
 }

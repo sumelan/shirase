@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  isLaptop,
   ...
 }:
 {
@@ -37,9 +36,13 @@
             let
               wallMap =
                 nameList: map (x: "${lib.getExe' pkgs.waypaper "waypaper"} --random --monitor " + x) nameList;
-              nameList = [
-                config.lib.monitors.mainMonitorName
-              ] ++ (lib.optional (!isLaptop) (builtins.toString config.lib.monitors.otherMonitorsNames));
+              nameList =
+                [
+                  config.lib.monitors.mainMonitorName
+                ]
+                ++ (lib.optional (config.lib.monitors.otherMonitorsNames != [ ]) (
+                  builtins.toString config.lib.monitors.otherMonitorsNames
+                ));
             in
             wallMap nameList;
 
