@@ -17,8 +17,10 @@
       # exit niri
       "Mod+Shift+Escape".action = quit { skip-confirmation = false; };
 
-      # screenshot NOTE: 'screenshot-screen' is valid only on niri-stable
+      # screenshot
       "Mod+Backslash".action = screenshot { show-pointer = false; };
+      # NOTE: 'screenshot-screen' is valid only on niri-stable
+      "Mod+Shift+Backslash".action = spawn "niri" "msg" "action" "screenshot-screen";
       "Mod+Alt+Backslash".action = screenshot-window { write-to-disk = true; };
 
       # window and colum management
@@ -43,6 +45,9 @@
       # acer fn+F3 binds Mod+P
       "Mod+P".action = consume-or-expel-window-left;
       "Mod+Shift+P".action = consume-or-expel-window-right;
+
+      # tabbed
+      "Mod+T".action = toggle-column-tabbed-display;
 
       "Mod+Alt+H".action = set-column-width "-10%";
       "Mod+Alt+L".action = set-column-width "+10%";

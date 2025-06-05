@@ -21,8 +21,8 @@
     # theme
     stylix = {
       icon = {
-        package = pkgs.papirus-icon-theme.override {
-          color = "orange";
+        package = pkgs.papirus-nord.override {
+          accent = "auroraorange";
         };
         darkName = "Papirus-Dark";
         lightName = "Papirus-Light";

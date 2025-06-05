@@ -104,10 +104,6 @@
       #image {
         padding: 6px 6px;
         border-radius: 20px;
-        background: radial-gradient(circle, ${base08} 0%, ${base0D} 100%);
-        background-size: 400% 400%;
-        animation: gradient_f 40s ease-in-out infinite;
-        transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
       }
 
       #idle_inhibitor.activated {

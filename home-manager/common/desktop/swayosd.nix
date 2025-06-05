@@ -10,7 +10,7 @@
   xdg.configFile."swayosd/style.scss".text = with config.lib.stylix.colors.withHashtag; ''
     window {
       border-radius: 999px;
-      border: 2px solid alpha(${base09}, ${toString config.stylix.opacity.popups});
+      border: 2px solid alpha(${base0A}, ${toString config.stylix.opacity.popups});
       background: alpha(${base00}, ${toString config.stylix.opacity.popups});
     }
 
@@ -50,7 +50,7 @@
     with config.lib.niri.actions;
     let
       sh = spawn "sh" "-c";
-      osdCommand = "swayosd-client --monitor $(niri msg -j outputs | jq -r '.[] | .name')";
+      osdCommand = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName}";
     in
     {
       # audio

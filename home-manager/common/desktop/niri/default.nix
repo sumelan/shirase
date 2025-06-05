@@ -93,11 +93,15 @@
           shadow = shadowConfig;
 
           tab-indicator = {
+            enable = true;
+            position = "left";
             hide-when-single-tab = true;
+            place-within-column = true;
+            active.color = base0D;
+            inactive.color = base02;
             gap = 5;
             width = 6;
             length.total-proportion = 0.5;
-            position = "right";
             gaps-between-tabs = 2;
           };
         };
