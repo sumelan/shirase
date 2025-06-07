@@ -32,7 +32,6 @@
     brave.enable = false;
     cyanrip.enable = true;
     ebook.enable = true;
-    ghostty.enable = true;
     thunderbird.enable = true;
   };
 }

@@ -51,7 +51,7 @@
             "clock" = {
               format = "<span size='${icon_size}' foreground='${base0E}'> </span> {:%a %d %H:%M}";
               tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-              on-click = "kitty --class=tty-clock --title=tty-clock -e ${lib.getExe' pkgs.tty-clock "tty-clock"} -s -c -C 5";
+              on-click = "ghostty -e ${lib.getExe' pkgs.tty-clock "tty-clock"} -s -c -C 5";
             };
             "idle_inhibitor" = {
               format = "{icon}";

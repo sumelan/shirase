@@ -25,6 +25,7 @@
         clip-to-geometry = true;
         draw-border-with-background = false;
       }
+      # focused column/window rules
       {
         matches = [ { is-focused = true; } ];
         excludes = lib.mkIf config.custom.krita.enable [
@@ -48,6 +49,12 @@
           }
         ];
         opacity = config.stylix.opacity.desktop * 0.9;
+      }
+      # floating window rules
+      {
+        matches = [ { is-floating = true; } ];
+        default-column-width.proportion = 0.5;
+        default-window-height.proportion = 0.5;
       }
     ];
 

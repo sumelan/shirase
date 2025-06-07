@@ -46,7 +46,6 @@
     brave.enable = false;
     cyanrip.enable = true;
     ebook.enable = true;
-    ghostty.enable = true;
     inkscape.enable = true;
     krita.enable = true;
     thunderbird.enable = false;

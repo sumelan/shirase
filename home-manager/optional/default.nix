@@ -4,7 +4,6 @@ _: {
     ./brave.nix
     ./cyanrip.nix
     ./ebook.nix
-    ./ghostty.nix
     ./hardware.nix
     ./inkscape.nix
     ./krita.nix

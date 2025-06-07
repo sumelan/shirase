@@ -11,6 +11,7 @@ _: {
     ./easyeffects.nix
     ./eza.nix
     ./fastfetch.nix
+    ./ghostty.nix
     ./git.nix
     ./impermanence.nix
     ./jujutsu.nix

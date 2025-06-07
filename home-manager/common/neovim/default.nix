@@ -40,7 +40,7 @@
     {
       # neovim
       "Mod+Shift+Return" = {
-        action = sh "cd /home/${user}/projects/wolborg && kitty nvim";
+        action = sh "ghostty --working-directory='projects/wolborg' -e nvim";
         hotkey-overlay.title = "Edit Config";
       };
     };

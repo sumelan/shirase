@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+_: {
   programs.kitty = {
     enable = true;
     settings = {
@@ -21,32 +20,6 @@
   home.shellAliases = {
     # change color on ssh
     ssh = "kitten ssh --kitten=color_scheme='Rosé Pine Moon'";
-  };
-
-  programs.niri.settings = {
-    binds = with config.lib.niri.actions; {
-      "Mod+Return" = {
-        action = spawn "kitty";
-        hotkey-overlay.title = "Kitty";
-      };
-    };
-    window-rules = [
-      {
-        matches = [ { app-id = "^(kitty)$"; } ];
-        default-column-width.proportion = 0.6;
-      }
-      {
-        # waybar
-        matches = [ { app-id = "^(tty-clock)$"; } ];
-        open-floating = true;
-        default-column-width.proportion = 0.3;
-        default-window-height.proportion = 0.2;
-      }
-      {
-        matches = [ { app-id = "^(htop)$"; } ];
-        default-column-width.proportion = 0.6;
-      }
-    ];
   };
 
   stylix.targets.kitty = {

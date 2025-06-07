@@ -37,28 +37,10 @@
   programs.niri.settings = {
     binds = with config.lib.niri.actions; {
       "Mod+R" = {
-        action =
-          spawn "kitty" "-T" "󱘗 Rusty Music Player Client" "-o" "font_family=Maple Mono NF" "-o"
-            "font_size=12"
-            "--app-id"
-            "rmpc"
-            "rmpc";
+        action = spawn "ghostty" "--font-family=Maple Mono NF Medium" "-e" "rmpc";
         hotkey-overlay.title = "Rusty Music Player Client";
       };
     };
-    window-rules = [
-      {
-        matches = [ { app-id = "^(rmpc)$"; } ];
-        default-column-width.proportion = 0.38;
-        default-window-height.proportion = 0.38;
-        open-floating = true;
-        default-floating-position = {
-          x = 8;
-          y = 8;
-          relative-to = "bottom-right";
-        };
-      }
-    ];
   };
 
   custom.persist = {
