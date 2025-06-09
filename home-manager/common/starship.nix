@@ -14,6 +14,7 @@
           important_style = "bg:white fg:bold #ff0000";
         in
         {
+          add_newline = false;
           format = lib.concatStrings [
             # begin left format
             "$username"

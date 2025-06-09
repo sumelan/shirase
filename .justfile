@@ -1,5 +1,5 @@
 # nix shell nixpkgs#just nixpkgs#nushell
-set shell := ["nu", "-c"]
+set shell := ["fish", "-c"]
 
 default:
     @just --list

@@ -1,12 +1,11 @@
 {
   lib,
   config,
-  isLaptop,
   ...
 }:
 {
   programs.niri.settings = {
-    workspaces = lib.mkIf (!isLaptop) {
+    workspaces = lib.mkIf (config.lib.monitors.otherMonitorsNames == [ ]) {
       "01-huion" = {
         name = "huion";
         open-on-output = builtins.toString config.lib.monitors.otherMonitorsNames;

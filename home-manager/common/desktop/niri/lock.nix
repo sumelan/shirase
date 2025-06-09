@@ -103,7 +103,7 @@
         };
       };
       niri.settings.binds = with config.lib.niri.actions; {
-        "Mod+Escape" = {
+        "Mod+Q" = {
           action = spawn "hyprlock";
           hotkey-overlay.title = "Screenlock";
           # usefull when screen-locker crashed

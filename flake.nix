@@ -4,10 +4,15 @@
   inputs = {
     # nixpkgs links
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     # hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    # nur
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # home-manager
     home-manager = {
@@ -35,9 +40,6 @@
 
     # secrets
     agenix.url = "github:ryantm/agenix";
-
-    # nur
-    nur.url = "github:nix-community/NUR";
 
     way-edges = {
       url = "github:way-edges/way-edges";
