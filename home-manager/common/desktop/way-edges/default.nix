@@ -71,7 +71,7 @@
         Wants = [ "graphical-session.target" ];
       };
       Service = {
-        ExecStart = "${lib.getExe' inputs.way-edges.packages."${pkgs.system}".default "way-edges"}";
+        ExecStart = "${lib.getExe inputs.way-edges.packages."${pkgs.system}".default}";
         Restart = "on-failure";
         ExecStartPre = "${lib.getExe' pkgs.coreutils "sleep"} 1";
         ExecStartPost = "${lib.getExe' pkgs.coreutils "sleep"} 1";

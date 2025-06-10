@@ -27,7 +27,7 @@ in
           font = "Maple Mono NF:size=${builtins.toString (config.stylix.fonts.sizes.popups)}";
           icon-theme = config.stylix.iconTheme.dark;
           match-counter = true;
-          terminal = "${lib.getExe' pkgs.ghostty "ghostty"} -e";
+          terminal = "${config.custom.terminal.exec}";
           width = 30;
           lines = 8;
           horizontal-pad = 38;

@@ -20,11 +20,11 @@
         ];
       }
       {
-        command = [ "${lib.getExe' pkgs.xwayland-satellite "xwayland-satellite"}" ];
+        command = [ "${lib.getExe pkgs.xwayland-satellite}" ];
       }
       {
         command = [
-          "${lib.getExe' pkgs.brightnessctl "brightnessctl"}"
+          "${lib.getExe pkgs.brightnessctl}"
           "set"
           "5%"
         ];
@@ -33,7 +33,7 @@
         command = [
           "${lib.getExe' pkgs.wl-clipboard "wl-paste"}"
           "--watch"
-          "${lib.getExe' pkgs.cliphist "cliphist"}"
+          "${lib.getExe pkgs.cliphist}"
           "store"
         ];
       }

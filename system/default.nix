@@ -44,7 +44,7 @@
       pathsToLink = [ "/share/fish" ];
 
       variables = {
-        TERMINAL = lib.getExe pkgs.ghostty;
+        TERMINAL = lib.getExe config.hm.custom.terminal.package;
         EDITOR = "nvim";
         VISUAL = "nvim";
         NIXPKGS_ALLOW_UNFREE = "1";
@@ -122,7 +122,7 @@
       terminal-exec = {
         enable = true;
         settings = {
-          default = [ "ghostty.desktop" ];
+          default = [ "${config.hm.custom.terminal.package.pname}.desktop" ];
         };
       };
     };

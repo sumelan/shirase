@@ -99,10 +99,18 @@ in
   programs.niri.settings = {
     binds = with config.lib.niri.actions; {
       "Mod+Shift+E" = {
-        action = spawn "ghostty" "-e" "yazi";
+        action = spawn "${config.custom.terminal.exec}" "--app-id" "yazi" "yazi";
         hotkey-overlay.title = "Yazi";
       };
     };
+    window-rules = [
+      {
+        matches = [ { app-id = "^(yazi)"; } ];
+        default-column-width.proportion = 0.5;
+        default-window-height.proportion = 0.5;
+        open-floating = true;
+      }
+    ];
   };
 
   stylix.targets.yazi.enable = true;

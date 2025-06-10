@@ -24,7 +24,6 @@
     alsa.enable = true;
     logitech.enable = true;
     qmk.enable = true;
-    opentabletdriver.enable = true;
 
     # steam
     steam.enable = false;

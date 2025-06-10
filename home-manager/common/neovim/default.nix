@@ -32,18 +32,29 @@
     };
   };
 
-  programs.niri.settings.binds =
-    with config.lib.niri.actions;
-    let
-      sh = spawn "sh" "-c";
-    in
-    {
-      # neovim
-      "Mod+Shift+Return" = {
-        action = sh "ghostty --working-directory='projects/wolborg' -e nvim";
-        hotkey-overlay.title = "Edit Config";
+  programs.niri.settings = {
+    binds =
+      with config.lib.niri.actions;
+      let
+        sh = spawn "sh" "-c";
+      in
+      {
+        # neovim
+        "Mod+Shift+Return" = {
+          action = sh "cd /home/${user}/projects/wolborg && ${config.custom.terminal.exec} --app-id neovim nvim";
+          hotkey-overlay.title = "Edit Config";
+        };
       };
-    };
+    window-rules = [
+      {
+        # Mod+C launch cava with app-id
+        matches = [ { app-id = "^(neovim)$"; } ];
+        default-column-width.proportion = 0.8;
+        default-window-height.proportion = 0.8;
+        open-floating = true;
+      }
+    ];
+  };
 
   custom.persist = {
     home.directories = [

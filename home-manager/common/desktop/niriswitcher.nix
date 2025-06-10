@@ -5,7 +5,11 @@
   ...
 }:
 {
-  home.packages = with pkgs; [ niriswitcher ];
+  programs = {
+    niriswitcher = {
+      enable = true;
+    };
+  };
 
   xdg.configFile = {
     "niriswitcher/config.toml".text = ''
@@ -227,7 +231,7 @@
   programs.niri.settings = {
     spawn-at-startup = [
       {
-        command = [ "${lib.getExe' pkgs.niriswitcher "niriswitcher"}" ];
+        command = [ "${lib.getExe pkgs.niriswitcher}" ];
       }
     ];
     binds = with config.lib.niri.actions; {

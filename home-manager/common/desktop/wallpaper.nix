@@ -34,8 +34,7 @@
           Type = "oneshot";
           ExecStart =
             let
-              wallMap =
-                nameList: map (x: "${lib.getExe' pkgs.waypaper "waypaper"} --random --monitor " + x) nameList;
+              wallMap = nameList: map (x: "${lib.getExe pkgs.waypaper} --random --monitor " + x) nameList;
               nameList =
                 [
                   config.lib.monitors.mainMonitorName

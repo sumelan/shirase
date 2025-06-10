@@ -35,8 +35,8 @@
             };
             "backlight" = {
               device = "intel_backlight";
-              on-scroll-up = "${lib.getExe' pkgs.brightnessctl "brightnessctl"} set +5";
-              on-scroll-down = "${lib.getExe' pkgs.brightnessctl "brightnessctl"} set 5-";
+              on-scroll-up = "${lib.getExe pkgs.brightnessctl} set +5";
+              on-scroll-down = "${lib.getExe pkgs.brightnessctl} set 5-";
               format = "<span size='${icon_size}' foreground='${base0A}'>{icon} </span> {percent}%";
               format-icons = [
                 ""
@@ -51,7 +51,7 @@
             "clock" = {
               format = "<span size='${icon_size}' foreground='${base0E}'> </span> {:%a %d %H:%M}";
               tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-              on-click = "ghostty -e ${lib.getExe' pkgs.tty-clock "tty-clock"} -s -c -C 5";
+              on-click = "${config.custom.terminal.exec} --class=tty-clock --title=tty-clock -e ${lib.getExe pkgs.tty-clock} -s -c -C 5";
             };
             "idle_inhibitor" = {
               format = "{icon}";
@@ -64,7 +64,7 @@
             "wireplumber" = {
               format = "<span size='${icon_size}' foreground='${base06}'>{icon} </span>{volume}%";
               format-muted = "<span size='${icon_size}' foreground='${base06}'> </span>Muted";
-              on-click = "${lib.getExe' pkgs.pwvucontrol "pwvucontrol"}";
+              on-click = "${lib.getExe pkgs.pwvucontrol}";
               format-icons = [
                 ""
                 ""

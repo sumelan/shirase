@@ -49,12 +49,6 @@
         ];
         opacity = config.stylix.opacity.desktop * 0.9;
       }
-      # floating window rules
-      {
-        matches = [ { is-floating = true; } ];
-        default-column-width.proportion = 0.5;
-        default-window-height.proportion = 0.5;
-      }
     ];
 
     switch-events = {
