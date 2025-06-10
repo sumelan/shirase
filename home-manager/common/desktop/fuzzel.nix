@@ -62,10 +62,10 @@ in
         action = spawn "fuzzel-files";
         hotkey-overlay.title = "File Search";
       };
-      # "Mod+Tab" = {
-      #   action = spawn "fuzzel-windows";
-      #   hotkey-overlay.title = "Windows Search";
-      # };
+      "Alt+Tab" = {
+        action = spawn "fuzzel-windows";
+        hotkey-overlay.title = "Windows Search";
+      };
       "Mod+Ctrl+Q" = {
         action = spawn "fuzzel-actions";
         hotkey-overlay.title = "System Actions";

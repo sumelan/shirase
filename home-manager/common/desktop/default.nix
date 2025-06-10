@@ -14,7 +14,6 @@
     ./fuzzel.nix
     ./image.nix
     ./nautilus.nix
-    ./niriswitcher.nix
     ./swayosd.nix
     ./wallpaper.nix
   ];
