@@ -45,15 +45,6 @@
           hotkey-overlay.title = "Edit Config";
         };
       };
-    window-rules = [
-      {
-        # Mod+C launch cava with app-id
-        matches = [ { app-id = "^(neovim)$"; } ];
-        default-column-width.proportion = 0.8;
-        default-window-height.proportion = 0.8;
-        open-floating = true;
-      }
-    ];
   };
 
   custom.persist = {

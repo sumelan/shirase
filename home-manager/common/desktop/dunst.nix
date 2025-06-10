@@ -57,14 +57,22 @@
         };
       };
   };
-  programs.niri.settings.binds = with config.lib.niri.actions; {
-    "Mod+N" = {
-      action = spawn "dunstctl" "history-pop";
-      hotkey-overlay.title = "Show Notification History";
+  programs.niri.settings = {
+    binds = with config.lib.niri.actions; {
+      "Mod+N" = {
+        action = spawn "dunstctl" "history-pop";
+        hotkey-overlay.title = "Show Notification History";
+      };
+      "Mod+Shift+N" = {
+        action = spawn "dunstctl" "close-all";
+        hotkey-overlay.title = "Dismiss Notification";
+      };
     };
-    "Mod+Shift+N" = {
-      action = spawn "dunstctl" "close-all";
-      hotkey-overlay.title = "Dismiss Notification";
-    };
+    layer-rules = [
+      {
+        matches = [ { namespace = "^(notifications)$"; } ];
+        block-out-from = "screen-capture";
+      }
+    ];
   };
 }

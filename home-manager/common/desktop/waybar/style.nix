@@ -87,6 +87,7 @@
       #clock,
       #wireplumber,
       #backlight,
+      #battery,
       #tray,
       #window {
         padding: 5px 10px;
@@ -123,6 +124,69 @@
         background: none;
         background-color: transparent;
         box-shadow: none;
+      }
+
+      #battery {
+        background: ${base0F};
+        background: linear-gradient(
+          118deg,
+          ${base0E} 5%,
+          ${base0D} 5%,
+          ${base0D} 20%,
+          ${base0E} 20%,
+          ${base0E} 40%,
+          ${base0D} 40%,
+          ${base0D} 60%,
+          ${base0E} 60%,
+          ${base0E} 80%,
+          ${base0D} 80%,
+          ${base0D} 95%,
+          ${base0E} 95%
+        );
+        background-size: 200% 300%;
+        animation: gradient_f_nh 6s linear infinite;
+        color: ${base01};
+      }
+
+      #battery.charging,
+      #battery.plugged {
+        background: linear-gradient(
+          118deg,
+          ${base0B} 5%,
+          ${base0C} 5%,
+          ${base0C} 20%,
+          ${base0B} 20%,
+          ${base0B} 40%,
+          ${base0C} 40%,
+          ${base0C} 60%,
+          ${base0B} 60%,
+          ${base0B} 80%,
+          ${base0C} 80%,
+          ${base0C} 95%,
+          ${base0B} 95%
+        );
+        background-size: 200% 300%;
+        animation: gradient_rv 4s linear infinite;
+      }
+
+      #battery.full {
+        background: linear-gradient(
+          118deg,
+          ${base0B} 5%,
+          ${base0C} 5%,
+          ${base0C} 20%,
+          ${base0B} 20%,
+          ${base0B} 40%,
+          ${base0C} 40%,
+          ${base0C} 60%,
+          ${base0B} 60%,
+          ${base0B} 80%,
+          ${base0C} 80%,
+          ${base0C} 95%,
+          ${base0B} 95%
+        );
+        background-size: 200% 300%;
+        animation: gradient_rv 20s linear infinite;
       }
 
       ${tray-css}

@@ -68,6 +68,7 @@
             "org.fcitx.fcitx5-migrator"
             "nixos-manual"
             "fish"
+            "yazi"
           ];
         in
         lib.attrsets.genAttrs hideList (name': {

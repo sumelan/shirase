@@ -44,7 +44,7 @@ function convert_to_gif
 end
 
 function notify -a 1 2
-    notify-send -a "$APP_NAME" "$1" "$2" -t 5000
+    notify-send -a "$APP_NAME" "$1" "$2" -t 600000
 end
 
 function screen
@@ -62,7 +62,7 @@ end
 
 function gif
     touch /tmp/recording_gif
-    area
+    screen
 end
 
 function stop

@@ -53,6 +53,28 @@
               tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
               on-click = "${config.custom.terminal.exec} --class=tty-clock --title=tty-clock -e ${lib.getExe pkgs.tty-clock} -s -c -C 5";
             };
+            "battery" = {
+              states = {
+                warning = 30;
+                critical = 15;
+              };
+              format = "<span size='${icon_size}' foreground='${base0B}'>{icon} </span>{capacity}%";
+              format-warning = "<span size='${icon_size}' foreground='${base09}'>{icon} </span>{capacity}%";
+              format-critical = "<span size='${icon_size}' foreground='${base08}'>{icon} </span>{capacity}%";
+              format-charging = "<span size='${icon_size}' foreground='${base0B}'> </span>{capacity}%";
+              format-plugged = "<span size='${icon_size}' foreground='${base0B}'> </span>{capacity}%";
+              format-alt = "<span size='${icon_size}' foreground='#${base01}'>{icon} </span>{time}";
+              format-full = "<span size='${icon_size}' foreground='${base08}'> </span>{capacity}%";
+              format-icons = [
+                ""
+                ""
+                ""
+                ""
+                ""
+              ];
+              tooltip-format = "{time}";
+              interval = 5;
+            };
             "idle_inhibitor" = {
               format = "{icon}";
               format-icons = {
@@ -84,11 +106,14 @@
             modules-center = [
               "clock"
             ];
-            modules-right = [
-              "idle_inhibitor"
-              "tray"
-              "wireplumber"
-            ] ++ (lib.optional config.custom.backlight.enable "backlight");
+            modules-right =
+              [
+                "idle_inhibitor"
+                "tray"
+                "wireplumber"
+              ]
+              ++ (lib.optional config.custom.backlight.enable "backlight")
+              ++ (lib.optional config.custom.battery.enable "battery");
           };
         in
         {

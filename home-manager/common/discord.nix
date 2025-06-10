@@ -195,6 +195,7 @@
       {
         matches = [ { app-id = "^(discord)$"; } ];
         default-column-width.proportion = 0.7;
+        block-out-from = "screen-capture";
       }
     ];
   };

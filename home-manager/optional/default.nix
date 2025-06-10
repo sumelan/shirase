@@ -3,7 +3,7 @@ _: {
     ./helix
     ./brave.nix
     ./cyanrip.nix
-    ./ebook.nix
+    ./foliate.nix
     ./ghostty.nix
     ./hardware.nix
     ./inkscape.nix

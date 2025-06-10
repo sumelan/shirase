@@ -10,18 +10,13 @@
   };
 
   config = lib.mkIf config.custom.ebook.enable {
-    home.packages = with pkgs; [
-      foliate
-      mcomix
-    ];
+    home.packages = with pkgs; [ foliate ];
 
     programs.niri.settings.window-rules = [
       {
-        matches = [
-          { app-id = "^(com.github.johnfactotum.Foliate)$"; }
-          { app-id = "^(MComix)$"; }
-        ];
+        matches = [ { app-id = "^(com.github.johnfactotum.Foliate)$"; } ];
         default-column-width.proportion = 0.9;
+        block-out-from = "screen-capture";
       }
     ];
 

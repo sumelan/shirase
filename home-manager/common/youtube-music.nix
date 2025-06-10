@@ -19,11 +19,19 @@
     })
   ];
 
-  programs.niri.settings.binds = with config.lib.niri.actions; {
-    "Mod+Y" = {
-      action = spawn "youtube-music";
-      hotkey-overlay.title = "YouTube Music";
+  programs.niri.settings = {
+    binds = with config.lib.niri.actions; {
+      "Mod+Y" = {
+        action = spawn "youtube-music";
+        hotkey-overlay.title = "YouTube Music";
+      };
     };
+    window-rules = [
+      {
+        matches = [ { app-id = "^(com.github.th_ch.youtube_music)$"; } ];
+        block-out-from = "screen-capture";
+      }
+    ];
   };
 
   services.playerctld.enable = true;

@@ -102,37 +102,37 @@ let
 
   statsConfig = commonConfig // {
     widget = commonWrap-box // {
-      widgets =
-        [
-          {
-            index = [
-              (-1)
-              (-1)
-            ];
-            widget = commonRing // cpuConfig;
-          }
-          {
-            index = [
-              (-1)
-              (-1)
-            ];
-            widget = commonRing // ramConfig;
-          }
-          {
-            index = [
-              (-1)
-              (-1)
-            ];
-            widget = commonRing // diskConfig;
-          }
-        ]
-        ++ (lib.optional config.custom.battery.enable {
+      widgets = [
+        {
           index = [
             (-1)
             (-1)
           ];
-          widget = commonRing // batteryConfig;
-        });
+          widget = commonRing // cpuConfig;
+        }
+        {
+          index = [
+            (-1)
+            (-1)
+          ];
+          widget = commonRing // ramConfig;
+        }
+        {
+          index = [
+            (-1)
+            (-1)
+          ];
+          widget = commonRing // diskConfig;
+        }
+      ]
+      # ++ (lib.optional config.custom.battery.enable {
+      #   index = [
+      #     (-1)
+      #     (-1)
+      #   ];
+      #   widget = commonRing // batteryConfig;
+      # })
+      ;
     };
   };
 in
