@@ -39,7 +39,7 @@ let
     monitor = [
       config.lib.monitors.mainMonitorName
     ] ++ config.lib.monitors.otherMonitorsNames;
-    margins.${position} = "10%";
+    margins.${position} = "35%";
   };
 
   monitorDown = position: {
@@ -53,7 +53,7 @@ let
     monitor = [
       config.lib.monitors.mainMonitorName
     ] ++ config.lib.monitors.otherMonitorsNames;
-    margins.${position} = "10%";
+    margins.${position} = "35%";
   };
 
   monitorUp = position: {
@@ -63,8 +63,8 @@ let
   };
 
   columnWorkspaceDown =
-    commonConfig "left"
-    // workspaceDown "bottom"
+    commonConfig "bottom"
+    // workspaceDown "left"
     // {
       widget = btnConfig "${base07}" "${base0A}" // {
         event_map = {
@@ -84,8 +84,8 @@ let
     };
 
   columnWorkspaceUp =
-    commonConfig "left"
-    // workspaceUp "top"
+    commonConfig "top"
+    // workspaceUp "right"
     // {
       widget = btnConfig "${base0F}" "${base0A}" // {
         event_map = {
