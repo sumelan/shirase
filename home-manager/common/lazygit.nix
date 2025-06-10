@@ -1,7 +1,7 @@
 { config, lib, ... }:
 let
-  accent = "#${config.lib.stylix.colors.base09}";
-  muted = "#${config.lib.stylix.colors.base03}";
+  accent = "${config.lib.stylix.colors.withHashtag.base0E}";
+  muted = "${config.lib.stylix.colors.withHashtag.base03}";
 in
 {
   programs.lazygit = {

@@ -28,10 +28,10 @@ let
   btnConfig = color: color': {
     type = "btn";
     thickness = 15;
-    length = "10%";
+    length = "30%";
     color = "${color}";
     border_color = "${color'}";
-    border_width = 2;
+    border_width = 3;
   };
 
   workspaceDown = position: {
@@ -66,7 +66,7 @@ let
     commonConfig "bottom"
     // workspaceDown "left"
     // {
-      widget = btnConfig "${base07}" "${base0A}" // {
+      widget = btnConfig "${base0E}" "${base05}" // {
         event_map = {
           ${builtins.toString left-click} = "niri msg action move-column-to-workspace-down";
         };
@@ -76,7 +76,7 @@ let
     commonConfig "left"
     // monitorDown "bottom"
     // {
-      widget = btnConfig "${base0E}" "${base0A}" // {
+      widget = btnConfig "${base07}" "${base05}" // {
         event_map = {
           ${builtins.toString left-click} = "niri msg action move-column-to-monitor-down";
         };
@@ -87,7 +87,7 @@ let
     commonConfig "top"
     // workspaceUp "right"
     // {
-      widget = btnConfig "${base0F}" "${base0A}" // {
+      widget = btnConfig "${base0D}" "${base05}" // {
         event_map = {
           ${builtins.toString left-click} = "niri msg action move-column-to-workspace-up";
         };
@@ -97,7 +97,7 @@ let
     commonConfig "left"
     // monitorUp "top"
     // {
-      widget = btnConfig "${base08}" "${base0A}" // {
+      widget = btnConfig "${base0C}" "${base05}" // {
         event_map = {
           ${builtins.toString left-click} = "niri msg action move-column-to-monitor-up";
         };

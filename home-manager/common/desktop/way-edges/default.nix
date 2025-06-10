@@ -49,6 +49,10 @@
 
     niri.settings = {
       binds = with config.lib.niri.actions; {
+        "Mod+C" = {
+          action = spawn "way-edges" "togglepin" "niri:move_column";
+          hotkey-overlay.title = "Toggle Column Widgets";
+        };
         "Mod+S" = {
           action = spawn "way-edges" "togglepin" "stats:stats";
           hotkey-overlay.title = "Toggle Stats Widgets";

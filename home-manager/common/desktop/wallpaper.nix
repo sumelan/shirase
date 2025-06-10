@@ -17,8 +17,8 @@
         Description = "Set a random wallpaper every 12 minutes";
       };
       Timer = {
-        Persistent = true;
-        OnCalendar = "*:00/12";
+        OnBootSec = "10s";
+        OnUnitActiveSec = "12min";
       };
     };
 
@@ -44,12 +44,6 @@
                 ));
             in
             wallMap nameList;
-
-          # possible race condition, introduce a small delay before starting
-          # https://github.com/LGFae/swww/issues/317#issuecomment-2131282832
-          ExecStartPre = "${lib.getExe' pkgs.coreutils "sleep"} 1";
-          # wait transitioning ends
-          ExecStartPost = "${lib.getExe' pkgs.coreutils "sleep"} 1";
         };
       };
     };
@@ -58,7 +52,7 @@
   programs.niri.settings.spawn-at-startup = [
     {
       command = [
-        "waypaper"
+        "${lib.getExe pkgs.waypaper}"
         "--restore"
       ];
     }

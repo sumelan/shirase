@@ -5,7 +5,7 @@
 
     niri.settings = {
       binds = with config.lib.niri.actions; {
-        "Mod+C" = {
+        "Mod+M" = {
           action = spawn "${config.custom.terminal.exec}" "--app-id" "cava" "cava";
           hotkey-overlay.title = "Cava";
         };
