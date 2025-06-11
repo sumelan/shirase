@@ -22,43 +22,39 @@ let
     pinnable = true;
     pin-with-key = true;
     pin_key = right-click;
-    widget = {
-      type = "wrap-box";
-      align = "center_right";
-      gap = 10;
-      outlook = {
-        type = "window";
-        color = "${base00}";
-        border_radius = 5;
-        border_width = 8;
-        margins = {
-          left = 5;
-          right = 5;
-          bottom = 5;
-          top = 5;
-        };
+    type = "wrap-box";
+    align = "center_right";
+    gap = 10;
+    outlook = {
+      type = "window";
+      color = "${base00}";
+      border_radius = 5;
+      border_width = 8;
+      margins = {
+        left = 5;
+        right = 5;
+        bottom = 5;
+        top = 5;
       };
-      widgets = [
-        {
-          index = [
-            (-1)
-            (-1)
-          ];
-          widget = {
-            type = "text";
-            fg_color = "${base05}";
-            font_family = "monospace";
-            font_size = 24;
-            preset = {
-              type = "time";
-              format = " %H:%M";
-              time_zone = null;
-              update_interval = 1000;
-            };
-          };
-        }
-      ];
     };
+    items = [
+      {
+        index = [
+          (-1)
+          (-1)
+        ];
+        type = "text";
+        fg_color = "${base05}";
+        font_family = "monospace";
+        font_size = 24;
+        preset = {
+          type = "time";
+          format = " %H:%M";
+          time_zone = null;
+          update_interval = 1000;
+        };
+      }
+    ];
   };
 in
 [

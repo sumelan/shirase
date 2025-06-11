@@ -14,47 +14,24 @@
     way-edges = {
       enable = true;
       settings = {
-        ensure_load_group = [
-          "niri"
-          "tray"
-          "clock"
-          "stats"
-          "slider"
-        ];
-        groups = [
-          {
-            name = "niri";
-            widgets =
-              (import ./column.nix { inherit lib config; }) ++ (import ./workspace.nix { inherit config; });
-          }
-          #  {
-          #    name = "tray";
-          #    widgets = (import ./tray.nix { inherit config; });
-          #  }
-          #  {
-          #    name = "clock";
-          #    widgets = (import ./clock.nix { inherit config; });
-          #  }
-          {
-            name = "stats";
-            widgets = (import ./stats.nix { inherit lib config; });
-          }
-          #  {
-          #    name = "slider";
-          #    widgets = (import ./slider.nix { inherit lib config; });
-          #  }
-        ];
+        widgets =
+          (import ./column.nix { inherit lib config; }) ++ (import ./workspace.nix { inherit config; })
+        # ++ (import ./stats.nix { inherit lib config; })
+        #   ++ (import ./tray.nix { inherit config; })
+        #   ++ (import ./clock.nix { inherit config; })
+        #   ++ (import ./slider.nix { inherit lib config; })
+        ;
       };
     };
 
     niri.settings = {
       binds = with config.lib.niri.actions; {
         "Mod+C" = {
-          action = spawn "way-edges" "togglepin" "niri:move_column";
+          action = spawn "way-edges" "togglepin" "move_column";
           hotkey-overlay.title = "Toggle Column Widgets";
         };
         "Mod+S" = {
-          action = spawn "way-edges" "togglepin" "stats:stats";
+          action = spawn "way-edges" "togglepin" "stats";
           hotkey-overlay.title = "Toggle Stats Widgets";
         };
       };

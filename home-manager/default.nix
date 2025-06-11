@@ -66,6 +66,7 @@
             "kcm_fcitx5"
             "org.fcitx.Fcitx5"
             "org.fcitx.fcitx5-migrator"
+            "kbd-layout-viewer5"
             "nixos-manual"
             "fish"
             "yazi"

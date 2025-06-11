@@ -39,7 +39,7 @@
             dots_rounding = -1;
             fade_on_empty = false;
             fade_timeout = 1000;
-            placeholder_text = "<span foreground=\"##${base05}\">󰌾  Logged in as <span foreground=\"##${base09}\"><i>$USER</i></span></span>";
+            placeholder_text = "<span foreground=\"##${base05}\">󰌾  Logged in as <span foreground=\"##${base0D}\"><i>$USER</i></span></span>";
             outer_color = "rgb(${base03})";
             inner_color = "rgb(${base00})";
             font_color = "rgb(${base05})";
@@ -57,7 +57,7 @@
           image = {
             path = "/home/${user}/.themed-logo.png";
             size = 200;
-            border_color = "rgb(${config.lib.stylix.colors.base09})";
+            border_color = "rgb(${config.lib.stylix.colors.base0D})";
             position = "0, 180";
             halign = "center";
             valign = "center";
@@ -82,15 +82,6 @@
               valign = "top";
             }
             {
-              text = "cmd[update:1000] get_battery_info";
-              color = "rgb(${config.lib.stylix.colors.base05})";
-              font_size = 25;
-              font_family = "Maple Mono NF";
-              position = "-30, -250";
-              halign = "right";
-              valign = "top";
-            }
-            {
               text = "cmd[update:1000] get_media_info";
               color = "rgb(${config.lib.stylix.colors.base05})";
               font_size = 25;
@@ -99,6 +90,15 @@
               halign = "right";
               valign = "top";
             }
+            (lib.mkIf config.custom.battery.enable {
+              text = "cmd[update:1000] get_battery_info";
+              color = "rgb(${config.lib.stylix.colors.base05})";
+              font_size = 25;
+              font_family = "Maple Mono NF";
+              position = "-30, -250";
+              halign = "right";
+              valign = "top";
+            })
           ];
         };
       };

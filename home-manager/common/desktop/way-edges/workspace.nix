@@ -24,50 +24,46 @@ let
     direction: color: action:
     commonConfiguration
     // {
-      name = "focus-workspace-${direction}";
+      namespace = "focus-workspace-${direction}";
       edge = "left";
       position = "${direction}";
       extra_trigger_size = 0;
       preview_size = "20%";
       margins.${direction} = "15%";
-      widget = {
-        type = "btn";
-        thickness = 15;
-        length = "20%";
-        color = "${color}";
-        border_width = 2;
-        border_color = "${base09}";
-        event_map = {
-          ${builtins.toString left-click} = "niri msg action ${action}";
-        };
+      type = "btn";
+      thickness = 15;
+      length = "20%";
+      color = "${color}";
+      border_width = 2;
+      border_color = "${base09}";
+      event_map = {
+        ${builtins.toString left-click} = "niri msg action ${action}";
       };
     };
 
   workspaceIndicator = commonConfiguration // {
-    name = "workspaces";
+    namespace = "workspace_indicator";
     edge = "left";
     position = "top";
     extra_trigger_size = 0;
     preview_size = "15%";
     margins.top = "40%";
-    widget = {
-      type = "workspace";
-      thickness = 20;
-      length = "20%";
-      active_increase = 0.3;
-      active_color = "${base0E}90"; # second monitor color
-      default_color = "${base00}";
-      focus_color = "${base0B}90";
-      hover_color = "${base05}80";
-      gap = 5;
-      invert_direction = false;
-      pop_duration = 500;
-      workspace_transition_duration = 300;
-      focused_only = false;
-      preset = {
-        type = "niri";
-        filter_empty = false;
-      };
+    type = "workspace";
+    thickness = 20;
+    length = "20%";
+    active_increase = 0.3;
+    active_color = "${base0E}90"; # second monitor color
+    default_color = "${base00}";
+    focus_color = "${base0B}90";
+    hover_color = "${base05}80";
+    gap = 5;
+    invert_direction = false;
+    pop_duration = 500;
+    workspace_transition_duration = 300;
+    focused_only = false;
+    preset = {
+      type = "niri";
+      filter_empty = false;
     };
   };
 in

@@ -58,19 +58,25 @@ let
     };
   };
 
-  speakerEdge = commonConfig // {
-    edge = "bottom";
-    position = "right";
-    margins.right = "15%";
-    widget = commonSlider // speakerConfig;
-  };
+  speakerEdge =
+    commonConfig
+    // commonSlider
+    // speakerConfig
+    // {
+      edge = "bottom";
+      position = "right";
+      margins.right = "15%";
+    };
 
-  backlightEdge = commonConfig // {
-    edge = "bottom";
-    position = "left";
-    margins.left = "15%";
-    widget = commonSlider // backlightConfig;
-  };
+  backlightEdge =
+    commonConfig
+    // commonSlider
+    // backlightConfig
+    // {
+      edge = "bottom";
+      position = "left";
+      margins.left = "15%";
+    };
 in
 [
   speakerEdge

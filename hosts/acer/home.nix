@@ -33,6 +33,8 @@
       };
     };
 
+    xwayland.enable = false;
+
     brave.enable = false;
     cyanrip.enable = true;
     ebook.enable = true;

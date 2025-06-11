@@ -40,7 +40,7 @@ in
         };
         colors = with config.lib.stylix.colors; {
           background = "${base00-hex}${opacity}";
-          border = "${base09-hex}ff";
+          border = "${base0B-hex}ff";
           counter = "${base06-hex}ff";
           input = "${base05-hex}ff";
           match = "${base0A-hex}ff";

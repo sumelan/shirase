@@ -12,7 +12,7 @@ let
   side-click-2 = 276;
 
   commonConfig = edge: {
-    name = "move_column";
+    namespace = "move_column";
     edge = "${edge}";
     layer = "overlay";
     extra_trigger_size = 0;
@@ -65,42 +65,40 @@ let
   columnWorkspaceDown =
     commonConfig "bottom"
     // workspaceDown "left"
+    // btnConfig "${base0E}" "${base05}"
     // {
-      widget = btnConfig "${base0E}" "${base05}" // {
-        event_map = {
-          ${builtins.toString left-click} = "niri msg action move-column-to-workspace-down";
-        };
+      event_map = {
+        ${builtins.toString left-click} = "niri msg action move-column-to-workspace-down";
       };
     };
+
   columnMonitorDown =
     commonConfig "left"
     // monitorDown "bottom"
+    // btnConfig "${base07}" "${base05}"
     // {
-      widget = btnConfig "${base07}" "${base05}" // {
-        event_map = {
-          ${builtins.toString left-click} = "niri msg action move-column-to-monitor-down";
-        };
+      event_map = {
+        ${builtins.toString left-click} = "niri msg action move-column-to-monitor-down";
       };
     };
 
   columnWorkspaceUp =
     commonConfig "top"
     // workspaceUp "right"
+    // btnConfig "${base0D}" "${base05}"
     // {
-      widget = btnConfig "${base0D}" "${base05}" // {
-        event_map = {
-          ${builtins.toString left-click} = "niri msg action move-column-to-workspace-up";
-        };
+      event_map = {
+        ${builtins.toString left-click} = "niri msg action move-column-to-workspace-up";
       };
     };
+
   columnMonitorUp =
     commonConfig "left"
     // monitorUp "top"
+    // btnConfig "${base0C}" "${base05}"
     // {
-      widget = btnConfig "${base0C}" "${base05}" // {
-        event_map = {
-          ${builtins.toString left-click} = "niri msg action move-column-to-monitor-up";
-        };
+      event_map = {
+        ${builtins.toString left-click} = "niri msg action move-column-to-monitor-up";
       };
     };
 in

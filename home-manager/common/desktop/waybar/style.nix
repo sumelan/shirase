@@ -79,7 +79,7 @@
         border-radius: 5px;
         border-width: 2px;
         border-style: solid;
-        border-color: ${base09};
+        border-color: ${base0B};
       }
 
       #image,

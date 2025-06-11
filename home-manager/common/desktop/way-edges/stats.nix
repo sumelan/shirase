@@ -8,7 +8,7 @@ let
   side-click-2 = 276;
 
   commonConfig = {
-    name = "stats";
+    namespace = "stats";
     edge = "right";
     position = "top";
     layer = "overlay";
@@ -100,41 +100,55 @@ let
     };
   };
 
-  statsConfig = commonConfig // {
-    widget = commonWrap-box // {
-      widgets = [
-        {
-          index = [
-            (-1)
-            (-1)
-          ];
-          widget = commonRing // cpuConfig;
-        }
-        {
-          index = [
-            (-1)
-            (-1)
-          ];
-          widget = commonRing // ramConfig;
-        }
-        {
-          index = [
-            (-1)
-            (-1)
-          ];
-          widget = commonRing // diskConfig;
-        }
+  cpuStats =
+    commonRing
+    // cpuConfig
+    // {
+      index = [
+        (-1)
+        (-1)
+      ];
+    };
+  ramStats =
+    commonRing
+    // ramConfig
+    // {
+      index = [
+        (-1)
+        (-1)
+      ];
+    };
+  diskStats =
+    commonRing
+    // diskConfig
+    // {
+      index = [
+        (-1)
+        (-1)
+      ];
+    };
+  batteryStats =
+    commonRing
+    // batteryConfig
+    // {
+      index = [
+        (-1)
+        (-1)
+      ];
+    };
+
+  statsConfig =
+    commonConfig
+    // commonWrap-box
+    // {
+      items = [
+        cpuStats
+        ramStats
+        diskStats
       ]
-      # ++ (lib.optional config.custom.battery.enable {
-      #   index = [
-      #     (-1)
-      #     (-1)
-      #   ];
-      #   widget = commonRing // batteryConfig;
-      # })
+      # ++ (lib.optional config.custom.battery.enable batteryStats)
       ;
     };
-  };
 in
 [
   statsConfig

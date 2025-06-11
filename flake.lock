@@ -985,11 +985,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1748853237,
-        "narHash": "sha256-4SOTNTx3ani2G626FlJpO/rmCHS7Ma6NYsB5uzIVcXY=",
+        "lastModified": 1749609728,
+        "narHash": "sha256-46ezD4zEkXwHafP4NqWDvcEsOAkzGOrI2vJZuUX08Vg=",
         "owner": "way-edges",
         "repo": "way-edges",
-        "rev": "69b9d00ee2f60f4cb474b8a95cc9db9b731f4282",
+        "rev": "67805af2a7e4fbd6796d0e21e5aeef7e7617c99d",
         "type": "github"
       },
       "original": {

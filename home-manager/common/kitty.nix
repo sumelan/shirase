@@ -4,7 +4,7 @@ _: {
     settings = {
       enable_audio_bell = false;
       copy_on_select = "clipboard";
-      cursor_trail = 1;
+      cursor_trail = 3;
       cursor_trail_start_threshold = 10;
       scrollback_lines = 10000;
       update_check_interval = 0;

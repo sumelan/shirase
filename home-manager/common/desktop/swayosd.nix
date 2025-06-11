@@ -10,7 +10,7 @@
   xdg.configFile."swayosd/style.scss".text = with config.lib.stylix.colors.withHashtag; ''
     window {
       border-radius: 999px;
-      border: 2px solid alpha(${base0A}, ${toString config.stylix.opacity.popups});
+      border: 2px solid alpha(${base02}, ${toString config.stylix.opacity.popups});
       background: alpha(${base00}, ${toString config.stylix.opacity.popups});
     }
 
