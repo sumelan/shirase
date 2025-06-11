@@ -13,23 +13,23 @@ let
     position = "right";
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
-    extra_trigger_size = 0;
-    preview_size = "15%";
-    animation_curve = "ease-expo";
-    transition_duration = 300;
+    extra-trigger-size = 0;
+    preview-size = "15%";
+    animation-curve = "ease-expo";
+    transition-duration = 300;
     margins.right = 0;
-    ignore_exclusive = false;
+    ignore-exclusive = false;
     pinnable = true;
     pin-with-key = true;
-    pin_key = right-click;
+    pin-key = right-click;
     type = "wrap-box";
-    align = "center_right";
+    align = "center-right";
     gap = 10;
     outlook = {
       type = "window";
       color = "${base00}";
-      border_radius = 5;
-      border_width = 8;
+      border-radius = 5;
+      border-width = 8;
       margins = {
         left = 5;
         right = 5;
@@ -44,14 +44,14 @@ let
           (-1)
         ];
         type = "text";
-        fg_color = "${base05}";
-        font_family = "monospace";
-        font_size = 24;
+        fg-color = "${base05}";
+        font-family = "monospace";
+        font-size = 24;
         preset = {
           type = "time";
           format = " %H:%M";
-          time_zone = null;
-          update_interval = 1000;
+          time-zone = null;
+          update-interval = 1000;
         };
       }
     ];

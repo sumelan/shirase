@@ -13,23 +13,23 @@ let
     position = "right";
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
-    extra_trigger_size = 0;
-    preview_size = "15%";
-    animation_curve = "ease-expo";
-    transition_duration = 300;
+    extra-trigger-size = 0;
+    preview-size = "15%";
+    animation-curve = "ease-expo";
+    transition-duration = 300;
     margins.right = "10%";
-    ignore_exclusive = false;
+    ignore-exclusive = false;
     pinnable = true;
     pin-with-key = true;
-    pin_key = right-click;
+    pin-key = right-click;
     type = "wrap-box";
-    align = "top_left";
+    align = "top-left";
     gap = 10;
     outlook = {
       type = "window";
       color = "${base00}";
-      border_radius = 5;
-      border_width = 8;
+      border-radius = 5;
+      border-width = 8;
       margins = {
         left = 5;
         right = 5;
@@ -44,25 +44,25 @@ let
           (-1)
         ]; # position in the grid layout. -1 means next available position.
         type = "tray";
-        font_family = "monospace";
-        grid_align = "center_left";
-        icon_theme = config.stylix.iconTheme.dark;
-        tray_gap = 2;
-        icon_size = 28;
-        header_draw_config = {
-          text_color = "${base05}";
-          font_pixel_height = 18;
+        font-family = "monospace";
+        grid-align = "center_left";
+        icon-theme = config.stylix.iconTheme.dark;
+        tray-gap = 2;
+        icon-size = 28;
+        header-draw-config = {
+          text-color = "${base05}";
+          font-pixel-height = 18;
         };
-        header_menu_align = "left";
-        header_menu_stack = "menu_top";
-        menu_draw_config = {
-          border_color = "${base09}";
-          text_color = "${base05}";
-          marker_color = "${base08}";
-          font_pixel_height = 18;
-          icon_size = 28;
-          marker_size = 20;
-          separator_height = 5;
+        header-menu-align = "left";
+        header-menu-stack = "menu_top";
+        menu-draw-config = {
+          border-color = "${base09}";
+          text-color = "${base05}";
+          marker-color = "${base08}";
+          font-pixel-height = 18;
+          icon-size = 28;
+          marker-size = 20;
+          separator-height = 5;
           margin = [
             5
             5

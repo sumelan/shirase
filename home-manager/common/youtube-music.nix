@@ -24,12 +24,6 @@
         hotkey-overlay.title = "YouTube Music";
       };
     };
-    window-rules = [
-      {
-        matches = [ { app-id = "^(com.github.th_ch.youtube_music)$"; } ];
-        block-out-from = "screen-capture";
-      }
-    ];
   };
 
   services.playerctld.enable = true;

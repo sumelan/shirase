@@ -8,8 +8,9 @@ set choices " Lock
  RecordScreen
  RecordArea
 󰵸 RecordToGif
- QuitRecording"
-set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Search for system actions..." --lines 5)
+ QuitRecording
+󰸉 ChangeWallpaper"
+set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Search for System actions..." --lines 5)
 
 switch (string split -f 2 " " $choice)
     case Lock
@@ -30,4 +31,6 @@ switch (string split -f 2 " " $choice)
         record-screen -g
     case QuitRecording
         record-screen -q
+    case ChangeWallpaper
+        wpaperctl next
 end

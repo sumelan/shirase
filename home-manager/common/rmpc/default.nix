@@ -39,7 +39,7 @@
       "Mod+R" = {
         action =
           spawn "${config.custom.terminal.exec}" "-T" "󱘗 Rusty Music Player Client" "-o"
-            "font_family=Maple Mono NF"
+            "font_family=${config.stylix.fonts.monospace.name}"
             "-o"
             "font_size=12"
             "--app-id"

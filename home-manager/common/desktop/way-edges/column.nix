@@ -1,8 +1,4 @@
-{
-  lib,
-  config,
-  ...
-}:
+{ config, ... }:
 with config.lib.stylix.colors.withHashtag;
 let
   left-click = 272;
@@ -12,17 +8,17 @@ let
   side-click-2 = 276;
 
   commonConfig = edge: {
-    namespace = "move_column";
+    namespace = "move-column";
     edge = "${edge}";
     layer = "overlay";
-    extra_trigger_size = 0;
-    preview_size = "25%";
-    animation_curve = "ease-expo";
-    transition_duration = 300;
-    ignore_exclusive = true;
+    extra-trigger-size = 0;
+    preview-size = "25%";
+    animation-curve = "ease-expo";
+    transition-duration = 300;
+    ignore-exclusive = true;
     pinnable = true;
     pin-with-key = true;
-    pin_key = right-click;
+    pin-key = right-click;
   };
 
   btnConfig = color: color': {
@@ -30,11 +26,11 @@ let
     thickness = 15;
     length = "30%";
     color = "${color}";
-    border_color = "${color'}";
-    border_width = 3;
+    border-color = "${color'}";
+    border-width = 3;
   };
 
-  workspaceDown = position: {
+  commonDown = position: {
     position = "${position}";
     monitor = [
       config.lib.monitors.mainMonitorName
@@ -42,13 +38,7 @@ let
     margins.${position} = "35%";
   };
 
-  monitorDown = position: {
-    position = "${position}";
-    monitor = config.lib.monitors.otherMonitorsNames;
-    margins.${position} = 0;
-  };
-
-  workspaceUp = position: {
+  commonUp = position: {
     position = "${position}";
     monitor = [
       config.lib.monitors.mainMonitorName
@@ -56,55 +46,29 @@ let
     margins.${position} = "35%";
   };
 
-  monitorUp = position: {
-    position = "${position}";
-    monitor = config.lib.monitors.mainMonitorName;
-    margins.${position} = 0;
-  };
-
-  columnWorkspaceDown =
+  columnDown =
     commonConfig "bottom"
-    // workspaceDown "left"
+    // commonDown "left"
     // btnConfig "${base0E}" "${base05}"
     // {
-      event_map = {
+      event-map = {
         ${builtins.toString left-click} = "niri msg action move-column-to-workspace-down";
+        ${builtins.toString middle-click} = "niri msg action move-column-to-monitor-down";
       };
     };
 
-  columnMonitorDown =
-    commonConfig "left"
-    // monitorDown "bottom"
-    // btnConfig "${base07}" "${base05}"
-    // {
-      event_map = {
-        ${builtins.toString left-click} = "niri msg action move-column-to-monitor-down";
-      };
-    };
-
-  columnWorkspaceUp =
+  columnUp =
     commonConfig "top"
-    // workspaceUp "right"
+    // commonUp "right"
     // btnConfig "${base0D}" "${base05}"
     // {
-      event_map = {
+      event-map = {
         ${builtins.toString left-click} = "niri msg action move-column-to-workspace-up";
-      };
-    };
-
-  columnMonitorUp =
-    commonConfig "left"
-    // monitorUp "top"
-    // btnConfig "${base0C}" "${base05}"
-    // {
-      event_map = {
-        ${builtins.toString left-click} = "niri msg action move-column-to-monitor-up";
+        ${builtins.toString middle-click} = "niri msg action move-column-to-monitor-up";
       };
     };
 in
 [
-  columnWorkspaceDown
-  columnWorkspaceUp
+  columnDown
+  columnUp
 ]
-++ (lib.optional (config.lib.monitors.otherMonitorsNames != [ ]) columnMonitorDown)
-++ (lib.optional (config.lib.monitors.otherMonitorsNames != [ ]) columnMonitorUp)

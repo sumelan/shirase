@@ -64,7 +64,7 @@
 
       * {
         /* all: unset; */
-        font-family: "Maple Mono NF";
+        font-family: "${config.stylix.fonts.monospace.name}";
         font-weight: bold;
         font-size: ${builtins.toString (config.stylix.fonts.sizes.desktop + 6)}px;
         min-height: 0;
@@ -108,7 +108,6 @@
       }
 
       #idle_inhibitor.activated {
-        color: ${base00};
         background: shade(alpha(${base0D}, 0.9), 1);
       }
 

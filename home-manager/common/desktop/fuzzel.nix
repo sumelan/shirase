@@ -24,13 +24,13 @@ in
         main = {
           placeholder = "Type to search...";
           prompt = "'❯ '";
-          font = "Maple Mono NF:size=${builtins.toString (config.stylix.fonts.sizes.popups)}";
+          font = with config.stylix.fonts; "${sansSerif.name}:size=${builtins.toString sizes.popups}";
           icon-theme = config.stylix.iconTheme.dark;
           match-counter = true;
           terminal = "${config.custom.terminal.exec}";
-          width = 30;
+          width = 24;
           lines = 8;
-          horizontal-pad = 38;
+          horizontal-pad = 28;
           vertical-pad = 14;
           inner-pad = 12;
         };

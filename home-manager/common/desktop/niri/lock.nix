@@ -67,7 +67,7 @@
               text = "$TIME";
               color = "rgb(${config.lib.stylix.colors.base05})";
               font_size = 120;
-              font_family = "Maple Mono NF";
+              font_family = "${config.stylix.fonts.monospace.name}";
               position = "-30, 0";
               halign = "right";
               valign = "top";
@@ -76,7 +76,7 @@
               text = "cmd[update:43200000] echo \"$(date +\"%B %d, %A\")\"";
               color = "rgb(${config.lib.stylix.colors.base05})";
               font_size = 40;
-              font_family = "Maple Mono NF";
+              font_family = "${config.stylix.fonts.monospace.name}";
               position = "-30, -180";
               halign = "right";
               valign = "top";
@@ -85,7 +85,7 @@
               text = "cmd[update:1000] get_media_info";
               color = "rgb(${config.lib.stylix.colors.base05})";
               font_size = 25;
-              font_family = "Maple Mono NF";
+              font_family = "${config.stylix.fonts.monospace.name}";
               position = "-30, -300";
               halign = "right";
               valign = "top";
@@ -94,7 +94,7 @@
               text = "cmd[update:1000] get_battery_info";
               color = "rgb(${config.lib.stylix.colors.base05})";
               font_size = 25;
-              font_family = "Maple Mono NF";
+              font_family = "${config.stylix.fonts.monospace.name}";
               position = "-30, -250";
               halign = "right";
               valign = "top";

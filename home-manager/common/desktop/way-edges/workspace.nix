@@ -12,12 +12,12 @@ let
     monitor = [
       config.lib.monitors.mainMonitorName
     ] ++ config.lib.monitors.otherMonitorsNames;
-    animation_curve = "ease-expo";
-    transition_duration = 300;
-    ignore_exclusive = false;
+    animation-curve = "ease-expo";
+    transition-duration = 300;
+    ignore-exclusive = false;
     pinnable = true;
     pin-with-key = true;
-    pin_key = right-click;
+    pin-key = right-click;
   };
 
   workspaceTransition =
@@ -27,48 +27,48 @@ let
       namespace = "focus-workspace-${direction}";
       edge = "left";
       position = "${direction}";
-      extra_trigger_size = 0;
-      preview_size = "20%";
-      margins.${direction} = "15%";
+      extra-trigger-size = 0;
+      preview-size = "20%";
+      margins.${direction} = "1%";
       type = "btn";
       thickness = 15;
-      length = "20%";
+      length = "6%";
       color = "${color}";
-      border_width = 2;
-      border_color = "${base09}";
-      event_map = {
+      border-width = 2;
+      border-color = "${base05}";
+      event-map = {
         ${builtins.toString left-click} = "niri msg action ${action}";
       };
     };
 
   workspaceIndicator = commonConfiguration // {
-    namespace = "workspace_indicator";
+    namespace = "workspace-indicator";
     edge = "left";
     position = "top";
-    extra_trigger_size = 0;
-    preview_size = "15%";
+    extra-trigger-size = 0;
+    preview-size = "16%";
     margins.top = "40%";
     type = "workspace";
     thickness = 20;
-    length = "20%";
-    active_increase = 0.3;
-    active_color = "${base0E}90"; # second monitor color
-    default_color = "${base00}";
-    focus_color = "${base0B}90";
-    hover_color = "${base05}80";
+    length = "22%";
+    active-increase = 0.3;
+    active-color = "${base0E}"; # second monitor color
+    default-color = "${base00}";
+    focus-color = "${base09}";
+    hover-color = "${base05}80";
     gap = 5;
-    invert_direction = false;
-    pop_duration = 500;
-    workspace_transition_duration = 300;
-    focused_only = false;
+    invert-direction = false;
+    pop-duration = 500;
+    workspace-transition_duration = 300;
+    focused-only = false;
     preset = {
       type = "niri";
-      filter_empty = false;
+      filter-empty = false;
     };
   };
 in
 [
-  # (workspaceTransition "top" "${base0D}" "focus-window-or-workspace-up")
-  # (workspaceTransition "bottom" "${base0E}" "focus-window-or-workspace-down")
+  (workspaceTransition "top" "${base0D}" "focus-window-or-workspace-up")
+  (workspaceTransition "bottom" "${base0E}" "focus-window-or-workspace-down")
   workspaceIndicator
 ]

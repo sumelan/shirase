@@ -13,26 +13,26 @@ let
     position = "top";
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
-    extra_trigger_size = 0;
-    preview_size = "38%";
-    animation_curve = "ease-expo";
-    transition_duration = 300;
+    extra-trigger-size = 0;
+    preview-size = "39%";
+    animation-curve = "ease-expo";
+    transition-duration = 300;
     margins.top = "5%";
-    ignore_exclusive = true;
+    ignore-exclusive = true;
     pinnable = true;
     pin-with-key = true;
-    pin_key = right-click;
+    pin-key = right-click;
   };
 
   commonWrap-box = {
     type = "wrap-box";
-    align = "center_right";
+    align = "center-right";
     gap = 8;
     outlook = {
       type = "window";
-      color = "${base02}";
-      border_radius = 8;
-      border_width = 5;
+      color = "${base00}";
+      border-radius = 8;
+      border-width = 2;
       margins = {
         left = 5;
         right = 5;
@@ -44,58 +44,58 @@ let
 
   commonRing = {
     type = "ring";
-    animation_curve = "ease-expo";
-    font_family = "Maple Mono NF";
-    font_size = 20;
-    prefix_hide = false;
-    suffix_hide = true;
-    ring_width = 8;
+    animation-curve = "ease-expo";
+    font-family = "${config.stylix.fonts.monospace.name}";
+    font-size = 20;
+    prefix-hide = false;
+    suffix-hide = true;
+    ring-width = 8;
     radius = 20;
-    text_transition_ms = 100;
+    text-transition-ms = 100;
   };
 
   batteryConfig = {
-    bg_color = "${base00}";
-    fg_color = "${base0B}";
+    bg-color = "${base00}";
+    fg-color = "${base0B}";
     prefix = " ";
     suffix = " {preset}";
     preset = {
       type = "battery";
-      update_interval = 500;
+      update-interval = 500;
     };
   };
 
   cpuConfig = {
-    bg_color = "${base00}";
-    fg_color = "${base07}";
+    bg-color = "${base00}";
+    fg-color = "${base07}";
     prefix = " ";
     suffix = " {preset}";
     preset = {
       type = "cpu";
-      update_interval = 500;
+      update-interval = 500;
       core = null;
     };
   };
 
   ramConfig = {
-    bg_color = "${base00}";
-    fg_color = "${base09}";
+    bg-color = "${base00}";
+    fg-color = "${base09}";
     prefix = " ";
     suffix = " {preset}";
     preset = {
       type = "ram";
-      update_interval = 500;
+      update-interval = 500;
     };
   };
 
   diskConfig = {
-    bg_color = "${base00}";
-    fg_color = "${base0D}";
+    bg-color = "${base00}";
+    fg-color = "${base0D}";
     prefix = " ";
     suffix = " {preset}";
     preset = {
       type = "disk";
-      update_interval = 500;
+      update-interval = 500;
       partition = "/persist";
     };
   };

@@ -66,8 +66,8 @@ in
           name = "Ubuntu Nerd Font";
         };
         monospace = {
-          package = pkgs.nerd-fonts.jetbrains-mono;
-          name = "JetBrainsMono Nerd Font";
+          package = pkgs.maple-mono.NF;
+          name = "Maple Mono NF";
         };
         emoji = {
           package = pkgs.noto-fonts-emoji;
@@ -100,8 +100,6 @@ in
       # japanese
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
-      # nerd fonts
-      maple-mono.NF
     ];
   };
 }

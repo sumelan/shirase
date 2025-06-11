@@ -79,7 +79,7 @@
               format = "{icon}";
               format-icons = {
                 activated = "<span size='${icon_size}' foreground='${base05}'></span>";
-                deactivated = "<span size='${icon_size}' foreground='${base03}'></span>";
+                deactivated = "<span size='${icon_size}' foreground='${base02}'></span>";
               };
               tooltip = false;
             };
@@ -124,7 +124,7 @@
     niri.settings.layer-rules = [
       {
         matches = [ { namespace = "^(waybar)$"; } ];
-        opacity = config.stylix.opacity.desktop;
+        opacity = config.stylix.opacity.desktop * 0.9;
       }
     ];
   };
