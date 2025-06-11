@@ -7,9 +7,9 @@
         duration = "12m";
         mode = "center";
         sorting = "random";
-      };
-      default.transition = {
-        stereo-viewer = { }; # default value
+        transition = {
+          grid-flip = { }; # keep blank to use on default values
+        };
       };
       # using regex
       "re:LG" = {

@@ -7,11 +7,9 @@
       paths = [
         pkgs.youtube-music
       ];
-
       buildInputs = [
         pkgs.makeWrapper
       ];
-
       postBuild = ''
         wrapProgram $out/bin/youtube-music \
           --add-flags '--enable-wayland-ime --wayland-text-input-version=3'
