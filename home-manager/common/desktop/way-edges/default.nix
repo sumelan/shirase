@@ -30,10 +30,10 @@
           action = spawn "way-edges" "togglepin" "move_column";
           hotkey-overlay.title = "Toggle Column Widgets";
         };
-        "Mod+S" = {
-          action = spawn "way-edges" "togglepin" "stats";
-          hotkey-overlay.title = "Toggle Stats Widgets";
-        };
+        #  "Mod+S" = {
+        #    action = spawn "way-edges" "togglepin" "stats";
+        #    hotkey-overlay.title = "Toggle Stats Widgets";
+        #  };
       };
       layer-rules = [
         {

@@ -9,7 +9,7 @@
         sorting = "random";
       };
       default.transition = {
-        inverted-page-curl = { }; # default value
+        stereo-viewer = { }; # default value
       };
       # using regex
       "re:LG" = {

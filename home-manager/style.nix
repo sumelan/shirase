@@ -17,7 +17,7 @@ in
         };
         name = mkOption {
           type = types.str;
-          default = "Bibata-Original-Amber";
+          default = "Bibata-Modern-Ice";
         };
       };
       icon = {
