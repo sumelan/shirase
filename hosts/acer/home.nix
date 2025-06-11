@@ -20,9 +20,13 @@
   custom = {
     # theme
     stylix = {
+      cursor = {
+        package = pkgs.capitaine-cursors-themed;
+        name = "Capitaine Cursors (Nord)";
+      };
       icon = {
         package = pkgs.papirus-nord.override {
-          accent = "auroraorange";
+          accent = "frostblue2";
         };
         darkName = "Papirus-Dark";
         lightName = "Papirus-Light";

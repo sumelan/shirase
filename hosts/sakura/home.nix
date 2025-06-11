@@ -33,10 +33,14 @@
   custom = {
     # theme
     stylix = {
+      cursor = {
+        package = pkgs.capitaine-cursors-themed;
+        name = "Capitaine Cursors (Palenight)";
+      };
       icon = {
         package = pkgs.catppuccin-papirus-folders.override {
           flavor = "frappe";
-          accent = "peach";
+          accent = "sapphire";
         };
         darkName = "Papirus-Dark";
         lightName = "Papirus-Light";
