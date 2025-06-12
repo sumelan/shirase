@@ -10,4 +10,10 @@
       default-window-height.proportion = 0.4;
     }
   ];
+
+  custom.persist = {
+    home.directories = [
+      ".config/pulse"
+    ];
+  };
 }
