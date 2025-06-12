@@ -3,7 +3,6 @@
   config,
   pkgs,
   self,
-  isLaptop,
   ...
 }:
 let
@@ -26,18 +25,12 @@ in
           layer = "overlay";
           placeholder = "Type to search...";
           prompt = "'❯ '";
-          font =
-            with config.stylix.fonts;
-            let
-              # adjust font size. 'dpi-aware' not work as intendted?
-              sizeParameter = if isLaptop then 0 else 1;
-            in
-            "${sansSerif.name}:size=${builtins.toString (sizes.popups + sizeParameter)}";
+          font = with config.stylix.fonts; "${sansSerif.name}:size=${builtins.toString sizes.popups}";
           icon-theme = config.stylix.iconTheme.dark;
           match-counter = true;
           terminal = "${config.custom.terminal.exec}";
           width = 24;
-          lines = 10;
+          lines = 12;
           horizontal-pad = 28;
           vertical-pad = 8;
           inner-pad = 5;

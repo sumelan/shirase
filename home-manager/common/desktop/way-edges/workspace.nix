@@ -29,7 +29,7 @@ let
       position = "${direction}";
       extra-trigger-size = 0;
       preview-size = "20%";
-      margins.${direction} = "1%";
+      margins.${direction} = "5%";
       type = "btn";
       thickness = 15;
       length = "6%";
@@ -46,11 +46,11 @@ let
     edge = "left";
     position = "top";
     extra-trigger-size = 0;
-    preview-size = "16%";
-    margins.top = "40%";
+    preview-size = "15%";
+    margins.top = "55%";
     type = "workspace";
     thickness = 20;
-    length = "22%";
+    length = "25%";
     active-increase = 0.3;
     active-color = "${base0E}"; # second monitor color
     default-color = "${base00}";

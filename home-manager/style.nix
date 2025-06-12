@@ -77,7 +77,7 @@ in
           applications = 12;
           terminal = 12;
           desktop = 13;
-          popups = 12;
+          popups = 13;
         };
       };
 

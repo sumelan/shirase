@@ -14,10 +14,10 @@ let
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
     extra-trigger-size = 0;
-    preview-size = "39%";
+    preview-size = "42%";
     animation-curve = "ease-expo";
     transition-duration = 300;
-    margins.top = "5%";
+    margins.top = "8%";
     ignore-exclusive = true;
     pinnable = true;
     pin-with-key = true;
@@ -46,7 +46,7 @@ let
     type = "ring";
     animation-curve = "ease-expo";
     font-family = "${config.stylix.fonts.monospace.name}";
-    font-size = 20;
+    font-size = config.stylix.fonts.sizes.desktop + 14;
     prefix-hide = false;
     suffix-hide = true;
     ring-width = 8;
