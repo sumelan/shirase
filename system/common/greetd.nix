@@ -13,7 +13,7 @@
       theme = {
         package = config.hm.stylix.iconTheme.package;
         name =
-          if (config.stylix.polarity == "dark") then
+          if config.stylix.polarity == "dark" then
             config.hm.stylix.iconTheme.dark
           else
             config.hm.stylix.iconTheme.light;
@@ -51,10 +51,6 @@
       extraCss = with config.lib.stylix.colors.withHashtag; ''
         * {
             all: unset;
-          }
-
-          picture {
-            filter: blur(1.2rem);
           }
 
           frame.background {
@@ -176,4 +172,10 @@
           }
       '';
     };
+
+  custom.persist = {
+    root.directories = [
+      "/var/lib/regreet"
+    ];
+  };
 }

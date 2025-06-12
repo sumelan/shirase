@@ -5,11 +5,11 @@
   user,
   ...
 }:
-# NOTE: multiple waybar setting using HM is complicated!
 {
   imports = [
     ./style.nix
   ];
+
   programs = {
     waybar = {
       enable = true;

@@ -14,8 +14,9 @@
       {
         command = [
           "dbus-update-activation-environment"
-          "--all"
           "--systemd"
+          "DISPLAY"
+          "WAYLAND_DISPLAY"
         ];
       }
       {

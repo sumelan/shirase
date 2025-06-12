@@ -19,15 +19,11 @@
   ];
 
   # screen-record
-  home.packages =
-    with pkgs;
-    [
-      wf-recorder
-      slurp
-      gifsicle
-      zenity
-    ]
-    ++ (lib.optional (
-      config.lib.monitors.otherMonitorsNames == [ ]
-    ) self.packages.${pkgs.system}.record-screen);
+  home.packages = lib.mkIf (config.lib.monitors.otherMonitorsNames == [ ]) [
+    pkgs.wf-recorder
+    pkgs.slurp
+    pkgs.gifsicle
+    pkgs.zenity
+    self.packages.${pkgs.system}.record-screen
+  ];
 }

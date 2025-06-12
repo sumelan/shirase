@@ -32,7 +32,11 @@ in
               sizeParamater = if isLaptop then 3 else 0;
             in
             "${sansSerif.name}:size=${builtins.toString (sizes.popups - sizeParamater)}";
-          icon-theme = config.stylix.iconTheme.dark;
+          icon-theme =
+            if config.stylix.polarity == "dark" then
+              config.stylix.iconTheme.dark
+            else
+              config.stylix.iconTheme.light;
           match-counter = true;
           terminal = "${config.custom.terminal.exec}";
           width = 24;

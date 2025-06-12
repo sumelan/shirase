@@ -11,7 +11,7 @@
   ];
 
   # start niri-session
-  custom.autologinCommand = "niri-session";
+  custom.autologinCommand = "${lib.getExe' config.programs.niri.package "niri-session"}";
 
   programs.niri = {
     settings =

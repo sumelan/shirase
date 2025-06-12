@@ -46,7 +46,11 @@ let
         type = "tray";
         font-family = "monospace";
         grid-align = "center_left";
-        icon-theme = config.stylix.iconTheme.dark;
+        icon-theme =
+          if config.stylix.polarity == "dark" then
+            config.stylix.iconTheme.dark
+          else
+            config.stylix.iconTheme.light;
         tray-gap = 2;
         icon-size = 28;
         header-draw-config = {

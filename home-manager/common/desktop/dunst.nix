@@ -21,7 +21,12 @@
           origin = "top-right";
           separator_color = base02;
           font = "${fonts.sansSerif.name} ${toString fonts.sizes.popups}";
-          width = 500;
+          icon_theme =
+            if config.stylix.polarity == "dark" then
+              config.stylix.iconTheme.dark
+            else
+              config.stylix.iconTheme.light;
+          width = "(250, 450)";
           offset = "(50, 20)";
           alignment = "center";
           browser = "librewolf -new-tab";
