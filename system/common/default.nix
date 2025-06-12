@@ -6,6 +6,7 @@ _: {
     ./configuration.nix
     ./filesystem.nix
     ./gh.nix
+    ./greetd.nix
     ./impermanence.nix
     ./niri.nix
     ./nix.nix

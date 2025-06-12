@@ -66,7 +66,7 @@
         /* all: unset; */
         font-family: "${config.stylix.fonts.monospace.name}";
         font-weight: bold;
-        font-size: ${builtins.toString (config.stylix.fonts.sizes.desktop + 6)}px;
+        font-size: ${builtins.toString (config.stylix.fonts.sizes.desktop + 5)}px;
         min-height: 0;
       }
 

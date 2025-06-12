@@ -1,5 +1,13 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    nautilus
+    ffmpegthumbnailer
+    p7zip-rar # support for encrypted archives
+    webp-pixbuf-loader # for webp thumbnails
+    xdg-terminal-exec
+  ];
+
   xdg = {
     # fix mimetype associations
     mimeApps.defaultApplications = {
@@ -20,7 +28,7 @@
     binds = with config.lib.niri.actions; {
       "Mod+E" = {
         action = spawn "nautilus";
-        hotkey-overlay.title = "Nautilus";
+        hotkey-overlay.title = "File Manager";
       };
     };
     window-rules = [

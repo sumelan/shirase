@@ -1,10 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  user,
-  ...
-}:
+{ lib, user, ... }:
 {
   # silence warning about setting multiple user password options
   # https://github.com/NixOS/nixpkgs/pull/287506#issuecomment-1950958990
@@ -17,32 +11,6 @@
   };
 
   config = {
-    # autologin
-    services = {
-      greetd =
-        let
-          inherit (config.hm.custom) autologinCommand;
-        in
-        lib.mkIf (autologinCommand != null) {
-          enable = true;
-          settings = {
-            default_session = {
-              command = # bash
-                let
-                  inherit (config.services.displayManager.sessionData) desktops;
-                in
-                ''
-                  ${pkgs.greetd.tuigreet}/bin/tuigreet --time \
-                    --sessions ${desktops}/share/xsessions:${desktops}/share/wayland-sessions \
-                      --remember --remember-user-session --asterisks --cmd ${autologinCommand} \
-                        --user-menu --greeting "Who are you?" --window-padding 2
-                '';
-              user = "greeter";
-            };
-          };
-        };
-    };
-
     users = {
       mutableUsers = false;
       # setup users with persistent passwords

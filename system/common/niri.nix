@@ -4,13 +4,9 @@
     inputs.niri.nixosModules.niri
   ];
 
+  # HEIC image preview in Nautilus
   environment = {
     systemPackages = with pkgs; [
-      nautilus
-      ffmpegthumbnailer
-      p7zip-rar # support for encrypted archives
-      webp-pixbuf-loader # for webp thumbnails
-      xdg-terminal-exec
       libheif
       libheif.out
     ];
