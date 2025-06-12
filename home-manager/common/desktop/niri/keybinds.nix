@@ -71,17 +71,17 @@
         hotkey-overlay.hidden = true;
       };
 
+      "Mod+Alt+H".action = set-column-width "-10%";
+      "Mod+Alt+J".action = set-window-height "+10%";
+      "Mod+Alt+K".action = set-window-height "-10%";
+      "Mod+Alt+L".action = set-column-width "+10%";
+
       # acer fn+F3 binds Mod+P
       "Mod+P".action = consume-or-expel-window-left;
       "Mod+Shift+P".action = consume-or-expel-window-right;
 
       # tabbed
       "Mod+T".action = toggle-column-tabbed-display;
-
-      "Mod+Alt+H".action = set-column-width "-10%";
-      "Mod+Alt+L".action = set-column-width "+10%";
-      "Mod+Alt+J".action = set-window-height "-10%";
-      "Mod+Alt+K".action = set-window-height "+10%";
 
       # workspaces
       "Mod+1" = {

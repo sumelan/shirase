@@ -3,6 +3,7 @@
   config,
   pkgs,
   inputs,
+  isLaptop,
   ...
 }:
 {
@@ -15,9 +16,18 @@
       enable = true;
       settings = {
         widgets =
-          (import ./column.nix { inherit config; })
-          ++ (import ./workspace.nix { inherit config; })
-          ++ (import ./stats.nix { inherit lib config; })
+          (import ./column.nix {
+            inherit config;
+            marginParameter = if isLaptop then 25 else 0;
+          })
+          ++ (import ./workspace.nix {
+            inherit config;
+            marginParameter = if isLaptop then 18 else 0;
+          })
+          ++ (import ./stats.nix {
+            inherit config;
+            sizeParameter = if isLaptop then 7 else 14;
+          })
         #   ++ (import ./tray.nix { inherit config; })
         #   ++ (import ./clock.nix { inherit config; })
         #   ++ (import ./slider.nix { inherit lib config; })

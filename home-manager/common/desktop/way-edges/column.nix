@@ -1,4 +1,8 @@
-{ config, ... }:
+{
+  config,
+  marginParameter ? 0,
+  ...
+}:
 with config.lib.stylix.colors.withHashtag;
 let
   left-click = 272;
@@ -35,7 +39,7 @@ let
     monitor = [
       config.lib.monitors.mainMonitorName
     ] ++ config.lib.monitors.otherMonitorsNames;
-    margins.${position} = "60%";
+    margins.${position} = "${builtins.toString (60 - marginParameter)}%";
   };
 
   commonUp = position: {
@@ -43,7 +47,7 @@ let
     monitor = [
       config.lib.monitors.mainMonitorName
     ] ++ config.lib.monitors.otherMonitorsNames;
-    margins.${position} = "60%";
+    margins.${position} = "${builtins.toString (60 - marginParameter)}%";
   };
 
   columnDown =

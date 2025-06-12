@@ -3,6 +3,7 @@
   config,
   pkgs,
   self,
+  isLaptop,
   ...
 }:
 let
@@ -25,7 +26,12 @@ in
           layer = "overlay";
           placeholder = "Type to search...";
           prompt = "'❯ '";
-          font = with config.stylix.fonts; "${sansSerif.name}:size=${builtins.toString sizes.popups}";
+          font =
+            with config.stylix.fonts;
+            let
+              sizeParamater = if isLaptop then 3 else 0;
+            in
+            "${sansSerif.name}:size=${builtins.toString (sizes.popups - sizeParamater)}";
           icon-theme = config.stylix.iconTheme.dark;
           match-counter = true;
           terminal = "${config.custom.terminal.exec}";
