@@ -45,7 +45,7 @@
         widget.clock = {
           format = "%a %H:%M";
           resolution = "500ms";
-          label_width = 150;
+          label_width = 120 * 4; # the interpretation of this value is entirely up to GTK
         };
       };
       extraCss = with config.lib.stylix.colors.withHashtag; ''
@@ -116,7 +116,8 @@
           }
 
           modelbutton.flat {
-            background: ${base04};
+            background: ${base03};
+            color: ${base07};
             padding: 6px;
             margin: 2px;
             border-radius: 8px;
@@ -124,7 +125,8 @@
           }
 
           modelbutton.flat:hover {
-            background: shade(${base04}, 1.2);
+            background: shade(${base03}, 1.2);
+            color: ${base07};
           }
 
           button.image-button.toggle {
