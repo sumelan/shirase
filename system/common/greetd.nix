@@ -53,6 +53,10 @@
             all: unset;
           }
 
+          picture {
+            filter: blur(1.2rem);
+          }
+
           frame.background {
             background: alpha(${base01}, .92);
             color: ${base05};
