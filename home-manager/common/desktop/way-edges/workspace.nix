@@ -1,8 +1,4 @@
-{
-  config,
-  marginParameter ? 0,
-  ...
-}:
+{ config, ... }:
 with config.lib.stylix.colors.withHashtag;
 let
   left-click = 272;
@@ -51,7 +47,7 @@ let
     position = "top";
     extra-trigger-size = 0;
     preview-size = "15%";
-    margins.top = "${builtins.toString (55 - marginParameter)}%";
+    margins.top = "50%";
     type = "workspace";
     thickness = 20;
     length = "25%";
