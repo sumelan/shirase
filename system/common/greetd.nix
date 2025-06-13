@@ -95,7 +95,7 @@
           }
 
           box.horizontal>button.text-button:hover {
-            background: ${base0F};
+            background: shade(${base01}, 1.2);
             color: ${base08};
           }
 

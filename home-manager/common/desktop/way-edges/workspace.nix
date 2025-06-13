@@ -46,8 +46,8 @@ let
     edge = "left";
     position = "top";
     extra-trigger-size = 0;
-    preview-size = "15%";
-    margins.top = "50%";
+    preview-size = "10%";
+    margins.top = "55%";
     type = "workspace";
     thickness = 20;
     length = "25%";

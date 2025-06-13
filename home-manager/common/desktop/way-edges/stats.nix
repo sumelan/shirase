@@ -10,14 +10,14 @@ let
   commonConfig = {
     namespace = "stats";
     edge = "right";
-    position = "top";
+    position = "bottom";
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
     extra-trigger-size = 0;
     preview-size = "42%";
     animation-curve = "ease-expo";
     transition-duration = 300;
-    margins.top = "8%";
+    margins.bottom = "5%";
     ignore-exclusive = true;
     pinnable = true;
     pin-with-key = true;
