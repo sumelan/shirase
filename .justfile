@@ -1,4 +1,4 @@
-# nix shell nixpkgs#just nixpkgs#nushell
+# nix shell nixpkgs#just nixpkgs#fish
 set shell := ["fish", "-c"]
 
 default:

@@ -3,7 +3,6 @@
   config,
   pkgs,
   inputs,
-  isLaptop,
   ...
 }:
 {
@@ -59,7 +58,7 @@
         Restart = "on-failure";
         ExecStartPre = "${lib.getExe' pkgs.coreutils "sleep"} 1";
         ExecStartPost = "${lib.getExe' pkgs.coreutils "sleep"} 1";
-        RestartSec = 3;
+        RestartSec = 1;
       };
     };
   };

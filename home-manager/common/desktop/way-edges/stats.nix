@@ -46,7 +46,7 @@ let
     type = "ring";
     animation-curve = "ease-expo";
     font-family = "${config.stylix.fonts.monospace.name}";
-    font-size = config.stylix.fonts.sizes.desktop + 14;
+    font-size = config.stylix.fonts.sizes.desktop + 12;
     prefix-hide = false;
     suffix-hide = true;
     ring-width = 8;

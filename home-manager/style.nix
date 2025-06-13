@@ -53,7 +53,7 @@ in
       cursor = {
         package = cfg.cursor.package;
         name = cfg.cursor.name;
-        size = 28;
+        size = 30;
       };
 
       fonts = {
