@@ -35,7 +35,7 @@ let
     monitor = [
       config.lib.monitors.mainMonitorName
     ] ++ config.lib.monitors.otherMonitorsNames;
-    margins.${position} = "60%";
+    margins.${position} = "35%";
   };
 
   commonUp = position: {
@@ -43,7 +43,7 @@ let
     monitor = [
       config.lib.monitors.mainMonitorName
     ] ++ config.lib.monitors.otherMonitorsNames;
-    margins.${position} = "60%";
+    margins.${position} = "35%";
   };
 
   columnDown =

@@ -32,7 +32,7 @@ let
       margins.${direction} = "5%";
       type = "btn";
       thickness = 15;
-      length = "6%";
+      length = "5%";
       color = "${color}";
       border-width = 2;
       border-color = "${base05}";
@@ -47,7 +47,7 @@ let
     position = "top";
     extra-trigger-size = 0;
     preview-size = "10%";
-    margins.top = "55%";
+    margins.top = "35%";
     type = "workspace";
     thickness = 20;
     length = "25%";
