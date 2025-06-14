@@ -168,6 +168,8 @@
     niri.settings.window-rules = [
       {
         matches = [ { app-id = "^(swayimg)$"; } ];
+        default-column-width.proportion = 0.5;
+        default-window-height.proportion = 0.5;
         open-floating = true;
       }
     ];

@@ -4,28 +4,18 @@ _: {
     ./neovim
     ./rmpc
     ./shell
-    ./blueman-applet.nix
     ./btop.nix
     ./cava.nix
-    ./discord.nix
-    ./easyeffects.nix
     ./eza.nix
     ./fastfetch.nix
     ./git.nix
     ./impermanence.nix
     ./jujutsu.nix
-    ./kitty.nix
     ./lazygit.nix
-    ./librewolf.nix
-    ./mpv.nix
     ./nix.nix
-    ./pwvucontrol.nix
     ./ripgrep.nix
     ./starship.nix
-    ./swayimg.nix
     ./terminal.nix
-    ./yazi.nix
-    ./youtube-music.nix
     ./yt-dlp.nix
     ./zathura.nix
     ./zoxide.nix

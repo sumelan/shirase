@@ -10,12 +10,22 @@
     ./niri
     ./way-edges
     ./waybar
+    ./blueman-applet.nix
+    ./discord.nix
     ./dunst.nix
+    ./easyeffects.nix
     ./fuzzel.nix
-    ./image.nix
+    ./kitty.nix
+    ./librewolf.nix
+    ./mpv.nix
     ./nautilus.nix
+    ./pwvucontrol.nix
+    ./swayimg.nix
     ./swayosd.nix
+    ./themed-logo.nix
     ./wallpaper.nix
+    ./yazi.nix
+    ./youtube-music.nix
   ];
 
   # screen-record
