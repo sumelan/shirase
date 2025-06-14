@@ -29,7 +29,7 @@ in
           font =
             with config.stylix.fonts;
             let
-              sizeParamater = if isLaptop then 3 else 0;
+              sizeParamater = if isLaptop then 3 else (-2);
             in
             "${sansSerif.name}:size=${builtins.toString (sizes.popups - sizeParamater)}";
           icon-theme =
@@ -41,7 +41,7 @@ in
           terminal = "${config.custom.terminal.exec}";
           width = 24;
           lines = 12;
-          horizontal-pad = 28;
+          horizontal-pad = 25;
           vertical-pad = 8;
           inner-pad = 5;
         };
