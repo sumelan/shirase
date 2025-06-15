@@ -23,7 +23,6 @@
     hdds.enable = true;
     alsa.enable = true;
     logitech.enable = true;
-    qmk.enable = true;
 
     # steam
     steam.enable = false;

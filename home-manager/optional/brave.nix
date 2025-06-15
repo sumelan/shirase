@@ -10,7 +10,7 @@
   };
 
   config = lib.mkIf config.custom.brave.enable {
-    programs.chromium = {
+    programs.brave = {
       enable = true;
       package = pkgs.brave;
       commandLineArgs = [

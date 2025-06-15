@@ -12,7 +12,6 @@ _: {
     ./logitech.nix
     ./opentabletdriver.nix
     ./printing.nix
-    ./qmk.nix
     ./steam.nix
   ];
 }
