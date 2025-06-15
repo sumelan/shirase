@@ -22,11 +22,12 @@
     stylix = {
       cursor = {
         package = pkgs.capitaine-cursors-themed;
-        name = "Capitaine Cursors (Nord)";
+        name = "Capitaine Cursors (Palenight)";
       };
       icon = {
-        package = pkgs.papirus-nord.override {
-          accent = "frostblue2";
+        package = pkgs.catppuccin-papirus-folders.override {
+          flavor = "frappe";
+          accent = "sapphire";
         };
         darkName = "Papirus-Dark";
         lightName = "Papirus-Light";

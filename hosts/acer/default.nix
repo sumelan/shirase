@@ -25,7 +25,7 @@
   custom = {
     # style
     stylix = {
-      colorTheme = "nord";
+      colorTheme = "catppuccin-frappe";
       polarity = "dark";
     };
 

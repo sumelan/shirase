@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  home.packages = with pkgs; [ webcord-vencord ];
+  home.packages = with pkgs; [ webcord ];
 
   programs.niri.settings = {
     binds = with config.lib.niri.actions; {
