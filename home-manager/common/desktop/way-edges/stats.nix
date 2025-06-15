@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, isLaptop, ... }:
 with config.lib.stylix.colors.withHashtag;
 let
   left-click = 272;
@@ -46,7 +46,11 @@ let
     type = "ring";
     animation-curve = "ease-expo";
     font-family = "${config.stylix.fonts.monospace.name}";
-    font-size = config.stylix.fonts.sizes.desktop + 12;
+    font-size =
+      let
+        sizeParameter = if isLaptop then 5 else 12;
+      in
+      config.stylix.fonts.sizes.desktop + sizeParameter;
     prefix-hide = false;
     suffix-hide = true;
     ring-width = 8;

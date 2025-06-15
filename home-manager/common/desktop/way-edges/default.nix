@@ -3,6 +3,7 @@
   config,
   pkgs,
   inputs,
+  isLaptop,
   ...
 }:
 {
@@ -17,7 +18,7 @@
         widgets =
           (import ./column.nix { inherit config; })
           ++ (import ./workspace.nix { inherit config; })
-          ++ (import ./stats.nix { inherit config; })
+          ++ (import ./stats.nix { inherit config isLaptop; })
         #   ++ (import ./tray.nix { inherit config; })
         #   ++ (import ./clock.nix { inherit config; })
         #   ++ (import ./slider.nix { inherit lib config; })

@@ -29,7 +29,7 @@ in
           font =
             with config.stylix.fonts;
             let
-              sizeParamater = if isLaptop then 3 else (-2);
+              sizeParamater = if isLaptop then 2 else (-2);
             in
             "${sansSerif.name}:size=${builtins.toString (sizes.popups - sizeParamater)}";
           icon-theme =
@@ -73,10 +73,10 @@ in
         action = spawn "fuzzel-files";
         hotkey-overlay.title = "File Search";
       };
-      "Alt+Tab" = {
-        action = spawn "fuzzel-windows";
-        hotkey-overlay.title = "Windows Search";
-      };
+      #     "Alt+Tab" = {
+      #       action = spawn "fuzzel-windows";
+      #       hotkey-overlay.title = "Windows Search";
+      #     };
       "Mod+Ctrl+Q" = {
         action = spawn "fuzzel-actions";
         hotkey-overlay.title = "System Actions";

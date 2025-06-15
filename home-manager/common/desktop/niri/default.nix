@@ -7,6 +7,7 @@
     ./keybinds.nix
     ./lock.nix
     ./monitors.nix
+    ./niriswitcher.nix
     ./rules.nix
   ];
 
