@@ -7,9 +7,7 @@
         with config.lib.stylix.colors.withHashtag;
         let
           inherit (config.stylix) fonts;
-          swayimgOpacity = lib.toHexString (
-            ((builtins.floor (config.stylix.opacity.desktop * 100 + 0.5)) * 255) / 100
-          );
+          swayimgOpacity = ((builtins.floor (config.stylix.opacity.desktop * 100 + 0.5)) * 255) / 100 |> lib.toHexString;
         in
         {
           general = {

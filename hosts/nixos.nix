@@ -18,7 +18,6 @@ let
         inherit host user;
         isLaptop = host == "acer";
         isServer = host == "sakura";
-        dotfiles = "/persist/home/${user}/projects/wolborg";
       };
       modules = [
         ./${host} # host specific configuration
@@ -35,14 +34,12 @@ let
               inherit host user;
               isLaptop = host == "acer";
               isServer = host == "sakura";
-              dotfiles = "/persist/home/${user}/projects/wolborg";
             };
             users.${user} = {
               nixpkgs.config.allowUnfree = true;
               imports = [
                 ./${host}/home.nix # host specific home-manager configuration
                 ../home-manager # home-manager modules
-                inputs.nix-index-database.hmModules.nix-index
               ];
             };
           };

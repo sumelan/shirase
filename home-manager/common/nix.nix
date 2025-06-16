@@ -1,12 +1,17 @@
 {
+  config,
   pkgs,
-  dotfiles,
+  inputs,
   ...
 }:
 let
   nixpkgs-review = pkgs.nixpkgs-review.override { withNom = true; };
 in
 {
+  imports = [
+    inputs.nix-index-database.hmModules.nix-index
+  ];
+
   home = {
     packages = with pkgs; [
       nixd
@@ -16,20 +21,13 @@ in
       nixpkgs-review
       nurl
     ];
-
-    shellAliases = {
-      nfl = "nix flake lock";
-      nfu = "nix flake update";
-      nsh = "nix-shell --command fish -p";
-      nshp = "nix-shell --pure --command fish -p";
-    };
   };
 
   programs = {
     nix-index.enable = true;
     nh = {
       enable = true;
-      flake = dotfiles;
+      flake = "/persist/${config.home.homeDirectory}/projects/wolborg}";
     };
   };
 

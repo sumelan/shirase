@@ -12,9 +12,8 @@
       with config.lib.stylix.colors.withHashtag;
       let
         inherit (config.stylix) fonts;
-        dunstOpacity = lib.toHexString (
-          ((builtins.floor (config.stylix.opacity.popups * 100 + 0.5)) * 255) / 100
-        );
+        dunstOpacity =
+          ((builtins.floor (config.stylix.opacity.popups * 100 + 0.5)) * 255) / 100 |> lib.toHexString;
       in
       {
         global = {

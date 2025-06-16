@@ -66,7 +66,7 @@ in
       style =
         with config.lib.stylix.colors.withHashtag;
         let
-          opacity = lib.toHexString (builtins.ceil (config.stylix.opacity.popups * 255));
+          opacity = builtins.ceil (config.stylix.opacity.popups * 255) |> lib.toHexString;
         in
         # css
         ''

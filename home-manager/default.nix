@@ -70,8 +70,10 @@
             "nixos-manual"
             "fish"
             "yazi"
+            "nm-connection-editor"
           ];
         in
+        # generate an attribute set by mapping a function over a list of attribute names.
         lib.attrsets.genAttrs hideList (name': {
           name = name';
           noDisplay = true;

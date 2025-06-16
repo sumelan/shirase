@@ -41,6 +41,7 @@
           size = config.stylix.cursor.size;
         };
 
+        # apply function f to every element of attrset
         outputs = builtins.mapAttrs (name: value: {
           inherit (value) scale mode position;
           transform.rotation = value.rotation;

@@ -1,11 +1,11 @@
 _: {
   imports = [
-    ./helix
     ./brave.nix
     ./cyanrip.nix
     ./foliate.nix
     ./ghostty.nix
     ./hardware.nix
+    ./helix.nix
     ./inkscape.nix
     ./krita.nix
     ./obs-studio.nix

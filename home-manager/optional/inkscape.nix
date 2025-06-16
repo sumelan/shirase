@@ -18,7 +18,7 @@
       {
         matches = [ { app-id = "^(org.inkscape.Inkscape)$"; } ];
         open-fullscreen = true;
-        open-on-output = builtins.toString config.lib.monitors.otherMonitorsNames;
+        open-on-output = builtins.head config.lib.monitors.otherMonitorsNames;
         opacity = 1.0;
       }
     ];

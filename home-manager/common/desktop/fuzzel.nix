@@ -7,7 +7,7 @@
   ...
 }:
 let
-  opacity = lib.toHexString (builtins.ceil (config.stylix.opacity.popups * 255));
+  opacity = config.stylix.opacity.popups * 255 |> builtins.ceil |> lib.toHexString;
 in
 {
   home.packages =
@@ -31,7 +31,7 @@ in
             let
               sizeParamater = if isLaptop then 2 else (-2);
             in
-            "${sansSerif.name}:size=${builtins.toString (sizes.popups - sizeParamater)}";
+            "${sansSerif.name}:size=${sizes.popups - sizeParamater |> builtins.toString}";
           icon-theme =
             if config.stylix.polarity == "dark" then
               config.stylix.iconTheme.dark

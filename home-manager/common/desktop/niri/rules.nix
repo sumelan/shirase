@@ -5,10 +5,10 @@
 }:
 {
   programs.niri.settings = {
-    workspaces = lib.mkIf (config.lib.monitors.otherMonitorsNames == [ ]) {
+    workspaces = lib.mkIf (config.lib.monitors.otherMonitorsNames != [ ]) {
       "01-huion" = {
         name = "huion";
-        open-on-output = builtins.toString config.lib.monitors.otherMonitorsNames;
+        open-on-output = builtins.head config.lib.monitors.otherMonitorsNames;
       };
     };
 

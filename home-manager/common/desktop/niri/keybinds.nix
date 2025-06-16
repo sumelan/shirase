@@ -96,7 +96,7 @@
         action.focus-workspace = 3;
         hotkey-overlay.hidden = true;
       };
-      "Mod+0" = lib.mkIf (config.lib.monitors.otherMonitorsNames == [ ]) {
+      "Mod+0" = lib.mkIf (config.lib.monitors.otherMonitorsNames != [ ]) {
         action.focus-workspace = "huion";
         hotkey-overlay.hidden = false;
       };
@@ -113,7 +113,7 @@
         action.move-column-to-workspace = 3;
         hotkey-overlay.hidden = true;
       };
-      "mod+Shift+0" = lib.mkIf (config.lib.monitors.otherMonitorsNames == [ ]) {
+      "mod+Shift+0" = lib.mkIf (config.lib.monitors.otherMonitorsNames != [ ]) {
         action.move-column-to-workspace = "huion";
         hotkey-overlay.hidden = false;
       };
