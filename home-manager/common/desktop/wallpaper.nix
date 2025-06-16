@@ -7,8 +7,9 @@
         duration = "12m";
         mode = "center";
         sorting = "random";
+        offset = 0.2;
         transition = {
-          grid-flip = { }; # keep blank to use on default values
+          ripple = { }; # keep blank to use on default values
         };
       };
       # using regex
