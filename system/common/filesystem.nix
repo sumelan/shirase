@@ -1,49 +1,17 @@
-{
-  lib,
-  pkgs,
-  self,
-  ...
-}:
+{ pkgs, self, ... }:
 # NOTE: partitions and subvolumes are created via install.sh
 {
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/NIXOS";
-    fsType = "btrfs";
-    options = [
-      "subvol=root"
-      "compress=zstd"
-      "noatime"
-    ];
-  };
-
-  boot.initrd = {
-    enable = true;
-    supportedFilesystems = [ "btrfs" ];
-
-    postResumeCommands = lib.mkAfter ''
-      mkdir -p /mnt
-
-      # mount btrfs root(/) to /mnt and manipulate btrfs subvolume
-      mount -o subvol=/ /dev/disk/by-label/NIXOS /mnt
-
-      # show and remove subvolumes below /mnt/root
-      btrfs subvolume list -o /mnt/root |
-      cut -f9 -d' ' |
-      while read subvolume; do
-          echo "deleting /$subvolume subvolume..."
-          btrfs subvolume delete "/mnt/$subvolume"
-      done &&
-      echo "deleting /root subvolume..." &&
-      btrfs subvolume delete /mnt/root
-
-      echo "restoring blank /root subvolume..."
-      btrfs subvolume snapshot /mnt/root-blank /mnt/root
-
-      umount /mnt
-    '';
-  };
-
   fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-label/NIXOS";
+      fsType = "btrfs";
+      options = [
+        "subvol=root"
+        "compress=zstd"
+        "noatime"
+      ];
+    };
+
     "/nix" = {
       device = "/dev/disk/by-label/NIXOS";
       fsType = "btrfs";

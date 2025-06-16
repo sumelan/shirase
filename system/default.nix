@@ -35,8 +35,12 @@
 
     environment = {
       etc = {
+        # Set of files that have to be linked in /etc
         # universal git settings
         "gitconfig".text = config.hm.xdg.configFile."git/config".text;
+        # get gparted to use system theme
+        "xdg/gtk-3.0/settings.ini".text = config.hm.xdg.configFile."gtk-3.0/settings.ini".text;
+        "xdg/gtk-4.0/settings.ini".text = config.hm.xdg.configFile."gtk-4.0/settings.ini".text;
       };
 
       # install fish completions for fish
@@ -79,20 +83,37 @@
           ripgrep
           yazi
           zoxide
+          # use same config as home-manager
+          (pkgs.symlinkJoin {
+            name = "yazi";
+            paths = [ pkgs.yazi ];
+            buildInputs = [ pkgs.makeWrapper ];
+            postBuild = # sh
+              ''wrapProgram $out/bin/yazi --set YAZI_CONFIG_HOME "${config.hm.xdg.configHome}/yazi"'';
+            meta.mainProgram = "yazi";
+          })
         ]
+        ++
+          # install gtk theme for root, some apps like gparted only run as root
+          [
+            config.hm.gtk.theme.package
+            config.hm.gtk.iconTheme.package
+          ]
         ++ (lib.optional config.hm.custom.helix.enable helix);
     };
+
+    # https://www.mankier.com/5/tmpfiles.d
+    systemd.tmpfiles.rules =
+      [
+        # cleanup systemd coredumps once a week
+        "D! /var/lib/systemd/coredump root root 7d"
+      ] # create symlinks
+      ++ (lib.mapAttrsToList (dest: src: "L+ ${dest} - - - - ${src}") config.custom.symlinks);
 
     # create symlink to dotfiles from default /etc/nixos
     custom.symlinks = {
       "/etc/nixos" = "/persist${config.hm.home.homeDirectory}/projects/wolborg";
     };
-
-    # create symlinks
-    systemd.tmpfiles.rules = [
-      # cleanup systemd coredumps once a week
-      "D! /var/lib/systemd/coredump root root 7d"
-    ] ++ (lib.mapAttrsToList (dest: src: "L+ ${dest} - - - - ${src}") config.custom.symlinks);
 
     programs = {
       # use same config as home-manager

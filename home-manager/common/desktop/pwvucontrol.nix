@@ -13,7 +13,7 @@
 
   custom.persist = {
     home.directories = [
-      ".config/pulse"
+      ".local/state/wireplumber"
     ];
   };
 }

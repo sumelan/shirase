@@ -19,6 +19,7 @@
       fi
     '';
 
+    # this code will be added to the builder creating the system store path.
     # make a symlink of flake within the generation (e.g. /run/current-system/src)
     extraSystemBuilderCmds = "ln -s ${self.sourceInfo.outPath} $out/src";
   };
@@ -52,7 +53,7 @@
 
   nix =
     let
-      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
+      nixPath = lib.mapAttrsToList (name: _: "${name}=flake:${name}") inputs;
       registry = lib.mapAttrs (_: flake: { inherit flake; }) inputs;
     in
     {
@@ -66,13 +67,16 @@
         options = "--delete-older-than 7d";
       };
       package = pkgs.lixPackageSets.latest.lix;
+      # to use shorter IDs instead of lengthy address
       registry = registry // {
         n = registry.nixpkgs;
         master = {
+          # the flake reference: 'nixpkgs-master'
           from = {
             type = "indirect";
             id = "nixpkgs-master";
           };
+          # the flake reference from: github:NixOS/nixpkgs 
           to = {
             type = "github";
             owner = "NixOS";
@@ -90,6 +94,7 @@
         warn-dirty = false;
         # removes ~/.nix-profile and ~/.nix-defexpr
         use-xdg-base-directories = true;
+
         experimental-features = [
           "nix-command"
           "flakes"

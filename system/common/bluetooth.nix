@@ -30,7 +30,7 @@
 
     services.blueman.enable = true;
 
-    hm = hmCfg: {
+    hm = {
       # control media player over bluetooth
       services.mpris-proxy.enable = true;
     };

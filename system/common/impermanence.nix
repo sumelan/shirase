@@ -8,6 +8,7 @@
 let
   cfg = config.custom.persist;
   hmPersistCfg = config.hm.custom.persist;
+  # https://nix.dev/manual/nix/2.28/language/syntax.html?highlight=assert#assertions
   assertNoHomeDirs =
     paths:
     assert (lib.assertMsg (!lib.any (lib.hasPrefix "/home") paths) "/home used in a root persist!");
@@ -64,13 +65,42 @@ in
   };
 
   config = {
-    # clear /tmp on boot
-    boot.tmp.cleanOnBoot = true;
+    boot = {
+      # clear /tmp on boot
+      tmp.cleanOnBoot = true;
+      # wipe /root at each boot and back to blank state
+      initrd = {
+        enable = true;
+        supportedFilesystems = [ "btrfs" ];
+        postResumeCommands = lib.mkAfter ''
+          mkdir -p /mnt
+
+          # mount btrfs root(/) to /mnt and manipulate btrfs subvolume
+          mount -o subvol=/ /dev/disk/by-label/NIXOS /mnt
+
+          # show and remove subvolumes below /mnt/root
+          btrfs subvolume list -o /mnt/root |
+          cut -f9 -d' ' |
+          while read subvolume; do
+              echo "deleting /$subvolume subvolume..."
+              btrfs subvolume delete "/mnt/$subvolume"
+          done &&
+          echo "deleting /root subvolume..." &&
+          btrfs subvolume delete /mnt/root
+
+          echo "restoring blank /root subvolume..."
+          btrfs subvolume snapshot /mnt/root-blank /mnt/root
+
+          umount /mnt
+        '';
+      };
+    };
 
     # setup persistence
     environment.persistence = {
       "/persist" = {
         hideMounts = true;
+        # remove duplicate elements from the list
         files = lib.unique cfg.root.files;
         directories = lib.unique (
           [
@@ -122,6 +152,7 @@ in
         allFiles =
           map (getFilePath "/persist") (persistCfg.files ++ persistCfg.users.${user}.files)
           ++ map (getFilePath "/cache") (persistCacheCfg.files ++ persistCacheCfg.users.${user}.files);
+        # produces sorted list: first element is less than the second
         sort-uniq = arr: lib.sort lib.lessThan (lib.unique arr);
       in
       lib.strings.toJSON {
