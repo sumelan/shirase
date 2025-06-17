@@ -55,8 +55,8 @@
             valign = "center";
           };
           image = {
-            path = "/home/${user}/.themed-logo.png";
-            size = 200;
+            path = "/home/${user}/.anime-logo.png";
+            size = 300;
             border_color = "rgb(${config.lib.stylix.colors.base0D})";
             position = "0, 180";
             halign = "center";

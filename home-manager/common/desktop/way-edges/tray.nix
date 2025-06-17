@@ -44,7 +44,7 @@ let
           (-1)
         ]; # position in the grid layout. -1 means next available position.
         type = "tray";
-        font-family = "monospace";
+        font-family = "${config.stylix.fonts.monospace.name}";
         grid-align = "center_left";
         icon-theme =
           if config.stylix.polarity == "dark" then

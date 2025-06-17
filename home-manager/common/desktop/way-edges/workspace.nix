@@ -68,7 +68,7 @@ let
   };
 in
 [
-  (workspaceTransition "top" "${base0D}" "focus-window-or-workspace-up")
-  (workspaceTransition "bottom" "${base0E}" "focus-window-or-workspace-down")
+  # (workspaceTransition "top" "${base0D}" "focus-window-or-workspace-up")
+  # (workspaceTransition "bottom" "${base0E}" "focus-window-or-workspace-down")
   workspaceIndicator
 ]

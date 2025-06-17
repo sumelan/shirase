@@ -19,10 +19,10 @@
     ./librewolf.nix
     ./mpv.nix
     ./nautilus.nix
+    ./nixlogo.nix
     ./pwvucontrol.nix
     ./swayimg.nix
     ./swayosd.nix
-    ./themed-logo.nix
     ./wallpaper.nix
     ./yazi.nix
     ./youtube-music.nix

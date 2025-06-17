@@ -22,7 +22,7 @@
           icon_size = builtins.toString 15000;
           moduleConfiguration = with config.lib.stylix.colors.withHashtag; {
             "image" = {
-              path = "/home/${user}/.themed-logo.png";
+              path = "/home/${user}/.anime-logo.png";
               size = 32;
               tooltip = false;
               on-click = "fuzzel-actions";

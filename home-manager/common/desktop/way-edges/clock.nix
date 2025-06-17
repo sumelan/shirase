@@ -45,8 +45,8 @@ let
         ];
         type = "text";
         fg-color = "${base05}";
-        font-family = "monospace";
-        font-size = 24;
+        font-family = "${config.stylix.fonts.monospace.name}";
+        font-size = config.stylix.fonts.sizes.desktop;
         preset = {
           type = "time";
           format = " %H:%M";
