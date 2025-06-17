@@ -34,11 +34,11 @@ let
       ${base0C} ${base0D} ${base0E} ${base0F}
     '';
   setImage =
-    image:
+    imageA: imageB:
     pkgs.runCommand "anime-logo.png" { } ''
-      ${lib.getExe pkgs.imagemagick} composite -gravity center ${cirno} ${image} $out
+      ${lib.getExe pkgs.imagemagick} composite -gravity center ${imageA} ${imageB} $out
     '';
 in
 {
-  home.file.".anime-logo.png".source = changeColor logo |> setImage;
+  home.file.".anime-logo.png".source = setImage (changeColor cirno) (changeColor logo);
 }
