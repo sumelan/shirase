@@ -1,6 +1,6 @@
 <div align="center">
 
-# Wolborg
+# Shirase
 
 This is my personal nixos config, always wip.
 
@@ -40,7 +40,7 @@ the minimal iso.
 From a standard ISO,
 
 ```sh
-sh <(curl -L https://raw.githubusercontent.com/Sumelan/wolborg/main/install.sh)
+sh <(curl -L https://raw.githubusercontent.com/Sumelan/shirase/main/install.sh)
 ```
 
 ## Credits

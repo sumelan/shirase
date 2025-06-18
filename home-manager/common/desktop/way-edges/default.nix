@@ -55,15 +55,13 @@
     "way-edges" = {
       Install.WantedBy = [ "graphical-session.target" ];
       Unit = {
-        Description = "Run way-edges";
+        Description = "way-edges";
         After = [ "graphical-session.target" ];
         Wants = [ "graphical-session.target" ];
       };
       Service = {
         ExecStart = "${lib.getExe inputs.way-edges.packages."${pkgs.system}".default}";
         Restart = "on-failure";
-        ExecStartPre = "${lib.getExe' pkgs.coreutils "sleep"} 1";
-        ExecStartPost = "${lib.getExe' pkgs.coreutils "sleep"} 1";
         RestartSec = 1;
       };
     };

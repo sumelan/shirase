@@ -18,13 +18,8 @@
       # exit niri
       "Mod+Shift+Escape".action = quit { skip-confirmation = false; };
 
-      # screenshot
+      # screenshot 'screenshot-screen' is valid only on niri-stable
       "Mod+Backslash".action = screenshot { show-pointer = false; };
-      # 'screenshot-screen' is valid only on niri-stable
-      "Mod+Shift+Backslash" = {
-        action = ush "niri msg action screenshot-screen";
-        hotkey-overlay.title = "Take a Screenshot of focused Output";
-      };
       "Mod+Alt+Backslash".action = screenshot-window { write-to-disk = true; };
 
       # window and colum management

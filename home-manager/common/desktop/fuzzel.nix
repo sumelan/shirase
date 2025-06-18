@@ -74,10 +74,6 @@ in
           action = ush "fuzzel-files";
           hotkey-overlay.title = "File Search";
         };
-        #     "Alt+Tab" = {
-        #       action = ush "fuzzel-windows";
-        #       hotkey-overlay.title = "Windows Search";
-        #     };
         "Mod+Ctrl+Q" = {
           action = ush "fuzzel-actions";
           hotkey-overlay.title = "System Actions";

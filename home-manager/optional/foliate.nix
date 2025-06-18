@@ -6,10 +6,10 @@
 }:
 {
   options.custom = with lib; {
-    ebook.enable = mkEnableOption "ebook reader";
+    foliate.enable = mkEnableOption "ebook reader";
   };
 
-  config = lib.mkIf config.custom.ebook.enable {
+  config = lib.mkIf config.custom.foliate.enable {
     home.packages = with pkgs; [ foliate ];
 
     programs.niri.settings.window-rules = [

@@ -112,7 +112,7 @@
 
     # create symlink to dotfiles from default /etc/nixos
     custom.symlinks = {
-      "/etc/nixos" = "/persist${config.hm.home.homeDirectory}/projects/wolborg";
+      "/etc/nixos" = "/persist${config.hm.home.homeDirectory}/projects/shirase";
     };
 
     programs = {

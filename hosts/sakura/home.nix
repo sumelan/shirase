@@ -50,7 +50,7 @@
 
     brave.enable = true;
     cyanrip.enable = true;
-    ebook.enable = true;
+    foliate.enable = true;
     krita.enable = false;
     thunderbird.enable = false;
   };

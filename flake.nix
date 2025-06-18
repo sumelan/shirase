@@ -1,5 +1,5 @@
 {
-  description = "Wolborg";
+  description = "Shirase";
 
   inputs = {
     # nixpkgs links
@@ -7,12 +7,6 @@
 
     # hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    # nur
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # home-manager
     home-manager = {
@@ -58,6 +52,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+
   outputs =
     inputs@{ nixpkgs, self, ... }:
     let

@@ -14,7 +14,7 @@
 
     # common
     btrbk.enable = true;
-    distrobox.enable = true;
+    distrobox.enable = false;
 
     # hardware
     hdds.enable = true;

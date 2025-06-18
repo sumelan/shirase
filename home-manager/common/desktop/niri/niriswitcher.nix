@@ -250,15 +250,13 @@ in
     "niriswitcher" = {
       Install.WantedBy = [ "graphical-session.target" ];
       Unit = {
-        Description = "Run niriswitcher";
+        Description = "niriswitcher";
         After = [ "graphical-session.target" ];
         Wants = [ "graphical-session.target" ];
       };
       Service = {
         ExecStart = "${lib.getExe pkgs.niriswitcher}";
         Restart = "on-failure";
-        ExecStartPre = "${lib.getExe' pkgs.coreutils "sleep"} 1";
-        ExecStartPost = "${lib.getExe' pkgs.coreutils "sleep"} 1";
         RestartSec = 1;
       };
     };
