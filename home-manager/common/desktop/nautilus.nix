@@ -25,12 +25,18 @@
   };
 
   programs.niri.settings = {
-    binds = with config.lib.niri.actions; {
-      "Mod+E" = {
-        action = spawn "nautilus";
-        hotkey-overlay.title = "File Manager";
+    binds =
+      with config.lib.niri.actions;
+      let
+        ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
+
+      in
+      {
+        "Mod+E" = {
+          action = ush "nautilus";
+          hotkey-overlay.title = "File Manager";
+        };
       };
-    };
     window-rules = [
       {
         matches = [

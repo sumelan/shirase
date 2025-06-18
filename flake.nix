@@ -62,7 +62,6 @@
     inputs@{ nixpkgs, self, ... }:
     let
       system = "x86_64-linux";
-      user = "sumelan";
 
       pkgs = import inputs.nixpkgs {
         inherit system;
@@ -78,7 +77,6 @@
           nixpkgs
           lib
           pkgs
-          user
           system
           ;
         specialArgs = {

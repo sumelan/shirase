@@ -10,44 +10,33 @@
   };
 
   config = {
-    programs.niri.settings.spawn-at-startup = [
-      {
-        command = [
-          "dbus-update-activation-environment"
-          "--systemd"
-          "DISPLAY"
-          "WAYLAND_DISPLAY"
+    custom.autologinCommand = "uwsm start Niri.desktop";
+
+    programs.niri.settings.spawn-at-startup =
+      let
+        ush = program: [
+          "sh"
+          "-c"
+          "uwsm app -- ${program}"
         ];
-      }
-      {
-        command = [ "nm-applet" ];
-      }
-      {
-        command = [
-          "fcitx5"
-          "-d"
-          "-r"
-        ];
-      }
-      {
-        command = [
-          "${lib.getExe pkgs.brightnessctl}"
-          "set"
-          "5%"
-        ];
-      }
-      {
-        command = [
-          "${lib.getExe' pkgs.wl-clipboard "wl-paste"}"
-          "--watch"
-          "${lib.getExe pkgs.cliphist}"
-          "store"
-        ];
-      }
-      (lib.mkIf config.custom.xwayland.enable {
-        command = [ "${lib.getExe pkgs.xwayland-satellite}" ];
-      })
-    ];
+      in
+      [
+        {
+          command = ush "nm-applet";
+        }
+        {
+          command = ush "fcitx5 -d -r";
+        }
+        {
+          command = ush "${lib.getExe pkgs.brightnessctl} set 5%";
+        }
+        {
+          command = ush "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store";
+        }
+        (lib.mkIf config.custom.xwayland.enable {
+          command = ush "${lib.getExe pkgs.xwayland-satellite}";
+        })
+      ];
 
     systemd.user.services = {
       "polkit-gnome-authentication-agent-1" = {

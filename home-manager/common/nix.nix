@@ -1,6 +1,6 @@
 {
-  config,
   pkgs,
+  user,
   inputs,
   ...
 }:
@@ -27,7 +27,7 @@ in
     nix-index.enable = true;
     nh = {
       enable = true;
-      flake = "/persist/${config.home.homeDirectory}/projects/wolborg}";
+      flake = "/persist/home/${user}/projects/wolborg";
     };
   };
 

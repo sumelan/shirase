@@ -27,16 +27,21 @@
     };
 
     niri.settings = {
-      binds = with config.lib.niri.actions; {
-        "Mod+C" = {
-          action = spawn "way-edges" "togglepin" "move-column";
-          hotkey-overlay.title = "Toggle Column Widgets";
+      binds =
+        with config.lib.niri.actions;
+        let
+          ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
+        in
+        {
+          "Mod+C" = {
+            action = ush "way-edges togglepin move-column";
+            hotkey-overlay.title = "Toggle Column Widgets";
+          };
+          "Mod+S" = {
+            action = ush "way-edges togglepin stats";
+            hotkey-overlay.title = "Toggle Stats Widgets";
+          };
         };
-        "Mod+S" = {
-          action = spawn "way-edges" "togglepin" "stats";
-          hotkey-overlay.title = "Toggle Stats Widgets";
-        };
-      };
       layer-rules = [
         {
           # match namespace contains 'way-edges-widget'

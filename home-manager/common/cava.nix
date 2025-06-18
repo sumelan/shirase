@@ -4,12 +4,17 @@
     cava.enable = true;
 
     niri.settings = {
-      binds = with config.lib.niri.actions; {
-        "Mod+M" = {
-          action = spawn "${config.custom.terminal.exec}" "--app-id" "cava" "cava";
-          hotkey-overlay.title = "Cava";
+      binds =
+        with config.lib.niri.actions;
+        let
+          ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
+        in
+        {
+          "Mod+M" = {
+            action = ush "${config.custom.terminal.exec} --app-id cava cava";
+            hotkey-overlay.title = "Cava";
+          };
         };
-      };
       window-rules = [
         {
           # Mod+C launch cava with app-id

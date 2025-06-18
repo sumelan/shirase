@@ -51,19 +51,17 @@
       }
     ];
 
-    switch-events = {
-      lid-close.action.spawn = [
-        "niri"
-        "msg"
-        "action"
-        "power-off-monitors"
-      ];
-      lid-open.action.spawn = [
-        "niri"
-        "msg"
-        "action"
-        "power-on-monitors"
-      ];
-    };
+    switch-events =
+      let
+        ush = program: [
+          "sh"
+          "-c"
+          "uwsm app -- ${program}"
+        ];
+      in
+      {
+        lid-close.action.spawn = ush "niri msg action power-off-monitors";
+        lid-open.action.spawn = ush "niri msg action power-on-monitors";
+      };
   };
 }

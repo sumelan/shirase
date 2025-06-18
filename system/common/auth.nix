@@ -6,15 +6,13 @@
   ...
 }:
 lib.mkMerge [
-
   # ssh settings
   {
     services.openssh = {
       enable = true;
       # disable password auth
       settings = {
-        # NOTE: set false for better security
-        PasswordAuthentication = false;
+        PasswordAuthentication = false; # NOTE: set false for better security
         KbdInteractiveAuthentication = false;
       };
     };

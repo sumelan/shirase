@@ -2,9 +2,9 @@
 {
   programs.niri.settings.binds =
     with config.lib.niri.actions;
-    # let
-    # sh = spawn "sh" "-c";
-    # in
+    let
+      ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
+    in
     {
       # application binds are written in each app.nix
       # mediakey binds are written in swayosd.nix
@@ -22,7 +22,7 @@
       "Mod+Backslash".action = screenshot { show-pointer = false; };
       # 'screenshot-screen' is valid only on niri-stable
       "Mod+Shift+Backslash" = {
-        action = spawn "niri" "msg" "action" "screenshot-screen";
+        action = ush "niri msg action screenshot-screen";
         hotkey-overlay.title = "Take a Screenshot of focused Output";
       };
       "Mod+Alt+Backslash".action = screenshot-window { write-to-disk = true; };

@@ -18,12 +18,17 @@
   ];
 
   programs.niri.settings = {
-    binds = with config.lib.niri.actions; {
-      "Mod+Y" = {
-        action = spawn "youtube-music";
-        hotkey-overlay.title = "YouTube Music";
+    binds =
+      with config.lib.niri.actions;
+      let
+        ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
+      in
+      {
+        "Mod+Y" = {
+          action = ush "youtube-music";
+          hotkey-overlay.title = "YouTube Music";
+        };
       };
-    };
   };
 
   services.playerctld.enable = true;

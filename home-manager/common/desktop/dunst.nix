@@ -59,16 +59,21 @@
       };
   };
   programs.niri.settings = {
-    binds = with config.lib.niri.actions; {
-      "Mod+N" = {
-        action = spawn "dunstctl" "history-pop";
-        hotkey-overlay.title = "Show Notification History";
+    binds =
+      with config.lib.niri.actions;
+      let
+        ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
+      in
+      {
+        "Mod+N" = {
+          action = ush "dunstctl history-pop";
+          hotkey-overlay.title = "Show Notification History";
+        };
+        "Mod+Shift+N" = {
+          action = ush "dunstctl close-all";
+          hotkey-overlay.title = "Dismiss Notification";
+        };
       };
-      "Mod+Shift+N" = {
-        action = spawn "dunstctl" "close-all";
-        hotkey-overlay.title = "Dismiss Notification";
-      };
-    };
     layer-rules = [
       {
         matches = [ { namespace = "^(notifications)$"; } ];

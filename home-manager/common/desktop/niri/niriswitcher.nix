@@ -227,19 +227,23 @@ in
         '';
     };
 
-    niri.settings.binds = with config.lib.niri.actions; {
-      "${modifierKey}+Tab" = {
-        # Using USR1 to trigger niriswitcher has been deprecated on version 0.60
-        action = spawn "niriswitcherctl" "show" "--window";
-        repeat = false;
-        hotkey-overlay.title = "Show applications on current window";
+    niri.settings.binds =
+      with config.lib.niri.actions;
+      let
+        ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
+      in
+      {
+        "${modifierKey}+Tab" = {
+          action = ush "niriswitcherctl show --window";
+          repeat = false;
+          hotkey-overlay.title = "Show applications on current window";
+        };
+        "${modifierKey}+Grave" = {
+          action = ush "niriswitcherctl show --workspace";
+          repeat = false;
+          hotkey-overlay.title = "Show applications on last used workspace";
+        };
       };
-      "${modifierKey}+Grave" = {
-        action = spawn "niriswitcherctl" "show" "--workspace";
-        repeat = false;
-        hotkey-overlay.title = "Show applications on last used workspace";
-      };
-    };
   };
 
   systemd.user.services = {

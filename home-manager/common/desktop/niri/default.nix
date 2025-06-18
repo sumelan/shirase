@@ -11,9 +11,6 @@
     ./rules.nix
   ];
 
-  # start niri-session
-  custom.autologinCommand = "${lib.getExe' config.programs.niri.package "niri-session"}";
-
   programs.niri = {
     settings =
       with config.lib.stylix.colors.withHashtag;

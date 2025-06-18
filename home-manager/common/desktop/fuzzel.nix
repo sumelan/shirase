@@ -60,31 +60,36 @@ in
         };
       };
     };
-    niri.settings.binds = with config.lib.niri.actions; {
-      "Mod+D" = {
-        action = spawn "fuzzel";
-        hotkey-overlay.title = "Fuzzel";
+    niri.settings.binds =
+      with config.lib.niri.actions;
+      let
+        ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
+      in
+      {
+        "Mod+D" = {
+          action = ush "fuzzel";
+          hotkey-overlay.title = "Fuzzel";
+        };
+        "Mod+Space" = {
+          action = ush "fuzzel-files";
+          hotkey-overlay.title = "File Search";
+        };
+        #     "Alt+Tab" = {
+        #       action = ush "fuzzel-windows";
+        #       hotkey-overlay.title = "Windows Search";
+        #     };
+        "Mod+Ctrl+Q" = {
+          action = ush "fuzzel-actions";
+          hotkey-overlay.title = "System Actions";
+        };
+        "Mod+Period" = {
+          action = ush "fuzzel-icons";
+          hotkey-overlay.title = "Icon Search";
+        };
+        "Mod+V" = {
+          action = ush "fuzzel-clipboard";
+          hotkey-overlay.title = "Show Clipboard History";
+        };
       };
-      "Mod+Space" = {
-        action = spawn "fuzzel-files";
-        hotkey-overlay.title = "File Search";
-      };
-      #     "Alt+Tab" = {
-      #       action = spawn "fuzzel-windows";
-      #       hotkey-overlay.title = "Windows Search";
-      #     };
-      "Mod+Ctrl+Q" = {
-        action = spawn "fuzzel-actions";
-        hotkey-overlay.title = "System Actions";
-      };
-      "Mod+Period" = {
-        action = spawn "fuzzel-icons";
-        hotkey-overlay.title = "Icon Search";
-      };
-      "Mod+V" = {
-        action = spawn "fuzzel-clipboard";
-        hotkey-overlay.title = "Show Clipboard History";
-      };
-    };
   };
 }

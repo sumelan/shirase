@@ -33,12 +33,17 @@
         };
       };
 
-      niri.settings.binds = with config.lib.niri.actions; {
-        "Mod+Return" = {
-          action = spawn "ghostty";
-          hotkey-overlay.title = "Ghostty";
+      niri.settings.binds =
+        with config.lib.niri.actions;
+        let
+          ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
+        in
+        {
+          "Mod+Return" = {
+            action = ush "ghostty";
+            hotkey-overlay.title = "Ghostty";
+          };
         };
-      };
     };
   };
 }

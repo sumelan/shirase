@@ -185,19 +185,17 @@
     };
 
     niri.settings = {
-      binds = with config.lib.niri.actions; {
-        "Mod+R" = {
-          action =
-            spawn "${config.custom.terminal.exec}" "-T" "󱘗 Rusty Music Player Client" "-o"
-              "font_family=${config.stylix.fonts.monospace.name}"
-              "-o"
-              "font_size=${builtins.toString config.stylix.fonts.sizes.terminal}"
-              "--app-id"
-              "rmpc"
-              "rmpc";
-          hotkey-overlay.title = "Rusty Music Player Client";
+      binds =
+        with config.lib.niri.actions;
+        let
+          ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
+        in
+        {
+          "Mod+R" = {
+            action = ush "${config.custom.terminal.exec} -T '󱘗 Rusty Music Player Client' --app-id rmpc rmpc";
+            hotkey-overlay.title = "Rusty Music Player Client";
+          };
         };
-      };
       window-rules = [
         {
           matches = [ { app-id = "^(rmpc)$"; } ];

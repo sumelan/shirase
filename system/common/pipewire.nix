@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs, ... }:
 {
   security.rtkit.enable = true;
   services = {
@@ -8,7 +8,6 @@
       alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
-
       extraConfig = {
         pipewire = {
           # automatically switch to newly connected devices
@@ -22,11 +21,10 @@
           };
         };
       };
-
-      # disable camera to save battery
-      # https://reddit.com/r/linux/comments/1em8biv/psa_pipewire_has_been_halving_your_battery_life/
       wireplumber = {
         enable = true;
+        # disable camera to save battery
+        # https://reddit.com/r/linux/comments/1em8biv/psa_pipewire_has_been_halving_your_battery_life/
         extraConfig = {
           "10-disable-camera" = {
             "wireplumber.profiles" = {
@@ -36,6 +34,21 @@
         };
       };
     };
-    pulseaudio.enable = lib.mkForce false;
+  };
+  hm = {
+    home.packages = with pkgs; [ pwvucontrol ];
+    programs.niri.settings.window-rules = [
+      {
+        matches = [ { app-id = "^(com.saivert.pwvucontrol)$"; } ];
+        open-floating = true;
+        default-column-width.proportion = 0.4;
+        default-window-height.proportion = 0.4;
+      }
+    ];
+  };
+  custom.persist = {
+    home.directories = [
+      ".local/state/wireplumber"
+    ];
   };
 }

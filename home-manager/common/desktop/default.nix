@@ -10,7 +10,6 @@
     ./niri
     ./way-edges
     ./waybar
-    ./blueman-applet.nix
     ./discord.nix
     ./dunst.nix
     ./easyeffects.nix
@@ -20,7 +19,6 @@
     ./mpv.nix
     ./nautilus.nix
     ./nixlogo.nix
-    ./pwvucontrol.nix
     ./swayimg.nix
     ./swayosd.nix
     ./wallpaper.nix

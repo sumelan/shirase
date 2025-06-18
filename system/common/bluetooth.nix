@@ -32,7 +32,18 @@
 
     hm = {
       # control media player over bluetooth
-      services.mpris-proxy.enable = true;
+      services = {
+        mpris-proxy.enable = true;
+        blueman-applet.enable = true;
+      };
+      programs.niri.settings = {
+        window-rules = [
+          {
+            matches = [ { app-id = "^(.blueman-manager-wrapped)$"; } ];
+            open-floating = true;
+          }
+        ];
+      };
     };
 
     custom.persist = {

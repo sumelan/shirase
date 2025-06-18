@@ -1,5 +1,4 @@
-{ config, user, ... }:
-{
+_: {
   imports = [
     ./keymaps.nix
     ./nvf.nix
@@ -30,21 +29,6 @@
         "text/csv" = "nvim.desktop";
       };
     };
-  };
-
-  programs.niri.settings = {
-    binds =
-      with config.lib.niri.actions;
-      let
-        sh = spawn "sh" "-c";
-      in
-      {
-        # neovim
-        "Mod+Shift+Return" = {
-          action = sh "cd /home/${user}/projects/wolborg && ${config.custom.terminal.exec} --app-id neovim nvim";
-          hotkey-overlay.title = "Edit Config";
-        };
-      };
   };
 
   custom.persist = {

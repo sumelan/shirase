@@ -97,12 +97,17 @@ in
   };
 
   programs.niri.settings = {
-    binds = with config.lib.niri.actions; {
-      "Mod+Shift+E" = {
-        action = spawn "${config.custom.terminal.exec}" "--app-id" "yazi" "yazi";
-        hotkey-overlay.title = "Yazi";
+    binds =
+      with config.lib.niri.actions;
+      let
+        ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
+      in
+      {
+        "Mod+Shift+E" = {
+          action = ush "${config.custom.terminal.exec} --app-id yazi yazi";
+          hotkey-overlay.title = "Yazi";
+        };
       };
-    };
     window-rules = [
       {
         matches = [ { app-id = "^(yazi)"; } ];

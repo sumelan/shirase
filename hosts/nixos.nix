@@ -2,7 +2,7 @@
   lib,
   inputs,
   specialArgs,
-  user,
+  user ? "sumelan",
   ...
 }@args:
 let

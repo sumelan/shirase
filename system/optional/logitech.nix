@@ -16,14 +16,18 @@
       enableGraphical = true;
     };
 
-    hm.programs.niri.settings.spawn-at-startup = [
-      {
-        command = [
-          "solaar"
-          "-w"
-          "hide"
+    hm.programs.niri.settings.spawn-at-startup =
+      let
+        ush = program: [
+          "sh"
+          "-c"
+          "uwsm app -- ${program}"
         ];
-      }
-    ];
+      in
+      [
+        {
+          command = ush "solaar -w hide";
+        }
+      ];
   };
 }

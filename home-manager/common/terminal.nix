@@ -65,12 +65,17 @@
         enableFishIntegration = true;
       };
 
-      niri.settings.binds = with config.lib.niri.actions; {
-        "Mod+Return" = {
-          action = spawn "${lib.getExe config.custom.terminal.package}";
-          hotkey-overlay.title = "Terminal";
+      niri.settings.binds =
+        with config.lib.niri.actions;
+        let
+          ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
+        in
+        {
+          "Mod+Return" = {
+            action = ush "${lib.getExe config.custom.terminal.package}";
+            hotkey-overlay.title = "Terminal";
+          };
         };
-      };
     };
     custom.persist = {
       home = {
