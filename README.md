@@ -1,10 +1,6 @@
-<div align="center">
-
 # Shirase
 
 This is my personal nixos config, always wip.
-
-</div>
 
 ## Features
 

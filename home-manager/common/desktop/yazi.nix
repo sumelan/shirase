@@ -3,8 +3,8 @@ let
   plugins-repo = pkgs.fetchFromGitHub {
     owner = "yazi-rs";
     repo = "plugins";
-    rev = "63f9650e522336e0010261dcd0ffb0bf114cf912";
-    hash = "sha256-ZCLJ6BjMAj64/zM606qxnmzl2la4dvO/F5QFicBEYfU=";
+    rev = "86d28e4fb4f25f36cc501b8cb0badb37a6b14263";
+    hash = "sha256-m/gJTDm0cVkIdcQ1ZJliPqBhNKoCW1FciLkuq7D1mxo=";
   };
 in
 {
