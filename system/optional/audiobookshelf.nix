@@ -12,7 +12,9 @@ in
       enable = mkEnableOption "audiobookshelf";
 
       nginx = {
-        enable = mkEnableOption "nginx";
+        enable = mkEnableOption "nginx" // {
+          default = config.custom.audiobookshelf.enable;
+        };
         domain = mkOption {
           type = types.str;
           default = "sakurairo.ddnsfree.com";
@@ -67,6 +69,19 @@ in
         dnsPropagationCheck = true;
         credentialsFile = config.age.secrets.api-key.path;
       };
+    };
+
+    networking.firewall = lib.mkIf config.custom.audiobookshelf.nginx.enable {
+      allowedTCPPorts = [
+        80
+        443
+        59010
+        59011
+      ];
+      allowedUDPPorts = [
+        59010
+        59011
+      ];
     };
 
     custom.persist = {

@@ -25,9 +25,6 @@
     steam.enable = false;
 
     # server
-    audiobookshelf = {
-      enable = true;
-      nginx.enable = true;
-    };
+    audiobookshelf.enable = true;
   };
 }

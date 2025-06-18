@@ -6,7 +6,6 @@ _: {
     ./audiobookshelf.nix
     ./btrbk.nix
     ./docker.nix
-    ./firewall.nix
     ./hdds.nix
     ./keyd.nix
     ./logitech.nix

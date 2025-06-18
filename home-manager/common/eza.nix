@@ -1,8 +1,4 @@
 _: {
-  home.shellAliases = {
-    t = "tree";
-  };
-
   programs.eza = {
     enable = true;
     icons = "always";

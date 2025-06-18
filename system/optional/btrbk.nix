@@ -89,7 +89,7 @@
       {
         "notify-problems@" = {
           enable = true;
-          serviceConfig.User = "${user}";
+          serviceConfig.User = user;
           environment.SERVICE = "%i";
           script = ''
             export $(cat /proc/$(${pkgs.procps}/bin/pgrep "niri-session" -u "$USER")/environ |grep -z '^DBUS_SESSION_BUS_ADDRESS=')

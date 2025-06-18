@@ -17,6 +17,8 @@
     })
   ];
 
+  services.playerctld.enable = true;
+
   programs.niri.settings = {
     binds =
       with config.lib.niri.actions;
@@ -30,8 +32,6 @@
         };
       };
   };
-
-  services.playerctld.enable = true;
 
   custom.persist = {
     home.directories = [

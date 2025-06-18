@@ -134,7 +134,7 @@ in
 
   stylix.targets.librewolf = {
     enable = true;
-    profileNames = [ "${user}" ];
+    profileNames = [ user ];
   };
 
   custom.persist = {
