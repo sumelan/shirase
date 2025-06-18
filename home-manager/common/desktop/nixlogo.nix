@@ -40,5 +40,5 @@ let
     '';
 in
 {
-  home.file.".anime-logo.png".source = setImage (changeColor cirno) (changeColor logo);
+  home.file.".anime-logo.png".source = setImage cirno (changeColor logo);
 }

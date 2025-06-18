@@ -3,7 +3,7 @@
   programs.waybar.style =
     with config.lib.stylix.colors.withHashtag;
     let
-      trayBackgroundColor = if config.stylix.polarity == "dark" then "${base00}" else "${base05}";
+      trayBackgroundColor = "${base00}";
       tray-css =
         # css
         ''

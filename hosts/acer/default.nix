@@ -24,10 +24,7 @@
   # SystemModule Options
   custom = {
     # style
-    stylix = {
-      colorTheme = "nord";
-      polarity = "dark";
-    };
+    stylix.colorTheme = "nord";
 
     # common
     btrbk.enable = true;

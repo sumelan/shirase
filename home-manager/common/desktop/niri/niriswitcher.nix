@@ -25,7 +25,7 @@ in
           icon_size = 128;
           max_width = 800;
           min_width = 600;
-          system_theme = config.stylix.polarity; # auto or light or dark
+          system_theme = "dark"; # auto or light or dark
           workspace_format = "{output}-{idx}"; # {output}, {idx}, {name}
           animation = {
             reveal = {

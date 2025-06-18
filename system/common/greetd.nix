@@ -12,11 +12,7 @@
       enable = true;
       theme = {
         package = config.hm.stylix.iconTheme.package;
-        name =
-          if config.stylix.polarity == "dark" then
-            config.hm.stylix.iconTheme.dark
-          else
-            config.hm.stylix.iconTheme.light;
+        name = config.hm.stylix.iconTheme.dark;
       };
       iconTheme = {
         package = config.programs.regreet.theme.package;
@@ -40,7 +36,7 @@
           path = ../../hosts/regreet.jpg;
           fit = "Contain";
         };
-        GTK.application_prefer_dark_theme = config.stylix.polarity == "dark";
+        GTK.application_prefer_dark_theme = true;
         appearance.greeting_msg = "Welcome back!";
         widget.clock = {
           format = "%a %H:%M";
