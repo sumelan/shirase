@@ -11,8 +11,14 @@
     ./rules.nix
   ];
 
-  programs.niri = {
-    settings =
+  options.custom = with lib; {
+    xwayland.enable = mkEnableOption "Enable xwayland-satellite" // {
+      default = true;
+    };
+  };
+
+  config = {
+    programs.niri.settings =
       with config.lib.stylix.colors.withHashtag;
       let
         shadowConfig = {
@@ -25,6 +31,8 @@
       {
         hotkey-overlay.skip-at-startup = true;
         prefer-no-csd = true;
+
+        xwayland-satellite.enable = config.custom.xwayland.enable;
 
         input = {
           focus-follows-mouse.enable = true;
@@ -42,7 +50,6 @@
         outputs = builtins.mapAttrs (name: value: {
           inherit (value) scale mode position;
           transform.rotation = value.rotation;
-          background-color = base01;
         }) config.monitors;
 
         gestures = {
@@ -55,6 +62,7 @@
 
         layout = {
           gaps = 12;
+          background-color = "transparent";
           border = {
             enable = true;
             width = 3;
@@ -105,15 +113,11 @@
           };
         };
 
-        overview = {
-          zoom = 0.7;
-          backdrop-color = base00;
-        };
+        overview.zoom = 0.7;
 
         environment = {
           QT_QPA_PLATFORM = "wayland";
           ELECTRON_OZONE_PLATFORM_HINT = "auto";
-          DISPLAY = lib.mkIf config.custom.xwayland.enable ":0";
         };
       };
   };

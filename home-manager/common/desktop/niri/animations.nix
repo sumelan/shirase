@@ -1,102 +1,101 @@
 _: {
   programs.niri.settings.animations = {
     window-open = {
-      spring = {
+      kind.spring = {
         damping-ratio = 0.7;
         stiffness = 300;
         epsilon = 0.001;
       };
+      custom-shader = # glsl
+        ''
+          // Example: fill the current geometry with a solid vertical gradient and
+            // gradually make opaque.
+            vec4 solid_gradient(vec3 coords_geo, vec3 size_geo) {
+                vec4 color = vec4(0.0);
+
+                // Paint only the area inside the current geometry.
+                if (0.0 <= coords_geo.x && coords_geo.x <= 1.0
+                        && 0.0 <= coords_geo.y && coords_geo.y <= 1.0)
+                {
+                    vec4 from = vec4(1.0, 0.0, 0.0, 1.0);
+                    vec4 to = vec4(0.0, 1.0, 0.0, 1.0);
+                    color = mix(from, to, coords_geo.y);
+                }
+
+                // Make it opaque.
+                color *= niri_clamped_progress;
+
+                return color;
+            }
+
+            // Example: gradually scale up and make opaque, equivalent to the default
+            // opening animation.
+            vec4 default_open(vec3 coords_geo, vec3 size_geo) {
+                // Scale up the window.
+                float scale = max(0.0, (niri_progress / 2.0 + 0.5));
+                coords_geo = vec3((coords_geo.xy - vec2(0.5)) / scale + vec2(0.5), 1.0);
+
+                // Get color from the window texture.
+                vec3 coords_tex = niri_geo_to_tex * coords_geo;
+                vec4 color = texture2D(niri_tex, coords_tex.st);
+
+                // Make the window opaque.
+                color *= niri_clamped_progress;
+
+                return color;
+            }
+
+            // Example: show the window as an expanding circle.
+            // Recommended setting: duration-ms 250
+            vec4 expanding_circle(vec3 coords_geo, vec3 size_geo) {
+                vec3 coords_tex = niri_geo_to_tex * coords_geo;
+                vec4 color = texture2D(niri_tex, coords_tex.st);
+
+                vec2 coords = (coords_geo.xy - vec2(0.5, 0.5)) * size_geo.xy * 2.0;
+                coords = coords / length(size_geo.xy);
+                float p = niri_clamped_progress;
+                if (p * p <= dot(coords, coords))
+                    color = vec4(0.0);
+
+                return color * p;
+            }
+
+            // This is the function that you must define.
+            vec4 open_color(vec3 coords_geo, vec3 size_geo) {
+                // You can pick one of the example functions or write your own.
+                return default_open(coords_geo, size_geo);
+            }
+        '';
     };
     window-close = {
-      easing = {
+      kind.easing = {
         curve = "ease-out-quad";
         duration-ms = 500;
       };
     };
     workspace-switch = {
-      spring = {
+      kind.spring = {
         damping-ratio = 0.8;
         stiffness = 600;
         epsilon = 0.001;
       };
     };
     horizontal-view-movement = {
-      spring = {
+      kind.spring = {
         damping-ratio = 1.0;
         stiffness = 600;
         epsilon = 0.001;
       };
     };
     window-movement = {
-      spring = {
+      kind.spring = {
         damping-ratio = 1.0;
         stiffness = 600;
         epsilon = 0.001;
       };
     };
-    shaders = {
-      window-open =
-        # glsl
-        ''
-          // Example: fill the current geometry with a solid vertical gradient and
-          // gradually make opaque.
-          vec4 solid_gradient(vec3 coords_geo, vec3 size_geo) {
-              vec4 color = vec4(0.0);
-
-              // Paint only the area inside the current geometry.
-              if (0.0 <= coords_geo.x && coords_geo.x <= 1.0
-                      && 0.0 <= coords_geo.y && coords_geo.y <= 1.0)
-              {
-                  vec4 from = vec4(1.0, 0.0, 0.0, 1.0);
-                  vec4 to = vec4(0.0, 1.0, 0.0, 1.0);
-                  color = mix(from, to, coords_geo.y);
-              }
-
-              // Make it opaque.
-              color *= niri_clamped_progress;
-
-              return color;
-          }
-
-          // Example: gradually scale up and make opaque, equivalent to the default
-          // opening animation.
-          vec4 default_open(vec3 coords_geo, vec3 size_geo) {
-              // Scale up the window.
-              float scale = max(0.0, (niri_progress / 2.0 + 0.5));
-              coords_geo = vec3((coords_geo.xy - vec2(0.5)) / scale + vec2(0.5), 1.0);
-
-              // Get color from the window texture.
-              vec3 coords_tex = niri_geo_to_tex * coords_geo;
-              vec4 color = texture2D(niri_tex, coords_tex.st);
-
-              // Make the window opaque.
-              color *= niri_clamped_progress;
-
-              return color;
-          }
-
-          // Example: show the window as an expanding circle.
-          // Recommended setting: duration-ms 250
-          vec4 expanding_circle(vec3 coords_geo, vec3 size_geo) {
-              vec3 coords_tex = niri_geo_to_tex * coords_geo;
-              vec4 color = texture2D(niri_tex, coords_tex.st);
-
-              vec2 coords = (coords_geo.xy - vec2(0.5, 0.5)) * size_geo.xy * 2.0;
-              coords = coords / length(size_geo.xy);
-              float p = niri_clamped_progress;
-              if (p * p <= dot(coords, coords))
-                  color = vec4(0.0);
-
-              return color * p;
-          }
-
-          // This is the function that you must define.
-          vec4 open_color(vec3 coords_geo, vec3 size_geo) {
-              // You can pick one of the example functions or write your own.
-              return default_open(coords_geo, size_geo);
-          }
-        '';
-      window-resize =
+    window-resize = {
+      custom-shader =
         # glsl
         ''
           // Example: fill the current geometry with a solid vertical gradient.

@@ -21,4 +21,10 @@
       };
     };
   };
+  programs.niri.settings.layer-rules = [
+    {
+      matches = [ { namespace = "wpaperd"; } ];
+      place-within-backdrop = true;
+    }
+  ];
 }
