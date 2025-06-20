@@ -1,23 +1,67 @@
-{ lib, config, ... }:
 {
+  lib,
+  config,
+  pkgs,
+  user,
+  ...
+}:
+let
+  inherit (config.hm.custom) autologinCommand;
+in
+{
+  # tty autologin
+  services.getty.autologinUser = user;
+
   # 'services.greetd' creates a self contained settings file referenced by the systemd service
-  # https://github.com/NixOS/nixpkgs/blob/fe51d34885f7b5e3e7b59572796e1bcb427eccb1/nixos/modules/services/display-managers/greetd.nix#L101
-  environment =
-    let
-      inherit (config.hm.custom) autologinCommand;
-    in
-    {
-      etc = lib.mkIf (autologinCommand != null) {
-        "greetd/config.toml".text = ''
-          [default_session]
-          command = "${autologinCommand}"
-          user = "greeter"
-        '';
-      };
+  # so '/etc/greetd/config.toml' is not created
+  # also, greetd is enabled and the settings for cage is created by default if regreet is enabled
+  services.greetd = {
+    enable = lib.mkIf (autologinCommand == null) false;
+    settings = {
+      default_session =
+        let
+          mainMonitor = config.hm.monitors.${config.hm.lib.monitors.mainMonitorName};
+          mainScale = mainMonitor.scale |> builtins.toString;
+          mainMode = "${mainMonitor.mode.width |> builtins.toString}x${
+            mainMonitor.mode.height |> builtins.toString
+          }@${mainMonitor.mode.refresh |> builtins.toString}";
+          niri-config = pkgs.writeText "niri-config" ''
+            hotkey-overlay {
+                skip-at-startup
+            }
+
+            environment {
+                GTK_USE_PORTAL "0"
+                GDK_DEBUG "no-portals"
+            }
+
+            input {
+                touchpad {
+                    tap
+                    natural-scroll
+                }
+            }
+
+            output "${config.hm.lib.monitors.mainMonitorName}" {
+                scale ${mainScale}
+                transform "normal"
+                position x=0 y=0
+                mode "${mainMode}"
+            }
+
+            spawn-at-startup "sh" "-c" "${lib.getExe pkgs.greetd.regreet}; pkill -f niri"
+          '';
+        in
+        {
+          command = "niri -c ${niri-config}";
+          user = "greeter";
+        };
     };
+  };
 
   programs.regreet = {
     enable = true;
+    # these theme, iconTheme, cursorTheme, font are installed via system-wide
     theme = {
       package = config.hm.stylix.iconTheme.package;
       name = config.hm.stylix.iconTheme.dark;
@@ -27,8 +71,8 @@
       name = config.programs.regreet.theme.name;
     };
     font = {
-      package = config.hm.stylix.fonts.sansSerif.package;
-      name = config.hm.stylix.fonts.sansSerif.name;
+      package = config.hm.stylix.fonts.monospace.package;
+      name = config.hm.stylix.fonts.monospace.name;
       size = config.hm.stylix.fonts.sizes.desktop;
     };
     cursorTheme = {

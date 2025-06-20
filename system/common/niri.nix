@@ -1,7 +1,7 @@
 {
   lib,
-  pkgs,
   config,
+  pkgs,
   inputs,
   ...
 }:
@@ -9,15 +9,6 @@
   imports = [
     inputs.niri.nixosModules.niri
   ];
-
-  # HEIC image preview in Nautilus
-  environment = {
-    systemPackages = with pkgs; [
-      libheif
-      libheif.out
-    ];
-    pathsToLink = [ "share/thumbnailers" ];
-  };
 
   programs = {
     niri = {
@@ -35,6 +26,7 @@
       };
     };
   };
+
   niri-flake.cache.enable = true;
 
   # https://github.com/YaLTeR/niri/wiki/Important-Software

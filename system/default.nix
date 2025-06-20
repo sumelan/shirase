@@ -45,7 +45,10 @@
 
       # install fish completions for fish
       # https://github.com/nix-community/home-manager/pull/2408
-      pathsToLink = [ "/share/fish" ];
+      pathsToLink =
+        [ "/share/fish" ]
+        # image preview in Nautilus
+        ++ [ "share/thumbnailers" ];
 
       variables = {
         TERMINAL = lib.getExe config.hm.custom.terminal.package;
@@ -92,6 +95,11 @@
             meta.mainProgram = "yazi";
           })
         ]
+        ++ [
+          # HEIC image preview in Nautilus
+          pkgs.libheif
+          pkgs.libheif.out
+        ]
         ++
           # install gtk theme for root, some apps like gparted only run as root
           [
@@ -125,6 +133,13 @@
       nano.enable = lib.mkForce false;
     };
 
+    # setup fonts
+    fonts = {
+      enableDefaultPackages = true;
+      # monospace only
+      packages = [ config.hm.stylix.fonts.monospace.package ];
+    };
+
     xdg = {
       # use mimetypes defined from home-manager
       mime =
@@ -152,8 +167,6 @@
       root.cache.directories = [
         "/var/lib/systemd/coredump"
       ];
-
-      home.directories = [ ".local/state/wireplumber" ];
     };
   };
 }
