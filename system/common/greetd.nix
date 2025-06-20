@@ -3,25 +3,24 @@
   config,
   ...
 }:
-let
-  inherit (config.hm.custom) autologinCommand;
-in
-lib.mkIf (autologinCommand != null) {
-  # somehow 'services.greetd.enable = true' does not create config.toml
-  environment.etc =
+{
+  # 'services.greetd' does not make /etc/greetd/config.toml?
+  environment =
     let
-      quitNiri = "uwsm stop Niri.desktop";
-      defaultCommand = lib.concatStringsSep "; " [
-        quitNiri
-        autologinCommand
-      ];
+      inherit (config.hm.custom) autologinCommand;
     in
     {
-      "greetd/config.toml".text = ''
-        [default_session]
-        command = ${defaultCommand}
-        user = "greeter"
-      '';
+      etc = lib.mkIf (autologinCommand != null) {
+        "greetd/config.toml".text = ''
+          [default_session]
+          command = ${autologinCommand}
+          user = "greeter"
+        '';
+      };
+      sessionVariables = {
+        GTK_USE_PORTAL = "0";
+        GDK_DEBUG = "no-portals";
+      };
     };
 
   programs.regreet = {
@@ -48,10 +47,6 @@ lib.mkIf (autologinCommand != null) {
         path = ../../hosts/regreet.jpg;
         fit = "Contain";
       };
-      env = {
-        GTK_USE_PORTAL = "0";
-        GDK_DEBUG = "no-portals";
-      };
       GTK.application_prefer_dark_theme = true;
       appearance.greeting_msg = "Welcome back!";
       widget.clock = {
@@ -66,7 +61,7 @@ lib.mkIf (autologinCommand != null) {
         }
 
         picture {
-          filter: blur(1.2rem);
+          filter: blur(1.0rem);
         }
 
         frame.background {
