@@ -17,7 +17,7 @@
       settings = {
         general =
           let
-            multiCommands = l: lib.concatStringsSep "; " l;
+            concatCommands = l: lib.concatStringsSep "; " l;
           in
           {
             ignore_dbus_inhibit = false;
@@ -26,7 +26,7 @@
             # kill hyprlock
             unlock_cmd = "pkill -SIGUSR1 hyprlock";
             # stop playing when lock-session
-            before_sleep_cmd = multiCommands [
+            before_sleep_cmd = concatCommands [
               "loginctl lock-session"
               "playerctl pause"
             ];
