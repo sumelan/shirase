@@ -1,10 +1,7 @@
+{ lib, config, ... }:
 {
-  lib,
-  config,
-  ...
-}:
-{
-  # 'services.greetd' does not make /etc/greetd/config.toml?
+  # 'services.greetd' creates a self contained settings file referenced by the systemd service
+  # https://github.com/NixOS/nixpkgs/blob/fe51d34885f7b5e3e7b59572796e1bcb427eccb1/nixos/modules/services/display-managers/greetd.nix#L101
   environment =
     let
       inherit (config.hm.custom) autologinCommand;
@@ -13,13 +10,9 @@
       etc = lib.mkIf (autologinCommand != null) {
         "greetd/config.toml".text = ''
           [default_session]
-          command = ${autologinCommand}
+          command = "${autologinCommand}"
           user = "greeter"
         '';
-      };
-      sessionVariables = {
-        GTK_USE_PORTAL = "0";
-        GDK_DEBUG = "no-portals";
       };
     };
 
@@ -44,7 +37,7 @@
     };
     settings = {
       background = {
-        path = ../../hosts/regreet.jpg;
+        path = ../../hosts/regreet.png;
         fit = "Contain";
       };
       GTK.application_prefer_dark_theme = true;
@@ -61,7 +54,7 @@
         }
 
         picture {
-          filter: blur(1.0rem);
+          filter: blur(.2rem);
         }
 
         frame.background {
