@@ -10,12 +10,12 @@
   };
 
   config = lib.mkIf config.custom.rustdesk.enable {
-    home.packages = [ pkgs.rustdesk-flutter ];
+    home.packages = with pkgs; [ rustdesk-flutter ];
 
     custom.persist = {
       home = {
         directories = [
-        ".config/rustdesk"
+          ".config/rustdesk"
         ];
         cache.directories = [
           ".local/share/logs/RustDesk"

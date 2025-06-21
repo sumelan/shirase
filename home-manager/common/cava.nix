@@ -17,7 +17,6 @@
         };
       window-rules = [
         {
-          # Mod+C launch cava with app-id
           matches = [ { app-id = "^(cava)$"; } ];
           default-column-width.proportion = 0.4;
           default-window-height.proportion = 0.4;

@@ -29,7 +29,6 @@
       with config.lib.niri.actions;
       let
         ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
-
       in
       {
         "Mod+E" = {
