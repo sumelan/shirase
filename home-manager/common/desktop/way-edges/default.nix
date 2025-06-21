@@ -19,8 +19,8 @@
           (import ./column.nix { inherit config; })
           ++ (import ./workspace.nix { inherit config; })
           ++ (import ./stats.nix { inherit config isLaptop; })
+          ++ (import ./media.nix { inherit config isLaptop; })
         #   ++ (import ./tray.nix { inherit config; })
-        #   ++ (import ./clock.nix { inherit config; })
         #   ++ (import ./slider.nix { inherit lib config; })
         ;
       };
@@ -33,9 +33,9 @@
           ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
         in
         {
-          "Mod+C" = {
-            action = ush "way-edges togglepin move-column";
-            hotkey-overlay.title = "Toggle Column Widgets";
+          "Mod+M" = {
+            action = ush "way-edges togglepin media";
+            hotkey-overlay.title = "Toggle Media Widgets";
           };
           "Mod+S" = {
             action = ush "way-edges togglepin stats";

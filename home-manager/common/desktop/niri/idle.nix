@@ -57,7 +57,7 @@
               on-resume = "niri msg action power-on-monitors";
             }
           ]
-          ++ lib.optional isLaptop [
+          ++ lib.optionalAttrs isLaptop [
             {
               timeout = 60 * 15;
               on-timeout = "systemctl suspend"; # suspend pc.

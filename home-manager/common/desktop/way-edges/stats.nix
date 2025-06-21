@@ -30,7 +30,7 @@ let
     gap = 8;
     outlook = {
       type = "window";
-      color = "${base00}";
+      color = "${base01}";
       border-radius = 8;
       border-width = 2;
       margins = {
@@ -65,7 +65,7 @@ let
     suffix = " {preset}";
     preset = {
       type = "battery";
-      update-interval = 500;
+      update-interval = 1000;
     };
   };
 
@@ -76,7 +76,7 @@ let
     suffix = " {preset}";
     preset = {
       type = "cpu";
-      update-interval = 500;
+      update-interval = 1000;
       core = null;
     };
   };
@@ -88,7 +88,7 @@ let
     suffix = " {preset}";
     preset = {
       type = "ram";
-      update-interval = 500;
+      update-interval = 1000;
     };
   };
 
@@ -99,7 +99,7 @@ let
     suffix = " {preset}";
     preset = {
       type = "disk";
-      update-interval = 500;
+      update-interval = 1000;
       partition = "/persist";
     };
   };

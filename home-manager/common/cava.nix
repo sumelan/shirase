@@ -10,7 +10,7 @@
           ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
         in
         {
-          "Mod+M" = {
+          "Mod+C" = {
             action = ush "${config.custom.terminal.exec} --app-id cava cava";
             hotkey-overlay.title = "Cava";
           };

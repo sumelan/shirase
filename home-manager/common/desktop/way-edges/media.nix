@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, isLaptop, ... }:
 with config.lib.stylix.colors.withHashtag;
 let
   left-click = 272;
@@ -7,18 +7,18 @@ let
   side-click-1 = 275;
   side-click-2 = 276;
 
-  clockConfig = {
-    name = "clock";
-    edge = "top";
-    position = "right";
+  mediaConfig = {
+    namespace = "media";
+    edge = "right";
+    position = "top";
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
     extra-trigger-size = 0;
-    preview-size = "15%";
+    preview-size = "5%";
     animation-curve = "ease-expo";
     transition-duration = 300;
-    margins.right = 0;
-    ignore-exclusive = false;
+    margins.top = "5%";
+    ignore-exclusive = true;
     pinnable = true;
     pin-with-key = true;
     pin-key = right-click;
@@ -27,14 +27,14 @@ let
     gap = 10;
     outlook = {
       type = "window";
-      color = "${base00}";
-      border-radius = 5;
-      border-width = 8;
+      color = "${base01}";
+      border-radius = 8;
+      border-width = 2;
       margins = {
-        left = 5;
-        right = 5;
-        bottom = 5;
-        top = 5;
+        left = 10;
+        right = 10;
+        bottom = 10;
+        top = 10;
       };
     };
     items = [
@@ -44,13 +44,16 @@ let
           (-1)
         ];
         type = "text";
-        fg-color = "${base05}";
+        fg-color = "${base0E}";
         font-family = "${config.stylix.fonts.monospace.name}";
-        font-size = config.stylix.fonts.sizes.desktop;
+        font-size =
+          let
+            sizeParameter = if isLaptop then 5 else 12;
+          in
+          config.stylix.fonts.sizes.desktop + sizeParameter;
         preset = {
-          type = "time";
-          format = " %H:%M";
-          time-zone = null;
+          type = "custom";
+          cmd = "get_media_info";
           update-interval = 1000;
         };
       }
@@ -58,5 +61,5 @@ let
   };
 in
 [
-  clockConfig
+  mediaConfig
 ]

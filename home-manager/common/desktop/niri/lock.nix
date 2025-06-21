@@ -51,15 +51,15 @@
             fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
             fail_transition = 300;
             capslock_color = "rgb(${base0A})";
-            position = "0, -180";
+            position = "0, -100";
             halign = "center";
             valign = "center";
           };
           image = {
             path = "${config.home.homeDirectory}/.anime-logo.png";
-            size = 300;
+            size = 280;
             border_color = "rgb(${base0D})";
-            position = "0, 180";
+            position = "0, 100";
             halign = "center";
             valign = "center";
           };
@@ -67,7 +67,7 @@
             {
               text = "$TIME";
               color = "rgb(${base05})";
-              font_size = 120;
+              font_size = config.stylix.fonts.sizes.desktop * 9;
               font_family = "${config.stylix.fonts.monospace.name}";
               position = "-30, 0";
               halign = "right";
@@ -76,7 +76,7 @@
             {
               text = "cmd[update:43200000] echo \"$(date +\"%B %d, %A\")\"";
               color = "rgb(${base05})";
-              font_size = config.stylix.fonts.sizes.applications * 4;
+              font_size = config.stylix.fonts.sizes.desktop * 4;
               font_family = "${config.stylix.fonts.monospace.name}";
               position = "-30, -180";
               halign = "right";
@@ -85,7 +85,7 @@
             {
               text = "cmd[update:1000] get_media_info";
               color = "rgb(${base05})";
-              font_size = config.stylix.fonts.sizes.applications * 2;
+              font_size = config.stylix.fonts.sizes.desktop * 2;
               font_family = "${config.stylix.fonts.monospace.name}";
               position = "-30, -300";
               halign = "right";
@@ -96,7 +96,7 @@
               color = "rgb(${base05})";
               font_size = config.stylix.fonts.sizes.desktop * 2;
               font_family = "${config.stylix.fonts.monospace.name}";
-              position = "-30, -250";
+              position = "-30, -360";
               halign = "right";
               valign = "top";
             })
