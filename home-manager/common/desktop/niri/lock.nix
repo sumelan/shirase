@@ -3,7 +3,6 @@
   config,
   pkgs,
   self,
-  user,
   ...
 }:
 {
@@ -15,22 +14,24 @@
 
   config = lib.mkIf config.custom.hyprlock.enable {
     home.packages = [ self.packages.${pkgs.system}.hypr-scripts ];
+    xdg.configFile."hypr/lock.png".source = ../../../../hosts/lock.png;
 
     programs = {
       hyprlock = {
         enable = true;
-        settings = {
+        settings = with config.lib.stylix.colors; {
           general = {
             hide_cursor = true;
             grace = 0;
           };
-          background = with config.lib.stylix.colors; {
-            color = "rgb(${base00})";
-            path = "screenshot";
-            blur_size = 4;
-            blur_passes = 4; # disable blurring
+          background = {
+            monitor = config.lib.monitors.mainMonitorName;
+            path = "${config.xdg.configHome}/hypr/lock.png";
+            color = "rgb(${base00})"; # fallback
+            blur_size = 1; # blur size (distance)
+            blur_passes = 2; # the amount of passes to perform. '0' disables blurring
           };
-          input-field = with config.lib.stylix.colors; {
+          input-field = {
             size = "300, 50";
             outline_thickness = 3;
             dots_size = 0.25;
@@ -39,7 +40,7 @@
             dots_rounding = -1;
             fade_on_empty = false;
             fade_timeout = 1000;
-            placeholder_text = "<span foreground=\"##${base05}\">󰌾  Logged in as <span foreground=\"##${base0D}\"><i>$USER</i></span></span>";
+            placeholder_text = "<span foreground='##${base05}'>󰌾  Logged in as <span foreground='##${base0D}'><i>$USER</i></span></span>";
             outer_color = "rgb(${base03})";
             inner_color = "rgb(${base00})";
             font_color = "rgb(${base05})";
@@ -55,9 +56,9 @@
             valign = "center";
           };
           image = {
-            path = "/home/${user}/.anime-logo.png";
+            path = "${config.home.homeDirectory}/.anime-logo.png";
             size = 300;
-            border_color = "rgb(${config.lib.stylix.colors.base0D})";
+            border_color = "rgb(${base0D})";
             position = "0, 180";
             halign = "center";
             valign = "center";
@@ -65,7 +66,7 @@
           label = [
             {
               text = "$TIME";
-              color = "rgb(${config.lib.stylix.colors.base05})";
+              color = "rgb(${base05})";
               font_size = 120;
               font_family = "${config.stylix.fonts.monospace.name}";
               position = "-30, 0";
@@ -74,8 +75,8 @@
             }
             {
               text = "cmd[update:43200000] echo \"$(date +\"%B %d, %A\")\"";
-              color = "rgb(${config.lib.stylix.colors.base05})";
-              font_size = 40;
+              color = "rgb(${base05})";
+              font_size = config.stylix.fonts.sizes.applications * 4;
               font_family = "${config.stylix.fonts.monospace.name}";
               position = "-30, -180";
               halign = "right";
@@ -83,8 +84,8 @@
             }
             {
               text = "cmd[update:1000] get_media_info";
-              color = "rgb(${config.lib.stylix.colors.base05})";
-              font_size = 25;
+              color = "rgb(${base05})";
+              font_size = config.stylix.fonts.sizes.applications * 2;
               font_family = "${config.stylix.fonts.monospace.name}";
               position = "-30, -300";
               halign = "right";
@@ -92,8 +93,8 @@
             }
             (lib.mkIf config.custom.battery.enable {
               text = "cmd[update:1000] get_battery_info";
-              color = "rgb(${config.lib.stylix.colors.base05})";
-              font_size = 25;
+              color = "rgb(${base05})";
+              font_size = config.stylix.fonts.sizes.desktop * 2;
               font_family = "${config.stylix.fonts.monospace.name}";
               position = "-30, -250";
               halign = "right";

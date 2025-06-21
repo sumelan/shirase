@@ -2,13 +2,13 @@
   lib,
   inputs,
   specialArgs,
-  user ? "sumelan",
   ...
 }@args:
 let
   mkNixosConfiguration =
     host:
     {
+      user ? throw "Please override username",
       pkgs ? args.pkgs,
     }:
     lib.nixosSystem {
@@ -50,6 +50,6 @@ let
     };
 in
 {
-  acer = mkNixosConfiguration "acer" { };
-  sakura = mkNixosConfiguration "sakura" { };
+  acer = mkNixosConfiguration "acer" { user = "sumelan"; };
+  sakura = mkNixosConfiguration "sakura" { user = "sumelan"; };
 }

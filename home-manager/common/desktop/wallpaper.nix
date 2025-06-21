@@ -1,4 +1,4 @@
-{ config, user, ... }:
+{ config, ... }:
 {
   services.wpaperd = {
     enable = true;
@@ -14,7 +14,7 @@
       };
       # using regex
       "re:${config.lib.monitors.mainMonitorName}" = {
-        path = "/home/${user}/Pictures/Wallpapers";
+        path = "${config.xdg.userDirs.pictures}/Wallpapers";
       };
     };
   };

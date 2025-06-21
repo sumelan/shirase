@@ -5,18 +5,14 @@
   user,
   ...
 }:
-let
-  inherit (config.hm.custom) autologinCommand;
-in
 {
   # tty autologin
   services.getty.autologinUser = user;
 
   # 'services.greetd' creates a self contained settings file referenced by the systemd service
   # so '/etc/greetd/config.toml' is not created
-  # also, greetd is enabled and the settings for cage is created by default if regreet is enabled
   services.greetd = {
-    enable = lib.mkIf (autologinCommand == null) false;
+    enable = true;
     settings = {
       default_session =
         let
@@ -25,32 +21,41 @@ in
           mainMode = "${mainMonitor.mode.width |> builtins.toString}x${
             mainMonitor.mode.height |> builtins.toString
           }@${mainMonitor.mode.refresh |> builtins.toString}";
-          niri-config = pkgs.writeText "niri-config" ''
-            hotkey-overlay {
-                skip-at-startup
-            }
 
-            environment {
-                GTK_USE_PORTAL "0"
-                GDK_DEBUG "no-portals"
-            }
-
-            input {
-                touchpad {
-                    tap
-                    natural-scroll
+          niri-config =
+            pkgs.writeText "niri-config"
+              # kdl
+              ''
+                hotkey-overlay {
+                    skip-at-startup
                 }
-            }
 
-            output "${config.hm.lib.monitors.mainMonitorName}" {
-                scale ${mainScale}
-                transform "normal"
-                position x=0 y=0
-                mode "${mainMode}"
-            }
+                environment {
+                    GTK_USE_PORTAL "0"
+                    GDK_DEBUG "no-portals"
+                }
 
-            spawn-at-startup "sh" "-c" "${lib.getExe pkgs.greetd.regreet}; pkill -f niri"
-          '';
+                cursor {
+                    xcursor-theme "${config.hm.stylix.cursor.name}"
+                    xcursor-size ${config.hm.stylix.cursor.size |> builtins.toString}
+                }
+
+                input {
+                    touchpad {
+                        tap
+                        natural-scroll
+                    }
+                }
+
+                output "${config.hm.lib.monitors.mainMonitorName}" {
+                    scale ${mainScale}
+                    transform "normal"
+                    position x=0 y=0
+                    mode "${mainMode}"
+                }
+
+                spawn-at-startup "sh" "-c" "${lib.getExe pkgs.greetd.regreet}; pkill -f niri"
+              '';
         in
         {
           command = "niri -c ${niri-config}";
@@ -59,9 +64,9 @@ in
     };
   };
 
+  # theme, iconTheme, cursorTheme, font are installed via system-wide
   programs.regreet = {
     enable = true;
-    # these theme, iconTheme, cursorTheme, font are installed via system-wide
     theme = {
       package = config.hm.stylix.iconTheme.package;
       name = config.hm.stylix.iconTheme.dark;

@@ -35,7 +35,7 @@
 
     xwayland.enable = false;
 
-    brave.enable = true;
+    brave.enable = false;
     cyanrip.enable = true;
     foliate.enable = true;
     thunderbird.enable = true;

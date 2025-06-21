@@ -13,11 +13,6 @@
   ];
 
   options.custom = with lib; {
-    autologinCommand = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-      description = "Command to run after autologin";
-    };
     symlinks = mkOption {
       type = types.attrsOf types.str;
       default = { };

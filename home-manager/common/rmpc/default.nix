@@ -1,4 +1,4 @@
-{ config, user, ... }:
+{ config, ... }:
 {
   imports = [
     ./theme.nix
@@ -7,15 +7,15 @@
   services = {
     mpd = {
       enable = true;
-      musicDirectory = "/home/${user}/Music";
-      dataDir = "/home/${user}/.config/mpd";
-      dbFile = "/home/${user}/.config/mpd/cache";
+      musicDirectory = config.xdg.userDirs.music;
+      dataDir = "${config.xdg.configHome}/mpd";
+      dbFile = "${config.xdg.configHome}/mpd/cache";
       extraConfig = ''
         audio_output {
           type  "pipewire"
           name  "PipeWire Sound Server"
         }
-        bind_to_address "/home/${user}/.config/mpd/mpd_socket"
+        bind_to_address "${config.xdg.configHome}/mpd/mpd_socket"
       '';
     };
     # mpd to mpris2 bridge
@@ -34,10 +34,10 @@
         #![enable(unwrap_newtypes)]
         #![enable(unwrap_variant_newtypes)]
         (
-            address: "/home/${user}/.config/mpd/mpd_socket",
+            address: "${config.xdg.configHome}/mpd/mpd_socket",
             password: None,
             theme: "custom",
-            cache_dir: "/home/${user}/.cache/rmpc",
+            cache_dir: "${config.xdg.cacheHome}/rmpc",
             on_song_change: None,
             volume_step: 5,
             scrolloff: 0,

@@ -1,9 +1,9 @@
-{ config, user, ... }:
+{ config, ... }:
 {
   services.swayosd = {
     enable = true;
     # NOTE: options "swayosd.display" exists, but not work
-    stylePath = "/home/${user}/.config/swayosd/style.scss";
+    stylePath = "${config.xdg.configHome}/swayosd/style.scss";
     topMargin = 1.0;
   };
 

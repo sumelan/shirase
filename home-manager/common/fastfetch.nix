@@ -1,4 +1,4 @@
-{ user, ... }:
+{ config, ... }:
 {
   programs = {
     fastfetch = {
@@ -12,7 +12,7 @@
           separator = " ➜  ";
         };
         logo = {
-          source = "/home/${user}/.anime-logo.png";
+          source = "${config.home.homeDirectory}/.anime-logo.png";
           type = "kitty-icat";
           height = 35;
           width = 35;

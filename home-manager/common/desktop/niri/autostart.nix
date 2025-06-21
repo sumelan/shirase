@@ -1,7 +1,5 @@
 { lib, pkgs, ... }:
 {
-  custom.autologinCommand = "uwsm start Niri.desktop";
-
   programs.niri.settings.spawn-at-startup =
     let
       ush = program: [
