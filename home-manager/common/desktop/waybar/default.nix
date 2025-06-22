@@ -97,7 +97,6 @@
           mainMonitorsConfig = {
             position = "top";
             layer = "top";
-            mode = "hide";
             reload_style_on_change = true;
             output = "${config.lib.monitors.mainMonitorName}";
             modules-left = [
@@ -122,24 +121,11 @@
         };
     };
 
-    niri.settings = {
-      binds =
-        with config.lib.niri.actions;
-        let
-          ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
-        in
-        {
-          "Mod+W" = {
-            action = ush "pkill -USR1 waybar";
-            hotkey-overlay.title = "Toggle Waybar";
-          };
-        };
-      layer-rules = [
-        {
-          matches = [ { namespace = "^(waybar)$"; } ];
-          opacity = config.stylix.opacity.desktop * 0.9;
-        }
-      ];
-    };
+    niri.settings.layer-rules = [
+      {
+        matches = [ { namespace = "^(waybar)$"; } ];
+        opacity = config.stylix.opacity.desktop * 0.9;
+      }
+    ];
   };
 }

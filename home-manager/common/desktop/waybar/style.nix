@@ -3,15 +3,6 @@
   programs.waybar.style =
     with config.lib.stylix.colors.withHashtag;
     let
-      trayBackgroundColor = "${base00}";
-      tray-css =
-        # css
-        ''
-          #tray {
-            background: shade(alpha(${trayBackgroundColor}, 0.9), 1);
-          }
-        '';
-
       animation-css =
         # css
         ''
@@ -188,7 +179,9 @@
         animation: gradient_rv 20s linear infinite;
       }
 
-      ${tray-css}
+      #tray {
+        background: shade(alpha(${base00}, 0.9), 1);
+      }
 
       #tray > .passive {
         -gtk-icon-effect: dim;

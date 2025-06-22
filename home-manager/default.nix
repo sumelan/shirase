@@ -69,8 +69,8 @@
           ];
         in
         # generate an attribute set by mapping a function over a list of attribute names.
-        lib.attrsets.genAttrs hideList (name': {
-          name = name';
+        lib.attrsets.genAttrs hideList (name: {
+          inherit name;
           noDisplay = true;
         });
     };

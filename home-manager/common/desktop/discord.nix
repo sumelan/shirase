@@ -9,7 +9,7 @@
         ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
       in
       {
-        "Mod+Shift+W" = {
+        "Mod+W" = {
           action = ush "webcord";
           hotkey-overlay.title = "WebCord";
         };
