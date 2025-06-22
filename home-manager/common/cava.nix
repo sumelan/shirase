@@ -11,7 +11,7 @@
         in
         {
           "Mod+C" = {
-            action = ush "${config.custom.terminal.exec} --app-id cava cava";
+            action = ush "${config.custom.terminal.exec} -T ' Cava' --app-id cava cava";
             hotkey-overlay.title = "Cava";
           };
         };

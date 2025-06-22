@@ -32,12 +32,8 @@ _: {
         # waybar
         matches = [ { app-id = "^(tty-clock)$"; } ];
         open-floating = true;
-        default-column-width.proportion = 0.3;
-        default-window-height.proportion = 0.2;
-      }
-      {
-        matches = [ { app-id = "^(htop)$"; } ];
-        default-column-width.proportion = 0.6;
+        default-column-width.proportion = 0.35;
+        default-window-height.proportion = 0.25;
       }
     ];
   };

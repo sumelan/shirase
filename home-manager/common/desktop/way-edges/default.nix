@@ -16,13 +16,12 @@
       enable = true;
       settings = {
         widgets =
-          (import ./column.nix { inherit config; })
-          ++ (import ./workspace.nix { inherit config; })
+          (import ./workspace.nix { inherit config; })
           ++ (import ./stats.nix { inherit config isLaptop; })
           ++ (import ./media.nix { inherit config isLaptop; })
+          ++ (import ./slider.nix { inherit lib config; });
+        # ++ (import ./column.nix { inherit config; })
         #   ++ (import ./tray.nix { inherit config; })
-        #   ++ (import ./slider.nix { inherit lib config; })
-        ;
       };
     };
 
@@ -37,9 +36,13 @@
             action = ush "way-edges togglepin media";
             hotkey-overlay.title = "Toggle Media Widgets";
           };
-          "Mod+S" = {
+          "Mod+R" = {
             action = ush "way-edges togglepin stats";
             hotkey-overlay.title = "Toggle Stats Widgets";
+          };
+          "Mod+S" = {
+            action = ush "way-edges togglepin slider";
+            hotkey-overlay.title = "Toggle Slider Widgets";
           };
         };
       layer-rules = [

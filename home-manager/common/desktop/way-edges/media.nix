@@ -14,7 +14,7 @@ let
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
     extra-trigger-size = 0;
-    preview-size = "5%";
+    preview-size = "4%";
     animation-curve = "ease-expo";
     transition-duration = 300;
     margins.top = "5%";

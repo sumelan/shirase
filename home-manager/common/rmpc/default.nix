@@ -21,8 +21,7 @@
     # mpd to mpris2 bridge
     mpdris2 = {
       enable = true;
-      # enable song change notifications
-      notifications = true;
+      notifications = true; # enable song change notifications
     };
   };
 
@@ -191,7 +190,7 @@
           ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
         in
         {
-          "Mod+R" = {
+          "Mod+Shift+M" = {
             action = ush "${config.custom.terminal.exec} -T '󱘗 Rusty Music Player Client' --app-id rmpc rmpc";
             hotkey-overlay.title = "Rusty Music Player Client";
           };

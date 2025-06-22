@@ -31,6 +31,7 @@
               separate-outputs = true;
               icon = true;
               icon-size = 24;
+              expand = false;
             };
             "backlight" = {
               device = "intel_backlight";
@@ -50,7 +51,7 @@
             "clock" = {
               format = "<span size='${icon_size}' foreground='${base0E}'> </span> {:%a %d %H:%M}";
               tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-              on-click = "${config.custom.terminal.exec} --class=tty-clock --title=tty-clock -e ${lib.getExe pkgs.tty-clock} -s -c -C 5";
+              on-click = "${config.custom.terminal.exec} -T ' tty-clock' --class=tty-clock ${lib.getExe pkgs.tty-clock} -s -c -C 5";
             };
             "battery" = {
               states = {
@@ -96,11 +97,12 @@
           mainMonitorsConfig = {
             position = "top";
             layer = "top";
+            mode = "hide";
             reload_style_on_change = true;
             output = "${config.lib.monitors.mainMonitorName}";
             modules-left = [
               "image"
-              "niri/window"
+              #             "niri/window"
             ];
             modules-center = [
               "clock"
@@ -109,9 +111,9 @@
               [
                 "idle_inhibitor"
                 "tray"
-                "wireplumber"
+                #    "wireplumber"
               ]
-              ++ (lib.optional config.custom.backlight.enable "backlight")
+              #  ++ (lib.optional config.custom.backlight.enable "backlight")
               ++ (lib.optional config.custom.battery.enable "battery");
           };
         in
@@ -120,11 +122,24 @@
         };
     };
 
-    niri.settings.layer-rules = [
-      {
-        matches = [ { namespace = "^(waybar)$"; } ];
-        opacity = config.stylix.opacity.desktop * 0.9;
-      }
-    ];
+    niri.settings = {
+      binds =
+        with config.lib.niri.actions;
+        let
+          ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
+        in
+        {
+          "Mod+W" = {
+            action = ush "pkill -USR1 waybar";
+            hotkey-overlay.title = "Toggle Waybar";
+          };
+        };
+      layer-rules = [
+        {
+          matches = [ { namespace = "^(waybar)$"; } ];
+          opacity = config.stylix.opacity.desktop * 0.9;
+        }
+      ];
+    };
   };
 }

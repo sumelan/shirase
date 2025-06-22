@@ -8,14 +8,14 @@ let
   side-click-2 = 276;
 
   commonConfig = {
-    name = "slider";
+    namespace = "slider";
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
     extra-trigger-size = 0;
-    preview-size = "30%";
+    preview-size = "28%";
     animation-curve = "ease-expo";
     transition-duration = 300;
-    ignore-exclusive = false;
+    ignore-exclusive = true;
     pinnable = true;
     pin-with-key = true;
     pin-key = right-click;
@@ -24,16 +24,17 @@ let
   commonSlider = {
     type = "slider";
     thickness = 20;
-    length = "25%";
-    border-width = 3;
-    redraw-only-on-internal-update = true;
+    length = "30%";
+    border-width = 2;
+    redraw-only-on-internal-update = true; # this is when you want to reduce the cpu usage
     radius = 20;
-    obtuse-angle = 120;
+    obtuse-angle = 120; # in degrees(90~180). controls how much curve the widget has
+    scroll-unit = 0.005;
   };
 
   speakerConfig = {
-    border-color = "${base09}";
-    fg-color = "${base0C}";
+    border-color = "${base05}";
+    fg-color = "${base0B}";
     bg-color = "${base00}";
     bg-text-color = "${base04}";
     fg-text-color = "${base05}";
@@ -41,20 +42,20 @@ let
       type = "speaker";
       device = null;
       animation-curve = "ease-expo";
-      mute-text-color = "${base08}";
+      mute-text-color = "${base00}";
       mute-color = "${base00}";
     };
   };
 
   backlightConfig = {
-    border-color = "${base09}";
+    border-color = "${base05}";
     fg-color = "${base0A}";
     bg-color = "${base00}";
     bg-text-color = "${base04}";
     fg-text-color = "${base05}";
     preset = {
       type = "backlight";
-      device = null;
+      device = "intel_backlight";
     };
   };
 
@@ -63,9 +64,9 @@ let
     // commonSlider
     // speakerConfig
     // {
-      edge = "bottom";
+      edge = "top";
       position = "right";
-      margins.right = "15%";
+      margins.right = "35%";
     };
 
   backlightEdge =
@@ -74,8 +75,8 @@ let
     // backlightConfig
     // {
       edge = "bottom";
-      position = "left";
-      margins.left = "15%";
+      position = "right";
+      margins.right = "35%";
     };
 in
 [

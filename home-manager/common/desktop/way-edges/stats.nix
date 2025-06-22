@@ -14,10 +14,10 @@ let
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
     extra-trigger-size = 0;
-    preview-size = "42%";
+    preview-size = "5%";
     animation-curve = "ease-expo";
     transition-duration = 300;
-    margins.bottom = "5%";
+    margins.bottom = "1%";
     ignore-exclusive = true;
     pinnable = true;
     pin-with-key = true;
