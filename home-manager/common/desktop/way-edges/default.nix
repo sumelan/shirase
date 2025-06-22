@@ -19,9 +19,10 @@
           (import ./workspace.nix { inherit config; })
           ++ (import ./stats.nix { inherit config isLaptop; })
           ++ (import ./media.nix { inherit config isLaptop; })
-          # ++ (import ./column.nix { inherit config; })
-          #   ++ (import ./tray.nix { inherit config; })
-          ++ (import ./slider.nix { inherit lib config; });
+          ++ (import ./slider.nix { inherit lib config; })
+        # ++ (import ./tray.nix { inherit config; })
+        # ++ (import ./column.nix { inherit config; })
+        ;
       };
     };
 
@@ -33,12 +34,26 @@
         in
         {
           "Mod+M" = {
-            action = ush "way-edges togglepin media; way-edges togglepin slider";
+            action = ush (
+              lib.concatStringsSep "; " [
+                "way-edges togglepin media"
+                "way-edges togglepin slider"
+              ]
+            );
             hotkey-overlay.title = "Toggle Media Widgets";
           };
           "Mod+R" = {
             action = ush "way-edges togglepin stats";
             hotkey-overlay.title = "Toggle Stats Widgets";
+          };
+          "Mod+Tab" = {
+            action = ush (
+              lib.concatStringsSep "; " [
+                "way-edges togglepin workspace"
+                "niri msg action toggle-overview"
+              ]
+            );
+            hotkey-overlay.title = "Open the Overview";
           };
         };
       layer-rules = [

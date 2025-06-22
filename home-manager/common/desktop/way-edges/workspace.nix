@@ -42,7 +42,7 @@ let
     };
 
   workspaceIndicator = commonConfiguration // {
-    namespace = "workspace-indicator";
+    namespace = "workspace";
     edge = "left";
     position = "top";
     extra-trigger-size = 0;

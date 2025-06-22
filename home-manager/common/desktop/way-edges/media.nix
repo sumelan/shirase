@@ -10,14 +10,14 @@ let
   mediaConfig = {
     namespace = "media";
     edge = "right";
-    position = "top";
+    position = "bottom";
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
     extra-trigger-size = 0;
-    preview-size = "4%";
+    preview-size = "8%";
     animation-curve = "ease-expo";
     transition-duration = 300;
-    margins.top = "5%";
+    margins.bottom = "2%";
     ignore-exclusive = true;
     pinnable = true;
     pin-with-key = true;

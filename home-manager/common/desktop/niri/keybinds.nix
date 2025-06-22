@@ -12,9 +12,6 @@
       # shows a list of important hotkeys.
       "Mod+Shift+Slash".action = show-hotkey-overlay;
 
-      # overview
-      "Mod+Tab".action = toggle-overview;
-
       # exit niri
       "Mod+Shift+Escape".action = quit { skip-confirmation = false; };
 

@@ -12,19 +12,19 @@ let
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
     extra-trigger-size = 0;
-    preview-size = "5%";
+    preview-size = "6%";
     animation-curve = "ease-expo";
     transition-duration = 300;
     ignore-exclusive = true;
     pinnable = true;
-    pin-with-key = false;
-    #   pin-key = right-click;
+    pin-with-key = true;
+    pin-key = right-click;
   };
 
   commonSlider = {
     type = "slider";
-    thickness = "0.5%";
-    length = "30%";
+    thickness = "0.6%";
+    length = "50%";
     border-width = 2;
     redraw-only-on-internal-update = true; # this is when you want to reduce the cpu usage
     radius = 20;
@@ -33,7 +33,7 @@ let
   };
 
   speakerConfig = {
-    border-color = "${base05}";
+    border-color = "${base03}";
     fg-color = "${base0B}";
     bg-color = "${base01}";
     bg-text-color = "${base04}";
@@ -72,7 +72,6 @@ let
       on-change-command = "";
       event-map = {
         ${builtins.toString left-click} = "playerctl play-pause";
-        ${builtins.toString right-click} = "playerctl next";
       };
     };
   };
@@ -104,7 +103,7 @@ let
     // {
       edge = "bottom";
       position = "right";
-      margins.right = "35%";
+      margins.right = "25%";
     };
 in
 [

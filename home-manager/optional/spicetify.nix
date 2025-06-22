@@ -37,36 +37,7 @@
           rotatingCoverart
           pointer
         ];
-        theme = spicePkgs.themes.nord;
-        #  colorScheme = "custom";
-        #  customColorScheme = with config.lib.stylix.colors; {
-        #    text = base05;
-        #    subtext = base04;
-        #    main = base00;
-        #    main-elevated = base01;
-        #    main-transition = base01;
-        #    highlight = base02;
-        #    highlight-elevated = base00;
-        #    sidebar = base01;
-        #    player = base01;
-        #    card = base03;
-        #    shadow = base04;
-        #    selected-row = base02;
-        #    button = base0C;
-        #    button-active = base0D;
-        #    button-disabled = base03;
-        #    tab-active = base02;
-        #    notification = base06;
-        #    notification-error = base08;
-        #    misc = base04;
-        #    play-button = base06;
-        #    play-button-active = base0F;
-        #    progress-fg = base02;
-        #    progress-bg = base01;
-        #    heart = base09;
-        #    pagelink-active = base05;
-        #    radio-btn-active = base0E;
-        #  };
+        theme = spicePkgs.themes.bloom;
       };
 
     services.playerctld.enable = true;
@@ -83,6 +54,12 @@
             hotkey-overlay.title = "Spotify";
           };
         };
+      window-rules = [
+        {
+          matches = [ { app-id = "^(Spotify Premium)$"; } ];
+          default-column-width.proportion = 0.9;
+        }
+      ];
     };
 
     custom.persist = {
