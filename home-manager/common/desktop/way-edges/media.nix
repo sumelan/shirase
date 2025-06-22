@@ -44,7 +44,7 @@ let
           (-1)
         ];
         type = "text";
-        fg-color = "${base0E}";
+        fg-color = "${base0B}";
         font-family = "${config.stylix.fonts.monospace.name}";
         font-size =
           let

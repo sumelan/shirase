@@ -78,8 +78,8 @@
             "idle_inhibitor" = {
               format = "{icon}";
               format-icons = {
-                activated = "<span size='${icon_size}' foreground='${base05}'></span>";
-                deactivated = "<span size='${icon_size}' foreground='${base02}'></span>";
+                activated = "<span size='${icon_size}' foreground='${base05}'>  </span>";
+                deactivated = "<span size='${icon_size}' foreground='${base02}'>  </span>";
               };
               tooltip = false;
             };
@@ -101,7 +101,7 @@
             output = "${config.lib.monitors.mainMonitorName}";
             modules-left = [
               "image"
-              #             "niri/window"
+              "niri/window"
             ];
             modules-center = [
               "clock"
@@ -110,9 +110,9 @@
               [
                 "idle_inhibitor"
                 "tray"
-                #    "wireplumber"
+                "wireplumber"
               ]
-              #  ++ (lib.optional config.custom.backlight.enable "backlight")
+              ++ (lib.optional config.custom.backlight.enable "backlight")
               ++ (lib.optional config.custom.battery.enable "battery");
           };
         in

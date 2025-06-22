@@ -12,18 +12,18 @@ let
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
     extra-trigger-size = 0;
-    preview-size = "28%";
+    preview-size = "5%";
     animation-curve = "ease-expo";
     transition-duration = 300;
     ignore-exclusive = true;
     pinnable = true;
-    pin-with-key = true;
-    pin-key = right-click;
+    pin-with-key = false;
+    #   pin-key = right-click;
   };
 
   commonSlider = {
     type = "slider";
-    thickness = 20;
+    thickness = "0.5%";
     length = "30%";
     border-width = 2;
     redraw-only-on-internal-update = true; # this is when you want to reduce the cpu usage
@@ -35,7 +35,7 @@ let
   speakerConfig = {
     border-color = "${base05}";
     fg-color = "${base0B}";
-    bg-color = "${base00}";
+    bg-color = "${base01}";
     bg-text-color = "${base04}";
     fg-text-color = "${base05}";
     preset = {
@@ -50,12 +50,30 @@ let
   backlightConfig = {
     border-color = "${base05}";
     fg-color = "${base0A}";
-    bg-color = "${base00}";
+    bg-color = "${base01}";
     bg-text-color = "${base04}";
     fg-text-color = "${base05}";
     preset = {
       type = "backlight";
       device = "intel_backlight";
+    };
+  };
+
+  mediaConfig = {
+    border-color = "${base03}";
+    fg-color = "${base0B}";
+    bg-color = "${base01}";
+    bg-text-color = "${base01}00";
+    fg-text-color = "${base01}00";
+    preset = {
+      type = "custom";
+      update-interval = 1000;
+      update-command = "get_media_progress";
+      on-change-command = "";
+      event-map = {
+        ${builtins.toString left-click} = "playerctl play-pause";
+        ${builtins.toString right-click} = "playerctl next";
+      };
     };
   };
 
@@ -78,8 +96,19 @@ let
       position = "right";
       margins.right = "35%";
     };
+
+  mediaEdge =
+    commonConfig
+    // commonSlider
+    // mediaConfig
+    // {
+      edge = "bottom";
+      position = "right";
+      margins.right = "35%";
+    };
 in
 [
-  speakerEdge
+  # speakerEdge
+  mediaEdge
 ]
-++ (lib.optional config.custom.backlight.enable backlightEdge)
+# ++ (lib.optional config.custom.backlight.enable backlightEdge)

@@ -1,8 +1,8 @@
 #!/usr/bin/env fish
 
-if test (playerctl status) = Playing
-    set artist (playerctl metadata xesam:artist)
-    set title (playerctl metadata xesam:title)
+if test (playerctl -p spotify status) = Playing
+    set artist (playerctl -p spotify metadata xesam:artist)
+    set title (playerctl -p spotify metadata xesam:title)
     echo " $artist - $title"
 end
 

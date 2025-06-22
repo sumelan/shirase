@@ -98,7 +98,14 @@
         border-radius: 20px;
       }
 
+      #idle_inhibitor {
+        padding: 6px 6px;
+        border-radius: 20px;
+      }
+
       #idle_inhibitor.activated {
+        padding: 6px 6px;
+        border-radius: 20px;
         background: shade(alpha(${base0D}, 0.9), 1);
       }
 

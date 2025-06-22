@@ -19,9 +19,9 @@
           (import ./workspace.nix { inherit config; })
           ++ (import ./stats.nix { inherit config isLaptop; })
           ++ (import ./media.nix { inherit config isLaptop; })
+          # ++ (import ./column.nix { inherit config; })
+          #   ++ (import ./tray.nix { inherit config; })
           ++ (import ./slider.nix { inherit lib config; });
-        # ++ (import ./column.nix { inherit config; })
-        #   ++ (import ./tray.nix { inherit config; })
       };
     };
 
@@ -33,16 +33,12 @@
         in
         {
           "Mod+M" = {
-            action = ush "way-edges togglepin media";
+            action = ush "way-edges togglepin media; way-edges togglepin slider";
             hotkey-overlay.title = "Toggle Media Widgets";
           };
           "Mod+R" = {
             action = ush "way-edges togglepin stats";
             hotkey-overlay.title = "Toggle Stats Widgets";
-          };
-          "Mod+S" = {
-            action = ush "way-edges togglepin slider";
-            hotkey-overlay.title = "Toggle Slider Widgets";
           };
         };
       layer-rules = [

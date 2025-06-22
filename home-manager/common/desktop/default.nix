@@ -23,7 +23,6 @@
     ./swayosd.nix
     ./wallpaper.nix
     ./yazi.nix
-    ./youtube-music.nix
   ];
 
   # screen-record
