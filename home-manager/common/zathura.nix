@@ -33,6 +33,4 @@ _: {
   xdg.mimeApps.defaultApplications = {
     "application/pdf" = "org.pwmt.zathura.desktop";
   };
-
-  stylix.targets.zathura.enable = true;
 }

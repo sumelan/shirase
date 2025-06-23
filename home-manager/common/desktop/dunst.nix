@@ -81,4 +81,5 @@
       }
     ];
   };
+  stylix.targets.dunst.enable = false;
 }

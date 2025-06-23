@@ -40,15 +40,7 @@ in
   config = {
     stylix = {
       enable = true;
-      autoEnable = false;
-      targets = {
-        gtk = {
-          enable = true;
-          flatpakSupport.enable = true;
-        };
-        qt.enable = true;
-        gnome.enable = true;
-      };
+      autoEnable = true;
 
       cursor = {
         package = cfg.cursor.package;

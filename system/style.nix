@@ -22,15 +22,8 @@
   config = {
     stylix = {
       enable = true;
-      autoEnable = false;
+      autoEnable = true;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.custom.stylix.colorTheme}.yaml";
-
-      targets = {
-        console.enable = true;
-        gnome.enable = true;
-        plymouth.enable = true;
-        chromium.enable = true;
-      };
     };
   };
 }

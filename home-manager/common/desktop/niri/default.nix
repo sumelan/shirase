@@ -120,5 +120,6 @@
           ELECTRON_OZONE_PLATFORM_HINT = "auto";
         };
       };
+    stylix.targets.niri.enable = false;
   };
 }

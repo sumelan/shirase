@@ -37,13 +37,16 @@ in
       inherit configPath;
 
       profiles.${user} = {
-        extensions.packages = with inputs.firefox-addons.packages.${pkgs.system}; [
-          bitwarden
-          darkreader
-          screenshot-capture-annotate
-          sponsorblock
-          ublock-origin
-        ];
+        extensions = {
+          force = true; # Whether to override all previous librewolf settings. This is required when using 'settings'.
+          packages = with inputs.firefox-addons.packages.${pkgs.system}; [
+            bitwarden
+            darkreader
+            screenshot-capture-annotate
+            sponsorblock
+            ublock-origin
+          ];
+        };
 
         settings = {
           "extensions.autoDisableScopes" = 0; # enable extensions immediately upon new install
@@ -133,7 +136,8 @@ in
   };
 
   stylix.targets.librewolf = {
-    enable = true;
+    colorTheme.enable = true;
+    firefoxGnomeTheme.enable = true;
     profileNames = [ user ];
   };
 

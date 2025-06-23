@@ -199,6 +199,4 @@
       };
     };
   };
-
-  stylix.targets.nvf.enable = true;
 }

@@ -26,8 +26,5 @@
     };
   };
 
-  stylix.targets.cava = {
-    enable = true;
-    rainbow.enable = true;
-  };
+  stylix.targets.cava.rainbow.enable = true;
 }

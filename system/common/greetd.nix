@@ -225,7 +225,7 @@
         }
     '';
   };
-
+  stylix.targets.regreet.enable = false;
   custom.persist = {
     root.directories = [
       # last authenticated user and the last used session per user
