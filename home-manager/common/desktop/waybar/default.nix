@@ -24,7 +24,7 @@
               path = "${config.home.homeDirectory}/.anime-logo.png";
               size = 32;
               tooltip = false;
-              on-click = "fuzzel-actions";
+              on-click = "${lib.getExe pkgs.killall} -SIGUSR1 .waybar-wrapped";
             };
             "niri/window" = {
               format = "{}";
@@ -97,6 +97,7 @@
           mainMonitorsConfig = {
             position = "top";
             layer = "top";
+            start_hidden = true;
             reload_style_on_change = true;
             output = "${config.lib.monitors.mainMonitorName}";
             modules-left = [

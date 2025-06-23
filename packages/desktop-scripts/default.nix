@@ -9,7 +9,7 @@
   zenity,
 }:
 stdenv.mkDerivation {
-  pname = "record-screen";
+  pname = "desktop-scripts";
   version = "1.1.0";
 
   src = ./scripts;

@@ -62,7 +62,7 @@ end
 
 function gif
     touch /tmp/recording_gif
-    screen
+    area
 end
 
 function stop

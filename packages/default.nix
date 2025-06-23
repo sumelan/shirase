@@ -2,6 +2,5 @@
 {
   btrfs-scripts = pkgs.callPackage ./btrfs-scripts { };
   fuzzel-scripts = pkgs.callPackage ./fuzzel-scripts { };
-  hypr-scripts = pkgs.callPackage ./hypr-scripts { };
-  record-screen = pkgs.callPackage ./record-screen { };
+  desktop-scripts = pkgs.callPackage ./desktop-scripts { };
 }

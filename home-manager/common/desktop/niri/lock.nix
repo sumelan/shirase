@@ -13,7 +13,6 @@
   };
 
   config = lib.mkIf config.custom.hyprlock.enable {
-    home.packages = [ self.packages.${pkgs.system}.hypr-scripts ];
     xdg.configFile."hypr/lock.png".source = ../../../../hosts/lock.png;
 
     programs = {
