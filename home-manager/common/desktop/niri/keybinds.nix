@@ -17,6 +17,10 @@
 
       # screenshot 'screenshot-screen' is valid only on niri-stable
       "Mod+Backslash".action = screenshot { show-pointer = false; };
+      "Mod+Shift+Backslash" = {
+        action = ush "niri msg action screenshot-screen";
+        hotkey-overlay.title = "Screenshot the focused screen";
+      };
       "Mod+Alt+Backslash".action = screenshot-window { write-to-disk = true; };
 
       # window and colum management
