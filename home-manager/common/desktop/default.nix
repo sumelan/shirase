@@ -19,6 +19,7 @@
     ./mpv.nix
     ./nautilus.nix
     ./nixlogo.nix
+    ./spicetify.nix
     ./swayimg.nix
     ./swayosd.nix
     ./wallpaper.nix

@@ -10,7 +10,6 @@ _: {
     ./krita.nix
     ./obs-studio.nix
     ./picard.nix
-    ./spicetify.nix
     ./rustdesk.nix
     ./thunderbird.nix
     ./vlc.nix

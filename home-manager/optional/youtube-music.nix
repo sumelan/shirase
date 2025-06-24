@@ -6,9 +6,7 @@
 }:
 {
   options.custom = with lib; {
-    youtube-music.enable = mkEnableOption "YoutubeMusic" // {
-      default = !config.programs.spicetify.enable;
-    };
+    youtube-music.enable = mkEnableOption "YoutubeMusic";
   };
 
   config = lib.mkIf config.custom.youtube-music.enable {

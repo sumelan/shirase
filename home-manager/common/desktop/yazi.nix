@@ -9,7 +9,7 @@ let
 in
 {
   home.packages = with pkgs; [
-    ripdrag
+    ripdrag # Drag and Drop utilty written in Rust and GTK4
     unar
     exiftool
   ];
