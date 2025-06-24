@@ -1,7 +1,7 @@
 { pkgs, ... }:
+# NOTE: 'programs.dconf.enable = true' is necessary for theb daemon to work correctly
 {
   services.easyeffects = {
-    # NOTE: 'programs.dconf.enable = true' is necessary for theb daemon to work correctly
     enable = true;
     package = pkgs.easyeffects;
   };

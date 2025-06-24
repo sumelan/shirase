@@ -37,8 +37,7 @@
         input = {
           focus-follows-mouse.enable = true;
           touchpad.natural-scroll = true;
-          # niri handle power button as sleep by default
-          power-key-handling.enable = false;
+          power-key-handling.enable = false; # niri handle power button as sleep by default
         };
 
         cursor = {
