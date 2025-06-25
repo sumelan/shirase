@@ -92,10 +92,10 @@
         ] (system: fn (mkSystem system));
     in
     {
-      nixosConfigurations = (import ./hosts/nixos.nix commonSysytem);
+      nixosConfigurations = import ./hosts/nixos.nix commonSysytem;
 
       inherit lib self;
 
-      packages = forAllSystems (commonSystem': (import ./packages commonSystem'));
+      # packages = forAllSystems (commonSystem': (import ./packages commonSystem'));
     };
 }

@@ -74,7 +74,7 @@
           enableFormat = true;
           enableTreesitter = true;
           enableExtraDiagnostics = true;
-
+          bash.enable = true;
           nix = {
             enable = true;
             format.type = "nixfmt";

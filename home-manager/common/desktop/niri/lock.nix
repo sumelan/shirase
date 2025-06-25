@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  self,
   ...
 }:
 {
@@ -62,44 +61,79 @@
             halign = "center";
             valign = "center";
           };
-          label = [
-            {
-              text = "$TIME";
-              color = "rgb(${base05})";
-              font_size = config.stylix.fonts.sizes.desktop * 9;
-              font_family = "${config.stylix.fonts.monospace.name}";
-              position = "-30, 0";
-              halign = "right";
-              valign = "top";
-            }
-            {
-              text = "cmd[update:43200000] echo \"$(date +\"%B %d, %A\")\"";
-              color = "rgb(${base05})";
-              font_size = config.stylix.fonts.sizes.desktop * 4;
-              font_family = "${config.stylix.fonts.monospace.name}";
-              position = "-30, -180";
-              halign = "right";
-              valign = "top";
-            }
-            {
-              text = "cmd[update:1000] get_media_info";
-              color = "rgb(${base05})";
-              font_size = config.stylix.fonts.sizes.desktop * 2;
-              font_family = "${config.stylix.fonts.monospace.name}";
-              position = "-30, -300";
-              halign = "right";
-              valign = "top";
-            }
-            (lib.mkIf config.custom.battery.enable {
-              text = "cmd[update:1000] get_battery_info";
-              color = "rgb(${base05})";
-              font_size = config.stylix.fonts.sizes.desktop * 2;
-              font_family = "${config.stylix.fonts.monospace.name}";
-              position = "-30, -360";
-              halign = "right";
-              valign = "top";
-            })
-          ];
+          label =
+            let
+              dateCmd = pkgs.writers.writeFish "date" ''
+                echo "$(date +'%B %d, %A')"
+              '';
+              mediaCmd = pkgs.writers.writeFish "get_media_info" ''
+                if test (playerctl -p spotify status) = Playing
+                    set artist (playerctl -p spotify metadata xesam:artist)
+                    set title (playerctl -p spotify metadata xesam:title)
+                    echo " $artist - $title"
+                else if test (playerctl -p spotify status) = Paused
+                    echo " - Paused -"
+                end
+              '';
+              batteryCmd = pkgs.writers.writeFish "get_battery_info" ''
+                set battery (cat /sys/class/power_supply/BAT*/capacity)
+                set battery_status (cat /sys/class/power_supply/BAT*/status)
+
+                set charging_icons 󰢜 󰂆 󰂇 󰂈 󰢝 󰂉 󰢞 󰂊 󰂋 󰂅
+                set discharging_icons 󰁺 󰁻 󰁼 󰁽 󰁾 󰁿 󰂀 󰂁 󰂂 󰁹
+
+                set icon (math round\($battery/10\))
+
+                if test $battery_status = Full
+                    echo "$charging_icons[10] Battery full"
+                else if test $battery_status = Discharging
+                    echo "$discharging_icons[$icon] Discharging $battery%"
+                else if test $battery_status = "Not charging"
+                    echo "$charging_icons[$icon] Battery charged"
+                else
+                    echo "$charging_icons[$icon] Charging $battery%"
+                end
+              '';
+
+            in
+            [
+              {
+                text = "$TIME";
+                color = "rgb(${base05})";
+                font_size = config.stylix.fonts.sizes.desktop * 9;
+                font_family = "${config.stylix.fonts.monospace.name}";
+                position = "-30, 0";
+                halign = "right";
+                valign = "top";
+              }
+              {
+                text = "cmd[update:43200000] ${dateCmd}";
+                color = "rgb(${base05})";
+                font_size = config.stylix.fonts.sizes.desktop * 4;
+                font_family = "${config.stylix.fonts.monospace.name}";
+                position = "-30, -180";
+                halign = "right";
+                valign = "top";
+              }
+              {
+                text = "cmd[update:1000] ${mediaCmd}";
+                color = "rgb(${base05})";
+                font_size = config.stylix.fonts.sizes.desktop * 2;
+                font_family = "${config.stylix.fonts.monospace.name}";
+                position = "-30, -300";
+                halign = "right";
+                valign = "top";
+              }
+              (lib.mkIf config.custom.battery.enable {
+                text = "cmd[update:1000] ${batteryCmd}";
+                color = "rgb(${base05})";
+                font_size = config.stylix.fonts.sizes.desktop * 2;
+                font_family = "${config.stylix.fonts.monospace.name}";
+                position = "-30, -360";
+                halign = "right";
+                valign = "top";
+              })
+            ];
         };
       };
       niri.settings.binds =
@@ -111,8 +145,7 @@
           "Mod+Q" = {
             action = ush "hyprlock";
             hotkey-overlay.title = "Screenlock";
-            # usefull when screen-locker crashed
-            allow-when-locked = true;
+            allow-when-locked = true; # usefull when screen-locker crashed
           };
         };
     };

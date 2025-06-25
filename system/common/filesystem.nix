@@ -1,4 +1,4 @@
-{ pkgs, self, ... }:
+_:
 # NOTE: partitions and subvolumes are created via install.sh
 {
   fileSystems = {
@@ -58,7 +58,4 @@
 
   # auto-scrubbing
   services.btrfs.autoScrub.enable = true;
-
-  # scripts
-  environment.systemPackages = [ self.packages.${pkgs.system}.btrfs-scripts ];
 }

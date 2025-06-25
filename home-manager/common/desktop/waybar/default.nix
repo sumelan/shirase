@@ -97,24 +97,20 @@
           mainMonitorsConfig = {
             position = "top";
             layer = "top";
+            mode = "hide";
             start_hidden = true;
             reload_style_on_change = true;
             output = "${config.lib.monitors.mainMonitorName}";
             modules-left = [
               "image"
-              "niri/window"
+              #  "niri/window"
+              "tray"
+              "idle_inhibitor"
             ];
             modules-center = [
-              "clock"
+              #  "clock"
             ];
-            modules-right =
-              [
-                "idle_inhibitor"
-                "tray"
-                "wireplumber"
-              ]
-              ++ (lib.optional config.custom.backlight.enable "backlight")
-              ++ (lib.optional config.custom.battery.enable "battery");
+            modules-right = [ ];
           };
         in
         {

@@ -18,22 +18,57 @@
         widgets =
           (import ./workspace.nix { inherit config; })
           ++ (import ./stats.nix { inherit config isLaptop; })
-          ++ (import ./media.nix { inherit config isLaptop; })
-          ++ (import ./slider.nix { inherit lib config; })
-        # ++ (import ./tray.nix { inherit config; })
-        # ++ (import ./column.nix { inherit config; })
+          ++ (import ./infotext.nix {
+            inherit
+              lib
+              config
+              pkgs
+              isLaptop
+              ;
+          })
+          ++ (import ./progress.nix { inherit lib config pkgs; })
+        #  ++ (import ./tray.nix { inherit config; })
         ;
       };
     };
 
-    niri.settings.layer-rules = [
-      {
-        # match namespace contains 'way-edges-widget'
-        matches = [ { namespace = "way-edges-widget"; } ];
-        opacity = config.stylix.opacity.desktop * 0.9;
-      }
-    ];
+    niri.settings = {
+      binds =
+        with config.lib.niri.actions;
+        let
+          ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
+          toggleWidget = map (x: "way-edges togglepin " + x) [
+            "workspace"
+            "info"
+            "progress"
+            "stats"
+          ];
+        in
+        {
+          "Mod+Tab" = {
+            action = ush (
+              lib.concatStringsSep "; " (
+                [
+                  "niri msg action toggle-overview"
+                  "${lib.getExe pkgs.killall} -SIGUSR1 .waybar-wrapped"
+                ]
+                ++ toggleWidget
+              )
+            );
+            hotkey-overlay.title = "Open the Overview and Widgets";
+          };
+        };
+
+      layer-rules = [
+        {
+          # match namespace contains 'way-edges-widget'
+          matches = [ { namespace = "way-edges-widget"; } ];
+          opacity = config.stylix.opacity.desktop * 0.9;
+        }
+      ];
+    };
   };
+
   systemd.user.services = {
     "way-edges" = {
       Install.WantedBy = [ "graphical-session.target" ];

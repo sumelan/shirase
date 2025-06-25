@@ -8,7 +8,7 @@ let
   side-click-2 = 276;
 
   trayConfig = {
-    name = "tray";
+    namespace = "tray";
     edge = "top";
     position = "right";
     layer = "overlay";
@@ -18,7 +18,7 @@ let
     animation-curve = "ease-expo";
     transition-duration = 300;
     margins.right = "10%";
-    ignore-exclusive = false;
+    ignore-exclusive = true;
     pinnable = true;
     pin-with-key = true;
     pin-key = right-click;
@@ -28,8 +28,8 @@ let
     outlook = {
       type = "window";
       color = "${base00}";
-      border-radius = 5;
-      border-width = 8;
+      border-radius = 8;
+      border-width = 2;
       margins = {
         left = 5;
         right = 5;
@@ -45,25 +45,26 @@ let
         ]; # position in the grid layout. -1 means next available position.
         type = "tray";
         font-family = "${config.stylix.fonts.monospace.name}";
-        grid-align = "center_left";
+        grid-align = "top-left";
         icon-theme = config.stylix.iconTheme.dark;
-        tray-gap = 2;
-        icon-size = 28;
+        tray-gap = 3;
+        icon-size = 26;
         header-draw-config = {
           text-color = "${base05}";
           font-pixel-height = 18;
         };
         header-menu-align = "left";
-        header-menu-stack = "menu_top";
+        header-menu-stack = "menu-top";
         menu-draw-config = {
-          border-color = "${base09}";
+          border-color = "${base02}";
           text-color = "${base05}";
-          marker-color = "${base08}";
+          marker-color = "${base0B}";
           font-pixel-height = 18;
-          icon-size = 28;
-          marker-size = 20;
-          separator-height = 5;
+          icon-size = 18;
+          marker-size = 15;
+          separator-height = 1;
           margin = [
+            # horizontal, vertical
             5
             5
           ];
