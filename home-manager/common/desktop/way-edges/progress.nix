@@ -24,21 +24,8 @@ let
   '';
 
   batteryCmd = pkgs.writers.writeFish "get_battery_progress" ''
-    set LOW 30
-    set CRITICAL 10
-
-    function notify -a 1 2
-         notify-send -a "Battery" -i "battery" "$1" "$2"
-    end
-
     set battery (cat /sys/class/power_supply/BAT*/capacity)
     math $battery / 100
-
-    if test $battery -le $LOW
-        notify "Battery Low!" "Battery is under $battery%!"
-    else if test $battery -le $CRITICAL
-        notify "Battery Critical!!" "Battery is under $battery!!"
-    end
   '';
 
   commonConfig = preview: {
@@ -84,10 +71,10 @@ let
 
   batteryConfig = {
     border-color = "${base03}";
-    fg-color = "${base0A}";
+    fg-color = "${base0B}";
     bg-color = "${base01}";
-    bg-text-color = "${base05}";
-    fg-text-color = "${base05}";
+    bg-text-color = "${base01}";
+    fg-text-color = "${base01}";
     preset = {
       type = "custom";
       update-interval = 1000;

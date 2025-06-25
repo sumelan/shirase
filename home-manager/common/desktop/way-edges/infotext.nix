@@ -10,10 +10,19 @@ let
   right-click = 273;
 
   mediaCmd = pkgs.writers.writeFish "get_media_text" ''
+    set MAXINFO 28
+
     if test (playerctl -p spotify status) = Playing
         set artist (playerctl -p spotify metadata xesam:artist)
         set title (playerctl -p spotify metadata xesam:title)
-        echo " $artist - $title"
+        set info " $artist - $title"
+        if test (string length $info) -gt $MAXINFO
+            set short (string shorten -m $MAXINFO $info)
+            echo "$short"
+        else
+            echo "$info"
+        end
+
     else if test (playerctl -p spotify status) = Paused
         echo " - Paused -"
     end
@@ -23,24 +32,35 @@ let
     set battery (cat /sys/class/power_supply/BAT*/capacity)
     set battery_status (cat /sys/class/power_supply/BAT*/status)
 
-    set charging_icons 󰢜 󰂆 󰂇 󰂈 󰢝 󰂉 󰢞 󰂊 󰂋 󰂅
+    set charging_icons 󰢜 󰂆 󰂇 󰂈 󰢝 󰂉 󰢞 󰂊 󰂋 
     set discharging_icons 󰁺 󰁻 󰁼 󰁽 󰁾 󰁿 󰂀 󰂁 󰂂 󰁹
 
     set icon (math round\($battery/10\))
 
     if test $battery_status = Full
-        echo "$charging_icons[10] Battery full"
+        echo "$charging_icons[10] Full Charged Now!!"
     else if test $battery_status = Discharging
-        echo "$discharging_icons[$icon] Discharging"
+        echo "$discharging_icons[$icon] Discharging Now ..."
     else if test $battery_status = "Not charging"
-        echo "$charging_icons[$icon] Battery charged"
+        echo "$charging_icons[$icon] Battery charged!"
     else
-        echo "$charging_icons[$icon] Charging"
+        echo "$charging_icons[$icon] Charging Now ..."
     end
   '';
 
   dateCmd = pkgs.writers.writeFish "get_date_text" ''
     date +" %m/%d |  %H:%M"
+  '';
+
+  dunstCmd = pkgs.writers.writeFish "get_dunst_count" ''
+    set sp (count (dunstctl history | jq -r '.data[0][].appname | select(.data == "Recorder" ).data'))
+    set all (dunstctl count history)
+    set count (math $all-$sp)
+    if test $count -eq 1
+        echo "󱅫 $count Notification History"
+    else if test $count -ge 2
+        echo "󱅫 $count Notifications History"
+    end
   '';
 
   commonConfig = edge: position: margin: {
@@ -49,7 +69,7 @@ let
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
     extra-trigger-size = 0;
-    preview-size = "8%";
+    preview-size = "10%";
     animation-curve = "ease-expo";
     transition-duration = 300;
     margins.${position} = margin;
@@ -100,7 +120,13 @@ let
     ];
   };
 
-  dateEdge = commonConfig "top" "right" "45%" // {
+  dunstEdge = commonConfig "right" "top" "6%" // {
+    items = [
+      (textConfig "${base0E}" "${dunstCmd}")
+    ];
+  };
+
+  dateEdge = commonConfig "top" "right" "44.5%" // {
     items = [
       (textConfig "${base05}" "${dateCmd}")
     ];
@@ -108,12 +134,13 @@ let
 
   batteryEdge = commonConfig "right" "top" "2%" // {
     items = [
-      (textConfig "${base0A}" "${batteryCmd}")
+      (textConfig "${base0B}" "${batteryCmd}")
     ];
   };
 in
 [
   mediaEdge
+  dunstEdge
   dateEdge
 ]
 ++ (lib.optional config.custom.battery.enable batteryEdge)

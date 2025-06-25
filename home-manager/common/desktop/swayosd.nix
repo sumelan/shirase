@@ -1,4 +1,9 @@
-{ config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   services.swayosd = {
     enable = true;
@@ -106,6 +111,10 @@
       "Mod+Ctrl+V" = {
         action = ush "rm $XDG_CACHE_HOME/cliphist/db && ${osdCommand} --custom-message='Clipboard Cleared' --custom-icon=edit-paste";
         hotkey-overlay.title = "Clear Clipboard History";
+      };
+      "Mod+Alt+N" = {
+        action = ush "${lib.getExe' pkgs.dunst "dunstctl"} history-clear && ${osdCommand}  --custom-message='History Cleared' --custom-icon=notification";
+        hotkey-overlay.title = "Clear Notification History";
       };
     };
 }
