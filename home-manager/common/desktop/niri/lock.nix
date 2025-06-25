@@ -63,19 +63,29 @@
           };
           label =
             let
-              dateCmd = pkgs.writers.writeFish "date" ''
+              dateCmd = pkgs.writers.writeFish "show_date_info" ''
                 echo "$(date +'%B %d, %A')"
               '';
-              mediaCmd = pkgs.writers.writeFish "get_media_info" ''
+
+              mediaCmd = pkgs.writers.writeFish "show_media_info" ''
+                set MAXINFO 28
+
                 if test (playerctl -p spotify status) = Playing
                     set artist (playerctl -p spotify metadata xesam:artist)
                     set title (playerctl -p spotify metadata xesam:title)
-                    echo " $artist - $title"
+                    set info " $artist - $title"
+                    if test (string length $info) -gt $MAXINFO
+                        set short (string shorten -m $MAXINFO $info)
+                        echo "$short"
+                    else
+                        echo "$info"
+                    end
                 else if test (playerctl -p spotify status) = Paused
                     echo " - Paused -"
                 end
               '';
-              batteryCmd = pkgs.writers.writeFish "get_battery_info" ''
+
+              batteryCmd = pkgs.writers.writeFish "show_battery_info" ''
                 set battery (cat /sys/class/power_supply/BAT*/capacity)
                 set battery_status (cat /sys/class/power_supply/BAT*/status)
 

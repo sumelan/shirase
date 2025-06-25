@@ -29,22 +29,35 @@ let
   '';
 
   batteryCmd = pkgs.writers.writeFish "get_battery_text" ''
+    function power_profile
+        set ppd (powerprofilesctl get)
+        if string match $ppd "power-saver" > /dev/null
+            echo " Power-saver"
+        else if string match $ppd "balanced" > /dev/null
+            echo " Balanced"
+        else
+            echo " Performance"
+        end
+    end
+
     set battery (cat /sys/class/power_supply/BAT*/capacity)
     set battery_status (cat /sys/class/power_supply/BAT*/status)
 
     set charging_icons 󰢜 󰂆 󰂇 󰂈 󰢝 󰂉 󰢞 󰂊 󰂋 
-    set discharging_icons 󰁺 󰁻 󰁼 󰁽 󰁾 󰁿 󰂀 󰂁 󰂂 󰁹
+    set discharging_icons 󰁺:Critical!! 󰁻:Causion! 󰁼:Low 󰁽 󰁾 󰁿 󰂀 󰂁 󰂂 󰁹
 
     set icon (math round\($battery/10\))
 
+    set profile (power_profile)
+
     if test $battery_status = Full
-        echo "$charging_icons[10] Full Charged Now!!"
+        echo "$charging_icons[10] | Full Charged!! - $profile"
     else if test $battery_status = Discharging
-        echo "$discharging_icons[$icon] Discharging Now ..."
+        echo "$discharging_icons[$icon] | No Connection - $profile"
     else if test $battery_status = "Not charging"
-        echo "$charging_icons[$icon] Battery charged!"
+        echo "$charging_icons[$icon] | Battery Charged! - $profile"
     else
-        echo "$charging_icons[$icon] Charging Now ..."
+        echo "$charging_icons[$icon] | Connected - $profile"
     end
   '';
 

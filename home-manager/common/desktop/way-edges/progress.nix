@@ -9,7 +9,7 @@ let
   left-click = 272;
   right-click = 273;
 
-  mediaCmd = pkgs.writers.writeFish "get_media_progress" ''
+  mediaCmd = pkgs.writers.writeFish "show_media_progress" ''
     if test (playerctl -p spotify status) = Playing
         set length (playerctl -p spotify metadata mpris:length)
         set position (playerctl -p spotify position)
@@ -23,9 +23,35 @@ let
     end
   '';
 
-  batteryCmd = pkgs.writers.writeFish "get_battery_progress" ''
+  batteryCmd = pkgs.writers.writeFish "show_battery_progress" ''
     set battery (cat /sys/class/power_supply/BAT*/capacity)
     math $battery / 100
+  '';
+
+  powerCmd = pkgs.writers.writeFish "select_power_setting" ''
+    set APP_NAME "Power Selector"
+
+    function notify -a 1 2
+        ${lib.getExe' pkgs.libnotify "notify-send"} -a "$APP_NAME" -i "battery" "$1" "$2"
+    end
+
+    set choices " Power-saver
+     Balanced
+     Performance"
+
+    set choice (echo -en $choices | fuzzel --dmenu --prompt "󱉓? " --placeholder "Select Power Profile..." --lines 3)
+
+    switch (string split -f 2 " " $choice)
+        case Power-saver
+            powerprofilesctl set power-saver
+            notify " Power-saver" "Profile switched"
+        case Balanced
+            powerprofilesctl set balanced
+            notify " Balanced" "Profile switched"
+        case Performance
+            powerprofilesctl set performance
+            notify " Performance" "Profile switched"
+    end
   '';
 
   commonConfig = preview: {
@@ -47,8 +73,8 @@ let
     inherit length thickness;
     border-width = 2;
     redraw-only-on-internal-update = true; # this is when you want to reduce the cpu usage
-    radius = 20;
-    obtuse-angle = 120; # in degrees(90~180). controls how much curve the widget has
+    radius = 5;
+    obtuse-angle = 90; # in degrees(90~180). controls how much curve the widget has
     scroll-unit = 0.005;
   };
 
@@ -73,14 +99,16 @@ let
     border-color = "${base03}";
     fg-color = "${base0B}";
     bg-color = "${base01}";
-    bg-text-color = "${base01}";
+    bg-text-color = "${base04}";
     fg-text-color = "${base01}";
     preset = {
       type = "custom";
       update-interval = 1000;
       update-command = batteryCmd;
       on-change-command = "";
-      event-map = { };
+      event-map = {
+        ${builtins.toString left-click} = powerCmd;
+      };
     };
   };
 
@@ -96,7 +124,7 @@ let
 
   batteryEdge =
     commonConfig "6%"
-    // commonSlider "8%" "1.5%"
+    // commonSlider "8%" "1.4%"
     // batteryConfig
     // {
       edge = "top";
