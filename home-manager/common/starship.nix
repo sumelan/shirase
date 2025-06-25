@@ -9,10 +9,13 @@
       settings = with config.lib.stylix.colors.withHashtag; {
         add_newline = false;
         format = lib.concatStrings [
+          # begin left format
           "$directory"
           "$git_branch"
           "$git_status"
+          # end left format
           "$fill"
+          # begin right format
           "$c"
           "$elixir"
           "$elm"
@@ -29,8 +32,11 @@
           "$container"
           "$nix_shell"
           "$time"
-          "$character"
-          "username"
+          # end right format
+          "\n" # newline
+          # begin left format
+          "$character "
+          "$username"
         ];
 
         palette = "rose-pine";
