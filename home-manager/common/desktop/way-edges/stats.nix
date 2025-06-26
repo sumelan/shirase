@@ -1,11 +1,7 @@
 { config, isLaptop, ... }:
 with config.lib.stylix.colors.withHashtag;
 let
-  left-click = 272;
   right-click = 273;
-  middle-click = 274;
-  side-click-1 = 275;
-  side-click-2 = 276;
 
   commonConfig = {
     namespace = "stats";
@@ -17,7 +13,7 @@ let
     preview-size = "5%";
     animation-curve = "ease-expo";
     transition-duration = 300;
-    margins.bottom = "6%";
+    margins.bottom = "3%";
     ignore-exclusive = true;
     pinnable = true;
     pin-with-key = true;

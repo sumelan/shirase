@@ -152,7 +152,7 @@
           ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
         in
         {
-          "Mod+Q" = {
+          "Mod+Escape" = {
             action = ush "hyprlock";
             hotkey-overlay.title = "Screenlock";
             allow-when-locked = true; # usefull when screen-locker crashed

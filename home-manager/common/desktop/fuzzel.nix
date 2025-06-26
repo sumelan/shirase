@@ -8,7 +8,7 @@
 let
   opacity = config.stylix.opacity.popups * 255 |> builtins.ceil |> lib.toHexString;
 
-  recordCmd = pkgs.writers.writeFish "recorder" ''
+  wfCmd = pkgs.writers.writeFish "recorder" ''
     set TMP_FILE_UNOPTIMIZED "/tmp/recording_unoptimized.gif"
     set TMP_PALETTE_FILE "/tmp/palette.png"
     set TMP_MP4_FILE "/tmp/recording.mp4"
@@ -162,13 +162,9 @@ let
     󰿅 Exit
      Reboot
      Poweroff
-     RecordScreen
-     RecordArea
-    󰵸 RecordToGif
-     QuitRecording
-    󰸉 ChangeWallpaper"
+    󰸉 Change-Wallpaper"
 
-    set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Search for System actions..." --lines 5)
+    set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Search for System actions..." --lines 6)
 
     switch (string split -f 2 " " $choice)
         case Lock
@@ -181,25 +177,29 @@ let
             systemctl reboot
         case Poweroff
             systemctl poweroff
-        case RecordScreen
-            ${recordCmd} -s
-        case RecordArea
-            ${recordCmd} -a
-        case RecordToGif
-            ${recordCmd} -g
-        case QuitRecording
-            ${recordCmd} -q
-        case ChangeWallpaper
+        case Change-Wallpaper
             ${lib.getExe' pkgs.wpaperd "wpaperctl"} next
     end
   '';
 
-  fileCmd = pkgs.writers.writeFish "fuzzel-files" ''
-    open (${lib.getExe pkgs.fd} | fuzzel --dmenu --prompt " " --placeholder "Search for files/directories...")
-  '';
+  recordCmd = pkgs.writers.writeFish "fuzzel-recorder" ''
+    set choices " Record-Screen
+     Record-Area
+    󰵸 Record-toGif
+     Quit-Recording"
 
-  iconCmd = pkgs.writers.writeFish "fuzzel-icons" ''
-    BEMOJI_PICKER_CMD="fuzzel --dmenu --prompt ' ' --placeholder 'Search for icons...'" ${lib.getExe pkgs.bemoji} -tcn
+    set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Search for Recorder actions..." --lines 4)
+
+    switch (string split -f 2 " " $choice)
+        case Record-Screen
+            ${wfCmd} -s
+        case Record-Area
+            ${wfCmd} -a
+        case Record-toGif
+            ${wfCmd} -g
+        case Quit-Recording
+            ${wfCmd} -q
+    end
   '';
 
   clipCmd = pkgs.writers.writeFish "fuzzel-clipboard" ''
@@ -278,21 +278,17 @@ in
           action = ush "fuzzel";
           hotkey-overlay.title = "Fuzzel";
         };
-        "Mod+Space" = {
-          action = ush fileCmd;
-          hotkey-overlay.title = "File Search";
-        };
         "Alt+Escape" = {
           action = ush windowCmd;
           hotkey-overlay.title = "Windows Search";
         };
-        "Mod+Ctrl+Q" = {
+        "Mod+R" = {
+          action = ush recordCmd;
+          hotkey-overlay.title = "Recorder";
+        };
+        "Mod+Q" = {
           action = ush actionCmd;
           hotkey-overlay.title = "System Actions";
-        };
-        "Mod+Period" = {
-          action = ush iconCmd;
-          hotkey-overlay.title = "Icon Search";
         };
         "Mod+V" = {
           action = ush clipCmd;

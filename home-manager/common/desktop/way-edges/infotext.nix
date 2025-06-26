@@ -132,7 +132,7 @@ let
     };
   };
 
-  mediaEdge = commonConfig "right" "bottom" "2%" // {
+  mediaEdge = commonConfig "right" "bottom" 0 // {
     items = [
       (textConfig "${base0B}" "${mediaCmd}")
     ];
