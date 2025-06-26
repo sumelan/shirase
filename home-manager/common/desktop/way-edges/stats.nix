@@ -13,7 +13,7 @@ let
     preview-size = "5%";
     animation-curve = "ease-expo";
     transition-duration = 300;
-    margins.bottom = "3%";
+    margins.bottom = "2%";
     ignore-exclusive = true;
     pinnable = true;
     pin-with-key = true;
@@ -52,17 +52,6 @@ let
     ring-width = 8;
     radius = 20;
     text-transition-ms = 100;
-  };
-
-  batteryConfig = {
-    bg-color = "${base00}";
-    fg-color = "${base0B}";
-    prefix = " ";
-    suffix = " {preset}";
-    preset = {
-      type = "battery";
-      update-interval = 1000;
-    };
   };
 
   cpuConfig = {
@@ -127,15 +116,6 @@ let
         (-1)
       ];
     };
-  batteryStats =
-    commonRing
-    // batteryConfig
-    // {
-      index = [
-        (-1)
-        (-1)
-      ];
-    };
 
   statsConfig =
     commonConfig
@@ -145,9 +125,7 @@ let
         cpuStats
         ramStats
         diskStats
-      ]
-      # ++ (lib.optional config.custom.battery.enable batteryStats)
-      ;
+      ];
     };
 in
 [
