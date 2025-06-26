@@ -10,7 +10,7 @@ let
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
     extra-trigger-size = 0;
-    preview-size = "5%";
+    preview-size = "3%";
     animation-curve = "ease-expo";
     transition-duration = 300;
     margins.bottom = "4%";
@@ -49,8 +49,8 @@ let
       config.stylix.fonts.sizes.desktop + sizeParameter;
     prefix-hide = false;
     suffix-hide = true;
-    ring-width = 8;
-    radius = 20;
+    ring-width = 6;
+    radius = 16;
     text-transition-ms = 100;
   };
 

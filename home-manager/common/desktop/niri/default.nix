@@ -67,8 +67,8 @@
             width = 3;
             active = {
               gradient = {
-                from = base0C;
-                to = base0B;
+                from = base09;
+                to = base08;
                 angle = 45;
                 in' = "oklab";
               };

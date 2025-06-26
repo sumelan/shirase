@@ -44,22 +44,21 @@ let
 
     set battery (cat /sys/class/power_supply/BAT*/capacity)
     set battery_status (cat /sys/class/power_supply/BAT*/status)
+    set profile (power_profile)
 
-    set charging_prefixs "" "" "" "" "" "" "" "" "" "󱈑"
-    set discharging_prefixs "󱟩 Critical!!" "󱃍 Causion!" "󱟟 Low" "" "" "" "" "" "" ""
+    set charging_prefixs $profile $profile $profile $profile $profile $profile $profile $profile $profile "$profile"
+    set discharging_prefixs "󱟩 Critical!! $profile" "󱃍 Causion! $profile" "󱟟 Low $profile" $profile $profile $profile $profile $profile $profile $profile
 
     set prefix (math round\($battery/10\))
 
-    set profile (power_profile)
-
     if test $battery_status = Full
-        echo "$charging_prefixs[10] $profile | Full Charged!!"
+        echo "$charging_prefixs[10] | Full Charged!!"
     else if test $battery_status = Discharging
-        echo "$discharging_prefixs[$prefix] $profile | No Connection"
+        echo "$discharging_prefixs[$prefix] | No Connection"
     else if test $battery_status = "Not charging"
-        echo "$charging_prefixs[$prefix] $profile | Battery Charged!"
+        echo "$charging_prefixs[$prefix] | Battery Charged!"
     else
-        echo "$charging_prefixs[$prefix] $profile | Connected"
+        echo "$charging_prefixs[$prefix] | Connected"
     end
   '';
 

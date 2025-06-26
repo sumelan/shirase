@@ -1,11 +1,7 @@
 { config, ... }:
 with config.lib.stylix.colors.withHashtag;
 let
-  left-click = 272;
   right-click = 273;
-  middle-click = 274;
-  side-click-1 = 275;
-  side-click-2 = 276;
 
   commonConfiguration = {
     layer = "overlay";
@@ -20,33 +16,12 @@ let
     pin-key = right-click;
   };
 
-  workspaceTransition =
-    direction: color: action:
-    commonConfiguration
-    // {
-      namespace = "focus-workspace-${direction}";
-      edge = "left";
-      position = "${direction}";
-      extra-trigger-size = 0;
-      preview-size = "20%";
-      margins.${direction} = "5%";
-      type = "btn";
-      thickness = 15;
-      length = "5%";
-      color = "${color}";
-      border-width = 2;
-      border-color = "${base05}";
-      event-map = {
-        ${builtins.toString left-click} = "niri msg action ${action}";
-      };
-    };
-
   workspaceIndicator = commonConfiguration // {
     namespace = "workspace";
     edge = "left";
     position = "top";
     extra-trigger-size = 0;
-    preview-size = "10%";
+    preview-size = "12%";
     margins.top = "35%";
     type = "workspace";
     thickness = 20;
@@ -68,7 +43,5 @@ let
   };
 in
 [
-  # (workspaceTransition "top" "${base0D}" "focus-window-or-workspace-up")
-  # (workspaceTransition "bottom" "${base0E}" "focus-window-or-workspace-down")
   workspaceIndicator
 ]

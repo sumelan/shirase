@@ -79,7 +79,7 @@
       };
       Service = {
         ExecStart = "${lib.getExe inputs.way-edges.packages."${pkgs.system}".default}";
-        Restart = "on-failure";
+        Restart = "always";
         RestartSec = 1;
       };
     };

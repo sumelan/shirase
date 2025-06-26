@@ -21,8 +21,8 @@
           separator_color = base02;
           font = "${fonts.sansSerif.name} ${toString fonts.sizes.popups}";
           icon_theme = config.stylix.iconTheme.dark;
-          width = "(250, 450)";
-          offset = "(50, 50)";
+          width = "(250, 400)";
+          offset = "(35, 35)";
           alignment = "center";
           browser = "librewolf -new-tab";
           corner_radius = 8;

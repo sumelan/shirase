@@ -90,7 +90,7 @@
           format = "([$all_status$ahead_behind]($style))";
           up_to_date = "[ 󰋑 ](fg:iris)";
           untracked = "[?\($count\)](fg:gold)";
-          stashed = "[\$](fg:iris)";
+          stashed = "[$](fg:iris)";
           modified = "[!\($count\)](fg:gold)";
           renamed = "[»\($count\)](fg:iris)";
           deleted = "[✘\($count\)](style)";

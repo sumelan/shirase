@@ -100,7 +100,7 @@ let
     fg-color = "${base0B}";
     bg-color = "${base01}";
     bg-text-color = "${base04}";
-    fg-text-color = "${base01}";
+    fg-text-color = "${base02}";
     preset = {
       type = "custom";
       update-interval = 1000;
@@ -114,17 +114,17 @@ let
 
   mediaEdge =
     commonConfig "6%"
-    // commonSlider "50%" "0.6%"
+    // commonSlider "30%" "0.6%"
     // mediaConfig
     // {
       edge = "bottom";
       position = "right";
-      margins.right = "25%";
+      margins.right = "36%";
     };
 
   batteryEdge =
     commonConfig "25%"
-    // commonSlider "8%" "1.4%"
+    // commonSlider "12%" "1.4%"
     // batteryConfig
     // {
       edge = "top";

@@ -21,12 +21,13 @@
     # theme
     stylix = {
       cursor = {
-        package = pkgs.capitaine-cursors-themed;
-        name = "Capitaine Cursors (Nord)";
+        package = pkgs.catppuccin-cursors.frappeDark;
+        name = "catppuccin-frappe-dark-cursors";
       };
       icon = {
-        package = pkgs.papirus-nord.override {
-          accent = "frostblue3";
+        package = pkgs.catppuccin-papirus-folders.override {
+          flavor = "frappe";
+          accent = "teal";
         };
         darkName = "Papirus-Dark";
         lightName = "Papirus-Light";

@@ -1,11 +1,7 @@
 { config, ... }:
 with config.lib.stylix.colors.withHashtag;
 let
-  left-click = 272;
   right-click = 273;
-  middle-click = 274;
-  side-click-1 = 275;
-  side-click-2 = 276;
 
   trayConfig = {
     namespace = "tray";

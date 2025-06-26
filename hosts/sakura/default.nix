@@ -10,7 +10,7 @@
   # SystemModule Options
   custom = {
     # style
-    stylix.colorTheme = "nord";
+    stylix.colorTheme = "catppuccin-frappe";
 
     # common
     btrbk.enable = true;
