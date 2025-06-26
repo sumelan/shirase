@@ -9,7 +9,7 @@ with config.lib.stylix.colors.withHashtag;
 let
   right-click = 273;
 
-  mediaCmd = pkgs.writers.writeFish "get_media_text" ''
+  mediaCmd = pkgs.writers.writeFish "write_media_text" ''
     set MAXINFO 28
 
     if test (playerctl -p spotify status) = Playing
@@ -28,51 +28,56 @@ let
     end
   '';
 
-  batteryCmd = pkgs.writers.writeFish "get_battery_text" ''
+  batteryCmd = pkgs.writers.writeFish "write_battery_text" ''
     function power_profile
         set ppd (powerprofilesctl get)
         if string match $ppd "power-saver" > /dev/null
-            echo " Power-saver"
+            echo " "
         else if string match $ppd "balanced" > /dev/null
-            echo " Balanced"
+            echo " "
         else
-            echo " Performance"
+            echo " "
         end
     end
 
     set battery (cat /sys/class/power_supply/BAT*/capacity)
     set battery_status (cat /sys/class/power_supply/BAT*/status)
 
-    set charging_icons 󰢜 󰂆 󰂇 󰂈 󰢝 󰂉 󰢞 󰂊 󰂋 
-    set discharging_icons 󰁺:Critical!! 󰁻:Causion! 󰁼:Low 󰁽 󰁾 󰁿 󰂀 󰂁 󰂂 󰁹
+    set charging_prefixs "" "" "" "" "" "" "" "" "" "󱈏"
+    set discharging_prefixs "Critical!!" "Causion!" "Low" "" "" "" "" "" "" ""
 
-    set icon (math round\($battery/10\))
+    set prefix (math round\($battery/10\))
 
     set profile (power_profile)
 
     if test $battery_status = Full
-        echo "$charging_icons[10] | Full Charged!! - $profile"
+        echo "$charging_prefixs[10] $profile | Full Charged!!"
     else if test $battery_status = Discharging
-        echo "$discharging_icons[$icon] | No Connection - $profile"
+        echo "$discharging_prefixs[$prefix] $profile | No Connection"
     else if test $battery_status = "Not charging"
-        echo "$charging_icons[$icon] | Battery Charged! - $profile"
+        echo "$charging_prefixs[$prefix] $profile | Battery Charged!"
     else
-        echo "$charging_icons[$icon] | Connected - $profile"
+        echo "$charging_prefixs[$prefix] $profile | Connected"
     end
   '';
 
-  dateCmd = pkgs.writers.writeFish "get_date_text" ''
+  dateCmd = pkgs.writers.writeFish "write_date_text" ''
     date +" %m/%d |  %H:%M"
   '';
 
-  dunstCmd = pkgs.writers.writeFish "get_dunst_count" ''
-    set sp (count (dunstctl history | jq -r '.data[0][].appname | select(.data == "Recorder" ).data'))
-    set all (dunstctl count history)
-    set count (math $all-$sp)
-    if test $count -eq 1
-        echo "󱅫 $count Notification History"
-    else if test $count -ge 2
-        echo "󱅫 $count Notifications History"
+  recorderCmd = pkgs.writers.writeFish "write_recorder_state" ''
+    function is_recorder_running
+        ${lib.getExe' pkgs.procps "pgrep"} -x "wf-recorder" > /dev/null
+    end
+
+    function is_convert_processing
+        ${lib.getExe' pkgs.procps "pgrep"} -x "ffmpeg" > /dev/null
+    end
+
+    if is_recorder_running
+        echo " Recorder running..."
+    else if is_convert_processing
+        echo " Converting to gif..."
     end
   '';
 
@@ -133,9 +138,9 @@ let
     ];
   };
 
-  dunstEdge = commonConfig "right" "top" "6%" // {
+  recorderEdge = commonConfig "right" "top" "6%" // {
     items = [
-      (textConfig "${base0E}" "${dunstCmd}")
+      (textConfig "${base08}" "${recorderCmd}")
     ];
   };
 
@@ -153,7 +158,7 @@ let
 in
 [
   mediaEdge
-  dunstEdge
+  recorderEdge
   dateEdge
 ]
 ++ (lib.optional config.custom.battery.enable batteryEdge)

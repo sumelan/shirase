@@ -53,7 +53,7 @@ let
     end
 
     function notify -a 1 2
-        ${lib.getExe' pkgs.libnotify "notify-send"} -a "$APP_NAME" "$1" "$2" -t 600000
+        ${lib.getExe' pkgs.libnotify "notify-send"} -a "$APP_NAME" "$1" "$2"
     end
 
     function screen

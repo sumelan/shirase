@@ -123,7 +123,7 @@ let
     };
 
   batteryEdge =
-    commonConfig "6%"
+    commonConfig "25%"
     // commonSlider "8%" "1.4%"
     // batteryConfig
     // {

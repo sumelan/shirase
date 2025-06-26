@@ -22,7 +22,7 @@
           font = "${fonts.sansSerif.name} ${toString fonts.sizes.popups}";
           icon_theme = config.stylix.iconTheme.dark;
           width = "(250, 450)";
-          offset = "(50, 20)";
+          offset = "(50, 50)";
           alignment = "center";
           browser = "librewolf -new-tab";
           corner_radius = 8;
@@ -58,28 +58,20 @@
         };
       };
   };
-  programs.niri.settings = {
-    binds =
-      with config.lib.niri.actions;
-      let
-        ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
-      in
-      {
-        "Mod+N" = {
-          action = ush "dunstctl history-pop";
-          hotkey-overlay.title = "Show Notification History";
-        };
-        "Mod+Shift+N" = {
-          action = ush "dunstctl close-all";
-          hotkey-overlay.title = "Dismiss Notification";
-        };
+  programs.niri.settings.binds =
+    with config.lib.niri.actions;
+    let
+      ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
+    in
+    {
+      "Mod+N" = {
+        action = ush "dunstctl history-pop";
+        hotkey-overlay.title = "Show Notification History";
       };
-    layer-rules = [
-      {
-        matches = [ { namespace = "^(notifications)$"; } ];
-        block-out-from = "screen-capture";
-      }
-    ];
-  };
+      "Mod+Shift+N" = {
+        action = ush "dunstctl close-all";
+        hotkey-overlay.title = "Dismiss Notification";
+      };
+    };
   stylix.targets.dunst.enable = false;
 }

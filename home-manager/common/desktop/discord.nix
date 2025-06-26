@@ -18,7 +18,6 @@
       {
         matches = [ { app-id = "^(WebCord)$"; } ];
         default-column-width.proportion = 0.7;
-        block-out-from = "screen-capture";
       }
     ];
   };
