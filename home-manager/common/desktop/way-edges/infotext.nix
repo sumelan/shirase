@@ -8,13 +8,16 @@
 with config.lib.stylix.colors.withHashtag;
 let
   right-click = 273;
+  player = "spotify";
 
   mediaCmd = pkgs.writers.writeFish "write_media_text" ''
     set MAXINFO 28
+    set PLAYER ${player}
 
-    if test (playerctl -p spotify status) = Playing
-        set artist (playerctl -p spotify metadata xesam:artist)
-        set title (playerctl -p spotify metadata xesam:title)
+    set player_status (playerctl -p $PLAYER status 2> /dev/null )
+    if  string match $player_status "Playing" > /dev/null
+        set artist (playerctl -p $PLAYER metadata xesam:artist)
+        set title (playerctl -p $PLAYER metadata xesam:title)
         set info " $artist - $title"
         if test (string length $info) -gt $MAXINFO
             set short (string shorten -m $MAXINFO $info)
@@ -22,8 +25,7 @@ let
         else
             echo "$info"
         end
-
-    else if test (playerctl -p spotify status) = Paused
+    else if string match $player_status "Paused" > /dev/null
         echo " - Paused -"
     end
   '';
@@ -43,8 +45,8 @@ let
     set battery (cat /sys/class/power_supply/BAT*/capacity)
     set battery_status (cat /sys/class/power_supply/BAT*/status)
 
-    set charging_prefixs "" "" "" "" "" "" "" "" "" "󱈏"
-    set discharging_prefixs "Critical!!" "Causion!" "Low" "" "" "" "" "" "" ""
+    set charging_prefixs "" "" "" "" "" "" "" "" "" "󱈑"
+    set discharging_prefixs "󱟩 Critical!!" "󱃍 Causion!" "󱟟 Low" "" "" "" "" "" "" ""
 
     set prefix (math round\($battery/10\))
 

@@ -13,7 +13,7 @@ let
     preview-size = "5%";
     animation-curve = "ease-expo";
     transition-duration = 300;
-    margins.bottom = "2%";
+    margins.bottom = "4%";
     ignore-exclusive = true;
     pinnable = true;
     pin-with-key = true;
