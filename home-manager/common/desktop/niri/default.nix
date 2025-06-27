@@ -67,8 +67,8 @@
             width = 3;
             active = {
               gradient = {
-                from = base09;
-                to = base08;
+                from = base0C;
+                to = base0D;
                 angle = 45;
                 in' = "oklab";
               };
@@ -103,7 +103,7 @@
             position = "left";
             hide-when-single-tab = true;
             place-within-column = true;
-            active.color = base0D;
+            active.color = base07;
             inactive.color = base02;
             gap = 5;
             width = 6;

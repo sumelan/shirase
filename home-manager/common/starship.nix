@@ -90,13 +90,13 @@
           format = "([$all_status$ahead_behind]($style))";
           up_to_date = "[ 󰋑 ](fg:iris)";
           untracked = "[?\($count\)](fg:gold)";
-          stashed = "[$](fg:iris)";
+          stashed = "[\\$\($count\)](fg:iris)";
           modified = "[!\($count\)](fg:gold)";
           renamed = "[»\($count\)](fg:iris)";
           deleted = "[✘\($count\)](style)";
           staged = "[++\($count\)](fg:gold)";
           ahead = "[⇡\($count\)](fg:foam)";
-          diverged = "⇕[\[](fg:iris)[⇡\($ahead_count\)](fg:foam)[⇣\($behind_count\)](fg:rose)[\]](fg:iris)";
+          diverged = "[⇕\[](fg:iris)[⇡\($ahead_count\)](fg:foam)[⇣\($behind_count\)](fg:rose)[\]](fg:iris)";
           behind = "[⇣\($count\)](fg:rose)";
         };
         time = {
