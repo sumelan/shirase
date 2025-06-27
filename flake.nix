@@ -74,8 +74,8 @@
       mkSystem =
         host:
         {
-          user ? throw "Please specify user value",
-          hardware ? throw "Please specify hardware value",
+          user ? throw ''Please specify user value, like user = "foo"'',
+          hardware ? throw ''Please specify hardware value, like hardware = "laptop"'',
           packages ? "stable",
           system ? "x86_64-linux",
         }:
@@ -143,6 +143,7 @@
           ];
         };
 
+      # device profile
       nixosConfigurations = {
         acer = self.mkSystem "acer" {
           user = "sumelan";

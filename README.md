@@ -1,6 +1,6 @@
 # Shirase
 
-This is my personal nixos config, always wip.
+This is my personal nixos dotfiles, always wip.
 
 ## Features
 
@@ -20,13 +20,19 @@ nvme0n1
   └── NIXBOOT
 ```
 
-Btrfs root volume is wiped at each boot via
-[the script](https://guekka.github.io/nixos-server-1/), but /perisit and /cache
+Btrfs root volume is wiped at each boot via the script but /perisit and /cache
 are remained by
 [impermanence module](https://github.com/nix-community/impermanence).
 
-Plus, /persist volume of laptop (acer) is transferred to hdd connected to mini
-pc (sakura) over ssh using [btrbk](https://github.com/digint/btrbk).
+Plus, /persist volume of my laptop (acer) is transferred to hdd connected to my
+desktop (sakura) over ssh using [btrbk](https://github.com/digint/btrbk).
+
+### Modularization
+
+I use [home-manager](https://github.com/nix-community/home-manager) to manage my
+config. Each program file is contained the all configs related to that program,
+so i just exclude its file and all related setting excluded when i stop using
+it.
 
 ## Automatic Install Script
 
@@ -46,11 +52,19 @@ sh <(curl -L https://raw.githubusercontent.com/Sumelan/shirase/main/install.sh)
   Shamelessly copied impermanence, install-scripts, and many config from his
   dotfiles.
 
+- [Guekka's blog](https://guekka.github.io/nixos-server-1/)
+
+  Thank you for his scripts, i can setup impermanence.
+
+- [tiredofit/nixos-config](https://github.com/tiredofit/nixos-config)
+
+  Structure in flake.nix is refered form his repo.
+
 - [EdenQwQ's gists](https://gist.github.com/EdenQwQ)
 
-  Desktop config is from this gist.
+  Niri's config is from this gist.
 
 - [MrSom3body/dotfiles](https://github.com/MrSom3body/dotfiles) and
   [Tyler Kelley/ZaneyOS](https://gitlab.com/Zaney/zaneyos)
 
-  Their configs are for hyprland, but should be mentioned.
+  This two dotfiles are for hyprland, but should be mentioned.
