@@ -2,7 +2,7 @@
   lib,
   config,
   user,
-  isServer,
+  isDesktop,
   ...
 }:
 lib.mkMerge [
@@ -24,7 +24,7 @@ lib.mkMerge [
       in
       {
         # path of remote host's authorized_keys
-        ${user}.openssh.authorizedKeys.keys = lib.mkIf isServer pubKeys;
+        ${user}.openssh.authorizedKeys.keys = lib.mkIf isDesktop pubKeys;
       };
   }
 

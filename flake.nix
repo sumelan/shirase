@@ -2,51 +2,46 @@
   description = "Shirase";
 
   inputs = {
-    # nixpkgs links
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # hardware
+    home-manager-stable = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+    home-manager-unstable = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    # home-manager
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # windows manager
-    niri.url = "github:sodiboo/niri-flake";
-
-    # impermanence
     impermanence.url = "github:nix-community/impermanence";
 
-    # theming
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # database
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # secrets
     agenix.url = "github:ryantm/agenix";
+
+    niri.url = "github:sodiboo/niri-flake";
+
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     way-edges = {
       url = "github:way-edges/way-edges";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # neovim
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # librewolf addon
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,46 +51,109 @@
   };
 
   outputs =
-    inputs@{ nixpkgs, self, ... }:
+    inputs@{
+      self,
+      nixpkgs,
+      nixpkgs-stable,
+      nixpkgs-unstable,
+      ...
+    }:
     let
-      system = "x86_64-linux";
-
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-
+      inherit (self) outputs;
       inherit (nixpkgs) lib;
 
-      mkSystem = system: {
-        inherit
-          self
-          inputs
-          nixpkgs
-          lib
-          pkgs
-          system
-          ;
-        specialArgs = {
-          inherit self inputs;
-        };
-      };
-      commonSysytem = mkSystem system;
-      # call with forAllSystems (commonArgs: function body)
-      forAllSystems =
-        fn:
-        lib.genAttrs [
-          "x86_64-linux"
-          "aarch64-linux"
-          "x86_64-darwin"
-          "aarch64-darwin"
-        ] (system: fn (mkSystem system));
+      # Create package sets for each system
+      # forAllSystems = f: lib.genAttrs systems (system: f system);
+      # forEachSystem = f: lib.genAttrs systems (sys: f pkgsFor.${sys});
     in
     {
-      nixosConfigurations = import ./hosts/nixos.nix commonSysytem;
+      inherit lib;
 
-      inherit lib self;
+      # packages = forEachSystem (pkgs: import ./packages { inherit pkgs; });
 
-      # packages = forAllSystems (commonSystem': (import ./packages commonSystem'));
+      mkSystem =
+        host:
+        {
+          user ? throw "Please specify user value",
+          hardware ? throw "Please specify hardware value",
+          packages ? "stable",
+          system ? "x86_64-linux",
+        }:
+        let
+          selectedNixpkgs = if packages == "stable" then nixpkgs-stable else nixpkgs-unstable;
+
+          selectedHomeManager =
+            if packages == "stable" then inputs.home-manager-stable else inputs.home-manager-unstable;
+
+          systemPkgs = import selectedNixpkgs {
+            inherit system;
+            config = {
+              allowUnfree = true;
+              allowBroken = false;
+              allowUnsupportedSystem = false;
+            };
+          };
+        in
+        lib.nixosSystem {
+          inherit (systemPkgs) system;
+          pkgs = systemPkgs;
+
+          specialArgs = {
+            inherit
+              self
+              inputs
+              outputs
+              host
+              user
+              ;
+            isLaptop = hardware == "laptop";
+            isDesktop = hardware == "desktop";
+          };
+
+          modules = [
+            ./hosts/${host}
+            ./hosts/${host}/hardware.nix
+            ./system
+            ./overlays
+            selectedHomeManager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit
+                    self
+                    inputs
+                    outputs
+                    host
+                    user
+                    ;
+                  isLaptop = hardware == "laptop";
+                  isDesktop = hardware == "desktop";
+                };
+                users.${user} = {
+                  imports = [
+                    ./hosts/${host}/home.nix
+                    ./home-manager
+                  ];
+                };
+              };
+            }
+            (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" user ]) # alias for home-manager
+          ];
+        };
+
+      nixosConfigurations = {
+        acer = self.mkSystem "acer" {
+          user = "sumelan";
+          hardware = "laptop";
+          packages = "unstable";
+        };
+        sakura = self.mkSystem "sakura" {
+          user = "sumelan";
+          hardware = "desktop";
+          packages = "unstable";
+        };
+      };
     };
 }

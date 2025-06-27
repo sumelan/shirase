@@ -5,7 +5,7 @@
   user,
   host,
   isLaptop,
-  isServer,
+  isDesktop,
   ...
 }:
 {
@@ -51,7 +51,7 @@
             };
           };
 
-          "local-backup" = lib.mkIf isServer {
+          "local-backup" = lib.mkIf isDesktop {
             onCalendar = "daily";
             settings = basicBtrbk // {
               volume."/" = {
@@ -70,7 +70,7 @@
         };
 
         # set ssh command on server side
-        sshAccess = lib.mkIf isServer [
+        sshAccess = lib.mkIf isDesktop [
           {
             key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGww+bXaeTXj6s10G4V8Kz2PqGfI6tU4rd8KfxxoQj9 btrbk";
             roles = [
