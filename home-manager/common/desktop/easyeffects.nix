@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 # NOTE: 'programs.dconf.enable = true' is necessary for theb daemon to work correctly
 {
   services.easyeffects = {
@@ -16,14 +16,14 @@
     recursive = true;
   };
 
-  programs.niri.settings.window-rules = [
-    {
-      matches = [ { app-id = "^(com.github.wwmm.easyeffects)$"; } ];
-      open-floating = true;
-      default-column-width.proportion = 0.4;
-      default-window-height.proportion = 0.4;
-    }
-  ];
+  programs.niri.settings.window-rules = lib.singleton {
+    matches = lib.singleton {
+      app-id = "^(com.github.wwmm.easyeffects)$";
+    };
+    open-floating = true;
+    default-column-width.proportion = 0.4;
+    default-window-height.proportion = 0.4;
+  };
 
   custom.persist = {
     home.directories = [

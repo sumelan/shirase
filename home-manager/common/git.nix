@@ -1,8 +1,9 @@
-_: {
+{ user, ... }:
+{
   programs = {
     git = {
       enable = true;
-      userName = "Sumelan";
+      userName = user;
       userEmail = "bathys@proton.me";
       difftastic = {
         enable = true;

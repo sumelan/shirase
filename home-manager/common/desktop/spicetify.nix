@@ -1,4 +1,5 @@
 {
+  lib,
   config,
   pkgs,
   inputs,
@@ -57,12 +58,16 @@
       };
     window-rules = [
       {
-        matches = [ { app-id = "^(spotify)$"; } ];
+        matches = lib.singleton {
+          app-id = "^(spotify)$";
+        };
         default-column-width.proportion = 0.9;
       }
       {
         # mini player
-        matches = [ { app-id = "^(chromium-browser)$"; } ];
+        matches = lib.singleton {
+          app-id = "^(chromium-browser)$";
+        };
         open-floating = true;
       }
     ];

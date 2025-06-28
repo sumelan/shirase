@@ -48,10 +48,8 @@
           "Mod+Tab" = {
             action = ush (
               lib.concatStringsSep "; " (
-                [
-                  "niri msg action toggle-overview"
-                  "${lib.getExe pkgs.killall} -SIGUSR1 .waybar-wrapped"
-                ]
+                [ "niri msg action toggle-overview" ]
+                ++ [ "${lib.getExe pkgs.killall} -SIGUSR1 .waybar-wrapped" ]
                 ++ toggleWidget
               )
             );

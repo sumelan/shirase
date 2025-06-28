@@ -1,4 +1,5 @@
-_: {
+{ lib, ... }:
+{
   programs.kitty = {
     enable = true;
     settings = {
@@ -23,19 +24,12 @@ _: {
   };
 
   programs.niri.settings = {
-    window-rules = [
-      {
-        matches = [ { app-id = "^(kitty)$"; } ];
-        default-column-width.proportion = 0.6;
-      }
-      {
-        # waybar
-        matches = [ { app-id = "^(tty-clock)$"; } ];
-        open-floating = true;
-        default-column-width.proportion = 0.35;
-        default-window-height.proportion = 0.25;
-      }
-    ];
+    window-rules = lib.singleton {
+      matches = lib.singleton {
+        app-id = "^(kitty)$";
+      };
+      default-column-width.proportion = 0.6;
+    };
   };
   stylix.targets.kitty.variant256Colors = true;
 }

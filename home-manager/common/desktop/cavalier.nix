@@ -26,9 +26,9 @@
     };
 
     niri.settings.window-rules = lib.singleton {
-      matches = lib.singleton { app-id = "^(org.nickvision.cavalier)$"; };
-      default-column-width.proportion = 0.4;
-      default-window-height.proportion = 0.4;
+      matches = lib.singleton {
+        app-id = "^(org.nickvision.cavalier)$";
+      };
       open-floating = true;
     };
   };

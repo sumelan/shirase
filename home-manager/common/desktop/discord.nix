@@ -20,7 +20,9 @@
         };
       };
     window-rules = lib.singleton {
-      matches = lib.singleton { app-id = "^(WebCord)$"; };
+      matches = lib.singleton {
+        app-id = "^(WebCord)$";
+      };
       default-column-width.proportion = 0.7;
     };
   };

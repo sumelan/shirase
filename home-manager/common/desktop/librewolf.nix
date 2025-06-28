@@ -85,10 +85,10 @@ in
       # https://github.com/hyprwm/Hyprland/issues/3835
       window-rules = [
         {
-          matches = [ { app-id = "^(librewolf)$"; } ];
-          default-column-width = {
-            proportion = 0.6;
+          matches = lib.singleton {
+            app-id = "^(librewolf)$";
           };
+          default-column-width.proportion = 0.6;
         }
         {
           matches = [
