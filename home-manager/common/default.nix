@@ -5,7 +5,6 @@ _: {
     ./rmpc
     ./shell
     ./btop.nix
-    ./cava.nix
     ./eza.nix
     ./fastfetch.nix
     ./fcitx5.nix

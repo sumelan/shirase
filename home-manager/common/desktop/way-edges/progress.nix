@@ -37,7 +37,7 @@ let
 
     set choices " Power-saver
      Balanced
-     Performance"
+     Performance"
 
     set choice (echo -en $choices | fuzzel --dmenu --prompt "󱉓? " --placeholder "Select Power Profile..." --lines 3)
 

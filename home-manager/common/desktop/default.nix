@@ -3,6 +3,7 @@ _: {
     ./niri
     ./way-edges
     ./waybar
+    ./cavalier.nix
     ./discord.nix
     ./dunst.nix
     ./easyeffects.nix

@@ -18,7 +18,7 @@ let
     if  string match $player_status "Playing" > /dev/null
         set artist (playerctl -p $PLAYER metadata xesam:artist)
         set title (playerctl -p $PLAYER metadata xesam:title)
-        set info " $artist - $title"
+        set info " | $artist - $title"
         if test (string length $info) -gt $MAXINFO
             set short (string shorten -m $MAXINFO $info)
             echo "$short"
@@ -26,7 +26,7 @@ let
             echo "$info"
         end
     else if string match $player_status "Paused" > /dev/null
-        echo " - Paused -"
+        echo " | Paused..."
     end
   '';
 
@@ -38,7 +38,7 @@ let
         else if string match $ppd "balanced" > /dev/null
             echo " "
         else
-            echo " "
+            echo " "
         end
     end
 
@@ -47,18 +47,18 @@ let
     set profile (power_profile)
 
     set charging_prefixs $profile $profile $profile $profile $profile $profile $profile $profile $profile "$profile"
-    set discharging_prefixs "󱟩 Critical!! $profile" "󱃍 Causion! $profile" "󱟟 Low $profile" $profile $profile $profile $profile $profile $profile $profile
+    set discharging_prefixs " Critical!! - $profile" " Causion! - $profile" " Low - $profile" $profile $profile $profile $profile $profile $profile $profile
 
     set prefix (math round\($battery/10\))
 
     if test $battery_status = Full
         echo "$charging_prefixs[10] | Full Charged!!"
     else if test $battery_status = Discharging
-        echo "$discharging_prefixs[$prefix] | No Connection"
+        echo "$discharging_prefixs[$prefix] | Discharging..."
     else if test $battery_status = "Not charging"
         echo "$charging_prefixs[$prefix] | Battery Charged!"
     else
-        echo "$charging_prefixs[$prefix] | Connected"
+        echo "$charging_prefixs[$prefix] | Charging..."
     end
   '';
 
@@ -76,9 +76,9 @@ let
     end
 
     if is_recorder_running
-        echo " Recorder running..."
+        echo " | Recording..."
     else if is_convert_processing
-        echo " Converting to gif..."
+        echo " | Converting..."
     end
   '';
 
@@ -153,7 +153,7 @@ let
 
   batteryEdge = commonConfig "right" "top" "2%" // {
     items = [
-      (textConfig "${base0B}" "${batteryCmd}")
+      (textConfig "${base0C}" "${batteryCmd}")
     ];
   };
 in

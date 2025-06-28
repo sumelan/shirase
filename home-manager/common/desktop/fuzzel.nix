@@ -32,7 +32,6 @@ let
         echo " -q, --quit   Stop screen recording"
     end
 
-
     function is_recorder_running
         ${lib.getExe' pkgs.procps "pgrep"} -x "wf-recorder" > /dev/null
     end

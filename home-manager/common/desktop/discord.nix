@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   home.packages = with pkgs; [ webcord ];
 
@@ -14,12 +19,10 @@
           hotkey-overlay.title = "WebCord";
         };
       };
-    window-rules = [
-      {
-        matches = [ { app-id = "^(WebCord)$"; } ];
-        default-column-width.proportion = 0.7;
-      }
-    ];
+    window-rules = lib.singleton {
+      matches = lib.singleton { app-id = "^(WebCord)$"; };
+      default-column-width.proportion = 0.7;
+    };
   };
 
   custom.persist = {
