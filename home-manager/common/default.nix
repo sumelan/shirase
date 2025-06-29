@@ -7,7 +7,6 @@ _: {
     ./btop.nix
     ./eza.nix
     ./fastfetch.nix
-    ./fcitx5.nix
     ./git.nix
     ./impermanence.nix
     ./jujutsu.nix

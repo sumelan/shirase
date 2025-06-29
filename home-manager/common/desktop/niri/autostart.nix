@@ -19,7 +19,7 @@
         command = ush "${lib.getExe pkgs.brightnessctl} set 5%";
       }
       {
-        command = ush "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store";
+        command = ush "${lib.getExe' pkgs.wl-clipboard-rs "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store";
       }
     ];
 

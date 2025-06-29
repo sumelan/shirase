@@ -4,21 +4,19 @@
     cavalier = {
       enable = true;
       settings.general = {
-        ShowControls = lib.mkForce false;
-        Mode = 3; # DrawingMode.BarsBox.
+        ShowControls = false;
+        Mode = 7;
         ColorProfiles =
           with config.lib.stylix.colors.withHashtag;
           # Create a list consisting of a single element.
           lib.singleton {
             Name = "Stylix";
             FgColors = [
-              base06
-              base08
-              base0A
+              base0B
               base0C
-              base0E
+              base0D
             ];
-            BgColors = [ base01 ];
+            BgColors = [ base00 ];
             Theme = 1;
           };
         ActiveProfile = 0;
@@ -30,6 +28,8 @@
         app-id = "^(org.nickvision.cavalier)$";
       };
       open-floating = true;
+      default-column-width.proportion = 0.4;
+      default-window-height.proportion = 0.4;
     };
   };
   stylix.targets.cavalier.enable = false;

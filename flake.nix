@@ -63,6 +63,7 @@
       inherit (nixpkgs) lib;
 
       # Create package sets for each system
+      # systems = [ "aarch64-linux" "x86_64-linux" ];
       # forAllSystems = f: lib.genAttrs systems (system: f system);
       # forEachSystem = f: lib.genAttrs systems (sys: f pkgsFor.${sys});
     in
@@ -76,7 +77,7 @@
         {
           user ? throw ''Please specify user value, like user = "foo"'',
           hardware ? throw ''Please specify hardware value, like hardware = "laptop"'',
-          packages ? "stable",
+          packages ? "stable", # nixpkgs branch to use, stable or unstable
           system ? "x86_64-linux",
         }:
         let
@@ -111,9 +112,9 @@
           };
 
           modules = [
-            ./hosts/${host}
-            ./hosts/${host}/hardware.nix
-            ./system
+            ./hosts/${host} # host's system setting
+            ./hosts/${host}/hardware.nix # hardware-config
+            ./system # system module
             ./overlays
             selectedHomeManager.nixosModules.home-manager
             {
@@ -133,8 +134,8 @@
                 };
                 users.${user} = {
                   imports = [
-                    ./hosts/${host}/home.nix
-                    ./home-manager
+                    ./hosts/${host}/home.nix # host's user setting
+                    ./home-manager # home-manager module
                   ];
                 };
               };
