@@ -51,26 +51,10 @@
   };
 
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      nixpkgs-stable,
-      nixpkgs-unstable,
-      ...
-    }:
+    inputs@{ self, nixpkgs, ... }:
     let
-      inherit (self) outputs;
-      inherit (nixpkgs) lib;
-
-      # Create package sets for each system
-      # systems = [ "aarch64-linux" "x86_64-linux" ];
-      # forAllSystems = f: lib.genAttrs systems (system: f system);
-      # forEachSystem = f: lib.genAttrs systems (sys: f pkgsFor.${sys});
-    in
-    {
-      inherit lib;
-
-      # packages = forEachSystem (pkgs: import ./packages { inherit pkgs; });
+      # Get the extended lib from ./lib/default.nix
+      lib = import ./lib { inherit inputs nixpkgs; };
 
       mkSystem =
         host:
@@ -81,8 +65,7 @@
           system ? "x86_64-linux",
         }:
         let
-          selectedNixpkgs = if packages == "stable" then nixpkgs-stable else nixpkgs-unstable;
-
+          selectedNixpkgs = if packages == "stable" then inputs.nixpkgs-stable else inputs.nixpkgs-unstable;
           selectedHomeManager =
             if packages == "stable" then inputs.home-manager-stable else inputs.home-manager-unstable;
 
@@ -103,7 +86,6 @@
             inherit
               self
               inputs
-              outputs
               host
               user
               ;
@@ -125,7 +107,6 @@
                   inherit
                     self
                     inputs
-                    outputs
                     host
                     user
                     ;
@@ -143,15 +124,16 @@
             (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" user ]) # alias for home-manager
           ];
         };
-
+    in
+    {
       # device profile
       nixosConfigurations = {
-        acer = self.mkSystem "acer" {
+        acer = mkSystem "acer" {
           user = "sumelan";
           hardware = "laptop";
           packages = "unstable";
         };
-        sakura = self.mkSystem "sakura" {
+        sakura = mkSystem "sakura" {
           user = "sumelan";
           hardware = "desktop";
           packages = "unstable";
