@@ -79,7 +79,7 @@
           };
         in
         lib.nixosSystem {
-          inherit (systemPkgs) system;
+          inherit system;
           pkgs = systemPkgs;
 
           specialArgs = {
