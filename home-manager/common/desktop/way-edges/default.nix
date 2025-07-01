@@ -34,26 +34,23 @@
 
     niri.settings = {
       binds =
-        with config.lib.niri.actions;
         let
-          ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
           toggleWidget = map (x: "way-edges togglepin " + x) [
             "workspace"
             "info"
             "progress"
             "stats"
           ];
+          cmd = lib.concatStringsSep "; " (
+            [ "niri msg action toggle-overview" ]
+            ++ [ "${lib.getExe pkgs.killall} -SIGUSR1 .waybar-wrapped" ]
+            ++ toggleWidget
+          );
         in
         {
-          "Mod+Tab" = {
-            action = ush (
-              lib.concatStringsSep "; " (
-                [ "niri msg action toggle-overview" ]
-                ++ [ "${lib.getExe pkgs.killall} -SIGUSR1 .waybar-wrapped" ]
-                ++ toggleWidget
-              )
-            );
-            hotkey-overlay.title = "Open the Overview and Widgets";
+          "Mod+Tab" = config.niri-lib.run {
+            inherit cmd;
+            title = "Open the Overview and Widgets";
           };
         };
 

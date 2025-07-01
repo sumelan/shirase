@@ -5,6 +5,7 @@
     ./autostart.nix
     ./idle.nix
     ./keybinds.nix
+    ./lib.nix
     ./lock.nix
     ./monitors.nix
     ./niriswitcher.nix

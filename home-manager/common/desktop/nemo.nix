@@ -72,17 +72,10 @@
   };
 
   programs.niri.settings = {
-    binds =
-      with config.lib.niri.actions;
-      let
-        ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
-      in
-      {
-        "Mod+E" = {
-          action = ush "nemo";
-          hotkey-overlay.title = "File Manager";
-        };
-      };
+    binds."Mod+E" = config.niri-lib.open {
+      app = pkgs.nemo;
+    };
+
     window-rules = [
       {
         matches = [
