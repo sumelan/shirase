@@ -66,7 +66,7 @@
       inherit (nixpkgs) legacyPackages;
 
       # Get the extended lib from ./lib/default.nix
-      lib = import ./lib { inherit inputs nixpkgs; };
+      lib = import ./lib { inherit inputs; };
 
       forAllSystems = lib.genAttrs [
         "x86_64-linux"

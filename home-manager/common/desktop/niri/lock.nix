@@ -66,45 +66,6 @@
               dateCmd = pkgs.writers.writeFish "show_date_info" ''
                 echo "$(date +'%B %d, %A')"
               '';
-
-              mediaCmd = pkgs.writers.writeFish "show_media_info" ''
-                set MAXINFO 28
-
-                if test (playerctl -p spotify status) = Playing
-                    set artist (playerctl -p spotify metadata xesam:artist)
-                    set title (playerctl -p spotify metadata xesam:title)
-                    set info " $artist - $title"
-                    if test (string length $info) -gt $MAXINFO
-                        set short (string shorten -m $MAXINFO $info)
-                        echo "$short"
-                    else
-                        echo "$info"
-                    end
-                else if test (playerctl -p spotify status) = Paused
-                    echo " - Paused -"
-                end
-              '';
-
-              batteryCmd = pkgs.writers.writeFish "show_battery_info" ''
-                set battery (cat /sys/class/power_supply/BAT*/capacity)
-                set battery_status (cat /sys/class/power_supply/BAT*/status)
-
-                set charging_icons 󰢜 󰂆 󰂇 󰂈 󰢝 󰂉 󰢞 󰂊 󰂋 󰂅
-                set discharging_icons 󰁺 󰁻 󰁼 󰁽 󰁾 󰁿 󰂀 󰂁 󰂂 󰁹
-
-                set icon (math round\($battery/10\))
-
-                if test $battery_status = Full
-                    echo "$charging_icons[10] Battery full"
-                else if test $battery_status = Discharging
-                    echo "$discharging_icons[$icon] Discharging $battery%"
-                else if test $battery_status = "Not charging"
-                    echo "$charging_icons[$icon] Battery charged"
-                else
-                    echo "$charging_icons[$icon] Charging $battery%"
-                end
-              '';
-
             in
             [
               {
@@ -126,7 +87,7 @@
                 valign = "top";
               }
               {
-                text = "cmd[update:1000] ${mediaCmd}";
+                text = "cmd[update:1000] show_media_info";
                 color = "rgb(${base05})";
                 font_size = config.stylix.fonts.sizes.desktop * 2;
                 font_family = "${config.stylix.fonts.monospace.name}";
@@ -135,7 +96,7 @@
                 valign = "top";
               }
               (lib.mkIf config.custom.battery.enable {
-                text = "cmd[update:1000] ${batteryCmd}";
+                text = "cmd[update:1000] show_battery_info";
                 color = "rgb(${base05})";
                 font_size = config.stylix.fonts.sizes.desktop * 2;
                 font_family = "${config.stylix.fonts.monospace.name}";
@@ -159,6 +120,5 @@
           };
         };
     };
-    stylix.targets.hyprlock.enable = false;
   };
 }

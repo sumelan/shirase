@@ -11,12 +11,13 @@ _: {
     ./kitty.nix
     ./librewolf.nix
     ./mpv.nix
-    ./nautilus.nix
+    ./nemo.nix
     ./nixlogo.nix
     ./spicetify.nix
     ./swayimg.nix
     ./swayosd.nix
     ./wallpaper.nix
     ./yazi.nix
+    ./zathura.nix
   ];
 }

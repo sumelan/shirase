@@ -16,13 +16,13 @@
 
   # Set your time zone
   time = {
-    inherit (config.profiles.${user}) timeZone;
+    inherit (config.hm.profiles.${user}) timeZone;
     hardwareClockInLocalTime = true;
   };
 
   i18n = rec {
     # Select internationalisation properties
-    inherit (config.profiles.${user}) defaultLocale;
+    inherit (config.hm.profiles.${user}) defaultLocale;
     extraLocaleSettings = {
       LC_ADDRESS = defaultLocale;
       LC_IDENTIFICATION = defaultLocale;

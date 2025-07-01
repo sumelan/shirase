@@ -43,8 +43,7 @@ in
       autoEnable = true;
 
       cursor = {
-        package = cfg.cursor.package;
-        name = cfg.cursor.name;
+        inherit (cfg.cursor) package name;
         size = 30;
       };
 
@@ -62,7 +61,7 @@ in
           name = "Maple Mono NF";
         };
         emoji = {
-          package = pkgs.noto-fonts-emoji;
+          package = pkgs.noto-fonts-color-emoji;
           name = "Noto Color Emoji";
         };
         sizes = {
@@ -75,7 +74,7 @@ in
 
       iconTheme = {
         enable = true;
-        package = cfg.icon.package;
+        inherit (cfg.icon) package;
         light = cfg.icon.lightName;
         dark = cfg.icon.darkName;
       };

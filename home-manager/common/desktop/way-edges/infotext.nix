@@ -1,86 +1,12 @@
 {
   lib,
   config,
-  pkgs,
   isLaptop,
   ...
 }:
 with config.lib.stylix.colors.withHashtag;
 let
   right-click = 273;
-  player = "spotify";
-
-  mediaCmd = pkgs.writers.writeFish "write_media_text" ''
-    set MAXINFO 28
-    set PLAYER ${player}
-
-    set player_status (playerctl -p $PLAYER status 2> /dev/null )
-    if  string match $player_status "Playing" > /dev/null
-        set artist (playerctl -p $PLAYER metadata xesam:artist)
-        set title (playerctl -p $PLAYER metadata xesam:title)
-        set info " | $artist - $title"
-        if test (string length $info) -gt $MAXINFO
-            set short (string shorten -m $MAXINFO $info)
-            echo "$short"
-        else
-            echo "$info"
-        end
-    else if string match $player_status "Paused" > /dev/null
-        echo " | Paused..."
-    end
-  '';
-
-  batteryCmd = pkgs.writers.writeFish "write_battery_text" ''
-    function power_profile
-        set ppd (powerprofilesctl get)
-        if string match $ppd "power-saver" > /dev/null
-            echo " "
-        else if string match $ppd "balanced" > /dev/null
-            echo " "
-        else
-            echo " "
-        end
-    end
-
-    set battery (cat /sys/class/power_supply/BAT*/capacity)
-    set battery_status (cat /sys/class/power_supply/BAT*/status)
-    set profile (power_profile)
-
-    set charging_prefixs $profile $profile $profile $profile $profile $profile $profile $profile $profile "$profile"
-    set discharging_prefixs " Critical!! - $profile" " Causion! - $profile" " Low - $profile" $profile $profile $profile $profile $profile $profile $profile
-
-    set prefix (math round\($battery/10\))
-
-    if test $battery_status = Full
-        echo "$charging_prefixs[10] | Full Charged!!"
-    else if test $battery_status = Discharging
-        echo "$discharging_prefixs[$prefix] | Discharging..."
-    else if test $battery_status = "Not charging"
-        echo "$charging_prefixs[$prefix] | Battery Charged!"
-    else
-        echo "$charging_prefixs[$prefix] | Charging..."
-    end
-  '';
-
-  dateCmd = pkgs.writers.writeFish "write_date_text" ''
-    date +" %m/%d |  %H:%M"
-  '';
-
-  recorderCmd = pkgs.writers.writeFish "write_recorder_state" ''
-    function is_recorder_running
-        ${lib.getExe' pkgs.procps "pgrep"} -x "wf-recorder" > /dev/null
-    end
-
-    function is_convert_processing
-        ${lib.getExe' pkgs.procps "pgrep"} -x "ffmpeg" > /dev/null
-    end
-
-    if is_recorder_running
-        echo " | Recording..."
-    else if is_convert_processing
-        echo " | Converting..."
-    end
-  '';
 
   commonConfig = edge: position: margin: {
     namespace = "info";
@@ -135,31 +61,24 @@ let
 
   mediaEdge = commonConfig "right" "bottom" 0 // {
     items = [
-      (textConfig "${base0B}" "${mediaCmd}")
+      (textConfig "${base0B}" "write_media_info")
     ];
   };
 
   recorderEdge = commonConfig "right" "top" "6%" // {
     items = [
-      (textConfig "${base08}" "${recorderCmd}")
-    ];
-  };
-
-  dateEdge = commonConfig "top" "right" "44.5%" // {
-    items = [
-      (textConfig "${base05}" "${dateCmd}")
+      (textConfig "${base08}" "write_recorder_state")
     ];
   };
 
   batteryEdge = commonConfig "right" "top" "2%" // {
     items = [
-      (textConfig "${base0C}" "${batteryCmd}")
+      (textConfig "${base0C}" "write_battery_info")
     ];
   };
 in
 [
   mediaEdge
   recorderEdge
-  dateEdge
 ]
 ++ (lib.optional config.custom.battery.enable batteryEdge)

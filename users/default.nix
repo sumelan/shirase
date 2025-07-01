@@ -1,5 +1,6 @@
 {
   lib,
+  config,
   pkgs,
   user,
   ...
@@ -10,33 +11,47 @@ let
       flakeDir = lib.mkOption {
         type = lib.types.path;
         description = "filesystem path that contains dotfiles";
-        default = "/home/" + user + "/shirase";
+        default = "";
       };
       timeZone = lib.mkOption {
         type = lib.types.str;
         description = "Time zone";
-        default = "Asia/Tokyo";
+        default = "";
       };
       defaultLocale = lib.mkOption {
         type = lib.types.str;
         description = "Locale";
-        default = "ja_JP.UTF-8";
+        default = "";
       };
-      defaultEditor.package = lib.mkOption {
-        type = lib.types.package;
-        description = "Editor to use as default";
-        default = pkgs.neovim;
+      defaultEditor = {
+        package = lib.mkOption {
+          type = lib.types.package;
+          description = "Editor package to use as default";
+          default = pkgs.neovim;
+        };
+        name = lib.mkOption {
+          type = lib.types.str;
+          description = "Editor name to use as default";
+          default = "nvim";
+        };
       };
-      defaultTerminal.package = lib.mkOption {
-        type = lib.types.package;
-        description = "Terminal program to use as default";
-        default = pkgs.kitty;
+      defaultTerminal = {
+        package = lib.mkOption {
+          type = lib.types.package;
+          description = "Terminal package to use as default";
+          default = pkgs.kitty;
+        };
+        name = lib.mkOption {
+          type = lib.types.str;
+          description = "Terminal name to use as default";
+          default = config.profile.${user}.defaultTerminal.package.pname;
+        };
       };
     };
   };
 in
 {
-  options = {
+  hm.options = {
     profiles = lib.mkOption {
       type = lib.types.attrsOf profile;
     };

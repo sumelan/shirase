@@ -23,7 +23,7 @@
   config = {
     home = {
       username = user;
-      homeDirectory = "/home/${user}";
+      homeDirectory = "/home/" + user;
       # do not change this value
       stateVersion = "24.05";
 
@@ -42,19 +42,36 @@
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
 
-    # create symlinks
-    systemd.user.tmpfiles.rules =
-      let
-        normalizeHome = p: if (lib.hasPrefix "/home" p) then p else "${config.home.homeDirectory}/${p}";
-      in
-      lib.mapAttrsToList (dest: src: "L+ ${normalizeHome dest} - - - - ${src}") config.custom.symlinks;
+    systemd.user = {
+      # Nicely reload system units when changing configs
+      startServices = "sd-switch";
+      tmpfiles.rules = # create symlinks
+        let
+          normalizeHome = p: if (lib.hasPrefix "/home" p) then p else "${config.home.homeDirectory}/${p}";
+        in
+        lib.mapAttrsToList (dest: src: "L+ ${normalizeHome dest} - - - - ${src}") config.custom.symlinks;
+    };
 
     xdg = {
       enable = true;
       userDirs.enable = true;
       mimeApps.enable = true;
-      # hide unnecessary desktopItems
-      desktopEntries =
+      portal = {
+        enable = true;
+        xdgOpenUsePortal = true;
+        extraPortals = with pkgs; [
+          xdg-desktop-portal-gtk
+          xdg-desktop-portal-gnome
+        ];
+        config = {
+          niri."org.freedesktop.impl.portal.FileChooser" = "gtk";
+          niri.default = "gnome";
+          common.default = "gnome";
+          obs.default = "gnome";
+        };
+      };
+
+      desktopEntries = # hide unnecessary desktopItems
         let
           hideList = [
             "fcitx5-configtool"

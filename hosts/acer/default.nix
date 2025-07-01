@@ -8,7 +8,7 @@
 
   services = {
     # power management
-    power-profiles-daemon.enable = true;
+    power-profiles-daemon.enable = true; # conflict with TLP
     upower = {
       enable = true;
       percentageLow = 30;
@@ -24,7 +24,7 @@
   # SystemModule Options
   custom = {
     # style
-    stylix.colorTheme = "nord";
+    stylix.colorTheme = "gruvbox-material-dark-soft";
 
     # common
     btrbk.enable = true;

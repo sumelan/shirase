@@ -68,21 +68,19 @@
   programs.regreet = {
     enable = true;
     theme = {
-      package = config.hm.stylix.iconTheme.package;
+      inherit (config.hm.stylix.iconTheme) package;
       name = config.hm.stylix.iconTheme.dark;
     };
     iconTheme = {
-      package = config.hm.stylix.iconTheme.package;
+      inherit (config.hm.stylix.iconTheme) package;
       name = config.hm.stylix.iconTheme.dark;
     };
     font = {
-      package = config.hm.stylix.fonts.monospace.package;
-      name = config.hm.stylix.fonts.monospace.name;
+      inherit (config.hm.stylix.fonts.monospace) package name;
       size = config.hm.stylix.fonts.sizes.desktop;
     };
     cursorTheme = {
-      package = config.hm.stylix.cursor.package;
-      name = config.hm.stylix.cursor.name;
+      inherit (config.hm.stylix.cursor) package name;
     };
     settings = {
       background = {
@@ -225,11 +223,11 @@
         }
     '';
   };
-  stylix.targets.regreet.enable = false;
   custom.persist = {
     root.directories = [
       # last authenticated user and the last used session per user
       "/var/lib/regreet"
     ];
   };
+  stylix.targets.regreet.enable = false;
 }

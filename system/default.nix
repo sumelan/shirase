@@ -46,9 +46,9 @@
       pathsToLink = [ "/share/fish" ];
 
       variables = {
-        TERMINAL = lib.getExe config.profiles.${user}.defaultTerminal.package;
-        EDITOR = lib.getExe config.profiles.${user}.defaultEditor.package;
-        VISUAL = lib.getExe config.profiles.${user}.defaultEditor.package;
+        TERMINAL = config.hm.profiles.${user}.defaultTerminal.name;
+        EDITOR = config.hm.profiles.${user}.defaultEditor.name;
+        VISUAL = config.hm.profiles.${user}.defaultEditor.name;
         NIXPKGS_ALLOW_UNFREE = "1";
         STARSHIP_CONFIG = "${config.hm.xdg.configHome}/starship.toml";
       };
@@ -95,7 +95,7 @@
             config.hm.gtk.theme.package
             config.hm.gtk.iconTheme.package
           ]
-        ++ [ config.profiles.${user}.defaultEditor.package ];
+        ++ [ config.hm.profiles.${user}.defaultEditor.package ];
     };
 
     # https://www.mankier.com/5/tmpfiles.d
@@ -145,7 +145,7 @@
       terminal-exec = {
         enable = true;
         settings = {
-          default = [ "${config.profiles.${user}.defaultTerminal.package.pname}.desktop" ];
+          default = [ "${config.hm.profiles.${user}.defaultTerminal.name}.desktop" ];
         };
       };
     };

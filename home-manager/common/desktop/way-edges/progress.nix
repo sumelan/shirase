@@ -9,25 +9,6 @@ let
   left-click = 272;
   right-click = 273;
 
-  mediaCmd = pkgs.writers.writeFish "show_media_progress" ''
-    if test (playerctl -p spotify status) = Playing
-        set length (playerctl -p spotify metadata mpris:length)
-        set position (playerctl -p spotify position)
-        math $position / $length x 1000000
-    else if test (playerctl -p spotify status) = Paused
-        set length (playerctl -p spotify metadata mpris:length)
-        set position (playerctl -p spotify position)
-        math $position / $length x 1000000
-    else
-        echo -n 0
-    end
-  '';
-
-  batteryCmd = pkgs.writers.writeFish "show_battery_progress" ''
-    set battery (cat /sys/class/power_supply/BAT*/capacity)
-    math $battery / 100
-  '';
-
   powerCmd = pkgs.writers.writeFish "select_power_setting" ''
     set APP_NAME "Power Selector"
 
@@ -87,7 +68,7 @@ let
     preset = {
       type = "custom";
       update-interval = 500;
-      update-command = mediaCmd;
+      update-command = "show_media_progress";
       on-change-command = "";
       event-map = {
         ${builtins.toString left-click} = "playerctl play-pause";
@@ -104,7 +85,7 @@ let
     preset = {
       type = "custom";
       update-interval = 1000;
-      update-command = batteryCmd;
+      update-command = "show_battery_progress";
       on-change-command = "";
       event-map = {
         ${builtins.toString left-click} = powerCmd;

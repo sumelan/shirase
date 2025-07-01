@@ -14,7 +14,7 @@
       enable = true;
       systemd = {
         enable = true;
-        target = config.wayland.systemd.target;
+        inherit (config.wayland.systemd) target;
       };
       settings =
         let
@@ -103,13 +103,11 @@
             output = "${config.lib.monitors.mainMonitorName}";
             modules-left = [
               "image"
-              #  "niri/window"
+              "clock"
               "tray"
               "idle_inhibitor"
             ];
-            modules-center = [
-              #  "clock"
-            ];
+            modules-center = [ ];
             modules-right = [ ];
           };
         in

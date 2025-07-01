@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  config,
   user,
   isDesktop,
   ...
@@ -26,11 +27,17 @@
       in
       lib.mkIf isDesktop pubKeys;
   };
-  profiles.${user} = {
-    flakeDir = "/home/" + user + "/shirase";
+  hm.profiles.${user} = {
+    flakeDir = "${config.hm.home.homeDirectory}/projects/shirase";
     timeZone = "Asia/Tokyo";
     defaultLocale = "ja_JP.UTF-8";
-    defaultEditor.package = pkgs.neovim;
-    defaultTerminal.package = pkgs.kitty;
+    defaultEditor = {
+      package = pkgs.neovim;
+      name = "nvim";
+    };
+    defaultTerminal = {
+      package = pkgs.kitty;
+      name = "kitty";
+    };
   };
 }

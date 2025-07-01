@@ -3,6 +3,7 @@ _: {
     ./desktop
     ./neovim
     ./rmpc
+    ./scripts
     ./shell
     ./btop.nix
     ./eza.nix
@@ -16,7 +17,6 @@ _: {
     ./starship.nix
     ./terminal.nix
     ./yt-dlp.nix
-    ./zathura.nix
     ./zoxide.nix
   ];
 }
