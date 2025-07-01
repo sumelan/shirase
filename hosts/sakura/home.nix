@@ -35,14 +35,15 @@
     stylix = {
       cursor = {
         package = pkgs.capitaine-cursors-themed;
-        name = "Capitaine Cursors (Nord)";
+        name = "Capitaine Cursors (Gruvbox)";
       };
       icon = {
-        package = pkgs.papirus-nord.override {
-          accent = "frostblue3";
+        package = pkgs.gruvbox-plus-icons.override {
+          # Supported colors: black blue caramel citron firebrick gold green grey highland jade lavender
+          # lime olive orange pistachio plasma pumpkin purple red rust sapphire tomato violet white yellow
+          folder-color = "lime";
         };
-        darkName = "Papirus-Dark";
-        lightName = "Papirus-Light";
+        darkName = "Gruvbox-Plus-Dark";
       };
     };
 

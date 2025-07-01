@@ -72,8 +72,8 @@
       name = config.hm.stylix.iconTheme.dark;
     };
     iconTheme = {
-      package = config.programs.regreet.theme.package;
-      name = config.programs.regreet.theme.name;
+      package = config.hm.stylix.iconTheme.package;
+      name = config.hm.stylix.iconTheme.dark;
     };
     font = {
       package = config.hm.stylix.fonts.monospace.package;

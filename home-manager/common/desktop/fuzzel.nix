@@ -202,7 +202,7 @@ let
   '';
 
   clipCmd = pkgs.writers.writeFish "fuzzel-clipboard" ''
-    ${lib.getExe pkgs.cliphist} list | fuzzel --dmenu --prompt "󰅇 " --placeholder "Search for clipboard entries..." --no-sort | ${lib.getExe pkgs.cliphist} decode | ${lib.getExe' pkgs.wl-clipboard-rs "wl-copy"}
+    ${lib.getExe pkgs.cliphist} list | fuzzel --dmenu --prompt "󰅇 " --placeholder "Search for clipboard entries..." --no-sort | ${lib.getExe pkgs.cliphist} decode | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}
   '';
 
   windowCmd = pkgs.writers.writeFish "fuzzel-windows" ''

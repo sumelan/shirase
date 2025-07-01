@@ -10,7 +10,7 @@
   # SystemModule Options
   custom = {
     # style
-    stylix.colorTheme = "nord";
+    stylix.colorTheme = "gruvbox-material-dark-soft";
 
     # common
     btrbk.enable = true;
