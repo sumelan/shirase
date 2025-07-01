@@ -1,5 +1,7 @@
 {
   pkgs,
+  config,
+  user,
   host,
   ...
 }:
@@ -13,29 +15,24 @@
   environment.systemPackages = with pkgs; [ networkmanagerapplet ];
 
   # Set your time zone
-  time.timeZone = "Asia/Tokyo";
+  time = {
+    inherit (config.profiles.${user}) timeZone;
+    hardwareClockInLocalTime = true;
+  };
 
-  i18n = {
+  i18n = rec {
     # Select internationalisation properties
-    defaultLocale = "ja_JP.UTF-8";
-    # Select internationalisation properties
+    inherit (config.profiles.${user}) defaultLocale;
     extraLocaleSettings = {
-      LC_ADDRESS = "ja_JP.UTF-8";
-      LC_IDENTIFICATION = "ja_JP.UTF-8";
-      LC_MEASUREMENT = "ja_JP.UTF-8";
-      LC_MONETARY = "ja_JP.UTF-8";
-      LC_NAME = "ja_JP.UTF-8";
-      LC_NUMERIC = "ja_JP.UTF-8";
-      LC_PAPER = "ja_JP.UTF-8";
-      LC_TELEPHONE = "ja_JP.UTF-8";
-      LC_TIME = "ja_JP.UTF-8";
-    };
-    # Japanese Input
-    inputMethod = {
-      enable = true;
-      type = "fcitx5";
-      fcitx5.addons = with pkgs; [ fcitx5-mozc ];
-      fcitx5.waylandFrontend = true;
+      LC_ADDRESS = defaultLocale;
+      LC_IDENTIFICATION = defaultLocale;
+      LC_MEASUREMENT = defaultLocale;
+      LC_MONETARY = defaultLocale;
+      LC_NAME = defaultLocale;
+      LC_NUMERIC = defaultLocale;
+      LC_PAPER = defaultLocale;
+      LC_TELEPHONE = defaultLocale;
+      LC_TIME = defaultLocale;
     };
   };
 

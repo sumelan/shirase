@@ -12,9 +12,9 @@
       {
         command = ush "nm-applet";
       }
-      {
-        command = ush "fcitx5 -d -r";
-      }
+      #     {
+      #       command = ush "fcitx5 -d -r";
+      #     }
       {
         command = ush "${lib.getExe pkgs.brightnessctl} set 5%";
       }

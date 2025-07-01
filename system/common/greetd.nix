@@ -16,7 +16,7 @@
     settings = {
       default_session =
         let
-          mainMonitor = config.hm.monitors.${config.hm.lib.monitors.mainMonitorName};
+          inherit (config.hm.lib.monitors) mainMonitor;
           mainScale = mainMonitor.scale |> builtins.toString;
           mainMode = "${mainMonitor.mode.width |> builtins.toString}x${
             mainMonitor.mode.height |> builtins.toString

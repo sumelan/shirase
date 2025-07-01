@@ -1,10 +1,9 @@
 {
-  description = "Shirase";
+  description = "Shirase: sumelan's nixos configuration";
 
   inputs = {
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
     home-manager-stable = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -14,130 +13,95 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    impermanence.url = "github:nix-community/impermanence";
-
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    # keep-sorted start block=yes
     agenix.url = "github:ryantm/agenix";
-
-    niri.url = "github:sodiboo/niri-flake";
-
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    way-edges = {
-      url = "github:way-edges/way-edges";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    impermanence.url = "github:nix-community/impermanence";
+    niri.url = "github:sodiboo/niri-flake";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    sherlock = {
+      url = "github:Skxxtz/sherlock";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    way-edges = {
+      url = "github:way-edges/way-edges";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # keep-sorted end
   };
 
   outputs =
-    inputs@{ self, nixpkgs, ... }:
+    inputs@{
+      self,
+      nixpkgs,
+      treefmt-nix,
+      ...
+    }:
     let
+      inherit (self) outputs;
+      inherit (nixpkgs) legacyPackages;
+
       # Get the extended lib from ./lib/default.nix
       lib = import ./lib { inherit inputs nixpkgs; };
 
-      mkSystem =
-        host:
-        {
-          user ? throw ''Please specify user value, like user = "foo"'',
-          hardware ? throw ''Please specify hardware value, like hardware = "laptop"'',
-          packages ? "stable", # nixpkgs branch to use, stable or unstable
-          system ? "x86_64-linux",
-        }:
-        let
-          selectedNixpkgs = if packages == "stable" then inputs.nixpkgs-stable else inputs.nixpkgs-unstable;
-          selectedHomeManager =
-            if packages == "stable" then inputs.home-manager-stable else inputs.home-manager-unstable;
-
-          systemPkgs = import selectedNixpkgs {
-            inherit system;
-            config = {
-              allowUnfree = true;
-              allowBroken = false;
-              allowUnsupportedSystem = false;
-            };
-          };
-        in
-        lib.nixosSystem {
-          inherit system;
-          pkgs = systemPkgs;
-
-          specialArgs = {
-            inherit
-              self
-              inputs
-              host
-              user
-              ;
-            isLaptop = hardware == "laptop";
-            isDesktop = hardware == "desktop";
-          };
-
-          modules = [
-            ./hosts/${host} # host's system setting
-            ./hosts/${host}/hardware.nix # hardware-config
-            ./system # system module
-            ./overlays
-            selectedHomeManager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = {
-                  inherit
-                    self
-                    inputs
-                    host
-                    user
-                    ;
-                  isLaptop = hardware == "laptop";
-                  isDesktop = hardware == "desktop";
-                };
-                users.${user} = {
-                  imports = [
-                    ./hosts/${host}/home.nix # host's user setting
-                    ./home-manager # home-manager module
-                  ];
-                };
-              };
-            }
-            (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" user ]) # alias for home-manager
-          ];
-        };
+      forAllSystems = lib.genAttrs [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
+      forAllPkgs = f: forAllSystems (system: f legacyPackages.${system});
+      treefmtEval = forAllPkgs (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in
     {
-      # device profile
-      nixosConfigurations = {
-        acer = mkSystem "acer" {
-          user = "sumelan";
-          hardware = "laptop";
-          packages = "unstable";
+      # Your custom packages, accessible through 'nix build', 'nix shell', etc
+      packages = forAllPkgs (pkgs: import ./pkgs pkgs);
+
+      # Formatter for your nix files, available through 'nix fmt'
+      formatter = forAllPkgs (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+
+      checks = forAllSystems (system: {
+        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            flake-checker = {
+              enable = true;
+              after = [ "treefmt-nix" ];
+            };
+            treefmt = {
+              enable = true;
+              package = outputs.formatter.${system};
+            };
+          };
         };
-        sakura = mkSystem "sakura" {
-          user = "sumelan";
-          hardware = "desktop";
-          packages = "unstable";
-        };
-      };
+      });
+
+      # Your custom packages and modifications, exported as overlays
+      overlays = import ./overlays { };
+
+      # NixOS configuration entrypoint
+      nixosConfigurations = import ./hosts { inherit self inputs lib; };
     };
 }

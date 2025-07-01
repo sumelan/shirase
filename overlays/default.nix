@@ -1,27 +1,11 @@
-{ pkgs, inputs, ... }:
-{
-  nixpkgs.overlays = [
-    # use niri flake
-    inputs.niri.overlays.niri
+_: {
+  # This one brings our custom packages from the 'pkgs' directory
+  additions = final: _prev: import ../pkgs final.pkgs;
 
-    (final: prev: {
-      # nautilus
-      nautilus = prev.nautilus.overrideAttrs (nprev: {
-        buildInputs =
-          nprev.buildInputs
-          ++ (with pkgs.gst_all_1; [
-            gst-plugins-good
-            gst-plugins-bad
-          ]);
-      });
-
-      # fix nix package count for nitch
-      nitch = prev.nitch.overrideAttrs (o: {
-        patches = (o.patches or [ ]) ++ [ ./nitch-nix-pkgs-count.patch ];
-      });
-
-      # use nixfmt-rfc-style as the default
-      nixfmt = prev.nixfmt-rfc-style;
-    })
-  ];
+  # You can change versions, add patches, set compilation flags, anything really.
+  # https://nixos.wiki/wiki/Overlays
+  modifications = _final: prev: {
+    # keep-sorted start block=yes newline_separated=yes
+    # keep-sorted end
+  };
 }

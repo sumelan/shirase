@@ -5,12 +5,11 @@ _: {
     ./boot.nix
     ./configuration.nix
     ./filesystem.nix
-    ./gh.nix
     ./greetd.nix
     ./impermanence.nix
     ./niri.nix
     ./nix.nix
     ./pipewire.nix
-    ./users.nix
+    ./root.nix
   ];
 }

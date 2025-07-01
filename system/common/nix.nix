@@ -8,8 +8,7 @@
   ...
 }:
 {
-  # execute shebangs that assume hardcoded shell paths
-  services.envfs.enable = true;
+  services.envfs.enable = true; # execute shebangs that assume hardcoded shell paths
   system = {
     # envfs sets usrbinenv activation script to "" with mkForce
     activationScripts.usrbinenv = lib.mkOverride (50 - 1) ''
@@ -32,7 +31,6 @@
     systemPackages = with pkgs; [
       nix-init
       nix-update
-      nixfmt-rfc-style
     ];
   };
 
@@ -76,7 +74,7 @@
             type = "indirect";
             id = "nixpkgs-master";
           };
-          # the flake reference from: github:NixOS/nixpkgs 
+          # the flake reference from: github:NixOS/nixpkgs
           to = {
             type = "github";
             owner = "NixOS";

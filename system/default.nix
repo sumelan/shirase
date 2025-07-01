@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  user,
   isLaptop,
   ...
 }:
@@ -22,10 +23,8 @@
 
   config = {
     services = {
-      # automount disks
-      gvfs.enable = true;
-      # disable accidentary push powerkey
-      logind.powerKey = lib.mkIf isLaptop "ignore";
+      gvfs.enable = true; # automount disks
+      logind.powerKey = lib.mkIf isLaptop "ignore"; # disable accidentary push powerkey
     };
 
     programs = {
@@ -35,9 +34,8 @@
 
     environment = {
       etc = {
-        # Set of files that have to be linked in /etc
-        # universal git settings
-        "gitconfig".text = config.hm.xdg.configFile."git/config".text;
+        # Set of files that have to be linked in /etc/=
+        "gitconfig".text = config.hm.xdg.configFile."git/config".text; # universal git settings
         # get gparted to use system theme
         "xdg/gtk-3.0/settings.ini".text = config.hm.xdg.configFile."gtk-3.0/settings.ini".text;
         "xdg/gtk-4.0/settings.ini".text = config.hm.xdg.configFile."gtk-4.0/settings.ini".text;
@@ -45,15 +43,12 @@
 
       # install fish completions for fish
       # https://github.com/nix-community/home-manager/pull/2408
-      pathsToLink =
-        [ "/share/fish" ]
-        # image preview in Nautilus
-        ++ [ "share/thumbnailers" ];
+      pathsToLink = [ "/share/fish" ];
 
       variables = {
-        TERMINAL = lib.getExe config.hm.custom.terminal.package;
-        EDITOR = "nvim";
-        VISUAL = "nvim";
+        TERMINAL = lib.getExe config.profiles.${user}.defaultTerminal.package;
+        EDITOR = lib.getExe config.profiles.${user}.defaultEditor.package;
+        VISUAL = lib.getExe config.profiles.${user}.defaultEditor.package;
         NIXPKGS_ALLOW_UNFREE = "1";
         STARSHIP_CONFIG = "${config.hm.xdg.configHome}/starship.toml";
       };
@@ -81,7 +76,6 @@
           eza
           killall
           (lib.hiPrio procps) # for uptime
-          neovim
           ripgrep
           yazi
           zoxide
@@ -95,18 +89,13 @@
             meta.mainProgram = "yazi";
           })
         ]
-        ++ [
-          # HEIC image preview in Nautilus
-          pkgs.libheif
-          pkgs.libheif.out
-        ]
         ++
           # install gtk theme for root, some apps like gparted only run as root
           [
             config.hm.gtk.theme.package
             config.hm.gtk.iconTheme.package
           ]
-        ++ (lib.optional config.hm.custom.helix.enable helix);
+        ++ [ config.profiles.${user}.defaultEditor.package ];
     };
 
     # https://www.mankier.com/5/tmpfiles.d
@@ -136,8 +125,7 @@
     # setup fonts
     fonts = {
       enableDefaultPackages = true;
-      # monospace only
-      packages = [ config.hm.stylix.fonts.monospace.package ];
+      packages = [ config.hm.stylix.fonts.monospace.package ]; # install monospace font for root
     };
 
     xdg = {
@@ -157,7 +145,7 @@
       terminal-exec = {
         enable = true;
         settings = {
-          default = [ "${config.hm.custom.terminal.package.pname}.desktop" ];
+          default = [ "${config.profiles.${user}.defaultTerminal.package.pname}.desktop" ];
         };
       };
     };

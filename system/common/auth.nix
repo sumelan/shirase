@@ -1,8 +1,6 @@
 {
   lib,
   config,
-  user,
-  isDesktop,
   ...
 }:
 lib.mkMerge [
@@ -16,16 +14,6 @@ lib.mkMerge [
         KbdInteractiveAuthentication = false;
       };
     };
-    users.users =
-      let
-        pubKeys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM0zoNZpdcUfZ/Nf8Nj248D3wGlQCLld3LjPGrA6zzXs sumelan"
-        ];
-      in
-      {
-        # path of remote host's authorized_keys
-        ${user}.openssh.authorizedKeys.keys = lib.mkIf isDesktop pubKeys;
-      };
   }
 
   # keyring settings
