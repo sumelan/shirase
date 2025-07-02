@@ -6,10 +6,6 @@
 }:
 {
   nixos = import ./nixos.nix {
-    inherit
-      self
-      inputs
-      lib
-      ;
+    inherit self inputs lib;
   };
 }
