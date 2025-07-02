@@ -25,7 +25,6 @@ in
         ehistory = "nvim ${config.xdg.dataHome}/fish/fish_history";
       };
       shellInit = ''
-        # shut up welcome message
         set fish_greeting
 
         # set options for plugins

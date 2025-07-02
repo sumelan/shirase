@@ -108,7 +108,7 @@
 
     # create symlink to dotfiles from default /etc/nixos
     custom.symlinks = {
-      "/etc/nixos" = "/persist${config.hm.home.homeDirectory}/projects/shirase";
+      "/etc/nixos" = config.hm.profiles.${user}.flakeDir;
     };
 
     programs = {

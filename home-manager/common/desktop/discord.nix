@@ -8,8 +8,10 @@
   home.packages = with pkgs; [ webcord ];
 
   programs.niri.settings = {
-    binds."Mod+W" = config.niri-lib.open {
-      app = pkgs.webcord;
+    binds = {
+      "Mod+W" = config.niri-lib.open {
+        app = pkgs.webcord;
+      };
     };
     window-rules = lib.singleton {
       matches = lib.singleton {

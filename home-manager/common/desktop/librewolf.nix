@@ -71,8 +71,9 @@ in
 
     niri.settings = {
       binds = {
-        "Mod+B" = config.niri-lib.open {
-          app = pkgs.librewolf;
+        "Mod+B" = {
+          action = config.niri-lib.uwsm "librewolf";
+          hotkey-overlay.title = "Launch librewolf";
         };
       };
       # NOTE: bitwarden window cannot be floated on this method
