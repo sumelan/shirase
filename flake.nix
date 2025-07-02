@@ -80,8 +80,8 @@
       inherit (self) outputs;
       inherit (nixpkgs) legacyPackages;
 
-      # Get the extended lib from ./lib/default.nix
-      lib = import ./lib { inherit inputs self; };
+      # Get the extended lib from ./lib/custom.nix
+      lib = import ./lib/custom.nix { inherit inputs self; };
 
       forAllSystems = lib.genAttrs [
         "x86_64-linux"
@@ -112,9 +112,6 @@
           };
         };
       });
-
-      # Your custom packages and modifications, exported as overlays
-      overlays = import ./overlays { };
 
       # NixOS configuration entrypoint
       nixosConfigurations = import ./hosts { inherit self inputs lib; };

@@ -107,18 +107,12 @@
             ];
         };
       };
-      niri.settings.binds =
-        with config.lib.niri.actions;
-        let
-          ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
-        in
-        {
-          "Mod+Escape" = {
-            action = ush "hyprlock";
-            hotkey-overlay.title = "Screenlock";
-            allow-when-locked = true; # usefull when screen-locker crashed
-          };
+      niri.settings.binds = {
+        "Mod+Escape" = config.niri-lib.run {
+          cmd = "hyprlock";
+          locked = "allow";
         };
+      };
     };
   };
 }

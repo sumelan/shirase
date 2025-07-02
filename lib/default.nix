@@ -1,9 +1,8 @@
 {
-  inputs,
   self,
+  inputs,
+  lib,
   ...
 }:
-inputs.nixpkgs.lib.extend (
-  _: _: {
-  }
-)
+{
+}

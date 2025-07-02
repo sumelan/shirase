@@ -2,24 +2,21 @@
 {
   programs.niri.settings.spawn-at-startup =
     let
-      ush = program: [
-        "sh"
+      fish = cmd: [
+        "fish"
         "-c"
-        "uwsm app -- ${program}"
+        cmd
       ];
     in
     [
       {
-        command = ush "nm-applet";
-      }
-      #     {
-      #       command = ush "fcitx5 -d -r";
-      #     }
-      {
-        command = ush "${lib.getExe pkgs.brightnessctl} set 5%";
+        command = fish "nm-applet";
       }
       {
-        command = ush "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store";
+        command = fish "${lib.getExe pkgs.brightnessctl} set 5%";
+      }
+      {
+        command = fish "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store";
       }
     ];
 

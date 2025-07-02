@@ -15,24 +15,20 @@
     services.hypridle = {
       enable = true;
       settings = {
-        general =
-          let
-            concatCommands = l: lib.concatStringsSep "; " l;
-          in
-          {
-            ignore_dbus_inhibit = false;
-            # exec hyprlock unless already running
-            lock_cmd = "pidof hyprlock || hyprlock";
-            # kill hyprlock
-            unlock_cmd = "pkill -SIGUSR1 hyprlock";
-            # stop playing when lock-session
-            before_sleep_cmd = concatCommands [
-              "loginctl lock-session"
-              "playerctl pause"
-            ];
-            # to avoid having to press a key twice to run on the display.
-            after_sleep_cmd = "niri msg action power-on-monitors";
-          };
+        general = {
+          ignore_dbus_inhibit = false;
+          # exec hyprlock unless already running
+          lock_cmd = "pidof hyprlock || hyprlock";
+          # kill hyprlock
+          unlock_cmd = "pkill -SIGUSR1 hyprlock";
+          # stop playing when lock-session
+          before_sleep_cmd = lib.concatStringsSep "; " [
+            "loginctl lock-session"
+            "playerctl pause"
+          ];
+          # to avoid having to press a key twice to run on the display.
+          after_sleep_cmd = "niri msg action power-on-monitors";
+        };
 
         listener = [
           {

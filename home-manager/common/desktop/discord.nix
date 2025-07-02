@@ -8,17 +8,9 @@
   home.packages = with pkgs; [ webcord ];
 
   programs.niri.settings = {
-    binds =
-      with config.lib.niri.actions;
-      let
-        ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
-      in
-      {
-        "Mod+W" = {
-          action = ush "webcord";
-          hotkey-overlay.title = "WebCord";
-        };
-      };
+    binds."Mod+W" = config.niri-lib.open {
+      app = pkgs.webcord;
+    };
     window-rules = lib.singleton {
       matches = lib.singleton {
         app-id = "^(WebCord)$";

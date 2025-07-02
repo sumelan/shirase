@@ -58,20 +58,18 @@
         };
       };
   };
-  programs.niri.settings.binds =
-    with config.lib.niri.actions;
-    let
-      ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
-    in
-    {
-      "Mod+N" = {
-        action = ush "dunstctl history-pop";
-        hotkey-overlay.title = "Show Notification History";
-      };
-      "Mod+Shift+N" = {
-        action = ush "dunstctl close-all";
-        hotkey-overlay.title = "Dismiss Notification";
-      };
+  programs.niri.settings.binds = {
+    "Mod+N" = config.niri-lib.run {
+      cmd = "dunstctl history-pop";
     };
+    "Mod+Shift+N" = config.niri-lib.run {
+      cmd = "dunstctl close-all";
+    };
+    "Mod+Alt+N" = config.niri-lib.run {
+      cmd = "dunstctl history-clear";
+      osd = pkgs.swayosd;
+      args = "--monitor ${config.lib.monitors.mainMonitorName} --custom-message='History Cleared' --custom-icon=notification";
+    };
+  };
   stylix.targets.dunst.enable = false;
 }

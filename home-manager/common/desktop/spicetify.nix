@@ -45,17 +45,17 @@
   services.playerctld.enable = true;
 
   programs.niri.settings = {
-    binds =
-      with config.lib.niri.actions;
-      let
-        ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
-      in
-      {
-        "Mod+S" = {
-          action = ush "spotify";
-          hotkey-overlay.title = "Spotify";
-        };
+    binds = {
+      "Mod+S" = {
+        action = config.niri-lib.uwsm (
+          lib.concatStringsSep " " [
+            "spotify"
+            "--wayland-text-input-version=3"
+          ]
+        );
+        hotkey-overlay.title = "Launch spotify";
       };
+    };
     window-rules = [
       {
         matches = lib.singleton {

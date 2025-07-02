@@ -18,15 +18,15 @@
 
     hm.programs.niri.settings.spawn-at-startup =
       let
-        ush = program: [
-          "sh"
+        fish = cmd: [
+          "fish"
           "-c"
-          "uwsm app -- ${program}"
+          cmd
         ];
       in
       [
         {
-          command = ush "solaar -w hide";
+          command = fish "solaar -w hide";
         }
       ];
   };

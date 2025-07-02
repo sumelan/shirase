@@ -53,15 +53,15 @@
 
     switch-events =
       let
-        ush = program: [
-          "sh"
+        fish = cmd: [
+          "fish"
           "-c"
-          "uwsm app -- ${program}"
+          cmd
         ];
       in
       {
-        lid-close.action.spawn = ush "niri msg action power-off-monitors";
-        lid-open.action.spawn = ush "niri msg action power-on-monitors";
+        lid-close.action.spawn = fish "niri msg action power-off-monitors";
+        lid-open.action.spawn = fish "niri msg action power-on-monitors";
       };
   };
 }

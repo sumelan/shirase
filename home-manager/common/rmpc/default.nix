@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     ./theme.nix
@@ -184,17 +184,11 @@
     };
 
     niri.settings = {
-      binds =
-        with config.lib.niri.actions;
-        let
-          ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
-        in
-        {
-          "Mod+Shift+M" = {
-            action = ush "${config.custom.terminal.exec} -T '󱘗 Rusty Music Player Client' --app-id rmpc rmpc";
-            hotkey-overlay.title = "Rusty Music Player Client";
-          };
+      binds = {
+        "Mod+M" = config.niri-lib.open-tui {
+          app = pkgs.rmpc;
         };
+      };
       window-rules = [
         {
           matches = [ { app-id = "^(rmpc)$"; } ];

@@ -1,5 +1,4 @@
 {
-  lib,
   config,
   pkgs,
   ...
@@ -51,70 +50,62 @@
     }
   '';
 
-  programs.niri.settings.binds =
-    with config.lib.niri.actions;
-    let
-      ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
-      osdCommand = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName}";
-    in
-    {
-      # audio
-      "XF86AudioRaiseVolume" = {
-        action = ush "${osdCommand} --output-volume raise";
-        allow-when-locked = true; # work even when the session is locked
-      };
-      "XF86AudioLowerVolume" = {
-        action = ush "${osdCommand} --output-volume lower";
-        allow-when-locked = true;
-      };
-      "XF86AudioMute" = {
-        action = ush "${osdCommand} --output-volume mute-toggle";
-        allow-when-locked = true;
-      };
-      "XF86AudioMicMute" = {
-        action = ush "${osdCommand} --input-volume mute-toggle";
-        allow-when-locked = true;
-      };
-      "XF86AudioPlay" = {
-        action = ush "${osdCommand} --playerctl=play-pause";
-        allow-when-locked = true;
-      };
-      "XF86AudioPause" = {
-        action = ush "${osdCommand} --playerctl=play-pause";
-        allow-when-locked = true;
-      };
-      "XF86AudioNext" = {
-        action = ush "${osdCommand} --playerctl=next";
-        allow-when-locked = true;
-      };
-      "XF86AudioPrev" = {
-        action = ush "${osdCommand} --playerctl=previous";
-        allow-when-locked = true;
-      };
-
-      # brightness
-      "XF86MonBrightnessUp" = {
-        action = ush "${osdCommand} --brightness raise";
-        allow-when-locked = true;
-      };
-      "XF86MonBrightnessDown" = {
-        action = ush "${osdCommand} --brightness lower";
-        allow-when-locked = true;
-      };
-
-      # fcitx5
-      "Ctrl+Space" = {
-        action = ush "fcitx5-remote -t && ${osdCommand} --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard";
-      };
-
-      # clear clipboard cache
-      "Mod+Ctrl+V" = {
-        action = ush "rm $XDG_CACHE_HOME/cliphist/db && ${osdCommand} --custom-message='Clipboard Cleared' --custom-icon=edit-paste";
-        hotkey-overlay.title = "Clear Clipboard History";
-      };
-      "Mod+Alt+N" = {
-        action = ush "${lib.getExe' pkgs.dunst "dunstctl"} history-clear && ${osdCommand}  --custom-message='History Cleared' --custom-icon=notification";
-        hotkey-overlay.title = "Clear Notification History";
-      };
+  programs.niri.settings.binds = {
+    # audio
+    "XF86AudioRaiseVolume" = config.niri-lib.run {
+      cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --output-volume raise";
+      locked = "allow";
     };
+    "XF86AudioLowerVolume" = config.niri-lib.run {
+      cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --output-volume lower";
+      locked = "allow";
+    };
+    "XF86AudioMute" = config.niri-lib.run {
+      cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --output-volume mute-toggle";
+      locked = "allow";
+    };
+    "XF86AudioMicMute" = config.niri-lib.run {
+      cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --input-volume mute-toggle";
+      locked = "allow";
+    };
+    "XF86AudioPlay" = config.niri-lib.run {
+      cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=play-pause";
+      locked = "allow";
+    };
+    "XF86AudioPause" = config.niri-lib.run {
+      cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=play-pause";
+      locked = "allow";
+    };
+    "XF86AudioNext" = config.niri-lib.run {
+      cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=next";
+      locked = "allow";
+    };
+    "XF86AudioPrev" = config.niri-lib.run {
+      cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=previous";
+      locked = "allow";
+    };
+    # brightness
+    "XF86MonBrightnessUp" = config.niri-lib.run {
+      cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --brightness raise";
+      locked = "allow";
+    };
+    "XF86MonBrightnessDown" = config.niri-lib.run {
+      cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --brightness lower";
+      locked = "allow";
+    };
+
+    # fcitx5
+    "Ctrl+Space" = config.niri-lib.run {
+      cmd = "fcitx5-remote -t";
+      osd = pkgs.swayosd;
+      args = "--monitor ${config.lib.monitors.mainMonitorName} --custom-message=(fcitx5-remote -n) --custom-icon=input-keyboard";
+    };
+
+    # clear clipboard cache
+    "Mod+Ctrl+V" = config.niri-lib.run {
+      cmd = "rm $XDG_CACHE_HOME/cliphist/db";
+      osd = pkgs.swayosd;
+      args = "--monitor ${config.lib.monitors.mainMonitorName} --custom-message='Clipboard Cleared' --custom-icon=edit-paste";
+    };
+  };
 }

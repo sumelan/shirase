@@ -70,17 +70,11 @@ in
     };
 
     niri.settings = {
-      binds =
-        with config.lib.niri.actions;
-        let
-          ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
-        in
-        {
-          "Mod+B" = {
-            action = ush "librewolf";
-            hotkey-overlay.title = "Librewolf";
-          };
+      binds = {
+        "Mod+B" = config.niri-lib.open {
+          app = pkgs.librewolf;
         };
+      };
       # NOTE: bitwarden window cannot be floated on this method
       # https://github.com/hyprwm/Hyprland/issues/3835
       window-rules = [

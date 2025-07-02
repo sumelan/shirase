@@ -57,7 +57,7 @@ in
           name = "Ubuntu Nerd Font";
         };
         monospace = {
-          package = pkgs.maple-mono.NF;
+          package = pkgs.maple-mono.NF; # Maple Mono NF (Ligature hinted)
           name = "Maple Mono NF";
         };
         emoji = {

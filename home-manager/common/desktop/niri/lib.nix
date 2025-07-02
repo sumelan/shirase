@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   user,
   ...
 }:
@@ -15,7 +16,6 @@
     let
       inherit (config.lib.niri) actions;
       terminal = config.profiles.${user}.defaultTerminal.package;
-      osdCommand = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName}";
     in
     {
       niri-lib = rec {
@@ -36,7 +36,7 @@
         open-tui =
           {
             app,
-            app-id,
+            app-id ? lib.getName app,
           }:
           {
             action = spawn' "${lib.getExe terminal} -o confirm_os_window_close=0 --app-id=${app-id} ${lib.getName app}";
@@ -46,26 +46,29 @@
         run =
           {
             cmd,
-            title ? null,
             osd ? null,
-            message ? null,
-            icon ? null,
+            args ? "",
+            title ? null,
+            locked ? null,
+            repeat ? null,
           }:
           {
             action.spawn =
-              if osd == null then
+              if osd == pkgs.swayosd then
                 [
                   "fish"
                   "-c"
-                  cmd
+                  "${cmd} && ${lib.getName osd}-client ${args}"
                 ]
               else
                 [
                   "fish"
                   "-c"
-                  "${cmd} && ${osdCommand} --custom-message=${message} --custom-icon=${icon}"
+                  cmd
                 ];
             hotkey-overlay = if title == null then { hidden = true; } else { inherit title; };
+            allow-when-locked = if locked == null then false else true;
+            repeat = if repeat == null then true else false;
           };
       };
     };

@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  user,
   isLaptop,
   ...
 }:
@@ -94,7 +95,7 @@ in
             "${sansSerif.name}:size=${sizes.popups - sizeParamater |> builtins.toString}";
           icon-theme = config.stylix.iconTheme.dark;
           match-counter = true;
-          terminal = "${config.custom.terminal.exec}";
+          terminal = "${lib.getExe config.profiles.${user}.defaultTerminal.package}";
           width = 24;
           lines = 12;
           horizontal-pad = 25;

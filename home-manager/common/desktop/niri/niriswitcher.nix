@@ -227,23 +227,16 @@ in
         '';
     };
 
-    niri.settings.binds =
-      with config.lib.niri.actions;
-      let
-        ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
-      in
-      {
-        "${modifierKey}+Tab" = {
-          action = ush "niriswitcherctl show --window";
-          repeat = false;
-          hotkey-overlay.title = "Show applications on current window";
-        };
-        "${modifierKey}+Grave" = {
-          action = ush "niriswitcherctl show --workspace";
-          repeat = false;
-          hotkey-overlay.title = "Show applications on last used workspace";
-        };
+    niri.settings.binds = {
+      "${modifierKey}+Tab" = config.niri-lib.run {
+        cmd = "niriswitcherctl show --window";
+        repeat = "no";
       };
+      "${modifierKey}+Grave" = config.niri-lib.run {
+        cmd = "niriswitcherctl show --workspace";
+        repeat = "no";
+      };
+    };
   };
 
   systemd.user.services = {

@@ -19,6 +19,7 @@ in
       nix-tree
       nixpkgs-review
       nurl
+      nvf
     ];
   };
 

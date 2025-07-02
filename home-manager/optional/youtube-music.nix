@@ -4,43 +4,37 @@
   pkgs,
   ...
 }:
+let
+  ymPkgs = pkgs.callPackage pkgs.symlinkJoin {
+    name = "youtube-music";
+    paths = [
+      pkgs.youtube-music
+    ];
+    buildInputs = [
+      pkgs.makeWrapper
+    ];
+    postBuild = ''
+      wrapProgram $out/bin/youtube-music \
+        --add-flags '--enable-wayland-ime --wayland-text-input-version=3'
+    '';
+  };
+in
 {
   options.custom = with lib; {
     youtube-music.enable = mkEnableOption "YoutubeMusic";
   };
 
   config = lib.mkIf config.custom.youtube-music.enable {
-    home.packages = [
-      pkgs.playerctl
-      (pkgs.callPackage pkgs.symlinkJoin {
-        name = "youtube-music";
-        paths = [
-          pkgs.youtube-music
-        ];
-        buildInputs = [
-          pkgs.makeWrapper
-        ];
-        postBuild = ''
-          wrapProgram $out/bin/youtube-music \
-            --add-flags '--enable-wayland-ime --wayland-text-input-version=3'
-        '';
-      })
-    ];
+    home.packages = [ ymPkgs ];
 
     services.playerctld.enable = true;
 
     programs.niri.settings = {
-      binds =
-        with config.lib.niri.actions;
-        let
-          ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
-        in
-        {
-          "Mod+Y" = {
-            action = ush "youtube-music";
-            hotkey-overlay.title = "YouTube Music";
-          };
+      binds = {
+        "Mod+Y" = config.niri-lib.open {
+          app = ymPkgs;
         };
+      };
     };
 
     custom.persist = {

@@ -1,4 +1,8 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 {
 
   options.custom = with lib; {
@@ -32,18 +36,6 @@
           window-padding-y = 12;
         };
       };
-
-      niri.settings.binds =
-        with config.lib.niri.actions;
-        let
-          ush = program: spawn "sh" "-c" "uwsm app -- ${program}";
-        in
-        {
-          "Mod+Return" = {
-            action = ush "ghostty";
-            hotkey-overlay.title = "Ghostty";
-          };
-        };
     };
   };
 }

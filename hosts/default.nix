@@ -22,10 +22,6 @@ let
         inherit system;
         config.allowUnfree = true;
       };
-    in
-    lib.nixosSystem {
-      inherit system;
-      pkgs = systemPkgs;
 
       specialArgs = {
         inherit
@@ -37,32 +33,28 @@ let
         isLaptop = hardware == "laptop";
         isDesktop = hardware == "desktop";
       };
-
+    in
+    lib.nixosSystem {
+      inherit system specialArgs;
+      pkgs = systemPkgs;
       modules =
+        # host's system and hardware config
         [
           ./${host}
           ./${host}/hardware.nix
         ]
-        ++ [ ../users/${user}.nix ]
-        ++ [ ../system ]
+        ++ [ ../users/${user}.nix ] # user config
+        ++ [ ../system ] # system-modules
+        ++ [ ../overlays ] # nixpkgs.overlay
         ++ [
           selectedHomeManager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = {
-                inherit
-                  self
-                  inputs
-                  host
-                  user
-                  ;
-                isLaptop = hardware == "laptop";
-                isDesktop = hardware == "desktop";
-              };
+              extraSpecialArgs = specialArgs;
               users.${user} = {
-                imports = [ ./${host}/home.nix ] ++ [ ../home-manager ];
+                imports = [ ./${host}/home.nix ] ++ [ ../home-manager ]; # host's home-manager modules
               };
             };
           }

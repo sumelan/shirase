@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  user,
   ...
 }:
 {
@@ -51,7 +52,9 @@
             "clock" = {
               format = "<span size='${icon_size}' foreground='${base0E}'> </span> {:%a %d %H:%M}";
               tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-              on-click = "${config.custom.terminal.exec} -T ' tty-clock' --class=tty-clock ${lib.getExe pkgs.tty-clock} -s -c -C 5";
+              on-click = "${
+                lib.getExe config.profiles.${user}.defaultTerminal.package
+              } -T ' tty-clock' --class=tty-clock ${lib.getExe pkgs.tty-clock} -s -c -C 5";
             };
             "battery" = {
               states = {
