@@ -41,7 +41,7 @@ in
     nh = {
       enable = true;
       clean.extraArgs = "--keep 5";
-      flake = config.profiles.${user}.flakeDir;
+      flake = config.profiles.${user}.flakePath;
     };
     niri.settings.binds = {
       "Mod+U" = config.niri-lib.open-tui {

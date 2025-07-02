@@ -2,19 +2,21 @@
   lib,
   pkgs,
   config,
-  user,
   isDesktop,
   ...
 }:
+let
+  username = "sumelan";
+in
 {
   imports = [ ./. ];
 
-  users.users.${user} = {
+  users.users.${username} = {
     isNormalUser = true;
     # create a password with $username with:
     # mkpasswd -m sha-512 'PASSWORD' | sudo tee -a /persist/etc/shadow/${username}
     initialPassword = "password";
-    hashedPasswordFile = "/persist/etc/shadow/${user}";
+    hashedPasswordFile = "/persist/etc/shadow/${username}";
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -27,8 +29,8 @@
       in
       lib.mkIf isDesktop pubKeys;
   };
-  hm.profiles.${user} = {
-    flakeDir = "${config.hm.home.homeDirectory}/projects/shirase";
+  hm.profiles.${username} = {
+    flakePath = "${config.hm.home.homeDirectory}/projects/shirase";
     timeZone = "Asia/Tokyo";
     defaultLocale = "ja_JP.UTF-8";
     defaultEditor = {

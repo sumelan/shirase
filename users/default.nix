@@ -8,7 +8,7 @@
 let
   profile = lib.types.submodule {
     options = {
-      flakeDir = lib.mkOption {
+      flakePath = lib.mkOption {
         type = lib.types.path;
         description = "filesystem path that contains dotfiles";
         default = "";

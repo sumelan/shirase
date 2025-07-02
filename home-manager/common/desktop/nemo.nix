@@ -35,10 +35,10 @@
   gtk.gtk3.bookmarks =
     let
       homeDir = config.home.homeDirectory;
-      inherit (config.profiles.${user}) flakeDir;
+      inherit (config.profiles.${user}) flakePath;
     in
     [
-      "file://${flakeDir}"
+      "file://${flakePath}"
       "file://${homeDir}/Downloads"
       "file://${homeDir}/Pictures/Wallpapers"
       "file:///persist Persist"

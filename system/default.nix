@@ -108,7 +108,7 @@
 
     # create symlink to dotfiles from default /etc/nixos
     custom.symlinks = {
-      "/etc/nixos" = config.hm.profiles.${user}.flakeDir;
+      "/etc/nixos" = config.hm.profiles.${user}.flakePath;
     };
 
     programs = {

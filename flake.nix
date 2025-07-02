@@ -81,7 +81,7 @@
       inherit (nixpkgs) legacyPackages;
 
       # Get the extended lib from ./lib/custom.nix
-      lib = import ./lib/custom.nix { inherit inputs self; };
+      lib = import ./lib/custom.nix { inherit inputs self nixpkgs; };
 
       forAllSystems = lib.genAttrs [
         "x86_64-linux"
@@ -114,6 +114,6 @@
       });
 
       # NixOS configuration entrypoint
-      nixosConfigurations = import ./hosts { inherit self inputs lib; };
+      nixosConfigurations = import ./hosts { inherit lib; };
     };
 }

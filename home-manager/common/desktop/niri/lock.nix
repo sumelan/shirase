@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }:
 {
@@ -61,50 +60,44 @@
             halign = "center";
             valign = "center";
           };
-          label =
-            let
-              dateCmd = pkgs.writers.writeFish "show_date_info" ''
-                echo "$(date +'%B %d, %A')"
-              '';
-            in
-            [
-              {
-                text = "$TIME";
-                color = "rgb(${base05})";
-                font_size = config.stylix.fonts.sizes.desktop * 9;
-                font_family = "${config.stylix.fonts.monospace.name}";
-                position = "-30, 0";
-                halign = "right";
-                valign = "top";
-              }
-              {
-                text = "cmd[update:43200000] ${dateCmd}";
-                color = "rgb(${base05})";
-                font_size = config.stylix.fonts.sizes.desktop * 4;
-                font_family = "${config.stylix.fonts.monospace.name}";
-                position = "-30, -180";
-                halign = "right";
-                valign = "top";
-              }
-              {
-                text = "cmd[update:1000] show_media_info";
-                color = "rgb(${base05})";
-                font_size = config.stylix.fonts.sizes.desktop * 2;
-                font_family = "${config.stylix.fonts.monospace.name}";
-                position = "-30, -300";
-                halign = "right";
-                valign = "top";
-              }
-              (lib.mkIf config.custom.battery.enable {
-                text = "cmd[update:1000] show_battery_info";
-                color = "rgb(${base05})";
-                font_size = config.stylix.fonts.sizes.desktop * 2;
-                font_family = "${config.stylix.fonts.monospace.name}";
-                position = "-30, -360";
-                halign = "right";
-                valign = "top";
-              })
-            ];
+          label = [
+            {
+              text = "$TIME";
+              color = "rgb(${base05})";
+              font_size = config.stylix.fonts.sizes.desktop * 9;
+              font_family = "${config.stylix.fonts.monospace.name}";
+              position = "-30, 0";
+              halign = "right";
+              valign = "top";
+            }
+            {
+              text = ''cmd[update:43200000] echo "$(date +'%B %d, %A')"'';
+              color = "rgb(${base05})";
+              font_size = config.stylix.fonts.sizes.desktop * 4;
+              font_family = "${config.stylix.fonts.monospace.name}";
+              position = "-30, -180";
+              halign = "right";
+              valign = "top";
+            }
+            {
+              text = "cmd[update:1000] write_media_info";
+              color = "rgb(${base05})";
+              font_size = config.stylix.fonts.sizes.desktop * 2;
+              font_family = "${config.stylix.fonts.monospace.name}";
+              position = "-30, -300";
+              halign = "right";
+              valign = "top";
+            }
+            (lib.mkIf config.custom.battery.enable {
+              text = "cmd[update:1000] write_battery_info";
+              color = "rgb(${base05})";
+              font_size = config.stylix.fonts.sizes.desktop * 2;
+              font_family = "${config.stylix.fonts.monospace.name}";
+              position = "-30, -360";
+              halign = "right";
+              valign = "top";
+            })
+          ];
         };
       };
       niri.settings.binds = {
