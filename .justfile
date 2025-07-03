@@ -30,7 +30,7 @@ profiles-path := "/nix/var/nix/profiles"
           >> build.log
 
     git add -A
-    git commit -m "deployed $(nixos-rebuild list-generations --flake $NH_FLAKE --json | jq '.[0].generation')"
+    git commit -m "deployed $(nixos-rebuild list-generations --flake $NH_FLAKE --json | jq '.[0].generation') on $(hostname)"
 
 [group('SYSTEM')]
 @get-updates: check
