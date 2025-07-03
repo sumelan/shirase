@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   plugins-repo = pkgs.fetchFromGitHub {
     owner = "yazi-rs";
@@ -98,8 +103,8 @@ in
 
   programs.niri.settings = {
     binds = {
-      "Mod+Shift+E" = config.niri-lib.open-tui {
-        app = pkgs.yazi;
+      "Mod+Shift+E" = lib.custom.niri.openTerminal {
+        app = "yazi";
       };
     };
     window-rules = [

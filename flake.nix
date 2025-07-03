@@ -81,7 +81,11 @@
       inherit (nixpkgs) legacyPackages;
 
       # Get the extended lib from ./lib/custom.nix
-      lib = import ./lib/custom.nix { inherit inputs self nixpkgs; };
+      lib = import ./lib/custom.nix {
+        inherit inputs self;
+        inherit (nixpkgs) lib;
+        inherit (inputs) home-manager-stable home-manager-unstable;
+      };
 
       forAllSystems = lib.genAttrs [
         "x86_64-linux"

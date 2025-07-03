@@ -1,14 +1,18 @@
 {
   inputs,
   self,
-  nixpkgs,
+  home-manager-stable,
+  home-manager-unstable,
   ...
 }:
 inputs.nixpkgs.lib.extend (
-  _: _: {
+  _final: libprev:
+  {
     custom = import ./. {
       inherit inputs self;
-      inherit (nixpkgs) lib;
+      lib = libprev;
     };
   }
+  // home-manager-stable.lib
+  // home-manager-unstable.lib
 )

@@ -59,7 +59,7 @@
       };
   };
   programs.niri.settings.binds = {
-    "Mod+N" = config.niri-lib.run {
+    "Mod+N" = lib.custom.niri.runCmd {
       cmd = "dunstctl history-pop";
     };
     "Mod+Shift+N" = config.niri-lib.run {
