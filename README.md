@@ -6,12 +6,12 @@ This is my personal nixos dotfiles, always wip.
 
 ### Btrfs + Impermanence
 
-My nixos has 1 GB for boot and the rest is btrfs root volumes. Whole volumes is
-like below.
+Whole volume has 1 GB for boot and the rest is btrfs root volumes. Volumes
+layout is like below.
 
 ```sh
 nvme0n1
-  ├── NIXOS
+  ├── NIXOS # Btrfs's Subvolume
   │     ├── /nix
   │     ├── /persist
   │     ├── /cache
@@ -20,19 +20,17 @@ nvme0n1
   └── NIXBOOT
 ```
 
-Btrfs root volume is wiped at each boot via the script but /perisit and /cache
-are remained by
+Root volume is wiped at each boot via the script but /perisit and /cache are
+remained by
 [impermanence module](https://github.com/nix-community/impermanence).
 
-Plus, /persist volume of my laptop (acer) is transferred to hdd connected to my
+Plus, /persist volume of my laptop (acer) is transferred to HDD connected to my
 desktop (sakura) over ssh using [btrbk](https://github.com/digint/btrbk).
 
-### Modularization
+### Setting per Host
 
-I use [home-manager](https://github.com/nix-community/home-manager) to manage my
-config. Each program file is contained the all configs related to that program,
-so i just exclude its file and all related setting excluded when i stop using
-it.
+You can set different setting per host; user, package branch, and default
+program.
 
 ## Automatic Install Script
 
@@ -54,17 +52,12 @@ sh <(curl -L https://raw.githubusercontent.com/Sumelan/shirase/main/install.sh)
 
 - [Guekka's blog](https://guekka.github.io/nixos-server-1/)
 
-  Thank you for his scripts, i can setup impermanence.
+  His script is used in my btrfs impermanence setup.
 
-- [tiredofit/nixos-config](https://github.com/tiredofit/nixos-config)
+- [Vortriz/dotfiles](https://github.com/Vortriz/dotfiles)
 
-  Structure in flake.nix is refered form his repo.
+  The .justfile contain many tools.
 
-- [EdenQwQ's gists](https://gist.github.com/EdenQwQ)
+- [Tyler Kelley/ZaneyOS](https://gitlab.com/Zaney/zaneyos)
 
-  Niri's config is from this gist.
-
-- [MrSom3body/dotfiles](https://github.com/MrSom3body/dotfiles) and
-  [Tyler Kelley/ZaneyOS](https://gitlab.com/Zaney/zaneyos)
-
-  This two dotfiles are for hyprland, but should be mentioned.
+  My NixOS journey began from ZaneyOS!
