@@ -29,7 +29,11 @@
         };
       in
       {
-        hotkey-overlay.skip-at-startup = true;
+        hotkey-overlay = {
+          skip-at-startup = true;
+          hide-not-bound = true;
+        };
+
         prefer-no-csd = true;
 
         xwayland-satellite.enable = config.custom.xwayland.enable;

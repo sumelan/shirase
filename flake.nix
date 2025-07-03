@@ -13,7 +13,6 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    # keep-sorted start block=yes
     agenix.url = "github:ryantm/agenix";
 
     firefox-addons = {
@@ -57,6 +56,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    swww.url = "github:LGFae/swww";
+
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,7 +67,6 @@
       url = "github:way-edges/way-edges";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # keep-sorted end
   };
 
   outputs =

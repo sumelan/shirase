@@ -227,16 +227,25 @@ in
         '';
     };
 
-    niri.settings.binds = {
-      "${modifierKey}+Tab" = lib.custom.niri.runCmd {
-        cmd = "niriswitcherctl show --window";
-        repeat = "no";
+    niri.settings.binds =
+      let
+        niriswitcher-gdbus =
+          cmd:
+          "${lib.getExe' pkgs.glib "gdbus"} call --session --dest io.github.isaksamsten.Niriswitcher --object-path /io/github/isaksamsten/Niriswitcher --method io.github.isaksamsten.Niriswitcher."
+          + cmd;
+        windowCmd = niriswitcher-gdbus "application";
+        workspaceCmd = niriswitcher-gdbus "workspace";
+      in
+      {
+        "${modifierKey}+Tab" = lib.custom.niri.runCmd {
+          cmd = windowCmd;
+          repeat = "no";
+        };
+        "${modifierKey}+Grave" = lib.custom.niri.runCmd {
+          cmd = workspaceCmd;
+          repeat = "no";
+        };
       };
-      "${modifierKey}+Grave" = lib.custom.niri.runCmd {
-        cmd = "niriswitcherctl show --workspace";
-        repeat = "no";
-      };
-    };
   };
 
   systemd.user.services = {

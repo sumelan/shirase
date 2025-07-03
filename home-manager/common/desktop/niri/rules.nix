@@ -51,6 +51,13 @@
       }
     ];
 
+    layer-rules = [
+      {
+        matches = [ { namespace = "overview"; } ];
+        place-within-backdrop = true;
+      }
+    ];
+
     switch-events =
       let
         fish = cmd: [
