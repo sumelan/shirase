@@ -1,7 +1,7 @@
 {
   lib,
-  config,
   pkgs,
+  config,
   user,
   ...
 }:
@@ -16,7 +16,7 @@
     symlinks = mkOption {
       type = types.attrsOf types.str;
       default = { };
-      description = "Symlinks to create in the format { dest = src;}";
+      description = "Symlinks to create";
     };
   };
 
@@ -42,15 +42,7 @@
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
 
-    systemd.user = {
-      # Nicely reload system units when changing configs
-      startServices = "sd-switch";
-      tmpfiles.rules = # create symlinks
-        let
-          normalizeHome = p: if (lib.hasPrefix "/home" p) then p else "${config.home.homeDirectory}/${p}";
-        in
-        lib.mapAttrsToList (dest: src: "L+ ${normalizeHome dest} - - - - ${src}") config.custom.symlinks;
-    };
+    systemd.user.startServices = "sd-switch"; # Nicely reload system units when changing configs
 
     xdg = {
       enable = true;

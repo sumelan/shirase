@@ -31,6 +31,7 @@
     systemPackages = with pkgs; [
       nix-init
       nix-update
+      nixfmt-rfc-style
     ];
   };
 

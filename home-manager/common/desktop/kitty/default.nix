@@ -1,5 +1,9 @@
 { lib, ... }:
 {
+  imports = [
+    ./kitty-search.nix
+  ];
+
   programs.kitty = {
     enable = true;
     settings = {

@@ -73,11 +73,9 @@
     inputs@{
       self,
       nixpkgs,
-      treefmt-nix,
       ...
     }:
     let
-      inherit (self) outputs;
       inherit (nixpkgs) legacyPackages;
 
       # Get the extended lib from ./lib/custom.nix
@@ -92,30 +90,10 @@
         "aarch64-linux"
       ];
       forAllPkgs = f: forAllSystems (system: f legacyPackages.${system});
-      treefmtEval = forAllPkgs (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in
     {
       # Your custom packages, accessible through 'nix build', 'nix shell', etc
-      packages = forAllPkgs (pkgs: import ./pkgs pkgs);
-
-      # Formatter for your nix files, available through 'nix fmt'
-      formatter = forAllPkgs (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
-
-      checks = forAllSystems (system: {
-        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            flake-checker = {
-              enable = true;
-              after = [ "treefmt-nix" ];
-            };
-            treefmt = {
-              enable = true;
-              package = outputs.formatter.${system};
-            };
-          };
-        };
-      });
+      packages = forAllPkgs (import ./packages);
 
       # NixOS configuration entrypoint
       nixosConfigurations = import ./hosts { inherit lib; };

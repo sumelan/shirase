@@ -5,117 +5,119 @@
   user,
   ...
 }:
-let
-  plugins-repo = pkgs.fetchFromGitHub {
-    owner = "yazi-rs";
-    repo = "plugins";
-    rev = "86d28e4fb4f25f36cc501b8cb0badb37a6b14263";
-    hash = "sha256-m/gJTDm0cVkIdcQ1ZJliPqBhNKoCW1FciLkuq7D1mxo=";
-  };
-in
 {
-  home.packages = with pkgs; [
-    ripdrag # Drag and Drop utilty written in Rust and GTK4
-    unar
-    exiftool
-  ];
-
-  home.shellAliases = {
-    lf = "yazi";
-    y = "yazi";
-  };
-
-  programs.yazi = {
-    enable = true;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-    shellWrapperName = "y";
-
-    settings = {
-      manager = {
-        show_hidden = true;
-      };
-      preview = {
-        max_width = 1000;
-        max_height = 1000;
-      };
-      # for git plugin
-      plugin.prepend_fetches = [
-        {
-          id = "git";
-          name = "*";
-          run = "git";
-        }
-        {
-          id = "git";
-          name = "*/";
-          run = "git";
-        }
-      ];
-    };
-
-    plugins = {
-      chmod = "${plugins-repo}/chmod.yazi";
-      full-border = "${plugins-repo}/full-border.yazi";
-      git = "${plugins-repo}/git.yazi";
-      toggle-pane = "${plugins-repo}/toggle-pane.yazi";
-      mount = "${plugins-repo}/mount.yazi";
-      starship = pkgs.fetchFromGitHub {
-        owner = "Rolv-Apneseth";
-        repo = "starship.yazi";
-        rev = "6a0f3f788971b155cbc7cec47f6f11aebbc148c9";
-        hash = "sha256-q1G0Y4JAuAv8+zckImzbRvozVn489qiYVGFQbdCxC98=";
-      };
-    };
-
-    initLua = ''
-      require("full-border"):setup()
-      require("git"):setup()
-      require("starship"):setup()
-    '';
-
-    keymap = {
-      manager.prepend_keymap = [
-        {
-          on = "M";
-          run = "plugin mount";
-          desc = "Open mount";
-        }
-        {
-          on = "T";
-          run = "plugin toggle-pane max-preview";
-          desc = "Maximize or restore the preview pane";
-        }
-        {
-          on = [
-            "c"
-            "m"
-          ];
-          run = "plugin chmod";
-          desc = "Chmod on selected files";
-        }
-        {
-          on = "<C-n>";
-          run = "shell --confirm 'ripdrag \"$@\" -x 2>/dev/null &'";
-        }
-      ];
-    };
-  };
-
-  programs.niri.settings = {
-    binds = {
-      "Mod+Shift+E" = lib.custom.niri.openTerminal {
-        app = pkgs.yazi;
-        terminal = config.profiles.${user}.defaultTerminal.package;
-      };
-    };
-    window-rules = [
-      {
-        matches = [ { app-id = "^(yazi)"; } ];
-        default-column-width.proportion = 0.5;
-        default-window-height.proportion = 0.5;
-        open-floating = true;
-      }
+  home = {
+    packages = with pkgs; [
+      ripdrag # Drag and Drop utilty written in Rust and GTK4
+      unar
+      exiftool
     ];
+
+    shellAliases = {
+      lf = "yazi";
+      y = "yazi";
+    };
+  };
+
+  programs = {
+    yazi = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+
+      plugins = {
+        chmod = "${pkgs.custom.yazi-plugins.src}/chmod.yazi";
+        full-border = "${pkgs.custom.yazi-plugins.src}/full-border.yazi";
+        git = "${pkgs.custom.yazi-plugins.src}/git.yazi";
+        toggle-pane = "${pkgs.custom.yazi-plugins.src}/toggle-pane.yazi";
+        mount = "${pkgs.custom.yazi-plugins.src}/mount.yazi";
+        starship = "${pkgs.custom.yazi-starship.src}";
+      };
+
+      initLua = # lua
+        ''
+          require("full-border"):setup({ type = ui.Border.ROUNDED })
+          require("git"):setup()
+          require("starship"):setup({
+            -- Custom starship configuration file to use
+            config_file = "~/.config/starship.toml",
+          })
+        '';
+
+      settings = {
+        log.enabled = true;
+        mgr = {
+          ratio = [
+            0
+            1
+            1
+          ];
+          sort_by = "alphabetical";
+          sort_sensitive = false;
+          sort_reverse = false;
+          linemode = "size";
+          show_hidden = true;
+        };
+        opener = { };
+        # settings for plugins
+        plugin = {
+          prepend_fetchers = [
+            {
+              id = "git";
+              name = "*";
+              run = "git";
+            }
+            {
+              id = "git";
+              name = "*/";
+              run = "git";
+            }
+          ];
+        };
+      };
+      keymap = {
+        manager.prepend_keymap = [
+          {
+            on = "M";
+            run = "plugin mount";
+            desc = "Open mount";
+          }
+          {
+            on = "T";
+            run = "plugin toggle-pane max-preview";
+            desc = "Maximize or restore the preview pane";
+          }
+          {
+            on = [
+              "c"
+              "m"
+            ];
+            run = "plugin chmod";
+            desc = "Chmod on selected files";
+          }
+          {
+            on = "<C-n>";
+            run = "shell --confirm 'ripdrag \"$@\" -x 2>/dev/null &'";
+          }
+        ];
+      };
+    };
+
+    niri.settings = {
+      binds = {
+        "Mod+Shift+E" = lib.custom.niri.openTerminal {
+          app = pkgs.yazi;
+          terminal = config.profiles.${user}.defaultTerminal.package;
+        };
+      };
+      window-rules = [
+        {
+          matches = [ { app-id = "^(yazi)"; } ];
+          default-column-width.proportion = 0.5;
+          default-window-height.proportion = 0.5;
+          open-floating = true;
+        }
+      ];
+    };
   };
 }

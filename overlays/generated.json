@@ -1,0 +1,44 @@
+{
+    "yazi-plugins": {
+        "cargoLocks": null,
+        "date": "2025-07-02",
+        "extract": null,
+        "name": "yazi-plugins",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "yazi-rs",
+            "repo": "plugins",
+            "rev": "e5f00e2716fd177b0ca0d313f1a6e64f01c12760",
+            "sha256": "sha256-DLcmzCmITybWrYuBpTyswtoGUimpagkyeVUWmbKjarY=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "e5f00e2716fd177b0ca0d313f1a6e64f01c12760"
+    },
+    "yazi-starship": {
+        "cargoLocks": null,
+        "date": "2025-06-01",
+        "extract": null,
+        "name": "yazi-starship",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "Rolv-Apneseth",
+            "repo": "starship.yazi",
+            "rev": "6a0f3f788971b155cbc7cec47f6f11aebbc148c9",
+            "sha256": "sha256-q1G0Y4JAuAv8+zckImzbRvozVn489qiYVGFQbdCxC98=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "6a0f3f788971b155cbc7cec47f6f11aebbc148c9"
+    }
+}

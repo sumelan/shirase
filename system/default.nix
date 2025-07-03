@@ -17,7 +17,7 @@
     symlinks = mkOption {
       type = types.attrsOf types.str;
       default = { };
-      description = "Symlinks to create in the format { dest = src;}";
+      description = "Symlinks to create";
     };
   };
 
@@ -99,16 +99,15 @@
     };
 
     # https://www.mankier.com/5/tmpfiles.d
-    systemd.tmpfiles.rules =
-      [
-        # cleanup systemd coredumps once a week
-        "D! /var/lib/systemd/coredump root root 7d"
-      ] # create symlinks
-      ++ (lib.mapAttrsToList (dest: src: "L+ ${dest} - - - - ${src}") config.custom.symlinks);
+    systemd.tmpfiles.rules = [
+      # cleanup systemd coredumps once a week
+      "D! /var/lib/systemd/coredump root root 7d"
+    ];
 
     # create symlink to dotfiles from default /etc/nixos
-    custom.symlinks = {
-      "/etc/nixos" = config.hm.profiles.${user}.flakePath;
+    custom.symlinks = lib.custom.utils.mkSymlinks {
+      dest = "/etc/nixos";
+      src = config.hm.profiles.${user}.flakePath;
     };
 
     programs = {

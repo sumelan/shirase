@@ -1,5 +1,6 @@
 _: {
   imports = [
+    ./kitty
     ./niri
     ./way-edges
     ./waybar
@@ -8,7 +9,6 @@ _: {
     ./dunst.nix
     ./easyeffects.nix
     ./fuzzel.nix
-    ./kitty.nix
     ./librewolf.nix
     ./mpv.nix
     ./nemo.nix

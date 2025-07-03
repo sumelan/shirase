@@ -12,4 +12,8 @@
   niri = import ./niri.nix {
     inherit lib;
   };
+
+  utils = import ./utils.nix {
+    inherit lib;
+  };
 }

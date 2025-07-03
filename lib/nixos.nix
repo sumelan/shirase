@@ -37,13 +37,14 @@
       inherit system specialArgs;
       pkgs = systemPkgs;
       modules =
-        # host's system and hardware config
         [
           ../hosts/${host}
           ../hosts/${host}/hardware.nix
         ]
-        ++ [ ../users/${user}.nix ] # user config
-        ++ [ ../system ] # system-modules
+        ++ [
+          ../users/${user}.nix
+          ../system
+        ]
         ++ [ ../overlays ] # nixpkgs.overlay
         ++ [
           selectedHomeManager.nixosModules.home-manager
@@ -53,7 +54,10 @@
               useUserPackages = true;
               extraSpecialArgs = specialArgs;
               users.${user} = {
-                imports = [ ../hosts/${host}/home.nix ] ++ [ ../home-manager ]; # host's home-manager modules
+                imports = [
+                  ../hosts/${host}/home.nix
+                  ../home-manager
+                ];
               };
             };
           }
