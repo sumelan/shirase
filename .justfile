@@ -1,6 +1,7 @@
 set shell := ["fish", "-c"]
 
 export NH_FLAKE := `echo $PWD`
+export HOSTNAME := `hostname`
 export NIXPKGS_ALLOW_UNFREE := "1"
 profiles-path := "/nix/var/nix/profiles"
 
@@ -21,13 +22,14 @@ profiles-path := "/nix/var/nix/profiles"
 
 [group('SYSTEM')]
 @deploy *args: check
+    touch {{ HOSTNAME }}_build.log
     nh os switch {{ args }}
 
-    echo -e "\n---\n\n$(date '+%x %X')" >> build.log
+    echo -e "\n---\n\n$(date '+%x %X')" >> {{ HOSTNAME }}_build.log
     nvd diff \
-      "$(command rg -N '>>> ({{ profiles-path }}/system-[0-9]+-link)' --only-matching --replace '$1' build.log | tail -1)" \
+      "$(command rg -N '>>> ({{ profiles-path }}/system-[0-9]+-link)' --only-matching --replace '$1' {{ HOSTNAME }}_build.log | tail -1)" \
         "$(command ls -d1v {{ profiles-path }}/system-*-link | tail -n 1)" \
-          >> build.log
+          >> {{ HOSTNAME }}_build.log
 
     git add -A
     git commit -m "deployed $(nixos-rebuild list-generations --flake $NH_FLAKE --json | jq '.[0].generation') on $(hostname)"
