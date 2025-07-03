@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  user,
   ...
 }:
 let
@@ -104,7 +105,8 @@ in
   programs.niri.settings = {
     binds = {
       "Mod+Shift+E" = lib.custom.niri.openTerminal {
-        app = "yazi";
+        app = pkgs.yazi;
+        terminal = config.profiles.${user}.defaultTerminal.package;
       };
     };
     window-rules = [

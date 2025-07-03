@@ -59,16 +59,11 @@
       };
   };
   programs.niri.settings.binds = {
-    "Mod+N" = lib.custom.niri.runCmd {
+    "Mod+Shift+N" = lib.custom.niri.runCmd {
       cmd = "dunstctl history-pop";
     };
-    "Mod+Shift+N" = config.niri-lib.run {
+    "Mod+Alt+N" = lib.custom.niri.runCmd {
       cmd = "dunstctl close-all";
-    };
-    "Mod+Alt+N" = config.niri-lib.run {
-      cmd = "dunstctl history-clear";
-      osd = pkgs.swayosd;
-      args = "--monitor ${config.lib.monitors.mainMonitorName} --custom-message='History Cleared' --custom-icon=notification";
     };
   };
   stylix.targets.dunst.enable = false;

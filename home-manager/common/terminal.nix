@@ -1,4 +1,5 @@
 {
+  lib,
   config,
   pkgs,
   user,
@@ -50,7 +51,7 @@
     };
 
     niri.settings.binds = {
-      "Mod+Return" = config.niri-lib.open {
+      "Mod+Return" = lib.custom.niri.openApp {
         app = config.profiles.${user}.defaultTerminal.package;
       };
     };

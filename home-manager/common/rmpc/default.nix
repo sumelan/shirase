@@ -1,4 +1,10 @@
-{ config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  user,
+  ...
+}:
 {
   imports = [
     ./theme.nix
@@ -185,8 +191,9 @@
 
     niri.settings = {
       binds = {
-        "Mod+M" = config.niri-lib.open-tui {
+        "Mod+M" = lib.custom.niri.openTerminal {
           app = pkgs.rmpc;
+          terminal = config.profiles.${user}.defaultTerminal.package;
         };
       };
       window-rules = [

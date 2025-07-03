@@ -44,8 +44,9 @@ in
       flake = config.profiles.${user}.flakePath;
     };
     niri.settings.binds = {
-      "Mod+U" = config.niri-lib.open-tui {
+      "Mod+N" = lib.custom.niri.openTerminal {
         app = "ns";
+        terminal = config.profiles.${user}.defaultTerminal.package;
         app-id = lib.getName pkgs.nix-search-tv;
       };
     };

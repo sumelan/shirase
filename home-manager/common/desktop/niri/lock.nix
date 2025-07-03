@@ -101,7 +101,7 @@
         };
       };
       niri.settings.binds = {
-        "Mod+Escape" = config.niri-lib.run {
+        "Mod+Escape" = lib.custom.niri.runCmd {
           cmd = "hyprlock";
           locked = "allow";
         };

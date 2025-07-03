@@ -12,7 +12,7 @@
 
     # screenshot 'screenshot-screen' is valid only on niri-stable
     "Mod+Backslash".action = screenshot { show-pointer = false; };
-    "Mod+Shift+Backslash" = config.niri-lib.run {
+    "Mod+Shift+Backslash" = lib.custom.niri.runCmd {
       cmd = "niri msg action screenshot-screen";
       title = "Screenshot the focused screen";
     };

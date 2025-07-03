@@ -31,7 +31,7 @@ in
 
     programs.niri.settings = {
       binds = {
-        "Mod+Y" = config.niri-lib.open {
+        "Mod+Y" = lib.custom.niri.openApp {
           app = ymPkgs;
         };
       };

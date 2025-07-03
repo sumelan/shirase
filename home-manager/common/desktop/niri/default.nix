@@ -5,7 +5,6 @@
     ./autostart.nix
     ./idle.nix
     ./keybinds.nix
-    ./lib.nix
     ./lock.nix
     ./monitors.nix
     ./niriswitcher.nix
@@ -43,11 +42,11 @@
 
         cursor = {
           theme = config.stylix.cursor.name;
-          size = config.stylix.cursor.size;
+          inherit (config.stylix.cursor) size;
         };
 
         # apply function f to every element of attrset
-        outputs = builtins.mapAttrs (name: value: {
+        outputs = builtins.mapAttrs (_name: value: {
           inherit (value) scale mode position;
           transform.rotation = value.rotation;
         }) config.monitors;

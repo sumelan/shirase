@@ -228,11 +228,11 @@ in
     };
 
     niri.settings.binds = {
-      "${modifierKey}+Tab" = config.niri-lib.run {
+      "${modifierKey}+Tab" = lib.custom.niri.runCmd {
         cmd = "niriswitcherctl show --window";
         repeat = "no";
       };
-      "${modifierKey}+Grave" = config.niri-lib.run {
+      "${modifierKey}+Grave" = lib.custom.niri.runCmd {
         cmd = "niriswitcherctl show --workspace";
         repeat = "no";
       };

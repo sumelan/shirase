@@ -72,7 +72,7 @@ in
     niri.settings = {
       binds = {
         "Mod+B" = {
-          action = config.niri-lib.uwsm "librewolf";
+          action.spawn = lib.custom.niri.useUwsm "librewolf";
           hotkey-overlay.title = "Launch librewolf";
         };
       };

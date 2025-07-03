@@ -1,6 +1,5 @@
 {
   lib,
-  config,
   pkgs,
   ...
 }:
@@ -9,7 +8,7 @@
 
   programs.niri.settings = {
     binds = {
-      "Mod+W" = config.niri-lib.open {
+      "Mod+W" = lib.custom.niri.openApp {
         app = pkgs.webcord;
       };
     };

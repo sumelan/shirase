@@ -1,9 +1,9 @@
 { lib }:
 rec {
-  useUwsm = cmd: [
+  useUwsm = app: [
     "fish"
     "-c"
-    "uwsm app -- ${cmd}"
+    "uwsm app -- ${app}"
   ];
 
   mkSpawn = cmd: lib.splitString " " cmd;
@@ -12,28 +12,28 @@ rec {
     {
       app,
       args ? "",
-      title ? "Launch ${app}",
+      title ? "Launch ${lib.getName app}",
     }:
     {
-      action.spawn = useUwsm (lib.strings.trim "${app} ${args}");
+      action.spawn = useUwsm (lib.strings.trim "${lib.getName app} ${args}");
       hotkey-overlay = { inherit title; };
     };
   openTerminal =
     {
       app,
-      terminal ? "kitty",
-      app-id ? app,
+      terminal,
+      app-id ? lib.getName app,
     }:
     {
-      action.spawn = mkSpawn "${terminal} -o confirm_os_window_close=0 --app-id=${app-id} ${app}";
+      action.spawn = mkSpawn "${lib.getExe terminal} -o confirm_os_window_close=0 --app-id=${app-id} ${lib.getName app}";
       hotkey-overlay.title = "Launch ${app-id}";
     };
 
   runCmd =
     {
       cmd,
-      osd ? null,
-      args ? "",
+      osd ? "",
+      osdArgs ? "",
       title ? null,
       locked ? "no",
       repeat ? "yes",
@@ -44,7 +44,7 @@ rec {
           [
             "fish"
             "-c"
-            "${cmd} && ${osd}-client ${args}"
+            "${cmd} && ${osd}-client ${osdArgs}"
           ]
         else
           [
@@ -53,8 +53,8 @@ rec {
             cmd
           ];
       hotkey-overlay = if title == null then { hidden = true; } else { inherit title; };
-      allow-when-locked = if locked == "no" then false else true;
-      repeat = if repeat == "yes" then true else false;
+      allow-when-locked = if locked == "allow" then true else false;
+      repeat = if repeat == "no" then false else true;
     };
 
 }

@@ -48,7 +48,7 @@
           );
         in
         {
-          "Mod+Tab" = config.niri-lib.run {
+          "Mod+Tab" = lib.custom.niri.runCmd {
             inherit cmd;
             title = "Open the Overview and Widgets";
           };

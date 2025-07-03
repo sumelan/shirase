@@ -73,7 +73,7 @@
 
   programs.niri.settings = {
     binds."Mod+E" = lib.custom.niri.openApp {
-      app = "nemo";
+      app = pkgs.nemo;
     };
 
     window-rules = [

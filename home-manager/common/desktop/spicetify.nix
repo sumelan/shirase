@@ -1,6 +1,5 @@
 {
   lib,
-  config,
   pkgs,
   inputs,
   ...
@@ -47,7 +46,7 @@
   programs.niri.settings = {
     binds = {
       "Mod+S" = {
-        action = config.niri-lib.uwsm (
+        action.spawn = lib.custom.niri.useUwsm (
           lib.concatStringsSep " " [
             "spotify"
             "--wayland-text-input-version=3"
