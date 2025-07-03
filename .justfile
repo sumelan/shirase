@@ -25,12 +25,12 @@ profiles-path := "/nix/var/nix/profiles"
 
     echo -e "\n---\n\n$(date '+%x %X')" >> build.log
     nvd diff \
-    $(command rg -N '>>> ({{ profiles-path }}/system-[0-9]+-link)' --only-matching --replace '$1' build.log | tail -1) \
-    $(command ls -d1v {{ profiles-path }}/system-*-link | tail -n 1) \
-    >> build.log
+      "$(command rg -N '>>> ({{ profiles-path }}/system-[0-9]+-link)' --only-matching --replace '$1' build.log | tail -1)" \
+        "$(command ls -d1v {{ profiles-path }}/system-*-link | tail -n 1)" \
+          >> build.log
 
     git add -A
-    git commit -m "deployed $(nixos-rebuild list-generations --flake $NH_FLAKE --json | jaq '.[0].generation')"
+    git commit -m "deployed $(nixos-rebuild list-generations --flake $NH_FLAKE --json | jq '.[0].generation')"
 
 [group('SYSTEM')]
 @get-updates: check
