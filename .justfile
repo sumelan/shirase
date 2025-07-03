@@ -8,11 +8,7 @@ profiles-path := "/nix/var/nix/profiles"
     just --list
 
 [group('SANITY')]
-@fmt:
-    nix fmt
-
-[group('SANITY')]
-@check: fmt
+@check:
     nix flake check
 
 [group('SYSTEM')]
