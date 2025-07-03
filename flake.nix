@@ -44,11 +44,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    sherlock = {
-      url = "github:Skxxtz/sherlock";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     stylix = {

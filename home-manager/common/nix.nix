@@ -57,7 +57,7 @@ in
     home = {
       cache.directories = [
         ".cache/nix-index"
-        "cache/nix-search-tv"
+        ".cache/nix-search-tv"
       ];
     };
   };
