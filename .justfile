@@ -1,3 +1,5 @@
+# originally form https://github.com/Vortriz/dotfiles
+
 set shell := ["fish", "-c"]
 
 export NH_FLAKE := `echo $PWD`
