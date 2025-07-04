@@ -22,8 +22,15 @@ profiles-path := "/nix/var/nix/profiles"
 
 [group('SYSTEM')]
 @deploy *args: check
-    touch {{ HOSTNAME }}_build.log
     nh os switch {{ args }}
+
+    if test -f {{ HOSTNAME }}_build.log; \
+      echo -e "Read from previous log..."; \
+    else; \
+      echo -e "Create new log..."; \
+      echo -e "\n[New entry]\n\n$(date '+%x %X')" >> {{ HOSTNAME }}_build.log; \
+      echo "<<< .\n>>> $(command ls -d1v {{ profiles-path }}/system-*-link | tail -n 1)" >> {{ HOSTNAME }}_build.log; \
+    end
 
     echo -e "\n---\n\n$(date '+%x %X')" >> {{ HOSTNAME }}_build.log
     nvd diff \
