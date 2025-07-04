@@ -80,12 +80,12 @@ alias pf := prefetch
     nix store prefetch-file --json --hash-type sha512 {{ url }} | jq -r .hash
 
 [group('TOOLS')]
-[doc('Fuzzy search for NixOS packages.')]
+[doc('Fuzzy search for NixOS packages with nix-search-tv.')]
 @search:
     ns
 
 [group('TOOLS')]
-[doc('look the store path of specific package through yazi.')]
+[doc('Look the store path of specific package through yazi.')]
 @explore name:
     yazi $(nix eval --raw nixpkgs#{{ name }})
 
