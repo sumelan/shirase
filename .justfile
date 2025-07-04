@@ -29,7 +29,7 @@ profiles-path := "/nix/var/nix/profiles"
     else; \
       echo -e "Create new log..."; \
       echo -e "\n[New entry]\n\n$(date '+%x %X')" >> {{ HOSTNAME }}_build.log; \
-      echo "<<< .\n>>> $(command ls -d1v {{ profiles-path }}/system-*-link | tail -n 1)" >> {{ HOSTNAME }}_build.log; \
+      echo -e "<<< .\n>>> $(command ls -d1v {{ profiles-path }}/system-*-link | tail -n 1)" >> {{ HOSTNAME }}_build.log; \
     end
 
     echo -e "\n---\n\n$(date '+%x %X')" >> {{ HOSTNAME }}_build.log
