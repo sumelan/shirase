@@ -88,7 +88,7 @@
               halign = "right";
               valign = "top";
             }
-            (lib.mkIf config.custom.battery.enable {
+            (lib.optionalAttrs config.custom.battery.enable {
               text = "cmd[update:1000] write_battery_info";
               color = "rgb(${base05})";
               font_size = config.stylix.fonts.sizes.desktop * 2;

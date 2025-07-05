@@ -55,7 +55,10 @@
                 }
 
                 spawn-at-startup "sh" "-c" "${lib.getExe pkgs.greetd.regreet}; pkill -f niri"
-              '';
+              ''
+            + lib.optionalString config.hm.custom.backlight.enable ''
+              spawn-at-startup "sh" "-c" "${lib.getExe pkgs.brightnessctl} set 5%"
+            '';
         in
         {
           command = "niri -c ${niri-config}";
