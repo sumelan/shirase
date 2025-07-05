@@ -22,6 +22,9 @@
             mainMonitor.mode.height |> builtins.toString
           }@${mainMonitor.mode.refresh |> builtins.toString}";
 
+          adjustBacklight = lib.optionalString config.hm.custom.backlight.enable ''
+            spawn-at-startup "sh" "-c" "${lib.getExe pkgs.brightnessctl} set 5%"
+          '';
           niri-config =
             pkgs.writeText "niri-config"
               # kdl
@@ -54,11 +57,10 @@
                     mode "${mainMode}"
                 }
 
+                ${adjustBacklight}
                 spawn-at-startup "sh" "-c" "${lib.getExe pkgs.greetd.regreet}; pkill -f niri"
-              ''
-            + lib.optionalString config.hm.custom.backlight.enable ''
-              spawn-at-startup "sh" "-c" "${lib.getExe pkgs.brightnessctl} set 5%"
-            '';
+              '';
+
         in
         {
           command = "niri -c ${niri-config}";
