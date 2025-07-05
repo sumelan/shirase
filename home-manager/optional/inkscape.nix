@@ -5,8 +5,8 @@
   ...
 }:
 {
-  options.custom = with lib; {
-    inkscape.enable = mkEnableOption "inkscape" // {
+  options.custom = {
+    inkscape.enable = lib.mkEnableOption "inkscape" // {
       default = config.custom.krita.enable;
     };
   };

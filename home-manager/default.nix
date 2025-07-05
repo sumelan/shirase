@@ -9,6 +9,8 @@
   imports = [
     ./common
     ./optional
+    ./hardware.nix
+    ./impermanence.nix
     ./style.nix
   ];
 
@@ -44,10 +46,18 @@
 
     systemd.user.startServices = "sd-switch"; # Nicely reload system units when changing configs
 
+    # create symlinks
+    systemd.user.tmpfiles.rules =
+      let
+        normalizeHome = p: if (lib.hasPrefix "/home" p) then p else "${config.home.homeDirectory}/${p}";
+      in
+      lib.mapAttrsToList (dest: src: "L+ ${normalizeHome dest} - - - - ${src}") config.custom.symlinks;
+
     xdg = {
       enable = true;
       userDirs.enable = true;
       mimeApps.enable = true;
+
       portal = {
         enable = true;
         xdgOpenUsePortal = true;
@@ -63,7 +73,8 @@
         };
       };
 
-      desktopEntries = # hide unnecessary desktopItems
+      # hide unnecessary desktopItems
+      desktopEntries =
         let
           hideList = [
             "fcitx5-configtool"

@@ -7,8 +7,8 @@
   ...
 }:
 {
-  options.custom = with lib; {
-    helix.enable = mkEnableOption "helix editor";
+  options.custom = {
+    helix.enable = lib.mkEnableOption "helix editor";
   };
 
   config = lib.mkIf config.custom.helix.enable {

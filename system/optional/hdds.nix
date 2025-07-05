@@ -7,10 +7,10 @@ let
   cfg = config.custom.hdds;
 in
 {
-  options.custom = with lib; {
+  options.custom = {
     hdds = {
-      enable = mkEnableOption "Desktop HDDs";
-      wdelem4 = mkEnableOption "WD Elements 4TB" // {
+      enable = lib.mkEnableOption "Desktop HDDs";
+      wdelem4 = lib.mkEnableOption "WD Elements 4TB" // {
         default = config.custom.hdds.enable;
       };
     };

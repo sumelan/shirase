@@ -6,8 +6,8 @@
   ...
 }:
 {
-  options.custom = with lib; {
-    alvr.enable = mkEnableOption "alvr" // {
+  options.custom = {
+    alvr.enable = lib.mkEnableOption "alvr" // {
       default = config.custom.steam.enable;
     };
   };

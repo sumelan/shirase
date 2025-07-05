@@ -5,8 +5,8 @@
   ...
 }:
 {
-  options.custom = with lib; {
-    foliate.enable = mkEnableOption "ebook reader";
+  options.custom = {
+    foliate.enable = lib.mkEnableOption "ebook reader";
   };
 
   config = lib.mkIf config.custom.foliate.enable {

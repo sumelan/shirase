@@ -10,11 +10,11 @@ let
   cfg = config.custom.alsa;
 in
 {
-  options.custom = with lib; {
+  options.custom = {
     alsa = {
-      enable = mkEnableOption "Advanced Linux Sound Architecture";
+      enable = lib.mkEnableOption "Advanced Linux Sound Architecture";
       devices = {
-        ifi-uno.enable = mkEnableOption "using ifi-uno";
+        ifi-uno.enable = lib.mkEnableOption "using ifi-uno";
       };
     };
   };

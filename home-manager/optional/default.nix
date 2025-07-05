@@ -4,7 +4,6 @@ _: {
     ./cyanrip.nix
     ./foliate.nix
     ./ghostty.nix
-    ./hardware.nix
     ./helix.nix
     ./inkscape.nix
     ./krita.nix

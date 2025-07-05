@@ -5,8 +5,8 @@
   ...
 }:
 {
-  options.custom = with lib; {
-    keyd.enable = mkEnableOption "keyd" // {
+  options.custom = {
+    keyd.enable = lib.mkEnableOption "keyd" // {
       default = isLaptop;
     };
   };

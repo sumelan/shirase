@@ -5,8 +5,8 @@
   ...
 }:
 {
-  options.custom = with lib; {
-    krita.enable = mkEnableOption "krita";
+  options.custom = {
+    krita.enable = lib.mkEnableOption "krita";
   };
 
   config = lib.mkIf config.custom.krita.enable {

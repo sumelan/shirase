@@ -4,9 +4,9 @@
   ...
 }:
 {
-  options.custom = with lib; {
+  options.custom = {
     logitech = {
-      enable = mkEnableOption "Whether to enable support for Logitech Wireless Devices";
+      enable = lib.mkEnableOption "Whether to enable support for Logitech Wireless Devices";
     };
   };
 

@@ -5,9 +5,9 @@
   ...
 }:
 {
-  options.custom = with lib; {
-    distrobox.enable = mkEnableOption "Enable distrobox";
-    docker.enable = mkEnableOption "Enable docker" // {
+  options.custom = {
+    distrobox.enable = lib.mkEnableOption "Enable distrobox";
+    docker.enable = lib.mkEnableOption "Enable docker" // {
       default = config.custom.distrobox.enable;
     };
   };

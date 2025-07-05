@@ -10,8 +10,8 @@
     inputs.agenix.nixosModules.default
   ];
 
-  options.custom = with lib; {
-    agenix.enable = mkEnableOption "agenix" // {
+  options.custom = {
+    agenix.enable = lib.mkEnableOption "agenix" // {
       default = config.custom.audiobookshelf.nginx.enable;
     };
   };
@@ -21,7 +21,7 @@
     age.secrets.api-key = lib.mkIf config.custom.agenix.enable {
       file = ../../secrets/api-key.age;
       owner = "nginx";
-      group = config.services.nginx.group;
+      inherit (config.services.nginx) group;
     };
   };
 }

@@ -9,8 +9,8 @@
   ...
 }:
 {
-  options.custom = with lib; {
-    btrbk.enable = mkEnableOption "snapshots using btrbk";
+  options.custom = {
+    btrbk.enable = lib.mkEnableOption "snapshots using btrbk";
   };
 
   config = lib.mkIf config.custom.btrbk.enable {
@@ -98,7 +98,7 @@
         };
       }
       // flip mapAttrs' config.services.btrbk.instances (
-        name: value:
+        name: _value:
         nameValuePair "btrbk-${name}" {
           unitConfig.OnFailure = "notify-problems@%i.service";
           preStart = lib.mkBefore ''
@@ -112,7 +112,7 @@
     systemd.timers =
       with lib;
       flip mapAttrs' config.services.btrbk.instances (
-        name: value:
+        name: _value:
         nameValuePair "btrbk-${name}" {
           timerConfig.Persistent = lib.mkForce true;
         }

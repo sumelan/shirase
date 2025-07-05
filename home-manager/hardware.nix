@@ -6,14 +6,14 @@
   ...
 }:
 {
-  options.custom = with lib; {
-    backlight.enable = mkEnableOption "Backlight" // {
+  options.custom = {
+    backlight.enable = lib.mkEnableOption "Backlight" // {
       default = isLaptop;
     };
-    battery.enable = mkEnableOption "Battery" // {
+    battery.enable = lib.mkEnableOption "Battery" // {
       default = isLaptop;
     };
-    wifi.enable = mkEnableOption "Wifi" // {
+    wifi.enable = lib.mkEnableOption "Wifi" // {
       default = isLaptop;
     };
   };

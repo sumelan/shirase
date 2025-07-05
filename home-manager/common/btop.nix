@@ -4,10 +4,10 @@
   ...
 }:
 {
-  options.custom = with lib; {
+  options.custom = {
     btop = {
-      disks = mkOption {
-        type = types.listOf types.str;
+      disks = lib.mkOption {
+        type = with lib.types; listOf str;
         default = [ ];
         description = "List of disks to monitor in btop";
       };

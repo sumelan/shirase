@@ -5,8 +5,8 @@
   ...
 }:
 {
-  options.custom = with lib; {
-    vlc.enable = mkEnableOption "vlc";
+  options.custom = {
+    vlc.enable = lib.mkEnableOption "vlc";
   };
 
   config = lib.mkIf config.custom.vlc.enable {

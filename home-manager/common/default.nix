@@ -10,7 +10,6 @@ _: {
     ./fastfetch.nix
     ./gh.nix
     ./git.nix
-    ./impermanence.nix
     ./jujutsu.nix
     ./lazygit.nix
     ./nix.nix

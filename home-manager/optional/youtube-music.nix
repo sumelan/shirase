@@ -20,8 +20,8 @@ let
   };
 in
 {
-  options.custom = with lib; {
-    youtube-music.enable = mkEnableOption "YoutubeMusic";
+  options.custom = {
+    youtube-music.enable = lib.mkEnableOption "YoutubeMusic";
   };
 
   config = lib.mkIf config.custom.youtube-music.enable {

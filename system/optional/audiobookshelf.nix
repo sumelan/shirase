@@ -7,20 +7,20 @@ let
   cfg = config.custom.audiobookshelf;
 in
 {
-  options.custom = with lib; {
+  options.custom = {
     audiobookshelf = {
-      enable = mkEnableOption "audiobookshelf";
+      enable = lib.mkEnableOption "audiobookshelf";
 
       nginx = {
-        enable = mkEnableOption "nginx" // {
+        enable = lib.mkEnableOption "nginx" // {
           default = config.custom.audiobookshelf.enable;
         };
-        domain = mkOption {
-          type = types.str;
+        domain = lib.mkOption {
+          type = lib.types.str;
           default = "sakurairo.ddnsfree.com";
         };
-        provider = mkOption {
-          type = types.str;
+        provider = lib.mkOption {
+          type = lib.types.str;
           default = "dynu";
         };
       };
@@ -64,7 +64,7 @@ in
         # extraDomainNames = [
         # "audiobookshelf.${cfg.nginx.domain}"
         # ];
-        group = config.services.nginx.group;
+        inherit (config.services.nginx) group;
         dnsProvider = "${cfg.nginx.provider}";
         dnsPropagationCheck = true;
         credentialsFile = config.age.secrets.api-key.path;

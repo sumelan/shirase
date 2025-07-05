@@ -4,8 +4,8 @@
   ...
 }:
 {
-  options.custom = with lib; {
-    obs-studio.enable = mkEnableOption "obs-studio";
+  options.custom = {
+    obs-studio.enable = lib.mkEnableOption "obs-studio";
   };
 
   config = lib.mkIf config.custom.obs-studio.enable {

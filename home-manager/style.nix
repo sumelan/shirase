@@ -8,29 +8,29 @@ let
   cfg = config.custom.stylix;
 in
 {
-  options.custom = with lib; {
+  options.custom = {
     stylix = {
       cursor = {
-        package = mkOption {
-          type = types.package;
+        package = lib.mkOption {
+          type = lib.types.package;
           default = pkgs.bibata-cursors;
         };
-        name = mkOption {
-          type = types.str;
+        name = lib.mkOption {
+          type = lib.types.str;
           default = "Bibata-Modern-Ice";
         };
       };
       icon = {
-        package = mkOption {
-          type = types.package;
+        package = lib.mkOption {
+          type = lib.types.package;
           default = pkgs.papirus-icon-theme;
         };
-        lightName = mkOption {
-          type = types.str;
+        lightName = lib.mkOption {
+          type = lib.types.str;
           default = "Papirus-Light";
         };
-        darkName = mkOption {
-          type = types.str;
+        darkName = lib.mkOption {
+          type = lib.types.str;
           default = "Papirus-Dark";
         };
       };

@@ -68,12 +68,10 @@
   programs.regreet = {
     enable = true;
     theme = {
-      inherit (config.hm.stylix.iconTheme) package;
-      name = config.hm.stylix.iconTheme.dark;
+      inherit (config.hm.gtk.theme) package name;
     };
     iconTheme = {
-      inherit (config.hm.stylix.iconTheme) package;
-      name = config.hm.stylix.iconTheme.dark;
+      inherit (config.hm.gtk.iconTheme) package name;
     };
     font = {
       inherit (config.hm.stylix.fonts.monospace) package name;

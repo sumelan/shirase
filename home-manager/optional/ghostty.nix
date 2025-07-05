@@ -5,9 +5,9 @@
 }:
 {
 
-  options.custom = with lib; {
+  options.custom = {
     ghostty = {
-      enable = mkEnableOption "ghostty";
+      enable = lib.mkEnableOption "ghostty";
     };
   };
 

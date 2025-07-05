@@ -5,8 +5,8 @@
   ...
 }:
 {
-  options.custom = with lib; {
-    picard.enable = mkEnableOption "picard" // {
+  options.custom = {
+    picard.enable = lib.mkEnableOption "picard" // {
       default = config.custom.cyanrip.enable;
     };
   };

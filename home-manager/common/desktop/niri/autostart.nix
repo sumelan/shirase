@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   programs.niri.settings.spawn-at-startup =
     let
@@ -12,29 +17,17 @@
       {
         command = fish "nm-applet";
       }
-      {
-        command = fish "${lib.getExe pkgs.brightnessctl} set 5%";
-      }
+      # clipboard manager
       {
         command = fish "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store";
       }
-    ];
+    ]
+    ++ (lib.optional config.custom.backlight.enable [
+      {
+        command = fish "${lib.getExe pkgs.brightnessctl} set 5%";
+      }
+    ]);
 
-  systemd.user.services = {
-    "polkit-gnome-authentication-agent-1" = {
-      Install.WantedBy = [ "graphical-session.target" ];
-      Unit = {
-        Description = "polkit-gnome-authentication-agent-1";
-        Wants = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-      };
-      Service = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
-  };
+  # WM agnostic polkit authentication agent
+  services.polkit-gnome.enable = true;
 }

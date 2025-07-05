@@ -5,8 +5,8 @@
   ...
 }:
 {
-  options.custom = with lib; {
-    rustdesk.enable = mkEnableOption "rustdesk";
+  options.custom = {
+    rustdesk.enable = lib.mkEnableOption "rustdesk";
   };
 
   config = lib.mkIf config.custom.rustdesk.enable {

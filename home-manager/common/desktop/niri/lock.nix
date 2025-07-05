@@ -4,8 +4,8 @@
   ...
 }:
 {
-  options.custom = with lib; {
-    hyprlock.enable = mkEnableOption "hyprlock" // {
+  options.custom = {
+    hyprlock.enable = lib.mkEnableOption "hyprlock" // {
       default = true;
     };
   };

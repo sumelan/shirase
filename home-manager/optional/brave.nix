@@ -5,8 +5,8 @@
   ...
 }:
 {
-  options.custom = with lib; {
-    brave.enable = mkEnableOption "brave";
+  options.custom = {
+    brave.enable = lib.mkEnableOption "brave";
   };
 
   config = lib.mkIf config.custom.brave.enable {

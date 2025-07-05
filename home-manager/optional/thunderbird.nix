@@ -4,9 +4,9 @@
   ...
 }:
 {
-  options.custom = with lib; {
+  options.custom = {
     thunderbird = {
-      enable = mkEnableOption "thunderbird";
+      enable = lib.mkEnableOption "thunderbird";
     };
   };
 

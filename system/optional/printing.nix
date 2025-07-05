@@ -5,8 +5,8 @@
   ...
 }:
 {
-  options.custom = with lib; {
-    printing.enable = mkEnableOption "printing";
+  options.custom = {
+    printing.enable = lib.mkEnableOption "printing";
   };
 
   config = lib.mkIf config.custom.printing.enable {
