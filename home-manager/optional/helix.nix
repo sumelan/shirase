@@ -3,7 +3,7 @@
   config,
   pkgs,
   host,
-  self,
+  user,
   ...
 }:
 {
@@ -38,11 +38,6 @@
 
           indent-guides.render = true;
         };
-        ignores = [
-          "!.github/"
-          "!.gitignore"
-          "!.gitattributes"
-        ];
       };
       languages = {
         language = [
@@ -155,15 +150,15 @@
           };
 
           ltex = {
-            command = lib.getExe pkgs.ltex;
+            command = lib.getExe pkgs.ltex-ls;
           };
 
           nixd = {
             config.nixd = {
-              formatting.command = [ "${lib.getExe pkgs.alejandra}" ];
+              formatting.command = [ "${lib.getExe pkgs.nixfmt}" ];
               options =
                 let
-                  flake = ''(builtins.getFlake "${self}")'';
+                  flake = ''(builtins.getFlake "${config.profiles.${user}.flakePath}")'';
                 in
                 rec {
                   nixos.expr = "${flake}.nixosConfigurations.${host}.options";
@@ -197,6 +192,11 @@
           };
         };
       };
+      ignores = [
+        "!.github/"
+        "!.gitignore"
+        "!.gitattributes"
+      ];
     };
   };
 }

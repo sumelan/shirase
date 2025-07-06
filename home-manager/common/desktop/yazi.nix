@@ -76,7 +76,7 @@
         };
       };
       keymap = {
-        manager.prepend_keymap = [
+        mgr.prepend_keymap = [
           {
             on = "M";
             run = "plugin mount";
@@ -110,14 +110,6 @@
           terminal = config.profiles.${user}.defaultTerminal.package;
         };
       };
-      window-rules = [
-        {
-          matches = [ { app-id = "^(yazi)"; } ];
-          default-column-width.proportion = 0.5;
-          default-window-height.proportion = 0.5;
-          open-floating = true;
-        }
-      ];
     };
   };
 }

@@ -41,7 +41,13 @@ in
     stylix = {
       enable = true;
       autoEnable = true;
-
+      # unnecessary module
+      targets = {
+        kde.enable = false;
+        blender.enable = false;
+        forge.enable = false;
+        vencord.enable = false;
+      };
       cursor = {
         inherit (cfg.cursor) package name;
         size = 30;

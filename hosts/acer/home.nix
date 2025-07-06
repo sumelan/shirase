@@ -39,6 +39,7 @@
     brave.enable = false;
     cyanrip.enable = true;
     foliate.enable = true;
+    helix.enable = true;
     thunderbird.enable = true;
   };
 }

@@ -96,7 +96,8 @@
             config.hm.gtk.theme.package
             config.hm.gtk.iconTheme.package
           ]
-        ++ [ config.hm.profiles.${user}.defaultEditor.package ];
+        ++ [ config.hm.profiles.${user}.defaultEditor.package ]
+        ++ (lib.optional config.hm.custom.helix.enable helix);
     };
 
     # create symlink to dotfiles from default /etc/nixos
