@@ -44,9 +44,9 @@
 
   # never going to read html docs locally
   documentation = {
-    enable = true;
-    doc.enable = true;
-    man.enable = true;
+    enable = false;
+    doc.enable = false;
+    man.enable = false;
     dev.enable = false;
   };
 
