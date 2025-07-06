@@ -34,7 +34,8 @@
         starship = "${pkgs.custom.yazi-starship.src}";
       };
 
-      initLua = # lua
+      initLua =
+        #lua
         ''
           require("full-border"):setup({ type = ui.Border.ROUNDED })
           require("git"):setup()

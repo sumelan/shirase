@@ -83,14 +83,12 @@
           lsp = {
             enable = true;
             server = "nixd";
-            options =
-              let
-                flake = ''(builtins.getFlake "${config.profiles.${user}.flakePath}")'';
-              in
-              rec {
-                nixos.expr = "${flake}.nixosConfigurations.${host}.options";
-                home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
-              };
+            options = rec {
+              nixos.expr = ''(builtins.getFlake ("git+file://" + "${
+                config.profiles.${user}.flakePath
+              }")).nixosConfigurations.${host}.options'';
+              home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
+            };
           };
         };
 

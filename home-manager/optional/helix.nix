@@ -53,35 +53,6 @@
             };
           }
           {
-            name = "css";
-            auto-format = true;
-            formatter = {
-              command = lib.getExe pkgs.nodePackages.prettier;
-              args = [
-                "--parser"
-                "css"
-              ];
-            };
-          }
-          {
-            name = "git-commit";
-            language-servers = [ "ltex" ];
-          }
-          {
-            name = "go";
-            auto-format = true;
-          }
-          {
-            name = "html";
-            formatter = {
-              command = lib.getExe pkgs.nodePackages.prettier;
-              args = [
-                "--parser"
-                "html"
-              ];
-            };
-          }
-          {
             name = "markdown";
             auto-format = true;
             soft-wrap.enable = true;
@@ -94,19 +65,13 @@
             };
             language-servers = [
               "marksman"
-              "ltex"
+              "ltex-ls-plus"
             ];
           }
           {
             name = "nix";
             auto-format = true;
             language-servers = [ "nixd" ];
-          }
-          {
-            name = "php";
-            auto-format = true;
-            formatter.command = lib.getExe pkgs.pretty-php;
-            language-servers = [ "phpactor" ];
           }
           {
             name = "python";
@@ -125,17 +90,9 @@
             };
           }
           {
-            name = "sql";
-            language-servers = [ "sqls" ];
-          }
-          {
             name = "typst";
             auto-format = true;
             language-servers = [ "tinymist" ];
-          }
-          {
-            name = "xml";
-            language-servers = [ "lemminx" ];
           }
         ];
 
@@ -145,45 +102,28 @@
             args = [ "--stdio" ];
           };
 
-          lemminx = {
-            command = lib.getExe pkgs.lemminx;
-          };
-
-          ltex = {
-            command = lib.getExe pkgs.ltex-ls;
+          ltex-ls-plus = {
+            command = lib.getExe pkgs.ltex-ls-plus;
           };
 
           nixd = {
             config.nixd = {
               formatting.command = [ "${lib.getExe pkgs.nixfmt}" ];
-              options =
-                let
-                  flake = ''(builtins.getFlake "${config.profiles.${user}.flakePath}")'';
-                in
-                rec {
-                  nixos.expr = "${flake}.nixosConfigurations.${host}.options";
-                  home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
-                };
+              options = rec {
+                nixos.expr = ''(builtins.getFlake ("git+file://" + "${
+                  config.profiles.${user}.flakePath
+                }")).nixosConfigurations.${host}.options'';
+                home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
+              };
             };
-          };
-
-          phpactor = {
-            command = lib.getExe pkgs.phpactor;
-            args = [ "language-server" ];
-          };
-
-          sqls = {
-            command = lib.getExe pkgs.sqls;
           };
 
           tinymist = {
             config = {
               exportPdf = "onType";
               outputPath = "$root/target/$dir/$name";
-
               formatterMode = "typstyle";
               formatterPrintWidth = 80;
-
               lint = {
                 enabled = true;
                 when = "onType";

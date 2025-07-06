@@ -52,7 +52,7 @@
     brave.enable = false;
     cyanrip.enable = true;
     foliate.enable = true;
-    helix.enable = true;
+    helix.enable = false;
     krita.enable = false;
     thunderbird.enable = false;
   };

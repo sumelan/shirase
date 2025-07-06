@@ -87,10 +87,10 @@
       forAllPkgs = f: forAllSystems (system: f legacyPackages.${system});
     in
     {
-      # Your custom packages, accessible through 'nix build', 'nix shell', etc
-      packages = forAllPkgs (import ./packages);
-
       # NixOS configuration entrypoint
       nixosConfigurations = import ./hosts { inherit lib; };
+
+      # Your custom packages, accessible through 'nix build', 'nix shell', etc
+      packages = forAllPkgs (import ./packages);
     };
 }
