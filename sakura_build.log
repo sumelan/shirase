@@ -10,3 +10,93 @@
 >>> /nix/var/nix/profiles/system-248-link
 No version or selection state changes.
 Closure size: 2689 -> 2689 (4 paths added, 4 paths removed, delta +0, disk usage -16B).
+
+---
+
+2025年07月06日 14時36分15秒
+<<< /nix/var/nix/profiles/system-248-link
+>>> /nix/var/nix/profiles/system-249-link
+Version changes:
+[C.]  #1  base16-gruvbox-material-dark-soft.css  <none> x2 -> <none>
+[C.]  #2  icu4c                                  75.1, 76.1 x2, 76.1-dev, 77.1 -> 73.2, 75.1, 76.1 x2, 76.1-dev, 77.1
+[U.]  #3  nixos-system-sakura                    25.11.20250624.30a61f0.dirty -> 25.11.20250624.30a61f0.97d53da
+[C.]  #4  pcre2                                  10.44 x3 -> 10.44 x4
+Added packages:
+[A.]  #01  base16-gruvbox-material-dark-soft.toml  <none>
+[A+]  #02  bonk                                    0.4.0
+[A+]  #03  helix                                   25.01.1, 25.01.1-fish-completions
+[A.]  #04  helix-config.toml                       <none>
+[A.]  #05  helix-languages-config                  <none>
+[A.]  #06  hm_helixignore                          <none>
+[A.]  #07  lemminx                                 0.31.0
+[A.]  #08  libargon2                               20190702
+[A.]  #09  libzip                                  1.11.4
+[A.]  #10  lspkind-nvim-d79a1c32                   <none>
+[A.]  #11  ltex-ls                                 16.0.0
+[A.]  #12  openjdk-headless                        21.0.7+6
+[A.]  #13  openjdk-headless-minimal-jre            21.0.7+6
+[A.]  #14  otter-nvim                              1348aad7
+[A.]  #15  php                                     8.4.8
+[A.]  #16  php-bcmath                              8.4.8
+[A.]  #17  php-calendar                            8.4.8
+[A.]  #18  php-ctype                               8.4.8
+[A.]  #19  php-curl                                8.4.8
+[A.]  #20  php-dom                                 8.4.8
+[A.]  #21  php-exif                                8.4.8
+[A.]  #22  php-extra-init                          8.4.8.ini
+[A.]  #23  php-fileinfo                            8.4.8
+[A.]  #24  php-filter                              8.4.8
+[A.]  #25  php-ftp                                 8.4.8
+[A.]  #26  php-gd                                  8.4.8
+[A.]  #27  php-gettext                             8.4.8
+[A.]  #28  php-gmp                                 8.4.8
+[A.]  #29  php-iconv                               8.4.8
+[A.]  #30  php-intl                                8.4.8
+[A.]  #31  php-ldap                                8.4.8
+[A.]  #32  php-mbstring                            8.4.8
+[A.]  #33  php-mysqli                              8.4.8
+[A.]  #34  php-mysqlnd                             8.4.8
+[A.]  #35  php-opcache                             8.4.8
+[A.]  #36  php-openssl                             8.4.8
+[A.]  #37  php-pcntl                               8.4.8
+[A.]  #38  php-pdo                                 8.4.8
+[A.]  #39  php-pdo_mysql                           8.4.8
+[A.]  #40  php-pdo_odbc                            8.4.8
+[A.]  #41  php-pdo_pgsql                           8.4.8
+[A.]  #42  php-pdo_sqlite                          8.4.8
+[A.]  #43  php-pgsql                               8.4.8
+[A.]  #44  php-posix                               8.4.8
+[A.]  #45  php-readline                            8.4.8
+[A.]  #46  php-session                             8.4.8
+[A.]  #47  php-simplexml                           8.4.8
+[A.]  #48  php-soap                                8.4.8
+[A.]  #49  php-sockets                             8.4.8
+[A.]  #50  php-sodium                              8.4.8
+[A.]  #51  php-sqlite3                             8.4.8
+[A.]  #52  php-sysvsem                             8.4.8
+[A.]  #53  php-tokenizer                           8.4.8
+[A.]  #54  php-with-extensions                     8.4.8
+[A.]  #55  php-xmlreader                           8.4.8
+[A.]  #56  php-xmlwriter                           8.4.8
+[A.]  #57  php-zip                                 8.4.8
+[A.]  #58  php-zlib                                8.4.8
+[A.]  #59  phpactor                                2025.04.17.0
+[A.]  #60  polkit-gnome.service                    <none>
+[A.]  #61  prettier                                3.5.3
+[A.]  #62  pretty-php                              0.4.94
+[A.]  #63  ruff                                    0.12.1
+[A.]  #64  set-java-classpath-hook                 <none>
+[A.]  #65  sqls                                    0.2.28
+Removed packages:
+[R.]  #01  hm_Vencordthemesstylix.theme.css                      <none>
+[R.]  #02  hm_autostartstylixactivatekde.desktop                 <none>
+[R.]  #03  hm_blender4.2scriptspresetsinterface_themeStylix.xml  <none>
+[R.]  #04  hm_blender4.3scriptspresetsinterface_themeStylix.xml  <none>
+[R.]  #05  hm_blender4.4scriptspresetsinterface_themeStylix.xml  <none>
+[R.]  #06  lsp-signature-nvim-d50e40b3                           <none>
+[R.]  #07  polkit-gnome-authentication-agent                     1.service
+[R.]  #08  stylix-kde-apply-plasma-theme                         <none>
+[R.]  #09  stylix-kde-config                                     <none>
+[R.]  #10  stylix-kde-theme                                      <none>
+[R.]  #11  stylix-kde-theme-fish-completions                     <none>
+Closure size: 2689 -> 2745 (120 paths added, 64 paths removed, delta +56, disk usage +1.2GiB).
