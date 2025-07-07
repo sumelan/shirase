@@ -46,7 +46,6 @@ in
         kde.enable = false;
         blender.enable = false;
         forge.enable = false;
-        vencord.enable = false;
       };
       cursor = {
         inherit (cfg.cursor) package name;

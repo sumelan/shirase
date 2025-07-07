@@ -3,13 +3,22 @@
   pkgs,
   ...
 }:
+let
+  discordPkgs = pkgs.webcord-vencord;
+in
 {
-  home.packages = with pkgs; [ webcord ];
+  home.packages = [ discordPkgs ];
 
   programs.niri.settings = {
     binds = {
-      "Mod+W" = lib.custom.niri.openApp {
-        app = pkgs.webcord;
+      "Mod+W" = {
+        action.spawn = lib.custom.niri.useUwsm (
+          lib.concatStringsSep " " [
+            "webcord"
+            "--enable-wayland-ime --wayland-text-input-version=3"
+          ]
+        );
+        hotkey-overlay.title = "Launch WebCord";
       };
     };
     window-rules = lib.singleton {
@@ -25,4 +34,5 @@
       ".config/WebCord"
     ];
   };
+  stylix.targets.vencord.enable = false;
 }
