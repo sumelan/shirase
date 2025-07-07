@@ -3,7 +3,7 @@ _: {
     ./kitty
     ./niri
     ./way-edges
-    ./waybar
+    #   ./waybar
     ./discord.nix
     ./dunst.nix
     ./easyeffects.nix

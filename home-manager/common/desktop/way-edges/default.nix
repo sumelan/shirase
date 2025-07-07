@@ -27,8 +27,7 @@
               ;
           })
           ++ (import ./progress.nix { inherit lib config pkgs; })
-        #  ++ (import ./tray.nix { inherit config; })
-        ;
+          ++ (import ./tray.nix { inherit config; });
       };
     };
 
@@ -40,6 +39,7 @@
             "info"
             "progress"
             "stats"
+            "tray"
           ];
           cmd = lib.concatStringsSep "; " (
             [ "niri msg action toggle-overview" ]

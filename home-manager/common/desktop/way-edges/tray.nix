@@ -5,15 +5,15 @@ let
 
   trayConfig = {
     namespace = "tray";
-    edge = "top";
-    position = "right";
+    edge = "left";
+    position = "top";
     layer = "overlay";
     monitor = config.lib.monitors.mainMonitorName;
     extra-trigger-size = 0;
-    preview-size = "15%";
+    preview-size = "10%";
     animation-curve = "ease-expo";
     transition-duration = 300;
-    margins.right = "10%";
+    margins.top = 0;
     ignore-exclusive = true;
     pinnable = true;
     pin-with-key = true;
@@ -44,10 +44,10 @@ let
         grid-align = "top-left";
         icon-theme = config.stylix.iconTheme.dark;
         tray-gap = 3;
-        icon-size = 26;
+        icon-size = 30;
         header-draw-config = {
           text-color = "${base05}";
-          font-pixel-height = 18;
+          font-pixel-height = 30;
         };
         header-menu-align = "left";
         header-menu-stack = "menu-top";
@@ -55,8 +55,8 @@ let
           border-color = "${base02}";
           text-color = "${base05}";
           marker-color = "${base0B}";
-          font-pixel-height = 18;
-          icon-size = 18;
+          font-pixel-height = 20;
+          icon-size = 20;
           marker-size = 15;
           separator-height = 1;
           margin = [

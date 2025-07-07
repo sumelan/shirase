@@ -59,6 +59,12 @@ let
     };
   };
 
+  clockEdge = commonConfig "top" "right" "44.5%" // {
+    items = [
+      (textConfig "${base05}" "date +' %m/%d |  %H:%M'")
+    ];
+  };
+
   mediaEdge = commonConfig "right" "bottom" 0 // {
     items = [
       (textConfig "${base0B}" "write_media_info")
@@ -78,6 +84,7 @@ let
   };
 in
 [
+  clockEdge
   mediaEdge
   recorderEdge
 ]
