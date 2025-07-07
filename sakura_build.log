@@ -100,3 +100,149 @@ Removed packages:
 [R.]  #10  stylix-kde-theme                                      <none>
 [R.]  #11  stylix-kde-theme-fish-completions                     <none>
 Closure size: 2689 -> 2745 (120 paths added, 64 paths removed, delta +56, disk usage +1.2GiB).
+
+---
+
+2025年07月07日 14時15分15秒
+<<< /nix/var/nix/profiles/system-249-link
+>>> /nix/var/nix/profiles/system-251-link
+Version changes:
+[U.]  #01  MapleMono-NF            7.3, 7.3-fish-completions -> 7.4, 7.4-fish-completions
+[C*]  #02  acl                     2.3.2 x3, 2.3.2-bin, 2.3.2-doc, 2.3.2-man -> 2.3.2 x3, 2.3.2-bin
+[C*]  #03  attr                    2.5.2 x3, 2.5.2-bin, 2.5.2-doc, 2.5.2-man -> 2.5.2 x3, 2.5.2-bin
+[C*]  #04  bash-interactive        5.2p37 x2, 5.2p37-doc, 5.2p37-fish-completions, 5.2p37-info, 5.2p37-man -> 5.2p37 x2, 5.2p37-fish-completions, 5.2p37-man
+[U*]  #05  bind                    9.20.9-dnsutils, 9.20.9-host, 9.20.9-lib, 9.20.9-man -> 9.20.10-dnsutils, 9.20.10-host, 9.20.10-lib
+[C.]  #06  boehm-gc                8.2.8 x3 -> 8.2.8 x2
+[C*]  #07  bzip2                   1.0.8 x3, 1.0.8-bin x2, 1.0.8-dev, 1.0.8-man -> 1.0.8 x3, 1.0.8-bin x2, 1.0.8-dev
+[C.]  #08  cava                    0.10.4 -> 0.10.4, 0.10.4-fish-completions
+[C*]  #09  coreutils-full          9.7, 9.7-info -> 9.7
+[C*]  #10  dbus                    1, 1.14.10, 1.14.10-dev, 1.14.10-doc, 1.14.10-lib x2, 1.14.10-man -> 1, 1.14.10, 1.14.10-dev, 1.14.10-lib x2
+[U.]  #11  deno                    2.3.7 -> 2.4.0
+[C*]  #12  diffutils               3.10, 3.12, 3.12-info -> 3.10, 3.12
+[C*]  #13  e2fsprogs               1.47.2, 1.47.2-bin, 1.47.2-info, 1.47.2-man -> 1.47.2, 1.47.2-bin
+[U*]  #14  eza                     0.21.6, 0.21.6-fish-completions, 0.21.6-man -> 0.22.0, 0.22.0-fish-completions, 0.22.0-man
+[C*]  #15  findutils               4.10.0, 4.10.0-info -> 4.10.0
+[C*]  #16  fuse                    2.9.9, 2.9.9-bin, 2.9.9-man, 3.17.2, 3.17.2-bin, 3.17.2-man -> 2.9.9, 2.9.9-bin, 3.17.2, 3.17.2-bin
+[C*]  #17  fwupd                   2.0.12, 2.0.12-lib, 2.0.12-man -> 2.0.12, 2.0.12-lib
+[C*]  #18  gawk                    5.3.2, 5.3.2-info, 5.3.2-man -> 5.3.2
+[C*]  #19  gnugrep                 3.12 x2, 3.12-info -> 3.12 x2
+[C*]  #20  gnused                  4.9, 4.9-info -> 4.9
+[C*]  #21  gnutar                  1.35 x2, 1.35-info -> 1.35 x2
+[C*]  #22  gzip                    1.14 x2, 1.14-fish-completions, 1.14-info, 1.14-man -> 1.14 x2, 1.14-fish-completions, 1.14-man
+[C.]  #23  icu4c                   73.2, 75.1, 76.1 x2, 76.1-dev, 77.1 -> 75.1, 76.1 x2, 76.1-dev, 77.1
+[C*]  #24  iptables                1.8.11 x2, 1.8.11-man -> 1.8.11 x2
+[U*]  #25  iputils                 20240905 -> 20250605
+[U.]  #26  jujutsu                 0.30.0, 0.30.0-fish-completions -> 0.31.0, 0.31.0-fish-completions
+[C*]  #27  less                    668, 668-man -> 668
+[C*]  #28  libcap                  2.75, 2.75-doc, 2.75-lib x2, 2.75-man -> 2.75, 2.75-lib x2
+[U.]  #29  libimobiledevice-glue   1.3.1 -> 1.3.2
+[U*]  #30  libressl                4.0.0, 4.0.0-man, 4.0.0-nc -> 4.1.0, 4.1.0-nc
+[C*]  #31  linux-pam               1.6.1 x2, 1.6.1-doc, 1.6.1-man -> 1.6.1 x2
+[C*]  #32  lix                     2.93.2, 2.93.2-doc, 2.93.2-man -> 2.93.2, 2.93.2-man
+[C*]  #33  lvm2                    2.03.32, 2.03.32-bin, 2.03.32-lib x2, 2.03.32-man -> 2.03.32, 2.03.32-bin, 2.03.32-lib x2
+[C*]  #34  lz4                     1.10.0, 1.10.0-lib x2, 1.10.0-man -> 1.10.0, 1.10.0-lib x2
+[C.]  #35  man-cache               <none> x2 -> <none>
+[C-]  #36  man-db                  2.13.1, 2.13.1-doc, 2.13.1-fish-completions -> 2.13.1, 2.13.1-fish-completions
+[U.]  #37  mesa                    25.1.4 x2 -> 25.1.5 x2
+[U*]  #38  mtools                  4.0.48 -> 4.0.49
+[C*]  #39  network-manager-applet  1.36.0, 1.36.0-man -> 1.36.0
+[C*]  #40  networkmanager          1.52.0, 1.52.0-doc, 1.52.0-man -> 1.52.0
+[C*]  #41  niri-unstable           2025-06-24-37458d9, 2025-06-24-37458d9-doc -> 2025-06-24-37458d9
+[U.]  #42  nixos-system-sakura     25.11.20250624.30a61f0.97d53da -> 25.11.20250624.30a61f0.373fd8a
+[C.]  #43  pcre2                   10.44 x4 -> 10.44 x3
+[C*]  #44  pipewire                1.4.5 x2, 1.4.5-dev, 1.4.5-doc, 1.4.5-jack, 1.4.5-man -> 1.4.5 x2, 1.4.5-dev, 1.4.5-jack
+[C*]  #45  shadow                  4.17.4, 4.17.4-man, 4.17.4-su -> 4.17.4, 4.17.4-su
+[C*]  #46  strace                  6.15, 6.15-man -> 6.15
+[U*]  #47  sudo-rs                 0.2.6 -> 0.2.7
+[C*]  #48  systemd                 <none>, 257.6 x2, 257.6-man -> <none>, 257.6 x2
+[U.]  #49  tevent                  0.16.2 -> 0.17.0
+[C*]  #50  udisks                  2.10.1, 2.10.1-man -> 2.10.1
+[C*]  #51  util-linux              2.41-bin, 2.41-lib, 2.41-login, 2.41-man, 2.41-mount, 2.41-swap -> 2.41-bin, 2.41-lib, 2.41-login, 2.41-mount, 2.41-swap
+[U*]  #52  uwsm                    0.22.0, 0.22.0-man -> 0.23.0
+[U.]  #53  vimplugin-mini.nvim     2025-06-24 -> 2025-07-01
+[U.]  #54  vimplugin-yazi.nvim     2025-06-15 -> 2025-06-29
+[C*]  #55  wireplumber             0.4.17, 0.5.10, 0.5.10-doc -> 0.4.17, 0.5.10
+[U.]  #56  xfsprogs                6.13.0, 6.13.0-bin -> 6.15.0, 6.15.0-bin
+[C*]  #57  xz                      5.8.1 x3, 5.8.1-bin x2, 5.8.1-dev, 5.8.1-doc, 5.8.1-man -> 5.8.1 x3, 5.8.1-bin x2, 5.8.1-dev
+[U.]  #58  yt-dlp                  2025.6.25, 2025.6.25-fish-completions -> 2025.6.30, 2025.6.30-fish-completions
+[C*]  #59  zstd                    1.5.7 x3, 1.5.7-bin x2, 1.5.7-dev, 1.5.7-man -> 1.5.7 x3, 1.5.7-bin x2, 1.5.7-dev
+Added packages:
+[A.]  #1  hm_cavaconfig    <none>
+[A.]  #2  vencord          1.12.4
+[A.]  #3  webcord-vencord  4.11.0, 4.11.0-fish-completions
+Removed packages:
+[R.]  #01  appstream-glib                          0.8.2
+[R.]  #02  base16-gruvbox-material-dark-soft.toml  <none>
+[R.]  #03  cavalier                                2024.1.0, 2024.1.0-fish-completions
+[R.]  #04  etc-man_db.conf                         <none>
+[R.]  #05  gpm-unstable                            2020-06-17
+[R-]  #06  helix                                   25.01.1, 25.01.1-fish-completions
+[R.]  #07  helix-config.toml                       <none>
+[R.]  #08  helix-languages-config                  <none>
+[R.]  #09  hm_NickvisionCavalierconfig.json        <none>
+[R.]  #10  hm_helixignore                          <none>
+[R.]  #11  lemminx                                 0.31.0
+[R.]  #12  libargon2                               20190702
+[R.]  #13  libzip                                  1.11.4
+[R.]  #14  ltex-ls                                 16.0.0
+[R-]  #15  nixos-configuration-reference-manpage   <none>
+[R-]  #16  nixos-help                              <none> x2
+[R-]  #17  nixos-manual-html                       <none>
+[R.]  #18  nixos-manual.desktop                    <none> x2
+[R.]  #19  nixos-manual.desktop-fish-completions   <none>
+[R.]  #20  openjdk-headless                        21.0.7+6
+[R.]  #21  openjdk-headless-minimal-jre            21.0.7+6
+[R.]  #22  php                                     8.4.8
+[R.]  #23  php-bcmath                              8.4.8
+[R.]  #24  php-calendar                            8.4.8
+[R.]  #25  php-ctype                               8.4.8
+[R.]  #26  php-curl                                8.4.8
+[R.]  #27  php-dom                                 8.4.8
+[R.]  #28  php-exif                                8.4.8
+[R.]  #29  php-extra-init                          8.4.8.ini
+[R.]  #30  php-fileinfo                            8.4.8
+[R.]  #31  php-filter                              8.4.8
+[R.]  #32  php-ftp                                 8.4.8
+[R.]  #33  php-gd                                  8.4.8
+[R.]  #34  php-gettext                             8.4.8
+[R.]  #35  php-gmp                                 8.4.8
+[R.]  #36  php-iconv                               8.4.8
+[R.]  #37  php-intl                                8.4.8
+[R.]  #38  php-ldap                                8.4.8
+[R.]  #39  php-mbstring                            8.4.8
+[R.]  #40  php-mysqli                              8.4.8
+[R.]  #41  php-mysqlnd                             8.4.8
+[R.]  #42  php-opcache                             8.4.8
+[R.]  #43  php-openssl                             8.4.8
+[R.]  #44  php-pcntl                               8.4.8
+[R.]  #45  php-pdo                                 8.4.8
+[R.]  #46  php-pdo_mysql                           8.4.8
+[R.]  #47  php-pdo_odbc                            8.4.8
+[R.]  #48  php-pdo_pgsql                           8.4.8
+[R.]  #49  php-pdo_sqlite                          8.4.8
+[R.]  #50  php-pgsql                               8.4.8
+[R.]  #51  php-posix                               8.4.8
+[R.]  #52  php-readline                            8.4.8
+[R.]  #53  php-session                             8.4.8
+[R.]  #54  php-simplexml                           8.4.8
+[R.]  #55  php-soap                                8.4.8
+[R.]  #56  php-sockets                             8.4.8
+[R.]  #57  php-sodium                              8.4.8
+[R.]  #58  php-sqlite3                             8.4.8
+[R.]  #59  php-sysvsem                             8.4.8
+[R.]  #60  php-tokenizer                           8.4.8
+[R.]  #61  php-with-extensions                     8.4.8
+[R.]  #62  php-xmlreader                           8.4.8
+[R.]  #63  php-xmlwriter                           8.4.8
+[R.]  #64  php-zip                                 8.4.8
+[R.]  #65  php-zlib                                8.4.8
+[R.]  #66  phpactor                                2025.04.17.0
+[R.]  #67  prettier                                3.5.3
+[R.]  #68  pretty-php                              0.4.94
+[R.]  #69  ruff                                    0.12.1
+[R.]  #70  set-java-classpath-hook                 <none>
+[R.]  #71  sqls                                    0.2.28
+[R-]  #72  texinfo-interactive                     7.2
+[R.]  #73  w3m                                     0.5.3+git20230121
+[R.]  #74  webcord                                 4.11.0, 4.11.0-fish-completions
+Closure size: 2745 -> 2616 (201 paths added, 330 paths removed, delta -129, disk usage -1.3GiB).
