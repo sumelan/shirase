@@ -4,6 +4,7 @@
   pkgs,
   user,
   inputs,
+  flakePath,
   ...
 }:
 let
@@ -42,7 +43,7 @@ in
     nh = {
       enable = true;
       clean.extraArgs = "--keep 5";
-      flake = config.profiles.${user}.flakePath;
+      flake = flakePath;
     };
     niri.settings.binds = {
       "Mod+N" = lib.custom.niri.openTerminal {

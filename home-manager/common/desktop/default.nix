@@ -1,9 +1,8 @@
 _: {
   imports = [
     ./kitty
+    ./maomaowm
     ./niri
-    ./way-edges
-    #   ./waybar
     ./discord.nix
     ./dunst.nix
     ./easyeffects.nix
@@ -15,8 +14,10 @@ _: {
     ./spicetify.nix
     ./swayimg.nix
     ./swayosd.nix
-    ./wallpaper.nix
     ./yazi.nix
     ./zathura.nix
   ];
+
+  # WM agnostic polkit authentication agent
+  services.polkit-gnome.enable = true;
 }

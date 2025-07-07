@@ -7,7 +7,7 @@
 {
   options.custom = {
     hypridle.enable = lib.mkEnableOption "Enable hypridle" // {
-      default = true;
+      default = config.custom.niri.enable;
     };
   };
 

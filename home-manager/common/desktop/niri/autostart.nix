@@ -4,7 +4,7 @@
   pkgs,
   ...
 }:
-{
+lib.mkIf config.custom.niri.enable {
   programs.niri.settings.spawn-at-startup =
     let
       fish = cmd: [
@@ -25,7 +25,4 @@
         command = fish "${lib.getExe pkgs.brightnessctl} set 5%";
       })
     ];
-
-  # WM agnostic polkit authentication agent
-  services.polkit-gnome.enable = true;
 }

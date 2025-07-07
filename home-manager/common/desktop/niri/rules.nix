@@ -3,7 +3,7 @@
   config,
   ...
 }:
-{
+lib.mkIf config.custom.niri.enable {
   programs.niri.settings = {
     workspaces = lib.mkIf (config.lib.monitors.otherMonitorsNames != [ ]) {
       "01-huion" = {

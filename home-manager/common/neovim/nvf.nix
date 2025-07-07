@@ -3,7 +3,7 @@
   config,
   inputs,
   host,
-  user,
+  flakePath,
   ...
 }:
 {
@@ -83,12 +83,14 @@
           lsp = {
             enable = true;
             server = "nixd";
-            options = rec {
-              nixos.expr = ''(builtins.getFlake ("git+file://" + "${
-                config.profiles.${user}.flakePath
-              }")).nixosConfigurations.${host}.options'';
-              home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
-            };
+            options =
+              let
+                flake = ''(builtins.getFlake "${flakePath}")'';
+              in
+              rec {
+                nixos.expr = ''${flake}.nixosConfigurations.${host}.options'';
+                home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
+              };
           };
         };
 

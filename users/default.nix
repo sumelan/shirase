@@ -8,11 +8,6 @@
 let
   profile = lib.types.submodule {
     options = {
-      flakePath = lib.mkOption {
-        type = lib.types.path;
-        description = "filesystem path that contains dotfiles";
-        default = "";
-      };
       timeZone = lib.mkOption {
         type = lib.types.str;
         description = "Time zone";

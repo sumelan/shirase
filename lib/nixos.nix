@@ -29,6 +29,7 @@
           host
           user
           ;
+        flakePath = "/persist/home/${user}/projects/shirase";
         isLaptop = hardware == "laptop";
         isDesktop = hardware == "desktop";
       };

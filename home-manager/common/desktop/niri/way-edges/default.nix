@@ -11,7 +11,7 @@
     inputs.way-edges.homeManagerModules.default
   ];
 
-  programs = {
+  programs = lib.mkIf config.custom.niri.enable {
     way-edges = {
       enable = true;
       settings = {
@@ -64,7 +64,7 @@
     };
   };
 
-  systemd.user.services = {
+  systemd.user.services = lib.mkIf config.custom.niri.enable {
     "way-edges" = {
       Install.WantedBy = [ "graphical-session.target" ];
       Unit = {

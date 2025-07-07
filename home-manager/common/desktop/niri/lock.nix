@@ -6,7 +6,7 @@
 {
   options.custom = {
     hyprlock.enable = lib.mkEnableOption "hyprlock" // {
-      default = true;
+      default = config.custom.niri.enable;
     };
   };
 

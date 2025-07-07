@@ -1,6 +1,8 @@
 { lib, config, ... }:
 {
   imports = [
+    #./way-edges
+    # ./waybar
     ./animations.nix
     ./autostart.nix
     ./idle.nix
@@ -9,15 +11,20 @@
     ./monitors.nix
     ./niriswitcher.nix
     ./rules.nix
+    # ./wallpaper.nix
   ];
 
   options.custom = with lib; {
+    niri.enable = lib.mkEnableOption "Enablen niri" // {
+      default = true;
+    };
+
     xwayland.enable = mkEnableOption "Enable xwayland-satellite" // {
       default = true;
     };
   };
 
-  config = {
+  config = lib.mkIf config.custom.niri.enable {
     programs.niri.settings =
       with config.lib.stylix.colors.withHashtag;
       let

@@ -7,7 +7,7 @@
 let
   modifierKey = "Alt";
 in
-{
+lib.mkIf config.custom.niri.enable {
   programs = {
     niriswitcher = {
       enable = true;

@@ -3,7 +3,7 @@
   config,
   pkgs,
   host,
-  user,
+  flakePath,
   ...
 }:
 {
@@ -109,12 +109,14 @@
           nixd = {
             config.nixd = {
               formatting.command = [ "${lib.getExe pkgs.nixfmt}" ];
-              options = rec {
-                nixos.expr = ''(builtins.getFlake ("git+file://" + "${
-                  config.profiles.${user}.flakePath
-                }")).nixosConfigurations.${host}.options'';
-                home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
-              };
+              options =
+                let
+                  flake = ''(builtins.getFlake ("git+file://" + "${flakePath}"))'';
+                in
+                {
+                  nixos.expr = ''${flake}.nixosConfigurations.${host}.options'';
+                  home-manager.expr = "${flake}.homeConfigurations.${host}.options";
+                };
             };
           };
 

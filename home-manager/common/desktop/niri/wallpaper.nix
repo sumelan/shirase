@@ -8,7 +8,7 @@
 let
   swww-git = inputs.swww.packages.${pkgs.system}.swww;
 
-  wallImg = ../../../hosts/wallpaper.jpg;
+  wallImg = ../../../../hosts/wallpaper.jpg;
 
   blurImg =
     img:

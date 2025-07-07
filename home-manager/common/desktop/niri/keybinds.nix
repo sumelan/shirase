@@ -1,5 +1,5 @@
 { lib, config, ... }:
-{
+lib.mkIf config.custom.niri.enable {
   programs.niri.settings.binds = with config.lib.niri.actions; {
     # application binds are written in each app.nix
     # mediakey binds are written in swayosd.nix

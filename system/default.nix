@@ -3,6 +3,7 @@
   config,
   pkgs,
   user,
+  flakePath,
   isLaptop,
   ...
 }:
@@ -102,7 +103,7 @@
 
     # create symlink to dotfiles from default /etc/nixos
     custom.symlinks = {
-      "/etc/nixos" = config.hm.profiles.${user}.flakePath;
+      "/etc/nixos" = flakePath;
     };
 
     systemd.tmpfiles.rules = [

@@ -1,17 +1,28 @@
-{ lib, config, ... }:
 {
-  imports = [
+  lib,
+  config,
+  inputs,
+  ...
+}:
+{
+  imports =
+    [
+      inputs.maomaowm.hmModules.maomaowm
+    ]
+    ++ [
+      ./waybar
+      ./settings.nix
+      ./autostart.nix
+      ./wallpaper.nix
+    ];
 
-  ];
+  options.custom = {
+    maomaowm.enable = lib.mkEnableOption "maomaowm";
+  };
 
-  wayland.windowManager.maomaowm = {
-    enable = true;
-    settings = ''
-      # see config.conf
-    '';
-    autostart_sh = ''
-      # see autostart.sh
-      # Note: here no need to add shebang
-    '';
+  config = lib.mkIf config.custom.maomaowm.enable {
+    wayland.windowManager.maomaowm = {
+      enable = true;
+    };
   };
 }

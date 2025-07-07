@@ -10,7 +10,7 @@
     ./style.nix
   ];
 
-  programs = {
+  programs = lib.mkIf config.cutsom.niri.enable {
     waybar = {
       enable = true;
       systemd = {
@@ -119,12 +119,12 @@
         };
     };
 
-    niri.settings.layer-rules = [
+    niri.settings.layer-rules = lib.mkIf config.cutsom.niri.enable [
       {
         matches = [ { namespace = "^(waybar)$"; } ];
         opacity = config.stylix.opacity.desktop * 0.9;
       }
     ];
   };
-  stylix.targets.waybar.enable = false;
+  stylix.targets.waybar.enable = lib.mkIf config.cutsom.niri.enable false;
 }

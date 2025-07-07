@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  config,
   isDesktop,
   ...
 }:
@@ -30,7 +29,6 @@ in
       lib.mkIf isDesktop pubKeys;
   };
   hm.profiles.${username} = {
-    flakePath = "/persist${config.hm.home.homeDirectory}/projects/shirase";
     timeZone = "Asia/Tokyo";
     defaultLocale = "ja_JP.UTF-8";
     defaultEditor = {

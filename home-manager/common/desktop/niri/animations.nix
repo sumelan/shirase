@@ -1,5 +1,5 @@
-{ config, ... }:
-{
+{ lib, config, ... }:
+lib.mkIf config.custom.niri.enable {
   programs.niri.settings.animations = {
     window-open = {
       kind.spring = {

@@ -9,8 +9,16 @@
   imports = [ inputs.niri.nixosModules.niri ];
 
   options.custom = {
-    niri.flake.enable = lib.mkEnableOption "Enable niri-flake" // {
-      default = true;
+    niri = {
+      enable = lib.mkEnableOption "Niri compositor" // {
+        default = true;
+      };
+      flake.enable = lib.mkEnableOption "Enable niri-flake" // {
+        default = config.custom.niri.enable;
+      };
+      uwsm.enable = lib.mkEnableOption "Uing uwsm with niri" // {
+        default = config.custom.niri.flake.enable;
+      };
     };
   };
 
@@ -22,7 +30,7 @@
         enable = true;
         package = pkgs.niri-unstable;
       };
-      uwsm = {
+      uwsm = lib.mkIf config.custom.niri.uwsm.enable {
         enable = true;
         waylandCompositors.niri = {
           prettyName = "Niri";

@@ -2,7 +2,7 @@
   lib,
   config,
   pkgs,
-  user,
+  flakePath,
   ...
 }:
 {
@@ -35,7 +35,6 @@
   gtk.gtk3.bookmarks =
     let
       homeDir = config.home.homeDirectory;
-      inherit (config.profiles.${user}) flakePath;
     in
     [
       "file://${flakePath}"
