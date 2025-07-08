@@ -1,4 +1,15 @@
-_:
+{
+  config,
+  isLaptop,
+  ...
+}:
+let
+  inherit (config.lib.monitors) mainMonitor;
+  mainScale = mainMonitor.scale |> builtins.toString;
+  monitorMode =
+    layout: "monitorrule=${config.lib.monitors.mainMonitorName},0,1,${layout},0,${mainScale},0,0";
+  monitorRules = if isLaptop then monitorMode "scroller" else monitorMode "tile";
+in
 # == tags rule ==
 # layout support: tile,scroller,grid,monocle,spiral,dwindle
 ''
@@ -62,6 +73,5 @@ _:
   # 6:flip and rotate 180 degrees counter-clockwise
   # 7:flip and rotate 270 degrees counter-clockwise
 
-  monitorrule=eDP-1,0,1,scroller,0,1.0,0,0
-  monitorrule=HDMI-A-1,0,1,tile,0,1.5,0,0
+  ${monitorRules}
 ''

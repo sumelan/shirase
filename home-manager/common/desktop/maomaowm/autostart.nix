@@ -11,6 +11,7 @@ let
 in
 {
   wayland.windowManager.maomaowm.autostart_sh = lib.mkIf config.custom.maomaowm.enable ''
+    dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots
     swww kill
     swww-daemon --namespace background &
     killall .nm-applet-wrap

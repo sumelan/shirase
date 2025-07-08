@@ -10,7 +10,6 @@
   options.custom = {
     maomaowm = {
       enable = lib.mkEnableOption "Enable maomaowm";
-      uwsm.enable = lib.mkEnableOption "Using uwsm with maomaowm";
     };
   };
 

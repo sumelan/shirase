@@ -3,6 +3,7 @@
   config,
   pkgs,
   user,
+  isLaptop,
   ...
 }:
 let
@@ -15,7 +16,7 @@ let
       user
       ;
   };
-  rules = import ./rules.nix { };
+  rules = import ./rules.nix { inherit config isLaptop; };
 in
 lib.mkIf config.custom.maomaowm.enable {
   wayland.windowManager.maomaowm.settings = ''

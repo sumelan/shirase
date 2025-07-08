@@ -79,14 +79,14 @@ pkgs.writers.writeFishBin "record_screen" ''
               set SavePath (${lib.getExe pkgs.zenity} --file-selection --save --file-filter="*.gif" --filename=.gif)
               if not string match '*.gif' $SavePath; set SavePath '.gif'; end
               mv $TMP_GIF_RESULT $SavePath
-              wl-copy -t image/png < $SavePath
+              ${lib.getExe' pkgs.wl-clipboard "wl-copy"} -t image/png < $SavePath
               notify "GIF conversion completed" "GIF saved to $SavePath"
           else
               set FILENAME "mp4"
               set SavePath (${lib.getExe pkgs.zenity} --file-selection --save --file-filter="*.mp4" --filename=.mp4)
               if not string match '*.mp4' $SavePath; set SavePath '.mp4'; end
               mv $TMP_MP4_FILE $SavePath
-              wl-copy -t video/mp4 < $SavePath
+              ${lib.getExe' pkgs.wl-clipboard "wl-copy"} -t video/mp4 < $SavePath
               notify "Stopped Recording" "Video saved to $SavePath"
           end
 
