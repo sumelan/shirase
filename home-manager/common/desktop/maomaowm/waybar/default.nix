@@ -29,19 +29,22 @@
             output = "${config.lib.monitors.mainMonitorName}";
             modules-left = [
               "dwl/tags"
-              "tray"
+              "idle_inhibitor"
               "dwl/window"
             ];
             modules-center = [
               "clock"
+              "mpris"
               "memory"
             ];
-            modules-right = [
-              "network"
-              "wireplumber"
-              "backlight"
-              "battery"
-            ];
+            modules-right =
+              [
+                "network"
+                "bluetooth"
+                "wireplumber"
+              ]
+              ++ (lib.optional config.custom.backlight.enable [ "backlight" ])
+              ++ (lib.optional config.custom.battery.enable [ "battery" ]);
           };
 
           moduleConfiguration = with config.lib.stylix.colors.withHashtag; {
@@ -113,11 +116,11 @@
             };
             "network" = {
               format-wifi = "<span size='${iconSizeStr}' foreground='${base06}'>󰖩  </span>{essid}";
-              format-ethernet = "<span size='${iconSizeStr}' foreground='${base06}'>󰤭 </span> Disconnected";
+              format-ethernet = "<span size='${iconSizeStr}' foreground='${base06}'>󰈀 </span> Connected";
               format-linked = "{ifname} (No IP) 󱚵 ";
               format-disconnected = "<span size='${iconSizeStr}' foreground='${base06}'> </span>Disconnected";
               tooltip-format-wifi = "Signal Strenght: {signalStrength}%";
-              on-click = "${lib.getExe terminalPkgs} --class=nmtui  -T '󰖩 nmtui' sudo nmtui";
+              on-click = "${lib.getExe' pkgs.networkmanagerapplet "nm-connection-editor"}";
             };
             "idle_inhibitor" = {
               format = "{icon}";
@@ -143,6 +146,35 @@
                   ""
                 ];
               };
+            };
+            "bluetooth" = {
+              format = "<span size='${iconSizeStr}' foreground='${base0D}'> </span>{status}";
+              format-disabled = ""; # an empty format will hide the modules-left
+              format-connected = "<span size='${iconSizeStr}' foreground='${base0D}'> </span>{device_alias}";
+              format-connected-battery = "<span size='${iconSizeStr}' foreground='${base0D}'> </span>{device_alias} {device_battery_percentage}%";
+              tooltip-format = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
+              tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
+              tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
+              tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
+              on-click = "${lib.getExe' pkgs.blueman "blueman-manager"}";
+            };
+            "mpris" = {
+              player = "spotify";
+              format = "<span size='${iconSizeStr}' foreground='${base0B}'>{player_icon} {status_icon} </span><b>{title}</b> by <i>{artist}</i>";
+              tooltip-format = "Album: {album}";
+              artist-len = 12;
+              title-len = 22;
+              ellipsis = "...";
+              player-icons = {
+                default = "";
+                spotify = "󰓇";
+                kdeconnect = "";
+              };
+              status-icons = {
+                paused = "󰏤";
+              };
+              on-scroll-up = "${lib.getExe pkgs.playerctl} volume 0.1+";
+              on-scroll-down = "${lib.getExe pkgs.playerctl} volume 0.1-";
             };
           };
         in

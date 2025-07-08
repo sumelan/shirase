@@ -74,6 +74,8 @@ lib.mkIf config.custom.maomaowm.enable {
       }
 
       #network,
+      #bluetooth,
+      #mpris,
       #idle_inhibitor,
       #clock,
       #tags,
@@ -124,8 +126,9 @@ lib.mkIf config.custom.maomaowm.enable {
         background-size: 400% 400%;
       }
 
-
-
+      #mpris {
+        background: shade(alpha(${base0C}, 0.9), 1);
+      }
 
       #idle_inhibitor {
         padding: 6px 6px;
@@ -135,7 +138,7 @@ lib.mkIf config.custom.maomaowm.enable {
       #idle_inhibitor.activated {
         padding: 6px 6px;
         border-radius: 20px;
-        background: shade(alpha(${base0D}, 0.9), 1);
+        background: shade(alpha(${base0A}, 0.9), 1);
       }
 
       #window {

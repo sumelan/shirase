@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   inputs,
   ...
 }:
@@ -19,16 +18,6 @@
     programs = {
       maomaowm = {
         enable = true;
-      };
-      uwsm = lib.mkIf config.custom.maomaowm.uwsm.enable {
-        enable = true;
-        waylandCompositors.maomaowm = {
-          prettyName = "Maomaowm";
-          comment = "Maomaowm managed by UWSM";
-          binPath = pkgs.writeShellScript "maomaowm" ''
-            ${lib.getExe' inputs.maomaowm.packages.${pkgs.system}.default "maomao"} 
-          '';
-        };
       };
     };
   };

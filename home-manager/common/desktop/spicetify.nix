@@ -15,7 +15,7 @@
     in
     {
       enable = true;
-      wayland = true;
+      wayland = null;
       enabledExtensions = with spicePkgs.extensions; [
         # adblock
         keyboardShortcut

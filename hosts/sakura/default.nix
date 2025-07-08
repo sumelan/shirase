@@ -9,6 +9,8 @@
 
   # SystemModule Options
   custom = {
+    maomaowm.enable = true;
+
     # style
     stylix.colorTheme = "gruvbox-material-dark-soft";
 
