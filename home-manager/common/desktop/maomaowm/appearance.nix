@@ -26,6 +26,7 @@ with config.lib.stylix.colors;
 + ''
   cursor_theme=${config.stylix.cursor.name}
   cursor_size=${config.stylix.cursor.size |> builtins.toString}
+  env=XCURSOR_SIZE,${config.stylix.cursor.size |> builtins.toString}
 ''
 # == Window Effects ==
 + ''

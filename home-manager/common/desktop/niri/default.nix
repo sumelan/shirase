@@ -5,9 +5,7 @@
     # ./waybar
     ./animations.nix
     ./autostart.nix
-    ./idle.nix
     ./keybinds.nix
-    ./lock.nix
     ./monitors.nix
     ./niriswitcher.nix
     ./rules.nix

@@ -1,13 +1,14 @@
 {
   lib,
   config,
+  pkgs,
   isLaptop,
   ...
 }:
 {
   options.custom = {
     hypridle.enable = lib.mkEnableOption "Enable hypridle" // {
-      default = config.custom.niri.enable;
+      default = config.custom.maomaowm.enable;
     };
   };
 
@@ -16,7 +17,7 @@
       enable = true;
       settings = {
         general = {
-          ignore_dbus_inhibit = false;
+          ignore_dbus_inhibit = true;
           # exec hyprlock unless already running
           lock_cmd = "pidof hyprlock || hyprlock";
           # kill hyprlock
@@ -27,15 +28,15 @@
             "playerctl pause"
           ];
           # to avoid having to press a key twice to run on the display.
-          after_sleep_cmd = "niri msg action power-on-monitors";
+          after_sleep_cmd = "${lib.getExe pkgs.wlr-randr} --output ${config.lib.monitors.mainMonitorName} --on";
         };
 
         listener = [
           (lib.optionalAttrs config.custom.backlight.enable {
             timeout = 60 * 5;
             # set monitor backlight to minimum, avoid 0 on OLED monitor.
-            on-timeout = "brightnessctl -s set 5";
-            on-resume = "brightnessctl -r"; # monitor backlight restore.
+            on-timeout = "${lib.getExe pkgs.brightnessctl} -s set 5";
+            on-resume = "${lib.getExe pkgs.brightnessctl} -r"; # monitor backlight restore.
           })
           {
             timeout = 60 * 8;
@@ -45,9 +46,9 @@
           {
             timeout = 60 * 10;
             # screen off when timeout has passed.
-            on-timeout = "niri msg action power-off-monitors";
+            on-timeout = "${lib.getExe pkgs.wlr-randr} --output ${config.lib.monitors.mainMonitorName} --off";
             # screen on when activity is detected after timeout has fired.
-            on-resume = "niri msg action power-on-monitors";
+            on-resume = "${lib.getExe pkgs.wlr-randr} --output ${config.lib.monitors.mainMonitorName} --on";
           }
           (lib.optionalAttrs isLaptop {
             timeout = 60 * 15;

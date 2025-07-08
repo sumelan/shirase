@@ -21,7 +21,6 @@ let
   '';
 
   terminal = lib.getExe config.profiles.${user}.defaultTerminal.package;
-
   openTerminal =
     {
       app,
@@ -37,8 +36,11 @@ in
   # close
   bind=SUPER,BackSpace,killclient
 
+  # lock
+  bind=SUPER,Escape,spawn,${lib.getExe pkgs.hyprlock}
+
   # quit
-  bind=SUPER+SHIFT,q,quit
+  bind=SUPER+SHIFT,Escape,quit
 
   # fuzzel-menu
   bind=SUPER,d,spawn,fuzzel
@@ -49,15 +51,14 @@ in
   bind=SUPER,Return,spawn,${terminal}
 
   # programs
-  bind=SUPER,e,spawn,${lib.getExe pkgs.nemo}
+  bind=SUPER,o,spawn,${lib.getExe pkgs.nemo}
   bind=SUPER,b,spawn,librewolf
-  bind=SUPER,w,spawn,webcord
+  bind=SUPER,w,spawn,${lib.getExe pkgs.vesktop}
   bind=SUPER,s,spawn,spotify
 
   # tui
-  bind=SUPER,c,spawn,${openTerminal { app = pkgs.cava; }}
-  bind=SUPER+SHIFT,e,spawn,${openTerminal { app = pkgs.yazi; }}
-  bind=SUPER,n,spawn,${
+  bind=SUPER+SHIFT,o,spawn,${openTerminal { app = pkgs.yazi; }}
+  bind=SUPER,p,spawn,${
     openTerminal {
       app = "ns";
       app-id = lib.getName pkgs.nix-search-tv;

@@ -20,7 +20,7 @@ in
 lib.mkIf config.custom.maomaowm.enable {
   wayland.windowManager.maomaowm.settings = ''
     # == Master-Stack Layout Setting (tile,spiral,dwindle) ==
-    new_is_master=1
+    new_is_master=0
     default_mfact=0.55
     default_nmaster=1
     smartgaps=1
@@ -67,5 +67,11 @@ lib.mkIf config.custom.maomaowm.enable {
     ${appearance}
     ${rules}
     ${keybinds}
+
+    # == scale factor about qt (herr is 1.4) ==
+    env=QT_QPA_PLATFORMTHEME,qt5ct
+    env=QT_AUTO_SCREEN_SCALE_FACTOR,1
+    env=QT_QPA_PLATFORM,Wayland;xcb
+    env=QT_WAYLAND_FORCE_DPI,140
   '';
 }

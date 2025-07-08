@@ -6,7 +6,7 @@
 {
   options.custom = {
     hyprlock.enable = lib.mkEnableOption "hyprlock" // {
-      default = config.custom.niri.enable;
+      default = config.custom.maomaowm.enable;
     };
   };
 
@@ -98,12 +98,6 @@
               valign = "top";
             })
           ];
-        };
-      };
-      niri.settings.binds = {
-        "Mod+Escape" = lib.custom.niri.runCmd {
-          cmd = "hyprlock";
-          locked = "allow";
         };
       };
     };

@@ -13,6 +13,8 @@
       ./waybar
       ./settings.nix
       ./autostart.nix
+      ./idle.nix
+      ./lock.nix
       ./wallpaper.nix
     ];
 
