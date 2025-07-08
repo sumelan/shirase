@@ -21,6 +21,7 @@
         let
           iconSizeStr = builtins.toString 15000;
           terminalPkgs = config.profiles.${user}.defaultTerminal.package;
+          spotifyColor = "#1DB954";
 
           mainBarConfig = {
             position = "top";
@@ -43,8 +44,9 @@
                 "bluetooth"
                 "wireplumber"
               ]
-              ++ (lib.optional config.custom.backlight.enable [ "backlight" ])
-              ++ (lib.optional config.custom.battery.enable [ "battery" ]);
+              ++ (lib.optional config.custom.backlight.enable "backlight")
+              ++ (lib.optional config.custom.battery.enable "power-profiles-daemon")
+              ++ (lib.optional config.custom.battery.enable "battery");
           };
 
           moduleConfiguration = with config.lib.stylix.colors.withHashtag; {
@@ -102,7 +104,6 @@
               format-critical = "<span size='${iconSizeStr}' foreground='${base08}'>{icon} </span>{capacity}%";
               format-charging = "<span size='${iconSizeStr}' foreground='${base0B}'> </span>{capacity}%";
               format-plugged = "<span size='${iconSizeStr}' foreground='${base0B}'> </span>{capacity}%";
-              format-alt = "<span size='${iconSizeStr}' foreground='#${base01}'>{icon} </span>{time}";
               format-full = "<span size='${iconSizeStr}' foreground='${base08}'> </span>{capacity}%";
               format-icons = [
                 ""
@@ -160,7 +161,7 @@
             };
             "mpris" = {
               player = "spotify";
-              format = "<span size='${iconSizeStr}' foreground='${base0B}'>{player_icon} {status_icon} </span><b>{title}</b> by <i>{artist}</i>";
+              format = "<span size='${iconSizeStr}' foreground='${spotifyColor}'>{player_icon} </span><span size='${iconSizeStr}' foreground='${base05}'>{status_icon} </span><b>{title}</b> by <i>{artist}</i>";
               tooltip-format = "Album: {album}";
               artist-len = 12;
               title-len = 22;
@@ -175,6 +176,17 @@
               };
               on-scroll-up = "${lib.getExe pkgs.playerctl} volume 0.1+";
               on-scroll-down = "${lib.getExe pkgs.playerctl} volume 0.1-";
+            };
+            "power-profiles-daemon" = {
+              format = "{icon}";
+              tooltip-format = "Power profile: {profile}\nDriver: {driver}";
+              tooltip = true;
+              format-icons = {
+                default = "";
+                performance = "<span size='${iconSizeStr}' foreground='${base05}'> </span>";
+                balanced = "<span size='${iconSizeStr}' foreground='${base0A}'> </span>";
+                power-saver = "<span size='${iconSizeStr}' foreground='${base0B}'> </span>";
+              };
             };
           };
         in

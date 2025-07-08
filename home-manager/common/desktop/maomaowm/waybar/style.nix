@@ -76,6 +76,7 @@ lib.mkIf config.custom.maomaowm.enable {
       #network,
       #bluetooth,
       #mpris,
+      #power-profiles-daemon,
       #idle_inhibitor,
       #clock,
       #tags,
@@ -126,10 +127,6 @@ lib.mkIf config.custom.maomaowm.enable {
         background-size: 400% 400%;
       }
 
-      #mpris {
-        background: shade(alpha(${base0C}, 0.9), 1);
-      }
-
       #idle_inhibitor {
         padding: 6px 6px;
         border-radius: 20px;
@@ -159,18 +156,18 @@ lib.mkIf config.custom.maomaowm.enable {
         background: ${base0F};
         background: linear-gradient(
           118deg,
-          ${base0B} 5%,
-          ${base0F} 5%,
-          ${base0F} 20%,
-          ${base0B} 20%,
-          ${base0B} 40%,
-          ${base0F} 40%,
-          ${base0F} 60%,
-          ${base0B} 60%,
-          ${base0B} 80%,
-          ${base0F} 80%,
-          ${base0F} 95%,
-          ${base0B} 95%
+          ${base0E} 5%,
+          ${base0D} 5%,
+          ${base0D} 20%,
+          ${base0E} 20%,
+          ${base0E} 40%,
+          ${base0D} 40%,
+          ${base0D} 60%,
+          ${base0E} 60%,
+          ${base0E} 80%,
+          ${base0D} 80%,
+          ${base0D} 95%,
+          ${base0E} 95%
         );
         background-size: 200% 300%;
         animation: gradient_f_nh 6s linear infinite;
@@ -181,18 +178,18 @@ lib.mkIf config.custom.maomaowm.enable {
       #battery.plugged {
         background: linear-gradient(
           118deg,
-          ${base0E} 5%,
-          ${base0D} 5%,
-          ${base0D} 20%,
-          ${base0E} 20%,
-          ${base0E} 40%,
-          ${base0D} 40%,
-          ${base0D} 60%,
-          ${base0E} 60%,
-          ${base0E} 80%,
-          ${base0D} 80%,
-          ${base0D} 95%,
-          ${base0E} 95%
+          ${base0B} 5%,
+          ${base0C} 5%,
+          ${base0C} 20%,
+          ${base0B} 20%,
+          ${base0B} 40%,
+          ${base0C} 40%,
+          ${base0C} 60%,
+          ${base0B} 60%,
+          ${base0B} 80%,
+          ${base0C} 80%,
+          ${base0C} 95%,
+          ${base0B} 95%
         );
         background-size: 200% 300%;
         animation: gradient_rv 4s linear infinite;
@@ -201,18 +198,18 @@ lib.mkIf config.custom.maomaowm.enable {
       #battery.full {
         background: linear-gradient(
           118deg,
-          ${base0E} 5%,
-          ${base0D} 5%,
-          ${base0D} 20%,
-          ${base0E} 20%,
-          ${base0E} 40%,
-          ${base0D} 40%,
-          ${base0D} 60%,
-          ${base0E} 60%,
-          ${base0E} 80%,
-          ${base0D} 80%,
-          ${base0D} 95%,
-          ${base0E} 95%
+          ${base0B} 5%,
+          ${base0C} 5%,
+          ${base0C} 20%,
+          ${base0B} 20%,
+          ${base0B} 40%,
+          ${base0C} 40%,
+          ${base0C} 60%,
+          ${base0B} 60%,
+          ${base0B} 80%,
+          ${base0C} 80%,
+          ${base0C} 95%,
+          ${base0B} 95%
         );
         background-size: 200% 300%;
         animation: gradient_rv 20s linear infinite;

@@ -36,16 +36,16 @@
     # theme
     stylix = {
       cursor = {
-        package = pkgs.capitaine-cursors-themed;
-        name = "Capitaine Cursors (Gruvbox)";
+        package = pkgs.catppuccin-cursors.frappeDark;
+        name = "catppuccin-frappe-dark-cursors";
       };
       icon = {
-        package = pkgs.gruvbox-plus-icons.override {
-          # Supported colors: black blue caramel citron firebrick gold green grey highland jade lavender
-          # lime olive orange pistachio plasma pumpkin purple red rust sapphire tomato violet white yellow
-          folder-color = "lime";
+        package = pkgs.catppuccin-papirus-folders.override {
+          flavor = "frappe";
+          accent = "sapphire";
         };
-        darkName = "Gruvbox-Plus-Dark";
+        darkName = "Papirus-Dark";
+        lightName = "Papirus-Light";
       };
     };
 

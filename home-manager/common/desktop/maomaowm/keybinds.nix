@@ -19,6 +19,15 @@ let
     fcitx5-remote -t
     ${osdCmd "--custom-message=(fcitx5-remote -n) --custom-icon=input-keyboard"}
   '';
+
+  terminal = lib.getExe config.profiles.${user}.defaultTerminal.package;
+
+  openTerminal =
+    {
+      app,
+      app-id ? lib.getName app,
+    }:
+    "${terminal} -o confirm_os_window_close=0 --app-id=${app-id} ${lib.getName app}";
 in
 # common
 ''
@@ -37,12 +46,27 @@ in
   bind=SUPER,v,spawn,fuzzel-clipboard
 
   # terminal
-  bind=SUPER,Return,spawn,${lib.getExe config.profiles.${user}.defaultTerminal.package}
+  bind=SUPER,Return,spawn,${terminal}
 
   # programs
+  bind=SUPER,e,spawn,${lib.getExe pkgs.nemo}
   bind=SUPER,b,spawn,librewolf
   bind=SUPER,w,spawn,webcord
   bind=SUPER,s,spawn,spotify
+
+  # tui
+  bind=SUPER,c,spawn,${openTerminal { app = pkgs.cava; }}
+  bind=SUPER+SHIFT,e,spawn,${openTerminal { app = pkgs.yazi; }}
+  bind=SUPER,n,spawn,${
+    openTerminal {
+      app = "ns";
+      app-id = lib.getName pkgs.nix-search-tv;
+    }
+  }
+
+  # dunst
+  bind=SUPER+SHIFT,n,spawn,${lib.getExe' pkgs.dunst "dunstctl"} history-pop
+  bind=SUPER+ALT,n,spawn,${lib.getExe' pkgs.dunst "dunstctl"} close-all
 
   # media-key
   bind=none,XF86AudioRaiseVolume,spawn,${osdCmd "--output-volume raise"}
@@ -185,10 +209,10 @@ in
 ''
 # gesture
 + ''
-  gesturebind=NONE,left,3,focusdir,left
-  gesturebind=NONE,right,3,focusdir,right
-  gesturebind=NONE,up,3,focusdir,up
-  gesturebind=NONE,down,3,focusdir,down
+  gesturebind=NONE,left,3,focusdir,right
+  gesturebind=NONE,right,3,focusdir,left
+  gesturebind=NONE,up,3,focusdir,down
+  gesturebind=NONE,down,3,focusdir,up
   gesturebind=NONE,left,4,viewtoleft_have_client
   gesturebind=NONE,right,4,viewtoright_have_client
   gesturebind=NONE,up,4,toggleoverview

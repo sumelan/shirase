@@ -49,7 +49,7 @@ in
       };
       cursor = {
         inherit (cfg.cursor) package name;
-        size = 30;
+        size = 28;
       };
 
       fonts = {
