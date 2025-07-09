@@ -103,12 +103,5 @@
       osd = "swayosd";
       osdArgs = "--monitor ${config.lib.monitors.mainMonitorName} --custom-message=(fcitx5-remote -n) --custom-icon=input-keyboard";
     };
-
-    # clear clipboard cache
-    "Mod+Ctrl+V" = lib.custom.niri.runCmd {
-      cmd = "rm $XDG_CACHE_HOME/cliphist/db";
-      osd = "swayosd";
-      osdArgs = "--monitor ${config.lib.monitors.mainMonitorName} --custom-message='Clipboard Cleared' --custom-icon=edit-paste";
-    };
   };
 }

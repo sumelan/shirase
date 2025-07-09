@@ -1,21 +1,22 @@
 {
-  lib,
-  config,
   pkgs,
-  user,
   inputs,
   flakePath,
   ...
 }:
 let
   nixpkgs-review = pkgs.nixpkgs-review.override { withNom = true; };
-  ns =
-    builtins.fetchurl {
-      url = "https://raw.githubusercontent.com/3timeslazy/nix-search-tv/refs/heads/main/nixpkgs.sh";
-      sha256 = "sha256-/usZX16ept4bXAf10jggeVwOn8B7Rs2dV48F9Jc0dbk=";
-    }
-    |> builtins.readFile
-    |> pkgs.writeShellScriptBin "ns";
+
+  ns = pkgs.writeShellApplication {
+    name = "ns";
+    runtimeInputs = with pkgs; [
+      fzf
+      nix-search-tv
+    ];
+    # ignore checks since i didn't write this
+    checkPhase = "";
+    text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
+  };
 in
 {
   imports = [
@@ -44,13 +45,6 @@ in
       enable = true;
       clean.extraArgs = "--keep 5";
       flake = flakePath;
-    };
-    niri.settings.binds = {
-      "Mod+N" = lib.custom.niri.openTerminal {
-        app = "ns";
-        terminal = config.profiles.${user}.defaultTerminal.package;
-        app-id = lib.getName pkgs.nix-search-tv;
-      };
     };
   };
 

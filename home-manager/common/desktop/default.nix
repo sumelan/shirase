@@ -7,6 +7,7 @@ _: {
     ./dunst.nix
     ./easyeffects.nix
     ./fuzzel.nix
+    ./kooha.nix
     ./librewolf.nix
     ./mpv.nix
     ./nemo.nix

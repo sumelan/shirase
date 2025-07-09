@@ -10,9 +10,7 @@
 
   options.custom = {
     niri = {
-      enable = lib.mkEnableOption "Niri compositor" // {
-        default = true;
-      };
+      enable = lib.mkEnableOption "Niri compositor";
       flake.enable = lib.mkEnableOption "Enable niri-flake" // {
         default = config.custom.niri.enable;
       };

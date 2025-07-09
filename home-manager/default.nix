@@ -66,11 +66,22 @@
           xdg-desktop-portal-gtk
           xdg-desktop-portal-gnome
         ];
+
         config = {
-          niri."org.freedesktop.impl.portal.FileChooser" = "gtk";
-          niri.default = "gnome";
-          common.default = "gnome";
-          obs.default = "gnome";
+          common = {
+            default = [
+              "wlr"
+              "gtk"
+            ];
+            "org.freedesktop.impl.portal.FileChooser" = "gtk";
+            "org.freedesktop.impl.portal.Screenshot" = "wlr";
+            "org.freedesktop.impl.portal.ScreenCast" = "wlr";
+          };
+          obs.default = [ "wlr" ];
+          niri = lib.mkIf config.custom.niri.enable {
+            default = "gnome";
+            "org.freedesktop.impl.portal.FileChooser" = "gtk";
+          };
         };
       };
 

@@ -21,7 +21,7 @@ in
 lib.mkIf config.custom.maomaowm.enable {
   wayland.windowManager.maomaowm.settings = ''
     # == Master-Stack Layout Setting (tile,spiral,dwindle) ==
-    new_is_master=0
+    new_is_master=1
     default_mfact=0.55
     default_nmaster=1
     smartgaps=1

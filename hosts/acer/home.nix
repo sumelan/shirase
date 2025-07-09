@@ -18,8 +18,6 @@
   };
 
   custom = {
-    maomaowm.enable = true;
-
     # theme
     stylix = {
       cursor = {

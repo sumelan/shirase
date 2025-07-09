@@ -10,16 +10,19 @@
       inputs.maomaowm.hmModules.maomaowm
     ]
     ++ [
+      ./settings
       ./waybar
-      ./settings.nix
       ./autostart.nix
       ./idle.nix
       ./lock.nix
+      ./monitors.nix
       ./wallpaper.nix
     ];
 
   options.custom = {
-    maomaowm.enable = lib.mkEnableOption "maomaowm";
+    maomaowm.enable = lib.mkEnableOption "maomaowm" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf config.custom.maomaowm.enable {

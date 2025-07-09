@@ -68,44 +68,6 @@ in
           '';
       };
     };
-
-    niri.settings = {
-      binds = {
-        "Mod+B" = {
-          action.spawn = lib.custom.niri.useUwsm "librewolf";
-          hotkey-overlay.title = "Launch librewolf";
-        };
-      };
-      # NOTE: bitwarden window cannot be floated on this method
-      # https://github.com/hyprwm/Hyprland/issues/3835
-      window-rules = [
-        {
-          matches = lib.singleton {
-            app-id = "^(librewolf)$";
-          };
-          default-column-width.proportion = 0.6;
-        }
-        {
-          matches = [
-            {
-              app-id = "^(librewolf)$";
-              title = "^(ピクチャーインピクチャー)$";
-            }
-            {
-              app-id = "^(librewolf)$";
-              title = "^(Save File)$";
-            }
-            {
-              app-id = "^(librewolf)$";
-              title = "^(.*)(wants to save)$";
-            }
-          ];
-          open-floating = true;
-          default-column-width.proportion = 0.4;
-          default-window-height.proportion = 0.4;
-        }
-      ];
-    };
   };
 
   home = {

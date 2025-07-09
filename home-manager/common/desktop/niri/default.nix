@@ -6,20 +6,15 @@
     ./animations.nix
     ./autostart.nix
     ./keybinds.nix
-    ./monitors.nix
     ./niriswitcher.nix
     ./rules.nix
     # ./wallpaper.nix
   ];
 
   options.custom = with lib; {
-    niri.enable = lib.mkEnableOption "Enablen niri" // {
-      default = true;
-    };
+    niri.enable = lib.mkEnableOption "Enablen niri";
 
-    xwayland.enable = mkEnableOption "Enable xwayland-satellite" // {
-      default = true;
-    };
+    xwayland.enable = mkEnableOption "Enable xwayland-satellite";
   };
 
   config = lib.mkIf config.custom.niri.enable {

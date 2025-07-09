@@ -9,8 +9,6 @@
 
   # SystemModule Options
   custom = {
-    maomaowm.enable = true;
-
     # style
     stylix.colorTheme = "catppuccin-frappe";
 

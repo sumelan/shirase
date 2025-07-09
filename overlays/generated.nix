@@ -15,14 +15,14 @@
   };
   yazi-starship = {
     pname = "yazi-starship";
-    version = "6a0f3f788971b155cbc7cec47f6f11aebbc148c9";
+    version = "a63550b2f91f0553cc545fd8081a03810bc41bc0";
     src = fetchFromGitHub {
       owner = "Rolv-Apneseth";
       repo = "starship.yazi";
-      rev = "6a0f3f788971b155cbc7cec47f6f11aebbc148c9";
+      rev = "a63550b2f91f0553cc545fd8081a03810bc41bc0";
       fetchSubmodules = false;
-      sha256 = "sha256-q1G0Y4JAuAv8+zckImzbRvozVn489qiYVGFQbdCxC98=";
+      sha256 = "sha256-PYeR6fiWDbUMpJbTFSkM57FzmCbsB4W4IXXe25wLncg=";
     };
-    date = "2025-06-01";
+    date = "2025-07-08";
   };
 }
