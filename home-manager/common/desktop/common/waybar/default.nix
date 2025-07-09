@@ -147,7 +147,7 @@
             "idle_inhibitor" = {
               format = "{icon}";
               format-icons = {
-                activated = "<span size='${iconSizeStr}' foreground='${base05}'>  </span>";
+                activated = "<span size='${iconSizeStr}' foreground='${base00}'>  </span>";
                 deactivated = "<span size='${iconSizeStr}' foreground='${base02}'>  </span>";
               };
               tooltip = false;

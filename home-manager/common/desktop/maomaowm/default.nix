@@ -12,7 +12,6 @@
     ++ [
       ./settings
       ./autostart.nix
-      ./wallpaper.nix
     ];
 
   options.custom = {

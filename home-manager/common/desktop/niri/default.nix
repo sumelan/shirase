@@ -1,8 +1,6 @@
 { lib, config, ... }:
 {
   imports = [
-    #./way-edges
-    # ./waybar
     ./animations.nix
     ./autostart.nix
     ./idle.nix
@@ -119,8 +117,6 @@
             gaps-between-tabs = 2;
           };
         };
-
-        overview.zoom = 0.7;
 
         environment = {
           QT_QPA_PLATFORM = "wayland";

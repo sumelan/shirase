@@ -106,7 +106,7 @@
         border-radius: 20px;
       }
 
-       #workspaces button {
+      #workspaces button {
         font-size: 0px;
         background-color: ${base07};
         padding: 0px 1px;
@@ -165,7 +165,7 @@
       #idle_inhibitor.activated {
         padding: 6px 6px;
         border-radius: 20px;
-        background: shade(alpha(${base0A}, 0.9), 1);
+        background: shade(alpha(${base0C}, 0.9), 1);
       }
 
       #window {

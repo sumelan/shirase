@@ -33,16 +33,10 @@
 
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
-      #     inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nvf = {
       url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    pre-commit-hooks = {
-      url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -54,16 +48,6 @@
     };
 
     swww.url = "github:LGFae/swww";
-
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    way-edges = {
-      url = "github:way-edges/way-edges";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =

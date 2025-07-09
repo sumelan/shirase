@@ -9,13 +9,6 @@
   services = {
     # power management
     power-profiles-daemon.enable = true; # conflict with TLP
-    upower = {
-      enable = true;
-      percentageLow = 30;
-      percentageCritical = 10;
-      percentageAction = 5;
-      criticalPowerAction = "PowerOff";
-    };
 
     # touchpad support
     libinput.enable = true;
