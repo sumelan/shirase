@@ -1,13 +1,13 @@
 _: {
   imports = [
-    ./kitty
+    ./common
     ./maomaowm
     ./niri
     ./discord.nix
     ./dunst.nix
     ./easyeffects.nix
     ./fuzzel.nix
-    ./kooha.nix
+    ./kitty.nix
     ./librewolf.nix
     ./mpv.nix
     ./nemo.nix

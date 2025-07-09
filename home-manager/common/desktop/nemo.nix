@@ -70,6 +70,28 @@
     };
   };
 
+  programs.niri.settings = {
+    binds."Mod+E" = lib.custom.niri.openApp {
+      app = pkgs.nemo;
+    };
+
+    window-rules = [
+      {
+        matches = [
+          {
+            app-id = "^(nemo)$";
+          }
+          {
+            app-id = "^(xdg-desktop-portal-gtk)$";
+          }
+        ];
+        open-floating = true;
+        default-column-width.proportion = 0.4;
+        default-window-height.proportion = 0.4;
+      }
+    ];
+  };
+
   custom.persist = {
     home = {
       directories = [

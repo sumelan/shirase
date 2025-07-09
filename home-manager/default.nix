@@ -68,7 +68,8 @@
         ];
 
         config = {
-          common = {
+          common.default = [ "gnome" ];
+          maomao = {
             default = [
               "wlr"
               "gtk"
@@ -77,11 +78,11 @@
             "org.freedesktop.impl.portal.Screenshot" = "wlr";
             "org.freedesktop.impl.portal.ScreenCast" = "wlr";
           };
-          obs.default = [ "wlr" ];
-          niri = lib.mkIf config.custom.niri.enable {
+          niri = {
             default = "gnome";
             "org.freedesktop.impl.portal.FileChooser" = "gtk";
           };
+          obs.default = [ "gnome" ];
         };
       };
 

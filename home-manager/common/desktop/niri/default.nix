@@ -5,14 +5,18 @@
     # ./waybar
     ./animations.nix
     ./autostart.nix
+    ./idle.nix
     ./keybinds.nix
+    ./lock.nix
     ./niriswitcher.nix
     ./rules.nix
-    # ./wallpaper.nix
+    ./wallpaper.nix
   ];
 
   options.custom = with lib; {
-    niri.enable = lib.mkEnableOption "Enablen niri";
+    niri.enable = lib.mkEnableOption "Enablen niri" // {
+      default = true;
+    };
 
     xwayland.enable = mkEnableOption "Enable xwayland-satellite";
   };

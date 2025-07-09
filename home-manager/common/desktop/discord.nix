@@ -15,6 +15,7 @@ in
     binds = {
       "Mod+W" = lib.custom.niri.openApp {
         app = discordPkgs;
+        args = "--enable-wayland-ime --wayland-text-input-version=3";
       };
     };
     window-rules = lib.singleton {

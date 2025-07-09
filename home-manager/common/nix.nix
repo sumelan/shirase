@@ -1,5 +1,8 @@
 {
+  lib,
+  config,
   pkgs,
+  user,
   inputs,
   flakePath,
   ...
@@ -45,6 +48,13 @@ in
       enable = true;
       clean.extraArgs = "--keep 5";
       flake = flakePath;
+    };
+    niri.settings.binds = {
+      "Mod+N" = lib.custom.niri.openTerminal {
+        app = "ns";
+        terminal = config.profiles.${user}.defaultTerminal.package;
+        app-id = lib.getName pkgs.nix-search-tv;
+      };
     };
   };
 

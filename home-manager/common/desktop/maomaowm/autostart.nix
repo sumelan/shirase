@@ -16,7 +16,7 @@ in
       ''
         set +e
 
-        dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots
+        dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots GTK_USE_PORTAL=1 NIXOS_XDG_OPEN_USE_PORTAL=1
         ${lib.getExe' pkgs.xdg-desktop-portal-wlr "xdg-desktop-portal-wlr"} &
 
         ${lib.getExe pkgs.wl-clip-persist} ----clipboard regular --reconnect-tries 0 &

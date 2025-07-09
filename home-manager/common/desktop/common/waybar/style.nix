@@ -1,5 +1,5 @@
-{ lib, config, ... }:
-lib.mkIf config.custom.maomaowm.enable {
+{ config, ... }:
+{
   programs.waybar.style =
     with config.lib.stylix.colors.withHashtag;
     let
@@ -79,6 +79,7 @@ lib.mkIf config.custom.maomaowm.enable {
       #power-profiles-daemon,
       #idle_inhibitor,
       #clock,
+      #workspaces,
       #tags,
       #wireplumber,
       #backlight,
@@ -96,6 +97,35 @@ lib.mkIf config.custom.maomaowm.enable {
         margin-right: 5px;
         box-shadow: 1px 2px 2px #101010;
         border-radius: 10px;
+      }
+
+      #workspaces {
+        margin-left: 15px;
+        font-size: 0px;
+        padding: 6px 3px;
+        border-radius: 20px;
+      }
+
+       #workspaces button {
+        font-size: 0px;
+        background-color: ${base07};
+        padding: 0px 1px;
+        margin: 0px 4px;
+        border-radius: 20px;
+        transition: all 0.25s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+      }
+
+      #workspaces button.active {
+        font-size: 1px;
+        background-color: ${base0E};
+        border-radius: 20px;
+        min-width: 30px;
+        background-size: 400% 400%;
+      }
+
+      #workspaces button.empty {
+        font-size: 1px;
+        background-color: ${base04};
       }
 
       #tags {

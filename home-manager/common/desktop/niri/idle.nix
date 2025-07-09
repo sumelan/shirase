@@ -8,7 +8,7 @@
 {
   options.custom = {
     hypridle.enable = lib.mkEnableOption "Enable hypridle" // {
-      default = config.custom.maomaowm.enable;
+      default = config.custom.niri.enable;
     };
   };
 
@@ -28,7 +28,7 @@
             "playerctl pause"
           ];
           # to avoid having to press a key twice to run on the display.
-          after_sleep_cmd = "${lib.getExe pkgs.wlr-randr} --output ${config.lib.monitors.mainMonitorName} --on";
+          after_sleep_cmd = "niri msg action power-on-monitors";
         };
 
         listener = [
@@ -46,9 +46,9 @@
           {
             timeout = 60 * 10;
             # screen off when timeout has passed.
-            on-timeout = "${lib.getExe pkgs.wlr-randr} --output ${config.lib.monitors.mainMonitorName} --off";
+            on-timeout = "niri msg action power-off-monitors";
             # screen on when activity is detected after timeout has fired.
-            on-resume = "${lib.getExe pkgs.wlr-randr} --output ${config.lib.monitors.mainMonitorName} --on";
+            on-resume = "niri msg action power-on-monitors";
           }
           (lib.optionalAttrs isLaptop {
             timeout = 60 * 15;

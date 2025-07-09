@@ -58,5 +58,13 @@
         };
       };
   };
+  programs.niri.settings.binds = {
+    "Mod+Shift+N" = lib.custom.niri.runCmd {
+      cmd = "dunstctl history-pop";
+    };
+    "Mod+Alt+N" = lib.custom.niri.runCmd {
+      cmd = "dunstctl close-all";
+    };
+  };
   stylix.targets.dunst.enable = false;
 }

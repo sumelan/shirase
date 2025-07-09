@@ -58,12 +58,6 @@
 
       telescope.enable = true;
 
-      spellcheck = {
-        enable = true;
-        languages = [ "en" ];
-        programmingWordlist.enable = true;
-      };
-
       lsp = {
         formatOnSave = true;
         lspkind.enable = true;

@@ -9,47 +9,59 @@
   # tty autologin
   services.getty.autologinUser = user;
 
-  environment.etc =
-    let
-      monitorRules = "monitorrule=${config.hm.lib.monitors.mainMonitorName},0,1,tile,0,1.0,0,0";
-    in
-    {
-      # fallback config path
-      "maomao/config.conf".text = ''
-        tap_to_click=1
-        trackpad_natural_scrolling=1
-
-        cursor_theme=${config.hm.stylix.cursor.name}
-        cursor_size=${config.hm.stylix.cursor.size |> builtins.toString}
-
-        ${monitorRules}
-
-        env=XCURSOR_SIZE,${config.hm.stylix.cursor.size |> builtins.toString}
-        env=GTK_USE_PORTAL,0
-        env=GDK_DEBUG,no-portals
-      '';
-    };
-
-  # 'services.greetd' creates a self contained settings file referenced by the systemd service
-  # so '/etc/greetd/config.toml' is not created
   services.greetd = {
     enable = true;
     settings = {
       default_session =
         let
-          backlightCmd = lib.optionalString config.hm.custom.backlight.enable ''
-            ${lib.getExe pkgs.brightnessctl} set 5%
+          inherit (config.hm.lib.monitors) mainMonitor;
+          mainScale = mainMonitor.scale |> builtins.toString;
+          mainMode = "${mainMonitor.mode.width |> builtins.toString}x${
+            mainMonitor.mode.height |> builtins.toString
+          }@${mainMonitor.mode.refresh |> builtins.toString}";
+
+          adjustBacklight = lib.optionalString config.hm.custom.backlight.enable ''
+            spawn-at-startup "sh" "-c" "${lib.getExe pkgs.brightnessctl} set 5%"
           '';
-          autostart.sh =
-            pkgs.writeShellScript "autostart.sh"
-              # bash
+          niri-config =
+            pkgs.writeText "niri-config"
+              # kdl
               ''
-                ${backlightCmd}
-                ${lib.getExe pkgs.greetd.regreet}; pkill -f maomao
+                hotkey-overlay {
+                    skip-at-startup
+                }
+
+                environment {
+                    GTK_USE_PORTAL "0"
+                    GDK_DEBUG "no-portals"
+                }
+
+                cursor {
+                    xcursor-theme "${config.hm.stylix.cursor.name}"
+                    xcursor-size ${config.hm.stylix.cursor.size |> builtins.toString}
+                }
+
+                input {
+                    touchpad {
+                        tap
+                        natural-scroll
+                    }
+                }
+
+                output "${config.hm.lib.monitors.mainMonitorName}" {
+                    scale ${mainScale}
+                    transform "normal"
+                    position x=0 y=0
+                    mode "${mainMode}"
+                }
+
+                ${adjustBacklight}
+                spawn-at-startup "sh" "-c" "${lib.getExe pkgs.greetd.regreet}; pkill -f niri"
               '';
+
         in
         {
-          command = "maomao -s ${autostart.sh}";
+          command = "niri -c ${niri-config}";
           user = "greeter";
         };
     };

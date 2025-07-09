@@ -103,5 +103,13 @@
         ];
       };
     };
+    niri.settings = {
+      binds = {
+        "Mod+Shift+E" = lib.custom.niri.openTerminal {
+          app = pkgs.yazi;
+          terminal = config.profiles.${user}.defaultTerminal.package;
+        };
+      };
+    };
   };
 }

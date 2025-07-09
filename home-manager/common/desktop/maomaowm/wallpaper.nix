@@ -10,7 +10,7 @@ let
 
   wallImg = ../../../../hosts/wallpaper.jpg;
 in
-{
+lib.mkIf config.custom.maomaowm.enable {
   home = {
     file = {
       ".wallpaper.jpg".source = wallImg;

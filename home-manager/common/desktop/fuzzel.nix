@@ -56,6 +56,12 @@ in
       "Mod+D" = lib.custom.niri.openApp {
         app = pkgs.fuzzel;
       };
+      "Alt+Escape" = lib.custom.niri.runCmd {
+        cmd = "fuzzel-windows";
+      };
+      "Mod+R" = lib.custom.niri.runCmd {
+        cmd = "fuzzel-recorder";
+      };
       "Mod+Q" = lib.custom.niri.runCmd {
         cmd = "fuzzel-actions";
       };

@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   inputs,
   ...
@@ -14,7 +15,7 @@
     in
     {
       enable = true;
-      wayland = null;
+      wayland = true;
       enabledExtensions = with spicePkgs.extensions; [
         # adblock
         keyboardShortcut
@@ -41,6 +42,35 @@
     };
 
   services.playerctld.enable = true;
+
+  programs.niri.settings = {
+    binds = {
+      "Mod+S" = {
+        action.spawn = lib.custom.niri.useUwsm (
+          lib.concatStringsSep " " [
+            "spotify"
+            "--wayland-text-input-version=3"
+          ]
+        );
+        hotkey-overlay.title = "Launch spotify";
+      };
+    };
+    window-rules = [
+      {
+        matches = lib.singleton {
+          app-id = "^(spotify)$";
+        };
+        default-column-width.proportion = 0.9;
+      }
+      {
+        # mini player
+        matches = lib.singleton {
+          app-id = "^(chromium-browser)$";
+        };
+        open-floating = true;
+      }
+    ];
+  };
 
   custom.persist = {
     home = {
