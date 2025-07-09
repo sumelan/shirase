@@ -6,7 +6,7 @@
 {
   options.custom = {
     hyprlock.enable = lib.mkEnableOption "hyprlock" // {
-      default = config.custom.maomaowm.enable;
+      default = config.custom.niri.enable;
     };
   };
 
