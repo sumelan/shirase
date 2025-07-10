@@ -2,12 +2,10 @@ _: {
   imports = [
     ./brave.nix
     ./cyanrip.nix
-    ./dimland.nix
     ./foliate.nix
     ./ghostty.nix
     ./helix.nix
     ./inkscape.nix
-    ./kooha.nix
     ./krita.nix
     ./obs-studio.nix
     ./picard.nix

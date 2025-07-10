@@ -5,6 +5,7 @@
   user,
   ...
 }:
+with config.lib.stylix.colors.withHashtag;
 # == Key Bindings ==
 # The mod key is not case sensitive,
 # but the second key is case sensitive,
@@ -18,6 +19,11 @@ let
   imeCmd = pkgs.writers.writeFish "switch_ime" ''
     fcitx5-remote -t
     ${osdCmd "--custom-message=(fcitx5-remote -n) --custom-icon=input-keyboard"}
+  '';
+
+  screenshotCmd = pkgs.writers.writeFish "take_screenshot" ''
+    ${lib.getExe pkgs.grim} -g (${lib.getExe pkgs.slurp} -b '${base00}55' -c '${base0B}ff') -t ppm - \
+      | ${lib.getExe pkgs.satty} -f - -o ${config.xdg.userDirs.pictures}/Screenshots/(date +'%Y-%m-%d_%H-%M-%S_grim.png')
   '';
 
   terminal = lib.getExe config.profiles.${user}.defaultTerminal.package;
@@ -41,6 +47,12 @@ in
 
   # quit
   bind=SUPER+SHIFT,Escape,quit
+
+  # screenshot
+  bind=SUPER,backslash,spawn,${screenshotCmd}
+
+  # screencast
+  bind=SUPER+ALT,backslash,spawn,fuzzel-recorder
 
   # fuzzel-menu
   bind=SUPER,d,spawn,fuzzel

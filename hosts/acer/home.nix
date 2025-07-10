@@ -19,6 +19,8 @@
 
   custom = {
     maomao.enable = true;
+    niri.enable = false;
+
     # theme
     stylix = {
       cursor = {

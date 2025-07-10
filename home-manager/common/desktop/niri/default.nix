@@ -3,9 +3,7 @@
   imports = [
     ./animations.nix
     ./autostart.nix
-    ./idle.nix
     ./keybinds.nix
-    ./lock.nix
     ./niriswitcher.nix
     ./rules.nix
     ./wallpaper.nix

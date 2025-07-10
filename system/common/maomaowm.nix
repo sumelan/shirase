@@ -32,6 +32,13 @@
         common = {
           default = "wlr";
         };
+        maomao = {
+          default = [
+            "gtk"
+            "wlr"
+          ];
+          "org.freedesktop.impl.portal.FileChooser" = "gtk";
+        };
       };
     };
   };

@@ -16,7 +16,7 @@ let
       ${lib.getExe' pkgs.imagemagick "magick"} ${img} -blur 0x30 $out
     '';
 in
-{
+lib.mkIf config.custom.niri.enable {
   home = {
     file = {
       ".wallpaper.jpg".source = wallImg;

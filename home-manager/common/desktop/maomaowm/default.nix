@@ -10,9 +10,9 @@
       inputs.maomaowm.hmModules.maomaowm
     ]
     ++ [
-      ./scripts
       ./settings
       ./autostart.nix
+      ./wallpaper.nix
     ];
 
   options.custom = {

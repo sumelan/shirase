@@ -8,7 +8,7 @@
 {
   options.custom = {
     hypridle.enable = lib.mkEnableOption "Enable hypridle" // {
-      default = config.custom.niri.enable;
+      default = true;
     };
   };
 
@@ -17,38 +17,37 @@
       enable = true;
       settings = {
         general = {
-          ignore_dbus_inhibit = true;
+          ignore_dbus_inhibit = false;
           # exec hyprlock unless already running
-          lock_cmd = "pidof hyprlock || hyprlock";
+          lock_cmd = "${lib.getExe' pkgs.procps "pidof"} hyprlock || ${lib.getExe pkgs.hyprlock}";
           # kill hyprlock
-          unlock_cmd = "pkill -SIGUSR1 hyprlock";
+          unlock_cmd = " ${lib.getExe' pkgs.procps "pkill"} -SIGUSR1 hyprlock";
           # stop playing when lock-session
           before_sleep_cmd = lib.concatStringsSep "; " [
             "loginctl lock-session"
             "playerctl pause"
           ];
           # to avoid having to press a key twice to run on the display.
-          after_sleep_cmd = "niri msg action power-on-monitors";
+          after_sleep_cmd = "${lib.getExe pkgs.wlr-randr} --output ${config.lib.monitors.mainMonitorName} --on";
         };
 
         listener = [
-          (lib.optionalAttrs config.custom.backlight.enable {
+          {
             timeout = 60 * 5;
-            # set monitor backlight to minimum, avoid 0 on OLED monitor.
-            on-timeout = "${lib.getExe pkgs.brightnessctl} -s set 5";
-            on-resume = "${lib.getExe pkgs.brightnessctl} -r"; # monitor backlight restore.
-          })
+            on-timeout = "${lib.getExe' config.programs.dimland.package "dimland"} -a 0.5";
+            on-resume = "${lib.getExe' config.programs.dimland.package "dimland"} stop";
+          }
           {
             timeout = 60 * 8;
             # lock screen when timeout has passed.
-            on-timeout = "loginctl lock-session";
+            on-timeout = "${lib.getExe pkgs.hyprlock}";
           }
           {
             timeout = 60 * 10;
             # screen off when timeout has passed.
-            on-timeout = "niri msg action power-off-monitors";
+            on-timeout = "${lib.getExe pkgs.wlr-randr} --output ${config.lib.monitors.mainMonitorName} --off";
             # screen on when activity is detected after timeout has fired.
-            on-resume = "niri msg action power-on-monitors";
+            on-resume = "${lib.getExe pkgs.wlr-randr} --output ${config.lib.monitors.mainMonitorName} --on";
           }
           (lib.optionalAttrs isLaptop {
             timeout = 60 * 15;

@@ -84,26 +84,22 @@
             };
             "memory" = {
               interval = 30;
-              format = "<span size='${iconSizeStr}' foreground='${base0E}'>  </span>  {used:0.1f}G/{total:0.1f}G";
+              format = "<span size='${iconSizeStr}' foreground='${base0E}'> </span>{used:0.1f}G/{total:0.1f}G";
               on-click = "${lib.getExe terminalPkgs} -T ' htop' --class=htop  ${lib.getExe pkgs.htop}";
             };
             "backlight" = {
               device = "intel_backlight";
               on-scroll-up = "${lib.getExe pkgs.brightnessctl} set +5";
               on-scroll-down = "${lib.getExe pkgs.brightnessctl} set 5-";
-              format = "<span size='${iconSizeStr}' foreground='${base0A}'>{icon} </span> {percent}%";
+              format = "<span size='${iconSizeStr}' foreground='${base0A}'>{icon} </span>{percent}%";
               format-icons = [
                 ""
                 ""
               ];
               tooltip = false;
             };
-            "tray" = {
-              icon-size = 24;
-              spacing = 10;
-            };
             "clock" = {
-              format = "<span size='${iconSizeStr}' foreground='${base0E}'> </span> {:%a %d %H:%M}";
+              format = "<span size='${iconSizeStr}' foreground='${base0E}'> </span>{:%a %d %H:%M}";
               tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
               on-click = "${lib.getExe terminalPkgs} -T ' tty-clock' --class=tty-clock ${lib.getExe pkgs.tty-clock} -s -c -C 5";
             };
@@ -130,7 +126,7 @@
             };
             "network" = {
               format-wifi = "<span size='${iconSizeStr}' foreground='${base06}'>󰖩  </span>{essid}";
-              format-ethernet = "<span size='${iconSizeStr}' foreground='${base06}'>󰈀 </span> Connected";
+              format-ethernet = "<span size='${iconSizeStr}' foreground='${base06}'>󰈀 </span>Connected";
               format-linked = "{ifname} (No IP) 󱚵 ";
               format-disconnected = "<span size='${iconSizeStr}' foreground='${base06}'> </span>Disconnected";
               tooltip-format-wifi = "Signal Strenght: {signalStrength}%";

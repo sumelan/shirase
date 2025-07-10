@@ -1,32 +1,20 @@
 { pkgs, ... }:
 pkgs.writers.writeFishBin "write_battery_info" ''
-  function power_profile
-      set ppd (powerprofilesctl get)
-      if string match $ppd "power-saver" > /dev/null
-          echo " "
-      else if string match $ppd "balanced" > /dev/null
-          echo " "
-      else
-          echo " "
-      end
-  end
-
   set battery (cat /sys/class/power_supply/BAT*/capacity)
   set battery_status (cat /sys/class/power_supply/BAT*/status)
-  set profile (power_profile)
 
-  set charging_prefixs $profile $profile $profile $profile $profile $profile $profile $profile $profile "$profile"
-  set discharging_prefixs " Critical!! - $profile" " Causion! - $profile" " Low - $profile" $profile $profile $profile $profile $profile $profile $profile
+  set charging_icons 󰢜 󰂆 󰂇 󰂈 󰢝 󰂉 󰢞 󰂊 󰂋 󰂅
+  set discharging_icons 󰁺 󰁻 󰁼 󰁽 󰁾 󰁿 󰂀 󰂁 󰂂 󰁹
 
-  set prefix (math round\($battery/10\))
+  set icon (math round\($battery/10\))
 
   if test $battery_status = Full
-      echo "$charging_prefixs[10] | Full Charged!!"
+      echo "$charging_icons[10] Battery full"
   else if test $battery_status = Discharging
-      echo "$discharging_prefixs[$prefix] | Discharging..."
+      echo "$discharging_icons[$icon] Discharging $battery%"
   else if test $battery_status = "Not charging"
-      echo "$charging_prefixs[$prefix] | Battery Charged!"
+      echo "$charging_icons[$icon] Battery charged"
   else
-      echo "$charging_prefixs[$prefix] | Charging..."
+      echo "$charging_icons[$icon] Charging $battery%"
   end
 ''

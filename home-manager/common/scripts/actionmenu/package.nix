@@ -14,7 +14,7 @@ pkgs.writers.writeFishBin "fuzzel-actions" ''
       case Suspend
           systemctl suspend
       case Exit
-          niri msg action quit
+          pkill -f maomao
       case Reboot
           systemctl reboot
       case Poweroff

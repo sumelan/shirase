@@ -11,7 +11,7 @@
 
   options.custom = {
     dimland.enable = lib.mkEnableOption "dimland" // {
-      default = config.custom.maomao.enable;
+      default = true;
     };
   };
 
@@ -23,7 +23,6 @@
         enable = true;
         alpha = 0;
         radius = 20;
-        # Specify target to start after
       };
     };
   };
