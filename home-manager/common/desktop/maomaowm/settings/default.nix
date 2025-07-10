@@ -18,7 +18,7 @@ let
   };
   rules = import ./rules.nix { inherit config isLaptop; };
 in
-lib.mkIf config.custom.maomaowm.enable {
+{
   wayland.windowManager.maomaowm.settings = ''
     # == Master-Stack Layout Setting (tile,spiral,dwindle) ==
     new_is_master=1

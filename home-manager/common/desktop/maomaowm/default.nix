@@ -10,15 +10,16 @@
       inputs.maomaowm.hmModules.maomaowm
     ]
     ++ [
+      ./scripts
       ./settings
       ./autostart.nix
     ];
 
   options.custom = {
-    maomaowm.enable = lib.mkEnableOption "maomaowm";
+    maomao.enable = lib.mkEnableOption "maomaowm";
   };
 
-  config = lib.mkIf config.custom.maomaowm.enable {
+  config = lib.mkIf config.custom.maomao.enable {
     wayland.windowManager.maomaowm = {
       enable = true;
     };

@@ -41,10 +41,28 @@
         };
       };
     };
-
     niri-flake.cache.enable = true;
-
     # use gnome-polkit instead
     systemd.user.services.niri-flake-polkit.enable = false;
+
+    xdg.portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome
+      ];
+
+      config = {
+        common.default = [
+          "gnome"
+        ];
+        niri = {
+          default = "gnome";
+          "org.freedesktop.impl.portal.FileChooser" = "gtk";
+        };
+        obs.default = [ "gnome" ];
+      };
+    };
   };
 }

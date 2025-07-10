@@ -18,6 +18,7 @@
   };
 
   custom = {
+    maomao.enable = true;
     # theme
     stylix = {
       cursor = {

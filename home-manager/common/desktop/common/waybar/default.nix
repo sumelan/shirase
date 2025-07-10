@@ -10,7 +10,7 @@
     ./style.nix
   ];
 
-  programs = {
+  programs = lib.mkIf config.custom.maomao.enable {
     waybar = {
       enable = true;
       systemd = {
@@ -28,19 +28,11 @@
             layer = "top";
             reload_style_on_change = true;
             output = "${config.lib.monitors.mainMonitorName}";
-            modules-left =
-              if config.custom.niri.enable then
-                [
-                  "niri/workspaces"
-                  "idle_inhibitor"
-                  "niri/window"
-                ]
-              else
-                [
-                  "dwl/tags"
-                  "idle_inhibitor"
-                  "dwl/window"
-                ];
+            modules-left = [
+              "dwl/tags"
+              "idle_inhibitor"
+              "dwl/window"
+            ];
             modules-center = [
               "clock"
               "mpris"
