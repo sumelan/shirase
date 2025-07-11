@@ -18,8 +18,6 @@
   };
 
   custom = {
-    maomao.enable = true;
-    niri.enable = false;
 
     # theme
     stylix = {
@@ -37,12 +35,11 @@
       };
     };
 
-    xwayland.enable = false;
-
     brave.enable = false;
     cyanrip.enable = true;
     foliate.enable = true;
     helix.enable = false;
     thunderbird.enable = true;
+    wlsunset.enable = true;
   };
 }

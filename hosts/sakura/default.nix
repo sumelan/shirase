@@ -9,9 +9,6 @@
 
   # SystemModule Options
   custom = {
-    maomao.enable = true;
-    niri.enable = false;
-
     # style
     stylix.colorTheme = "catppuccin-frappe";
 

@@ -9,15 +9,10 @@
     {
       user ? throw ''Please specify user value, like user = "foo"'',
       hardware ? throw ''Please specify hardware value, like hardware = "laptop"'',
-      packages ? "stable", # nixpkgs branch to use, stable or unstable
       system ? "x86_64-linux",
     }:
     let
-      selectedNixpkgs = if packages == "stable" then inputs.nixpkgs-stable else inputs.nixpkgs-unstable;
-      selectedHomeManager =
-        if packages == "stable" then inputs.home-manager-stable else inputs.home-manager-unstable;
-
-      systemPkgs = import selectedNixpkgs {
+      pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
@@ -35,8 +30,7 @@
       };
     in
     lib.nixosSystem {
-      inherit system specialArgs;
-      pkgs = systemPkgs;
+      inherit pkgs system specialArgs;
       modules =
         [
           ../hosts/${host}
@@ -48,7 +42,7 @@
         ]
         ++ [ ../overlays ] # nixpkgs.overlay
         ++ [
-          selectedHomeManager.nixosModules.home-manager
+          inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;

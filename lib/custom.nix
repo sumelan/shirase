@@ -1,8 +1,7 @@
 {
   inputs,
   self,
-  home-manager-stable,
-  home-manager-unstable,
+  home-manager,
   ...
 }:
 inputs.nixpkgs.lib.extend (
@@ -13,6 +12,5 @@ inputs.nixpkgs.lib.extend (
       lib = libprev;
     };
   }
-  // home-manager-stable.lib
-  // home-manager-unstable.lib
+  // home-manager.lib
 )

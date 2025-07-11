@@ -15,7 +15,9 @@
     ];
 
   options.custom = {
-    maomao.enable = lib.mkEnableOption "maomaowm";
+    maomao.enable = lib.mkEnableOption "maomaowm" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf config.custom.maomao.enable {

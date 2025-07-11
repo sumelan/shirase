@@ -12,6 +12,7 @@ _: {
     ./rustdesk.nix
     ./thunderbird.nix
     ./vlc.nix
+    ./wlsunset.nix
     ./youtube-music.nix
   ];
 }

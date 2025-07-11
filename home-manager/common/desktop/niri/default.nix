@@ -9,11 +9,10 @@
   ];
 
   options.custom = with lib; {
-    niri.enable = lib.mkEnableOption "Enablen niri" // {
-      default = true;
+    niri = {
+      enable = lib.mkEnableOption "Enablen niri";
+      xwayland.enable = mkEnableOption "Enable xwayland-satellite";
     };
-
-    xwayland.enable = mkEnableOption "Enable xwayland-satellite";
   };
 
   config = lib.mkIf config.custom.niri.enable {
@@ -35,7 +34,7 @@
 
         prefer-no-csd = true;
 
-        xwayland-satellite.enable = config.custom.xwayland.enable;
+        xwayland-satellite.enable = config.custom.niri.xwayland.enable;
 
         input = {
           focus-follows-mouse.enable = true;

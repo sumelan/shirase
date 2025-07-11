@@ -82,10 +82,11 @@
                 flake = ''(builtins.getFlake "${flakePath}")'';
               in
               rec {
-                nixos.expr = ''${flake}.nixosConfigurations.${host}.options'';
+                nixos.expr = "${flake}.nixosConfigurations.${host}.options";
                 home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
               };
           };
+          treesitter.enable = true;
         };
 
         clang.enable = true;

@@ -2,15 +2,11 @@
   description = "Shirase: sumelan's nixos configuration";
 
   inputs = {
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager-stable = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-    home-manager-unstable = {
+    # use unstable brunch
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     agenix.url = "github:ryantm/agenix";
@@ -63,7 +59,7 @@
       lib = import ./lib/custom.nix {
         inherit inputs self;
         inherit (nixpkgs) lib;
-        inherit (inputs) home-manager-stable home-manager-unstable;
+        inherit (inputs) home-manager;
       };
 
       forAllSystems = lib.genAttrs [

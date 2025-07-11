@@ -31,9 +31,6 @@
   };
 
   custom = {
-    maomao.enable = true;
-    niri.enable = false;
-
     # theme
     stylix = {
       cursor = {
@@ -50,13 +47,12 @@
       };
     };
 
-    xwayland.enable = false;
-
     brave.enable = false;
     cyanrip.enable = true;
     foliate.enable = true;
     helix.enable = false;
     krita.enable = false;
     thunderbird.enable = false;
+    wlsunset.enable = true;
   };
 }

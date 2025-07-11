@@ -10,7 +10,9 @@
 
   options.custom = {
     maomao = {
-      enable = lib.mkEnableOption "Enable maomaowm";
+      enable = lib.mkEnableOption "Enable maomaowm" // {
+        default = true;
+      };
     };
   };
 
