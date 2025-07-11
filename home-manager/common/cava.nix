@@ -1,7 +1,5 @@
 _: {
-  programs = {
-    cava = {
-      enable = true;
-    };
+  programs.cava = {
+    enable = true;
   };
 }

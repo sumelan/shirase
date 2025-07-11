@@ -31,7 +31,6 @@
             modules-left = [
               "dwl/tags"
               "idle_inhibitor"
-              "dwl/window"
             ];
             modules-center = [
               "clock"
@@ -42,6 +41,7 @@
               [
                 "network"
                 "bluetooth"
+                "cava"
                 "wireplumber"
               ]
               ++ (lib.optional config.custom.backlight.enable "backlight")
@@ -160,8 +160,8 @@
             "bluetooth" = {
               format = "<span size='${iconSizeStr}' foreground='${base0D}'> </span>{status}";
               format-disabled = ""; # an empty format will hide the modules-left
-              format-connected = "<span size='${iconSizeStr}' foreground='${base0D}'> </span>{device_alias}";
-              format-connected-battery = "<span size='${iconSizeStr}' foreground='${base0D}'> </span>{device_alias} {device_battery_percentage}%";
+              format-connected = "<span size='${iconSizeStr}' foreground='${base0D}'>󰂱 </span>";
+              format-connected-battery = "<span size='${iconSizeStr}' foreground='${base0D}'>󰥈 </span>{device_battery_percentage}%";
               tooltip-format = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
               tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
               tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
@@ -195,6 +195,39 @@
                 performance = "<span size='${iconSizeStr}' foreground='${base05}'> </span>";
                 balanced = "<span size='${iconSizeStr}' foreground='${base0A}'> </span>";
                 power-saver = "<span size='${iconSizeStr}' foreground='${base0B}'> </span>";
+              };
+            };
+            "cava" = {
+              # "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+              framerate = 30;
+              autosens = 1;
+              bars = 12;
+              lower_cutoff_freq = 50;
+              higher_cutoff_freq = 10000;
+              sleep_timer = 5;
+              hide_on_silence = true;
+              # "format_silent": "quiet",
+              method = "pipewire";
+              source = "auto";
+              stereo = true;
+              reverse = false;
+              bar_delimiter = 0;
+              monstercat = false;
+              waves = false;
+              noise_reduction = 0.77;
+              input_delay = 2;
+              format-icons = [
+                "▁"
+                "▂"
+                "▃"
+                "▄"
+                "▅"
+                "▆"
+                "▇"
+                "█"
+              ];
+              actions = {
+                on-click-right = "mode";
               };
             };
           };

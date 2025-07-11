@@ -5,12 +5,13 @@
   ...
 }:
 let
-  backlight.sh =
-    lib.optionalString config.custom.backlight.enable pkgs.writeShellScript "backlight.sh"
+  backlight.sh = lib.optionalString config.custom.backlight.enable (
+    pkgs.writeShellScript "backlight.sh"
       # bash
       ''
         ${lib.getExe pkgs.brightnessctl} set 5%
-      '';
+      ''
+  );
 in
 {
   wayland.windowManager.maomaowm.autostart_sh =

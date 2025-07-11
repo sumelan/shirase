@@ -76,6 +76,7 @@
       #network,
       #bluetooth,
       #mpris,
+      #cava,
       #power-profiles-daemon,
       #idle_inhibitor,
       #clock,
