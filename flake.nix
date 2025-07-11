@@ -48,8 +48,6 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    swww.url = "github:LGFae/swww";
   };
 
   outputs =

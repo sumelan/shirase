@@ -6,7 +6,6 @@
     ./keybinds.nix
     ./niriswitcher.nix
     ./rules.nix
-    ./wallpaper.nix
   ];
 
   options.custom = with lib; {

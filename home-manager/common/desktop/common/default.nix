@@ -5,5 +5,6 @@ _: {
     ./idle.nix
     ./lock.nix
     ./monitors.nix
+    ./wallpaper.nix
   ];
 }

@@ -46,19 +46,21 @@ pkgs.writers.writeFishBin "record_screen" ''
       end
   end
 
-  function notify -a 1 2
-      ${lib.getExe' pkgs.libnotify "notify-send"} -a "$APP_NAME" "$1" "$2"
+  function notify -a urgency summary body
+      ${lib.getExe' pkgs.libnotify "notify-send"}  -a "$APP_NAME" -u "$urgency"  "$summary" "$body"
   end
 
   function screen
-      notify "Starting Recording" "Your screen is being recorded"
+      notify "low" "Starting Recording" "Your screen is being recorded..."
+      notify "critical" "To quit recording" "Press SUPER+ALT and BackSpace"
       timeout 600 ${lib.getExe pkgs.wf-recorder} -F format=rgb24 -x rgb24 -p qp=0 -p crf=0 -p preset=slow -c libx264rgb -f "$TMP_MP4_FILE"
   end
 
   function area
       set GEOMETRY (${lib.getExe pkgs.slurp})
       if test "$GEOMETRY" != ""
-          notify "Starting Recording" "Your screen is being recorded"
+          notify "low" "Starting Recording" "Your screen is being recorded..."
+          notify "critical" "To quit recording" "Press SUPER+ALT and BackSpace"
           timeout 600 ${lib.getExe pkgs.wf-recorder} -F format=rgb24 -x rgb24 -p qp=0 -p crf=0 -p preset=slow -c libx264rgb -g "$GEOMETRY" -f "$TMP_MP4_FILE"
       end
   end
@@ -70,24 +72,25 @@ pkgs.writers.writeFishBin "record_screen" ''
 
   function stop
       if is_recorder_running
+          ${lib.getExe' pkgs.dunst "dunstctl"} close-all
           kill (pgrep -x wf-recorder)
 
           if test -f /tmp/recording_gif
-              notify "Stopped Recording" "Starting GIF conversion phase..."
+              notify "normal" "Stopped Recording" "Starting GIF conversion phase..."
               set FILENAME "gif"
               convert_to_gif
               set SavePath (${lib.getExe pkgs.zenity} --file-selection --save --file-filter="*.gif" --filename=.gif)
               if not string match '*.gif' $SavePath; set SavePath '.gif'; end
               mv $TMP_GIF_RESULT $SavePath
               ${lib.getExe' pkgs.wl-clipboard "wl-copy"} -t image/png < $SavePath
-              notify "GIF conversion completed" "GIF saved to $SavePath"
+              notify "low" "GIF conversion completed" "GIF saved to $SavePath"
           else
               set FILENAME "mp4"
               set SavePath (${lib.getExe pkgs.zenity} --file-selection --save --file-filter="*.mp4" --filename=.mp4)
               if not string match '*.mp4' $SavePath; set SavePath '.mp4'; end
               mv $TMP_MP4_FILE $SavePath
               ${lib.getExe' pkgs.wl-clipboard "wl-copy"} -t video/mp4 < $SavePath
-              notify "Stopped Recording" "Video saved to $SavePath"
+              notify "low" "Stopped Recording" "Video saved to $SavePath"
           end
 
           if test -f $TMP_FILE_UNOPTIMIZED; rm -f "$TMP_FILE_UNOPTIMIZED"; end

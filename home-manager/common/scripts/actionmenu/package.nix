@@ -14,7 +14,7 @@ pkgs.writers.writeFishBin "fuzzel-actions" ''
       case Suspend
           systemctl suspend
       case Exit
-          pkill -f maomao
+          ${lib.getExe' pkgs.procps "pkill"} -f maomao
       case Reboot
           systemctl reboot
       case Poweroff

@@ -5,13 +5,62 @@
   user,
   ...
 }:
-with config.lib.stylix.colors.withHashtag;
 # == Key Bindings ==
 # The mod key is not case sensitive,
 # but the second key is case sensitive,
 # if you use shift as one of the mod keys,
 # remember to use uppercase keys
 let
+  actionMenu = pkgs.writers.writeFish "open_actionMenu" ''
+    set choices " Lock
+     Suspend
+    󰿅 Exit
+     Reboot
+     Power Off
+     Next Wallpaper"
+
+    set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Select system actions" --lines 6)
+
+    switch (string split -f 2 " " $choice)
+        case Lock
+            ${lib.getExe pkgs.hyprlock}
+        case Suspend
+            systemctl suspend
+        case Exit
+            ${lib.getExe' pkgs.procps "pkill"} -f maomao
+        case Reboot
+            systemctl reboot
+        case Power
+            systemctl poweroff
+        case Next
+            ${lib.getExe' config.services.wpaperd.package "wpaperctl"} next
+    end
+  '';
+
+  clipboardMenu = pkgs.writers.writeFish "open_clipboardMenu" ''
+    ${lib.getExe pkgs.cliphist} list \
+      | fuzzel --dmenu --prompt "󰅇 " --placeholder "Search for clipboard entries..." --no-sort \
+        | ${lib.getExe pkgs.cliphist} decode \
+          | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}
+  '';
+
+  recordMenu = pkgs.writers.writeFish "open_recordMenu" ''
+    set choices " Capture whole Screen
+     Selected Area
+    󰵸 Convert to GIF"
+
+    set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Select capture actions" --lines 3)
+
+    switch (string split -f 2 " " $choice)
+        case Capture
+            record_screen -s
+        case Selected
+            record_screen -a
+        case Convert
+            record_screen -g
+    end
+  '';
+
   osdCmd =
     args:
     "${lib.getExe' pkgs.swayosd "swayosd-client"} --monitor ${config.lib.monitors.mainMonitorName} ${args}";
@@ -22,8 +71,11 @@ let
   '';
 
   screenshotCmd = pkgs.writers.writeFish "take_screenshot" ''
-    ${lib.getExe pkgs.grim} -g (${lib.getExe pkgs.slurp} -b '${base00}55' -c '${base0B}ff') -t ppm - \
-      | ${lib.getExe pkgs.satty} -f - -o ${config.xdg.userDirs.pictures}/Screenshots/(date +'%Y-%m-%d_%H-%M-%S_grim.png')
+    ${lib.getExe pkgs.grim} -g (${lib.getExe pkgs.slurp}) -t ppm - \
+      | ${lib.getExe pkgs.satty} -f - \
+        --early-exit --save-after-copy --copy-command '${lib.getExe' pkgs.wl-clipboard "wl-copy"} -t image/png' \
+          -o ${config.xdg.userDirs.pictures}/Screenshots/(date +'%Y-%m-%d_%H-%M-%S.png')
+
   '';
 
   terminal = lib.getExe config.profiles.${user}.defaultTerminal.package;
@@ -52,12 +104,15 @@ in
   bind=SUPER,backslash,spawn,${screenshotCmd}
 
   # screencast
-  bind=SUPER+ALT,backslash,spawn,fuzzel-recorder
+  ## menu
+  bind=SUPER+ALT,backslash,spawn,${recordMenu}
+  ## quit
+  bind=SUPER+ALT,BackSpace,spawn,record_screen -q
 
   # fuzzel-menu
-  bind=SUPER,d,spawn,fuzzel
-  bind=SUPER,q,spawn,fuzzel-actions
-  bind=SUPER,v,spawn,fuzzel-clipboard
+  bind=SUPER,d,spawn,${lib.getExe pkgs.fuzzel}
+  bind=SUPER,q,spawn,${actionMenu}
+  bind=SUPER,v,spawn,${clipboardMenu}
 
   # terminal
   bind=SUPER,Return,spawn,${terminal}
