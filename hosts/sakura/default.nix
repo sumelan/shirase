@@ -23,8 +23,5 @@
 
     # steam
     steam.enable = false;
-
-    # server
-    audiobookshelf.enable = true;
   };
 }

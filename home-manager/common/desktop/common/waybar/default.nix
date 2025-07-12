@@ -21,7 +21,6 @@
         let
           iconSizeStr = builtins.toString 15000;
           terminalPkgs = config.profiles.${user}.defaultTerminal.package;
-          spotifyColor = "#1DB954";
 
           mainBarConfig = {
             position = "top";
@@ -44,9 +43,10 @@
                 "cava"
                 "wireplumber"
               ]
-              ++ (lib.optional config.custom.backlight.enable "backlight")
-              ++ (lib.optional config.custom.battery.enable "power-profiles-daemon")
-              ++ (lib.optional config.custom.battery.enable "battery");
+              ++ (lib.optionals config.custom.battery.enable [
+                "power-profiles-daemon"
+                "battery"
+              ]);
           };
 
           moduleConfiguration = with config.lib.stylix.colors.withHashtag; {
@@ -84,7 +84,7 @@
             };
             "memory" = {
               interval = 30;
-              format = "<span size='${iconSizeStr}' foreground='${base0E}'> </span>{used:0.1f}G/{total:0.1f}G";
+              format = "<span size='${iconSizeStr}' foreground='${base09}'> </span>{used:0.1f}G/{total:0.1f}G";
               on-click = "${lib.getExe terminalPkgs} -T ' htop' --class=htop  ${lib.getExe pkgs.htop}";
             };
             "backlight" = {
@@ -125,10 +125,10 @@
               interval = 5;
             };
             "network" = {
-              format-wifi = "<span size='${iconSizeStr}' foreground='${base06}'>󰖩  </span>{essid}";
-              format-ethernet = "<span size='${iconSizeStr}' foreground='${base06}'>󰈀 </span>Connected";
+              format-wifi = "<span size='${iconSizeStr}' foreground='${base0C}'>󰖩 </span>{essid}";
+              format-ethernet = "<span size='${iconSizeStr}' foreground='${base0C}'>󰈀 </span>Connected";
               format-linked = "{ifname} (No IP) 󱚵 ";
-              format-disconnected = "<span size='${iconSizeStr}' foreground='${base06}'> </span>Disconnected";
+              format-disconnected = "<span size='${iconSizeStr}' foreground='${base0C}'> </span>Disconnected";
               tooltip-format-wifi = "Signal Strenght: {signalStrength}%";
               on-click = "${lib.getExe' pkgs.networkmanagerapplet "nm-connection-editor"}";
             };
@@ -170,18 +170,15 @@
             };
             "mpris" = {
               player = "spotify";
-              format = "<span size='${iconSizeStr}' foreground='${spotifyColor}'>{player_icon} </span><span size='${iconSizeStr}' foreground='${base05}'>{status_icon} </span><b>{title}</b> by <i>{artist}</i>";
+              format = "<span size='${iconSizeStr}' foreground='${base00}'>{player_icon} </span><b>{title}</b> by <i>{artist}</i>";
               tooltip-format = "Album: {album}";
-              artist-len = 12;
-              title-len = 22;
+              artist-len = 14;
+              title-len = 18;
               ellipsis = "...";
               player-icons = {
                 default = "";
                 spotify = "󰓇";
                 kdeconnect = "";
-              };
-              status-icons = {
-                paused = "󰏤";
               };
               on-scroll-up = "${lib.getExe pkgs.playerctl} volume 0.1+";
               on-scroll-down = "${lib.getExe pkgs.playerctl} volume 0.1-";
@@ -201,7 +198,7 @@
               # "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
               framerate = 30;
               autosens = 1;
-              bars = 12;
+              bars = 15;
               lower_cutoff_freq = 50;
               higher_cutoff_freq = 10000;
               sleep_timer = 5;
@@ -217,14 +214,14 @@
               noise_reduction = 0.77;
               input_delay = 2;
               format-icons = [
-                "▁"
-                "▂"
-                "▃"
-                "▄"
-                "▅"
-                "▆"
-                "▇"
-                "█"
+                "<span size='10000'>▁</span>"
+                "<span size='10000'>▂</span>"
+                "<span size='10000'>▃</span>"
+                "<span size='10000'>▄</span>"
+                "<span size='10000'>▅</span>"
+                "<span size='10000'>▆</span>"
+                "<span size='10000'>▇</span>"
+                "<span size='10000'>█</span>"
               ];
               actions = {
                 on-click-right = "mode";

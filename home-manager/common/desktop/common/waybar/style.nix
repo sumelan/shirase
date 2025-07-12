@@ -158,6 +158,19 @@
         background-size: 400% 400%;
       }
 
+      #mpris {
+        background: shade(alpha(${base0B}, 0.9), 1);
+        color: ${base00};
+      }
+
+      #cava {
+        margin-right: 0px;
+      }
+
+      #power-profiles-daemon {
+        margin-right: 0px;
+      }
+
       #idle_inhibitor {
         padding: 6px 6px;
         border-radius: 20px;

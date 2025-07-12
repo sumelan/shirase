@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  isLaptop,
   ...
 }:
 {
@@ -33,26 +32,26 @@
 
         listener = [
           {
-            timeout = 60 * 5;
+            timeout = 60 * 8;
             on-timeout = "${lib.getExe' config.programs.dimland.package "dimland"} -a 0.5";
             on-resume = "${lib.getExe' config.programs.dimland.package "dimland"} stop";
           }
           {
-            timeout = 60 * 8;
+            timeout = 60 * 10;
             # lock screen when timeout has passed.
             on-timeout = "${lib.getExe pkgs.hyprlock}";
           }
           {
-            timeout = 60 * 10;
+            timeout = 60 * 15;
             # screen off when timeout has passed.
             on-timeout = "${lib.getExe pkgs.wlr-randr} --output ${config.lib.monitors.mainMonitorName} --off";
             # screen on when activity is detected after timeout has fired.
             on-resume = "${lib.getExe pkgs.wlr-randr} --output ${config.lib.monitors.mainMonitorName} --on";
           }
-          (lib.optionalAttrs isLaptop {
-            timeout = 60 * 15;
+          {
+            timeout = 60 * 30;
             on-timeout = "systemctl suspend"; # suspend pc.
-          })
+          }
         ];
       };
     };
