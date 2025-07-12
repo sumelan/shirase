@@ -71,7 +71,7 @@ let
   '';
 
   screenshotCmd = pkgs.writers.writeFish "take_screenshot" ''
-    ${lib.getExe pkgs.grim} -g (${lib.getExe pkgs.slurp}) -t ppm - \
+    ${lib.getExe pkgs.grim} -g (${lib.getExe pkgs.slurp} -d) -t ppm - \
       | ${lib.getExe pkgs.satty} -f - \
         --early-exit --save-after-copy --copy-command '${lib.getExe' pkgs.wl-clipboard "wl-copy"} -t image/png' \
           -o ${config.xdg.userDirs.pictures}/Screenshots/(date +'%Y-%m-%d_%H-%M-%S.png')
@@ -86,8 +86,10 @@ let
     }:
     "${terminal} -o confirm_os_window_close=0 --app-id=${app-id} ${lib.getName app}";
 in
-# common
+# Base binds
 ''
+  # == Base binds ==
+
   # reload config
   bind=SUPER+CTRL,r,reload_config
 
@@ -103,28 +105,50 @@ in
   # screenshot
   bind=SUPER,backslash,spawn,${screenshotCmd}
 
-  # screencast
-  ## menu
+  # screencast-menu
   bind=SUPER+ALT,backslash,spawn,${recordMenu}
-  ## quit
+  # screencast-quit
   bind=SUPER+ALT,BackSpace,spawn,record_screen -q
 
-  # fuzzel-menu
+  # launcher
   bind=SUPER,d,spawn,${lib.getExe pkgs.fuzzel}
+  # action-menu
   bind=SUPER,q,spawn,${actionMenu}
+  # clipboard-history
   bind=SUPER,v,spawn,${clipboardMenu}
 
   # terminal
   bind=SUPER,Return,spawn,${terminal}
+''
+# Programs binds
 
-  # programs
+# custom app bind example
+# spawn_on_empty (if tag 4 is empty , open app in this,otherwise view to tag 4)
+# bind=SUPER,Return,spawn_on_empty,google-chrome,4
+# spawn
+# bind=CTRL+ALT,Return,spawn,st -e ~/tool/ter-multiplexer.sh
+
+# toggle_name_scratchpad (appid,title,width,height,cmd)
+# (a,none,1,1,foot)/(none,b,1,1,foot)
++ ''
+  # == Programs binds==
+
+  # file
   bind=SUPER,o,spawn,${lib.getExe pkgs.nemo}
+
+  # browser
   bind=SUPER,b,spawn,librewolf
+
+  # discord
   bind=SUPER,w,spawn,${lib.getExe pkgs.vesktop}
+
+  # spotify
   bind=SUPER,s,spawn,spotify
 
-  # tui
+  # yazi
   bind=SUPER+SHIFT,o,spawn,${openTerminal { app = pkgs.yazi; }}
+
+  # nix-search-tv
   bind=SUPER,p,spawn,${
     openTerminal {
       app = "ns";
@@ -151,8 +175,10 @@ in
   # ime
   bind=CTRL,space,spawn,${imeCmd}
 ''
-# window
+# Windows binds
 + ''
+  # == Windows binds ==
+
   # switch window focus
   bind=SUPER,h,focusdir,left
   bind=SUPER,l,focusdir,right
@@ -175,8 +201,10 @@ in
   bind=SUPER+SHIFT,I,restore_minized
   bind=ALT,z,toggle_scratchpad
 ''
-# layout
+# Layout binds
 + ''
+  # == Layout binds ==
+
   # scroller layout
   bind=SUPER,f,set_proportion,1.0
   bind=SUPER,r,switch_proportion_preset,
@@ -206,6 +234,8 @@ in
 # normal num key  is (1-9)
 # right-side keyboard num keys is (KP_1-KP_9)
 + ''
+  # == Num-key binds ==
+
   bind=SUPER,1,view,1
   bind=SUPER,2,view,2
   bind=SUPER,3,view,3
@@ -248,6 +278,8 @@ in
 ''
 # monitor switch
 + ''
+  # == Monitor switch ==
+
   bind=SUPER+CTRL,h,focusmon,left
   bind=SUPER+CTRL,l,focusmon,right
   bind=SUPER+CTRL+SHIFT,H,tagmon,left
@@ -255,20 +287,16 @@ in
 ''
 # gaps
 + ''
+  # == Gaps ==
   bind=ALT+SHIFT,X,incgaps,1
   bind=ALT+SHIFT,Z,incgaps,-1
   bind=ALT+SHIFT,R,togglegaps
 ''
-# custom app bind example
-+ ''
-  # spawn_on_empty (if tag 4 is empty , open app in this,otherwise view to tag 4)
-  # bind=SUPER,Return,spawn_on_empty,google-chrome,4
-  # spawn
-  # bind=CTRL+ALT,Return,spawn,st -e ~/tool/ter-multiplexer.sh
-''
 # Mouse Button Bindings
 # NONE: mode key only work in ov mode
 + ''
+  # == Mouse Button ==
+
   mousebind=SUPER,btn_left,moveresize,curmove
   mousebind=NONE,btn_middle,togglemaxmizescreen,0
   mousebind=ALT,btn_left,moveresize,curresize
@@ -277,6 +305,8 @@ in
 ''
 # gesture
 + ''
+  # == Gesture ==
+
   gesturebind=NONE,left,3,focusdir,right
   gesturebind=NONE,right,3,focusdir,left
   gesturebind=NONE,up,3,focusdir,down
@@ -288,6 +318,8 @@ in
 ''
 # Axis Bindings
 + ''
+  # == Axis Bindings ==
+
   axisbind=SUPER,UP,viewtoleft_have_client
   axisbind=SUPER,DOWN,viewtoright_have_client
 ''

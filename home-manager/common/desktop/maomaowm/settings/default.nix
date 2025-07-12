@@ -21,7 +21,7 @@ in
 {
   wayland.windowManager.maomaowm.settings = ''
     # == Master-Stack Layout Setting (tile,spiral,dwindle) ==
-    new_is_master=0
+    new_is_master=1
     default_mfact=0.55
     default_nmaster=1
     smartgaps=1
@@ -65,8 +65,11 @@ in
     left_handed=0
     middle_button_emulation=0
 
+    # == Appearance ==
     ${appearance}
+    # == Rules ==
     ${rules}
+    # == Keybinds ==
     ${keybinds}
 
     # == scale factor about qt (herr is 1.4) ==

@@ -125,10 +125,10 @@
               interval = 5;
             };
             "network" = {
-              format-wifi = "<span size='${iconSizeStr}' foreground='${base0C}'>󰖩 </span>{essid}";
-              format-ethernet = "<span size='${iconSizeStr}' foreground='${base0C}'>󰈀 </span>Connected";
+              format-wifi = "<span size='${iconSizeStr}' foreground='${base0F}'>󰖩 </span>{essid}";
+              format-ethernet = "<span size='${iconSizeStr}' foreground='${base05}'>󰈀 </span>Connected";
               format-linked = "{ifname} (No IP) 󱚵 ";
-              format-disconnected = "<span size='${iconSizeStr}' foreground='${base0C}'> </span>Disconnected";
+              format-disconnected = "<span size='${iconSizeStr}' foreground='${base08}'> </span>Disconnected";
               tooltip-format-wifi = "Signal Strenght: {signalStrength}%";
               on-click = "${lib.getExe' pkgs.networkmanagerapplet "nm-connection-editor"}";
             };
