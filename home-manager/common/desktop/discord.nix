@@ -1,10 +1,10 @@
 {
   lib,
-  pkgs,
+  config,
   ...
 }:
 let
-  discordPkgs = pkgs.pkgs.vesktop;
+  discordPkgs = config.programs.vesktop.package;
 in
 {
   programs.vesktop = {
