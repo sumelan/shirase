@@ -54,10 +54,20 @@
     }:
     let
       inherit (nixpkgs) legacyPackages;
+      system = "x86_64-linux";
+      pkgs = import inputs.nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
 
       # Get the extended lib from ./lib/custom.nix
       lib = import ./lib/custom.nix {
-        inherit inputs self;
+        inherit
+          system
+          pkgs
+          inputs
+          self
+          ;
         inherit (nixpkgs) lib;
         inherit (inputs) home-manager;
       };
@@ -69,6 +79,7 @@
       forAllPkgs = f: forAllSystems (system: f legacyPackages.${system});
     in
     {
+      inherit lib;
       # NixOS configuration entrypoint
       nixosConfigurations = import ./hosts { inherit lib; };
 

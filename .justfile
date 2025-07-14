@@ -79,7 +79,7 @@ alias pf := prefetch
 [group('TOOLS')]
 [doc('Download a file to the Nix store and get the SHA-512 hash.')]
 @prefetch url:
-    nix store prefetch-file --json --hash-type sha512 {{ url }} | jq -r .hash
+    nix store prefetch-file --json --hash-type sha256 {{ url }} | jq -r .hash
 
 [group('TOOLS')]
 [doc('Fuzzy search for NixOS packages with nix-search-tv.')]

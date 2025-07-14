@@ -1,4 +1,6 @@
 {
+  system,
+  pkgs,
   self,
   inputs,
   lib,
@@ -6,7 +8,13 @@
 }:
 {
   nixos = import ./nixos.nix {
-    inherit self inputs lib;
+    inherit
+      system
+      pkgs
+      self
+      inputs
+      lib
+      ;
   };
 
   niri = import ./niri.nix {

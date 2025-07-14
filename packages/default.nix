@@ -1,4 +1,4 @@
 { pkgs, ... }:
 {
-  qobuz-player = pkgs.callPackage ./qobuz-player;
+  qobuz-player = pkgs.callPackage ./qobuz-player { };
 }

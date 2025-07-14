@@ -9,6 +9,7 @@ _: {
     ./krita.nix
     ./obs-studio.nix
     ./picard.nix
+    ./qobuz-player.nix
     ./rustdesk.nix
     ./thunderbird.nix
     ./vlc.nix

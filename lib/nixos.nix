@@ -1,4 +1,6 @@
 {
+  system,
+  pkgs,
   self,
   inputs,
   lib,
@@ -9,14 +11,8 @@
     {
       user ? throw ''Please specify user value, like user = "foo"'',
       hardware ? throw ''Please specify hardware value, like hardware = "laptop"'',
-      system ? "x86_64-linux",
     }:
     let
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-
       specialArgs = {
         inherit
           self
@@ -30,7 +26,7 @@
       };
     in
     lib.nixosSystem {
-      inherit pkgs system specialArgs;
+      inherit system pkgs specialArgs;
       modules =
         [
           ../hosts/${host}

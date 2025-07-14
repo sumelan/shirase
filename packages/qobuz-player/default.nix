@@ -1,27 +1,26 @@
 {
-  stdenv,
+  pkgs,
+  stdenvNoCC,
   fetchurl,
   ...
 }:
-stdenv.mkDerivation {
-  name = "qobuz-player";
+stdenvNoCC.mkDerivation {
+  pname = "qobuz-player";
   version = "0.3.1.2";
+
   src = fetchurl {
     url = "https://github.com/SofusA/qobuz-player/releases/download/v0.3.1.2/qobuz-player-x86_64-unknown-linux-gnu.tar.gz";
-    sha256 = "sha512-4CyLe+3VIW7+t1OykiTTG9c5dAZYalWX0XIs4bMjzCpYe0r5WAAwNmnh/QxG1lRgVvxOqZlg3E4zpgFYkY6qgw==";
+    hash = "sha256-NxZJpW6ySYZMexOU/EV5/YXJCTDniCTu0syKMjkeDQg=";
   };
 
-  dontConfigure = true;
-  dontBuild = true;
+  buildInputs = with pkgs.gst_all_1; [
+    gstreamer
+  ];
+
+  sourceRoot = ".";
 
   installPhase = ''
     mkdir -p $out/bin
-    cp -r $src $out/bin/custom-app
+    cp qobuz-player $out/bin
   '';
-
-  meta = {
-    description = "qobuz-player";
-    homepage = "https://github.com/SofusA/qobuz-player";
-    maintainers = [ "SofusA" ];
-  };
 }
