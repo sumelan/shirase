@@ -9,6 +9,7 @@
   imports = [
     ./common
     ./optional
+    ./fcitx5.nix
     ./hardware.nix
     ./impermanence.nix
     ./style.nix
