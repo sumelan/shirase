@@ -11,6 +11,7 @@
         mode = "center";
         sorting = "random";
         recursive = true;
+        offset = 0.2;
       };
       default.transition = {
         ripple = { };
@@ -21,4 +22,11 @@
       };
     };
   };
+
+  programs.niri.settings.layer-rules = [
+    {
+      matches = [ { namespace = "wpaperd"; } ];
+      place-within-backdrop = true;
+    }
+  ];
 }

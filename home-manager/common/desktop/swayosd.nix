@@ -100,6 +100,7 @@
     # fcitx5
     "Ctrl+Space" = lib.custom.niri.runCmd {
       cmd = "fcitx5-remote -t";
+      title = "Switch ime";
       osd = "swayosd";
       osdArgs = "--monitor ${config.lib.monitors.mainMonitorName} --custom-message=(fcitx5-remote -n) --custom-icon=input-keyboard";
     };

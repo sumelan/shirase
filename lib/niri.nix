@@ -12,7 +12,7 @@ rec {
     {
       app,
       args ? "",
-      title ? "Launch ${lib.getName app}",
+      title ? "<i>Launch</i> <b>${lib.getName app}</b>",
     }:
     {
       action.spawn = useUwsm (lib.strings.trim "${lib.getName app} ${args}");
@@ -26,7 +26,7 @@ rec {
     }:
     {
       action.spawn = mkSpawn "${lib.getExe terminal} -o confirm_os_window_close=0 --app-id=${app-id} ${lib.getName app}";
-      hotkey-overlay.title = "Launch ${app-id}";
+      hotkey-overlay.title = "<i>Launch</i> <b>${app-id}</b>";
     };
 
   runCmd =

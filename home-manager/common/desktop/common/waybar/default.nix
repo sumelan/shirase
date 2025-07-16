@@ -171,7 +171,7 @@
             };
             "mpris" = {
               player = "spotify";
-              format = "<span size='${iconSizeStr}' foreground='${base00}'>{player_icon} </span><b>{title}</b> by <i>{artist}</i>";
+              format = "<span size='${iconSizeStr}' foreground='${base00}'>{player_icon} </span><b>{title}</b> <small>by</small> <i>{artist}</i>";
               tooltip-format = "Album: {album}";
               artist-len = 14;
               title-len = 18;

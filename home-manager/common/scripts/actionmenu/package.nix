@@ -4,9 +4,10 @@ pkgs.writers.writeFishBin "fuzzel-actions" ''
    Suspend
   󰿅 Exit
    Reboot
-   Poweroff"
+   Power Off
+   Next Wallpaper"
 
-  set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Search for System actions..." --lines 5)
+  set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Search for System actions..." --lines 6)
 
   switch (string split -f 2 " " $choice)
       case Lock
@@ -14,10 +15,12 @@ pkgs.writers.writeFishBin "fuzzel-actions" ''
       case Suspend
           systemctl suspend
       case Exit
-          ${lib.getExe' pkgs.procps "pkill"} -f maomao
+          niri msg action quit
       case Reboot
           systemctl reboot
-      case Poweroff
+      case Power
           systemctl poweroff
+      case Next
+          ${lib.getExe' pkgs.wpaperd "wpaperctl"} next
   end
 ''

@@ -61,9 +61,11 @@
   programs.niri.settings.binds = {
     "Mod+Shift+N" = lib.custom.niri.runCmd {
       cmd = "dunstctl history-pop";
+      title = "Notification history";
     };
     "Mod+Alt+N" = lib.custom.niri.runCmd {
       cmd = "dunstctl close-all";
+      title = "Dismiss notification";
     };
   };
   stylix.targets.dunst.enable = false;

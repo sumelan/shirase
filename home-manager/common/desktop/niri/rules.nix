@@ -51,13 +51,6 @@ lib.mkIf config.custom.niri.enable {
       }
     ];
 
-    layer-rules = [
-      {
-        matches = [ { namespace = "overview"; } ];
-        place-within-backdrop = true;
-      }
-    ];
-
     switch-events =
       let
         fish = cmd: [

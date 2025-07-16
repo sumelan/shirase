@@ -15,11 +15,7 @@ lib.mkIf config.custom.niri.enable {
 
     # screenshot 'screenshot-screen' is valid only on niri-stable
     "Mod+Backslash".action = screenshot { show-pointer = false; };
-    "Mod+Shift+Backslash" = lib.custom.niri.runCmd {
-      cmd = "niri msg action screenshot-screen";
-      title = "Screenshot the focused screen";
-    };
-    "Mod+Alt+Backslash".action = screenshot-window { write-to-disk = true; };
+    "Mod+Shift+Backslash".action = screenshot-window { write-to-disk = true; };
 
     # window and colum management
     "Mod+Backspace".action = close-window;

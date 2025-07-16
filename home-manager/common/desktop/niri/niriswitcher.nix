@@ -239,10 +239,12 @@ lib.mkIf config.custom.niri.enable {
       {
         "${modifierKey}+Tab" = lib.custom.niri.runCmd {
           cmd = windowCmd;
+          title = "Switch windows";
           repeat = "no";
         };
         "${modifierKey}+Grave" = lib.custom.niri.runCmd {
           cmd = workspaceCmd;
+          title = "Switch workspaces";
           repeat = "no";
         };
       };

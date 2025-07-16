@@ -72,7 +72,7 @@ in
       binds = {
         "Mod+B" = {
           action.spawn = lib.custom.niri.useUwsm "librewolf";
-          hotkey-overlay.title = "Launch librewolf";
+          hotkey-overlay.title = "<i>Launch</i> <b>librewolf</b>";
         };
       };
       # NOTE: bitwarden window cannot be floated on this method

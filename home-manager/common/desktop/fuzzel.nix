@@ -58,15 +58,23 @@ in
       };
       "Alt+Escape" = lib.custom.niri.runCmd {
         cmd = "fuzzel-windows";
+        title = "Search for windows";
       };
-      "Mod+R" = lib.custom.niri.runCmd {
+      "Mod+Alt+Backslash" = lib.custom.niri.runCmd {
         cmd = "fuzzel-recorder";
+        title = "Open Screen-record menu";
+      };
+      "Mod+Alt+Backspace" = lib.custom.niri.runCmd {
+        cmd = "record_screen -q";
+        title = "Stop Screen-record";
       };
       "Mod+Q" = lib.custom.niri.runCmd {
         cmd = "fuzzel-actions";
+        title = "Open Actions menu";
       };
       "Mod+V" = lib.custom.niri.runCmd {
         cmd = "fuzzel-clipboard";
+        title = "Search for clipboard history";
       };
     };
   };

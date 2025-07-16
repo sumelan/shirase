@@ -53,7 +53,7 @@
             "--wayland-text-input-version=3"
           ]
         );
-        hotkey-overlay.title = "Launch spotify";
+        hotkey-overlay.title = "<i>Launch</i> <b>spotify</b>";
       };
     };
     window-rules = [
