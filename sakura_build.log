@@ -11,3 +11,76 @@
 Version changes:
 [D.]  #1  nixos-system-sakura  25.11.20250708.9807714.9384720 -> 25.11.20250708.9807714.dirty
 Closure size: 2554 -> 2554 (5 paths added, 5 paths removed, delta +0, disk usage -26.6KiB).
+
+---
+
+2025年07月16日 22時49分20秒
+<<< /nix/var/nix/profiles/system-277-link
+>>> /nix/var/nix/profiles/system-279-link
+Version changes:
+[C.]  #1  gdk-pixbuf-loaders.cache  <none> -> <none> x2
+[C.]  #2  libinput                  1.28.1 x2 -> 1.28.1
+[C.]  #3  libwacom                  2.15.0, 2.16.1 -> 2.16.1
+[C*]  #4  pipewire                  1.4.5 x2, 1.4.5-jack -> 1.4.5 x2, 1.4.5-dev, 1.4.5-jack
+[C.]  #5  python3                   3.12.11, 3.13.4 x3, 3.13.4-env x6 -> 3.12.11, 3.13.4 x3, 3.13.4-env x7
+Added packages:
+[A.]  #01  config.toml                                   <none>
+[A.]  #02  dmenu                                         5.3
+[A.]  #03  etc-xdg-xdg-desktop-portal-niri-portals.conf  <none>
+[A.]  #04  etc-xdg-xdg-desktop-portal-obs-portals.conf   <none>
+[A.]  #05  niri                                          <none>
+[A.]  #06  niri-config                                   <none>
+[A+]  #07  niri-unstable                                 2025-07-14-746a7e8
+[A.]  #08  niri-uwsm                                     <none>
+[A.]  #09  niriswitcher-style.css                        <none>
+[A.]  #10  niriswitcher.service                          <none>
+[A.]  #11  python3.13-niriswitcher                       0.7.0, 0.7.0-fish-completions
+[A.]  #12  python3.13-pydbus                             0.6.0
+[A.]  #13  swaylock.pam                                  <none>
+[A.]  #14  unit-niri-flake-polkit.service-disabled       <none>
+[A+]  #15  uwsm                                          0.23.0
+[A+]  #16  xdg-desktop-portal-gnome                      48.0
+Removed packages:
+[R.]  #01  atkmm                                           2.28.4
+[R.]  #02  autostart.sh                                    <none> x2
+[R.]  #03  cairomm                                         1.14.5
+[R.]  #04  etc-maomao-config.conf                          <none>
+[R.]  #05  etc-xdg-xdg-desktop-portal-maomao-portals.conf  <none>
+[R.]  #06  font-util                                       1.4.1
+[R.]  #07  gpsd                                            3.26.1
+[R.]  #08  grim                                            1.4.1
+[R.]  #09  gtkmm                                           3.24.10
+[R.]  #10  jsoncpp                                         1.9.6
+[R.]  #11  libXfont2                                       2.0.7
+[R.]  #12  libei                                           1.4.1 x2
+[R.]  #13  libfontenc                                      1.1.8
+[R.]  #14  libliftoff                                      0.5.0
+[R.]  #15  libtirpc                                        1.3.6
+[R.]  #16  libxcvt                                         0.1.3
+[R.]  #17  maomao-session.target                           <none>
+[R-]  #18  maomaowm-nightly                                <none>
+[R.]  #19  maomaowm-nightly-fish-completions               <none>
+[R-]  #20  mmsg-nightly                                    <none>
+[R.]  #21  open_actionMenu                                 <none> x2
+[R.]  #22  open_clipboardMenu                              <none> x2
+[R.]  #23  open_recordMenu                                 <none> x2
+[R.]  #24  pangomm                                         2.46.4
+[R.]  #25  portaudio                                       190700_20210406
+[R.]  #26  satty                                           0.19.0
+[R.]  #27  scenefx                                         0.4.1-git-lib
+[R.]  #28  spdlog                                          1.15.2
+[R.]  #29  switch_ime                                      <none> x2
+[R.]  #30  take_screenshot                                 <none> x2
+[R.]  #31  tty-clock                                       2.3+unstable=2021-04-07
+[R.]  #32  unit-xdg-desktop-portal-wlr.service             <none>
+[R.]  #33  waybar                                          0.13.0, 0.13.0-fish-completions
+[R.]  #34  waybar-config.json                              <none>
+[R.]  #35  waybar-style.css                                <none>
+[R.]  #36  waybar.service                                  <none>
+[R.]  #37  wl-clip-persist                                 0.4.3
+[R.]  #38  wlroots                                         0.19.0 x2
+[R.]  #39  xcb-util-errors                                 1.0.1
+[R-]  #40  xdg-desktop-portal-wlr                          0.7.1
+[R.]  #41  xdg-desktop-portal-wlr.ini                      <none>
+[R-]  #42  xwayland                                        24.1.8 x2
+Closure size: 2554 -> 2520 (55 paths added, 89 paths removed, delta -34, disk usage +211.7MiB).

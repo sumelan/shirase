@@ -10,7 +10,9 @@
 
   options.custom = with lib; {
     niri = {
-      enable = lib.mkEnableOption "Enablen niri";
+      enable = lib.mkEnableOption "Enablen niri" // {
+        default = true;
+      };
       xwayland.enable = mkEnableOption "Enable xwayland-satellite";
     };
   };

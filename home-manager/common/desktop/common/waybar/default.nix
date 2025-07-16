@@ -28,7 +28,8 @@
             reload_style_on_change = true;
             output = "${config.lib.monitors.mainMonitorName}";
             modules-left = [
-              "dwl/tags"
+              #"dwl/tags"
+              "niri/workspaces"
               "idle_inhibitor"
             ];
             modules-center = [
