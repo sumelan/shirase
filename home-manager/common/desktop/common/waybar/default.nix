@@ -10,7 +10,7 @@
     ./style.nix
   ];
 
-  programs = lib.mkIf config.custom.maomao.enable {
+  programs = {
     waybar = {
       enable = true;
       systemd = {
