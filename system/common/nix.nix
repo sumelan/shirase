@@ -65,7 +65,7 @@
         dates = "daily";
         options = "--delete-older-than 7d";
       };
-      package = pkgs.lixPackageSets.latest.lix;
+      package = pkgs.nix; # for lix: pkgs.lixPackageSets.latest.lix;
       # to use shorter IDs instead of lengthy address
       registry = registry // {
         n = registry.nixpkgs;
@@ -99,7 +99,7 @@
           "flakes"
           # NOTE: 'pipe-operators' in nix but 'pipe-operator' in lix
           # https://discourse.nixos.org/t/lix-mismatch-in-feature-name-compared-to-nix/59879
-          "pipe-operator"
+          "pipe-operators"
         ];
         substituters = [
           "https://nix-community.cachix.org"

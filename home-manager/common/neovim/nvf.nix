@@ -77,14 +77,10 @@
           lsp = {
             enable = true;
             server = "nixd";
-            options =
-              let
-                flake = ''(builtins.getFlake "${flakePath}")'';
-              in
-              rec {
-                nixos.expr = "${flake}.nixosConfigurations.${host}.options";
-                home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
-              };
+            options = rec {
+              nixos.expr = "(builtins.getFlake ''${flakePath}'').nixosConfigurations.${host}.options";
+              home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
+            };
           };
           treesitter.enable = true;
         };
