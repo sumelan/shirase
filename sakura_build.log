@@ -84,3 +84,187 @@ Removed packages:
 [R.]  #41  xdg-desktop-portal-wlr.ini                      <none>
 [R-]  #42  xwayland                                        24.1.8 x2
 Closure size: 2554 -> 2520 (55 paths added, 89 paths removed, delta -34, disk usage +211.7MiB).
+
+---
+
+2025年07月20日 17時51分35秒
+<<< /nix/var/nix/profiles/system-279-link
+>>> /nix/var/nix/profiles/system-281-link
+Version changes:
+[U.]  #001  7zz                             24.09 -> 25.00
+[U.]  #002  abseil-cpp                      20250127.1 -> 20250512.1 x2
+[U.]  #003  alsa-lib                        1.2.13 x2 -> 1.2.14 x2
+[U.]  #004  audit                           4.0.3-bin, 4.0.3-lib x2 -> 4.0.5-bin, 4.0.5-lib x2
+[C.]  #005  aws-sdk-cpp                     1.11.448 x3 -> 1.11.448 x2
+[U.]  #006  basedpyright                    1.29.5 -> 1.30.1
+[U*]  #007  bluez                           5.80 x2 -> 5.83 x2
+[U*]  #008  btrfs-progs                     6.14 -> 6.15
+[U.]  #009  c-grammar-neovim                0.11.2 -> 0.11.3
+[U.]  #010  cairo                           1.18.2 x2, 1.18.2-dev -> 1.18.4 x2, 1.18.4-dev
+[U.]  #011  cpp-grammar                     0.0.0+rev=56455f4 -> 0.0.0+rev=2871652
+[U.]  #012  cryptsetup                      2.7.5 x2 -> 2.8.0 x2
+[U.]  #013  cups                            2.4.11, 2.4.11-dev, 2.4.11-lib -> 2.4.12, 2.4.12-dev, 2.4.12-lib
+[U.]  #014  darkreader                      4.9.106 -> 4.9.110
+[C.]  #015  dav1d                           1.5.1 x2, 1.5.1-dev -> 1.5.1 x2
+[U.]  #016  ddcutil                         2.2.0 -> 2.2.1
+[U.]  #017  dhcpcd                          10.1.0 -> 10.2.4
+[U.]  #018  dotnet-runtime                  8.0.17 -> 8.0.18
+[U.]  #019  dotnet-runtime-wrapped          8.0.17 -> 8.0.18
+[U.]  #020  easyeffects                     7.2.3, 7.2.3-fish-completions -> 7.2.4, 7.2.4-fish-completions
+[C.]  #021  editline                        1.17.1 x3 -> 1.17.1 x2
+[U.]  #022  electron                        35.6.0 -> 35.7.1
+[U.]  #023  electron-unwrapped              35.6.0 -> 35.7.1
+[U.]  #024  ell                             0.77 x2 -> 0.78 x2
+[U.]  #025  exempi                          2.6.5 -> 2.6.6
+[U*]  #026  eza                             0.22.0, 0.22.0-fish-completions, 0.22.0-man -> 0.22.1, 0.22.1-fish-completions, 0.22.1-man
+[U.]  #027  fluidsynth                      2.4.4 -> 2.4.6
+[U.]  #028  fx                              36.0.3, 36.0.3-fish-completions -> 37.0.0, 37.0.0-fish-completions
+[U.]  #029  gettext                         0.22.5 -> 0.25
+[U.]  #030  gh                              2.74.2, 2.74.2-fish-completions -> 2.75.0, 2.75.0-fish-completions
+[U*]  #031  git                             2.49.0, 2.49.0-doc, 2.49.0-fish-completions -> 2.50.0, 2.50.0-doc, 2.50.0-fish-completions
+[U.]  #032  git-minimal                     2.49.0 -> 2.50.0
+[U.]  #033  glib                            2.84.2 x2, 2.84.2-bin, 2.84.2-dev -> 2.84.3 x2, 2.84.3-bin, 2.84.3-dev
+[U.]  #034  gnome-online-accounts           3.54.3 -> 3.54.4
+[U.]  #035  gnome-user-share                48.0 -> 48.1
+[U.]  #036  gnum4                           1.4.19 x2 -> 1.4.20 x2
+[U*]  #037  gnupg                           2.4.7 x3 -> 2.4.8 x3
+[C.]  #038  gtest                           1.16.0 x2 -> 1.16.0, 1.17.0 x2
+[U.]  #039  gtk4                            4.18.5 -> 4.18.6
+[U.]  #040  gumbo                           0.13.0 -> 0.13.1
+[U.]  #041  harfbuzz                        10.2.0 x2, 10.2.0-dev -> 11.2.1 x2, 11.2.1-dev
+[U.]  #042  harfbuzz-icu                    10.2.0 -> 11.2.1
+[C*]  #043  hostname-debian                 3.25 -> 3.25, 3.25-man
+[U.]  #044  hwdata                          0.396 x2 -> 0.397 x2
+[U.]  #045  hyprgraphics                    0.1.3 -> 0.1.4
+[U.]  #046  hyprutils                       0.7.1 -> 0.8.1
+[U.]  #047  imagemagick                     7.1.1-47 -> 7.1.2-0
+[U.]  #048  inih                            58 -> 60
+[U.]  #049  initrd-linux-zen                6.15.4 -> 6.15.6
+[U*]  #050  iproute2                        6.14.0 -> 6.15.0
+[U.]  #051  iso-codes                       4.17.0 x2 -> 4.18.0 x2
+[C.]  #052  jq                              1.7.1, 1.7.1-bin, 1.8.0, 1.8.0-bin, 1.8.0-fish-completions, 1.8.0-man -> 1.7.1, 1.7.1-bin, 1.8.1, 1.8.1-bin, 1.8.1-fish-completions, 1.8.1-man
+[U.]  #053  kitty                           0.42.1, 0.42.1-fish-completions, 0.42.1-terminfo -> 0.42.2, 0.42.2-fish-completions, 0.42.2-terminfo
+[C.]  #054  kwindowsystem                   5.116.0, 6.15.0 -> 5.116.0, 6.16.0
+[U*]  #055  less                            668 -> 679
+[U.]  #056  libSM                           1.2.5, 1.2.5-dev -> 1.2.6, 1.2.6-dev
+[U.]  #057  libadwaita                      1.7.3 -> 1.7.4
+[U.]  #058  libajantv2                      17.1.3 -> 17.5.0
+[U.]  #059  libaom                          3.11.0 x2, 3.11.0-bin, 3.11.0-dev -> 3.12.1 x2
+[U.]  #060  libapparmor                     4.1.0 x2 -> 4.1.1 x2
+[C.]  #061  libarchive                      3.7.8-lib, 3.8.0-lib x2 -> 3.7.8-lib, 3.8.1-lib x2
+[U.]  #062  libass                          0.17.3 x2 -> 0.17.4 x2
+[U.]  #063  libcamera                       0.5.0 x2 -> 0.5.1 x2
+[U*]  #064  libcap                          2.75, 2.75-lib x2 -> 2.76, 2.76-lib x2
+[C.]  #065  libcap-ng                       0.8.5 -> 0.8.5 x2
+[U.]  #066  libdecor                        0.2.2 -> 0.2.3
+[U.]  #067  libedit                         20240808-3.1 -> 20250104-3.1
+[U.]  #068  libgcrypt                       1.10.3-lib x2 -> 1.11.1-lib x2
+[U.]  #069  libgpg-error                    1.51 x2 -> 1.55 x2
+[U.]  #070  libjpeg-turbo                   3.1.0 x2, 3.1.0-bin, 3.1.0-dev -> 3.1.1 x2, 3.1.1-bin, 3.1.1-dev
+[U.]  #071  libmpg123                       1.32.10 x2 -> 1.33.0 x2
+[U.]  #072  libopenmpt                      0.7.13 x2 -> 0.8.0 x2
+[U.]  #073  libplist                        2.6.0 -> 2.7.0
+[U.]  #074  libssh                          0.11.1 x2 -> 0.11.2 x2
+[U.]  #075  libtpms                         0.10.0 x2 -> 0.10.1 x2
+[U.]  #076  liburcu                         0.15.2 -> 0.15.3
+[C.]  #077  libvmaf                         3.0.0 x2, 3.0.0-dev -> 3.0.0 x2
+[U.]  #078  libvoikko                       4.3.2 -> 4.3.3
+[U.]  #079  libvpx                          1.15.0 x2 -> 1.15.2 x2
+[C.]  #080  libxml2                         2.13.4, 2.13.6, 2.14.3 x2 -> 2.13.4, 2.13.6, 2.14.4-unstable-2025-06-20 x2
+[U.]  #081  linux-firmware                  20250627-zstd -> 20250708-zstd
+[U.]  #082  linux-zen                       6.15.4, 6.15.4-modules, 6.15.4-modules-shrunk -> 6.15.6, 6.15.6-modules, 6.15.6-modules-shrunk
+[C.]  #083  lttng-ust                       2.12.2, 2.13.8 x2 -> 2.12.2, 2.14.0 x2
+[U.]  #084  lua-grammar-neovim              0.11.2 -> 0.11.3
+[U.]  #085  lua-language-server             3.14.0 -> 3.15.0
+[U.]  #086  luarocks_bootstrap              3.11.1 -> 3.12.0
+[C.]  #087  lzo                             2.10 -> 2.10 x2
+[U.]  #088  markdown-grammar-neovim         0.11.2 -> 0.11.3
+[U.]  #089  markdown_inline-grammar-neovim  0.11.2 -> 0.11.3
+[U.]  #090  mesa                            25.1.5 x2 -> 25.1.6 x2
+[U.]  #091  mnw                             0.11.2 -> 0.11.3
+[U.]  #092  mpg123                          1.32.10 x2 -> 1.33.0 x2
+[U.]  #093  nautilus                        48.2 -> 48.3
+[U*]  #094  neovim                          0.11.2 x2, 0.11.2-fish-completions -> 0.11.3 x2, 0.11.3-fish-completions
+[U.]  #095  neovim-unwrapped                0.11.2 -> 0.11.3
+[U*]  #096  networkmanager                  1.52.0 -> 1.52.1
+[U*]  #097  niri-unstable                   2025-07-14-746a7e8 -> 2025-07-18-fefc0bc
+[U.]  #098  nix-ld                          2.0.4 -> 2.0.5
+[U.]  #099  nix-tree                        0.6.1, 0.6.1-fish-completions -> 0.6.3, 0.6.3-fish-completions
+[U.]  #100  nixos-system-sakura             25.11.20250708.9807714.dirty -> 25.11.20250716.6e98748.9838a51
+[U.]  #101  nodejs                          22.16.0 -> 22.17.0
+[U.]  #102  nss-cacert                      3.111, 3.111-p11kit -> 3.113.1, 3.113.1-p11kit
+[U.]  #103  ocl-icd                         2.3.2 x2 -> 2.3.3 x2
+[U.]  #104  openal-soft                     1.24.2 -> 1.24.3
+[U.]  #105  openexr                         3.2.4 -> 3.3.4
+[U.]  #106  openfec                         1.4.2.11 x2 -> 1.4.2.12 x2
+[U*]  #107  openresolv                      3.13.2 -> 3.16.5
+[C.]  #108  openssl                         3.4.1 x3, 3.4.1-bin, 3.4.1-dev -> 3.4.1, 3.5.1 x2, 3.5.1-bin, 3.5.1-dev
+[U.]  #109  pciutils                        3.13.0 -> 3.14.0
+[U*]  #110  pipewire                        1.4.5 x2, 1.4.5-dev, 1.4.5-jack -> 1.4.6 x2, 1.4.6-dev, 1.4.6-jack
+[U.]  #111  pixman                          0.46.0 x2 -> 0.46.2 x2
+[C.]  #112  publicsuffix-list               0-unstable-2025-03-12 x3 -> 0-unstable-2025-03-12, 0-unstable-2025-06-10 x2
+[C.]  #113  python3                         3.12.11, 3.13.4 x3, 3.13.4-env x7 -> 3.12.11, 3.13.5 x3, 3.13.5-env x7
+[U.]  #114  python3.13-cryptography         45.0.2 -> 45.0.4
+[U.]  #115  python3.13-requests             2.32.3 -> 2.32.4
+[C.]  #116  qtbase                          5.15.17, 5.15.17-bin, 6.9.0, 6.9.0-only-plugins-qml -> 5.15.17, 5.15.17-bin, 6.9.1, 6.9.1-only-plugins-qml
+[C.]  #117  qtdeclarative                   5.15.17, 5.15.17-bin, 6.9.0 -> 5.15.17, 5.15.17-bin, 6.9.1
+[C.]  #118  qtsvg                           5.15.17, 5.15.17-bin, 6.9.0 -> 5.15.17, 5.15.17-bin, 6.9.1
+[C.]  #119  qttools                         5.15.17, 5.15.17-bin, 6.9.0 -> 5.15.17, 5.15.17-bin, 6.9.1
+[C.]  #120  qttranslations                  5.15.17, 6.9.0 -> 5.15.17, 6.9.1
+[C.]  #121  qtwayland                       5.15.17, 5.15.17-bin, 6.9.0, 6.9.0-only-plugins-qml -> 5.15.17, 5.15.17-bin, 6.9.1, 6.9.1-only-plugins-qml
+[U.]  #122  query-grammar-neovim            0.11.2 -> 0.11.3
+[U.]  #123  rust-analyzer                   2025-06-30 -> 2025-07-14
+[U.]  #124  rust-analyzer-unwrapped         2025-06-30 -> 2025-07-14
+[C.]  #125  s2n-tls                         1.5.12, 1.5.20 -> 1.5.12, 1.5.21
+[U.]  #126  sbc                             2.0 x2 -> 2.1 x2
+[U.]  #127  soundtouch                      2.3.3 -> 2.4.0
+[U.]  #128  sponsorblock                    5.13.2 -> 5.13.3
+[U.]  #129  swayosd                         0.2.0, 0.2.0-fish-completions -> 0.2.1, 0.2.1-fish-completions
+[U.]  #130  taglib                          2.0.2 -> 2.1
+[U.]  #131  tree-sitter                     0.25.4 -> 0.25.6
+[U.]  #132  ublock-origin                   1.64.0 -> 1.65.0
+[U.]  #133  v4l-utils                       1.24.1 x2 -> 1.30.1 x2
+[U.]  #134  vesktop                         1.5.7, 1.5.7-fish-completions -> 1.5.8, 1.5.8-fish-completions
+[D.]  #135  vim-grammar                     0.0.0+rev=ccc312e -> 0.0.0+rev=a93e834
+[U.]  #136  vim-grammar-neovim              0.11.2 -> 0.11.3
+[U.]  #137  vimdoc-grammar-neovim           0.11.2 -> 0.11.3
+[U.]  #138  vimplugin-mini.nvim             2025-07-01 -> 2025-07-08
+[U.]  #139  vimplugin-yazi.nvim             2025-06-29 -> 2025-07-08
+[U.]  #140  wayland-protocols               1.44 -> 1.45
+[C.]  #141  webrtc-audio-processing         1.3 x2 -> 1.3, 2.1 x2
+[U.]  #142  wireless-regdb                  2025.02.20-zstd -> 2025.07.10-zstd
+[U*]  #143  xdg-terminal-exec               0.13.1, 0.13.1-fish-completions -> 0.13.2, 0.13.2-fish-completions
+[C.]  #144  xkeyboard-config                2.42, 2.44 -> 2.42, 2.45
+[U.]  #145  zix                             0.4.2 x2 -> 0.6.2 x2
+[U.]  #146  zziplib                         0.13.79 -> 0.13.80
+Selection state changes:
+[C+]  #1  nix  2.28.2, 2.28.2-man, 2.28.4, 2.28.4-man
+Added packages:
+[A.]  #01  atkmm                     2.28.4
+[A.]  #02  cairomm                   1.14.5
+[A.]  #03  gpsd                      3.26.1
+[A.]  #04  gtkmm                     3.24.10
+[A.]  #05  hostname-hostname-debian  3.25
+[A.]  #06  hunk-nvim                 1e0a4d71
+[A.]  #07  jsoncpp                   1.9.6
+[A.]  #08  pangomm                   2.46.4
+[A.]  #09  portaudio                 190700_20210406
+[A.]  #10  spdlog                    1.15.2
+[A.]  #11  tty-clock                 2.3+unstable=2021-04-07
+[A.]  #12  waybar                    0.13.0, 0.13.0-fish-completions
+[A.]  #13  waybar-config.json        <none>
+[A.]  #14  waybar-style.css          <none>
+[A.]  #15  waybar.service            <none>
+[A.]  #16  xtrans                    1.6.0
+Removed packages:
+[R.]  #01  capnproto           1.1.0
+[R.]  #02  celt                0.11.3 x2
+[R.]  #03  hostname-net-tools  2.10
+[R.]  #04  libspng             0.7.4
+[R-]  #05  lix                 2.93.2, 2.93.2-man
+[R.]  #06  lsof                4.99.4
+[R.]  #07  net-tools           2.10
+[R.]  #08  nlohmann_json       3.11.3
+[R.]  #09  passt               2025_06_11.0293c6f
+[R.]  #10  toml11              3.7.1
+Closure size: 2520 -> 2525 (2357 paths added, 2352 paths removed, delta +5, disk usage +12.1MiB).
