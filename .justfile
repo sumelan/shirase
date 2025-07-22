@@ -28,21 +28,21 @@ profiles-path := "/nix/var/nix/profiles"
 [group('SYSTEM')]
 [doc('Switch configuration, make boot-default and remain a log, commit on git.')]
 @deploy *args: check
-    if test -f {{ HOSTNAME }}_build.log; \
+    if test -f bootlog/{{ HOSTNAME }}.log; \
       echo -e "Write in previous log...\n"; \
     else; \
       echo -e "Create new log...\n"; \
-      echo -e "\n[New entry]" >> {{ HOSTNAME }}_build.log; \
-      echo -e "<<< .\n>>> $(command ls -d1v {{ profiles-path }}/system-*-link | tail -n 1)" >> {{ HOSTNAME }}_build.log; \
+      echo -e "\n[New entry]" >> bootlog/{{ HOSTNAME }}.log; \
+      echo -e "<<< .\n>>> $(command ls -d1v {{ profiles-path }}/system-*-link | tail -n 1)" >> bootlog/{{ HOSTNAME }}.log; \
     end
 
     nh os switch {{ args }}
 
-    echo -e "\n---\n\n$(date '+%x %X')" >> {{ HOSTNAME }}_build.log
+    echo -e "\n---\n\n$(date '+%x %X')" >> bootlog/{{ HOSTNAME }}.log
     nvd diff \
-      "$(command rg -N '>>> ({{ profiles-path }}/system-[0-9]+-link)' --only-matching --replace '$1' {{ HOSTNAME }}_build.log | tail -1)" \
+      "$(command rg -N '>>> ({{ profiles-path }}/system-[0-9]+-link)' --only-matching --replace '$1' bootlog/{{ HOSTNAME }}.log | tail -1)" \
         "$(command ls -d1v {{ profiles-path }}/system-*-link | tail -n 1)" \
-          >> {{ HOSTNAME }}_build.log
+          >> bootlog/{{ HOSTNAME }}.log
 
     git add -A
     echo -e "Commit on git...\n"
