@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   options.custom = {
     wireshark.enable = lib.mkEnableOption "wireshark" // {
@@ -9,6 +14,7 @@
   config = lib.mkIf config.custom.wireshark.enable {
     programs.wireshark = {
       enable = true;
+      package = pkgs.wireshark; # default: wireshark-cli
     };
   };
 }

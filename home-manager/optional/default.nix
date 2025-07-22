@@ -12,6 +12,5 @@ _: {
     ./thunderbird.nix
     ./vlc.nix
     ./wlsunset.nix
-    ./youtube-music.nix
   ];
 }

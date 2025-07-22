@@ -18,12 +18,6 @@ in
         args = "--enable-wayland-ime --wayland-text-input-version=3";
       };
     };
-    window-rules = lib.singleton {
-      matches = lib.singleton {
-        app-id = "^(vesktop)$";
-      };
-      default-column-width.proportion = 0.7;
-    };
   };
 
   custom.persist = {

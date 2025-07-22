@@ -19,19 +19,17 @@ in
       ];
       package = pkgs.librewolf.overrideAttrs (o: {
         # launch librewolf with user profile
-        buildCommand =
-          o.buildCommand
-          + ''
-            wrapProgram "$out/bin/librewolf" \
-              --set 'HOME' '${config.xdg.configHome}' \
-              --append-flags "${
-                lib.concatStringsSep " " [
-                  "--name librewolf"
-                  # load librewolf profile with same name as user
-                  "--profile ${config.home.homeDirectory}/${configPath}/${user}"
-                ]
-              }"
-          '';
+        buildCommand = o.buildCommand + ''
+          wrapProgram "$out/bin/librewolf" \
+            --set 'HOME' '${config.xdg.configHome}' \
+            --append-flags "${
+              lib.concatStringsSep " " [
+                "--name librewolf"
+                # load librewolf profile with same name as user
+                "--profile ${config.home.homeDirectory}/${configPath}/${user}"
+              ]
+            }"
+        '';
       });
 
       inherit configPath;
@@ -55,7 +53,8 @@ in
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
 
-        userChrome = # css
+        userChrome =
+          # css
           ''
             /* remove useless urlbar padding */
             #customizableui-special-spring1 { display:none }
@@ -78,12 +77,6 @@ in
       # NOTE: bitwarden window cannot be floated on this method
       # https://github.com/hyprwm/Hyprland/issues/3835
       window-rules = [
-        {
-          matches = lib.singleton {
-            app-id = "^(librewolf)$";
-          };
-          default-column-width.proportion = 0.6;
-        }
         {
           matches = [
             {
