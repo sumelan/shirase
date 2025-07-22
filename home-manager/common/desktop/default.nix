@@ -1,7 +1,6 @@
 _: {
   imports = [
     ./common
-    ./maomaowm
     ./niri
     ./discord.nix
     ./dunst.nix

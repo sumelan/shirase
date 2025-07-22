@@ -9,27 +9,6 @@
   # tty autologin
   services.getty.autologinUser = user;
 
-  # environment.etc =
-  #   let
-  #     monitorRules = "monitorrule=${config.hm.lib.monitors.mainMonitorName},0,1,tile,0,1.0,0,0";
-  #   in
-  #   {
-  # fallback config path
-  #     "maomao/config.conf".text = ''
-  #       tap_to_click=1
-  #       trackpad_natural_scrolling=1
-
-  #       cursor_theme=${config.hm.stylix.cursor.name}
-  #       cursor_size=${config.hm.stylix.cursor.size |> builtins.toString}
-
-  #       ${monitorRules}
-
-  #       env=XCURSOR_SIZE,${config.hm.stylix.cursor.size |> builtins.toString}
-  #       env=GTK_USE_PORTAL,0
-  #       env=GDK_DEBUG,no-portals
-  #     '';
-  #   };
-
   services.greetd = {
     enable = true;
     settings = {
@@ -80,21 +59,9 @@
                 ${backlightSpawn}
                 spawn-at-startup "sh" "-c" "${lib.getExe pkgs.greetd.regreet}; pkill -f niri"
               '';
-
-          # backlightCmd = lib.optionalString config.hm.custom.backlight.enable ''
-          #   ${lib.getExe pkgs.brightnessctl} set 5%
-          # '';
-          # autostart.sh =
-          #   pkgs.writeShellScript "autostart.sh"
-          # bash
-          #     ''
-          #       ${backlightCmd}
-          #       ${lib.getExe pkgs.greetd.regreet}; pkill -f maomao
-          #     '';
         in
         {
           command = "niri -c ${niri-config}";
-          #  command = "maomao -s ${autostart.sh}";
           user = "greeter";
         };
     };

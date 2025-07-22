@@ -7,7 +7,6 @@ _: {
     ./filesystem.nix
     ./greetd.nix
     ./impermanence.nix
-    ./maomaowm.nix
     ./niri.nix
     ./nix.nix
     ./pipewire.nix

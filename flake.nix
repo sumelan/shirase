@@ -20,8 +20,6 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    maomaowm.url = "github:DreamMaoMao/maomaowm";
-
     niri.url = "github:sodiboo/niri-flake";
 
     nix-index-database = {

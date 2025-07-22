@@ -28,7 +28,6 @@
             reload_style_on_change = true;
             output = "${config.lib.monitors.mainMonitorName}";
             modules-left = [
-              #"dwl/tags"
               "niri/workspaces"
               "idle_inhibitor"
             ];
@@ -37,17 +36,16 @@
               "mpris"
               "memory"
             ];
-            modules-right =
-              [
-                "network"
-                "bluetooth"
-                "cava"
-                "wireplumber"
-              ]
-              ++ (lib.optionals config.custom.battery.enable [
-                "power-profiles-daemon"
-                "battery"
-              ]);
+            modules-right = [
+              "network"
+              "bluetooth"
+              "cava"
+              "wireplumber"
+            ]
+            ++ (lib.optionals config.custom.battery.enable [
+              "power-profiles-daemon"
+              "battery"
+            ]);
           };
 
           moduleConfiguration = with config.lib.stylix.colors.withHashtag; {
@@ -63,25 +61,6 @@
               icon = true;
               icon-size = 24;
               expand = false;
-            };
-            "dwl/tags" = {
-              tag-labels = [
-                ""
-                ""
-                ""
-                ""
-                ""
-                ""
-                ""
-                ""
-                ""
-              ];
-            };
-            "dwl/window" = {
-              format = "{}";
-              separate-outputs = true;
-              icon = true;
-              icon-size = 18;
             };
             "memory" = {
               interval = 30;

@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  config,
   inputs,
   ...
 }:
@@ -16,7 +15,7 @@
     in
     {
       enable = true;
-      wayland = if config.custom.maomao.enable then null else true;
+      wayland = true;
       enabledExtensions = with spicePkgs.extensions; [
         # adblock
         keyboardShortcut

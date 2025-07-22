@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  isLaptop,
   ...
 }:
 {
@@ -16,7 +17,7 @@
       enable = true;
       settings = {
         general = {
-          ignore_dbus_inhibit = false;
+          ignore_dbus_inhibit = true;
           # exec hyprlock unless already running
           lock_cmd = "${lib.getExe' pkgs.procps "pidof"} hyprlock || ${lib.getExe pkgs.hyprlock}";
           # kill hyprlock
@@ -24,10 +25,10 @@
           # stop playing when lock-session
           before_sleep_cmd = lib.concatStringsSep "; " [
             "loginctl lock-session"
-            "playerctl pause"
+            "${lib.getExe pkgs.playerctl} pause"
           ];
           # to avoid having to press a key twice to run on the display.
-          after_sleep_cmd = "${lib.getExe pkgs.wlr-randr} --output ${config.lib.monitors.mainMonitorName} --on";
+          after_sleep_cmd = "niri msg action power-on-monitors";
         };
 
         listener = [
@@ -39,19 +40,19 @@
           {
             timeout = 60 * 10;
             # lock screen when timeout has passed.
-            on-timeout = "${lib.getExe pkgs.hyprlock}";
+            on-timeout = "loginctl lock-session";
           }
           {
             timeout = 60 * 15;
             # screen off when timeout has passed.
-            on-timeout = "${lib.getExe pkgs.wlr-randr} --output ${config.lib.monitors.mainMonitorName} --off";
+            on-timeout = "niri msg action power-off-monitors";
             # screen on when activity is detected after timeout has fired.
-            on-resume = "${lib.getExe pkgs.wlr-randr} --output ${config.lib.monitors.mainMonitorName} --on";
+            on-resume = "niri msg action power-on-monitors";
           }
-          {
+          (lib.optionalAttrs isLaptop {
             timeout = 60 * 30;
             on-timeout = "systemctl suspend"; # suspend pc.
-          }
+          })
         ];
       };
     };

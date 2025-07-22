@@ -81,7 +81,6 @@
       #idle_inhibitor,
       #clock,
       #workspaces,
-      #tags,
       #wireplumber,
       #backlight,
       #memory,
@@ -127,35 +126,6 @@
       #workspaces button.empty {
         font-size: 1px;
         background-color: ${base04};
-      }
-
-      #tags {
-        margin-left: 15px;
-        font-size: 0px;
-        padding: 6px 3px;
-        border-radius: 20px;
-      }
-
-      #tags button {
-        font-size: 0px;
-        background-color: ${base04};
-        padding: 0px 1px;
-        margin: 0px 4px;
-        border-radius: 20px;
-        transition: all 0.25s cubic-bezier(0.55, -0.68, 0.48, 1.682);
-      }
-
-      #tags button.occupied {
-        font-size: 1px;
-        background-color: ${base07};
-      }
-
-      #tags button.focused {
-        font-size: 1px;
-        background-color: ${base0E};
-        border-radius: 20px;
-        min-width: 30px;
-        background-size: 400% 400%;
       }
 
       #mpris {
