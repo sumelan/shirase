@@ -3,6 +3,7 @@ _: {
     ./brave.nix
     ./cyanrip.nix
     ./foliate.nix
+    ./freetube.nix
     ./ghostty.nix
     ./helix.nix
     ./inkscape.nix

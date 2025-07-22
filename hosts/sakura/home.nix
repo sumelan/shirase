@@ -50,6 +50,7 @@
     brave.enable = false;
     cyanrip.enable = true;
     foliate.enable = true;
+    freetube.enable = true;
     helix.enable = false;
     krita.enable = false;
     thunderbird.enable = false;

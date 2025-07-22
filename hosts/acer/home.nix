@@ -38,6 +38,7 @@
     brave.enable = false;
     cyanrip.enable = true;
     foliate.enable = true;
+    freetube.enable = true;
     helix.enable = false;
     thunderbird.enable = true;
     wlsunset.enable = true;
