@@ -246,3 +246,39 @@ Removed packages:
 [R.]  #09  passt               2025_06_11.0293c6f
 [R.]  #10  toml11              3.7.1
 Closure size: 2533 -> 2524 (2356 paths added, 2365 paths removed, delta -9, disk usage -8.6MiB).
+
+---
+
+2025年07月22日 19時42分34秒
+<<< /nix/var/nix/profiles/system-290-link
+>>> /nix/var/nix/profiles/system-291-link
+Version changes:
+[U.]  #01  electron                    35.7.1 -> 35.7.2
+[U.]  #02  electron-unwrapped          35.7.1 -> 35.7.2
+[U*]  #03  eza                         0.22.1, 0.22.1-fish-completions, 0.22.1-man -> 0.23.0, 0.23.0-fish-completions, 0.23.0-man
+[U.]  #04  fastfetch                   2.47.0, 2.47.0-fish-completions, 2.47.0-man -> 2.48.1, 2.48.1-fish-completions, 2.48.1-man
+[U.]  #05  fcft                        3.3.1 -> 3.3.2
+[U.]  #06  fcitx5-gtk                  5.1.3 -> 5.1.4
+[U.]  #07  fx                          37.0.0, 37.0.0-fish-completions -> 37.0.1, 37.0.1-fish-completions
+[U.]  #08  gh                          2.75.0, 2.75.0-fish-completions -> 2.76.0, 2.76.0-fish-completions
+[U.]  #09  hyprgraphics                0.1.4 -> 0.1.5
+[U.]  #10  hyprlock                    0.8.2, 0.8.2-fish-completions -> 0.9.0, 0.9.0-fish-completions
+[U.]  #11  intel-media-driver          25.1.4 -> 25.2.6
+[U.]  #12  just                        1.40.0, 1.40.0-fish-completions, 1.40.0-man -> 1.42.2, 1.42.2-fish-completions, 1.42.2-man
+[U*]  #13  mkpasswd                    5.6.2 -> 5.6.3
+[U.]  #14  nix-index                   0.1.8 -> 0.1.9
+[U.]  #15  nix-index-with-full-db      0.1.8, 0.1.8-fish-completions -> 0.1.9, 0.1.9-fish-completions
+[U.]  #16  nixos-system-acer           25.11.20250716.6e98748.49c0b25 -> 25.11.20250719.c87b95e.fd77a7c
+[U.]  #17  typescript-language-server  4.3.3 -> 4.3.4
+[U.]  #18  vpl-gpu-rt                  25.2.5 -> 25.2.6
+[U.]  #19  zathura                     0.5.11, 0.5.11-bin, 0.5.11-dev, 0.5.11-man -> 0.5.12, 0.5.12-bin, 0.5.12-dev, 0.5.12-man
+[U.]  #20  zathura-with-plugins        0.5.11, 0.5.11-fish-completions -> 0.5.12, 0.5.12-fish-completions
+Added packages:
+[A.]  #1  freetube          0.23.5, 0.23.5-fish-completions
+[A.]  #2  hm_settings.db    <none>
+[A.]  #3  nixfmt            1.0.0
+[A.]  #4  systemd-run0.pam  <none>
+[A.]  #5  undotree          28f2f54a
+Removed packages:
+[R-]  #1  nixfmt-unstable  2025-04-04, 2025-04-04-fish-completions
+Closure size: 2524 -> 2528 (154 paths added, 150 paths removed, delta +4, disk usage +6.8MiB).
