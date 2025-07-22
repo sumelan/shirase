@@ -27,9 +27,6 @@ in
           inherit (prev) pkgs;
           inherit inputs;
         });
-
-      # use nixfmt-rfc-style as the default
-      nixfmt = prev.nixfmt-rfc-style;
     })
   ];
 }

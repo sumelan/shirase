@@ -33,7 +33,6 @@ in
         nixd
         nix-output-monitor
         nix-tree
-        nixfmt-rfc-style
         nixpkgs-review
         nix-search-tv
         nvd
