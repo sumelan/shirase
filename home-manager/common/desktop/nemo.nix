@@ -60,6 +60,8 @@
       thumbnail-limit = lib.hm.gvariant.mkUint64 (100 * 1024 * 1024); # 100 mb
     };
     "org/nemo/window-state" = {
+      start-with-menu-bar = false;
+      start-with-status-bar = false;
       sidebar-bookmark-breakpoint = 0;
       sidebar-width = 180;
     };
@@ -86,8 +88,6 @@
           }
         ];
         open-floating = true;
-        default-column-width.proportion = 0.4;
-        default-window-height.proportion = 0.4;
       }
     ];
   };
