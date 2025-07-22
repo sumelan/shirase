@@ -86,11 +86,6 @@ lib.mkIf config.custom.niri.enable {
       action.focus-workspace = 3;
       hotkey-overlay.hidden = true;
     };
-    "Mod+0" = lib.mkIf (config.lib.monitors.otherMonitorsNames != [ ]) {
-      action.focus-workspace = "huion";
-      hotkey-overlay.hidden = false;
-    };
-
     "Mod+Shift+1" = {
       action.move-column-to-workspace = 1;
       hotkey-overlay.hidden = true;
@@ -102,10 +97,6 @@ lib.mkIf config.custom.niri.enable {
     "Mod+Shift+3" = {
       action.move-column-to-workspace = 3;
       hotkey-overlay.hidden = true;
-    };
-    "mod+Shift+0" = lib.mkIf (config.lib.monitors.otherMonitorsNames != [ ]) {
-      action.move-column-to-workspace = "huion";
-      hotkey-overlay.hidden = false;
     };
 
     # mouse scroll

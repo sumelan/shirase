@@ -39,7 +39,9 @@
       programs.niri.settings = {
         window-rules = [
           {
-            matches = [ { app-id = "^(.blueman-manager-wrapped)$"; } ];
+            matches = lib.singleton {
+              app-id = "^(.blueman-manager-wrapped)$";
+            };
             open-floating = true;
           }
         ];

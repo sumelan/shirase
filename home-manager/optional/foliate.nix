@@ -14,7 +14,9 @@
 
     programs.niri.settings.window-rules = [
       {
-        matches = [ { app-id = "^(com.github.johnfactotum.Foliate)$"; } ];
+        matches = lib.singleton {
+          app-id = "^(com.github.johnfactotum.Foliate)$";
+        };
         default-column-width.proportion = 0.9;
         block-out-from = "screen-capture";
       }

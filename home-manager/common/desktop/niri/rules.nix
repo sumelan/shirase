@@ -5,13 +5,6 @@
 }:
 lib.mkIf config.custom.niri.enable {
   programs.niri.settings = {
-    workspaces = lib.mkIf (config.lib.monitors.otherMonitorsNames != [ ]) {
-      "01-huion" = {
-        name = "huion";
-        open-on-output = builtins.head config.lib.monitors.otherMonitorsNames;
-      };
-    };
-
     window-rules = [
       {
         # global rules
@@ -26,27 +19,15 @@ lib.mkIf config.custom.niri.enable {
       }
       # focused column/window rules
       {
-        matches = [ { is-focused = true; } ];
-        excludes = lib.mkIf config.custom.krita.enable [
-          {
-            app-id = "^(krita)$";
-          }
-          {
-            app-id = "^(org.inkscape.Inkscape)$";
-          }
-        ];
+        matches = lib.singleton {
+          is-focused = true;
+        };
         opacity = config.stylix.opacity.desktop;
       }
       {
-        matches = [ { is-focused = false; } ];
-        excludes = lib.mkIf config.custom.krita.enable [
-          {
-            app-id = "^(krita)$";
-          }
-          {
-            app-id = "^(org.inkscape.Inkscape)$";
-          }
-        ];
+        matches = lib.singleton {
+          is-focused = false;
+        };
         opacity = config.stylix.opacity.desktop * 0.9;
       }
     ];
@@ -60,7 +41,7 @@ lib.mkIf config.custom.niri.enable {
         ];
       in
       {
-        lid-close.action.spawn = fish "niri msg action power-off-monitors";
+        lid-close.action.spawn = fish "systemctl suspend";
         lid-open.action.spawn = fish "niri msg action power-on-monitors";
       };
   };

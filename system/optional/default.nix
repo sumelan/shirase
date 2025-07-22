@@ -9,8 +9,8 @@ _: {
     ./hdds.nix
     ./keyd.nix
     ./logitech.nix
-    ./opentabletdriver.nix
     ./printing.nix
     ./steam.nix
+    ./wireshark.nix
   ];
 }

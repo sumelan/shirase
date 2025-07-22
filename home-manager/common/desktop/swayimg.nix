@@ -7,7 +7,8 @@
         with config.lib.stylix.colors.withHashtag;
         let
           inherit (config.stylix) fonts;
-          swayimgOpacity = ((builtins.floor (config.stylix.opacity.desktop * 100 + 0.5)) * 255) / 100 |> lib.toHexString;
+          swayimgOpacity =
+            ((builtins.floor (config.stylix.opacity.desktop * 100 + 0.5)) * 255) / 100 |> lib.toHexString;
         in
         {
           general = {
@@ -165,9 +166,9 @@
 
     niri.settings.window-rules = [
       {
-        matches = [ { app-id = "^(swayimg)$"; } ];
-        default-column-width.proportion = 0.5;
-        default-window-height.proportion = 0.5;
+        matches = lib.singleton {
+          app-id = "^(swayimg)$";
+        };
         open-floating = true;
       }
     ];

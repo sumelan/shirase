@@ -52,7 +52,6 @@
     foliate.enable = true;
     freetube.enable = true;
     helix.enable = false;
-    krita.enable = false;
     thunderbird.enable = false;
     wlsunset.enable = true;
   };

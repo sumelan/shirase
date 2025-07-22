@@ -6,8 +6,6 @@ _: {
     ./freetube.nix
     ./ghostty.nix
     ./helix.nix
-    ./inkscape.nix
-    ./krita.nix
     ./obs-studio.nix
     ./picard.nix
     ./rustdesk.nix

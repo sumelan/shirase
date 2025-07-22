@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   security.rtkit.enable = true;
 
@@ -40,10 +40,10 @@
     home.packages = with pkgs; [ pwvucontrol ];
     programs.niri.settings.window-rules = [
       {
-        matches = [ { app-id = "^(com.saivert.pwvucontrol)$"; } ];
+        matches = lib.singleton {
+          app-id = "^(com.saivert.pwvucontrol)$";
+        };
         open-floating = true;
-        default-column-width.proportion = 0.4;
-        default-window-height.proportion = 0.4;
       }
     ];
   };

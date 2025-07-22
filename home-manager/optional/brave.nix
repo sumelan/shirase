@@ -59,7 +59,9 @@
 
     programs.niri.settings.window-rules = [
       {
-        matches = [ { app-id = "^(brave-browser)$"; } ];
+        matches = lib.singleton {
+          app-id = "^(brave-browser)$";
+        };
         default-column-width = {
           proportion = 0.6;
         };
@@ -79,8 +81,6 @@
             title = "(.*)(wants to save)$";
           }
         ];
-        default-column-width.proportion = 0.4;
-        default-window-height.proportion = 0.4;
         open-floating = true;
       }
     ];

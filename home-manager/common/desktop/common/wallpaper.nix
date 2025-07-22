@@ -1,4 +1,5 @@
 {
+  lib,
   config,
   ...
 }:
@@ -25,7 +26,9 @@
 
   programs.niri.settings.layer-rules = [
     {
-      matches = [ { namespace = "wpaperd"; } ];
+      matches = lib.singleton {
+        namespace = "wpaperd";
+      };
       place-within-backdrop = true;
     }
   ];

@@ -22,8 +22,9 @@
 
     programs.niri.settings.window-rules = [
       {
-        matches = [ { app-id = "^(thunderbird)$"; } ];
-        default-column-width.proportion = 0.7;
+        matches = lib.singleton {
+          app-id = "^(thunderbird)$";
+        };
         block-out-from = "screen-capture";
       }
     ];

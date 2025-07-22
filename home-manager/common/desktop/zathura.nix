@@ -1,4 +1,5 @@
-_: {
+{ lib, ... }:
+{
   programs = {
     zathura = {
       enable = true;
@@ -22,15 +23,16 @@ _: {
       };
     };
   };
-
-  programs.niri.settings.window-rules = [
-    {
-      matches = [ { app-id = "^(org.pwmt.zathura)$"; } ];
-      default-column-width.proportion = 0.9;
-    }
-  ];
-
   xdg.mimeApps.defaultApplications = {
     "application/pdf" = "org.pwmt.zathura.desktop";
   };
+
+  programs.niri.settings.window-rules = [
+    {
+      matches = lib.singleton {
+        app-id = "^(org.pwmt.zathura)$";
+      };
+      default-column-width.proportion = 0.9;
+    }
+  ];
 }

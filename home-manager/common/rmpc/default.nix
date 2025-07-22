@@ -198,9 +198,9 @@
       };
       window-rules = [
         {
-          matches = [ { app-id = "^(rmpc)$"; } ];
-          default-column-width.proportion = 0.5;
-          default-window-height.proportion = 0.5;
+          matches = lib.singleton {
+            app-id = "^(rmpc)$";
+          };
           open-floating = true;
         }
       ];
