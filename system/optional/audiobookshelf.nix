@@ -27,6 +27,7 @@ in
   config = lib.mkIf cfg.enable {
     services.audiobookshelf = {
       enable = true;
+      host = "0.0.0.0"; # "127.0.0.1" means localhost only
       port = 8234;
       openFirewall = true;
     };
@@ -72,10 +73,6 @@ in
       allowedTCPPorts = [
         80
         443
-        59010
-        59011
-      ];
-      allowedUDPPorts = [
         59010
         59011
       ];
