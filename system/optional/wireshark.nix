@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  user,
   ...
 }:
 {
@@ -16,5 +17,6 @@
       enable = true;
       package = pkgs.wireshark; # default: wireshark-cli
     };
+    users.users.${user}.extraGroups = [ "wireshark" ];
   };
 }
