@@ -1,7 +1,7 @@
 {
   lib,
   pkgs,
-  isDesktop,
+  isServer,
   ...
 }:
 let
@@ -26,7 +26,7 @@ in
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM0zoNZpdcUfZ/Nf8Nj248D3wGlQCLld3LjPGrA6zzXs sumelan"
         ];
       in
-      lib.mkIf isDesktop pubKeys;
+      lib.mkIf isServer pubKeys;
   };
   hm.profiles.${username} = {
     timeZone = "Asia/Tokyo";

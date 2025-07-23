@@ -35,11 +35,7 @@
     };
 
     brave.enable = false;
-    cyanrip.enable = true;
-    foliate.enable = true;
-    freetube.enable = true;
     helix.enable = false;
-    rustdesk.enable = true;
     thunderbird.enable = false;
     wlsunset.enable = true;
   };

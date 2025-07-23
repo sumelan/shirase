@@ -6,6 +6,6 @@
   };
   sakura = lib.custom.nixos.mkSystem "sakura" {
     user = "sumelan";
-    hardware = "desktop";
+    hardware = "server";
   };
 }

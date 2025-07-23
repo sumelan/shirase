@@ -5,12 +5,12 @@
   user,
   host,
   isLaptop,
-  isDesktop,
+  isServer,
   ...
 }:
 {
   options.custom = {
-    btrbk.enable = lib.mkEnableOption "snapshots using btrbk";
+    btrbk.enable = lib.mkEnableOption "Tool for snapshots and remote backups";
   };
 
   config = lib.mkIf config.custom.btrbk.enable {
@@ -46,31 +46,14 @@
                     snapshot_name = "persist";
                   };
                 };
-                target = "ssh://sakura/media/${host}-backups";
-              };
-            };
-          };
-
-          "local-backup" = lib.mkIf isDesktop {
-            onCalendar = "daily";
-            settings = basicBtrbk // {
-              volume."/" = {
-                group = "local";
-                subvolume = {
-                  persist = {
-                    group = "local-persist";
-                    snapshot_dir = "/cache/snapshots";
-                    snapshot_name = "persist";
-                  };
-                };
-                target = "/media/${host}-backups";
+                target = "ssh://sakura/media/4TWD/${host}-remote";
               };
             };
           };
         };
 
         # set ssh command on server side
-        sshAccess = lib.mkIf isDesktop [
+        sshAccess = lib.mkIf isServer [
           {
             key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGww+bXaeTXj6s10G4V8Kz2PqGfI6tU4rd8KfxxoQj9 btrbk";
             roles = [
@@ -118,10 +101,10 @@
         }
       );
 
-    # only client side
+    # only remote side
     custom.persist = {
       root = {
-        directories = lib.mkIf isLaptop [
+        directories = lib.mkIf isServer [
           "/var/lib/btrbk/.ssh"
         ];
       };

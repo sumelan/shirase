@@ -9,19 +9,9 @@
 
   # SystemModule Options
   custom = {
-    # style
     stylix.colorTheme = "catppuccin-frappe";
 
-    # common
     btrbk.enable = true;
     distrobox.enable = false;
-
-    # hardware
-    hdds.enable = true;
-    alsa.enable = true;
-    logitech.enable = true;
-
-    # steam
-    steam.enable = false;
   };
 }
