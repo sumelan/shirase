@@ -28,3 +28,119 @@ Added packages:
 [A.]  #2  rustdesk  1.4.0, 1.4.0-fish-completions
 [A.]  #3  xdotool   3.20211022.1
 Closure size: 2527 -> 2532 (27 paths added, 22 paths removed, delta +5, disk usage +1.5GiB).
+
+---
+
+2025年07月24日 02時03分28秒
+<<< /nix/var/nix/profiles/system-284-link
+>>> /nix/var/nix/profiles/system-285-link
+Version changes:
+[C.]  #1  abseil-cpp                20250512.1 x2 -> 20210324.2, 20250512.1 x2
+[C.]  #2  btrfs-scrub-maybe-cancel  <none> x2 -> <none> x3
+[C.]  #3  icu4c                     75.1, 76.1 x2, 76.1-dev, 77.1 -> 76.1 x2, 76.1-dev, 77.1
+[C.]  #4  llvm                      19.1.7-lib x2, 20.1.6-lib -> 19.1.7-lib x2
+[D.]  #5  nixos-system-sakura       25.11.20250719.c87b95e.08d9bd1 -> 25.11.20250719.c87b95e.4a08d51
+[C.]  #6  nodejs                    22.17.0 -> 22.17.0, 22.17.0-source
+[C.]  #7  python3                   3.12.11, 3.13.5 x3, 3.13.5-env x7 -> 3.13.5 x3, 3.13.5-env x7
+Selection state changes:
+[C-]  #1  blueman           2.4.6
+[C-]  #2  bluez             5.83 x2
+[C-]  #3  obex-data-server  0.4.6
+Added packages:
+[A.]  #01  aribb24                                   1.0.4
+[A.]  #02  audiobookshelf                            2.26.1, 2.26.1-npm-deps
+[A.]  #03  celt                                      0.11.3
+[A.]  #04  codec2                                    1.2.0-lib
+[A.]  #05  ffmpeg-full                               7.1.1-bin, 7.1.1-data, 7.1.1-lib
+[A.]  #06  frei0r-plugins                            2.3.3
+[A.]  #07  getopt                                    1.1.6
+[A.]  #08  gflags                                    2.2.2
+[A.]  #09  gfortran                                  14.3.0-lib, 14.3.0-libgcc
+[A.]  #10  glog                                      0.7.1
+[A.]  #11  hdf5-cpp                                  1.14.6
+[A.]  #12  kvazaar                                   2.3.1-lib
+[A.]  #13  lcevcdec                                  3.3.8-lib
+[A.]  #14  libaribcaption                            1.1.1
+[A.]  #15  libilbc                                   3.0.4
+[A.]  #16  libvpl                                    2.15.0
+[A.]  #17  nunicode                                  1.11-sqlite
+[A.]  #18  openblas                                  0.3.30
+[A.]  #19  opencv                                    4.11.0
+[A.]  #20  protobuf                                  21.12
+[A.]  #21  quirc                                     1.2
+[A.]  #22  rav1e                                     0.8.0
+[A.]  #23  shine                                     3.1.1
+[A.]  #24  snappy                                    1.2.2
+[A.]  #25  unit-audiobookshelf.service               <none>
+[A.]  #26  unit-btrfs-scrub-media                    4TWD.service, 4TWD.timer
+[A.]  #27  unit-btrfs-scrub-media-IRONWOLF2.service  <none>
+[A.]  #28  unit-btrfs-scrub-media-IRONWOLF2.timer    <none>
+[A.]  #29  unit-btrfs-scrub-persist.service          <none>
+[A.]  #30  unit-btrfs-scrub-persist.timer            <none>
+[A.]  #31  vo-amrwbenc                               0.1.3
+[A.]  #32  vvenc                                     1.13.1-lib
+[A.]  #33  xavs                                      55
+[A.]  #34  xevd                                      0.5.0-lib
+[A.]  #35  xeve                                      0.5.1-lib
+[A.]  #36  zeromq                                    4.3.5
+Removed packages:
+[R.]  #01  all-plugins                               <none>
+[R-]  #02  alsa-utils                                1.2.13
+[R.]  #03  blueman-applet.service                    <none>
+[R.]  #04  btrbk-local-backup.conf                   <none>
+[R.]  #05  cyanrip                                   0.9.3.1, 0.9.3.1-fish-completions
+[R.]  #06  foliate                                   3.3.0, 3.3.0-fish-completions
+[R.]  #07  freetube                                  0.23.5, 0.23.5-fish-completions
+[R.]  #08  gjs                                       1.84.2
+[R.]  #09  gst-libav                                 1.26.0
+[R.]  #10  gstreamer-vaapi                           1.26.0
+[R.]  #11  harfbuzz-icu                              11.2.1
+[R.]  #12  hidapi                                    0.15.0
+[R.]  #13  hm_settings.db                            <none>
+[R.]  #14  hyphen                                    2.8.8
+[R.]  #15  input.conf                                <none>
+[R.]  #16  libappindicator-gtk3                      12.10.1+20.10.20200706.1
+[R.]  #17  libbacktrace                              0-unstable-2024-03-02
+[R.]  #18  libdiscid                                 0.6.5
+[R.]  #19  libmanette                                0.2.12
+[R.]  #20  libmusicbrainz                            5.1.0
+[R-]  #21  ltunify                                   0.3
+[R.]  #22  main.conf                                 <none>
+[R.]  #23  mpris-proxy.service                       <none>
+[R.]  #24  network.conf                              <none>
+[R.]  #25  picard                                    2.13.3, 2.13.3-fish-completions
+[R.]  #26  python3.12-dbus-python                    1.4.0, 1.4.0-dev
+[R.]  #27  python3.12-discid                         1.2.0
+[R.]  #28  python3.12-fasteners                      0.19
+[R.]  #29  python3.12-markdown                       3.8
+[R.]  #30  python3.12-mutagen                        1.47.0
+[R.]  #31  python3.12-pyjwt                          2.10.1
+[R.]  #32  python3.12-pyqt5                          5.15.10, 5.15.10-dev
+[R.]  #33  python3.12-pyqt5-sip                      12.17.0
+[R.]  #34  python3.12-python-dateutil                2.9.0.post0
+[R.]  #35  python3.12-pyyaml                         6.0.2
+[R.]  #36  python3.12-six                            1.17.0
+[R.]  #37  python3.13-evdev                          1.9.2
+[R.]  #38  python3.13-hid-parser                     0.0.3
+[R.]  #39  python3.13-pyyaml                         6.0.2
+[R.]  #40  python3.13-typing-extensions              4.13.2
+[R.]  #41  python3.13-xlib                           0.33
+[R.]  #42  qtmultimedia                              5.15.17, 5.15.17-bin
+[R.]  #43  qtwebchannel                              5.15.17
+[R.]  #44  rustc                                     1.88.0
+[R.]  #45  rustdesk                                  1.4.0, 1.4.0-fish-completions
+[R-]  #46  solaar                                    1.1.14
+[R.]  #47  spidermonkey                              128.5.0
+[R.]  #48  unit-bluetooth.service                    <none>
+[R.]  #49  unit-btrbk-local-backup.service           <none>
+[R.]  #50  unit-btrbk-local-backup.timer             <none>
+[R.]  #51  unit-btrfs-scrub--.service                <none>
+[R.]  #52  unit-btrfs-scrub--.timer                  <none>
+[R.]  #53  unit-btrfs-scrub-media.service            <none>
+[R.]  #54  unit-btrfs-scrub-media.timer              <none>
+[R.]  #55  unit-obex.service                         <none>
+[R.]  #56  unit-script-btrbk-local-backup-pre-start  <none>
+[R.]  #57  webkitgtk                                 2.48.3+abi=6.0
+[R.]  #58  woff2                                     1.0.2-lib
+[R.]  #59  xdotool                                   3.20211022.1
+Closure size: 2532 -> 2506 (85 paths added, 111 paths removed, delta -26, disk usage -1.1GiB).
