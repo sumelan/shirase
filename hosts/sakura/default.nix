@@ -11,7 +11,7 @@
   custom = {
     stylix.colorTheme = "catppuccin-frappe";
 
-    btrbk.enable = true;
+    audiobookshelf.enable = true;
     distrobox.enable = false;
   };
 }

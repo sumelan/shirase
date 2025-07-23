@@ -19,8 +19,6 @@
     # style
     stylix.colorTheme = "catppuccin-frappe";
 
-    # common
-    btrbk.enable = true;
     distrobox.enable = false;
   };
 }

@@ -10,7 +10,9 @@
 }:
 {
   options.custom = {
-    btrbk.enable = lib.mkEnableOption "Tool for snapshots and remote backups";
+    btrbk.enable = lib.mkEnableOption "Tool for snapshots and remote backups" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf config.custom.btrbk.enable {
@@ -101,10 +103,10 @@
         }
       );
 
-    # only remote side
+    # only client side
     custom.persist = {
       root = {
-        directories = lib.mkIf isServer [
+        directories = lib.mkIf isLaptop [
           "/var/lib/btrbk/.ssh"
         ];
       };

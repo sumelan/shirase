@@ -30,3 +30,16 @@ Added packages:
 Removed packages:
 [R.]  #1  wlr-randr  0.5.0
 Closure size: 2528 -> 2541 (50 paths added, 37 paths removed, delta +13, disk usage +249.9MiB).
+
+---
+
+2025年07月24日 02時00分34秒
+<<< /nix/var/nix/profiles/system-292-link
+>>> /nix/var/nix/profiles/system-293-link
+Added packages:
+[A.]  #1  unit-btrfs-scrub-persist.service  <none>
+[A.]  #2  unit-btrfs-scrub-persist.timer    <none>
+Removed packages:
+[R.]  #1  unit-btrfs-scrub--.service  <none>
+[R.]  #2  unit-btrfs-scrub--.timer    <none>
+Closure size: 2541 -> 2541 (14 paths added, 14 paths removed, delta +0, disk usage +2.8KiB).

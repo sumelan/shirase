@@ -34,9 +34,7 @@
       };
     };
 
-    brave.enable = false;
     helix.enable = false;
-    thunderbird.enable = false;
     wlsunset.enable = true;
   };
 }

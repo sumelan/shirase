@@ -40,7 +40,6 @@
     foliate.enable = true;
     freetube.enable = true;
     helix.enable = false;
-    rustdesk.enable = true;
     thunderbird.enable = true;
     wlsunset.enable = true;
   };

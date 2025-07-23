@@ -10,11 +10,8 @@ in
   options.custom = {
     audiobookshelf = {
       enable = lib.mkEnableOption "audiobookshelf";
-
       nginx = {
-        enable = lib.mkEnableOption "nginx" // {
-          default = config.custom.audiobookshelf.enable;
-        };
+        enable = lib.mkEnableOption "nginx";
         domain = lib.mkOption {
           type = lib.types.str;
           default = "sakurairo.ddnsfree.com";
@@ -71,7 +68,7 @@ in
       };
     };
 
-    networking.firewall = lib.mkIf config.custom.audiobookshelf.nginx.enable {
+    networking.firewall = lib.mkIf cfg.nginx.enable {
       allowedTCPPorts = [
         80
         443
@@ -87,8 +84,8 @@ in
     custom.persist = {
       root.directories = [
         "/var/lib/audiobookshelf"
-        "/var/lib/acme"
-      ];
+      ]
+      ++ (lib.optional cfg.nginx.enable "/var/lib/acme");
     };
   };
 }
