@@ -11,5 +11,11 @@
 
   config = lib.mkIf config.custom.rustdesk.enable {
     home.packages = with pkgs; [ rustdesk-flutter ];
+
+    custom.persist = {
+      home.directories = [
+        ".config/rustdesk"
+      ];
+    };
   };
 }

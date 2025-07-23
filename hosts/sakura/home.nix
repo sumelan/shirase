@@ -3,10 +3,10 @@
   monitors = {
     "HDMI-A-1" = {
       isMain = true;
-      scale = 1.50;
+      scale = 1.5;
       mode = {
-        width = 3840;
-        height = 2160;
+        width = 2560;
+        height = 1600;
         refresh = 60.000;
       };
       position = {
@@ -15,19 +15,6 @@
       };
       rotation = 0;
     };
-    #   "DP-1" = {
-    #     scale = 1.0;
-    #     mode = {
-    #       width = 2560;
-    #       height = 1440;
-    #       refresh = 59.951;
-    #     };
-    #     position = {
-    #       x = 0;
-    #       y = 0;
-    #     };
-    #     rotation = 0;
-    #   };
   };
 
   custom = {
@@ -52,6 +39,7 @@
     foliate.enable = true;
     freetube.enable = true;
     helix.enable = false;
+    rustdesk.enable = true;
     thunderbird.enable = false;
     wlsunset.enable = true;
   };
