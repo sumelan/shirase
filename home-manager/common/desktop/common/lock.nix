@@ -53,7 +53,7 @@
             valign = "center";
           };
           image = {
-            path = "${config.home.homeDirectory}/.anime-logo.png";
+            path = "${config.home.homeDirectory}/profile.jpg";
             size = 280;
             border_color = "rgb(${base0D})";
             position = "0, 100";

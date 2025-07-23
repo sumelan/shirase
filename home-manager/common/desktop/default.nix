@@ -10,7 +10,6 @@ _: {
     ./librewolf.nix
     ./mpv.nix
     ./nemo.nix
-    ./nixlogo.nix
     ./spicetify.nix
     ./swayimg.nix
     ./swayosd.nix

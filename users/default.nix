@@ -27,7 +27,7 @@ let
         name = lib.mkOption {
           type = lib.types.str;
           description = "Editor name to use as default";
-          default = "nvim";
+          default = lib.getExe config.profile.${user}.defaultEditor.package;
         };
       };
       defaultTerminal = {
