@@ -12,7 +12,7 @@
         mode = "center";
         sorting = "random";
         recursive = true;
-        offset = 0.2;
+        offset = 0.3;
       };
       default.transition = {
         ripple = { };

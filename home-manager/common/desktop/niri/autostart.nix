@@ -14,15 +14,23 @@ lib.mkIf config.custom.niri.enable {
       ];
     in
     [
-      {
-        command = fish "nm-applet";
-      }
+      # network
+      { command = [ "nm-applet" ]; }
+      # bluetooth
+      { command = [ "blueman-applet" ]; }
       # clipboard manager
       {
         command = fish "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store";
       }
+      # dynamic open-float script
+      { command = [ "open-float" ]; }
+      # initial backlight
       (lib.optionalAttrs config.custom.backlight.enable {
-        command = fish "${lib.getExe pkgs.brightnessctl} set 5%";
+        command = [
+          "${lib.getExe pkgs.brightnessctl}"
+          "set"
+          "5%"
+        ];
       })
     ];
 }
