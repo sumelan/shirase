@@ -144,3 +144,34 @@ Removed packages:
 [R.]  #58  woff2                                     1.0.2-lib
 [R.]  #59  xdotool                                   3.20211022.1
 Closure size: 2532 -> 2506 (85 paths added, 111 paths removed, delta -26, disk usage -1.1GiB).
+
+---
+
+2025年07月25日 20時24分07秒
+<<< /nix/var/nix/profiles/system-285-link
+>>> /nix/var/nix/profiles/system-286-link
+Version changes:
+[U.]  #01  audiobookshelf       2.26.1, 2.26.1-npm-deps -> 2.26.2, 2.26.2-npm-deps
+[U*]  #02  bind                 9.20.10-dnsutils, 9.20.10-host, 9.20.10-lib -> 9.20.11-dnsutils, 9.20.11-host, 9.20.11-lib
+[U.]  #03  deno                 2.4.0 -> 2.4.2
+[U.]  #04  electron             35.7.2 -> 37.2.2
+[U.]  #05  electron-unwrapped   35.7.2 -> 37.2.2
+[C.]  #06  gcc                  13.3.0-lib, 13.3.0-libgcc, 14.2.1.20250322-lib, 14.2.1.20250322-libgcc, 14.3.0, 14.3.0-lib x3, 14.3.0-libgcc x3 -> 13.3.0-lib, 13.3.0-libgcc, 14.2.1.20250322-lib, 14.2.1.20250322-libgcc, 14.3.0, 14.3.0-lib x2, 14.3.0-libgcc x2, 15.1.0-lib, 15.1.0-libgcc
+[U.]  #07  just                 1.42.2, 1.42.2-fish-completions, 1.42.2-man -> 1.42.3, 1.42.3-fish-completions, 1.42.3-man
+[U.]  #08  librewolf            140.0.2-1 x2, 140.0.2-1-fish-completions -> 140.0.4-1 x2, 140.0.4-1-fish-completions
+[U.]  #09  librewolf-unwrapped  140.0.2-1 -> 140.0.4-1
+[U.]  #10  libtracefs           1.8.1 -> 1.8.2
+[U.]  #11  nixos-system-sakura  25.11.20250719.c87b95e.4a08d51 -> 25.11.20250723.fc02ee7.1ea0f71
+[C.]  #12  nss                  3.101.2, 3.113 -> 3.101.2, 3.114
+[U.]  #13  yt-dlp               2025.6.30, 2025.6.30-fish-completions -> 2025.07.21, 2025.07.21-fish-completions
+Added packages:
+[A.]  #1  hm_sumelan.jpg               <none>
+[A.]  #2  open-float                   <none>
+[A.]  #3  open-float-fish-completions  <none>
+[A.]  #4  themed-logo.png              <none>
+Removed packages:
+[R.]  #1  anime-logo.png                      <none>
+[R.]  #2  undotree                            28f2f54a
+[R.]  #3  unit-notify-problems-.service       <none>
+[R.]  #4  unit-script-notify-problems_-start  <none>
+Closure size: 2506 -> 2506 (150 paths added, 150 paths removed, delta +0, disk usage +16.7MiB).
