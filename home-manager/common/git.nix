@@ -4,7 +4,7 @@
     git = {
       enable = true;
       userName = user;
-      userEmail = "bathys@proton.me";
+      userEmail = "sumelan@proton.me";
       difftastic = {
         enable = true;
         background = "dark";

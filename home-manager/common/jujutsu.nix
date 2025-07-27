@@ -6,7 +6,7 @@ _: {
       settings = {
         user = {
           name = "sumelan";
-          email = "bathys@proton.me";
+          email = "sumelan@proton.me";
         };
         template-aliases = {
           "format_short_id(id)" = "id.shortest()";

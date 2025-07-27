@@ -56,7 +56,7 @@ in
 
     security.acme = lib.mkIf cfg.nginx.enable {
       acceptTerms = true;
-      defaults.email = "bathys@proton.me";
+      defaults.email = "sumelan@proton.me";
       certs."${cfg.nginx.domain}" = {
         domain = "${cfg.nginx.domain}";
         # extraDomainNames = [

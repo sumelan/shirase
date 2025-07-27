@@ -8,6 +8,7 @@ _: {
     ./helix.nix
     ./obs-studio.nix
     ./picard.nix
+    ./protonapp.nix
     ./rustdesk.nix
     ./thunderbird.nix
     ./vlc.nix
