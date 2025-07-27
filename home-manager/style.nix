@@ -31,16 +31,16 @@ in
           default = "Bibata-Modern-Ice";
         };
       };
-      icon = {
+      icons = {
         package = lib.mkOption {
           type = lib.types.package;
           default = pkgs.papirus-icon-theme;
         };
-        lightName = lib.mkOption {
+        light = lib.mkOption {
           type = lib.types.str;
           default = "Papirus-Light";
         };
-        darkName = lib.mkOption {
+        dark = lib.mkOption {
           type = lib.types.str;
           default = "Papirus-Dark";
         };
@@ -88,11 +88,9 @@ in
         };
       };
 
-      iconTheme = {
+      icons = {
         enable = true;
-        inherit (cfg.icon) package;
-        light = cfg.icon.lightName;
-        dark = cfg.icon.darkName;
+        inherit (cfg.icons) package light dark;
       };
 
       opacity = {
