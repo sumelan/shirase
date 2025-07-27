@@ -24,13 +24,12 @@
         package = pkgs.catppuccin-cursors.frappeDark;
         name = "catppuccin-frappe-dark-cursors";
       };
-      icon = {
+      icons = {
         package = pkgs.catppuccin-papirus-folders.override {
           flavor = "frappe";
           accent = "sapphire";
         };
-        darkName = "Papirus-Dark";
-        lightName = "Papirus-Light";
+        dark = "Papirus-Dark";
       };
     };
 
