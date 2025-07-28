@@ -9,7 +9,9 @@ _: {
     ./obs-studio.nix
     ./picard.nix
     ./protonapp.nix
+    ./qobuz-player.nix
     ./rustdesk.nix
+    ./spotify.nix
     ./thunderbird.nix
     ./vlc.nix
     ./wlsunset.nix

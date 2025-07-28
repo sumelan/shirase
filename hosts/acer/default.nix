@@ -17,7 +17,7 @@
   # SystemModule Options
   custom = {
     # style
-    stylix.colorTheme = "gruvbox-dark-pale";
+    stylix.colorTheme = "catppuccin-frappe";
 
     alsa.enable = true;
     distrobox.enable = false;
