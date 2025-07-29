@@ -175,3 +175,63 @@ Removed packages:
 [R.]  #3  unit-notify-problems-.service       <none>
 [R.]  #4  unit-script-notify-problems_-start  <none>
 Closure size: 2506 -> 2506 (150 paths added, 150 paths removed, delta +0, disk usage +16.7MiB).
+
+---
+
+2025年07月30日 03時32分34秒
+<<< /nix/var/nix/profiles/system-286-link
+>>> /nix/var/nix/profiles/system-287-link
+Version changes:
+[U.]  #01  basedpyright             1.30.1 -> 1.31.0
+[C*]  #02  curl                     8.12.1, 8.14.1 x4, 8.14.1-bin, 8.14.1-fish-completions, 8.14.1-man -> 8.12.1, 8.14.1 x3, 8.14.1-bin, 8.14.1-fish-completions, 8.14.1-man
+[U.]  #03  easyeffects              7.2.4, 7.2.4-fish-completions -> 7.2.5, 7.2.5-fish-completions
+[C.]  #04  ffmpeg                   4.4.6-data, 4.4.6-lib, 7.1.1-bin, 7.1.1-data, 7.1.1-fish-completions, 7.1.1-lib, 7.1.1-man -> 7.1.1-bin, 7.1.1-data, 7.1.1-fish-completions, 7.1.1-lib, 7.1.1-man
+[U*]  #05  fwupd                    2.0.12, 2.0.12-lib -> 2.0.13, 2.0.13-lib
+[U.]  #06  gh                       2.76.0, 2.76.0-fish-completions -> 2.76.1, 2.76.1-fish-completions
+[C+]  #07  gstreamer                1.26.0 x2 -> 1.26.0 x2, 1.26.0-bin
+[U.]  #08  initrd-linux-zen         6.15.6 -> 6.15.7
+[U.]  #09  linux-zen                6.15.6, 6.15.6-modules, 6.15.6-modules-shrunk -> 6.15.7, 6.15.7-modules, 6.15.7-modules-shrunk
+[U.]  #10  nixos-system-sakura      25.11.20250723.fc02ee7.1ea0f71 -> 25.11.20250725.7fd36ee.f331bbc
+[C.]  #11  playerctl                2.4.1, 2.4.1-fish-completions -> 2.4.1
+[C.]  #12  python3.13-dbus-python   1.4.0, 1.4.0-dev -> 1.4.0
+[U.]  #13  rust-analyzer            2025-07-14 -> 2025-07-21
+[U.]  #14  rust-analyzer-unwrapped  2025-07-14 -> 2025-07-21
+[C.]  #15  tbb                      2020.3.3, 2021.12.0 -> 2021.12.0
+Selection state changes:
+[C+]  #1  glib              2.84.3 x2, 2.84.3-bin, 2.84.3-dev
+[C+]  #2  gst-plugins-bad   1.26.0
+[C+]  #3  gst-plugins-base  1.26.0 x2
+[C+]  #4  gst-plugins-good  1.26.0
+[C+]  #5  openssl           3.4.1, 3.5.1 x2, 3.5.1-bin, 3.5.1-dev
+Added packages:
+[A.]  #1  a52dec            0.8.0
+[A.]  #2  all-plugins       <none>
+[A+]  #3  alsa-utils        1.2.13
+[A+]  #4  gst-libav         1.26.0
+[A+]  #5  gst-plugins-ugly  1.26.0
+[A+]  #6  gstreamer-vaapi   1.26.0
+[A.]  #7  libmpeg2          0.5.1
+[A.]  #8  qobuz-player      0.3.2-3, 0.3.2-3-fish-completions
+Removed packages:
+[R.]  #01  audiofile                         0.3.6
+[R.]  #02  hm_mpDris2mpDris2.conf            <none>
+[R.]  #03  hm_rmpcconfig.ron                 <none>
+[R.]  #04  libdbusmenu-glib                  16.04.0
+[R.]  #05  libid3tag                         0.16.3
+[R.]  #06  libmikmod                         3.3.13
+[R.]  #07  libmms                            0.6.4
+[R.]  #08  libupnp                           1.14.18
+[R.]  #09  mpDris2                           0.9.1
+[R.]  #10  mpd                               0.24.4, 0.24.4-fish-completions, 0.24.4-man
+[R.]  #11  mpd.conf                          <none>
+[R.]  #12  mpd.service                       <none>
+[R.]  #13  mpdris2.service                   <none>
+[R.]  #14  playerctld.service                <none>
+[R.]  #15  python3.13-python-mpd2            3.1.1
+[R.]  #16  rmpc                              0.9.0, 0.9.0-fish-completions
+[R.]  #17  spicetify-Bloom                   <none>
+[R.]  #18  spicetify-Bloom-fish-completions  <none>
+[R.]  #19  wlsunset                          0.4.0
+[R.]  #20  wlsunset.service                  <none>
+[R.]  #21  zziplib                           0.13.80
+Closure size: 2506 -> 2486 (113 paths added, 133 paths removed, delta -20, disk usage -327.7MiB).
