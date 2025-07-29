@@ -1,5 +1,6 @@
 _: {
   imports = [
+    ./rmpc
     ./brave.nix
     ./cyanrip.nix
     ./foliate.nix
@@ -15,5 +16,6 @@ _: {
     ./thunderbird.nix
     ./vlc.nix
     ./wlsunset.nix
+    ./youtube-music.nix
   ];
 }

@@ -32,8 +32,6 @@
         dark = "Papirus-Dark";
       };
     };
-
-    helix.enable = false;
-    wlsunset.enable = true;
+    qobuz-player.enable = true;
   };
 }

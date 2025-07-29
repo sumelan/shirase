@@ -19,7 +19,6 @@
     # style
     stylix.colorTheme = "catppuccin-frappe";
 
-    alsa.enable = true;
     distrobox.enable = false;
   };
 }

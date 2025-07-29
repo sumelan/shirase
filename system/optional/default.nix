@@ -7,6 +7,7 @@ _: {
     ./bluetooth.nix
     ./btrbk.nix
     ./docker.nix
+    ./gstreamer.nix
     ./hdds.nix
     ./keyd.nix
     ./logitech.nix

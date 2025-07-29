@@ -2,7 +2,6 @@ _: {
   imports = [
     ./desktop
     ./neovim
-    ./rmpc
     ./scripts
     ./shell
     ./btop.nix

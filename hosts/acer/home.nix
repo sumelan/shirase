@@ -22,12 +22,15 @@
     # theme
     stylix = {
       cursor = {
-        package = pkgs.capitaine-cursors-themed;
-        name = "Capitaine Cursors (Palenight)";
+        package = pkgs.catppuccin-cursors.frappeDark;
+        name = "catppuccin-frappe-dark-cursors";
       };
       icons = {
-        package = pkgs.kora-icon-theme;
-        dark = "kora-pgrey";
+        package = pkgs.catppuccin-papirus-folders.override {
+          flavor = "frappe";
+          accent = "sapphire";
+        };
+        dark = "Papirus-Dark";
       };
     };
 
@@ -36,8 +39,7 @@
     freetube.enable = true;
     protonapp.enable = true;
     qobuz-player.enable = true;
-    spotify.enable = true;
-    thunderbird.enable = true;
-    wlsunset.enable = true;
+    spotify.enable = false;
+    youtube-music.enable = true;
   };
 }
