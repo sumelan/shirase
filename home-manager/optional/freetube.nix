@@ -6,7 +6,9 @@
 }:
 {
   options.custom = {
-    freetube.enable = lib.mkEnableOption "freetube";
+    freetube.enable = lib.mkEnableOption "freetube" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf config.custom.freetube.enable {

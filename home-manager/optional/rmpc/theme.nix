@@ -15,8 +15,8 @@ with config.lib.stylix.colors.withHashtag;
           progress_bar: (
               symbols: ["󰝤", "", " "],
               track_style: (fg: "${base01}"),
-              elapsed_style: (fg: "${base0E}", bg: "${base00}"),
-              thumb_style: (fg: "${base0E}", bg: "${base00}"),
+              elapsed_style: (fg: "${base0D}", bg: "${base00}"),
+              thumb_style: (fg: "${base0D}", bg: "${base00}"),
           ),
           scrollbar: (
               symbols: ["│", "█", "▲", "▼"],
@@ -36,12 +36,12 @@ with config.lib.stylix.colors.withHashtag;
           ),
           borders_style: (fg: "${base04}"),
           highlighted_item_style: (fg: "${base0A}", modifiers: "Bold"),
-          current_item_style: (fg: "black", bg: "${base07}", modifiers: "Bold"),
-          highlight_border_style: (fg: "${base07}"),
+          current_item_style: (fg: "${base00}", bg: "${base0D}", modifiers: "Bold"),
+          highlight_border_style: (fg: "${base0D}"),
           song_table_format: [
               (
                   prop: (kind: Property(Artist),
-                      style: (fg: "${base0D}"),
+                      style: (fg: "${base07}"),
                       default: (kind: Text("Unknown"))
                   ),
                   width: "50%",
@@ -49,7 +49,7 @@ with config.lib.stylix.colors.withHashtag;
               ),
               (
                   prop: (kind: Text("-"),
-                      style: (fg: "${base07}"),
+                      style: (fg: "${base05}", modifiers: "Dim"),
                       default: (kind: Text("Unknown"))
                   ),
                   width: "1",
@@ -57,8 +57,8 @@ with config.lib.stylix.colors.withHashtag;
               ),
               (
                   prop: (kind: Property(Title),
-                      style: (fg: "${base0C}"),
-                      default: (kind: Text("Unknown"))
+                      style: (fg: "${base0E}"),
+                      default: (kind: Text("No Song"))
                   ),
                   width: "50%",
                   alignment: Left,
@@ -85,24 +85,24 @@ with config.lib.stylix.colors.withHashtag;
               rows: [
                   (
                       left: [
-                          (kind: Text("["), style: (fg: "${base07}", modifiers: "Bold")),
-                          (kind: Property(Status(State)), style: (fg: "${base07}", modifiers: "Bold")),
-                          (kind: Text("]"), style: (fg: "${base07}", modifiers: "Bold"))
+                          (kind: Text("["), style: (fg: "${base0F}", modifiers: "Bold")),
+                          (kind: Property(Status(State)), style: (fg: "${base0F}", modifiers: "Bold")),
+                          (kind: Text("]"), style: (fg: "${base0F}", modifiers: "Bold"))
                       ],
                       center: [
                           (kind: Text("  "), style: (fg: "${base09}", modifiers: "Bold")),
-                          (kind: Property(Song(Artist)), style: (fg: "${base0D}", modifiers: "Bold"),
-                              default: (kind: Text("Unknown"), style: (fg: "${base0D}", modifiers: "Bold"))
+                          (kind: Property(Song(Artist)), style: (fg: "${base07}", modifiers: "Bold"),
+                              default: (kind: Text("Unknown"), style: (fg: "${base07}", modifiers: "Bold"))
                           ),
-                          (kind: Text(" - "), style: (fg: "${base07}", modifiers: "Bold")),
-                          (kind: Property(Song(Title)), style: (fg: "${base0C}", modifiers: "Bold"),
-                              default: (kind: Text("No Song"), style: (fg: "${base0C}", modifiers: "Bold"))
+                          (kind: Text(" - "), style: (fg: "${base05}", modifiers: "Dim")),
+                          (kind: Property(Song(Title)), style: (fg: "${base0E}", modifiers: "Bold"),
+                              default: (kind: Text("No Song"), style: (fg: "${base0E}", modifiers: "Bold"))
                           )
                       ],
                       right: [
-                          (kind: Text("Vol: "), style: (fg: "${base07}", modifiers: "Bold")),
-                          (kind: Property(Status(Volume)), style: (fg: "${base07}", modifiers: "Bold")),
-                          (kind: Text("% "), style: (fg: "${base07}", modifiers: "Bold"))
+                          (kind: Text("Vol: "), style: (fg: "${base0F}", modifiers: "Bold")),
+                          (kind: Property(Status(Volume)), style: (fg: "${base0F}", modifiers: "Bold")),
+                          (kind: Text("% "), style: (fg: "${base0F}", modifiers: "Bold"))
                       ]
                   )
               ],

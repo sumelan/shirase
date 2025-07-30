@@ -150,7 +150,7 @@
             };
             "mpris" = {
               player = "mpd";
-              format = "<span size='${iconSizeStr}' foreground='${base09}'>{player_icon} </span><span foreground='${base0D}'>{artist}</span> <span foreground='${base07}'>-</span> <span foreground='${base0C}'>{title}</span>";
+              format = "<span size='${iconSizeStr}' foreground='${base09}'>{player_icon} </span><span weight='bold' foreground='${base07}'>{artist}</span> <span foreground='${base03}'>-</span> <span weight='bold' foreground='${base0E}'>{title}</span>";
               tooltip-format = "Album: {album}";
               artist-len = 18;
               title-len = 24;
