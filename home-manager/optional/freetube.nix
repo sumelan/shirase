@@ -66,7 +66,6 @@
         binds = {
           "Mod+Y" = lib.custom.niri.openApp {
             app = pkgs.freetube;
-            args = "--enable-wayland-ime --wayland-text-input-version=3";
           };
         };
         window-rules = lib.singleton {

@@ -6,9 +6,7 @@
   ...
 }:
 {
-  imports = [
-    inputs.spicetify-nix.homeManagerModules.default
-  ];
+  imports = [ inputs.spicetify-nix.homeManagerModules.default ];
 
   options.custom = {
     spotify.enable = lib.mkEnableOption "Spotify";

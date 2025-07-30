@@ -7,9 +7,7 @@
   ...
 }:
 {
-  imports = [
-    inputs.nvf.homeManagerModules.default
-  ];
+  imports = [ inputs.nvf.homeManagerModules.default ];
 
   programs.nvf = lib.mkIf config.custom.neovim.enable {
     enable = true;

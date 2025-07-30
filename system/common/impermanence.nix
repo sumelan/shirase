@@ -15,9 +15,7 @@ let
     paths;
 in
 {
-  imports = [
-    inputs.impermanence.nixosModules.impermanence
-  ];
+  imports = [ inputs.impermanence.nixosModules.impermanence ];
 
   options.custom = with lib; {
     persist = {

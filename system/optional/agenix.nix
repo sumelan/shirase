@@ -6,9 +6,7 @@
   ...
 }:
 {
-  imports = [
-    inputs.agenix.nixosModules.default
-  ];
+  imports = [ inputs.agenix.nixosModules.default ];
 
   options.custom = {
     agenix.enable = lib.mkEnableOption "agenix" // {

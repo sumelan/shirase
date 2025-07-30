@@ -30,6 +30,7 @@
             modules-left = [
               "niri/workspaces"
               "idle_inhibitor"
+              "cava"
             ];
             modules-center = [
               "clock"
@@ -39,7 +40,6 @@
             modules-right = [
               "network"
               "bluetooth"
-              "cava"
               "wireplumber"
             ]
             ++ (lib.optionals config.custom.battery.enable [
@@ -64,7 +64,7 @@
             };
             "memory" = {
               interval = 30;
-              format = "<span size='${iconSizeStr}' foreground='${base09}'> </span>{used:0.1f}G/{total:0.1f}G";
+              format = "<span size='${iconSizeStr}' foreground='${base0E}'> </span>{used:0.1f}G/{total:0.1f}G";
               on-click = "${lib.getExe terminalPkgs} -T ' htop' --class=htop  ${lib.getExe pkgs.htop}";
             };
             "backlight" = {
@@ -79,7 +79,7 @@
               tooltip = false;
             };
             "clock" = {
-              format = "<span size='${iconSizeStr}' foreground='${base0E}'> </span>{:%a %d %H:%M}";
+              format = "<span size='${iconSizeStr}' foreground='${base0A}'> </span>{:%a %d %H:%M}";
               tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
               on-click = "${lib.getExe terminalPkgs} -T ' tty-clock' --class=tty-clock ${lib.getExe pkgs.tty-clock} -s -c -C 5";
             };
@@ -105,7 +105,7 @@
               interval = 5;
             };
             "network" = {
-              format-wifi = "<span size='${iconSizeStr}' foreground='${base0F}'>󰖩 </span>{essid}";
+              format-wifi = "<span size='${iconSizeStr}' foreground='${base0B}'>󰖩 </span>{essid}";
               format-ethernet = "<span size='${iconSizeStr}' foreground='${base05}'>󰈀 </span>Connected";
               format-linked = "{ifname} (No IP) 󱚵 ";
               format-disconnected = "<span size='${iconSizeStr}' foreground='${base08}'> </span>Disconnected";
@@ -149,15 +149,15 @@
               on-click = "${lib.getExe' pkgs.blueman "blueman-manager"}";
             };
             "mpris" = {
-              player = "spotify";
-              format = "<span size='${iconSizeStr}' foreground='${base00}'>{player_icon} </span><b>{title}</b> <small>by</small> <i>{artist}</i>";
+              player = "mpd";
+              format = "<span size='${iconSizeStr}' foreground='${base09}'>{player_icon} </span><span foreground='${base0D}'>{artist}</span> <span foreground='${base07}'>-</span> <span foreground='${base0C}'>{title}</span>";
               tooltip-format = "Album: {album}";
-              artist-len = 14;
-              title-len = 18;
+              artist-len = 18;
+              title-len = 24;
               ellipsis = "...";
               player-icons = {
-                default = "";
-                spotify = "󰓇";
+                default = "▶";
+                mpd = "";
                 kdeconnect = "";
               };
               on-scroll-up = "${lib.getExe pkgs.playerctl} volume 0.1+";

@@ -5,9 +5,7 @@
   ...
 }:
 {
-  imports = [
-    inputs.dimland.homeManagerModules.dimland
-  ];
+  imports = [ inputs.dimland.homeManagerModules.dimland ];
 
   options.custom = {
     dimland.enable = lib.mkEnableOption "dimland" // {

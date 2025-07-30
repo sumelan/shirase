@@ -129,8 +129,7 @@
       }
 
       #mpris {
-        background: shade(alpha(${base0B}, 0.9), 1);
-        color: ${base00};
+        background: shade(alpha(${base01}, 0.9), 1);
       }
 
       #cava {

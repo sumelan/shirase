@@ -6,9 +6,7 @@
   ...
 }:
 {
-  imports = [
-    inputs.stylix.nixosModules.stylix
-  ];
+  imports = [ inputs.stylix.nixosModules.stylix ];
 
   options.custom = with lib; {
     stylix = {
