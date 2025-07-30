@@ -27,8 +27,6 @@ in
   config = lib.mkIf config.custom.youtube-music.enable {
     home.packages = [ ymPkgs ];
 
-    services.playerctld.enable = true;
-
     programs.niri.settings = {
       binds = {
         "Mod+M" = lib.custom.niri.openApp {

@@ -20,4 +20,6 @@ _: {
     ./yt-dlp.nix
     ./zoxide.nix
   ];
+
+  services.playerctld.enable = true;
 }

@@ -12,7 +12,7 @@
           separator = " ➜  ";
         };
         logo = {
-          source = "${config.home.homeDirectory}/themed-logo.png";
+          source = "${config.home.homeDirectory}/.themed-logo.png";
           type = "kitty-icat";
           height = 35;
           width = 35;

@@ -32,6 +32,5 @@
         dark = "Papirus-Dark";
       };
     };
-    qobuz-player.enable = true;
   };
 }

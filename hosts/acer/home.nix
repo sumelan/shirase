@@ -38,8 +38,5 @@
     foliate.enable = true;
     freetube.enable = true;
     protonapp.enable = true;
-    qobuz-player.enable = true;
-    spotify.enable = false;
-    youtube-music.enable = true;
   };
 }

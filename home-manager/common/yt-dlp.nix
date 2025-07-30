@@ -19,13 +19,11 @@ in
     };
   };
 
-  home = {
-    packages = with pkgs; [
-      ffmpeg
-    ];
-
-    shellAliases = {
-      yt = "yt-dlp";
-    };
-  };
+  # yt-dlp’s dependencies
+  home.packages = with pkgs; [
+    # Required
+    ffmpeg
+    # For --embed-thumbnail in certain formats
+    (python313.withPackages (ps: with ps; [ mutagen ]))
+  ];
 }

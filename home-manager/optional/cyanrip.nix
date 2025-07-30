@@ -10,6 +10,9 @@
   };
 
   config = lib.mkIf config.custom.cyanrip.enable {
-    home.packages = with pkgs; [ cyanrip ];
+    home.packages = with pkgs; [
+      cyanrip
+      picard
+    ];
   };
 }

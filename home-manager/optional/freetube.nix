@@ -27,9 +27,9 @@
           hideLabelsSideBar = true;
           hideHeaderLogo = true;
           expandSideBar = false;
-          baseTheme = "gruvboxDark";
-          mainColor = "GruvboxDarkAqua";
-          secColor = "GruvboxDarkAqua";
+          baseTheme = "catppuccinFrappe";
+          mainColor = "CatppuccinFrappeRed";
+          secColor = "CatppuccinFrappeBlue";
           bounds = {
             x = 0;
             y = 0;

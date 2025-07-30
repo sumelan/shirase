@@ -5,10 +5,8 @@ _: {
     ./cyanrip.nix
     ./foliate.nix
     ./freetube.nix
-    ./ghostty.nix
     ./helix.nix
     ./obs-studio.nix
-    ./picard.nix
     ./protonapp.nix
     ./qobuz-player.nix
     ./rustdesk.nix
