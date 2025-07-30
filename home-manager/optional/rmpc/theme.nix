@@ -15,8 +15,8 @@ with config.lib.stylix.colors.withHashtag;
           progress_bar: (
               symbols: ["󰝤", "", " "],
               track_style: (fg: "${base01}"),
-              elapsed_style: (fg: "${base0E}", bg: "${base01}"),
-              thumb_style: (fg: "${base0E}", bg: "${base01}"),
+              elapsed_style: (fg: "${base0E}", bg: "${base00}"),
+              thumb_style: (fg: "${base0E}", bg: "${base00}"),
           ),
           scrollbar: (
               symbols: ["│", "█", "▲", "▼"],
