@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-lib.mkIf config.custom.niri.enable {
+_: {
   programs.niri.settings.animations = {
     enable = true;
     slowdown = 2.0;

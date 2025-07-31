@@ -1,5 +1,5 @@
 { lib, config, ... }:
-lib.mkIf config.custom.niri.enable {
+{
   programs.niri.settings.binds = with config.lib.niri.actions; {
     # application binds are written in each app.nix
     # mediakey binds are written in swayosd.nix
@@ -15,14 +15,20 @@ lib.mkIf config.custom.niri.enable {
 
     # screenshot 'screenshot-screen' is valid only on niri-stable
     "Mod+Backslash".action = screenshot { show-pointer = false; };
-    "Mod+Shift+Backslash".action = screenshot-window { write-to-disk = true; };
+    "Mod+Shift+Backslash" = lib.custom.niri.runCmd {
+      cmd = "niri msg action screenshot-screen";
+      title = "Screenshot the focused screen";
+    };
+    "Mod+Alt+Backslash".action = screenshot-window { write-to-disk = true; };
 
     # window and colum management
     "Mod+Backspace".action = close-window;
 
-    "Mod+F".action = fullscreen-window;
+    "Mod+F".action = toggle-window-floating;
+    "Mod+Shift+F".action = fullscreen-window;
+    "Mod+Ctrl+Shift+F".action = toggle-windowed-fullscreen;
+
     "Mod+Alt+F".action = maximize-column;
-    "Mod+Shift+F".action = toggle-window-floating;
     "Mod+Shift+C".action = switch-preset-column-width;
     "Mod+Alt+C".action = center-column;
 

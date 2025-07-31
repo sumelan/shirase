@@ -37,6 +37,7 @@
     cyanrip.enable = true;
     foliate.enable = true;
     freetube.enable = true;
+    obs-studio.enable = true;
     protonapp.enable = true;
   };
 }

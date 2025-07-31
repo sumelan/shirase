@@ -107,7 +107,7 @@
             position = "left";
             hide-when-single-tab = true;
             place-within-column = true;
-            active.color = base07;
+            active.color = base0B;
             inactive.color = base02;
             gap = 5;
             width = 6;

@@ -29,7 +29,7 @@
             output = "${config.lib.monitors.mainMonitorName}";
             modules-left = [
               "niri/workspaces"
-              "idle_inhibitor"
+              "tray"
               "cava"
             ];
             modules-center = [
@@ -38,6 +38,7 @@
               "memory"
             ];
             modules-right = [
+              "idle_inhibitor"
               "network"
               "bluetooth"
               "wireplumber"
@@ -148,12 +149,16 @@
               tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
               on-click = "${lib.getExe' pkgs.blueman "blueman-manager"}";
             };
+            "tray" = {
+              icon-size = 24;
+              spacing = 10;
+            };
             "mpris" = {
               player = "mpd";
               format = "<span size='${iconSizeStr}' foreground='${base09}'>{player_icon} </span><span weight='bold' foreground='${base07}'>{artist}</span> <span foreground='${base03}'>-</span> <span weight='bold' foreground='${base0E}'>{title}</span>";
               tooltip-format = "Album: {album}";
-              artist-len = 18;
-              title-len = 24;
+              artist-len = 14;
+              title-len = 20;
               ellipsis = "...";
               player-icons = {
                 default = "▶";

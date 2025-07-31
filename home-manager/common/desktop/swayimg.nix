@@ -170,6 +170,8 @@
           app-id = "^(swayimg)$";
         };
         open-floating = true;
+        default-column-width.proportion = 0.50;
+        default-window-height.proportion = 0.50;
       }
     ];
   };

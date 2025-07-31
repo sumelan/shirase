@@ -3,8 +3,16 @@
   config,
   ...
 }:
-lib.mkIf config.custom.niri.enable {
-  programs.niri.settings = {
+let
+  shadowConfig = {
+    enable = true;
+    spread = 0;
+    softness = 10;
+    color = "#000000dd";
+  };
+in
+{
+  programs.niri.settings = with config.lib.stylix.colors.withHashtag; {
     window-rules = [
       {
         # global rules
@@ -17,18 +25,34 @@ lib.mkIf config.custom.niri.enable {
         clip-to-geometry = true;
         draw-border-with-background = false;
       }
-      # focused column/window rules
+      # focused column/window opacity
       {
         matches = lib.singleton {
           is-focused = true;
         };
         opacity = config.stylix.opacity.desktop;
       }
+      # out-focued column/window opacity
       {
         matches = lib.singleton {
           is-focused = false;
         };
         opacity = config.stylix.opacity.desktop * 0.9;
+      }
+      # targeted column/window from screencast program, like obs
+      {
+        matches = lib.singleton {
+          is-window-cast-target = true;
+        };
+        border = {
+          active.color = base08;
+          inactive.color = base0A;
+        };
+        tab-indicator = {
+          active.color = base09;
+          inactive.color = base0F;
+        };
+        shadow = shadowConfig;
       }
     ];
 

@@ -58,15 +58,26 @@
         };
       };
   };
-  programs.niri.settings.binds = {
-    "Mod+Shift+N" = lib.custom.niri.runCmd {
-      cmd = "dunstctl history-pop";
-      title = "Notification history";
+
+  programs.niri.settings = {
+    binds = {
+      "Mod+Shift+N" = lib.custom.niri.runCmd {
+        cmd = "dunstctl history-pop";
+        title = "Notification history";
+      };
+      "Mod+Alt+N" = lib.custom.niri.runCmd {
+        cmd = "dunstctl close-all";
+        title = "Dismiss notification";
+      };
     };
-    "Mod+Alt+N" = lib.custom.niri.runCmd {
-      cmd = "dunstctl close-all";
-      title = "Dismiss notification";
-    };
+    layer-rules = [
+      {
+        matches = lib.singleton {
+          namespace = "^(notifications)";
+        };
+        block-out-from = "screen-capture";
+      }
+    ];
   };
   stylix.targets.dunst.enable = false;
 }

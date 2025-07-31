@@ -4,7 +4,7 @@
   pkgs,
   ...
 }:
-lib.mkIf config.custom.niri.enable {
+{
   programs.niri.settings.spawn-at-startup =
     let
       fish = cmd: [

@@ -14,8 +14,8 @@
         logo = {
           source = "${config.home.homeDirectory}/.themed-logo.png";
           type = "kitty-icat";
-          height = 35;
-          width = 35;
+          height = 30;
+          width = 30;
           padding = {
             top = 2;
             left = 2;

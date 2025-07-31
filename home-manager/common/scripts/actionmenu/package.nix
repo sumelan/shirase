@@ -5,9 +5,10 @@ pkgs.writers.writeFishBin "fuzzel-actions" ''
   󰿅 Exit
    Reboot
    Power Off
-   Next Wallpaper"
+   Next Wallpaper
+   Pick which window to Cast"
 
-  set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Search for System actions..." --lines 6)
+  set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Search for System actions..." --lines 5)
 
   switch (string split -f 2 " " $choice)
       case Lock
@@ -22,5 +23,7 @@ pkgs.writers.writeFishBin "fuzzel-actions" ''
           systemctl poweroff
       case Next
           ${lib.getExe' pkgs.wpaperd "wpaperctl"} next
+      case Pick
+          niri msg action set-dynamic-cast-window --id (niri msg --json pick-window | jq .id)
   end
 ''
