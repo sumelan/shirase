@@ -34,12 +34,21 @@
     ];
   };
 
-  systemd.tmpfiles.rules = [
+  systemd.tmpfiles.rules =
     # cleanup nixpkgs-review cache on boot
-    "D! ${config.hm.xdg.cacheHome}/nixpkgs-review 1755 ${user} users 5d"
+    lib.custom.nixos.mkRemove "${config.hm.xdg.cacheHome}/nixpkgs-review" {
+      mode = "1775";
+      inherit user;
+      group = "users";
+      age = "5d";
+    }
     # cleanup channels so nix stops complaining
-    "D! /nix/var/nix/profiles/per-user/root 1755 root root 1d"
-  ];
+    ++ lib.custom.nixos.mkRemove "/nix/var/nix/profiles/per-user/root" {
+      mode = "1775";
+      user = "root";
+      group = "root";
+      age = "1d";
+    };
 
   # never going to read html docs locally
   documentation = {

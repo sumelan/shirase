@@ -54,4 +54,25 @@
         (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" user ]) # alias for home-manager
       ];
     };
+
+  # tmpfiles.d
+  mkSymlinks = { dest, src }: [ "L+ ${dest} - - - - ${src}" ];
+  mkRemove =
+    target:
+    {
+      mode ? "-",
+      user,
+      group,
+      age,
+    }:
+    [ "D! ${mode} ${target} ${user} ${group} ${age}" ];
+  mkCreate =
+    target:
+    {
+      mode ? "-",
+      user,
+      group,
+      age ? "-",
+    }:
+    [ "d! ${mode} ${target} ${user} ${group} ${age}" ];
 }

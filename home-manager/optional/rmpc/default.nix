@@ -5,6 +5,9 @@
   user,
   ...
 }:
+let
+  ytDir = "${config.xdg.userDirs.music}/YouTube";
+in
 {
   imports = [
     ./config.nix
@@ -62,20 +65,25 @@
       };
     };
 
-    custom = {
-      symlinks = {
-        # make a symlink to yt-dlp cache directory
-        "${config.xdg.userDirs.music}/YouTube" = "${config.xdg.cacheHome}/rmpc/youtube";
+    systemd.user.tmpfiles.rules =
+      # create ytDir if not existed
+      lib.custom.nixos.mkCreate ytDir {
+        inherit user;
+        group = "users";
+      }
+      # symlink from yt-dlp cache directory
+      ++ lib.custom.nixos.mkSymlinks {
+        dest = ytDir;
+        src = "${config.xdg.cacheHome}/rmpc/youtube";
       };
 
-      persist.home = {
-        directories = [
-          ".config/mpd"
-        ];
-        cache.directories = [
-          ".cache/rmpc"
-        ];
-      };
+    custom.persist.home = {
+      directories = [
+        ".config/mpd"
+      ];
+      cache.directories = [
+        ".cache/rmpc"
+      ];
     };
   };
 }

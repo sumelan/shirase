@@ -54,6 +54,13 @@ in
         };
         shadow = shadowConfig;
       }
+      # hide gnome seahorse from screencast
+      {
+        matches = lib.singleton {
+          app-id = "^(org.gnome.seahorse.Application)$";
+        };
+        block-out-from = "screen-capture";
+      }
     ];
 
     switch-events =

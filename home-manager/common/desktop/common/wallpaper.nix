@@ -1,9 +1,19 @@
 {
   lib,
   config,
+  user,
   ...
 }:
+let
+  wallpaperDir = "${config.xdg.userDirs.pictures}/Wallpapers";
+in
 {
+  # create wallpaperDir on boot if not exist
+  systemd.user.tmpfiles.rules = lib.custom.nixos.mkCreate wallpaperDir {
+    inherit user;
+    group = "users";
+  };
+
   services.wpaperd = {
     enable = true;
     settings = {
@@ -19,7 +29,7 @@
       };
       # using regex
       "re:${config.lib.monitors.mainMonitorName}" = {
-        path = "${config.xdg.userDirs.pictures}/Wallpapers";
+        path = wallpaperDir;
       };
     };
   };
