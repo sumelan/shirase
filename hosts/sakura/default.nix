@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ lib, inputs, ... }:
 {
   imports = with inputs.nixos-hardware.nixosModules; [
     common-pc
@@ -7,11 +7,23 @@
     common-gpu-amd
   ];
 
-  # SystemModule Options
-  custom = {
-    stylix.colorTheme = "catppuccin-frappe";
-
-    audiobookshelf.enable = true;
-    distrobox.enable = false;
-  };
+  custom =
+    let
+      enableList = [
+        "alsa"
+        "audiobookshelf"
+      ];
+      disableList = [
+        "distrobox"
+      ];
+    in
+    {
+      stylix.colorTheme = "catppuccin-frappe";
+    }
+    // lib.genAttrs enableList (_name: {
+      enable = true;
+    })
+    // lib.genAttrs disableList (_name: {
+      enable = false;
+    });
 }

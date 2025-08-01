@@ -11,9 +11,7 @@ let
 in
 {
   options.custom = {
-    alsa.enable = lib.mkEnableOption "Advanced Linux Sound Architecture" // {
-      default = true;
-    };
+    alsa.enable = lib.mkEnableOption "Advanced Linux Sound Architecture";
   };
 
   config = lib.mkIf cfg.enable {

@@ -11,6 +11,7 @@
   imports = [
     ./common
     ./optional
+    ./hardware.nix
     ./style.nix
   ];
 
@@ -26,7 +27,6 @@
 
   environment = {
     etc = {
-      # Set of files that have to be linked in /etc/=
       "gitconfig".text = config.hm.xdg.configFile."git/config".text; # universal git settings
       # get gparted to use system theme
       "xdg/gtk-3.0/settings.ini".text = config.hm.xdg.configFile."gtk-3.0/settings.ini".text;

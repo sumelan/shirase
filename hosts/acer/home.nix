@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   monitors = {
     "eDP-1" = {
@@ -17,26 +17,40 @@
     };
   };
 
-  custom = {
-
-    # theme
-    stylix = {
-      cursor = {
-        package = pkgs.catppuccin-cursors.frappeDark;
-        name = "catppuccin-frappe-dark-cursors";
-      };
-      icons = {
-        package = pkgs.catppuccin-papirus-folders.override {
-          flavor = "frappe";
-          accent = "sapphire";
+  # theme
+  custom =
+    let
+      enableList = [
+        "cyanrip"
+        "foliate"
+        "freetube"
+        "obs-studio"
+        "protonapp"
+      ];
+      disableList = [
+        "helix"
+        "wlsunset"
+      ];
+    in
+    {
+      stylix = {
+        cursor = {
+          package = pkgs.catppuccin-cursors.frappeDark;
+          name = "catppuccin-frappe-dark-cursors";
         };
-        dark = "Papirus-Dark";
+        icons = {
+          package = pkgs.catppuccin-papirus-folders.override {
+            flavor = "frappe";
+            accent = "sapphire";
+          };
+          dark = "Papirus-Dark";
+        };
       };
-    };
-
-    cyanrip.enable = true;
-    foliate.enable = true;
-    obs-studio.enable = true;
-    protonapp.enable = true;
-  };
+    }
+    // lib.genAttrs enableList (_name: {
+      enable = true;
+    })
+    // lib.genAttrs disableList (_name: {
+      enable = false;
+    });
 }

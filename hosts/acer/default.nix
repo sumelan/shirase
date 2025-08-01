@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ lib, inputs, ... }:
 {
   imports = with inputs.nixos-hardware.nixosModules; [
     common-pc-laptop
@@ -6,19 +6,22 @@
     common-cpu-intel
   ];
 
-  services = {
-    # power management
-    power-profiles-daemon.enable = true; # conflict with TLP
-
-    # touchpad support
-    libinput.enable = true;
-  };
-
-  # SystemModule Options
-  custom = {
-    # style
-    stylix.colorTheme = "catppuccin-frappe";
-
-    distrobox.enable = false;
-  };
+  custom =
+    let
+      enableList = [
+        "alsa"
+      ];
+      disableList = [
+        "distrobox"
+      ];
+    in
+    {
+      stylix.colorTheme = "catppuccin-frappe";
+    }
+    // lib.genAttrs enableList (_name: {
+      enable = true;
+    })
+    // lib.genAttrs disableList (_name: {
+      enable = false;
+    });
 }
