@@ -111,3 +111,78 @@ Removed packages:
 [R.]  #22  rustaceanvim-a0c8e969                <none>
 [R.]  #23  smartcolumn-nvim                     92f3773a
 Closure size: 2568 -> 2572 (2427 paths added, 2423 paths removed, delta +4, disk usage +31.8MiB).
+
+---
+
+2025年08月02日 00時11分09秒
+<<< /nix/var/nix/profiles/system-320-link
+>>> /nix/var/nix/profiles/system-322-link
+Version changes:
+[C.]  #1  binutils-wrapper        2.44 -> 2.44 x2
+[C.]  #2  expand-response-params  <none> -> <none> x2
+[C.]  #3  ffmpeg                  7.1.1-bin, 7.1.1-data, 7.1.1-fish-completions, 7.1.1-lib, 7.1.1-man -> 6.1.2-data, 6.1.2-lib, 7.1.1-bin, 7.1.1-data, 7.1.1-fish-completions, 7.1.1-lib, 7.1.1-man
+[C-]  #4  gstreamer               1.26.0 x2, 1.26.0-bin -> 1.26.0 x2
+[C.]  #5  libplacebo              7.351.0 -> 5.264.1, 7.351.0
+[D.]  #6  nixos-system-acer       25.11.20250728.dc96378.74aa123 -> 25.11.20250728.dc96378.e8c892c
+[C.]  #7  python3                 3.12.11, 3.13.5 x3, 3.13.5-env x7 -> 3.12.11, 3.13.5 x3, 3.13.5-env x8, 3.13.5-env-fish-completions
+[C.]  #8  taglib                  2.1 -> 1.13.1, 2.1
+Selection state changes:
+[C-]  #1  glib              2.84.3 x2, 2.84.3-bin, 2.84.3-dev
+[C-]  #2  gst-libav         1.26.0
+[C-]  #3  gst-plugins-bad   1.26.0
+[C-]  #4  gst-plugins-base  1.26.0 x2
+[C-]  #5  gst-plugins-good  1.26.0
+[C-]  #6  gstreamer-vaapi   1.26.0
+[C-]  #7  openssl           3.4.1, 3.5.1 x2, 3.5.1-bin, 3.5.1-dev
+Added packages:
+[A.]  #01  audiofile                          0.3.6
+[A.]  #02  cef-binary                         138.0.17
+[A.]  #03  gcc-wrapper                        14.3.0
+[A.]  #04  gnumake                            4.4.1
+[A.]  #05  hm_mpDris2mpDris2.conf             <none>
+[A.]  #06  hm_rmpcconfig.ron                  <none>
+[A.]  #07  hm_usertmpfiles.dhomemanager.conf  <none>
+[A.]  #08  libcddb                            1.3.2
+[A.]  #09  libdatachannel                     0.23.0
+[A.]  #10  libdvbpsi                          1.3.3
+[A.]  #11  libebml                            1.4.5
+[A.]  #12  libid3tag                          0.16.3
+[A.]  #13  libkate                            0.4.3
+[A.]  #14  libmatroska                        1.7.1
+[A.]  #15  libmicrodns                        0.2.0
+[A.]  #16  libmikmod                          3.3.13
+[A.]  #17  libmms                             0.6.4
+[A.]  #18  libtiger                           0.3.4
+[A.]  #19  libupnp                            1.14.18
+[A.]  #20  libvlc                             3.0.21
+[A.]  #21  libvpl                             2.15.0
+[A.]  #22  mpDris2                            0.9.1
+[A.]  #23  mpd                                0.24.4, 0.24.4-fish-completions, 0.24.4-man
+[A.]  #24  mpd.conf                           <none>
+[A.]  #25  mpd.service                        <none>
+[A.]  #26  mpdris2.service                    <none>
+[A.]  #27  obs-studio                         31.1.2
+[A.]  #28  obs-studio-plugins                 <none>
+[A.]  #29  protobuf                           31.1
+[A.]  #30  python3.13-python-mpd2             3.1.1
+[A.]  #31  rmpc                               0.9.0, 0.9.0-fish-completions
+[A.]  #32  schroedinger                       1.0.11
+[A.]  #33  wrapped-obs-studio                 31.1.2, 31.1.2-fish-completions
+[A.]  #34  zziplib                            0.13.80
+Removed packages:
+[R.]  #01  fuzzel-recorder                   <none>
+[R.]  #02  fuzzel-recorder-fish-completions  <none>
+[R.]  #03  fuzzel-windows                    <none>
+[R.]  #04  fuzzel-windows-fish-completions   <none>
+[R.]  #05  gifsicle                          1.96
+[R-]  #06  gst-plugins-ugly                  1.26.0
+[R.]  #07  open-float                        <none>
+[R.]  #08  open-float-fish-completions       <none>
+[R.]  #09  qobuz-player                      0.3.2-3, 0.3.2-3-fish-completions
+[R.]  #10  record_screen                     <none>
+[R.]  #11  record_screen-fish-completions    <none>
+[R.]  #12  slurp                             1.5.0
+[R.]  #13  wf-recorder                       0.5.0
+[R.]  #14  youtube-music                     <none>, 3.9.0
+[R.]  #15  youtube-music-fish-completions    <none>
+Closure size: 2572 -> 2600 (90 paths added, 62 paths removed, delta +28, disk usage +1.6GiB).
