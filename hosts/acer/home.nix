@@ -35,15 +35,12 @@
     {
       stylix = {
         cursor = {
-          package = pkgs.catppuccin-cursors.frappeDark;
-          name = "catppuccin-frappe-dark-cursors";
+          package = pkgs.custom.everforest-cursors;
+          name = "everforest-cursors";
         };
         icons = {
-          package = pkgs.catppuccin-papirus-folders.override {
-            flavor = "frappe";
-            accent = "sapphire";
-          };
-          dark = "Papirus-Dark";
+          package = pkgs.everforest-gtk-theme;
+          dark = "Everforest-Dark";
         };
       };
     }
