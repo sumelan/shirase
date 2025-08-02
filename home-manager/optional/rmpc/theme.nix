@@ -85,7 +85,7 @@ with config.lib.stylix.colors.withHashtag;
               rows: [
                   (
                       left: [
-                          (kind: Text("["), style: (fg: "${base0D}", modifiers: "Bold")),
+                          (kind: Text("["), style: (fg: "${base0D}", modifiers: "Dim")),
                           (kind: Property(Status(StateV2(
                               playing_label: "Playing",
                               paused_label: "Paused",
@@ -94,31 +94,25 @@ with config.lib.stylix.colors.withHashtag;
                               paused_style: (fg: "${base0D}", modifiers: "Bold"),
                               stopped_style: (fg: "${base0D}", modifiers: "Bold"))))
                           ),
-                          (kind: Text("]"), style: (fg: "${base0D}", modifiers: "Bold"))
+                          (kind: Text("]"), style: (fg: "${base0D}", modifiers: "Dim"))
                       ],
                       center: [
-                          (kind: Text(" "), style: (fg: "${base09}", modifiers: "Bold")),
-                          (kind: Text("- "), style: (fg: "${base05}", modifiers: "Dim")),
                           (kind: Property(Song(Title)), style: (fg: "${base0E}", modifiers: "Bold"),
                               default: (kind: Text("No Song"), style: (fg: "${base0E}", modifiers: "Bold"))
                           ),
                       ],
                       right: [
-                          (kind: Text("Vol: "), style: (fg: "${base0D}", modifiers: "Bold")),
+                          (kind: Text("Vol: "), style: (fg: "${base0D}", modifiers: "Dim")),
                           (kind: Property(Status(Volume)), style: (fg: "${base0D}", modifiers: "Bold")),
-                          (kind: Text("% "), style: (fg: "${base0D}", modifiers: "Bold"))
+                          (kind: Text("% "), style: (fg: "${base0D}", modifiers: "Dim"))
                       ]
                   ),
                   (
                       left: [
-                          (kind: Text("󱫝 "), style: (fg: "${base05}")),
-                          (kind: Property(Status(Elapsed)), style: (fg: "${base0F}")),
+                          (kind: Text("󰚭 "), style: (fg: "${base05}")),
+                          (kind: Property(Status(Elapsed)), style: (fg: "${base0C}")),
                           (kind: Text(" / "), style: (fg: "${base0F}", modifiers: "Dim")),
-                          (kind: Property(Status(Duration)), style: (fg: "${base0F}")),
-                          (kind: Text(" {"), style: (fg: "${base0F}", modifiers: "Dim")),
-                          (kind: Property(Status(Bitrate)), style: (fg: "${base0F}")),
-                          (kind: Text(" kbps"), style: (fg: "${base0F}", modifiers: "Dim")),
-                          (kind: Text("}"), style: (fg: "${base0F}", modifiers: "Dim"))
+                          (kind: Property(Status(Duration)), style: (fg: "${base0C}")),
                       ],
                       center: [
                           (kind: Text("󰳩 "), style: (fg: "${base09}", modifiers: "Bold")),
@@ -128,13 +122,9 @@ with config.lib.stylix.colors.withHashtag;
                           ),
                       ],
                       right: [
-                          (
-                              kind: Property(Widget(States(
-                                  active_style: (fg: "${base0F}", modifiers: "Bold"),
-                                  separator_style: (fg: "${base0F}")))
-                              ),
-                              style: (fg: "${base0F}", modifiers: "Dim")
-                          ),
+                          (kind: Text("󰿈 "), style: (fg: "${base05}")),
+                          (kind: Property(Status(Bitrate)), style: (fg: "${base0C}")),
+                          (kind: Text(" kbps"), style: (fg: "${base0F}", modifiers: "Dim")),
                       ]
                   ),
               ],
