@@ -11,9 +11,9 @@ with config.lib.stylix.colors.withHashtag;
           default_album_art_path: None,
           draw_borders: true,
           show_song_table_header: false,
-          symbols: (song: "", dir: "󱍙", marker: ""),
+          symbols: (song: "󰝚 ", dir: " ", playlist: "󰲸 ", marker: "󰧂", ellipsis: "..."),
           progress_bar: (
-              symbols: ["󰝤", "", " "],
+              symbols: ["󰇼", "󰇼", "", " ", " "],
               track_style: (fg: "${base01}"),
               elapsed_style: (fg: "${base0D}", bg: "${base00}"),
               thumb_style: (fg: "${base0D}", bg: "${base00}"),
@@ -85,26 +85,58 @@ with config.lib.stylix.colors.withHashtag;
               rows: [
                   (
                       left: [
-                          (kind: Text("["), style: (fg: "${base0F}", modifiers: "Bold")),
-                          (kind: Property(Status(State)), style: (fg: "${base0F}", modifiers: "Bold")),
-                          (kind: Text("]"), style: (fg: "${base0F}", modifiers: "Bold"))
+                          (kind: Text("["), style: (fg: "${base0D}", modifiers: "Bold")),
+                          (kind: Property(Status(StateV2(
+                              playing_label: "Playing",
+                              paused_label: "Paused",
+                              stopped_label: "Stopped",
+                              playing_style: (fg: "${base0D}", modifiers: "Bold"),
+                              paused_style: (fg: "${base0D}", modifiers: "Bold"),
+                              stopped_style: (fg: "${base0D}", modifiers: "Bold"))))
+                          ),
+                          (kind: Text("]"), style: (fg: "${base0D}", modifiers: "Bold"))
                       ],
                       center: [
-                          (kind: Text("  "), style: (fg: "${base09}", modifiers: "Bold")),
+                          (kind: Text(" "), style: (fg: "${base09}", modifiers: "Bold")),
+                          (kind: Text("- "), style: (fg: "${base05}", modifiers: "Dim")),
+                          (kind: Property(Song(Title)), style: (fg: "${base0E}", modifiers: "Bold"),
+                              default: (kind: Text("No Song"), style: (fg: "${base0E}", modifiers: "Bold"))
+                          ),
+                      ],
+                      right: [
+                          (kind: Text("Vol: "), style: (fg: "${base0D}", modifiers: "Bold")),
+                          (kind: Property(Status(Volume)), style: (fg: "${base0D}", modifiers: "Bold")),
+                          (kind: Text("% "), style: (fg: "${base0D}", modifiers: "Bold"))
+                      ]
+                  ),
+                  (
+                      left: [
+                          (kind: Text("󱫝 "), style: (fg: "${base05}")),
+                          (kind: Property(Status(Elapsed)), style: (fg: "${base0F}")),
+                          (kind: Text(" / "), style: (fg: "${base0F}", modifiers: "Dim")),
+                          (kind: Property(Status(Duration)), style: (fg: "${base0F}")),
+                          (kind: Text(" {"), style: (fg: "${base0F}", modifiers: "Dim")),
+                          (kind: Property(Status(Bitrate)), style: (fg: "${base0F}")),
+                          (kind: Text(" kbps"), style: (fg: "${base0F}", modifiers: "Dim")),
+                          (kind: Text("}"), style: (fg: "${base0F}", modifiers: "Dim"))
+                      ],
+                      center: [
+                          (kind: Text("󰳩 "), style: (fg: "${base09}", modifiers: "Bold")),
+                          (kind: Text("- "), style: (fg: "${base05}", modifiers: "Dim")),
                           (kind: Property(Song(Artist)), style: (fg: "${base07}", modifiers: "Bold"),
                               default: (kind: Text("Unknown"), style: (fg: "${base07}", modifiers: "Bold"))
                           ),
-                          (kind: Text(" - "), style: (fg: "${base05}", modifiers: "Dim")),
-                          (kind: Property(Song(Title)), style: (fg: "${base0E}", modifiers: "Bold"),
-                              default: (kind: Text("No Song"), style: (fg: "${base0E}", modifiers: "Bold"))
-                          )
                       ],
                       right: [
-                          (kind: Text("Vol: "), style: (fg: "${base0F}", modifiers: "Bold")),
-                          (kind: Property(Status(Volume)), style: (fg: "${base0F}", modifiers: "Bold")),
-                          (kind: Text("% "), style: (fg: "${base0F}", modifiers: "Bold"))
+                          (
+                              kind: Property(Widget(States(
+                                  active_style: (fg: "${base0F}", modifiers: "Bold"),
+                                  separator_style: (fg: "${base0F}")))
+                              ),
+                              style: (fg: "${base0F}", modifiers: "Dim")
+                          ),
                       ]
-                  )
+                  ),
               ],
           ),
       )

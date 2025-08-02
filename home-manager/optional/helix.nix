@@ -8,7 +8,7 @@
 }:
 {
   options.custom = {
-    helix.enable = lib.mkEnableOption "helix editor";
+    helix.enable = lib.mkEnableOption "A post-modern modal text editor";
   };
 
   config = lib.mkIf config.custom.helix.enable {
@@ -24,21 +24,18 @@
           bufferline = "multiple";
           color-modes = true;
           soft-wrap.enable = true;
-
           end-of-line-diagnostics = "hint";
           inline-diagnostics.cursor-line = "error";
-
           lsp.display-inlay-hints = true;
-
           cursor-shape = {
             normal = "block";
             insert = "bar";
             select = "underline";
           };
-
           indent-guides.render = true;
         };
       };
+
       languages = {
         language = [
           {
@@ -51,6 +48,51 @@
                 "2"
               ];
             };
+          }
+          {
+            name = "css";
+            auto-format = true;
+            formatter = {
+              command = lib.getExe pkgs.prettier;
+              args = [
+                "--parser"
+                "css"
+              ];
+            };
+            language-servers = [
+              "vscode-css-language-server"
+              "codebook"
+            ];
+          }
+          {
+            name = "git-commit";
+            language-servers = [ "ltex-ls-plus" ];
+          }
+          {
+            name = "go";
+            auto-format = true;
+            language-servers = [
+              "gopls"
+              "golangci-lint-langserver"
+              "codebook"
+            ];
+          }
+          {
+            name = "html";
+            auto-format = true;
+            formatter = {
+              command = lib.getExe pkgs.prettier;
+              args = [
+                "--parser"
+                "html"
+              ];
+
+            };
+            language-servers = [
+              "vscode-html-language-server"
+              "superhtml"
+              "codebook"
+            ];
           }
           {
             name = "markdown";
@@ -75,10 +117,6 @@
           }
           {
             name = "python";
-            language-servers = [
-              "basedpyright"
-              "ruff"
-            ];
             auto-format = true;
             formatter = {
               command = lib.getExe pkgs.ruff;
@@ -88,11 +126,25 @@
                 "-"
               ];
             };
+            language-servers = [
+              "basedpyright"
+              "ruff"
+              "gpt"
+              "codebook"
+            ];
+          }
+          {
+            name = "sql";
+            language-servers = [ "sqls" ];
           }
           {
             name = "typst";
             auto-format = true;
             language-servers = [ "tinymist" ];
+          }
+          {
+            name = "xml";
+            language-servers = [ "lemminx" ];
           }
         ];
 
@@ -101,25 +153,32 @@
             command = lib.getExe pkgs.basedpyright;
             args = [ "--stdio" ];
           };
-
-          ltex-ls-plus = {
+          codebook = {
+            command = lib.getExe pkgs.codebook;
+            args = [ "serve" ];
+          };
+          lemminx = {
+            command = lib.getExe pkgs.lemminx;
+          };
+          ltex = {
             command = lib.getExe pkgs.ltex-ls-plus;
           };
-
           nixd = {
             config.nixd = {
               formatting.command = [ "${lib.getExe pkgs.nixfmt}" ];
-              options =
-                let
-                  flake = ''(builtins.getFlake ("git+file://" + "${flakePath}"))'';
-                in
-                {
-                  nixos.expr = ''${flake}.nixosConfigurations.${host}.options'';
-                  home-manager.expr = "${flake}.homeConfigurations.${host}.options";
-                };
+              options = rec {
+                nixos.expr = "(builtins.getFlake ''${flakePath}'').nixosConfigurations.${host}.options";
+                home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
+              };
             };
           };
-
+          phpactor = {
+            command = lib.getExe pkgs.phpactor;
+            args = [ "language-server" ];
+          };
+          sqls = {
+            command = lib.getExe pkgs.sqls;
+          };
           tinymist = {
             config = {
               exportPdf = "onType";

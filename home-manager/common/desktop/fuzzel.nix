@@ -18,12 +18,7 @@ in
           layer = "overlay";
           placeholder = "Type to search...";
           prompt = "'❯ '";
-          font =
-            with config.stylix.fonts;
-            let
-              sizeParamater = if isLaptop then 2 else (-2);
-            in
-            "${sansSerif.name}:size=${sizes.popups - sizeParamater |> builtins.toString}";
+          font = with config.stylix.fonts; "${sansSerif.name}:size=${sizes.popups |> builtins.toString}";
           icon-theme = config.stylix.iconTheme.dark;
           match-counter = true;
           terminal = "${lib.getExe config.profiles.${user}.defaultTerminal.package}";

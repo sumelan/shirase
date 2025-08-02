@@ -60,7 +60,7 @@ in
       };
       cursor = {
         inherit (cfg.cursor) package name;
-        size = 48; # available cursor size: 24, 32, 48, 64, 96 and 128
+        size = 32; # available cursor size: 24, 32, 48, 64, 96 and 128
       };
 
       fonts = {
@@ -81,10 +81,10 @@ in
           name = "Noto Color Emoji";
         };
         sizes = {
-          applications = 14;
-          terminal = 14;
-          desktop = 14;
-          popups = 14;
+          applications = 13;
+          terminal = 13;
+          desktop = 13;
+          popups = 12;
         };
       };
 
