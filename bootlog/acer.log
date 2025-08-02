@@ -186,3 +186,53 @@ Removed packages:
 [R.]  #14  youtube-music                     <none>, 3.9.0
 [R.]  #15  youtube-music-fish-completions    <none>
 Closure size: 2572 -> 2600 (90 paths added, 62 paths removed, delta +28, disk usage +1.6GiB).
+
+---
+
+2025年08月02日 13時11分44秒
+<<< /nix/var/nix/profiles/system-322-link
+>>> /nix/var/nix/profiles/system-324-link
+Version changes:
+[C.]  #01  audit                4.1.0-bin, 4.1.0-lib x2 -> 4.1.0-lib x2
+[U.]  #02  electron             37.2.2 -> 37.2.4
+[U.]  #03  electron-unwrapped   37.2.2 -> 37.2.4
+[U.]  #04  gh                   2.76.1, 2.76.1-fish-completions -> 2.76.2, 2.76.2-fish-completions
+[U.]  #05  librewolf            140.0.4-1 x2, 140.0.4-1-fish-completions -> 141.0-1 x2, 141.0-1-fish-completions
+[U.]  #06  librewolf-unwrapped  140.0.4-1 -> 141.0-1
+[C.]  #07  lowdown              1.3.2-lib x2 -> 1.3.2-lib, 2.0.2-lib
+[U.]  #08  mesa                 25.1.6 -> 25.1.7
+[U*]  #09  niri-unstable        2025-07-18-fefc0bc -> 2025-07-31-91b6a11
+[U.]  #10  nixos-system-acer    25.11.20250728.dc96378.e8c892c -> 25.11.20250731.94def63.7f130d1
+[U.]  #11  tinymist             0.13.14 -> 0.13.16
+Selection state changes:
+[C-]  #1  hicolor-icon-theme  0.18
+Added packages:
+[A.]  #01  base16-everforest-dark-soft.conf        <none>
+[A.]  #02  base16-everforest-dark-soft.css         <none>
+[A.]  #03  base16-everforest-dark-soft.fish        <none>
+[A.]  #04  base16-everforest-dark-soft.html        <none>
+[A.]  #05  base16-everforest-dark-soft.json        <none>
+[A.]  #06  base16-everforest-dark-soft.svg         <none> x2
+[A.]  #07  base16-everforest-dark-soft.tmTheme     <none>
+[A.]  #08  base16-everforest-dark-soft.xml         <none>
+[A+]  #09  everforest-cursors                      3212590527, 3212590527-fish-completions
+[A.]  #10  everforest-dark-soft-gnome-shell-theme  <none>
+[A+]  #11  everforest-gtk-theme                    0-unstable-2023-03-20, 0-unstable-2023-03-20-fish-completions
+[A+]  #12  gtk-engine-murrine                      0.98.2
+[A.]  #13  unit-getty.target                       <none>
+Removed packages:
+[R.]  #01  audit-disable                        <none>
+[R.]  #02  audit-stop                           <none>
+[R.]  #03  base16-catppuccin-frappe.conf        <none>
+[R.]  #04  base16-catppuccin-frappe.css         <none>
+[R.]  #05  base16-catppuccin-frappe.fish        <none>
+[R.]  #06  base16-catppuccin-frappe.html        <none>
+[R.]  #07  base16-catppuccin-frappe.json        <none>
+[R.]  #08  base16-catppuccin-frappe.svg         <none> x2
+[R.]  #09  base16-catppuccin-frappe.tmTheme     <none>
+[R.]  #10  base16-catppuccin-frappe.xml         <none>
+[R-]  #11  catppuccin-cursors                   2.0.0-fish-completions, 2.0.0-frappeDark
+[R.]  #12  catppuccin-frappe-gnome-shell-theme  <none>
+[R-]  #13  catppuccin-papirus-folders           0-unstable-2023-08-02, 0-unstable-2023-08-02-fish-completions
+[R.]  #14  unit-audit.service                   <none>
+Closure size: 2600 -> 2598 (217 paths added, 219 paths removed, delta -2, disk usage -11.9MiB).
