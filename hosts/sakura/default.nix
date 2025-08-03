@@ -12,6 +12,7 @@
       enableList = [
         "alsa"
         "audiobookshelf"
+        "steam"
       ];
       disableList = [
         "distrobox"
