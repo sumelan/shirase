@@ -2,7 +2,6 @@ _: {
   imports = [
     ./agenix.nix
     ./alsa.nix
-    ./alvr.nix
     ./audiobookshelf.nix
     ./bluetooth.nix
     ./btrbk.nix
@@ -13,6 +12,7 @@ _: {
     ./logitech.nix
     ./printing.nix
     ./steam.nix
+    ./vr.nix
     ./wireshark.nix
   ];
 }

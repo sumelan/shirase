@@ -5,6 +5,9 @@
   };
 
   config = lib.mkIf config.custom.steam.enable {
+    # To get Steam games working with monado on NixOS,
+    # use below as launch options on steam and, if prompted, choose the SteamVR launch option.
+    # env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc %command%
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -14,10 +17,6 @@
 
     hardware = {
       graphics.enable32Bit = true;
-      amdgpu.amdvlk = {
-        enable = true;
-        support32Bit.enable = true;
-      };
     };
 
     custom.persist = {
