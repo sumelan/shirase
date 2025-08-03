@@ -235,3 +235,165 @@ Removed packages:
 [R.]  #20  wlsunset.service                  <none>
 [R.]  #21  zziplib                           0.13.80
 Closure size: 2506 -> 2486 (113 paths added, 133 paths removed, delta -20, disk usage -327.7MiB).
+
+---
+
+2025年08月03日 17時43分19秒
+<<< /nix/var/nix/profiles/system-287-link
+>>> /nix/var/nix/profiles/system-289-link
+Version changes:
+[U.]  #01  audiobookshelf           2.26.2, 2.26.2-npm-deps -> 2.26.3, 2.26.3-npm-deps
+[U.]  #02  audit                    4.0.5-bin, 4.0.5-lib x2 -> 4.1.0-lib x2
+[C.]  #03  bash                     5.2p37 x3 -> 5.2p37, 5.3p0 x2
+[U*]  #04  bash-interactive         5.2p37 x2, 5.2p37-fish-completions, 5.2p37-man -> 5.3p0 x2, 5.3p0-fish-completions, 5.3p0-man
+[U.]  #05  conform-nvim             0e93e0d1 -> 973f3cb7
+[D.]  #06  cpp-grammar              0.0.0+rev=2871652 -> 0.0.0+rev=5cb9b69
+[U.]  #07  electron                 37.2.2 -> 37.2.4
+[U.]  #08  electron-unwrapped       37.2.2 -> 37.2.4
+[U.]  #09  ethtool                  6.14 -> 6.15
+[U.]  #10  fx                       37.0.1, 37.0.1-fish-completions -> 38.0.0, 38.0.0-fish-completions
+[U.]  #11  fzf                      0.64.0, 0.64.0-fish-completions, 0.64.0-man -> 0.65.0, 0.65.0-fish-completions, 0.65.0-man
+[U.]  #12  game-music-emu           0.6.3 -> 0.6.4
+[U.]  #13  gettext                  0.25 -> 0.25.1
+[U.]  #14  gh                       2.76.1, 2.76.1-fish-completions -> 2.76.2, 2.76.2-fish-completions
+[U*]  #15  git                      2.50.0, 2.50.0-doc, 2.50.0-fish-completions -> 2.50.1, 2.50.1-doc, 2.50.1-fish-completions
+[U.]  #16  git-minimal              2.50.0 -> 2.50.1
+[U.]  #17  gnutls                   3.8.9 x2 -> 3.8.10 x2
+[C-]  #18  gstreamer                1.26.0 x2, 1.26.0-bin -> 1.26.0 x2
+[U.]  #19  hyprlang                 0.6.3 -> 0.6.4
+[U.]  #20  just                     1.42.3, 1.42.3-fish-completions, 1.42.3-man -> 1.42.4, 1.42.4-fish-completions, 1.42.4-man
+[U.]  #21  libde265                 1.0.15 -> 1.0.16
+[C.]  #22  libffi                   3.4.6, 3.4.8 x2, 3.4.8-dev -> 3.4.6, 3.5.1 x2, 3.5.1-dev
+[U.]  #23  libmpdclient             2.22 -> 2.23
+[U.]  #24  libogg                   1.3.5 x2 -> 1.3.6 x2
+[U.]  #25  libproxy                 0.5.9 -> 0.5.10
+[U.]  #26  librewolf                140.0.4-1 x2, 140.0.4-1-fish-completions -> 141.0-1 x2, 141.0-1-fish-completions
+[U.]  #27  librewolf-unwrapped      140.0.4-1 -> 141.0-1
+[C.]  #28  libsoup                  2.74.3, 3.6.5 -> 3.6.5
+[U.]  #29  libwebp                  1.5.0 x4 -> 1.6.0 x4
+[C.]  #30  lowdown                  1.3.2-lib x2 -> 1.3.2-lib, 2.0.2-lib
+[D.]  #31  luasnip                  5271933f -> 3d5bced1
+[U*]  #32  lvm2                     2.03.32, 2.03.32-bin, 2.03.32-lib x2 -> 2.03.33, 2.03.33-bin, 2.03.33-lib x2
+[U.]  #33  mesa                     25.1.6 x2 -> 25.1.7 x2
+[U.]  #34  neon                     0.32.5 -> 0.34.2
+[U*]  #35  niri-unstable            2025-07-18-fefc0bc -> 2025-07-31-91b6a11
+[U.]  #36  nix-grammar              0.0.0+rev=cfc53fd -> 0.0.0+rev=ea1d87f
+[U.]  #37  nixos-system-sakura      25.11.20250725.7fd36ee.f331bbc -> 25.11.20250731.94def63.cf152e7
+[U.]  #38  nspr                     4.36 -> 4.37
+[U.]  #39  nvim-autopairs           4d74e759 -> 23320e75
+[U.]  #40  nvim-colorizer-lua       517df88c -> 16597180
+[D.]  #41  nvim-lspconfig           036885e8 -> 4d3b3bb8
+[D.]  #42  nvim-surround            8dd9150c -> 7a7a78a5
+[U.]  #43  nvim-web-devicons        1fb58cca -> 4a8369f4
+[C.]  #44  playerctl                2.4.1 -> 2.4.1, 2.4.1-fish-completions
+[C.]  #45  python3                  3.13.5 x3, 3.13.5-env x7 -> 3.13.5 x3, 3.13.5-env x8, 3.13.5-env-fish-completions
+[U.]  #46  python3.13-certifi       2025.04.26 -> 2025.06.15
+[C.]  #47  python3.13-dbus-python   1.4.0 -> 1.4.0, 1.4.0-dev
+[U.]  #48  rainbow-delimiters-nvim  55ad4fb7 -> 97bf4b8e
+[U.]  #49  readline                 8.2p13 x2 -> 8.3p1 x2
+[D.]  #50  render-markdown-nvim     6f5a4c36 -> 5c0e241b
+[C.]  #51  s2n-tls                  1.5.12, 1.5.21 -> 1.5.12, 1.5.22
+[U.]  #52  sdl3                     3.2.16-lib -> 3.2.18-lib
+[U.]  #53  sponsorblock             5.13.3 -> 5.14
+[C.]  #54  sqlite                   3.48.0, 3.50.1 x2, 3.50.1-bin, 3.50.1-dev -> 3.48.0, 3.50.2 x2, 3.50.2-bin, 3.50.2-dev
+[U.]  #55  tinymist                 0.13.14 -> 0.13.16
+[U.]  #56  vim-fugitive             4a745ea7 -> 61b51c09
+[U.]  #57  vim-grammar              0.0.0+rev=a93e834 -> 0.0.0+rev=3dd4747
+[U.]  #58  vimplugin-mini.nvim      2025-07-08 -> 2025-07-24
+[U.]  #59  vimplugin-yazi.nvim      2025-07-08 -> 2025-07-22
+[C.]  #60  wayland                  1.23.1 x3, 1.23.1-dev -> 1.23.1, 1.24.0 x2, 1.24.0-dev
+Selection state changes:
+[C-]  #1  glib              2.84.3 x2, 2.84.3-bin, 2.84.3-dev
+[C-]  #2  gst-plugins-bad   1.26.0
+[C-]  #3  gst-plugins-base  1.26.0 x2
+[C-]  #4  gst-plugins-good  1.26.0
+[C-]  #5  openssl           3.4.1, 3.5.1 x2, 3.5.1-bin, 3.5.1-dev
+Added packages:
+[A.]  #01  alpha-nvim                         2b3cbcdd
+[A.]  #02  audiofile                          0.3.6
+[A.]  #03  base16-aa923dae                    <none>
+[A+]  #04  catppuccin-papirus-folders         0-unstable-2023-08-02, 0-unstable-2023-08-02-fish-completions
+[A.]  #05  cmp-path-e52e640b                  <none>
+[A.]  #06  crates-nvim-c915ab53               <none>
+[A.]  #07  davs2                              1.7-lib
+[A.]  #08  fastaction-nvim                    9bf0c368
+[A.]  #09  fidget-nvim                        17ce5ac3
+[A.]  #10  gitsigns-nvim-b0143316             <none>
+[A.]  #11  highlight-undo-nvim-ee32e126       <none>
+[A.]  #12  hm_mpDris2mpDris2.conf             <none>
+[A.]  #13  hm_rmpcconfig.ron                  <none>
+[A.]  #14  hm_usertmpfiles.dhomemanager.conf  <none>
+[A.]  #15  leap-nvim-ebaf38f7                 <none>
+[A.]  #16  libid3tag                          0.16.3
+[A.]  #17  libmikmod                          3.3.13
+[A.]  #18  libmms                             0.6.4
+[A.]  #19  libupnp                            1.14.18
+[A.]  #20  lualine-nvim-a94fc689              <none>
+[A.]  #21  lz-n-dbf51256                      <none>
+[A.]  #22  mpDris2                            0.9.1
+[A.]  #23  mpd                                0.24.4, 0.24.4-fish-completions, 0.24.4-man
+[A.]  #24  mpd.conf                           <none>
+[A.]  #25  mpd.service                        <none>
+[A.]  #26  mpdris2.service                    <none>
+[A.]  #27  neo-tree-nvim-e858a443             <none>
+[A.]  #28  none-ls-nvim                       3ce66bc6
+[A.]  #29  nui-nvim-de740991                  <none>
+[A.]  #30  nvim-lint                          9c620755
+[A.]  #31  nvim-notify                        397c7c11
+[A.]  #32  otter-nvim-fcc8cf1e                <none>
+[A.]  #33  playerctld.service                 <none>
+[A.]  #34  plenary-nvim-b9fd5226              <none>
+[A.]  #35  python3.13-python-mpd2             3.1.1
+[A.]  #36  rmpc                               0.9.0, 0.9.0-fish-completions
+[A.]  #37  rtl8192su                          0-unstable-2016-10-05-zstd
+[A.]  #38  rustaceanvim-f845bb05              <none>
+[A.]  #39  smartcolumn-nvim-b9cdbdf4          <none>
+[A.]  #40  uavs3d                             1.1-unstable-2023-02-23
+[A.]  #41  unit-getty.target                  <none>
+[A.]  #42  xavs2                              1.4-lib
+[A.]  #43  zziplib                            0.13.80
+Removed packages:
+[R.]  #01  a52dec                               0.8.0
+[R.]  #02  alpha-nvim-a35468cd                  <none>
+[R.]  #03  audit-disable                        <none>
+[R.]  #04  audit-stop                           <none>
+[R.]  #05  base16                               5d0fcd83
+[R-]  #06  catppuccin-papirus-folders-unstable  2023-08-02, 2023-08-02-fish-completions
+[R.]  #07  cmp-path-c6635aae                    <none>
+[R.]  #08  crates-nvim                          5d8b1bef
+[R.]  #09  fastaction-nvim-f9a986b8             <none>
+[R.]  #10  fidget-nvim-d9ba6b7b                 <none>
+[R.]  #11  fuzzel-recorder                      <none>
+[R.]  #12  fuzzel-recorder-fish-completions     <none>
+[R.]  #13  fuzzel-windows                       <none>
+[R.]  #14  fuzzel-windows-fish-completions      <none>
+[R.]  #15  gifsicle                             1.96
+[R.]  #16  gitsigns-nvim-d0f90ef5               <none>
+[R-]  #17  gst-libav                            1.26.0
+[R-]  #18  gst-plugins-ugly                     1.26.0
+[R-]  #19  gstreamer-vaapi                      1.26.0
+[R.]  #20  highlight-undo-nvim-a5e2e2d4         <none>
+[R.]  #21  leap-nvim                            9958013b
+[R.]  #22  libgdata                             0.18.1
+[R.]  #23  libmpeg2                             0.5.1
+[R.]  #24  lualine-nvim                         0c6cca9f
+[R.]  #25  lz-n                                 07a7c611
+[R.]  #26  neo-tree-nvim-b287285c               <none>
+[R.]  #27  none-ls-nvim-db2a48b7                <none>
+[R.]  #28  nui-nvim                             7cd18e73
+[R.]  #29  nvim-lint-cc26ae6a                   <none>
+[R.]  #30  nvim-notify-b5825cf9                 <none>
+[R.]  #31  open-float                           <none>
+[R.]  #32  open-float-fish-completions          <none>
+[R.]  #33  otter-nvim                           1348aad7
+[R.]  #34  plenary-nvim                         857c5ac6
+[R.]  #35  qobuz-player                         0.3.2-3, 0.3.2-3-fish-completions
+[R.]  #36  record_screen                        <none>
+[R.]  #37  record_screen-fish-completions       <none>
+[R.]  #38  rtl8192su-unstable                   2016-10-05-zstd
+[R.]  #39  rustaceanvim-a0c8e969                <none>
+[R.]  #40  slurp                                1.5.0
+[R.]  #41  smartcolumn-nvim                     92f3773a
+[R.]  #42  unit-audit.service                   <none>
+[R.]  #43  wf-recorder                          0.5.0
+Closure size: 2486 -> 2489 (2344 paths added, 2341 paths removed, delta +3, disk usage -25.5MiB).
