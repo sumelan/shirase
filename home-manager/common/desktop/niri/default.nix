@@ -8,12 +8,12 @@
     ./rules.nix
   ];
 
-  options.custom = with lib; {
+  options.custom = {
     niri = {
       enable = lib.mkEnableOption "Enablen niri" // {
         default = true;
       };
-      xwayland.enable = mkEnableOption "Enable xwayland-satellite";
+      xwayland.enable = lib.mkEnableOption "Enable xwayland-satellite";
     };
   };
 

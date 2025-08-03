@@ -32,5 +32,6 @@
         dark = "Papirus-Dark";
       };
     };
+    niri.xwayland.enable = true;
   };
 }
