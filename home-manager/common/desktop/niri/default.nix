@@ -43,7 +43,7 @@
 
         xwayland-satellite = lib.mkIf config.custom.niri.xwayland.enable {
           enable = true;
-          path = lib.getExe pkgs.xwayland-satellite;
+          path = lib.getExe pkgs.xwayland-satellite-unstable;
         };
 
         input = {
@@ -125,7 +125,6 @@
         };
 
         environment = {
-          DISPLAY = lib.mkIf config.custom.niri.xwayland.enable ":0";
           QT_QPA_PLATFORM = "wayland";
           ELECTRON_OZONE_PLATFORM_HINT = "auto";
         };
