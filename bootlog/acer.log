@@ -236,3 +236,35 @@ Removed packages:
 [R-]  #13  catppuccin-papirus-folders           0-unstable-2023-08-02, 0-unstable-2023-08-02-fish-completions
 [R.]  #14  unit-audit.service                   <none>
 Closure size: 2600 -> 2598 (217 paths added, 219 paths removed, delta -2, disk usage -11.9MiB).
+
+---
+
+2025年08月05日 02時15分53秒
+<<< /nix/var/nix/profiles/system-324-link
+>>> /nix/var/nix/profiles/system-325-link
+Version changes:
+[U.]  #01  fastfetch                2.48.1, 2.48.1-fish-completions, 2.48.1-man -> 2.49.0, 2.49.0-fish-completions, 2.49.0-man
+[U.]  #02  folder-color-switcher    1.6.7 -> 1.6.8
+[U.]  #03  hyprlock                 0.9.0, 0.9.0-fish-completions -> 0.9.1, 0.9.1-fish-completions
+[U.]  #04  initrd-linux-zen         6.15.7 -> 6.15.8
+[U.]  #05  lazygit                  0.53.0, 0.53.0-fish-completions -> 0.54.0, 0.54.0-fish-completions
+[U.]  #06  linux-zen                6.15.7, 6.15.7-modules, 6.15.7-modules-shrunk -> 6.15.8, 6.15.8-modules, 6.15.8-modules-shrunk
+[U.]  #07  mpd                      0.24.4, 0.24.4-fish-completions, 0.24.4-man -> 0.24.5, 0.24.5-fish-completions, 0.24.5-man
+[U*]  #08  niri-unstable            2025-07-31-91b6a11 -> 2025-08-04-5edd91d
+[U.]  #09  nixos-system-acer        25.11.20250731.94def63.7f130d1 -> 25.11.20250803.5b09dc4.dad5810
+[U.]  #10  nsncd                    1.5.1 -> 1.5.2
+[U.]  #11  proton-pass              1.32.2, 1.32.2-fish-completions -> 1.32.3, 1.32.3-fish-completions
+[U.]  #12  rust-analyzer            2025-07-21 -> 2025-07-28
+[U.]  #13  rust-analyzer-unwrapped  2025-07-21 -> 2025-07-28
+[U.]  #14  typescript               5.8.3 -> 5.9.2
+[C.]  #15  udev-rules               <none> x2 -> <none>
+[U.]  #16  webkitgtk                2.48.3+abi=6.0 -> 2.48.5+abi=6.0
+[U.]  #17  xapp                     2.8.9, 2.8.9-dev -> 2.8.11, 2.8.11-dev
+Added packages:
+[A.]  #1  fstrm  0.6.1
+Removed packages:
+[R.]  #1  initrd-fsinfo  <none>
+[R.]  #2  keymap         <none>
+[R.]  #3  link-units     <none>
+[R.]  #4  stage          1-init.sh
+Closure size: 2598 -> 2594 (162 paths added, 166 paths removed, delta -4, disk usage +2.9MiB).
