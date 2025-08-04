@@ -11,10 +11,10 @@
     let
       enableList = [
         "alsa"
-        "audiobookshelf"
         "steam"
       ];
       disableList = [
+        "audiobookshelf"
         "distrobox"
       ];
     in
