@@ -117,6 +117,7 @@
         };
 
         environment = {
+          DISPLAY = ":0";
           QT_QPA_PLATFORM = "wayland";
           ELECTRON_OZONE_PLATFORM_HINT = "auto";
         };
