@@ -22,6 +22,11 @@
       {
         command = fish "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store";
       }
+      {
+        command = lib.mkIf config.custom.niri.xwayland.enable [
+          config.programs.niri.settings.xwayland-satellite.path
+        ];
+      }
       # initial backlight
       (lib.optionalAttrs config.custom.backlight.enable {
         command = [
