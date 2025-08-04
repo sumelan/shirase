@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./animations.nix
@@ -36,7 +41,10 @@
 
         prefer-no-csd = true;
 
-        xwayland-satellite.enable = config.custom.niri.xwayland.enable;
+        xwayland-satellite = lib.mkIf config.custom.niri.xwayland.enable {
+          enable = true;
+          path = lib.getExe pkgs.xwayland-satellite;
+        };
 
         input = {
           focus-follows-mouse.enable = true;
@@ -117,7 +125,6 @@
         };
 
         environment = {
-          DISPLAY = ":0";
           QT_QPA_PLATFORM = "wayland";
           ELECTRON_OZONE_PLATFORM_HINT = "auto";
         };
