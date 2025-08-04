@@ -397,3 +397,151 @@ Removed packages:
 [R.]  #42  unit-audit.service                   <none>
 [R.]  #43  wf-recorder                          0.5.0
 Closure size: 2486 -> 2489 (2344 paths added, 2341 paths removed, delta +3, disk usage -25.5MiB).
+
+---
+
+2025年08月05日 02時34分17秒
+<<< /nix/var/nix/profiles/system-289-link
+>>> /nix/var/nix/profiles/system-296-link
+Version changes:
+[C.]  #01  abseil-cpp                      20210324.2, 20250512.1 x2 -> 20250512.1 x2
+[C*]  #02  bash-interactive                5.3p0 x2, 5.3p0-fish-completions, 5.3p0-man -> 5.3p0 x3, 5.3p0-fish-completions, 5.3p0-man x2
+[C.]  #03  breeze-icons                    5.116.0 -> 5.116.0, 6.16.0
+[C*]  #04  bzip2                           1.0.8 x3, 1.0.8-bin x2, 1.0.8-dev -> 1.0.8 x3, 1.0.8-bin x2, 1.0.8-dev, 1.0.8-man
+[U*]  #05  catppuccin-papirus-folders      0-unstable-2023-08-02, 0-unstable-2023-08-02-fish-completions -> 0-unstable-2024-08-06, 0-unstable-2024-08-06-fish-completions
+[C.]  #06  container-init                  <none> -> <none> x2
+[C.]  #07  dhcpcd                          10.2.4 -> 10.2.4 x2
+[C.]  #08  dnsmasq                         2.91 -> 2.91 x2
+[C.]  #09  duktape                         2.7.0 -> 2.7.0 x2
+[C.]  #10  ethtool                         6.15 -> 6.15 x2
+[U.]  #11  fastfetch                       2.48.1, 2.48.1-fish-completions, 2.48.1-man -> 2.49.0, 2.49.0-fish-completions, 2.49.0-man
+[C.]  #12  file                            5.45 x2 -> 5.45 x2, 5.45-man
+[U.]  #13  folder-color-switcher           1.6.7 -> 1.6.8
+[C*]  #14  gawk                            5.3.2 -> 5.3.2, 5.3.2-man
+[C*]  #15  glibc                           2.40-36, 2.40-66 x3, 2.40-66-bin, 2.40-66-dev, 2.40-66-getent x2 -> 2.40-36, 2.40-66 x3, 2.40-66-bin x2, 2.40-66-dev, 2.40-66-getent x2
+[C*]  #16  glibc-locales                   2.40-66 -> 2.40-66 x2
+[C*]  #17  gnused                          4.9 -> 4.9 x2
+[U.]  #18  hyprlock                        0.9.0, 0.9.0-fish-completions -> 0.9.1, 0.9.1-fish-completions
+[U.]  #19  initrd-linux-zen                6.15.7 -> 6.15.8
+[C*]  #20  iputils                         20250605 -> 20250605 x2
+[C.]  #21  jansson                         2.14 -> 2.14 x2
+[C.]  #22  karchive                        5.116.0 -> 5.116.0, 6.16.0
+[C.]  #23  kconfig                         5.116.0 -> 5.116.0, 6.16.0
+[C.]  #24  kcoreaddons                     5.116.0, 5.116.0-bin -> 5.116.0, 5.116.0-bin, 6.16.0
+[C.]  #25  kguiaddons                      5.116.0 -> 5.116.0, 6.16.0
+[C.]  #26  ki18n                           5.116.0, 5.116.0-bin -> 5.116.0, 5.116.0-bin, 6.16.0
+[C.]  #27  kiconthemes                     5.116.0, 5.116.0-bin -> 5.116.0, 5.116.0-bin, 6.16.0
+[C.]  #28  kwidgetsaddons                  5.116.0 -> 5.116.0, 6.16.0
+[U.]  #29  lazygit                         0.53.0, 0.53.0-fish-completions -> 0.54.0, 0.54.0-fish-completions
+[C*]  #30  less                            679 -> 679, 679-man
+[C*]  #31  libcap                          2.76, 2.76-lib x2 -> 2.76, 2.76-lib x2, 2.76-man
+[C.]  #32  libedit                         20250104-3.1 -> 20250104-3.1 x2
+[C.]  #33  libgudev                        238 -> 238 x2
+[C.]  #34  libidn                          1.43 -> 1.43 x2
+[C.]  #35  libmbim                         1.30.0 -> 1.30.0 x2
+[C.]  #36  libndp                          1.9 -> 1.9 x2
+[C.]  #37  libqmi                          1.36.0 -> 1.36.0 x2
+[C.]  #38  libqrtr-glib                    1.2.2 -> 1.2.2 x2
+[C.]  #39  libva                           2.22.0 -> 2.22.0 x2
+[C.]  #40  libxcrypt                       4.4.38 x3 -> 4.4.38 x3, 4.4.38-man
+[U.]  #41  linux-zen                       6.15.7, 6.15.7-modules, 6.15.7-modules-shrunk -> 6.15.8, 6.15.8-modules, 6.15.8-modules-shrunk
+[C.]  #42  mobile-broadband-provider-info  20240407 -> 20240407 x2
+[C*]  #43  modemmanager                    1.22.0 -> 1.22.0 x2
+[U.]  #44  mpd                             0.24.4, 0.24.4-fish-completions, 0.24.4-man -> 0.24.5, 0.24.5-fish-completions, 0.24.5-man
+[C*]  #45  networkmanager                  1.52.1 -> 1.52.1 x2, 1.52.1-man
+[C.]  #46  newt                            0.52.24 -> 0.52.24 x2
+[C.]  #47  nftables                        1.1.3 -> 1.1.3 x2
+[U*]  #48  niri-unstable                   2025-07-31-91b6a11 -> 2025-08-04-5edd91d
+[U.]  #49  nixos-system-sakura             25.11.20250731.94def63.cf152e7 -> 25.11.20250803.5b09dc4.e488e02
+[C.]  #50  nodejs                          22.17.0, 22.17.0-source -> 22.17.0
+[U.]  #51  nsncd                           1.5.1 -> 1.5.2
+[C*]  #52  openresolv                      3.16.5 -> 3.16.5 x2
+[C*]  #53  polkit                          1.pam, 126, 126-bin, 126-dev -> 1.pam, 126 x2, 126-bin, 126-dev
+[C.]  #54  popt                            1.19 -> 1.19 x2
+[C.]  #55  ppp                             2.5.2 -> 2.5.2 x2
+[U.]  #56  rust-analyzer                   2025-07-21 -> 2025-07-28
+[U.]  #57  rust-analyzer-unwrapped         2025-07-21 -> 2025-07-28
+[C*]  #58  shadow                          4.17.4, 4.17.4-su -> 4.17.4, 4.17.4-man, 4.17.4-su
+[C.]  #59  slang                           2.3.3 -> 2.3.3 x2
+[C.]  #60  sonnet                          5.116.0, 5.116.0-bin -> 5.116.0, 5.116.0-bin, 6.16.0
+[U.]  #61  typescript                      5.8.3 -> 5.9.2
+[U.]  #62  xapp                            2.8.9, 2.8.9-dev -> 2.8.11, 2.8.11-dev
+[C*]  #63  xz                              5.8.1 x3, 5.8.1-bin x2, 5.8.1-dev -> 5.8.1 x3, 5.8.1-bin x2, 5.8.1-dev, 5.8.1-man
+Selection state changes:
+[C+]  #1  avahi  0.8 x2
+Added packages:
+[A.]  #01  X-Restart-Triggers-wivrn                   <none>
+[A.]  #02  avahi-daemon.conf                          <none>
+[A.]  #03  config.json                                <none>
+[A.]  #04  fhsenv-ensure-gsettings-schemas-directory  <none>
+[A.]  #05  font-util                                  1.4.1
+[A.]  #06  fstrm                                      0.6.1
+[A.]  #07  glibc-multi                                2.40-66, 2.40-66-bin
+[A.]  #08  hm_openvropenvrpaths.vrpath                <none>
+[A.]  #09  kcolorscheme                               6.16.0
+[A.]  #10  kirigami                                   6.16.0
+[A.]  #11  ldconfig                                   <none>
+[A.]  #12  libXfont2                                  2.0.7
+[A.]  #13  libei                                      1.4.1
+[A.]  #14  libfontenc                                 1.1.8
+[A.]  #15  libtirpc                                   1.3.6
+[A.]  #16  libudev0-shim                              1 x2
+[A.]  #17  libxcvt                                    0.1.3
+[A.]  #18  lsb_release                                <none>
+[A.]  #19  opencomposite                              1.0.1521
+[A.]  #20  openxr-loader                              1.1.49
+[A.]  #21  qqc2-desktop-style                         6.16.0
+[A.]  #22  qt5compat                                  6.9.1
+[A.]  #23  qtshadertools                              6.9.1
+[A.]  #24  sbin-ldconfig                              <none>
+[A+]  #25  steam                                      1.0.0.83, 1.0.0.83-bwrap, 1.0.0.83-fhsenv-profile, 1.0.0.83-fhsenv-rootfs, 1.0.0.83-init
+[A+]  #26  steam-run                                  <none> x2
+[A.]  #27  steam-run-bwrap                            <none>
+[A.]  #28  steam-run-fhsenv-profile                   <none>
+[A.]  #29  steam-run-fhsenv-rootfs                    <none>
+[A.]  #30  steam-run-init                             <none>
+[A.]  #31  steam-unwrapped                            1.0.0.83
+[A.]  #32  steam-wrapped                              <none>
+[A.]  #33  unit-avahi-daemon.service                  <none>
+[A.]  #34  unit-avahi-daemon.socket                   <none>
+[A.]  #35  unit-wivrn.service                         <none>
+[A+]  #36  wivrn                                      25.6.1
+[A.]  #37  xorg-locale                                <none>
+[A.]  #38  xrizer                                     0.2
+[A.]  #39  xwayland                                   24.1.8
+[A.]  #40  xwayland-satellite-unstable                2025-07-12-ba78881
+Removed packages:
+[R.]  #01  aribb24                      1.0.4
+[R.]  #02  audiobookshelf               2.26.3, 2.26.3-npm-deps
+[R.]  #03  celt                         0.11.3
+[R.]  #04  codec2                       1.2.0-lib
+[R.]  #05  davs2                        1.7-lib
+[R.]  #06  ffmpeg-full                  7.1.1-bin, 7.1.1-data, 7.1.1-lib
+[R.]  #07  frei0r-plugins               2.3.3
+[R.]  #08  gflags                       2.2.2
+[R.]  #09  gfortran                     14.3.0-lib, 14.3.0-libgcc
+[R.]  #10  glog                         0.7.1
+[R.]  #11  hdf5-cpp                     1.14.6
+[R.]  #12  kvazaar                      2.3.1-lib
+[R.]  #13  lcevcdec                     3.3.8-lib
+[R.]  #14  libaribcaption               1.1.1
+[R.]  #15  libilbc                      3.0.4
+[R.]  #16  libvpl                       2.15.0
+[R.]  #17  nunicode                     1.11-sqlite
+[R.]  #18  openblas                     0.3.30
+[R.]  #19  opencv                       4.11.0
+[R.]  #20  protobuf                     21.12
+[R.]  #21  quirc                        1.2
+[R.]  #22  rav1e                        0.8.0
+[R.]  #23  shine                        3.1.1
+[R.]  #24  snappy                       1.2.2
+[R.]  #25  uavs3d                       1.1-unstable-2023-02-23
+[R.]  #26  unit-audiobookshelf.service  <none>
+[R.]  #27  vo-amrwbenc                  0.1.3
+[R.]  #28  vvenc                        1.13.1-lib
+[R.]  #29  xavs                         55
+[R.]  #30  xavs2                        1.4-lib
+[R.]  #31  xevd                         0.5.0-lib
+[R.]  #32  xeve                         0.5.1-lib
+[R.]  #33  zeromq                       4.3.5
+Closure size: 2489 -> 2545 (261 paths added, 205 paths removed, delta +56, disk usage -364.6MiB).
