@@ -1,7 +1,7 @@
 {
   lib,
   config,
-  user,
+  pkgs,
   ...
 }:
 {
@@ -55,7 +55,35 @@
       };
     };
 
-    programs.adb.enable = true;
-    users.users.${user}.extraGroups = [ "adbusers" ];
+    hm.xdg.configFile = {
+      "openvr/openvrpaths.vrpath".text = ''
+        {
+          "config" :
+          [
+            "${config.hm.xdg.dataHome}/Steam/config"
+          ],
+          "external_drivers" : null,
+          "jsonid" : "vrpathreg",
+          "log" :
+          [
+            "${config.hm.xdg.dataHome}/Steam/logs"
+          ],
+          "runtime" :
+          [
+            "${pkgs.opencomposite}/lib/opencomposite"
+          ],
+          "version" : 1
+        }
+      '';
+
+      "openxr/1/active_runtime.json".source = "${pkgs.wivrn}/share/openxr/1/openxr_wivrn.json";
+
+    };
+
+    custom.persist = {
+      home.directories = [
+        ".config/wivrn"
+      ];
+    };
   };
 }
