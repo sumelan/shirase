@@ -5,11 +5,9 @@
   inputs,
   user,
   ...
-}:
-let
+}: let
   configPath = ".config/.librewolf";
-in
-{
+in {
   programs = {
     librewolf = {
       enable = true;
@@ -19,17 +17,19 @@ in
       ];
       package = pkgs.librewolf.overrideAttrs (o: {
         # launch librewolf with user profile
-        buildCommand = o.buildCommand + ''
-          wrapProgram "$out/bin/librewolf" \
-            --set 'HOME' '${config.xdg.configHome}' \
-            --append-flags "${
+        buildCommand =
+          o.buildCommand
+          + ''
+            wrapProgram "$out/bin/librewolf" \
+              --set 'HOME' '${config.xdg.configHome}' \
+              --append-flags "${
               lib.concatStringsSep " " [
                 "--name librewolf"
                 # load librewolf profile with same name as user
                 "--profile ${config.home.homeDirectory}/${configPath}/${user}"
               ]
             }"
-        '';
+          '';
       });
 
       inherit configPath;
@@ -69,20 +69,14 @@ in
     };
     niri.settings = {
       binds = {
-        "Mod+B" = {
-          action.spawn = lib.custom.niri.useUwsm "librewolf";
-          hotkey-overlay.title = "<i>Launch</i> <b>librewolf</b>";
+        "Mod+B" = lib.custom.niri.openApp {
+          app = config.programs.librewolf.package;
         };
       };
       # NOTE: bitwarden window cannot be floated on this method
-      # https://github.com/hyprwm/Hyprland/issues/3835
       window-rules = [
         {
           matches = [
-            {
-              app-id = "^(librewolf)$";
-              title = "^(ピクチャーインピクチャー)$";
-            }
             {
               app-id = "^(librewolf)$";
               title = "^(Save File)$";
@@ -93,6 +87,7 @@ in
             }
           ];
           open-floating = true;
+          opacity = 1.0;
           default-column-width.proportion = 0.4;
           default-window-height.proportion = 0.4;
         }
@@ -125,7 +120,7 @@ in
   stylix.targets.librewolf = {
     colorTheme.enable = true;
     firefoxGnomeTheme.enable = true;
-    profileNames = [ user ];
+    profileNames = [user];
   };
 
   custom.persist = {

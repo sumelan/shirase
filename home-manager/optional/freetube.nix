@@ -3,8 +3,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   options.custom = {
     freetube.enable = lib.mkEnableOption "freetube";
   };
@@ -62,17 +61,9 @@
         };
       };
 
-      niri.settings = {
-        binds = {
-          "Mod+Y" = lib.custom.niri.openApp {
-            app = pkgs.freetube;
-          };
-        };
-        window-rules = lib.singleton {
-          matches = lib.singleton {
-            title = "^(ピクチャー イン ピクチャー)$";
-          };
-          open-floating = true;
+      niri.settings.binds = {
+        "Mod+Y" = lib.custom.niri.openApp {
+          app = pkgs.freetube;
         };
       };
     };

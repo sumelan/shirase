@@ -2,20 +2,18 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   shadowConfig = {
     enable = true;
     spread = 0;
     softness = 10;
     color = "#000000dd";
   };
-in
-{
+in {
   programs.niri.settings = with config.lib.stylix.colors.withHashtag; {
     window-rules = [
+      # global rules
       {
-        # global rules
         geometry-corner-radius = {
           bottom-left = 10.0;
           bottom-right = 10.0;
@@ -32,12 +30,21 @@ in
         };
         opacity = config.stylix.opacity.desktop;
       }
-      # out-focued column/window opacity
+      # out-focued and no-floating column/window opacity
       {
         matches = lib.singleton {
           is-focused = false;
+          is-floating = false;
         };
         opacity = config.stylix.opacity.desktop * 0.9;
+      }
+      # Picture-in-pictures
+      {
+        matches = lib.singleton {
+          title = "^(ピクチャー イン ピクチャー)$";
+        };
+        open-floating = true;
+        opacity = 1.0;
       }
       # targeted column/window from screencast program, like obs
       {
@@ -63,17 +70,15 @@ in
       }
     ];
 
-    switch-events =
-      let
-        fish = cmd: [
-          "fish"
-          "-c"
-          cmd
-        ];
-      in
-      {
-        lid-close.action.spawn = fish "systemctl suspend";
-        lid-open.action.spawn = fish "niri msg action power-on-monitors";
-      };
+    switch-events = let
+      fish = cmd: [
+        "fish"
+        "-c"
+        cmd
+      ];
+    in {
+      lid-close.action.spawn = fish "systemctl suspend";
+      lid-open.action.spawn = fish "niri msg action power-on-monitors";
+    };
   };
 }

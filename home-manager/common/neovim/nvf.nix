@@ -71,7 +71,7 @@
 
         nix = {
           enable = true;
-          format.type = "nixfmt";
+          format.type = "alejandra";
           lsp = {
             enable = true;
             server = "nixd";

@@ -4,44 +4,40 @@
   user,
   inputs,
   ...
-}:
-let
+}: let
   cfg = config.custom.persist;
   hmPersistCfg = config.hm.custom.persist;
   # https://nix.dev/manual/nix/2.28/language/syntax.html?highlight=assert#assertions
-  assertNoHomeDirs =
-    paths:
-    assert (lib.assertMsg (!lib.any (lib.hasPrefix "/home") paths) "/home used in a root persist!");
-    paths;
-in
-{
-  imports = [ inputs.impermanence.nixosModules.impermanence ];
+  assertNoHomeDirs = paths:
+    assert (lib.assertMsg (!lib.any (lib.hasPrefix "/home") paths) "/home used in a root persist!"); paths;
+in {
+  imports = [inputs.impermanence.nixosModules.impermanence];
 
   options.custom = with lib; {
     persist = {
       root = {
         directories = mkOption {
           type = types.listOf types.str;
-          default = [ ];
+          default = [];
           apply = assertNoHomeDirs;
           description = "Directories to persist in root filesystem";
         };
         files = mkOption {
           type = types.listOf types.str;
-          default = [ ];
+          default = [];
           apply = assertNoHomeDirs;
           description = "Files to persist in root filesystem";
         };
         cache = {
           directories = mkOption {
             type = types.listOf types.str;
-            default = [ ];
+            default = [];
             apply = assertNoHomeDirs;
             description = "Directories to persist, but not to snapshot";
           };
           files = mkOption {
             type = types.listOf types.str;
-            default = [ ];
+            default = [];
             apply = assertNoHomeDirs;
             description = "Files to persist, but not to snapshot";
           };
@@ -50,12 +46,12 @@ in
       home = {
         directories = mkOption {
           type = types.listOf types.str;
-          default = [ ];
+          default = [];
           description = "Directories to persist in home directory";
         };
         files = mkOption {
           type = types.listOf types.str;
-          default = [ ];
+          default = [];
           description = "Files to persist in home directory";
         };
       };
@@ -69,7 +65,7 @@ in
       # wipe /root at each boot and back to blank state
       initrd = {
         enable = true;
-        supportedFilesystems = [ "btrfs" ];
+        supportedFilesystems = ["btrfs"];
         postResumeCommands = lib.mkAfter ''
           mkdir -p /mnt
 
@@ -136,23 +132,22 @@ in
       };
     };
 
-    hm.xdg.stateFile."impermanence.json".text =
-      let
-        getDirPath = prefix: d: "${prefix}${d.dirPath}";
-        getFilePath = prefix: f: "${prefix}${f.filePath}";
-        persistCfg = config.environment.persistence."/persist";
-        persistCacheCfg = config.environment.persistence."/cache";
-        allDirectories =
-          map (getDirPath "/persist") (persistCfg.directories ++ persistCfg.users.${user}.directories)
-          ++ map (getDirPath "/cache") (
-            persistCacheCfg.directories ++ persistCacheCfg.users.${user}.directories
-          );
-        allFiles =
-          map (getFilePath "/persist") (persistCfg.files ++ persistCfg.users.${user}.files)
-          ++ map (getFilePath "/cache") (persistCacheCfg.files ++ persistCacheCfg.users.${user}.files);
-        # produces sorted list: first element is less than the second
-        sort-uniq = arr: lib.sort lib.lessThan (lib.unique arr);
-      in
+    hm.xdg.stateFile."impermanence.json".text = let
+      getDirPath = prefix: d: "${prefix}${d.dirPath}";
+      getFilePath = prefix: f: "${prefix}${f.filePath}";
+      persistCfg = config.environment.persistence."/persist";
+      persistCacheCfg = config.environment.persistence."/cache";
+      allDirectories =
+        map (getDirPath "/persist") (persistCfg.directories ++ persistCfg.users.${user}.directories)
+        ++ map (getDirPath "/cache") (
+          persistCacheCfg.directories ++ persistCacheCfg.users.${user}.directories
+        );
+      allFiles =
+        map (getFilePath "/persist") (persistCfg.files ++ persistCfg.users.${user}.files)
+        ++ map (getFilePath "/cache") (persistCacheCfg.files ++ persistCacheCfg.users.${user}.files);
+      # produces sorted list: first element is less than the second
+      sort-uniq = arr: lib.sort lib.lessThan (lib.unique arr);
+    in
       lib.strings.toJSON {
         directories = sort-uniq allDirectories;
         files = sort-uniq allFiles;

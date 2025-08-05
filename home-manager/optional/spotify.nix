@@ -4,49 +4,43 @@
   config,
   inputs,
   ...
-}:
-{
-  imports = [ inputs.spicetify-nix.homeManagerModules.default ];
+}: {
+  imports = [inputs.spicetify-nix.homeManagerModules.default];
 
   options.custom = {
     spotify.enable = lib.mkEnableOption "Spotify";
   };
 
   config = lib.mkIf config.custom.spotify.enable {
-
-    programs.spicetify =
-      let
-        spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-      in
-      {
-        enable = true;
-        wayland = true;
-        enabledExtensions = with spicePkgs.extensions; [
-          # adblock
-          keyboardShortcut
-          copyToClipboard
-          history
-          betterGenres
-          # lastfm
-          hidePodcasts
-          shuffle # shuffle+ (special characters are sanitized out of extension names)
-        ];
-        enabledCustomApps = with spicePkgs.apps; [
-          newReleases
-          ncsVisualizer
-          historyInSidebar
-        ];
-        enabledSnippets = with spicePkgs.snippets; [
-          circularAlbumArt
-          newHoverPanel
-          dynamicLeftSidebar
-          spinningCdCoverArt
-          pointer
-        ];
-        theme = spicePkgs.themes.bloom;
-      };
-
-    services.playerctld.enable = true;
+    programs.spicetify = let
+      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+    in {
+      enable = true;
+      wayland = true;
+      enabledExtensions = with spicePkgs.extensions; [
+        # adblock
+        keyboardShortcut
+        copyToClipboard
+        history
+        betterGenres
+        # lastfm
+        hidePodcasts
+        shuffle # shuffle+ (special characters are sanitized out of extension names)
+      ];
+      enabledCustomApps = with spicePkgs.apps; [
+        newReleases
+        ncsVisualizer
+        historyInSidebar
+      ];
+      enabledSnippets = with spicePkgs.snippets; [
+        circularAlbumArt
+        newHoverPanel
+        dynamicLeftSidebar
+        spinningCdCoverArt
+        pointer
+      ];
+      theme = spicePkgs.themes.bloom;
+    };
 
     programs.niri.settings = {
       binds = {
