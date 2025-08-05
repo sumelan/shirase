@@ -31,8 +31,6 @@
       url = "github:NixOS/nixos-hardware";
     };
 
-    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
-
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";

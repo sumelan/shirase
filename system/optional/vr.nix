@@ -1,13 +1,10 @@
 {
   lib,
   config,
-  inputs,
   user,
   ...
 }:
 {
-  imports = [ inputs.nixpkgs-xr.nixosModules.nixpkgs-xr ];
-
   options.custom = {
     vr.enable = lib.mkEnableOption "VR" // {
       default = config.custom.steam.enable;
