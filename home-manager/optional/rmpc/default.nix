@@ -4,20 +4,20 @@
   pkgs,
   user,
   ...
-}:
-let
+}: let
   ytDir = "${config.xdg.userDirs.music}/YouTube";
-in
-{
+in {
   imports = [
     ./config.nix
     ./theme.nix
   ];
 
   options.custom = {
-    rmpc.enable = lib.mkEnableOption "A beautiful and configurable TUI client for MPD" // {
-      default = true;
-    };
+    rmpc.enable =
+      lib.mkEnableOption "A beautiful and configurable TUI client for MPD"
+      // {
+        default = true;
+      };
   };
 
   config = lib.mkIf config.custom.rmpc.enable {

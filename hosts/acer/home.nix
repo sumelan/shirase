@@ -1,5 +1,8 @@
-{ lib, pkgs, ... }:
 {
+  lib,
+  pkgs,
+  ...
+}: {
   monitors = {
     "eDP-1" = {
       isMain = true;
@@ -18,20 +21,19 @@
   };
 
   # theme
-  custom =
-    let
-      enableList = [
-        "cyanrip"
-        "foliate"
-        "freetube"
-        "obs-studio"
-        "protonapp"
-      ];
-      disableList = [
-        "helix"
-        "wlsunset"
-      ];
-    in
+  custom = let
+    enableList = [
+      "cyanrip"
+      "foliate"
+      "freetube"
+      "helix"
+      "obs-studio"
+      "protonapp"
+    ];
+    disableList = [
+      "wlsunset"
+    ];
+  in
     {
       stylix = {
         cursor = {

@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   programs.rmpc.config =
     # ron
     ''

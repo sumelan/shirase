@@ -5,8 +5,7 @@
   host,
   flakePath,
   ...
-}:
-{
+}: {
   options.custom = {
     helix.enable = lib.mkEnableOption "A post-modern modal text editor";
   };
@@ -20,7 +19,7 @@
           cursorline = true;
           auto-format = true;
           completion-replace = false;
-          rulers = [ 80 ];
+          rulers = [80];
           bufferline = "multiple";
           color-modes = true;
           soft-wrap.enable = true;
@@ -66,7 +65,7 @@
           }
           {
             name = "git-commit";
-            language-servers = [ "ltex-ls-plus" ];
+            language-servers = ["ltex-ls-plus"];
           }
           {
             name = "go";
@@ -86,7 +85,6 @@
                 "--parser"
                 "html"
               ];
-
             };
             language-servers = [
               "vscode-html-language-server"
@@ -113,7 +111,7 @@
           {
             name = "nix";
             auto-format = true;
-            language-servers = [ "nixd" ];
+            language-servers = ["nixd"];
           }
           {
             name = "python";
@@ -135,27 +133,27 @@
           }
           {
             name = "sql";
-            language-servers = [ "sqls" ];
+            language-servers = ["sqls"];
           }
           {
             name = "typst";
             auto-format = true;
-            language-servers = [ "tinymist" ];
+            language-servers = ["tinymist"];
           }
           {
             name = "xml";
-            language-servers = [ "lemminx" ];
+            language-servers = ["lemminx"];
           }
         ];
 
         language-server = {
           basedpyright = {
             command = lib.getExe pkgs.basedpyright;
-            args = [ "--stdio" ];
+            args = ["--stdio"];
           };
           codebook = {
             command = lib.getExe pkgs.codebook;
-            args = [ "serve" ];
+            args = ["serve"];
           };
           lemminx = {
             command = lib.getExe pkgs.lemminx;
@@ -165,7 +163,7 @@
           };
           nixd = {
             config.nixd = {
-              formatting.command = [ "${lib.getExe pkgs.nixfmt}" ];
+              formatting.command = ["${lib.getExe pkgs.alejandra}"];
               options = rec {
                 nixos.expr = "(builtins.getFlake ''${flakePath}'').nixosConfigurations.${host}.options";
                 home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
@@ -174,7 +172,7 @@
           };
           phpactor = {
             command = lib.getExe pkgs.phpactor;
-            args = [ "language-server" ];
+            args = ["language-server"];
           };
           sqls = {
             command = lib.getExe pkgs.sqls;

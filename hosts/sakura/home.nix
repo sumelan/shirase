@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   monitors = {
     "HDMI-A-1" = {
       isMain = true;
@@ -18,7 +17,6 @@
   };
 
   custom = {
-    # theme
     stylix = {
       cursor = {
         package = pkgs.catppuccin-cursors.frappeDark;

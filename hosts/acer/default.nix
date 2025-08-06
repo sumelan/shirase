@@ -1,20 +1,22 @@
-{ lib, inputs, ... }:
 {
+  lib,
+  inputs,
+  ...
+}: {
   imports = with inputs.nixos-hardware.nixosModules; [
     common-pc-laptop
     common-pc-laptop-ssd
     common-cpu-intel
   ];
 
-  custom =
-    let
-      enableList = [
-        "alsa"
-      ];
-      disableList = [
-        "distrobox"
-      ];
-    in
+  custom = let
+    enableList = [
+      "alsa"
+    ];
+    disableList = [
+      "distrobox"
+    ];
+  in
     {
       stylix.colorTheme = "everforest-dark-soft";
     }

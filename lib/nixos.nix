@@ -4,75 +4,69 @@
   self,
   inputs,
   lib,
-}:
-{
-  mkSystem =
-    host:
-    {
-      user ? throw ''Please specify user value, like user = "foo"'',
-      hardware ? throw ''Please specify hardware value, like hardware = "laptop"'',
-    }:
-    let
-      specialArgs = {
-        inherit
-          self
-          inputs
-          host
-          user
-          ;
-        flakePath = "/persist/home/${user}/projects/shirase";
-        isLaptop = hardware == "laptop";
-        isServer = hardware == "server";
-      };
-    in
+}: {
+  mkSystem = host: {
+    user ? throw ''Please specify user value, like user = "foo"'',
+    hardware ? throw ''Please specify hardware value, like hardware = "laptop"'',
+  }: let
+    specialArgs = {
+      inherit
+        self
+        inputs
+        host
+        user
+        ;
+      flakePath = "/persist/home/${user}/projects/shirase";
+      isLaptop = hardware == "laptop";
+      isServer = hardware == "server";
+    };
+  in
     lib.nixosSystem {
       inherit system pkgs specialArgs;
-      modules = [
-        ../hosts/${host}
-        ../hosts/${host}/hardware.nix
-      ]
-      ++ [
-        ../users/${user}.nix
-        ../system
-      ]
-      ++ [ ../overlays ] # nixpkgs.overlay
-      ++ [
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = specialArgs;
-            users.${user} = {
-              imports = [
-                ../hosts/${host}/home.nix
-                ../home-manager
-              ];
+      modules =
+        [
+          ../hosts/${host}
+          ../hosts/${host}/hardware.nix
+        ]
+        ++ [
+          ../users/${user}.nix
+          ../system
+        ]
+        ++ [../overlays] # nixpkgs.overlay
+        ++ [
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = specialArgs;
+              users.${user} = {
+                imports = [
+                  ../hosts/${host}/home.nix
+                  ../home-manager
+                ];
+              };
             };
-          };
-        }
-        (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" user ]) # alias for home-manager
-      ];
+          }
+          (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" user]) # alias for home-manager
+        ];
     };
 
   # tmpfiles.d
-  mkSymlinks = { dest, src }: [ "L+ ${dest} - - - - ${src}" ];
-  mkRemove =
-    target:
-    {
-      mode ? "-",
-      user,
-      group,
-      age,
-    }:
-    [ "D! ${mode} ${target} ${user} ${group} ${age}" ];
-  mkCreate =
-    target:
-    {
-      mode ? "-",
-      user,
-      group,
-      age ? "-",
-    }:
-    [ "d! ${mode} ${target} ${user} ${group} ${age}" ];
+  mkSymlinks = {
+    dest,
+    src,
+  }: ["L+ ${dest} - - - - ${src}"];
+  mkRemove = target: {
+    mode ? "-",
+    user,
+    group,
+    age,
+  }: ["D! ${mode} ${target} ${user} ${group} ${age}"];
+  mkCreate = target: {
+    mode ? "-",
+    user,
+    group,
+    age ? "-",
+  }: ["d! ${mode} ${target} ${user} ${group} ${age}"];
 }

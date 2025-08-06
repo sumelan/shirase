@@ -1,6 +1,5 @@
-{ config, ... }:
-with config.lib.stylix.colors.withHashtag;
-{
+{config, ...}:
+with config.lib.stylix.colors.withHashtag; {
   xdg.configFile."rmpc/themes/custom.ron".text =
     # ron
     ''

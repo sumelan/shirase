@@ -1,5 +1,4 @@
-{ lib }:
-rec {
+{lib}: rec {
   useUwsm = app: [
     "fish"
     "-c"
@@ -8,53 +7,54 @@ rec {
 
   mkSpawn = cmd: lib.splitString " " cmd;
 
-  openApp =
-    {
-      app,
-      args ? "",
-      title ? "<i>Launch</i> <b>${lib.getName app}</b>",
-    }:
-    {
-      action.spawn = useUwsm (lib.strings.trim "${lib.getName app} ${args}");
-      hotkey-overlay = { inherit title; };
-    };
-  openTerminal =
-    {
-      app,
-      terminal,
-      app-id ? lib.getName app,
-    }:
-    {
-      action.spawn = mkSpawn "${lib.getExe terminal} -o confirm_os_window_close=0 --app-id=${app-id} ${lib.getName app}";
-      hotkey-overlay.title = "<i>Launch</i> <b>${app-id}</b>";
-    };
+  openApp = {
+    app,
+    args ? "",
+    title ? "<i>Launch</i> <b>${lib.getName app}</b>",
+  }: {
+    action.spawn = useUwsm (lib.strings.trim "${lib.getName app} ${args}");
+    hotkey-overlay = {inherit title;};
+  };
+  openTerminal = {
+    app,
+    terminal,
+    app-id ? lib.getName app,
+  }: {
+    action.spawn = mkSpawn "${lib.getExe terminal} -o confirm_os_window_close=0 --app-id=${app-id} ${lib.getName app}";
+    hotkey-overlay.title = "<i>Launch</i> <b>${app-id}</b>";
+  };
 
-  runCmd =
-    {
-      cmd,
-      osd ? "",
-      osdArgs ? "",
-      title ? null,
-      locked ? "no",
-      repeat ? "yes",
-    }:
-    {
-      action.spawn =
-        if osd == "swayosd" then
-          [
-            "fish"
-            "-c"
-            "${cmd} && ${osd}-client ${osdArgs}"
-          ]
-        else
-          [
-            "fish"
-            "-c"
-            cmd
-          ];
-      hotkey-overlay = if title == null then { hidden = true; } else { inherit title; };
-      allow-when-locked = if locked == "allow" then true else false;
-      repeat = if repeat == "no" then false else true;
-    };
-
+  runCmd = {
+    cmd,
+    osd ? "",
+    osdArgs ? "",
+    title ? null,
+    locked ? "no",
+    repeat ? "yes",
+  }: {
+    action.spawn =
+      if osd == "swayosd"
+      then [
+        "fish"
+        "-c"
+        "${cmd} && ${osd}-client ${osdArgs}"
+      ]
+      else [
+        "fish"
+        "-c"
+        cmd
+      ];
+    hotkey-overlay =
+      if title == null
+      then {hidden = true;}
+      else {inherit title;};
+    allow-when-locked =
+      if locked == "allow"
+      then true
+      else false;
+    repeat =
+      if repeat == "no"
+      then false
+      else true;
+  };
 }

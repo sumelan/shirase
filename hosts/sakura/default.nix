@@ -1,5 +1,8 @@
-{ lib, inputs, ... }:
 {
+  lib,
+  inputs,
+  ...
+}: {
   imports = with inputs.nixos-hardware.nixosModules; [
     common-pc
     common-pc-ssd
@@ -7,17 +10,16 @@
     common-gpu-amd
   ];
 
-  custom =
-    let
-      enableList = [
-        "alsa"
-        "steam"
-      ];
-      disableList = [
-        "audiobookshelf"
-        "distrobox"
-      ];
-    in
+  custom = let
+    enableList = [
+      "alsa"
+      "steam"
+    ];
+    disableList = [
+      "audiobookshelf"
+      "distrobox"
+    ];
+  in
     {
       stylix.colorTheme = "catppuccin-frappe";
     }

@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   acer = lib.custom.nixos.mkSystem "acer" {
     user = "sumelan";
     hardware = "laptop";
