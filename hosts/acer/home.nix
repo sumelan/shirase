@@ -37,12 +37,17 @@
     {
       stylix = {
         cursor = {
-          package = pkgs.custom.everforest-cursors;
-          name = "everforest-cursors";
+          package = pkgs.custom.qogir-cursors.override {
+            themeVariants = ["Manjaro"];
+          };
+          name = "dist-Manjaro-Dark";
         };
         icons = {
-          package = pkgs.everforest-gtk-theme;
-          dark = "Everforest-Dark";
+          package = pkgs.qogir-icon-theme.overrideAttrs {
+            colorVariants = ["dark"]; # default is all
+            themeVariants = ["manjaro"]; # default is all
+          };
+          dark = "Qogir-Manjaro-Dark";
         };
       };
     }
