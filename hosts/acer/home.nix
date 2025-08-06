@@ -20,7 +20,6 @@
     };
   };
 
-  # theme
   custom = let
     enableList = [
       "cyanrip"
@@ -37,17 +36,14 @@
     {
       stylix = {
         cursor = {
-          package = pkgs.custom.qogir-cursors.override {
-            themeVariants = ["Manjaro"];
-          };
-          name = "dist-Manjaro-Dark";
+          package = pkgs.nordzy-cursor-theme;
+          name = "Nordzy-cursors-white";
         };
         icons = {
-          package = pkgs.qogir-icon-theme.overrideAttrs {
-            colorVariants = ["dark"]; # default is all
-            themeVariants = ["manjaro"]; # default is all
+          package = pkgs.nordzy-icon-theme.override {
+            nordzy-themes = ["cyan"];
           };
-          dark = "Qogir-Manjaro-Dark";
+          dark = "Nordzy-cyan-dark";
         };
       };
     }

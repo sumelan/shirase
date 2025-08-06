@@ -1,9 +1,12 @@
-{ config, lib, ... }:
-let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
   accent = "${config.lib.stylix.colors.withHashtag.base0E}";
   muted = "${config.lib.stylix.colors.withHashtag.base03}";
-in
-{
+in {
   programs.lazygit = {
     enable = true;
     settings = lib.mkForce {
@@ -21,7 +24,7 @@ in
             accent
             "bold"
           ];
-          inactiveBorderColor = [ muted ];
+          inactiveBorderColor = [muted];
         };
         showListFooter = false;
         showRandomTip = false;

@@ -1,4 +1,4 @@
-_: {
+{pkgs, ...}: {
   imports = [
     ./desktop
     ./neovim
@@ -19,6 +19,10 @@ _: {
     ./tldr.nix
     ./yt-dlp.nix
     ./zoxide.nix
+  ];
+
+  home.packages = with pkgs; [
+    wl-clipboard
   ];
 
   services.playerctld.enable = true;

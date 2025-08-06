@@ -18,7 +18,7 @@
     ];
   in
     {
-      stylix.colorTheme = "everforest-dark-soft";
+      stylix.colorTheme = "nord";
     }
     // lib.genAttrs enableList (_name: {
       enable = true;
