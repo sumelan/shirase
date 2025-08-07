@@ -3,17 +3,16 @@
   config,
   ...
 }:
+# NOTE: options "swayosd.display" exists, but not work
 {
   services.swayosd = {
     enable = true;
-    # NOTE: options "swayosd.display" exists, but not work
     stylePath = "${config.xdg.configHome}/swayosd/style.scss";
     topMargin = 1.0;
   };
 
-  xdg.configFile."swayosd/style.scss".text =
-    with config.lib.stylix.colors.withHashtag;
-    # scss
+  xdg.configFile."swayosd/style.scss".text = with config.lib.stylix.colors.withHashtag;
+  # scss
     ''
       window {
         border-radius: 999px;

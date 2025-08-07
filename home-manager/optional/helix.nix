@@ -32,6 +32,7 @@
             select = "underline";
           };
           indent-guides.render = true;
+          clipboard-provider = "wayland";
         };
       };
 

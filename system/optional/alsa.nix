@@ -8,16 +8,15 @@
 # NOTE:spotify refuse to play when above 192 kHz
 let
   cfg = config.custom.alsa;
-in
-{
+in {
   options.custom = {
     alsa.enable = lib.mkEnableOption "Advanced Linux Sound Architecture";
   };
 
   config = lib.mkIf cfg.enable {
     # ALSA settings
-    environment.systemPackages = with pkgs; [ alsa-utils ];
-    users.users.${user}.extraGroups = [ "audio" ];
+    environment.systemPackages = with pkgs; [alsa-utils];
+    users.users.${user}.extraGroups = ["audio"];
 
     custom.persist = {
       root.directories = [

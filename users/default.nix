@@ -4,8 +4,7 @@
   pkgs,
   user,
   ...
-}:
-let
+}: let
   profile = lib.types.submodule {
     options = {
       timeZone = lib.mkOption {
@@ -44,8 +43,7 @@ let
       };
     };
   };
-in
-{
+in {
   hm.options = {
     profiles = lib.mkOption {
       type = lib.types.attrsOf profile;

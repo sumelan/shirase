@@ -3,12 +3,10 @@
   pkgs,
   isServer,
   ...
-}:
-let
+}: let
   username = "sumelan";
-in
-{
-  imports = [ ./. ];
+in {
+  imports = [./.];
 
   users.users.${username} = {
     isNormalUser = true;
@@ -20,12 +18,11 @@ in
       "networkmanager"
       "wheel"
     ];
-    openssh.authorizedKeys.keys =
-      let
-        pubKeys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM0zoNZpdcUfZ/Nf8Nj248D3wGlQCLld3LjPGrA6zzXs sumelan"
-        ];
-      in
+    openssh.authorizedKeys.keys = let
+      pubKeys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM0zoNZpdcUfZ/Nf8Nj248D3wGlQCLld3LjPGrA6zzXs sumelan"
+      ];
+    in
       lib.mkIf isServer pubKeys;
   };
   hm.profiles.${username} = {

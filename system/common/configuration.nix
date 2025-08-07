@@ -4,15 +4,14 @@
   user,
   host,
   ...
-}:
-{
+}: {
   # Define your hostname
   networking = {
     hostName = "${host}";
     networkmanager.enable = true;
     firewall.enable = true;
   };
-  environment.systemPackages = with pkgs; [ networkmanagerapplet ];
+  environment.systemPackages = with pkgs; [networkmanagerapplet];
 
   # Set your time zone
   time = {
@@ -51,7 +50,7 @@
         variant = "";
       };
       # remove xterm
-      excludePackages = [ pkgs.xterm ];
+      excludePackages = [pkgs.xterm];
     };
 
     # use dbus broker as default implementation

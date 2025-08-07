@@ -4,26 +4,31 @@
   pkgs,
   inputs,
   ...
-}:
-{
-  imports = [ inputs.niri.nixosModules.niri ];
+}: {
+  imports = [inputs.niri.nixosModules.niri];
 
   options.custom = {
     niri = {
-      enable = lib.mkEnableOption "Niri compositor" // {
-        default = true;
-      };
-      flake.enable = lib.mkEnableOption "Enable niri-flake" // {
-        default = config.custom.niri.enable;
-      };
-      uwsm.enable = lib.mkEnableOption "Uing uwsm with niri" // {
-        default = config.custom.niri.flake.enable;
-      };
+      enable =
+        lib.mkEnableOption "Niri compositor"
+        // {
+          default = true;
+        };
+      flake.enable =
+        lib.mkEnableOption "Enable niri-flake"
+        // {
+          default = config.custom.niri.enable;
+        };
+      uwsm.enable =
+        lib.mkEnableOption "Uing uwsm with niri"
+        // {
+          default = config.custom.niri.flake.enable;
+        };
     };
   };
 
   config = lib.mkIf config.custom.niri.flake.enable {
-    nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+    nixpkgs.overlays = [inputs.niri.overlays.niri];
 
     programs = {
       niri = {
@@ -62,7 +67,7 @@
           default = "gnome";
           "org.freedesktop.impl.portal.FileChooser" = "gtk";
         };
-        obs.default = [ "gnome" ];
+        obs.default = ["gnome"];
       };
     };
   };
