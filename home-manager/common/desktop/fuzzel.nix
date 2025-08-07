@@ -3,13 +3,10 @@
   config,
   pkgs,
   user,
-  isLaptop,
   ...
-}:
-let
+}: let
   opacity = config.stylix.opacity.popups * 255 |> builtins.ceil |> lib.toHexString;
-in
-{
+in {
   programs = {
     fuzzel = {
       enable = true;

@@ -4,66 +4,63 @@
   pkgs,
   user,
   ...
-}:
-{
+}: {
   # tty autologin
   services.getty.autologinUser = user;
 
   services.greetd = {
     enable = true;
     settings = {
-      default_session =
-        let
-          inherit (config.hm.lib.monitors) mainMonitor;
-          mainScale = mainMonitor.scale |> builtins.toString;
-          mainMode = "${mainMonitor.mode.width |> builtins.toString}x${
-            mainMonitor.mode.height |> builtins.toString
-          }@${mainMonitor.mode.refresh |> builtins.toString}";
+      default_session = let
+        inherit (config.hm.lib.monitors) mainMonitor;
+        mainScale = mainMonitor.scale |> builtins.toString;
+        mainMode = "${mainMonitor.mode.width |> builtins.toString}x${
+          mainMonitor.mode.height |> builtins.toString
+        }@${mainMonitor.mode.refresh |> builtins.toString}";
 
-          backlightSpawn = lib.optionalString config.hm.custom.backlight.enable ''
-            spawn-at-startup "sh" "-c" "${lib.getExe pkgs.brightnessctl} set 5%"
+        backlightSpawn = lib.optionalString config.hm.custom.backlight.enable ''
+          spawn-at-startup "sh" "-c" "${lib.getExe pkgs.brightnessctl} set 5%"
+        '';
+
+        niri-config =
+          pkgs.writeText "niri-config"
+          # kdl
+          ''
+            hotkey-overlay {
+                skip-at-startup
+            }
+
+            environment {
+                GTK_USE_PORTAL "0"
+                GDK_DEBUG "no-portals"
+            }
+
+            cursor {
+                xcursor-theme "${config.hm.stylix.cursor.name}"
+                xcursor-size ${config.hm.stylix.cursor.size |> builtins.toString}
+            }
+
+            input {
+                touchpad {
+                    tap
+                    natural-scroll
+                }
+            }
+
+            output "${config.hm.lib.monitors.mainMonitorName}" {
+                scale ${mainScale}
+                transform "normal"
+                position x=0 y=0
+                mode "${mainMode}"
+            }
+
+            ${backlightSpawn}
+            spawn-at-startup "sh" "-c" "${lib.getExe pkgs.greetd.regreet}; pkill -f niri"
           '';
-
-          niri-config =
-            pkgs.writeText "niri-config"
-              # kdl
-              ''
-                hotkey-overlay {
-                    skip-at-startup
-                }
-
-                environment {
-                    GTK_USE_PORTAL "0"
-                    GDK_DEBUG "no-portals"
-                }
-
-                cursor {
-                    xcursor-theme "${config.hm.stylix.cursor.name}"
-                    xcursor-size ${config.hm.stylix.cursor.size |> builtins.toString}
-                }
-
-                input {
-                    touchpad {
-                        tap
-                        natural-scroll
-                    }
-                }
-
-                output "${config.hm.lib.monitors.mainMonitorName}" {
-                    scale ${mainScale}
-                    transform "normal"
-                    position x=0 y=0
-                    mode "${mainMode}"
-                }
-
-                ${backlightSpawn}
-                spawn-at-startup "sh" "-c" "${lib.getExe pkgs.greetd.regreet}; pkill -f niri"
-              '';
-        in
-        {
-          command = "niri -c ${niri-config}";
-          user = "greeter";
-        };
+      in {
+        command = "niri -c ${niri-config}";
+        user = "greeter";
+      };
     };
   };
 
@@ -96,9 +93,8 @@
         label_width = 450; # the interpretation of this value is entirely up to GTK
       };
     };
-    extraCss =
-      with config.lib.stylix.colors.withHashtag;
-      # css
+    extraCss = with config.lib.stylix.colors.withHashtag;
+    # css
       ''
         * {
             all: unset;

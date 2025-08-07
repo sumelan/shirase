@@ -4,12 +4,13 @@
   pkgs,
   isLaptop,
   ...
-}:
-{
+}: {
   options.custom = {
-    hypridle.enable = lib.mkEnableOption "Enable hypridle" // {
-      default = true;
-    };
+    hypridle.enable =
+      lib.mkEnableOption "Enable hypridle"
+      // {
+        default = true;
+      };
   };
 
   config = lib.mkIf config.custom.hypridle.enable {

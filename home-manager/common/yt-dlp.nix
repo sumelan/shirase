@@ -1,9 +1,6 @@
-{ pkgs, ... }:
-let
-  mkFormat =
-    height: ''"bestvideo[height<=?${toString height}][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'';
-in
-{
+{pkgs, ...}: let
+  mkFormat = height: ''"bestvideo[height<=?${toString height}][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'';
+in {
   programs = {
     yt-dlp = {
       enable = true;
@@ -24,6 +21,6 @@ in
     # Required
     ffmpeg
     # For --embed-thumbnail in certain formats
-    (python313.withPackages (ps: with ps; [ mutagen ]))
+    (python313.withPackages (ps: with ps; [mutagen]))
   ];
 }

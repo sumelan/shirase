@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   # silence warning about setting multiple user password options
   # https://github.com/NixOS/nixpkgs/pull/287506#issuecomment-1950958990
   options = {

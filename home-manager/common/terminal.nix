@@ -4,8 +4,7 @@
   pkgs,
   user,
   ...
-}:
-{
+}: {
   home.packages = with pkgs; [
     dysk # better disk info
     ets # add timestamp to beginning of each line
@@ -25,7 +24,7 @@
       extraPackages = [
         (pkgs.symlinkJoin {
           name = "batman";
-          paths = [ pkgs.bat-extras.batman ];
+          paths = [pkgs.bat-extras.batman];
           postBuild = ''
             mkdir -p $out/share/bash-completion/completions
             echo 'complete -F _comp_cmd_man batman' > $out/share/bash-completion/completions/batman
@@ -58,7 +57,7 @@
   };
   custom.persist = {
     home = {
-      cache.directories = [ ".local/share/zoxide" ];
+      cache.directories = [".local/share/zoxide"];
     };
   };
 }

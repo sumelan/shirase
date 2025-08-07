@@ -1,13 +1,11 @@
 {
-  config,
   lib,
+  config,
   pkgs,
   ...
-}:
-let
+}: let
   fishPath = lib.getExe config.programs.fish.package;
-in
-{
+in {
   programs = {
     fish = {
       enable = true;
@@ -21,9 +19,11 @@ in
       # use abbreviations instead of aliases
       preferAbbrs = true;
       # seems like shell abbreviations take precedence over aliases
-      shellAbbrs = config.home.shellAliases // {
-        ehistory = "nvim ${config.xdg.dataHome}/fish/fish_history";
-      };
+      shellAbbrs =
+        config.home.shellAliases
+        // {
+          ehistory = "nvim ${config.xdg.dataHome}/fish/fish_history";
+        };
       shellInit = ''
         set fish_greeting
 
@@ -57,7 +57,7 @@ in
 
   custom.persist = {
     home = {
-      cache.directories = [ ".local/share/fish" ];
+      cache.directories = [".local/share/fish"];
     };
   };
 }

@@ -24,15 +24,17 @@ lib.mkMerge [
 
   # security
   {
-    security = {
-      polkit.enable = true;
-      # Use sudo-rs in place of regular sudo
-      sudo-rs = {
-        enable = true;
-        wheelNeedsPassword = false;
-        extraConfig = "Defaults passwd_tries=10";
-      };
-    } // lib.optionalAttrs config.hm.programs.hyprlock.enable { pam.services.hyprlock = { }; };
+    security =
+      {
+        polkit.enable = true;
+        # Use sudo-rs in place of regular sudo
+        sudo-rs = {
+          enable = true;
+          wheelNeedsPassword = false;
+          extraConfig = "Defaults passwd_tries=10";
+        };
+      }
+      // lib.optionalAttrs config.hm.programs.hyprlock.enable {pam.services.hyprlock = {};};
   }
 
   # gnuupg

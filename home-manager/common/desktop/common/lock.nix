@@ -2,12 +2,13 @@
   lib,
   config,
   ...
-}:
-{
+}: {
   options.custom = {
-    hyprlock.enable = lib.mkEnableOption "hyprlock" // {
-      default = true;
-    };
+    hyprlock.enable =
+      lib.mkEnableOption "hyprlock"
+      // {
+        default = true;
+      };
   };
 
   config = lib.mkIf config.custom.hyprlock.enable {

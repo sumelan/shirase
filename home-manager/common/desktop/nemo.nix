@@ -4,11 +4,9 @@
   pkgs,
   flakePath,
   ...
-}:
-{
-  home.packages =
-    with pkgs;
-    [ nemo-with-extensions ]
+}: {
+  home.packages = with pkgs;
+    [nemo-with-extensions]
     ++ (with pkgs; [
       p7zip-rar # support for encrypted archives
       nemo-fileroller
@@ -32,16 +30,14 @@
     };
   };
 
-  gtk.gtk3.bookmarks =
-    let
-      homeDir = config.home.homeDirectory;
-    in
-    [
-      "file://${flakePath}"
-      "file://${homeDir}/Downloads"
-      "file://${homeDir}/Pictures/Wallpapers"
-      "file:///persist Persist"
-    ];
+  gtk.gtk3.bookmarks = let
+    homeDir = config.home.homeDirectory;
+  in [
+    "file://${flakePath}"
+    "file://${homeDir}/Downloads"
+    "file://${homeDir}/Pictures/Wallpapers"
+    "file:///persist Persist"
+  ];
 
   dconf.settings = {
     # fix open in terminal

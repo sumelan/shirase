@@ -6,8 +6,7 @@
   self,
   user,
   ...
-}:
-{
+}: {
   services.envfs.enable = true; # execute shebangs that assume hardcoded shell paths
   system = {
     # envfs sets usrbinenv activation script to "" with mkForce
@@ -58,24 +57,24 @@
     dev.enable = false;
   };
 
-  nix =
-    let
-      nixPath = lib.mapAttrsToList (name: _: "${name}=flake:${name}") inputs;
-      registry = lib.mapAttrs (_: flake: { inherit flake; }) inputs;
-    in
-    {
-      channel.enable = false;
-      # required for nix-shell -p to work
-      inherit nixPath;
-      gc = {
-        # Automatic garbage collection
-        automatic = true;
-        dates = "daily";
-        options = "--delete-older-than 7d";
-      };
-      package = pkgs.nix; # for lix: pkgs.lixPackageSets.latest.lix;
-      # to use shorter IDs instead of lengthy address
-      registry = registry // {
+  nix = let
+    nixPath = lib.mapAttrsToList (name: _: "${name}=flake:${name}") inputs;
+    registry = lib.mapAttrs (_: flake: {inherit flake;}) inputs;
+  in {
+    channel.enable = false;
+    # required for nix-shell -p to work
+    inherit nixPath;
+    gc = {
+      # Automatic garbage collection
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-than 7d";
+    };
+    package = pkgs.nix; # for lix: pkgs.lixPackageSets.latest.lix;
+    # to use shorter IDs instead of lengthy address
+    registry =
+      registry
+      // {
         n = registry.nixpkgs;
         master = {
           # the flake reference: 'nixpkgs-master'
@@ -91,36 +90,36 @@
           };
         };
       };
-      settings = {
-        auto-optimise-store = true; # Optimise symlinks
-        # re-evaluate on every rebuild instead of "cached failure of attribute" error
-        # eval-cache = false;
-        flake-registry = ""; # don't use the global flake registry, define everything explicitly
-        # required to be set, for some reason nix.nixPath does not write to nix.conf
-        nix-path = nixPath;
-        warn-dirty = false;
-        # removes ~/.nix-profile and ~/.nix-defexpr
-        use-xdg-base-directories = true;
+    settings = {
+      auto-optimise-store = true; # Optimise symlinks
+      # re-evaluate on every rebuild instead of "cached failure of attribute" error
+      # eval-cache = false;
+      flake-registry = ""; # don't use the global flake registry, define everything explicitly
+      # required to be set, for some reason nix.nixPath does not write to nix.conf
+      nix-path = nixPath;
+      warn-dirty = false;
+      # removes ~/.nix-profile and ~/.nix-defexpr
+      use-xdg-base-directories = true;
 
-        experimental-features = [
-          "nix-command"
-          "flakes"
-          # NOTE: 'pipe-operators' in nix but 'pipe-operator' in lix
-          # https://discourse.nixos.org/t/lix-mismatch-in-feature-name-compared-to-nix/59879
-          "pipe-operators"
-        ];
-        substituters = [
-          "https://nix-community.cachix.org"
-          "https://niri.cachix.org"
-        ];
-        # allow building and pushing of laptop config from desktop
-        trusted-users = [ user ];
-        trusted-public-keys = [
-          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
-        ];
-      };
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        # NOTE: 'pipe-operators' in nix but 'pipe-operator' in lix
+        # https://discourse.nixos.org/t/lix-mismatch-in-feature-name-compared-to-nix/59879
+        "pipe-operators"
+      ];
+      substituters = [
+        "https://nix-community.cachix.org"
+        "https://niri.cachix.org"
+      ];
+      # allow building and pushing of laptop config from desktop
+      trusted-users = [user];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+      ];
     };
+  };
 
   system = {
     # use nixos-rebuild-ng to rebuild the system
@@ -130,7 +129,7 @@
     # https://reddit.com/r/NixOS/comments/16t2njf/small_trick_for_people_using_nixos_with_flakes/k2d0sxx/
     nixos.label = lib.concatStringsSep "-" (
       (lib.sort (x: y: x < y) config.system.nixos.tags)
-      ++ [ "${config.system.nixos.version}.${self.sourceInfo.shortRev or "dirty"}" ]
+      ++ ["${config.system.nixos.version}.${self.sourceInfo.shortRev or "dirty"}"]
     );
   };
 

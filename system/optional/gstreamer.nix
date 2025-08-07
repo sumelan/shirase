@@ -3,12 +3,9 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   options.custom = {
-    gstreamer.enable = lib.mkEnableOption "Gstreamer" // {
-      default = config.hm.custom.qobuz-player.enable;
-    };
+    gstreamer.enable = lib.mkEnableOption "Gstreamer";
   };
 
   config = lib.mkIf config.custom.gstreamer.enable {

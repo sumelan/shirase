@@ -1,5 +1,8 @@
-{ lib, config, ... }:
-let
+{
+  lib,
+  config,
+  ...
+}: let
   monitor = lib.types.submodule {
     options = {
       isMain = lib.mkOption {
@@ -50,9 +53,7 @@ let
       };
     };
   };
-in
-
-{
+in {
   options.monitors = lib.mkOption {
     type = lib.types.attrsOf monitor;
   };

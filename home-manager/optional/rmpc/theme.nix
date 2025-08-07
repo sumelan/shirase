@@ -108,7 +108,7 @@ with config.lib.stylix.colors.withHashtag; {
                   ),
                   (
                       left: [
-                          (kind: Text("󰚭 "), style: (fg: "${base05}")),
+                          (kind: Text(" 󰚭 "), style: (fg: "${base05}")),
                           (kind: Property(Status(Elapsed)), style: (fg: "${base0C}")),
                           (kind: Text(" / "), style: (fg: "${base0F}", modifiers: "Dim")),
                           (kind: Property(Status(Duration)), style: (fg: "${base0C}")),
@@ -123,7 +123,7 @@ with config.lib.stylix.colors.withHashtag; {
                       right: [
                           (kind: Text("󰿈 "), style: (fg: "${base05}")),
                           (kind: Property(Status(Bitrate)), style: (fg: "${base0C}")),
-                          (kind: Text(" kbps"), style: (fg: "${base0F}", modifiers: "Dim")),
+                          (kind: Text(" kbps "), style: (fg: "${base0F}", modifiers: "Dim")),
                       ]
                   ),
               ],

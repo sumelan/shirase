@@ -6,9 +6,8 @@
   inputs,
   flakePath,
   ...
-}:
-let
-  nixpkgs-review = pkgs.nixpkgs-review.override { withNom = true; };
+}: let
+  nixpkgs-review = pkgs.nixpkgs-review.override {withNom = true;};
 
   ns = pkgs.writeShellApplication {
     name = "ns";
@@ -20,13 +19,11 @@ let
     checkPhase = "";
     text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
   };
-in
-{
-  imports = [ inputs.nix-index-database.homeModules.nix-index ];
+in {
+  imports = [inputs.nix-index-database.homeModules.nix-index];
 
   home = {
-    packages =
-      with pkgs;
+    packages = with pkgs;
       [
         nixd
         nix-output-monitor
@@ -36,7 +33,7 @@ in
         nvd
         nvfetcher
       ]
-      ++ [ ns ];
+      ++ [ns];
   };
 
   programs = {

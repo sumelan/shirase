@@ -8,7 +8,6 @@ _: {
     ./helix.nix
     ./obs-studio.nix
     ./protonapp.nix
-    ./qobuz-player.nix
     ./rustdesk.nix
     ./spotify.nix
     ./thunderbird.nix

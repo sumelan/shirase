@@ -1,4 +1,8 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 # NOTE: partitions and subvolumes are created via install.sh
 {
   fileSystems = {
@@ -60,10 +64,11 @@
   services.btrfs.autoScrub = {
     enable = true;
     interval = "monthly";
-    fileSystems = [
-      "/persist"
-    ]
-    ++ (lib.optional config.custom.hdds.wdelem4 "/media/4TWD")
-    ++ (lib.optional config.custom.hdds.ironwolf2 "/media/IRONWOLF2");
+    fileSystems =
+      [
+        "/persist"
+      ]
+      ++ (lib.optional config.custom.hdds.wdelem4 "/media/4TWD")
+      ++ (lib.optional config.custom.hdds.ironwolf2 "/media/IRONWOLF2");
   };
 }

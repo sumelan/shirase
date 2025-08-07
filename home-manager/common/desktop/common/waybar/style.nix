@@ -1,54 +1,51 @@
-{ config, ... }:
-{
-  programs.waybar.style =
-    with config.lib.stylix.colors.withHashtag;
-    let
-      animation-css =
-        # css
-        ''
-          @keyframes gradient {
-            0% {
-              background-position: 0% 50%;
-            }
-            50% {
-              background-position: 100% 30%;
-            }
-            100% {
-              background-position: 0% 50%;
-            }
+{config, ...}: {
+  programs.waybar.style = with config.lib.stylix.colors.withHashtag; let
+    animation-css =
+      # css
+      ''
+        @keyframes gradient {
+          0% {
+            background-position: 0% 50%;
           }
+          50% {
+            background-position: 100% 30%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
 
-          @keyframes gradient_f {
-            0% {
-              background-position: 0% 200%;
-            }
-            50% {
-              background-position: 200% 0%;
-            }
-            100% {
-              background-position: 400% 200%;
-            }
+        @keyframes gradient_f {
+          0% {
+            background-position: 0% 200%;
           }
+          50% {
+            background-position: 200% 0%;
+          }
+          100% {
+            background-position: 400% 200%;
+          }
+        }
 
-          @keyframes gradient_f_nh {
-            0% {
-              background-position: 0% 200%;
-            }
-            100% {
-              background-position: 200% 200%;
-            }
+        @keyframes gradient_f_nh {
+          0% {
+            background-position: 0% 200%;
           }
+          100% {
+            background-position: 200% 200%;
+          }
+        }
 
-          @keyframes gradient_rv {
-            0% {
-              background-position: 200% 200%;
-            }
-            100% {
-              background-position: 0% 200%;
-            }
+        @keyframes gradient_rv {
+          0% {
+            background-position: 200% 200%;
           }
-        '';
-    in
+          100% {
+            background-position: 0% 200%;
+          }
+        }
+      '';
+  in
     # css
     ''
       ${animation-css}
