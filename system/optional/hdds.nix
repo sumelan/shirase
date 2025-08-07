@@ -3,24 +3,28 @@
   config,
   isServer,
   ...
-}:
-let
+}: let
   cfg = config.custom.hdds;
   wdelem = "/media/4TWD";
   ironwolf = "/media/IRONWOLF2";
-in
-{
+in {
   options.custom = {
     hdds = {
-      enable = lib.mkEnableOption "Desktop HDDs" // {
-        default = isServer;
-      };
-      wdelem4 = lib.mkEnableOption "WD Elements 4TB" // {
-        default = config.custom.hdds.enable;
-      };
-      ironwolf2 = lib.mkEnableOption "Seagate IronWolf 2TB" // {
-        default = config.custom.hdds.enable;
-      };
+      enable =
+        lib.mkEnableOption "Desktop HDDs"
+        // {
+          default = isServer;
+        };
+      wdelem4 =
+        lib.mkEnableOption "WD Elements 4TB"
+        // {
+          default = config.custom.hdds.enable;
+        };
+      ironwolf2 =
+        lib.mkEnableOption "Seagate IronWolf 2TB"
+        // {
+          default = config.custom.hdds.enable;
+        };
     };
   };
 
@@ -46,7 +50,7 @@ in
 
     hm = {
       custom.btop.disks =
-        lib.optionals cfg.wdelem4 [ wdelem ] ++ lib.optionals cfg.ironwolf2 [ ironwolf ];
+        lib.optionals cfg.wdelem4 [wdelem] ++ lib.optionals cfg.ironwolf2 [ironwolf];
     };
   };
 }

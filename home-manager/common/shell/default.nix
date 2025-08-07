@@ -1,8 +1,6 @@
-{ config, ... }:
-let
+{config, ...}: let
   proj_dir = "/persist${config.home.homeDirectory}/projects";
-in
-{
+in {
   imports = [
     ./bash.nix
     ./fish.nix

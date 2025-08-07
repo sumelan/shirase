@@ -4,8 +4,7 @@
   pkgs,
   user,
   ...
-}:
-{
+}: {
   home = {
     packages = with pkgs; [
       ripdrag # Drag and Drop utilty written in Rust and GTK4
@@ -59,7 +58,7 @@
           linemode = "size";
           show_hidden = true;
         };
-        opener = { };
+        opener = {};
         # settings for plugins
         plugin = {
           prepend_fetchers = [

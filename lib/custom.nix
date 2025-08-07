@@ -8,16 +8,16 @@
 }:
 inputs.nixpkgs.lib.extend (
   _final: libprev:
-  {
-    custom = import ./. {
-      inherit
-        system
-        pkgs
-        inputs
-        self
-        ;
-      lib = libprev;
-    };
-  }
-  // home-manager.lib
+    {
+      custom = import ./. {
+        inherit
+          system
+          pkgs
+          inputs
+          self
+          ;
+        lib = libprev;
+      };
+    }
+    // home-manager.lib
 )

@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 pkgs.writers.writeFishBin "fuzzel-actions" ''
   set choices " Lock
    Suspend

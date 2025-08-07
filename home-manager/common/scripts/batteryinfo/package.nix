@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.writers.writeFishBin "write_battery_info" ''
   set battery (cat /sys/class/power_supply/BAT*/capacity)
   set battery_status (cat /sys/class/power_supply/BAT*/status)

@@ -2,11 +2,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.custom.audiobookshelf;
-in
-{
+in {
   options.custom = {
     audiobookshelf = {
       enable = lib.mkEnableOption "audiobookshelf";
@@ -79,10 +77,11 @@ in
     };
 
     custom.persist = {
-      root.directories = [
-        "/var/lib/audiobookshelf"
-      ]
-      ++ (lib.optional cfg.nginx.enable "/var/lib/acme");
+      root.directories =
+        [
+          "/var/lib/audiobookshelf"
+        ]
+        ++ (lib.optional cfg.nginx.enable "/var/lib/acme");
     };
   };
 }

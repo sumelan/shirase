@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./desktop
-    ./neovim
     ./scripts
     ./shell
     ./btop.nix
@@ -10,6 +9,7 @@
     ./fastfetch.nix
     ./gh.nix
     ./git.nix
+    ./helix.nix
     ./jujutsu.nix
     ./lazygit.nix
     ./nix.nix

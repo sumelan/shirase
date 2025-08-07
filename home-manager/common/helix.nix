@@ -7,7 +7,11 @@
   ...
 }: {
   options.custom = {
-    helix.enable = lib.mkEnableOption "A post-modern modal text editor";
+    helix.enable =
+      lib.mkEnableOption "A post-modern modal text editor"
+      // {
+        default = true;
+      };
   };
 
   config = lib.mkIf config.custom.helix.enable {

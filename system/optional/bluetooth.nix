@@ -3,12 +3,13 @@
   config,
   isLaptop,
   ...
-}:
-{
+}: {
   options.custom = with lib; {
-    bluetooth.enable = mkEnableOption "Bluetooth" // {
-      default = isLaptop;
-    };
+    bluetooth.enable =
+      mkEnableOption "Bluetooth"
+      // {
+        default = isLaptop;
+      };
   };
 
   config = lib.mkIf config.custom.bluetooth.enable {
@@ -50,7 +51,7 @@
     };
 
     custom.persist = {
-      root.directories = [ "/var/lib/bluetooth" ];
+      root.directories = ["/var/lib/bluetooth"];
     };
   };
 }

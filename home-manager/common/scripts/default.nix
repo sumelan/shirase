@@ -2,8 +2,7 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   home.packages =
     lib.packagesFromDirectoryRecursive {
       inherit (pkgs) callPackage;

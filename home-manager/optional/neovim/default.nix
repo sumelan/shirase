@@ -1,14 +1,15 @@
-{ lib, config, ... }:
 {
+  lib,
+  config,
+  ...
+}: {
   imports = [
     ./keymaps.nix
     ./nvf.nix
   ];
 
   options.custom = {
-    neovim.enable = lib.mkEnableOption "neovim editor" // {
-      default = true;
-    };
+    neovim.enable = lib.mkEnableOption "neovim editor";
   };
 
   config = lib.mkIf config.custom.neovim.enable {

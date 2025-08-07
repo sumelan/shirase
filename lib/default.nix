@@ -5,8 +5,7 @@
   inputs,
   lib,
   ...
-}:
-{
+}: {
   nixos = import ./nixos.nix {
     inherit
       system

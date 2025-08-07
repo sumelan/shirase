@@ -6,8 +6,7 @@
   flakePath,
   isLaptop,
   ...
-}:
-{
+}: {
   imports = [
     ./common
     ./optional
@@ -35,7 +34,7 @@
 
     # install fish completions for fish
     # https://github.com/nix-community/home-manager/pull/2408
-    pathsToLink = [ "/share/fish" ];
+    pathsToLink = ["/share/fish"];
 
     variables = {
       TERMINAL = config.hm.profiles.${user}.defaultTerminal.name;
@@ -46,22 +45,24 @@
     };
 
     # use some shell aliases from home manager
-    shellAliases = {
-      inherit (config.hm.programs.bash.shellAliases)
-        eza
-        ls
-        ll
-        la
-        lla
-        ;
-    }
-    // {
-      inherit (config.hm.home.shellAliases)
-        y # yazi
-        ;
-    };
-    systemPackages =
-      with pkgs;
+    shellAliases =
+      {
+        inherit
+          (config.hm.programs.bash.shellAliases)
+          eza
+          ls
+          ll
+          la
+          lla
+          ;
+      }
+      // {
+        inherit
+          (config.hm.home.shellAliases)
+          y # yazi
+          ;
+      };
+    systemPackages = with pkgs;
       [
         bonk # mkdir and touch in one
         curl
@@ -74,21 +75,22 @@
         # use same config as home-manager
         (pkgs.symlinkJoin {
           name = "yazi";
-          paths = [ pkgs.yazi ];
-          buildInputs = [ pkgs.makeWrapper ];
-          postBuild = # sh
+          paths = [pkgs.yazi];
+          buildInputs = [pkgs.makeWrapper];
+          postBuild =
+            # sh
             ''wrapProgram $out/bin/yazi --set YAZI_CONFIG_HOME "${config.hm.xdg.configHome}/yazi"'';
           meta.mainProgram = "yazi";
         })
       ]
       ++
-        # install gtk theme for root, some apps like gparted only run as root
-        [
-          config.hm.gtk.theme.package
-          config.hm.gtk.iconTheme.package
-        ]
-      ++ [ config.hm.profiles.${user}.defaultEditor.package ]
-      ++ (lib.optional config.hm.custom.helix.enable helix);
+      # install gtk theme for root, some apps like gparted only run as root
+      [
+        config.hm.gtk.theme.package
+        config.hm.gtk.iconTheme.package
+      ]
+      ++ [config.hm.profiles.${user}.defaultEditor.package]
+      ++ (lib.optional config.hm.custom.neovim.enable neovim);
   };
 
   systemd.tmpfiles.rules =
@@ -118,33 +120,31 @@
   # setup fonts
   fonts = {
     enableDefaultPackages = true;
-    packages = [ config.hm.stylix.fonts.monospace.package ]; # install monospace font for root
+    packages = [config.hm.stylix.fonts.monospace.package]; # install monospace font for root
   };
 
   xdg = {
     # use mimetypes defined from home-manager
-    mime =
-      let
-        hmMime = config.hm.xdg.mimeApps;
-      in
-      {
-        enable = true;
-        inherit (hmMime) defaultApplications;
-        addedAssociations = hmMime.associations.added;
-        removedAssociations = hmMime.associations.removed;
-      };
+    mime = let
+      hmMime = config.hm.xdg.mimeApps;
+    in {
+      enable = true;
+      inherit (hmMime) defaultApplications;
+      addedAssociations = hmMime.associations.added;
+      removedAssociations = hmMime.associations.removed;
+    };
 
     # fix opening terminal for nemo / thunar by using xdg-terminal-exec spec
     terminal-exec = {
       enable = true;
       settings = {
-        default = [ "${config.hm.profiles.${user}.defaultTerminal.name}.desktop" ];
+        default = ["${config.hm.profiles.${user}.defaultTerminal.name}.desktop"];
       };
     };
   };
 
   custom.persist = {
-    root.directories = lib.optionals config.hm.custom.wifi.enable [ "/etc/NetworkManager" ];
+    root.directories = lib.optionals config.hm.custom.wifi.enable ["/etc/NetworkManager"];
     root.cache.directories = [
       "/var/lib/systemd/coredump"
     ];

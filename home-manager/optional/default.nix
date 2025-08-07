@@ -1,11 +1,11 @@
 _: {
   imports = [
+    ./neovim
     ./rmpc
     ./brave.nix
     ./cyanrip.nix
     ./foliate.nix
     ./freetube.nix
-    ./helix.nix
     ./obs-studio.nix
     ./protonapp.nix
     ./rustdesk.nix

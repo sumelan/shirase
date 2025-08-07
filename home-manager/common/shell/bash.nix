@@ -1,8 +1,6 @@
-{ config, ... }:
-let
+{config, ...}: let
   histFile = "${config.xdg.configHome}/bash/.bash_history";
-in
-{
+in {
   programs.bash = {
     enable = true;
     enableCompletion = true;
@@ -35,6 +33,6 @@ in
   };
 
   custom.persist = {
-    home.directories = [ ".config/bash" ];
+    home.directories = [".config/bash"];
   };
 }

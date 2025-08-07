@@ -19,15 +19,12 @@
   custom = {
     stylix = {
       cursor = {
-        package = pkgs.catppuccin-cursors.frappeDark;
-        name = "catppuccin-frappe-dark-cursors";
+        package = pkgs.custom.colloid-pastel-cursors;
+        name = "dist-dark";
       };
       icons = {
-        package = pkgs.catppuccin-papirus-folders.override {
-          flavor = "frappe";
-          accent = "sapphire";
-        };
-        dark = "Papirus-Dark";
+        package = pkgs.custom.colloid-pastel-icons;
+        dark = "Colloid-Pastel-Dark";
       };
     };
     niri.xwayland.enable = true;
