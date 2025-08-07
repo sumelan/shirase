@@ -3,8 +3,7 @@
   config,
   pkgs,
   ...
-}:
-let
+}: let
   ymPkgs = pkgs.callPackage pkgs.symlinkJoin {
     name = "youtube-music";
     paths = [
@@ -18,14 +17,13 @@ let
         --add-flags '--enable-wayland-ime --wayland-text-input-version=3'
     '';
   };
-in
-{
+in {
   options.custom = {
     youtube-music.enable = lib.mkEnableOption "YoutubeMusic";
   };
 
   config = lib.mkIf config.custom.youtube-music.enable {
-    home.packages = [ ymPkgs ];
+    home.packages = [ymPkgs];
 
     programs.niri.settings = {
       binds = {

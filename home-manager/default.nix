@@ -3,8 +3,7 @@
   pkgs,
   user,
   ...
-}:
-{
+}: {
   imports = [
     ./common
     ./optional
@@ -43,19 +42,18 @@
     mimeApps.enable = true;
 
     # hide unnecessary desktopItems
-    desktopEntries =
-      let
-        hideList = [
-          "fcitx5-configtool"
-          "kcm_fcitx5"
-          "org.fcitx.Fcitx5"
-          "org.fcitx.fcitx5-migrator"
-          "kbd-layout-viewer5"
-          "fish"
-          "yazi"
-          "nm-connection-editor"
-        ];
-      in
+    desktopEntries = let
+      hideList = [
+        "fcitx5-configtool"
+        "kcm_fcitx5"
+        "org.fcitx.Fcitx5"
+        "org.fcitx.fcitx5-migrator"
+        "kbd-layout-viewer5"
+        "fish"
+        "yazi"
+        "nm-connection-editor"
+      ];
+    in
       # generate an attribute set by mapping a function over a list of attribute names.
       lib.genAttrs hideList (name: {
         inherit name;

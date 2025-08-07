@@ -40,7 +40,8 @@ in {
           packages = with inputs.firefox-addons.packages.${pkgs.system}; [
             bitwarden
             darkreader
-            screenshot-capture-annotate
+            proton-pass
+            proton-vpn
             sponsorblock
             ublock-origin
           ];

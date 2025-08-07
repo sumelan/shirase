@@ -2,13 +2,12 @@
   lib,
   config,
   ...
-}:
-{
+}: {
   options.custom = {
     btop = {
       disks = lib.mkOption {
         type = with lib.types; listOf str;
-        default = [ ];
+        default = [];
         description = "List of disks to monitor in btop";
       };
     };

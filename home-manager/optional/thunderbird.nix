@@ -2,8 +2,7 @@
   lib,
   config,
   ...
-}:
-{
+}: {
   options.custom = {
     thunderbird = {
       enable = lib.mkEnableOption "thunderbird";

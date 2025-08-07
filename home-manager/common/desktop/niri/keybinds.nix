@@ -1,5 +1,8 @@
-{ lib, config, ... }:
 {
+  lib,
+  config,
+  ...
+}: {
   programs.niri.settings.binds = with config.lib.niri.actions; {
     # application binds are written in each app.nix
     # mediakey binds are written in swayosd.nix
@@ -11,15 +14,15 @@
     "Mod+Tab".action = toggle-overview;
 
     # exit niri
-    "Mod+Shift+Escape".action = quit { skip-confirmation = false; };
+    "Mod+Shift+Escape".action = quit {skip-confirmation = false;};
 
     # screenshot 'screenshot-screen' is valid only on niri-stable
-    "Mod+Backslash".action = screenshot { show-pointer = false; };
+    "Mod+Backslash".action = screenshot {show-pointer = false;};
     "Mod+Shift+Backslash" = lib.custom.niri.runCmd {
       cmd = "niri msg action screenshot-screen";
       title = "Screenshot the focused screen";
     };
-    "Mod+Alt+Backslash".action = screenshot-window { write-to-disk = true; };
+    "Mod+Alt+Backslash".action = screenshot-window {write-to-disk = true;};
 
     # window and colum management
     "Mod+Backspace".action = close-window;

@@ -1,5 +1,4 @@
-{ user, ... }:
-{
+{user, ...}: {
   programs = {
     git = {
       enable = true;
