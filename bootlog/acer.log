@@ -268,3 +268,108 @@ Removed packages:
 [R.]  #3  link-units     <none>
 [R.]  #4  stage          1-init.sh
 Closure size: 2598 -> 2594 (162 paths added, 166 paths removed, delta -4, disk usage +2.9MiB).
+
+---
+
+2025年08月07日 12時02分39秒
+<<< /nix/var/nix/profiles/system-325-link
+>>> /nix/var/nix/profiles/system-326-link
+Version changes:
+[C.]  #1  icu4c              75.1, 76.1 x2, 76.1-dev, 77.1 -> 73.2, 75.1, 76.1 x2, 76.1-dev, 77.1
+[U.]  #2  nixos-system-acer  25.11.20250803.5b09dc4.dad5810 -> 25.11.20250803.5b09dc4.4e96bf4
+[C.]  #3  pcre2              10.44 x3 -> 10.44 x4
+[C.]  #4  wl-clipboard       2.2.1 -> 2.2.1, 2.2.1-fish-completions
+Added packages:
+[A.]  #01  alejandra                            4.0.0
+[A.]  #02  base16-catppuccin-frappe.conf        <none>
+[A.]  #03  base16-catppuccin-frappe.css         <none>
+[A.]  #04  base16-catppuccin-frappe.fish        <none>
+[A.]  #05  base16-catppuccin-frappe.html        <none>
+[A.]  #06  base16-catppuccin-frappe.json        <none>
+[A.]  #07  base16-catppuccin-frappe.svg         <none> x2
+[A.]  #08  base16-catppuccin-frappe.tmTheme     <none>
+[A.]  #09  base16-catppuccin-frappe.toml        <none>
+[A.]  #10  base16-catppuccin-frappe.xml         <none>
+[A.]  #11  catppuccin-frappe-gnome-shell-theme  <none>
+[A.]  #12  codebook                             0.3.5
+[A+]  #13  colloid-pastel-cursors-unstable      2025-03-20, 2025-03-20-fish-completions
+[A+]  #14  colloid-pastel-icons-unstable        2025-03-20, 2025-03-20-fish-completions
+[A+]  #15  helix                                25.07.1, 25.07.1-fish-completions
+[A.]  #16  helix-config.toml                    <none>
+[A.]  #17  helix-languages-config               <none>
+[A.]  #18  hm_helixignore                       <none>
+[A.]  #19  lemminx                              0.31.0
+[A.]  #20  libargon2                            20190702
+[A.]  #21  libzip                               1.11.4
+[A.]  #22  ltex-ls-plus                         18.5.1
+[A.]  #23  openjdk-headless                     21.0.7+6
+[A.]  #24  openjdk-headless-minimal-jre         21.0.7+6
+[A.]  #25  php                                  8.4.10
+[A.]  #26  php-bcmath                           8.4.10
+[A.]  #27  php-calendar                         8.4.10
+[A.]  #28  php-ctype                            8.4.10
+[A.]  #29  php-curl                             8.4.10
+[A.]  #30  php-dom                              8.4.10
+[A.]  #31  php-exif                             8.4.10
+[A.]  #32  php-extra-init                       8.4.10.ini
+[A.]  #33  php-fileinfo                         8.4.10
+[A.]  #34  php-filter                           8.4.10
+[A.]  #35  php-ftp                              8.4.10
+[A.]  #36  php-gd                               8.4.10
+[A.]  #37  php-gettext                          8.4.10
+[A.]  #38  php-gmp                              8.4.10
+[A.]  #39  php-iconv                            8.4.10
+[A.]  #40  php-intl                             8.4.10
+[A.]  #41  php-ldap                             8.4.10
+[A.]  #42  php-mbstring                         8.4.10
+[A.]  #43  php-mysqli                           8.4.10
+[A.]  #44  php-mysqlnd                          8.4.10
+[A.]  #45  php-opcache                          8.4.10
+[A.]  #46  php-openssl                          8.4.10
+[A.]  #47  php-pcntl                            8.4.10
+[A.]  #48  php-pdo                              8.4.10
+[A.]  #49  php-pdo_mysql                        8.4.10
+[A.]  #50  php-pdo_odbc                         8.4.10
+[A.]  #51  php-pdo_pgsql                        8.4.10
+[A.]  #52  php-pdo_sqlite                       8.4.10
+[A.]  #53  php-pgsql                            8.4.10
+[A.]  #54  php-posix                            8.4.10
+[A.]  #55  php-readline                         8.4.10
+[A.]  #56  php-session                          8.4.10
+[A.]  #57  php-simplexml                        8.4.10
+[A.]  #58  php-soap                             8.4.10
+[A.]  #59  php-sockets                          8.4.10
+[A.]  #60  php-sodium                           8.4.10
+[A.]  #61  php-sqlite3                          8.4.10
+[A.]  #62  php-sysvsem                          8.4.10
+[A.]  #63  php-tokenizer                        8.4.10
+[A.]  #64  php-with-extensions                  8.4.10
+[A.]  #65  php-xmlreader                        8.4.10
+[A.]  #66  php-xmlwriter                        8.4.10
+[A.]  #67  php-zip                              8.4.10
+[A.]  #68  php-zlib                             8.4.10
+[A.]  #69  phpactor                             2025.07.25.0
+[A.]  #70  prettier                             3.6.2
+[A.]  #71  ruff                                 0.12.4
+[A.]  #72  set-java-classpath-hook              <none>
+[A.]  #73  sqls                                 0.2.28
+[A.]  #74  todo-comments-nvim                   304a8d20
+Removed packages:
+[R.]  #01  base16-everforest-dark-soft.conf        <none>
+[R.]  #02  base16-everforest-dark-soft.css         <none>
+[R.]  #03  base16-everforest-dark-soft.fish        <none>
+[R.]  #04  base16-everforest-dark-soft.html        <none>
+[R.]  #05  base16-everforest-dark-soft.json        <none>
+[R.]  #06  base16-everforest-dark-soft.svg         <none> x2
+[R.]  #07  base16-everforest-dark-soft.tmTheme     <none>
+[R.]  #08  base16-everforest-dark-soft.xml         <none>
+[R.]  #09  cinnamon-nvim                           450cb324
+[R-]  #10  everforest-cursors                      3212590527, 3212590527-fish-completions
+[R.]  #11  everforest-dark-soft-gnome-shell-theme  <none>
+[R-]  #12  everforest-gtk-theme                    0-unstable-2023-03-20, 0-unstable-2023-03-20-fish-completions
+[R-]  #13  gtk-engine-murrine                      0.98.2
+[R.]  #14  highlight-undo-nvim-ee32e126            <none>
+[R.]  #15  nixfmt                                  1.0.0
+[R.]  #16  node-client                             5.3.0
+[R.]  #17  nvim-cursorline                         804f0023
+Closure size: 2594 -> 2655 (168 paths added, 107 paths removed, delta +61, disk usage +1.2GiB).
