@@ -1,5 +1,4 @@
-{ lib, pkgs, ... }:
-{
+_: {
   security.rtkit.enable = true;
 
   services = {
@@ -16,7 +15,7 @@
             "pulse.cmd" = [
               {
                 cmd = "load-module";
-                args = [ "module-switch-on-connect" ];
+                args = ["module-switch-on-connect"];
               }
             ];
           };
@@ -36,17 +35,7 @@
       };
     };
   };
-  hm = {
-    home.packages = with pkgs; [ pwvucontrol ];
-    programs.niri.settings.window-rules = [
-      {
-        matches = lib.singleton {
-          app-id = "^(com.saivert.pwvucontrol)$";
-        };
-        open-floating = true;
-      }
-    ];
-  };
+
   custom.persist = {
     home.directories = [
       ".local/state/wireplumber"

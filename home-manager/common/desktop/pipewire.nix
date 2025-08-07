@@ -1,6 +1,14 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 # NOTE: 'programs.dconf.enable = true' is necessary for theb daemon to work correctly
 {
+  home.packages = with pkgs; [
+    pwvucontrol
+  ];
+
   services.easyeffects = {
     enable = true;
     package = pkgs.easyeffects;
@@ -17,9 +25,10 @@
   };
 
   programs.niri.settings.window-rules = lib.singleton {
-    matches = lib.singleton {
-      app-id = "^(com.github.wwmm.easyeffects)$";
-    };
+    matches = [
+      {app-id = "^(com.github.wwmm.easyeffects)$";}
+      {app-id = "^(com.saivert.pwvucontrol)$";}
+    ];
     open-floating = true;
   };
 

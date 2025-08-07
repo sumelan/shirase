@@ -4,12 +4,12 @@ _: {
     ./niri
     ./discord.nix
     ./dunst.nix
-    ./easyeffects.nix
     ./fuzzel.nix
     ./kitty.nix
     ./librewolf.nix
     ./mpv.nix
     ./nemo.nix
+    ./pipewire.nix
     ./swayimg.nix
     ./swayosd.nix
     ./yazi.nix
