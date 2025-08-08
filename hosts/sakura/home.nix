@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   monitors = {
     "DP-1" = {
       isMain = true;
@@ -6,7 +10,7 @@
       mode = {
         width = 1920;
         height = 1080;
-        refresh = 60.000;
+        refresh = 60.0;
       };
       position = {
         x = 0;
@@ -16,17 +20,33 @@
     };
   };
 
-  custom = {
-    stylix = {
-      cursor = {
-        package = pkgs.custom.colloid-pastel-cursors;
-        name = "dist-dark";
+  custom = let
+    enableList = [
+      "freetube"
+      "rmpc"
+      "wlsunset"
+    ];
+    disableList = [
+      "neovim"
+    ];
+  in
+    {
+      stylix = {
+        cursor = {
+          package = pkgs.custom.colloid-pastel-cursors;
+          name = "dist-dark";
+        };
+        icons = {
+          package = pkgs.custom.colloid-pastel-icons;
+          dark = "Colloid-Pastel-Dark";
+        };
       };
-      icons = {
-        package = pkgs.custom.colloid-pastel-icons;
-        dark = "Colloid-Pastel-Dark";
-      };
-    };
-    niri.xwayland.enable = true;
-  };
+      niri.xwayland.enable = true;
+    }
+    // lib.genAttrs enableList (_name: {
+      enable = true;
+    })
+    // lib.genAttrs disableList (_name: {
+      enable = false;
+    });
 }

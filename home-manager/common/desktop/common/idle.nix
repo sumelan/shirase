@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  isLaptop,
   ...
 }: {
   options.custom = {
@@ -50,10 +49,10 @@
             # screen on when activity is detected after timeout has fired.
             on-resume = "niri msg action power-on-monitors";
           }
-          (lib.optionalAttrs isLaptop {
+          {
             timeout = 60 * 30;
             on-timeout = "systemctl suspend"; # suspend pc.
-          })
+          }
         ];
       };
     };

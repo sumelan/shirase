@@ -14,10 +14,7 @@ in {
 
   options.custom = {
     rmpc.enable =
-      lib.mkEnableOption "A beautiful and configurable TUI client for MPD"
-      // {
-        default = true;
-      };
+      lib.mkEnableOption "A beautiful and configurable TUI client for MPD";
   };
 
   config = lib.mkIf config.custom.rmpc.enable {

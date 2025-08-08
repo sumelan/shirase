@@ -28,6 +28,7 @@
       "neovim"
       "obs-studio"
       "protonapp"
+      "rmpc"
     ];
     disableList = [
       "wlsunset"
