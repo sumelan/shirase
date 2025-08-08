@@ -40,9 +40,10 @@ in {
       }
       # Picture-in-pictures
       {
-        matches = lib.singleton {
-          title = "^(ピクチャー イン ピクチャー)$";
-        };
+        matches = [
+          {title = "^(ピクチャー イン ピクチャー)$";}
+          {title = "^(Picture-in-Picture)$";}
+        ];
         open-floating = true;
         opacity = 1.0;
       }
