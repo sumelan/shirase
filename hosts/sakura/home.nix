@@ -1,11 +1,11 @@
 {pkgs, ...}: {
   monitors = {
-    "HDMI-A-1" = {
+    "DP-1" = {
       isMain = true;
-      scale = 1.5;
+      scale = 1.0;
       mode = {
-        width = 2560;
-        height = 1600;
+        width = 1920;
+        height = 1080;
         refresh = 60.000;
       };
       position = {

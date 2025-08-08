@@ -1,14 +1,13 @@
 {
   lib,
   config,
-  isLaptop,
   ...
 }: {
   options.custom = with lib; {
     bluetooth.enable =
       mkEnableOption "Bluetooth"
       // {
-        default = isLaptop;
+        default = true;
       };
   };
 
