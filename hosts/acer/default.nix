@@ -12,6 +12,7 @@
   custom = let
     enableList = [
       "alsa"
+      "mango"
     ];
     disableList = [
       "distrobox"

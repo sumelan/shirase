@@ -1,6 +1,7 @@
 _: {
   imports = [
     ./common
+    ./mango
     ./niri
     ./discord.nix
     ./dunst.nix

@@ -26,8 +26,8 @@
           reload_style_on_change = true;
           output = "${config.lib.monitors.mainMonitorName}";
           modules-left = [
+            "dwl/tags"
             "niri/workspaces"
-            "tray"
             "cava"
           ];
           modules-center = [
@@ -61,6 +61,25 @@
             icon = true;
             icon-size = 24;
             expand = false;
+          };
+          "dwl/tags" = {
+            tag-labels = [
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+            ];
+          };
+          "dwl/window" = {
+            format = "{}";
+            separate-outputs = true;
+            icon = true;
+            icon-size = 18;
           };
           "memory" = {
             interval = 30;
