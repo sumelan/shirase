@@ -24,7 +24,6 @@
     enableList = [
       "freetube"
       "rmpc"
-      "mango"
       "wlsunset"
     ];
     disableList = [

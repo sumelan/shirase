@@ -393,3 +393,80 @@ Version changes:
 [C.]  #11  s2n-tls            1.5.12, 1.5.22 -> 1.5.17, 1.5.22
 [C.]  #12  tbb                2021.12.0 -> 2021.11.0, 2021.11.0-dev, 2021.12.0
 Closure size: 2655 -> 2657 (112 paths added, 110 paths removed, delta +2, disk usage +3.4MiB).
+
+---
+
+2025年08月09日 12時58分12秒
+<<< /nix/var/nix/profiles/system-327-link
+>>> /nix/var/nix/profiles/system-331-link
+Version changes:
+[U.]  #01  apt                  3.1.2 -> 3.1.3
+[U.]  #02  codebook             0.3.5 -> 0.3.6
+[U.]  #03  dpkg                 1.22.20 -> 1.22.21
+[U.]  #04  fzf                  0.65.0, 0.65.0-fish-completions, 0.65.0-man -> 0.65.1, 0.65.1-fish-completions, 0.65.1-man
+[U.]  #05  hyprutils            0.8.1 -> 0.8.2
+[U.]  #06  libdatachannel       0.23.0 -> 0.23.1
+[U.]  #07  libgphoto2           2.5.31 -> 2.5.32
+[D.]  #08  lua-grammar          0.0.0+rev=e5e4069 -> 0.0.0+rev=d760230
+[U*]  #09  mkpasswd             5.6.3 -> 5.6.4
+[U.]  #10  nghttp3              1.10.1 -> 1.11.0
+[U*]  #11  niri-unstable        2025-08-05-52c579d -> 2025-08-07-f74d83d
+[U*]  #12  nix-update           1.11.0 -> 1.12.0
+[U.]  #13  nixos-system-acer    25.11.20250803.5b09dc4.8264ffc -> 25.11.20250806.c2ae88e.dirty
+[U.]  #14  php                  8.4.10 -> 8.4.11
+[U.]  #15  php-bcmath           8.4.10 -> 8.4.11
+[U.]  #16  php-calendar         8.4.10 -> 8.4.11
+[U.]  #17  php-ctype            8.4.10 -> 8.4.11
+[U.]  #18  php-curl             8.4.10 -> 8.4.11
+[U.]  #19  php-dom              8.4.10 -> 8.4.11
+[U.]  #20  php-exif             8.4.10 -> 8.4.11
+[U.]  #21  php-extra-init       8.4.10.ini -> 8.4.11.ini
+[U.]  #22  php-fileinfo         8.4.10 -> 8.4.11
+[U.]  #23  php-filter           8.4.10 -> 8.4.11
+[U.]  #24  php-ftp              8.4.10 -> 8.4.11
+[U.]  #25  php-gd               8.4.10 -> 8.4.11
+[U.]  #26  php-gettext          8.4.10 -> 8.4.11
+[U.]  #27  php-gmp              8.4.10 -> 8.4.11
+[U.]  #28  php-iconv            8.4.10 -> 8.4.11
+[U.]  #29  php-intl             8.4.10 -> 8.4.11
+[U.]  #30  php-ldap             8.4.10 -> 8.4.11
+[U.]  #31  php-mbstring         8.4.10 -> 8.4.11
+[U.]  #32  php-mysqli           8.4.10 -> 8.4.11
+[U.]  #33  php-mysqlnd          8.4.10 -> 8.4.11
+[U.]  #34  php-opcache          8.4.10 -> 8.4.11
+[U.]  #35  php-openssl          8.4.10 -> 8.4.11
+[U.]  #36  php-pcntl            8.4.10 -> 8.4.11
+[U.]  #37  php-pdo              8.4.10 -> 8.4.11
+[U.]  #38  php-pdo_mysql        8.4.10 -> 8.4.11
+[U.]  #39  php-pdo_odbc         8.4.10 -> 8.4.11
+[U.]  #40  php-pdo_pgsql        8.4.10 -> 8.4.11
+[U.]  #41  php-pdo_sqlite       8.4.10 -> 8.4.11
+[U.]  #42  php-pgsql            8.4.10 -> 8.4.11
+[U.]  #43  php-posix            8.4.10 -> 8.4.11
+[U.]  #44  php-readline         8.4.10 -> 8.4.11
+[U.]  #45  php-session          8.4.10 -> 8.4.11
+[U.]  #46  php-simplexml        8.4.10 -> 8.4.11
+[U.]  #47  php-soap             8.4.10 -> 8.4.11
+[U.]  #48  php-sockets          8.4.10 -> 8.4.11
+[U.]  #49  php-sodium           8.4.10 -> 8.4.11
+[U.]  #50  php-sqlite3          8.4.10 -> 8.4.11
+[U.]  #51  php-sysvsem          8.4.10 -> 8.4.11
+[U.]  #52  php-tokenizer        8.4.10 -> 8.4.11
+[U.]  #53  php-with-extensions  8.4.10 -> 8.4.11
+[U.]  #54  php-xmlreader        8.4.10 -> 8.4.11
+[U.]  #55  php-xmlwriter        8.4.10 -> 8.4.11
+[U.]  #56  php-zip              8.4.10 -> 8.4.11
+[U.]  #57  php-zlib             8.4.10 -> 8.4.11
+[C.]  #58  proton-pass          1.32.3, 1.32.3-fish-completions -> 1.32.2, 1.32.3, 1.32.3-fish-completions
+[U.]  #59  skopeo               1.19.0 -> 1.20.0
+[C.]  #60  source               <none> x18 -> <none> x19
+[U*]  #61  sudo-rs              0.2.7 -> 0.2.8
+[U.]  #62  tinymist             0.13.16 -> 0.13.20
+[U.]  #63  vimplugin-mini.nvim  2025-07-24 -> 2025-08-02
+[U.]  #64  vimplugin-yazi.nvim  2025-07-22 -> 2025-08-04
+[D.]  #65  zig-grammar          0.0.0+rev=b670c8d -> 0.0.0+rev=b71afff
+Added packages:
+[A.]  #1  proton-vpn  1.2.9
+Removed packages:
+[R.]  #1  screenshot-capture-annotate  4.3.7.13
+Closure size: 2657 -> 2659 (223 paths added, 221 paths removed, delta +2, disk usage +6.7MiB).

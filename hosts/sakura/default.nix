@@ -14,7 +14,6 @@
     enableList = [
       "alsa"
       "steam"
-      "mango"
     ];
     disableList = [
       "audiobookshelf"
