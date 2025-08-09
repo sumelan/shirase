@@ -99,6 +99,7 @@
   # theme, iconTheme, cursorTheme, font are installed via system-wide
   programs.regreet = {
     enable = true;
+    package = pkgs.regreet;
     theme = {
       inherit (config.hm.gtk.theme) package name;
     };
