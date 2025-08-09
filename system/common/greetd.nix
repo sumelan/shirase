@@ -8,27 +8,25 @@
   # tty autologin
   services.getty.autologinUser = user;
 
-  # for mango
   # set fallback config in /etc/mango/config.conf and write autostart.sh
-  # environment.etc =
-  #   let
-  #     monitorRules = "monitorrule=${config.hm.lib.monitors.mainMonitorName},0,1,tile,0,1.0,0,0";
-  #   in
-  #   {
-  #     "mango/config.conf".text = ''
-  #       tap_to_click=1
-  #       trackpad_natural_scrolling=1
+  environment.etc = let
+    monitorRules = "monitorrule=${config.hm.lib.monitors.mainMonitorName},0,1,tile,0,1.0,0,0";
+  in
+    lib.mkIf config.custom.mango.enable {
+      "mango/config.conf".text = ''
+        tap_to_click=1
+        trackpad_natural_scrolling=1
 
-  #       cursor_theme=${config.hm.stylix.cursor.name}
-  #       cursor_size=${config.hm.stylix.cursor.size |> builtins.toString}
+        cursor_theme=${config.hm.stylix.cursor.name}
+        cursor_size=${config.hm.stylix.cursor.size |> builtins.toString}
 
-  #       ${monitorRules}
+        ${monitorRules}
 
-  #       env=XCURSOR_SIZE,${config.hm.stylix.cursor.size |> builtins.toString}
-  #       env=GTK_USE_PORTAL,0
-  #       env=GDK_DEBUG,no-portals
-  #     '';
-  #   };
+        env=XCURSOR_SIZE,${config.hm.stylix.cursor.size |> builtins.toString}
+        env=GTK_USE_PORTAL,0
+        env=GDK_DEBUG,no-portals
+      '';
+    };
 
   # backlightCmd = lib.optionalString config.hm.custom.backlight.enable ''
   #   ${lib.getExe pkgs.brightnessctl} set 5%
