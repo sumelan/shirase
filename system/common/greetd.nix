@@ -36,7 +36,7 @@
   # bash
   #     ''
   #       ${backlightCmd}
-  #       ${lib.getExe pkgs.greetd.regreet}; pkill -f mango
+  #       ${lib.getExe pkgs.regreet}; pkill -f mango
   #     '';
   #
   services.greetd = {
@@ -86,7 +86,7 @@
             }
 
             ${backlightSpawn}
-            spawn-at-startup "sh" "-c" "${lib.getExe pkgs.greetd.regreet}; pkill -f niri"
+            spawn-at-startup "sh" "-c" "${lib.getExe pkgs.regreet}; pkill -f niri"
           '';
       in {
         command = "niri -c ${niri-config}";
