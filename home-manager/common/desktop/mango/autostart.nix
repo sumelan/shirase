@@ -18,7 +18,7 @@ in {
       set +e
       # obs
       dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots >/dev/null 2>&1
-      ${lib.getExe' pkgs.xdg-desktop-portal-wlr "xdg-desktop-portal-wlr"} >/dev/null 2>&1 &
+      systemctl --user start xdg-desktop-portal-wlr.service >/dev/null 2>&1 &
       # keep clipboard content
       ${lib.getExe pkgs.wl-clip-persist} --clipboard regular --reconnect-tries 0 >/dev/null 2>&1 &
       # clipboard content manager

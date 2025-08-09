@@ -10,7 +10,8 @@
 
   # set fallback config in /etc/mango/config.conf and write autostart.sh
   environment.etc = let
-    monitorRules = "monitorrule=${config.hm.lib.monitors.mainMonitorName},0,1,tile,0,1.0,0,0";
+    hmcfg = config.hm.lib.monitors;
+    monitorRules = "monitorrule=${hmcfg.mainMonitorName},0,1,tile,0,1.0,0,0,${hmcfg.mainMonitor.mode.width |> builtins.toString},${hmcfg.mainMonitor.mode.height |> builtins.toString},${hmcfg.mainMonitor.mode.refresh |> builtins.toString}";
   in
     lib.mkIf config.custom.mango.enable {
       "mango/config.conf".text = ''
@@ -28,17 +29,6 @@
       '';
     };
 
-  # backlightCmd = lib.optionalString config.hm.custom.backlight.enable ''
-  #   ${lib.getExe pkgs.brightnessctl} set 5%
-  # '';
-  # autostart.sh =
-  #   pkgs.writeShellScript "autostart.sh"
-  # bash
-  #     ''
-  #       ${backlightCmd}
-  #       ${lib.getExe pkgs.regreet}; pkill -f mango
-  #     '';
-  #
   services.greetd = {
     enable = true;
     settings = {
@@ -52,6 +42,18 @@
         backlightSpawn = lib.optionalString config.hm.custom.backlight.enable ''
           spawn-at-startup "sh" "-c" "${lib.getExe pkgs.brightnessctl} set 5%"
         '';
+
+        # mango
+        backlightCmd = lib.optionalString config.hm.custom.backlight.enable ''
+          ${lib.getExe pkgs.brightnessctl} set 5%
+        '';
+        autostart.sh =
+          pkgs.writeShellScript "autostart.sh"
+          # sh
+          ''
+            ${backlightCmd}
+            ${lib.getExe pkgs.regreet}; pkill -f mango
+          '';
 
         niri-config =
           pkgs.writeText "niri-config"

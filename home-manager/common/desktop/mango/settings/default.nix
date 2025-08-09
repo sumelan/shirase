@@ -29,7 +29,7 @@ in {
     # == Scroller Layout Setting ==
     scroller_structs=20
     scroller_default_proportion=0.8
-    scoller_focus_center=0
+    scroller_focus_center=0
     scroller_proportion_preset=0.5,0.8,1.0
 
     # == Overview Setting ==
@@ -40,12 +40,12 @@ in {
     overviewgappo=30
 
     # == Misc ==
-    xwayland_persistenc=0
+    xwayland_persistence=0
     focus_cross_tag=0
     focus_cross_monitor=0
     axis_bind_apply_timeout=100
     focus_on_activate=1
-    bypass_surface_visibility=0
+    inhibit_regardless_of_visibility=0
     sloppyfocus=1
     warpcursor=1
 

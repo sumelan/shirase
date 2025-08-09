@@ -1,15 +1,13 @@
-{
-  config,
-  isLaptop,
-  ...
-}: let
+{config, ...}: let
   inherit (config.lib.monitors) mainMonitor;
   mainScale = mainMonitor.scale |> builtins.toString;
-  monitorMode = layout: "monitorrule=${config.lib.monitors.mainMonitorName},0.55,1,${layout},0,${mainScale},0,0";
-  monitorRules =
-    if isLaptop
-    then monitorMode "scroller"
-    else monitorMode "tile";
+  mainWidth = mainMonitor.mode.width |> builtins.toString;
+  mainHeight = mainMonitor.mode.height |> builtins.toString;
+  mainRefresh = mainMonitor.mode.refresh |> builtins.toString;
+
+  monitorMode = layout: "monitorrule=${config.lib.monitors.mainMonitorName},0.55,1,${layout},0,${mainScale},0,0,${mainWidth},${mainHeight},${mainRefresh}";
+
+  monitorRules = monitorMode "scroller";
 in
   # Tags Rules
   # layout support: tile,scroller,monocle,grid,dwindle,spiral,deck
@@ -93,7 +91,7 @@ in
     windowrule=isfloating:1,appid:librewolf,title:(.*)wants to save
   ''
   # Monitor Rules
-  # name|mfact|nmaster|scale|layout|(rotate or reflect)|x|y
+  # name|mfact|nmaster|scale|layout|(rotate or reflect)|x|y|width|height|refreshrate
   # rotate or reflect:
   # 0:no transform
   # 1:90 degrees counter-clockwise
