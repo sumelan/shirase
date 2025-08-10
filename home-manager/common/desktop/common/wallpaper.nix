@@ -6,38 +6,48 @@
 }: let
   wallpaperDir = "${config.xdg.userDirs.pictures}/Wallpapers";
 in {
-  # create wallpaperDir on boot if not exist
-  systemd.user.tmpfiles.rules = lib.custom.nixos.mkCreate wallpaperDir {
-    inherit user;
-    group = "users";
+  options.custom = {
+    wallpaper.enable =
+      lib.mkEnableOption "Wallpapers"
+      // {
+        default = true;
+      };
   };
 
-  services.wpaperd = {
-    enable = true;
-    settings = {
-      default = {
-        duration = "12m";
-        mode = "center";
-        sorting = "random";
-        recursive = true;
-        offset = 0.1;
-      };
-      default.transition = {
-        ripple = {};
-      };
-      # using regex
-      "re:${config.lib.monitors.mainMonitorName}" = {
-        path = wallpaperDir;
+  config = lib.mkIf config.custom.wallpaper.enable {
+    # create wallpaperDir on boot if not exist
+    systemd.user.tmpfiles.rules = lib.custom.nixos.mkCreate wallpaperDir {
+      inherit user;
+      group = "users";
+    };
+
+    services.wpaperd = {
+      enable = true;
+      settings = {
+        default = {
+          duration = "12m";
+          mode = "center";
+          sorting = "random";
+          recursive = true;
+          offset = 0.1;
+        };
+        default.transition = {
+          ripple = {};
+        };
+        # using regex
+        "re:${config.lib.monitors.mainMonitorName}" = {
+          path = wallpaperDir;
+        };
       };
     };
-  };
 
-  programs.niri.settings.layer-rules = [
-    {
-      matches = lib.singleton {
-        namespace = "wpaperd";
-      };
-      place-within-backdrop = true;
-    }
-  ];
+    programs.niri.settings.layer-rules = [
+      {
+        matches = lib.singleton {
+          namespace = "wpaperd";
+        };
+        place-within-backdrop = true;
+      }
+    ];
+  };
 }
