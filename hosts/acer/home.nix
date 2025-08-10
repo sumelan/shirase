@@ -25,7 +25,6 @@
       "cyanrip"
       "foliate"
       "freetube"
-      "mango"
       "neovim"
       "obs-studio"
       "protonapp"
