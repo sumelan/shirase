@@ -7,12 +7,12 @@
 }: {
   home.packages = with pkgs;
     [nemo-with-extensions]
-    ++ (with pkgs; [
+    ++ [
       p7zip-rar # support for encrypted archives
       nemo-fileroller
       webp-pixbuf-loader # for webp thumbnails
       xdg-terminal-exec
-    ]);
+    ];
 
   xdg = {
     # fix mimetype associations

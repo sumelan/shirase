@@ -43,12 +43,23 @@ in {
       clean.extraArgs = "--keep 5";
       flake = flakePath;
     };
-    niri.settings.binds = {
-      "Mod+N" = lib.custom.niri.openTerminal {
-        app = "ns";
-        terminal = config.profiles.${user}.defaultTerminal.package;
-        app-id = lib.getName pkgs.nix-search-tv;
+
+    niri.settings = {
+      binds = {
+        "Mod+N" = lib.custom.niri.openTerminal {
+          app = "ns";
+          terminal = config.profiles.${user}.defaultTerminal.package;
+          app-id = lib.getName pkgs.nix-search-tv;
+        };
       };
+      window-rules =
+        lib.singleton
+        {
+          matches = lib.singleton {
+            app-id = "^(nix-search-tv)$";
+          };
+          open-floating = true;
+        };
     };
   };
 

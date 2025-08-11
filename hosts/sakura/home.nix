@@ -27,7 +27,7 @@
       "wlsunset"
     ];
     disableList = [
-      "neovim"
+      "helix"
     ];
   in
     {

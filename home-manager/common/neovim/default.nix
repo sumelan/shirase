@@ -9,7 +9,11 @@
   ];
 
   options.custom = {
-    neovim.enable = lib.mkEnableOption "neovim editor";
+    neovim.enable =
+      lib.mkEnableOption "neovim editor"
+      // {
+        default = true;
+      };
   };
 
   config = lib.mkIf config.custom.neovim.enable {

@@ -73,10 +73,10 @@
         yazi
         zoxide
         # use same config as home-manager
-        (pkgs.symlinkJoin {
+        (symlinkJoin {
           name = "yazi";
-          paths = [pkgs.yazi];
-          buildInputs = [pkgs.makeWrapper];
+          paths = [yazi];
+          buildInputs = [makeWrapper];
           postBuild =
             # sh
             ''wrapProgram $out/bin/yazi --set YAZI_CONFIG_HOME "${config.hm.xdg.configHome}/yazi"'';
@@ -90,7 +90,7 @@
         config.hm.gtk.iconTheme.package
       ]
       ++ [config.hm.profiles.${user}.defaultEditor.package]
-      ++ (lib.optional config.hm.custom.neovim.enable neovim);
+      ++ (lib.optional config.hm.custom.helix.enable helix);
   };
 
   systemd.tmpfiles.rules =

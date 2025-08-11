@@ -25,7 +25,7 @@
       "cyanrip"
       "foliate"
       "freetube"
-      "neovim"
+      "helix"
       "obs-studio"
       "protonapp"
       "rmpc"

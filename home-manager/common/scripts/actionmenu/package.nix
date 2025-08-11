@@ -12,7 +12,7 @@ pkgs.writers.writeFishBin "fuzzel-actions" ''
    Next Wallpaper
    Pick which window to Cast"
 
-  set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Search for System actions..." --lines 5)
+  set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Search for System actions..." --lines 7)
 
   switch (string split -f 2 " " $choice)
       case Lock

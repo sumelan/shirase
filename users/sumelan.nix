@@ -29,8 +29,8 @@ in {
     timeZone = "Asia/Tokyo";
     defaultLocale = "ja_JP.UTF-8";
     defaultEditor = {
-      package = pkgs.helix;
-      name = "hx";
+      package = pkgs.neovim;
+      name = "nvim";
     };
     defaultTerminal = {
       package = pkgs.kitty;

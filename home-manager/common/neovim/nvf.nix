@@ -140,13 +140,6 @@
       };
       telescope = {
         enable = true;
-        mappings = {
-          buffers = "<leader>fb";
-          findFiles = "<leader>ff";
-          gitBranches = "<leader>gb";
-          gitStatus = "<leader>gs";
-          liveGrep = "<leader>/";
-        };
       };
       terminal.toggleterm = {
         enable = true;
