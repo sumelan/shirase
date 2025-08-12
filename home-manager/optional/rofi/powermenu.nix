@@ -4,7 +4,6 @@
   fontSize = config.stylix.fonts.sizes.desktop;
 in {
   xdg.configFile."rofi/theme/powermenu.rasi".text = with config.lib.stylix.colors.withHashtag;
-  # https://github.com/adi1090x/rofi/blob/master/files/powermenu/type-4/style-3.rasi
   # rasi
     ''
       configuration {

@@ -1,4 +1,7 @@
-{config, ...}: {
+{config, ...}: let
+  sansSerifName = config.stylix.fonts.sansSerif.name;
+  fontSize = config.stylix.fonts.sizes.desktop;
+in {
   xdg.configFile."rofi/theme/confirm.rasi".text = with config.lib.stylix.colors.withHashtag;
   # rasi
     ''
@@ -82,7 +85,7 @@
           cursor:                      pointer;
       }
       element-text {
-          font:                        "feather 48";
+          font:                        "${sansSerifName} Bold ${(fontSize + 10) |> builtins.toString}";
           background-color:            transparent;
           text-color:                  inherit;
           cursor:                      inherit;

@@ -2,7 +2,6 @@
   xdg.configFile."rofi/theme/launcher.rasi".text = with config.lib.stylix.colors.withHashtag;
   # rasi
     ''
-      /** https://github.com/adi1090x/rofi/blob/master/files/launchers/type-3/style-2.rasi **/
 
       configuration {
         modi:                 "drun";
