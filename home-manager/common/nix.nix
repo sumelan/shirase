@@ -52,14 +52,6 @@ in {
           app-id = lib.getName pkgs.nix-search-tv;
         };
       };
-      window-rules =
-        lib.singleton
-        {
-          matches = lib.singleton {
-            app-id = "^(nix-search-tv)$";
-          };
-          open-floating = true;
-        };
     };
   };
 

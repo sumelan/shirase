@@ -99,7 +99,7 @@ in {
 
     home.file = {
       ".themed-logo.png".source = changeColor logo;
-      ".profile.jpg".source = ../users/${user}.jpg;
+      ".user.jpg".source = ../users/${user}.jpg;
     };
   };
 }

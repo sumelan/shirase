@@ -2,8 +2,15 @@
   lib,
   config,
   pkgs,
+  user,
   ...
 }: {
+  imports = [
+    ./confirm.nix
+    ./launcher.nix
+    ./powermenu.nix
+  ];
+
   options.custom = {
     rofi.enable = lib.mkEnableOption "Rofi";
   };
@@ -12,11 +19,11 @@
     programs.rofi = {
       enable = true;
       package = pkgs.rofi-wayland;
-      extraConfig = {
-        modi = "drun, run, ssh";
-        show-icons = true;
-        icon-theme = config.stylix.icons.dark;
-      };
+      font = config.stylix.fonts.monospace.name + " " + builtins.toString config.stylix.fonts.sizes.desktop;
+      terminal = "${lib.getExe config.profiles.${user}.defaultTerminal.package}";
+      theme = "${config.xdg.configHome}/rofi/theme/launcher.rasi";
     };
+
+    stylix.targets.rofi.enable = false;
   };
 }

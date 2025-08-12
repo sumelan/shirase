@@ -20,7 +20,6 @@
         settings = with config.lib.stylix.colors; {
           general = {
             hide_cursor = true;
-            grace = 0;
           };
           background = {
             monitor = config.lib.monitors.mainMonitorName;
@@ -47,14 +46,13 @@
             hide_input = false;
             rounding = -1;
             fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
-            fail_transition = 300;
             capslock_color = "rgb(${base0A})";
             position = "0, -100";
             halign = "center";
             valign = "center";
           };
           image = {
-            path = "${config.home.homeDirectory}/.profile.jpg";
+            path = "${config.home.homeDirectory}/.user.jpg";
             size = 280;
             border_color = "rgb(${base0D})";
             position = "0, 100";

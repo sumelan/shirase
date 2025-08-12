@@ -23,10 +23,10 @@
         exrc = true; # use project specific vimrc
         smartindent = true;
         virtualedit = "block"; # allow cursor to move anywhere in visual block mode
-        # Use 4 spaces for <Tab> and :retab
+        # Use 2 spaces for <Tab> and :retab
         tabstop = 4;
         softtabstop = 4;
-        shiftwidth = 4;
+        shiftwidth = 2;
         expandtab = true;
         shiftround = true; # round indent to multiple of 'shiftwidth' for > and < command
       };

@@ -1,6 +1,7 @@
 _: {
   imports = [
     ./rmpc
+    ./rofi
     ./brave.nix
     ./cyanrip.nix
     ./foliate.nix

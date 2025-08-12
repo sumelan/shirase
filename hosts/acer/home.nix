@@ -29,6 +29,7 @@
       "obs-studio"
       "protonapp"
       "rmpc"
+      "rofi"
     ];
     disableList = [
       "wlsunset"
