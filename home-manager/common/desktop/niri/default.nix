@@ -73,19 +73,9 @@
 
       layout = {
         gaps = 12;
-        background-color = "transparent";
         border = {
           enable = true;
           width = 3;
-          active = {
-            gradient = {
-              from = base0C;
-              to = base0D;
-              angle = 45;
-              in' = "oklab";
-            };
-          };
-          inactive.color = base02;
         };
 
         focus-ring.enable = false;

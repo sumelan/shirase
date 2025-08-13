@@ -23,19 +23,39 @@
     };
 
     programs.niri.settings.binds = {
+      "Mod+N" = {
+        action.spawn = ["qs" "-c" "DankMaterialShell" "ipc" "call" "notifications" "toggle"];
+        hotkey-overlay.title = "Notification Center";
+      };
+      "XF86AudioPlay" = {
+        allow-when-locked = true;
+        action.spawn = ["qs" "-c" "DankMaterialShell" "ipc" "call" "mpris" "playPause"];
+      };
+      "XF86AudioPause" = {
+        allow-when-locked = true;
+        action.spawn = ["qs" "-c" "DankMaterialShell" "ipc" "call" "mpris" "playPause"];
+      };
+      "XF86AudioNext" = {
+        allow-when-locked = true;
+        action.spawn = ["qs" "-c" "DankMaterialShell" "ipc" "call" "mpris" "next"];
+      };
+      "XF86AudioPrev" = {
+        allow-when-locked = true;
+        action.spawn = ["qs" "-c" "DankMaterialShell" "ipc" "call" "mpris" "previous"];
+      };
       "XF86MonBrightnessUp" = {
         allow-when-locked = true;
-        action.spawn = ["qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "increment" "5"];
+        action.spawn = ["qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "increment" "5" "intel_backlight"];
       };
       "XF86MonBrightnessDown" = {
         allow-when-locked = true;
-        action.spawn = ["qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "decrement" "5"];
+        action.spawn = ["qs" "-c" "DankMaterialShell" "ipc" "call" "brightness" "decrement" "5" "intel_backlight"];
       };
     };
 
     custom.persist = {
       home.directories = [
-        ".cache/DankMaterialShell"
+        ".config/DankMaterialShell"
         ".local/state/DankMaterialShell"
       ];
     };

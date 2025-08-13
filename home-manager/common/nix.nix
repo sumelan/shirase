@@ -46,7 +46,7 @@ in {
 
     niri.settings = {
       binds = {
-        "Mod+N" = lib.custom.niri.openTerminal {
+        "Mod+Period" = lib.custom.niri.openTerminal {
           app = "ns";
           terminal = config.profiles.${user}.defaultTerminal.package;
           app-id = lib.getName pkgs.nix-search-tv;
