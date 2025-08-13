@@ -19,6 +19,9 @@
     {
       command = fish "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store";
     }
+    (lib.optionalAttrs config.custom.battery.enable {
+      command = ["${lib.getExe pkgs.upower-notify}"];
+    })
     # initial backlight
     (lib.optionalAttrs config.custom.backlight.enable {
       command = [

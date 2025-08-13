@@ -1,28 +1,18 @@
 {
   lib,
-  config,
-  pkgs,
   isLaptop,
   ...
 }: {
-  options.custom = {
-    touchpad.enable =
-      lib.mkEnableOption "Touchpad support"
-      // {
-        default = isLaptop;
-      };
-  };
-
-  config = {
-    environment.systemPackages = with pkgs; [upower-notify];
-
-    services = {
-      # power management, conflict with TLP
-      power-profiles-daemon.enable = config.hm.custom.battery.enable;
-      upower = {
-        enable = true;
-      };
-      libinput.enable = config.custom.touchpad.enable;
+  services = lib.mkIf isLaptop {
+    # power management, conflict with TLP
+    power-profiles-daemon.enable = true;
+    upower = {
+      enable = true;
+      usePercentageForPolicy = false;
+      timeLow = 60 * 20;
+      timeCritical = 60 * 10;
+      timeAction = 60 * 2;
     };
+    libinput.enable = true;
   };
 }

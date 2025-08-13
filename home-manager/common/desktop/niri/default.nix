@@ -76,6 +76,15 @@
         border = {
           enable = true;
           width = 3;
+          active = {
+            gradient = {
+              from = base0C;
+              to = base0D;
+              angle = 45;
+              in' = "oklab";
+            };
+          };
+          inactive.color = base02;
         };
 
         focus-ring.enable = false;
@@ -112,6 +121,15 @@
           length.total-proportion = 0.5;
           gaps-between-tabs = 2;
         };
+      };
+
+      overview = {
+        backdrop-color = base01;
+        workspace-shadow = {
+          enable = true;
+          color = "#000000dd";
+        };
+        zoom = 0.4; # zoom ranges from 0 to 0.75 where lower values make everything smaller.
       };
 
       environment = {
