@@ -13,7 +13,7 @@
       };
   };
 
-  config = {
+  config = lib.mkIf config.custom.swayosd.enable {
     services.swayosd = {
       enable = true;
       stylePath = "${config.xdg.configHome}/swayosd/style.scss";

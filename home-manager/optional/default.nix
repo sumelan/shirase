@@ -4,6 +4,7 @@ _: {
     ./rofi
     ./brave.nix
     ./cyanrip.nix
+    ./dmshell.nix
     ./foliate.nix
     ./freetube.nix
     ./helix.nix

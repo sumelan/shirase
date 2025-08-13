@@ -44,7 +44,7 @@ in {
 
       niri.settings = {
         binds = {
-          "Mod+M" = lib.custom.niri.openTerminal {
+          "Mod+R" = lib.custom.niri.openTerminal {
             app = pkgs.rmpc;
             terminal = config.profiles.${user}.defaultTerminal.package;
           };

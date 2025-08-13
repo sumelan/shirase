@@ -11,6 +11,8 @@
 
     agenix.url = "github:ryantm/agenix";
 
+    dmshell.url = "github:AvengeMedia/DankMaterialShell";
+
     dimland.url = "github:keifufu/dimland";
 
     firefox-addons = {

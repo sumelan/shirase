@@ -98,8 +98,8 @@ in {
     };
 
     home.file = {
-      ".themed-logo.png".source = changeColor logo;
-      ".user.jpg".source = ../users/${user}.jpg;
+      "${config.xdg.userDirs.pictures}/themed-logo.png".source = changeColor logo;
+      "${config.xdg.userDirs.pictures}/user.jpg".source = ../users/${user}.jpg;
     };
   };
 }

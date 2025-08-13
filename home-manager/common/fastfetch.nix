@@ -11,7 +11,7 @@
           separator = " ➜  ";
         };
         logo = {
-          source = "${config.home.homeDirectory}/.themed-logo.png";
+          source = "${config.xdg.userDirs.pictures}/themed-logo.png";
           type = "kitty-icat";
           height = 30;
           width = 30;

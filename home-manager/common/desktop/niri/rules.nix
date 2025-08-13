@@ -41,6 +41,7 @@ in {
       # Picture-in-pictures
       {
         matches = [
+          {title = "^(ピクチャーインピクチャー)$";}
           {title = "^(ピクチャー イン ピクチャー)$";}
           {title = "^(Picture-in-Picture)$";}
         ];

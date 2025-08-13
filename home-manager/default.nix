@@ -50,7 +50,6 @@
         "org.fcitx.fcitx5-migrator"
         "kbd-layout-viewer5"
         "fish"
-        "yazi"
         "nm-connection-editor"
       ];
     in
