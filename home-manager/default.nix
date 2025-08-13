@@ -13,6 +13,9 @@
     ./style.nix
   ];
 
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
+
   home = {
     username = user;
     homeDirectory = "/home/" + user;
@@ -30,11 +33,6 @@
       xdg-utils
     ];
   };
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
-  systemd.user.startServices = "sd-switch"; # Nicely reload system units when changing configs
 
   xdg = {
     enable = true;

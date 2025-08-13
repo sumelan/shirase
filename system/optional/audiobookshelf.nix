@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  user,
   ...
 }: let
   cfg = config.custom.audiobookshelf;
@@ -54,7 +55,7 @@ in {
 
     security.acme = lib.mkIf cfg.nginx.enable {
       acceptTerms = true;
-      defaults.email = "sumelan@proton.me";
+      defaults.email = config.hm.profiles.${user}.email;
       certs."${cfg.nginx.domain}" = {
         domain = "${cfg.nginx.domain}";
         # extraDomainNames = [

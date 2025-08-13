@@ -1,9 +1,13 @@
-{user, ...}: {
+{
+  config,
+  user,
+  ...
+}: {
   programs = {
     git = {
       enable = true;
       userName = user;
-      userEmail = "sumelan@proton.me";
+      userEmail = config.profiles.${user}.email;
       difftastic = {
         enable = true;
         background = "dark";

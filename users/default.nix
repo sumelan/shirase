@@ -17,6 +17,11 @@
         description = "Locale";
         default = "";
       };
+      email = lib.mkOption {
+        type = lib.types.str;
+        description = "Email address";
+        default = "";
+      };
       defaultEditor = {
         package = lib.mkOption {
           type = lib.types.package;
