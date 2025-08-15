@@ -22,8 +22,6 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    mango.url = "github:DreamMaoMao/mango";
-
     niri.url = "github:sodiboo/niri-flake";
 
     nix-index-database = {

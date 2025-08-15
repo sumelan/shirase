@@ -8,27 +8,6 @@
   # tty autologin
   services.getty.autologinUser = user;
 
-  # set fallback config in /etc/mango/config.conf and write autostart.sh
-  environment.etc = let
-    hmcfg = config.hm.lib.monitors;
-    monitorRules = "monitorrule=${hmcfg.mainMonitorName},0,1,tile,0,1.0,0,0,${hmcfg.mainMonitor.mode.width |> builtins.toString},${hmcfg.mainMonitor.mode.height |> builtins.toString},${hmcfg.mainMonitor.mode.refresh |> builtins.toString}";
-  in
-    lib.mkIf config.custom.mango.enable {
-      "mango/config.conf".text = ''
-        tap_to_click=1
-        trackpad_natural_scrolling=1
-
-        cursor_theme=${config.hm.stylix.cursor.name}
-        cursor_size=${config.hm.stylix.cursor.size |> builtins.toString}
-
-        ${monitorRules}
-
-        env=XCURSOR_SIZE,${config.hm.stylix.cursor.size |> builtins.toString}
-        env=GTK_USE_PORTAL,0
-        env=GDK_DEBUG,no-portals
-      '';
-    };
-
   services.greetd = {
     enable = true;
     settings = {
@@ -42,18 +21,6 @@
         backlightSpawn = lib.optionalString config.hm.custom.backlight.enable ''
           spawn-at-startup "sh" "-c" "${lib.getExe pkgs.brightnessctl} set 5%"
         '';
-
-        # mango
-        backlightCmd = lib.optionalString config.hm.custom.backlight.enable ''
-          ${lib.getExe pkgs.brightnessctl} set 5%
-        '';
-        autostart.sh =
-          pkgs.writeShellScript "autostart.sh"
-          # sh
-          ''
-            ${backlightCmd}
-            ${lib.getExe pkgs.regreet}; pkill -f mango
-          '';
 
         niri-config =
           pkgs.writeText "niri-config"
@@ -92,7 +59,6 @@
           '';
       in {
         command = "niri -c ${niri-config}";
-        # command = "mango -s ${autostart.sh}";
         user = "greeter";
       };
     };
