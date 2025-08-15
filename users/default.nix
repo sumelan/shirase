@@ -49,6 +49,8 @@
     };
   };
 in {
+  services.accounts-daemon.enable = true;
+
   hm.options = {
     profiles = lib.mkOption {
       type = lib.types.attrsOf profile;

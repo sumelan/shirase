@@ -64,12 +64,12 @@ in {
 
     systemd.user.tmpfiles.rules =
       # create ytDir if not existed
-      lib.custom.nixos.mkCreate ytDir {
+      lib.custom.tmpfiles.mkCreateAndCleanup ytDir {
         inherit user;
         group = "users";
       }
       # symlink from yt-dlp cache directory
-      ++ lib.custom.nixos.mkSymlinks {
+      ++ lib.custom.tmpfiles.mkSymlinks {
         dest = ytDir;
         src = "${config.xdg.cacheHome}/rmpc/youtube";
       };

@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  user,
   ...
 }: let
   cfg = config.custom.stylix;
@@ -98,8 +97,7 @@ in {
     };
 
     home.file = {
-      "${config.xdg.userDirs.pictures}/themed-logo.png".source = changeColor logo;
-      "${config.xdg.userDirs.pictures}/user.jpg".source = ../users/${user}.jpg;
+      ".themed-logo.png".source = changeColor logo;
     };
   };
 }

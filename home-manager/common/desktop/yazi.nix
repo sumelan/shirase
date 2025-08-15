@@ -109,14 +109,6 @@
           terminal = config.profiles.${user}.defaultTerminal.package;
         };
       };
-      window-rules =
-        lib.singleton
-        {
-          matches = lib.singleton {
-            app-id = "^(yazi)$";
-          };
-          open-floating = true;
-        };
     };
   };
 }

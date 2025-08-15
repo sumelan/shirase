@@ -52,7 +52,7 @@
             valign = "center";
           };
           image = {
-            path = "${config.xdg.userDirs.pictures}/user.jpg";
+            path = "${config.home.homeDirectiry}/.face";
             size = 280;
             border_color = "rgb(${base0D})";
             position = "0, 100";

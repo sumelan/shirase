@@ -35,14 +35,14 @@
 
   systemd.tmpfiles.rules =
     # cleanup nixpkgs-review cache on boot
-    lib.custom.nixos.mkRemove "${config.hm.xdg.cacheHome}/nixpkgs-review" {
+    lib.custom.tmpfiles.mkCreateAndRemove "${config.hm.xdg.cacheHome}/nixpkgs-review" {
       mode = "1775";
       inherit user;
       group = "users";
       age = "5d";
     }
     # cleanup channels so nix stops complaining
-    ++ lib.custom.nixos.mkRemove "/nix/var/nix/profiles/per-user/root" {
+    ++ lib.custom.tmpfiles.mkCreateAndRemove "/nix/var/nix/profiles/per-user/root" {
       mode = "1775";
       user = "root";
       group = "root";

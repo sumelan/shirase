@@ -16,7 +16,7 @@ in {
 
   config = lib.mkIf config.custom.wallpaper.enable {
     # create wallpaperDir on boot if not exist
-    systemd.user.tmpfiles.rules = lib.custom.nixos.mkCreate wallpaperDir {
+    systemd.user.tmpfiles.rules = lib.custom.tmpfiles.mkCreateAndCleanup wallpaperDir {
       inherit user;
       group = "users";
     };

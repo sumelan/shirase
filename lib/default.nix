@@ -19,4 +19,6 @@
   niri = import ./niri.nix {
     inherit lib;
   };
+
+  tmpfiles = import ./tmpfiles.nix {};
 }

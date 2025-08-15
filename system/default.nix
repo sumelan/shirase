@@ -95,13 +95,13 @@
 
   systemd.tmpfiles.rules =
     # cleanup systemd coredumps once a week
-    lib.custom.nixos.mkRemove "/var/lib/systemd/coredump" {
+    lib.custom.tmpfiles.mkCreateAndRemove "/var/lib/systemd/coredump" {
       user = "root";
       group = "root";
       age = "7d";
     }
     # create symlink to dotfiles from default /etc/nixos
-    ++ (lib.custom.nixos.mkSymlinks {
+    ++ (lib.custom.tmpfiles.mkSymlinks {
       dest = "/etc/nixos";
       src = flakePath;
     });
