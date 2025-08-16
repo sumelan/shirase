@@ -14,7 +14,9 @@
   config = lib.mkIf config.custom.dmshell.enable {
     home.packages = with pkgs; [
       brightnessctl
+      gammastep
     ];
+
     programs.dankMaterialShell = {
       enable = true;
       enableKeybinds = true;
