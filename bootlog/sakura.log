@@ -886,3 +886,330 @@ Removed packages:
 [R.]  #204  zip                                           3.0
 [R.]  #205  zls                                           0.14.0
 Closure size: 2545 -> 2416 (397 paths added, 526 paths removed, delta -129, disk usage -492.9MiB).
+
+---
+
+2025年08月16日 21時42分58秒
+<<< /nix/var/nix/profiles/system-306-link
+>>> /nix/var/nix/profiles/system-307-link
+Version changes:
+[U.]  #01  7zz                    25.00 -> 25.01
+[C.]  #02  abseil-cpp             20240722.1, 20250512.1 x2 -> 20250512.1 x2
+[U*]  #03  android-tools          35.0.1 -> 35.0.2
+[U.]  #04  basedpyright           1.31.0 -> 1.31.1
+[C.]  #05  binutils               2.44-lib -> 2.44, 2.44-lib
+[U.]  #06  bitwarden              2025.7.0 -> 2025.7.1
+[C.]  #07  breeze-icons           5.116.0, 6.16.0 -> 5.116.0, 6.17.0
+[C*]  #08  curl                   8.14.1 x3, 8.14.1-bin, 8.14.1-fish-completions, 8.14.1-man -> 8.14.1 x4, 8.14.1-bin, 8.14.1-fish-completions, 8.14.1-man
+[U.]  #09  fx                     38.0.0, 38.0.0-fish-completions -> 39.0.1, 39.0.1-fish-completions
+[U.]  #10  gnome-online-accounts  3.54.4 -> 3.54.5
+[C.]  #11  icu4c                  73.2, 76.1 x2, 76.1-dev, 77.1 -> 76.1 x2, 76.1-dev, 77.1
+[U.]  #12  initrd-linux-zen       6.15.8 -> 6.16
+[C.]  #13  karchive               5.116.0, 6.16.0 -> 5.116.0, 6.17.0
+[U.]  #14  kcolorscheme           6.16.0 -> 6.17.0
+[C.]  #15  kconfig                5.116.0, 6.16.0 -> 5.116.0, 6.17.0
+[C.]  #16  kcoreaddons            5.116.0, 5.116.0-bin, 6.16.0 -> 5.116.0, 5.116.0-bin, 6.17.0
+[C.]  #17  kguiaddons             5.116.0, 6.16.0 -> 5.116.0, 6.17.0
+[C.]  #18  ki18n                  5.116.0, 5.116.0-bin, 6.16.0 -> 5.116.0, 5.116.0-bin, 6.17.0
+[C.]  #19  kiconthemes            5.116.0, 5.116.0-bin, 6.16.0 -> 5.116.0, 5.116.0-bin, 6.17.0
+[U.]  #20  kirigami               6.16.0 -> 6.17.0
+[C.]  #21  kwidgetsaddons         5.116.0, 6.16.0 -> 5.116.0, 6.17.0
+[C.]  #22  kwindowsystem          5.116.0, 6.16.0 -> 5.116.0, 6.17.0
+[U.]  #23  lazygit                0.54.1, 0.54.1-fish-completions -> 0.54.2, 0.54.2-fish-completions
+[U.]  #24  libinput               1.28.1 -> 1.29.0
+[U.]  #25  librewolf              141.0.2-1 x2, 141.0.2-1-fish-completions -> 141.0.3-1 x2, 141.0.3-1-fish-completions
+[U.]  #26  librewolf-unwrapped    141.0.2-1 -> 141.0.3-1
+[U.]  #27  linux-zen              6.15.8, 6.15.8-modules, 6.15.8-modules-shrunk -> 6.16, 6.16-modules, 6.16-modules-shrunk
+[C.]  #28  lttng-ust              2.14.0 x2 -> 2.12.2, 2.14.0 x2
+[U.]  #29  mate-panel             1.28.4 -> 1.28.5
+[U*]  #30  niri-unstable          2025-08-09-67361f8 -> 2025-08-13-af9ce53
+[U.]  #31  nixos-system-sakura    25.11.20250809.85dbfc7.3159c91 -> 25.11.20250812.005433b.6d14a4b
+[U.]  #32  openxr-loader          1.1.49 -> 1.1.50
+[C.]  #33  pcre2                  10.44 x4 -> 10.44 x3
+[U.]  #34  pinentry-gnome3        1.3.1 -> 1.3.2
+[C.]  #35  protobuf               29.5, 31.1 -> 31.1
+[U.]  #36  proton-pass            1.32.2 -> 1.32.4
+[C.]  #37  python3                3.13.5 x3, 3.13.5-env x8, 3.13.5-env-fish-completions -> 3.13.5 x3, 3.13.5-env x9, 3.13.5-env-fish-completions
+[U.]  #38  qqc2-desktop-style     6.16.0 -> 6.17.0
+[C.]  #39  sonnet                 5.116.0, 5.116.0-bin, 6.16.0 -> 5.116.0, 5.116.0-bin, 6.17.0
+[U.]  #40  xapp                   2.8.11, 2.8.11-dev -> 2.8.12, 2.8.12-dev
+Added packages:
+[A.]  #001  AccountService                                <none>
+[A+]  #002  accountsservice                               23.13.9
+[A.]  #003  alpha-nvim                                    2b3cbcdd
+[A.]  #004  base16-aa923dae                               <none>
+[A.]  #005  bash-grammar                                  0.0.0+rev=56b54c6
+[A.]  #006  bash-language-server                          5.6.0
+[A.]  #007  binutils-wrapper                              2.44
+[A.]  #008  bufdelete-nvim-f6bcea78                       <none>
+[A.]  #009  bundler                                       2.6.9
+[A.]  #010  c-grammar                                     0.0.0+rev=7fa1be1
+[A.]  #011  c-grammar-neovim                              0.11.3
+[A.]  #012  cheatsheet-nvim                               9716f9aa
+[A.]  #013  clang                                         19.1.7, 19.1.7-lib
+[A.]  #014  clang-tools                                   19.1.7
+[A.]  #015  clang-wrapper                                 19.1.7
+[A.]  #016  clipboard-history                             <none>
+[A.]  #017  clipboard-history-fish-completions            <none>
+[A.]  #018  cmake                                         3.31.7
+[A.]  #019  cmp-buffer-b74fab36                           <none>
+[A.]  #020  cmp-luasnip                                   98d9cb5c
+[A.]  #021  cmp-nvim-lsp-a8912b88                         <none>
+[A.]  #022  cmp-path-e52e640b                             <none>
+[A.]  #023  cmp-treesitter                                958fcfa0
+[A.]  #024  comment-nvim-e30b7f20                         <none>
+[A.]  #025  compiler-rt-libc                              19.1.7, 19.1.7-dev
+[A.]  #026  conform-nvim                                  973f3cb7
+[A.]  #027  cpp-grammar                                   0.0.0+rev=5cb9b69
+[A.]  #028  crates-nvim-c915ab53                          <none>
+[A.]  #029  deadnix                                       1.2.1
+[A.]  #030  deno                                          2.4.3
+[A.]  #031  die-hook                                      <none>
+[A.]  #032  diffview-nvim                                 4516612f
+[A.]  #033  dotnet-runtime                                8.0.19
+[A.]  #034  dotnet-runtime-wrapped                        8.0.19
+[A.]  #035  dressing-nvim                                 2d7c2db2
+[A.]  #036  eslint_d                                      14.3.0
+[A.]  #037  expand-response-params                        <none>
+[A.]  #038  fastaction-nvim                               9bf0c368
+[A.]  #039  fidget-nvim                                   17ce5ac3
+[A.]  #040  friendly-snippets                             572f5660
+[A.]  #041  gemfile-and-lockfile                          <none> x2
+[A.]  #042  ghostty                                       1.1.3, 1.1.3-fish-completions, 1.1.3-man, 1.1.3-shell_integration, 1.1.3-terminfo, 1.1.3-vim
+[A.]  #043  ghostty-config                                <none>
+[A.]  #044  ghostty-stylix-theme                          <none>
+[A.]  #045  git-conflict-nvim-a1badcd0                    <none>
+[A.]  #046  gitlinker-nvim                                23982c86
+[A.]  #047  gitsigns-nvim-b0143316                        <none>
+[A.]  #048  glslang                                       15.3.0
+[A.]  #049  hm_nviminit.lua                               <none>
+[A.]  #050  hm_rofithemecliphist.rasi                     <none>
+[A.]  #051  hm_rofithemeconfirm.rasi                      <none>
+[A.]  #052  hm_rofithemelauncher.rasi                     <none>
+[A.]  #053  hm_rofithemepowermenu.rasi                    <none>
+[A.]  #054  hop-nvim                                      1a1eceaf
+[A.]  #055  html-grammar                                  0.0.0+rev=cbb91a0
+[A.]  #056  hunk-nvim                                     1e0a4d71
+[A.]  #057  icon-picker-nvim                              3ee9a0ea
+[A.]  #058  image-nvim                                    4c51d620
+[A.]  #059  indent-blankline-nvim                         005b5600
+[A.]  #060  init.lua                                      <none>
+[A.]  #061  javascript-grammar                            0.0.0+rev=6fbef40
+[A.]  #062  leap-nvim-ebaf38f7                            <none>
+[A.]  #063  libluv                                        1.51.0-1
+[A.]  #064  lspkind-nvim-d79a1c32                         <none>
+[A.]  #065  lua-grammar                                   0.0.0+rev=d760230
+[A.]  #066  lua-grammar-neovim                            0.11.3
+[A.]  #067  lua-language-server                           3.15.0
+[A.]  #068  luacheck-luarocks-config.lua                  <none>
+[A.]  #069  luajit                                        2.1.1741730670, 2.1.1741730670-env x2
+[A.]  #070  luajit2.1-argparse                            0.7.1-1
+[A.]  #071  luajit2.1-lpeg                                1.1.0-2
+[A.]  #072  luajit2.1-luabitop                            1.0.2-3
+[A.]  #073  luajit2.1-luacheck                            1.2.0-1
+[A.]  #074  luajit2.1-luafilesystem                       1.8.0-1
+[A.]  #075  luajit2.1-luassert                            1.9.0-1
+[A.]  #076  luajit2.1-mpack                               1.0.12-0
+[A.]  #077  luajit2.1-say                                 1.4.1-3
+[A.]  #078  lualine-nvim-a94fc689                         <none>
+[A.]  #079  luarocks_bootstrap                            3.12.0
+[A.]  #080  luasnip                                       3d5bced1
+[A.]  #081  lz-n-dbf51256                                 <none>
+[A.]  #082  lzn-auto-require-ef746afb                     <none>
+[A.]  #083  make-shell-wrapper-hook                       <none>
+[A.]  #084  markdown-grammar                              0.0.0+rev=7462bb6
+[A.]  #085  markdown-grammar-neovim                       0.11.3
+[A.]  #086  markdown-preview.nvim                         2023-10-17
+[A.]  #087  markdown_inline-grammar                       0.0.0+rev=7462bb6
+[A.]  #088  markdown_inline-grammar-neovim                0.11.3
+[A.]  #089  markdownlint-cli2                             0.18.1
+[A.]  #090  marksman                                      2024-12-18
+[A.]  #091  mnw                                           0.11.3
+[A.]  #092  mnw-configDir                                 <none>
+[A.]  #093  neo-tree-nvim-e858a443                        <none>
+[A+]  #094  neovim                                        0.11.3 x2, 0.11.3-fish-completions
+[A.]  #095  neovim-providers                              <none>
+[A.]  #096  neovim-ruby-env                               <none> x2
+[A.]  #097  neovim-unwrapped                              0.11.3
+[A.]  #098  nix-grammar                                   0.0.0+rev=ea1d87f
+[A.]  #099  noice-nvim                                    0427460c
+[A.]  #100  none-ls-nvim                                  3ce66bc6
+[A.]  #101  nui-nvim-de740991                             <none>
+[A.]  #102  nvf-init.lua                                  <none>
+[A.]  #103  nvf-print-config                              <none>
+[A.]  #104  nvf-print-config-path                         <none>
+[A.]  #105  nvf-with-helpers                              <none>
+[A.]  #106  nvf-with-helpers-fish-completions             <none>
+[A.]  #107  nvim-autopairs                                23320e75
+[A.]  #108  nvim-bufferline-lua                           655133c3
+[A.]  #109  nvim-cmp-b5311ab3                             <none>
+[A.]  #110  nvim-colorizer-lua                            16597180
+[A.]  #111  nvim-lint                                     9c620755
+[A.]  #112  nvim-lspconfig                                4d3b3bb8
+[A.]  #113  nvim-notify                                   397c7c11
+[A.]  #114  nvim-surround                                 7a7a78a5
+[A.]  #115  nvim-ts-autotag-a1d526af                      <none>
+[A.]  #116  nvim-web-devicons                             4a8369f4
+[A.]  #117  nvim.desktop                                  <none>
+[A.]  #118  nvim.desktop-fish-completions                 <none>
+[A.]  #119  otter-nvim-fcc8cf1e                           <none>
+[A.]  #120  packdir-start                                 <none>
+[A.]  #121  plenary-nvim-b9fd5226                         <none>
+[A.]  #122  powermenu                                     <none>
+[A.]  #123  powermenu-fish-completions                    <none>
+[A.]  #124  prettierd                                     0.26.1
+[A.]  #125  project-nvim                                  8c6bad7d
+[A.]  #126  python-grammar                                0.0.0+rev=710796b
+[A.]  #127  python3.13-black                              25.1.0
+[A.]  #128  python3.13-click                              8.1.8
+[A.]  #129  python3.13-flit-core                          3.12.0
+[A.]  #130  python3.13-greenlet                           3.2.2
+[A.]  #131  python3.13-msgpack                            1.1.0
+[A.]  #132  python3.13-mypy-extensions                    1.1.0
+[A.]  #133  python3.13-pathspec                           0.12.1
+[A.]  #134  python3.13-pynvim                             0.5.2
+[A.]  #135  query-grammar                                 0.0.0+rev=8a43889
+[A.]  #136  query-grammar-neovim                          0.11.3
+[A.]  #137  rainbow-delimiters-nvim                       97bf4b8e
+[A.]  #138  regex-grammar                                 0.0.0+rev=b638d29
+[A.]  #139  render-markdown-nvim                          5c0e241b
+[A.]  #140  rhash                                         1.4.4
+[A.]  #141  rtp-nvim                                      494ddfc8
+[A.]  #142  ruby                                          3.3.8
+[A.]  #143  ruby3.3-logger                                1.6.1, 1.7.0
+[A.]  #144  ruby3.3-msgpack                               1.7.5, 1.8.0
+[A.]  #145  ruby3.3-multi_json                            1.15.0
+[A.]  #146  ruby3.3-neovim                                0.10.0 x2
+[A.]  #147  rust-analyzer                                 2025-08-11
+[A.]  #148  rust-analyzer-unwrapped                       2025-08-11
+[A.]  #149  rust-grammar                                  0.0.0+rev=3691201
+[A.]  #150  rust-lib-src                                  <none>
+[A.]  #151  rustaceanvim-f845bb05                         <none>
+[A.]  #152  shellcheck                                    0.10.0-bin
+[A.]  #153  smartcolumn-nvim-b9cdbdf4                     <none>
+[A.]  #154  snacks-nvim                                   5eac729f
+[A.]  #155  statix                                        0.5.8
+[A.]  #156  stylua                                        2.1.0
+[A.]  #157  telescope-b4da76be                            <none>
+[A.]  #158  tinymist                                      0.13.22
+[A.]  #159  todo-comments-nvim                            304a8d20
+[A.]  #160  toggleterm-nvim                               9a88eae8
+[A.]  #161  tree-sitter                                   0.25.6
+[A.]  #162  trouble                                       85bedb7e
+[A.]  #163  ts-error-translator-nvim                      47e5ba89
+[A.]  #164  tsx-grammar                                   0.0.0+rev=75b3874
+[A.]  #165  typescript                                    5.9.2
+[A.]  #166  typescript-language-server                    4.4.0
+[A.]  #167  typst-grammar                                 0.0.0+rev=46cf4de
+[A.]  #168  typst-preview-nvim-dea4525d                   <none>
+[A.]  #169  typstfmt                                      0.2.10
+[A.]  #170  unibilium                                     2.1.2
+[A.]  #171  unit-accounts-daemon.service                  <none>
+[A.]  #172  unzip                                         6.0
+[A.]  #173  vim-fugitive                                  61b51c09
+[A.]  #174  vim-grammar                                   0.0.0+rev=3dd4747
+[A.]  #175  vim-grammar-neovim                            0.11.3
+[A.]  #176  vim-illuminate                                0d1e9368
+[A.]  #177  vim-pack-dir                                  <none>
+[A.]  #178  vim-repeat                                    65846025
+[A.]  #179  vimdoc-grammar                                0.0.0+rev=9f6191a
+[A.]  #180  vimdoc-grammar-neovim                         0.11.3
+[A.]  #181  vimplugin-luajit2.1-plenary.nvim-scm          1-unstable-scm-1
+[A.]  #182  vimplugin-markdown-preview.nvim               2023-10-17
+[A.]  #183  vimplugin-mini.nvim                           2025-08-02
+[A.]  #184  vimplugin-nvim-treesitter                     2025-05-24
+[A.]  #185  vimplugin-treesitter-grammar-bash             <none>
+[A.]  #186  vimplugin-treesitter-grammar-c                <none>
+[A.]  #187  vimplugin-treesitter-grammar-cpp              <none>
+[A.]  #188  vimplugin-treesitter-grammar-html             <none>
+[A.]  #189  vimplugin-treesitter-grammar-javascript       <none>
+[A.]  #190  vimplugin-treesitter-grammar-lua              <none>
+[A.]  #191  vimplugin-treesitter-grammar-markdown         <none>
+[A.]  #192  vimplugin-treesitter-grammar-markdown_inline  <none>
+[A.]  #193  vimplugin-treesitter-grammar-nix              <none>
+[A.]  #194  vimplugin-treesitter-grammar-python           <none>
+[A.]  #195  vimplugin-treesitter-grammar-query            <none>
+[A.]  #196  vimplugin-treesitter-grammar-regex            <none>
+[A.]  #197  vimplugin-treesitter-grammar-rust             <none>
+[A.]  #198  vimplugin-treesitter-grammar-tsx              <none>
+[A.]  #199  vimplugin-treesitter-grammar-typst            <none>
+[A.]  #200  vimplugin-treesitter-grammar-vim              <none>
+[A.]  #201  vimplugin-treesitter-grammar-vimdoc           <none>
+[A.]  #202  vimplugin-treesitter-grammar-zig              <none>
+[A.]  #203  vimplugin-yazi.nvim                           2025-08-04
+[A.]  #204  websocat                                      1.14.0
+[A.]  #205  which-key-nvim                                370ec46f
+[A.]  #206  wrap-lua-hook                                 <none>
+[A.]  #207  xsel                                          1.2.1
+[A.]  #208  zig-grammar                                   0.0.0+rev=b71afff
+[A.]  #209  zip                                           3.0
+[A.]  #210  zls                                           0.14.0
+Removed packages:
+[R.]  #01  append-initrd-secrets          <none>
+[R.]  #02  base16-catppuccin-frappe.toml  <none>
+[R.]  #03  codebook                       0.3.6
+[R.]  #04  fcft                           3.3.2
+[R.]  #05  fuzzel                         1.12.0, 1.12.0-fish-completions
+[R.]  #06  fuzzel.ini                     <none>
+[R-]  #07  helix                          25.07.1, 25.07.1-fish-completions
+[R.]  #08  helix-config.toml              <none>
+[R.]  #09  helix-languages-config         <none>
+[R.]  #10  hm_helixignore                 <none>
+[R.]  #11  lemminx                        0.31.0
+[R.]  #12  libargon2                      20190702
+[R.]  #13  libzip                         1.11.4
+[R.]  #14  ltex-ls-plus                   18.5.1
+[R.]  #15  openjdk-headless               21.0.7+6
+[R.]  #16  openjdk-headless-minimal-jre   21.0.7+6
+[R.]  #17  php                            8.4.11
+[R.]  #18  php-bcmath                     8.4.11
+[R.]  #19  php-calendar                   8.4.11
+[R.]  #20  php-ctype                      8.4.11
+[R.]  #21  php-curl                       8.4.11
+[R.]  #22  php-dom                        8.4.11
+[R.]  #23  php-exif                       8.4.11
+[R.]  #24  php-extra-init                 8.4.11.ini
+[R.]  #25  php-fileinfo                   8.4.11
+[R.]  #26  php-filter                     8.4.11
+[R.]  #27  php-ftp                        8.4.11
+[R.]  #28  php-gd                         8.4.11
+[R.]  #29  php-gettext                    8.4.11
+[R.]  #30  php-gmp                        8.4.11
+[R.]  #31  php-iconv                      8.4.11
+[R.]  #32  php-intl                       8.4.11
+[R.]  #33  php-ldap                       8.4.11
+[R.]  #34  php-mbstring                   8.4.11
+[R.]  #35  php-mysqli                     8.4.11
+[R.]  #36  php-mysqlnd                    8.4.11
+[R.]  #37  php-opcache                    8.4.11
+[R.]  #38  php-openssl                    8.4.11
+[R.]  #39  php-pcntl                      8.4.11
+[R.]  #40  php-pdo                        8.4.11
+[R.]  #41  php-pdo_mysql                  8.4.11
+[R.]  #42  php-pdo_odbc                   8.4.11
+[R.]  #43  php-pdo_pgsql                  8.4.11
+[R.]  #44  php-pdo_sqlite                 8.4.11
+[R.]  #45  php-pgsql                      8.4.11
+[R.]  #46  php-posix                      8.4.11
+[R.]  #47  php-readline                   8.4.11
+[R.]  #48  php-session                    8.4.11
+[R.]  #49  php-simplexml                  8.4.11
+[R.]  #50  php-soap                       8.4.11
+[R.]  #51  php-sockets                    8.4.11
+[R.]  #52  php-sodium                     8.4.11
+[R.]  #53  php-sqlite3                    8.4.11
+[R.]  #54  php-sysvsem                    8.4.11
+[R.]  #55  php-tokenizer                  8.4.11
+[R.]  #56  php-with-extensions            8.4.11
+[R.]  #57  php-xmlreader                  8.4.11
+[R.]  #58  php-xmlwriter                  8.4.11
+[R.]  #59  php-zip                        8.4.11
+[R.]  #60  php-zlib                       8.4.11
+[R.]  #61  phpactor                       2025.07.25.0
+[R.]  #62  prettier                       3.6.2
+[R.]  #63  ruff                           0.12.4
+[R.]  #64  set-java-classpath-hook        <none>
+[R.]  #65  sqls                           0.2.28
+[R.]  #66  yazi.desktop                   <none>
+[R.]  #67  yazi.desktop-fish-completions  <none>
+Closure size: 2416 -> 2573 (387 paths added, 230 paths removed, delta +157, disk usage +629.9MiB).
