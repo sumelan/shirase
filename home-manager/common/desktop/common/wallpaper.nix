@@ -25,7 +25,7 @@ in {
       enable = true;
       settings = {
         default = {
-          duration = "12m";
+          duration = "15m";
           mode = "center";
           sorting = "random";
           recursive = true;
@@ -46,7 +46,7 @@ in {
         matches = lib.singleton {
           namespace = "wpaperd";
         };
-        place-within-backdrop = true;
+        place-within-backdrop = false;
       }
     ];
   };

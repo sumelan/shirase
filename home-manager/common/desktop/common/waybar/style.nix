@@ -89,8 +89,8 @@
         background: shade(alpha(${base00}, 0.9), 1);
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.377);
         color: ${base05};
-        margin-top: 10px;
-        margin-bottom: 5px;
+        margin-top: 2px;
+        margin-bottom: 1px;
         margin-left: 5px;
         margin-right: 5px;
         box-shadow: 1px 2px 2px #101010;

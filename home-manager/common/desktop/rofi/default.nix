@@ -6,6 +6,7 @@
   ...
 }: {
   imports = [
+    ./scripts
     ./cliphist.nix
     ./confirm.nix
     ./launcher.nix
@@ -13,7 +14,11 @@
   ];
 
   options.custom = {
-    rofi.enable = lib.mkEnableOption "Rofi";
+    rofi.enable =
+      lib.mkEnableOption "Rofi"
+      // {
+        default = true;
+      };
   };
 
   config = lib.mkIf config.custom.rofi.enable {

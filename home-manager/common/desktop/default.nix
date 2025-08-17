@@ -2,9 +2,9 @@ _: {
   imports = [
     ./common
     ./niri
+    ./rofi
     ./discord.nix
     ./dunst.nix
-    ./fuzzel.nix
     ./kitty.nix
     ./librewolf.nix
     ./mpv.nix
