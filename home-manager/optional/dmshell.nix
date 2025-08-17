@@ -15,6 +15,7 @@
     home.packages = with pkgs; [
       brightnessctl
       gammastep
+      glib
     ];
 
     programs.dankMaterialShell = {

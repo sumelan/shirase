@@ -21,18 +21,30 @@
   };
 
   custom = let
-    enableList = [
-      "cyanrip"
-      "foliate"
-      "freetube"
-      "helix"
-      "obs-studio"
-      "protonapp"
-      "rmpc"
-    ];
-    disableList = [
-      "wlsunset"
-    ];
+    enableList =
+      [
+        "cyanrip"
+        "foliate"
+        "freetube"
+        "helix"
+        "obs-studio"
+        "protonapp"
+        "rmpc"
+      ]
+      ++ ["dmshell" "fuzzel" "ghostty" "swayidle"];
+    disableList =
+      [
+        "wlsunset"
+      ]
+      ++ [
+        "dunst"
+        "hypridle"
+        "hyprlock"
+        "rofi"
+        "swayosd"
+        "wallpaper"
+        "waybar"
+      ];
   in
     {
       stylix = {

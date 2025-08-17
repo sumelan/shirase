@@ -48,6 +48,7 @@ in {
     stylix = {
       enable = true;
       autoEnable = true;
+      polarity = "dark";
       # unnecessary module
       targets = {
         kde.enable = false;

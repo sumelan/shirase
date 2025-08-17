@@ -35,7 +35,6 @@
             reload_style_on_change = true;
             output = "${config.lib.monitors.mainMonitorName}";
             modules-left = [
-              "dwl/tags"
               "niri/workspaces"
               "cava"
             ];

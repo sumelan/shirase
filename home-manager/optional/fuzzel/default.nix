@@ -1,14 +1,19 @@
 {
   lib,
   config,
-  pkgs,
   user,
   ...
 }: let
   opacity = config.stylix.opacity.popups * 255 |> builtins.ceil |> lib.toHexString;
 in {
+  imports = [
+    ./scripts
+  ];
+
   options.custom = {
-    fuzzel.enable = lib.mkEnableOption "Fuzzel";
+    fuzzel = {
+      enable = lib.mkEnableOption "Fuzzel";
+    };
   };
 
   config = lib.mkIf config.custom.fuzzel.enable {
@@ -50,16 +55,9 @@ in {
         };
       };
       niri.settings.binds = {
-        "Mod+D" = lib.custom.niri.openApp {
-          app = pkgs.fuzzel;
-        };
-        "Mod+Q" = lib.custom.niri.runCmd {
-          cmd = "fuzzel-actions";
-          title = "Open Actions menu";
-        };
-        "Mod+V" = lib.custom.niri.runCmd {
-          cmd = "fuzzel-clipboard";
-          title = "Search for clipboard history";
+        "Mod+Ctrl+Backslash" = lib.custom.niri.runCmd {
+          cmd = "dynamic-screencast-target";
+          title = "niri Dynamic Cast Target";
         };
       };
     };

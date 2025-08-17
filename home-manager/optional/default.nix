@@ -1,12 +1,12 @@
 _: {
   imports = [
+    ./fuzzel
     ./rmpc
     ./brave.nix
     ./cyanrip.nix
     ./dmshell.nix
     ./foliate.nix
     ./freetube.nix
-    ./fuzzel.nix
     ./helix.nix
     ./ghostty.nix
     ./obs-studio.nix
