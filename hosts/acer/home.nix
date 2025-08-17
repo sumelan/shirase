@@ -31,7 +31,7 @@
         "protonapp"
         "rmpc"
       ]
-      ++ ["dmshell" "fuzzel" "ghostty" "swayidle"];
+      ++ ["dmshell" "fuzzel" "swayidle"];
     disableList =
       [
         "wlsunset"

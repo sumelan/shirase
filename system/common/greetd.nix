@@ -36,8 +36,8 @@
             }
 
             cursor {
-                xcursor-theme "${config.hm.stylix.cursor.name}"
-                xcursor-size ${config.hm.stylix.cursor.size |> builtins.toString}
+                xcursor-theme "${config.hm.home.pointerCursor.name}"
+                xcursor-size ${config.hm.home.pointerCursor.size |> builtins.toString}
             }
 
             input {
@@ -79,7 +79,7 @@
       size = config.hm.stylix.fonts.sizes.desktop;
     };
     cursorTheme = {
-      inherit (config.hm.stylix.cursor) package name;
+      inherit (config.hm.home.pointerCursor) package name;
     };
     settings = {
       background = {

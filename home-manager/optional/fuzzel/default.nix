@@ -26,7 +26,7 @@ in {
             placeholder = "Type to search...";
             prompt = "'❯ '";
             font = with config.stylix.fonts; "${sansSerif.name}:size=${sizes.popups |> builtins.toString}";
-            icon-theme = config.stylix.iconTheme.dark;
+            icon-theme = config.gtk.iconTheme.name;
             match-counter = true;
             terminal = "${lib.getExe config.profiles.${user}.defaultTerminal.package}";
             width = 24;

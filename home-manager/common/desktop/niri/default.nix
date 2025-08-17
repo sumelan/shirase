@@ -51,8 +51,8 @@
       };
 
       cursor = {
-        theme = config.stylix.cursor.name;
-        inherit (config.stylix.cursor) size;
+        theme = config.home.pointerCursor.name;
+        inherit (config.home.pointerCursor) size;
       };
 
       # apply function f to every element of attrset

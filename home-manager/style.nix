@@ -62,16 +62,16 @@ in {
 
       fonts = {
         sansSerif = {
-          package = pkgs.nerd-fonts.ubuntu;
-          name = "Ubuntu Nerd Font";
+          package = pkgs.nerd-fonts.caskaydia-cove;
+          name = "CaskaydiaCove Nerd Font";
         };
         serif = {
-          package = pkgs.nerd-fonts.ubuntu;
-          name = "Ubuntu Nerd Font";
+          package = pkgs.nerd-fonts.caskaydia-cove;
+          name = "CaskaydiaCove Nerd Font";
         };
         monospace = {
-          package = pkgs.maple-mono.NF; # Maple Mono NF (Ligature hinted)
-          name = "Maple Mono NF";
+          package = pkgs.nerd-fonts.caskaydia-cove;
+          name = "CaskaydiaCove Nerd Font";
         };
         emoji = {
           package = pkgs.noto-fonts-color-emoji;
@@ -79,7 +79,7 @@ in {
         };
         sizes = {
           applications = 13;
-          terminal = 13;
+          terminal = 14;
           desktop = 13;
           popups = 12;
         };

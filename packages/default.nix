@@ -1,4 +1,5 @@
 {pkgs, ...}: {
   colloid-pastel-cursors = pkgs.callPackage ./colloid-pastel-cursors {};
   colloid-pastel-icons = pkgs.callPackage ./colloid-pastel-icons {};
+  dgop = pkgs.callPackage ./dgop {};
 }

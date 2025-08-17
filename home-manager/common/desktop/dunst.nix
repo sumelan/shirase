@@ -12,7 +12,7 @@
       };
   };
 
-  config = {
+  config = lib.mkIf config.custom.dunst.enable {
     home.packages = with pkgs; [libnotify];
     services.dunst = {
       enable = true;
@@ -25,7 +25,7 @@
           origin = "top-right";
           separator_color = base02;
           font = "${fonts.sansSerif.name} ${toString fonts.sizes.popups}";
-          icon_theme = config.stylix.iconTheme.dark;
+          icon_theme = config.gtk.iconTheme.name;
           width = "(250, 400)";
           offset = "(30, 30)";
           alignment = "center";
