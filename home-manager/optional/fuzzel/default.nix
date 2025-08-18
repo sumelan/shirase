@@ -29,7 +29,7 @@ in {
             icon-theme = config.gtk.iconTheme.name;
             match-counter = true;
             terminal = "${lib.getExe config.profiles.${user}.defaultTerminal.package}";
-            width = 24;
+            width = 26;
             lines = 12;
             horizontal-pad = 25;
             vertical-pad = 8;

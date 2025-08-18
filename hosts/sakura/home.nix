@@ -21,14 +21,25 @@
   };
 
   custom = let
-    enableList = [
-      "freetube"
-      "rmpc"
-      "wlsunset"
-    ];
-    disableList = [
-      "helix"
-    ];
+    enableList =
+      [
+        "freetube"
+        "rmpc"
+      ]
+      ++ ["dmshell" "fuzzel" "swayidle"];
+    disableList =
+      [
+        "helix"
+      ]
+      ++ [
+        "dunst"
+        "hypridle"
+        "hyprlock"
+        "rofi"
+        "swayosd"
+        "wallpaper"
+        "waybar"
+      ];
   in
     {
       stylix = {

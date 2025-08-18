@@ -70,10 +70,10 @@
       hotkey-overlay.hidden = true;
     };
 
-    "Mod+Ctrl+H".action = set-column-width "-10%";
-    "Mod+Ctrl+J".action = set-window-height "+10%";
-    "Mod+Ctrl+K".action = set-window-height "-10%";
-    "Mod+Ctrl+L".action = set-column-width "+10%";
+    "Mod+Alt+H".action = set-column-width "-10%";
+    "Mod+Alt+J".action = set-window-height "+10%";
+    "Mod+Alt+K".action = set-window-height "-10%";
+    "Mod+Alt+L".action = set-column-width "+10%";
 
     # acer fn+F3 binds Mod+P
     "Mod+P".action = consume-or-expel-window-left;

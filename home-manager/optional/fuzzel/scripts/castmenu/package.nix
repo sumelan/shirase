@@ -2,7 +2,7 @@
 pkgs.writers.writeFishBin "dynamic-screencast-target" ''
   set choices " Pick the target window\n󰍺 Focused Monitor\n󰞊 Clear Target"
 
-  set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Search for Screencast targets..." --lines 3)
+  set choice (echo -en $choices | fuzzel --dmenu --prompt " " --placeholder "Select Screencast action..." --lines 3)
 
   switch (string split -f 2 " " $choice)
       case Pick

@@ -48,7 +48,7 @@
         action.spawn = ["qs" "-c" "DankMaterialShell" "ipc" "call" "settings" "toggle"];
         hotkey-overlay.title = "Settings";
       };
-      "Super+Alt+L" = {
+      "Mod+Ctrl+L" = {
         action.spawn = ["qs" "-c" "DankMaterialShell" "ipc" "call" "lock" "lock"];
         hotkey-overlay.title = "Lock Screen";
       };
