@@ -13,11 +13,11 @@
   custom = let
     enableList = [
       "alsa"
-      "steam"
+      "audiobookshelf"
     ];
     disableList = [
-      "audiobookshelf"
       "distrobox"
+      "steam"
     ];
   in
     {

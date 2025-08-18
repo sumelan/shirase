@@ -49,7 +49,7 @@
           command = "niri msg action power-off-monitors";
           resumeCommand = "niri msg action power-on-monitors";
         }
-        (lib.optionalAttrs (!isServer) {
+        (lib.mkIf (!isServer) {
           timeout = 60 * 20;
           command = "systemctl suspend";
         })

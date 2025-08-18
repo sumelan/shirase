@@ -52,7 +52,7 @@
           dark = "Colloid-Pastel-Dark";
         };
       };
-      niri.xwayland.enable = true;
+      niri.xwayland.enable = false;
     }
     // lib.genAttrs enableList (_name: {
       enable = true;
