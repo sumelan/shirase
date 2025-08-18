@@ -84,7 +84,7 @@
     settings = {
       background = {
         path = ../../hosts/regreet.png;
-        fit = "Contain";
+        fit = "Cover";
       };
       GTK.application_prefer_dark_theme = true;
       appearance.greeting_msg = "Welcome back!";
@@ -102,7 +102,7 @@
           }
 
           picture {
-            filter: blur(.2rem);
+            filter: blur(.1rem);
           }
 
           frame.background {
@@ -122,8 +122,8 @@
           }
 
           box.horizontal>button.default.suggested-action.text-button {
-            background: ${base0B};
-            color: ${base03};
+            background: ${base03};
+            color: ${base06};
             padding: 12px;
             margin: 0 8px;
             border-radius: 12px;
@@ -131,7 +131,7 @@
           }
 
           box.horizontal>button.default.suggested-action.text-button:hover {
-            background: shade(${base0B}, 1.2);
+            background: shade(${base03}, 1.2);
           }
 
           box.horizontal>button.text-button {
