@@ -49,12 +49,12 @@
     {
       stylix = {
         cursor = {
-          package = pkgs.custom.colloid-pastel-cursors;
-          name = "dist-dark";
+          package = pkgs.capitaine-cursors;
+          name = "capitaine-cursors-white";
         };
         icons = {
-          package = pkgs.custom.colloid-pastel-icons;
-          dark = "Colloid-Pastel-Dark";
+          package = pkgs.kora-icon-theme;
+          dark = "kora-pgrey";
         };
       };
     }

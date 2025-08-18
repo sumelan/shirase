@@ -17,6 +17,7 @@
         brightnessctl
         gammastep
         libnotify
+        pciutils
       ]
       ++ [custom.dgop];
 
