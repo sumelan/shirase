@@ -27,13 +27,13 @@
         "foliate"
         "freetube"
         "helix"
-        "obs-studio"
         "protonapp"
         "rmpc"
       ]
-      ++ ["dmshell" "fuzzel" "swayidle"];
+      ++ ["fuzzel" "noctalia-shell" "swayidle"];
     disableList =
       [
+        "obs-studio"
         "wlsunset"
       ]
       ++ [
@@ -49,12 +49,14 @@
     {
       stylix = {
         cursor = {
-          package = pkgs.capitaine-cursors;
-          name = "capitaine-cursors-white";
+          package = pkgs.capitaine-cursors-themed;
+          name = "Capitaine Cursors (Gruvbox)";
         };
         icons = {
-          package = pkgs.kora-icon-theme;
-          dark = "kora-pgrey";
+          package = pkgs.gruvbox-plus-icons.override {
+            folder-color = "lime";
+          };
+          dark = "Gruvbox-Plus-Dark";
         };
       };
     }

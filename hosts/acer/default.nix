@@ -18,7 +18,7 @@
     ];
   in
     {
-      stylix.colorTheme = "tomorrow-night-eighties";
+      stylix.colorTheme = "gruvbox-material-dark-soft";
     }
     // lib.genAttrs enableList (_name: {
       enable = true;

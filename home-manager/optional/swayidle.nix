@@ -16,10 +16,7 @@
       events = [
         {
           event = "before-sleep";
-          command = lib.concatStringsSep "; " [
-            "qs -c DankMaterialShell ipc call lock lock"
-            "qs -c DankMaterialShell ipc call mpris playPause"
-          ];
+          command = "qs -c noctalia-shell ipc call lockScreen toggle";
         }
         {
           event = "after-resume";
@@ -27,7 +24,7 @@
         }
         {
           event = "lock";
-          command = "qs -c DankMaterialShell ipc call lock lock";
+          command = "qs -c noctalia-shell ipc call lockScreen toggle";
         }
         {
           event = "unlock";
@@ -42,7 +39,7 @@
         }
         {
           timeout = 60 * 12;
-          command = "qs -c DankMaterialShell ipc call lock lock";
+          command = "qs -c noctalia-shell ipc call lockScreen toggle";
         }
         {
           timeout = 60 * 15;
