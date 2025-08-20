@@ -191,7 +191,7 @@
 
           button.image-button.toggle:disabled {
             background: ${base02};
-            color: alpha(${base08}, .6);
+            color: alpha(${base06}, .6);
             margin-right: 36px;
             padding: 12px;
             border-radius: 12px;

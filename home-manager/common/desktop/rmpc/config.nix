@@ -6,7 +6,7 @@
       #![enable(unwrap_newtypes)]
       #![enable(unwrap_variant_newtypes)]
       (
-          address: "${config.xdg.configHome}/mpd/mpd_socket",
+          address: "/run/mpd/socket",
           password: None,
           theme: "custom",
           cache_dir: "${config.xdg.cacheHome}/rmpc",

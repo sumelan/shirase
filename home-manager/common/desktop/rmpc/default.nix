@@ -29,7 +29,7 @@ in {
             type  "pipewire"
             name  "PipeWire Sound Server"
           }
-          bind_to_address "${config.xdg.configHome}/mpd/mpd_socket"
+          bind_to_address "/run/mpd/socket"
         '';
       };
       # mpd to mpris2 bridge
