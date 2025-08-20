@@ -109,7 +109,7 @@
             background: alpha(${base01}, .92);
             color: ${base05};
             border-radius: 24px;
-            box-shadow: 0 0 8px 0 alpha(${base02}, .92);
+            box-shadow: 0 0 8px 0 alpha(${base00}, .92);
           }
 
           frame.background.top {
@@ -122,8 +122,8 @@
           }
 
           box.horizontal>button.default.suggested-action.text-button {
-            background: ${base03};
-            color: ${base06};
+            background: ${base0B};
+            color: ${base02};
             padding: 12px;
             margin: 0 8px;
             border-radius: 12px;
@@ -131,41 +131,42 @@
           }
 
           box.horizontal>button.default.suggested-action.text-button:hover {
-            background: shade(${base03}, 1.2);
+            background: shade(${base0C}, 1.2);
+            color: ${base00};
           }
 
           box.horizontal>button.text-button {
-            background: ${base01};
-            color: ${base06};
+            background: ${base0E};
+            color: ${base02};
             padding: 12px;
             border-radius: 12px;
             transition: background .3s ease-in-out;
           }
 
           box.horizontal>button.text-button:hover {
-            background: shade(${base01}, 1.2);
-            color: ${base08};
+            background: shade(${base06}, 1.2);
+            color: ${base00};
           }
 
           combobox {
-            background: ${base02};
+            background: ${base01};
             color: ${base05};
             border-radius: 12px;
             padding: 12px;
-            box-shadow: 0 0 4px 0 alpha(${base02}, .6);
+            box-shadow: 0 0 4px 0 alpha(${base00}, .6);
           }
 
           combobox:disabled {
-            background: ${base00};
-            color: alpha(${base04}, .6);
+            background: ${base01};
+            color: alpha(${base08}, .6);
             border-radius: 12px;
             padding: 12px;
-            box-shadow: 0 0 4px 0 alpha(${base02}, .6);
+            box-shadow: 0 0 4px 0 alpha(${base00}, .6);
           }
 
           modelbutton.flat {
-            background: ${base03};
-            color: ${base07};
+            background: ${base02};
+            color: ${base0D};
             padding: 6px;
             margin: 2px;
             border-radius: 8px;
@@ -174,7 +175,7 @@
 
           modelbutton.flat:hover {
             background: shade(${base03}, 1.2);
-            color: ${base07};
+            color: ${base0C};
           }
 
           button.image-button.toggle {
@@ -184,13 +185,13 @@
           }
 
           button.image-button.toggle:hover {
-            background: ${base01};
-            box-shadow: 0 0 4px 0px alpha(${base02}, .6);
+            background: ${base02};
+            box-shadow: 0 0 4px 0px alpha(${base00}, .6);
           }
 
           button.image-button.toggle:disabled {
-            background: ${base00};
-            color: alpha(${base04}, .6);
+            background: ${base02};
+            color: alpha(${base08}, .6);
             margin-right: 36px;
             padding: 12px;
             border-radius: 12px;
@@ -201,7 +202,7 @@
             color: ${base04};
             border-radius: 8px;
             border-spacing: 6px;
-            box-shadow: 0 0 4px 0 alpha(${base02}, .6);
+            box-shadow: 0 0 4px 0 alpha(${base00}, .6);
             padding: 6px 12px;
           }
 
@@ -214,7 +215,7 @@
           }
 
           entry.password {
-            border: 2px solid ${base0D};
+            border: 2px solid ${base0C};
             border-radius: 12px;
             padding: 12px;
           }
