@@ -19,16 +19,24 @@
       protonvpn-gui
     ];
 
-    programs.niri.settings.window-rules = [
-      {
-        matches = [
-          {app-id = "^(Proton Mail)$";}
-          {app-id = "^(Proton Pass)$";}
-          {app-id = "^(.protonvpn-app-wrapped)$";}
-        ];
-        block-out-from = "screen-capture";
-      }
-    ];
+    programs.niri.settings = {
+      window-rules = [
+        {
+          matches = [
+            {app-id = "^(Proton Mail)$";}
+            {app-id = "^(Proton Pass)$";}
+            {app-id = "^(.protonvpn-app-wrapped)$";}
+          ];
+          block-out-from = "screen-capture";
+        }
+      ];
+      binds = {
+        "Mod+M" = {
+          action.spawn = lib.custom.niri.useUwsm "proton-mail";
+          hotkey-overlay.title = ''<i>Launch</i> <span foreground="#FF007F" weight="bold">Proton Mail</span>'';
+        };
+      };
+    };
 
     custom.persist = {
       home = {

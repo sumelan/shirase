@@ -49,14 +49,12 @@
     {
       stylix = {
         cursor = {
-          package = pkgs.capitaine-cursors-themed;
-          name = "Capitaine Cursors (Gruvbox)";
+          package = pkgs.custom.colloid-pastel-cursors;
+          name = "dist-dark";
         };
         icons = {
-          package = pkgs.gruvbox-plus-icons.override {
-            folder-color = "lime";
-          };
-          dark = "Gruvbox-Plus-Dark";
+          package = pkgs.custom.colloid-pastel-icons;
+          dark = "Colloid-Pastel-Dark";
         };
       };
     }

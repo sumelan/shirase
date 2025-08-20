@@ -243,6 +243,7 @@
           "mainBar" = mainBarConfig // moduleConfiguration;
         };
       };
+      cava.enable = true;
     };
     stylix.targets.waybar.enable = false;
   };

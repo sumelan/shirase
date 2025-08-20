@@ -10,7 +10,7 @@
   openApp = {
     app,
     args ? "",
-    title ? "<i>Launch</i> <b>${lib.getName app}</b>",
+    title ? ''<i>Launch</i> <span foreground="#FF007F" weight="bold">${lib.getName app}</span>'',
   }: {
     action.spawn = useUwsm (lib.strings.trim "${lib.getName app} ${args}");
     hotkey-overlay = {inherit title;};
@@ -21,7 +21,7 @@
     app-id ? lib.getName app,
   }: {
     action.spawn = mkSpawn "${lib.getExe terminal} -o confirm_os_window_close=0 --app-id=${app-id} ${lib.getName app}";
-    hotkey-overlay.title = "<i>Launch</i> <b>${app-id}</b>";
+    hotkey-overlay.title = ''<i>Launch</i> <span foreground="#FF007F" weight="bold">${app-id}</span>'';
   };
 
   runCmd = {

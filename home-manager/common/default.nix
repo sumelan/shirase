@@ -5,7 +5,6 @@
     ./scripts
     ./shell
     ./btop.nix
-    ./cava.nix
     ./eza.nix
     ./fastfetch.nix
     ./gh.nix
