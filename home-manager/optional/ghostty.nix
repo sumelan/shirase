@@ -5,10 +5,7 @@
 }: {
   options.custom = {
     ghostty.enable =
-      lib.mkEnableOption "ghostty"
-      // {
-        default = true;
-      };
+      lib.mkEnableOption "ghostty";
   };
 
   config = lib.mkIf config.custom.ghostty.enable {

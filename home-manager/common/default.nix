@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./desktop
-    ./neovim
     ./shell
     ./btop.nix
     ./eza.nix
@@ -10,6 +9,7 @@
     ./git.nix
     ./jujutsu.nix
     ./lazygit.nix
+    ./neovim.nix
     ./nix.nix
     ./ripgrep.nix
     ./starship.nix

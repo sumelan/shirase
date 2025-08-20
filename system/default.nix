@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  host,
   user,
   flakePath,
   isLaptop,
@@ -82,6 +83,8 @@
             ''wrapProgram $out/bin/yazi --set YAZI_CONFIG_HOME "${config.hm.xdg.configHome}/yazi"'';
           meta.mainProgram = "yazi";
         })
+        # use the package configured by nvf
+        (custom.neovim-sumelan.override {inherit host flakePath;})
       ]
       ++
       # install gtk theme for root, some apps like gparted only run as root

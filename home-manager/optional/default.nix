@@ -6,6 +6,7 @@ _: {
     ./dmshell.nix
     ./foliate.nix
     ./freetube.nix
+    ./ghostty.nix
     ./helix.nix
     ./noctalia-shell.nix
     ./obs-studio.nix

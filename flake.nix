@@ -53,7 +53,6 @@
     nixpkgs,
     ...
   }: let
-    inherit (nixpkgs) legacyPackages;
     system = "x86_64-linux";
     pkgs = import inputs.nixpkgs {
       inherit system;
@@ -76,12 +75,11 @@
       "x86_64-linux"
       "aarch64-linux"
     ];
-    forAllPkgs = f: forAllSystems (system: f legacyPackages.${system});
+    forAllPkgs = fn: forAllSystems (system: fn {inherit system pkgs inputs;});
   in {
     inherit lib;
     # NixOS configuration entrypoint
     nixosConfigurations = import ./hosts {inherit lib;};
-
     # Your custom packages, accessible through 'nix build', 'nix shell', etc
     packages = forAllPkgs (import ./packages);
   };

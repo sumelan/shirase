@@ -1,9 +1,5 @@
-{
-  lib,
-  config,
-  ...
-}: {
-  programs.nvf.settings.vim.keymaps = lib.mkIf config.custom.neovim.enable [
+_: {
+  vim.keymaps = [
     # disable arrow keys in normal mode
     {
       mode = ["n"];
