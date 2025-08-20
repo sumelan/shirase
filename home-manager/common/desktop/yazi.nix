@@ -1,8 +1,6 @@
 {
   lib,
-  config,
   pkgs,
-  user,
   ...
 }: {
   home = {
@@ -106,7 +104,6 @@
       binds = {
         "Mod+Shift+O" = lib.custom.niri.openTerminal {
           app = pkgs.yazi;
-          terminal = config.profiles.${user}.defaultTerminal.package;
         };
       };
     };

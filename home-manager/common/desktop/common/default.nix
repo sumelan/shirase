@@ -1,5 +1,6 @@
 _: {
   imports = [
+    ./scripts
     ./waybar
     ./dimland.nix
     ./idle.nix

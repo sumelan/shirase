@@ -1,5 +1,8 @@
-{ lib, config, ... }:
 {
+  lib,
+  config,
+  ...
+}: {
   programs = {
     starship = {
       enable = true;
@@ -215,11 +218,14 @@
           echo ""
         end
       '';
-      interactiveShellInit = lib.mkAfter ''
-        function starship_transient_prompt_func
-          starship module character
-        end
-      '';
+      interactiveShellInit =
+        lib.mkAfter
+        # fish
+        ''
+          function starship_transient_prompt_func
+            starship module character
+          end
+        '';
     };
     # some sort of race condition with kitty and starship
     # https://github.com/kovidgoyal/kitty/issues/4476#issuecomment-1013617251

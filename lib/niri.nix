@@ -1,4 +1,7 @@
-{lib}: rec {
+{
+  lib,
+  pkgs,
+}: rec {
   useUwsm = app: [
     "fish"
     "-c"
@@ -17,7 +20,7 @@
   };
   openTerminal = {
     app,
-    terminal,
+    terminal ? pkgs.kitty,
     app-id ? lib.getName app,
   }: {
     action.spawn = mkSpawn "${lib.getExe terminal} -o confirm_os_window_close=0 --app-id=${app-id} ${lib.getName app}";

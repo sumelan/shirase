@@ -46,7 +46,6 @@ in {
         binds = {
           "Mod+R" = lib.custom.niri.openTerminal {
             app = pkgs.rmpc;
-            terminal = config.profiles.${user}.defaultTerminal.package;
           };
         };
         window-rules = [

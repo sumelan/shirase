@@ -18,7 +18,7 @@
     ];
   in
     {
-      stylix.colorTheme = "rose-pine-moon";
+      stylix.colorTheme = "catppuccin-frappe";
     }
     // lib.genAttrs enableList (_name: {
       enable = true;

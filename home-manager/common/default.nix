@@ -2,7 +2,6 @@
   imports = [
     ./desktop
     ./neovim
-    ./scripts
     ./shell
     ./btop.nix
     ./eza.nix

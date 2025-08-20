@@ -57,8 +57,8 @@ in {
       name = "nvim";
     };
     defaultTerminal = {
-      package = pkgs.kitty;
-      name = "kitty";
+      package = pkgs.ghostty;
+      name = "ghostty";
     };
   };
 }

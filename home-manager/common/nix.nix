@@ -1,8 +1,6 @@
 {
   lib,
-  config,
   pkgs,
-  user,
   inputs,
   flakePath,
   ...
@@ -48,7 +46,6 @@ in {
       binds = {
         "Mod+Period" = lib.custom.niri.openTerminal {
           app = "ns";
-          terminal = config.profiles.${user}.defaultTerminal.package;
           app-id = lib.getName pkgs.nix-search-tv;
         };
       };
