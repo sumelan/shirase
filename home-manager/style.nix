@@ -62,16 +62,16 @@ in {
 
       fonts = {
         sansSerif = {
-          package = pkgs.nerd-fonts.caskaydia-cove;
-          name = "CaskaydiaCove Nerd Font";
+          package = pkgs.noto-fonts-cjk-sans;
+          name = "Noto Sans CJK";
         };
         serif = {
-          package = pkgs.nerd-fonts.caskaydia-cove;
-          name = "CaskaydiaCove Nerd Font";
+          package = pkgs.noto-fonts-cjk-serif;
+          name = "Noto Serif CJK";
         };
         monospace = {
-          package = pkgs.nerd-fonts.caskaydia-cove;
-          name = "CaskaydiaCove Nerd Font";
+          package = pkgs.maple-mono.NF; # Maple Mono NF (Ligature hinted)
+          name = "Maple Mono NF";
         };
         emoji = {
           package = pkgs.noto-fonts-color-emoji;

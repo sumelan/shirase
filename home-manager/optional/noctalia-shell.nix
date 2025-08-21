@@ -13,8 +13,8 @@
   config = lib.mkIf config.custom.noctalia-shell.enable {
     programs.noctalia-shell = {
       enable = true;
-      systemd.enable = true;
-      spawn.enable = false;
+      spawn.enable = true;
+      systemd.enable = false;
       keybinds = {
         enable = true;
       };

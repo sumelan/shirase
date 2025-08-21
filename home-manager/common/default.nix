@@ -19,9 +19,5 @@
     ./zoxide.nix
   ];
 
-  home.packages = with pkgs; [
-    wl-clipboard
-  ];
-
   services.playerctld.enable = true;
 }

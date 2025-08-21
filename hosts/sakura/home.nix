@@ -26,7 +26,7 @@
         "freetube"
         "rmpc"
       ]
-      ++ ["fuzzel" "noctalia-shell" "swayidle"];
+      ++ ["fuzzel" "noctalia-shell"];
     disableList =
       [
         "helix"

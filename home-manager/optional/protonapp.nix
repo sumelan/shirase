@@ -30,12 +30,6 @@
           block-out-from = "screen-capture";
         }
       ];
-      binds = {
-        "Mod+M" = {
-          action.spawn = lib.custom.niri.useUwsm "proton-mail";
-          hotkey-overlay.title = ''<i>Launch</i> <span foreground="#FF007F" weight="bold">Proton Mail</span>'';
-        };
-      };
     };
 
     custom.persist = {

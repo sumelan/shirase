@@ -30,7 +30,7 @@
         "protonapp"
         "rmpc"
       ]
-      ++ ["fuzzel" "noctalia-shell" "swayidle"];
+      ++ ["fuzzel" "noctalia-shell"];
     disableList =
       [
         "obs-studio"

@@ -29,7 +29,7 @@
     };
 
     programs.niri.settings.binds = {
-      "Mod+D" = {
+      "Mod+Space" = {
         action.spawn = ["qs" "-c" "DankMaterialShell" "ipc" "call" "spotlight" "toggle"];
         hotkey-overlay.title = "Application Launcher";
       };
