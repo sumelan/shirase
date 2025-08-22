@@ -23,23 +23,24 @@
   custom = let
     enableList =
       [
+        "cyanrip"
+        "foliate"
         "freetube"
+        "helix"
+        "obs-studio"
+        "protonapp"
         "rmpc"
       ]
       ++ ["fuzzel" "noctalia-shell"];
-    disableList =
-      [
-        "helix"
-      ]
-      ++ [
-        "dunst"
-        "hypridle"
-        "hyprlock"
-        "rofi"
-        "swayosd"
-        "wallpaper"
-        "waybar"
-      ];
+    disableList = [
+      "dunst"
+      "hypridle"
+      "hyprlock"
+      "rofi"
+      "swayosd"
+      "wallpaper"
+      "waybar"
+    ];
   in
     {
       stylix = {

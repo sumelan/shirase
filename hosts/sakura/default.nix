@@ -16,12 +16,13 @@
       "audiobookshelf"
     ];
     disableList = [
+      "btrbk"
       "distrobox"
       "steam"
     ];
   in
     {
-      stylix.colorTheme = "catppuccin-frappe";
+      stylix.colorTheme = "nord";
     }
     // lib.genAttrs enableList (_name: {
       enable = true;

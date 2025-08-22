@@ -14,6 +14,7 @@
       "alsa"
     ];
     disableList = [
+      "btrbk"
       "distrobox"
     ];
   in
