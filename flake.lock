@@ -129,17 +129,17 @@
         "type": "github"
       }
     },
-    "dmshell": {
+    "dm-shell": {
       "inputs": {
         "nixpkgs": "nixpkgs_3",
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1755782274,
-        "narHash": "sha256-6QeyKnrhfIUtSHeeR/7o+wXP291jQO+JqL+PXopUpwo=",
+        "lastModified": 1755829586,
+        "narHash": "sha256-AyZzoGeIq6jVGTN/xJc2pCgVQ5tuAp+ub5bG4HNCS0I=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "1a8766a291f48ad04b409486d349d1eca7a9042c",
+        "rev": "491d0a6f68a366a395f34ac770f69804f1f30322",
         "type": "github"
       },
       "original": {
@@ -668,7 +668,7 @@
     "quickshell": {
       "inputs": {
         "nixpkgs": [
-          "dmshell",
+          "dm-shell",
           "nixpkgs"
         ]
       },
@@ -711,7 +711,7 @@
       "inputs": {
         "agenix": "agenix",
         "dimland": "dimland",
-        "dmshell": "dmshell",
+        "dm-shell": "dm-shell",
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager_2",
         "impermanence": "impermanence",

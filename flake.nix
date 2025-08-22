@@ -11,7 +11,7 @@
 
     agenix.url = "github:ryantm/agenix";
 
-    dmshell.url = "github:AvengeMedia/DankMaterialShell";
+    dm-shell.url = "github:AvengeMedia/DankMaterialShell";
 
     dimland.url = "github:keifufu/dimland";
 

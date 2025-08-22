@@ -5,28 +5,28 @@
 }:
 buildGoModule rec {
   pname = "dgop";
-  version = "0.0.6";
+  version = "0.0.9";
 
   src = fetchFromGitHub {
     owner = "AvengeMedia";
     repo = "dgop";
     rev = "v${version}";
-    hash = "sha256-QCJbcczQjUZ+Xf7tQHckuP9h8SD0C4p0C8SVByIAq/g=";
+    hash = "sha256-TX8GTYg6Z9JFY+Z+0dfJHyROt94OlkuMBJJxbmxrlac=";
   };
 
-  vendorHash = "sha256-+5rN3ekzExcnFdxK2xqOzgYiUzxbJtODHGd4HVq6hqk=";
-
-  subPackages = ["cmd/cli"];
+  vendorHash = "sha256-+3o/Kg5ROSgp8IZfvU71JvbEgaiLasx5IAkjq27faLQ=";
 
   ldflags = [
     "-s"
     "-w"
-    "-X github.com/AvengeMedia/dgop.VERSION=${version}"
-    "-X github.com/AvengeMedia/dgop.GIT_COMMIT=v${version}"
+    "-X main.Version=${version}"
+    "-X main.buildTime=1970-01-01_00:00:00"
+    "-X main.Commit=${version}"
   ];
 
-  postInstall = ''
-    mv $out/bin/cli $out/bin/dgop
+  installPhase = ''
+    mkdir -p $out/bin
+    cp $GOPATH/bin/cli $out/bin/dgop
   '';
 
   meta = {

@@ -14,13 +14,13 @@ in {
     window-rules = [
       # global rules
       {
-        # geometry-corner-radius = {
-        #   bottom-left = 10.0;
-        #   bottom-right = 10.0;
-        #   top-left = 10.0;
-        #   top-right = 10.0;
-        # };
-        # clip-to-geometry = true;
+        geometry-corner-radius = {
+          bottom-left = 20.0;
+          bottom-right = 20.0;
+          top-left = 20.0;
+          top-right = 20.0;
+        };
+        clip-to-geometry = true;
         draw-border-with-background = false;
       }
       # focused column/window opacity
