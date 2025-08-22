@@ -49,14 +49,12 @@
     {
       stylix = {
         cursor = {
-          package = pkgs.capitaine-cursors-themed;
-          name = "Capitaine Cursors (Nord)";
+          package = pkgs.custom.colloid-pastel-cursors;
+          name = "dist-dark";
         };
         icons = {
-          package = pkgs.nordzy-icon-theme.override {
-            nordzy-themes = ["turquoise"];
-          };
-          dark = "Nordzy-turquoise-dark";
+          package = pkgs.custom.colloid-pastel-icons;
+          dark = "Colloid-Pastel-Dark";
         };
       };
     }

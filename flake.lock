@@ -603,11 +603,11 @@
         "quickshell": "quickshell_2"
       },
       "locked": {
-        "lastModified": 1755797304,
-        "narHash": "sha256-bE2exnGB2mqOF2U+fFXSX1mb2hoNb30rc+AMozEj0rQ=",
+        "lastModified": 1755861093,
+        "narHash": "sha256-0qn0Yz8+MMWJSyQwJ7gzfAMaP9VwMCM/GVydcrhc+G8=",
         "owner": "sumelan",
         "repo": "noctalia-shell",
-        "rev": "1c5f26b6755c05a801d94928302b1e7a99f7c323",
+        "rev": "93430d4b590718c522b4e30f79622e82113226f0",
         "type": "github"
       },
       "original": {
