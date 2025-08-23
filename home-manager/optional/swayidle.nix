@@ -15,7 +15,7 @@
       events = [
         {
           event = "before-sleep";
-          command = "qs -c dms ipc call lock lock";
+          command = "${lib.getExe' config.programs.quickshell.package "qs"} -c DankMaterialShell ipc call lock lock";
         }
         {
           event = "after-resume";
@@ -23,11 +23,11 @@
         }
         {
           event = "lock";
-          command = "qs -c dms ipc call lock lock";
+          command = "${lib.getExe' config.programs.quickshell.package "qs"} -c DankMaterialShell ipc call lock lock";
         }
         {
           event = "unlock";
-          command = "qs -c dms ipc call lock lock";
+          command = "";
         }
       ];
       timeouts = [
@@ -38,7 +38,7 @@
         }
         {
           timeout = 60 * 12;
-          command = "qs -c dms ipc call lock lock";
+          command = "${lib.getExe' config.programs.quickshell.package "qs"} -c DankMaterialShell ipc call lock lock";
         }
         {
           timeout = 60 * 15;
