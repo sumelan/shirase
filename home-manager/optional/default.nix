@@ -3,7 +3,7 @@ _: {
     ./fuzzel
     ./brave.nix
     ./cyanrip.nix
-    ./dm-shell.nix
+    ./dms.nix
     ./foliate.nix
     ./freetube.nix
     ./ghostty.nix

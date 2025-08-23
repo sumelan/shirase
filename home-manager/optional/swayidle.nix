@@ -11,12 +11,11 @@
   config = lib.mkIf config.custom.swayidle.enable {
     services.swayidle = {
       enable = true;
-      systemdTarget = "config.wayland.systemd.target";
       extraArgs = ["-w"];
       events = [
         {
           event = "before-sleep";
-          command = "qs -c noctalia-shell ipc call lockScreen toggle";
+          command = "qs -c dms ipc call lock lock";
         }
         {
           event = "after-resume";
@@ -24,11 +23,11 @@
         }
         {
           event = "lock";
-          command = "qs -c noctalia-shell ipc call lockScreen toggle";
+          command = "qs -c dms ipc call lock lock";
         }
         {
           event = "unlock";
-          command = "";
+          command = "qs -c dms ipc call lock lock";
         }
       ];
       timeouts = [
@@ -39,7 +38,7 @@
         }
         {
           timeout = 60 * 12;
-          command = "qs -c noctalia-shell ipc call lockScreen toggle";
+          command = "qs -c dms ipc call lock lock";
         }
         {
           timeout = 60 * 15;
