@@ -96,14 +96,14 @@
         locked = "allow";
       };
       # brightness
-      "XF86MonBrightnessUp" = lib.custom.niri.runCmd {
-        cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --brightness raise";
-        locked = "allow";
-      };
-      "XF86MonBrightnessDown" = lib.custom.niri.runCmd {
-        cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --brightness lower";
-        locked = "allow";
-      };
+      #     "XF86MonBrightnessUp" = lib.custom.niri.runCmd {
+      #       cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --brightness raise";
+      #       locked = "allow";
+      #     };
+      #     "XF86MonBrightnessDown" = lib.custom.niri.runCmd {
+      #       cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --brightness lower";
+      #       locked = "allow";
+      #     };
 
       # fcitx5
       "Ctrl+Space" = lib.custom.niri.runCmd {
@@ -111,12 +111,6 @@
         title = "Switch ime";
         osd = "swayosd";
         osdArgs = "--monitor ${config.lib.monitors.mainMonitorName} --custom-message=(fcitx5-remote -n) --custom-icon=input-keyboard";
-      };
-      # clear clipboard cache
-      "Mod+Ctrl+V" = lib.custom.niri.runCmd {
-        cmd = "rm $XDG_CACHE_HOME/cliphist/db";
-        osd = "swayosd";
-        osdArgs = "--monitor ${config.lib.monitors.mainMonitorName} --custom-message='Clipboard Cleared' --custom-icon=edit-paste";
       };
     };
   };

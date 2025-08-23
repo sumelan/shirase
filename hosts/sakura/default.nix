@@ -13,9 +13,9 @@
   custom = let
     enableList = [
       "alsa"
-      "audiobookshelf"
     ];
     disableList = [
+      "audiobookshelf"
       "btrbk"
       "distrobox"
       "steam"

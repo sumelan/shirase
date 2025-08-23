@@ -11,7 +11,7 @@
   config = lib.mkIf config.custom.swayidle.enable {
     services.swayidle = {
       enable = true;
-      systemdTarget = "sway-session.target";
+      systemdTarget = "config.wayland.systemd.target";
       extraArgs = ["-w"];
       events = [
         {
