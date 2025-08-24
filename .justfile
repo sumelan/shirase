@@ -1,5 +1,3 @@
-# originally form https://github.com/Vortriz/dotfiles
-
 set shell := ["fish", "-c"]
 
 export NH_FLAKE := `echo $PWD`
@@ -77,7 +75,7 @@ profiles-path := "/nix/var/nix/profiles"
 alias pf := prefetch
 
 [group('TOOLS')]
-[doc('Download a file to the Nix store and get the SHA-512 hash.')]
+[doc('Download a file to the Nix store and get the SHA-256 hash.')]
 @prefetch url:
     nix store prefetch-file --json --hash-type sha256 {{ url }} | jq -r .hash
 
@@ -85,6 +83,11 @@ alias pf := prefetch
 [doc('Fuzzy search for NixOS packages with nix-search-tv.')]
 @search:
     ns
+
+[group('TOOLS')]
+[doc('Nix (package manager) indexing primitives.')]
+@locate name:
+    nix-locate {{ name }}
 
 [group('TOOLS')]
 [doc('Look the store path of specific package through yazi.')]

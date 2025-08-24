@@ -5,9 +5,10 @@
   host,
   ...
 }: {
-  # Define your hostname
   networking = {
-    hostName = "${host}";
+    # Define your hostname
+    hostName = host;
+    # Enable networking
     networkmanager.enable = true;
     firewall.enable = true;
   };

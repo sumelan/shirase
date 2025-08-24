@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   isServer,
   ...
 }: {
@@ -15,19 +16,19 @@
       events = [
         {
           event = "before-sleep";
-          command = "${lib.getExe' config.programs.quickshell.package "qs"} -c DankMaterialShell ipc call lock lock";
+          command = "${lib.getExe' config.programs.quickshell.package "qs"} ipc call lockScreen toggle";
         }
         {
           event = "after-resume";
-          command = "niri msg action power-on-monitors";
+          command = "${lib.getExe config.programs.niri.package} msg action power-on-monitors";
         }
         {
           event = "lock";
-          command = "${lib.getExe' config.programs.quickshell.package "qs"} -c DankMaterialShell ipc call lock lock";
+          command = "${lib.getExe' config.programs.quickshell.package "qs"} ipc call lockScreen toggle";
         }
         {
           event = "unlock";
-          command = "";
+          command = "${lib.getExe' config.programs.quickshell.package "qs"} ipc call lockScreen toggle";
         }
       ];
       timeouts = [
@@ -38,16 +39,16 @@
         }
         {
           timeout = 60 * 12;
-          command = "${lib.getExe' config.programs.quickshell.package "qs"} -c DankMaterialShell ipc call lock lock";
+          command = "${lib.getExe' config.programs.quickshell.package "qs"} ipc call lockScreen toggle";
         }
         {
           timeout = 60 * 15;
-          command = "niri msg action power-off-monitors";
-          resumeCommand = "niri msg action power-on-monitors";
+          command = "${lib.getExe config.programs.niri.package} msg action power-off-monitors";
+          resumeCommand = "${lib.getExe config.programs.niri.package} msg action power-on-monitors";
         }
         (lib.mkIf (!isServer) {
           timeout = 60 * 20;
-          command = "systemctl suspend";
+          command = "${lib.getExe' pkgs.systemd "systemctl"} suspend";
         })
       ];
     };

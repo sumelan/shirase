@@ -31,13 +31,13 @@
         "protonapp"
         "rmpc"
       ]
-      ++ ["fuzzel" "dms" "swayidle"];
+      ++ ["fuzzel" "noctalia-shell" "swayidle" "swayosd"];
+
     disableList = [
       "dunst"
       "hypridle"
       "hyprlock"
       "rofi"
-      "swayosd"
       "wallpaper"
       "waybar"
     ];
