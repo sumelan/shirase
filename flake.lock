@@ -637,11 +637,11 @@
         "quickshell": "quickshell_2"
       },
       "locked": {
-        "lastModified": 1755991395,
-        "narHash": "sha256-7YfiM/JV0+Q2XdONN8Zsy5JzzFpu2bWS3cyVZo0W/t4=",
+        "lastModified": 1756011293,
+        "narHash": "sha256-PECt1YYGRqPitw+xafHa1z9fhEtFFKwpPBba4vYiI2o=",
         "owner": "sumelan",
         "repo": "noctalia-shell",
-        "rev": "35388e50058c546fd1c50b0389e8323126875dd4",
+        "rev": "e699d4cfe7c51b8e04ac6d973032f55ea0ea36d8",
         "type": "github"
       },
       "original": {
