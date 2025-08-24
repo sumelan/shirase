@@ -133,10 +133,14 @@
       };
 
       environment = {
-        QT_QPA_PLATFORM = "wayland";
-        QT_QPA_PLATFORMTHEME = "gtk3";
-        QT_QPA_PLATFORMTHEME_QT6 = "gtk3";
         ELECTRON_OZONE_PLATFORM_HINT = "auto";
+        QT_QPA_PLATFORM = "wayland";
+        QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+        XDG_SESSION_TYPE = "wayland";
+        XDG_CURRENT_DESKTOP = "niri";
+        QT_QPA_PLATFORMTHEME = "kde";
+        QT_STYLE_OVERRIDE = "kvantum";
+        GDK_BACKEND = "wayland";
       };
     };
     stylix.targets.niri.enable = false;
