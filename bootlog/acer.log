@@ -1309,3 +1309,113 @@ Removed packages:
 [R.]  #29  vim-pack-dir                         <none>
 [R.]  #30  vimplugin-mini.nvim                  2025-08-02
 Closure size: 2632 -> 2602 (262 paths added, 292 paths removed, delta -30, disk usage +142.6MiB).
+
+---
+
+2025年08月24日 09時23分38秒
+<<< /nix/var/nix/profiles/system-362-link
+>>> /nix/var/nix/profiles/system-363-link
+Version changes:
+[C.]  #1  icu4c              73.2, 75.1, 76.1 x2, 76.1-dev, 77.1 -> 76.1 x2, 76.1-dev, 77.1
+[C-]  #2  lz4                1.10.0, 1.10.0-lib x2 -> 1.10.0-lib x2
+[U.]  #3  nixos-system-acer  25.11.20250819.2007595.c8975b6 -> 25.11.20250819.2007595.4b8769d
+[C.]  #4  pcre2              10.44 x4 -> 10.44 x3
+[C.]  #5  source             <none> x20 -> <none> x21
+Selection state changes:
+[C-]  #1  hicolor-icon-theme  0.18
+Added packages:
+[A+]  #1  colloid-pastel-cursors-unstable  2025-03-20, 2025-03-20-fish-completions
+[A+]  #2  colloid-pastel-icons-unstable    2025-03-20, 2025-03-20-fish-completions
+[A.]  #3  hm_swayosdstyle.scss             <none>
+[A.]  #4  inter                            4.1, 4.1-fish-completions
+[A.]  #5  roboto                           3.011, 3.011-fish-completions
+[A.]  #6  swayidle                         1.8.0
+[A.]  #7  swayidle.service                 <none>
+[A.]  #8  swayosd                          0.2.1, 0.2.1-fish-completions
+[A.]  #9  swayosd.service                  <none>
+Removed packages:
+[R.]  #01  base16-nord.toml                           <none>
+[R-]  #02  btrbk                                      0.32.6
+[R.]  #03  btrbk-remote-backup.conf                   <none>
+[R-]  #04  capitaine-cursors-themed                   5, 5-fish-completions
+[R.]  #05  codebook                                   0.3.8
+[R.]  #06  foliate                                    3.3.0, 3.3.0-fish-completions
+[R.]  #07  gjs                                        1.84.2
+[R.]  #08  harfbuzz-icu                               11.2.1
+[R-]  #09  helix                                      25.07.1, 25.07.1-fish-completions
+[R.]  #10  helix-config.toml                          <none>
+[R.]  #11  helix-languages-config                     <none>
+[R.]  #12  hidapi                                     0.15.0
+[R.]  #13  hm_helixignore                             <none>
+[R.]  #14  hyphen                                     2.8.8
+[R.]  #15  lemminx                                    0.31.0
+[R.]  #16  libargon2                                  20190702
+[R.]  #17  libbacktrace                               0-unstable-2024-03-02
+[R.]  #18  libmanette                                 0.2.12
+[R.]  #19  libzip                                     1.11.4
+[R.]  #20  ltex-ls-plus                               18.5.1
+[R.]  #21  mbuffer                                    20250809
+[R-]  #22  nordzy-icon-theme                          1.8.7, 1.8.7-fish-completions
+[R.]  #23  openjdk-headless                           21.0.7+6
+[R.]  #24  openjdk-headless-minimal-jre               21.0.7+6
+[R.]  #25  perl5.40.0-Bit-Vector                      7.4
+[R.]  #26  perl5.40.0-Carp-Clan                       6.08
+[R.]  #27  perl5.40.0-Date-Calc                       6.4
+[R.]  #28  php                                        8.4.11
+[R.]  #29  php-bcmath                                 8.4.11
+[R.]  #30  php-calendar                               8.4.11
+[R.]  #31  php-ctype                                  8.4.11
+[R.]  #32  php-curl                                   8.4.11
+[R.]  #33  php-dom                                    8.4.11
+[R.]  #34  php-exif                                   8.4.11
+[R.]  #35  php-extra-init                             8.4.11.ini
+[R.]  #36  php-fileinfo                               8.4.11
+[R.]  #37  php-filter                                 8.4.11
+[R.]  #38  php-ftp                                    8.4.11
+[R.]  #39  php-gd                                     8.4.11
+[R.]  #40  php-gettext                                8.4.11
+[R.]  #41  php-gmp                                    8.4.11
+[R.]  #42  php-iconv                                  8.4.11
+[R.]  #43  php-intl                                   8.4.11
+[R.]  #44  php-ldap                                   8.4.11
+[R.]  #45  php-mbstring                               8.4.11
+[R.]  #46  php-mysqli                                 8.4.11
+[R.]  #47  php-mysqlnd                                8.4.11
+[R.]  #48  php-opcache                                8.4.11
+[R.]  #49  php-openssl                                8.4.11
+[R.]  #50  php-pcntl                                  8.4.11
+[R.]  #51  php-pdo                                    8.4.11
+[R.]  #52  php-pdo_mysql                              8.4.11
+[R.]  #53  php-pdo_odbc                               8.4.11
+[R.]  #54  php-pdo_pgsql                              8.4.11
+[R.]  #55  php-pdo_sqlite                             8.4.11
+[R.]  #56  php-pgsql                                  8.4.11
+[R.]  #57  php-posix                                  8.4.11
+[R.]  #58  php-readline                               8.4.11
+[R.]  #59  php-session                                8.4.11
+[R.]  #60  php-simplexml                              8.4.11
+[R.]  #61  php-soap                                   8.4.11
+[R.]  #62  php-sockets                                8.4.11
+[R.]  #63  php-sodium                                 8.4.11
+[R.]  #64  php-sqlite3                                8.4.11
+[R.]  #65  php-sysvsem                                8.4.11
+[R.]  #66  php-tokenizer                              8.4.11
+[R.]  #67  php-with-extensions                        8.4.11
+[R.]  #68  php-xmlreader                              8.4.11
+[R.]  #69  php-xmlwriter                              8.4.11
+[R.]  #70  php-zip                                    8.4.11
+[R.]  #71  php-zlib                                   8.4.11
+[R.]  #72  phpactor                                   2025.07.25.0
+[R.]  #73  prettier                                   3.6.2
+[R.]  #74  ruff                                       0.12.4
+[R.]  #75  set-java-classpath-hook                    <none>
+[R.]  #76  spidermonkey                               128.5.0
+[R.]  #77  sqls                                       0.2.28
+[R.]  #78  unit-btrbk-remote-backup.service           <none>
+[R.]  #79  unit-btrbk-remote-backup.timer             <none>
+[R.]  #80  unit-notify-problems-.service              <none>
+[R.]  #81  unit-script-btrbk-remote-backup-pre-start  <none>
+[R.]  #82  unit-script-notify-problems_-start         <none>
+[R.]  #83  webkitgtk                                  2.48.5+abi=6.0
+[R.]  #84  woff2                                      1.0.2-lib
+Closure size: 2602 -> 2525 (79 paths added, 156 paths removed, delta -77, disk usage -1.8GiB).
