@@ -16,7 +16,9 @@
       [
         brightnessctl
         gammastep
+        glib
         libnotify
+        khal
       ]
       ++ [inputs.dgop.packages.${system}.default];
 
