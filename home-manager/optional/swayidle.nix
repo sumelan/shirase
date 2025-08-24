@@ -16,7 +16,10 @@
       events = [
         {
           event = "before-sleep";
-          command = "${lib.getExe' config.programs.quickshell.package "qs"} ipc call lockScreen toggle";
+          command = lib.concatStringsSep "; " [
+            "${lib.getExe' config.programs.quickshell.package "qs"} ipc call lockScreen toggle"
+            "${lib.getExe pkgs.playerctl} pause"
+          ];
         }
         {
           event = "after-resume";
