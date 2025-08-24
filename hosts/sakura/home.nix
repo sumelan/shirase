@@ -44,7 +44,7 @@
         "protonapp"
         "rmpc"
       ]
-      ++ ["fuzzel" "noctalia-shell" "swayidle" "swayosd"];
+      ++ ["fuzzel" "noctalia" "swayidle" "swayosd"];
 
     disableList = [
       "dunst"

@@ -7,14 +7,14 @@
   imports = [inputs.noctalia-shell.homeModules.noctalia-shell];
 
   options.custom = {
-    noctalia-shell.enable = lib.mkEnableOption "Noctalia for Niri";
+    noctalia.enable = lib.mkEnableOption "Noctalia for Niri";
   };
 
-  config = lib.mkIf config.custom.noctalia-shell.enable {
+  config = lib.mkIf config.custom.noctalia.enable {
     programs.noctalia-shell = {
       enable = true;
       spawn.enable = true;
-      systemd.enable = false;
+      systemd.enable = lib.mkForce false;
       keybinds = {
         enable = true;
       };

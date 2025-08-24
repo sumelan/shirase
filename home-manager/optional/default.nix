@@ -8,7 +8,7 @@ _: {
     ./freetube.nix
     ./ghostty.nix
     ./helix.nix
-    ./noctalia-shell.nix
+    ./noctalia.nix
     ./obs-studio.nix
     ./protonapp.nix
     ./rustdesk.nix

@@ -3,12 +3,14 @@
   isLaptop,
   ...
 }: {
-  services = lib.mkIf isLaptop {
-    # power management, conflict with TLP
-    power-profiles-daemon.enable = true;
-    upower = {
-      enable = true;
-    };
-    libinput.enable = true;
-  };
+  services = lib.mkMerge [
+    # power management
+    {
+      upower.enable = true;
+      power-profiles-daemon.enable = true; # conflict with TLP
+    }
+    (lib.mkIf isLaptop {
+      libinput.enable = true;
+    })
+  ];
 }
