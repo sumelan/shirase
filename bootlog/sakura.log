@@ -1658,3 +1658,55 @@ Removed packages:
 [R.]  #31  vim-pack-dir                         <none>
 [R.]  #32  vimplugin-mini.nvim                  2025-08-02
 Closure size: 2501 -> 2643 (437 paths added, 295 paths removed, delta +142, disk usage +3.3GiB).
+
+---
+
+2025年08月24日 09時29分22秒
+<<< /nix/var/nix/profiles/system-311-link
+>>> /nix/var/nix/profiles/system-313-link
+Version changes:
+[C.]  #1  abseil-cpp           20210324.2, 20250512.1 x2 -> 20250512.1 x2
+[D.]  #2  nixos-system-sakura  25.11.20250819.2007595.9221a68 -> 25.11.20250819.2007595.6cc0766
+[C.]  #3  nodejs               22.17.0, 22.17.0-source -> 22.17.0
+[C.]  #4  protobuf             21.12, 31.1 -> 31.1
+[C.]  #5  source               <none> x20 -> <none> x21
+Added packages:
+[A.]  #1  hm_swayosdstyle.scss  <none>
+[A.]  #2  swayidle              1.8.0
+[A.]  #3  swayidle.service      <none>
+[A.]  #4  swayosd               0.2.1, 0.2.1-fish-completions
+[A.]  #5  swayosd.service       <none>
+Removed packages:
+[R.]  #01  aribb24                      1.0.4
+[R.]  #02  audiobookshelf               2.28.0, 2.28.0-npm-deps
+[R.]  #03  celt                         0.11.3
+[R.]  #04  codec2                       1.2.0-lib
+[R.]  #05  davs2                        1.7-lib
+[R.]  #06  ffmpeg-full                  7.1.1-bin, 7.1.1-data, 7.1.1-lib
+[R.]  #07  frei0r-plugins               2.3.3
+[R.]  #08  getopt                       1.1.6
+[R.]  #09  gflags                       2.2.2
+[R.]  #10  gfortran                     14.3.0-lib, 14.3.0-libgcc
+[R.]  #11  glog                         0.7.1
+[R.]  #12  hdf5-cpp                     1.14.6
+[R.]  #13  kvazaar                      2.3.1-lib
+[R.]  #14  lcevcdec                     3.3.8-lib
+[R.]  #15  libaribcaption               1.1.1
+[R.]  #16  libilbc                      3.0.4
+[R.]  #17  nunicode                     1.11-sqlite
+[R.]  #18  openblas                     0.3.30
+[R.]  #19  opencv                       4.11.0
+[R.]  #20  quirc                        1.2
+[R.]  #21  rav1e                        0.8.0
+[R.]  #22  shine                        3.1.1
+[R.]  #23  snappy                       1.2.2
+[R.]  #24  uavs3d                       1.1-unstable-2023-02-23
+[R.]  #25  unit-audiobookshelf.service  <none>
+[R.]  #26  vo-amrwbenc                  0.1.3
+[R.]  #27  vvenc                        1.13.1-lib
+[R.]  #28  xavs                         55
+[R.]  #29  xavs2                        1.4-lib
+[R.]  #30  xevd                         0.5.0-lib
+[R.]  #31  xeve                         0.5.1-lib
+[R.]  #32  zeromq                       4.3.5
+Closure size: 2643 -> 2611 (53 paths added, 85 paths removed, delta -32, disk usage -776.8MiB).
