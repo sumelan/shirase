@@ -62,12 +62,12 @@ in {
 
       fonts = {
         sansSerif = {
-          package = pkgs.noto-fonts-cjk-sans;
-          name = "Noto Sans CJK";
+          package = pkgs.geist-font;
+          name = "Geist";
         };
         serif = {
-          package = pkgs.noto-fonts-cjk-serif;
-          name = "Noto Serif CJK";
+          package = pkgs.geist-font;
+          name = "Geist";
         };
         monospace = {
           package = pkgs.maple-mono.NF; # Maple Mono NF (Ligature hinted)
@@ -97,8 +97,14 @@ in {
       };
     };
 
-    home.file = {
-      ".themed-logo.png".source = changeColor logo;
+    home = {
+      file = {
+        ".themed-logo.png".source = changeColor logo;
+      };
+      packages = with pkgs; [
+        noto-fonts-cjk-sans
+        noto-fonts-cjk-serif
+      ];
     };
   };
 }
