@@ -35,7 +35,7 @@
       url = "github:NixOS/nixos-hardware";
     };
 
-    noctalia-shell.url = "github:sumelan/noctalia-shell";
+    noctalia-shell.url = "github:noctalia-dev/noctalia-shell";
 
     nvf = {
       url = "github:notashelf/nvf";

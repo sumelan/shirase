@@ -634,18 +634,19 @@
     "noctalia-shell": {
       "inputs": {
         "nixpkgs": "nixpkgs_7",
-        "quickshell": "quickshell_2"
+        "quickshell": "quickshell_2",
+        "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1756015310,
-        "narHash": "sha256-NiVbbJJUZY53ZYtqiA8iuWstqTtmHHZjOGtici9VYgo=",
-        "owner": "sumelan",
+        "lastModified": 1756206721,
+        "narHash": "sha256-azmY1sJPbhzszbhsFZh10G+H6J77BUKfE/h/bMNyYUw=",
+        "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "0d33c9269f1acfc0911819bd2b796d5501dbdc85",
+        "rev": "3c39ea192b5846d9e53141a63f12d6d893cfad4e",
         "type": "github"
       },
       "original": {
-        "owner": "sumelan",
+        "owner": "noctalia-dev",
         "repo": "noctalia-shell",
         "type": "github"
       }
@@ -683,7 +684,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems_2"
+        "systems": "systems_3"
       },
       "locked": {
         "lastModified": 1755463179,
@@ -734,11 +735,11 @@
         "rev": "a5431dd02dc23d9ef1680e67777fed00fe5f7cda",
         "revCount": 665,
         "type": "git",
-        "url": "https://git.outfoxxed.me/quickshell/quickshell"
+        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       },
       "original": {
         "type": "git",
-        "url": "https://git.outfoxxed.me/quickshell/quickshell"
+        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       }
     },
     "root": {
@@ -763,7 +764,7 @@
     "spicetify-nix": {
       "inputs": {
         "nixpkgs": "nixpkgs_8",
-        "systems": "systems_3"
+        "systems": "systems_4"
       },
       "locked": {
         "lastModified": 1755613017,
@@ -792,7 +793,7 @@
           "nixpkgs"
         ],
         "nur": "nur",
-        "systems": "systems_4",
+        "systems": "systems_5",
         "tinted-foot": "tinted-foot",
         "tinted-kitty": "tinted-kitty",
         "tinted-schemes": "tinted-schemes",
@@ -859,6 +860,21 @@
       }
     },
     "systems_4": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_5": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",

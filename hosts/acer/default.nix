@@ -11,7 +11,6 @@
 
   custom = let
     enableList = [
-      "alsa"
     ];
     disableList = [
       "btrbk"
