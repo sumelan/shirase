@@ -84,7 +84,7 @@
           meta.mainProgram = "yazi";
         })
         # use the package configured by nvf
-        (custom.neovim-sumelan.override {inherit host flakePath;})
+        (custom.nvf.override {inherit host flakePath;})
       ]
       ++
       # install gtk theme for root, some apps like gparted only run as root

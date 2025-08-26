@@ -4,7 +4,7 @@
   flakePath,
   ...
 }: let
-  customNeovim = pkgs.custom.neovim-sumelan.override {inherit host flakePath;};
+  customNeovim = pkgs.custom.nvf.override {inherit host flakePath;};
 in {
   home = {
     packages = [customNeovim];
