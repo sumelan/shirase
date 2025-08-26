@@ -17,7 +17,7 @@
 
   services = {
     gvfs.enable = true; # automount disks
-    logind.powerKey = lib.mkIf isLaptop "ignore"; # disable accidentary push powerkey
+    logind.settings.Login.HandlePowerKey = lib.mkIf isLaptop "ignore"; # disable accidentary push powerkey
   };
 
   programs = {

@@ -35,7 +35,10 @@
       url = "github:NixOS/nixos-hardware";
     };
 
-    noctalia-shell.url = "github:noctalia-dev/noctalia-shell";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nvf = {
       url = "github:notashelf/nvf";
@@ -46,6 +49,11 @@
 
     stylix = {
       url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    quickshell = {
+      url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

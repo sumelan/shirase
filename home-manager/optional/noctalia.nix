@@ -16,7 +16,10 @@ in {
   };
 
   config = mkIf config.custom.noctalia.enable {
-    home.packages = [inputs.noctalia-shell.packages.${pkgs.system}.default];
+    home.packages = with inputs; [
+      noctalia.packages.${pkgs.system}
+      quickshell.packages.${pkgs.system}.default
+    ];
 
     programs.niri.settings = {
       layout = {
