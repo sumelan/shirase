@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  inputs,
   isServer,
   ...
 }: {
@@ -17,7 +18,7 @@
         {
           event = "before-sleep";
           command = lib.concatStringsSep "; " [
-            "${lib.getExe' config.programs.quickshell.package "qs"} ipc call lockScreen toggle"
+            "${lib.getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call lockScreen toggle"
             "${lib.getExe pkgs.playerctl} pause"
           ];
         }
@@ -27,11 +28,11 @@
         }
         {
           event = "lock";
-          command = "${lib.getExe' config.programs.quickshell.package "qs"} ipc call lockScreen toggle";
+          command = "${lib.getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call lockScreen toggle";
         }
         {
           event = "unlock";
-          command = "${lib.getExe' config.programs.quickshell.package "qs"} ipc call lockScreen toggle";
+          command = "${lib.getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call lockScreen toggle";
         }
       ];
       timeouts = [
@@ -42,7 +43,7 @@
         }
         {
           timeout = 60 * 12;
-          command = "${lib.getExe' config.programs.quickshell.package "qs"} ipc call lockScreen toggle";
+          command = "${lib.getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call lockScreen toggle";
         }
         {
           timeout = 60 * 15;

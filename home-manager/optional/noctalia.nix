@@ -17,7 +17,7 @@ in {
 
   config = mkIf config.custom.noctalia.enable {
     home.packages = with inputs; [
-      noctalia.packages.${pkgs.system}
+      noctalia.packages.${pkgs.system}.default
       quickshell.packages.${pkgs.system}.default
     ];
 

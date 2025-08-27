@@ -71,16 +71,5 @@ in {
         block-out-from = "screen-capture";
       }
     ];
-
-    switch-events = let
-      fish = cmd: [
-        "fish"
-        "-c"
-        cmd
-      ];
-    in {
-      lid-close.action.spawn = fish "systemctl suspend";
-      lid-open.action.spawn = fish "niri msg action power-on-monitors";
-    };
   };
 }

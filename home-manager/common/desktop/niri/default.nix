@@ -132,6 +132,15 @@
         zoom = 0.5; # zoom ranges from 0 to 0.75 where lower values make everything smaller.
       };
 
+      switch-events = {
+        lid-close = {
+          action.spawn = ["${lib.getExe' pkgs.systemd "systemctl"}" "suspend"];
+        };
+        lid-open = {
+          action.spawn = ["${lib.getExe config.programs.niri.package}" "msg" "action" "power-on-monitors"];
+        };
+      };
+
       environment = {
         ELECTRON_OZONE_PLATFORM_HINT = "auto";
         QT_QPA_PLATFORM = "wayland";
