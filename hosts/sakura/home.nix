@@ -37,6 +37,7 @@
     enableList =
       [
         "cyanrip"
+        "euphonica"
         "foliate"
         "freetube"
         "helix"

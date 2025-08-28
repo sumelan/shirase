@@ -3,6 +3,7 @@ _: {
     ./fuzzel
     ./brave.nix
     ./cyanrip.nix
+    ./euphonica.nix
     ./dms.nix
     ./foliate.nix
     ./freetube.nix
@@ -11,7 +12,6 @@ _: {
     ./noctalia.nix
     ./obs-studio.nix
     ./protonapp.nix
-    ./qobuz-player.nix
     ./rustdesk.nix
     ./spotify.nix
     ./swayidle.nix
