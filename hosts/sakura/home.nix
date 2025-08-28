@@ -42,6 +42,7 @@
         "helix"
         "obs-studio"
         "protonapp"
+        "qobuz-player"
         "rmpc"
       ]
       ++ ["fuzzel" "noctalia" "swayidle" "swayosd"];

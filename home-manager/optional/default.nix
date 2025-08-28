@@ -11,6 +11,7 @@ _: {
     ./noctalia.nix
     ./obs-studio.nix
     ./protonapp.nix
+    ./qobuz-player.nix
     ./rustdesk.nix
     ./spotify.nix
     ./swayidle.nix
