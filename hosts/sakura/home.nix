@@ -36,6 +36,7 @@
   custom = let
     enableList =
       [
+        "brave"
         "cyanrip"
         "euphonica"
         "foliate"

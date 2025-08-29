@@ -102,7 +102,7 @@
           }
 
           picture {
-            filter: blur(.1rem);
+            filter: blur(0rem);
           }
 
           frame.background {

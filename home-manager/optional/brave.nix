@@ -16,8 +16,6 @@
         "--enable-features=UseOzonePlatform"
         "--enable-features=TouchpadOverscrollHistoryNavigation"
         "--ozone-platform=wayland"
-        "--enable-wayland-ime"
-        "--wayland-text-input-version=3"
       ];
 
       extensions = [
@@ -57,14 +55,6 @@
     };
 
     programs.niri.settings.window-rules = [
-      {
-        matches = lib.singleton {
-          app-id = "^(brave-browser)$";
-        };
-        default-column-width = {
-          proportion = 0.6;
-        };
-      }
       {
         matches = [
           {

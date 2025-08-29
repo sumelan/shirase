@@ -23,6 +23,7 @@
   custom = let
     enableList =
       [
+        "brave"
         "cyanrip"
         "freetube"
         "protonapp"
