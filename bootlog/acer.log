@@ -1584,3 +1584,129 @@ Removed packages:
 [R.]  #3  inter        4.1, 4.1-fish-completions
 [R.]  #4  libXext      1.3.6 x2, 1.3.6-dev
 Closure size: 2525 -> 2531 (2359 paths added, 2353 paths removed, delta +6, disk usage -49.1MiB).
+
+---
+
+2025年08月31日 16時40分16秒
+<<< /nix/var/nix/profiles/system-364-link
+>>> /nix/var/nix/profiles/system-366-link
+Version changes:
+[U.]  #01  MapleMono-NF         7.4, 7.4-fish-completions -> 7.6, 7.6-fish-completions
+[C.]  #02  abseil-cpp           20250127.1 x2 -> 20210324.2, 20250127.1 x2
+[U.]  #03  basedpyright         1.31.2 -> 1.31.3
+[U.]  #04  bitwarden            2025.7.1 -> 2025.8.1
+[U.]  #05  bootspec             1.0.1 -> 1.1.0
+[C.]  #06  breeze-icons         5.116.0 -> 5.116.0, 6.17.0
+[U.]  #07  dysk                 3.0.0, 3.0.0-fish-completions -> 3.1.0, 3.1.0-fish-completions
+[U.]  #08  fastfetch            2.50.2, 2.50.2-fish-completions, 2.50.2-man -> 2.51.0, 2.51.0-fish-completions, 2.51.0-man
+[U.]  #09  fcitx5               5.1.12 -> 5.1.14
+[U.]  #10  fcitx5-configtool    5.1.9 -> 5.1.10
+[U.]  #11  fcitx5-qt5           5.1.9 -> 5.1.10
+[U.]  #12  fcitx5-qt6           5.1.9 -> 5.1.10
+[U.]  #13  fcitx5-with-addons   5.1.12, 5.1.12-fish-completions -> 5.1.14, 5.1.14-fish-completions
+[U.]  #14  fd                   10.2.0, 10.2.0-fish-completions -> 10.3.0, 10.3.0-fish-completions
+[U.]  #15  gexiv2               0.14.5 -> 0.14.6
+[C.]  #16  gpgme                1.24.3 x2 -> 1.24.3
+[U.]  #17  imagemagick          7.1.2-1 -> 7.1.2-2
+[U.]  #18  initrd-linux-zen     6.16.1 -> 6.16.3
+[U.]  #19  karchive             5.116.0 -> 6.17.0
+[U.]  #20  kauth                5.116.0 -> 6.17.0
+[U.]  #21  kbookmarks           5.116.0 -> 6.17.0
+[U.]  #22  kcodecs              5.116.0 -> 6.17.0
+[U.]  #23  kcompletion          5.116.0 -> 6.17.0
+[U.]  #24  kconfig              5.116.0 -> 6.17.0
+[U.]  #25  kconfigwidgets       5.116.0 -> 6.17.0
+[U.]  #26  kcoreaddons          5.116.0, 5.116.0-bin -> 6.17.0
+[U.]  #27  kcrash               5.116.0 -> 6.17.0
+[U.]  #28  kdbusaddons          5.116.0 -> 6.17.0
+[U.]  #29  kdeclarative         5.116.0, 5.116.0-bin -> 6.17.0
+[U.]  #30  kdoctools            5.116.0 -> 6.17.0
+[U.]  #31  kglobalaccel         5.116.0 -> 6.17.0
+[U.]  #32  kguiaddons           5.116.0 -> 6.17.0
+[U.]  #33  ki18n                5.116.0, 5.116.0-bin -> 6.17.0
+[U.]  #34  kiconthemes          5.116.0, 5.116.0-bin -> 6.17.0
+[U.]  #35  kio                  5.116.0 -> 6.17.0
+[U.]  #36  kitemviews           5.116.0 -> 6.17.0
+[U.]  #37  kjobwidgets          5.116.0, 5.116.0-bin -> 6.17.0
+[U.]  #38  knotifications       5.116.0, 5.116.0-bin -> 6.17.0
+[U.]  #39  kpackage             5.116.0, 5.116.0-bin -> 6.17.0
+[C.]  #40  krb5                 1.21.3-lib x3 -> 1.21.3, 1.21.3-lib x3
+[U.]  #41  kservice             5.116.0, 5.116.0-bin -> 6.17.0
+[U.]  #42  ktextwidgets         5.116.0, 5.116.0-bin -> 6.17.0
+[U.]  #43  kwallet              5.116.0, 5.116.0-bin -> 6.17.0
+[U.]  #44  kwidgetsaddons       5.116.0 -> 6.17.0
+[C.]  #45  kwindowsystem        5.116.0, 6.17.0 -> 6.17.0
+[U.]  #46  kxmlgui              5.116.0, 5.116.0-bin -> 6.17.0
+[U.]  #47  librewolf            142.0-1 x2, 142.0-1-fish-completions -> 142.0.1-1 x2, 142.0.1-1-fish-completions
+[U.]  #48  librewolf-unwrapped  142.0-1 -> 142.0.1-1
+[U.]  #49  linux-zen            6.16.1, 6.16.1-modules x2, 6.16.1-modules-shrunk -> 6.16.3, 6.16.3-modules x2, 6.16.3-modules-shrunk
+[U.]  #50  lsp-plugins          1.2.22 -> 1.2.23
+[C+]  #51  niri                 <none> -> <none>, 25.08
+[U.]  #52  nixos-system-acer    25.11.20250825.3b9f00d.3bf21da -> 25.11.20250830.d7600c7.fc50904
+[U.]  #53  nixpkgs-review       3.4.0 x2, 3.4.0-fish-completions -> 3.5.0 x2, 3.5.0-fish-completions
+[D.]  #54  noctalia-shell       9ee31e3a6a02887c1d4a939bd2b2b4f6576b01f8, 9ee31e3a6a02887c1d4a939bd2b2b4f6576b01f8-fish-completions -> 2c9e675ba490b9ade24844d66a65943afd919b40, 2c9e675ba490b9ade24844d66a65943afd919b40-fish-completions
+[C.]  #55  nss                  3.101.2, 3.114 -> 3.101.2, 3.114.1
+[U.]  #56  polkit-qt            1-0.114.0 -> 1-0.200.0
+[U.]  #57  prettierd            0.26.1 -> 0.26.2
+[U.]  #58  solid                5.116.0, 5.116.0-bin -> 6.17.0
+[U.]  #59  sonnet               5.116.0, 5.116.0-bin -> 6.17.0
+[U.]  #60  tinymist             0.13.22 -> 0.13.24
+[U.]  #61  xfsprogs             6.15.0, 6.15.0-bin -> 6.16.0, 6.16.0-bin
+[U.]  #62  yt-dlp               2025.08.22, 2025.08.22-fish-completions -> 2025.08.27, 2025.08.27-fish-completions
+Added packages:
+[A.]  #01  brave                                                                                                  1.81.137, 1.81.137-fish-completions
+[A.]  #02  docbook-xsl-nons                                                                                       1.79.2
+[A.]  #03  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsbmnlcjabgnpnenekpadlanbbkooimhnj.json  <none>
+[A.]  #04  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionscjpalhdlnbpafiamejdnhcphjbkeiagm.json  <none>
+[A.]  #05  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionseimadpbcbfnmbkopoojfekhnkhdbieeh.json  <none>
+[A.]  #06  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsfcphghnknhkimeagdglkljinmpbagone.json  <none>
+[A.]  #07  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsfmkadmapgofadopljbjfkapdkoienihi.json  <none>
+[A.]  #08  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsgbmdgpbipfallnflgajpaliibnhdgobh.json  <none>
+[A.]  #09  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsgebbhagfogifgggkldgodflihgfeippi.json  <none>
+[A.]  #10  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsgfbliohnnapiefjpjlpjnehglfpaknnc.json  <none>
+[A.]  #11  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsigiofjhpmpihnifddepnpngfjhkfenbp.json  <none>
+[A.]  #12  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsjiaopdjbehhjgokpphdfgmapkobbnmjp.json  <none>
+[A.]  #13  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsmghenlmbmjcpehccoangkdpagbcbkdpc.json  <none>
+[A.]  #14  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsmnjggcdmjocbbbhaepdhchncahnbgone.json  <none>
+[A.]  #15  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsnffaoalbilbmmfgbnbgppjihopabppdk.json  <none>
+[A.]  #16  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsnlipoenfbbikpbjkfpfillcgkoblgpmj.json  <none>
+[A.]  #17  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsnngceckbapebfimnlniiiahkandclblb.json  <none>
+[A.]  #18  kcmutils                                                                                               6.17.0
+[A.]  #19  kcolorscheme                                                                                           6.17.0
+[A.]  #20  kirigami                                                                                               6.17.0
+[A.]  #21  kparts                                                                                                 6.17.0
+[A.]  #22  ksvg                                                                                                   6.17.0
+[A.]  #23  libplasma                                                                                              6.4.4
+[A.]  #24  librest                                                                                                0.10.2
+[A.]  #25  onnxruntime                                                                                            1.22.0
+[A.]  #26  plasma-activities                                                                                      6.4.4
+[A.]  #27  protobuf                                                                                               21.12
+[A.]  #28  qqc2-desktop-style                                                                                     6.17.0
+[A.]  #29  qtspeech                                                                                               6.9.1
+[A.]  #30  security-wrapper-sudoedit-x86_64-unknown-linux-musl                                                    <none>
+[A.]  #31  unit-systemd-tmpfiles-clean.timer                                                                      <none>
+Removed packages:
+[R.]  #01  bison                              3.8.2
+[R.]  #02  container-init                     <none>
+[R.]  #03  docbook-xsl-ns                     1.79.2
+[R.]  #04  flex                               2.6.4
+[R.]  #05  kactivities                        5.116.0, 5.116.0-bin
+[R.]  #06  kded                               5.116.0
+[R.]  #07  kirigami2                          5.116.0
+[R.]  #08  kwayland                           5.116.0
+[R.]  #09  libdbusmenu-qt                     0.9.3+16
+[R.]  #10  media-player-info                  26
+[R-]  #11  niri-unstable                      2025-08-25-9b622b1
+[R-]  #12  nixos-container                    <none>
+[R.]  #13  phonon                             4.11.1
+[R.]  #14  plasma-framework                   5.116.0, 5.116.0-bin
+[R.]  #15  qtgraphicaleffects                 5.15.17
+[R.]  #16  qtquickcontrols2                   5.15.17, 5.15.17-bin
+[R.]  #17  quickshell                         0.2.0
+[R.]  #18  reload-container                   <none>
+[R.]  #19  rest                               0.9.1
+[R.]  #20  unit-container-.service            <none>
+[R.]  #21  unit-script-container_-post-start  <none>
+[R.]  #22  unit-script-container_-pre-start   <none>
+[R.]  #23  unit-script-container_-start       <none>
+Closure size: 2531 -> 2526 (259 paths added, 264 paths removed, delta -5, disk usage +545.0MiB).
