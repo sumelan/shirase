@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+_: {
   imports = [
     ./desktop
     ./shell
@@ -9,6 +9,7 @@
     ./git.nix
     ./jujutsu.nix
     ./lazygit.nix
+    ./mpd.nix
     ./neovim.nix
     ./nix.nix
     ./ripgrep.nix

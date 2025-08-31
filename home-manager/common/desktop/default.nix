@@ -2,7 +2,6 @@ _: {
   imports = [
     ./common
     ./niri
-    ./rmpc
     ./rofi
     ./discord.nix
     ./dunst.nix

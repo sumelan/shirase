@@ -18,30 +18,8 @@ in {
   };
 
   config = lib.mkIf config.custom.rmpc.enable {
-    services = {
-      mpd = {
-        enable = true;
-        musicDirectory = config.xdg.userDirs.music;
-        dataDir = "${config.xdg.configHome}/mpd";
-        dbFile = "${config.xdg.configHome}/mpd/cache";
-        extraConfig = ''
-          audio_output {
-            type  "pipewire"
-            name  "PipeWire Sound Server"
-          }
-          bind_to_address "/run/mpd/socket"
-        '';
-      };
-      # mpd to mpris2 bridge
-      mpdris2 = {
-        enable = true;
-        notifications = true; # enable song change notifications
-      };
-    };
-
     programs = {
       rmpc.enable = true;
-
       niri.settings = {
         binds = {
           "Mod+R" = lib.custom.niri.openTerminal {
@@ -73,11 +51,8 @@ in {
         src = "${config.xdg.cacheHome}/rmpc/youtube";
       };
 
-    custom.persist.home = {
-      directories = [
-        ".config/mpd"
-      ];
-      cache.directories = [
+    custom.persist = {
+      home.cache.directories = [
         ".cache/rmpc"
       ];
     };
