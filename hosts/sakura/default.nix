@@ -13,6 +13,7 @@
   custom = let
     enableList = [
       "alsa"
+      "logitech"
     ];
     disableList = [
       "audiobookshelf"

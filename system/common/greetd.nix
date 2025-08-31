@@ -19,7 +19,7 @@
         }@${mainMonitor.mode.refresh |> builtins.toString}";
 
         backlightSpawn = lib.optionalString config.hm.custom.backlight.enable ''
-          spawn-at-startup "sh" "-c" "${lib.getExe pkgs.brightnessctl} set 5%"
+          spawn-sh-at-startup "${lib.getExe pkgs.brightnessctl} set 5%"
         '';
 
         niri-config =
@@ -55,7 +55,7 @@
             }
 
             ${backlightSpawn}
-            spawn-at-startup "sh" "-c" "${lib.getExe pkgs.regreet}; pkill -f niri"
+            spawn-sh-at-startup "${lib.getExe pkgs.regreet}; pkill -f niri"
           '';
       in {
         command = "niri -c ${niri-config}";

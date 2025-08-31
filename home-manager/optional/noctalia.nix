@@ -98,7 +98,7 @@ in {
           action.spawn = ["noctalia-shell" "ipc" "call" "brightness" "decrease"];
         };
       };
-      spawn-at-startup = [{command = ["noctalia-shell"];}];
+      spawn-at-startup = [{argv = ["noctalia-shell"];}];
     };
 
     services.swww.enable = true;

@@ -17,7 +17,7 @@
 
     hm.programs.niri.settings.spawn-at-startup = [
       {
-        command = ["solaar" "-w" "hide"];
+        argv = ["solaar" "-w" "hide"];
       }
     ];
   };

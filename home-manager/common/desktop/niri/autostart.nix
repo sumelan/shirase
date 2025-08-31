@@ -3,29 +3,19 @@
   config,
   pkgs,
   ...
-}: {
-  programs.niri.settings.spawn-at-startup = let
-    fish = cmd: [
-      "fish"
-      "-c"
-      cmd
-    ];
-  in [
+}: let
+  inherit (lib) mkIf;
+in {
+  programs.niri.settings.spawn-at-startup = [
     # network
-    {command = ["nm-applet"];}
+    {argv = ["nm-applet"];}
     # bluetooth
-    {command = ["blueman-applet"];}
+    {argv = ["blueman-applet"];}
     # clipboard manager
-    #   {
-    #     command = fish "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store";
-    #   }
+    # { sh = "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store"; }
     # initial backlight
-    (lib.optionalAttrs config.custom.backlight.enable {
-      command = [
-        "${lib.getExe pkgs.brightnessctl}"
-        "set"
-        "5%"
-      ];
+    (mkIf config.custom.backlight.enable {
+      argv = ["${lib.getExe pkgs.brightnessctl}" "set" "5%"];
     })
   ];
 }
