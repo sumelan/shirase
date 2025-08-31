@@ -7,10 +7,7 @@
 {
   options.custom = {
     swayosd.enable =
-      lib.mkEnableOption "Swayosd"
-      // {
-        default = true;
-      };
+      lib.mkEnableOption "Swayosd" // {default = true;};
   };
 
   config = lib.mkIf config.custom.swayosd.enable {
@@ -63,22 +60,32 @@
 
     programs.niri.settings.binds = {
       # audio
-      "XF86AudioRaiseVolume" = lib.custom.niri.runCmd {
-        cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --output-volume raise";
-        locked = "allow";
-      };
-      "XF86AudioLowerVolume" = lib.custom.niri.runCmd {
-        cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --output-volume lower";
-        locked = "allow";
-      };
-      "XF86AudioMute" = lib.custom.niri.runCmd {
-        cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --output-volume mute-toggle";
-        locked = "allow";
-      };
-      "XF86AudioMicMute" = lib.custom.niri.runCmd {
-        cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --input-volume mute-toggle";
-        locked = "allow";
-      };
+      #  "XF86AudioRaiseVolume" = lib.custom.niri.runCmd {
+      # cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --output-volume raise";
+      # locked = "allow";
+      # };
+      #"XF86AudioLowerVolume" = lib.custom.niri.runCmd {
+      # cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --output-volume lower";
+      # locked = "allow";
+      #};
+      #"XF86AudioMute" = lib.custom.niri.runCmd {
+      # cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --output-volume mute-toggle";
+      # locked = "allow";
+      # };
+      # "XF86AudioMicMute" = lib.custom.niri.runCmd {
+      # cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --input-volume mute-toggle";
+      # locked = "allow";
+      # };
+      # brightness
+      # "XF86MonBrightnessUp" = lib.custom.niri.runCmd {
+      #   cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --brightness raise";
+      #   locked = "allow";
+      # };
+      # "XF86MonBrightnessDown" = lib.custom.niri.runCmd {
+      #   cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --brightness lower";
+      #   locked = "allow";
+      # };
+
       "XF86AudioPlay" = lib.custom.niri.runCmd {
         cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=play-pause";
         locked = "allow";
@@ -95,15 +102,6 @@
         cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=previous";
         locked = "allow";
       };
-      # brightness
-      #     "XF86MonBrightnessUp" = lib.custom.niri.runCmd {
-      #       cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --brightness raise";
-      #       locked = "allow";
-      #     };
-      #     "XF86MonBrightnessDown" = lib.custom.niri.runCmd {
-      #       cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --brightness lower";
-      #       locked = "allow";
-      #     };
 
       # fcitx5
       "Ctrl+Space" = lib.custom.niri.runCmd {

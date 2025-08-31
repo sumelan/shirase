@@ -89,6 +89,22 @@ in {
           action.spawn = ["noctalia-shell" "ipc" "call" "powerPanel" "toggle"];
           hotkey-overlay.title = ''<i>Toggle</i> <span foreground="${hotkeyColor}">Power Panel</span>'';
         };
+        "XF86AudioRaiseVolume" = {
+          allow-when-locked = true;
+          action.spawn = ["noctalia-shell" "ipc" "call" "volume" "increase"];
+        };
+        "XF86AudioLowerVolume" = {
+          allow-when-locked = true;
+          action.spawn = ["noctalia-shell" "ipc" "call" "volume" "decrease"];
+        };
+        "XF86AudioMute" = {
+          allow-when-locked = true;
+          action.spawn = ["noctalia-shell" "ipc" "call" "volume" "muteOutput"];
+        };
+        "XF86AudioMicMute" = {
+          allow-when-locked = true;
+          action.spawn = ["noctalia-shell" "ipc" "call" "volume" "muteInput"];
+        };
         "XF86MonBrightnessUp" = {
           allow-when-locked = true;
           action.spawn = ["noctalia-shell" "ipc" "call" "brightness" "increase"];
