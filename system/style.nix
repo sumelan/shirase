@@ -8,12 +8,12 @@
   inherit
     (lib)
     mkOption
-    types
     ;
+  inherit (lib.types) str;
 in {
   imports = [inputs.stylix.nixosModules.stylix];
 
-  options.custom = with types; {
+  options.custom = {
     stylix = {
       colorTheme = mkOption {
         type = str;

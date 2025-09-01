@@ -18,7 +18,6 @@ _: {
     ./swayidle.nix
     ./thunderbird.nix
     ./vlc.nix
-    ./wlsunset.nix
     ./youtube-music.nix
   ];
 }

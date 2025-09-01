@@ -4,7 +4,13 @@
   pkgs,
   user,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    optionalString
+    getExe
+    ;
+in {
   # tty autologin
   services.getty.autologinUser = user;
 
@@ -18,8 +24,8 @@
           mainMonitor.mode.height |> builtins.toString
         }@${mainMonitor.mode.refresh |> builtins.toString}";
 
-        backlightSpawn = lib.optionalString config.hm.custom.backlight.enable ''
-          spawn-sh-at-startup "${lib.getExe pkgs.brightnessctl} set 5%"
+        backlightSpawn = optionalString config.hm.custom.backlight.enable ''
+          spawn-sh-at-startup "${getExe pkgs.brightnessctl} set 5%"
         '';
 
         niri-config =
@@ -55,7 +61,7 @@
             }
 
             ${backlightSpawn}
-            spawn-sh-at-startup "${lib.getExe pkgs.regreet}; pkill -f niri"
+            spawn-sh-at-startup "${getExe pkgs.regreet}; pkill -f niri"
           '';
       in {
         command = "niri -c ${niri-config}";

@@ -4,7 +4,12 @@
   ...
 }:
 # NOTE: partitions and subvolumes are created via install.sh
-{
+let
+  inherit
+    (lib)
+    optional
+    ;
+in {
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/NIXOS";
@@ -68,7 +73,7 @@
       [
         "/persist"
       ]
-      ++ (lib.optional config.custom.hdds.wdelem4 "/media/4TWD")
-      ++ (lib.optional config.custom.hdds.ironwolf2 "/media/IRONWOLF2");
+      ++ (optional config.custom.hdds.wdelem4 "/media/4TWD")
+      ++ (optional config.custom.hdds.ironwolf2 "/media/IRONWOLF2");
   };
 }

@@ -31,6 +31,7 @@ in {
   # setup a file and user icon for accountservice
   # https://discourse.nixos.org/t/setting-the-user-profile-image-under-gnome/36233/10?u=sumelan
   hm.home.file.".face".source = ./${username}.jpg;
+
   systemd.tmpfiles.rules =
     lib.custom.tmpfiles.mkFiles "/var/lib/AccountsService/users/${username}" {
       mode = "0600";
@@ -62,4 +63,9 @@ in {
       name = "kitty";
     };
   };
+
+  fonts.packages = with pkgs; [
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+  ];
 }

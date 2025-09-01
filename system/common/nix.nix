@@ -6,11 +6,25 @@
   self,
   user,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    mkOverride
+    mapAttrsToList
+    mapAttrs
+    sort
+    concatStringsSep
+    ;
+
+  inherit
+    (lib.custom.tmpfiles)
+    mkCreateAndRemove
+    ;
+in {
   services.envfs.enable = true; # execute shebangs that assume hardcoded shell paths
   system = {
     # envfs sets usrbinenv activation script to "" with mkForce
-    activationScripts.usrbinenv = lib.mkOverride (50 - 1) ''
+    activationScripts.usrbinenv = mkOverride (50 - 1) ''
       if [ ! -d "/usr/bin" ]; then
         mkdir -p /usr/bin
         chmod 0755 /usr/bin
@@ -35,14 +49,14 @@
 
   systemd.tmpfiles.rules =
     # cleanup nixpkgs-review cache on boot
-    lib.custom.tmpfiles.mkCreateAndRemove "${config.hm.xdg.cacheHome}/nixpkgs-review" {
+    mkCreateAndRemove "${config.hm.xdg.cacheHome}/nixpkgs-review" {
       mode = "1775";
       inherit user;
       group = "users";
       age = "5d";
     }
     # cleanup channels so nix stops complaining
-    ++ lib.custom.tmpfiles.mkCreateAndRemove "/nix/var/nix/profiles/per-user/root" {
+    ++ mkCreateAndRemove "/nix/var/nix/profiles/per-user/root" {
       mode = "1775";
       user = "root";
       group = "root";
@@ -58,8 +72,8 @@
   };
 
   nix = let
-    nixPath = lib.mapAttrsToList (name: _: "${name}=flake:${name}") inputs;
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) inputs;
+    nixPath = mapAttrsToList (name: _: "${name}=flake:${name}") inputs;
+    registry = mapAttrs (_: flake: {inherit flake;}) inputs;
   in {
     channel.enable = false;
     # required for nix-shell -p to work
@@ -127,8 +141,8 @@
 
     # better nixos generation label
     # https://reddit.com/r/NixOS/comments/16t2njf/small_trick_for_people_using_nixos_with_flakes/k2d0sxx/
-    nixos.label = lib.concatStringsSep "-" (
-      (lib.sort (x: y: x < y) config.system.nixos.tags)
+    nixos.label = concatStringsSep "-" (
+      (sort (x: y: x < y) config.system.nixos.tags)
       ++ ["${config.system.nixos.version}.${self.sourceInfo.shortRev or "dirty"}"]
     );
   };

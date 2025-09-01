@@ -7,11 +7,16 @@
   inherit
     (lib)
     mkOption
-    types
+    ;
+
+  inherit
+    (lib.types)
+    package
+    str
     ;
   cfg = config.custom.stylix;
 in {
-  options.custom = with types; {
+  options.custom = {
     stylix = {
       cursor = {
         package = mkOption {
@@ -91,13 +96,6 @@ in {
         popups = 0.85;
         terminal = 1.0;
       };
-    };
-
-    home = {
-      packages = with pkgs; [
-        noto-fonts-cjk-sans
-        noto-fonts-cjk-serif
-      ];
     };
   };
 }

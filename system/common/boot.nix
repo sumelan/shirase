@@ -2,8 +2,12 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: let
+  inherit
+    (lib)
+    mkForce
+    ;
+in {
   # bootloader
   boot.loader = {
     systemd-boot.enable = true;
@@ -18,7 +22,7 @@
   boot.plymouth.enable = true;
 
   # faster boot times
-  systemd.services.NetworkManager-wait-online.wantedBy = lib.mkForce [ ];
+  systemd.services.NetworkManager-wait-online.wantedBy = mkForce [];
 
   # reduce journald logs
   services.journald.extraConfig = ''SystemMaxUse=50M'';
