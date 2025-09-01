@@ -5,7 +5,6 @@ _: {
     ./dimland.nix
     ./idle.nix
     ./lock.nix
-    ./monitors.nix
     ./wpaperd.nix
   ];
 }
