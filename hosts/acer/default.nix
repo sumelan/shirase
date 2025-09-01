@@ -2,7 +2,12 @@
   lib,
   inputs,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    genAttrs
+    ;
+in {
   imports = with inputs.nixos-hardware.nixosModules; [
     common-pc-laptop
     common-pc-laptop-ssd
@@ -20,10 +25,10 @@
     {
       stylix.colorTheme = "nord";
     }
-    // lib.genAttrs enableList (_name: {
+    // genAttrs enableList (_name: {
       enable = true;
     })
-    // lib.genAttrs disableList (_name: {
+    // genAttrs disableList (_name: {
       enable = false;
     });
 }

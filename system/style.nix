@@ -4,14 +4,19 @@
   pkgs,
   inputs,
   ...
-}:
-{
-  imports = [ inputs.stylix.nixosModules.stylix ];
+}: let
+  inherit
+    (lib)
+    mkOption
+    types
+    ;
+in {
+  imports = [inputs.stylix.nixosModules.stylix];
 
-  options.custom = with lib; {
+  options.custom = with types; {
     stylix = {
       colorTheme = mkOption {
-        type = types.str;
+        type = str;
         default = "catppuccin-mocha";
       };
     };

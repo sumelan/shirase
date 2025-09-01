@@ -2,14 +2,20 @@
   lib,
   isLaptop,
   ...
-}: {
-  services = lib.mkMerge [
+}: let
+  inherit
+    (lib)
+    mkMerge
+    mkIf
+    ;
+in {
+  services = mkMerge [
     # power management
     {
       upower.enable = true;
       power-profiles-daemon.enable = true; # conflict with TLP
     }
-    (lib.mkIf isLaptop {
+    (mkIf isLaptop {
       libinput.enable = true;
     })
   ];

@@ -5,6 +5,7 @@
   isServer,
   ...
 }: let
+  inherit (lib) mkIf;
   username = "sumelan";
 in {
   imports = [./.];
@@ -24,7 +25,7 @@ in {
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM0zoNZpdcUfZ/Nf8Nj248D3wGlQCLld3LjPGrA6zzXs sumelan"
       ];
     in
-      lib.mkIf isServer pubKeys;
+      mkIf isServer pubKeys;
   };
 
   # setup a file and user icon for accountservice

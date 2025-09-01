@@ -2,16 +2,20 @@
   lib,
   config,
   ...
-}: {
-  options.custom = with lib; {
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    singleton
+    ;
+in {
+  options.custom = {
     bluetooth.enable =
-      mkEnableOption "Bluetooth"
-      // {
-        default = true;
-      };
+      mkEnableOption "Bluetooth" // {default = true;};
   };
 
-  config = lib.mkIf config.custom.bluetooth.enable {
+  config = mkIf config.custom.bluetooth.enable {
     hardware.bluetooth = {
       enable = true;
       powerOnBoot = true;
@@ -40,7 +44,7 @@
       programs.niri.settings = {
         window-rules = [
           {
-            matches = lib.singleton {
+            matches = singleton {
               app-id = "^(.blueman-manager-wrapped)$";
             };
             open-floating = true;

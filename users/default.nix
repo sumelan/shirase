@@ -5,55 +5,63 @@
   user,
   ...
 }: let
-  profile = lib.types.submodule {
-    options = {
-      timeZone = lib.mkOption {
-        type = lib.types.str;
-        description = "Time zone";
-        default = "";
-      };
-      defaultLocale = lib.mkOption {
-        type = lib.types.str;
-        description = "Locale";
-        default = "";
-      };
-      email = lib.mkOption {
-        type = lib.types.str;
-        description = "Email address";
-        default = "";
-      };
-      defaultEditor = {
-        package = lib.mkOption {
-          type = lib.types.package;
-          description = "Editor package to use as default";
-          default = pkgs.neovim;
+  inherit
+    (lib)
+    mkOption
+    getExe
+    types
+    ;
+
+  profile = with types;
+    submodule {
+      options = {
+        timeZone = mkOption {
+          type = str;
+          description = "Time zone";
+          default = "";
         };
-        name = lib.mkOption {
-          type = lib.types.str;
-          description = "Editor name to use as default";
-          default = lib.getExe config.profile.${user}.defaultEditor.package;
+        defaultLocale = mkOption {
+          type = str;
+          description = "Locale";
+          default = "";
         };
-      };
-      defaultTerminal = {
-        package = lib.mkOption {
-          type = lib.types.package;
-          description = "Terminal package to use as default";
-          default = pkgs.kitty;
+        email = mkOption {
+          type = str;
+          description = "Email address";
+          default = "";
         };
-        name = lib.mkOption {
-          type = lib.types.str;
-          description = "Terminal name to use as default";
-          default = config.profile.${user}.defaultTerminal.package.pname;
+        defaultEditor = {
+          package = mkOption {
+            type = package;
+            description = "Editor package to use as default";
+            default = pkgs.neovim;
+          };
+          name = mkOption {
+            type = str;
+            description = "Editor name to use as default";
+            default = getExe config.profile.${user}.defaultEditor.package;
+          };
+        };
+        defaultTerminal = {
+          package = mkOption {
+            type = package;
+            description = "Terminal package to use as default";
+            default = pkgs.kitty;
+          };
+          name = mkOption {
+            type = str;
+            description = "Terminal name to use as default";
+            default = config.profile.${user}.defaultTerminal.package.pname;
+          };
         };
       };
     };
-  };
 in {
   services.accounts-daemon.enable = true;
 
-  hm.options = {
-    profiles = lib.mkOption {
-      type = lib.types.attrsOf profile;
+  hm.options = with types; {
+    profiles = mkOption {
+      type = attrsOf profile;
     };
   };
 }

@@ -8,6 +8,19 @@
   isServer,
   ...
 }: let
+  inherit
+    (lib)
+    flip
+    mkEnableOption
+    mkMerge
+    mkIf
+    mkBefore
+    mkForce
+    mapAttrs'
+    nameValuePair
+    optionalAttrs
+    ;
+
   retentionPolicy = {
     stream_compress = "lz4";
     snapshot_create = "onchange";
@@ -19,14 +32,11 @@
 in {
   options.custom = {
     btrbk.enable =
-      lib.mkEnableOption "Tool for snapshots and remote backups"
-      // {
-        default = true;
-      };
+      mkEnableOption "Tool for snapshots and remote backups" // {default = true;};
   };
 
-  config = lib.mkIf config.custom.btrbk.enable (
-    lib.mkMerge [
+  config = mkIf config.custom.btrbk.enable (
+    mkMerge [
       # common setting
       # add extra packages on both clinet and server
       {
@@ -36,7 +46,7 @@ in {
       # client settings
       # set remote instances and systemd service that will notify when backup fails
       # plus, add the ssh directory to persist
-      (lib.optionalAttrs isLaptop {
+      (optionalAttrs isLaptop {
         services.btrbk.instances = {
           "remote-backup" = {
             onCalendar = "daily";
@@ -60,7 +70,7 @@ in {
           };
         };
 
-        systemd.services = with lib;
+        systemd.services =
           {
             "notify-problems@" = {
               enable = true;
@@ -76,7 +86,7 @@ in {
             name: _value:
               nameValuePair "btrbk-${name}" {
                 unitConfig.OnFailure = "notify-problems@%i.service";
-                preStart = lib.mkBefore ''
+                preStart = mkBefore ''
                   # waiting for internet after resume-from-suspend
                   until ${pkgs.iputils.out}/bin/ping google.com -c1 -q >/dev/null; do :; done
                 '';
@@ -84,13 +94,12 @@ in {
           );
         # optional, but this actually forces backup after boot in case laptop was powered off during scheduled event
         # for example, if you scheduled backups daily, your laptop should be powered on at 00:00
-        systemd.timers = with lib;
-          flip mapAttrs' config.services.btrbk.instances (
-            name: _value:
-              nameValuePair "btrbk-${name}" {
-                timerConfig.Persistent = lib.mkForce true;
-              }
-          );
+        systemd.timers = flip mapAttrs' config.services.btrbk.instances (
+          name: _value:
+            nameValuePair "btrbk-${name}" {
+              timerConfig.Persistent = mkForce true;
+            }
+        );
 
         custom.persist = {
           root = {
@@ -103,7 +112,7 @@ in {
 
       # server setting
       # add ssh key to perform btrfs command
-      (lib.optionalAttrs isServer {
+      (optionalAttrs isServer {
         services.btrbk.sshAccess = [
           {
             key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGww+bXaeTXj6s10G4V8Kz2PqGfI6tU4rd8KfxxoQj9 btrbk";

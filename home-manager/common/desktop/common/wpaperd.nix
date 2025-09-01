@@ -4,19 +4,27 @@
   user,
   ...
 }: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    singleton
+    ;
+
+  inherit
+    (lib.custom.tmpfiles)
+    mkCreateAndCleanup
+    ;
+
   wallpaperDir = "${config.xdg.userDirs.pictures}/Wallpapers";
 in {
   options.custom = {
-    wallpaper.enable =
-      lib.mkEnableOption "Wallpapers"
-      // {
-        default = true;
-      };
+    wpaperd.enable = mkEnableOption "Wallpapers" // {default = true;};
   };
 
-  config = lib.mkIf config.custom.wallpaper.enable {
+  config = mkIf config.custom.wpaperd.enable {
     # create wallpaperDir on boot if not exist
-    systemd.user.tmpfiles.rules = lib.custom.tmpfiles.mkCreateAndCleanup wallpaperDir {
+    systemd.user.tmpfiles.rules = mkCreateAndCleanup wallpaperDir {
       inherit user;
       group = "users";
     };
@@ -43,7 +51,7 @@ in {
 
     programs.niri.settings.layer-rules = [
       {
-        matches = lib.singleton {
+        matches = singleton {
           namespace = "wpaperd";
         };
         place-within-backdrop = false;

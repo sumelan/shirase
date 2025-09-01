@@ -2,7 +2,12 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    genAttrs
+    ;
+in {
   monitors = {
     "HDMI-A-1" = {
       isMain = true;
@@ -39,7 +44,7 @@
       "hypridle"
       "hyprlock"
       "rofi"
-      "wallpaper"
+      "wpaperd"
       "waybar"
     ];
   in
@@ -56,10 +61,10 @@
       };
       niri.xwayland.enable = false;
     }
-    // lib.genAttrs enableList (_name: {
+    // genAttrs enableList (_name: {
       enable = true;
     })
-    // lib.genAttrs disableList (_name: {
+    // genAttrs disableList (_name: {
       enable = false;
     });
 }

@@ -2,7 +2,12 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    genAttrs
+    ;
+in {
   monitors = {
     "eDP-1" = {
       isMain = true;
@@ -36,7 +41,7 @@
       "hypridle"
       "hyprlock"
       "rofi"
-      "wallpaper"
+      "wpaperd"
       "waybar"
     ];
   in
@@ -52,10 +57,10 @@
         };
       };
     }
-    // lib.genAttrs enableList (_name: {
+    // genAttrs enableList (_name: {
       enable = true;
     })
-    // lib.genAttrs disableList (_name: {
+    // genAttrs disableList (_name: {
       enable = false;
     });
 }

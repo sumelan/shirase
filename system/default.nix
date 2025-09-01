@@ -7,7 +7,21 @@
   flakePath,
   isLaptop,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    mkForce
+    mkIf
+    hiPrio
+    optional
+    optionals
+    ;
+  inherit
+    (lib.custom.tmpfiles)
+    mkSymlinks
+    mkCreateAndRemove
+    ;
+in {
   imports = [
     ./common
     ./optional
@@ -17,7 +31,7 @@
 
   services = {
     gvfs.enable = true; # automount disks
-    logind.settings.Login.HandlePowerKey = lib.mkIf isLaptop "ignore"; # disable accidentary push powerkey
+    logind.settings.Login.HandlePowerKey = mkIf isLaptop "ignore"; # disable accidentary push powerkey
   };
 
   programs = {
@@ -69,7 +83,7 @@
         curl
         eza
         killall
-        (lib.hiPrio procps) # for uptime
+        (hiPrio procps) # for uptime
         ripgrep
         yazi
         zoxide
@@ -93,18 +107,18 @@
         config.hm.gtk.iconTheme.package
       ]
       ++ [config.hm.profiles.${user}.defaultEditor.package]
-      ++ (lib.optional config.hm.custom.helix.enable helix);
+      ++ (optional config.hm.custom.helix.enable helix);
   };
 
   systemd.tmpfiles.rules =
     # cleanup systemd coredumps once a week
-    lib.custom.tmpfiles.mkCreateAndRemove "/var/lib/systemd/coredump" {
+    mkCreateAndRemove "/var/lib/systemd/coredump" {
       user = "root";
       group = "root";
       age = "7d";
     }
     # create symlink to dotfiles from default /etc/nixos
-    ++ (lib.custom.tmpfiles.mkSymlinks {
+    ++ (mkSymlinks {
       dest = "/etc/nixos";
       src = flakePath;
     });
@@ -117,7 +131,7 @@
     git.enable = true;
 
     # remove nano
-    nano.enable = lib.mkForce false;
+    nano.enable = mkForce false;
   };
 
   # setup fonts
@@ -147,7 +161,7 @@
   };
 
   custom.persist = {
-    root.directories = lib.optionals config.hm.custom.wifi.enable ["/etc/NetworkManager"];
+    root.directories = optionals config.hm.custom.wifi.enable ["/etc/NetworkManager"];
     root.cache.directories = [
       "/var/lib/systemd/coredump"
     ];
