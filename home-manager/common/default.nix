@@ -4,7 +4,6 @@ _: {
     ./shell
     ./btop.nix
     ./eza.nix
-    ./fastfetch.nix
     ./gh.nix
     ./git.nix
     ./jujutsu.nix

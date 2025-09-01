@@ -29,6 +29,7 @@
     packages = with pkgs; [
       curl
       gzip
+      microfetch
       trash-cli
       xdg-utils
     ];

@@ -3,7 +3,15 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    getExe
+    getExe'
+    mkEnableOption
+    mkIf
+    ;
+in {
   imports = [
     ./animations.nix
     ./autostart.nix
@@ -14,16 +22,12 @@
 
   options.custom = {
     niri = {
-      enable =
-        lib.mkEnableOption "Enablen niri"
-        // {
-          default = true;
-        };
-      xwayland.enable = lib.mkEnableOption "Enable xwayland-satellite";
+      enable = mkEnableOption "Enablen niri" // {default = true;};
+      xwayland.enable = mkEnableOption "Enable xwayland-satellite";
     };
   };
 
-  config = lib.mkIf config.custom.niri.enable {
+  config = mkIf config.custom.niri.enable {
     programs.niri.settings = with config.lib.stylix.colors.withHashtag; let
       shadowConfig = {
         enable = true;
@@ -39,9 +43,9 @@
 
       prefer-no-csd = true;
 
-      xwayland-satellite = lib.mkIf config.custom.niri.xwayland.enable {
+      xwayland-satellite = mkIf config.custom.niri.xwayland.enable {
         enable = true;
-        path = lib.getExe pkgs.xwayland-satellite-unstable;
+        path = getExe pkgs.xwayland-satellite-unstable;
       };
 
       input = {
@@ -134,10 +138,10 @@
 
       switch-events = {
         lid-close = {
-          action.spawn = ["${lib.getExe' pkgs.systemd "systemctl"}" "suspend"];
+          action.spawn = ["${getExe' pkgs.systemd "systemctl"}" "suspend"];
         };
         lid-open = {
-          action.spawn = ["${lib.getExe config.programs.niri.package}" "msg" "action" "power-on-monitors"];
+          action.spawn = ["${getExe config.programs.niri.package}" "msg" "action" "power-on-monitors"];
         };
       };
 

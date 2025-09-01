@@ -25,9 +25,9 @@
       [
         "brave"
         "cyanrip"
+        "euphonica"
         "freetube"
         "protonapp"
-        "rmpc"
       ]
       ++ ["fuzzel" "noctalia" "swayidle"];
 
