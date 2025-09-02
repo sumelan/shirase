@@ -6,7 +6,7 @@
       #![enable(unwrap_newtypes)]
       #![enable(unwrap_variant_newtypes)]
       (
-          address: "/run/mpd/socket",
+          address: "${config.services.mpd.network.listenAddress}",
           password: None,
           theme: "custom",
           cache_dir: "${config.xdg.cacheHome}/rmpc",

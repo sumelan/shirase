@@ -1,27 +1,49 @@
-{config, ...}: {
+{
+  lib,
+  config,
+  user,
+  ...
+}: let
+  inherit
+    (lib.custom.tmpfiles)
+    mkCreateAndCleanup
+    ;
+
+  configDir = "${config.xdg.configHome}/mpd";
+in {
+  # create mpd directory for local socket on boot
+  systemd.user.tmpfiles.rules = mkCreateAndCleanup configDir {
+    inherit user;
+    group = "users";
+  };
+
   services = {
     mpd = {
       enable = true;
       musicDirectory = config.xdg.userDirs.music;
-      dataDir = "${config.xdg.configHome}/mpd";
-      dbFile = "${config.xdg.configHome}/mpd/cache";
+      dataDir = "${config.xdg.dataHome}/mpd";
+      dbFile = "${config.services.mpd.dataDir}/tag_cache";
+      playlistDirectory = "${config.services.mpd.dataDir}/playlists";
+      # connect local socket
+      network.listenAddress = "${configDir}/socket";
       extraConfig = ''
         audio_output {
           type  "pipewire"
           name  "PipeWire Sound Server"
         }
-        bind_to_address "/run/mpd/socket"
       '';
     };
+
     # mpd to mpris2 bridge
     mpdris2 = {
       enable = true;
       notifications = true; # enable song change notifications
     };
+
     mpd-discord-rpc = {
       enable = true;
       settings = {
-        hosts = ["/run/mpd/socket"];
+        hosts = [config.services.mpd.network.listenAddress];
         format = {
           details = "$title";
           state = "On $album by $artist";
@@ -38,7 +60,7 @@
 
   custom.persist = {
     home.directories = [
-      ".config/mpd"
+      ".local/share/mpd"
     ];
   };
 }

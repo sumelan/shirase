@@ -1,13 +1,4 @@
-{
-  lib,
-  user,
-  ...
-}: let
-  inherit
-    (lib.custom.tmpfiles)
-    mkCreateAndCleanup
-    ;
-in {
+_: {
   security.rtkit.enable = true;
 
   services = {
@@ -43,12 +34,6 @@ in {
         };
       };
     };
-  };
-
-  # create mpd directory for local socket on boot
-  systemd.tmpfiles.rules = mkCreateAndCleanup "/run/mpd" {
-    inherit user;
-    group = "users";
   };
 
   custom.persist = {
