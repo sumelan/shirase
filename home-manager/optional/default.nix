@@ -13,11 +13,8 @@ _: {
     ./noctalia.nix
     ./obs-studio.nix
     ./protonapp.nix
-    ./rustdesk.nix
-    ./spotify.nix
     ./swayidle.nix
     ./thunderbird.nix
     ./vlc.nix
-    ./youtube-music.nix
   ];
 }
