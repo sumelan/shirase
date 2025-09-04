@@ -4,9 +4,22 @@
   pkgs,
   ...
 }: let
+  inherit
+    (lib)
+    mkIf
+    getExe
+    getExe'
+    toHexString
+    ;
+
+  inherit
+    (lib.custom.niri)
+    runCmd
+    ;
+
   modifierKey = "Alt";
 in
-  lib.mkIf config.custom.niri.enable {
+  mkIf config.custom.niri.enable {
     programs = {
       niriswitcher = {
         enable = true;
@@ -63,7 +76,7 @@ in
           };
         };
         style = with config.lib.stylix.colors.withHashtag; let
-          opacity = builtins.ceil (config.stylix.opacity.popups * 255) |> lib.toHexString;
+          opacity = builtins.ceil (config.stylix.opacity.popups * 255) |> toHexString;
         in
           # css
           ''
@@ -226,17 +239,17 @@ in
 
       niri.settings.binds = let
         niriswitcher-gdbus = cmd:
-          "${lib.getExe' pkgs.glib "gdbus"} call --session --dest io.github.isaksamsten.Niriswitcher --object-path /io/github/isaksamsten/Niriswitcher --method io.github.isaksamsten.Niriswitcher."
+          "${getExe' pkgs.glib "gdbus"} call --session --dest io.github.isaksamsten.Niriswitcher --object-path /io/github/isaksamsten/Niriswitcher --method io.github.isaksamsten.Niriswitcher."
           + cmd;
         windowCmd = niriswitcher-gdbus "application";
         workspaceCmd = niriswitcher-gdbus "workspace";
       in {
-        "${modifierKey}+Tab" = lib.custom.niri.runCmd {
+        "${modifierKey}+Tab" = runCmd {
           cmd = windowCmd;
           title = "Switch windows";
           repeat = "no";
         };
-        "${modifierKey}+Grave" = lib.custom.niri.runCmd {
+        "${modifierKey}+Grave" = runCmd {
           cmd = workspaceCmd;
           title = "Switch workspaces";
           repeat = "no";
@@ -253,7 +266,7 @@ in
           Wants = ["graphical-session.target"];
         };
         Service = {
-          ExecStart = "${lib.getExe pkgs.niriswitcher}";
+          ExecStart = "${getExe pkgs.niriswitcher}";
           Restart = "on-failure";
           RestartSec = 1;
         };

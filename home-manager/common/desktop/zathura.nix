@@ -1,5 +1,9 @@
-{ lib, ... }:
-{
+{lib, ...}: let
+  inherit
+    (lib)
+    singleton
+    ;
+in {
   programs = {
     zathura = {
       enable = true;
@@ -29,7 +33,7 @@
 
   programs.niri.settings.window-rules = [
     {
-      matches = lib.singleton {
+      matches = singleton {
         app-id = "^(org.pwmt.zathura)$";
       };
       default-column-width.proportion = 0.9;

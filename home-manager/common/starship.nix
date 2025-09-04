@@ -2,7 +2,13 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    concatStrings
+    mkAfter
+    ;
+in {
   programs = {
     starship = {
       enable = true;
@@ -11,7 +17,7 @@
       enableTransience = true;
       settings = with config.lib.stylix.colors.withHashtag; {
         add_newline = false;
-        format = lib.concatStrings [
+        format = concatStrings [
           # begin left format
           "$directory"
           "$git_branch"
@@ -219,7 +225,7 @@
         end
       '';
       interactiveShellInit =
-        lib.mkAfter
+        mkAfter
         # fish
         ''
           function starship_transient_prompt_func

@@ -4,7 +4,12 @@
   pkgs,
   user,
   ...
-}: {
+}: let
+  inherit
+    (lib.custom.niri)
+    openApp
+    ;
+in {
   home.packages = with pkgs; [
     dysk # better disk info
     ets # add timestamp to beginning of each line
@@ -50,7 +55,7 @@
     };
 
     niri.settings.binds = {
-      "Mod+Return" = lib.custom.niri.openApp {
+      "Mod+Return" = openApp {
         app = config.profiles.${user}.defaultTerminal.package;
       };
     };

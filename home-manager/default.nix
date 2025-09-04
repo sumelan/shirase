@@ -3,7 +3,12 @@
   pkgs,
   user,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    genAttrs
+    ;
+in {
   imports = [
     ./common
     ./optional
@@ -53,7 +58,7 @@
       ];
     in
       # generate an attribute set by mapping a function over a list of attribute names.
-      lib.genAttrs hideList (name: {
+      genAttrs hideList (name: {
         inherit name;
         noDisplay = true;
       });

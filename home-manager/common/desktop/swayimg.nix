@@ -2,7 +2,12 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    singleton
+    ;
+in {
   programs = {
     swayimg = {
       enable = true;
@@ -53,7 +58,7 @@
           fsmon = "yes"; # Enable file system monitoring for adding new images to the list (yes/no)
         };
         font = {
-          name = fonts.monospace.name;
+          inherit (fonts.monospace) name;
           size = fonts.sizes.desktop;
           color = base05;
           shadow = base00 + swayimgOpacity;
@@ -166,7 +171,7 @@
 
     niri.settings.window-rules = [
       {
-        matches = lib.singleton {
+        matches = singleton {
           app-id = "^(swayimg)$";
         };
         open-floating = true;

@@ -3,15 +3,22 @@
   config,
   user,
   ...
-}:
-{
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    ;
+in {
   options.custom = {
-    vr.enable = lib.mkEnableOption "VR" // {
-      default = config.custom.steam.enable;
-    };
+    vr.enable =
+      mkEnableOption "VR"
+      // {
+        default = config.custom.steam.enable;
+      };
   };
 
-  config = lib.mkIf config.custom.vr.enable {
+  config = mkIf config.custom.vr.enable {
     # OpenXR streaming application built around Monado
     services.wivrn = {
       enable = true;
@@ -56,7 +63,7 @@
     };
 
     programs.adb.enable = true;
-    users.users.${user}.extraGroups = [ "adbusers" ];
+    users.users.${user}.extraGroups = ["adbusers"];
 
     custom.persist = {
       home.directories = [

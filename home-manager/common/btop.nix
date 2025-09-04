@@ -2,11 +2,23 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    mkOption
+    concatStringsSep
+    ;
+
+  inherit
+    (lib.types)
+    listOf
+    str
+    ;
+in {
   options.custom = {
     btop = {
-      disks = lib.mkOption {
-        type = with lib.types; listOf str;
+      disks = mkOption {
+        type = listOf str;
         default = [];
         description = "List of disks to monitor in btop";
       };
@@ -28,7 +40,7 @@
         swap_disk = false;
         use_fstab = false;
         only_physical = false;
-        disks_filter = lib.concatStringsSep " " (
+        disks_filter = concatStringsSep " " (
           [
             "/"
             "/boot"

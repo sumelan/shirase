@@ -3,12 +3,18 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    ;
+in {
   options.custom = {
-    brave.enable = lib.mkEnableOption "brave";
+    brave.enable = mkEnableOption "brave";
   };
 
-  config = lib.mkIf config.custom.brave.enable {
+  config = mkIf config.custom.brave.enable {
     programs.brave = {
       enable = true;
       package = pkgs.brave;

@@ -3,17 +3,22 @@
   config,
   pkgs,
   ...
-}:
-{
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    ;
+in {
   options.custom = {
-    vlc.enable = lib.mkEnableOption "vlc";
+    vlc.enable = mkEnableOption "vlc";
   };
 
-  config = lib.mkIf config.custom.vlc.enable {
-    home.packages = with pkgs; [ vlc ];
+  config = mkIf config.custom.vlc.enable {
+    home.packages = with pkgs; [vlc];
 
     custom.persist = {
-      home.directories = [ ".config/vlc" ];
+      home.directories = [".config/vlc"];
     };
   };
 }

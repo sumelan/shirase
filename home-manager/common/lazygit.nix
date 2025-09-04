@@ -1,15 +1,18 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: let
+  inherit
+    (lib)
+    mkForce
+    ;
   accent = "${config.lib.stylix.colors.withHashtag.base0E}";
   muted = "${config.lib.stylix.colors.withHashtag.base03}";
 in {
   programs.lazygit = {
     enable = true;
-    settings = lib.mkForce {
+    settings = mkForce {
       disableStartupPopups = true;
       notARepository = "skip";
       promptToReturnFromSubprocess = false;

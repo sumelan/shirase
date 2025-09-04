@@ -2,11 +2,13 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit
+    (lib.custom.niri)
+    runCmd
+    ;
+in {
   programs.niri.settings.binds = with config.lib.niri.actions; {
-    # application binds are written in each app.nix
-    # mediakey binds are written in swayosd.nix
-
     # shows a list of important hotkeys.
     "Mod+Shift+Slash".action = show-hotkey-overlay;
 
@@ -18,7 +20,7 @@
 
     # screenshot 'screenshot-screen' is valid only on niri-stable
     "Mod+Backslash".action = screenshot {show-pointer = false;};
-    "Mod+Shift+Backslash" = lib.custom.niri.runCmd {
+    "Mod+Shift+Backslash" = runCmd {
       cmd = "niri msg action screenshot-screen";
       title = "Screenshot the focused screen";
     };

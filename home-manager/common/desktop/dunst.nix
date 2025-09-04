@@ -3,16 +3,28 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    singleton
+    ;
+
+  inherit
+    (lib.custom.niri)
+    runCmd
+    ;
+in {
   options.custom = {
     dunst.enable =
-      lib.mkEnableOption "Dunst"
+      mkEnableOption "Dunst"
       // {
         default = true;
       };
   };
 
-  config = lib.mkIf config.custom.dunst.enable {
+  config = mkIf config.custom.dunst.enable {
     home.packages = with pkgs; [libnotify];
     services.dunst = {
       enable = true;
@@ -66,18 +78,18 @@
 
     programs.niri.settings = {
       binds = {
-        "Mod+Shift+N" = lib.custom.niri.runCmd {
+        "Mod+Shift+N" = runCmd {
           cmd = "dunstctl history-pop";
           title = "Notification history";
         };
-        "Mod+Alt+N" = lib.custom.niri.runCmd {
+        "Mod+Alt+N" = runCmd {
           cmd = "dunstctl close-all";
           title = "Dismiss notification";
         };
       };
       layer-rules = [
         {
-          matches = lib.singleton {
+          matches = singleton {
             namespace = "^(notifications)";
           };
           block-out-from = "screen-capture";

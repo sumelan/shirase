@@ -5,6 +5,22 @@
   user,
   ...
 }: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    singleton
+    ;
+  inherit
+    (lib.custom.niri)
+    openTerminal
+    ;
+  inherit
+    (lib.custom.tmpfiles)
+    mkCreateAndCleanup
+    mkSymlinks
+    ;
+
   ytDir = "${config.xdg.userDirs.music}/YouTube";
 in {
   imports = [
@@ -14,21 +30,21 @@ in {
 
   options.custom = {
     rmpc.enable =
-      lib.mkEnableOption "A beautiful and configurable TUI client for MPD";
+      mkEnableOption "A beautiful and configurable TUI client for MPD";
   };
 
-  config = lib.mkIf config.custom.rmpc.enable {
+  config = mkIf config.custom.rmpc.enable {
     programs = {
       rmpc.enable = true;
       niri.settings = {
         binds = {
-          "Mod+R" = lib.custom.niri.openTerminal {
+          "Mod+R" = openTerminal {
             app = pkgs.rmpc;
           };
         };
         window-rules = [
           {
-            matches = lib.singleton {
+            matches = singleton {
               app-id = "^(rmpc)$";
             };
             open-floating = true;
@@ -41,12 +57,12 @@ in {
 
     systemd.user.tmpfiles.rules =
       # create ytDir if not existed
-      lib.custom.tmpfiles.mkCreateAndCleanup ytDir {
+      mkCreateAndCleanup ytDir {
         inherit user;
         group = "users";
       }
       # symlink from yt-dlp cache directory
-      ++ lib.custom.tmpfiles.mkSymlinks {
+      ++ mkSymlinks {
         dest = ytDir;
         src = "${config.xdg.cacheHome}/rmpc/youtube";
       };

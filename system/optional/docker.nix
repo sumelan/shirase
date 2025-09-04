@@ -3,17 +3,24 @@
   pkgs,
   config,
   ...
-}:
-{
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    ;
+in {
   options.custom = {
-    distrobox.enable = lib.mkEnableOption "Enable distrobox";
-    docker.enable = lib.mkEnableOption "Enable docker" // {
-      default = config.custom.distrobox.enable;
-    };
+    distrobox.enable = mkEnableOption "Enable distrobox";
+    docker.enable =
+      mkEnableOption "Enable docker"
+      // {
+        default = config.custom.distrobox.enable;
+      };
   };
 
-  config = lib.mkIf config.custom.docker.enable {
-    environment.systemPackages = lib.mkIf config.custom.distrobox.enable [ pkgs.distrobox ];
+  config = mkIf config.custom.docker.enable {
+    environment.systemPackages = mkIf config.custom.distrobox.enable [pkgs.distrobox];
 
     virtualisation = {
       podman = {
@@ -28,7 +35,7 @@
     # store docker images on /cache
     hm.custom.persist = {
       home.cache = {
-        directories = [ ".local/share/containers" ];
+        directories = [".local/share/containers"];
       };
     };
   };

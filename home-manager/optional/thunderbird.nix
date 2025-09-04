@@ -2,14 +2,21 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    singleton
+    ;
+in {
   options.custom = {
     thunderbird = {
-      enable = lib.mkEnableOption "thunderbird";
+      enable = mkEnableOption "thunderbird";
     };
   };
 
-  config = lib.mkIf config.custom.thunderbird.enable {
+  config = mkIf config.custom.thunderbird.enable {
     programs.thunderbird = {
       enable = true;
       profiles = {
@@ -21,7 +28,7 @@
 
     programs.niri.settings.window-rules = [
       {
-        matches = lib.singleton {
+        matches = singleton {
           app-id = "^(thunderbird)$";
         };
         block-out-from = "screen-capture";

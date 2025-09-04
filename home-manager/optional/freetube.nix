@@ -3,12 +3,22 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    ;
+  inherit
+    (lib.custom.niri)
+    openApp
+    ;
+in {
   options.custom = {
-    freetube.enable = lib.mkEnableOption "freetube";
+    freetube.enable = mkEnableOption "freetube";
   };
 
-  config = lib.mkIf config.custom.freetube.enable {
+  config = mkIf config.custom.freetube.enable {
     programs = {
       freetube = {
         enable = true;
@@ -62,7 +72,7 @@
       };
 
       niri.settings.binds = {
-        "Mod+Y" = lib.custom.niri.openApp {
+        "Mod+Y" = openApp {
           app = pkgs.freetube;
         };
       };

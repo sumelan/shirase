@@ -2,13 +2,19 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    ;
+in {
   options.custom = {
     ghostty.enable =
-      lib.mkEnableOption "ghostty";
+      mkEnableOption "ghostty";
   };
 
-  config = lib.mkIf config.custom.ghostty.enable {
+  config = mkIf config.custom.ghostty.enable {
     programs.ghostty = {
       enable = true;
       enableBashIntegration = true;

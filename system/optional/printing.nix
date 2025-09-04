@@ -3,13 +3,18 @@
   config,
   pkgs,
   ...
-}:
-{
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    ;
+in {
   options.custom = {
-    printing.enable = lib.mkEnableOption "printing";
+    printing.enable = mkEnableOption "printing";
   };
 
-  config = lib.mkIf config.custom.printing.enable {
+  config = mkIf config.custom.printing.enable {
     services.printing = {
       enable = true;
       browsed.enable = true;

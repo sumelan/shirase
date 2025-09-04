@@ -3,13 +3,18 @@
   config,
   pkgs,
   ...
-}:
-{
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    ;
+in {
   options.custom = {
-    cyanrip.enable = lib.mkEnableOption "cyanrip";
+    cyanrip.enable = mkEnableOption "cyanrip";
   };
 
-  config = lib.mkIf config.custom.cyanrip.enable {
+  config = mkIf config.custom.cyanrip.enable {
     home.packages = with pkgs; [
       cyanrip
       picard

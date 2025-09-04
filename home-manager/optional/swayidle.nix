@@ -5,54 +5,63 @@
   inputs,
   isServer,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    concatStringsSep
+    getExe
+    getExe'
+    ;
+in {
   options.custom = {
-    swayidle.enable = lib.mkEnableOption "Swayilde";
+    swayidle.enable = mkEnableOption "Swayilde";
   };
 
-  config = lib.mkIf config.custom.swayidle.enable {
+  config = mkIf config.custom.swayidle.enable {
     services.swayidle = {
       enable = true;
       extraArgs = ["-w"];
       events = [
         {
           event = "before-sleep";
-          command = lib.concatStringsSep "; " [
-            "${lib.getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call lockScreen toggle"
-            "${lib.getExe pkgs.playerctl} pause"
+          command = concatStringsSep "; " [
+            "${getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call lockScreen toggle"
+            "${getExe pkgs.playerctl} pause"
           ];
         }
         {
           event = "after-resume";
-          command = "${lib.getExe config.programs.niri.package} msg action power-on-monitors";
+          command = "${getExe config.programs.niri.package} msg action power-on-monitors";
         }
         {
           event = "lock";
-          command = "${lib.getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call lockScreen toggle";
+          command = "${getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call lockScreen toggle";
         }
         {
           event = "unlock";
-          command = "${lib.getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call lockScreen toggle";
+          command = "${getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call lockScreen toggle";
         }
       ];
       timeouts = [
         {
           timeout = 60 * 8;
-          command = "${lib.getExe' config.programs.dimland.package "dimland"} -a 0.6";
-          resumeCommand = "${lib.getExe' config.programs.dimland.package "dimland"} stop";
+          command = "${getExe' config.programs.dimland.package "dimland"} -a 0.6";
+          resumeCommand = "${getExe' config.programs.dimland.package "dimland"} stop";
         }
         {
           timeout = 60 * 12;
-          command = "${lib.getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call lockScreen toggle";
+          command = "${getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call lockScreen toggle";
         }
         {
           timeout = 60 * 15;
-          command = "${lib.getExe config.programs.niri.package} msg action power-off-monitors";
-          resumeCommand = "${lib.getExe config.programs.niri.package} msg action power-on-monitors";
+          command = "${getExe config.programs.niri.package} msg action power-off-monitors";
+          resumeCommand = "${getExe config.programs.niri.package} msg action power-on-monitors";
         }
         (lib.mkIf (!isServer) {
           timeout = 60 * 20;
-          command = "${lib.getExe' pkgs.systemd "systemctl"} suspend";
+          command = "${getExe' pkgs.systemd "systemctl"} suspend";
         })
       ];
     };

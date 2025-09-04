@@ -2,16 +2,23 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    singleton
+    ;
+in {
   options.custom = {
     kitty.enable =
-      lib.mkEnableOption "kitty"
+      mkEnableOption "kitty"
       // {
         default = true;
       };
   };
 
-  config = lib.mkIf config.custom.kitty.enable {
+  config = mkIf config.custom.kitty.enable {
     programs.kitty = {
       enable = true;
       settings = {
@@ -36,8 +43,8 @@
     };
 
     programs.niri.settings = {
-      window-rules = lib.singleton {
-        matches = lib.singleton {
+      window-rules = singleton {
+        matches = singleton {
           app-id = "^(kitty)$";
         };
         default-column-width.proportion = 0.6;

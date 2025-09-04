@@ -3,6 +3,11 @@
   config,
   ...
 }: let
+  inherit
+    (lib)
+    singleton
+    ;
+
   shadowConfig = {
     enable = true;
     spread = 0;
@@ -25,14 +30,14 @@ in {
       }
       # focused column/window opacity
       {
-        matches = lib.singleton {
+        matches = singleton {
           is-focused = true;
         };
         opacity = config.stylix.opacity.desktop;
       }
       # out-focued and no-floating column/window opacity
       {
-        matches = lib.singleton {
+        matches = singleton {
           is-focused = false;
           is-floating = false;
         };
@@ -50,7 +55,7 @@ in {
       }
       # targeted column/window from screencast program, like obs
       {
-        matches = lib.singleton {
+        matches = singleton {
           is-window-cast-target = true;
         };
         border = {
@@ -65,7 +70,7 @@ in {
       }
       # hide gnome seahorse from screencast
       {
-        matches = lib.singleton {
+        matches = singleton {
           app-id = "^(org.gnome.seahorse.Application)$";
         };
         block-out-from = "screen-capture";

@@ -5,6 +5,16 @@
   flakePath,
   ...
 }: let
+  inherit
+    (lib)
+    getName
+    ;
+
+  inherit
+    (lib.custom.niri)
+    openTerminal
+    ;
+
   nixpkgs-review = pkgs.nixpkgs-review.override {withNom = true;};
 
   ns = pkgs.writeShellApplication {
@@ -44,9 +54,9 @@ in {
 
     niri.settings = {
       binds = {
-        "Mod+Period" = lib.custom.niri.openTerminal {
+        "Mod+Period" = openTerminal {
           app = "ns";
-          app-id = lib.getName pkgs.nix-search-tv;
+          app-id = getName pkgs.nix-search-tv;
         };
       };
     };

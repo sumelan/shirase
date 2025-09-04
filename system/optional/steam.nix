@@ -1,10 +1,19 @@
-{ lib, config, ... }:
 {
+  lib,
+  config,
+  ...
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    ;
+in {
   options.custom = {
-    steam.enable = lib.mkEnableOption "steam";
+    steam.enable = mkEnableOption "steam";
   };
 
-  config = lib.mkIf config.custom.steam.enable {
+  config = mkIf config.custom.steam.enable {
     # To get Steam games working with monado on NixOS,
     # use below as launch options on steam and, if prompted, choose the SteamVR launch option.
     # env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc %command%

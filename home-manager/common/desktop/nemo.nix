@@ -4,7 +4,21 @@
   pkgs,
   flakePath,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    getExe
+    ;
+
+  inherit
+    (lib.gvariant)
+    mkUint64
+    ;
+  inherit
+    (lib.custom.niri)
+    openApp
+    ;
+in {
   home.packages = with pkgs;
     [nemo-with-extensions]
     ++ [
@@ -42,10 +56,10 @@
   dconf.settings = {
     # fix open in terminal
     "org/gnome/desktop/applications/terminal" = {
-      exec = lib.getExe pkgs.xdg-terminal-exec;
+      exec = getExe pkgs.xdg-terminal-exec;
     };
     "org/cinnamon/desktop/applications/terminal" = {
-      exec = lib.getExe pkgs.xdg-terminal-exec;
+      exec = getExe pkgs.xdg-terminal-exec;
     };
     "org/nemo/preferences" = {
       default-folder-viewer = "icon-view";
@@ -53,7 +67,7 @@
       start-with-dual-pane = false;
       date-format-monospace = true;
       # needs to be a uint64!
-      thumbnail-limit = lib.hm.gvariant.mkUint64 (100 * 1024 * 1024); # 100 mb
+      thumbnail-limit = mkUint64 (100 * 1024 * 1024); # 100 mb
     };
     "org/nemo/window-state" = {
       start-with-menu-bar = false;
@@ -69,7 +83,7 @@
   };
 
   programs.niri.settings = {
-    binds."Mod+O" = lib.custom.niri.openApp {
+    binds."Mod+O" = openApp {
       app = pkgs.nemo;
     };
 

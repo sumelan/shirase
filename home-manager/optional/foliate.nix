@@ -3,18 +3,24 @@
   config,
   pkgs,
   ...
-}:
-{
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    singleton
+    ;
+in {
   options.custom = {
-    foliate.enable = lib.mkEnableOption "ebook reader";
+    foliate.enable = mkEnableOption "ebook reader";
   };
 
-  config = lib.mkIf config.custom.foliate.enable {
-    home.packages = with pkgs; [ foliate ];
+  config = mkIf config.custom.foliate.enable {
+    home.packages = with pkgs; [foliate];
 
     programs.niri.settings.window-rules = [
       {
-        matches = lib.singleton {
+        matches = singleton {
           app-id = "^(com.github.johnfactotum.Foliate)$";
         };
         block-out-from = "screen-capture";

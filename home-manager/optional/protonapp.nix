@@ -3,12 +3,18 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    ;
+in {
   options.custom = {
-    protonapp.enable = lib.mkEnableOption "Enable Proton apps";
+    protonapp.enable = mkEnableOption "Enable Proton apps";
   };
 
-  config = lib.mkIf config.custom.protonapp.enable {
+  config = mkIf config.custom.protonapp.enable {
     # NOTE: protonmail-desktop need to be started onece through xwayland with
     # 'XDG_SESSION_TYPE=x11 DISPLAY=:0 proton-mail'
     # but after that it worked without them

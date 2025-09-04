@@ -4,7 +4,11 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit
+    (lib)
+    mkIf
+    getExe
+    ;
 in {
   programs.niri.settings.spawn-at-startup = [
     # network
@@ -15,7 +19,7 @@ in {
     # { sh = "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store"; }
     # initial backlight
     (mkIf config.custom.backlight.enable {
-      argv = ["${lib.getExe pkgs.brightnessctl}" "set" "5%"];
+      argv = ["${getExe pkgs.brightnessctl}" "set" "5%"];
     })
   ];
 }

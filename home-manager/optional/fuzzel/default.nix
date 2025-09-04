@@ -4,7 +4,20 @@
   user,
   ...
 }: let
-  opacity = config.stylix.opacity.popups * 255 |> builtins.ceil |> lib.toHexString;
+  inherit
+    (lib)
+    toHexString
+    mkEnableOption
+    mkIf
+    getExe
+    ;
+
+  inherit
+    (lib.custom.niri)
+    runCmd
+    ;
+
+  opacity = config.stylix.opacity.popups * 255 |> builtins.ceil |> toHexString;
 in {
   imports = [
     ./scripts
@@ -12,11 +25,11 @@ in {
 
   options.custom = {
     fuzzel = {
-      enable = lib.mkEnableOption "Fuzzel";
+      enable = mkEnableOption "Fuzzel";
     };
   };
 
-  config = lib.mkIf config.custom.fuzzel.enable {
+  config = mkIf config.custom.fuzzel.enable {
     programs = {
       fuzzel = {
         enable = true;
@@ -28,7 +41,7 @@ in {
             font = with config.stylix.fonts; "${sansSerif.name}:size=${sizes.popups |> builtins.toString}";
             icon-theme = config.gtk.iconTheme.name;
             match-counter = true;
-            terminal = "${lib.getExe config.profiles.${user}.defaultTerminal.package}";
+            terminal = "${getExe config.profiles.${user}.defaultTerminal.package}";
             width = 26;
             lines = 12;
             horizontal-pad = 25;
@@ -55,7 +68,7 @@ in {
         };
       };
       niri.settings.binds = {
-        "Mod+Ctrl+Backslash" = lib.custom.niri.runCmd {
+        "Mod+Ctrl+Backslash" = runCmd {
           cmd = "dynamic-screencast-target";
           title = "niri Dynamic Cast Target";
         };

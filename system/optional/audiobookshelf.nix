@@ -4,26 +4,38 @@
   user,
   ...
 }: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    optional
+    ;
+
+  inherit
+    (lib.types)
+    str
+    ;
   cfg = config.custom.audiobookshelf;
 in {
   options.custom = {
     audiobookshelf = {
-      enable = lib.mkEnableOption "audiobookshelf";
+      enable = mkEnableOption "audiobookshelf";
       nginx = {
-        enable = lib.mkEnableOption "nginx";
-        domain = lib.mkOption {
-          type = lib.types.str;
+        enable = mkEnableOption "nginx";
+        domain = mkOption {
+          type = str;
           default = "sakurairo.ddnsfree.com";
         };
-        provider = lib.mkOption {
-          type = lib.types.str;
+        provider = mkOption {
+          type = str;
           default = "dynu";
         };
       };
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     services.audiobookshelf = {
       enable = true;
       host = "0.0.0.0"; # "127.0.0.1" means localhost only
@@ -31,7 +43,7 @@ in {
       openFirewall = true;
     };
 
-    services.nginx = lib.mkIf cfg.nginx.enable {
+    services.nginx = mkIf cfg.nginx.enable {
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
@@ -53,7 +65,7 @@ in {
       clientMaxBodySize = "10240M";
     };
 
-    security.acme = lib.mkIf cfg.nginx.enable {
+    security.acme = mkIf cfg.nginx.enable {
       acceptTerms = true;
       defaults.email = config.hm.profiles.${user}.email;
       certs."${cfg.nginx.domain}" = {
@@ -68,7 +80,7 @@ in {
       };
     };
 
-    networking.firewall = lib.mkIf cfg.nginx.enable {
+    networking.firewall = mkIf cfg.nginx.enable {
       allowedTCPPorts = [
         80
         443
@@ -82,7 +94,7 @@ in {
         [
           "/var/lib/audiobookshelf"
         ]
-        ++ (lib.optional cfg.nginx.enable "/var/lib/acme");
+        ++ (optional cfg.nginx.enable "/var/lib/acme");
     };
   };
 }

@@ -2,7 +2,12 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  inherit
+    (lib.custom.niri)
+    openTerminal
+    ;
+in {
   home = {
     packages = with pkgs; [
       ripdrag # Drag and Drop utilty written in Rust and GTK4
@@ -102,7 +107,7 @@
     };
     niri.settings = {
       binds = {
-        "Mod+Shift+O" = lib.custom.niri.openTerminal {
+        "Mod+Shift+O" = openTerminal {
           app = pkgs.yazi;
         };
       };

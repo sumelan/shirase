@@ -5,13 +5,20 @@
   host,
   flakePath,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    getExe
+    ;
+in {
   options.custom = {
     helix.enable =
-      lib.mkEnableOption "A post-modern modal text editor";
+      mkEnableOption "A post-modern modal text editor";
   };
 
-  config = lib.mkIf config.custom.helix.enable {
+  config = mkIf config.custom.helix.enable {
     programs.helix = {
       enable = true;
       settings = {
@@ -43,7 +50,7 @@
             name = "bash";
             auto-format = true;
             formatter = {
-              command = lib.getExe pkgs.shfmt;
+              command = getExe pkgs.shfmt;
               args = [
                 "-i"
                 "2"
@@ -54,7 +61,7 @@
             name = "css";
             auto-format = true;
             formatter = {
-              command = lib.getExe pkgs.prettier;
+              command = getExe pkgs.prettier;
               args = [
                 "--parser"
                 "css"
@@ -82,7 +89,7 @@
             name = "html";
             auto-format = true;
             formatter = {
-              command = lib.getExe pkgs.prettier;
+              command = getExe pkgs.prettier;
               args = [
                 "--parser"
                 "html"
@@ -99,7 +106,7 @@
             auto-format = true;
             soft-wrap.enable = true;
             formatter = {
-              command = lib.getExe pkgs.nodePackages.prettier;
+              command = getExe pkgs.nodePackages.prettier;
               args = [
                 "--parser"
                 "markdown"
@@ -119,7 +126,7 @@
             name = "python";
             auto-format = true;
             formatter = {
-              command = lib.getExe pkgs.ruff;
+              command = getExe pkgs.ruff;
               args = [
                 "format"
                 "--line-length=80"
@@ -150,22 +157,22 @@
 
         language-server = {
           basedpyright = {
-            command = lib.getExe pkgs.basedpyright;
+            command = getExe pkgs.basedpyright;
             args = ["--stdio"];
           };
           codebook = {
-            command = lib.getExe pkgs.codebook;
+            command = getExe pkgs.codebook;
             args = ["serve"];
           };
           lemminx = {
-            command = lib.getExe pkgs.lemminx;
+            command = getExe pkgs.lemminx;
           };
           ltex = {
-            command = lib.getExe pkgs.ltex-ls-plus;
+            command = getExe pkgs.ltex-ls-plus;
           };
           nixd = {
             config.nixd = {
-              formatting.command = ["${lib.getExe pkgs.alejandra}"];
+              formatting.command = ["${getExe pkgs.alejandra}"];
               options = rec {
                 nixos.expr = "(builtins.getFlake ''${flakePath}'').nixosConfigurations.${host}.options";
                 home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
@@ -173,11 +180,11 @@
             };
           };
           phpactor = {
-            command = lib.getExe pkgs.phpactor;
+            command = getExe pkgs.phpactor;
             args = ["language-server"];
           };
           sqls = {
-            command = lib.getExe pkgs.sqls;
+            command = getExe pkgs.sqls;
           };
           tinymist = {
             config = {

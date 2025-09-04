@@ -2,14 +2,20 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    ;
+in {
   options.custom = {
     logitech = {
-      enable = lib.mkEnableOption "Whether to enable support for Logitech Wireless Devices";
+      enable = mkEnableOption "Whether to enable support for Logitech Wireless Devices";
     };
   };
 
-  config = lib.mkIf config.custom.logitech.enable {
+  config = mkIf config.custom.logitech.enable {
     hardware.logitech.wireless = {
       enable = true;
       enableGraphical = true;

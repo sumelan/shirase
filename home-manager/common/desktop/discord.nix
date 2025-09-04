@@ -2,18 +2,20 @@
   lib,
   config,
   ...
-}:
-let
+}: let
+  inherit
+    (lib.custom.niri)
+    openApp
+    ;
   discordPkgs = config.programs.vesktop.package;
-in
-{
+in {
   programs.vesktop = {
     enable = true;
   };
 
   programs.niri.settings = {
     binds = {
-      "Mod+W" = lib.custom.niri.openApp {
+      "Mod+W" = openApp {
         app = discordPkgs;
       };
     };

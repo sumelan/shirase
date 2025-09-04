@@ -4,14 +4,20 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    ;
+in {
   imports = [inputs.dms.homeModules.dankMaterialShell];
 
   options.custom = {
-    dms.enable = lib.mkEnableOption "Quickshell for niri";
+    dms.enable = mkEnableOption "Quickshell for niri";
   };
 
-  config = lib.mkIf config.custom.dms.enable {
+  config = mkIf config.custom.dms.enable {
     home.packages = with pkgs;
       [
         brightnessctl

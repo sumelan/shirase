@@ -4,13 +4,24 @@
   ...
 }:
 # NOTE: options "swayosd.display" exists, but not work
-{
+let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    ;
+
+  inherit
+    (lib.custom.niri)
+    runCmd
+    ;
+in {
   options.custom = {
     swayosd.enable =
-      lib.mkEnableOption "Swayosd" // {default = true;};
+      mkEnableOption "Swayosd" // {default = true;};
   };
 
-  config = lib.mkIf config.custom.swayosd.enable {
+  config = mkIf config.custom.swayosd.enable {
     services.swayosd = {
       enable = true;
       stylePath = "${config.xdg.configHome}/swayosd/style.scss";
@@ -86,25 +97,25 @@
       #   locked = "allow";
       # };
 
-      "XF86AudioPlay" = lib.custom.niri.runCmd {
+      "XF86AudioPlay" = runCmd {
         cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=play-pause";
         locked = "allow";
       };
-      "XF86AudioPause" = lib.custom.niri.runCmd {
+      "XF86AudioPause" = runCmd {
         cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=play-pause";
         locked = "allow";
       };
-      "XF86AudioNext" = lib.custom.niri.runCmd {
+      "XF86AudioNext" = runCmd {
         cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=next";
         locked = "allow";
       };
-      "XF86AudioPrev" = lib.custom.niri.runCmd {
+      "XF86AudioPrev" = runCmd {
         cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=previous";
         locked = "allow";
       };
 
       # fcitx5
-      "Ctrl+Space" = lib.custom.niri.runCmd {
+      "Ctrl+Space" = runCmd {
         cmd = "fcitx5-remote -t";
         title = "Switch ime";
         osd = "swayosd";

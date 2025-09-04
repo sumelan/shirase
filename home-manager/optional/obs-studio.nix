@@ -2,17 +2,22 @@
   lib,
   config,
   ...
-}:
-{
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    ;
+in {
   options.custom = {
-    obs-studio.enable = lib.mkEnableOption "obs-studio";
+    obs-studio.enable = mkEnableOption "obs-studio";
   };
 
-  config = lib.mkIf config.custom.obs-studio.enable {
+  config = mkIf config.custom.obs-studio.enable {
     programs.obs-studio.enable = true;
 
     custom.persist = {
-      home.directories = [ ".config/obs-studio" ];
+      home.directories = [".config/obs-studio"];
     };
   };
 }

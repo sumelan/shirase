@@ -6,6 +6,16 @@
   user,
   ...
 }: let
+  inherit
+    (lib)
+    concatStringsSep
+    getExe
+    ;
+
+  inherit
+    (lib.custom.niri)
+    openApp
+    ;
   configPath = ".config/.librewolf";
 in {
   programs = {
@@ -23,7 +33,7 @@ in {
             wrapProgram "$out/bin/librewolf" \
               --set 'HOME' '${config.xdg.configHome}' \
               --append-flags "${
-              lib.concatStringsSep " " [
+              concatStringsSep " " [
                 "--name librewolf"
                 # load librewolf profile with same name as user
                 "--profile ${config.home.homeDirectory}/${configPath}/${user}"
@@ -70,7 +80,7 @@ in {
     };
     niri.settings = {
       binds = {
-        "Mod+B" = lib.custom.niri.openApp {
+        "Mod+B" = openApp {
           app = config.programs.librewolf.package;
         };
       };
@@ -105,8 +115,8 @@ in {
 
     # set default browser
     sessionVariables = {
-      DEFAULT_BROWSER = lib.getExe pkgs.librewolf;
-      BROWSER = lib.getExe pkgs.librewolf;
+      DEFAULT_BROWSER = getExe pkgs.librewolf;
+      BROWSER = getExe pkgs.librewolf;
     };
   };
 
