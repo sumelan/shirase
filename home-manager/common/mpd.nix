@@ -9,10 +9,10 @@
     mkCreateAndCleanup
     ;
 
-  configDir = "${config.xdg.configHome}/mpd";
+  socketDir = "/run/user/1000/mpd";
 in {
   # create mpd directory for local socket on boot
-  systemd.user.tmpfiles.rules = mkCreateAndCleanup configDir {
+  systemd.user.tmpfiles.rules = mkCreateAndCleanup socketDir {
     inherit user;
     group = "users";
   };
@@ -25,7 +25,7 @@ in {
       dbFile = "${config.services.mpd.dataDir}/tag_cache";
       playlistDirectory = "${config.services.mpd.dataDir}/playlists";
       # connect local socket
-      network.listenAddress = "${configDir}/socket";
+      network.listenAddress = "${socketDir}/socket";
       extraConfig = ''
         audio_output {
           type  "pipewire"

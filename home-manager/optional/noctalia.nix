@@ -9,6 +9,7 @@
     (lib)
     mkEnableOption
     mkIf
+    singleton
     ;
 in {
   options.custom = {
@@ -116,34 +117,8 @@ in {
           action.spawn = ["noctalia-shell" "ipc" "call" "brightness" "decrease"];
         };
       };
-    };
-
-    systemd.user.services = {
-      "noctalia" = {
-        Install.WantedBy = ["graphical-session.target"];
-        Unit = {
-          Description = "Noctalia";
-          After = ["graphical-session.target"];
-          Wants = ["graphical-session.target"];
-        };
-        Service = {
-          ExecStart = "${lib.getExe inputs.noctalia.packages.${pkgs.system}.default}";
-          Restart = "on-failure";
-          RestartSec = 1;
-        };
-      };
-      "swww-daemon" = {
-        Install.WantedBy = ["graphical-session.target"];
-        Unit = {
-          Description = "Swww Daemon";
-          After = ["graphical-session.target"];
-          Wants = ["graphical-session.target"];
-        };
-        Service = {
-          ExecStart = "${lib.getExe' pkgs.swww "swww-daemon"}";
-          Restart = "on-failure";
-          RestartSec = 1;
-        };
+      spawn-at-startup = singleton {
+        argv = singleton "noctalia-shell";
       };
     };
 
