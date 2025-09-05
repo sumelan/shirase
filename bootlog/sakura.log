@@ -2023,3 +2023,106 @@ Removed packages:
 [R.]  #24  unit-script-container_-pre-start   <none>
 [R.]  #25  unit-script-container_-start       <none>
 Closure size: 2626 -> 2631 (276 paths added, 271 paths removed, delta +5, disk usage +627.4MiB).
+
+---
+
+2025年09月05日 13時16分03秒
+<<< /nix/var/nix/profiles/system-319-link
+>>> /nix/var/nix/profiles/system-321-link
+Version changes:
+[U.]  #01  bitwarden                       2025.8.1 -> 2025.8.2
+[U.]  #02  c-grammar-neovim                0.11.3 -> 0.11.4
+[U.]  #03  codebook                        0.3.8 -> 0.3.9
+[C.]  #04  config.toml                     <none> -> <none> x2
+[U.]  #05  deno                            2.4.4 -> 2.4.5
+[U*]  #06  eza                             0.23.0, 0.23.0-fish-completions, 0.23.0-man -> 0.23.1, 0.23.1-fish-completions, 0.23.1-man
+[D.]  #07  fidget-nvim                     17ce5ac3 -> 4d5858bd
+[U*]  #08  fwupd                           2.0.13, 2.0.13-lib -> 2.0.14, 2.0.14-lib
+[U.]  #09  fzf                             0.65.1, 0.65.1-fish-completions, 0.65.1-man -> 0.65.2, 0.65.2-fish-completions, 0.65.2-man
+[U.]  #10  git-lfs                         3.6.1 -> 3.7.0
+[D.]  #11  gitlinker-nvim                  23982c86 -> 5d448b14
+[U.]  #12  hyprutils                       0.8.3 -> 0.8.4
+[U.]  #13  lua-grammar-neovim              0.11.3 -> 0.11.4
+[U.]  #14  markdown-grammar-neovim         0.11.3 -> 0.11.4
+[U.]  #15  markdown_inline-grammar-neovim  0.11.3 -> 0.11.4
+[U.]  #16  mnw                             0.11.3 -> 0.11.4
+[U*]  #17  neovim                          0.11.3 -> 0.11.4
+[U.]  #18  neovim-unwrapped                0.11.3 -> 0.11.4
+[C-]  #19  niri                            <none>, 25.08 -> <none>
+[U.]  #20  nixos-system-sakura             25.11.20250830.d7600c7.dirty -> 25.11.20250902.d0fc308.3960b50
+[U.]  #21  noctalia-shell                  2c9e675ba490b9ade24844d66a65943afd919b40, 2c9e675ba490b9ade24844d66a65943afd919b40-fish-completions -> 42297217744c2023569b4453f9625ad0a289f5ee, 42297217744c2023569b4453f9625ad0a289f5ee-fish-completions
+[U.]  #22  none-ls-nvim                    3ce66bc6 -> 53ec7718
+[C.]  #23  noto-fonts-cjk-sans             2.004, 2.004-fish-completions -> 2.004
+[C.]  #24  noto-fonts-cjk-serif            2.003, 2.003-fish-completions -> 2.003
+[D.]  #25  nvim-colorizer-lua              16597180 -> 51cf7c99
+[C.]  #26  proton-pass                     1.32.3, 1.32.3-fish-completions, 1.32.4 -> 1.32.4, 1.32.5, 1.32.5-fish-completions
+[U.]  #27  query-grammar-neovim            0.11.3 -> 0.11.4
+[C.]  #28  source                          <none> x22 -> <none> x21
+[C.]  #29  swww                            0.10.3, 0.10.3-fish-completions -> 0.10.3
+[U.]  #30  vim-grammar-neovim              0.11.3 -> 0.11.4
+[U.]  #31  vimdoc-grammar-neovim           0.11.3 -> 0.11.4
+[U.]  #32  vimplugin-yazi.nvim             2025-08-21 -> 2025-08-28
+Added packages:
+[A.]  #01  bufferline-nvim                655133c3
+[A.]  #02  cmp-nvim-lsp-bd5a7d6d          <none>
+[A.]  #03  cmp-path-c6424870              <none>
+[A.]  #04  conform-nvim-b4aab989          <none>
+[A.]  #05  crates-nvim-ac9fa498           <none>
+[A.]  #06  fastaction-nvim-b147d917       <none>
+[A.]  #07  gitsigns-nvim                  6e3c6654
+[A.]  #08  image-nvim-a8d6829c            <none>
+[A.]  #09  leap-nvim-e9cb442c             <none>
+[A.]  #10  lualine-nvim-b8c23159          <none>
+[A.]  #11  luasnip-de10d841               <none>
+[A.]  #12  lz-n                           8c7d8e3c
+[A.]  #13  microfetch                     0.4.9, 0.4.9-fish-completions
+[A.]  #14  mpd-discord-rpc                1.8.1
+[A.]  #15  mpd-discord-rpc.service        <none>
+[A.]  #16  neo-tree-nvim-aa27c5cb         <none>
+[A+]  #17  niri-unstable                  2025-09-03-c69464c
+[A.]  #18  noctalia.service               <none>
+[A.]  #19  nvim-lint-f126af53             <none>
+[A.]  #20  nvim-lspconfig-f8474abb        <none>
+[A.]  #21  nvim-surround-a868c256         <none>
+[A.]  #22  nvim-web-devicons-f66cdfef     <none>
+[A.]  #23  otter-nvim                     71fec0dc
+[A.]  #24  render-markdown-nvim-e76eb2e4  <none>
+[A.]  #25  rustaceanvim                   7abb29ab
+[A.]  #26  swww-daemon.service            <none>
+[A.]  #27  wlsunset                       0.4.0, 0.4.0-fish-completions
+Removed packages:
+[R.]  #01  cmp-nvim-lsp-a8912b88   <none>
+[R.]  #02  cmp-path-e52e640b       <none>
+[R.]  #03  config.jsonc            <none>
+[R.]  #04  conform-nvim            973f3cb7
+[R.]  #05  crates-nvim-c915ab53    <none>
+[R.]  #06  dimland.service         <none>
+[R.]  #07  fastaction-nvim         9bf0c368
+[R.]  #08  fastfetch               2.51.0, 2.51.0-fish-completions, 2.51.0-man
+[R.]  #09  gitsigns-nvim-b0143316  <none>
+[R.]  #10  hm_rmpcconfig.ron       <none>
+[R.]  #11  image-nvim              4c51d620
+[R.]  #12  leap-nvim-ebaf38f7      <none>
+[R.]  #13  libelf                  0.8.13
+[R.]  #14  libsepol                3.8.1
+[R.]  #15  libsysprof-capture      48.0
+[R.]  #16  libxfce4util            4.20.1
+[R.]  #17  lualine-nvim-a94fc689   <none>
+[R.]  #18  luasnip                 3d5bced1
+[R.]  #19  lz-n-dbf51256           <none>
+[R.]  #20  neo-tree-nvim-e858a443  <none>
+[R.]  #21  nvim-bufferline-lua     655133c3
+[R.]  #22  nvim-lint               9c620755
+[R.]  #23  nvim-lspconfig          4d3b3bb8
+[R.]  #24  nvim-surround           7a7a78a5
+[R.]  #25  nvim-web-devicons       4a8369f4
+[R.]  #26  opencl-headers          2025.07.22
+[R.]  #27  otter-nvim-fcc8cf1e     <none>
+[R.]  #28  render-markdown-nvim    5c0e241b
+[R.]  #29  rmpc                    0.9.0, 0.9.0-fish-completions
+[R.]  #30  rustaceanvim-f845bb05   <none>
+[R.]  #31  swww.service            <none>
+[R.]  #32  themed-logo.png         <none>
+[R.]  #33  xfconf                  4.20.0
+[R.]  #34  yyjson                  0.12.0
+Closure size: 2631 -> 2619 (239 paths added, 251 paths removed, delta -12, disk usage -23.9MiB).
