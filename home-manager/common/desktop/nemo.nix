@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  user,
   flakePath,
   ...
 }: let
@@ -29,6 +30,14 @@ in {
     ];
 
   xdg = {
+    # fix opening terminal for nemo / thunar by using xdg-terminal-exec spec
+    terminal-exec = {
+      enable = true;
+      settings = {
+        default = ["${config.profiles.${user}.defaultTerminal.name}.desktop"];
+      };
+    };
+
     # fix mimetype associations
     mimeApps.defaultApplications = {
       "inode/directory" = "nemo.desktop";
