@@ -14,7 +14,6 @@ in {
     ./optional
     ./hardware.nix
     ./impermanence.nix
-    ./input.nix
     ./style.nix
   ];
 

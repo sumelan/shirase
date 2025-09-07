@@ -5,7 +5,10 @@
   isServer,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit
+    (lib)
+    mkIf
+    ;
   username = "sumelan";
 in {
   imports = [./.];
@@ -50,17 +53,26 @@ in {
     };
 
   # define user profiles
-  hm.profiles.${username} = {
-    timeZone = "Asia/Tokyo";
-    defaultLocale = "ja_JP.UTF-8";
-    email = "sumelan@proton.me";
-    defaultEditor = {
-      package = pkgs.neovim;
-      name = "nvim";
+  hm = {
+    profiles.${username} = {
+      timeZone = "Asia/Tokyo";
+      defaultLocale = "ja_JP.UTF-8";
+      email = "sumelan@proton.me";
+      defaultEditor = {
+        package = pkgs.neovim;
+        name = "nvim";
+      };
+      defaultTerminal = {
+        package = pkgs.kitty;
+        name = "kitty";
+      };
     };
-    defaultTerminal = {
-      package = pkgs.kitty;
-      name = "kitty";
+    # Japanese settings
+    i18n.inputMethod = {
+      enable = true;
+      type = "fcitx5";
+      fcitx5.addons = with pkgs; [fcitx5-mozc];
+      fcitx5.waylandFrontend = true;
     };
   };
 
