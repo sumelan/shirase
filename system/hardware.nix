@@ -8,15 +8,21 @@
     mkMerge
     mkIf
     ;
-in {
-  services = mkMerge [
-    # power management
+in
+  mkMerge [
     {
-      upower.enable = true;
-      power-profiles-daemon.enable = true; # conflict with TLP
+      powerManagement = {
+        enable = true;
+        # It disabled usb after some time of inativity, so not usable on desktop
+        powertop.enable = mkIf isLaptop true;
+      };
+      services = {
+        upower.enable = true;
+        power-profiles-daemon.enable = true; # conflict with TLP
+        tlp.enable = false;
+      };
     }
-    (mkIf isLaptop {
-      libinput.enable = true;
-    })
-  ];
-}
+    {
+      services.libinput.enable = mkIf isLaptop true;
+    }
+  ]
