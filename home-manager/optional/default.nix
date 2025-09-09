@@ -10,6 +10,7 @@ _: {
     ./freetube.nix
     ./ghostty.nix
     ./helix.nix
+    ./niri-caelestia.nix
     ./noctalia.nix
     ./obs-studio.nix
     ./protonapp.nix

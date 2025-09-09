@@ -26,6 +26,11 @@
 
     niri.url = "github:sodiboo/niri-flake";
 
+    niri-caelestia = {
+      url = "github:jutraim/niri-caelestia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -28,13 +28,12 @@ in {
   custom = let
     enableList =
       [
-        "brave"
         "cyanrip"
         "euphonica"
         "freetube"
         "protonapp"
       ]
-      ++ ["fuzzel" "noctalia" "swayidle"];
+      ++ ["niri-caelestia" "swayosd"];
 
     disableList = [
       "dunst"
