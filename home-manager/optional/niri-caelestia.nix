@@ -11,6 +11,7 @@
     mkEnableOption
     mkIf
     mkForce
+    singleton
     ;
 in {
   imports = [inputs.niri-caelestia.homeManagerModules.default];
@@ -27,7 +28,7 @@ in {
         enable = true;
         inherit (config.wayland.systemd) target;
         environment = [
-          "QT_QPA_PLATFORMTHEME=gtk3"
+          "ELECTRON_OZONE_PLATFORM_HINT=auto"
         ];
       };
       settings = {
@@ -93,6 +94,8 @@ in {
           vimKeybinds = true;
         };
         paths = {
+          mediaGif = "root:/assets/bongocat.gif";
+          sessionGif = "root:/assets/kurukuru.gif";
           wallpaperDir = "~/Pictures/Wallpapers";
         };
         services = {
@@ -135,18 +138,20 @@ in {
     };
 
     programs.niri.settings = {
-      binds = {
+      binds = let
+        hintColor = config.lib.stylix.colors.withHashtag.base08;
+      in {
         "Mod+Space" = {
           action.spawn = ["caelestia-shell" "ipc" "call" "drawers" "toggle" "launcher"];
-          hotkey-overlay.title = "[QuickShell] Launcher";
+          hotkey-overlay.title = "<span foreground='${hintColor}'>[Niri-Caelestia]</span> Launcher";
         };
-        "Mod+Q" = {
+        "Mod+X" = {
           action.spawn = ["caelestia-shell" "ipc" "call" "drawers" "toggle" "session"];
-          hotkey-overlay.title = "[QuickShell] Session";
+          hotkey-overlay.title = "<span foreground='${hintColor}'>[Niri-Caelestia]</span> Session";
         };
-        "Mod+Ctrl+L" = {
+        "Mod+Alt+L" = {
           action.spawn = ["caelestia-shell" "ipc" "call" "lock" "lock"];
-          hotkey-overlay.title = "[QuickShell] Lock";
+          hotkey-overlay.title = "<span foreground='${hintColor}'>[Niri-Caelestia]</span> Lock";
           allow-when-locked = true;
         };
         "XF86AudioPlay" = {
@@ -166,6 +171,28 @@ in {
           allow-when-locked = true;
         };
       };
+      layout = {
+        background-color = "transparent";
+      };
+      window-rules = [
+        {
+          geometry-corner-radius = {
+            bottom-left = 20.0;
+            bottom-right = 20.0;
+            top-left = 20.0;
+            top-right = 20.0;
+          };
+          clip-to-geometry = true;
+        }
+      ];
+      layer-rules = [
+        {
+          matches = singleton {
+            namespace = "^caelestia-background$";
+          };
+          place-within-backdrop = true;
+        }
+      ];
     };
   };
 }

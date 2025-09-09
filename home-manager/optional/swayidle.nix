@@ -23,11 +23,16 @@ in {
     services.swayidle = {
       enable = true;
       extraArgs = ["-w"];
-      events = [
+      events = let
+        caelestia-lock = pkgs.writers.writeFish "caelestia-lock" ''
+          string match 'true' (${getExe inputs.niri-caelestia.packages.${pkgs.system}.default} ipc call lock isLocked) \
+            || ${getExe inputs.niri-caelestia.packages.${pkgs.system}.default} ipc call lock lock
+        '';
+      in [
         {
           event = "before-sleep";
           command = concatStringsSep "; " [
-            "${getExe' pkgs.systemd "loginctl"} lock-sessions"
+            "${getExe inputs.niri-caelestia.packages.${pkgs.system}.default} ipc call lock lock"
             "${getExe pkgs.playerctl} pause"
           ];
         }
@@ -37,16 +42,14 @@ in {
         }
         {
           event = "lock";
-          command = concatStringsSep " || " [
-            "string macth 'true' (${getExe' inputs.dms.packages.${pkgs.system}.dankMaterialShell "dms"} ipc call lock isLocked)"
-            "${getExe' inputs.dms.packages.${pkgs.system}.dankMaterialShell "dms"} ipc call lock lock"
-          ];
+          command = "${caelestia-lock}";
         }
         {
           event = "unlock";
-          command = "";
+          command = "${getExe inputs.niri-caelestia.packages.${pkgs.system}.default} ipc call lock unlock";
         }
       ];
+
       timeouts = [
         {
           timeout = 60 * 8;
@@ -55,7 +58,7 @@ in {
         }
         {
           timeout = 60 * 12;
-          command = "${getExe' pkgs.systemd "loginctl"} lock-sessions";
+          command = "${getExe inputs.niri-caelestia.packages.${pkgs.system}.default} ipc call lock lock";
         }
         {
           timeout = 60 * 15;

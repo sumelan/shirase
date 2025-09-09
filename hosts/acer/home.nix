@@ -33,7 +33,7 @@ in {
         "freetube"
         "protonapp"
       ]
-      ++ ["dms" "swayidle"];
+      ++ ["niri-caelestia" "swayidle"];
 
     disableList = [
       "dunst"
@@ -47,12 +47,14 @@ in {
     {
       stylix = {
         cursor = {
-          package = pkgs.custom.colloid-pastel-cursors;
-          name = "dist-dark";
+          package = pkgs.capitaine-cursors-themed;
+          name = "Capitaine Cursors (Nord)";
         };
         icons = {
-          package = pkgs.custom.colloid-pastel-icons;
-          dark = "Colloid-Pastel-Dark";
+          package = pkgs.papirus-nord.override {
+            accent = "polarnight3";
+          };
+          dark = "Papirus-Dark";
         };
       };
     }
