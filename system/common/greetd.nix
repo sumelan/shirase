@@ -89,7 +89,7 @@ in {
     };
     settings = {
       background = {
-        path = ../../hosts/regreet.png;
+        path = ../../assets/regreet.png;
         fit = "Cover";
       };
       GTK.application_prefer_dark_theme = true;

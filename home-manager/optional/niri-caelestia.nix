@@ -94,8 +94,8 @@ in {
           vimKeybinds = true;
         };
         paths = {
-          mediaGif = "root:/assets/bongocat.gif";
-          sessionGif = "root:/assets/kurukuru.gif";
+          mediaGif = ../../assets/dj-blobcat.gif;
+          sessionGif = ../../assets/blob-goodnight.gif;
           wallpaperDir = "~/Pictures/Wallpapers";
         };
         services = {
@@ -139,7 +139,7 @@ in {
 
     programs.niri.settings = {
       binds = let
-        hintColor = config.lib.stylix.colors.withHashtag.base08;
+        hintColor = config.lib.stylix.colors.withHashtag.base0B;
       in {
         "Mod+Space" = {
           action.spawn = ["caelestia-shell" "ipc" "call" "drawers" "toggle" "launcher"];
@@ -148,6 +148,10 @@ in {
         "Mod+X" = {
           action.spawn = ["caelestia-shell" "ipc" "call" "drawers" "toggle" "session"];
           hotkey-overlay.title = "<span foreground='${hintColor}'>[Niri-Caelestia]</span> Session";
+        };
+        "Mod+D" = {
+          action.spawn = ["caelestia-shell" "ipc" "call" "drawers" "toggle" "dashboard"];
+          hotkey-overlay.title = "<span foreground='${hintColor}'>[Niri-Caelestia]</span> Dashboard";
         };
         "Mod+Alt+L" = {
           action.spawn = ["caelestia-shell" "ipc" "call" "lock" "lock"];
