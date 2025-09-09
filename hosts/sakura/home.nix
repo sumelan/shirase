@@ -37,7 +37,7 @@ in {
         "obs-studio"
         "protonapp"
       ]
-      ++ ["fuzzel" "noctalia" "swayidle"];
+      ++ ["dms" "swayidle"];
 
     disableList = [
       "dunst"

@@ -27,7 +27,7 @@ in {
         {
           event = "before-sleep";
           command = concatStringsSep "; " [
-            "${getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call lockScreen toggle"
+            "${getExe' pkgs.systemd "loginctl"} lock-sessions"
             "${getExe pkgs.playerctl} pause"
           ];
         }
@@ -37,11 +37,14 @@ in {
         }
         {
           event = "lock";
-          command = "${getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call lockScreen toggle";
+          command = concatStringsSep " || " [
+            "string macth 'true' (${getExe' inputs.dms.packages.${pkgs.system}.dankMaterialShell "dms"} ipc call lock isLocked)"
+            "${getExe' inputs.dms.packages.${pkgs.system}.dankMaterialShell "dms"} ipc call lock lock"
+          ];
         }
         {
           event = "unlock";
-          command = "${getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call lockScreen toggle";
+          command = "";
         }
       ];
       timeouts = [
@@ -52,7 +55,7 @@ in {
         }
         {
           timeout = 60 * 12;
-          command = "${getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call lockScreen toggle";
+          command = "${getExe' pkgs.systemd "loginctl"} lock-sessions";
         }
         {
           timeout = 60 * 15;

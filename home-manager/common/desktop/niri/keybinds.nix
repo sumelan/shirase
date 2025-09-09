@@ -38,53 +38,28 @@ in {
     "Mod+Alt+C".action = center-column;
 
     # vim-like
-    "Mod+H" = {
-      action = focus-column-left;
-      hotkey-overlay.hidden = true;
-    };
-    "Mod+J" = {
-      action = focus-window-down;
-      hotkey-overlay.hidden = true;
-    };
-    "Mod+K" = {
-      action = focus-window-up;
-      hotkey-overlay.hidden = true;
-    };
-    "Mod+L" = {
-      action = focus-column-right;
-      hotkey-overlay.hidden = true;
-    };
+    "Mod+H".action = focus-column-left;
+    "Mod+J".action = focus-window-down;
+    "Mod+K".action = focus-window-up;
+    "Mod+L".action = focus-column-right;
 
-    "Mod+Shift+H" = {
-      action = move-column-left;
-      hotkey-overlay.hidden = true;
-    };
-    "Mod+Shift+J" = {
-      action = move-window-down-or-to-workspace-down;
-      hotkey-overlay.hidden = true;
-    };
-    "Mod+Shift+K" = {
-      action = move-window-up-or-to-workspace-up;
-      hotkey-overlay.hidden = true;
-    };
-    "Mod+Shift+L" = {
-      action = move-column-right;
-      hotkey-overlay.hidden = true;
-    };
+    "Mod+Shift+H".action = move-column-left;
+    "Mod+Shift+J".action = move-window-down-or-to-workspace-down;
+    "Mod+Shift+K".action = move-window-up-or-to-workspace-up;
+    "Mod+Shift+L".action = move-column-right;
 
-    "Mod+Alt+H".action = set-column-width "-10%";
-    "Mod+Alt+J".action = set-window-height "+10%";
-    "Mod+Alt+K".action = set-window-height "-10%";
-    "Mod+Alt+L".action = set-column-width "+10%";
+    "Mod+Ctrl+H".action = set-column-width "-10%";
+    "Mod+Ctrl+J".action = set-window-height "+10%";
+    "Mod+Ctrl+K".action = set-window-height "-10%";
+    "Mod+Ctrl+L".action = set-column-width "+10%";
 
-    # acer fn+F3 binds Mod+P
-    "Mod+P".action = consume-or-expel-window-left;
-    "Mod+Shift+P".action = consume-or-expel-window-right;
+    "Mod+Left".action = consume-or-expel-window-left;
+    "Mod+Right".action = consume-or-expel-window-right;
 
     # tabbed
     "Mod+T".action = toggle-column-tabbed-display;
 
-    # workspaces
+    # numbered-workspaces
     "Mod+1" = {
       action.focus-workspace = 1;
       hotkey-overlay.hidden = true;

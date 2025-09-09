@@ -16,7 +16,6 @@ in {
     ./animations.nix
     ./autostart.nix
     ./keybinds.nix
-    ./niriswitcher.nix
     ./rules.nix
   ];
 

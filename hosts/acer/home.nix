@@ -33,7 +33,7 @@ in {
         "freetube"
         "protonapp"
       ]
-      ++ ["niri-caelestia" "swayosd"];
+      ++ ["dms" "swayidle"];
 
     disableList = [
       "dunst"

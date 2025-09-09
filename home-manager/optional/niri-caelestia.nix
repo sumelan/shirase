@@ -131,8 +131,6 @@ in {
           };
         };
       };
-
-      extraConfig = "";
       cli.enable = mkForce false;
     };
 
