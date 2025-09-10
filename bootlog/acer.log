@@ -1814,3 +1814,135 @@ Removed packages:
 [R.]  #33  xfconf                  4.20.0
 [R.]  #34  yyjson                  0.12.0
 Closure size: 2526 -> 2516 (243 paths added, 253 paths removed, delta -10, disk usage -8.7MiB).
+
+---
+
+2025年09月10日 23時37分08秒
+<<< /nix/var/nix/profiles/system-373-link
+>>> /nix/var/nix/profiles/system-376-link
+Version changes:
+[U.]  #01  SPIRV-LLVM-Translator    15.0.13 -> 15.0.14
+[U.]  #02  basedpyright             1.31.3 -> 1.31.4
+[C*]  #03  bash-interactive         5.3p3 x2, 5.3p3-dev, 5.3p3-fish-completions, 5.3p3-man -> 5.3p3 x2, 5.3p3-fish-completions, 5.3p3-man
+[U*]  #04  bind                     9.20.11-dnsutils, 9.20.11-host, 9.20.11-lib -> 9.20.12-dnsutils, 9.20.12-host, 9.20.12-lib
+[C*]  #05  bluez                    5.83 x2, 5.83-dev -> 5.83 x2
+[C.]  #06  breeze-icons             5.116.0, 6.17.0 -> 6.17.0
+[C.]  #07  brightnessctl            0.5.1 -> 0.5.1, 0.5.1-fish-completions
+[C.]  #08  cava                     0.10.4 -> 0.10.4, 0.10.4-fish-completions
+[U.]  #09  cinnamon-desktop         6.4.1 -> 6.4.2
+[C.]  #10  cliphist                 0.6.1 -> 0.6.1, 0.6.1-fish-completions
+[C.]  #11  config.toml              <none> x2 -> <none>
+[C.]  #12  ddcutil                  2.2.1 -> 2.2.1, 2.2.1-fish-completions
+[U.]  #13  deadnix                  1.2.1 -> 1.3.1
+[U.]  #14  electron                 37.3.1 -> 37.4.0
+[U.]  #15  electron-unwrapped       37.3.1 -> 37.4.0
+[U.]  #16  exiv2                    0.28.5-lib -> 0.28.7-lib
+[C.]  #17  file                     5.45 x2, 5.45-dev -> 5.45 x2
+[U.]  #18  fx                       39.0.2, 39.0.2-fish-completions -> 39.0.4, 39.0.4-fish-completions
+[C.]  #19  glib                     2.84.3 x2, 2.84.3-bin, 2.84.3-dev -> 2.84.3 x2, 2.84.3-bin, 2.84.3-dev, 2.84.3-fish-completions
+[U.]  #20  imagemagick              7.1.2-2 -> 7.1.2-3
+[U.]  #21  initrd-linux-zen         6.16.3 -> 6.16.5
+[U.]  #22  intel-graphics-compiler  2.14.1 -> 2.16.0
+[U.]  #23  inxi                     3.3.38-1 -> 3.3.39-1
+[U.]  #24  jujutsu                  0.32.0, 0.32.0-fish-completions -> 0.33.0, 0.33.0-fish-completions
+[C.]  #25  krb5                     1.21.3, 1.21.3-lib x3 -> 1.21.3-lib x3
+[U.]  #26  lazygit                  0.54.2, 0.54.2-fish-completions -> 0.55.0, 0.55.0-fish-completions
+[C.]  #27  libnotify                0.8.6, 0.8.6-dev -> 0.8.6
+[U.]  #28  libwnck                  43.2 -> 43.3
+[U.]  #29  linux-zen                6.16.3, 6.16.3-modules x2, 6.16.3-modules-shrunk -> 6.16.5, 6.16.5-modules x2, 6.16.5-modules-shrunk
+[U.]  #30  lz-n                     8c7d8e3c -> 590d1fca
+[U.]  #31  mate-panel               1.28.5 -> 1.28.6
+[C.]  #32  material-symbols         4.0.0-unstable-2025-04-11 -> 4.0.0-unstable-2025-04-11, 4.0.0-unstable-2025-04-11-fish-completions
+[C.]  #33  matugen                  2.4.1 -> 2.4.1, 2.4.1-fish-completions
+[U.]  #34  mesa                     25.2.1 -> 25.2.2
+[C*]  #35  networkmanager           1.52.1, 1.52.1-dev -> 1.52.1, 1.52.1-dev, 1.52.1-fish-completions, 1.52.1-man
+[U*]  #36  niri-unstable            2025-09-03-c69464c -> 2025-09-08-bdee1a6
+[C*]  #37  nix                      2.28.4 x2, 2.28.4-man x2 -> 2.28.4, 2.28.4-man, 2.28.5, 2.28.5-man
+[U.]  #38  nix-search-tv            2.1.8, 2.1.8-fish-completions -> 2.2.0, 2.2.0-fish-completions
+[U.]  #39  nixos-system-acer        25.11.20250902.d0fc308.aea408e -> 25.11.20250908.b599843.fd224c6
+[U.]  #40  opencl-clang             15.0.1 -> 15.0.3
+[C.]  #41  proton-pass              1.32.4, 1.32.5, 1.32.5-fish-completions -> 1.32.5 x2, 1.32.5-fish-completions
+[U.]  #42  python3.13-pynvim        0.5.2 -> 0.6.0
+[C.]  #43  source                   <none> x21 -> <none> x22
+[U*]  #44  udisks                   2.10.1 -> 2.10.2
+[U*]  #45  uwsm                     0.23.2 -> 0.23.3
+[C*]  #46  wireplumber              0.4.17, 0.5.10 -> 0.4.17, 0.5.11
+[C.]  #47  wl-clipboard             2.2.1 -> 2.2.1, 2.2.1-fish-completions
+[U.]  #48  yt-dlp                   2025.08.27, 2025.08.27-fish-completions -> 2025.09.05, 2025.09.05-fish-completions
+Selection state changes:
+[C+]  #1  hicolor-icon-theme  0.18
+[C-]  #2  xdg-terminal-exec   0.13.2, 0.13.2-fish-completions
+Added packages:
+[A.]  #01  caelestia-lock                <none> x2
+[A+]  #02  capitaine-cursors-themed      5, 5-fish-completions
+[A.]  #03  dankMaterialShell             <none>
+[A.]  #04  dgop                          0.0.9, 0.0.9-fish-completions
+[A.]  #05  dms-cli                       0.0.2, 0.0.2-fish-completions
+[A.]  #06  fira-code                     6.2, 6.2-fish-completions
+[A.]  #07  gammastep                     2.0.11, 2.0.11-fish-completions
+[A.]  #08  hm_xdgterminals.list          <none>
+[A.]  #09  inter                         4.1, 4.1-fish-completions
+[A.]  #10  khal                          0.13.0, 0.13.0-fish-completions, 0.13.0-man
+[A+]  #11  papirus-nord                  3.2.0, 3.2.0-fish-completions
+[A.]  #12  powertop                      2.15
+[A.]  #13  python3.13-aiohttp-oauthlib   0.1.0
+[A.]  #14  python3.13-aiostream          0.7.0
+[A.]  #15  python3.13-atomicwrites       1.4.1
+[A.]  #16  python3.13-click-log          0.4.0
+[A.]  #17  python3.13-click-threading    0.5.0
+[A.]  #18  python3.13-configobj          5.0.9
+[A.]  #19  python3.13-freezegun          1.5.4
+[A.]  #20  python3.13-icalendar          6.3.1
+[A.]  #21  python3.13-oauthlib           3.3.1
+[A.]  #22  python3.13-pkginfo            1.12.1.2
+[A.]  #23  python3.13-python-dateutil    2.9.0.post0
+[A.]  #24  python3.13-pytz               2025.2
+[A.]  #25  python3.13-requests-toolbelt  1.0.0
+[A.]  #26  python3.13-tzdata             2025.2
+[A.]  #27  python3.13-tzlocal            5.3.1
+[A.]  #28  python3.13-urwid              3.0.2
+[A.]  #29  python3.13-vdirsyncer         0.20.0
+[A.]  #30  python3.13-wcwidth            0.2.13
+[A.]  #31  quickshell                    0.2.0, 0.2.0-fish-completions
+[A.]  #32  quickshell.service            <none>
+[A.]  #33  unit-emergency.service        <none>
+[A.]  #34  unit-powertop.service         <none>
+[A.]  #35  unit-rescue.service           <none>
+[A.]  #36  xset                          1.2.5
+Removed packages:
+[R.]  #01  brave                                                                                                  1.81.137, 1.81.137-fish-completions
+[R-]  #02  colloid-pastel-cursors-unstable                                                                        2025-03-20, 2025-03-20-fish-completions
+[R-]  #03  colloid-pastel-icons-unstable                                                                          2025-03-20, 2025-03-20-fish-completions
+[R.]  #04  etc-xdg-xdg-terminals.list                                                                             <none>
+[R.]  #05  fcft                                                                                                   3.3.2
+[R.]  #06  fonts.conf                                                                                             <none>
+[R.]  #07  fuzzel                                                                                                 1.13.0, 1.13.0-fish-completions
+[R.]  #08  fuzzel.ini                                                                                             <none>
+[R.]  #09  gpu-screen-recorder                                                                                    5.6.5
+[R.]  #10  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsbmnlcjabgnpnenekpadlanbbkooimhnj.json  <none>
+[R.]  #11  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionscjpalhdlnbpafiamejdnhcphjbkeiagm.json  <none>
+[R.]  #12  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionseimadpbcbfnmbkopoojfekhnkhdbieeh.json  <none>
+[R.]  #13  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsfcphghnknhkimeagdglkljinmpbagone.json  <none>
+[R.]  #14  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsfmkadmapgofadopljbjfkapdkoienihi.json  <none>
+[R.]  #15  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsgbmdgpbipfallnflgajpaliibnhdgobh.json  <none>
+[R.]  #16  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsgebbhagfogifgggkldgodflihgfeippi.json  <none>
+[R.]  #17  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsgfbliohnnapiefjpjlpjnehglfpaknnc.json  <none>
+[R.]  #18  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsigiofjhpmpihnifddepnpngfjhkfenbp.json  <none>
+[R.]  #19  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsjiaopdjbehhjgokpphdfgmapkobbnmjp.json  <none>
+[R.]  #20  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsmghenlmbmjcpehccoangkdpagbcbkdpc.json  <none>
+[R.]  #21  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsmnjggcdmjocbbbhaepdhchncahnbgone.json  <none>
+[R.]  #22  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsnffaoalbilbmmfgbnbgppjihopabppdk.json  <none>
+[R.]  #23  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsnlipoenfbbikpbjkfpfillcgkoblgpmj.json  <none>
+[R.]  #24  hm_homesumelan.configBraveSoftwareBraveBrowserExternalExtensionsnngceckbapebfimnlniiiahkandclblb.json  <none>
+[R.]  #25  inter-nerdfont                                                                                         4.1
+[R.]  #26  niriswitcher-style.css                                                                                 <none>
+[R.]  #27  niriswitcher.service                                                                                   <none>
+[R.]  #28  noctalia-shell                                                                                         42297217744c2023569b4453f9625ad0a289f5ee, 42297217744c2023569b4453f9625ad0a289f5ee-fish-completions
+[R.]  #29  noctalia.service                                                                                       <none>
+[R.]  #30  python3.13-niriswitcher                                                                                0.7.1, 0.7.1-fish-completions
+[R.]  #31  quickshell-wrapped                                                                                     0.2.0 x2, 0.2.0-fish-completions
+[R.]  #32  roboto                                                                                                 3.011
+[R.]  #33  swww                                                                                                   0.10.3
+[R.]  #34  swww-daemon.service                                                                                    <none>
+[R.]  #35  wlsunset                                                                                               0.4.0, 0.4.0-fish-completions
+Closure size: 2516 -> 2523 (312 paths added, 305 paths removed, delta +7, disk usage -7.4MiB).
