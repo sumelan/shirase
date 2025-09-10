@@ -58,9 +58,7 @@ in {
       ];
 
       config = {
-        common.default = [
-          "gnome"
-        ];
+        common.default = ["gnome"];
         niri = {
           default = "gnome";
           "org.freedesktop.impl.portal.FileChooser" = "gtk";

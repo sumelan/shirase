@@ -12,10 +12,7 @@
 in {
   options.custom = {
     keyd.enable =
-      mkEnableOption "keyd"
-      // {
-        default = isLaptop;
-      };
+      mkEnableOption "keyd" // {default = isLaptop;};
   };
 
   config = mkIf config.custom.keyd.enable {
@@ -31,7 +28,6 @@ in {
               #   control = "oneshot(control)";
               leftalt = "alt";
               rightalt = "altgr";
-
               capslock = "`";
               menu = "shift";
             };
