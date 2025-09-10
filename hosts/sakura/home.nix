@@ -28,14 +28,13 @@ in {
   custom = let
     enableList =
       [
-        "brave"
         "cyanrip"
         "euphonica"
         "foliate"
         "freetube"
-        "helix"
         "obs-studio"
         "protonapp"
+        "spotify"
       ]
       ++ ["dms" "swayidle"];
 

@@ -1,15 +1,6 @@
-{
-  lib,
-  config,
-  ...
-}: let
-  inherit
-    (lib.custom.niri)
-    runCmd
-    ;
-in {
+{config, ...}: {
   programs.niri.settings.binds = with config.lib.niri.actions; {
-    # shows a list of important hotkeys.
+    # shows a list of important hotkeys
     "Mod+Shift+Slash".action = show-hotkey-overlay;
 
     # overview
@@ -18,24 +9,27 @@ in {
     # exit niri
     "Mod+Shift+Escape".action = quit {skip-confirmation = false;};
 
-    # screenshot 'screenshot-screen' is valid only on niri-stable
+    # screenshot
     "Mod+Backslash".action = screenshot {show-pointer = false;};
-    "Mod+Shift+Backslash" = runCmd {
-      cmd = "niri msg action screenshot-screen";
-      title = "Screenshot the focused screen";
+    "Mod+Shift+Backslash".action = screenshot-window {write-to-disk = true;};
+
+    # dynamic screencast target
+    "Mod+Alt+Backslash" = {
+      action = spawn "sh" "-c" "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)";
+      hotkey-overlay.title = "Interactively pick which window to cast";
     };
-    "Mod+Alt+Backslash".action = screenshot-window {write-to-disk = true;};
+    "Mod+Ctrl+Backslash".action = clear-dynamic-cast-target;
 
     # window and colum management
     "Mod+Backspace".action = close-window;
 
     "Mod+F".action = toggle-window-floating;
     "Mod+Shift+F".action = fullscreen-window;
-    "Mod+Ctrl+Shift+F".action = toggle-windowed-fullscreen;
+    "Mod+Alt+F".action = toggle-windowed-fullscreen;
 
-    "Mod+Alt+F".action = maximize-column;
-    "Mod+Shift+C".action = switch-preset-column-width;
-    "Mod+Alt+C".action = center-column;
+    "Mod+Ctrl+F".action = maximize-column;
+    "Mod+Shift+C".action = center-column;
+    "Mod+Ctrl+C".action = switch-preset-column-width;
 
     # vim-like
     "Mod+H".action = focus-column-left;
@@ -53,6 +47,7 @@ in {
     "Mod+Ctrl+K".action = set-window-height "-10%";
     "Mod+Ctrl+L".action = set-column-width "+10%";
 
+    # consume or expel
     "Mod+Left".action = consume-or-expel-window-left;
     "Mod+Right".action = consume-or-expel-window-right;
 
@@ -60,62 +55,38 @@ in {
     "Mod+T".action = toggle-column-tabbed-display;
 
     # numbered-workspaces
-    "Mod+1" = {
-      action.focus-workspace = 1;
-      hotkey-overlay.hidden = true;
-    };
-    "Mod+2" = {
-      action.focus-workspace = 2;
-      hotkey-overlay.hidden = true;
-    };
-    "Mod+3" = {
-      action.focus-workspace = 3;
-      hotkey-overlay.hidden = true;
-    };
-    "Mod+Shift+1" = {
-      action.move-column-to-workspace = 1;
-      hotkey-overlay.hidden = true;
-    };
-    "Mod+Shift+2" = {
-      action.move-column-to-workspace = 2;
-      hotkey-overlay.hidden = true;
-    };
-    "Mod+Shift+3" = {
-      action.move-column-to-workspace = 3;
-      hotkey-overlay.hidden = true;
-    };
+    "Mod+1".action.focus-workspace = 1;
+    "Mod+2".action.focus-workspace = 2;
+    "Mod+3".action.focus-workspace = 3;
+    "Mod+Shift+1".action.move-column-to-workspace = 1;
+    "Mod+Shift+2".action.move-column-to-workspace = 2;
+    "Mod+Shift+3".action.move-column-to-workspace = 3;
 
     # mouse scroll
     "Mod+WheelScrollDown" = {
       action = focus-workspace-down;
       cooldown-ms = 150;
-      hotkey-overlay.hidden = true;
     };
     "Mod+WheelScrollUp" = {
       action = focus-workspace-up;
       cooldown-ms = 150;
-      hotkey-overlay.hidden = true;
     };
     "Mod+WheelScrollRight" = {
       action = focus-column-right;
       cooldown-ms = 150;
-      hotkey-overlay.hidden = true;
     };
     "Mod+WheelScrollLeft" = {
       action = focus-column-left;
       cooldown-ms = 150;
-      hotkey-overlay.hidden = true;
     };
 
     "Mod+Shift+WheelScrollDown" = {
       action = move-column-to-workspace-down;
       cooldown-ms = 150;
-      hotkey-overlay.hidden = true;
     };
     "Mod+Shift+WheelScrollUp" = {
       action = move-column-to-workspace-up;
       cooldown-ms = 150;
-      hotkey-overlay.hidden = true;
     };
 
     # Touchpad gestures

@@ -14,6 +14,7 @@ _: {
     ./noctalia.nix
     ./obs-studio.nix
     ./protonapp.nix
+    ./spotify.nix
     ./swayidle.nix
     ./thunderbird.nix
     ./vlc.nix

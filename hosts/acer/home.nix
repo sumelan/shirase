@@ -31,7 +31,9 @@ in {
         "cyanrip"
         "euphonica"
         "freetube"
+        "obs-studio"
         "protonapp"
+        "spotify"
       ]
       ++ ["dms" "swayidle"];
 
