@@ -2,11 +2,10 @@
   lib,
   config,
   pkgs,
-  inputs,
   isServer,
   ...
 }: let
-  qsPkg = inputs.dms.packages.${pkgs.system}.dankMaterialShell;
+  cfg = config.programs.quickshell;
 
   inherit
     (lib)
@@ -27,14 +26,14 @@ in {
       extraArgs = ["-w"];
       events = let
         lockCmd = pkgs.writers.writeFish "dms-lock" ''
-          string match 'true' (${getExe' qsPkg "dms"} ipc call lock isLocked) \
-            || ${getExe' qsPkg "dms"} ipc call lock lock
+          string match 'true' (${getExe cfg.package} -c dms ipc call lock isLocked) \
+            || ${getExe cfg.package} -c dms ipc call lock lock
         '';
       in [
         {
           event = "before-sleep";
           command = concatStringsSep "; " [
-            "${getExe' qsPkg "dms"} ipc call lock lock"
+            "${getExe' pkgs.systemd "loginctl"} lock-session"
             "${getExe pkgs.playerctl} pause"
           ];
         }
@@ -48,7 +47,7 @@ in {
         }
         {
           event = "unlock";
-          command = "";
+          command = "${getExe' pkgs.systemd "systemctl"} --user restart quickshell.service";
         }
       ];
 
@@ -60,7 +59,7 @@ in {
         }
         {
           timeout = 60 * 12;
-          command = "${getExe' qsPkg "dms"} ipc call lock lock";
+          command = "${getExe' pkgs.systemd "loginctl"} lock-session";
         }
         {
           timeout = 60 * 15;
