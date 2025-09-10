@@ -58,7 +58,7 @@ in {
       binds = {
         "Mod+S" = {
           action.spawn = useUwsm "spotify";
-          hotkey-overlay.title = ''<span foreground="#FF007F">Launch</span> spotify'';
+          hotkey-overlay.title = ''<span foreground="#f2d5cf">[Application]</span> spotify'';
         };
       };
       window-rules = [
