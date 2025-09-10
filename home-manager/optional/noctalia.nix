@@ -9,7 +9,7 @@
     (lib)
     mkEnableOption
     mkIf
-    singleton
+    getExe
     ;
 in {
   options.custom = {
@@ -25,20 +25,6 @@ in {
       ++ [pkgs.wlsunset];
 
     programs.niri.settings = {
-      layout = {
-        background-color = "transparent";
-      };
-      window-rules = [
-        {
-          geometry-corner-radius = {
-            bottom-left = 20.0;
-            bottom-right = 20.0;
-            top-left = 20.0;
-            top-right = 20.0;
-          };
-          clip-to-geometry = true;
-        }
-      ];
       layer-rules = [
         {
           matches = [{namespace = "^swww-daemon$";}];
@@ -53,44 +39,44 @@ in {
         }
       ];
       binds = let
-        hotkeyColor = "#c7a1d8";
+        hotkeyColor = config.lib.stylix.colors.withHashtag.base0D;
       in {
         "Mod+Space" = {
           action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "toggle"];
-          hotkey-overlay.title = ''<i>Toggle</i> <span foreground="${hotkeyColor}">launcher</span>'';
+          hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Launcher'';
         };
         "Mod+V" = {
           action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "clipboard"];
-          hotkey-overlay.title = ''<i>Toggle</i> <span foreground="${hotkeyColor}">Clipboard History</span>'';
+          hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Clipboard'';
         };
         "Mod+C" = {
           action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "calculator"];
-          hotkey-overlay.title = ''<i>Toggle</i> <span foreground="${hotkeyColor}">Calculator</span>'';
+          hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Calculator'';
         };
         "Mod+N" = {
           action.spawn = ["noctalia-shell" "ipc" "call" "notifications" "toggleHistory"];
-          hotkey-overlay.title = ''<i>Toggle</i> <span foreground="${hotkeyColor}">Notification History</span>'';
+          hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Notification Histories'';
         };
         "Mod+S" = {
           action.spawn = ["noctalia-shell" "ipc" "call" "sidePanel" "toggle"];
-          hotkey-overlay.title = ''<i>Toggle</i> <span foreground="${hotkeyColor}">SidePanel</span>'';
+          hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Sidepanel'';
         };
         "Mod+Comma" = {
           action.spawn = ["noctalia-shell" "ipc" "call" "settings" "toggle"];
-          hotkey-overlay.title = ''<i>Toggle</i> <span foreground="${hotkeyColor}">Settings Panel</span>'';
+          hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Settings'';
         };
-        "Mod+Ctrl+L" = {
+        "Mod+Alt+L" = {
           allow-when-locked = true;
           action.spawn = ["noctalia-shell" "ipc" "call" "lockScreen" "toggle"];
-          hotkey-overlay.title = ''<i>Toggle</i> <span foreground="${hotkeyColor}">Lock screen</span>'';
+          hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Lock Screen'';
         };
         "Mod+I" = {
           action.spawn = ["noctalia-shell" "ipc" "call" "idleInhibitor" "toggle"];
-          hotkey-overlay.title = ''<i>Toggle</i> <span foreground="${hotkeyColor}">Idle Inhibitor</span>'';
+          hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Toggle Idleinhibitor'';
         };
         "Mod+Q" = {
           action.spawn = ["noctalia-shell" "ipc" "call" "powerPanel" "toggle"];
-          hotkey-overlay.title = ''<i>Toggle</i> <span foreground="${hotkeyColor}">Power Panel</span>'';
+          hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Powerpanel'';
         };
         "XF86AudioRaiseVolume" = {
           allow-when-locked = true;
@@ -117,8 +103,30 @@ in {
           action.spawn = ["noctalia-shell" "ipc" "call" "brightness" "decrease"];
         };
       };
-      spawn-at-startup = singleton {
-        argv = singleton "noctalia-shell";
+    };
+
+    systemd.user.services = {
+      "noctalia" = {
+        Unit = {
+          Description = "Noctalia Shell Service";
+          After = [config.wayland.systemd.target];
+          PartOf = [config.wayland.systemd.target];
+        };
+        Service = {
+          Type = "exec";
+          ExecStart = "${getExe inputs.noctalia.packages.${pkgs.system}.default}";
+          Restart = "on-failure";
+          RestartSec = "5s";
+          TimeoutStopSec = "5s";
+          Environment = [
+            "QT_QPA_PLATFORM=wayland"
+            "ELECTRON_OZONE_PLATFORM_HINT=auto"
+          ];
+          Slice = "session.slice";
+        };
+        Install = {
+          WantedBy = [config.wayland.systemd.target];
+        };
       };
     };
 

@@ -8,8 +8,9 @@
     (lib)
     mkEnableOption
     mkIf
-    mkForce
+    singleton
     ;
+  cfg = config.programs.dankMaterialShell;
 in {
   imports = [inputs.dms.homeModules.dankMaterialShell];
 
@@ -22,8 +23,27 @@ in {
       dankMaterialShell = {
         enable = true;
         enableKeybinds = true;
-        enableSystemd = mkForce false;
-        enableSpawn = true;
+        enableSystemd = true;
+        enableSpawn = false;
+      };
+      niri.settings = {
+        layer-rules = [
+          {
+            matches = singleton {
+              namespace = "^quickshell$";
+            };
+            place-within-backdrop = true;
+          }
+        ];
+      };
+    };
+
+    systemd.user.services.quickshell = mkIf cfg.enableSystemd {
+      Service = {
+        Environment = [
+          "QT_QPA_PLATFORM=wayland"
+          "ELECTRON_OZONE_PLATFORM_HINT=auto"
+        ];
       };
     };
 

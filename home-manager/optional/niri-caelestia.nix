@@ -32,6 +32,7 @@ in {
         ];
       };
       settings = {
+        theme.accent = config.lib.stylix.colors.withHashtag.base06;
         general = {
           apps = {
             terminal = [config.profiles.${user}.defaultTerminal.name];
@@ -139,23 +140,23 @@ in {
 
     programs.niri.settings = {
       binds = let
-        hintColor = config.lib.stylix.colors.withHashtag.base0B;
+        hotkeyColor = config.lib.stylix.colors.withHashtag.base0B;
       in {
         "Mod+Space" = {
           action.spawn = ["caelestia-shell" "ipc" "call" "drawers" "toggle" "launcher"];
-          hotkey-overlay.title = "<span foreground='${hintColor}'>[Niri-Caelestia]</span> Launcher";
+          hotkey-overlay.title = "<span foreground='${hotkeyColor}'>[Niri-Caelestia]</span> Launcher";
         };
         "Mod+X" = {
           action.spawn = ["caelestia-shell" "ipc" "call" "drawers" "toggle" "session"];
-          hotkey-overlay.title = "<span foreground='${hintColor}'>[Niri-Caelestia]</span> Session";
+          hotkey-overlay.title = "<span foreground='${hotkeyColor}'>[Niri-Caelestia]</span> Session";
         };
         "Mod+D" = {
           action.spawn = ["caelestia-shell" "ipc" "call" "drawers" "toggle" "dashboard"];
-          hotkey-overlay.title = "<span foreground='${hintColor}'>[Niri-Caelestia]</span> Dashboard";
+          hotkey-overlay.title = "<span foreground='${hotkeyColor}'>[Niri-Caelestia]</span> Dashboard";
         };
         "Mod+Alt+L" = {
           action.spawn = ["caelestia-shell" "ipc" "call" "lock" "lock"];
-          hotkey-overlay.title = "<span foreground='${hintColor}'>[Niri-Caelestia]</span> Lock";
+          hotkey-overlay.title = "<span foreground='${hotkeyColor}'>[Niri-Caelestia]</span> Lock";
           allow-when-locked = true;
         };
         "XF86AudioPlay" = {
@@ -175,20 +176,6 @@ in {
           allow-when-locked = true;
         };
       };
-      layout = {
-        background-color = "transparent";
-      };
-      window-rules = [
-        {
-          geometry-corner-radius = {
-            bottom-left = 20.0;
-            bottom-right = 20.0;
-            top-left = 20.0;
-            top-right = 20.0;
-          };
-          clip-to-geometry = true;
-        }
-      ];
       layer-rules = [
         {
           matches = singleton {

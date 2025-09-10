@@ -6,6 +6,8 @@
   isServer,
   ...
 }: let
+  qsPkg = inputs.dms.packages.${pkgs.system}.default;
+
   inherit
     (lib)
     mkEnableOption
@@ -24,15 +26,15 @@ in {
       enable = true;
       extraArgs = ["-w"];
       events = let
-        caelestia-lock = pkgs.writers.writeFish "caelestia-lock" ''
-          string match 'true' (${getExe inputs.niri-caelestia.packages.${pkgs.system}.default} ipc call lock isLocked) \
-            || ${getExe inputs.niri-caelestia.packages.${pkgs.system}.default} ipc call lock lock
+        lockCmd = pkgs.writers.writeFish "caelestia-lock" ''
+          string match 'true' (${getExe' qsPkg "dms"} ipc call lock isLocked) \
+            || ${getExe' qsPkg "dms"} ipc call lock lock
         '';
       in [
         {
           event = "before-sleep";
           command = concatStringsSep "; " [
-            "${getExe inputs.niri-caelestia.packages.${pkgs.system}.default} ipc call lock lock"
+            "${getExe' qsPkg "dms"} ipc call lock lock"
             "${getExe pkgs.playerctl} pause"
           ];
         }
@@ -42,11 +44,11 @@ in {
         }
         {
           event = "lock";
-          command = "${caelestia-lock}";
+          command = "${lockCmd}";
         }
         {
           event = "unlock";
-          command = "${getExe inputs.niri-caelestia.packages.${pkgs.system}.default} ipc call lock unlock";
+          command = "";
         }
       ];
 
@@ -58,14 +60,14 @@ in {
         }
         {
           timeout = 60 * 12;
-          command = "${getExe inputs.niri-caelestia.packages.${pkgs.system}.default} ipc call lock lock";
+          command = "${getExe' qsPkg "dms"} ipc call lock lock";
         }
         {
           timeout = 60 * 15;
           command = "${getExe config.programs.niri.package} msg action power-off-monitors";
           resumeCommand = "${getExe config.programs.niri.package} msg action power-on-monitors";
         }
-        (lib.mkIf (!isServer) {
+        (mkIf (!isServer) {
           timeout = 60 * 20;
           command = "${getExe' pkgs.systemd "systemctl"} suspend";
         })

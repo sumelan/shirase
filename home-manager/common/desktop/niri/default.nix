@@ -75,6 +75,7 @@ in {
       };
 
       layout = {
+        background-color = "transparent";
         gaps = 12;
         border = {
           enable = true;
