@@ -2126,3 +2126,157 @@ Removed packages:
 [R.]  #33  xfconf                  4.20.0
 [R.]  #34  yyjson                  0.12.0
 Closure size: 2631 -> 2619 (239 paths added, 251 paths removed, delta -12, disk usage -23.9MiB).
+
+---
+
+2025年09月10日 23時17分22秒
+<<< /nix/var/nix/profiles/system-321-link
+>>> /nix/var/nix/profiles/system-326-link
+Version changes:
+[U.]  #01  basedpyright         1.31.3 -> 1.31.4
+[C*]  #02  bash-interactive     5.3p3 x2, 5.3p3-dev, 5.3p3-fish-completions, 5.3p3-man -> 5.3p3 x2, 5.3p3-fish-completions, 5.3p3-man
+[U*]  #03  bind                 9.20.11-dnsutils, 9.20.11-host, 9.20.11-lib -> 9.20.12-dnsutils, 9.20.12-host, 9.20.12-lib
+[C*]  #04  bluez                5.83 x2, 5.83-dev -> 5.83 x2
+[C.]  #05  breeze-icons         5.116.0, 6.17.0 -> 6.17.0
+[C.]  #06  brightnessctl        0.5.1 -> 0.5.1, 0.5.1-fish-completions
+[C.]  #07  cava                 0.10.4 -> 0.10.4, 0.10.4-fish-completions
+[U.]  #08  cinnamon-desktop     6.4.1 -> 6.4.2
+[C.]  #09  cliphist             0.6.1 -> 0.6.1, 0.6.1-fish-completions
+[C.]  #10  config.toml          <none> x2 -> <none>
+[C.]  #11  ddcutil              2.2.1 -> 2.2.1, 2.2.1-fish-completions
+[U.]  #12  deadnix              1.2.1 -> 1.3.1
+[U.]  #13  electron             37.3.1 -> 37.4.0
+[U.]  #14  electron-unwrapped   37.3.1 -> 37.4.0
+[U.]  #15  exiv2                0.28.5-lib -> 0.28.7-lib
+[C.]  #16  file                 5.45 x2, 5.45-dev -> 5.45 x2
+[U.]  #17  fx                   39.0.2, 39.0.2-fish-completions -> 39.0.4, 39.0.4-fish-completions
+[C.]  #18  glib                 2.84.3 x2, 2.84.3-bin, 2.84.3-dev -> 2.84.3 x2, 2.84.3-bin, 2.84.3-dev, 2.84.3-fish-completions
+[U.]  #19  imagemagick          7.1.2-2 -> 7.1.2-3
+[U.]  #20  initrd-linux-zen     6.16.3 -> 6.16.5
+[U.]  #21  inxi                 3.3.38-1 -> 3.3.39-1
+[U.]  #22  jujutsu              0.32.0, 0.32.0-fish-completions -> 0.33.0, 0.33.0-fish-completions
+[U.]  #23  lazygit              0.54.2, 0.54.2-fish-completions -> 0.55.0, 0.55.0-fish-completions
+[C.]  #24  libnotify            0.8.6, 0.8.6-dev -> 0.8.6
+[U.]  #25  libwnck              43.2 -> 43.3
+[U.]  #26  linux-zen            6.16.3, 6.16.3-modules x2, 6.16.3-modules-shrunk -> 6.16.5, 6.16.5-modules x2, 6.16.5-modules-shrunk
+[U.]  #27  lz-n                 8c7d8e3c -> 590d1fca
+[U.]  #28  mate-panel           1.28.5 -> 1.28.6
+[C.]  #29  material-symbols     4.0.0-unstable-2025-04-11 -> 4.0.0-unstable-2025-04-11, 4.0.0-unstable-2025-04-11-fish-completions
+[C.]  #30  matugen              2.4.1 -> 2.4.1, 2.4.1-fish-completions
+[U.]  #31  mesa                 25.2.1 x2 -> 25.2.2 x2
+[C*]  #32  networkmanager       1.52.1, 1.52.1-dev -> 1.52.1, 1.52.1-dev, 1.52.1-fish-completions, 1.52.1-man
+[U*]  #33  niri-unstable        2025-09-03-c69464c -> 2025-09-08-bdee1a6
+[C*]  #34  nix                  2.28.4 x2, 2.28.4-man x2 -> 2.28.4, 2.28.4-man, 2.28.5, 2.28.5-man
+[U.]  #35  nix-search-tv        2.1.8, 2.1.8-fish-completions -> 2.2.0, 2.2.0-fish-completions
+[U.]  #36  nixos-system-sakura  25.11.20250902.d0fc308.3960b50 -> 25.11.20250908.b599843.f44d952
+[U.]  #37  php                  8.4.11 -> 8.4.12
+[U.]  #38  php-bcmath           8.4.11 -> 8.4.12
+[U.]  #39  php-calendar         8.4.11 -> 8.4.12
+[U.]  #40  php-ctype            8.4.11 -> 8.4.12
+[U.]  #41  php-curl             8.4.11 -> 8.4.12
+[U.]  #42  php-dom              8.4.11 -> 8.4.12
+[U.]  #43  php-exif             8.4.11 -> 8.4.12
+[U.]  #44  php-extra-init       8.4.11.ini -> 8.4.12.ini
+[U.]  #45  php-fileinfo         8.4.11 -> 8.4.12
+[U.]  #46  php-filter           8.4.11 -> 8.4.12
+[U.]  #47  php-ftp              8.4.11 -> 8.4.12
+[U.]  #48  php-gd               8.4.11 -> 8.4.12
+[U.]  #49  php-gettext          8.4.11 -> 8.4.12
+[U.]  #50  php-gmp              8.4.11 -> 8.4.12
+[U.]  #51  php-iconv            8.4.11 -> 8.4.12
+[U.]  #52  php-intl             8.4.11 -> 8.4.12
+[U.]  #53  php-ldap             8.4.11 -> 8.4.12
+[U.]  #54  php-mbstring         8.4.11 -> 8.4.12
+[U.]  #55  php-mysqli           8.4.11 -> 8.4.12
+[U.]  #56  php-mysqlnd          8.4.11 -> 8.4.12
+[U.]  #57  php-opcache          8.4.11 -> 8.4.12
+[U.]  #58  php-openssl          8.4.11 -> 8.4.12
+[U.]  #59  php-pcntl            8.4.11 -> 8.4.12
+[U.]  #60  php-pdo              8.4.11 -> 8.4.12
+[U.]  #61  php-pdo_mysql        8.4.11 -> 8.4.12
+[U.]  #62  php-pdo_odbc         8.4.11 -> 8.4.12
+[U.]  #63  php-pdo_pgsql        8.4.11 -> 8.4.12
+[U.]  #64  php-pdo_sqlite       8.4.11 -> 8.4.12
+[U.]  #65  php-pgsql            8.4.11 -> 8.4.12
+[U.]  #66  php-posix            8.4.11 -> 8.4.12
+[U.]  #67  php-readline         8.4.11 -> 8.4.12
+[U.]  #68  php-session          8.4.11 -> 8.4.12
+[U.]  #69  php-simplexml        8.4.11 -> 8.4.12
+[U.]  #70  php-soap             8.4.11 -> 8.4.12
+[U.]  #71  php-sockets          8.4.11 -> 8.4.12
+[U.]  #72  php-sodium           8.4.11 -> 8.4.12
+[U.]  #73  php-sqlite3          8.4.11 -> 8.4.12
+[U.]  #74  php-sysvsem          8.4.11 -> 8.4.12
+[U.]  #75  php-tokenizer        8.4.11 -> 8.4.12
+[U.]  #76  php-with-extensions  8.4.11 -> 8.4.12
+[U.]  #77  php-xmlreader        8.4.11 -> 8.4.12
+[U.]  #78  php-xmlwriter        8.4.11 -> 8.4.12
+[U.]  #79  php-zip              8.4.11 -> 8.4.12
+[U.]  #80  php-zlib             8.4.11 -> 8.4.12
+[C.]  #81  proton-pass          1.32.4, 1.32.5, 1.32.5-fish-completions -> 1.32.5 x2, 1.32.5-fish-completions
+[U.]  #82  python3.13-pynvim    0.5.2 -> 0.6.0
+[C.]  #83  source               <none> x21 -> <none> x22
+[U*]  #84  udisks               2.10.1 -> 2.10.2
+[U*]  #85  uwsm                 0.23.2 -> 0.23.3
+[U.]  #86  webkitgtk            2.48.5+abi=6.0 -> 2.48.6+abi=6.0
+[C*]  #87  wireplumber          0.4.17, 0.5.10 -> 0.4.17, 0.5.11
+[C.]  #88  wl-clipboard         2.2.1 -> 2.2.1, 2.2.1-fish-completions
+[U.]  #89  yt-dlp               2025.08.27, 2025.08.27-fish-completions -> 2025.09.05, 2025.09.05-fish-completions
+Selection state changes:
+[C+]  #1  hicolor-icon-theme  0.18
+[C-]  #2  xdg-terminal-exec   0.13.2, 0.13.2-fish-completions
+Added packages:
+[A.]  #01  caelestia-lock                <none> x2
+[A+]  #02  capitaine-cursors-themed      5, 5-fish-completions
+[A.]  #03  dankMaterialShell             <none>
+[A.]  #04  dgop                          0.0.9, 0.0.9-fish-completions
+[A.]  #05  dms-cli                       0.0.2, 0.0.2-fish-completions
+[A.]  #06  fira-code                     6.2, 6.2-fish-completions
+[A.]  #07  gammastep                     2.0.11, 2.0.11-fish-completions
+[A.]  #08  hm_xdgterminals.list          <none>
+[A.]  #09  inter                         4.1, 4.1-fish-completions
+[A.]  #10  khal                          0.13.0, 0.13.0-fish-completions, 0.13.0-man
+[A+]  #11  papirus-nord                  3.2.0, 3.2.0-fish-completions
+[A.]  #12  python3.13-aiohttp-oauthlib   0.1.0
+[A.]  #13  python3.13-aiostream          0.7.0
+[A.]  #14  python3.13-atomicwrites       1.4.1
+[A.]  #15  python3.13-click-log          0.4.0
+[A.]  #16  python3.13-click-threading    0.5.0
+[A.]  #17  python3.13-configobj          5.0.9
+[A.]  #18  python3.13-freezegun          1.5.4
+[A.]  #19  python3.13-icalendar          6.3.1
+[A.]  #20  python3.13-oauthlib           3.3.1
+[A.]  #21  python3.13-pkginfo            1.12.1.2
+[A.]  #22  python3.13-python-dateutil    2.9.0.post0
+[A.]  #23  python3.13-pytz               2025.2
+[A.]  #24  python3.13-requests-toolbelt  1.0.0
+[A.]  #25  python3.13-tzdata             2025.2
+[A.]  #26  python3.13-tzlocal            5.3.1
+[A.]  #27  python3.13-urwid              3.0.2
+[A.]  #28  python3.13-vdirsyncer         0.20.0
+[A.]  #29  python3.13-wcwidth            0.2.13
+[A.]  #30  quickshell                    0.2.0, 0.2.0-fish-completions
+[A.]  #31  quickshell.service            <none>
+[A.]  #32  unit-emergency.service        <none>
+[A.]  #33  unit-rescue.service           <none>
+Removed packages:
+[R-]  #01  colloid-pastel-cursors-unstable  2025-03-20, 2025-03-20-fish-completions
+[R-]  #02  colloid-pastel-icons-unstable    2025-03-20, 2025-03-20-fish-completions
+[R.]  #03  etc-xdg-xdg-terminals.list       <none>
+[R.]  #04  fcft                             3.3.2
+[R.]  #05  fonts.conf                       <none>
+[R.]  #06  fuzzel                           1.13.0, 1.13.0-fish-completions
+[R.]  #07  fuzzel.ini                       <none>
+[R.]  #08  gpu-screen-recorder              5.6.5
+[R.]  #09  inter-nerdfont                   4.1
+[R.]  #10  niriswitcher-style.css           <none>
+[R.]  #11  niriswitcher.service             <none>
+[R.]  #12  noctalia-shell                   42297217744c2023569b4453f9625ad0a289f5ee, 42297217744c2023569b4453f9625ad0a289f5ee-fish-completions
+[R.]  #13  noctalia.service                 <none>
+[R.]  #14  python3.13-niriswitcher          0.7.1, 0.7.1-fish-completions
+[R.]  #15  quickshell-wrapped               0.2.0 x2, 0.2.0-fish-completions
+[R.]  #16  roboto                           3.011
+[R.]  #17  swww                             0.10.3
+[R.]  #18  swww-daemon.service              <none>
+[R.]  #19  wlsunset                         0.4.0, 0.4.0-fish-completions
+Closure size: 2619 -> 2641 (357 paths added, 335 paths removed, delta +22, disk usage +392.7MiB).
