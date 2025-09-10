@@ -97,22 +97,22 @@ in {
       #   locked = "allow";
       # };
 
-      #   "XF86AudioPlay" = runCmd {
-      #     cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=play-pause";
-      #     locked = "allow";
-      #   };
-      #   "XF86AudioPause" = runCmd {
-      #     cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=play-pause";
-      #     locked = "allow";
-      #   };
-      #   "XF86AudioNext" = runCmd {
-      #     cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=next";
-      #     locked = "allow";
-      #   };
-      #   "XF86AudioPrev" = runCmd {
-      #     cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=previous";
-      #     locked = "allow";
-      #   };
+      "XF86AudioPlay" = runCmd {
+        cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=play-pause";
+        locked = "allow";
+      };
+      "XF86AudioPause" = runCmd {
+        cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=play-pause";
+        locked = "allow";
+      };
+      "XF86AudioNext" = runCmd {
+        cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=next";
+        locked = "allow";
+      };
+      "XF86AudioPrev" = runCmd {
+        cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=previous";
+        locked = "allow";
+      };
 
       # fcitx5
       "Ctrl+Space" = runCmd {

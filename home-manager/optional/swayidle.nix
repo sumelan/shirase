@@ -6,7 +6,7 @@
   isServer,
   ...
 }: let
-  qsPkg = inputs.dms.packages.${pkgs.system}.default;
+  qsPkg = inputs.dms.packages.${pkgs.system}.dankMaterialShell;
 
   inherit
     (lib)
@@ -26,7 +26,7 @@ in {
       enable = true;
       extraArgs = ["-w"];
       events = let
-        lockCmd = pkgs.writers.writeFish "caelestia-lock" ''
+        lockCmd = pkgs.writers.writeFish "dms-lock" ''
           string match 'true' (${getExe' qsPkg "dms"} ipc call lock isLocked) \
             || ${getExe' qsPkg "dms"} ipc call lock lock
         '';

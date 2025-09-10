@@ -47,12 +47,13 @@ in {
     {
       stylix = {
         cursor = {
-          package = pkgs.capitaine-cursors-themed;
-          name = "Capitaine Cursors (Nord)";
+          package = pkgs.catppuccin-cursors.frappeLight;
+          name = "catppuccin-frappe-light-cursors";
         };
         icons = {
-          package = pkgs.papirus-nord.override {
-            accent = "polarnight3";
+          package = pkgs.catppuccin-papirus-folders.override {
+            flavor = "frappe";
+            accent = "lavender";
           };
           dark = "Papirus-Dark";
         };

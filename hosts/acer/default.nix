@@ -23,7 +23,7 @@ in {
     ];
   in
     {
-      stylix.colorTheme = "nord";
+      stylix.colorTheme = "catppuccin-frappe";
     }
     // genAttrs enableList (_name: {
       enable = true;

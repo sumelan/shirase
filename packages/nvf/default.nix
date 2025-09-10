@@ -15,7 +15,8 @@
 
     theme = {
       enable = true;
-      name = "nord";
+      name = "catppuccin";
+      style = "frappe";
     };
 
     options = {
