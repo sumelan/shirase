@@ -30,26 +30,17 @@ in {
       enable = true;
       wayland = true;
       enabledExtensions = with spicePkgs.extensions; [
-        # adblock
         keyboardShortcut
-        copyToClipboard
-        history
         betterGenres
-        lastfm
         hidePodcasts
-        shuffle # shuffle+ (special characters are sanitized out of extension names)
+        playlistIcons
+        shuffle
       ];
-      enabledCustomApps = with spicePkgs.apps; [
-        newReleases
-        ncsVisualizer
-        historyInSidebar
-      ];
+      enabledCustomApps = with spicePkgs.apps; [newReleases];
       enabledSnippets = with spicePkgs.snippets; [
-        circularAlbumArt
+        hideSidebarScrollbar
         newHoverPanel
-        dynamicLeftSidebar
-        spinningCdCoverArt
-        pointer
+        removeConnectBar
       ];
       theme = spicePkgs.themes.orchis;
     };
