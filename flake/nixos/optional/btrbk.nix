@@ -5,7 +5,6 @@
   user,
   host,
   isLaptop,
-  isServer,
   ...
 }: let
   inherit
@@ -112,8 +111,8 @@ in {
 
       # server setting
       # add ssh key to perform btrfs command
-      (optionalAttrs isServer {
-        services.btrbk.sshAccess = [
+      {
+        services.btrbk.sshAccess = mkIf config.custom.hdds.enable [
           {
             key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGww+bXaeTXj6s10G4V8Kz2PqGfI6tU4rd8KfxxoQj9 btrbk";
             roles = [
@@ -124,7 +123,7 @@ in {
             ];
           }
         ];
-      })
+      }
     ]
   );
 }

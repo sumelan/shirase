@@ -1,14 +1,8 @@
 {
-  lib,
   pkgs,
   config,
-  isServer,
   ...
 }: let
-  inherit
-    (lib)
-    mkIf
-    ;
   inherit
     (pkgs.lib.tmpfiles)
     mkFiles
@@ -33,7 +27,7 @@ in {
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM0zoNZpdcUfZ/Nf8Nj248D3wGlQCLld3LjPGrA6zzXs sumelan"
       ];
     in
-      mkIf isServer pubKeys;
+      pubKeys;
   };
 
   # setup a file and user icon for accountservice

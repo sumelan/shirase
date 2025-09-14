@@ -2,7 +2,7 @@
   lib,
   config,
   pkgs,
-  isServer,
+  isDesktop,
   ...
 }: let
   cfg = config.programs.quickshell;
@@ -66,7 +66,7 @@ in {
           command = "${getExe config.programs.niri.package} msg action power-off-monitors";
           resumeCommand = "${getExe config.programs.niri.package} msg action power-on-monitors";
         }
-        (mkIf (!isServer) {
+        (mkIf (!isDesktop) {
           timeout = 60 * 20;
           command = "${getExe' pkgs.systemd "systemctl"} suspend";
         })

@@ -28,7 +28,7 @@
         inherit system inputs self host user;
         flakePath = "/persist/home/${user}/projects/shirase";
         isLaptop = hardware == "laptop";
-        isServer = hardware == "server";
+        isDesktop = hardware == "desktop";
       };
 
       modules =
@@ -50,7 +50,7 @@
                 inherit inputs self host user;
                 flakePath = "/persist/home/${user}/projects/shirase";
                 isLaptop = hardware == "laptop";
-                isServer = hardware == "server";
+                isDesktop = hardware == "desktop";
               };
 
               users.${user} = {
@@ -84,7 +84,7 @@ in {
     sakura = mkSystem {
       host = "sakura";
       user = "sumelan";
-      hardware = "server";
+      hardware = "desktop";
     };
   };
 }

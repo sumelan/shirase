@@ -1,7 +1,7 @@
 {
   lib,
   config,
-  isServer,
+  isDesktop,
   ...
 }: let
   inherit
@@ -20,7 +20,7 @@ in {
       enable =
         mkEnableOption "Desktop HDDs"
         // {
-          default = isServer;
+          default = isDesktop;
         };
       wdelem4 =
         mkEnableOption "WD Elements 4TB"

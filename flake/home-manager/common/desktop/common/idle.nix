@@ -2,7 +2,7 @@
   lib,
   config,
   pkgs,
-  isServer,
+  isDesktop,
   ...
 }: {
   options.custom = {
@@ -50,7 +50,7 @@
             # screen on when activity is detected after timeout has fired.
             on-resume = "niri msg action power-on-monitors";
           }
-          (lib.optionalAttrs (!isServer) {
+          (lib.optionalAttrs (!isDesktop) {
             timeout = 60 * 30;
             on-timeout = "systemctl suspend"; # suspend pc.
           })
