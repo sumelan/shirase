@@ -2,14 +2,15 @@ _: {
   imports = [
     ./common
     ./niri
-    ./rofi
+    ./dimland.nix
     ./discord.nix
-    ./dunst.nix
+    ./dms.nix
     ./kitty.nix
     ./librewolf.nix
     ./mpv.nix
     ./nemo.nix
     ./pipewire.nix
+    ./swayidle.nix
     ./swayimg.nix
     ./swayosd.nix
     ./yazi.nix

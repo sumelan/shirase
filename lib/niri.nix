@@ -29,35 +29,16 @@
 
   runCmd = {
     cmd,
-    osd ? "",
-    osdArgs ? "",
     title ? null,
-    locked ? "no",
-    repeat ? "yes",
   }: {
-    action.spawn =
-      if osd == "swayosd"
-      then [
-        "sh"
-        "-c"
-        "${cmd} && ${osd}-client ${osdArgs}"
-      ]
-      else [
-        "fish"
-        "-c"
-        cmd
-      ];
+    action.spawn = [
+      "sh"
+      "-c"
+      cmd
+    ];
     hotkey-overlay =
       if title == null
       then {hidden = true;}
       else {inherit title;};
-    allow-when-locked =
-      if locked == "allow"
-      then true
-      else false;
-    repeat =
-      if repeat == "no"
-      then false
-      else true;
   };
 }

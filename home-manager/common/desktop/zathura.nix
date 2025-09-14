@@ -30,13 +30,4 @@ in {
   xdg.mimeApps.defaultApplications = {
     "application/pdf" = "org.pwmt.zathura.desktop";
   };
-
-  programs.niri.settings.window-rules = [
-    {
-      matches = singleton {
-        app-id = "^(org.pwmt.zathura)$";
-      };
-      default-column-width.proportion = 0.9;
-    }
-  ];
 }

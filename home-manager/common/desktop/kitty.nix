@@ -7,7 +7,6 @@
     (lib)
     mkEnableOption
     mkIf
-    singleton
     ;
 in {
   options.custom = {
@@ -42,14 +41,6 @@ in {
       ssh = "kitten ssh --kitten=color_scheme='Rosé Pine Moon'";
     };
 
-    programs.niri.settings = {
-      window-rules = singleton {
-        matches = singleton {
-          app-id = "^(kitty)$";
-        };
-        default-column-width.proportion = 0.6;
-      };
-    };
     stylix.targets.kitty.variant256Colors = true;
   };
 }

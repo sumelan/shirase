@@ -1,8 +1,9 @@
 _: {
   imports = [
+    ./rofi
     ./scripts
     ./waybar
-    ./dimland.nix
+    ./dunst.nix
     ./idle.nix
     ./lock.nix
     ./wpaperd.nix

@@ -54,17 +54,12 @@ in {
       };
       window-rules = [
         {
-          matches = singleton {
-            app-id = "^(spotify)$";
-          };
-          default-column-width.proportion = 0.9;
-        }
-        {
           # mini player
           matches = singleton {
             app-id = "^(chromium-browser)$";
           };
           open-floating = true;
+          opacity = 1.0;
         }
       ];
     };

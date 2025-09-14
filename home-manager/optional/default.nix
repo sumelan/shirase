@@ -5,7 +5,6 @@ _: {
     ./brave.nix
     ./cyanrip.nix
     ./euphonica.nix
-    ./dms.nix
     ./foliate.nix
     ./freetube.nix
     ./ghostty.nix
@@ -15,7 +14,6 @@ _: {
     ./obs-studio.nix
     ./protonapp.nix
     ./spotify.nix
-    ./swayidle.nix
     ./thunderbird.nix
     ./vlc.nix
   ];

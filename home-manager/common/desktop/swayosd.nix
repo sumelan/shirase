@@ -2,9 +2,7 @@
   lib,
   config,
   ...
-}:
-# NOTE: options "swayosd.display" exists, but not work
-let
+}: let
   inherit
     (lib)
     mkEnableOption
@@ -73,53 +71,49 @@ in {
       # audio
       #  "XF86AudioRaiseVolume" = lib.custom.niri.runCmd {
       # cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --output-volume raise";
-      # locked = "allow";
       # };
       #"XF86AudioLowerVolume" = lib.custom.niri.runCmd {
       # cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --output-volume lower";
-      # locked = "allow";
       #};
       #"XF86AudioMute" = lib.custom.niri.runCmd {
       # cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --output-volume mute-toggle";
-      # locked = "allow";
       # };
       # "XF86AudioMicMute" = lib.custom.niri.runCmd {
       # cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --input-volume mute-toggle";
-      # locked = "allow";
       # };
       # brightness
       # "XF86MonBrightnessUp" = lib.custom.niri.runCmd {
       #   cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --brightness raise";
-      #   locked = "allow";
       # };
       # "XF86MonBrightnessDown" = lib.custom.niri.runCmd {
       #   cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --brightness lower";
-      #   locked = "allow";
       # };
 
-      "XF86AudioPlay" = runCmd {
-        cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=play-pause";
-        locked = "allow";
-      };
-      "XF86AudioPause" = runCmd {
-        cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=play-pause";
-        locked = "allow";
-      };
-      "XF86AudioNext" = runCmd {
-        cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=next";
-        locked = "allow";
-      };
-      "XF86AudioPrev" = runCmd {
-        cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=previous";
-        locked = "allow";
-      };
+      "XF86AudioPlay" =
+        runCmd {
+          cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=play-pause";
+        }
+        // {allow-when-locked = true;};
+      "XF86AudioPause" =
+        runCmd {
+          cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=play-pause";
+        }
+        // {allow-when-locked = true;};
+      "XF86AudioNext" =
+        runCmd {
+          cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=next";
+        }
+        // {allow-when-locked = true;};
+      "XF86AudioPrev" =
+        runCmd {
+          cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --playerctl=previous";
+        }
+        // {allow-when-locked = true;};
 
       # fcitx5
       "Ctrl+Space" = runCmd {
-        cmd = "fcitx5-remote -t";
-        title = "Switch ime";
-        osd = "swayosd";
-        osdArgs = "--monitor ${config.lib.monitors.mainMonitorName} --custom-message=(fcitx5-remote -n) --custom-icon=input-keyboard";
+        cmd = "fcitx5-remote -t && swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --custom-message=(fcitx5-remote -n) --custom-icon=input-keyboard";
+        title = "Switch Active/Inactive";
       };
     };
   };
