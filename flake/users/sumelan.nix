@@ -22,12 +22,9 @@ in {
       "networkmanager"
       "wheel"
     ];
-    openssh.authorizedKeys.keys = let
-      pubKeys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM0zoNZpdcUfZ/Nf8Nj248D3wGlQCLld3LjPGrA6zzXs sumelan"
-      ];
-    in
-      pubKeys;
+    openssh.authorizedKeys.keyFiles = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM0zoNZpdcUfZ/Nf8Nj248D3wGlQCLld3LjPGrA6zzXs sumelan"
+    ];
   };
 
   # setup a file and user icon for accountservice

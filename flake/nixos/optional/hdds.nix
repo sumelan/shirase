@@ -1,14 +1,13 @@
 {
   lib,
   config,
-  isDesktop,
   ...
 }: let
   inherit
     (lib)
     mkEnableOption
     mkIf
-    optionals
+    optional
     ;
 
   cfg = config.custom.hdds;
@@ -17,11 +16,7 @@
 in {
   options.custom = {
     hdds = {
-      enable =
-        mkEnableOption "Desktop HDDs"
-        // {
-          default = isDesktop;
-        };
+      enable = mkEnableOption "Desktop HDDs";
       wdelem4 =
         mkEnableOption "WD Elements 4TB"
         // {
@@ -36,28 +31,37 @@ in {
   };
 
   config = mkIf cfg.enable {
-    fileSystems = {
-      ${wdelem} = mkIf cfg.wdelem4 {
-        device = "/dev/disk/by-uuid/40c7dc3e-a8ee-41ed-a30d-52eb8d24e425";
-        fsType = "btrfs";
-        options = [
-          "x-systemd.automount"
-          "nofail"
-        ];
-      };
-      ${ironwolf} = mkIf cfg.ironwolf2 {
-        device = "/dev/disk/by-uuid/96be0981-9995-4c3e-beb4-6ba049d37d7e";
-        fsType = "btrfs";
-        options = [
-          "x-systemd.automount"
-          "nofail"
-        ];
+    services.sanoid = {
+      datasets = {
+        "zfs-4twd-1/media" = mkIf cfg.wdelem4 {
+          hourly = 3;
+          daily = 10;
+          weekly = 2;
+          monthly = 0;
+        };
+        "zfs-ironwolf-1/media" = mkIf cfg.ironwolf2 {
+          hourly = 3;
+          daily = 10;
+          weekly = 2;
+          monthly = 0;
+        };
       };
     };
 
     hm = {
       custom.btop.disks =
-        optionals cfg.wdelem4 [wdelem] ++ optionals cfg.ironwolf2 [ironwolf];
+        optional cfg.wdelem4 wdelem ++ optional cfg.ironwolf2 ironwolf;
+    };
+
+    fileSystems = {
+      "/media/4TWD" = mkIf cfg.wdelem4 {
+        device = "zfs-4twd-1/media";
+        fsType = "zfs";
+      };
+      "/media/IRONWOLF2" = mkIf cfg.ironwolf2 {
+        device = "zfs-ironwolf-1/media";
+        fsType = "zfs";
+      };
     };
   };
 }
