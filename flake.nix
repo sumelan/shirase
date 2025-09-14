@@ -1,9 +1,19 @@
 {
   description = "Shirase: sumelan's nixos configuration";
 
+  outputs = {flake-parts, ...} @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      # These are the only systems types I support
+      systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin"];
+      imports = [./outputs];
+    };
+
   inputs = {
     # use unstable brunch
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -59,41 +69,5 @@
       url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
-
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    ...
-  }: let
-    system = "x86_64-linux";
-    pkgs = import inputs.nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
-
-    # Get the extended lib from ./lib/custom.nix
-    lib = import ./lib/custom.nix {
-      inherit
-        system
-        pkgs
-        inputs
-        self
-        ;
-      inherit (nixpkgs) lib;
-      inherit (inputs) home-manager;
-    };
-
-    forAllSystems = lib.genAttrs [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
-    forAllPkgs = fn: forAllSystems (system: fn {inherit system pkgs inputs;});
-  in {
-    inherit lib;
-    # NixOS configuration entrypoint
-    nixosConfigurations = import ./hosts {inherit lib;};
-    # Your custom packages, accessible through 'nix build', 'nix shell', etc
-    packages = forAllPkgs (import ./packages);
   };
 }
