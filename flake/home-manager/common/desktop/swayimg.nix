@@ -14,7 +14,7 @@ in {
       settings = with config.lib.stylix.colors.withHashtag; let
         inherit (config.stylix) fonts;
         swayimgOpacity =
-          ((builtins.floor (config.stylix.opacity.desktop * 100 + 0.5)) * 255) / 100 |> lib.toHexString;
+          lib.toHexString (((builtins.floor (config.stylix.opacity.desktop * 100 + 0.5)) * 255) / 100);
       in {
         general = {
           mode = "viewer";
