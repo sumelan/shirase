@@ -118,9 +118,6 @@ in {
       experimental-features = [
         "nix-command"
         "flakes"
-        # NOTE: 'pipe-operators' in nix but 'pipe-operator' in lix
-        # https://discourse.nixos.org/t/lix-mismatch-in-feature-name-compared-to-nix/59879
-        "pipe-operators"
       ];
       substituters = [
         "https://nix-community.cachix.org"

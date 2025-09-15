@@ -19,10 +19,10 @@ in {
     settings = {
       default_session = let
         inherit (config.hm.lib.monitors) mainMonitor;
-        mainScale = mainMonitor.scale |> builtins.toString;
-        mainMode = "${mainMonitor.mode.width |> builtins.toString}x${
-          mainMonitor.mode.height |> builtins.toString
-        }@${mainMonitor.mode.refresh |> builtins.toString}";
+        mainScale = builtins.toString mainMonitor.scale;
+        mainMode = "${builtins.toString mainMonitor.mode.width}x${
+          builtins.toString mainMonitor.mode.height
+        }@${builtins.toString mainMonitor.mode.refresh}";
 
         backlightSpawn = optionalString config.hm.custom.backlight.enable ''
           spawn-sh-at-startup "${getExe pkgs.brightnessctl} set 5%"
@@ -43,7 +43,7 @@ in {
 
             cursor {
                 xcursor-theme "${config.hm.home.pointerCursor.name}"
-                xcursor-size ${config.hm.home.pointerCursor.size |> builtins.toString}
+                xcursor-size ${builtins.toString config.hm.home.pointerCursor.size}
             }
 
             input {
