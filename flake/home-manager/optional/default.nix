@@ -1,6 +1,5 @@
 _: {
   imports = [
-    ./fuzzel
     ./rmpc
     ./brave.nix
     ./cyanrip.nix
