@@ -28,16 +28,20 @@ in {
   custom = let
     enableList =
       [
-        "cyanrip"
-        "euphonica"
-        "freetube"
-        "obs-studio"
-        "protonapp"
-        "spotify"
+        #   "cyanrip"
+        #   "euphonica"
+        #   "freetube"
+        #   "obs-studio"
+        #   "protonapp"
+        #   "spotify"
       ]
-      ++ ["dms" "swayidle"];
+      ++ [
+        #  "dms"
+        #  "swayidle"
+      ];
 
     disableList = [
+      "niri"
     ];
   in
     {
