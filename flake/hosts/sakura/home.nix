@@ -39,12 +39,6 @@ in {
       ++ ["dms" "swayidle"];
 
     disableList = [
-      "dunst"
-      "hypridle"
-      "hyprlock"
-      "rofi"
-      "wpaperd"
-      "waybar"
     ];
   in
     {

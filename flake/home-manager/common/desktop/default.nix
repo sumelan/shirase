@@ -1,6 +1,5 @@
 _: {
   imports = [
-    ./common
     ./niri
     ./dimland.nix
     ./discord.nix
