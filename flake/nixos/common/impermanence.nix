@@ -12,10 +12,7 @@
     assertMsg
     any
     hasPrefix
-    sort
-    lessThan
     ;
-  inherit (lib.strings) toJSON;
   inherit (lib.types) listOf str;
 
   cfg = config.custom.persist;
@@ -142,26 +139,5 @@ in {
         };
       };
     };
-
-    hm.xdg.stateFile."impermanence.json".text = let
-      getDirPath = prefix: d: "${prefix}${d.dirPath}";
-      getFilePath = prefix: f: "${prefix}${f.filePath}";
-      persistCfg = config.environment.persistence."/persist";
-      persistCacheCfg = config.environment.persistence."/cache";
-      allDirectories =
-        map (getDirPath "/persist") (persistCfg.directories ++ persistCfg.users.${user}.directories)
-        ++ map (getDirPath "/cache") (
-          persistCacheCfg.directories ++ persistCacheCfg.users.${user}.directories
-        );
-      allFiles =
-        map (getFilePath "/persist") (persistCfg.files ++ persistCfg.users.${user}.files)
-        ++ map (getFilePath "/cache") (persistCacheCfg.files ++ persistCacheCfg.users.${user}.files);
-      # produces sorted list: first element is less than the second
-      sort-uniq = arr: sort lessThan (unique arr);
-    in
-      toJSON {
-        directories = sort-uniq allDirectories;
-        files = sort-uniq allFiles;
-      };
   };
 }

@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   inherit
     (lib)
     mkForce
@@ -24,6 +28,7 @@ in {
       };
       timeout = 3;
     };
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
   };
 
   # faster boot times

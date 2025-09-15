@@ -21,32 +21,15 @@ in
     config = mkMerge [
       {
         boot = {
-          kernelPackages = pkgs.linuxPackages_xanmod_latest;
-          # lock xanmod version
-          # kernelPackages =
-          #   assert assertMsg (versionOlder pkgs.zfs_unstable.version "2.3")
-          #     "zfs 2.3 supports kernel 6.11 or greater";
-          #   pkgs.linuxPackagesFor (
-          #     pkgs.linux_xanmod_latest.override {
-          #       argsOverride = rec {
-          #         version = "6.10.11";
-          #         modDirVersion = versions.pad 3 "${version}-xanmod1";
-          #         src = pkgs.fetchFromGitHub {
-          #           owner = "xanmod";
-          #           repo = "linux";
-          #           rev = modDirVersion;
-          #           hash = "sha256-FDWFpiN0VvzdXcS3nZHm1HFgASazNX5+pL/8UJ3hkI8=";
-          #         };
-          #       };
-          #     }
-          #   );
+          kernelModules = ["zfs"];
+          supportedFilesystems = ["zfs"];
           zfs = {
             devNodes =
               if config.hardware.cpu.intel.updateMicrocode
               then "/dev/disk/by-id"
               else "/dev/disk/by-partuuid";
 
-            package = pkgs.zfs_unstable;
+            package = pkgs.zfs;
 
             requestEncryptionCredentials = config.custom.zfs.encryption;
           };
