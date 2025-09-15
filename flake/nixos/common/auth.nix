@@ -14,9 +14,9 @@ in
     {
       services.openssh = {
         enable = true;
-        # disable password auth
         settings = {
-          PasswordAuthentication = false; # NOTE: set false for better security
+          # disable password auth
+          PasswordAuthentication = true; # NOTE: set false for better security
           KbdInteractiveAuthentication = false;
         };
       };

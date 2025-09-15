@@ -15,6 +15,8 @@ in {
     common-gpu-amd
   ];
 
+  networking.hostId = "4e98920d";
+
   custom = let
     enableList = [
       "alsa"
@@ -22,7 +24,6 @@ in {
     ];
     disableList = [
       "audiobookshelf"
-      "btrbk"
       "distrobox"
       "steam"
     ];

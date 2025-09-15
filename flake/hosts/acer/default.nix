@@ -14,11 +14,12 @@ in {
     common-cpu-intel
   ];
 
+  networking.hostId = "4e98920d";
+
   custom = let
     enableList = [
     ];
     disableList = [
-      "btrbk"
       "distrobox"
     ];
   in

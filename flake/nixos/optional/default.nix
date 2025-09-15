@@ -4,7 +4,6 @@ _: {
     ./alsa.nix
     ./audiobookshelf.nix
     ./bluetooth.nix
-    ./btrbk.nix
     ./docker.nix
     ./hdds.nix
     ./keyd.nix

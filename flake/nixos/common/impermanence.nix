@@ -2,13 +2,12 @@
   lib,
   config,
   user,
-  inputs,
   ...
 }: let
   inherit
     (lib)
     mkOption
-    mkAfter
+    mkForce
     unique
     assertMsg
     any
@@ -71,36 +70,36 @@ in {
   };
 
   config = {
-    boot = {
-      # clear /tmp on boot
-      tmp.cleanOnBoot = true;
-      # wipe /root at each boot and back to blank state
-      initrd = {
-        enable = true;
-        supportedFilesystems = ["btrfs"];
-        postResumeCommands = mkAfter ''
-          mkdir -p /mnt
+    # clear /tmp on boot
+    boot.tmp.cleanOnBoot = true;
 
-          # mount btrfs root(/) to /mnt and manipulate btrfs subvolume
-          mount -o subvol=/ /dev/disk/by-label/NIXOS /mnt
-
-          # show and remove subvolumes below /mnt/root
-          btrfs subvolume list -o /mnt/root |
-          cut -f9 -d' ' |
-          while read subvolume; do
-              echo "deleting /$subvolume subvolume..."
-              btrfs subvolume delete "/mnt/$subvolume"
-          done &&
-          echo "deleting /root subvolume..." &&
-          btrfs subvolume delete /mnt/root
-
-          echo "restoring blank /root subvolume..."
-          btrfs subvolume snapshot /mnt/root-blank /mnt/root
-
-          umount /mnt
-        '';
-      };
+    # root and home on tmpfs
+    # neededForBoot is required, so there won't be permission errors creating directories or symlinks
+    # https://github.com/nix-community/impermanence/issues/149#issuecomment-1806604102
+    fileSystems."/" = mkForce {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      neededForBoot = true;
+      options = [
+        "defaults"
+        # whatever size feels comfortable, smaller is better
+        "size=1G"
+        "mode=755"
+      ];
     };
+
+    # uncomment to use separate home dataset
+    # fileSystems."/home" = mkForce {
+    #   device = "tmpfs";
+    #   fsType = "tmpfs";
+    #   neededForBoot = true;
+    #   options = [
+    #     "defaults"
+    #      # whatever size feels comfortable, smaller is better
+    #     "size=1G"
+    #     "mode=755"
+    #   ];
+    # };
 
     # setup persistence
     environment.persistence = {

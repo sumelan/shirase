@@ -18,8 +18,9 @@ in {
   config = mkIf config.custom.syncoid.enable {
     # allow syncoid to ssh into HDDs
     users.users = {
-      syncoid.openssh.authorizedKeys.keyFiles = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM0zoNZpdcUfZ/Nf8Nj248D3wGlQCLld3LjPGrA6zzXs sumelan"
+      syncoid.openssh.authorizedKeys.keys = [
+        "ssh-rsa AAAAB3NzaC1yc2etc/etc/etcjwrsh8e596z6J0l7 example@host"
+        "ssh-ed25519 AAAAC3NzaCetcetera/etceteraJZMfk3QPfQ foo@bar"
       ];
     };
 
