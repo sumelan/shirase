@@ -119,12 +119,13 @@ if [[ $do_format == "n" ]]; then
   exit
 fi
 
+echo "Creating partitions"
+sudo blkdiscard -f "$DISK"
+sudo sgdisk --clear"$DISK"
+
 sudo sgdisk -n3:1M:+1G -t3:EF00 "$DISK"
 sudo sgdisk -n2:0:+16G -t2:8200 "$DISK"
 sudo sgdisk -n1:0:0 -t1:BF01 "$DISK"
-
-sudo sgdisk -n2:1M:+1G -t2:EF00 "$DISK"
-sudo sgdisk -n1:0:0 -t1:8300 "$DISK"
 
 # notify kernel of partition changes
 sudo sgdisk -p "$DISK" >/dev/null
