@@ -49,15 +49,11 @@ in {
           action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "clipboard"];
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Clipboard'';
         };
-        "Mod+C" = {
-          action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "calculator"];
-          hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Calculator'';
-        };
         "Mod+N" = {
           action.spawn = ["noctalia-shell" "ipc" "call" "notifications" "toggleHistory"];
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Notification Histories'';
         };
-        "Mod+S" = {
+        "Mod+P" = {
           action.spawn = ["noctalia-shell" "ipc" "call" "sidePanel" "toggle"];
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Sidepanel'';
         };
@@ -74,7 +70,7 @@ in {
           action.spawn = ["noctalia-shell" "ipc" "call" "idleInhibitor" "toggle"];
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Toggle Idleinhibitor'';
         };
-        "Mod+Q" = {
+        "Mod+X" = {
           action.spawn = ["noctalia-shell" "ipc" "call" "powerPanel" "toggle"];
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Powerpanel'';
         };

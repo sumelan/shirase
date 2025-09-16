@@ -29,14 +29,14 @@ in {
     enableList =
       [
         "cyanrip"
-        "euphonica"
         "freetube"
         "obs-studio"
         "protonapp"
+        "rmpc"
         "spotify"
       ]
       ++ [
-        "dms"
+        "noctalia"
         "swayidle"
       ];
 
@@ -46,13 +46,12 @@ in {
     {
       stylix = {
         cursor = {
-          package = pkgs.catppuccin-cursors.frappeLight;
-          name = "catppuccin-frappe-light-cursors";
+          package = pkgs.capitaine-cursors-themed;
+          name = "Capitaine Cursors (Nord)";
         };
         icons = {
-          package = pkgs.catppuccin-papirus-folders.override {
-            flavor = "frappe";
-            accent = "lavender";
+          package = pkgs.papirus-nord.override {
+            accent = "polarnight3";
           };
           dark = "Papirus-Dark";
         };
