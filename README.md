@@ -4,40 +4,77 @@ This is my personal nixos dotfiles, always wip.
 
 ## Features
 
-### Btrfs + Impermanence
+### ZFS + Impermanence
 
-Whole volume has 1 GB for boot and the rest is btrfs root volumes. Volumes
-layout is like below.
+Whole volume has 1 GB for boot and 16 GB for swap, the rest are ZFS datasets.
+Layout is like below.
 
 ```sh
 nvme0n1
-  ├── NIXOS # Btrfs's Subvolume
-  │     ├── /nix
-  │     ├── /persist
-  │     ├── /cache
-  │     ├── /root
-  │     └── /root-blank
-  └── NIXBOOT
+  ├── NIXOS # zroot
+  │     ├── zroot/root
+  │     ├── zroot/nix
+  │     ├── zroot/tmp
+  │     ├── zroot/persist
+  │     └── zroot/cache
+  ├──── SWAP    - 16 GB
+  └──── NIXBOOT -  1 GB
 ```
 
-Root volume is wiped at each boot via the script but /perisit and /cache are
-remained by
+root and home on tmpfs but /perisit and /cache are remained by
 [impermanence module](https://github.com/nix-community/impermanence).
 
-Plus, /persist volume of my laptop (acer) is transferred to HDD connected to my
-desktop (sakura) over ssh using [btrbk](https://github.com/digint/btrbk).
+Plus, /persist volume of my laptop (acer) is transferred to a HDD connected to
+my desktop (sakura) using
+[Syncoid](https://github.com/jimsalterjrs/sanoid?tab=readme-ov-file#syncoid).
 
-### Setting per Host
+## Install
 
-You can set different setting per host; user, package branch, and default
-program.
+Some process need to install from a tty on the NixOS iso (minimal)
 
-## Automatic Install Script
+### (Optinal): Install from another Linux system via SSH
 
-Run the following commands from a terminal on a NixOS live iso / from a tty on
-the minimal iso.
+Enable SSH on the target device.
 
-From a standard ISO,
+```sh
+systemctl start sshd.service
+```
+
+Set password for root.
+
+```sh
+passwd
+```
+
+Look up IP address.
+
+```sh
+ip a
+```
+
+Now, from the other system, ssh into the target device.
+
+```sh
+ssh root@ip_address_of_target-device
+```
+
+### (Optional) Using Niri binary cache
+
+Install Cachix client.
+
+```sh
+nix-env -iA cachix -f https://cachix.org/api/v1/install
+```
+
+Start using the binary cache.
+
+```sh
+cachix use niri
+```
+
+### Automatically install using a script
+
+Run the following.
 
 ```sh
 sh <(curl -L https://raw.githubusercontent.com/Sumelan/shirase/main/install.sh)
@@ -48,16 +85,14 @@ sh <(curl -L https://raw.githubusercontent.com/Sumelan/shirase/main/install.sh)
 - [iynaix/dotfiles](https://github.com/iynaix/dotfiles)
 
   Shamelessly copied impermanence, install-scripts, and many config from his
-  dotfiles.
+  dotfile.
 
-- [Guekka's blog](https://guekka.github.io/nixos-server-1/)
+- [Michael-C-Buckley/nixos](https://github.com/Michael-C-Buckley/nixos)
 
-  His script is used in my btrfs impermanence setup.
+  My dotfile stracture is inspired form his repo.
 
-- [Vortriz/dotfiles](https://github.com/Vortriz/dotfiles)
+## Reference
 
-  The .justfile contain many tools.
+- [Vimjoyer's youtube](https://www.youtube.com/@vimjoyer)
 
-- [Tyler Kelley/ZaneyOS](https://gitlab.com/Zaney/zaneyos)
-
-  My NixOS journey began from ZaneyOS!
+  If you consider using nixos, check his YouTube!

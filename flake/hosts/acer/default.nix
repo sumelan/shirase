@@ -14,7 +14,7 @@ in {
     common-cpu-intel
   ];
 
-  networking.hostId = "a76690a9";
+  networking.hostId = "226c6834";
 
   custom = let
     enableList = [
