@@ -43,7 +43,7 @@ in {
     programs.niri.settings = {
       binds = {
         "Mod+S" = {
-          action.spawn = ["sh" "-c" "uwsm app -- spotify"];
+          action.spawn = ["sh" "-c" "uwsm app -- spotify --wayland-text-input-version=3"];
           hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Application]</span> Spotify'';
         };
       };

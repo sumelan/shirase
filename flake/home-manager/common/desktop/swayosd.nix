@@ -103,8 +103,8 @@ in {
 
       # fcitx5
       "Ctrl+Space" = {
-        action.spawn = ["sh" "-c" "fcitx5-remote -t && swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --custom-message=(fcitx5-remote -n) --custom-icon=input-keyboard"];
-        hotkey-overlay.title = "[Fcitx5] Switch Active/Inactive";
+        action.spawn = ["sh" "-c" "fcitx5-remote -t && swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard"];
+        hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base06}">[Fcitx5]</span> Switch Active/Inactive'';
       };
     };
   };
