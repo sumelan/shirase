@@ -3,15 +3,15 @@
 {
   yazi-plugins = {
     pname = "yazi-plugins";
-    version = "d7588f6d29b5998733d5a71ec312c7248ba14555";
+    version = "109b13df29f4b7d14fd8e1b38414b205e706c761";
     src = fetchFromGitHub {
       owner = "yazi-rs";
       repo = "plugins";
-      rev = "d7588f6d29b5998733d5a71ec312c7248ba14555";
+      rev = "109b13df29f4b7d14fd8e1b38414b205e706c761";
       fetchSubmodules = false;
-      sha256 = "sha256-9+58QhdM4HVOAfEC224TrPEx1N7F2VLGMxKVLAM4nJw=";
+      sha256 = "sha256-u8gbZnA8xShsbH06yCZM/aXskMrSHKPcQtIMFp1Cdyo=";
     };
-    date = "2025-08-23";
+    date = "2025-09-15";
   };
   yazi-starship = {
     pname = "yazi-starship";
