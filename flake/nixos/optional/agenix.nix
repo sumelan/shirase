@@ -23,10 +23,7 @@ in {
 
   config = {
     environment.systemPackages = [inputs.agenix.packages."${pkgs.system}".default];
-    age.secrets.api-key = mkIf config.custom.agenix.enable {
-      file = ../../secrets/api-key.age;
-      owner = "nginx";
-      inherit (config.services.nginx) group;
-    };
+    age.secrets.api-key =
+      mkIf config.custom.agenix.enable {};
   };
 }
