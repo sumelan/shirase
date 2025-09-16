@@ -53,7 +53,7 @@ in {
           action.spawn = ["noctalia-shell" "ipc" "call" "notifications" "toggleHistory"];
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Notification Histories'';
         };
-        "Mod+P" = {
+        "Mod+D" = {
           action.spawn = ["noctalia-shell" "ipc" "call" "sidePanel" "toggle"];
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Sidepanel'';
         };

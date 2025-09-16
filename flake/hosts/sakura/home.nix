@@ -26,17 +26,16 @@ in {
   };
 
   custom = let
-    enableList =
-      [
-        "cyanrip"
-        "euphonica"
-        "foliate"
-        "freetube"
-        "obs-studio"
-        "protonapp"
-        "spotify"
-      ]
-      ++ ["dms" "swayidle"];
+    enableList = [
+      "cyanrip"
+      "euphonica"
+      "foliate"
+      "freetube"
+      "noctalia"
+      "obs-studio"
+      "protonapp"
+      "spotify"
+    ];
 
     disableList = [
     ];
@@ -44,13 +43,12 @@ in {
     {
       stylix = {
         cursor = {
-          package = pkgs.catppuccin-cursors.frappeLight;
-          name = "catppuccin-frappe-light-cursors";
+          package = pkgs.capitaine-cursors-themed;
+          name = "Capitaine Cursors (Nord)";
         };
         icons = {
-          package = pkgs.catppuccin-papirus-folders.override {
-            flavor = "frappe";
-            accent = "lavender";
+          package = pkgs.papirus-nord.override {
+            accent = "polarnight3";
           };
           dark = "Papirus-Dark";
         };

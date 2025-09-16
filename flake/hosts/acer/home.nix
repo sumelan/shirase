@@ -26,19 +26,13 @@ in {
   };
 
   custom = let
-    enableList =
-      [
-        "cyanrip"
-        "freetube"
-        "obs-studio"
-        "protonapp"
-        "rmpc"
-        "spotify"
-      ]
-      ++ [
-        "noctalia"
-        "swayidle"
-      ];
+    enableList = [
+      "freetube"
+      "noctalia"
+      "protonapp"
+      "rmpc"
+      "spotify"
+    ];
 
     disableList = [
     ];
