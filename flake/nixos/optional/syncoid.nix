@@ -2,7 +2,6 @@
   lib,
   config,
   host,
-  isLaptop,
   ...
 }: let
   inherit
@@ -12,16 +11,19 @@
     ;
 in {
   options.custom = {
-    syncoid.enable = mkEnableOption "syncoid" // {default = isLaptop;};
+    syncoid.enable = mkEnableOption "syncoid";
   };
 
   config = mkIf config.custom.syncoid.enable {
     # allow syncoid to ssh into HDDs
     users.users = {
-      syncoid.openssh.authorizedKeys.keys = [
-        "ssh-rsa AAAAB3NzaC1yc2etc/etc/etcjwrsh8e596z6J0l7 example@host"
-        "ssh-ed25519 AAAAC3NzaCetcetera/etceteraJZMfk3QPfQ foo@bar"
-      ];
+      "syncoid" = {
+        # services.syncoid automaticall set user "syncoid" as systemuser
+        openssh.authorizedKeys.keys = [
+          "ssh-rsa AAAAB3NzaC1yc2etc/etc/etcjwrsh8e596z6J0l7 example@host"
+          "ssh-ed25519 AAAAC3NzaCetcetera/etceteraJZMfk3QPfQ foo@bar"
+        ];
+      };
     };
 
     # sync zfs to HDDs on desktop
@@ -33,10 +35,10 @@ in {
 
       commands."remote" = {
         source = "zroot/persist";
-        target = "root@sakura:media/4TWD/${host}";
+        target = "syncoid@sakura:media/4TWD/${host}";
         extraArgs = [
-          "--no-sync-snap"
-          "--delete-target-snapshots"
+          "--no-sync-snap" # restrict itself to existing snapshots
+          "--delete-target-snapshots" # snapshots which are missing on the source will be destroyed on the targe
         ];
         localSourceAllow = config.services.syncoid.localSourceAllow ++ ["mount"];
         localTargetAllow = config.services.syncoid.localTargetAllow ++ ["destroy"];
@@ -44,6 +46,7 @@ in {
     };
 
     # persist syncoid .ssh
+    # For syncoid to be able to create /var/lib/syncoid/.ssh/ and to use custom ssh_config or known_hosts.
     custom.persist = {
       root.directories = ["/var/lib/syncoid"];
     };

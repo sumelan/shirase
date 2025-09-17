@@ -3,7 +3,12 @@
   host ? "acer",
   flakePath ? "",
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    mkIf
+    ;
+in {
   imports = [
     ./keymaps.nix
   ];
@@ -67,7 +72,7 @@
         lsp = {
           enable = true;
           server = "nixd";
-          options = lib.mkIf (flakePath != "") rec {
+          options = mkIf (flakePath != "") rec {
             nixos.expr = "(builtins.getFlake ''${flakePath}'').nixosConfigurations.${host}.options";
             home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
           };

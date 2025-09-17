@@ -3,7 +3,12 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  inherit
+    (lib)
+    getExe
+    ;
+in {
   home = {
     packages = with pkgs; [
       ripdrag # Drag and Drop utilty written in Rust and GTK4
@@ -24,12 +29,12 @@
       enableFishIntegration = true;
 
       plugins = {
-        chmod = "${pkgs.custom.yazi-plugins.src}/chmod.yazi";
-        full-border = "${pkgs.custom.yazi-plugins.src}/full-border.yazi";
-        git = "${pkgs.custom.yazi-plugins.src}/git.yazi";
-        toggle-pane = "${pkgs.custom.yazi-plugins.src}/toggle-pane.yazi";
-        mount = "${pkgs.custom.yazi-plugins.src}/mount.yazi";
-        starship = "${pkgs.custom.yazi-starship.src}";
+        chmod = "${pkgs.nvfetch.yazi-plugins.src}/chmod.yazi";
+        full-border = "${pkgs.nvfetch.yazi-plugins.src}/full-border.yazi";
+        git = "${pkgs.nvfetch.yazi-plugins.src}/git.yazi";
+        toggle-pane = "${pkgs.nvfetch.yazi-plugins.src}/toggle-pane.yazi";
+        mount = "${pkgs.nvfetch.yazi-plugins.src}/mount.yazi";
+        starship = "${pkgs.nvfetch.yazi-starship.src}";
       };
 
       initLua =
@@ -104,8 +109,7 @@
     niri.settings = {
       binds = {
         "Mod+Shift+O" = {
-          action.spawn = ["${lib.getExe pkgs.kitty}" "-o" "confirm_os_window_close=0" "--app-id=yazi" "yazi"];
-
+          action.spawn = ["${getExe pkgs.kitty}" "-o" "confirm_os_window_close=0" "--app-id=yazi" "yazi"];
           hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Terminal]</span> Yazi'';
         };
       };

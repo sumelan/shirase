@@ -1,8 +1,12 @@
 {
-  inputs,
   lib,
+  inputs,
   ...
 }: let
+  inherit
+    (lib)
+    mkAliasOptionModule
+    ;
   inherit (inputs) self nixpkgs;
 
   customLib = import ../flake/lib {inherit (nixpkgs) lib;};
@@ -39,7 +43,7 @@
           ../flake/hosts/${host}/hardware.nix
         ]
         ++ [../flake/users/${user}.nix]
-        ++ [../flake/overlays] # nixpkgs.overlay
+        ++ [../flake/nvfetcher]
         ++ [
           inputs.home-manager.nixosModules.home-manager
           {
@@ -61,7 +65,7 @@
               };
             };
           }
-          (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" user]) # alias for home-manager
+          (mkAliasOptionModule ["hm"] ["home-manager" "users" user]) # alias for home-manager
         ];
 
       pkgs = import nixpkgs {

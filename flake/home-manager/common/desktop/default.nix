@@ -3,7 +3,6 @@ _: {
     ./niri
     ./dimland.nix
     ./discord.nix
-    ./dms.nix
     ./kitty.nix
     ./librewolf.nix
     ./mpv.nix

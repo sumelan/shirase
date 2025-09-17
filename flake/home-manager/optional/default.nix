@@ -3,6 +3,7 @@ _: {
     ./rmpc
     ./brave.nix
     ./cyanrip.nix
+    ./dms.nix
     ./euphonica.nix
     ./foliate.nix
     ./freetube.nix

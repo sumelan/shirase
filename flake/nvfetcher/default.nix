@@ -13,8 +13,8 @@ in {
   nixpkgs.overlays = [
     (_final: prev: {
       # include custom packages
-      custom =
-        (prev.custom or {})
+      nvfetch =
+        (prev.nvfetch or {})
         // {
           inherit (sources) yazi-plugins yazi-starship;
         };

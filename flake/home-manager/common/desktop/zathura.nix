@@ -1,9 +1,4 @@
-{lib, ...}: let
-  inherit
-    (lib)
-    singleton
-    ;
-in {
+_: {
   programs = {
     zathura = {
       enable = true;

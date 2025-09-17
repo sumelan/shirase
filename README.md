@@ -12,25 +12,27 @@ Layout is like below.
 ```sh
 nvme0n1
   ├── NIXOS # zroot
-  │     ├── zroot/root
-  │     ├── zroot/nix
-  │     ├── zroot/tmp
-  │     ├── zroot/persist
-  │     └── zroot/cache
+  │     ├── /root
+  │     ├── /nix
+  │     ├── /tmp
+  │     ├── /persist
+  │     └── /cache
   ├──── SWAP    - 16 GB
   └──── NIXBOOT -  1 GB
 ```
 
-root and home on tmpfs but /perisit and /cache are remained by
+Volume `/root` and `/home` are tmpfs so will be wipe when reboot. But `/perisit`
+and `/cache` are remained by
 [impermanence module](https://github.com/nix-community/impermanence).
 
-Plus, /persist volume of my laptop (acer) is transferred to a HDD connected to
+Plus, `/persist` volume of my laptop (acer) is transferred to a HDD connected to
 my desktop (sakura) using
 [Syncoid](https://github.com/jimsalterjrs/sanoid?tab=readme-ov-file#syncoid).
 
 ## Install
 
-Some process need to install from a tty on the NixOS iso (minimal)
+There exists a intall scripts, but some process may be needed before. Start from
+a tty on the NixOS iso (minimal) ...
 
 ### (Optinal): Install from another Linux system via SSH
 
@@ -55,6 +57,7 @@ ip a
 Now, from the other system, ssh into the target device.
 
 ```sh
+# from other system
 ssh root@ip_address_of_target-device
 ```
 
@@ -71,6 +74,8 @@ Start using the binary cache.
 ```sh
 cachix use niri
 ```
+
+Add `imports = [ ./cachix.nix ]` in `/etc/nixos/configuration.nix`.
 
 ### Automatically install using a script
 
