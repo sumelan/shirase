@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  user,
   flakePath,
   ...
 }: let
@@ -30,7 +29,7 @@ in {
     terminal-exec = {
       enable = true;
       settings = {
-        default = ["${config.profiles.${user}.defaultTerminal.name}.desktop"];
+        default = ["kitty.desktop"];
       };
     };
 

@@ -59,10 +59,6 @@ in {
         package = pkgs.neovim;
         name = "nvim";
       };
-      defaultTerminal = {
-        package = pkgs.kitty;
-        name = "kitty";
-      };
     };
     # Japanese settings
     i18n.inputMethod = {

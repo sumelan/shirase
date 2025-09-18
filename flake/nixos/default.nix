@@ -53,7 +53,7 @@ in {
     pathsToLink = ["/share/fish"];
 
     variables = {
-      TERMINAL = config.hm.profiles.${user}.defaultTerminal.name;
+      TERMINAL = "kitty";
       EDITOR = config.hm.profiles.${user}.defaultEditor.name;
       VISUAL = config.hm.profiles.${user}.defaultEditor.name;
       NIXPKGS_ALLOW_UNFREE = "1";

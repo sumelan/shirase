@@ -28,6 +28,7 @@ in {
   custom = let
     enableList = [
       "freetube"
+      "ghostty"
       "noctalia"
       "protonapp"
       "rmpc"

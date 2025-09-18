@@ -48,18 +48,6 @@
           default = getExe config.profile.${user}.defaultEditor.package;
         };
       };
-      defaultTerminal = {
-        package = mkOption {
-          type = package;
-          description = "Terminal package to use as default";
-          default = pkgs.kitty;
-        };
-        name = mkOption {
-          type = str;
-          description = "Terminal name to use as default";
-          default = config.profile.${user}.defaultTerminal.package.pname;
-        };
-      };
     };
   };
 in {
