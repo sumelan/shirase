@@ -299,3 +299,223 @@ Removed packages:
 [R.]  #4  libXrender  0.9.12
 [R.]  #5  libXv       1.0.13
 Closure size: 2859 -> 2562 (69 paths added, 366 paths removed, delta -297, disk usage -891.4MiB).
+
+---
+
+2025年09月18日 21時50分07秒
+<<< /nix/var/nix/profiles/system-4-link
+>>> /nix/var/nix/profiles/system-6-link
+Version changes:
+[C.]  #001  abseil-cpp              20210324.2, 20250127.1 x2 -> 20250127.1 x2
+[U*]  #002  adw-gtk3                6.2, 6.2-fish-completions -> 6.3, 6.3-fish-completions
+[C.]  #003  bash                    5.2p37, 5.3p3 x3 -> 5.2p37, 5.3p3 x2
+[U.]  #004  bash-grammar            0.0.0+rev=b930fed -> 0.0.0+rev=cef0974
+[C*]  #005  bash-interactive        5.3p3, 5.3p3-fish-completions, 5.3p3-man -> 5.3p3, 5.3p3-dev, 5.3p3-fish-completions, 5.3p3-man
+[U*]  #006  bind                    9.20.12-dnsutils, 9.20.12-host, 9.20.12-lib -> 9.20.13-dnsutils, 9.20.13-host, 9.20.13-lib
+[C.]  #007  binutils-wrapper        2.44 x2 -> 2.44
+[C*]  #008  bluez                   5.83 x2 -> 5.83 x2, 5.83-dev
+[U.]  #009  breeze-icons            6.17.0 -> 6.18.0
+[C.]  #010  brightnessctl           0.5.1, 0.5.1-fish-completions -> 0.5.1
+[C.]  #011  cava                    0.10.4, 0.10.4-fish-completions -> 0.10.4
+[C.]  #012  clang                   15.0.7-lib, 19.1.7, 19.1.7-lib -> 19.1.7, 19.1.7-lib
+[C.]  #013  cliphist                0.6.1, 0.6.1-fish-completions -> 0.6.1
+[D.]  #014  cpp-grammar             0.0.0+rev=077f14f -> 0.0.0+rev=e89fbaf
+[C.]  #015  ddcutil                 2.2.1, 2.2.1-fish-completions -> 2.2.1
+[U.]  #016  deno                    2.4.5 -> 2.5.0
+[U.]  #017  espeak-ng               1.51.1 -> 1.52.0
+[C.]  #018  expand-response-params  <none> x2 -> <none>
+[U*]  #019  eza                     0.23.2, 0.23.2-fish-completions, 0.23.2-man -> 0.23.3, 0.23.3-fish-completions, 0.23.3-man
+[C.]  #020  ffmpeg                  4.4.6-data, 4.4.6-lib, 6.1.2-data, 6.1.2-lib, 7.1.1-bin, 7.1.1-data, 7.1.1-fish-completions, 7.1.1-lib, 7.1.1-man -> 4.4.6-data, 4.4.6-lib, 7.1.1-bin, 7.1.1-data, 7.1.1-fish-completions, 7.1.1-lib, 7.1.1-man
+[C.]  #021  file                    5.45 x2 -> 5.45 x2, 5.45-dev
+[U.]  #022  fish                    4.0.2, 4.0.2-doc, 4.0.2-fish-completions -> 4.0.6, 4.0.6-doc, 4.0.6-fish-completions
+[U.]  #023  freetube                0.23.8, 0.23.8-fish-completions -> 0.23.9, 0.23.9-fish-completions
+[U.]  #024  fx                      39.0.4, 39.0.4-fish-completions -> 39.1.0, 39.1.0-fish-completions
+[C.]  #025  gcc                     13.3.0-lib, 13.3.0-libgcc, 14.2.1.20250322-lib, 14.2.1.20250322-libgcc, 14.3.0, 14.3.0-lib x3, 14.3.0-libgcc x3 -> 13.3.0-lib, 13.3.0-libgcc, 14.2.1.20250322-lib, 14.2.1.20250322-libgcc, 14.3.0, 14.3.0-lib x2, 14.3.0-libgcc x2
+[C.]  #026  glib                    2.84.4 x2, 2.84.4-bin, 2.84.4-dev, 2.84.4-fish-completions -> 2.84.4 x2, 2.84.4-bin, 2.84.4-dev
+[C*]  #027  glibc                   2.40-36, 2.40-66 x4, 2.40-66-bin, 2.40-66-dev, 2.40-66-getent x2 -> 2.40-36, 2.40-66 x3, 2.40-66-bin, 2.40-66-dev, 2.40-66-getent x2
+[U.]  #028  html-grammar            0.0.0+rev=9fc04b9 -> 0.0.0+rev=2817380
+[C.]  #029  iana-etc                20250505 x2 -> 20250505
+[U.]  #030  initrd-linux-xanmod     6.16.6 -> 6.16.7
+[U.]  #031  intel-compute-runtime   25.31.34666.3 -> 25.35.35096.9
+[D.]  #032  javascript-grammar      0.0.0+rev=44c892e -> 0.0.0+rev=22da14e
+[U.]  #033  karchive                6.17.0 -> 6.18.0
+[U.]  #034  kauth                   6.17.0 -> 6.18.0
+[U.]  #035  kbookmarks              6.17.0 -> 6.18.0
+[U.]  #036  kcmutils                6.17.0 -> 6.18.0
+[U.]  #037  kcodecs                 6.17.0 -> 6.18.0
+[U.]  #038  kcolorscheme            6.17.0 -> 6.18.0
+[U.]  #039  kcompletion             6.17.0 -> 6.18.0
+[U.]  #040  kconfig                 6.17.0 -> 6.18.0
+[U.]  #041  kconfigwidgets          6.17.0 -> 6.18.0
+[U.]  #042  kcoreaddons             6.17.0 -> 6.18.0
+[U.]  #043  kcrash                  6.17.0 -> 6.18.0
+[U.]  #044  kdbusaddons             6.17.0 -> 6.18.0
+[U.]  #045  kdeclarative            6.17.0 -> 6.18.0
+[U.]  #046  kdoctools               6.17.0 -> 6.18.0
+[U.]  #047  kglobalaccel            6.17.0 -> 6.18.0
+[U.]  #048  kguiaddons              6.17.0 -> 6.18.0
+[U.]  #049  ki18n                   6.17.0 -> 6.18.0
+[U.]  #050  kiconthemes             6.17.0 -> 6.18.0
+[U.]  #051  kio                     6.17.0 -> 6.18.0
+[U.]  #052  kirigami                6.17.0 -> 6.18.0
+[U.]  #053  kitemviews              6.17.0 -> 6.18.0
+[U.]  #054  kjobwidgets             6.17.0 -> 6.18.0
+[C*]  #055  kmod                    31 x2, 31-lib x3 -> 31 x2, 31-lib x2
+[U.]  #056  knotifications          6.17.0 -> 6.18.0
+[U.]  #057  kpackage                6.17.0 -> 6.18.0
+[U.]  #058  kparts                  6.17.0 -> 6.18.0
+[U.]  #059  kservice                6.17.0 -> 6.18.0
+[U.]  #060  ksvg                    6.17.0 -> 6.18.0
+[U.]  #061  ktextwidgets            6.17.0 -> 6.18.0
+[U.]  #062  kwallet                 6.17.0 -> 6.18.0
+[U.]  #063  kwidgetsaddons          6.17.0 -> 6.18.0
+[U.]  #064  kwindowsystem           6.17.0 -> 6.18.0
+[U.]  #065  kxmlgui                 6.17.0 -> 6.18.0
+[C.]  #066  libcpuid                0.7.1, 0.8.0 -> 0.7.1, 0.8.1
+[C.]  #067  libidn2                 2.3.7, 2.3.8 x4 -> 2.3.7, 2.3.8 x3
+[U.]  #068  libmpdclient            2.23 -> 2.24
+[C.]  #069  libnotify               0.8.6 -> 0.8.6, 0.8.6-dev
+[C.]  #070  libplacebo              5.264.1, 7.351.0 -> 7.351.0
+[C.]  #071  libunistring            1.2, 1.3 x4 -> 1.2, 1.3 x3
+[U.]  #072  linux-xanmod            6.16.6, 6.16.6-modules x2, 6.16.6-modules-shrunk -> 6.16.7, 6.16.7-modules x2, 6.16.7-modules-shrunk
+[C.]  #073  llvm                    15.0.7-lib, 19.1.7-lib -> 19.1.7-lib
+[C.]  #074  mailcap                 2.1.54 x3 -> 2.1.54 x2
+[C.]  #075  matugen                 2.4.1, 2.4.1-fish-completions -> 2.4.1
+[C*]  #076  networkmanager          1.52.1, 1.52.1-dev, 1.52.1-fish-completions, 1.52.1-man -> 1.52.1, 1.52.1-dev
+[U*]  #077  niri-unstable           2025-09-15-cd0d45f -> 2025-09-18-d9648e6
+[U.]  #078  nix-search-tv           2.2.0, 2.2.0-fish-completions -> 2.2.1, 2.2.1-fish-completions
+[U.]  #079  nixos-system-acer       25.11.20250913.c23193b.dd0b3aa -> 25.11.20250916.8d4ddb1.4fd42f6
+[U.]  #080  noto-fonts-color-emoji  2.048, 2.048-fish-completions -> 2.051, 2.051-fish-completions
+[U.]  #081  onnxruntime             1.22.0 -> 1.22.2
+[C.]  #082  pciutils                3.14.0 x2 -> 3.14.0
+[C.]  #083  protobuf                21.12, 32.0 -> 32.0
+[C.]  #084  proton-pass             1.32.5 x2, 1.32.5-fish-completions -> 1.32.5, 1.32.6, 1.32.6-fish-completions
+[C.]  #085  python3                 3.12.11, 3.13.7 x2, 3.13.7-env x8, 3.13.7-env-fish-completions -> 3.13.7 x2, 3.13.7-env x8, 3.13.7-env-fish-completions
+[U.]  #086  qqc2-desktop-style      6.17.0 -> 6.18.0
+[C.]  #087  qtmultimedia            5.15.17, 5.15.17-bin, 6.9.2 -> 6.9.2
+[D.]  #088  regex-grammar           0.0.0+rev=b638d29 -> 0.0.0+rev=b2ac15e
+[D.]  #089  rust-grammar            0.0.0+rev=3bfef41 -> 0.0.0+rev=2a58b00
+[U.]  #090  solid                   6.17.0 -> 6.18.0
+[U.]  #091  sonnet                  6.17.0 -> 6.18.0
+[C.]  #092  taglib                  1.13.1, 2.1.1 -> 2.1.1
+[C.]  #093  tbb                     2021.11.0, 2021.11.0-dev, 2021.12.0 -> 2021.11.0, 2021.11.0-dev, 2022.2.0
+[U.]  #094  tinymist                0.13.24 -> 0.13.26
+[C.]  #095  tzdata                  2025b x4 -> 2025b x3
+[U.]  #096  vimplugin-yazi.nvim     2025-09-05 -> 2025-09-15
+[C.]  #097  wl-clipboard            2.2.1, 2.2.1-fish-completions -> 2.2.1
+[U.]  #098  xapp                    2.8.12, 2.8.12-dev -> 2.8.13, 2.8.13-dev
+[C.]  #099  xgcc                    13.3.0-libgcc, 14.2.1.20250322-libgcc, 14.3.0-libgcc x3 -> 13.3.0-libgcc, 14.2.1.20250322-libgcc, 14.3.0-libgcc x2
+[C*]  #100  xz                      5.8.1 x4, 5.8.1-bin -> 5.8.1 x3, 5.8.1-bin
+[U.]  #101  zfs-kernel              2.3.4-6.16.6 -> 2.3.4-6.16.7
+[U.]  #102  zig-grammar             0.0.0+rev=b71afff -> 0.0.0+rev=6479aa1
+[U.]  #103  zls                     0.14.0 -> 0.15.0
+[C*]  #104  zstd                    1.5.7 x4, 1.5.7-bin -> 1.5.7 x3, 1.5.7-bin
+Added packages:
+[A.]  #01  base16-nord.conf                                                          <none>
+[A.]  #02  base16-nord.css                                                           <none>
+[A.]  #03  base16-nord.fish                                                          <none>
+[A.]  #04  base16-nord.html                                                          <none>
+[A.]  #05  base16-nord.json                                                          <none>
+[A.]  #06  base16-nord.svg                                                           <none> x2
+[A.]  #07  base16-nord.tmTheme                                                       <none>
+[A.]  #08  base16-nord.xml                                                           <none>
+[A+]  #09  capitaine-cursors-themed                                                  5, 5-fish-completions
+[A.]  #10  chroot-realpath                                                           0.1.0
+[A.]  #11  fonts.conf                                                                <none>
+[A.]  #12  gpu-screen-recorder                                                       5.6.8
+[A.]  #13  hm_rmpcconfig.ron                                                         <none>
+[A.]  #14  inter-nerdfont                                                            4.1
+[A.]  #15  noctalia-shell-ae2d3eddd6f41bc31a835307cffd1244531fd245                   <none>
+[A.]  #16  noctalia-shell-ae2d3eddd6f41bc31a835307cffd1244531fd245-fish-completions  <none>
+[A.]  #17  noctalia.service                                                          <none>
+[A.]  #18  nord-gnome-shell-theme                                                    <none>
+[A+]  #19  papirus-nord                                                              3.2.0, 3.2.0-fish-completions
+[A.]  #20  quickshell-wrapped                                                        0.2.0 x2, 0.2.0-fish-completions
+[A.]  #21  rmpc                                                                      0.9.0, 0.9.0-fish-completions
+[A.]  #22  roboto                                                                    3.011
+[A.]  #23  wlsunset                                                                  0.4.0, 0.4.0-fish-completions
+Removed packages:
+[R.]  #01  SPIRV-LLVM-Translator                15.0.15
+[R.]  #02  a52dec                               0.8.0
+[R.]  #03  base16-catppuccin-frappe.conf        <none>
+[R.]  #04  base16-catppuccin-frappe.css         <none>
+[R.]  #05  base16-catppuccin-frappe.fish        <none>
+[R.]  #06  base16-catppuccin-frappe.html        <none>
+[R.]  #07  base16-catppuccin-frappe.json        <none>
+[R.]  #08  base16-catppuccin-frappe.svg         <none> x2
+[R.]  #09  base16-catppuccin-frappe.tmTheme     <none>
+[R.]  #10  base16-catppuccin-frappe.xml         <none>
+[R-]  #11  catppuccin-cursors                   2.0.0-fish-completions, 2.0.0-frappeLight
+[R.]  #12  catppuccin-frappe-gnome-shell-theme  <none>
+[R-]  #13  catppuccin-papirus-folders           0-unstable-2024-08-06, 0-unstable-2024-08-06-fish-completions
+[R.]  #14  cef-binary                           138.0.17
+[R.]  #15  cyanrip                              0.9.3.1, 0.9.3.1-fish-completions
+[R.]  #16  dankMaterialShell                    <none>
+[R.]  #17  dgop                                 0.0.9, 0.0.9-fish-completions
+[R.]  #18  dms-cli                              0.0.2, 0.0.2-fish-completions
+[R.]  #19  dms-lock                             <none> x2
+[R.]  #20  dms.service                          <none>
+[R.]  #21  euphonica                            0.96.3-beta, 0.96.3-beta-fish-completions
+[R.]  #22  fira-code                            6.2, 6.2-fish-completions
+[R.]  #23  gammastep                            2.0.11, 2.0.11-fish-completions
+[R.]  #24  gcc-wrapper                          14.3.0
+[R.]  #25  gnumake                              4.4.1
+[R.]  #26  inter                                4.1, 4.1-fish-completions
+[R.]  #27  khal                                 0.13.0, 0.13.0-fish-completions, 0.13.0-man
+[R.]  #28  libcddb                              1.3.2
+[R.]  #29  libdatachannel                       0.23.1
+[R.]  #30  libdiscid                            0.6.5
+[R.]  #31  libdvbpsi                            1.3.3
+[R.]  #32  libebml                              1.4.5
+[R.]  #33  libkate                              0.4.3
+[R.]  #34  libmatroska                          1.7.1
+[R.]  #35  libmicrodns                          0.2.0
+[R.]  #36  libmpeg2                             0.5.1
+[R.]  #37  libmusicbrainz                       5.1.0
+[R.]  #38  libtiger                             0.3.4
+[R.]  #39  libvlc                               3.0.21
+[R.]  #40  libvpl                               2.15.0
+[R.]  #41  material-symbols                     4.0.0-unstable-2025-04-11, 4.0.0-unstable-2025-04-11-fish-completions
+[R.]  #42  obs-studio                           31.1.2
+[R.]  #43  obs-studio-plugins                   <none>
+[R.]  #44  opencl-clang                         15.0.3
+[R.]  #45  picard                               2.13.3, 2.13.3-fish-completions
+[R.]  #46  python3.12-dbus-python               1.4.0, 1.4.0-dev
+[R.]  #47  python3.12-discid                    1.3.0
+[R.]  #48  python3.12-fasteners                 0.19
+[R.]  #49  python3.12-markdown                  3.8.2
+[R.]  #50  python3.12-mutagen                   1.47.0
+[R.]  #51  python3.12-pyjwt                     2.10.1
+[R.]  #52  python3.12-pyqt5                     5.15.10, 5.15.10-dev
+[R.]  #53  python3.12-pyqt5-sip                 12.17.0
+[R.]  #54  python3.12-python-dateutil           2.9.0.post0
+[R.]  #55  python3.12-pyyaml                    6.0.2
+[R.]  #56  python3.12-six                       1.17.0
+[R.]  #57  python3.13-aiohttp-oauthlib          0.1.0
+[R.]  #58  python3.13-aiostream                 0.7.0
+[R.]  #59  python3.13-atomicwrites              1.4.1
+[R.]  #60  python3.13-click-log                 0.4.0
+[R.]  #61  python3.13-click-threading           0.5.0
+[R.]  #62  python3.13-configobj                 5.0.9
+[R.]  #63  python3.13-freezegun                 1.5.4
+[R.]  #64  python3.13-icalendar                 6.3.1
+[R.]  #65  python3.13-oauthlib                  3.3.1
+[R.]  #66  python3.13-pkginfo                   1.12.1.2
+[R.]  #67  python3.13-python-dateutil           2.9.0.post0
+[R.]  #68  python3.13-pytz                      2025.2
+[R.]  #69  python3.13-requests-toolbelt         1.0.0
+[R.]  #70  python3.13-tzdata                    2025.2
+[R.]  #71  python3.13-tzlocal                   5.3.1
+[R.]  #72  python3.13-urwid                     3.0.2
+[R.]  #73  python3.13-vdirsyncer                0.20.0
+[R.]  #74  python3.13-wcwidth                   0.2.13
+[R.]  #75  qtwebchannel                         5.15.17
+[R.]  #76  quickshell                           0.2.0, 0.2.0-fish-completions
+[R.]  #77  schroedinger                         1.0.11
+[R.]  #78  syncoid-authorized_keys              <none>
+[R.]  #79  unit-syncoid-remote.service          <none>
+[R.]  #80  unit-syncoid-remote.timer            <none>
+[R.]  #81  wrapped-obs-studio                   31.1.2, 31.1.2-fish-completions
+[R.]  #82  zfs-allow-zroot-persist              <none>
+[R.]  #83  zfs-unallow-zroot-persist            <none>
+Closure size: 2562 -> 2458 (400 paths added, 504 paths removed, delta -104, disk usage -2.5GiB).
