@@ -4,7 +4,7 @@
   outputs = {flake-parts, ...} @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       # These are the only systems types I support
-      systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin"];
+      systems = ["x86_64-linux" "aarch64-linux"];
       imports = [./outputs];
     };
 

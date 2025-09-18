@@ -53,7 +53,7 @@ profiles-path := "/nix/var/nix/profiles"
 
     nix flake update
     # run nvfetcher for overlays
-    nvfetcher --keep-old --config flake/nvfetcher/nvfetcher.toml --build-dir flake/nvfetcher
+    nvfetcher --keep-old --config flake/overlays/nvfetcher.toml --build-dir flake/overlays
 
 [group('SYSTEM')]
 [doc('Update flake, fetch input and commit on git.')]

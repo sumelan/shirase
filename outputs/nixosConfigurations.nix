@@ -43,7 +43,7 @@
           ../flake/hosts/${host}/hardware.nix
         ]
         ++ [../flake/users/${user}.nix]
-        ++ [../flake/nvfetcher]
+        ++ [../flake/overlays] # nixpkgs.overlays
         ++ [
           inputs.home-manager.nixosModules.home-manager
           {
