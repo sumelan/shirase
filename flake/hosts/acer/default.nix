@@ -1,10 +1,12 @@
 {
   lib,
+  config,
   inputs,
   ...
 }: let
   inherit
     (lib)
+    mkIf
     genAttrs
     ;
 in {
@@ -15,6 +17,28 @@ in {
   ];
 
   networking.hostId = "226c6834";
+
+  programs.ssh = {
+    extraConfig = ''
+      Host sakura
+        HostName 192.168.68.62
+        Port 22
+        User root
+    '';
+  };
+
+  services.syncoid = {
+    commands."remote" = mkIf config.custom.syncoid.enable {
+      source = "zroot/persist";
+      target = "root@192.168.68.62:media/WD4T/acer";
+      extraArgs = [
+        "--no-sync-snap" # restrict itself to existing snapshots
+        "--delete-target-snapshots" # snapshots which are missing on the source will be destroyed on the targe
+      ];
+      localSourceAllow = config.services.syncoid.localSourceAllow ++ ["mount"];
+      localTargetAllow = config.services.syncoid.localTargetAllow ++ ["destroy"];
+    };
+  };
 
   custom = let
     enableList = [

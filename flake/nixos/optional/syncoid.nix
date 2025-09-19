@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  host,
   ...
 }: let
   inherit
@@ -21,7 +20,6 @@ in {
         # services.syncoid automaticall set user "syncoid" as systemuser
         openssh.authorizedKeys.keyFiles = [
           ../../hosts/acer/id_ed25519.pub
-          ../../hosts/acer/id_rsa.pub
         ];
       };
     };
@@ -32,17 +30,6 @@ in {
 
       # 23:50 daily
       interval = "*-*-* 23:50:00";
-
-      commands."remote" = {
-        source = "zroot/persist";
-        target = "root@sakura:media/WD4T/${host}";
-        extraArgs = [
-          "--no-sync-snap" # restrict itself to existing snapshots
-          "--delete-target-snapshots" # snapshots which are missing on the source will be destroyed on the targe
-        ];
-        localSourceAllow = config.services.syncoid.localSourceAllow ++ ["mount"];
-        localTargetAllow = config.services.syncoid.localTargetAllow ++ ["destroy"];
-      };
     };
 
     # persist syncoid .ssh

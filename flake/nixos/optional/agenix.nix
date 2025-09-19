@@ -15,10 +15,7 @@ in {
 
   options.custom = {
     agenix.enable =
-      mkEnableOption "agenix"
-      // {
-        default = config.custom.audiobookshelf.nginx.enable;
-      };
+      mkEnableOption "agenix";
   };
 
   config = {

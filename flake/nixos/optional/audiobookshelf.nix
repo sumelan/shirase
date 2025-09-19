@@ -6,30 +6,14 @@
   inherit
     (lib)
     mkEnableOption
-    mkOption
     mkIf
     ;
 
-  inherit
-    (lib.types)
-    str
-    ;
   cfg = config.custom.audiobookshelf;
 in {
   options.custom = {
     audiobookshelf = {
       enable = mkEnableOption "audiobookshelf";
-      nginx = {
-        enable = mkEnableOption "nginx";
-        domain = mkOption {
-          type = str;
-          default = "sakurairo.ddnsfree.com";
-        };
-        provider = mkOption {
-          type = str;
-          default = "dynu";
-        };
-      };
     };
   };
 
