@@ -22,9 +22,8 @@ in {
       "networkmanager"
       "wheel"
     ];
-    openssh.authorizedKeys.keys = [
-      "ssh-rsa AAAAB3NzaC1yc2etc/etc/etcjwrsh8e596z6J0l7 example@host"
-      "ssh-ed25519 AAAAC3NzaCetcetera/etceteraJZMfk3QPfQ foo@bar"
+    openssh.authorizedKeys.keyFiles = [
+      ./id_ed25519.pub
     ];
   };
 
