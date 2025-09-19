@@ -95,3 +95,15 @@ Removed packages:
 [R.]  #09  roboto                                                                    3.011
 [R.]  #10  wlsunset                                                                  0.4.0, 0.4.0-fish-completions
 Closure size: 2511 -> 2564 (94 paths added, 41 paths removed, delta +53, disk usage +68.1MiB).
+
+---
+
+2025年09月19日 22時17分12秒
+<<< /nix/var/nix/profiles/system-3-link
+>>> /nix/var/nix/profiles/system-4-link
+Version changes:
+[U.]  #1  nixos-system-sakura  25.11.20250916.8d4ddb1.dirty -> 25.11.20250916.8d4ddb1.0b79793
+Added packages:
+[A.]  #1  root-authorized_keys     <none>
+[A.]  #2  syncoid-authorized_keys  <none>
+Closure size: 2564 -> 2566 (22 paths added, 20 paths removed, delta +2, disk usage +14.0KiB).
