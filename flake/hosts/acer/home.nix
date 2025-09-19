@@ -25,6 +25,15 @@ in {
     };
   };
 
+  programs.ssh = {
+    extraConfig = ''
+      Host sakura
+        Hostname 192.168.68.62
+        Port 22
+        User sumelan
+    '';
+  };
+
   custom = let
     enableList = [
       "freetube"

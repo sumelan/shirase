@@ -49,8 +49,8 @@ in {
       dest = "/var/lib/AccountsService/icons/${username}";
     };
 
-  # define user profiles
   hm = {
+    # define user profile
     profiles.${username} = {
       timeZone = "Asia/Tokyo";
       defaultLocale = "ja_JP.UTF-8";
