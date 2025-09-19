@@ -15,20 +15,13 @@ in {
   };
 
   config = mkIf config.custom.syncoid.enable {
-    programs.ssh = {
-      extraConfig = "
-        Host sakura
-          Hostname 192.168.68.62
-          Port 22
-          User syncoid
-      ";
-    };
-
     # allow syncoid to ssh into HDDs
     users.users = {
       "syncoid" = {
         # services.syncoid automaticall set user "syncoid" as systemuser
         openssh.authorizedKeys.keyFiles = [
+          ../../hosts/acer/id_ed25519.pub
+          ../../hosts/acer/id_rsa.pub
         ];
       };
     };

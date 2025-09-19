@@ -23,6 +23,8 @@ in {
       "wheel"
     ];
     openssh.authorizedKeys.keyFiles = [
+      ../hosts/acer/id_ed25519.pub
+      ../hosts/acer/id_rsa.pub
     ];
   };
 

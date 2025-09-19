@@ -28,7 +28,8 @@ in {
           initialPassword = "password";
           hashedPasswordFile = "/persist/etc/shadow/root";
           openssh.authorizedKeys.keyFiles = [
-            ../../users/id_ed25519.pub
+            ../../hosts/acer/id_ed25519.pub
+            ../../hosts/acer/id_rsa.pub
           ];
         };
       };
