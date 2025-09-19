@@ -52,9 +52,8 @@ in {
 
   custom = let
     enableList = [
+      "dms"
       "freetube"
-      "ghostty"
-      "noctalia"
       "protonapp"
       "rmpc"
       "spotify"

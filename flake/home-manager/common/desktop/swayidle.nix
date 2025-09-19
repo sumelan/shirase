@@ -2,11 +2,10 @@
   lib,
   config,
   pkgs,
-  inputs,
   isDesktop,
   ...
 }: let
-  cfg = inputs.noctalia.packages.${pkgs.system}.default;
+  cfg = config.programs.quickshell;
 
   inherit
     (lib)
@@ -25,11 +24,17 @@ in {
     services.swayidle = {
       enable = true;
       extraArgs = ["-w"];
-      events = [
+      events = let
+        lockCmd = pkgs.writeShellScript "dms-lock" ''
+          if [ "$(${getExe cfg.package} -c dms ipc call lock isLocked)" = 'false' ]; then
+            ${getExe cfg.package} -c dms ipc call lock lock
+          fi
+        '';
+      in [
         {
           event = "before-sleep";
           command = concatStringsSep "; " [
-            "${getExe cfg} ipc call lockScreen toggle"
+            "${getExe' pkgs.systemd "loginctl"} lock-session"
             "${getExe pkgs.playerctl} pause"
           ];
         }
@@ -39,7 +44,7 @@ in {
         }
         {
           event = "lock";
-          command = "${getExe cfg} lockScreen toggle";
+          command = builtins.toString lockCmd;
         }
         {
           event = "unlock";
@@ -55,7 +60,7 @@ in {
         }
         {
           timeout = 60 * 12;
-          command = "${getExe cfg} ipc call lockScreen toggle";
+          command = "${getExe' pkgs.systemd "loginctl"} lock-session";
         }
         {
           timeout = 60 * 15;

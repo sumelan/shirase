@@ -8,7 +8,6 @@
     (lib)
     mkEnableOption
     mkIf
-    getExe
     singleton
     ;
 in {
@@ -101,31 +100,10 @@ in {
             place-within-backdrop = true;
           }
         ];
-      };
-    };
 
-    systemd.user.services = {
-      "dms" = {
-        Unit = {
-          Description = "Dank Material Shell Service";
-          After = [config.wayland.systemd.target];
-          PartOf = [config.wayland.systemd.target];
-        };
-        Service = {
-          Type = "exec";
-          ExecStart = "${getExe config.programs.quickshell.package} -c dms";
-          Restart = "on-failure";
-          RestartSec = "5s";
-          TimeoutStopSec = "5s";
-          Environment = [
-            "QT_QPA_PLATFORM=wayland"
-            "ELECTRON_OZONE_PLATFORM_HINT=auto"
-          ];
-          Slice = "session.slice";
-        };
-        Install = {
-          WantedBy = [config.wayland.systemd.target];
-        };
+        spawn-at-startup = [
+          {argv = ["dms" "run"];}
+        ];
       };
     };
 

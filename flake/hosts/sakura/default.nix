@@ -21,6 +21,7 @@ in {
     enableList = [
       "alsa"
       "logitech"
+      "hdds"
     ];
     disableList = [
       "audiobookshelf"
