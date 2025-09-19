@@ -26,16 +26,15 @@ in {
   };
 
   programs.ssh = {
-    extraConfig = ''
-      Host sakura
-        Hostname 192.168.68.62
-        Port 22
-        User sumelan
-
-        # Prevent using ssh-agent or another keyfile, useful for testing
-        IdentitiesOnly yes
-        IdentityFile ~/.ssh/id_ed25519
-    '';
+    enable = true;
+    matchBlocks = {
+      "sakura" = {
+        hostname = "192.168.68.62";
+        user = "sumelan";
+        identitiesOnly = true;
+        identityFile = "/home/sumelan/.ssh/id_ed25519";
+      };
+    };
   };
 
   custom = let
