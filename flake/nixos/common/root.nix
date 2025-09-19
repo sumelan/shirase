@@ -27,6 +27,9 @@ in {
         root = {
           initialPassword = "password";
           hashedPasswordFile = "/persist/etc/shadow/root";
+          openssh.authorizedKeys.keyFiles = [
+            ../../users/id_ed25519.pub
+          ];
         };
       };
     };

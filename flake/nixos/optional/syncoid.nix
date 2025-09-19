@@ -15,6 +15,15 @@ in {
   };
 
   config = mkIf config.custom.syncoid.enable {
+    programs.ssh = {
+      extraConfig = "
+        Host sakura
+          Hostname 192.168.68.62
+          Port 22
+          User syncoid
+      ";
+    };
+
     # allow syncoid to ssh into HDDs
     users.users = {
       "syncoid" = {
