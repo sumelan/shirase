@@ -30,7 +30,7 @@ in {
   services.syncoid = {
     commands."remote" = mkIf config.custom.syncoid.enable {
       source = "zroot/persist";
-      target = "root@sakura:media/WD4T/acer";
+      target = "root@sakura:zfs-elements4T-1/media";
       extraArgs = [
         "--no-sync-snap" # restrict itself to existing snapshots
         "--delete-target-snapshots" # snapshots which are missing on the source will be destroyed on the targe
