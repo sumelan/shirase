@@ -15,7 +15,7 @@ in {
     common-gpu-amd
   ];
 
-  networking.hostId = "4e98920d";
+  networking.hostId = "a4b706c9";
 
   custom = let
     enableList = [

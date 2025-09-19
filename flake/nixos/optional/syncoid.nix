@@ -29,7 +29,6 @@ in {
       "syncoid" = {
         # services.syncoid automaticall set user "syncoid" as systemuser
         openssh.authorizedKeys.keyFiles = [
-          ../../users/id_ed25519.pub
         ];
       };
     };
