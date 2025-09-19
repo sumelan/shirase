@@ -35,7 +35,7 @@ in {
 
       commands."remote" = {
         source = "zroot/persist";
-        target = "root@sakura:media/4TWD/${host}";
+        target = "root@sakura:media/WD4T/${host}";
         extraArgs = [
           "--no-sync-snap" # restrict itself to existing snapshots
           "--delete-target-snapshots" # snapshots which are missing on the source will be destroyed on the targe

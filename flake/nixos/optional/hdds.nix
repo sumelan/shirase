@@ -11,18 +11,18 @@
     ;
 
   cfg = config.custom.hdds;
-  wdelem = "/media/4TWD";
-  ironwolf = "/media/IRONWOLF2";
+  elements = "/media/WD4T";
+  ironwolf = "/media/IRONWOLF2T";
 in {
   options.custom = {
     hdds = {
       enable = mkEnableOption "Desktop HDDs";
-      wdelem4 =
+      wd =
         mkEnableOption "WD Elements 4TB"
         // {
           default = config.custom.hdds.enable;
         };
-      ironwolf2 =
+      ironwolf =
         mkEnableOption "Seagate IronWolf 2TB"
         // {
           default = config.custom.hdds.enable;
@@ -33,13 +33,13 @@ in {
   config = mkIf cfg.enable {
     services.sanoid = {
       datasets = {
-        "zfs-4twd-1/media" = mkIf cfg.wdelem4 {
+        "zfs-elements4T-1/media" = mkIf cfg.wd {
           hourly = 3;
           daily = 10;
           weekly = 2;
           monthly = 0;
         };
-        "zfs-ironwolf-1/media" = mkIf cfg.ironwolf2 {
+        "zfs-ironwolf2T-1/media" = mkIf cfg.ironwolf {
           hourly = 3;
           daily = 10;
           weekly = 2;
@@ -50,16 +50,16 @@ in {
 
     hm = {
       custom.btop.disks =
-        optional cfg.wdelem4 wdelem ++ optional cfg.ironwolf2 ironwolf;
+        optional cfg.wd elements ++ optional cfg.ironwolf ironwolf;
     };
 
     fileSystems = {
-      "/media/4TWD" = mkIf cfg.wdelem4 {
-        device = "zfs-4twd-1/media";
+      "/media/WD4T" = mkIf cfg.wd {
+        device = "zfs-elements4T-1/media";
         fsType = "zfs";
       };
-      "/media/IRONWOLF2" = mkIf cfg.ironwolf2 {
-        device = "zfs-ironwolf-1/media";
+      "/media/IRONWOLF2T" = mkIf cfg.ironwolf {
+        device = "zfs-ironwolf2T-1/media";
         fsType = "zfs";
       };
     };
