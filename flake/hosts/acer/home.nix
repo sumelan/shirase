@@ -27,12 +27,25 @@ in {
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
+
     matchBlocks = {
       "sakura" = {
         hostname = "192.168.68.62";
         user = "sumelan";
         identitiesOnly = true;
         identityFile = "/home/sumelan/.ssh/id_ed25519";
+        # default config
+        forwardAgent = false;
+        addKeysToAgent = "no";
+        compression = false;
+        serverAliveInterval = 0;
+        serverAliveCountMax = 3;
+        hashKnownHosts = false;
+        userKnownHostsFile = "~/.ssh/known_hosts";
+        controlMaster = "no";
+        controlPath = "~/.ssh/master-%r@%n:%p";
+        controlPersist = "no";
       };
     };
   };
