@@ -18,6 +18,7 @@ in {
 
   custom = let
     enableList = [
+      "syncoid"
     ];
     disableList = [
       "distrobox"

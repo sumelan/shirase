@@ -20,8 +20,9 @@ in {
   custom = let
     enableList = [
       "alsa"
-      "logitech"
       "hdds"
+      "logitech"
+      "syncoid"
     ];
     disableList = [
       "audiobookshelf"
