@@ -9,26 +9,17 @@
     ;
 in {
   # bootloader
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+    timeout = 3;
+  };
+
+  # kernel
   boot = {
-    initrd = {
-      # enable stage-1 bootloader
-      systemd.enable = true;
-      # always allow booting from usb
-      availableKernelModules = ["uas"];
-    };
-    loader = {
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
-      };
-      grub = {
-        enable = true;
-        devices = ["nodev"];
-        efiSupport = true;
-      };
-      timeout = 3;
-    };
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
+    # plymouth
+    plymouth.enable = true;
   };
 
   # faster boot times

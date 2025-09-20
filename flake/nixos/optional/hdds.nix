@@ -31,37 +31,27 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.sanoid = {
-      datasets = {
-        "zfs-elements4T-1/media" = mkIf cfg.wd {
-          hourly = 3;
-          daily = 10;
-          weekly = 2;
-          monthly = 0;
-        };
-        "zfs-ironwolf2T-1/media" = mkIf cfg.ironwolf {
-          hourly = 3;
-          daily = 10;
-          weekly = 2;
-          monthly = 0;
-        };
+    fileSystems = {
+      "/media/WD4T" = mkIf cfg.wd {
+        device = "/dev/disk/by-label/btrfs-wdelem4T-1";
+        fsType = "btrfs";
+        options = [
+          "x-systemd.automount"
+          "nofail"
+        ];
+      };
+      "/media/IRONWOLF2T" = mkIf cfg.ironwolf {
+        device = "/dev/disk/by-label/btrfs-ironwolf2T-1";
+        fsType = "btrfs";
+        options = [
+          "x-systemd.automount"
+          "nofail"
+        ];
       };
     };
-
     hm = {
       custom.btop.disks =
         optional cfg.wd elements ++ optional cfg.ironwolf ironwolf;
-    };
-
-    fileSystems = {
-      "/media/WD4T" = mkIf cfg.wd {
-        device = "zfs-elements4T-1/media";
-        fsType = "zfs";
-      };
-      "/media/IRONWOLF2T" = mkIf cfg.ironwolf {
-        device = "zfs-ironwolf2T-1/media";
-        fsType = "zfs";
-      };
     };
   };
 }

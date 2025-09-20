@@ -4,37 +4,36 @@ This is my personal nixos dotfiles, always wip.
 
 ## Features
 
-### ZFS + Impermanence
+### BTRFS + Impermanence
 
-Whole volume has 1 GB for boot and 16 GB for swap, the rest are ZFS datasets.
-Layout is like below.
+Whole volume has 1 GB for boot, the rest are btrfs root volumes. Layout is like
+below.
 
 ```sh
 nvme0n1
-  ├── NIXOS # zroot
-  │     ├── /root
+  ├── NIXOS  # Btrfs's Subvolume
   │     ├── /nix
-  │     ├── /tmp
   │     ├── /persist
-  │     └── /cache
-  ├──── SWAP    - 16 GB
-  └──── NIXBOOT -  1 GB
+  │     ├── /cache
+  │     ├── /root
+  │     └── /root-blank
+  └── NIXBOOT # 1 GB
 ```
 
-Volume `/root` and `/home` are tmpfs so will be wipe when reboot. But `/perisit`
-and `/cache` are remained by
-[impermanence module](https://github.com/nix-community/impermanence).
+Volume `/root` is wiped at each boot via the script but `/perisit` and `/cache`
+are remained by [impermanence](https://github.com/nix-community/impermanence).
 
 Plus, `/persist` volume of my laptop (acer) is transferred to a HDD connected to
-my desktop (sakura) using
-[Syncoid](https://github.com/jimsalterjrs/sanoid?tab=readme-ov-file#syncoid).
+my desktop (sakura) using [btrbk](https://github.com/digint/btrbk).
 
 ## Install
 
 There exists a intall scripts, but some process may be needed before. Start from
 a tty on the NixOS iso (minimal) ...
 
-### (Optinal): Install from another Linux system via SSH
+<details>
+
+<summary><h4>(Optinal): Install from another Linux system via SSH</summary></h4>
 
 Enable SSH on the target device.
 
@@ -61,7 +60,11 @@ Now, from the other system, ssh into the target device.
 ssh root@ip_address_of_target-device
 ```
 
-### (Optional) Using Niri binary cache
+</details>
+
+<details>
+
+<summary><h4>(Optional) Using Niri binary cache</summary></h4>
 
 Install Cachix client.
 
@@ -76,6 +79,8 @@ cachix use niri
 ```
 
 Add `imports = [ ./cachix.nix ]` in `/etc/nixos/configuration.nix`.
+
+</details>
 
 ### Automatically install using a script
 
