@@ -9,7 +9,6 @@
     (lib)
     mkEnableOption
     mkIf
-    getExe
     ;
 in {
   options.custom = {
@@ -99,31 +98,9 @@ in {
           action.spawn = ["noctalia-shell" "ipc" "call" "brightness" "decrease"];
         };
       };
-    };
-
-    systemd.user.services = {
-      "noctalia" = {
-        Unit = {
-          Description = "Noctalia Shell Service";
-          After = [config.wayland.systemd.target];
-          PartOf = [config.wayland.systemd.target];
-        };
-        Service = {
-          Type = "exec";
-          ExecStart = "${getExe inputs.noctalia.packages.${pkgs.system}.default}";
-          Restart = "on-failure";
-          RestartSec = "5s";
-          TimeoutStopSec = "5s";
-          Environment = [
-            "QT_QPA_PLATFORM=wayland"
-            "ELECTRON_OZONE_PLATFORM_HINT=auto"
-          ];
-          Slice = "session.slice";
-        };
-        Install = {
-          WantedBy = [config.wayland.systemd.target];
-        };
-      };
+      spawn-at-startup = [
+        {argv = ["noctalia-shell"];}
+      ];
     };
 
     custom.persist = {
