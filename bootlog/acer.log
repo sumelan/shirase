@@ -599,3 +599,77 @@ Removed packages:
 [R.]  #8  roboto                                                                    3.011
 [R.]  #9  wlsunset                                                                  0.4.0, 0.4.0-fish-completions
 Closure size: 2458 -> 2507 (103 paths added, 54 paths removed, delta +49, disk usage +65.1MiB).
+
+---
+
+2025年09月21日 12時40分13秒
+<<< /nix/var/nix/profiles/system-9-link
+>>> /nix/var/nix/profiles/system-10-link
+Version changes:
+[C.]  #01  bash               5.2p37, 5.3p3 x3 -> 5.2p37, 5.3p3 x2
+[C*]  #02  bash-interactive   5.3p3, 5.3p3-fish-completions, 5.3p3-man -> 5.3p3, 5.3p3-dev, 5.3p3-fish-completions, 5.3p3-man
+[C*]  #03  bluez              5.83 x2 -> 5.83 x2, 5.83-dev
+[C.]  #04  brightnessctl      0.5.1, 0.5.1-fish-completions -> 0.5.1
+[C.]  #05  cava               0.10.4, 0.10.4-fish-completions -> 0.10.4
+[C.]  #06  cliphist           0.6.1, 0.6.1-fish-completions -> 0.6.1
+[C.]  #07  ddcutil            2.2.1, 2.2.1-fish-completions -> 2.2.1
+[C.]  #08  file               5.45 x2 -> 5.45 x2, 5.45-dev
+[C.]  #09  gcc                13.3.0-lib, 13.3.0-libgcc, 14.2.1.20250322-lib, 14.2.1.20250322-libgcc, 14.3.0, 14.3.0-lib x3, 14.3.0-libgcc x3 -> 13.3.0-lib, 13.3.0-libgcc, 14.2.1.20250322-lib, 14.2.1.20250322-libgcc, 14.3.0, 14.3.0-lib x2, 14.3.0-libgcc x2
+[C.]  #10  glib               2.84.4 x2, 2.84.4-bin, 2.84.4-dev, 2.84.4-fish-completions -> 2.84.4 x2, 2.84.4-bin, 2.84.4-dev
+[C*]  #11  glibc              2.40-36, 2.40-66 x4, 2.40-66-bin, 2.40-66-dev, 2.40-66-getent x2 -> 2.40-36, 2.40-66 x3, 2.40-66-bin, 2.40-66-dev, 2.40-66-getent x2
+[C.]  #12  iana-etc           20250505 x2 -> 20250505
+[C*]  #13  kmod               31 x2, 31-lib x3 -> 31 x2, 31-lib x2
+[C.]  #14  libidn2            2.3.7, 2.3.8 x4 -> 2.3.7, 2.3.8 x3
+[C.]  #15  libnotify          0.8.6 -> 0.8.6, 0.8.6-dev
+[C.]  #16  libunistring       1.2, 1.3 x4 -> 1.2, 1.3 x3
+[C.]  #17  mailcap            2.1.54 x3 -> 2.1.54 x2
+[C.]  #18  matugen            2.4.1, 2.4.1-fish-completions -> 2.4.1
+[C*]  #19  networkmanager     1.52.1, 1.52.1-dev, 1.52.1-fish-completions, 1.52.1-man -> 1.52.1, 1.52.1-dev
+[U.]  #20  nixos-system-acer  25.11.20250916.8d4ddb1.6a51ca9 -> 25.11.20250916.8d4ddb1.7280d04
+[C.]  #21  pciutils           3.14.0 x2 -> 3.14.0
+[C.]  #22  tzdata             2025b x4 -> 2025b x3
+[C.]  #23  wl-clipboard       2.2.1, 2.2.1-fish-completions -> 2.2.1
+[C.]  #24  xgcc               13.3.0-libgcc, 14.2.1.20250322-libgcc, 14.3.0-libgcc x3 -> 13.3.0-libgcc, 14.2.1.20250322-libgcc, 14.3.0-libgcc x2
+[C*]  #25  xz                 5.8.1 x4, 5.8.1-bin -> 5.8.1 x3, 5.8.1-bin
+[C*]  #26  zstd               1.5.7 x4, 1.5.7-bin -> 1.5.7 x3, 1.5.7-bin
+Added packages:
+[A.]  #1  fonts.conf                                                                <none>
+[A.]  #2  gpu-screen-recorder                                                       5.6.8
+[A.]  #3  initrd-bin-env                                                            <none>
+[A.]  #4  inter-nerdfont                                                            4.1
+[A.]  #5  noctalia-shell-ae2d3eddd6f41bc31a835307cffd1244531fd245                   <none>
+[A.]  #6  noctalia-shell-ae2d3eddd6f41bc31a835307cffd1244531fd245-fish-completions  <none>
+[A.]  #7  quickshell-wrapped                                                        0.2.0 x2, 0.2.0-fish-completions
+[A.]  #8  roboto                                                                    3.011
+[A.]  #9  wlsunset                                                                  0.4.0, 0.4.0-fish-completions
+Removed packages:
+[R.]  #01  chroot-realpath               0.1.0
+[R.]  #02  dankMaterialShell             <none>
+[R.]  #03  dgop                          0.0.9, 0.0.9-fish-completions
+[R.]  #04  dms-cli                       0.0.2, 0.0.2-fish-completions
+[R.]  #05  dms-lock                      <none>
+[R.]  #06  fira-code                     6.2, 6.2-fish-completions
+[R.]  #07  gammastep                     2.0.11, 2.0.11-fish-completions
+[R.]  #08  inter                         4.1, 4.1-fish-completions
+[R.]  #09  khal                          0.13.0, 0.13.0-fish-completions, 0.13.0-man
+[R.]  #10  material-symbols              4.0.0-unstable-2025-04-11, 4.0.0-unstable-2025-04-11-fish-completions
+[R.]  #11  python3.13-aiohttp-oauthlib   0.1.0
+[R.]  #12  python3.13-aiostream          0.7.0
+[R.]  #13  python3.13-atomicwrites       1.4.1
+[R.]  #14  python3.13-click-log          0.4.0
+[R.]  #15  python3.13-click-threading    0.5.0
+[R.]  #16  python3.13-configobj          5.0.9
+[R.]  #17  python3.13-freezegun          1.5.4
+[R.]  #18  python3.13-icalendar          6.3.1
+[R.]  #19  python3.13-oauthlib           3.3.1
+[R.]  #20  python3.13-pkginfo            1.12.1.2
+[R.]  #21  python3.13-python-dateutil    2.9.0.post0
+[R.]  #22  python3.13-pytz               2025.2
+[R.]  #23  python3.13-requests-toolbelt  1.0.0
+[R.]  #24  python3.13-tzdata             2025.2
+[R.]  #25  python3.13-tzlocal            5.3.1
+[R.]  #26  python3.13-urwid              3.0.2
+[R.]  #27  python3.13-vdirsyncer         0.20.0
+[R.]  #28  python3.13-wcwidth            0.2.13
+[R.]  #29  quickshell                    0.2.0, 0.2.0-fish-completions
+Closure size: 2507 -> 2462 (37 paths added, 82 paths removed, delta -45, disk usage -70.5MiB).
