@@ -21,7 +21,6 @@ in {
     enableList = [
       "alsa"
       "hdds"
-      "logitech"
       "syncoid"
     ];
     disableList = [

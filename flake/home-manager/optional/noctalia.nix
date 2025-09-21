@@ -51,7 +51,7 @@ in {
           cavaFrameRate = 60;
           mprisBlacklist = [];
           preferredPlayer = "spotify";
-          visualizerType = "wave";
+          visualizerType = "linear";
           volumeStep = 5;
         };
         bar = {

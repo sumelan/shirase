@@ -9,12 +9,12 @@
     ;
 in {
   monitors = {
-    "HDMI-A-1" = {
+    "DP-1" = {
       isMain = true;
-      scale = 1.5;
+      scale = 1.25;
       mode = {
-        width = 3840;
-        height = 2160;
+        width = 1920;
+        height = 1080;
         refresh = 60.0;
       };
       position = {
@@ -27,12 +27,8 @@ in {
 
   custom = let
     enableList = [
-      "cyanrip"
-      "foliate"
       "freetube"
       "noctalia"
-      "obs-studio"
-      "protonapp"
       "rmpc"
       "spotify"
     ];
