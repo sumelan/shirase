@@ -30,6 +30,8 @@ in
               else "/dev/disk/by-partuuid";
 
             package = pkgs.zfs;
+            # a mismatched host ID will prevent ZFS from importing the pool, but you can override that with a force import
+            forceImportAll = true;
 
             requestEncryptionCredentials = config.custom.zfs.encryption;
           };
@@ -64,11 +66,13 @@ in
           "/boot" = {
             device = "/dev/disk/by-label/NIXBOOT";
             fsType = "vfat";
+            neededForBoot = true;
           };
 
           "/nix" = {
             device = "zroot/nix";
             fsType = "zfs";
+            neededForBoot = true;
           };
 
           # by default, /tmp is not a tmpfs on nixos as some build artifacts can be stored there

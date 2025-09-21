@@ -28,9 +28,9 @@ in {
   custom = let
     enableList = [
       "cyanrip"
-      "dms"
       "foliate"
       "freetube"
+      "noctalia"
       "obs-studio"
       "protonapp"
       "rmpc"
