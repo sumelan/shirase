@@ -57,10 +57,18 @@ in {
       "/media/WD4T" = mkIf cfg.wd {
         device = "zfs-elements4T-1/media";
         fsType = "zfs";
+        options = [
+          "x-systemd.automount"
+          "nofail"
+        ];
       };
       "/media/IRONWOLF2T" = mkIf cfg.ironwolf {
         device = "zfs-ironwolf2T-1/media";
         fsType = "zfs";
+        options = [
+          "x-systemd.automount"
+          "nofail"
+        ];
       };
     };
   };
