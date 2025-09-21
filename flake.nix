@@ -21,10 +21,6 @@
 
     agenix.url = "github:ryantm/agenix";
 
-    dgop.url = "github:AvengeMedia/dgop";
-
-    dms.url = "github:AvengeMedia/DankMaterialShell";
-
     dimland.url = "github:keifufu/dimland";
 
     firefox-addons = {
