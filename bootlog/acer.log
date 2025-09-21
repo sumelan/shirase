@@ -673,3 +673,35 @@ Removed packages:
 [R.]  #28  python3.13-wcwidth            0.2.13
 [R.]  #29  quickshell                    0.2.0, 0.2.0-fish-completions
 Closure size: 2507 -> 2462 (37 paths added, 82 paths removed, delta -45, disk usage -70.5MiB).
+
+---
+
+2025年09月21日 20時59分21秒
+<<< /nix/var/nix/profiles/system-10-link
+>>> /nix/var/nix/profiles/system-11-link
+Version changes:
+[U.]  #01  fish                     4.0.6, 4.0.6-doc, 4.0.6-fish-completions -> 4.0.8, 4.0.8-doc, 4.0.8-fish-completions
+[U.]  #02  gnustep-libobjc          2.2.1 -> 2.3
+[U.]  #03  intel-graphics-compiler  2.16.0 -> 2.18.5
+[U.]  #04  lazygit                  0.55.0, 0.55.0-fish-completions -> 0.55.1, 0.55.1-fish-completions
+[U.]  #05  linux-firmware           20250808-zstd -> 20250917-zstd
+[U.]  #06  mesa                     25.2.2 -> 25.2.3
+[U*]  #07  niri-unstable            2025-09-18-d9648e6 -> 2025-09-20-a1dcced
+[U*]  #08  nix-update               1.12.1 -> 1.13.0
+[U.]  #09  nixos-system-acer        25.11.20250916.8d4ddb1.7280d04 -> 25.11.20250919.8eaee11.ea1464f
+[C.]  #10  nss                      3.112.1, 3.114.1, 3.115.1 -> 3.112.1, 3.114.1, 3.116
+[C.]  #11  quickshell-wrapped       0.2.0 x2, 0.2.0-fish-completions -> 0.2.0
+[U.]  #12  roboto                   3.011 -> 3.012
+[C.]  #13  source                   <none> x23 -> <none> x21
+[U.]  #14  ublock-origin            1.66.0 -> 1.66.4
+[C.]  #15  wlsunset                 0.4.0, 0.4.0-fish-completions -> 0.4.0
+Added packages:
+[A.]  #1  hm_noctaliacolors.json    <none>
+[A.]  #2  hm_noctaliasettings.json  <none>
+[A.]  #3  mimeapps.list             <none>
+[A.]  #4  noctalia-shell            2e0214ddb81e3857ac863438c6f522cd5caaea26, 2e0214ddb81e3857ac863438c6f522cd5caaea26-fish-completions
+Removed packages:
+[R.]  #1  hm_mimeapps.list                                                          <none>
+[R.]  #2  noctalia-shell-ae2d3eddd6f41bc31a835307cffd1244531fd245                   <none>
+[R.]  #3  noctalia-shell-ae2d3eddd6f41bc31a835307cffd1244531fd245-fish-completions  <none>
+Closure size: 2462 -> 2459 (244 paths added, 247 paths removed, delta -3, disk usage -20.6MiB).
