@@ -2,24 +2,29 @@
   lib,
   config,
   pkgs,
+  user,
   inputs,
+  isLaptop,
   ...
 }: let
   inherit
     (lib)
     mkEnableOption
     mkIf
+    getExe
     splitString
     ;
+
+  noctaliaPkgs = inputs.noctalia-shell.packages.${pkgs.system}.default;
 in {
   imports = [inputs.noctalia-shell.homeModules.default];
 
   options.custom = {
-    noctalia.enable = mkEnableOption "Noctalia for Niri";
+    noctalia.enable = mkEnableOption "Noctalia for Niri" // {default = true;};
   };
 
   config = mkIf config.custom.noctalia.enable {
-    home.packages = [inputs.noctalia-shell.packages.${pkgs.system}.default];
+    home.packages = [noctaliaPkgs];
 
     programs.noctalia-shell = {
       enable = true;
@@ -41,7 +46,7 @@ in {
       };
       settings = {
         appLauncher = {
-          backgroundOpacity = 0.8;
+          backgroundOpacity = 0.85;
           enableClipboardHistory = true;
           pinnedExecs = [];
           position = "center";
@@ -49,19 +54,22 @@ in {
         };
         audio = {
           cavaFrameRate = 60;
-          mprisBlacklist = [];
+          mprisBlacklist = ["librewolf"];
           preferredPlayer = "spotify";
           visualizerType = "linear";
           volumeStep = 5;
         };
         bar = {
-          backgroundOpacity = 0.85;
+          backgroundOpacity = 0.9;
           density = "comfortable";
           floating = false;
           marginHorizontal = 0.25;
           marginVertical = 0.25;
           monitors = [];
-          position = "top";
+          position =
+            if isLaptop
+            then "left"
+            else "center";
           showCapsule = true;
           widgets = {
             center = [
@@ -103,14 +111,27 @@ in {
                 showUnreadBadge = true;
               }
               {
+                id = "WiFi";
+              }
+              {
                 id = "Bluetooth";
+              }
+              {
+                alwaysShowPercentage = false;
+                displayMode = "onhover";
+                id = "Battery";
+                warningThreshold = 30;
               }
               {
                 displayMode = "onhover";
                 id = "Volume";
               }
               {
-                displayFormat = "time";
+                displayMode = "onhover";
+                id = "Brightness";
+              }
+              {
+                displayFormat = "time-date-short";
                 id = "Clock";
               }
             ];
@@ -126,14 +147,14 @@ in {
         };
         dock = {
           autoHide = false;
-          backgroundOpacity = 1;
+          backgroundOpacity = 0.8;
           exclusive = false;
           floatingRatio = 0.5;
           monitors = [];
         };
         general = {
           animationSpeed = 1;
-          avatarImage = "/home/sumelan/.face";
+          avatarImage = "/home/${user}/.face";
           dimDesktop = true;
           forceBlackScreenCorners = false;
           radiusRatio = 1;
@@ -167,7 +188,7 @@ in {
         };
         network = {
           bluetoothEnabled = true;
-          wifiEnabled = false;
+          wifiEnabled = config.custom.wifi.enable;
         };
         nightLight = {
           autoSchedule = true;
@@ -190,7 +211,7 @@ in {
           audioCodec = "opus";
           audioSource = "default_output";
           colorRange = "limited";
-          directory = "/home/sumelan/Videos";
+          directory = config.xdg.userDirs.videos;
           frameRate = 60;
           quality = "very_high";
           showCursor = true;
@@ -200,19 +221,19 @@ in {
         settingsVersion = 3;
         ui = {
           fontBillboard = "Roboto";
-          fontDefault = "Geist";
-          fontFixed = "Maple Mono NF";
+          fontDefault = config.stylix.fonts.sansSerif;
+          fontFixed = config.stylix.fonts.monospace;
           idleInhibitorEnabled = false;
           monitorsScaling = [];
         };
         wallpaper = {
-          directory = "/home/sumelan/Pictures/Wallpapers";
+          directory = "${config.xdg.userDirs.pictures}/Wallpapers";
           enableMultiMonitorDirectories = false;
           enabled = true;
-          fillColor = "#000000";
+          fillColor = config.lib.stylix.colors.withHashtag.base00;
           fillMode = "crop";
           monitors = [];
-          randomEnabled = false;
+          randomEnabled = true;
           randomIntervalSec = 300;
           setWallpaperOnAllMonitors = true;
           transitionDuration = 1500;
@@ -239,7 +260,7 @@ in {
       binds = let
         noctalia = cmd:
           [
-            "noctalia-shell"
+            "${getExe noctaliaPkgs}"
             "ipc"
             "call"
           ]
@@ -304,9 +325,31 @@ in {
           action.spawn = noctalia "brightness decrease";
         };
       };
-      spawn-at-startup = [
-        {argv = ["noctalia-shell"];}
-      ];
+    };
+
+    systemd.user.services = {
+      "noctalia" = {
+        Unit = {
+          Description = "Noctalia Shell Service";
+          After = [config.wayland.systemd.target];
+          PartOf = [config.wayland.systemd.target];
+        };
+        Service = {
+          Type = "exec";
+          ExecStart = "${getExe noctaliaPkgs}";
+          Restart = "on-failure";
+          RestartSec = "5s";
+          TimeoutStopSec = "5s";
+          Environment = [
+            "QT_QPA_PLATFORM=wayland"
+            "ELECTRON_OZONE_PLATFORM_HINT=auto"
+          ];
+          Slice = "session.slice";
+        };
+        Install = {
+          WantedBy = [config.wayland.systemd.target];
+        };
+      };
     };
   };
 }

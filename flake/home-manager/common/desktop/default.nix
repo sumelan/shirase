@@ -7,6 +7,7 @@ _: {
     ./librewolf.nix
     ./mpv.nix
     ./nemo.nix
+    ./noctalia.nix
     ./pipewire.nix
     ./swayidle.nix
     ./swayimg.nix

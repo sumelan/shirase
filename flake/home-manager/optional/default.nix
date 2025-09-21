@@ -8,7 +8,6 @@ _: {
     ./freetube.nix
     ./ghostty.nix
     ./helix.nix
-    ./noctalia.nix
     ./obs-studio.nix
     ./protonapp.nix
     ./spotify.nix

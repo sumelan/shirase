@@ -13,9 +13,10 @@
 
   defaultMods = [
     inputs.agenix.nixosModules.default
-    inputs.niri.nixosModules.niri
-    inputs.stylix.nixosModules.stylix
     inputs.impermanence.nixosModules.impermanence
+    inputs.niri.nixosModules.niri
+    inputs.noctalia-shell.nixosModules.default
+    inputs.stylix.nixosModules.stylix
     ../flake/nixos
   ];
 

@@ -27,8 +27,10 @@ in {
 
   custom = let
     enableList = [
+      "cyanrip"
       "freetube"
-      "noctalia"
+      "helix"
+      "obs-studio"
       "protonapp"
       "rmpc"
       "spotify"

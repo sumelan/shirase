@@ -42,6 +42,7 @@ in {
 
   custom = let
     enableList = [
+      "alsa"
       "syncoid"
     ];
     disableList = [
