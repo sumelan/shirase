@@ -18,7 +18,7 @@
     ;
 in {
   options.custom = {
-    swayidle.enable = mkEnableOption "Swayilde";
+    swayidle.enable = mkEnableOption "Swayilde" // {default = true;};
   };
 
   config = mkIf config.custom.swayidle.enable {
