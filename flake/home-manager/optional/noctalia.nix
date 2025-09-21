@@ -9,19 +9,218 @@
     (lib)
     mkEnableOption
     mkIf
+    splitString
     ;
 in {
+  imports = [inputs.noctalia-shell.homeModules.default];
+
   options.custom = {
     noctalia.enable = mkEnableOption "Noctalia for Niri";
   };
 
   config = mkIf config.custom.noctalia.enable {
-    home.packages =
-      (with inputs; [
-        noctalia.packages.${pkgs.system}.default
-        quickshell.packages.${pkgs.system}.default
-      ])
-      ++ [pkgs.wlsunset];
+    home.packages = [inputs.noctalia-shell.packages.${pkgs.system}.default];
+
+    programs.noctalia-shell = {
+      enable = true;
+      colors = {
+        mError = "#bf616a";
+        mOnError = "#2e3440";
+        mOnPrimary = "#2e3440";
+        mOnSecondary = "#2e3440";
+        mOnSurface = "#d8dee9";
+        mOnSurfaceVariant = "#e5e9f0";
+        mOnTertiary = "#2e3440";
+        mOutline = "#505a70";
+        mPrimary = "#8fbcbb";
+        mSecondary = "#88c0d0";
+        mShadow = "#2e3440";
+        mSurface = "#2e3440";
+        mSurfaceVariant = "#3b4252";
+        mTertiary = "#5e81ac";
+      };
+      settings = {
+        appLauncher = {
+          backgroundOpacity = 0.8;
+          enableClipboardHistory = true;
+          pinnedExecs = [];
+          position = "center";
+          useApp2Unit = false;
+        };
+        audio = {
+          cavaFrameRate = 60;
+          mprisBlacklist = [];
+          preferredPlayer = "spotify";
+          visualizerType = "wave";
+          volumeStep = 5;
+        };
+        bar = {
+          backgroundOpacity = 0.85;
+          density = "comfortable";
+          floating = false;
+          marginHorizontal = 0.25;
+          marginVertical = 0.25;
+          monitors = [];
+          position = "top";
+          showCapsule = true;
+          widgets = {
+            center = [
+              {
+                hideUnoccupied = true;
+                id = "Workspace";
+                labelMode = "none";
+              }
+            ];
+            left = [
+              {
+                id = "SidePanelToggle";
+                useDistroLogo = true;
+              }
+              {
+                id = "ActiveWindow";
+                showIcon = true;
+              }
+              {
+                id = "MediaMini";
+                showAlbumArt = false;
+                showVisualizer = false;
+                visualizerType = "linear";
+              }
+              {
+                id = "NightLight";
+              }
+              {
+                id = "KeepAwake";
+              }
+            ];
+            right = [
+              {
+                id = "ScreenRecorderIndicator";
+              }
+              {
+                hideWhenZero = true;
+                id = "NotificationHistory";
+                showUnreadBadge = true;
+              }
+              {
+                id = "Bluetooth";
+              }
+              {
+                displayMode = "onhover";
+                id = "Volume";
+              }
+              {
+                displayFormat = "time";
+                id = "Clock";
+              }
+            ];
+          };
+        };
+        brightness = {
+          brightnessStep = 5;
+        };
+        colorSchemes = {
+          darkMode = true;
+          predefinedScheme = "Nord";
+          useWallpaperColors = false;
+        };
+        dock = {
+          autoHide = false;
+          backgroundOpacity = 1;
+          exclusive = false;
+          floatingRatio = 0.5;
+          monitors = [];
+        };
+        general = {
+          animationSpeed = 1;
+          avatarImage = "/home/sumelan/.face";
+          dimDesktop = true;
+          forceBlackScreenCorners = false;
+          radiusRatio = 1;
+          screenRadiusRatio = 1;
+          showScreenCorners = true;
+        };
+        hooks = {
+          darkModeChange = "";
+          enabled = false;
+          wallpaperChange = "";
+        };
+        location = {
+          monthBeforeDay = false;
+          name = "Tokyo";
+          showWeekNumberInCalendar = false;
+          use12hourFormat = false;
+          useFahrenheit = false;
+        };
+        matugen = {
+          enableUserTemplates = false;
+          foot = false;
+          fuzzel = false;
+          ghostty = false;
+          gtk3 = false;
+          gtk4 = false;
+          kitty = false;
+          pywalfox = false;
+          qt5 = false;
+          qt6 = false;
+          vesktop = false;
+        };
+        network = {
+          bluetoothEnabled = true;
+          wifiEnabled = false;
+        };
+        nightLight = {
+          autoSchedule = true;
+          dayTemp = "6500";
+          enabled = true;
+          forced = false;
+          manualSunrise = "06:30";
+          manualSunset = "18:30";
+          nightTemp = "4000";
+        };
+        notifications = {
+          criticalUrgencyDuration = 15;
+          doNotDisturb = false;
+          lastSeenTs = 0;
+          lowUrgencyDuration = 3;
+          monitors = [];
+          normalUrgencyDuration = 8;
+        };
+        screenRecorder = {
+          audioCodec = "opus";
+          audioSource = "default_output";
+          colorRange = "limited";
+          directory = "/home/sumelan/Videos";
+          frameRate = 60;
+          quality = "very_high";
+          showCursor = true;
+          videoCodec = "h264";
+          videoSource = "portal";
+        };
+        settingsVersion = 3;
+        ui = {
+          fontBillboard = "Roboto";
+          fontDefault = "Geist";
+          fontFixed = "Maple Mono NF";
+          idleInhibitorEnabled = false;
+          monitorsScaling = [];
+        };
+        wallpaper = {
+          directory = "/home/sumelan/Pictures/Wallpapers";
+          enableMultiMonitorDirectories = false;
+          enabled = true;
+          fillColor = "#000000";
+          fillMode = "crop";
+          monitors = [];
+          randomEnabled = false;
+          randomIntervalSec = 300;
+          setWallpaperOnAllMonitors = true;
+          transitionDuration = 1500;
+          transitionEdgeSmoothness = 0.05;
+          transitionType = "random";
+        };
+      };
+    };
 
     programs.niri.settings = {
       layer-rules = [
@@ -38,74 +237,75 @@ in {
         }
       ];
       binds = let
+        noctalia = cmd:
+          [
+            "noctalia-shell"
+            "ipc"
+            "call"
+          ]
+          ++ (splitString " " cmd);
         hotkeyColor = config.lib.stylix.colors.withHashtag.base0D;
       in {
         "Mod+Space" = {
-          action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "toggle"];
+          action.spawn = noctalia "launcher toggle";
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Launcher'';
         };
         "Mod+V" = {
-          action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "clipboard"];
+          action.spawn = noctalia "launcher clipboard";
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Clipboard'';
         };
         "Mod+N" = {
-          action.spawn = ["noctalia-shell" "ipc" "call" "notifications" "toggleHistory"];
+          action.spawn = noctalia "notifications toggleHistory";
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Notification Histories'';
         };
         "Mod+D" = {
-          action.spawn = ["noctalia-shell" "ipc" "call" "sidePanel" "toggle"];
+          action.spawn = noctalia "sidePanel toggle";
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Sidepanel'';
         };
         "Mod+Comma" = {
-          action.spawn = ["noctalia-shell" "ipc" "call" "settings" "toggle"];
+          action.spawn = noctalia "settings toggle";
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Settings'';
         };
         "Mod+Alt+L" = {
           allow-when-locked = true;
-          action.spawn = ["noctalia-shell" "ipc" "call" "lockScreen" "toggle"];
+          action.spawn = noctalia "lockScreen toggle";
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Lock Screen'';
         };
         "Mod+I" = {
-          action.spawn = ["noctalia-shell" "ipc" "call" "idleInhibitor" "toggle"];
+          action.spawn = noctalia "idleInhibitor toggle";
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Toggle Idleinhibitor'';
         };
         "Mod+X" = {
-          action.spawn = ["noctalia-shell" "ipc" "call" "powerPanel" "toggle"];
+          action.spawn = noctalia "powerPanel toggle";
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Powerpanel'';
         };
         "XF86AudioRaiseVolume" = {
           allow-when-locked = true;
-          action.spawn = ["noctalia-shell" "ipc" "call" "volume" "increase"];
+          action.spawn = noctalia "volume increase";
         };
         "XF86AudioLowerVolume" = {
           allow-when-locked = true;
-          action.spawn = ["noctalia-shell" "ipc" "call" "volume" "decrease"];
+          action.spawn = noctalia "volume decrease";
         };
         "XF86AudioMute" = {
           allow-when-locked = true;
-          action.spawn = ["noctalia-shell" "ipc" "call" "volume" "muteOutput"];
+          action.spawn = noctalia "volume muteOutput";
         };
         "XF86AudioMicMute" = {
           allow-when-locked = true;
-          action.spawn = ["noctalia-shell" "ipc" "call" "volume" "muteInput"];
+          action.spawn = noctalia "volume muteInput";
         };
         "XF86MonBrightnessUp" = {
           allow-when-locked = true;
-          action.spawn = ["noctalia-shell" "ipc" "call" "brightness" "increase"];
+          action.spawn = noctalia "brightness increase";
         };
         "XF86MonBrightnessDown" = {
           allow-when-locked = true;
-          action.spawn = ["noctalia-shell" "ipc" "call" "brightness" "decrease"];
+          action.spawn = noctalia "brightness decrease";
         };
       };
       spawn-at-startup = [
         {argv = ["noctalia-shell"];}
-      ];
-    };
-
-    custom.persist = {
-      home.directories = [
-        ".config/noctalia"
       ];
     };
   };

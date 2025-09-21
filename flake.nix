@@ -43,9 +43,10 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
-    noctalia = {
+    noctalia-shell = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.quickshell.follows = "quickshell"; # Use same quickshell version
     };
 
     nvf = {

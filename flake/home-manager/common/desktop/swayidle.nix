@@ -6,7 +6,7 @@
   isDesktop,
   ...
 }: let
-  cfg = inputs.noctalia.packages.${pkgs.system}.default;
+  cfg = inputs.noctalia-shell.packages.${pkgs.system}.default;
 
   inherit
     (lib)
