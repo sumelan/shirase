@@ -18,4 +18,8 @@ _: {
 
   # WM agnostic polkit authentication agent
   services.polkit-gnome.enable = true;
+
+  home.file = {
+    ".defaultWall.jpg".source = ./nixbook.jpg;
+  };
 }

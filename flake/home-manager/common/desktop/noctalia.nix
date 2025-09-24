@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  user,
   inputs,
   isLaptop,
   ...
@@ -160,8 +159,8 @@ in {
         };
         general = {
           animationSpeed = 1;
-          avatarImage = "/home/${user}/.face";
-          dimDesktop = true;
+          avatarImage = "${config.home.homeDirectory}/.face";
+          dimDesktop = false;
           forceBlackScreenCorners = false;
           radiusRatio = 1;
           screenRadiusRatio = 1;
@@ -245,7 +244,7 @@ in {
             {
               inherit (config.programs.noctalia-shell.settings.wallpaper) directory;
               name = config.lib.monitors.mainMonitorName;
-              wallpaper = "/home/sumelan/Pictures/cirno_with_nixbook.jpg";
+              wallpaper = "${config.home.homeDirectory}/.defaultWall.jpg";
             }
           ];
           randomEnabled = true;
