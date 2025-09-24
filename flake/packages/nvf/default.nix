@@ -18,10 +18,11 @@ in {
     viAlias = true;
     vimAlias = true;
 
+    # https://github.com/NotAShelf/nvf/blob/main/modules/plugins/theme/supported-themes.nix
     theme = {
       enable = true;
-      name = "catppuccin";
-      style = "frappe";
+      name = "everforest";
+      style = "soft";
     };
 
     options = {

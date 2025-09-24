@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  self,
   ...
 }: let
   inherit
@@ -39,14 +40,12 @@ in {
     {
       stylix = {
         cursor = {
-          package = pkgs.capitaine-cursors-themed;
-          name = "Capitaine Cursors (Nord)";
+          package = self.packages.${pkgs.system}.everforest-cursors;
+          name = "everforest-cursors";
         };
         icons = {
-          package = pkgs.papirus-nord.override {
-            accent = "polarnight3";
-          };
-          dark = "Papirus-Dark";
+          package = pkgs.everforest-gtk-theme;
+          dark = "Everforest-Dark";
         };
       };
       niri.xwayland.enable = false;

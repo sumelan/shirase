@@ -30,7 +30,7 @@ in {
     ];
   in
     {
-      stylix.colorTheme = "nord";
+      stylix.colorTheme = "everforest-dark-soft";
     }
     // genAttrs enableList (_name: {
       enable = true;

@@ -29,20 +29,20 @@ in {
     programs.noctalia-shell = {
       enable = true;
       colors = {
-        mError = "#bf616a";
-        mOnError = "#2e3440";
-        mOnPrimary = "#2e3440";
-        mOnSecondary = "#2e3440";
-        mOnSurface = "#d8dee9";
-        mOnSurfaceVariant = "#e5e9f0";
-        mOnTertiary = "#2e3440";
-        mOutline = "#505a70";
-        mPrimary = "#8fbcbb";
-        mSecondary = "#88c0d0";
-        mShadow = "#2e3440";
-        mSurface = "#2e3440";
-        mSurfaceVariant = "#3b4252";
-        mTertiary = "#5e81ac";
+        mError = "#e67e80";
+        mOnError = "#232a2e";
+        mOnPrimary = "#232a2e";
+        mOnSecondary = "#232a2e";
+        mOnSurface = "#859289";
+        mOnSurfaceVariant = "#d3c6aa";
+        mOnTertiary = "#232a2e";
+        mOutline = "#d3c6aa";
+        mPrimary = "#d3c6aa";
+        mSecondary = "#d3c6aa";
+        mShadow = "#775258";
+        mSurface = "#232a2e";
+        mSurfaceVariant = "#2d353b";
+        mTertiary = "#9da9a0";
       };
       settings = {
         appLauncher = {
@@ -50,6 +50,7 @@ in {
           enableClipboardHistory = true;
           pinnedExecs = [];
           position = "center";
+          sortByMostUsed = true;
           useApp2Unit = false;
         };
         audio = {
@@ -60,7 +61,7 @@ in {
           volumeStep = 5;
         };
         bar = {
-          backgroundOpacity = 0.9;
+          backgroundOpacity = 0.95;
           density = "comfortable";
           floating = false;
           marginHorizontal = 0.25;
@@ -81,7 +82,9 @@ in {
             ];
             left = [
               {
-                id = "SidePanelToggle";
+                customIconPath = "";
+                icon = "";
+                id = "ControlCenter";
                 useDistroLogo = true;
               }
               {
@@ -95,15 +98,15 @@ in {
                 visualizerType = "linear";
               }
               {
-                id = "NightLight";
+                id = "KeepAwake";
               }
               {
-                id = "KeepAwake";
+                id = "NightLight";
               }
             ];
             right = [
               {
-                id = "ScreenRecorderIndicator";
+                id = "ScreenRecorder";
               }
               {
                 hideWhenZero = true;
@@ -117,12 +120,6 @@ in {
                 id = "Bluetooth";
               }
               {
-                alwaysShowPercentage = false;
-                displayMode = "onhover";
-                id = "Battery";
-                warningThreshold = 30;
-              }
-              {
                 displayMode = "onhover";
                 id = "Volume";
               }
@@ -131,8 +128,16 @@ in {
                 id = "Brightness";
               }
               {
-                displayFormat = "time-date-short";
+                displayMode = "alwaysShow";
+                id = "Battery";
+                warningThreshold = 30;
+              }
+              {
+                formatHorizontal = "HH:mm ddd, MMM dd";
+                formatVertical = "HH mm - MM dd";
                 id = "Clock";
+                useMonospacedFont = true;
+                usePrimaryColor = true;
               }
             ];
           };
@@ -142,15 +147,16 @@ in {
         };
         colorSchemes = {
           darkMode = true;
-          predefinedScheme = "Nord";
+          predefinedScheme = "Everforest";
           useWallpaperColors = false;
         };
         dock = {
           autoHide = false;
-          backgroundOpacity = 0.8;
+          backgroundOpacity = 1;
           exclusive = false;
-          floatingRatio = 0.5;
+          floatingRatio = 1;
           monitors = [];
+          pinnedApps = [];
         };
         general = {
           animationSpeed = 1;
@@ -167,7 +173,6 @@ in {
           wallpaperChange = "";
         };
         location = {
-          monthBeforeDay = false;
           name = "Tokyo";
           showWeekNumberInCalendar = false;
           use12hourFormat = false;
@@ -200,12 +205,16 @@ in {
           nightTemp = "4000";
         };
         notifications = {
+          alwaysOnTop = false;
           criticalUrgencyDuration = 15;
           doNotDisturb = false;
+          enableOSD = true;
           lastSeenTs = 0;
+          location = "top_right";
           lowUrgencyDuration = 3;
           monitors = [];
           normalUrgencyDuration = 8;
+          respectExpireTimeout = true;
         };
         screenRecorder = {
           audioCodec = "opus";
@@ -218,11 +227,11 @@ in {
           videoCodec = "h264";
           videoSource = "portal";
         };
-        settingsVersion = 3;
+        settingsVersion = 5;
         ui = {
           fontBillboard = "Roboto";
-          fontDefault = config.stylix.fonts.sansSerif;
-          fontFixed = config.stylix.fonts.monospace;
+          fontDefault = config.stylix.fonts.sansSerif.name;
+          fontFixed = config.stylix.fonts.monospace.name;
           idleInhibitorEnabled = false;
           monitorsScaling = [];
         };
@@ -232,9 +241,15 @@ in {
           enabled = true;
           fillColor = config.lib.stylix.colors.withHashtag.base00;
           fillMode = "crop";
-          monitors = [];
+          monitors = [
+            {
+              inherit (config.programs.noctalia-shell.settings.wallpaper) directory;
+              name = config.lib.monitors.mainMonitorName;
+              wallpaper = "/home/sumelan/Pictures/cirno_with_nixbook.jpg";
+            }
+          ];
           randomEnabled = true;
-          randomIntervalSec = 300;
+          randomIntervalSec = 900;
           setWallpaperOnAllMonitors = true;
           transitionDuration = 1500;
           transitionEdgeSmoothness = 0.05;
@@ -280,7 +295,7 @@ in {
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Notification Histories'';
         };
         "Mod+D" = {
-          action.spawn = noctalia "sidePanel toggle";
+          action.spawn = noctalia "controlCenter toggle";
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Sidepanel'';
         };
         "Mod+Comma" = {
@@ -297,7 +312,7 @@ in {
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Toggle Idleinhibitor'';
         };
         "Mod+X" = {
-          action.spawn = noctalia "powerPanel toggle";
+          action.spawn = noctalia "sessionMenu toggle";
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Powerpanel'';
         };
         "XF86AudioRaiseVolume" = {
