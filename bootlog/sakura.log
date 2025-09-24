@@ -314,3 +314,54 @@ Removed packages:
 [R.]  #91  woff2                                                                     1.0.2-lib
 [R.]  #92  wrapped-obs-studio                                                        31.1.2, 31.1.2-fish-completions
 Closure size: 2521 -> 2408 (244 paths added, 357 paths removed, delta -113, disk usage -2.2GiB).
+
+---
+
+2025年09月24日 17時51分47秒
+<<< /nix/var/nix/profiles/system-10-link
+>>> /nix/var/nix/profiles/system-11-link
+Version changes:
+[U.]  #01  btop                        1.4.4, 1.4.4-fish-completions -> 1.4.5, 1.4.5-fish-completions
+[U.]  #02  initrd-linux-xanmod         6.16.7 -> 6.16.8
+[U.]  #03  librewolf                   142.0.1-1 x2, 142.0.1-1-fish-completions -> 143.0-1 x2, 143.0-1-fish-completions
+[U.]  #04  librewolf-unwrapped         142.0.1-1 -> 143.0-1
+[U.]  #05  linux-xanmod                6.16.7, 6.16.7-modules x2, 6.16.7-modules-shrunk -> 6.16.8, 6.16.8-modules x2, 6.16.8-modules-shrunk
+[U*]  #06  niri-unstable               2025-09-20-a1dcced -> 2025-09-23-3850739
+[U.]  #07  nixos-system-sakura         25.11.20250919.8eaee11.dbf80de -> 25.11.20250921.554be64.fef95f1
+[U.]  #08  noctalia-shell              2e0214ddb81e3857ac863438c6f522cd5caaea26, 2e0214ddb81e3857ac863438c6f522cd5caaea26-fish-completions -> 72475cd29b8137609865b291949edbc6e7d853cb, 72475cd29b8137609865b291949edbc6e7d853cb-fish-completions
+[C.]  #09  nss                         3.112.1, 3.114.1, 3.116 -> 3.112.1, 3.115.1, 3.116
+[U.]  #10  typescript-language-server  4.4.0 -> 5.0.0
+[U.]  #11  zfs-kernel                  2.3.4-6.16.7 -> 2.3.4-6.16.8
+Selection state changes:
+[C-]  #1  hicolor-icon-theme  0.18
+Added packages:
+[A.]  #01  base16-everforest-dark-soft.conf        <none>
+[A.]  #02  base16-everforest-dark-soft.css         <none>
+[A.]  #03  base16-everforest-dark-soft.fish        <none>
+[A.]  #04  base16-everforest-dark-soft.html        <none>
+[A.]  #05  base16-everforest-dark-soft.json        <none>
+[A.]  #06  base16-everforest-dark-soft.svg         <none> x2
+[A.]  #07  base16-everforest-dark-soft.tmTheme     <none>
+[A.]  #08  base16-everforest-dark-soft.xml         <none>
+[A.]  #09  everforest                              1e625639
+[A+]  #10  everforest-cursors                      3212590527, 3212590527-fish-completions
+[A.]  #11  everforest-dark-soft-gnome-shell-theme  <none>
+[A+]  #12  everforest-gtk-theme                    0-unstable-2023-03-20, 0-unstable-2023-03-20-fish-completions
+[A+]  #13  gtk-engine-murrine                      0.98.2
+[A.]  #14  noctalia.service                        <none>
+[A.]  #15  unit-notify-problems-.service           <none>
+[A.]  #16  unit-script-notify-problems_-start      <none>
+Removed packages:
+[R.]  #01  base16-nord.conf          <none>
+[R.]  #02  base16-nord.css           <none>
+[R.]  #03  base16-nord.fish          <none>
+[R.]  #04  base16-nord.html          <none>
+[R.]  #05  base16-nord.json          <none>
+[R.]  #06  base16-nord.svg           <none> x2
+[R.]  #07  base16-nord.tmTheme       <none>
+[R.]  #08  base16-nord.xml           <none>
+[R-]  #09  capitaine-cursors-themed  5, 5-fish-completions
+[R.]  #10  catppuccin                30fa4d12
+[R.]  #11  nord-gnome-shell-theme    <none>
+[R-]  #12  papirus-nord              3.2.0, 3.2.0-fish-completions
+Closure size: 2408 -> 2412 (142 paths added, 138 paths removed, delta +4, disk usage -345.5MiB).
