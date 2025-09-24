@@ -705,3 +705,136 @@ Removed packages:
 [R.]  #2  noctalia-shell-ae2d3eddd6f41bc31a835307cffd1244531fd245                   <none>
 [R.]  #3  noctalia-shell-ae2d3eddd6f41bc31a835307cffd1244531fd245-fish-completions  <none>
 Closure size: 2462 -> 2459 (244 paths added, 247 paths removed, delta -3, disk usage -20.6MiB).
+
+---
+
+2025年09月24日 16時13分56秒
+<<< /nix/var/nix/profiles/system-11-link
+>>> /nix/var/nix/profiles/system-13-link
+Version changes:
+[C.]  #01  binutils-wrapper            2.44 -> 2.44 x2
+[U.]  #02  btop                        1.4.4, 1.4.4-fish-completions -> 1.4.5, 1.4.5-fish-completions
+[C.]  #03  expand-response-params      <none> -> <none> x2
+[C.]  #04  ffmpeg                      4.4.6-data, 4.4.6-lib, 7.1.1-bin, 7.1.1-data, 7.1.1-fish-completions, 7.1.1-lib, 7.1.1-man -> 4.4.6-data, 4.4.6-lib, 6.1.2-data, 6.1.2-lib, 7.1.1-bin, 7.1.1-data, 7.1.1-fish-completions, 7.1.1-lib, 7.1.1-man
+[C.]  #05  icu4c                       76.1 x2, 76.1-dev, 77.1 -> 73.2, 76.1 x2, 76.1-dev, 77.1
+[U.]  #06  initrd-linux-xanmod         6.16.7 -> 6.16.8
+[C.]  #07  libplacebo                  7.351.0 -> 5.264.1, 7.351.0
+[U.]  #08  librewolf                   142.0.1-1 x2, 142.0.1-1-fish-completions -> 143.0-1 x2, 143.0-1-fish-completions
+[U.]  #09  librewolf-unwrapped         142.0.1-1 -> 143.0-1
+[U.]  #10  linux-xanmod                6.16.7, 6.16.7-modules x2, 6.16.7-modules-shrunk -> 6.16.8, 6.16.8-modules x2, 6.16.8-modules-shrunk
+[U*]  #11  niri-unstable               2025-09-20-a1dcced -> 2025-09-23-3850739
+[U.]  #12  nixos-system-acer           25.11.20250919.8eaee11.ea1464f -> 25.11.20250921.554be64.6824a77
+[U.]  #13  noctalia-shell              2e0214ddb81e3857ac863438c6f522cd5caaea26, 2e0214ddb81e3857ac863438c6f522cd5caaea26-fish-completions -> 72475cd29b8137609865b291949edbc6e7d853cb, 72475cd29b8137609865b291949edbc6e7d853cb-fish-completions
+[C.]  #14  nss                         3.112.1, 3.114.1, 3.116 -> 3.112.1, 3.115.1, 3.116
+[C.]  #15  pcre2                       10.44 x3 -> 10.44 x4
+[C.]  #16  python3                     3.13.7 x2, 3.13.7-env x8, 3.13.7-env-fish-completions -> 3.12.11, 3.13.7 x2, 3.13.7-env x8, 3.13.7-env-fish-completions
+[C.]  #17  qtmultimedia                6.9.2 -> 5.15.17, 5.15.17-bin, 6.9.2
+[C.]  #18  taglib                      2.1.1 -> 1.13.1, 2.1.1
+[U.]  #19  typescript-language-server  4.4.0 -> 5.0.0
+[U.]  #20  zfs-kernel                  2.3.4-6.16.7 -> 2.3.4-6.16.8
+Added packages:
+[A.]  #001  a52dec                                0.8.0
+[A.]  #002  all-plugins                           <none>
+[A+]  #003  alsa-utils                            1.2.14
+[A.]  #004  base16-nord.toml                      <none>
+[A.]  #005  cef-binary                            138.0.17
+[A.]  #006  codebook                              0.3.9
+[A.]  #007  cyanrip                               0.9.3.1, 0.9.3.1-fish-completions
+[A.]  #008  gcc-wrapper                           14.3.0
+[A.]  #009  gnumake                               4.4.1
+[A+]  #010  helix                                 25.07.1, 25.07.1-fish-completions
+[A.]  #011  helix-config.toml                     <none>
+[A.]  #012  helix-languages-config                <none>
+[A.]  #013  hm_helixignore                        <none>
+[A.]  #014  lemminx                               0.31.0
+[A.]  #015  libargon2                             20190702
+[A.]  #016  libcddb                               1.3.2
+[A.]  #017  libdatachannel                        0.23.1
+[A.]  #018  libdiscid                             0.6.5
+[A.]  #019  libdvbpsi                             1.3.3
+[A.]  #020  libebml                               1.4.5
+[A.]  #021  libkate                               0.4.3
+[A.]  #022  libmatroska                           1.7.1
+[A.]  #023  libmicrodns                           0.2.0
+[A.]  #024  libmpeg2                              0.5.1
+[A.]  #025  libmusicbrainz                        5.1.0-unstable-2025-07-12
+[A.]  #026  libtiger                              0.3.4
+[A.]  #027  libvlc                                3.0.21
+[A.]  #028  libvpl                                2.15.0
+[A.]  #029  libzip                                1.11.4
+[A.]  #030  ltex-ls-plus                          18.5.1
+[A.]  #031  noctalia.service                      <none>
+[A.]  #032  obs-studio                            31.1.2
+[A.]  #033  obs-studio-plugins                    <none>
+[A.]  #034  openjdk-headless                      21.0.8+9
+[A.]  #035  openjdk-headless-minimal-jre          21.0.8+9
+[A.]  #036  php                                   8.4.12
+[A.]  #037  php-bcmath                            8.4.12
+[A.]  #038  php-calendar                          8.4.12
+[A.]  #039  php-ctype                             8.4.12
+[A.]  #040  php-curl                              8.4.12
+[A.]  #041  php-dom                               8.4.12
+[A.]  #042  php-exif                              8.4.12
+[A.]  #043  php-extra-init                        8.4.12.ini
+[A.]  #044  php-fileinfo                          8.4.12
+[A.]  #045  php-filter                            8.4.12
+[A.]  #046  php-ftp                               8.4.12
+[A.]  #047  php-gd                                8.4.12
+[A.]  #048  php-gettext                           8.4.12
+[A.]  #049  php-gmp                               8.4.12
+[A.]  #050  php-iconv                             8.4.12
+[A.]  #051  php-intl                              8.4.12
+[A.]  #052  php-ldap                              8.4.12
+[A.]  #053  php-mbstring                          8.4.12
+[A.]  #054  php-mysqli                            8.4.12
+[A.]  #055  php-mysqlnd                           8.4.12
+[A.]  #056  php-opcache                           8.4.12
+[A.]  #057  php-openssl                           8.4.12
+[A.]  #058  php-pcntl                             8.4.12
+[A.]  #059  php-pdo                               8.4.12
+[A.]  #060  php-pdo_mysql                         8.4.12
+[A.]  #061  php-pdo_odbc                          8.4.12
+[A.]  #062  php-pdo_pgsql                         8.4.12
+[A.]  #063  php-pdo_sqlite                        8.4.12
+[A.]  #064  php-pgsql                             8.4.12
+[A.]  #065  php-posix                             8.4.12
+[A.]  #066  php-readline                          8.4.12
+[A.]  #067  php-session                           8.4.12
+[A.]  #068  php-simplexml                         8.4.12
+[A.]  #069  php-soap                              8.4.12
+[A.]  #070  php-sockets                           8.4.12
+[A.]  #071  php-sodium                            8.4.12
+[A.]  #072  php-sqlite3                           8.4.12
+[A.]  #073  php-sysvsem                           8.4.12
+[A.]  #074  php-tokenizer                         8.4.12
+[A.]  #075  php-with-extensions                   8.4.12
+[A.]  #076  php-xmlreader                         8.4.12
+[A.]  #077  php-xmlwriter                         8.4.12
+[A.]  #078  php-zip                               8.4.12
+[A.]  #079  php-zlib                              8.4.12
+[A.]  #080  phpactor                              2025.07.25.0
+[A.]  #081  picard                                2.13.3, 2.13.3-fish-completions
+[A.]  #082  prettier                              3.6.2
+[A.]  #083  python3.12-dbus-python                1.4.0, 1.4.0-dev
+[A.]  #084  python3.12-discid                     1.3.0
+[A.]  #085  python3.12-fasteners                  0.20
+[A.]  #086  python3.12-markdown                   3.8.2
+[A.]  #087  python3.12-mutagen                    1.47.0
+[A.]  #088  python3.12-pyjwt                      2.10.1
+[A.]  #089  python3.12-pyqt5                      5.15.10, 5.15.10-dev
+[A.]  #090  python3.12-pyqt5-sip                  12.17.0
+[A.]  #091  python3.12-python-dateutil            2.9.0.post0
+[A.]  #092  python3.12-pyyaml                     6.0.2
+[A.]  #093  python3.12-six                        1.17.0
+[A.]  #094  qtwebchannel                          5.15.17
+[A.]  #095  ruff                                  0.12.10
+[A.]  #096  schroedinger                          1.0.11
+[A.]  #097  set-java-classpath-hook               <none>
+[A.]  #098  sqls                                  0.2.28
+[A.]  #099  unit-notify-problems-.service         <none>
+[A.]  #100  unit-script-notify-problems_-start    <none>
+[A.]  #101  unit-script-syncoid-remote-pre-start  <none>
+[A.]  #102  wrapped-obs-studio                    31.1.2, 31.1.2-fish-completions
+Removed packages:
+[R.]  #1  initrd-bin-env  <none>
+Closure size: 2459 -> 2577 (204 paths added, 86 paths removed, delta +118, disk usage +3.2GiB).
