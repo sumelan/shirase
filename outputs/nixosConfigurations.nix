@@ -20,8 +20,7 @@
     ../flake/nixos
   ];
 
-  mkSystem = {
-    host,
+  mkSystem = host: {
     user,
     system ? "x86_64-linux",
     hardware,
@@ -81,13 +80,11 @@
     };
 in {
   flake.nixosConfigurations = {
-    acer = mkSystem {
-      host = "acer";
+    acer = mkSystem "acer" {
       user = "sumelan";
       hardware = "laptop";
     };
-    sakura = mkSystem {
-      host = "sakura";
+    sakura = mkSystem "sakura" {
       user = "sumelan";
       hardware = "desktop";
     };
