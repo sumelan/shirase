@@ -1,4 +1,4 @@
-set shell := ["fish", "-c"]
+set shell := ["sh", "-c"]
 
 export NH_FLAKE := `echo $PWD`
 export HOSTNAME := `hostname`
@@ -26,13 +26,13 @@ profiles-path := "/nix/var/nix/profiles"
 [group('SYSTEM')]
 [doc('Switch configuration, make boot-default and remain a log, commit on git.')]
 @deploy *args: check
-    if test -f bootlog/{{ HOSTNAME }}.log; \
+    if [ -f "bootlog/{{ HOSTNAME }}.log" ]; then \
       echo -e "Write in previous log...\n"; \
-    else; \
-      echo -e "Create new log...\n"; \
-      echo -e "\n[New entry]" >> bootlog/{{ HOSTNAME }}.log; \
+    else \
+      echo -e "Create new log...\n" && \
+      echo -e "\n[New entry]" >> bootlog/{{ HOSTNAME }}.log && \
       echo -e "<<< .\n>>> $(command ls -d1v {{ profiles-path }}/system-*-link | tail -n 1)" >> bootlog/{{ HOSTNAME }}.log; \
-    end
+    fi
 
     nh os switch {{ args }}
 
