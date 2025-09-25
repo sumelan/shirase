@@ -63,27 +63,6 @@ in {
       '';
 
     programs.niri.settings.binds = {
-      # audio
-      #  "XF86AudioRaiseVolume" = lib.custom.niri.runCmd {
-      # cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --output-volume raise";
-      # };
-      #"XF86AudioLowerVolume" = lib.custom.niri.runCmd {
-      # cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --output-volume lower";
-      #};
-      #"XF86AudioMute" = lib.custom.niri.runCmd {
-      # cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --output-volume mute-toggle";
-      # };
-      # "XF86AudioMicMute" = lib.custom.niri.runCmd {
-      # cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --input-volume mute-toggle";
-      # };
-      # brightness
-      # "XF86MonBrightnessUp" = lib.custom.niri.runCmd {
-      #   cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --brightness raise";
-      # };
-      # "XF86MonBrightnessDown" = lib.custom.niri.runCmd {
-      #   cmd = "swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --brightness lower";
-      # };
-
       "XF86AudioPlay" = {
         action.spawn = ["swayosd-client" "--monitor" "${config.lib.monitors.mainMonitorName}" "--playerctl=play-pause"];
         allow-when-locked = true;

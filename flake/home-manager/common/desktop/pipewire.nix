@@ -11,6 +11,7 @@ in
   # NOTE: 'programs.dconf.enable = true' is necessary for theb daemon to work correctly
   {
     home.packages = with pkgs; [pwvucontrol];
+
     services.easyeffects.enable = true;
 
     xdg.configFile."easyeffects/output" = {

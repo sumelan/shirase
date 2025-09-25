@@ -65,9 +65,9 @@ in {
 
   # never going to read html docs locally
   documentation = {
-    enable = false;
-    doc.enable = false;
-    man.enable = false;
+    enable = true;
+    doc.enable = true;
+    man.enable = true;
     dev.enable = false;
   };
 
