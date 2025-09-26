@@ -879,3 +879,102 @@ Removed packages:
 [R.]  #12  nord-gnome-shell-theme    <none>
 [R-]  #13  papirus-nord              3.2.0, 3.2.0-fish-completions
 Closure size: 2577 -> 2579 (98 paths added, 96 paths removed, delta +2, disk usage -333.8MiB).
+
+---
+
+2025年09月26日 22時57分32秒
+<<< /nix/var/nix/profiles/system-14-link
+>>> /nix/var/nix/profiles/system-15-link
+Version changes:
+[C*]  #01  acl                     2.3.2 x3, 2.3.2-bin -> 2.3.2 x3, 2.3.2-bin, 2.3.2-doc, 2.3.2-man
+[C*]  #02  attr                    2.5.2 x3, 2.5.2-bin -> 2.5.2 x3, 2.5.2-bin, 2.5.2-doc, 2.5.2-man
+[C*]  #03  bash-interactive        5.3p3, 5.3p3-dev, 5.3p3-fish-completions, 5.3p3-man -> 5.3p3, 5.3p3-dev, 5.3p3-doc, 5.3p3-fish-completions, 5.3p3-info, 5.3p3-man
+[U*]  #04  bcache-tools            1.0.8 -> 1.1
+[C*]  #05  bind                    9.20.13-dnsutils, 9.20.13-host, 9.20.13-lib -> 9.20.13-dnsutils, 9.20.13-host, 9.20.13-lib, 9.20.13-man
+[C.]  #06  boehm-gc                8.2.8 x2 -> 8.2.8 x3
+[C*]  #07  bzip2                   1.0.8 x3, 1.0.8-bin, 1.0.8-dev -> 1.0.8 x3, 1.0.8-bin, 1.0.8-dev, 1.0.8-man
+[U.]  #08  cava                    0.10.4 -> 0.10.6
+[U.]  #09  codebook                0.3.9 -> 0.3.10
+[C*]  #10  coreutils-full          9.7 -> 9.7, 9.7-info
+[C*]  #11  dbus                    1, 1.14.10, 1.14.10-dev, 1.14.10-lib x2 -> 1, 1.14.10, 1.14.10-dev, 1.14.10-doc, 1.14.10-lib x2, 1.14.10-man
+[U.]  #12  deno                    2.5.0 -> 2.5.1
+[C*]  #13  diffutils               3.12 x2 -> 3.12 x2, 3.12-info
+[U.]  #14  electron                37.4.0 -> 37.5.1
+[U.]  #15  electron-unwrapped      37.4.0 -> 37.5.1
+[C*]  #16  findutils               4.10.0 -> 4.10.0, 4.10.0-info
+[C*]  #17  fuse                    2.9.9, 2.9.9-bin, 3.17.4, 3.17.4-bin -> 2.9.9, 2.9.9-bin, 2.9.9-man, 3.17.4, 3.17.4-bin, 3.17.4-man
+[C*]  #18  fwupd                   2.0.16, 2.0.16-lib -> 2.0.16, 2.0.16-lib, 2.0.16-man
+[C*]  #19  gawk                    5.3.2 -> 5.3.2, 5.3.2-info, 5.3.2-man
+[U.]  #20  gh                      2.79.0, 2.79.0-fish-completions -> 2.80.0, 2.80.0-fish-completions
+[C*]  #21  gnugrep                 3.12 -> 3.12, 3.12-info
+[C*]  #22  gnused                  4.9 -> 4.9, 4.9-info
+[C*]  #23  gnutar                  1.35 x2 -> 1.35 x2, 1.35-info
+[U.]  #24  gpu-screen-recorder     5.6.8 -> 5.7.0
+[C*]  #25  gzip                    1.14, 1.14-fish-completions, 1.14-man -> 1.14, 1.14-fish-completions, 1.14-info, 1.14-man
+[C*]  #26  iptables                1.8.11, 1.8.11-lib -> 1.8.11, 1.8.11-lib, 1.8.11-man
+[C*]  #27  kbd                     2.8.0-unstable-2025-08-12 x4 -> 2.8.0-unstable-2025-08-12 x4, 2.8.0-unstable-2025-08-12-man
+[C*]  #28  less                    679 -> 679, 679-man
+[C*]  #29  libcap                  2.76, 2.76-lib x4 -> 2.76, 2.76-doc, 2.76-lib x4, 2.76-man
+[U.]  #30  libdatachannel          0.23.1 -> 0.23.2
+[C*]  #31  libressl                4.1.0, 4.1.0-nc -> 4.1.0, 4.1.0-man, 4.1.0-nc
+[C*]  #32  linux-pam               1.7.1 x2 -> 1.7.1 x2, 1.7.1-doc, 1.7.1-man
+[C*]  #33  lvm2                    2.03.33, 2.03.33-bin, 2.03.33-lib x2 -> 2.03.33, 2.03.33-bin, 2.03.33-lib x2, 2.03.33-man
+[C.]  #34  man-cache               <none> -> <none> x2
+[C+]  #35  man-db                  2.13.1, 2.13.1-fish-completions -> 2.13.1, 2.13.1-doc, 2.13.1-fish-completions
+[C*]  #36  network-manager-applet  1.36.0 -> 1.36.0, 1.36.0-man
+[C*]  #37  networkmanager          1.52.1, 1.52.1-dev -> 1.52.1, 1.52.1-dev, 1.52.1-doc, 1.52.1-man
+[U.]  #38  nilfs-utils             2.2.11 -> 2.2.12
+[U*]  #39  niri-unstable           2025-09-23-3850739 -> 2025-09-24-e837e39, 2025-09-24-e837e39-doc
+[C*]  #40  nix                     2.28.4, 2.28.4-man, 2.28.5, 2.28.5-man -> 2.28.4, 2.28.4-man, 2.28.5, 2.28.5-doc, 2.28.5-man
+[U*]  #41  nix-update              1.13.0 -> 1.13.1
+[U.]  #42  nixd                    2.6.4, 2.6.4-fish-completions -> 2.7.0, 2.7.0-fish-completions
+[U.]  #43  nixf                    2.6.4 -> 2.7.0
+[U.]  #44  nixos-system-acer       25.11.20250921.554be64.dirty -> 25.11.20250924.e643668.1bcdc4f
+[U.]  #45  nixpkgs-review          3.5.0 x2, 3.5.0-fish-completions -> 3.5.1 x2, 3.5.1-fish-completions
+[U.]  #46  nixt                    2.6.4 -> 2.7.0
+[D.]  #47  noctalia-shell          72475cd29b8137609865b291949edbc6e7d853cb, 72475cd29b8137609865b291949edbc6e7d853cb-fish-completions -> 5cfa66f9e8fd22170ec9e4d112bd8dc3a80a3908, 5cfa66f9e8fd22170ec9e4d112bd8dc3a80a3908-fish-completions
+[C*]  #48  pipewire                1.4.7 x2, 1.4.7-dev, 1.4.7-jack -> 1.4.7 x2, 1.4.7-dev, 1.4.7-doc, 1.4.7-jack, 1.4.7-man
+[C.]  #49  proton-pass             1.32.5, 1.32.6, 1.32.6-fish-completions -> 1.32.6, 1.32.6-fish-completions, 1.32.7
+[C*]  #50  shadow                  4.18.0, 4.18.0-su -> 4.18.0, 4.18.0-man, 4.18.0-su
+[C*]  #51  strace                  6.16 -> 6.16, 6.16-man
+[U.]  #52  stylua                  2.1.0 -> 2.2.0
+[C*]  #53  systemd                 <none>, 257.8 x2 -> <none>, 257.8 x2, 257.8-man
+[U.]  #54  tevent                  0.17.0 -> 0.17.1
+[C*]  #55  udisks                  2.10.2 -> 2.10.2, 2.10.2-man
+[C*]  #56  util-linux              2.41.1-bin, 2.41.1-lastlog, 2.41.1-lib, 2.41.1-login, 2.41.1-mount, 2.41.1-swap -> 2.41.1-bin, 2.41.1-lastlog, 2.41.1-lib, 2.41.1-login, 2.41.1-man, 2.41.1-mount, 2.41.1-swap
+[C*]  #57  uwsm                    0.23.3 -> 0.23.3, 0.23.3-man
+[U.]  #58  vpl-gpu-rt              25.3.2 -> 25.3.4
+[C*]  #59  wireplumber             0.4.17, 0.5.11 -> 0.4.17, 0.5.11, 0.5.11-doc
+[U.]  #60  xdg-terminal-exec       0.13.2, 0.13.2-fish-completions -> 0.13.3, 0.13.3-fish-completions
+[C*]  #61  xz                      5.8.1 x3, 5.8.1-bin -> 5.8.1 x3, 5.8.1-bin, 5.8.1-doc, 5.8.1-man
+[U.]  #62  yt-dlp                  2025.09.05, 2025.09.05-fish-completions -> 2025.09.23, 2025.09.23-fish-completions
+[C*]  #63  zstd                    1.5.7 x3, 1.5.7-bin -> 1.5.7 x3, 1.5.7-bin, 1.5.7-man
+Added packages:
+[A.]  #01  boost                                  1.87.0
+[A.]  #02  etc-man_db.conf                        <none>
+[A.]  #03  ghostty                                1.2.0, 1.2.0-fish-completions, 1.2.0-man, 1.2.0-shell_integration, 1.2.0-terminfo, 1.2.0-vim
+[A.]  #04  ghostty-config                         <none>
+[A.]  #05  ghostty-stylix-theme                   <none>
+[A.]  #06  glslang                                15.4.0
+[A.]  #07  gpm-unstable                           2020-06-17
+[A.]  #08  initrd-bin-env                         <none>
+[A.]  #09  initrd-fstab                           <none>
+[A.]  #10  initrd-shadow                          <none>
+[A.]  #11  nix-cmd                                2.30.3
+[A.]  #12  nix-expr                               2.30.3
+[A.]  #13  nix-fetchers                           2.30.3
+[A.]  #14  nix-flake                              2.30.3
+[A.]  #15  nix-main                               2.30.3
+[A.]  #16  nix-store                              2.30.3
+[A.]  #17  nix-util                               2.30.3
+[A+]  #18  nixos-configuration-reference-manpage  <none>
+[A+]  #19  nixos-help                             <none> x2
+[A+]  #20  nixos-manual-html                      <none>
+[A.]  #21  nixos-manual.desktop                   <none>
+[A+]  #22  texinfo-interactive                    7.2
+[A.]  #23  w3m                                    0.5.5
+Removed packages:
+[R.]  #1  unit-notify-problems-.service         <none>
+[R.]  #2  unit-script-notify-problems_-start    <none>
+[R.]  #3  unit-script-syncoid-remote-pre-start  <none>
+Closure size: 2579 -> 2656 (229 paths added, 152 paths removed, delta +77, disk usage +135.2MiB).
