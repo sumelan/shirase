@@ -27,6 +27,7 @@ in {
 
     programs.noctalia-shell = {
       enable = true;
+      # everforest default palette
       colors = {
         mError = "#e67e80";
         mOnError = "#232a2e";
@@ -38,7 +39,7 @@ in {
         mOutline = "#d3c6aa";
         mPrimary = "#d3c6aa";
         mSecondary = "#d3c6aa";
-        mShadow = "#775258";
+        mShadow = "#475258";
         mSurface = "#232a2e";
         mSurfaceVariant = "#2d353b";
         mTertiary = "#9da9a0";
@@ -160,7 +161,7 @@ in {
         general = {
           animationSpeed = 1;
           avatarImage = "${config.home.homeDirectory}/.face";
-          dimDesktop = false;
+          dimDesktop = true;
           forceBlackScreenCorners = false;
           radiusRatio = 1;
           screenRadiusRatio = 1;
@@ -207,13 +208,18 @@ in {
           alwaysOnTop = false;
           criticalUrgencyDuration = 15;
           doNotDisturb = false;
-          enableOSD = true;
           lastSeenTs = 0;
           location = "top_right";
           lowUrgencyDuration = 3;
           monitors = [];
           normalUrgencyDuration = 8;
           respectExpireTimeout = true;
+        };
+        osd = {
+          autoHideMs = 2000;
+          enabled = true;
+          location = "bottom";
+          monitors = [];
         };
         screenRecorder = {
           audioCodec = "opus";
@@ -226,9 +232,9 @@ in {
           videoCodec = "h264";
           videoSource = "portal";
         };
-        settingsVersion = 5;
+        settingsVersion = 8;
         ui = {
-          fontBillboard = "Roboto";
+          fontBillboard = "Inter";
           fontDefault = config.stylix.fonts.sansSerif.name;
           fontFixed = config.stylix.fonts.monospace.name;
           idleInhibitorEnabled = false;
