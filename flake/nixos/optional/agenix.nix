@@ -14,8 +14,7 @@ in {
   imports = [inputs.agenix.nixosModules.default];
 
   options.custom = {
-    agenix.enable =
-      mkEnableOption "agenix";
+    agenix.enable = mkEnableOption "agenix";
   };
 
   config = {
