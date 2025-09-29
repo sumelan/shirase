@@ -978,3 +978,37 @@ Removed packages:
 [R.]  #2  unit-script-notify-problems_-start    <none>
 [R.]  #3  unit-script-syncoid-remote-pre-start  <none>
 Closure size: 2579 -> 2656 (229 paths added, 152 paths removed, delta +77, disk usage +135.2MiB).
+
+---
+
+2025年09月29日 21時46分13秒
+<<< /nix/var/nix/profiles/system-15-link
+>>> /nix/var/nix/profiles/system-16-link
+Version changes:
+[U.]  #01  apt                      3.1.4 -> 3.1.5
+[U.]  #02  bash-grammar             0.0.0+rev=cef0974 -> 0.0.0+rev=20f55fb
+[D.]  #03  c-grammar                0.0.0+rev=d8d0503 -> 0.0.0+rev=ae19b67
+[U.]  #04  cpp-grammar              0.0.0+rev=e89fbaf -> 0.0.0+rev=2a682d3
+[U.]  #05  deno                     2.5.1 -> 2.5.2
+[U.]  #06  difftastic               0.64.0, 0.64.0-fish-completions -> 0.65.0, 0.65.0-fish-completions
+[U.]  #07  espeak-ng                1.52.0 -> 1.52.0.1-unstable-2025-09-09
+[D.]  #08  html-grammar             0.0.0+rev=2817380 -> 0.0.0+rev=73a3947
+[U.]  #09  initrd-linux-xanmod      6.16.8 -> 6.16.9
+[U.]  #10  javascript-grammar       0.0.0+rev=22da14e -> 0.0.0+rev=58404d8
+[U.]  #11  linux-xanmod             6.16.8, 6.16.8-modules x2, 6.16.8-modules-shrunk -> 6.16.9, 6.16.9-modules x2, 6.16.9-modules-shrunk
+[D.]  #12  markdown-grammar         0.0.0+rev=7462bb6 -> 0.0.0+rev=2dfd57f
+[D.]  #13  markdown_inline-grammar  0.0.0+rev=7462bb6 -> 0.0.0+rev=2dfd57f
+[U.]  #14  nix-search-tv            2.2.1, 2.2.1-fish-completions -> 2.2.2, 2.2.2-fish-completions
+[U.]  #15  nixos-system-acer        25.11.20250924.e643668.1bcdc4f -> 25.11.20250928.e9f00bd.b9556d5
+[D.]  #16  rust-grammar             0.0.0+rev=2a58b00 -> 0.0.0+rev=00d7cbc
+[U.]  #17  vimplugin-yazi.nvim      2025-09-15 -> 2025-09-26
+[U.]  #18  yt-dlp                   2025.09.23, 2025.09.23-fish-completions -> 2025.09.26, 2025.09.26-fish-completions
+[U.]  #19  zfs-kernel               2.3.4-6.16.8 -> 2.3.4-6.16.9
+Added packages:
+[A.]  #1  noctalia-shell-b8b54825d55f65897cdc4e7c5f4d28e0f50ecde1                   <none>
+[A.]  #2  noctalia-shell-b8b54825d55f65897cdc4e7c5f4d28e0f50ecde1-fish-completions  <none>
+Removed packages:
+[R.]  #1  initrd-fstab    <none>
+[R.]  #2  initrd-shadow   <none>
+[R.]  #3  noctalia-shell  5cfa66f9e8fd22170ec9e4d112bd8dc3a80a3908, 5cfa66f9e8fd22170ec9e4d112bd8dc3a80a3908-fish-completions
+Closure size: 2656 -> 2654 (147 paths added, 149 paths removed, delta -2, disk usage -19.0MiB).
