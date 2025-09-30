@@ -48,8 +48,8 @@ in {
         mOnSurfaceVariant = base06;
         mOnTertiary = base00;
         mOutline = base02;
-        mPrimary = base0B;
-        mSecondary = base0A;
+        mPrimary = base0A;
+        mSecondary = base0B;
         mShadow = base00;
         mSurface = base00;
         mSurfaceVariant = base01;
