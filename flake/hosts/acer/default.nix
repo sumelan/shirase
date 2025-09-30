@@ -49,10 +49,7 @@ in {
       "distrobox"
     ];
   in
-    {
-      stylix.colorTheme = "everforest-dark-soft";
-    }
-    // genAttrs enableList (_name: {
+    genAttrs enableList (_name: {
       enable = true;
     })
     // genAttrs disableList (_name: {

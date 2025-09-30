@@ -3,7 +3,6 @@
   config,
   pkgs,
   inputs,
-  isLaptop,
   ...
 }: let
   inherit
@@ -12,6 +11,19 @@
     mkIf
     getExe
     splitString
+    ;
+
+  inherit
+    (config.lib.stylix.colors.withHashtag)
+    base00
+    base01
+    base02
+    base06
+    base07
+    base08
+    base0A
+    base0B
+    base0D
     ;
 
   noctaliaPkgs = inputs.noctalia-shell.packages.${pkgs.system}.default;
@@ -27,22 +39,21 @@ in {
 
     programs.noctalia-shell = {
       enable = true;
-      # everforest default palette
       colors = {
-        mError = "#e67e80";
-        mOnError = "#232a2e";
-        mOnPrimary = "#232a2e";
-        mOnSecondary = "#232a2e";
-        mOnSurface = "#859289";
-        mOnSurfaceVariant = "#d3c6aa";
-        mOnTertiary = "#232a2e";
-        mOutline = "#d3c6aa";
-        mPrimary = "#d3c6aa";
-        mSecondary = "#d3c6aa";
-        mShadow = "#475258";
-        mSurface = "#232a2e";
-        mSurfaceVariant = "#2d353b";
-        mTertiary = "#9da9a0";
+        mError = base08;
+        mOnError = base00;
+        mOnPrimary = base00;
+        mOnSecondary = base00;
+        mOnSurface = base07;
+        mOnSurfaceVariant = base06;
+        mOnTertiary = base00;
+        mOutline = base02;
+        mPrimary = base0B;
+        mSecondary = base0A;
+        mShadow = base00;
+        mSurface = base00;
+        mSurfaceVariant = base01;
+        mTertiary = base0D;
       };
       settings = {
         appLauncher = {
@@ -58,6 +69,7 @@ in {
           mprisBlacklist = ["librewolf"];
           preferredPlayer = "spotify";
           visualizerType = "linear";
+          volumeOverdrive = false;
           volumeStep = 5;
         };
         bar = {
@@ -67,10 +79,7 @@ in {
           marginHorizontal = 0.25;
           marginVertical = 0.25;
           monitors = [];
-          position =
-            if isLaptop
-            then "left"
-            else "center";
+          position = "left";
           showCapsule = true;
           widgets = {
             center = [
@@ -88,11 +97,15 @@ in {
                 useDistroLogo = true;
               }
               {
+                autoHide = true;
                 id = "ActiveWindow";
+                scrollingMode = "hover";
                 showIcon = true;
               }
               {
+                autoHide = true;
                 id = "MediaMini";
+                scrollingMode = "hover";
                 showAlbumArt = false;
                 showVisualizer = false;
                 visualizerType = "linear";
@@ -146,8 +159,12 @@ in {
           brightnessStep = 5;
         };
         colorSchemes = {
-          darkMode = true;
-          predefinedScheme = "Everforest";
+          darkMode =
+            if (config.stylix.polarity == "dark")
+            then true
+            else false;
+          matugenSchemeType = "scheme-fruit-salad";
+          predefinedScheme = "Gruvbox";
           useWallpaperColors = false;
         };
         dock = {
@@ -159,6 +176,7 @@ in {
           pinnedApps = [];
         };
         general = {
+          animationDisabled = false;
           animationSpeed = 1;
           avatarImage = "${config.home.homeDirectory}/.face";
           dimDesktop = true;
@@ -173,7 +191,7 @@ in {
           wallpaperChange = "";
         };
         location = {
-          name = "Tokyo";
+          name = "Shiga";
           showWeekNumberInCalendar = false;
           use12hourFormat = false;
           useFahrenheit = false;
@@ -192,20 +210,20 @@ in {
           vesktop = false;
         };
         network = {
-          bluetoothEnabled = true;
+          # bluetoothEnabled = true;
           wifiEnabled = config.custom.wifi.enable;
         };
         nightLight = {
           autoSchedule = true;
           dayTemp = "6500";
-          enabled = true;
+          enabled = false;
           forced = false;
           manualSunrise = "06:30";
           manualSunset = "18:30";
           nightTemp = "4000";
         };
         notifications = {
-          alwaysOnTop = false;
+          alwaysOnTop = true;
           criticalUrgencyDuration = 15;
           doNotDisturb = false;
           lastSeenTs = 0;
@@ -232,9 +250,9 @@ in {
           videoCodec = "h264";
           videoSource = "portal";
         };
-        settingsVersion = 8;
+        settingsVersion = 12;
         ui = {
-          fontBillboard = "Inter";
+          fontBillboard = "Roboto";
           fontDefault = config.stylix.fonts.sansSerif.name;
           fontFixed = config.stylix.fonts.monospace.name;
           idleInhibitorEnabled = false;
@@ -244,16 +262,16 @@ in {
           directory = "${config.xdg.userDirs.pictures}/Wallpapers";
           enableMultiMonitorDirectories = false;
           enabled = true;
-          fillColor = config.lib.stylix.colors.withHashtag.base00;
+          fillColor = base00;
           fillMode = "crop";
           monitors = [
             {
               inherit (config.programs.noctalia-shell.settings.wallpaper) directory;
               name = config.lib.monitors.mainMonitorName;
-              wallpaper = "${config.home.homeDirectory}/.defaultWall.jpg";
+              wallpaper = "${config.home.homeDirectory}/.wall.png";
             }
           ];
-          randomEnabled = true;
+          randomEnabled = false;
           randomIntervalSec = 900;
           setWallpaperOnAllMonitors = true;
           transitionDuration = 1500;

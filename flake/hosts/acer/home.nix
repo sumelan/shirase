@@ -1,9 +1,4 @@
-{
-  lib,
-  pkgs,
-  self,
-  ...
-}: let
+{lib, ...}: let
   inherit
     (lib)
     genAttrs
@@ -41,19 +36,7 @@ in {
     disableList = [
     ];
   in
-    {
-      stylix = {
-        cursor = {
-          package = self.packages.${pkgs.system}.everforest-cursors;
-          name = "everforest-cursors";
-        };
-        icons = {
-          package = pkgs.everforest-gtk-theme;
-          dark = "Everforest-Dark";
-        };
-      };
-    }
-    // genAttrs enableList (_name: {
+    genAttrs enableList (_name: {
       enable = true;
     })
     // genAttrs disableList (_name: {

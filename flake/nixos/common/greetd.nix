@@ -10,6 +10,22 @@
     optionalString
     getExe
     ;
+
+  inherit
+    (config.lib.stylix.colors.withHashtag)
+    base00
+    base01
+    base02
+    base03
+    base04
+    base05
+    base06
+    base08
+    base0B
+    base0C
+    base0D
+    base0E
+    ;
 in {
   # tty autologin
   services.getty.autologinUser = user;
@@ -89,7 +105,7 @@ in {
     };
     settings = {
       background = {
-        path = ./regreet.png;
+        path = ./regreet.jpg;
         fit = "Cover";
       };
       GTK.application_prefer_dark_theme = true;
@@ -100,15 +116,15 @@ in {
         label_width = 450; # the interpretation of this value is entirely up to GTK
       };
     };
-    extraCss = with config.lib.stylix.colors.withHashtag;
-    # css
+    extraCss =
+      # css
       ''
         * {
             all: unset;
           }
 
           picture {
-            filter: blur(0rem);
+            filter: blur(0.4rem);
           }
 
           frame.background {

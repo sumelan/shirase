@@ -8,6 +8,13 @@
     mkEnableOption
     mkIf
     ;
+
+  inherit
+    (config.lib.stylix.colors.withHashtag)
+    base00
+    base02
+    base05
+    ;
 in {
   options.custom = {
     swayosd.enable =
@@ -21,8 +28,8 @@ in {
       topMargin = 1.0;
     };
 
-    xdg.configFile."swayosd/style.scss".text = with config.lib.stylix.colors.withHashtag;
-    # scss
+    xdg.configFile."swayosd/style.scss".text =
+      # scss
       ''
         window {
           border-radius: 999px;

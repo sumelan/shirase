@@ -8,6 +8,14 @@
     singleton
     ;
 
+  inherit
+    (config.lib.stylix.colors.withHashtag)
+    base08
+    base09
+    base0A
+    base0F
+    ;
+
   shadowConfig = {
     enable = true;
     spread = 0;
@@ -15,7 +23,7 @@
     color = "#000000dd";
   };
 in {
-  programs.niri.settings = with config.lib.stylix.colors.withHashtag; {
+  programs.niri.settings = {
     window-rules = [
       # global rules
       {

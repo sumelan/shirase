@@ -1,5 +1,19 @@
-{config, ...}:
-with config.lib.stylix.colors.withHashtag; {
+{config, ...}: let
+  inherit
+    (config.lib.stylix.colors.withHashtag)
+    base00
+    base01
+    base04
+    base05
+    base07
+    base09
+    base0A
+    base0C
+    base0D
+    base0E
+    base0F
+    ;
+in {
   xdg.configFile."rmpc/themes/custom.ron".text =
     # ron
     ''

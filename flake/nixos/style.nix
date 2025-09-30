@@ -14,7 +14,7 @@ in {
     stylix = {
       colorTheme = mkOption {
         type = str;
-        default = "catppuccin-mocha";
+        default = "gruvbox-material-dark-soft";
       };
     };
   };

@@ -7,11 +7,19 @@
     (lib)
     singleton
     ;
+
+  inherit
+    (config.lib.stylix.colors.withHashtag)
+    base00
+    base02
+    base04
+    base05
+    ;
 in {
   programs = {
     swayimg = {
       enable = true;
-      settings = with config.lib.stylix.colors.withHashtag; let
+      settings = let
         inherit (config.stylix) fonts;
         swayimgOpacity =
           lib.toHexString (((builtins.floor (config.stylix.opacity.desktop * 100 + 0.5)) * 255) / 100);

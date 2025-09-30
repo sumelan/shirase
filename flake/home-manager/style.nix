@@ -21,25 +21,30 @@ in {
       cursor = {
         package = mkOption {
           type = package;
-          default = pkgs.bibata-cursors;
+          default = pkgs.capitaine-cursors-themed;
         };
         name = mkOption {
           type = str;
-          default = "Bibata-Modern-Ice";
+          default = "Capitaine Cursors (Gruvbox)";
         };
       };
       icons = {
         package = mkOption {
           type = package;
-          default = pkgs.papirus-icon-theme;
+          default = pkgs.gruvbox-plus-icons.override {
+            # Supported colors:
+            # black blue caramel citron firebrick gold green grey highland jade lavender lime olive
+            # orange pistachio plasma pumpkin purple red rust sapphire tomato violet white yellow
+            folder-color = "yellow";
+          };
         };
         light = mkOption {
           type = str;
-          default = "Papirus-Light";
+          default = "";
         };
         dark = mkOption {
           type = str;
-          default = "Papirus-Dark";
+          default = "Gruvbox-Plus-Dark";
         };
       };
     };

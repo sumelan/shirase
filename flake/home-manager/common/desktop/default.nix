@@ -20,6 +20,6 @@ _: {
   services.polkit-gnome.enable = true;
 
   home.file = {
-    ".defaultWall.jpg".source = ./nixbook.jpg;
+    ".wall.png".source = ./bokutai.png;
   };
 }

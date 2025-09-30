@@ -1,9 +1,4 @@
-{
-  lib,
-  pkgs,
-  self,
-  ...
-}: let
+{lib, ...}: let
   inherit
     (lib)
     genAttrs
@@ -38,16 +33,6 @@ in {
     ];
   in
     {
-      stylix = {
-        cursor = {
-          package = self.packages.${pkgs.system}.everforest-cursors;
-          name = "everforest-cursors";
-        };
-        icons = {
-          package = pkgs.everforest-gtk-theme;
-          dark = "Everforest-Dark";
-        };
-      };
       niri.xwayland.enable = false;
     }
     // genAttrs enableList (_name: {

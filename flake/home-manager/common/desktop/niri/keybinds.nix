@@ -1,5 +1,40 @@
-{config, ...}: {
-  programs.niri.settings.binds = with config.lib.niri.actions; {
+{config, ...}: let
+  inherit
+    (config.lib.niri.actions)
+    spawn
+    show-hotkey-overlay
+    toggle-overview
+    quit
+    screenshot
+    screenshot-window
+    clear-dynamic-cast-target
+    close-window
+    toggle-window-floating
+    fullscreen-window
+    toggle-windowed-fullscreen
+    maximize-column
+    center-column
+    switch-preset-column-width
+    focus-column-left
+    focus-window-down
+    focus-window-up
+    focus-column-right
+    focus-workspace-down
+    focus-workspace-up
+    move-column-left
+    move-window-down-or-to-workspace-down
+    move-window-up-or-to-workspace-up
+    move-column-right
+    move-column-to-workspace-down
+    move-column-to-workspace-up
+    set-column-width
+    set-window-height
+    consume-or-expel-window-left
+    consume-or-expel-window-right
+    toggle-column-tabbed-display
+    ;
+in {
+  programs.niri.settings.binds = {
     # shows a list of important hotkeys
     "Mod+Shift+Slash".action = show-hotkey-overlay;
 

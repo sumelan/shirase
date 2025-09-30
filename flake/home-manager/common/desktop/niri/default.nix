@@ -11,6 +11,14 @@
     mkEnableOption
     mkIf
     ;
+  inherit
+    (config.lib.stylix.colors.withHashtag)
+    base01
+    base02
+    base0B
+    base0C
+    base0D
+    ;
 in {
   imports = [
     ./animations.nix
@@ -27,7 +35,7 @@ in {
   };
 
   config = mkIf config.custom.niri.enable {
-    programs.niri.settings = with config.lib.stylix.colors.withHashtag; let
+    programs.niri.settings = let
       shadowConfig = {
         enable = true;
         spread = 0;
