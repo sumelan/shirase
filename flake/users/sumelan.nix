@@ -29,7 +29,7 @@ in {
 
   # setup a file and user icon for accountservice
   # https://discourse.nixos.org/t/setting-the-user-profile-image-under-gnome/36233/10?u=sumelan
-  hm.home.file.".face".source = ./${username}.jpg;
+  hm.home.file.".face".source = ./${username}.png;
 
   systemd.tmpfiles.rules =
     mkFiles "/var/lib/AccountsService/users/${username}" {
