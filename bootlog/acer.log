@@ -1012,3 +1012,55 @@ Removed packages:
 [R.]  #2  initrd-shadow   <none>
 [R.]  #3  noctalia-shell  5cfa66f9e8fd22170ec9e4d112bd8dc3a80a3908, 5cfa66f9e8fd22170ec9e4d112bd8dc3a80a3908-fish-completions
 Closure size: 2656 -> 2654 (147 paths added, 149 paths removed, delta -2, disk usage -19.0MiB).
+
+---
+
+2025年10月01日 03時22分33秒
+<<< /nix/var/nix/profiles/system-16-link
+>>> /nix/var/nix/profiles/system-17-link
+Version changes:
+[U.]  #1  bitwarden          2025.8.2 -> 2025.9.0
+[C.]  #2  breeze-icons       6.18.0 -> 5.116.0, 6.18.0
+[D.]  #3  nixos-system-acer  25.11.20250928.e9f00bd.b9556d5 -> 25.11.20250928.e9f00bd.aed5840
+[U.]  #4  proton-vpn         1.2.9 -> 1.2.10
+[U.]  #5  sponsorblock       5.14 -> 6.0
+Selection state changes:
+[C+]  #1  hicolor-icon-theme  0.18
+Added packages:
+[A.]  #01  base16-gruvbox-material-dark-soft.conf        <none>
+[A.]  #02  base16-gruvbox-material-dark-soft.css         <none>
+[A.]  #03  base16-gruvbox-material-dark-soft.fish        <none>
+[A.]  #04  base16-gruvbox-material-dark-soft.html        <none>
+[A.]  #05  base16-gruvbox-material-dark-soft.json        <none>
+[A.]  #06  base16-gruvbox-material-dark-soft.svg         <none> x2
+[A.]  #07  base16-gruvbox-material-dark-soft.tmTheme     <none>
+[A.]  #08  base16-gruvbox-material-dark-soft.toml        <none>
+[A.]  #09  base16-gruvbox-material-dark-soft.xml         <none>
+[A+]  #10  capitaine-cursors-themed                      5, 5-fish-completions
+[A.]  #11  gnome-icon-theme                              3.12.0
+[A.]  #12  gruvbox-material-dark-soft-gnome-shell-theme  <none>
+[A+]  #13  gruvbox-plus-icons                            6.3.0, 6.3.0-fish-completions
+[A.]  #14  hm_bokutai.png                                <none>
+[A.]  #15  hm_sumelan.png                                <none>
+[A.]  #16  noctalia-shell                                32712c70527eb9ecc01a1b8f064280fceb3a2766, 32712c70527eb9ecc01a1b8f064280fceb3a2766-fish-completions
+[A.]  #17  regreet.jpg                                   <none>
+Removed packages:
+[R.]  #01  base16-everforest-dark-soft.conf                                          <none>
+[R.]  #02  base16-everforest-dark-soft.css                                           <none>
+[R.]  #03  base16-everforest-dark-soft.fish                                          <none>
+[R.]  #04  base16-everforest-dark-soft.html                                          <none>
+[R.]  #05  base16-everforest-dark-soft.json                                          <none>
+[R.]  #06  base16-everforest-dark-soft.svg                                           <none> x2
+[R.]  #07  base16-everforest-dark-soft.tmTheme                                       <none>
+[R.]  #08  base16-everforest-dark-soft.toml                                          <none>
+[R.]  #09  base16-everforest-dark-soft.xml                                           <none>
+[R-]  #10  everforest-cursors                                                        3212590527, 3212590527-fish-completions
+[R.]  #11  everforest-dark-soft-gnome-shell-theme                                    <none>
+[R-]  #12  everforest-gtk-theme                                                      0-unstable-2023-03-20, 0-unstable-2023-03-20-fish-completions
+[R-]  #13  gtk-engine-murrine                                                        0.98.2
+[R.]  #14  hm_nixbook.jpg                                                            <none>
+[R.]  #15  hm_sumelan.jpg                                                            <none>
+[R.]  #16  noctalia-shell-b8b54825d55f65897cdc4e7c5f4d28e0f50ecde1                   <none>
+[R.]  #17  noctalia-shell-b8b54825d55f65897cdc4e7c5f4d28e0f50ecde1-fish-completions  <none>
+[R.]  #18  regreet.png                                                               <none>
+Closure size: 2654 -> 2655 (109 paths added, 108 paths removed, delta +1, disk usage +327.2MiB).
