@@ -21,8 +21,8 @@ in {
     # https://github.com/NotAShelf/nvf/blob/main/modules/plugins/theme/supported-themes.nix
     theme = {
       enable = true;
-      name = "everforest";
-      style = "soft";
+      name = "gruvbox";
+      style = "dark";
     };
 
     options = {

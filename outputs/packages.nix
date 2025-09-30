@@ -12,7 +12,6 @@
   in {
     packages = {
       nvf = pkgs.callPackage (mkNvf []) {};
-      everforest-cursors = pkgs.callPackage ../flake/packages/everforest-cursors {};
     };
   };
 }
