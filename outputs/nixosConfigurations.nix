@@ -33,8 +33,12 @@
   }:
     nixpkgs.lib.nixosSystem {
       inherit system;
+      # Special args are a better mechanism than overlays
+      # because it is significantly more obvious what came from where without indirection
       specialArgs = {
-        inherit system inputs self host user;
+        # passing system etc. to nixosSystem is a useless deprecated pattern
+        # that is superseded by nixpkgs.hostPlatform etc. in hardware-configuration.nix
+        inherit self inputs customLib host user;
         flakePath = "/persist/home/${user}/projects/shirase";
         isLaptop = hardware == "laptop";
         isDesktop = hardware == "desktop";
@@ -56,7 +60,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = {
-                inherit inputs self host user;
+                inherit self inputs customLib host user;
                 flakePath = "/persist/home/${user}/projects/shirase";
                 isLaptop = hardware == "laptop";
                 isDesktop = hardware == "desktop";
@@ -76,11 +80,6 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [
-          (
-            _: prev: {lib = prev.lib // customLib;}
-          )
-        ];
       };
     };
 in {

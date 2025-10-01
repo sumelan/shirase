@@ -1,11 +1,11 @@
 {
   config,
-  pkgs,
   user,
+  customLib,
   ...
 }: let
   inherit
-    (pkgs.lib.tmpfiles)
+    (customLib.tmpfiles)
     mkCreateAndCleanup
     ;
 

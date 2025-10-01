@@ -9,32 +9,28 @@
     (lib)
     getExe
     ;
-
-  nixpkgs-review = pkgs.nixpkgs-review.override {withNom = true;};
-
-  ns = pkgs.writeShellApplication {
-    name = "ns";
-    runtimeInputs = with pkgs; [
-      fzf
-      nix-search-tv
-    ];
-    # ignore checks since i didn't write this
-    checkPhase = "";
-    text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
-  };
 in {
-  home = {
-    packages = with pkgs;
-      [
-        nixd
-        nix-output-monitor
-        nix-tree
-        nixpkgs-review
-        nix-search-tv
-        nvd
-        nvfetcher
-      ]
-      ++ [ns];
+  home.packages = builtins.attrValues {
+    inherit
+      (pkgs)
+      nixd
+      nix-output-monitor
+      nix-tree
+      nix-search-tv
+      nvd
+      nvfetcher
+      ;
+    nixpkgs-reviewPackage = pkgs.nixpkgs-review.override {withNom = true;};
+    nsPackage = pkgs.writeShellApplication {
+      name = "ns";
+      runtimeInputs = [
+        pkgs.fzf
+        pkgs.nix-search-tv
+      ];
+      # ignore checks since i didn't write this
+      checkPhase = "";
+      text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
+    };
   };
 
   programs = {

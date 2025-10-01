@@ -12,7 +12,7 @@
     networkmanager.enable = true;
     firewall.enable = true;
   };
-  environment.systemPackages = with pkgs; [networkmanagerapplet];
+  environment.systemPackages = [pkgs.networkmanagerapplet];
 
   # Set your time zone
   time = {

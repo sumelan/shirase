@@ -10,11 +10,14 @@
     genAttrs
     ;
 in {
-  imports = with inputs.nixos-hardware.nixosModules; [
-    common-pc-laptop
-    common-pc-laptop-ssd
-    common-cpu-intel
-  ];
+  imports = builtins.attrValues {
+    inherit
+      (inputs.nixos-hardware.nixosModules)
+      common-pc-laptop
+      common-pc-laptop-ssd
+      common-cpu-intel
+      ;
+  };
 
   networking.hostId = "226c6834";
 

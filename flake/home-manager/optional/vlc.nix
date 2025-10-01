@@ -15,7 +15,7 @@ in {
   };
 
   config = mkIf config.custom.vlc.enable {
-    home.packages = with pkgs; [vlc];
+    home.packages = [pkgs.vlc];
 
     custom.persist = {
       home.directories = [".config/vlc"];

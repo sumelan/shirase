@@ -30,13 +30,16 @@ in {
       NIXPKGS_ALLOW_UNFREE = "1";
     };
 
-    packages = with pkgs; [
-      curl
-      gzip
-      microfetch
-      trash-cli
-      xdg-utils
-    ];
+    packages = builtins.attrValues {
+      inherit
+        (pkgs)
+        curl
+        gzip
+        microfetch
+        trash-cli
+        xdg-utils
+        ;
+    };
   };
 
   xdg = {

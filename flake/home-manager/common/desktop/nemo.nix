@@ -15,14 +15,16 @@
     mkUint64
     ;
 in {
-  home.packages = with pkgs;
-    [nemo-with-extensions]
-    ++ [
+  home.packages = builtins.attrValues {
+    inherit
+      (pkgs)
+      nemo-with-extensions
       p7zip-rar # support for encrypted archives
       nemo-fileroller
       webp-pixbuf-loader # for webp thumbnails
       xdg-terminal-exec
-    ];
+      ;
+  };
 
   xdg = {
     # fix opening terminal for nemo / thunar by using xdg-terminal-exec spec

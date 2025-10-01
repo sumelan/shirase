@@ -16,7 +16,7 @@ in {
   };
 
   config = mkIf config.custom.foliate.enable {
-    home.packages = with pkgs; [foliate];
+    home.packages = [pkgs.foliate];
 
     programs.niri.settings.window-rules = [
       {

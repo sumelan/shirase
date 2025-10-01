@@ -28,7 +28,7 @@ in {
   };
 
   config = mkIf config.custom.youtube-tui.enable {
-    home.packages = with pkgs; [youtube-tui];
+    home.packages = [pkgs.youtube-tui];
 
     xdg.configFile = {
       "youtube-tui/main.yml".source = (pkgs.formats.yaml {}).generate "main" {

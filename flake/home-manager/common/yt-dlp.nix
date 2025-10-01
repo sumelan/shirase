@@ -17,10 +17,10 @@ in {
   };
 
   # yt-dlp’s dependencies
-  home.packages = with pkgs; [
-    # Required
-    ffmpeg
-    # For --embed-thumbnail in certain formats
-    (python313.withPackages (ps: with ps; [mutagen]))
-  ];
+  home.packages = builtins.attrValues {
+    # must
+    inherit (pkgs) ffmpeg;
+    # for --embed-thumbnail option in certain formats
+    thumbnailPackage = pkgs.python313.withPackages (ps: [ps.mutagen]);
+  };
 }

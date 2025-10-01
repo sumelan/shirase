@@ -1,14 +1,11 @@
 {
   lib,
-  config,
   pkgs,
-  user,
   ...
 }: let
   inherit
     (lib)
     mkOption
-    getExe
     ;
 
   inherit
@@ -45,7 +42,7 @@
         name = mkOption {
           type = str;
           description = "Editor name to use as default";
-          default = getExe config.profile.${user}.defaultEditor.package;
+          default = "nvim";
         };
       };
     };

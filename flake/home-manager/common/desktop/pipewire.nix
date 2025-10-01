@@ -10,7 +10,7 @@
 in
   # NOTE: 'programs.dconf.enable = true' is necessary for theb daemon to work correctly
   {
-    home.packages = with pkgs; [pwvucontrol];
+    home.packages = [pkgs.pwvucontrol];
 
     services.easyeffects.enable = true;
 

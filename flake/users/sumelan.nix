@@ -1,10 +1,11 @@
 {
   pkgs,
   config,
+  customLib,
   ...
 }: let
   inherit
-    (pkgs.lib.tmpfiles)
+    (customLib.tmpfiles)
     mkFiles
     mkSymlinks
     ;
@@ -63,13 +64,12 @@ in {
     i18n.inputMethod = {
       enable = true;
       type = "fcitx5";
-      fcitx5.addons = with pkgs; [fcitx5-mozc];
+      fcitx5.addons = [pkgs.fcitx5-mozc];
       fcitx5.waylandFrontend = true;
     };
   };
 
-  fonts.packages = with pkgs; [
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-  ];
+  fonts.packages = builtins.attrValues {
+    inherit (pkgs) noto-fonts-cjk-sans noto-fonts-cjk-serif;
+  };
 }

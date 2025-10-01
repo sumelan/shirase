@@ -5,6 +5,7 @@
   self,
   host,
   user,
+  customLib,
   flakePath,
   isLaptop,
   ...
@@ -14,11 +15,10 @@
     mkForce
     mkIf
     hiPrio
-    optional
     optionals
     ;
   inherit
-    (pkgs.lib.tmpfiles)
+    (customLib.tmpfiles)
     mkSymlinks
     mkCreateAndRemove
     ;
@@ -78,37 +78,40 @@ in {
           y # yazi
           ;
       };
-    systemPackages = with pkgs;
-      [
+    systemPackages = builtins.attrValues {
+      inherit
+        (pkgs)
         bonk # mkdir and touch in one
         curl
         eza
         killall
-        (hiPrio procps) # for uptime
         ripgrep
         yazi
         zoxide
-        # use same config as home-manager
-        (symlinkJoin {
-          name = "yazi";
-          paths = [yazi];
-          buildInputs = [makeWrapper];
-          postBuild =
-            # sh
-            ''wrapProgram $out/bin/yazi --set YAZI_CONFIG_HOME "${config.hm.xdg.configHome}/yazi"'';
-          meta.mainProgram = "yazi";
-        })
-        # use the package configured by nvf
-        (self.packages.${system}.nvf.override {inherit host flakePath;})
-      ]
-      ++
+        ;
+      forUptime = hiPrio pkgs.procps; # for uptime
+
+      # use same config as home-manager
+      customYazi = pkgs.symlinkJoin {
+        name = "yazi";
+        paths = [pkgs.yazi];
+        buildInputs = [pkgs.makeWrapper];
+        postBuild =
+          # sh
+          ''wrapProgram $out/bin/yazi --set YAZI_CONFIG_HOME "${config.hm.xdg.configHome}/yazi"'';
+        meta.mainProgram = "yazi";
+      };
+
+      # default editor
+      defaultEditor = config.hm.profiles.${user}.defaultEditor.package;
+
+      # use the package configured by nvf
+      customNeovim = self.packages.${pkgs.system}.nvf.override {inherit host flakePath;};
+
       # install gtk theme for root, some apps like gparted only run as root
-      [
-        config.hm.gtk.theme.package
-        config.hm.gtk.iconTheme.package
-      ]
-      ++ [config.hm.profiles.${user}.defaultEditor.package]
-      ++ (optional config.hm.custom.helix.enable helix);
+      gtkTheme = config.hm.gtk.theme.package;
+      gtkIconTheme = config.hm.gtk.iconTheme.package;
+    };
   };
 
   systemd.tmpfiles.rules =

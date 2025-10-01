@@ -18,7 +18,7 @@ in {
 
   config = mkIf cfg.enable {
     # ALSA settings
-    environment.systemPackages = with pkgs; [alsa-utils];
+    environment.systemPackages = [pkgs.alsa-utils];
     users.users.${user}.extraGroups = ["audio"];
 
     custom.persist = {

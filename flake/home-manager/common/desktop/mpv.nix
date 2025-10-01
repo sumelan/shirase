@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-{
-  home.packages = with pkgs; [ mpv ];
+{pkgs, ...}: {
+  home.packages = [pkgs.mpv];
 
   custom.persist = {
     home.directories = [

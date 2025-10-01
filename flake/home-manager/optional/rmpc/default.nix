@@ -3,6 +3,7 @@
   config,
   pkgs,
   user,
+  customLib,
   ...
 }: let
   inherit
@@ -12,7 +13,7 @@
     singleton
     ;
   inherit
-    (pkgs.lib.tmpfiles)
+    (customLib.tmpfiles)
     mkCreateAndCleanup
     mkSymlinks
     ;

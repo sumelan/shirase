@@ -5,6 +5,7 @@
   inputs,
   self,
   user,
+  customLib,
   ...
 }: let
   inherit
@@ -17,7 +18,7 @@
     ;
 
   inherit
-    (pkgs.lib.tmpfiles)
+    (customLib.tmpfiles)
     mkCreateAndRemove
     ;
 in {
@@ -41,10 +42,9 @@ in {
 
   environment = {
     # for nixlang / nixpkgs
-    systemPackages = with pkgs; [
-      nix-init
-      nix-update
-    ];
+    systemPackages = builtins.attrValues {
+      inherit (pkgs) nix-init nix-update;
+    };
   };
 
   systemd.tmpfiles.rules =
