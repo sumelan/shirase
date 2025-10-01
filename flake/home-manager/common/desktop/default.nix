@@ -1,7 +1,6 @@
 _: {
   imports = [
     ./niri
-    ./dimland.nix
     ./discord.nix
     ./kitty.nix
     ./librewolf.nix

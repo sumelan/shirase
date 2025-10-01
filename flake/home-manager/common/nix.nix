@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  inputs,
   flakePath,
   ...
 }: let
@@ -24,8 +23,6 @@
     text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
   };
 in {
-  imports = [inputs.nix-index-database.homeModules.nix-index];
-
   home = {
     packages = with pkgs;
       [

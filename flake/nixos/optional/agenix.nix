@@ -11,15 +11,11 @@
     mkIf
     ;
 in {
-  imports = [inputs.agenix.nixosModules.default];
-
   options.custom = {
     agenix.enable = mkEnableOption "agenix";
   };
 
-  config = {
+  config = mkIf config.custom.agenix.enable {
     environment.systemPackages = [inputs.agenix.packages."${pkgs.system}".default];
-    age.secrets.api-key =
-      mkIf config.custom.agenix.enable {};
   };
 }

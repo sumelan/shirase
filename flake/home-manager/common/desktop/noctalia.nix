@@ -28,8 +28,6 @@
 
   noctaliaPkgs = inputs.noctalia-shell.packages.${pkgs.system}.default;
 in {
-  imports = [inputs.noctalia-shell.homeModules.default];
-
   options.custom = {
     noctalia.enable = mkEnableOption "Noctalia for Niri" // {default = true;};
   };
@@ -303,7 +301,7 @@ in {
             "call"
           ]
           ++ (splitString " " cmd);
-        hotkeyColor = config.lib.stylix.colors.withHashtag.base0D;
+        hotkeyColor = base0A;
       in {
         "Mod+Space" = {
           action.spawn = noctalia "launcher toggle";
@@ -316,6 +314,10 @@ in {
         "Mod+N" = {
           action.spawn = noctalia "notifications toggleHistory";
           hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Notification Histories'';
+        };
+        "Mod+Shift+N" = {
+          action.spawn = noctalia "notifications clear";
+          hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Clear Notifications'';
         };
         "Mod+D" = {
           action.spawn = noctalia "controlCenter toggle";
@@ -366,21 +368,25 @@ in {
     };
 
     systemd.user.services = {
-      "noctalia" = {
+      "noctalia-shell" = {
         Unit = {
-          Description = "Noctalia Shell Service";
+          Description = "Noctalia Shell - Wayland desktop shell";
           After = [config.wayland.systemd.target];
           PartOf = [config.wayland.systemd.target];
+          StartLimitIntervalSec = 60;
+          StartLimitBurst = 3;
         };
         Service = {
           Type = "exec";
           ExecStart = "${getExe noctaliaPkgs}";
           Restart = "on-failure";
-          RestartSec = "5s";
-          TimeoutStopSec = "5s";
+          RestartSec = 3;
+          TimeoutStartSec = 10;
+          TimeoutStopSec = 5;
           Environment = [
             "QT_QPA_PLATFORM=wayland"
             "ELECTRON_OZONE_PLATFORM_HINT=auto"
+            "NOCTALIA_SETTINGS_FALLBACK=%h/.config/noctalia/gui-settings.json"
           ];
           Slice = "session.slice";
         };

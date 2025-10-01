@@ -48,11 +48,12 @@ in {
       ];
 
       timeouts = [
-        {
+        (mkIf config.custom.backlight.enable {
           timeout = 60 * 8;
-          command = "${getExe' config.programs.dimland.package "dimland"} -a 0.6";
-          resumeCommand = "${getExe' config.programs.dimland.package "dimland"} stop";
-        }
+          # set monitor backlight to minimum, avoid 0 on OLED monitor.
+          command = "${getExe pkgs.brightnessctl} --save set 5%"; # save previous state in a temporary file
+          resumeCommand = "${getExe pkgs.brightnessctl} -r"; # monitor backlight restore
+        })
         {
           timeout = 60 * 12;
           command = "${getExe cfg} ipc call lockScreen toggle";

@@ -124,7 +124,7 @@ in {
           }
 
           picture {
-            filter: blur(0.4rem);
+            filter: blur(0.2rem);
           }
 
           frame.background {

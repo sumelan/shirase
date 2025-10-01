@@ -24,9 +24,7 @@ in {
   custom = let
     enableList = [
       "freetube"
-      "noctalia"
       "rmpc"
-      "spotify"
     ];
 
     disableList = [

@@ -21,8 +21,6 @@
 
     agenix.url = "github:ryantm/agenix";
 
-    dimland.url = "github:keifufu/dimland";
-
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";

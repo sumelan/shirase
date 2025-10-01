@@ -11,20 +11,25 @@
 
   customLib = import ../flake/lib {inherit (nixpkgs) lib;};
 
-  defaultMods = [
-    inputs.agenix.nixosModules.default
+  defaultNixMods = [
     inputs.impermanence.nixosModules.impermanence
     inputs.niri.nixosModules.niri
-    inputs.noctalia-shell.nixosModules.default
     inputs.stylix.nixosModules.stylix
     ../flake/nixos
+  ];
+
+  defaultHomeMods = [
+    inputs.nix-index-database.homeModules.nix-index
+    inputs.noctalia-shell.homeModules.default
+    ../flake/home-manager
   ];
 
   mkSystem = host: {
     user,
     system ? "x86_64-linux",
     hardware,
-    modules ? [],
+    nixModules ? [],
+    homeModules ? [],
   }:
     nixpkgs.lib.nixosSystem {
       inherit system;
@@ -36,8 +41,8 @@
       };
 
       modules =
-        modules
-        ++ defaultMods
+        nixModules
+        ++ defaultNixMods
         ++ [
           ../flake/hosts/${host}
           ../flake/hosts/${host}/hardware.nix
@@ -58,10 +63,10 @@
               };
 
               users.${user} = {
-                imports = [
-                  ../flake/hosts/${host}/home.nix
-                  ../flake/home-manager
-                ];
+                imports =
+                  homeModules
+                  ++ defaultHomeMods
+                  ++ [../flake/hosts/${host}/home.nix];
               };
             };
           }
@@ -83,10 +88,16 @@ in {
     acer = mkSystem "acer" {
       user = "sumelan";
       hardware = "laptop";
+      homeModules = [
+        inputs.spicetify-nix.homeManagerModules.default
+      ];
     };
     sakura = mkSystem "sakura" {
       user = "sumelan";
       hardware = "desktop";
+      nixModules = [
+        inputs.agenix.nixosModules.default
+      ];
     };
   };
 }

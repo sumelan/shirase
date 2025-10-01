@@ -16,16 +16,13 @@ in {
     niri = {
       enable =
         mkEnableOption "Niri compositor" // {default = true;};
-      flake.enable =
-        mkEnableOption "Enable niri-flake" // {default = config.custom.niri.enable;};
       uwsm.enable =
-        mkEnableOption "Uing uwsm with niri" // {default = config.custom.niri.flake.enable;};
+        mkEnableOption "Uing uwsm with niri" // {default = config.custom.niri.enable;};
     };
   };
 
-  config = mkIf config.custom.niri.flake.enable {
+  config = mkIf config.custom.niri.enable {
     nixpkgs.overlays = [inputs.niri.overlays.niri];
-
     programs = {
       niri = {
         enable = true;

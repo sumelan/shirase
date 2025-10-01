@@ -135,8 +135,8 @@ in {
           disabled = false;
           format = "[](fg:overlay)[ $user ]($style)[](fg:overlay) ";
           show_always = true;
-          style_root = "bg:overlay fg:iris";
-          style_user = "bg:overlay fg:iris";
+          style_root = "bg:overlay fg:rose";
+          style_user = "bg:overlay fg:rose";
         };
         hostname = {
           # only show when conncted to to an SSH session

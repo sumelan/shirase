@@ -25,7 +25,6 @@ in {
     enableList = [
       "cyanrip"
       "freetube"
-      "ghostty"
       "helix"
       "obs-studio"
       "protonapp"
