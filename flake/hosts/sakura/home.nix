@@ -23,7 +23,6 @@ in {
 
   custom = let
     enableList = [
-      "freetube"
       "rmpc"
     ];
 

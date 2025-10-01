@@ -5,7 +5,6 @@ _: {
     ./cyanrip.nix
     ./euphonica.nix
     ./foliate.nix
-    ./freetube.nix
     ./ghostty.nix
     ./helix.nix
     ./obs-studio.nix
@@ -13,5 +12,6 @@ _: {
     ./spotify.nix
     ./thunderbird.nix
     ./vlc.nix
+    ./youtube-tui.nix
   ];
 }

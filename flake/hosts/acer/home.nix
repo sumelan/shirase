@@ -24,12 +24,12 @@ in {
   custom = let
     enableList = [
       "cyanrip"
-      "freetube"
       "helix"
       "obs-studio"
       "protonapp"
       "rmpc"
       "spotify"
+      "youtube-tui"
     ];
 
     disableList = [
