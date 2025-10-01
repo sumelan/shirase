@@ -365,3 +365,220 @@ Removed packages:
 [R.]  #11  nord-gnome-shell-theme    <none>
 [R-]  #12  papirus-nord              3.2.0, 3.2.0-fish-completions
 Closure size: 2408 -> 2412 (142 paths added, 138 paths removed, delta +4, disk usage -345.5MiB).
+
+---
+
+2025年10月01日 14時26分27秒
+<<< /nix/var/nix/profiles/system-11-link
+>>> /nix/var/nix/profiles/system-12-link
+Version changes:
+[C*]  #001  acl                      2.3.2 x3, 2.3.2-bin -> 2.3.2 x2, 2.3.2-bin, 2.3.2-doc, 2.3.2-man
+[C*]  #002  attr                     2.5.2 x3, 2.5.2-bin -> 2.5.2 x2, 2.5.2-bin, 2.5.2-doc, 2.5.2-man
+[C.]  #003  aws-c-auth               0.8.1, 0.9.0 -> 0.9.0
+[C.]  #004  aws-c-cal                0.8.0, 0.9.2 -> 0.9.2
+[C.]  #005  aws-c-common             0.10.3, 0.12.4 -> 0.12.4
+[C.]  #006  aws-c-compression        0.3.0, 0.3.1 -> 0.3.1
+[C.]  #007  aws-c-event-stream       0.5.0, 0.5.5 -> 0.5.5
+[C.]  #008  aws-c-http               0.9.2, 0.10.4 -> 0.10.4
+[C.]  #009  aws-c-io                 0.15.3, 0.21.2 -> 0.21.2
+[C.]  #010  aws-c-mqtt               0.11.0, 0.13.3 -> 0.13.3
+[C.]  #011  aws-c-s3                 0.7.1, 0.8.6 -> 0.8.6
+[C.]  #012  aws-c-sdkutils           0.2.1, 0.2.4 -> 0.2.4
+[C.]  #013  aws-checksums            0.2.2, 0.2.7 -> 0.2.7
+[C.]  #014  aws-crt-cpp              0.29.4, 0.33.1 -> 0.33.1
+[C.]  #015  aws-sdk-cpp              1.11.448, 1.11.612 -> 1.11.612
+[C.]  #016  bash                     5.2p37, 5.3p3 x2 -> 5.3p3 x2
+[U.]  #017  bash-grammar             0.0.0+rev=cef0974 -> 0.0.0+rev=20f55fb
+[C*]  #018  bash-interactive         5.3p3, 5.3p3-dev, 5.3p3-fish-completions, 5.3p3-man -> 5.3p3, 5.3p3-dev, 5.3p3-doc, 5.3p3-fish-completions, 5.3p3-info, 5.3p3-man
+[U*]  #019  bcache-tools             1.0.8 -> 1.1
+[C*]  #020  bind                     9.20.13-dnsutils, 9.20.13-host, 9.20.13-lib -> 9.20.13-dnsutils, 9.20.13-host, 9.20.13-lib, 9.20.13-man
+[U.]  #021  bitwarden                2025.8.2 -> 2025.9.0
+[C.]  #022  breeze-icons             6.18.0 -> 5.116.0, 6.18.0
+[C.]  #023  brotli                   1.1.0, 1.1.0-dev, 1.1.0-lib x3 -> 1.1.0, 1.1.0-dev, 1.1.0-lib x2
+[C.]  #024  busybox                  1.36.1 x2 -> 1.36.1
+[C*]  #025  bzip2                    1.0.8 x3, 1.0.8-bin, 1.0.8-dev -> 1.0.8 x2, 1.0.8-bin, 1.0.8-dev, 1.0.8-man
+[D.]  #026  c-grammar                0.0.0+rev=d8d0503 -> 0.0.0+rev=ae19b67
+[U.]  #027  cava                     0.10.4 -> 0.10.6
+[C.]  #028  coreutils                9.7 x3 -> 9.7 x2
+[C*]  #029  coreutils-full           9.7 -> 9.7, 9.7-info
+[U.]  #030  cpp-grammar              0.0.0+rev=e89fbaf -> 0.0.0+rev=2a682d3
+[C*]  #031  curl                     8.14.1 x5, 8.14.1-bin, 8.14.1-fish-completions, 8.14.1-man -> 8.14.1 x3, 8.14.1-bin, 8.14.1-fish-completions, 8.14.1-man
+[C*]  #032  dbus                     1, 1.14.10, 1.14.10-dev, 1.14.10-lib x2 -> 1, 1.14.10, 1.14.10-dev, 1.14.10-doc, 1.14.10-lib x2, 1.14.10-man
+[U.]  #033  deno                     2.5.0 -> 2.5.2
+[U.]  #034  difftastic               0.64.0, 0.64.0-fish-completions -> 0.65.0, 0.65.0-fish-completions
+[C*]  #035  diffutils                3.12 x2 -> 3.12, 3.12-info
+[C.]  #036  editline                 1.17.1 x2 -> 1.17.1
+[U.]  #037  electron                 37.4.0 -> 37.5.1
+[U.]  #038  electron-unwrapped       37.4.0 -> 37.5.1
+[U.]  #039  espeak-ng                1.52.0 -> 1.52.0.1-unstable-2025-09-09
+[C.]  #040  ffmpeg                   4.4.6-data, 4.4.6-lib, 7.1.1-bin, 7.1.1-data, 7.1.1-fish-completions, 7.1.1-lib, 7.1.1-man -> 7.1.1-bin, 7.1.1-data, 7.1.1-fish-completions, 7.1.1-lib, 7.1.1-man
+[C*]  #041  findutils                4.10.0 -> 4.10.0, 4.10.0-info
+[C*]  #042  fuse                     2.9.9, 2.9.9-bin, 3.17.4, 3.17.4-bin -> 2.9.9, 2.9.9-bin, 2.9.9-man, 3.17.4, 3.17.4-bin, 3.17.4-man
+[C*]  #043  fwupd                    2.0.16, 2.0.16-lib -> 2.0.16, 2.0.16-lib, 2.0.16-man
+[C*]  #044  gawk                     5.3.2 -> 5.3.2, 5.3.2-info, 5.3.2-man
+[C.]  #045  gcc                      13.3.0-lib, 13.3.0-libgcc, 14.2.1.20250322-lib, 14.2.1.20250322-libgcc, 14.3.0, 14.3.0-lib x2, 14.3.0-libgcc x2 -> 14.3.0, 14.3.0-lib x2, 14.3.0-libgcc x2
+[U.]  #046  gh                       2.79.0, 2.79.0-fish-completions -> 2.80.0, 2.80.0-fish-completions
+[C*]  #047  glibc                    2.40-36, 2.40-66 x3, 2.40-66-bin, 2.40-66-dev, 2.40-66-getent x2 -> 2.40-66 x2, 2.40-66-bin, 2.40-66-dev, 2.40-66-getent x2
+[C.]  #048  gmp-with-cxx             6.3.0 x5, 6.3.0-dev -> 6.3.0 x4, 6.3.0-dev
+[C*]  #049  gnugrep                  3.12 -> 3.12, 3.12-info
+[C*]  #050  gnused                   4.9 -> 4.9, 4.9-info
+[C*]  #051  gnutar                   1.35 x2 -> 1.35 x2, 1.35-info
+[U.]  #052  gpu-screen-recorder      5.6.8 -> 5.7.0
+[C.]  #053  gtest                    1.16.0, 1.17.0 x2 -> 1.17.0 x2
+[C*]  #054  gzip                     1.14, 1.14-fish-completions, 1.14-man -> 1.14, 1.14-fish-completions, 1.14-info, 1.14-man
+[D.]  #055  html-grammar             0.0.0+rev=2817380 -> 0.0.0+rev=73a3947
+[U.]  #056  initrd-linux-xanmod      6.16.8 -> 6.16.9
+[C*]  #057  iptables                 1.8.11, 1.8.11-lib -> 1.8.11, 1.8.11-lib, 1.8.11-man
+[U.]  #058  javascript-grammar       0.0.0+rev=22da14e -> 0.0.0+rev=58404d8
+[C.]  #059  jq                       1.7.1, 1.7.1-bin, 1.8.1, 1.8.1-bin, 1.8.1-fish-completions, 1.8.1-man -> 1.8.1, 1.8.1-bin, 1.8.1-fish-completions, 1.8.1-man
+[C*]  #060  kbd                      2.8.0-unstable-2025-08-12 x4 -> 2.8.0-unstable-2025-08-12 x4, 2.8.0-unstable-2025-08-12-man
+[C.]  #061  keyutils                 1.6.3-lib x3 -> 1.6.3-lib x2
+[C.]  #062  krb5                     1.21.3-lib, 1.22.1-lib x2 -> 1.22.1-lib x2
+[C*]  #063  less                     679 -> 679, 679-man
+[C.]  #064  libarchive               3.8.0-lib, 3.8.1-lib x2 -> 3.8.1-lib x2
+[C.]  #065  libblake3                1.8.2 x2 -> 1.8.2
+[C*]  #066  libcap                   2.76, 2.76-lib x4 -> 2.76, 2.76-doc, 2.76-lib x4, 2.76-man
+[C.]  #067  libcpuid                 0.7.1, 0.8.1 -> 0.8.1
+[C.]  #068  libffi                   3.4.6, 3.5.1 x2, 3.5.1-dev -> 3.5.1 x2, 3.5.1-dev
+[C.]  #069  libgit2                  1.9.0-lib, 1.9.1-lib -> 1.9.1-lib
+[C.]  #070  libidn2                  2.3.7, 2.3.8 x3 -> 2.3.8 x2
+[C.]  #071  libpsl                   0.21.5 x3 -> 0.21.5 x2
+[C*]  #072  libressl                 4.1.0, 4.1.0-nc -> 4.1.0, 4.1.0-man, 4.1.0-nc
+[C.]  #073  libseccomp               2.6.0-lib x3 -> 2.6.0-lib x2
+[C.]  #074  libsodium                1.0.20 x2 -> 1.0.20
+[C.]  #075  libssh2                  1.11.1 x3 -> 1.11.1 x2
+[C.]  #076  libunistring             1.2, 1.3 x3 -> 1.3 x2
+[C.]  #077  libxcb                   1.17.0 x3, 1.17.0-dev -> 1.17.0 x2, 1.17.0-dev
+[C.]  #078  libxkbcommon             1.7.0, 1.11.0 -> 1.11.0
+[C.]  #079  libxml2                  2.13.4, 2.13.8, 2.14.5 x2 -> 2.14.5 x2
+[C*]  #080  linux-pam                1.7.1 x2 -> 1.7.1 x2, 1.7.1-doc, 1.7.1-man
+[U.]  #081  linux-xanmod             6.16.8, 6.16.8-modules x2, 6.16.8-modules-shrunk -> 6.16.9, 6.16.9-modules x2, 6.16.9-modules-shrunk
+[C.]  #082  llhttp                   9.2.1, 9.3.0 -> 9.3.0
+[C.]  #083  lowdown                  1.3.2-lib, 2.0.2-lib -> 2.0.2-lib
+[C*]  #084  lvm2                     2.03.33, 2.03.33-bin, 2.03.33-lib x2 -> 2.03.33, 2.03.33-bin, 2.03.33-lib x2, 2.03.33-man
+[C.]  #085  man-cache                <none> -> <none> x2
+[C+]  #086  man-db                   2.13.1, 2.13.1-fish-completions -> 2.13.1, 2.13.1-doc, 2.13.1-fish-completions
+[D.]  #087  markdown-grammar         0.0.0+rev=7462bb6 -> 0.0.0+rev=2dfd57f
+[D.]  #088  markdown_inline-grammar  0.0.0+rev=7462bb6 -> 0.0.0+rev=2dfd57f
+[C*]  #089  network-manager-applet   1.36.0 -> 1.36.0, 1.36.0-man
+[C*]  #090  networkmanager           1.52.1, 1.52.1-dev -> 1.52.1, 1.52.1-dev, 1.52.1-doc, 1.52.1-man
+[C.]  #091  nghttp2                  1.65.0-lib, 1.66.0-lib x2 -> 1.66.0-lib x2
+[U.]  #092  nilfs-utils              2.2.11 -> 2.2.12
+[U*]  #093  niri-unstable            2025-09-23-3850739 -> 2025-09-24-e837e39, 2025-09-24-e837e39-doc
+[C*]  #094  nix                      2.28.4, 2.28.4-man, 2.28.5, 2.28.5-man -> 2.28.5, 2.28.5-doc, 2.28.5-man
+[U.]  #095  nix-search-tv            2.2.1, 2.2.1-fish-completions -> 2.2.2, 2.2.2-fish-completions
+[U*]  #096  nix-update               1.13.0 -> 1.13.1
+[U.]  #097  nixd                     2.6.4, 2.6.4-fish-completions -> 2.7.0, 2.7.0-fish-completions
+[U.]  #098  nixf                     2.6.4 -> 2.7.0
+[U.]  #099  nixos-system-sakura      25.11.20250921.554be64.fef95f1 -> 25.11.20250928.e9f00bd.dirty
+[U.]  #100  nixpkgs-review           3.5.0 x2, 3.5.0-fish-completions -> 3.5.1 x2, 3.5.1-fish-completions
+[U.]  #101  nixt                     2.6.4 -> 2.7.0
+[D.]  #102  noctalia-shell           72475cd29b8137609865b291949edbc6e7d853cb, 72475cd29b8137609865b291949edbc6e7d853cb-fish-completions -> 32712c70527eb9ecc01a1b8f064280fceb3a2766, 32712c70527eb9ecc01a1b8f064280fceb3a2766-fish-completions
+[C.]  #103  nss                      3.112.1, 3.115.1, 3.116 -> 3.112.1, 3.115.1
+[C.]  #104  oniguruma                6.9.10-lib x2 -> 6.9.10-lib
+[C.]  #105  openssl                  3.4.1, 3.5.1 x2, 3.5.1-bin, 3.5.1-dev -> 3.5.1 x2, 3.5.1-bin, 3.5.1-dev
+[C.]  #106  pcre2                    10.44 x3 -> 10.44 x2
+[C*]  #107  pipewire                 1.4.7 x2, 1.4.7-dev, 1.4.7-jack -> 1.4.7 x2, 1.4.7-dev, 1.4.7-doc, 1.4.7-jack, 1.4.7-man
+[U.]  #108  proton-pass              1.32.5 -> 1.32.7
+[U.]  #109  proton-vpn               1.2.9 -> 1.2.10
+[C.]  #110  publicsuffix-list        0-unstable-2025-03-12, 0-unstable-2025-07-22 x2 -> 0-unstable-2025-07-22 x2
+[C.]  #111  rapidcheck               0-unstable-2023-12-14 x2 -> 0-unstable-2023-12-14
+[D.]  #112  rust-grammar             0.0.0+rev=2a58b00 -> 0.0.0+rev=00d7cbc
+[C.]  #113  s2n-tls                  1.5.17, 1.5.24 -> 1.5.24
+[C*]  #114  shadow                   4.18.0, 4.18.0-su -> 4.18.0, 4.18.0-man, 4.18.0-su
+[C.]  #115  source                   <none> x21 -> <none> x20
+[U.]  #116  sponsorblock             5.14 -> 6.0
+[C.]  #117  sqlite                   3.48.0, 3.50.2 x2, 3.50.2-bin, 3.50.2-dev -> 3.50.2 x2, 3.50.2-bin, 3.50.2-dev
+[C*]  #118  strace                   6.16 -> 6.16, 6.16-man
+[U.]  #119  stylua                   2.1.0 -> 2.2.0
+[C*]  #120  systemd                  <none>, 257.8 x2 -> <none>, 257.8 x2, 257.8-man
+[C.]  #121  tbb                      2021.11.0, 2021.11.0-dev, 2022.2.0 -> 2022.2.0
+[U.]  #122  tevent                   0.17.0 -> 0.17.1
+[C.]  #123  tzdata                   2025b x3 -> 2025b x2
+[C*]  #124  udisks                   2.10.2 -> 2.10.2, 2.10.2-man
+[C*]  #125  util-linux               2.41.1-bin, 2.41.1-lastlog, 2.41.1-lib, 2.41.1-login, 2.41.1-mount, 2.41.1-swap -> 2.41.1-bin, 2.41.1-lastlog, 2.41.1-lib, 2.41.1-login, 2.41.1-man, 2.41.1-mount, 2.41.1-swap
+[C*]  #126  uwsm                     0.23.3 -> 0.23.3, 0.23.3-man
+[U.]  #127  vimplugin-yazi.nvim      2025-09-15 -> 2025-09-26
+[C.]  #128  wayland                  1.23.1, 1.24.0 x2, 1.24.0-dev -> 1.24.0 x2, 1.24.0-dev
+[C*]  #129  wireplumber              0.4.17, 0.5.11 -> 0.4.17, 0.5.11, 0.5.11-doc
+[U.]  #130  xdg-terminal-exec        0.13.2, 0.13.2-fish-completions -> 0.13.3, 0.13.3-fish-completions
+[C.]  #131  xgcc                     13.3.0-libgcc, 14.2.1.20250322-libgcc, 14.3.0-libgcc x2 -> 14.3.0-libgcc x2
+[C.]  #132  xkeyboard-config         2.42, 2.45 -> 2.45
+[C*]  #133  xz                       5.8.1 x3, 5.8.1-bin -> 5.8.1 x2, 5.8.1-bin, 5.8.1-doc, 5.8.1-man
+[U.]  #134  yt-dlp                   2025.09.05, 2025.09.05-fish-completions -> 2025.09.26, 2025.09.26-fish-completions
+[U.]  #135  zfs-kernel               2.3.4-6.16.8 -> 2.3.4-6.16.9
+[C.]  #136  zlib                     1.3.1 x3, 1.3.1-dev -> 1.3.1 x2, 1.3.1-dev
+[C*]  #137  zstd                     1.5.7 x3, 1.5.7-bin -> 1.5.7 x2, 1.5.7-bin, 1.5.7-man
+Selection state changes:
+[C+]  #1  hicolor-icon-theme  0.18
+Added packages:
+[A.]  #01  base16-gruvbox-material-dark-soft.conf        <none>
+[A.]  #02  base16-gruvbox-material-dark-soft.css         <none>
+[A.]  #03  base16-gruvbox-material-dark-soft.fish        <none>
+[A.]  #04  base16-gruvbox-material-dark-soft.html        <none>
+[A.]  #05  base16-gruvbox-material-dark-soft.json        <none>
+[A.]  #06  base16-gruvbox-material-dark-soft.svg         <none> x2
+[A.]  #07  base16-gruvbox-material-dark-soft.tmTheme     <none>
+[A.]  #08  base16-gruvbox-material-dark-soft.xml         <none>
+[A.]  #09  boost                                         1.87.0
+[A+]  #10  capitaine-cursors-themed                      5, 5-fish-completions
+[A.]  #11  etc-man_db.conf                               <none>
+[A.]  #12  gnome-icon-theme                              3.12.0
+[A.]  #13  gpm-unstable                                  2020-06-17
+[A.]  #14  gruvbox                                       12c26242
+[A.]  #15  gruvbox-material-dark-soft-gnome-shell-theme  <none>
+[A+]  #16  gruvbox-plus-icons                            6.3.0, 6.3.0-fish-completions
+[A.]  #17  hm_bokutai.png                                <none>
+[A.]  #18  hm_sumelan.png                                <none>
+[A.]  #19  nix-cmd                                       2.30.3
+[A.]  #20  nix-expr                                      2.30.3
+[A.]  #21  nix-fetchers                                  2.30.3
+[A.]  #22  nix-flake                                     2.30.3
+[A.]  #23  nix-main                                      2.30.3
+[A.]  #24  nix-store                                     2.30.3
+[A.]  #25  nix-util                                      2.30.3
+[A+]  #26  nixos-configuration-reference-manpage         <none>
+[A+]  #27  nixos-help                                    <none> x2
+[A.]  #28  nixos-init                                    0.1.0
+[A+]  #29  nixos-manual-html                             <none>
+[A.]  #30  nixos-manual.desktop                          <none>
+[A.]  #31  noctalia-shell.service                        <none>
+[A.]  #32  regreet.jpg                                   <none>
+[A+]  #33  texinfo-interactive                           7.2
+[A.]  #34  unit-script-initrd-find-nixos-closure-start   <none>
+[A.]  #35  w3m                                           0.5.5
+Removed packages:
+[R.]  #01  age                                        1.2.1
+[R-]  #02  agenix                                     0.15.0
+[R.]  #03  base16-everforest-dark-soft.conf           <none>
+[R.]  #04  base16-everforest-dark-soft.css            <none>
+[R.]  #05  base16-everforest-dark-soft.fish           <none>
+[R.]  #06  base16-everforest-dark-soft.html           <none>
+[R.]  #07  base16-everforest-dark-soft.json           <none>
+[R.]  #08  base16-everforest-dark-soft.svg            <none> x2
+[R.]  #09  base16-everforest-dark-soft.tmTheme        <none>
+[R.]  #10  base16-everforest-dark-soft.xml            <none>
+[R.]  #11  dimland                                    1.1.2, 1.1.2-fish-completions
+[R.]  #12  everforest                                 1e625639
+[R-]  #13  everforest-cursors                         3212590527, 3212590527-fish-completions
+[R.]  #14  everforest-dark-soft-gnome-shell-theme     <none>
+[R-]  #15  everforest-gtk-theme                       0-unstable-2023-03-20, 0-unstable-2023-03-20-fish-completions
+[R.]  #16  fira                                       4.301, 4.301-fish-completions
+[R.]  #17  fira-mono                                  3.2
+[R.]  #18  fira-sans                                  4.301
+[R-]  #19  gtk-engine-murrine                         0.98.2
+[R.]  #20  hm_sumelan.jpg                             <none>
+[R.]  #21  libX11                                     1.8.10
+[R.]  #22  libXau                                     1.0.11
+[R.]  #23  libXdmcp                                   1.1.5
+[R.]  #24  libdbusmenu-glib                           16.04.0
+[R.]  #25  mktemp                                     1.7
+[R.]  #26  noctalia.service                           <none>
+[R.]  #27  regreet.png                                <none>
+[R.]  #28  spicetify-DarkGreen                        <none>
+[R.]  #29  spicetify-DarkGreen-fish-completions       <none>
+[R.]  #30  unit-notify-problems-.service              <none>
+[R.]  #31  unit-script-initrd-nixos-activation-start  <none>
+[R.]  #32  unit-script-notify-problems_-start         <none>
+[R.]  #33  unit-script-zfs-import-zroot-start         <none>
+Closure size: 2412 -> 2385 (328 paths added, 355 paths removed, delta -27, disk usage -230.2MiB).

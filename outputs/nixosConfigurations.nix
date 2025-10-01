@@ -98,6 +98,9 @@ in {
       nixModules = [
         inputs.agenix.nixosModules.default
       ];
+      homeModules = [
+        inputs.spicetify-nix.homeManagerModules.default
+      ];
     };
   };
 }
