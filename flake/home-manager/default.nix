@@ -57,6 +57,7 @@ in {
         "kbd-layout-viewer5"
         "fish"
         "nm-connection-editor"
+        "blueman-adapters"
       ];
     in
       # generate an attribute set by mapping a function over a list of attribute names.
