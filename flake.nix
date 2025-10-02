@@ -2,11 +2,37 @@
   description = "Shirase: sumelan's nixos configuration";
 
   outputs = {flake-parts, ...} @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      # These are the only systems types I support
+    flake-parts.lib.mkFlake {inherit inputs;} (_: {
+      flake = let
+        inherit (inputs) self nixpkgs;
+
+        pkgs = import inputs.nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
+
+        # Get the extended lib from ./lib/custom.nix
+        # https://www.notashelf.dev/posts/extended-nixpkgs-lib
+        lib = import ./lib/custom.nix {
+          inherit inputs;
+          inherit (inputs) home-manager;
+        };
+      in {
+        nixosConfigurations = import ./hosts {
+          inherit inputs nixpkgs pkgs self lib;
+        };
+
+        inherit lib;
+      };
+
       systems = ["x86_64-linux" "aarch64-linux"];
-      imports = [./outputs];
-    };
+
+      perSystem = {pkgs, ...}: {
+        packages = import ./packages {
+          inherit pkgs inputs;
+        };
+      };
+    });
 
   inputs = {
     # use unstable brunch

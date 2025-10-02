@@ -32,12 +32,12 @@ in {
       enableFishIntegration = true;
 
       plugins = {
-        chmod = "${pkgs.nvfetch.yazi-plugins.src}/chmod.yazi";
-        full-border = "${pkgs.nvfetch.yazi-plugins.src}/full-border.yazi";
-        git = "${pkgs.nvfetch.yazi-plugins.src}/git.yazi";
-        toggle-pane = "${pkgs.nvfetch.yazi-plugins.src}/toggle-pane.yazi";
-        mount = "${pkgs.nvfetch.yazi-plugins.src}/mount.yazi";
-        starship = "${pkgs.nvfetch.yazi-starship.src}";
+        chmod = "${pkgs.custom.yazi-plugins.src}/chmod.yazi";
+        full-border = "${pkgs.custom.yazi-plugins.src}/full-border.yazi";
+        git = "${pkgs.custom.yazi-plugins.src}/git.yazi";
+        toggle-pane = "${pkgs.custom.yazi-plugins.src}/toggle-pane.yazi";
+        mount = "${pkgs.custom.yazi-plugins.src}/mount.yazi";
+        starship = "${pkgs.custom.yazi-starship.src}";
       };
 
       initLua =

@@ -5,7 +5,6 @@
   inputs,
   self,
   user,
-  customLib,
   ...
 }: let
   inherit
@@ -18,7 +17,7 @@
     ;
 
   inherit
-    (customLib.tmpfiles)
+    (lib.custom.tmpfiles)
     mkCreateAndRemove
     ;
 in {

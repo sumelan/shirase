@@ -1,11 +1,11 @@
 {
+  lib,
   pkgs,
   config,
-  customLib,
   ...
 }: let
   inherit
-    (customLib.tmpfiles)
+    (lib.custom.tmpfiles)
     mkFiles
     mkSymlinks
     ;

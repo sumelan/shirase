@@ -1,11 +1,10 @@
 {
   pkgs,
-  self,
   host,
   flakePath,
   ...
 }: let
-  customNeovim = self.packages.${pkgs.system}.nvf.override {inherit host flakePath;};
+  customNeovim = pkgs.custom.nvf.override {inherit host flakePath;};
 in {
   home = {
     packages = [customNeovim];

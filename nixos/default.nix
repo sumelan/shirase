@@ -2,10 +2,8 @@
   lib,
   config,
   pkgs,
-  self,
   host,
   user,
-  customLib,
   flakePath,
   isLaptop,
   ...
@@ -18,7 +16,7 @@
     optionals
     ;
   inherit
-    (customLib.tmpfiles)
+    (lib.custom.tmpfiles)
     mkSymlinks
     mkCreateAndRemove
     ;
@@ -106,7 +104,7 @@ in {
       defaultEditor = config.hm.profiles.${user}.defaultEditor.package;
 
       # use the package configured by nvf
-      customNeovim = self.packages.${pkgs.system}.nvf.override {inherit host flakePath;};
+      customNeovim = pkgs.custom.nvf.override {inherit host flakePath;};
 
       # install gtk theme for root, some apps like gparted only run as root
       gtkTheme = config.hm.gtk.theme.package;
