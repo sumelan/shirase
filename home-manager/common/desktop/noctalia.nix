@@ -60,6 +60,7 @@ in {
           pinnedExecs = [];
           position = "center";
           sortByMostUsed = true;
+          terminalCommand = "kitty";
           useApp2Unit = false;
         };
         audio = {
@@ -147,7 +148,7 @@ in {
                 formatHorizontal = "HH:mm ddd, MMM dd";
                 formatVertical = "HH mm - MM dd";
                 id = "Clock";
-                useMonospacedFont = true;
+                useCustomFont = false;
                 usePrimaryColor = true;
               }
             ];
@@ -171,6 +172,7 @@ in {
           exclusive = false;
           floatingRatio = 1;
           monitors = [];
+          onlySameOutput = true;
           pinnedApps = [];
         };
         general = {
@@ -208,7 +210,6 @@ in {
           vesktop = false;
         };
         network = {
-          # bluetoothEnabled = true;
           wifiEnabled = config.custom.wifi.enable;
         };
         nightLight = {
@@ -250,9 +251,10 @@ in {
         };
         settingsVersion = 12;
         ui = {
-          fontBillboard = "Roboto";
           fontDefault = config.stylix.fonts.sansSerif.name;
+          fontDefaultScale = 1;
           fontFixed = config.stylix.fonts.monospace.name;
+          fontFixedScale = 1;
           idleInhibitorEnabled = false;
           monitorsScaling = [];
         };
