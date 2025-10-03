@@ -43,14 +43,17 @@ in {
       profiles.${user} = {
         extensions = {
           force = true; # Whether to override all previous librewolf settings. This is required when using 'settings'.
-          packages = with inputs.firefox-addons.packages.${pkgs.system}; [
-            bitwarden
-            darkreader
-            proton-pass
-            proton-vpn
-            sponsorblock
-            ublock-origin
-          ];
+          packages = builtins.attrValues {
+            inherit
+              (inputs.firefox-addons.packages.${pkgs.system})
+              bitwarden
+              darkreader
+              proton-pass
+              proton-vpn
+              sponsorblock
+              ublock-origin
+              ;
+          };
         };
 
         settings = {

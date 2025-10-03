@@ -22,19 +22,30 @@ in {
     in {
       enable = true;
       wayland = true;
-      enabledExtensions = with spicePkgs.extensions; [
-        keyboardShortcut
-        betterGenres
-        hidePodcasts
-        playlistIcons
-        shuffle
-      ];
-      enabledCustomApps = with spicePkgs.apps; [newReleases];
-      enabledSnippets = with spicePkgs.snippets; [
-        hideSidebarScrollbar
-        newHoverPanel
-        removeConnectBar
-      ];
+      enabledExtensions = builtins.attrValues {
+        inherit
+          (spicePkgs.extensions)
+          keyboardShortcut
+          betterGenres
+          hidePodcasts
+          playlistIcons
+          shuffle
+          ;
+      };
+      enabledCustomApps = builtins.attrValues {
+        inherit
+          (spicePkgs.apps)
+          newReleases
+          ;
+      };
+      enabledSnippets = builtins.attrValues {
+        inherit
+          (spicePkgs.snippets)
+          hideSidebarScrollbar
+          newHoverPanel
+          removeConnectBar
+          ;
+      };
       theme = spicePkgs.themes.orchis;
     };
 
