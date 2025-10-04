@@ -21,11 +21,15 @@
         nixosConfigurations = import ./hosts {
           inherit inputs nixpkgs pkgs self lib;
         };
-
         inherit lib;
       };
 
-      systems = ["x86_64-linux" "aarch64-linux"];
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
 
       perSystem = {pkgs, ...}: {
         packages = import ./packages {
@@ -55,6 +59,8 @@
     impermanence.url = "github:nix-community/impermanence";
 
     niri.url = "github:sodiboo/niri-flake";
+
+    nix-chuwi-minibook-x.url = "github:knoopx/nix-chuwi-minibook-x";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";

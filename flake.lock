@@ -384,6 +384,25 @@
         "type": "github"
       }
     },
+    "nix-chuwi-minibook-x": {
+      "inputs": {
+        "nixos-hardware": "nixos-hardware",
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1753224897,
+        "narHash": "sha256-xespbbZr6dWMz6WtctqKGwJ2mKVJoZit+GIB444gy9Q=",
+        "owner": "knoopx",
+        "repo": "nix-chuwi-minibook-x",
+        "rev": "8be96e49aaebdefb456d33fb1a787f2a1da1fa52",
+        "type": "github"
+      },
+      "original": {
+        "owner": "knoopx",
+        "repo": "nix-chuwi-minibook-x",
+        "type": "github"
+      }
+    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -405,6 +424,21 @@
       }
     },
     "nixos-hardware": {
+      "locked": {
+        "lastModified": 1753122741,
+        "narHash": "sha256-nFxE8lk9JvGelxClCmwuJYftbHqwnc01dRN4DVLUroM=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "cc66fddc6cb04ab479a1bb062f4d4da27c936a22",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
+    "nixos-hardware_2": {
       "locked": {
         "lastModified": 1759261527,
         "narHash": "sha256-wPd5oGvBBpUEzMF0kWnXge0WITNsITx/aGI9qLHgJ4g=",
@@ -484,6 +518,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1752950548,
+        "narHash": "sha256-NS6BLD0lxOrnCiEOcvQCDVPXafX1/ek1dfJHX1nUIzc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c87b95e25065c028d31a94f06a62927d18763fdf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1759036355,
         "narHash": "sha256-0m27AKv6ka+q270dw48KflE0LwQYrO7Fm4/2//KCVWg=",
         "owner": "nixos",
@@ -498,7 +548,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1758690382,
         "narHash": "sha256-NY3kSorgqE5LMm1LqNwGne3ZLMF2/ILgLpFr1fS4X3o=",
@@ -615,9 +665,10 @@
         "home-manager": "home-manager_2",
         "impermanence": "impermanence",
         "niri": "niri",
+        "nix-chuwi-minibook-x": "nix-chuwi-minibook-x",
         "nix-index-database": "nix-index-database",
-        "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_3",
+        "nixos-hardware": "nixos-hardware_2",
+        "nixpkgs": "nixpkgs_4",
         "noctalia-shell": "noctalia-shell",
         "nvf": "nvf",
         "quickshell": "quickshell",
@@ -627,7 +678,7 @@
     },
     "spicetify-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "systems": "systems_4"
       },
       "locked": {

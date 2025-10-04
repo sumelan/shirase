@@ -1,3 +1,5 @@
+# passing system etc. to nixosSystem is a useless deprecated pattern
+# that is superseded by nixpkgs.hostPlatform etc. in hardware-configuration.nix
 {
   lib,
   pkgs,
@@ -16,6 +18,7 @@
   defaultHomeMods = [
     inputs.nix-index-database.homeModules.nix-index
     inputs.noctalia-shell.homeModules.default
+    inputs.spicetify-nix.homeManagerModules.default
     ../home-manager
   ];
 
@@ -27,11 +30,7 @@
   }:
     nixpkgs.lib.nixosSystem {
       inherit pkgs;
-      # Special args are a better mechanism than overlays
-      # because it is significantly more obvious what came from where without indirection
       specialArgs = {
-        # passing system etc. to nixosSystem is a useless deprecated pattern
-        # that is superseded by nixpkgs.hostPlatform etc. in hardware-configuration.nix
         inherit inputs self lib host user;
         flakePath = "/persist/home/${user}/projects/shirase";
         isLaptop = hardware == "laptop";
@@ -75,18 +74,21 @@ in {
   acer = mkSystem "acer" {
     user = "sumelan";
     hardware = "laptop";
-    homeModules = [
-      inputs.spicetify-nix.homeManagerModules.default
-    ];
   };
+
+  # minibook = mkSystem "minibook" {
+  #   user = "sumelan";
+  #   hardware = "laptop";
+  #   nixosModules = [
+  #     inputs.nix-chuwi-minibook-x.nixosModules.default
+  #   ];
+  # };
+
   sakura = mkSystem "sakura" {
     user = "sumelan";
     hardware = "desktop";
     nixModules = [
       inputs.agenix.nixosModules.default
-    ];
-    homeModules = [
-      inputs.spicetify-nix.homeManagerModules.default
     ];
   };
 }
