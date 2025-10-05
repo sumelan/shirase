@@ -17,7 +17,7 @@ in {
     };
   };
 
-  networking.hostId = "";
+  networking.hostId = "9c4c64f4";
 
   custom = let
     enableList = [

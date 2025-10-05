@@ -76,13 +76,13 @@ in {
     hardware = "laptop";
   };
 
-  # minibook = mkSystem "minibook" {
-  #   user = "sumelan";
-  #   hardware = "laptop";
-  #   nixosModules = [
-  #     inputs.nix-chuwi-minibook-x.nixosModules.default
-  #   ];
-  # };
+  minibook = mkSystem "minibook" {
+    user = "sumelan";
+    hardware = "laptop";
+    nixModules = [
+      inputs.nix-chuwi-minibook-x.nixosModules.default
+    ];
+  };
 
   sakura = mkSystem "sakura" {
     user = "sumelan";
