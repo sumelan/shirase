@@ -35,10 +35,11 @@ in {
     settings = {
       default_session = let
         inherit (config.hm.lib.monitors) mainMonitor;
-        mainScale = builtins.toString mainMonitor.scale;
         mainMode = "${builtins.toString mainMonitor.mode.width}x${
           builtins.toString mainMonitor.mode.height
         }@${builtins.toString mainMonitor.mode.refresh}";
+        mainScale = builtins.toString mainMonitor.scale;
+        mainRotate = builtins.toString mainMonitor.rotation;
 
         backlightSpawn = optionalString config.hm.custom.backlight.enable ''
           spawn-sh-at-startup "${getExe pkgs.brightnessctl} set 5%"
@@ -71,7 +72,7 @@ in {
 
             output "${config.hm.lib.monitors.mainMonitorName}" {
                 scale ${mainScale}
-                transform "normal"
+                transform "${mainRotate}"
                 position x=0 y=0
                 mode "${mainMode}"
             }

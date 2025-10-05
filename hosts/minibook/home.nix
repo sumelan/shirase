@@ -9,20 +9,36 @@ in {
       isMain = true;
       scale = 1.0;
       mode = {
-        width = 1920;
-        height = 1200;
-        refresh = 60.0;
+        width = 1200;
+        height = 1920;
+        refresh = 50.002;
       };
       position = {
         x = 0;
         y = 0;
       };
-      rotation = 0;
+      rotation = 270;
+    };
+  };
+
+  programs.niri.settings.input = {
+    tablet = {
+      enable = true;
+      map-to-output = "DSI-1";
+    };
+    touch = {
+      enable = true;
+      map-to-output = "DSI-1";
     };
   };
 
   custom = let
     enableList = [
+      "helix"
+      "protonapp"
+      "rmpc"
+      "spotify"
+      "youtube-tui"
     ];
 
     disableList = [
