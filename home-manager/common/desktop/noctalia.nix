@@ -100,6 +100,7 @@ in {
                 id = "ActiveWindow";
                 scrollingMode = "hover";
                 showIcon = true;
+                width = 145;
               }
               {
                 autoHide = true;
@@ -162,14 +163,17 @@ in {
             if (config.stylix.polarity == "dark")
             then true
             else false;
+          generateTemplatesForPredefined = false;
           matugenSchemeType = "scheme-fruit-salad";
           predefinedScheme = "Gruvbox";
           useWallpaperColors = false;
         };
+        controlCenter = {
+          position = "close_to_bar_button";
+        };
         dock = {
-          autoHide = false;
           backgroundOpacity = 1;
-          exclusive = false;
+          displayMode = "always_visible";
           floatingRatio = 1;
           monitors = [];
           onlySameOutput = true;
@@ -195,19 +199,6 @@ in {
           showWeekNumberInCalendar = false;
           use12hourFormat = false;
           useFahrenheit = false;
-        };
-        matugen = {
-          enableUserTemplates = false;
-          foot = false;
-          fuzzel = false;
-          ghostty = false;
-          gtk3 = false;
-          gtk4 = false;
-          kitty = false;
-          pywalfox = false;
-          qt5 = false;
-          qt6 = false;
-          vesktop = false;
         };
         network = {
           wifiEnabled = config.custom.wifi.enable;
@@ -250,6 +241,17 @@ in {
           videoSource = "portal";
         };
         settingsVersion = 12;
+        templates = {
+          enableUserTemplates = false;
+          foot = false;
+          fuzzel = false;
+          ghostty = false;
+          gtk = false;
+          kitty = false;
+          pywalfox = false;
+          qt = false;
+          vesktop = false;
+        };
         ui = {
           fontDefault = config.stylix.fonts.sansSerif.name;
           fontDefaultScale = 1;
