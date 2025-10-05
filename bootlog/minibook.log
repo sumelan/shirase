@@ -1,0 +1,13 @@
+
+[New entry]
+<<< .
+>>> /nix/var/nix/profiles/system-4-link
+
+---
+
+2025年10月05日 17時14分16秒
+<<< /nix/var/nix/profiles/system-4-link
+>>> /nix/var/nix/profiles/system-5-link
+Version changes:
+[D.]  #1  nixos-system-minibook  25.11.20250928.e9f00bd.dirty -> 25.11.20250928.e9f00bd.cc46bd7
+Closure size: 2539 -> 2539 (10 paths added, 10 paths removed, delta +0, disk usage +344B).
