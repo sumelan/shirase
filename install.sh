@@ -211,7 +211,7 @@ repo="${repo:-github:sumelan/shirase}"
 
 # shirase
 if [[ $repo == "github:sumelan/shirase" ]]; then
-  hosts=("acer" "sakura")
+  hosts=("acer" "sakura" "minibook")
 
   echo "Available hosts:"
   for i in "${!hosts[@]}"; do
