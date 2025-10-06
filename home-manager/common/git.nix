@@ -10,7 +10,7 @@
       userEmail = config.profiles.${user}.email;
       difftastic = {
         enable = true;
-        background = "dark";
+        options.background = "dark";
       };
       extraConfig = {
         init = {
