@@ -85,3 +85,15 @@ Removed packages:
 [R.]  #17  trouble                        85bedb7e
 [R.]  #18  typst-preview-nvim-dea4525d    <none>
 Closure size: 2539 -> 2538 (333 paths added, 334 paths removed, delta -1, disk usage +36.9MiB).
+
+---
+
+2025年10月07日 01時36分43秒
+<<< /nix/var/nix/profiles/system-6-link
+>>> /nix/var/nix/profiles/system-7-link
+Version changes:
+[D.]  #1  nixos-system-minibook  25.11.20251002.7df7ff7.e17f267 -> 25.11.20251002.7df7ff7.b92dd24
+[D.]  #2  noctalia-shell         17fa29abc4b61902f6a9620d88bbebbe828ac71e, 17fa29abc4b61902f6a9620d88bbebbe828ac71e-fish-completions -> 8caff79b96d244ea451aca7c65166e9790a052db, 8caff79b96d244ea451aca7c65166e9790a052db-fish-completions
+Added packages:
+[A.]  #1  euphonica  0.96.4-beta, 0.96.4-beta-fish-completions
+Closure size: 2538 -> 2540 (34 paths added, 32 paths removed, delta +2, disk usage +15.6MiB).
