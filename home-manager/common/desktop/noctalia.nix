@@ -65,8 +65,11 @@ in {
         };
         audio = {
           cavaFrameRate = 60;
-          mprisBlacklist = ["librewolf"];
-          preferredPlayer = "spotify";
+          mprisBlacklist = [
+            "io.github.htkhiem.Euphonica"
+            "Mozilla librewolf"
+          ];
+          preferredPlayer = "Music Player Daemon";
           visualizerType = "linear";
           volumeOverdrive = false;
           volumeStep = 5;

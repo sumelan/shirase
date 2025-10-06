@@ -185,6 +185,7 @@ in {
         open-floating = true;
         default-column-width.proportion = 0.50;
         default-window-height.proportion = 0.50;
+        opacity = 1.0;
       }
     ];
   };
