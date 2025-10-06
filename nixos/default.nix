@@ -5,13 +5,11 @@
   host,
   user,
   flakePath,
-  isLaptop,
   ...
 }: let
   inherit
     (lib)
     mkForce
-    mkIf
     hiPrio
     optionals
     ;
@@ -28,10 +26,7 @@ in {
     ./style.nix
   ];
 
-  services = {
-    gvfs.enable = true; # automount disks
-    logind.settings.Login.HandlePowerKey = mkIf isLaptop "ignore"; # disable accidentary push powerkey
-  };
+  services.gvfs.enable = true; # automount disks
 
   programs = {
     dconf.enable = true;

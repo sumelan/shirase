@@ -69,7 +69,7 @@ in {
             "io.github.htkhiem.Euphonica"
             "Mozilla librewolf"
           ];
-          preferredPlayer = "Music Player Daemon";
+          preferredPlayer = "Spotify";
           visualizerType = "linear";
           volumeOverdrive = false;
           volumeStep = 5;
