@@ -1250,3 +1250,13 @@ Removed packages:
 [R.]  #16  trouble                        85bedb7e
 [R.]  #17  typst-preview-nvim-dea4525d    <none>
 Closure size: 2573 -> 2576 (347 paths added, 344 paths removed, delta +3, disk usage +43.5MiB).
+
+---
+
+2025年10月07日 07時44分41秒
+<<< /nix/var/nix/profiles/system-20-link
+>>> /nix/var/nix/profiles/system-21-link
+Version changes:
+[D.]  #1  nixos-system-acer  25.11.20251002.7df7ff7.17f74b1 -> 25.11.20251002.7df7ff7.c217e76
+[D.]  #2  noctalia-shell     17fa29abc4b61902f6a9620d88bbebbe828ac71e, 17fa29abc4b61902f6a9620d88bbebbe828ac71e-fish-completions -> 8caff79b96d244ea451aca7c65166e9790a052db, 8caff79b96d244ea451aca7c65166e9790a052db-fish-completions
+Closure size: 2576 -> 2576 (30 paths added, 30 paths removed, delta +0, disk usage +4.1KiB).
