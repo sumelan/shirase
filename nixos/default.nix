@@ -134,7 +134,7 @@ in {
   # setup fonts
   fonts = {
     enableDefaultPackages = true;
-    packages = [config.hm.stylix.fonts.monospace.package]; # install monospace font for root
+    packages = [config.stylix.fonts.monospace.package]; # install monospace font for root
   };
 
   xdg = {

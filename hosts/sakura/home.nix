@@ -31,15 +31,6 @@ in {
     };
   };
 
-  programs.noctalia-shell.settings = {
-    ui.monitorsScaling = [
-      {
-        name = "DP-1";
-        scale = 1.0;
-      }
-    ];
-  };
-
   custom = let
     enableList = [
       "rmpc"

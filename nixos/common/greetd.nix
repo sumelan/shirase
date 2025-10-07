@@ -98,8 +98,7 @@ in {
       inherit (config.hm.gtk.iconTheme) package name;
     };
     font = {
-      inherit (config.hm.stylix.fonts.monospace) package name;
-      size = config.hm.stylix.fonts.sizes.desktop;
+      inherit (config.hm.gtk.font) package name size;
     };
     cursorTheme = {
       inherit (config.hm.home.pointerCursor) package name;

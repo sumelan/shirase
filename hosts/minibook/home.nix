@@ -31,15 +31,6 @@ in {
     };
   };
 
-  programs.noctalia-shell.settings = {
-    ui.monitorsScaling = [
-      {
-        name = "DSI-1";
-        scale = 1.2;
-      }
-    ];
-  };
-
   programs.niri.settings.input = {
     tablet = {
       enable = true;

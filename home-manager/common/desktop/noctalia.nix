@@ -249,11 +249,25 @@ in {
           vesktop = false;
         };
         ui = {
-          fontDefault = config.stylix.fonts.sansSerif.name;
+          fontDefault = config.gtk.font.name;
           fontDefaultScale = 1;
           fontFixed = config.stylix.fonts.monospace.name;
           fontFixedScale = 1;
           idleInhibitorEnabled = false;
+          monitorsScaling = [
+            {
+              name = "eDP-1";
+              scale = 1.0;
+            }
+            {
+              name = "DP-1";
+              scale = 1.0;
+            }
+            {
+              name = "DSI-1";
+              scale = 1.2;
+            }
+          ];
           tooltipsEnabled = true;
         };
         wallpaper = {

@@ -65,25 +65,6 @@ in {
         inherit (cfg.cursor) package name;
       };
 
-      fonts = {
-        sansSerif = {
-          package = pkgs.geist-font;
-          name = "Geist";
-        };
-        serif = {
-          package = pkgs.geist-font;
-          name = "Geist";
-        };
-        monospace = {
-          package = pkgs.maple-mono.NF; # Maple Mono NF (Ligature hinted)
-          name = "Maple Mono NF";
-        };
-        emoji = {
-          package = pkgs.noto-fonts-color-emoji;
-          name = "Noto Color Emoji";
-        };
-      };
-
       icons = {
         enable = true;
         inherit (cfg.icons) package light dark;
