@@ -21,6 +21,25 @@ in {
     };
   };
 
+  stylix = {
+    cursor.size = 32;
+    fonts.sizes = {
+      applications = 13;
+      terminal = 13;
+      desktop = 13;
+      popups = 12;
+    };
+  };
+
+  programs.noctalia-shell.settings = {
+    ui.monitorsScaling = [
+      {
+        name = "DP-1";
+        scale = 1.0;
+      }
+    ];
+  };
+
   custom = let
     enableList = [
       "rmpc"

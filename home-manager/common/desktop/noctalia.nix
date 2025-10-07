@@ -114,6 +114,9 @@ in {
                 visualizerType = "linear";
               }
               {
+                id = "ScreenRecorder";
+              }
+              {
                 id = "KeepAwake";
               }
               {
@@ -121,9 +124,6 @@ in {
               }
             ];
             right = [
-              {
-                id = "ScreenRecorder";
-              }
               {
                 hideWhenZero = true;
                 id = "NotificationHistory";
@@ -134,14 +134,6 @@ in {
               }
               {
                 id = "Bluetooth";
-              }
-              {
-                displayMode = "onhover";
-                id = "Volume";
-              }
-              {
-                displayMode = "onhover";
-                id = "Brightness";
               }
               {
                 displayMode = "alwaysShow";
@@ -261,7 +253,6 @@ in {
           fontFixed = config.stylix.fonts.monospace.name;
           fontFixedScale = 1;
           idleInhibitorEnabled = false;
-          monitorsScaling = [];
         };
         wallpaper = {
           directory = "${config.xdg.userDirs.pictures}/Wallpapers";
@@ -328,7 +319,7 @@ in {
         };
         "Mod+D" = {
           action.spawn = noctalia "controlCenter toggle";
-          hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Sidepanel'';
+          hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Control Center'';
         };
         "Mod+Comma" = {
           action.spawn = noctalia "settings toggle";
@@ -345,7 +336,7 @@ in {
         };
         "Mod+X" = {
           action.spawn = noctalia "sessionMenu toggle";
-          hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Powerpanel'';
+          hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Session Menu'';
         };
         "XF86AudioRaiseVolume" = {
           allow-when-locked = true;

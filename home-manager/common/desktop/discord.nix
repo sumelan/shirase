@@ -1,20 +1,24 @@
-{config, ...}: {
-  programs.vesktop = {
-    enable = true;
-  };
+{
+  pkgs,
+  config,
+  ...
+}: {
+  home.packages = [pkgs.webcord-vencord];
 
   programs.niri.settings = {
     binds = {
       "Mod+W" = {
-        action.spawn = ["sh" "-c" "uwsm app -- vesktop"];
-        hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Application]</span> Vesktop'';
+        action.spawn = ["sh" "-c" "uwsm app -- webcord"];
+        hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Application]</span> Webcord'';
       };
     };
   };
 
+  stylix.targets.vencord.enable = false;
+
   custom.persist = {
     home.directories = [
-      ".config/vesktop"
+      ".config/WebCord"
     ];
   };
 }

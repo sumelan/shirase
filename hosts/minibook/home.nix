@@ -21,6 +21,25 @@ in {
     };
   };
 
+  stylix = {
+    cursor.size = 42;
+    fonts.sizes = {
+      applications = 16;
+      terminal = 15;
+      desktop = 16;
+      popups = 15;
+    };
+  };
+
+  programs.noctalia-shell.settings = {
+    ui.monitorsScaling = [
+      {
+        name = "DSI-1";
+        scale = 1.2;
+      }
+    ];
+  };
+
   programs.niri.settings.input = {
     tablet = {
       enable = true;

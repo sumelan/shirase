@@ -63,7 +63,6 @@ in {
       };
       cursor = {
         inherit (cfg.cursor) package name;
-        size = 32;
       };
 
       fonts = {
@@ -82,12 +81,6 @@ in {
         emoji = {
           package = pkgs.noto-fonts-color-emoji;
           name = "Noto Color Emoji";
-        };
-        sizes = {
-          applications = 13;
-          terminal = 13;
-          desktop = 13;
-          popups = 12;
         };
       };
 
