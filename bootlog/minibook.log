@@ -97,3 +97,25 @@ Version changes:
 Added packages:
 [A.]  #1  euphonica  0.96.4-beta, 0.96.4-beta-fish-completions
 Closure size: 2538 -> 2540 (34 paths added, 32 paths removed, delta +2, disk usage +15.6MiB).
+
+---
+
+2025年10月08日 04時52分39秒
+<<< /nix/var/nix/profiles/system-7-link
+>>> /nix/var/nix/profiles/system-9-link
+Version changes:
+[C.]  #1  MapleMono-NF           7.6, 7.6-fish-completions -> 7.6, 7.6-fish-completions, 7.6.pf2
+[C.]  #2  dejavu-fonts           2.37, 2.37.pf2 -> 2.37
+[C.]  #3  electron               37.6.0 -> 36.9.2, 37.6.0
+[C.]  #4  electron-unwrapped     37.6.0 -> 36.9.2, 37.6.0
+[U.]  #5  nixos-system-minibook  25.11.20251002.7df7ff7.b92dd24 -> 25.11.20251002.7df7ff7.3e60a98
+[D.]  #6  noctalia-shell         8caff79b96d244ea451aca7c65166e9790a052db, 8caff79b96d244ea451aca7c65166e9790a052db-fish-completions -> 6bc23e905d6c514db74e2649c0d4c09db7533e00, 6bc23e905d6c514db74e2649c0d4c09db7533e00-fish-completions
+Added packages:
+[A.]  #1  vencord          1.13.0
+[A.]  #2  webcord-vencord  4.11.1, 4.11.1-fish-completions
+Removed packages:
+[R.]  #1  hm_Vencordthemesstylix.theme.css  <none>
+[R.]  #2  vencord-settings                  <none>
+[R.]  #3  vesktop                           1.5.8, 1.5.8-fish-completions
+[R.]  #4  vesktop-themes-stylix             <none>
+Closure size: 2540 -> 2540 (64 paths added, 64 paths removed, delta +0, disk usage +290.0MiB).
