@@ -55,7 +55,7 @@ in {
       };
       settings = {
         appLauncher = {
-          backgroundOpacity = 0.85;
+          backgroundOpacity = config.stylix.opacity.popups;
           enableClipboardHistory = true;
           pinnedExecs = [];
           position = "center";
@@ -75,7 +75,7 @@ in {
           volumeStep = 5;
         };
         bar = {
-          backgroundOpacity = 0.95;
+          backgroundOpacity = config.stylix.opacity.desktop;
           density = "comfortable";
           floating = false;
           marginHorizontal = 0.25;
@@ -138,7 +138,7 @@ in {
               {
                 displayMode = "alwaysShow";
                 id = "Battery";
-                warningThreshold = 30;
+                warningThreshold = 20;
               }
               {
                 formatHorizontal = "HH:mm ddd, MMM dd";
