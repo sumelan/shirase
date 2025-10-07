@@ -141,6 +141,7 @@ in {
                 warningThreshold = 20;
               }
               {
+                customFont = "";
                 formatHorizontal = "HH:mm ddd, MMM dd";
                 formatVertical = "HH mm - MM dd";
                 id = "Clock";
@@ -253,8 +254,10 @@ in {
           fontFixed = config.stylix.fonts.monospace.name;
           fontFixedScale = 1;
           idleInhibitorEnabled = false;
+          tooltipsEnabled = true;
         };
         wallpaper = {
+          defaultWallpaper = "";
           directory = "${config.xdg.userDirs.pictures}/Wallpapers";
           enableMultiMonitorDirectories = false;
           enabled = true;
