@@ -18,8 +18,8 @@ in {
     users.users = {
       "syncoid" = {
         # services.syncoid automaticall set user "syncoid" as systemuser
-        openssh.authorizedKeys.keyFiles = [
-          ../../hosts/acer/id_ed25519.pub
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN6tX+1PCu+A57NZV0qhGyWMBFdUvPb56kX/cksEyumk sumelan"
         ];
       };
     };

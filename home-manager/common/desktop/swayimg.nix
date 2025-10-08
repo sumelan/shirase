@@ -7,7 +7,6 @@
     (lib)
     singleton
     ;
-
   inherit
     (config.lib.stylix.colors.withHashtag)
     base00

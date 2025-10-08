@@ -84,10 +84,8 @@ in {
   config.lib.monitors = {
     mainMonitorName =
       builtins.head (builtins.filter (name: config.monitors.${name}.isMain) (builtins.attrNames config.monitors));
-
     otherMonitorsNames =
       builtins.filter (name: !config.monitors.${name}.isMain) (builtins.attrNames config.monitors);
-
     mainMonitor = config.monitors.${config.lib.monitors.mainMonitorName};
   };
 }

@@ -99,12 +99,8 @@ in {
     window-rules = [
       {
         matches = [
-          {
-            app-id = "^(nemo)$";
-          }
-          {
-            app-id = "^(xdg-desktop-portal-gtk)$";
-          }
+          {app-id = "^(nemo)$";}
+          {app-id = "^(xdg-desktop-portal-gtk)$";}
         ];
         open-floating = true;
       }
@@ -114,12 +110,10 @@ in {
   custom.persist = {
     home = {
       directories = [
-        # folder preferences such as view mode and sort order
-        ".local/share/gvfs-metadata"
+        ".local/share/gvfs-metadata" # folder preferences such as view mode and sort order
       ];
       cache.directories = [
-        # thumbnail cache
-        ".cache/thumbnails"
+        ".cache/thumbnails" # thumbnail cache
       ];
     };
   };

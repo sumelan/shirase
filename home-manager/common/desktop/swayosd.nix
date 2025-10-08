@@ -4,6 +4,7 @@
     base00
     base02
     base05
+    base0E
     ;
 in {
   services.swayosd = {
@@ -74,7 +75,7 @@ in {
     # fcitx5
     "Ctrl+Space" = {
       action.spawn = ["sh" "-c" "fcitx5-remote -t && swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard"];
-      hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0E}">[Fcitx5]</span> Switch Active/Inactive'';
+      hotkey-overlay.title = ''<span foreground="${base0E}">[Fcitx5]</span> Switch Active/Inactive'';
     };
   };
 }

@@ -54,11 +54,7 @@ in {
       settings = {
         log.enabled = true;
         mgr = {
-          ratio = [
-            0
-            1
-            1
-          ];
+          ratio = [0 1 1];
           sort_by = "alphabetical";
           sort_sensitive = false;
           sort_reverse = false;
@@ -95,10 +91,7 @@ in {
             desc = "Maximize or restore the preview pane";
           }
           {
-            on = [
-              "c"
-              "m"
-            ];
+            on = ["c" "m"];
             run = "plugin chmod";
             desc = "Chmod on selected files";
           }

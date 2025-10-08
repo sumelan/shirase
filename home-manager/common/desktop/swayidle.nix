@@ -6,7 +6,7 @@
   isDesktop,
   ...
 }: let
-  cfg = inputs.noctalia-shell.packages.${pkgs.system}.default;
+  noctaliaPkgs = inputs.noctalia-shell.packages.${pkgs.system}.default;
 
   inherit
     (lib)
@@ -23,7 +23,7 @@ in {
       {
         event = "before-sleep";
         command = concatStringsSep "; " [
-          "${getExe cfg} ipc call lockScreen toggle"
+          "${getExe noctaliaPkgs} ipc call lockScreen toggle"
           "${getExe pkgs.playerctl} pause"
         ];
       }
@@ -33,7 +33,7 @@ in {
       }
       {
         event = "lock";
-        command = "${getExe cfg} lockScreen toggle";
+        command = "${getExe noctaliaPkgs} lockScreen toggle";
       }
       {
         event = "unlock";
@@ -50,7 +50,7 @@ in {
       })
       {
         timeout = 60 * 12;
-        command = "${getExe cfg} ipc call lockScreen toggle";
+        command = "${getExe noctaliaPkgs} ipc call lockScreen toggle";
       }
       {
         timeout = 60 * 15;

@@ -13,7 +13,6 @@ in
     home.packages = [pkgs.pwvucontrol];
 
     services.easyeffects.enable = true;
-
     xdg.configFile."easyeffects/output" = {
       source = pkgs.fetchFromGitHub {
         owner = "JackHack96";
