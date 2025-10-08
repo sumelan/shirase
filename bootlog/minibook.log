@@ -119,3 +119,42 @@ Removed packages:
 [R.]  #3  vesktop                           1.5.8, 1.5.8-fish-completions
 [R.]  #4  vesktop-themes-stylix             <none>
 Closure size: 2540 -> 2540 (64 paths added, 64 paths removed, delta +0, disk usage +290.0MiB).
+
+---
+
+2025年10月08日 21時07分41秒
+<<< /nix/var/nix/profiles/system-9-link
+>>> /nix/var/nix/profiles/system-10-link
+Version changes:
+[C*]  #1  ncurses                6.5 x2, 6.5-dev, 6.5-man -> 6.5 x2, 6.5-man
+[C.]  #2  nixd                   2.7.0, 2.7.0-fish-completions -> 2.7.0
+[U.]  #3  nixos-system-minibook  25.11.20251002.7df7ff7.3e60a98 -> 25.11.20251002.7df7ff7.8b1ce29
+[C.]  #4  wl-clipboard           2.2.1 -> 2.2.1, 2.2.1-fish-completions
+Added packages:
+[A.]  #01  base16-gruvbox-material-dark-soft.ini  <none>
+[A.]  #02  docker-compose-language-service        0.2.0
+[A.]  #03  fcft                                   3.3.2
+[A.]  #04  fish-lsp                               1.0.10
+[A.]  #05  foot                                   1.24.0, 1.24.0-fish-completions, 1.24.0-terminfo
+[A.]  #06  foot.ini                               <none>
+[A.]  #07  golangci-lint-langserver               0.0.11
+[A.]  #08  gopls                                  0.20.0
+[A+]  #09  ltunify                                0.3
+[A.]  #10  nil                                    2025-06-13
+[A.]  #11  nixfmt                                 1.0.1
+[A.]  #12  pretty-php                             0.4.94
+[A.]  #13  python3.13-evdev                       1.9.2
+[A.]  #14  python3.13-hid-parser                  0.1.0
+[A.]  #15  python3.13-pyyaml                      6.0.2
+[A+]  #16  solaar                                 1.1.14
+[A.]  #17  superhtml                              0.6.0
+[A.]  #18  taplo                                  0.10.0
+[A.]  #19  terraform-ls                           0.38.0
+[A.]  #20  ty                                     0.0.1-alpha.21
+[A.]  #21  vscode-langservers-extracted           4.10.0
+[A.]  #22  yaml-language-server                   1.18.0
+Removed packages:
+[R.]  #1  base16-gruvbox-material-dark-soft.conf  <none>
+[R.]  #2  hm_kittykitty.conf                      <none>
+[R.]  #3  kitty                                   0.43.1, 0.43.1-fish-completions, 0.43.1-terminfo
+Closure size: 2540 -> 2558 (75 paths added, 57 paths removed, delta +18, disk usage +571.2MiB).
