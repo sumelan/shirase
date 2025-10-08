@@ -17,7 +17,6 @@
 
   cfg = config.custom.persist;
   hmPersistCfg = config.hm.custom.persist;
-  # https://nix.dev/manual/nix/2.28/language/syntax.html?highlight=assert#assertions
   assertNoHomeDirs = paths:
     assert (assertMsg (!any (hasPrefix "/home") paths) "/home used in a root persist!"); paths;
 in {
@@ -102,7 +101,6 @@ in {
     environment.persistence = {
       "/persist" = {
         hideMounts = true;
-        # remove duplicate elements from the list
         files = unique cfg.root.files;
         directories = unique (
           [

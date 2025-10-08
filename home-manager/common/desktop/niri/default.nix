@@ -29,12 +29,11 @@ in {
 
   options.custom = {
     niri = {
-      enable = mkEnableOption "Enablen niri" // {default = true;};
       xwayland.enable = mkEnableOption "Enable xwayland-satellite";
     };
   };
 
-  config = mkIf config.custom.niri.enable {
+  config = {
     programs.niri.settings = let
       shadowConfig = {
         enable = true;

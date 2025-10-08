@@ -57,7 +57,7 @@ in {
         env = {
           video-player = "mpv";
           download-path = "${config.xdg.userDirs.download}/%(title)s-%(id)s.%(ext)s";
-          terminal-emulator = "kitty";
+          terminal-emulator = "foot";
           youtube-downloader = "yt-dlp";
           save-path = "${config.xdg.dataHome}/youtube-tui/saved/";
           browser = "librewolf";
@@ -265,7 +265,7 @@ in {
     programs.niri.settings = {
       binds = {
         "Mod+Y" = {
-          action.spawn = ["${getExe pkgs.kitty}" "-o" "confirm_os_window_close=0" "--app-id=youtube-tui" "youtube-tui"];
+          action.spawn = ["${getExe pkgs.foot}" "--app-id=youtube-tui" "youtube-tui"];
           hotkey-overlay.title = ''<span foreground="${base0B}">[Terminal]</span> Youtube-tui'';
         };
       };

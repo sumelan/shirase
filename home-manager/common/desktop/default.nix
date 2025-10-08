@@ -2,7 +2,7 @@ _: {
   imports = [
     ./niri
     ./discord.nix
-    ./kitty.nix
+    ./foot.nix
     ./librewolf.nix
     ./mpv.nix
     ./nemo.nix

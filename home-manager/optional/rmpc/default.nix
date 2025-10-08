@@ -35,7 +35,7 @@ in {
       niri.settings = {
         binds = {
           "Mod+R" = {
-            action.spawn = ["${lib.getExe pkgs.kitty}" "-o" "confirm_os_window_close=0" "--app-id=rmpc" "rmpc"];
+            action.spawn = ["${lib.getExe pkgs.foot}" "--app-id=rmpc" "rmpc"];
             hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Terminal]</span> rmpc'';
           };
         };

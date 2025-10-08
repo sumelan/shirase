@@ -1,6 +1,6 @@
 {
-  pkgs,
   config,
+  pkgs,
   ...
 }: {
   home.packages = [pkgs.webcord-vencord];

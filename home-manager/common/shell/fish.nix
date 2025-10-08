@@ -55,12 +55,11 @@ in {
 
   # set as default interactive shell
   programs = {
-    kitty.settings = {
-      env = "SHELL=${fishPath}";
-      shell = mkForce (lib.getExe config.programs.fish.package);
-    };
     ghostty.settings = {
       command = mkForce "SHELL=${fishPath} ${fishPath}";
+    };
+    foot.settings = {
+      main.shell = mkForce fishPath;
     };
   };
 

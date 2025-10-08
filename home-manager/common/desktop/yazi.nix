@@ -112,7 +112,7 @@ in {
     niri.settings = {
       binds = {
         "Mod+Shift+O" = {
-          action.spawn = ["${getExe pkgs.kitty}" "-o" "confirm_os_window_close=0" "--app-id=yazi" "yazi"];
+          action.spawn = ["${getExe pkgs.foot}" "--app-id=yazi" "yazi"];
           hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Terminal]</span> Yazi'';
         };
       };

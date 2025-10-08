@@ -14,14 +14,12 @@
 in {
   options.custom = {
     niri = {
-      enable =
-        mkEnableOption "Niri compositor" // {default = true;};
       uwsm.enable =
-        mkEnableOption "Uing uwsm with niri" // {default = config.custom.niri.enable;};
+        mkEnableOption "Uing uwsm with niri" // {default = true;};
     };
   };
 
-  config = mkIf config.custom.niri.enable {
+  config = {
     nixpkgs.overlays = [inputs.niri.overlays.niri];
     programs = {
       niri = {
