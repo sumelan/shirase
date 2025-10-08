@@ -7,12 +7,6 @@
 in {
   home.packages = [pkgs.mpv];
 
-  custom.persist = {
-    home.directories = [
-      ".local/state/mpv" # watch later
-    ];
-  };
-
   programs.niri.settings.window-rules = [
     {
       matches = singleton {
@@ -24,4 +18,10 @@ in {
       opacity = 1.0;
     }
   ];
+
+  custom.persist = {
+    home.directories = [
+      ".local/state/mpv" # watch later
+    ];
+  };
 }

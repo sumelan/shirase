@@ -13,7 +13,6 @@ in {
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
-      nixd
       nix-output-monitor
       nix-tree
       nix-search-tv

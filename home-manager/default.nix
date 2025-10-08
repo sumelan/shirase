@@ -37,6 +37,7 @@ in {
         gzip
         microfetch
         trash-cli
+        wl-clipboard
         xdg-utils
         ;
     };
@@ -60,7 +61,6 @@ in {
         "blueman-adapters"
       ];
     in
-      # generate an attribute set by mapping a function over a list of attribute names.
       genAttrs hideList (name: {
         inherit name;
         noDisplay = true;

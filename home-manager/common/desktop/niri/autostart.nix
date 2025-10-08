@@ -16,8 +16,6 @@ in {
     {argv = singleton "nm-applet";}
     # bluetooth
     {argv = singleton "blueman-applet";}
-    # clipboard manager
-    {sh = "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store &";}
     # initial backlight
     (mkIf config.custom.backlight.enable {
       argv = ["${getExe pkgs.brightnessctl}" "set" "5%"];

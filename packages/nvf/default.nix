@@ -53,14 +53,6 @@ in {
     preventJunkFiles = true;
     searchCase = "smart";
 
-    lsp = {
-      enable = true;
-      formatOnSave = true;
-      lspkind.enable = true;
-      otter-nvim.enable = true;
-      trouble.enable = true;
-    };
-
     languages = {
       enableFormat = true;
       enableTreesitter = true;
@@ -70,14 +62,6 @@ in {
       nix = {
         enable = true;
         format.type = "alejandra";
-        lsp = {
-          enable = true;
-          server = "nixd";
-          options = mkIf (flakePath != "") rec {
-            nixos.expr = "(builtins.getFlake ''${flakePath}'').nixosConfigurations.${host}.options";
-            home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
-          };
-        };
         treesitter.enable = true;
       };
 
@@ -105,6 +89,20 @@ in {
       rust = {
         enable = true;
         crates.enable = true;
+      };
+    };
+
+    lsp = {
+      enable = true;
+      formatOnSave = true;
+      lspkind.enable = true;
+      otter-nvim.enable = true;
+      trouble.enable = true;
+      servers.nixd = {
+        init_options = mkIf (flakePath != "") rec {
+          nixos.expr = "(builtins.getFlake ''${flakePath}'').nixosConfigurations.${host}.options";
+          home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
+        };
       };
     };
 
