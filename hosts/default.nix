@@ -74,6 +74,14 @@ in {
   acer = mkSystem "acer" {
     user = "sumelan";
     hardware = "laptop";
+    nixModules = builtins.attrValues {
+      inherit
+        (inputs.nixos-hardware.nixosModules)
+        common-pc-laptop
+        common-pc-laptop-ssd
+        common-cpu-intel
+        ;
+    };
   };
 
   minibook = mkSystem "minibook" {
@@ -87,8 +95,14 @@ in {
   sakura = mkSystem "sakura" {
     user = "sumelan";
     hardware = "desktop";
-    nixModules = [
-      inputs.agenix.nixosModules.default
-    ];
+    nixModules = builtins.attrValues {
+      inherit
+        (inputs.nixos-hardware.nixosModules)
+        common-pc
+        common-pc-ssd
+        common-cpu-amd
+        common-gpu-amd
+        ;
+    };
   };
 }

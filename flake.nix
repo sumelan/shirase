@@ -49,8 +49,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    agenix.url = "github:ryantm/agenix";
-
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,9 +56,16 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    niri.url = "github:sodiboo/niri-flake";
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    nix-chuwi-minibook-x.url = "github:knoopx/nix-chuwi-minibook-x";
+    nix-chuwi-minibook-x = {
+      url = "github:knoopx/nix-chuwi-minibook-x";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixos-hardware.follows = "nixos-hardware";
+    };
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -78,13 +83,18 @@
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     quickshell = {

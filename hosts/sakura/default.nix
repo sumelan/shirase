@@ -8,16 +8,6 @@
     genAttrs
     ;
 in {
-  imports = builtins.attrValues {
-    inherit
-      (inputs.nixos-hardware.nixosModules)
-      common-pc
-      common-pc-ssd
-      common-cpu-amd
-      common-gpu-amd
-      ;
-  };
-
   networking.hostId = "a4b706c9";
 
   custom = let

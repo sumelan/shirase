@@ -1,6 +1,5 @@
 _: {
   imports = [
-    ./agenix.nix
     ./alsa.nix
     ./audiobookshelf.nix
     ./bluetooth.nix
