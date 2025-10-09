@@ -1,40 +1,39 @@
 # Shirase
 
-This is my personal nixos dotfiles, always wip.
+This is my personal flake.
 
 ## Features
 
-### ZFS + Impermanence
+### BTRFS + Impermanence
 
 Whole volume has 1 GB for boot and 16 GB for swap, the rest are ZFS datasets.
 Layout is like below.
 
 ```sh
 nvme0n1
-  ├── NIXOS # zroot
+  ├── NIXOS # subvolumes
   │     ├── /root
+  │     ├── /root-blank
   │     ├── /nix
-  │     ├── /tmp
   │     ├── /persist
   │     └── /cache
-  ├──── SWAP    - 16 GB
+  │
   └──── NIXBOOT -  1 GB
 ```
 
-Volume `/root` and `/home` are tmpfs so will be wipe when reboot. But `/perisit`
+`/root` volume is wiped at each boot, but `/perisit`
 and `/cache` are remained by
 [impermanence module](https://github.com/nix-community/impermanence).
 
-Plus, `/persist` volume of my laptop (acer) is transferred to a HDD connected to
+Also, `/persist` volume of my laptop (minibook) is transferred to HDDs connected to
 my desktop (sakura) using
-[Syncoid](https://github.com/jimsalterjrs/sanoid?tab=readme-ov-file#syncoid).
+[btrbk](https://github.com/digint/btrbk).
 
 ## Install
 
-There exists a intall scripts, but some process may be needed before. Start from
-a tty on the NixOS iso (minimal) ...
+Some process may be needed before. Start from a tty on the NixOS iso (minimal) ...
 
-### (Optinal): Install from another Linux system via SSH
+### (Optional): Install from another Linux system via SSH
 
 Enable SSH on the target device.
 
@@ -61,9 +60,9 @@ Now, from the other system, ssh into the target device.
 ssh root@ip_address_of_target-device
 ```
 
-### (Optional) Using Niri binary cache
+### (Optional) Using niri binary cache
 
-Install Cachix client.
+Install cachix client.
 
 ```sh
 nix-env -iA cachix -f https://cachix.org/api/v1/install
@@ -89,15 +88,14 @@ sh <(curl -L https://raw.githubusercontent.com/Sumelan/shirase/main/install.sh)
 
 - [iynaix/dotfiles](https://github.com/iynaix/dotfiles)
 
-  Shamelessly copied impermanence, install-scripts, and many config from his
-  dotfile.
+  Shamelessly copied impermanence, install-scripts, and many configs from his repo.
 
-- [Michael-C-Buckley/nixos](https://github.com/Michael-C-Buckley/nixos)
+- [Guekka's blog](https://guekka.github.io/nixos-server-1/)
 
-  My dotfile stracture is inspired form his repo.
+  His script is used in my btrfs+impermanence setup.
 
 ## Reference
 
-- [Vimjoyer's youtube](https://www.youtube.com/@vimjoyer)
+- [Vimjoyer's YouTube](https://www.youtube.com/@vimjoyer)
 
-  If you consider using nixos, check his YouTube!
+  If you consider using nixos, check his YouTube channel!
