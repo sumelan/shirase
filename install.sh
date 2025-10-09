@@ -25,44 +25,22 @@ function yesno() {
 
 cat <<Introduction
 The *entire* disk will be formatted with a 1GB boot partition
-(labelled NIXBOOT), 16GB of swap, and the rest allocated to ZFS.
+(labelled NIXBOOT), and the rest allocated to BTRFS (labelled NIXOS).
 
-The following ZFS datasets will be created:
-    - zroot/root (mounted at / with blank snapshot)
-    - zroot/nix (mounted at /nix)
-    - zroot/tmp (mounted at /tmp)
-    - zroot/persist (mounted at /persist)
-    - zroot/cache (mounted at /cache)
+The following BTRFS subvolumes will be created:
+    - root(/) (mounted at / with blank snapshot)
+    - /nix (mounted at /nix)
+    - /persist (mounted at /persist)
+    - /cache (mounted at /cache)
 
 ** IMPORTANT **
 This script assumes that the relevant "fileSystems" are declared within the
 NixOS config to be installed. It does not create any hardware configuration
 or modify the NixOS config to be installed in any way. If you have not done
-so, you will need to add the necessary zfs options and filesystems before
+so, you will need to add the necessary btrfs options and filesystems before
 proceeding or your install WILL NOT BOOT.
 
 Introduction
-
-# ZFS "fileSystems" declarations can be referenced from zfs.nix
-# ZFS also requires the following options to be set within host config:
-#   networking.hostId (can be generated using: head -c 8 /etc/machine-id)
-#   zfs.devNodes
-#       "/dev/disk/by-id" for Intel CPUs
-#       "/dev/disk/by-partuuid" for AMD CPUs / within VMs
-# impermanence setup can be referenced from nixos/impermanence.nix
-
-# It is highly recommended to setup an initialPassword for root and your user(s)
-# as a fallback so you will always be able to login / sudo using that initialPassword, e.g.
-#
-# users = {
-#     mutableUsers = false;
-#     users.root.initialPassword = "password";
-#     users.<USERNAME>.initialPassword = "password";
-# }
-#
-# After initial login, you can then set new passwords for root and your user(s)
-# using `users.<USERNAME>.hashedPasswordFile = /persist/PATH_TO_HASHED_PASSWORD_FILE`
-# read -s -p "" PASSWORD && mkpasswd -m sha-512 "$PASSWORD" | sudo tee -a /persist/PATH_TO_HASHED_PASSWORD_FILE
 
 # NOTE: during rebuild, there will be warnings about setting multiple password options, this is expected :(
 # (https://github.com/NixOS/nixpkgs/pull/287506#issuecomment-1950958990)
@@ -100,18 +78,15 @@ fi
 
 # if disk contains "nvme", append "p" to partitions
 if [[ "$DISK" =~ "nvme" ]]; then
-  BOOTDISK="${DISK}p3"
-  SWAPDISK="${DISK}p2"
-  ZFSDISK="${DISK}p1"
+  BOOTDISK="${DISK}p2"
+  BTRFSDISK="${DISK}p1"
 else
-  BOOTDISK="${DISK}3"
-  SWAPDISK="${DISK}2"
-  ZFSDISK="${DISK}1"
+  BOOTDISK="${DISK}2"
+  BTRFSDISK="${DISK}1"
 fi
 
 echo "Boot Partiton: $BOOTDISK"
-echo "SWAP Partiton: $SWAPDISK"
-echo "ZFS Partiton: $ZFSDISK"
+echo "BTRFS Partiton: $BTRFSDISK"
 
 echo ""
 do_format=$(yesno "This irreversibly formats the entire disk. Are you sure?")
@@ -123,87 +98,48 @@ echo "Creating partitions"
 sudo blkdiscard -f "$DISK"
 sudo sgdisk --clear"$DISK"
 
-sudo sgdisk -n3:1M:+1G -t3:EF00 "$DISK"
-sudo sgdisk -n2:0:+16G -t2:8200 "$DISK"
-sudo sgdisk -n1:0:0 -t1:BF01 "$DISK"
+sudo sgdisk -n2:1M:+1G -t2:EF00 "$DISK"
+sudo sgdisk -n1:0:0 -t1:8300 "$DISK"
 
 # notify kernel of partition changes
 sudo sgdisk -p "$DISK" >/dev/null
 sleep 5
 
-echo "Creating Swap"
-sudo mkswap "$SWAPDISK" --label "SWAP"
-sudo swapon "$SWAPDISK"
-
 echo "Creating Boot Disk"
 sudo mkfs.fat -F 32 "$BOOTDISK" -n NIXBOOT
 
-# setup encryption
-use_encryption=$(yesno "Use encryption? (Encryption must also be enabled within host config with boot.zfs.requestEncryptionCredentials = true)")
-if [[ $use_encryption == "y" ]]; then
-  encryption_options=(-O encryption=aes-256-gcm -O keyformat=passphrase -O keylocation=prompt)
-else
-  encryption_options=()
-fi
-echo "Creating base zpool"
-sudo zpool create -f \
-  -o ashift=12 \
-  -o autotrim=on \
-  -O compression=zstd \
-  -O acltype=posixacl \
-  -O atime=off \
-  -O xattr=sa \
-  -O normalization=formD \
-  -O mountpoint=none \
-  "${encryption_options[@]}" \
-  zroot "$ZFSDISK"
+echo "Creating Btrfs disk"
+sudo mkfs.btrfs -L NIXOS "$BTRFSDISK"
 
-# NOTE: legacy mounts are used so they can be managed by fstab and swapped out via nixos configuration, e.g. for tmpfs
+echo "Mounting Btrfs disk"
+sudo mount "$BTRFSDISK" /mnt
+
 echo "Creating /"
-sudo zfs create -o mountpoint=legacy zroot/root
-sudo zfs snapshot zroot/root@blank
-sudo mount -t zfs zroot/root /mnt
+sudo btrfs subvolume create /mnt/root
 
-# uncomment to have separate /home dataset
-# echo "Creating /home"
-# sudo zfs create -o mountpoint=legacy zroot/home
-# sudo zfs snapshot zroot/home@blank
-# sudo mount --mkdir -t zfs zroot/home /mnt/home
-
-# create the boot parition after creating root
-echo "Mounting /boot (efi)"
-sudo mount --mkdir "$BOOTDISK" /mnt/boot
-
-# Nix store gets higher compression
 echo "Creating /nix"
-sudo zfs create -o mountpoint=legacy -o compression=zstd zroot/nix
-sudo mount --mkdir -t zfs zroot/nix /mnt/nix
+sudo btrfs subvolume create /mnt/nix
 
-echo "Creating /tmp"
-sudo zfs create -o mountpoint=legacy zroot/tmp
-sudo mount --mkdir -t zfs zroot/tmp /mnt/tmp
+echo "Creating /persist"
+sudo btrfs subvolume create /mnt/persist
 
 echo "Creating /cache"
-sudo zfs create -o mountpoint=legacy zroot/cache
-sudo mount --mkdir -t zfs zroot/cache /mnt/cache
+sudo btrfs subvolume create /mnt/cache
 
-# handle persist, possibly from snapshot
-restore_snapshot=$(yesno "Do you want to restore from a persist snapshot?")
-if [[ $restore_snapshot == "y" ]]; then
-  echo "Enter full path to snapshot: "
-  read -r snapshot_file_path
-  echo
+echo "taking an empty *readonly* snapshot of the root subvolum"
+sudo btrfs subvolume snapshot -r /mnt/root /mnt/root-blank
 
-  echo "Creating /persist"
-  # disable shellcheck (sudo doesn't affect redirects)
-  # shellcheck disable=SC2024
-  sudo zfs receive -o mountpoint=legacy zroot/persist <"$snapshot_file_path"
+echo "Unmounting /mnt"
+sudo umount /mnt
 
-else
-  echo "Creating /persist"
-  sudo zfs create -o mountpoint=legacy zroot/persist
-fi
-sudo mount --mkdir -t zfs zroot/persist /mnt/persist
+echo "Mounting the subvolumes"
+sudo mount -o subvol=root,compress=zstd,noatime "$BTRFSDISK" /mnt
+sudo mount --mkdir -o subvol=nix,compress=zstd,noatime "$BTRFSDISK" /mnt/nix
+sudo mount --mkdir -o subvol=persist,compress=zstd,noatime "$BTRFSDISK" /mnt/persist
+sudo mount --mkdir -o subvol=cache,compress=zstd,noatime "$BTRFSDISK" /mnt/cache
+
+echo "Mounting /boot (efi)"
+sudo mount --mkdir "$BOOTDISK" /mnt/boot
 
 # Get repo to install from
 read -rp "Enter flake URL (default: github:sumelan/shirase): " repo

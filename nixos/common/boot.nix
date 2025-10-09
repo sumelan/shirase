@@ -6,34 +6,28 @@
   inherit
     (lib)
     mkForce
+    mkMerge
     ;
-in {
-  # bootloader
-  boot = {
-    initrd = {
-      # enable stage-1 bootloader
-      systemd.enable = true;
-      # always allow booting from usb
-      availableKernelModules = ["uas"];
-    };
-    loader = {
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
+in
+  mkMerge [
+    {
+      # bootloader
+      boot.loader = {
+        systemd-boot.enable = true;
+        efi.canTouchEfiVariables = true;
+        timeout = 3;
       };
-      grub = {
-        enable = true;
-        devices = ["nodev"];
-        efiSupport = true;
-      };
-      timeout = 3;
-    };
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
-  };
-
-  # faster boot times
-  systemd.services.NetworkManager-wait-online.wantedBy = mkForce [];
-
-  # reduce journald logs
-  services.journald.extraConfig = ''SystemMaxUse=50M'';
-}
+      # faster boot times
+      systemd.services.NetworkManager-wait-online.wantedBy = mkForce [];
+      # plymouth
+      boot.plymouth.enable = true;
+    }
+    {
+      # kernel
+      boot.kernelPackages = pkgs.linuxPackages_zen;
+    }
+    {
+      # reduce journald logs
+      services.journald.extraConfig = ''SystemMaxUse=50M'';
+    }
+  ]

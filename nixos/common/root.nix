@@ -28,7 +28,7 @@ in {
           initialPassword = "password";
           hashedPasswordFile = "/persist/etc/shadow/root";
           openssh.authorizedKeys.keys = [
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN6tX+1PCu+A57NZV0qhGyWMBFdUvPb56kX/cksEyumk sumelan"
+            ""
           ];
         };
       };

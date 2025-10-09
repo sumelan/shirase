@@ -73,6 +73,9 @@
   # enable opengl
   hardware.graphics.enable = true;
 
+  # zram
+  zramSwap.enable = true;
+
   # do not change this value
   system.stateVersion = "24.05";
 }

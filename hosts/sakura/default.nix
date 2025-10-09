@@ -1,16 +1,30 @@
-{lib, ...}: let
+{
+  lib,
+  config,
+  ...
+}: let
   inherit
     (lib)
     genAttrs
+    mkIf
     ;
 in {
-  networking.hostId = "a4b706c9";
+  services.btrbk.sshAccess = mkIf config.custom.hdds.enable [
+    {
+      key = "";
+      roles = [
+        "target"
+        "info"
+        "receive"
+        "delete"
+      ];
+    }
+  ];
 
   custom = let
     enableList = [
       "alsa"
       "hdds"
-      "syncoid"
     ];
     disableList = [
       "audiobookshelf"
