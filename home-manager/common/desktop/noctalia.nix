@@ -9,6 +9,7 @@
     (lib)
     getExe
     splitString
+    singleton
     ;
 
   inherit
@@ -62,7 +63,7 @@ in {
           "io.github.htkhiem.Euphonica"
           "Mozilla librewolf"
         ];
-        preferredPlayer = "Music Player Daemon";
+        preferredPlayer = "Youtube Music";
         visualizerType = "linear";
         volumeOverdrive = false;
         volumeStep = 5;
@@ -373,6 +374,9 @@ in {
         action.spawn = noctalia "brightness decrease";
       };
     };
+    spawn-at-startup = [
+      {argv = singleton "noctalia-shell";}
+    ];
   };
 
   systemd.user.services = {
@@ -396,7 +400,6 @@ in {
           "ELECTRON_OZONE_PLATFORM_HINT=auto"
           "NOCTALIA_SETTINGS_FALLBACK=%h/.config/noctalia/gui-settings.json"
         ];
-        Slice = "session.slice";
       };
       Install = {
         WantedBy = [config.wayland.systemd.target];

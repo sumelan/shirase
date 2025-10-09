@@ -80,11 +80,6 @@ alias pf := prefetch
     nix store prefetch-file --json --hash-type sha256 {{ url }} | jq -r .hash
 
 [group('TOOLS')]
-[doc('Fuzzy search for NixOS packages with nix-search-tv.')]
-@search:
-    ns
-
-[group('TOOLS')]
 [doc('Nix (package manager) indexing primitives.')]
 @locate name:
     nix-locate {{ name }}
@@ -97,9 +92,4 @@ alias pf := prefetch
 [group('TOOLS')]
 [doc('Start an interactive environment for evaluating Nix expressions.')]
 @repl:
-    nix repl --expr \
-    "let \
-        flake = builtins.getFlake (toString ./.); \
-        nixpkgs = import <nixpkgs> {}; \
-    in \
-        {inherit flake;} // flake // builtins // nixpkgs // nixpkgs.lib // flake.nixosConfigurations"
+    nh os repl

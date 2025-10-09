@@ -80,7 +80,7 @@ in {
     niri.settings = {
       binds = {
         "Mod+B" = {
-          action.spawn = ["sh" "-c" "uwsm app -- librewolf"];
+          action.spawn = ["librewolf"];
           hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Application]</span> Librewolf'';
         };
       };

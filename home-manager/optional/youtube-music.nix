@@ -16,5 +16,11 @@ in {
 
   config = mkIf config.custom.youtube-music.enable {
     home.packages = [pkgs.youtube-music];
+
+    custom.persist = {
+      home.directories = [
+        ".config/YouTube Music"
+      ];
+    };
   };
 }

@@ -91,7 +91,7 @@ in {
   programs.niri.settings = {
     binds = {
       "Mod+O" = {
-        action.spawn = ["sh" "-c" "uwsm app -- nemo"];
+        action.spawn = ["nemo"];
         hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Application]</span> Nemo'';
       };
     };

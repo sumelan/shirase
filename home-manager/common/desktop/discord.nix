@@ -8,7 +8,7 @@
   programs.niri.settings = {
     binds = {
       "Mod+W" = {
-        action.spawn = ["sh" "-c" "uwsm app -- webcord"];
+        action.spawn = ["webcord"];
         hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Application]</span> Webcord'';
       };
     };

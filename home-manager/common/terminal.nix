@@ -53,7 +53,7 @@
 
     niri.settings.binds = {
       "Mod+Return" = {
-        action.spawn = ["sh" "-c" "uwsm app -- foot"];
+        action.spawn = ["foot"];
         hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Application]</span> Foot'';
       };
     };
