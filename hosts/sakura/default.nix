@@ -1,8 +1,4 @@
-{
-  lib,
-  inputs,
-  ...
-}: let
+{lib, ...}: let
   inherit
     (lib)
     genAttrs

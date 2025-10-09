@@ -63,8 +63,10 @@
 
     nix-chuwi-minibook-x = {
       url = "github:knoopx/nix-chuwi-minibook-x";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixos-hardware.follows = "nixos-hardware";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixos-hardware.follows = "nixos-hardware";
+      };
     };
 
     nix-index-database = {
@@ -76,14 +78,18 @@
 
     noctalia-shell = {
       url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell"; # Use same quickshell version
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        quickshell.follows = "quickshell"; # Use same quickshell version
+      };
     };
 
     nvf = {
       url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
 
     spicetify-nix = {
@@ -93,8 +99,10 @@
 
     stylix = {
       url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
 
     quickshell = {
