@@ -60,6 +60,9 @@ in {
     };
     foot.settings = {
       main.shell = mkForce fishPath;
+      environment = {
+        "SHELL" = fishPath;
+      };
     };
   };
 

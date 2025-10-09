@@ -64,12 +64,10 @@ in {
       cursor = {
         inherit (cfg.cursor) package name;
       };
-
       icons = {
         enable = true;
         inherit (cfg.icons) package light dark;
       };
-
       opacity = {
         desktop = 0.95;
         popups = 0.85;

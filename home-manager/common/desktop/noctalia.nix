@@ -9,7 +9,6 @@
     (lib)
     getExe
     splitString
-    singleton
     ;
 
   inherit
@@ -63,7 +62,7 @@ in {
           "io.github.htkhiem.Euphonica"
           "Mozilla librewolf"
         ];
-        preferredPlayer = "Youtube Music";
+        preferredPlayer = "YouTube Music";
         visualizerType = "linear";
         volumeOverdrive = false;
         volumeStep = 5;
@@ -374,9 +373,6 @@ in {
         action.spawn = noctalia "brightness decrease";
       };
     };
-    spawn-at-startup = [
-      {argv = singleton "noctalia-shell";}
-    ];
   };
 
   systemd.user.services = {

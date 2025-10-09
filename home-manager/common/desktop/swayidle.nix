@@ -3,11 +3,10 @@
   config,
   pkgs,
   inputs,
-  isDesktop,
+  isLaptop,
   ...
 }: let
   noctaliaPkgs = inputs.noctalia-shell.packages.${pkgs.system}.default;
-
   inherit
     (lib)
     mkIf
@@ -57,7 +56,7 @@ in {
         command = "${getExe config.programs.niri.package} msg action power-off-monitors";
         resumeCommand = "${getExe config.programs.niri.package} msg action power-on-monitors";
       }
-      (mkIf (!isDesktop) {
+      (mkIf isLaptop {
         timeout = 60 * 20;
         command = "${getExe' pkgs.systemd "systemctl"} suspend";
       })

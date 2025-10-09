@@ -31,7 +31,7 @@ in {
           "--user-menu" # allow graphical selection of users from a menu
           "--asterisks" # display asterisks when a secret is typed
           "--greeting 'Welcome back on Shirase'" # show custom text above login prompt
-          "--cmd 'niri --session'"
+          "--cmd niri-session"
         ];
       in {
         command = "${getExe pkgs.tuigreet} " + args;
