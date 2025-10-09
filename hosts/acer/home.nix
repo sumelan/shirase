@@ -38,7 +38,6 @@ in {
       "obs-studio"
       "protonapp"
       "rmpc"
-      "spotify"
       "youtube-tui"
     ];
 

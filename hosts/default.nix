@@ -18,7 +18,6 @@
   defaultHomeMods = [
     inputs.nix-index-database.homeModules.nix-index
     inputs.noctalia-shell.homeModules.default
-    inputs.spicetify-nix.homeManagerModules.default
     ../home-manager
   ];
 

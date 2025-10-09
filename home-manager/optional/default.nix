@@ -9,9 +9,9 @@ _: {
     ./helix.nix
     ./obs-studio.nix
     ./protonapp.nix
-    ./spotify.nix
     ./thunderbird.nix
     ./vlc.nix
+    ./youtube-music.nix
     ./youtube-tui.nix
   ];
 }
