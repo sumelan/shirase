@@ -7,7 +7,7 @@
 }: let
   inherit
     (lib)
-    mkIf
+    optional
     getExe
     splitString
     ;
@@ -117,32 +117,35 @@ in {
               id = "NightLight";
             }
           ];
-          right = [
-            {
-              hideWhenZero = true;
-              id = "NotificationHistory";
-              showUnreadBadge = true;
-            }
-            {
-              id = "WiFi";
-            }
-            {
-              id = "Bluetooth";
-            }
-            (mkIf config.custom.battery.enable {
+          right =
+            [
+              {
+                hideWhenZero = true;
+                id = "NotificationHistory";
+                showUnreadBadge = true;
+              }
+              {
+                id = "WiFi";
+              }
+              {
+                id = "Bluetooth";
+              }
+            ]
+            ++ (optional config.custom.battery.enable {
               displayMode = "alwaysShow";
               id = "Battery";
               warningThreshold = 20;
             })
-            {
-              customFont = "";
-              formatHorizontal = "HH:mm ddd, MMM dd";
-              formatVertical = "HH mm - MM dd";
-              id = "Clock";
-              useCustomFont = false;
-              usePrimaryColor = true;
-            }
-          ];
+            ++ [
+              {
+                customFont = "";
+                formatHorizontal = "HH:mm ddd, MMM dd";
+                formatVertical = "HH mm - MM dd";
+                id = "Clock";
+                useCustomFont = false;
+                usePrimaryColor = true;
+              }
+            ];
         };
       };
       brightness = {

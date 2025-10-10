@@ -92,7 +92,7 @@ in {
             // {
               ssh_user = "btrbk";
               # must be readable by user/group btrbk
-              ssh_identity = "/var/lib/btrbk/.ssh/id_25519";
+              ssh_identity = "/var/lib/btrbk/.ssh/id_ed25519";
               volume."/" = {
                 group = "remote";
                 subvolume = {
