@@ -44,7 +44,6 @@ in {
 
   custom = let
     enableList = [
-      "euphonica"
       "helix"
       "protonapp"
       "rmpc"

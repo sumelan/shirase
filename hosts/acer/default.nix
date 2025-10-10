@@ -14,7 +14,14 @@ in {
       "distrobox"
     ];
   in
-    genAttrs enableList (_name: {
+    {
+      btrbk = {
+        enable = true;
+        local.enable = true;
+      };
+    }
+    // genAttrs
+    enableList (_name: {
       enable = true;
     })
     // genAttrs disableList (_name: {

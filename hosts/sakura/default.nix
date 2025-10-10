@@ -1,30 +1,13 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{lib, ...}: let
   inherit
     (lib)
     genAttrs
-    mkIf
     ;
 in {
-  services.btrbk.sshAccess = mkIf config.custom.hdds.enable [
-    {
-      key = "";
-      roles = [
-        "target"
-        "info"
-        "receive"
-        "delete"
-      ];
-    }
-  ];
-
   custom = let
     enableList = [
       "alsa"
-      "hdds"
+      "logitech"
     ];
     disableList = [
       "audiobookshelf"
@@ -32,7 +15,18 @@ in {
       "steam"
     ];
   in
-    genAttrs enableList (_name: {
+    {
+      hdds = {
+        enable = true;
+        wd = false;
+        ironwolf = true;
+      };
+      btrbk = {
+        enable = true;
+        usb.enable = true;
+      };
+    }
+    // genAttrs enableList (_name: {
       enable = true;
     })
     // genAttrs disableList (_name: {

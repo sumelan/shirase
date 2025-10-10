@@ -7,6 +7,7 @@
 }: let
   inherit
     (lib)
+    mkIf
     getExe
     splitString
     ;
@@ -128,11 +129,11 @@ in {
             {
               id = "Bluetooth";
             }
-            {
+            (mkIf config.custom.battery.enable {
               displayMode = "alwaysShow";
               id = "Battery";
               warningThreshold = 20;
-            }
+            })
             {
               customFont = "";
               formatHorizontal = "HH:mm ddd, MMM dd";
@@ -253,7 +254,7 @@ in {
             scale = 1.0;
           }
           {
-            name = "DP-1";
+            name = "HDMI-A-1";
             scale = 1.0;
           }
           {

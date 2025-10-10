@@ -33,7 +33,7 @@ in {
   config = mkIf cfg.enable {
     fileSystems = {
       "/media/WD4T" = mkIf cfg.wd {
-        device = "btrfs-elements4T-1/media";
+        device = "elements4T-1";
         fsType = "btrfs";
         options = [
           "x-systemd.automount"
@@ -41,7 +41,7 @@ in {
         ];
       };
       "/media/IRONWOLF2T" = mkIf cfg.ironwolf {
-        device = "btrfs-ironwolf2T-1/media";
+        device = "ironwolf2T-1";
         fsType = "btrfs";
         options = [
           "x-systemd.automount"
@@ -51,10 +51,9 @@ in {
     };
 
     services.btrfs.autoScrub = {
-      fileSystems = [
-        (mkIf cfg.wd "/media/4TWD")
-        (mkIf cfg.ironwolf "/media/IRONWOLF2")
-      ];
+      fileSystems =
+        optional cfg.wd "/media/4TWD"
+        ++ (optional cfg.ironwolf "/media/IRONWOLF2");
     };
 
     hm = {

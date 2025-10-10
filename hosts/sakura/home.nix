@@ -5,12 +5,12 @@
     ;
 in {
   monitors = {
-    "DP-1" = {
+    "HDMI-A-1" = {
       isMain = true;
-      scale = 1.25;
+      scale = 1.5;
       mode = {
-        width = 1920;
-        height = 1080;
+        width = 3840;
+        height = 2160;
         refresh = 60.0;
       };
       position = {
@@ -33,7 +33,11 @@ in {
 
   custom = let
     enableList = [
+      "helix"
+      "protonapp"
       "rmpc"
+      "youtube-music"
+      "youtube-tui"
     ];
 
     disableList = [
