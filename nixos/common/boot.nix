@@ -13,9 +13,17 @@ in
     {
       # bootloader
       boot.loader = {
-        systemd-boot.enable = true;
-        efi.canTouchEfiVariables = true;
-        timeout = 3;
+        efi = {
+          efiSysMountPoint = "/boot"; # ← use the same mount point here.
+          canTouchEfiVariables = true;
+        };
+        grub = {
+          enable = true;
+          efiSupport = true;
+          # in case canTouchEfiVariables doesn't work for your system
+          #  efiInstallAsRemovable = true;
+          devices = ["nodev"];
+        };
       };
       # faster boot times
       systemd.services.NetworkManager-wait-online.wantedBy = mkForce [];
