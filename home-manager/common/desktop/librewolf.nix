@@ -48,8 +48,6 @@ in {
               (inputs.firefox-addons.packages.${pkgs.system})
               bitwarden
               darkreader
-              proton-pass
-              proton-vpn
               sponsorblock
               ublock-origin
               ;

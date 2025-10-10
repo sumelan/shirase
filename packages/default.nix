@@ -3,6 +3,7 @@
   inputs,
   ...
 }: let
+  inherit (pkgs) callPackage;
   mkNvf = extraModules: {
     host ? "acer",
     flakePath ? "",
@@ -13,7 +14,9 @@
       extraSpecialArgs = {inherit host flakePath;};
     }).neovim;
 in {
-  nvf = pkgs.callPackage (mkNvf [
+  nvf = callPackage (mkNvf [
     # add extraModules here
   ]) {};
+
+  grub-nixos = callPackage ./grub-nixos {};
 }

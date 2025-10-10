@@ -19,16 +19,19 @@ in
         };
         grub = {
           enable = true;
+          theme = pkgs.custom.grub-nixos;
           efiSupport = true;
           # in case canTouchEfiVariables doesn't work for your system
           #  efiInstallAsRemovable = true;
           devices = ["nodev"];
         };
       };
-      # faster boot times
-      systemd.services.NetworkManager-wait-online.wantedBy = mkForce [];
+
       # plymouth
       boot.plymouth.enable = true;
+
+      # faster boot times
+      systemd.services.NetworkManager-wait-online.wantedBy = mkForce [];
     }
     {
       # kernel
@@ -37,5 +40,6 @@ in
     {
       # reduce journald logs
       services.journald.extraConfig = ''SystemMaxUse=50M'';
+      stylix.targets.grub.enable = false;
     }
   ]

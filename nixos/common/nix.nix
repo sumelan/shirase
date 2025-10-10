@@ -83,7 +83,7 @@ in {
       dates = "daily";
       options = "--delete-older-than 7d";
     };
-    package = pkgs.nix; # for lix: pkgs.lixPackageSets.latest.lix;
+    package = pkgs.lixPackageSets.latest.lix; # for lix: pkgs.lixPackageSets.latest.lix;
     # to use shorter IDs instead of lengthy address
     registry =
       registry

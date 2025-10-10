@@ -16,6 +16,7 @@ in {
       nix-output-monitor
       nix-tree
       nix-search-tv
+      nixd
       nvd
       nvfetcher
       ;
