@@ -92,7 +92,7 @@ in {
             // {
               ssh_user = "btrbk";
               # must be readable by user/group btrbk
-              ssh_identity = "/var/lib/btrbk/.ssh/btrbk_key";
+              ssh_identity = "/var/lib/btrbk/.ssh/id_25519";
               volume."/" = {
                 group = "remote";
                 subvolume = {
@@ -109,7 +109,7 @@ in {
       };
       sshAccess = [
         {
-          key = "";
+          key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFjto1d8D7GNrnS4mYx/l3qnxAlx04+0q7dceNUIdPxs btrbk";
           roles = [
             "target"
             "info"

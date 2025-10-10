@@ -20,14 +20,14 @@ in {
     i2c.enable = true;
   };
 
-  #  programs.ssh = {
-  #   extraConfig = ''
-  # Host sakura
-  #   HostName 192.168.68.62
-  #   Port 22
-  #   User root
-  # '';
-  #};
+  programs.ssh = {
+    extraConfig = ''
+      Host sakura
+        HostName 192.168.68.62
+        Port 22
+        User root
+    '';
+  };
 
   custom = let
     enableList = [
