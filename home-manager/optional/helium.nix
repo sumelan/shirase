@@ -18,18 +18,6 @@ in {
     programs.chromium = {
       enable = true;
       package = pkgs.custom.helium;
-      extensions = [
-        # AutoPagerize
-        {id = "igiofjhpmpihnifddepnpngfjhkfenbp";}
-        # Bitwarden
-        {id = "nngceckbapebfimnlniiiahkandclblb";}
-        # Dark Reader
-        {id = "eimadpbcbfnmbkopoojfekhnkhdbieeh";}
-        # SponsorBlock for YouTube - Skip Sponsorships
-        {id = "mnjggcdmjocbbbhaepdhchncahnbgone";}
-        # Youtube-shorts block
-        {id = "jiaopdjbehhjgokpphdfgmapkobbnmjp";}
-      ];
     };
     # declarative extentions through home-manager seem to be installed as chromium's extentions!
     custom.persist = {

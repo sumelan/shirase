@@ -25,8 +25,6 @@ in {
       ];
 
       extensions = [
-        # AutoPagerize
-        {id = "igiofjhpmpihnifddepnpngfjhkfenbp";}
         # Bitwarden
         {id = "nngceckbapebfimnlniiiahkandclblb";}
         # Dark Reader
