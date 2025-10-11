@@ -24,9 +24,9 @@ in {
   stylix = {
     cursor.size = 42;
     fonts.sizes = {
-      applications = 16;
+      applications = 15;
       terminal = 15;
-      desktop = 16;
+      desktop = 15;
       popups = 15;
     };
   };

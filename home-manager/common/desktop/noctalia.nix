@@ -164,6 +164,29 @@ in {
       };
       controlCenter = {
         position = "close_to_bar_button";
+        quickSettingsStyle = "compact";
+        widgets = {
+          quickSettings = [
+            {
+              id = "WiFi";
+            }
+            {
+              id = "Bluetooth";
+            }
+            {
+              id = "Notifications";
+            }
+            {
+              id = "ScreenRecorder";
+            }
+            {
+              id = "PowerProfile";
+            }
+            {
+              id = "WallpaperSelector";
+            }
+          ];
+        };
       };
       dock = {
         backgroundOpacity = 1;
@@ -211,7 +234,7 @@ in {
         criticalUrgencyDuration = 15;
         doNotDisturb = false;
         lastSeenTs = 0;
-        location = "top_right";
+        location = "top";
         lowUrgencyDuration = 3;
         monitors = [];
         normalUrgencyDuration = 8;
@@ -236,6 +259,13 @@ in {
       };
       settingsVersion = 12;
       templates = {
+        discord = false;
+        discord_armcord = false;
+        discord_dorion = false;
+        discord_equibop = false;
+        discord_lightcord = false;
+        discord_vesktop = false;
+        discord_webcord = false;
         enableUserTemplates = false;
         foot = false;
         fuzzel = false;
@@ -244,7 +274,6 @@ in {
         kitty = false;
         pywalfox = false;
         qt = false;
-        vesktop = false;
       };
       ui = {
         fontDefault = config.gtk.font.name;
