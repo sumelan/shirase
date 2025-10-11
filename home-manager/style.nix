@@ -35,7 +35,7 @@ in {
             # Supported colors:
             # black blue caramel citron firebrick gold green grey highland jade lavender lime olive
             # orange pistachio plasma pumpkin purple red rust sapphire tomato violet white yellow
-            folder-color = "yellow";
+            folder-color = "lime";
           };
         };
         light = mkOption {

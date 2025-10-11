@@ -44,6 +44,7 @@ in {
 
   custom = let
     enableList = [
+      "ghostty"
       "helix"
       "protonapp"
       "rmpc"

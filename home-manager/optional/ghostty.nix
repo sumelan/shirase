@@ -10,8 +10,7 @@
     ;
 in {
   options.custom = {
-    ghostty.enable =
-      mkEnableOption "ghostty";
+    ghostty.enable = mkEnableOption "ghostty";
   };
 
   config = mkIf config.custom.ghostty.enable {
