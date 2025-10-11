@@ -44,7 +44,7 @@ in {
 
   custom = let
     enableList = [
-      "ghostty"
+      "helium"
       "helix"
       "protonapp"
       "rmpc"
@@ -55,10 +55,6 @@ in {
     disableList = [
     ];
   in
-    genAttrs enableList (_name: {
-      enable = true;
-    })
-    // genAttrs disableList (_name: {
-      enable = false;
-    });
+    genAttrs enableList (_name: {enable = true;})
+    // genAttrs disableList (_name: {enable = false;});
 }

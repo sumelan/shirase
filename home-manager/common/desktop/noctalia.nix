@@ -62,6 +62,7 @@ in {
         mprisBlacklist = [
           "io.github.htkhiem.Euphonica"
           "Mozilla librewolf"
+          "Helium"
         ];
         preferredPlayer = "YouTube Music";
         visualizerType = "linear";

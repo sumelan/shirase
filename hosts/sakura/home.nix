@@ -33,9 +33,11 @@ in {
 
   custom = let
     enableList = [
+      "cyanrip"
       "ghostty"
       "helium"
       "helix"
+      "obs-studio"
       "protonapp"
       "rmpc"
       "youtube-music"
@@ -48,10 +50,6 @@ in {
     {
       niri.xwayland.enable = false;
     }
-    // genAttrs enableList (_name: {
-      enable = true;
-    })
-    // genAttrs disableList (_name: {
-      enable = false;
-    });
+    // genAttrs enableList (_name: {enable = true;})
+    // genAttrs disableList (_name: {enable = false;});
 }

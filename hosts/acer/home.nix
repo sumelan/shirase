@@ -33,9 +33,6 @@ in {
 
   custom = let
     enableList = [
-      "cyanrip"
-      "helix"
-      "obs-studio"
       "protonapp"
       "rmpc"
       "youtube-music"
@@ -45,10 +42,6 @@ in {
     disableList = [
     ];
   in
-    genAttrs enableList (_name: {
-      enable = true;
-    })
-    // genAttrs disableList (_name: {
-      enable = false;
-    });
+    genAttrs enableList (_name: {enable = true;})
+    // genAttrs disableList (_name: {enable = false;});
 }

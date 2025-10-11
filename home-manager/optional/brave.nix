@@ -1,3 +1,4 @@
+#NOTE: stylix.targets.chromium.enable is only available as NioxOS Options
 {
   lib,
   config,
@@ -54,8 +55,6 @@ in {
         opacity = 1.0;
       }
     ];
-
-    #NOTE: stylix.targets.chromium.enable is only available as NioxOS Options
 
     custom.persist = {
       home.directories = [
