@@ -284,15 +284,15 @@ in {
         monitorsScaling = [
           {
             name = "eDP-1";
-            scale = 1.0;
+            scale = 1.00;
           }
           {
             name = "HDMI-A-1";
-            scale = 1.0;
+            scale = 1.00;
           }
           {
             name = "DSI-1";
-            scale = 1.2;
+            scale = 1.15;
           }
         ];
         tooltipsEnabled = true;

@@ -24,10 +24,10 @@ in {
   stylix = {
     cursor.size = 42;
     fonts.sizes = {
-      applications = 15;
+      applications = 13;
       terminal = 15;
-      desktop = 15;
-      popups = 15;
+      desktop = 13;
+      popups = 13;
     };
   };
 
