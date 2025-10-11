@@ -94,3 +94,8 @@ alias pf := prefetch
 [doc('Start an interactive environment for evaluating Nix expressions.')]
 @repl:
     nh os repl
+
+[group('TOOLS')]
+[doc('Analyzing a `flake.lock` for duplicate inputs.')]
+@flint:
+    nix run github:NotAShelf/flint

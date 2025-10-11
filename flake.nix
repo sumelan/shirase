@@ -41,6 +41,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # No Nixpkgs Inputs
     flake-parts.url = "github:hercules-ci/flake-parts";
     impermanence.url = "github:nix-community/impermanence";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
@@ -49,16 +50,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    quickshell = {
-      url = "github:outfoxxed/quickshell";
+    noctalia-shell = {
+      url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -69,25 +66,34 @@
         nixos-hardware.follows = "nixos-hardware";
       };
     };
-    noctalia-shell = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        quickshell.follows = "quickshell";
-      };
-    };
+
     nvf = {
       url = "github:notashelf/nvf";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
       };
     };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-stable.follows = "";
+        niri-stable.follows = "";
+        xwayland-satellite-stable.follows = "";
+      };
+    };
+
     stylix = {
       url = "github:danth/stylix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
+        tinted-kitty.follows = "";
+        tinted-tmux.follows = "";
+        tinted-zed.follows = "";
       };
     };
   };
