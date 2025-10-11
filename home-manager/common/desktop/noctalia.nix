@@ -89,9 +89,9 @@ in {
           left = [
             {
               customIconPath = "";
-              icon = "";
+              icon = "niri";
               id = "ControlCenter";
-              useDistroLogo = true;
+              useDistroLogo = false;
             }
             {
               autoHide = true;

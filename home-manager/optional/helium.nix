@@ -19,7 +19,7 @@ in {
       enable = true;
       package = pkgs.custom.helium;
     };
-    # NOTE: declarative extentions through home-manager are installed as chromium's extentions!
+
     custom.persist = {
       home.directories = [
         ".cache/net.imput.helium"
