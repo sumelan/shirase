@@ -114,8 +114,8 @@ in {
 
     # set default browser
     sessionVariables = {
-      DEFAULT_BROWSER = getExe pkgs.librewolf;
-      BROWSER = getExe pkgs.librewolf;
+      DEFAULT_BROWSER = getExe config.programs.librewolf.package;
+      BROWSER = getExe config.programs.librewolf.package;
     };
   };
 

@@ -6,6 +6,7 @@ _: {
     ./euphonica.nix
     ./foliate.nix
     ./ghostty.nix
+    ./helium.nix
     ./helix.nix
     ./obs-studio.nix
     ./protonapp.nix

@@ -51,7 +51,6 @@ in {
     # hide unnecessary desktopItems
     desktopEntries = let
       hideList = [
-        "fcitx5-configtool"
         "kcm_fcitx5"
         "org.fcitx.Fcitx5"
         "org.fcitx.fcitx5-migrator"

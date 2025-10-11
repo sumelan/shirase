@@ -3,8 +3,13 @@ set shell := ["sh", "-c"]
 export NH_FLAKE := `echo $PWD`
 export HOSTNAME := `hostname`
 export NIXPKGS_ALLOW_UNFREE := "1"
+
+# nix-profiles
 profiles-path := "/nix/var/nix/profiles"
-nvfetcher-path := "packages/nvfetcher"
+
+# package-paths updated through nvfetcher
+yazi-path := "packages/yazi-plugins"
+helium-path := "packages/helium"
 
 @default:
     just --list --unsorted
@@ -53,8 +58,9 @@ nvfetcher-path := "packages/nvfetcher"
     echo -e "Updating flake and fetch git inputs...\n"
 
     nix flake update
-    # run nvfetcher for overlays
-    nvfetcher --keep-old --config {{ nvfetcher-path }}/nvfetcher.toml --build-dir {{ nvfetcher-path }}
+    # run nvfetcher for yazi-plugins
+    nvfetcher --keep-old --config {{ yazi-path }}/nvfetcher.toml --build-dir {{ yazi-path }}
+    nvfetcher --keep-old --config {{ helium-path }}/nvfetcher.toml --build-dir {{ helium-path }}
 
 [group('SYSTEM')]
 [doc('Update flake, fetch input and commit on git.')]

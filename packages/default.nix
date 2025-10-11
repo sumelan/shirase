@@ -16,6 +16,8 @@
 in {
   grub-nixos = callPackage ./grub-nixos {};
 
+  helium = callPackage ./helium {};
+
   nvf = callPackage (mkNvf [
     # add extraModules here
   ]) {};

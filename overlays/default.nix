@@ -4,7 +4,7 @@
   ...
 }: let
   # include generated sources from nvfetcher
-  sources = import ../packages/nvfetcher/generated.nix {
+  yaziSources = import ../packages/yazi-plugins/generated.nix {
     inherit
       (pkgs)
       fetchFromGitHub
@@ -16,21 +16,18 @@
 in {
   nixpkgs.overlays = [
     (_final: prev: {
-      # include packages as pkgs.custom
       custom =
         (prev.custom or {})
-        // {
-          inherit
-            (sources)
-            # yazi
-            yazi-plugins
-            yazi-starship
-            ;
-        }
+        # include packages defined as pkgs.custom.bar
         // (import ../packages {
           inherit (prev) pkgs;
           inherit inputs;
-        });
+        })
+        # include yazi-plugins defined and updated through nvfetcher
+        # as pkgs.custom.
+        // {
+          inherit (yaziSources) yazi-plugins yazi-starship;
+        };
     })
   ];
 }

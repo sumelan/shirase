@@ -1,0 +1,17 @@
+{
+    "helium": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "helium",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-FCLCt0T+U8JqUkFVAfl//OtnWsNoN8lWHIiMJws2Mqo=",
+            "type": "url",
+            "url": "https://github.com/imputnet/helium-linux/releases/download/0.5.5.1/helium-0.5.5.1-x86_64.AppImage"
+        },
+        "version": "0.5.5.1"
+    }
+}
