@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  inputs,
   user,
   ...
 }: let
@@ -40,39 +39,41 @@ in {
 
       inherit configPath;
 
-      profiles.${user} = {
-        extensions = {
-          force = true; # Whether to override all previous librewolf settings. This is required when using 'settings'.
-          packages = builtins.attrValues {
-            inherit
-              (inputs.firefox-addons.packages.${pkgs.system})
-              bitwarden
-              darkreader
-              sponsorblock
-              ublock-origin
-              ;
+      policies = {
+        Extensions = {
+          Install = [
+            "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/"
+            "https://addons.mozilla.org/firefox/downloads/latest/darkreader/"
+            "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/"
+            "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/"
+          ];
+          # extension IOs can be obtained after installation by going to about:support
+          Locked = [
+            "{446900e4-71c2-419f-a6a7-df9c091e268b}" # bitwarden
+            "addon@darkreader.org"
+            "sponsorBlocker@ajay.app"
+            "uBlock0@raymondhill.net"
+          ];
+          ExtensionSettings = {
+            # bitwarden
+            "{446900e4-71c2-419f-a6a7-df9c091e268b}".private_browsing = true;
+            "addon@darkreader.org".private_browsing = true;
+            "sponsorBlocker@ajay.app".private_browsing = true;
+            "uBlock0@raymondhill.net".private_browsing = true;
           };
         };
+      };
 
+      profiles.${user} = {
+        # Whether to override all previous librewolf settings.
+        # This is required when using 'settings'.
+        extensions.force = true;
         settings = {
           "extensions.autoDisableScopes" = 0; # enable extensions immediately upon new install
           "privacy.clearOnShutdown_v2.cache" = false;
           "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
-
-        userChrome =
-          # css
-          ''
-            /* remove useless urlbar padding */
-            #customizableui-special-spring1 { display:none }
-            #customizableui-special-spring2 { display:none }
-
-            /* remove all tabs button and window controls */
-            #alltabs-button { display:none }
-            .titlebar-spacer { display:none }
-            .titlebar-buttonbox-container { display:none }
-          '';
       };
     };
     niri.settings = {
@@ -96,9 +97,9 @@ in {
             }
           ];
           open-floating = true;
-          opacity = 1.0;
           default-column-width.proportion = 0.4;
           default-window-height.proportion = 0.4;
+          opacity = 1.0;
         }
       ];
     };

@@ -14,9 +14,9 @@
       extraSpecialArgs = {inherit host flakePath;};
     }).neovim;
 in {
+  grub-nixos = callPackage ./grub-nixos {};
+
   nvf = callPackage (mkNvf [
     # add extraModules here
   ]) {};
-
-  grub-nixos = callPackage ./grub-nixos {};
 }

@@ -4,6 +4,7 @@ export NH_FLAKE := `echo $PWD`
 export HOSTNAME := `hostname`
 export NIXPKGS_ALLOW_UNFREE := "1"
 profiles-path := "/nix/var/nix/profiles"
+nvfetcher-path := "packages/nvfetcher"
 
 @default:
     just --list --unsorted
@@ -53,7 +54,7 @@ profiles-path := "/nix/var/nix/profiles"
 
     nix flake update
     # run nvfetcher for overlays
-    nvfetcher --keep-old --config overlays/nvfetcher.toml --build-dir overlays
+    nvfetcher --keep-old --config {{ nvfetcher-path }}/nvfetcher.toml --build-dir {{ nvfetcher-path }}
 
 [group('SYSTEM')]
 [doc('Update flake, fetch input and commit on git.')]
