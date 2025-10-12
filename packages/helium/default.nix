@@ -16,7 +16,7 @@ in
         #sh
         ''
           wrapProgram $out/bin/${pname} \
-              --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true}}"
+              --add-flags "--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true --enable-features=TouchpadOverscrollHistoryNavigation --password-store=basic"
 
           install -m 444 -D ${appimageContents}/${pname}.desktop -t $out/share/applications
           substituteInPlace $out/share/applications/${pname}.desktop \

@@ -3,22 +3,20 @@
   pkgs,
   ...
 }: {
-  home.packages = [pkgs.webcord-vencord];
+  home.packages = [pkgs.vesktop];
 
   programs.niri.settings = {
     binds = {
       "Mod+W" = {
-        action.spawn = ["webcord"];
-        hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Application]</span> Webcord'';
+        action.spawn = ["vesktop"];
+        hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Application]</span> Vesktop'';
       };
     };
   };
 
-  stylix.targets.vencord.enable = false;
-
   custom.persist = {
     home.directories = [
-      ".config/WebCord"
+      ".config/vesktop"
     ];
   };
 }
