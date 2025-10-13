@@ -283,3 +283,21 @@ Removed packages:
 [R.]  #16  vulkan-headers                              1.4.321.0
 [R.]  #17  xcb-util-cursor                             0.1.5
 Closure size: 2528 -> 2616 (2519 paths added, 2431 paths removed, delta +88, disk usage +1.0GiB).
+
+---
+
+2025年10月14日 01時31分31秒
+<<< /nix/var/nix/profiles/system-10-link
+>>> /nix/var/nix/profiles/system-12-link
+Version changes:
+[C.]  #1  electron               36.9.2, 37.6.0 -> 37.6.0
+[C.]  #2  electron-unwrapped     36.9.2, 37.6.0 -> 37.6.0
+[U.]  #3  nixos-system-minibook  25.11.20251009.0b4defa.dfe0af5 -> 25.11.20251009.0b4defa.4a5f4e7
+[U.]  #4  noctalia-shell         3e4a315587ba4c68023d0958ec8a44e88bd66c3d, 3e4a315587ba4c68023d0958ec8a44e88bd66c3d-fish-completions -> 158d3a1e6348fa513285f93f8174b964cc5a81cf, 158d3a1e6348fa513285f93f8174b964cc5a81cf-fish-completions
+Added packages:
+[A.]  #1  hm_Vencordthemesstylix.theme.css  <none>
+[A.]  #2  vesktop                           1.5.8, 1.5.8-fish-completions
+Removed packages:
+[R.]  #1  vencord          1.13.1
+[R.]  #2  webcord-vencord  4.11.1, 4.11.1-fish-completions
+Closure size: 2616 -> 2614 (59 paths added, 61 paths removed, delta -2, disk usage -290.6MiB).
