@@ -13,7 +13,7 @@
 
         # Get the extended lib from ./lib/custom.nix
         # https://www.notashelf.dev/posts/extended-nixpkgs-lib
-        lib = import ./lib/custom.nix {
+        lib = import ./lib {
           inherit inputs;
           inherit (inputs) home-manager;
         };

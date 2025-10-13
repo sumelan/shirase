@@ -6,7 +6,6 @@
   host,
   ...
 }: let
-  cfg = config.custom.btrbk;
   inherit
     (lib)
     mkEnableOption
@@ -21,6 +20,8 @@
     (lib.custom.tmpfiles)
     mkCreateAndCleanup
     ;
+
+  cfg = config.custom.btrbk;
 in {
   options.custom = {
     btrbk = {
@@ -81,7 +82,7 @@ in {
                     snapshot_name = "persist";
                   };
                 };
-                target = "/media/IRONWOLF2T/${host}-local";
+                target = "/media/WD4T/${host}-local";
               };
             };
         };
@@ -102,7 +103,7 @@ in {
                     snapshot_name = "persist";
                   };
                 };
-                target = "ssh://sakura/media/IRONWOLF2T/${host}-remote";
+                target = "ssh://sakura/media/WD4T/${host}-remote";
               };
             };
         };

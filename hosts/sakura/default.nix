@@ -18,8 +18,7 @@ in {
     {
       hdds = {
         enable = true;
-        wd = false;
-        ironwolf = true;
+        wd = true;
       };
       btrbk = {
         enable = true;
