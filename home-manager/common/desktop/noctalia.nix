@@ -65,7 +65,7 @@ in {
           "Helium"
         ];
         preferredPlayer = "YouTube Music";
-        visualizerType = "linear";
+        visualizerType = "wave";
         volumeOverdrive = false;
         volumeStep = 5;
       };
@@ -94,14 +94,15 @@ in {
               useDistroLogo = false;
             }
             {
-              autoHide = true;
+              colorizeIcons = true;
+              hideMode = "hidden";
               id = "ActiveWindow";
               scrollingMode = "hover";
               showIcon = true;
               width = 145;
             }
             {
-              autoHide = true;
+              hideMode = "hidden";
               id = "MediaMini";
               scrollingMode = "hover";
               showAlbumArt = false;
@@ -163,8 +164,8 @@ in {
         useWallpaperColors = false;
       };
       controlCenter = {
+        audioControlsEnabled = true;
         position = "close_to_bar_button";
-        quickSettingsStyle = "compact";
         widgets = {
           quickSettings = [
             {
@@ -189,7 +190,8 @@ in {
         };
       };
       dock = {
-        backgroundOpacity = 1;
+        backgroundOpacity = config.stylix.opacity.popups;
+        colorizeIcons = true;
         displayMode = "always_visible";
         floatingRatio = 1;
         monitors = [];
@@ -200,9 +202,11 @@ in {
         animationDisabled = false;
         animationSpeed = 1;
         avatarImage = "${config.home.homeDirectory}/.face";
+        compactLockScreen = true;
         dimDesktop = true;
         forceBlackScreenCorners = false;
         radiusRatio = 1;
+        scaleRatio = 1;
         screenRadiusRatio = 1;
         showScreenCorners = true;
       };
@@ -241,6 +245,7 @@ in {
         respectExpireTimeout = true;
       };
       osd = {
+        alwaysOnTop = true;
         autoHideMs = 2000;
         enabled = true;
         location = "bottom";
@@ -271,6 +276,7 @@ in {
         fuzzel = false;
         ghostty = false;
         gtk = false;
+        kcolorscheme = false;
         kitty = false;
         pywalfox = false;
         qt = false;
@@ -281,20 +287,6 @@ in {
         fontFixed = config.stylix.fonts.monospace.name;
         fontFixedScale = 1;
         idleInhibitorEnabled = false;
-        monitorsScaling = [
-          {
-            name = "eDP-1";
-            scale = 1.00;
-          }
-          {
-            name = "HDMI-A-1";
-            scale = 1.00;
-          }
-          {
-            name = "DSI-1";
-            scale = 1.15;
-          }
-        ];
         tooltipsEnabled = true;
       };
       wallpaper = {
