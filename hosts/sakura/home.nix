@@ -35,12 +35,12 @@ in {
     enableList = [
       "cyanrip"
       "ghostty"
-      "helium"
       "helix"
+      "librewolf"
       "obs-studio"
       "protonapp"
       "rmpc"
-      "youtube-music"
+      "spotify-player"
       "youtube-tui"
     ];
 

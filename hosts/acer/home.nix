@@ -35,7 +35,6 @@ in {
     enableList = [
       "protonapp"
       "rmpc"
-      "youtube-music"
       "youtube-tui"
     ];
 

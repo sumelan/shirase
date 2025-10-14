@@ -3,7 +3,7 @@ _: {
     ./niri
     ./discord.nix
     ./foot.nix
-    ./librewolf.nix
+    ./helium.nix
     ./mpv.nix
     ./nemo.nix
     ./noctalia.nix

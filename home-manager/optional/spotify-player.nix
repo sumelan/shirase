@@ -1,0 +1,66 @@
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    getExe
+    ;
+in {
+  options.custom = {
+    spotify-player.enable = mkEnableOption "A Spotify player in the terminal with full feature parity";
+  };
+
+  config = mkIf config.custom.spotify-player.enable {
+    programs = {
+      spotify-player = {
+        enable = true;
+        settings = {
+          playback_format = "{status} {track} • {artists}\n{album} • {genres}\n{metadata}";
+          notify_format = {
+            summary = "{track} • {artists}";
+            body = "{album}";
+          };
+          default_device = "spotify-player";
+          copy_command = {
+            command = "wl-copy";
+            args = [];
+          };
+          device = {
+            name = "spotify-player";
+            device_type = "speaker";
+            audio_cache = false;
+            normalization = false;
+          };
+          layout = {
+            library = {
+              playlist_percent = 40;
+              album_percent = 40;
+            };
+            playback_window_position = "Top";
+          };
+        };
+      };
+
+      niri.settings = {
+        binds = {
+          "Mod+S" = {
+            action.spawn = ["${getExe pkgs.foot}" "--app-id=spotify" "spotify_player"];
+            hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Terminal]</span> Spotify-player'';
+          };
+        };
+      };
+    };
+
+    custom.persist = {
+      home.directories = [
+        # credenctials.json
+        ".cache/spotify-player"
+      ];
+    };
+  };
+}

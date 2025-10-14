@@ -64,8 +64,8 @@ in {
           "Mozilla librewolf"
           "Helium"
         ];
-        preferredPlayer = "YouTube Music";
-        visualizerType = "wave";
+        preferredPlayer = "Spotify Player";
+        visualizerType = "linear";
         volumeOverdrive = false;
         volumeStep = 5;
       };

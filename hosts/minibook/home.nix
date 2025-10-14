@@ -44,11 +44,10 @@ in {
 
   custom = let
     enableList = [
-      "helium"
       "helix"
       "protonapp"
       "rmpc"
-      "youtube-music"
+      "spotify-player"
       "youtube-tui"
     ];
 

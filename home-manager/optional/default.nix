@@ -6,13 +6,13 @@ _: {
     ./euphonica.nix
     ./foliate.nix
     ./ghostty.nix
-    ./helium.nix
     ./helix.nix
+    ./librewolf.nix
     ./obs-studio.nix
     ./protonapp.nix
+    ./spotify-player.nix
     ./thunderbird.nix
     ./vlc.nix
-    ./youtube-music.nix
     ./youtube-tui.nix
   ];
 }

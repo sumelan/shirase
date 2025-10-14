@@ -102,6 +102,7 @@ in {
         ];
       };
     };
+
     niri.settings = {
       binds = {
         "Mod+Shift+O" = {
