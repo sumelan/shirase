@@ -150,6 +150,9 @@ in {
             ];
         };
       };
+      battery = {
+        chargingMode = 0;
+      };
       brightness = {
         brightnessStep = 5;
       };
@@ -164,10 +167,31 @@ in {
         useWallpaperColors = false;
       };
       controlCenter = {
-        audioControlsEnabled = true;
+        cards = [
+          {
+            enabled = true;
+            id = "profile-card";
+          }
+          {
+            enabled = true;
+            id = "shortcuts-card";
+          }
+          {
+            enabled = false;
+            id = "audio-card";
+          }
+          {
+            enabled = false;
+            id = "weather-card";
+          }
+          {
+            enabled = true;
+            id = "media-sysmon-card";
+          }
+        ];
         position = "close_to_bar_button";
-        widgets = {
-          quickSettings = [
+        shortcuts = {
+          left = [
             {
               id = "WiFi";
             }
@@ -175,16 +199,24 @@ in {
               id = "Bluetooth";
             }
             {
-              id = "Notifications";
+              id = "ScreenRecorder";
             }
             {
-              id = "ScreenRecorder";
+              id = "WallpaperSelector";
+            }
+          ];
+          right = [
+            {
+              id = "Notifications";
             }
             {
               id = "PowerProfile";
             }
             {
-              id = "WallpaperSelector";
+              id = "KeepAwake";
+            }
+            {
+              id = "NightLight";
             }
           ];
         };
@@ -216,7 +248,7 @@ in {
         wallpaperChange = "";
       };
       location = {
-        name = "Shiga";
+        name = "Otsu";
         showWeekNumberInCalendar = false;
         use12hourFormat = false;
         useFahrenheit = false;
@@ -238,7 +270,7 @@ in {
         criticalUrgencyDuration = 15;
         doNotDisturb = false;
         lastSeenTs = 0;
-        location = "top";
+        location = "top_right";
         lowUrgencyDuration = 3;
         monitors = [];
         normalUrgencyDuration = 8;
