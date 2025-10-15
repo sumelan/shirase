@@ -2,7 +2,6 @@ _: {
   imports = [
     ./niri
     ./discord.nix
-    ./dms.nix
     ./foot.nix
     ./helium.nix
     ./mpv.nix

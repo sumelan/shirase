@@ -9,7 +9,6 @@
   ...
 }: let
   defaultNixMods = [
-    inputs.dankMaterialShell.nixosModules.greeter
     inputs.impermanence.nixosModules.impermanence
     inputs.niri.nixosModules.niri
     inputs.stylix.nixosModules.stylix
@@ -17,8 +16,6 @@
   ];
 
   defaultHomeMods = [
-    inputs.dankMaterialShell.homeModules.dankMaterialShell.default
-    inputs.dankMaterialShell.homeModules.dankMaterialShell.niri
     inputs.nix-index-database.homeModules.nix-index
     inputs.noctalia-shell.homeModules.default
     ../home-manager
