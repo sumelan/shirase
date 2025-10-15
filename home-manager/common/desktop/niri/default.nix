@@ -47,6 +47,8 @@ in {
         hide-not-bound = true;
       };
 
+      config-notification.disable-failed = true;
+
       prefer-no-csd = true;
 
       xwayland-satellite = mkIf config.custom.niri.xwayland.enable {

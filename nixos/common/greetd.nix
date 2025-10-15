@@ -17,7 +17,7 @@ in {
     tuiGreet.enable = mkEnableOption "Tuigreet";
   };
 
-  config = mkIf config.custom.tuigreet.enable {
+  config = mkIf config.custom.tuiGreet.enable {
     # tty autologin
     services.getty.autologinUser = user;
 
