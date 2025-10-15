@@ -353,3 +353,80 @@ Removed packages:
 [R.]  #3  vencord                                   1.13.1
 [R.]  #4  webcord-vencord                           4.11.1, 4.11.1-fish-completions
 Closure size: 2650 -> 2648 (51 paths added, 53 paths removed, delta -2, disk usage -290.6MiB).
+
+---
+
+2025年10月16日 07時31分06秒
+<<< /nix/var/nix/profiles/system-10-link
+>>> /nix/var/nix/profiles/system-11-link
+Version changes:
+[C.]  #01  breeze-icons                5.116.0, 6.18.0 -> 5.116.0, 6.19.0
+[U.]  #02  codebook                    0.3.11 -> 0.3.13
+[U.]  #03  electron                    37.6.0 -> 37.6.1
+[U.]  #04  electron-unwrapped          37.6.0 -> 37.6.1
+[U.]  #05  gnome-settings-daemon       48.1 -> 48.1-gsettings-schemas
+[U.]  #06  gpu-screen-recorder         5.7.4 -> 5.8.0
+[U.]  #07  helium                      0.5.5.2, 0.5.5.2-bwrap, 0.5.5.2-extracted, 0.5.5.2-fhsenv-profile, 0.5.5.2-fhsenv-rootfs, 0.5.5.2-fish-completions, 0.5.5.2-init -> 0.5.6.1, 0.5.6.1-bwrap, 0.5.6.1-extracted, 0.5.6.1-fhsenv-profile, 0.5.6.1-fhsenv-rootfs, 0.5.6.1-fish-completions, 0.5.6.1-init
+[U.]  #08  karchive                    6.18.0 -> 6.19.0
+[U.]  #09  kauth                       6.18.0 -> 6.19.0
+[U.]  #10  kbookmarks                  6.18.0 -> 6.19.0
+[U.]  #11  kcmutils                    6.18.0 -> 6.19.0
+[U.]  #12  kcodecs                     6.18.0 -> 6.19.0
+[U.]  #13  kcolorscheme                6.18.0 -> 6.19.0
+[U.]  #14  kcompletion                 6.18.0 -> 6.19.0
+[U.]  #15  kconfig                     6.18.0 -> 6.19.0
+[U.]  #16  kconfigwidgets              6.18.0 -> 6.19.0
+[U.]  #17  kcoreaddons                 6.18.0 -> 6.19.0
+[U.]  #18  kcrash                      6.18.0 -> 6.19.0
+[U.]  #19  kdbusaddons                 6.18.0 -> 6.19.0
+[U.]  #20  kdeclarative                6.18.0 -> 6.19.0
+[U.]  #21  kdoctools                   6.18.0 -> 6.19.0
+[U.]  #22  kglobalaccel                6.18.0 -> 6.19.0
+[U.]  #23  kguiaddons                  6.18.0 -> 6.19.0
+[U.]  #24  ki18n                       6.18.0 -> 6.19.0
+[U.]  #25  kiconthemes                 6.18.0 -> 6.19.0
+[U.]  #26  kio                         6.18.0 -> 6.19.0
+[U.]  #27  kirigami                    6.18.0 -> 6.19.0
+[U.]  #28  kitemviews                  6.18.0 -> 6.19.0
+[U.]  #29  kjobwidgets                 6.18.0 -> 6.19.0
+[U.]  #30  knotifications              6.18.0 -> 6.19.0
+[U.]  #31  kpackage                    6.18.0 -> 6.19.0
+[U.]  #32  kparts                      6.18.0 -> 6.19.0
+[U.]  #33  kservice                    6.18.0 -> 6.19.0
+[U.]  #34  ksvg                        6.18.0 -> 6.19.0
+[U.]  #35  ktextwidgets                6.18.0 -> 6.19.0
+[U.]  #36  kwallet                     6.18.0 -> 6.19.0
+[U.]  #37  kwidgetsaddons              6.18.0 -> 6.19.0
+[U.]  #38  kwindowsystem               6.18.0 -> 6.19.0
+[U.]  #39  kxmlgui                     6.18.0 -> 6.19.0
+[C.]  #40  librewolf                   143.0.4-1 x2, 143.0.4-1-fish-completions -> 143.0.4-1, 143.0.4-1-fish-completions
+[U.]  #41  linux-firmware              20250917-zstd -> 20251011-zstd
+[U*]  #42  niri-unstable               2025-10-02-ba6e5e0, 2025-10-02-ba6e5e0-doc -> 2025-10-15-2776005, 2025-10-15-2776005-doc
+[U.]  #43  nixos-system-sakura         25.11.20251009.0b4defa.7a3721a -> 25.11.20251012.cf3f5c4.f9b0890
+[D.]  #44  noctalia-shell              158d3a1e6348fa513285f93f8174b964cc5a81cf, 158d3a1e6348fa513285f93f8174b964cc5a81cf-fish-completions -> 0019c0962d8952a7e6197de1d953f47708cd67f7, 0019c0962d8952a7e6197de1d953f47708cd67f7-fish-completions
+[U.]  #45  pv                          1.9.34 -> 1.9.42
+[U.]  #46  qqc2-desktop-style          6.18.0 -> 6.19.0
+[U.]  #47  ruff                        0.13.1 -> 0.14.0
+[U.]  #48  solid                       6.18.0 -> 6.19.0
+[U.]  #49  sonnet                      6.18.0 -> 6.19.0
+[U.]  #50  superhtml                   0.6.0 -> 0.6.1
+[U.]  #51  tealdeer                    1.7.2, 1.7.2-fish-completions -> 1.8.0, 1.8.0-fish-completions
+[U.]  #52  ty                          0.0.1-alpha.21 -> 0.0.1-alpha.22
+[U.]  #53  typescript-language-server  5.0.0 -> 5.0.1
+[U.]  #54  wireless-regdb              2025.07.10-zstd -> 2025.10.07-zstd
+[C*]  #55  wireplumber                 0.4.17, 0.5.11, 0.5.11-doc -> 0.4.17, 0.5.12, 0.5.12-doc
+Added packages:
+[A.]  #1  spotify-player        0.21.0, 0.21.0-fish-completions
+[A.]  #2  spotify-player-app    <none>
+[A.]  #3  spotify-player-theme  <none>
+Removed packages:
+[R.]  #1  colord                                   1.4.6
+[R.]  #2  geocode-glib                             3.26.4
+[R.]  #3  gnome-session-ctl                        47.0.1
+[R.]  #4  libgweather                              4.4.4
+[R.]  #5  libieee1284                              0.2.11
+[R.]  #6  net-snmp                                 5.9.4, 5.9.4-lib
+[R.]  #7  sane-backends                            1.4.0
+[R.]  #8  unit-script-systemd-timesyncd-pre-start  <none>
+[R.]  #9  youtube-music                            3.11.0, 3.11.0-fish-completions
+Closure size: 2648 -> 2640 (204 paths added, 212 paths removed, delta -8, disk usage -131.8MiB).
