@@ -21,8 +21,8 @@ in {
         wd = true;
       };
       btrbk = {
-        enable = true;
-        usb.enable = true;
+        enable = false;
+        usb.enable = false;
       };
     }
     // genAttrs enableList (_name: {enable = true;})

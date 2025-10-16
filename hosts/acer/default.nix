@@ -15,8 +15,8 @@ in {
   in
     {
       btrbk = {
-        enable = true;
-        local.enable = true;
+        enable = false;
+        local.enable = false;
       };
     }
     // genAttrs enableList (_name: {enable = true;})

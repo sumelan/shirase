@@ -19,6 +19,11 @@ helium-path := "packages/helium"
 @check:
     nix flake check
 
+[group('SANITY')]
+[doc('Analyzing a `flake.lock` for duplicate inputs.')]
+@flint:
+    nix run github:NotAShelf/flint
+
 [group('SYSTEM')]
 [doc('Build and activate the new configuration.')]
 @test *args:
@@ -96,12 +101,14 @@ alias pf := prefetch
 @explore name:
     yazi $(nix eval --raw nixpkgs#{{ name }})
 
+alias cb := customBuild
+
+[group('TOOLS')]
+[doc('Build a custom package you defined in `./packages`.')]
+@customBuild name:
+    nix-build --expr '(import <nixpkgs> { }).callPackage ./packages/{{ name }}/default.nix {}'
+
 [group('TOOLS')]
 [doc('Start an interactive environment for evaluating Nix expressions.')]
 @repl:
     nh os repl
-
-[group('TOOLS')]
-[doc('Analyzing a `flake.lock` for duplicate inputs.')]
-@flint:
-    nix run github:NotAShelf/flint
