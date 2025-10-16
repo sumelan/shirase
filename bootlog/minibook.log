@@ -301,3 +301,110 @@ Removed packages:
 [R.]  #1  vencord          1.13.1
 [R.]  #2  webcord-vencord  4.11.1, 4.11.1-fish-completions
 Closure size: 2616 -> 2614 (59 paths added, 61 paths removed, delta -2, disk usage -290.6MiB).
+
+---
+
+2025年10月16日 17時35分04秒
+<<< /nix/var/nix/profiles/system-12-link
+>>> /nix/var/nix/profiles/system-22-link
+Version changes:
+[C.]  #01  breeze-icons                5.116.0, 6.18.0 -> 5.116.0, 6.19.0
+[U.]  #02  codebook                    0.3.11 -> 0.3.13
+[U.]  #03  electron                    37.6.0 -> 37.6.1
+[U.]  #04  electron-unwrapped          37.6.0 -> 37.6.1
+[U.]  #05  gnome-settings-daemon       48.1 -> 48.1-gsettings-schemas
+[U.]  #06  gpu-screen-recorder         5.7.4 -> 5.8.0
+[U.]  #07  helium                      0.5.5.2, 0.5.5.2-bwrap, 0.5.5.2-extracted, 0.5.5.2-fhsenv-profile, 0.5.5.2-fhsenv-rootfs, 0.5.5.2-fish-completions, 0.5.5.2-init -> 0.5.6.1, 0.5.6.1-bwrap, 0.5.6.1-extracted, 0.5.6.1-fhsenv-profile, 0.5.6.1-fhsenv-rootfs, 0.5.6.1-fish-completions, 0.5.6.1-init
+[C.]  #08  icu4c                       73.2, 76.1 x2, 76.1-dev, 77.1 -> 73.2, 76.1 x2, 76.1-dev
+[U.]  #09  karchive                    6.18.0 -> 6.19.0
+[U.]  #10  kauth                       6.18.0 -> 6.19.0
+[U.]  #11  kbookmarks                  6.18.0 -> 6.19.0
+[U.]  #12  kcmutils                    6.18.0 -> 6.19.0
+[U.]  #13  kcodecs                     6.18.0 -> 6.19.0
+[U.]  #14  kcolorscheme                6.18.0 -> 6.19.0
+[U.]  #15  kcompletion                 6.18.0 -> 6.19.0
+[U.]  #16  kconfig                     6.18.0 -> 6.19.0
+[U.]  #17  kconfigwidgets              6.18.0 -> 6.19.0
+[U.]  #18  kcoreaddons                 6.18.0 -> 6.19.0
+[U.]  #19  kcrash                      6.18.0 -> 6.19.0
+[U.]  #20  kdbusaddons                 6.18.0 -> 6.19.0
+[U.]  #21  kdeclarative                6.18.0 -> 6.19.0
+[U.]  #22  kdoctools                   6.18.0 -> 6.19.0
+[U.]  #23  kglobalaccel                6.18.0 -> 6.19.0
+[U.]  #24  kguiaddons                  6.18.0 -> 6.19.0
+[U.]  #25  ki18n                       6.18.0 -> 6.19.0
+[U.]  #26  kiconthemes                 6.18.0 -> 6.19.0
+[U.]  #27  kio                         6.18.0 -> 6.19.0
+[U.]  #28  kirigami                    6.18.0 -> 6.19.0
+[U.]  #29  kitemviews                  6.18.0 -> 6.19.0
+[U.]  #30  kjobwidgets                 6.18.0 -> 6.19.0
+[U.]  #31  knotifications              6.18.0 -> 6.19.0
+[U.]  #32  kpackage                    6.18.0 -> 6.19.0
+[U.]  #33  kparts                      6.18.0 -> 6.19.0
+[U.]  #34  kservice                    6.18.0 -> 6.19.0
+[U.]  #35  ksvg                        6.18.0 -> 6.19.0
+[U.]  #36  ktextwidgets                6.18.0 -> 6.19.0
+[U.]  #37  kwallet                     6.18.0 -> 6.19.0
+[U.]  #38  kwidgetsaddons              6.18.0 -> 6.19.0
+[U.]  #39  kwindowsystem               6.18.0 -> 6.19.0
+[U.]  #40  kxmlgui                     6.18.0 -> 6.19.0
+[U.]  #41  linux-firmware              20250917-zstd -> 20251011-zstd
+[C-]  #42  lz4                         1.10.0, 1.10.0-lib x2, 1.10.0-man -> 1.10.0-lib x2
+[U*]  #43  niri-unstable               2025-10-02-ba6e5e0, 2025-10-02-ba6e5e0-doc -> 2025-10-15-2776005, 2025-10-15-2776005-doc
+[U.]  #44  nixos-system-minibook       25.11.20251009.0b4defa.4a5f4e7 -> 25.11.20251012.cf3f5c4.f97c8e3
+[D.]  #45  noctalia-shell              158d3a1e6348fa513285f93f8174b964cc5a81cf, 158d3a1e6348fa513285f93f8174b964cc5a81cf-fish-completions -> 0019c0962d8952a7e6197de1d953f47708cd67f7, 0019c0962d8952a7e6197de1d953f47708cd67f7-fish-completions
+[C.]  #46  nss                         3.112.1, 3.112.1-man, 3.115.1 -> 3.112.1, 3.112.1-man
+[U.]  #47  pv                          1.9.34 -> 1.9.42
+[U.]  #48  qqc2-desktop-style          6.18.0 -> 6.19.0
+[U.]  #49  ruff                        0.13.1 -> 0.14.0
+[U.]  #50  solid                       6.18.0 -> 6.19.0
+[U.]  #51  sonnet                      6.18.0 -> 6.19.0
+[C.]  #52  source                      <none> x17 -> <none> x16
+[U.]  #53  superhtml                   0.6.0 -> 0.6.1
+[U.]  #54  tealdeer                    1.7.2, 1.7.2-fish-completions -> 1.8.0, 1.8.0-fish-completions
+[U.]  #55  ty                          0.0.1-alpha.21 -> 0.0.1-alpha.22
+[U.]  #56  typescript-language-server  5.0.0 -> 5.0.1
+[U.]  #57  wireless-regdb              2025.07.10-zstd -> 2025.10.07-zstd
+[C*]  #58  wireplumber                 0.4.17, 0.5.11, 0.5.11-doc -> 0.4.17, 0.5.12, 0.5.12-doc
+Added packages:
+[A.]  #1  spotify-player        0.21.0, 0.21.0-fish-completions
+[A.]  #2  spotify-player-app    <none>
+[A.]  #3  spotify-player-theme  <none>
+Removed packages:
+[R.]  #01  adwaita-icon-theme                                                                48.0
+[R.]  #02  base16-gruvbox-material-dark-soft.css                                             <none>
+[R-]  #03  btrbk                                                                             0.32.6
+[R.]  #04  btrbk-authorized_keys                                                             <none>
+[R.]  #05  btrbk-remote.conf                                                                 <none>
+[R.]  #06  colord                                                                            1.4.6
+[R.]  #07  firefox-color                                                                     2.1.7
+[R.]  #08  geocode-glib                                                                      3.26.4
+[R.]  #09  gnome-session-ctl                                                                 47.0.1
+[R.]  #10  hm-firefox-extensions                                                             <none>
+[R.]  #11  hm_.config.librewolfprofiles.ini                                                  <none>
+[R.]  #12  hm_.config.librewolfsumelan.keep                                                  <none>
+[R.]  #13  hm_.config.librewolfsumelanbrowserextensiondataFirefoxColormozilla.comstorage.js  <none>
+[R.]  #14  hm_.config.librewolfsumelanchromeuserChrome.css                                   <none>
+[R.]  #15  hm_.config.librewolfsumelanchromeuserContent.css                                  <none>
+[R.]  #16  hm_.config.librewolfsumelanuser.js                                                <none>
+[R.]  #17  libgweather                                                                       4.4.4
+[R.]  #18  libieee1284                                                                       0.2.11
+[R.]  #19  librewolf                                                                         143.0.4-1 x2, 143.0.4-1-fish-completions
+[R.]  #20  librewolf-unwrapped                                                               143.0.4-1
+[R.]  #21  mbuffer                                                                           20250809
+[R.]  #22  net-snmp                                                                          5.9.4, 5.9.4-lib
+[R.]  #23  onnxruntime                                                                       1.22.2
+[R.]  #24  perl5.40.0-Bit-Vector                                                             7.4
+[R.]  #25  perl5.40.0-Carp-Clan                                                              6.08
+[R.]  #26  perl5.40.0-Date-Calc                                                              6.4
+[R.]  #27  protobuf                                                                          32.1
+[R.]  #28  sane-backends                                                                     1.4.0
+[R.]  #29  sndio                                                                             1.10.0
+[R.]  #30  unit-btrbk-remote.service                                                         <none>
+[R.]  #31  unit-btrbk-remote.timer                                                           <none>
+[R.]  #32  unit-notify-problems-.service                                                     <none>
+[R.]  #33  unit-script-btrbk-remote-pre-start                                                <none>
+[R.]  #34  unit-script-notify-problems_-start                                                <none>
+[R.]  #35  unit-script-systemd-timesyncd-pre-start                                           <none>
+[R.]  #36  youtube-music                                                                     3.11.0, 3.11.0-fish-completions
+Closure size: 2614 -> 2573 (209 paths added, 250 paths removed, delta -41, disk usage -580.4MiB).
