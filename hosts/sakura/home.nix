@@ -40,7 +40,7 @@ in {
       "obs-studio"
       "protonapp"
       "rmpc"
-      "spotify-player"
+      "spicetify-nix"
       "youtube-tui"
     ];
 

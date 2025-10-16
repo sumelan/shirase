@@ -58,6 +58,10 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-chuwi-minibook-x = {
       url = "github:knoopx/nix-chuwi-minibook-x";

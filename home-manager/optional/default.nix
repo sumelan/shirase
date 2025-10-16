@@ -10,6 +10,7 @@ _: {
     ./librewolf.nix
     ./obs-studio.nix
     ./protonapp.nix
+    ./spicetify-nix.nix
     ./spotify-player.nix
     ./thunderbird.nix
     ./vlc.nix

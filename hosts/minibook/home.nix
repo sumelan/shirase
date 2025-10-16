@@ -47,7 +47,7 @@ in {
       "helix"
       "protonapp"
       "rmpc"
-      "spotify-player"
+      "spicetify-nix"
       "youtube-tui"
     ];
 

@@ -64,7 +64,7 @@ in {
           "Mozilla librewolf"
           "Helium"
         ];
-        preferredPlayer = "Spotify Player";
+        preferredPlayer = "Spotify";
         visualizerType = "linear";
         volumeOverdrive = false;
         volumeStep = 5;
@@ -121,6 +121,15 @@ in {
           ];
           right =
             [
+              {
+                blacklist = [
+                  "nm-applet"
+                  "Fcitx*"
+                  "bluetooth*"
+                ];
+                colorizeIcons = true;
+                id = "Tray";
+              }
               {
                 hideWhenZero = true;
                 id = "NotificationHistory";
