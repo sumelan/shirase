@@ -8,17 +8,11 @@ _: {
     ./nemo.nix
     ./noctalia.nix
     ./pipewire.nix
+    ./polkit.nix
     ./swayidle.nix
     ./swayimg.nix
     ./swayosd.nix
     ./yazi.nix
     ./zathura.nix
   ];
-
-  # WM agnostic polkit authentication agent
-  services.polkit-gnome.enable = true;
-
-  home.file = {
-    ".wall.png".source = ./bokutai.png;
-  };
 }

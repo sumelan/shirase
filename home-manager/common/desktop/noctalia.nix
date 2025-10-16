@@ -27,7 +27,10 @@
 
   noctaliaPkgs = inputs.noctalia-shell.packages.${pkgs.system}.default;
 in {
-  home.packages = [noctaliaPkgs];
+  home = {
+    packages = [noctaliaPkgs];
+    file.".wall.png".source = ./default.png;
+  };
 
   programs.noctalia-shell = {
     enable = true;
@@ -331,7 +334,7 @@ in {
         tooltipsEnabled = true;
       };
       wallpaper = {
-        defaultWallpaper = "";
+        defaultWallpaper = "${config.home.homeDirectory}/.wall.png";
         directory = "${config.xdg.userDirs.pictures}/Wallpapers";
         enableMultiMonitorDirectories = false;
         enabled = true;
@@ -341,10 +344,10 @@ in {
           {
             inherit (config.programs.noctalia-shell.settings.wallpaper) directory;
             name = config.lib.monitors.mainMonitorName;
-            wallpaper = "${config.home.homeDirectory}/.wall.png";
+            wallpaper = "";
           }
         ];
-        randomEnabled = false;
+        randomEnabled = true;
         randomIntervalSec = 900;
         setWallpaperOnAllMonitors = true;
         transitionDuration = 1500;

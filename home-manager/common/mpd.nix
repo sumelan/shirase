@@ -18,6 +18,8 @@ in {
   };
 
   services = {
+    playerctld.enable = true;
+
     mpd = {
       enable = true;
       musicDirectory = config.xdg.userDirs.music;

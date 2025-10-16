@@ -22,6 +22,7 @@
     base06
     base08
     base09
+    base0B
     base0C
     base0D
     base0E
@@ -95,6 +96,12 @@ in {
     };
 
     programs.niri.settings = {
+      binds = {
+        "Mod+S" = {
+          action.spawn = ["spotify" "--wayland-text-input-version=3"];
+          hotkey-overlay.title = ''<span foreground="${base0B}">[Application]</span> Spotify'';
+        };
+      };
       window-rules = [
         {
           # mini player

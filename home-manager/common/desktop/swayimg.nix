@@ -25,8 +25,8 @@ in {
       in {
         general = {
           mode = "viewer";
-          position = "parent";
-          size = "parent"; # Window size (fullscreen/parent/image, or absolute size, e.g. 800,600)
+          position = "auto";
+          size = "image"; # Window size (fullscreen/parent/image, or absolute size, e.g. 800,600)
           decoration = "no";
           sigusr1 = "reload"; # Action performed by SIGUSR1 signal (same format as for key bindings)
           sigusr2 = "next_file"; # Action performed by SIGUSR2 signal (same format as for key bindings)
@@ -38,10 +38,23 @@ in {
           scale = "optimal"; # Default image scale (optimal/width/height/fit/fill/real/keep)
           position = "center";
           antialiasing = "mks13";
-          slideshow = "no"; # Run slideshow at startup (yes/no)
-          slideshow_time = 3;
           history = 1;
           preload = 1;
+          loop = "yes";
+        };
+        slideshow = {
+          # Slideshow image display time (seconds)
+          time = 3;
+          # Window background color (auto/extend/mirror/RGBA)
+          window = "auto";
+          # Background for transparent images (grid/RGBA)
+          transparency = "#000000ff";
+          # Default image scale (optimal/width/height/fit/fill/real)
+          scale = "fit";
+          # Initial image position on the window (center/top/bottom/free/...)
+          position = "center";
+          # Anti-aliasing mode (none/box/bilinear/bicubic/mks13)
+          antialiasing = "mks13";
         };
         gallery = {
           size = 200;
@@ -59,7 +72,6 @@ in {
         list = {
           order = "alpha";
           reverse = "no";
-          loop = "yes";
           recursive = "no"; # Read directories recursively (yes/no)
           all = "no"; # Add files from the same directory as the first file (yes/no)
           fsmon = "yes"; # Enable file system monitoring for adding new images to the list (yes/no)
@@ -103,8 +115,8 @@ in {
           "Shift+o" = "prev_frame";
           "o" = "next_frame";
           "c" = "skip_file";
-          "Shift+s" = "slideshow";
-          "s" = "animation";
+          "s" = "mode slideshow";
+          "n" = "animation";
           "f" = "fullscreen";
           "Return" = "mode";
           "Left" = "step_left 10";
@@ -146,6 +158,22 @@ in {
           "Alt+ScrollDown" = "next_frame";
           "MouseSide" = "prev_file";
           "MouseExtra" = "next_file";
+        };
+        "keys.slideshow" = {
+          "F1" = "help";
+          "Home" = "first_file";
+          "End" = "last_file";
+          "Prior" = "prev_file";
+          "Next" = "next_file";
+          "Shift+r" = "rand_file";
+          "Shift+d" = "prev_dir";
+          "d" = "next_dir";
+          "Space" = "pause";
+          "i" = "info";
+          "f" = "fullscreen";
+          "Return" = "mode";
+          "Escape" = "exit";
+          "q" = "exit";
         };
         "keys.gallery" = {
           "F1" = "help";
@@ -189,10 +217,20 @@ in {
     ];
   };
 
-  xdg.mimeApps.defaultApplications = {
-    "image/jpeg" = "swayimg.desktop";
-    "image/gif" = "swayimg.desktop";
-    "image/webp" = "swayimg.desktop";
-    "image/png" = "swayimg.desktop";
+  xdg = {
+    desktopEntries.swayimg = {
+      name = "Swayimg";
+      genericName = "Image Viewer";
+      icon = "swayimg";
+      terminal = false;
+      exec = "swayimg %U";
+    };
+
+    mimeApps.defaultApplications = {
+      "image/jpeg" = "swayimg.desktop";
+      "image/gif" = "swayimg.desktop";
+      "image/webp" = "swayimg.desktop";
+      "image/png" = "swayimg.desktop";
+    };
   };
 }
