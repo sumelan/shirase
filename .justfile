@@ -93,20 +93,20 @@ alias pf := prefetch
 
 [group('TOOLS')]
 [doc('Nix (package manager) indexing primitives.')]
-@locate name:
-    nix-locate {{ name }}
+@locate program:
+    nix-locate {{ program }}
 
 [group('TOOLS')]
 [doc('Look the store path of specific package through yazi.')]
-@explore name:
-    yazi $(nix eval --raw nixpkgs#{{ name }})
+@explore nixpkg:
+    yazi $(nix eval --raw nixpkgs#{{ nixpkg }})
 
 alias cb := customBuild
 
 [group('TOOLS')]
 [doc('Build a custom package you defined in `./packages`.')]
-@customBuild name:
-    nix-build --expr '(import <nixpkgs> { }).callPackage ./packages/{{ name }}/default.nix {}'
+@customBuild package:
+    nix-build --expr '(import <nixpkgs> { }).callPackage ./packages/{{ package }}/default.nix {}'
 
 [group('TOOLS')]
 [doc('Start an interactive environment for evaluating Nix expressions.')]
