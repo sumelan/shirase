@@ -15,6 +15,7 @@
     (config.lib.stylix.colors.withHashtag)
     base01
     base02
+    base05
     base0B
     base0C
     base0D
@@ -30,9 +31,14 @@ in {
     programs.niri.settings = let
       shadowConfig = {
         enable = true;
-        spread = 0;
-        softness = 10;
-        color = "#000000dd";
+        softness = 20;
+        spread = 10;
+        offset = {
+          x = 0;
+          y = 0;
+        };
+        draw-behind-window = false;
+        color = base05 + "90";
       };
     in {
       hotkey-overlay = {

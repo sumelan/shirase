@@ -10,6 +10,7 @@
 
   inherit
     (config.lib.stylix.colors.withHashtag)
+    base05
     base08
     base09
     base0A
@@ -18,9 +19,14 @@
 
   shadowConfig = {
     enable = true;
-    spread = 0;
-    softness = 10;
-    color = "#000000dd";
+    softness = 20;
+    spread = 10;
+    offset = {
+      x = 0;
+      y = 0;
+    };
+    draw-behind-window = false;
+    color = base05 + "90";
   };
 in {
   programs.niri.settings = {
