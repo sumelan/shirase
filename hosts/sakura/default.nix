@@ -16,12 +16,8 @@ in {
     ];
   in
     {
-      hdds = {
-        enable = true;
-        wd = true;
-      };
       btrbk = {
-        enable = false;
+        enable = true;
         usb.enable = false;
       };
     }

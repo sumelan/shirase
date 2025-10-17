@@ -103,7 +103,7 @@ in {
                     snapshot_name = "persist";
                   };
                 };
-                target = "ssh://sakura/media/WD4T/${host}-remote";
+                target = "ssh://sakura/cache/snapshots/${host}-remote";
               };
             };
         };

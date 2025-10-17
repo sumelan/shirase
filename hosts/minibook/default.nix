@@ -39,8 +39,8 @@ in {
   in
     {
       btrbk = {
-        enable = false;
-        remote.enable = false;
+        enable = true;
+        remote.enable = true;
       };
     }
     // genAttrs enableList (_name: {enable = true;})
