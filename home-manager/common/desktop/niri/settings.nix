@@ -14,7 +14,6 @@
   base01 = "#212337";
   base05 = "#ebfafa";
   base0B = "#37f499";
-  base0C = "#f7c67f";
   base0F = "#f1fc79";
 in {
   options.custom = {
@@ -42,8 +41,6 @@ in {
         hide-not-bound = true;
       };
 
-      config-notification.disable-failed = true;
-
       prefer-no-csd = true;
 
       xwayland-satellite = mkIf config.custom.niri.xwayland.enable {
@@ -62,7 +59,6 @@ in {
         inherit (config.home.pointerCursor) size;
       };
 
-      # apply function f to every element of attrset
       outputs =
         builtins.mapAttrs (_name: value: {
           inherit (value) scale mode position;
@@ -84,14 +80,7 @@ in {
         border = {
           enable = true;
           width = 3;
-          active = {
-            gradient = {
-              from = base0C;
-              to = base0F;
-              angle = 45;
-              in' = "oklab";
-            };
-          };
+          active.color = base0B;
           inactive.color = base01;
         };
 

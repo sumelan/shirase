@@ -15,8 +15,8 @@ in {
 
   users.users.${username} = {
     isNormalUser = true;
-    # create a password with $username with:
-    # mkpasswd -m sha-512 'PASSWORD' | sudo tee -a /persist/etc/shadow/${username}
+    # create a password with sumelan with:
+    # mkpasswd -m sha-512 'PASSWORD' | sudo tee -a /persist/etc/shadow/sumelan
     initialPassword = "password";
     hashedPasswordFile = "/persist/etc/shadow/${username}";
     extraGroups = [

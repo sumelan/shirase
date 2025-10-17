@@ -38,7 +38,7 @@ in {
         matches = singleton {
           is-focused = true;
         };
-        opacity = 0.95;
+        opacity = 0.98;
       }
       # out-focued and no-floating column/window opacity
       {
@@ -46,7 +46,7 @@ in {
           is-focused = false;
           is-floating = false;
         };
-        opacity = 0.95 * 0.9;
+        opacity = 0.98 * 0.85;
       }
       # Picture-in-pictures
       {

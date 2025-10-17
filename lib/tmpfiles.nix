@@ -1,10 +1,9 @@
-_:
 # If the exclamation mark ("!") is used, this line is only safe to
 # execute during boot, and can break a running system.
 # The file access mode to use when creating this file or directory.
 # If omitted or when set to "-",
 # the default is used: 0755 for directories, 0644 for all other file objects.
-{
+_: {
   # Create a symlink if it does not exist yet.
   # If suffixed with + and a file or directory already exists where the symlink is to be created,
   # it will be removed and be replaced by the symlink.
