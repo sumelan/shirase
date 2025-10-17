@@ -263,7 +263,7 @@ in {
       binds = {
         "Mod+Y" = {
           action.spawn = ["${getExe pkgs.foot}" "--app-id=youtube-tui" "youtube-tui"];
-          hotkey-overlay.title = ''<span foreground="${base0B}">[Terminal]</span> Youtube-tui'';
+          hotkey-overlay.title = ''<span foreground="#f1fc79">[Terminal]</span> Youtube-tui'';
         };
       };
     };
