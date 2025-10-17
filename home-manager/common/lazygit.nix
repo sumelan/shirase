@@ -1,14 +1,10 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{lib, ...}: let
   inherit
     (lib)
     mkForce
     ;
-  accent = "${config.lib.stylix.colors.withHashtag.base0E}";
-  muted = "${config.lib.stylix.colors.withHashtag.base03}";
+  accent = "#37f499";
+  muted = "#323449";
 in {
   programs.lazygit = {
     enable = true;

@@ -11,17 +11,14 @@
     getExe
     ;
 
-  inherit
-    (config.lib.stylix.colors.withHashtag)
-    base01
-    base05
-    base08
-    base0A
-    base0B
-    base0C
-    base0D
-    base0E
-    ;
+  base01 = "#212337";
+  base05 = "#ebfafa";
+  base08 = "#7081d0";
+  base0A = "#04d1f9";
+  base0B = "#37f499";
+  base0C = "#f7c67f";
+  base0D = "#f265b5";
+  base0E = "#a48cf2";
 in {
   options.custom = {
     youtube-tui.enable = mkEnableOption "Aesthetically pleasing YouTube TUI written in Rust";

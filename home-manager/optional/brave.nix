@@ -1,4 +1,3 @@
-#NOTE: stylix.targets.chromium.enable is only available as NioxOS Options
 {
   lib,
   config,

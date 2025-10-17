@@ -1,24 +1,17 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{lib, ...}: let
   inherit
     (lib)
     concatStrings
     mkAfter
     ;
 
-  inherit
-    (config.lib.stylix.colors.withHashtag)
-    base01
-    base07
-    base08
-    base0A
-    base0B
-    base0D
-    base0E
-    ;
+  base01 = "#212337";
+  base08 = "#7081d0";
+  base0A = "#04d1f9";
+  base0B = "#37f499";
+  base0C = "#f7c67f";
+  base0D = "#f265b5";
+  base0E = "#a48cf2";
 in {
   programs = {
     starship = {
@@ -64,12 +57,12 @@ in {
           "$hostname"
         ];
 
-        palette = "stylix";
-        palettes.stylix = {
+        palette = "custom";
+        palettes.custom = {
           overlay = base01;
           love = base08;
           gold = base0A;
-          rose = base07;
+          rose = base0C;
           pine = base0D;
           foam = base0B;
           iris = base0E;
@@ -257,5 +250,4 @@ in {
         '';
     };
   };
-  stylix.targets.starship.enable = false;
 }

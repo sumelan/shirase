@@ -1,11 +1,8 @@
 {config, ...}: let
-  inherit
-    (config.lib.stylix.colors.withHashtag)
-    base00
-    base02
-    base05
-    base0E
-    ;
+  base00 = "#323449";
+  base01 = "#212337";
+  base05 = "#ebfafa";
+  base0E = "#a48cf2";
 in {
   services.swayosd = {
     enable = true;
@@ -18,8 +15,8 @@ in {
     ''
       window {
         border-radius: 999px;
-        border: 2px solid alpha(${base02}, ${toString config.stylix.opacity.popups});
-        background: alpha(${base00}, ${toString config.stylix.opacity.popups});
+        border: 2px solid alpha(${base01}, ${toString 0.85});
+        background: alpha(${base00}, ${toString 0.85});
       }
 
       image,

@@ -1,18 +1,13 @@
-{config, ...}: let
-  inherit
-    (config.lib.stylix.colors.withHashtag)
-    base00
-    base01
-    base04
-    base05
-    base07
-    base09
-    base0A
-    base0C
-    base0D
-    base0E
-    base0F
-    ;
+_: let
+  base00 = "#323449";
+  base01 = "#212337";
+  base05 = "#ebfafa";
+  base09 = "#f16c75";
+  base0A = "#04d1f9";
+  base0B = "#37f499";
+  base0C = "#f7c67f";
+  base0E = "#a48cf2";
+  base0F = "#f1fc79";
 in {
   xdg.configFile."rmpc/themes/custom.ron".text =
     # ron
@@ -28,14 +23,14 @@ in {
           progress_bar: (
               symbols: ["󰇼", "󰇼", "", " ", " "],
               track_style: (fg: "${base01}"),
-              elapsed_style: (fg: "${base0D}", bg: "${base00}"),
-              thumb_style: (fg: "${base0D}", bg: "${base00}"),
+              elapsed_style: (fg: "${base0B}", bg: "${base00}"),
+              thumb_style: (fg: "${base0B}", bg: "${base00}"),
           ),
           scrollbar: (
               symbols: ["│", "█", "▲", "▼"],
               track_style: (),
               ends_style: (),
-              thumb_style: (fg: "${base04}"),
+              thumb_style: (fg: "${base05}"),
           ),
           browser_column_widths: [20, 38, 42],
           text_color: "${base05}",
@@ -47,14 +42,14 @@ in {
               active_style: (fg: "black", bg: "${base0E}", modifiers: "Bold"),
               inactive_style: (),
           ),
-          borders_style: (fg: "${base04}"),
+          borders_style: (fg: "${base05}"),
           highlighted_item_style: (fg: "${base0A}", modifiers: "Bold"),
-          current_item_style: (fg: "${base00}", bg: "${base0D}", modifiers: "Bold"),
-          highlight_border_style: (fg: "${base0D}"),
+          current_item_style: (fg: "${base00}", bg: "${base0B}", modifiers: "Bold"),
+          highlight_border_style: (fg: "${base0B}"),
           song_table_format: [
               (
                   prop: (kind: Property(Artist),
-                      style: (fg: "${base07}"),
+                      style: (fg: "${base09}"),
                       default: (kind: Text("Unknown"))
                   ),
                   width: "50%",
@@ -98,16 +93,16 @@ in {
               rows: [
                   (
                       left: [
-                          (kind: Text("["), style: (fg: "${base0D}", modifiers: "Dim")),
+                          (kind: Text("["), style: (fg: "${base0B}", modifiers: "Dim")),
                           (kind: Property(Status(StateV2(
                               playing_label: "Playing",
                               paused_label: "Paused",
                               stopped_label: "Stopped",
-                              playing_style: (fg: "${base0D}", modifiers: "Bold"),
-                              paused_style: (fg: "${base0D}", modifiers: "Bold"),
-                              stopped_style: (fg: "${base0D}", modifiers: "Bold"))))
+                              playing_style: (fg: "${base0B}", modifiers: "Bold"),
+                              paused_style: (fg: "${base0B}", modifiers: "Bold"),
+                              stopped_style: (fg: "${base0B}", modifiers: "Bold"))))
                           ),
-                          (kind: Text("]"), style: (fg: "${base0D}", modifiers: "Dim"))
+                          (kind: Text("]"), style: (fg: "${base0B}", modifiers: "Dim"))
                       ],
                       center: [
                           (kind: Property(Song(Title)), style: (fg: "${base0E}", modifiers: "Bold"),
@@ -115,9 +110,9 @@ in {
                           ),
                       ],
                       right: [
-                          (kind: Text("Vol: "), style: (fg: "${base0D}", modifiers: "Dim")),
-                          (kind: Property(Status(Volume)), style: (fg: "${base0D}", modifiers: "Bold")),
-                          (kind: Text("% "), style: (fg: "${base0D}", modifiers: "Dim"))
+                          (kind: Text("Vol: "), style: (fg: "${base0B}", modifiers: "Dim")),
+                          (kind: Property(Status(Volume)), style: (fg: "${base0B}", modifiers: "Bold")),
+                          (kind: Text("% "), style: (fg: "${base0B}", modifiers: "Dim"))
                       ]
                   ),
                   (
@@ -130,8 +125,8 @@ in {
                       center: [
                           (kind: Text("󰳩 "), style: (fg: "${base09}", modifiers: "Bold")),
                           (kind: Text("- "), style: (fg: "${base05}", modifiers: "Dim")),
-                          (kind: Property(Song(Artist)), style: (fg: "${base07}", modifiers: "Bold"),
-                              default: (kind: Text("Unknown"), style: (fg: "${base07}", modifiers: "Bold"))
+                          (kind: Property(Song(Artist)), style: (fg: "${base09}", modifiers: "Bold"),
+                              default: (kind: Text("Unknown"), style: (fg: "${base09}", modifiers: "Bold"))
                           ),
                       ],
                       right: [

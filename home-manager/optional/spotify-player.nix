@@ -50,7 +50,7 @@ in {
         binds = {
           "Mod+S" = {
             action.spawn = ["${getExe pkgs.foot}" "--app-id=spotify" "spotify_player"];
-            hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Terminal]</span> Spotify-player'';
+            hotkey-overlay.title = ''<span foreground="#f1fc79">[Terminal]</span> Spotify-player'';
           };
         };
       };

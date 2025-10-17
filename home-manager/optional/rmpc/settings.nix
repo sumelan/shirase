@@ -31,7 +31,7 @@ in {
         binds = {
           "Mod+R" = {
             action.spawn = ["${lib.getExe pkgs.foot}" "--app-id=rmpc" "rmpc"];
-            hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Terminal]</span> rmpc'';
+            hotkey-overlay.title = ''<span foreground="#f1fc79">[Terminal]</span> rmpc'';
           };
         };
         window-rules = [

@@ -111,12 +111,6 @@ in {
       ".mozilla/native-messaging-hosts".enable = lib.mkForce false;
     };
 
-    stylix.targets.librewolf = {
-      colorTheme.enable = true;
-      firefoxGnomeTheme.enable = true;
-      profileNames = [user];
-    };
-
     custom.persist = {
       home.directories = [
         ".cache/librewolf"

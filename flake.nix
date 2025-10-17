@@ -89,16 +89,5 @@
         xwayland-satellite-stable.follows = "";
       };
     };
-
-    stylix = {
-      url = "github:danth/stylix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        tinted-kitty.follows = "";
-        tinted-tmux.follows = "";
-        tinted-zed.follows = "";
-      };
-    };
   };
 }

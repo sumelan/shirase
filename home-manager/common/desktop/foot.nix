@@ -3,6 +3,7 @@ _: {
     enable = true;
     settings = {
       main = {
+        font = "monospace:size=14";
         initial-window-size-pixels = "1200x800";
       };
       scrollback = {

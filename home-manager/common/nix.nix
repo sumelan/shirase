@@ -1,6 +1,5 @@
 {
   lib,
-  config,
   pkgs,
   flakePath,
   ...
@@ -45,7 +44,7 @@ in {
       binds = {
         "Mod+Period" = {
           action.spawn = ["${getExe pkgs.foot}" "--app-id=nix-search-tv" "ns"];
-          hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Terminal]</span> nix-search-tv'';
+          hotkey-overlay.title = ''<span foreground="#f1fc79">[Terminal]</span> nix-search-tv'';
         };
       };
     };

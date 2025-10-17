@@ -127,7 +127,14 @@ in {
   # setup fonts
   fonts = {
     enableDefaultPackages = true;
-    packages = [config.stylix.fonts.monospace.package]; # install monospace font for root
+    inherit (config.hm.custom.fonts) packages;
+  };
+
+  # use gtk theme on qt apps
+  qt = {
+    enable = true;
+    platformTheme = "qt5ct";
+    style = "kvantum";
   };
 
   xdg = {

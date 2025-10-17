@@ -7,21 +7,16 @@
     (lib)
     singleton
     ;
-  inherit
-    (config.lib.stylix.colors.withHashtag)
-    base00
-    base02
-    base04
-    base05
-    ;
+  base00 = "#323449";
+  base01 = "#212337";
+  base05 = "#ebfafa";
 in {
   programs = {
     swayimg = {
       enable = true;
       settings = let
-        inherit (config.stylix) fonts;
         swayimgOpacity =
-          lib.toHexString (((builtins.floor (config.stylix.opacity.desktop * 100 + 0.5)) * 255) / 100);
+          lib.toHexString (((builtins.floor (0.95 * 100 + 0.5)) * 255) / 100);
       in {
         general = {
           mode = "viewer";
@@ -64,8 +59,8 @@ in {
           fill = "yes";
           antialiasing = "mks13";
           window = base00 + swayimgOpacity; # Background color of the window (RGBA)
-          background = base02; # Background color of non-selected tiles (RGBA)
-          select = base04; # Background color of the selected tile (RGBA)
+          background = base01; # Background color of non-selected tiles (RGBA)
+          select = base05; # Background color of the selected tile (RGBA)
           border = base00; # Border color of the selected tile (RGBA)
           shadow = base00; # Shadow color of the selected tile (RGBA)
         };
@@ -77,8 +72,8 @@ in {
           fsmon = "yes"; # Enable file system monitoring for adding new images to the list (yes/no)
         };
         font = {
-          inherit (fonts.monospace) name;
-          size = fonts.sizes.desktop;
+          name = config.custom.fonts.monospace;
+          size = 14;
           color = base05;
           shadow = base00 + swayimgOpacity;
           background = base00;

@@ -18,7 +18,7 @@ in {
     niri.settings.binds = {
       "Mod+B" = {
         action.spawn = ["helium"];
-        hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Application]</span> Helium'';
+        hotkey-overlay.title = ''<span foreground="#37f499">[Application]</span> Helium'';
       };
     };
   };

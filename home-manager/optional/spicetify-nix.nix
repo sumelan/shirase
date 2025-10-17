@@ -11,23 +11,6 @@
     mkIf
     singleton
     ;
-  inherit
-    (config.lib.stylix.colors.withHashtag)
-    base00
-    base01
-    base02
-    base03
-    base04
-    base05
-    base06
-    base08
-    base09
-    base0B
-    base0C
-    base0D
-    base0E
-    base0F
-    ;
 in {
   options.custom = {
     spicetify-nix.enable = mkEnableOption "Spotify";
@@ -63,43 +46,14 @@ in {
           removeConnectBar
           ;
       };
-      theme = spicePkgs.themes.comfy;
-      colorScheme = "custom";
-      customColorScheme = {
-        text = base05;
-        subtext = base04;
-        main = base00;
-        main-elevated = base01;
-        main-transition = base01;
-        highlight = base02;
-        highlight-elevated = base00;
-        sidebar = base01;
-        player = base01;
-        card = base03;
-        shadow = base04;
-        selected-row = base02;
-        button = base0C;
-        button-active = base0D;
-        button-disabled = base03;
-        tab-active = base02;
-        notification = base06;
-        notification-error = base08;
-        misc = base04;
-        play-button = base06;
-        play-button-active = base0F;
-        progress-fg = base02;
-        progress-bg = base01;
-        heart = base09;
-        pagelink-active = base05;
-        radio-btn-active = base0E;
-      };
+      theme = spicePkgs.themes.nightlight;
     };
 
     programs.niri.settings = {
       binds = {
         "Mod+S" = {
           action.spawn = ["spotify" "--wayland-text-input-version=3"];
-          hotkey-overlay.title = ''<span foreground="${base0B}">[Application]</span> Spotify'';
+          hotkey-overlay.title = ''<span foreground="#37f499">[Application]</span> Spotify'';
         };
       };
       window-rules = [
@@ -124,6 +78,5 @@ in {
         ];
       };
     };
-    stylix.targets.spicetify.enable = false;
   };
 }

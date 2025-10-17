@@ -11,15 +11,11 @@
     mkEnableOption
     mkIf
     ;
-  inherit
-    (config.lib.stylix.colors.withHashtag)
-    base01
-    base02
-    base05
-    base0B
-    base0C
-    base0D
-    ;
+  base01 = "#212337";
+  base05 = "#ebfafa";
+  base0B = "#37f499";
+  base0C = "#f7c67f";
+  base0F = "#f1fc79";
 in {
   options.custom = {
     niri = {
@@ -91,12 +87,12 @@ in {
           active = {
             gradient = {
               from = base0C;
-              to = base0D;
+              to = base0F;
               angle = 45;
               in' = "oklab";
             };
           };
-          inactive.color = base02;
+          inactive.color = base01;
         };
 
         focus-ring.enable = false;
@@ -112,7 +108,7 @@ in {
           enable = true;
           display = {
             gradient = {
-              from = base0D;
+              from = base0F;
               to = base0B;
               angle = 45;
             };
@@ -127,7 +123,7 @@ in {
           hide-when-single-tab = true;
           place-within-column = true;
           active.color = base0B;
-          inactive.color = base02;
+          inactive.color = base01;
           gap = 5;
           width = 6;
           length.total-proportion = 0.5;
@@ -165,6 +161,5 @@ in {
         GDK_BACKEND = "wayland";
       };
     };
-    stylix.targets.niri.enable = false;
   };
 }

@@ -27,9 +27,6 @@ in
         };
       };
 
-      # plymouth
-      boot.plymouth.enable = true;
-
       # faster boot times
       systemd.services.NetworkManager-wait-online.wantedBy = mkForce [];
     }
@@ -40,6 +37,5 @@ in
     {
       # reduce journald logs
       services.journald.extraConfig = ''SystemMaxUse=50M'';
-      stylix.targets.grub.enable = false;
     }
   ]

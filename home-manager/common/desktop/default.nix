@@ -3,12 +3,14 @@ _: {
     ./niri
     ./discord.nix
     ./foot.nix
+    ./gtk.nix
     ./helium.nix
     ./mpv.nix
     ./nemo.nix
     ./noctalia.nix
     ./pipewire.nix
     ./polkit.nix
+    ./qt.nix
     ./swayidle.nix
     ./swayimg.nix
     ./swayosd.nix

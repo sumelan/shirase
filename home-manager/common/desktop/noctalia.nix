@@ -12,19 +12,6 @@
     splitString
     ;
 
-  inherit
-    (config.lib.stylix.colors.withHashtag)
-    base00
-    base01
-    base02
-    base06
-    base07
-    base08
-    base0A
-    base0B
-    base0D
-    ;
-
   noctaliaPkgs = inputs.noctalia-shell.packages.${pkgs.system}.default;
 in {
   home = {
@@ -34,25 +21,9 @@ in {
 
   programs.noctalia-shell = {
     enable = true;
-    colors = {
-      mError = base08;
-      mOnError = base00;
-      mOnPrimary = base00;
-      mOnSecondary = base00;
-      mOnSurface = base07;
-      mOnSurfaceVariant = base06;
-      mOnTertiary = base00;
-      mOutline = base02;
-      mPrimary = base0A;
-      mSecondary = base0B;
-      mShadow = base00;
-      mSurface = base00;
-      mSurfaceVariant = base01;
-      mTertiary = base0D;
-    };
     settings = {
       appLauncher = {
-        backgroundOpacity = config.stylix.opacity.popups;
+        backgroundOpacity = 0.85;
         enableClipboardHistory = true;
         pinnedExecs = [];
         position = "center";
@@ -68,12 +39,12 @@ in {
           "Helium"
         ];
         preferredPlayer = "Spotify";
-        visualizerType = "linear";
+        visualizerType = "mirrored";
         volumeOverdrive = false;
         volumeStep = 5;
       };
       bar = {
-        backgroundOpacity = config.stylix.opacity.desktop;
+        backgroundOpacity = "0.95";
         density = "comfortable";
         floating = false;
         marginHorizontal = 0.25;
@@ -169,13 +140,10 @@ in {
         brightnessStep = 5;
       };
       colorSchemes = {
-        darkMode =
-          if (config.stylix.polarity == "dark")
-          then true
-          else false;
+        darkMode = true;
         generateTemplatesForPredefined = false;
         matugenSchemeType = "scheme-fruit-salad";
-        predefinedScheme = "Gruvbox";
+        predefinedScheme = "Eldritch";
         useWallpaperColors = false;
       };
       controlCenter = {
@@ -234,7 +202,7 @@ in {
         };
       };
       dock = {
-        backgroundOpacity = config.stylix.opacity.popups;
+        backgroundOpacity = 0.85;
         colorizeIcons = true;
         displayMode = "always_visible";
         floatingRatio = 1;
@@ -306,14 +274,15 @@ in {
         videoCodec = "h264";
         videoSource = "portal";
       };
-      settingsVersion = 12;
+      settingsVersion = 16;
+      setupCompleted = true;
       templates = {
         discord = false;
         discord_armcord = false;
         discord_dorion = false;
         discord_equibop = false;
         discord_lightcord = false;
-        discord_vesktop = false;
+        discord_vesktop = true;
         discord_webcord = false;
         enableUserTemplates = false;
         foot = false;
@@ -328,7 +297,7 @@ in {
       ui = {
         fontDefault = config.gtk.font.name;
         fontDefaultScale = 1;
-        fontFixed = config.stylix.fonts.monospace.name;
+        fontFixed = config.custom.fonts.monospace;
         fontFixedScale = 1;
         idleInhibitorEnabled = false;
         tooltipsEnabled = true;
@@ -338,7 +307,7 @@ in {
         directory = "${config.xdg.userDirs.pictures}/Wallpapers";
         enableMultiMonitorDirectories = false;
         enabled = true;
-        fillColor = base00;
+        fillColor = "#212337";
         fillMode = "crop";
         monitors = [
           {
@@ -379,7 +348,7 @@ in {
           "call"
         ]
         ++ (splitString " " cmd);
-      hotkeyColor = base0A;
+      hotkeyColor = "#04d1f9";
     in {
       "Mod+Space" = {
         action.spawn = noctalia "launcher toggle";

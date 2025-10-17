@@ -4,6 +4,5 @@ _: {
     ./optional
     ./hardware.nix
     ./settings.nix
-    ./style.nix
   ];
 }

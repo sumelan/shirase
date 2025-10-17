@@ -11,7 +11,6 @@
   defaultNixMods = [
     inputs.impermanence.nixosModules.impermanence
     inputs.niri.nixosModules.niri
-    inputs.stylix.nixosModules.stylix
     ../nixos
   ];
 

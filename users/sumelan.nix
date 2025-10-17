@@ -68,8 +68,4 @@ in {
       fcitx5.waylandFrontend = true;
     };
   };
-
-  fonts.packages = builtins.attrValues {
-    inherit (pkgs) noto-fonts-cjk-sans noto-fonts-cjk-serif;
-  };
 }

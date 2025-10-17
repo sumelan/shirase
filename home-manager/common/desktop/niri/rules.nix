@@ -1,21 +1,12 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{lib, ...}: let
   inherit
     (lib)
     singleton
     ;
-
-  inherit
-    (config.lib.stylix.colors.withHashtag)
-    base05
-    base08
-    base09
-    base0A
-    base0F
-    ;
+  base01 = "#212337";
+  base05 = "#ebfafa";
+  base09 = "#f16c75";
+  base0D = "#f265b5";
 
   shadowConfig = {
     enable = true;
@@ -47,7 +38,7 @@ in {
         matches = singleton {
           is-focused = true;
         };
-        opacity = config.stylix.opacity.desktop;
+        opacity = 0.95;
       }
       # out-focued and no-floating column/window opacity
       {
@@ -55,7 +46,7 @@ in {
           is-focused = false;
           is-floating = false;
         };
-        opacity = config.stylix.opacity.desktop * 0.9;
+        opacity = 0.95 * 0.9;
       }
       # Picture-in-pictures
       {
@@ -73,12 +64,12 @@ in {
           is-window-cast-target = true;
         };
         border = {
-          active.color = base08;
-          inactive.color = base0A;
+          active.color = base09;
+          inactive.color = base01;
         };
         tab-indicator = {
-          active.color = base09;
-          inactive.color = base0F;
+          active.color = base0D;
+          inactive.color = base01;
         };
         shadow = shadowConfig;
       }

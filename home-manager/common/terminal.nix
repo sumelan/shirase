@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
@@ -54,7 +50,7 @@
     niri.settings.binds = {
       "Mod+Return" = {
         action.spawn = ["foot"];
-        hotkey-overlay.title = ''<span foreground="${config.lib.stylix.colors.withHashtag.base0B}">[Application]</span> Foot'';
+        hotkey-overlay.title = ''<span foreground="#37f499">[Application]</span> Foot'';
       };
     };
   };

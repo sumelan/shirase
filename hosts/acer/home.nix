@@ -21,16 +21,6 @@ in {
     };
   };
 
-  stylix = {
-    cursor.size = 32;
-    fonts.sizes = {
-      applications = 13;
-      terminal = 13;
-      desktop = 13;
-      popups = 12;
-    };
-  };
-
   custom = let
     enableList = [
       "protonapp"
