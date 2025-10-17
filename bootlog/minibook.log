@@ -408,3 +408,51 @@ Removed packages:
 [R.]  #35  unit-script-systemd-timesyncd-pre-start                                           <none>
 [R.]  #36  youtube-music                                                                     3.11.0, 3.11.0-fish-completions
 Closure size: 2614 -> 2573 (209 paths added, 250 paths removed, delta -41, disk usage -580.4MiB).
+
+---
+
+2025年10月17日 23時40分54秒
+<<< /nix/var/nix/profiles/system-22-link
+>>> /nix/var/nix/profiles/system-25-link
+Version changes:
+[U.]  #01  electron               37.6.1 -> 38.2.2
+[U.]  #02  electron-unwrapped     37.6.1 -> 38.2.2
+[C.]  #03  ffmpeg                 7.1.1-bin, 7.1.1-data, 7.1.1-fish-completions, 7.1.1-lib, 7.1.1-man -> 4.4.6-data, 4.4.6-lib, 7.1.1-bin, 7.1.1-data, 7.1.1-fish-completions, 7.1.1-lib, 7.1.1-man
+[U.]  #04  fzf                    0.65.2, 0.65.2-fish-completions, 0.65.2-man -> 0.66.0, 0.66.0-fish-completions, 0.66.0-man
+[U.]  #05  imagemagick            7.1.2-5 -> 7.1.2-6
+[U.]  #06  ltex-ls-plus           18.5.1 -> 18.6.0
+[C+]  #07  lz4                    1.10.0-lib x2 -> 1.10.0, 1.10.0-lib x2, 1.10.0-man
+[U.]  #08  nix-search-tv          2.2.2, 2.2.2-fish-completions -> 2.2.3, 2.2.3-fish-completions
+[U.]  #09  nixos-system-minibook  25.11.20251012.cf3f5c4.f97c8e3 -> 25.11.20251015.544961d.a67f11c
+[U.]  #10  noctalia-shell         0019c0962d8952a7e6197de1d953f47708cd67f7, 0019c0962d8952a7e6197de1d953f47708cd67f7-fish-completions -> 702cd1d283e5ffec8db63b84ac70535ec0327360, 702cd1d283e5ffec8db63b84ac70535ec0327360-fish-completions
+[C.]  #11  nss                    3.112.1, 3.112.1-man -> 3.112.1, 3.112.1-man, 3.117
+[U.]  #12  rust-grammar           0.0.0+rev=00d7cbc -> 0.0.0+rev=261b202
+[C.]  #13  source                 <none> x16 -> <none> x17
+[U.]  #14  terraform-ls           0.38.1 -> 0.38.2
+[U.]  #15  vimplugin-yazi.nvim    2025-10-02 -> 2025-10-10
+[U.]  #16  xapp                   2.8.13, 2.8.13-dev -> 3.0.1, 3.0.1-dev
+Added packages:
+[A+]  #01  btrbk                               0.32.6
+[A.]  #02  btrbk-authorized_keys               <none>
+[A.]  #03  btrbk-remote.conf                   <none>
+[A.]  #04  hm_default.png                      <none>
+[A.]  #05  libdbusmenu-glib                    16.04.0
+[A.]  #06  mbuffer                             20250809
+[A.]  #07  perl5.40.0-Bit-Vector               7.4
+[A.]  #08  perl5.40.0-Carp-Clan                6.08
+[A.]  #09  perl5.40.0-Date-Calc                6.4
+[A.]  #10  spicetify-Comfy                     <none>
+[A.]  #11  spicetify-Comfy-fish-completions    <none>
+[A.]  #12  swayimg.desktop                     <none>
+[A.]  #13  swayimg.desktop-fish-completions    <none>
+[A.]  #14  unit-btrbk-remote.service           <none>
+[A.]  #15  unit-btrbk-remote.timer             <none>
+[A.]  #16  unit-notify-problems-.service       <none>
+[A.]  #17  unit-script-btrbk-remote-pre-start  <none>
+[A.]  #18  unit-script-notify-problems_-start  <none>
+Removed packages:
+[R.]  #1  hm_bokutai.png        <none>
+[R.]  #2  spotify-player        0.21.0, 0.21.0-fish-completions
+[R.]  #3  spotify-player-app    <none>
+[R.]  #4  spotify-player-theme  <none>
+Closure size: 2573 -> 2592 (152 paths added, 133 paths removed, delta +19, disk usage +381.8MiB).
