@@ -170,7 +170,7 @@ in {
             id = "media-sysmon-card";
           }
         ];
-        position = "close_to_bar_button";
+        position = "top_center";
         shortcuts = {
           left = [
             {
@@ -216,7 +216,7 @@ in {
         animationSpeed = 1;
         avatarImage = "${config.home.homeDirectory}/.face";
         compactLockScreen = true;
-        dimDesktop = true;
+        dimDesktop = false;
         forceBlackScreenCorners = false;
         radiusRatio = 1;
         scaleRatio = 1;

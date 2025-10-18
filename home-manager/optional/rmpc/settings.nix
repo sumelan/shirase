@@ -35,7 +35,7 @@ in {
               app-id = "^(rmpc)$";
             };
             open-floating = true;
-            default-column-width.proportion = 0.30;
+            default-column-width.proportion = 0.35;
             default-window-height.proportion = 0.28;
           }
         ];
