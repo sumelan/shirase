@@ -7,7 +7,9 @@
   pkgs,
   config,
   ...
-}: {
+}: let
+  inherit (lib.generators) toINI;
+in {
   qt = {
     enable = true;
     platformTheme.name = "qtct";
@@ -32,14 +34,14 @@
   xdg.configFile = {
     kvantum = {
       target = "Kvantum/kvantum.kvconfig";
-      text = lib.generators.toINI {} {
+      text = toINI {} {
         General.theme = "Nightfox-Dark";
       };
     };
 
     qt5ct = {
       target = "qt5ct/qt5ct.conf";
-      text = lib.generators.toINI {} {
+      text = toINI {} {
         Appearance = {
           icon_theme = "Papirus-Dark";
         };
@@ -48,7 +50,7 @@
 
     qt6ct = {
       target = "qt6ct/qt6ct.conf";
-      text = lib.generators.toINI {} {
+      text = toINI {} {
         Appearance = {
           icon_theme = "Papirus-Dark";
         };

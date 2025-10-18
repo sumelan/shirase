@@ -30,6 +30,48 @@ in {
       enableBashIntegration = true;
       enableFishIntegration = true;
 
+      theme = {
+        filetype = {
+          rules = [
+            # Images
+            {
+              mime = "image/*";
+              fg = "#f1fc79";
+            }
+
+            # Videos
+            {
+              mime = "video/*";
+              fg = "#f265b5";
+            }
+            {
+              mime = "audio/*";
+              fg = "#f265b5";
+            }
+
+            # Empty files
+            {
+              mime = "inode/empty";
+              fg = "#04d1f9";
+            }
+
+            # Orphan symbolic links
+            {
+              name = "*";
+              is = "orphan";
+              fg = "#f16c75";
+            }
+
+            # Fallback
+            # { name = "*", fg = "white" },
+            {
+              name = "*/";
+              fg = "#a48cf2";
+            }
+          ];
+        };
+      };
+
       plugins = {
         chmod = "${pkgs.custom.yazi-plugins.src}/chmod.yazi";
         full-border = "${pkgs.custom.yazi-plugins.src}/full-border.yazi";

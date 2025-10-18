@@ -22,9 +22,9 @@ in {
           symbols: (song: "󰝚 ", dir: " ", playlist: "󰲸 ", marker: "󰧂", ellipsis: "..."),
           progress_bar: (
               symbols: ["󰇼", "󰇼", "", " ", " "],
-              track_style: (fg: "${base01}"),
-              elapsed_style: (fg: "${base0B}", bg: "${base00}"),
-              thumb_style: (fg: "${base0B}", bg: "${base00}"),
+              track_style: (fg: "${base00}"),
+              elapsed_style: (fg: "${base0B}", bg: "${base01}"),
+              thumb_style: (fg: "${base0B}", bg: "${base01}"),
           ),
           scrollbar: (
               symbols: ["│", "█", "▲", "▼"],
@@ -34,8 +34,8 @@ in {
           ),
           browser_column_widths: [20, 38, 42],
           text_color: "${base05}",
-          background_color: "${base00}",
-          header_background_color: "${base01}",
+          background_color: "${base01}",
+          header_background_color: "${base00}",
           modal_background_color: None,
           tab_bar: (
               enabled: false,
@@ -44,7 +44,7 @@ in {
           ),
           borders_style: (fg: "${base05}"),
           highlighted_item_style: (fg: "${base0A}", modifiers: "Bold"),
-          current_item_style: (fg: "${base00}", bg: "${base0B}", modifiers: "Bold"),
+          current_item_style: (fg: "${base01}", bg: "${base0B}", modifiers: "Bold"),
           highlight_border_style: (fg: "${base0B}"),
           song_table_format: [
               (
