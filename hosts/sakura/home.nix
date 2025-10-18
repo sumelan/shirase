@@ -26,7 +26,7 @@ in {
       "cyanrip"
       "ghostty"
       "helix"
-      "librewolf"
+      "helium"
       "obs-studio"
       "protonapp"
       "rmpc"

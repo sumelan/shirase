@@ -22,7 +22,98 @@ in {
   config = mkIf config.custom.helix.enable {
     programs.helix = {
       enable = true;
+      themes = {
+        eldritch = let
+          transparent = "none";
+          black = "#282828";
+          gray = "#323449";
+          dark-gray = "#212337";
+          white = "#ebfafa";
+          magenta = "#f265b5";
+          purple = "#7081d0";
+          red = "#f16c75";
+          cyan = "#04d1f9";
+          green = "#37f499";
+          orange = "#f7c67f";
+          alt-purple = "#a48cf2";
+          yellow = "#f1fc79";
+        in {
+          "ui.menu" = transparent;
+          "ui.menu.selected" = {
+            fg = cyan;
+            bg = dark-gray;
+          };
+          "ui.linenr" = {
+            fg = gray;
+            bg = black;
+          };
+          "ui.linenr.selected" = {
+            fg = alt-purple;
+            bg = black;
+            modifiers = ["bold"];
+          };
+          "ui.popup" = {
+            fg = green;
+            bg = black;
+          };
+          "ui.selection" = {
+            fg = gray;
+            bg = red;
+          };
+          "ui.selection.primary" = {
+            fg = black;
+            bg = red;
+          };
+          "ui.statusline" = {
+            fg = orange;
+            bg = dark-gray;
+          };
+          "ui.statusline.inactive" = {
+            fg = dark-gray;
+            bg = black;
+          };
+          "ui.help" = {
+            fg = white;
+            bg = gray;
+          };
+          "ui.cursor" = {
+            fg = black;
+            bg = cyan;
+          };
+          "ui.cursor.match" = {
+            fg = orange;
+            modifiers = ["underlined"];
+          };
+          "ui.gutter" = {bg = black;};
+          "variable" = orange;
+          "variable.builtin" = red;
+          "constant.numeric" = purple;
+          "constant" = orange;
+          "attributes" = yellow;
+          "type" = yellow;
+          "string" = yellow;
+          "variable.other.member" = green;
+          "constant.character.escape" = purple;
+          "function" = purple;
+          "constructor" = orange;
+          "special" = purple;
+          "keyword" = magenta;
+          "label" = magenta;
+          "namespace" = purple;
+          "diff.plus" = green;
+          "diff.delta" = yellow;
+          "diff.minus" = red;
+          "diagnostic" = {modifiers = ["underlined"];};
+          "info" = cyan;
+          "hint" = yellow;
+          "debug" = dark-gray;
+          "warning" = magenta;
+          "error" = red;
+          "comment" = {fg = gray;};
+        };
+      };
       settings = {
+        theme = "eldritch";
         editor = {
           line-number = "relative";
           cursorline = true;

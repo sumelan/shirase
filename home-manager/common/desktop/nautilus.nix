@@ -53,10 +53,14 @@ in {
     "file:///persist Persist"
   ];
 
+  # to find a setting value, run `dconf watch /` in terminal
   dconf.settings = {
     # fix open in terminal
     "org/gnome/desktop/applications/terminal" = {
       exec = getExe pkgs.xdg-terminal-exec;
+    };
+    "org/gnome/nautilus/icon-view" = {
+      default-zoom-level = "small-plus";
     };
   };
 
@@ -75,6 +79,8 @@ in {
           {app-id = "^(xdg-desktop-portal-gtk)$";}
         ];
         open-floating = true;
+        default-column-width.proportion = 0.48;
+        default-window-height.proportion = 0.42;
       }
     ];
   };

@@ -4,9 +4,8 @@ _: {
     ./discord.nix
     ./foot.nix
     ./gtk.nix
-    ./helium.nix
     ./mpv.nix
-    ./nemo.nix
+    ./nautilus.nix
     ./noctalia.nix
     ./pipewire.nix
     ./polkit.nix
@@ -16,5 +15,6 @@ _: {
     ./swayosd.nix
     ./yazi.nix
     ./zathura.nix
+    ./zen-browser.nix
   ];
 }

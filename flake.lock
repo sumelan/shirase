@@ -279,7 +279,8 @@
         "nixpkgs": "nixpkgs",
         "noctalia-shell": "noctalia-shell",
         "nvf": "nvf",
-        "spicetify-nix": "spicetify-nix"
+        "spicetify-nix": "spicetify-nix",
+        "zen-browser": "zen-browser"
       }
     },
     "spicetify-nix": {
@@ -361,6 +362,29 @@
       "original": {
         "owner": "Supreeeme",
         "repo": "xwayland-satellite",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760721442,
+        "narHash": "sha256-mhHwhnxlJm+bA6Na5OHPzUR5pU0nshi+7lRzneaXR0A=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "377329200e79c3fdadd6d74322657c564d4b8ef0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

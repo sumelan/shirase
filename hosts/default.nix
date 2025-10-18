@@ -18,6 +18,7 @@
     inputs.nix-index-database.homeModules.nix-index
     inputs.noctalia-shell.homeModules.default
     inputs.spicetify-nix.homeManagerModules.default
+    inputs.zen-browser.homeModules.twilight
     ../home-manager
   ];
 

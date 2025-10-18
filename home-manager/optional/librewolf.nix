@@ -9,6 +9,7 @@
     (lib)
     mkEnableOption
     mkIf
+    mkForce
     concatStringsSep
     ;
 
@@ -107,8 +108,8 @@ in {
 
     # remove the leftover native messaging hosts directory
     home.file = {
-      ".librewolf/native-messaging-hosts".enable = lib.mkForce false;
-      ".mozilla/native-messaging-hosts".enable = lib.mkForce false;
+      ".librewolf/native-messaging-hosts".enable = mkForce false;
+      ".mozilla/native-messaging-hosts".enable = mkForce false;
     };
 
     custom.persist = {
