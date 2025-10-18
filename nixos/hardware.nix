@@ -3,11 +3,7 @@
   isLaptop,
   ...
 }: let
-  inherit
-    (lib)
-    mkMerge
-    mkIf
-    ;
+  inherit (lib) mkMerge mkIf;
 in
   mkMerge [
     {

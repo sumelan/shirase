@@ -3,11 +3,7 @@
   pkgs,
   ...
 }: let
-  inherit
-    (lib)
-    mkForce
-    mkMerge
-    ;
+  inherit (lib) mkForce mkMerge;
 in
   mkMerge [
     {

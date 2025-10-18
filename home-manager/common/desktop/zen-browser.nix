@@ -4,11 +4,7 @@
   inputs,
   ...
 }: let
-  inherit
-    (lib)
-    getExe
-    mkForce
-    ;
+  inherit (lib) getExe mkForce;
   zen-browser = inputs.zen-browser.packages.${pkgs.system}.twilight;
 in {
   programs = {

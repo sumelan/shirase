@@ -4,11 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit
-    (lib)
-    mkEnableOption
-    mkIf
-    ;
+  inherit (lib) mkEnableOption mkIf;
 in {
   options.custom = {
     helium.enable = mkEnableOption "Helium";

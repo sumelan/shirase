@@ -4,11 +4,7 @@
   isLaptop,
   ...
 }: let
-  inherit
-    (lib)
-    mkOption
-    mkEnableOption
-    ;
+  inherit (lib) mkOption mkEnableOption;
   inherit
     (lib.types)
     submodule

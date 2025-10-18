@@ -1,9 +1,5 @@
 {lib, ...}: let
-  inherit
-    (lib)
-    concatStrings
-    mkAfter
-    ;
+  inherit (lib) concatStrings mkAfter;
 
   base01 = "#212337";
   base08 = "#7081d0";

@@ -16,10 +16,7 @@
     concatStringsSep
     ;
 
-  inherit
-    (lib.custom.tmpfiles)
-    mkCreateAndRemove
-    ;
+  inherit (lib.custom.tmpfiles) mkCreateAndRemove;
 in {
   services.envfs.enable = true; # execute shebangs that assume hardcoded shell paths
   system = {

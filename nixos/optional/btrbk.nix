@@ -16,11 +16,7 @@
     mapAttrs'
     nameValuePair
     ;
-  inherit
-    (lib.custom.tmpfiles)
-    mkCreateAndCleanup
-    ;
-
+  inherit (lib.custom.tmpfiles) mkCreateAndCleanup;
   cfg = config.custom.btrbk;
 in {
   options.custom = {

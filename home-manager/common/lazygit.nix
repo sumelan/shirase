@@ -1,8 +1,5 @@
 {lib, ...}: let
-  inherit
-    (lib)
-    mkForce
-    ;
+  inherit (lib) mkForce;
   accent = "#37f499";
   muted = "#323449";
 in {

@@ -3,11 +3,7 @@
   config,
   ...
 }: let
-  inherit
-    (lib)
-    mkEnableOption
-    mkIf
-    ;
+  inherit (lib) mkEnableOption mkIf;
 in {
   options.custom = {
     steam.enable = mkEnableOption "steam";

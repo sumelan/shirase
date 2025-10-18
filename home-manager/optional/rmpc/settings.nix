@@ -11,12 +11,7 @@
     mkIf
     singleton
     ;
-  inherit
-    (lib.custom.tmpfiles)
-    mkCreateAndCleanup
-    mkSymlinks
-    ;
-
+  inherit (lib.custom.tmpfiles) mkCreateAndCleanup mkSymlinks;
   ytDir = "${config.xdg.userDirs.music}/YouTube";
 in {
   options.custom = {
@@ -40,8 +35,8 @@ in {
               app-id = "^(rmpc)$";
             };
             open-floating = true;
-            default-column-width.proportion = 0.18;
-            default-window-height.proportion = 0.15;
+            default-column-width.proportion = 0.30;
+            default-window-height.proportion = 0.28;
           }
         ];
       };

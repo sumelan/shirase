@@ -13,11 +13,7 @@
     hiPrio
     optionals
     ;
-  inherit
-    (lib.custom.tmpfiles)
-    mkSymlinks
-    mkCreateAndRemove
-    ;
+  inherit (lib.custom.tmpfiles) mkSymlinks mkCreateAndRemove;
 in {
   services.gvfs.enable = true; # automount disks
 

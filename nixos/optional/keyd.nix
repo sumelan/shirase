@@ -4,11 +4,7 @@
   isLaptop,
   ...
 }: let
-  inherit
-    (lib)
-    mkEnableOption
-    mkIf
-    ;
+  inherit (lib) mkEnableOption mkIf;
 in {
   options.custom = {
     keyd.enable =

@@ -3,12 +3,7 @@
   config,
   ...
 }: let
-  inherit
-    (lib)
-    mkEnableOption
-    mkIf
-    ;
-
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.custom.audiobookshelf;
 in {
   options.custom = {

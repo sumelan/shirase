@@ -4,10 +4,7 @@
   user,
   ...
 }: let
-  inherit
-    (lib)
-    genAttrs
-    ;
+  inherit (lib) genAttrs;
 in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

@@ -4,12 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit
-    (lib)
-    getExe
-    mkForce
-    ;
-
+  inherit (lib) getExe mkForce;
   fishPath = getExe config.programs.fish.package;
 in {
   programs = {

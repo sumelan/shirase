@@ -5,10 +5,7 @@
   flakePath,
   ...
 }: let
-  inherit
-    (lib)
-    getExe
-    ;
+  inherit (lib) getExe;
 in {
   home.packages = builtins.attrValues {
     inherit

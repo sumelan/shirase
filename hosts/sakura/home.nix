@@ -1,8 +1,5 @@
 {lib, ...}: let
-  inherit
-    (lib)
-    genAttrs
-    ;
+  inherit (lib) genAttrs;
 in {
   monitors = {
     "HDMI-A-1" = {
@@ -24,7 +21,6 @@ in {
   custom = let
     enableList = [
       "cyanrip"
-      "ghostty"
       "helix"
       "helium"
       "obs-studio"

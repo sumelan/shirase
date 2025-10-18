@@ -3,11 +3,7 @@
   config,
   ...
 }: let
-  inherit
-    (lib)
-    mkEnableOption
-    mkIf
-    ;
+  inherit (lib) mkEnableOption mkIf;
 in {
   options.custom = {
     spotify-player.enable = mkEnableOption "A Spotify player in the terminal with full feature parity";

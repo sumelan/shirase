@@ -3,10 +3,7 @@
   pkgs,
   ...
 }: let
-  inherit
-    (lib)
-    mkOption
-    ;
+  inherit (lib) mkOption;
 
   inherit
     (lib.types)

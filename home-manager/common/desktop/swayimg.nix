@@ -3,10 +3,7 @@
   config,
   ...
 }: let
-  inherit
-    (lib)
-    singleton
-    ;
+  inherit (lib) singleton;
   base00 = "#323449";
   base01 = "#212337";
   base05 = "#ebfafa";

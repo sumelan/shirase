@@ -4,11 +4,7 @@
   user,
   ...
 }: let
-  inherit
-    (lib.custom.tmpfiles)
-    mkCreateAndCleanup
-    ;
-
+  inherit (lib.custom.tmpfiles) mkCreateAndCleanup;
   socketDir = "/run/user/1000/mpd";
 in {
   # create mpd directory for local socket on boot

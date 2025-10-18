@@ -12,7 +12,6 @@
     mkForce
     concatStringsSep
     ;
-
   configPath = ".config/.librewolf";
 in {
   options.custom = {

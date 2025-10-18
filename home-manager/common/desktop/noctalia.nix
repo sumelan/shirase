@@ -36,6 +36,7 @@ in {
         mprisBlacklist = [
           "io.github.htkhiem.Euphonica"
           "Mozilla librewolf"
+          "Mozilla zen-twilight"
           "Helium"
         ];
         preferredPlayer = "Spotify";

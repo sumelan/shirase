@@ -3,17 +3,9 @@
   config,
   ...
 }: let
-  inherit
-    (lib)
-    mkOption
-    concatStringsSep
-    ;
+  inherit (lib) mkOption concatStringsSep;
+  inherit (lib.types) listOf str;
 
-  inherit
-    (lib.types)
-    listOf
-    str
-    ;
   base00 = "#323449";
   base01 = "#212337";
   base05 = "#ebfafa";

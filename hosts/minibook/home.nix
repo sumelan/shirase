@@ -1,8 +1,5 @@
 {lib, ...}: let
-  inherit
-    (lib)
-    genAttrs
-    ;
+  inherit (lib) genAttrs;
 in {
   monitors = {
     "DSI-1" = {

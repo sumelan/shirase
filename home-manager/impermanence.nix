@@ -2,15 +2,8 @@
 # impermanence is not actually used in standalone home-manager as
 # it doesn't serve much utility on legacy distros
 {lib, ...}: let
-  inherit
-    (lib)
-    mkOption
-    ;
-  inherit
-    (lib.types)
-    listOf
-    str
-    ;
+  inherit (lib) mkOption;
+  inherit (lib.types) listOf str;
 in {
   options.custom = {
     persist = {

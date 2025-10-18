@@ -3,10 +3,7 @@
   pkgs,
   ...
 }: let
-  inherit
-    (lib)
-    singleton
-    ;
+  inherit (lib) singleton;
 in
   # NOTE: 'programs.dconf.enable = true' is necessary for theb daemon to work correctly
   {

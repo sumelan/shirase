@@ -3,11 +3,7 @@
   config,
   ...
 }: let
-  inherit
-    (lib)
-    mkMerge
-    optionalAttrs
-    ;
+  inherit (lib) mkMerge optionalAttrs;
 in
   mkMerge [
     # ssh settings

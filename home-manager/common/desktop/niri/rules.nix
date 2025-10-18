@@ -1,8 +1,5 @@
 {lib, ...}: let
-  inherit
-    (lib)
-    singleton
-    ;
+  inherit (lib) singleton;
   base01 = "#212337";
   base05 = "#ebfafa";
   base09 = "#f16c75";

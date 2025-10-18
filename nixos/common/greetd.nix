@@ -4,11 +4,7 @@
   user,
   ...
 }: let
-  inherit
-    (lib)
-    concatStringsSep
-    getExe
-    ;
+  inherit (lib) concatStringsSep getExe;
 in {
   # tty autologin
   services.getty.autologinUser = user;

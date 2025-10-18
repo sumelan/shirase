@@ -4,11 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit
-    (lib)
-    mkEnableOption
-    mkIf
-    ;
+  inherit (lib) mkEnableOption mkIf;
 in {
   options.custom = {
     euphonica.enable = mkEnableOption "An MPD client with delusions of grandeur, made with Rust, GTK and Libadwaita.";
