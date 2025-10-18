@@ -78,40 +78,40 @@ _: {
         ''
           // old TV shut down effect
           vec4 close_color(vec3 coords_geo, vec3 size_geo) {
-          float p = niri_clamped_progress;
+              float p = niri_clamped_progress;
 
-          float vertical_shrink = smoothstep(0.0, 0.5, p);
-          float horizontal_shrink = smoothstep(0.5, 0.8, p);
+              float vertical_shrink = smoothstep(0.0, 0.5, p);
+              float horizontal_shrink = smoothstep(0.5, 0.8, p);
 
           // change the 0.0015 to a larger value if you want the bar to be thicker
-          vec2 scale = max(vec2(1.0 - horizontal_shrink, 1.0 - vertical_shrink), 0.0015);
+              vec2 scale = max(vec2(1.0 - horizontal_shrink, 1.0 - vertical_shrink), 0.0015);
 
-          vec2 centered_coords = coords_geo.xy - 0.5;
-          vec2 scaled_coords = centered_coords / scale;
+              vec2 centered_coords = coords_geo.xy - 0.5;
+              vec2 scaled_coords = centered_coords / scale;
 
-          vec4 color = vec4(0.0);
+              vec4 color = vec4(0.0);
 
-          // this will only affect the area inside the scale
-          if (abs(scaled_coords.x) <= 0.5 && abs(scaled_coords.y) <= 0.5) {
-              vec3 sample_coords_geo = vec3(scaled_coords + 0.5, 1.0);
-              vec3 coords_tex = niri_geo_to_tex * sample_coords_geo;
-              color = texture2D(niri_tex, coords_tex.st);
+              // this will only affect the area inside the scale
+              if (abs(scaled_coords.x) <= 0.5 && abs(scaled_coords.y) <= 0.5) {
+                  vec3 sample_coords_geo = vec3(scaled_coords + 0.5, 1.0);
+                  vec3 coords_tex = niri_geo_to_tex * sample_coords_geo;
+                  color = texture2D(niri_tex, coords_tex.st);
 
-              float flash_intensity = 0.4 / (1.0 - p);
-              color.rgb += flash_intensity;
-          }
+                  float flash_intensity = 0.4 / (1.0 - p);
+                  color.rgb += flash_intensity;
+              }
 
-          // this is the glowing dot in the middle!!
-          if (p > 0.5) {
-            float collapse_progress = (vertical_shrink + horizontal_shrink);
-            float glow = pow(1.0 - length(centered_coords), 200.0) * collapse_progress * 3.0;
-            color.rgb += glow;
-          }
+              // this is the glowing dot in the middle!!
+              if (p > 0.5) {
+                  float collapse_progress = (vertical_shrink + horizontal_shrink);
+                  float glow = pow(1.0 - length(centered_coords), 200.0) * collapse_progress * 3.0;
+                  color.rgb += glow;
+              }
 
-          // fade out at the end
-          color *= (1.0 - smoothstep(0.8, 1.0, p));
+              // fade out at the end
+              color *= (1.0 - smoothstep(0.8, 1.0, p));
 
-          return color;
+              return color;
           }
         '';
     };
@@ -121,20 +121,18 @@ _: {
         ''
           // Example: fill the current geometry with a solid vertical gradient.
           vec4 solid_gradient(vec3 coords_curr_geo, vec3 size_curr_geo) {
-          vec3 coords = coords_curr_geo;
-          vec4 color = vec4(0.0);
+              vec3 coords = coords_curr_geo;
+              vec4 color = vec4(0.0);
 
-          // Paint only the area inside the current geometry.
-          if (0.0 <= coords.x && coords.x <= 1.0
-              && 0.0 <= coords.y && coords.y <= 1.0)
-                  {
-                      vec4 from = vec4(1.0, 0.0, 0.0, 1.0);
-                      vec4 to = vec4(0.0, 1.0, 0.0, 1.0);
-                      color = mix(from, to, coords.y);
-                  }
+              // Paint only the area inside the current geometry.
+              if (0.0 <= coords.x && coords.x <= 1.0 && 0.0 <= coords.y && coords.y <= 1.0) {
+                  vec4 from = vec4(1.0, 0.0, 0.0, 1.0);
+                  vec4 to = vec4(0.0, 1.0, 0.0, 1.0);
+                  color = mix(from, to, coords.y);
+              }
 
-                      return color;
-                  }
+              return color;
+          }
 
           // Example: crossfade between previous and next texture, stretched to the
           // current geometry.
@@ -152,11 +150,11 @@ _: {
           }
 
           // Example: next texture, stretched to the current geometry.
-              vec4 stretch_next(vec3 coords_curr_geo, vec3 size_curr_geo) {
-                  vec3 coords_tex_next = niri_geo_to_tex_next * coords_curr_geo;
-                  vec4 color = texture2D(niri_tex_next, coords_tex_next.st);
-                  return color;
-              }
+          vec4 stretch_next(vec3 coords_curr_geo, vec3 size_curr_geo) {
+              vec3 coords_tex_next = niri_geo_to_tex_next * coords_curr_geo;
+              vec4 color = texture2D(niri_tex_next, coords_tex_next.st);
+              return color;
+          }
 
           // Example: next texture, stretched to the current geometry if smaller, and
           // cropped if bigger.
@@ -221,27 +219,26 @@ _: {
                   // When crossfading, this is not an issue because the area outside will
                   // correspond to client-side decoration shadows, which are already supposed
                   // to be outside.
-                  if (coords_curr_geo.x < 0.0 || 1.0 < coords_curr_geo.x ||
-                      coords_curr_geo.y < 0.0 || 1.0 < coords_curr_geo.y) {
-                          color = vec4(0.0);
-                      } else {
-                          color = texture2D(niri_tex_next, coords_crop.st);
-                      }
+                  if (coords_curr_geo.x < 0.0 || 1.0 < coords_curr_geo.x || coords_curr_geo.y < 0.0 || 1.0 < coords_curr_geo.y) {
+                      color = vec4(0.0);
                   } else {
-                      // If we can't crop, then crossfade.
-                      color = texture2D(niri_tex_next, coords_stretch.st);
-                      vec4 color_prev = texture2D(niri_tex_prev, coords_stretch_prev.st);
-                      color = mix(color_prev, color, niri_clamped_progress);
+                      color = texture2D(niri_tex_next, coords_crop.st);
                   }
-
-                  return color;
+              } else {
+                  // If we can't crop, then crossfade.
+                  color = texture2D(niri_tex_next, coords_stretch.st);
+                  vec4 color_prev = texture2D(niri_tex_prev, coords_stretch_prev.st);
+                  color = mix(color_prev, color, niri_clamped_progress);
               }
+
+              return color;
+          }
 
               // This is the function that you must define.
-              vec4 resize_color(vec3 coords_curr_geo, vec3 size_curr_geo) {
-                  // You can pick one of the example functions or write your own.
-                  return crossfade_or_crop_next(coords_curr_geo, size_curr_geo);
-              }
+          vec4 resize_color(vec3 coords_curr_geo, vec3 size_curr_geo) {
+              // You can pick one of the example functions or write your own.
+              return crossfade_or_crop_next(coords_curr_geo, size_curr_geo);
+          }
         '';
     };
     window-movement = {

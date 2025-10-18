@@ -119,7 +119,6 @@ in {
           cursorline = true;
           auto-format = true;
           completion-replace = true;
-          rulers = [80];
           bufferline = "multiple";
           color-modes = true;
           trim-trailing-whitespace = true;

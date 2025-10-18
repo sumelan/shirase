@@ -4,11 +4,7 @@
   config,
   ...
 }: let
-  inherit
-    (lib.custom.tmpfiles)
-    mkFiles
-    mkSymlinks
-    ;
+  inherit (lib.custom.tmpfiles) mkFiles mkSymlinks;
   username = "sumelan";
 in {
   imports = [./.];
@@ -64,8 +60,17 @@ in {
     i18n.inputMethod = {
       enable = true;
       type = "fcitx5";
-      fcitx5.addons = [pkgs.fcitx5-mozc];
-      fcitx5.waylandFrontend = true;
+      fcitx5 = {
+        addons = [pkgs.fcitx5-mozc];
+        waylandFrontend = true;
+        settings.addons.classicui.globalSection = {
+          Font = "${config.hm.custom.fonts.regular} 13";
+          MenuFont = "${config.hm.custom.fonts.regular} 13";
+          TrayFont = "${config.hm.custom.fonts.regular} 13";
+          UseDarkTheme = true;
+          UseAccentColor = true;
+        };
+      };
     };
   };
 }
