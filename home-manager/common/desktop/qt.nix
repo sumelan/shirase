@@ -35,15 +35,24 @@ in {
     kvantum = {
       target = "Kvantum/kvantum.kvconfig";
       text = toINI {} {
-        General.theme = "Nightfox-Dark";
+        General.theme = "Kvantum-Tokyo-Night";
       };
+    };
+
+    # Kvantum looks for themes here
+    Kvantum-Tokyo-Night = {
+      target = "Kvantum/Kvantum-Tokyo-Night";
+      source = "${pkgs.custom.tokyo-night-kvantum}/share/Kvantum/Kvantum-Tokyo-Night";
+      recursive = true;
     };
 
     qt5ct = {
       target = "qt5ct/qt5ct.conf";
       text = toINI {} {
         Appearance = {
+          custom_palette = false;
           icon_theme = "Papirus-Dark";
+          style = "kvantum";
         };
       };
     };
@@ -52,7 +61,9 @@ in {
       target = "qt6ct/qt6ct.conf";
       text = toINI {} {
         Appearance = {
+          custom_palette = false;
           icon_theme = "Papirus-Dark";
+          style = "kvantum";
         };
       };
     };

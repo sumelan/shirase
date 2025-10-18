@@ -28,14 +28,12 @@
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.nightfox-gtk-theme.override {
+      package = pkgs.tokyo-night-gtk.override {
         colorVariants = ["dark"];
         sizeVariants = ["compact"];
-        themeVariants = ["green"];
-        tweakVariants = ["float"];
-        iconVariants = ["Duskfox"];
+        themeVariants = ["all"];
       };
-      name = "Nightfox-Dark";
+      name = "Tokyonight-Dark-Compact";
     };
     iconTheme = {
       package = pkgs.papirus-icon-theme.override {

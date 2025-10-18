@@ -18,6 +18,8 @@ in {
 
   helium = callPackage ./helium {};
 
+  tokyo-night-kvantum = callPackage ./tokyo-night-kvantum {};
+
   nvf = callPackage (mkNvf [
     # add extraModules here
   ]) {};
