@@ -175,7 +175,7 @@ in {
             id = "media-sysmon-card";
           }
         ];
-        position = "top_center";
+        position = "close_to_bar_button";
         shortcuts = {
           left = [
             {

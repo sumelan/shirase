@@ -33,9 +33,6 @@ in {
     disableList = [
     ];
   in
-    {
-      niri.xwayland.enable = false;
-    }
-    // genAttrs enableList (_name: {enable = true;})
+    genAttrs enableList (_name: {enable = true;})
     // genAttrs disableList (_name: {enable = false;});
 }

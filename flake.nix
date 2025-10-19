@@ -92,8 +92,10 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         nixpkgs-stable.follows = "";
-        niri-stable.follows = "";
+        # according to `niri-flake` doc, using xwayland-satellite require niri-unstable
+        niri-unstable.follows = "";
         xwayland-satellite-stable.follows = "";
+        xwayland-satellite-unstable.follows = "";
       };
     };
   };
