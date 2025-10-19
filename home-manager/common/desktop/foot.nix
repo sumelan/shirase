@@ -6,7 +6,7 @@ in {
     settings = {
       main = {
         include = "~/.config/foot/themes/eldritch";
-        font = "monospace:size=14";
+        font = "monospace:size=15";
         initial-window-size-pixels = "1200x800";
       };
       scrollback = {
