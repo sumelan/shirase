@@ -72,9 +72,10 @@ in {
               colorizeIcons = true;
               hideMode = "hidden";
               id = "ActiveWindow";
+              maxWidth = 145;
               scrollingMode = "hover";
               showIcon = true;
-              width = 145;
+              useFixedWidth = false;
             }
             {
               hideMode = "hidden";
@@ -82,6 +83,7 @@ in {
               scrollingMode = "hover";
               showAlbumArt = false;
               showVisualizer = false;
+              useFixedWidth = false;
               visualizerType = "linear";
             }
             {
@@ -143,8 +145,11 @@ in {
       colorSchemes = {
         darkMode = true;
         generateTemplatesForPredefined = false;
+        manualSunrise = "06:30";
+        manualSunset = "18:30";
         matugenSchemeType = "scheme-fruit-salad";
         predefinedScheme = "Eldritch";
+        schedulingMode = "off";
         useWallpaperColors = false;
       };
       controlCenter = {
@@ -210,6 +215,7 @@ in {
         monitors = [];
         onlySameOutput = true;
         pinnedApps = [];
+        size = 1;
       };
       general = {
         animationDisabled = false;
@@ -218,6 +224,8 @@ in {
         compactLockScreen = true;
         dimDesktop = false;
         forceBlackScreenCorners = false;
+        language = "";
+        lockOnSuspend = true;
         radiusRatio = 1;
         scaleRatio = 1;
         screenRadiusRatio = 1;
@@ -233,6 +241,7 @@ in {
         showWeekNumberInCalendar = false;
         use12hourFormat = false;
         useFahrenheit = false;
+        weatherEnabled = true;
       };
       network = {
         wifiEnabled = config.custom.wifi.enable;
@@ -300,7 +309,6 @@ in {
         fontDefaultScale = 1;
         fontFixed = config.custom.fonts.monospace;
         fontFixedScale = 1;
-        idleInhibitorEnabled = false;
         tooltipsEnabled = true;
       };
       wallpaper = {

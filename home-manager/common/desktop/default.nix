@@ -5,7 +5,7 @@ _: {
     ./foot.nix
     ./gtk.nix
     ./mpv.nix
-    ./nautilus.nix
+    ./nemo.nix
     ./noctalia.nix
     ./pipewire.nix
     ./polkit.nix

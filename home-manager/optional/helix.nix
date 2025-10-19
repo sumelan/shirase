@@ -24,7 +24,6 @@ in {
       enable = true;
       themes = {
         eldritch = let
-          transparent = "none";
           black = "#282828";
           gray = "#323449";
           dark-gray = "#212337";
@@ -38,17 +37,17 @@ in {
           alt-purple = "#a48cf2";
           yellow = "#f1fc79";
         in {
-          "ui.menu" = transparent;
+          "ui.menu" = cyan;
           "ui.menu.selected" = {
-            fg = cyan;
-            bg = dark-gray;
+            fg = dark-gray;
+            bg = yellow;
           };
           "ui.linenr" = {
-            fg = gray;
+            fg = white;
             bg = black;
           };
           "ui.linenr.selected" = {
-            fg = alt-purple;
+            fg = cyan;
             bg = black;
             modifiers = ["bold"];
           };
@@ -61,31 +60,33 @@ in {
             bg = red;
           };
           "ui.selection.primary" = {
-            fg = black;
-            bg = red;
+            fg = gray;
+            bg = cyan;
           };
           "ui.statusline" = {
-            fg = orange;
-            bg = dark-gray;
+            fg = black;
+            bg = cyan;
+            modifiers = ["blod" "underlined"];
           };
           "ui.statusline.inactive" = {
-            fg = dark-gray;
-            bg = black;
-          };
-          "ui.help" = {
             fg = white;
             bg = gray;
+          };
+          "ui.help" = {
+            fg = green;
+            bg = black;
           };
           "ui.cursor" = {
             fg = black;
             bg = cyan;
           };
           "ui.cursor.match" = {
-            fg = orange;
-            modifiers = ["underlined"];
+            fg = black;
+            bg = yellow;
+            modifiers = ["blod" "underlined"];
           };
           "ui.gutter" = {bg = black;};
-          "variable" = white;
+          "variable" = orange;
           "variable.builtin" = red;
           "variable.other.member" = green;
           "constant" = orange;
@@ -93,8 +94,8 @@ in {
           "constant.character.escape" = alt-purple;
           "attributes" = yellow;
           "type" = yellow;
-          "string" = magenta;
-          "function" = red;
+          "string" = yellow;
+          "function" = alt-purple;
           "constructor" = alt-purple;
           "special" = purple;
           "keyword" = alt-purple;
@@ -109,11 +110,12 @@ in {
           "debug" = dark-gray;
           "warning" = magenta;
           "error" = red;
-          "comment" = {fg = gray;};
+          "comment" = {fg = white;};
         };
       };
       settings = {
         theme = "eldritch";
+
         editor = {
           line-number = "relative";
           cursorline = true;
@@ -124,20 +126,18 @@ in {
           trim-trailing-whitespace = true;
           trim-final-newlines = true;
           soft-wrap.enable = true;
-
           end-of-line-diagnostics = "hint";
           inline-diagnostics.cursor-line = "error";
-
           lsp.display-inlay-hints = true;
-
           cursor-shape = {
             normal = "block";
             insert = "bar";
             select = "underline";
           };
-
-          indent-guides.render = true;
-
+          indent-guides = {
+            render = true;
+            character = "╎";
+          };
           clipboard-provider = "wayland";
         };
       };
