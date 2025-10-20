@@ -5,9 +5,9 @@
 }: {
   home = {
     pointerCursor = {
-      package = pkgs.capitaine-cursors;
-      name = "capitaine-cursors";
-      size = 40;
+      package = pkgs.custom.everforest-cursors;
+      name = "everforest-cursors";
+      size = 42;
       gtk.enable = true;
       x11.enable = true;
     };
@@ -28,12 +28,8 @@
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.tokyo-night-gtk.override {
-        colorVariants = ["dark"];
-        sizeVariants = ["compact"];
-        themeVariants = ["all"];
-      };
-      name = "Tokyonight-Dark-Compact";
+      package = pkgs.everforest-gtk-theme;
+      name = "Everforest-Dark-BL";
     };
     iconTheme = {
       package = pkgs.papirus-icon-theme.override {

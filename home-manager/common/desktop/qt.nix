@@ -35,14 +35,14 @@ in {
     kvantum = {
       target = "Kvantum/kvantum.kvconfig";
       text = toINI {} {
-        General.theme = "Kvantum-Tokyo-Night";
+        General.theme = "MateriaEverforestDark";
       };
     };
 
     # Kvantum looks for themes here
     Kvantum-Tokyo-Night = {
-      target = "Kvantum/Kvantum-Tokyo-Night";
-      source = "${pkgs.custom.tokyo-night-kvantum}/share/Kvantum/Kvantum-Tokyo-Night";
+      target = "Kvantum/MateriaEverforestDark";
+      source = "${pkgs.custom.everforest-kvantum}/share/Kvantum/MateriaEverforestDark";
       recursive = true;
     };
 

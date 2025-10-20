@@ -22,7 +22,6 @@ in {
           "{446900e4-71c2-419f-a6a7-df9c091e268b}" = "bitwarden-password-manager";
           "addon@darkreader.org" = "darkreader";
           "search@kagi.com" = "kagi-search";
-          "{f2bcd203-646c-4f72-8da5-092a671277cc}" = "eldritch";
         };
 
         AutofillAddressEnabled = true;

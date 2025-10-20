@@ -5,7 +5,7 @@ in {
     enable = true;
     settings = {
       main = {
-        include = "~/.config/foot/themes/eldritch";
+        include = "~/.config/foot/themes/everforest";
         font = "monospace:size=15";
         initial-window-size-pixels = "1200x800";
       };
@@ -26,30 +26,30 @@ in {
 
   xdg.configFile = {
     eldritch = {
-      target = "foot/themes/eldritch";
+      target = "foot/themes/everforest";
       text = toINI {} {
         colors = {
-          foreground = "ebfafa";
-          background = "212337";
-          regular0 = "21222c";
-          regular1 = "f9515d";
-          regular2 = "37f499";
-          regular3 = "e9f941";
-          regular4 = "9071f4";
-          regular5 = "f265b5";
-          regular6 = "04d1f9";
-          regular7 = "ebfafa";
-          bright0 = "7081d0";
-          bright1 = "f16c75";
-          bright2 = "69F8B3";
-          bright3 = "f1fc79";
-          bright4 = "a48cf2";
-          bright5 = "FD92CE";
-          bright6 = "66e4fd";
-          bright7 = "ffffff";
-          selection-foreground = "ebfafa";
-          selection-background = "bf4f8e";
-          cursor = "37f499 f8f8f2";
+          alpha = 1.0;
+          background = "323d43";
+          foreground = "d3c6aa";
+
+          regular0 = "4b565c"; # black
+          regular1 = "e67e80"; # red
+          regular2 = "a7c080"; # green
+          regular3 = "dbbc7f"; # yellow
+          regular4 = "7fbbb3"; # blue
+          regular5 = "d699b6"; # magenta
+          regular6 = "83c092"; # cyan
+          regular7 = "d3c6aa"; # white
+
+          bright0 = "4b565c"; # black
+          bright1 = "e67e80"; # red
+          bright2 = "a7c080"; # green
+          bright3 = "dbbc7f"; # yellow
+          bright4 = "7fbbb3"; # blue
+          bright5 = "d699b6"; # magenta
+          bright6 = "83c092"; # cyan
+          bright7 = "d3c6aa"; # white
         };
       };
     };

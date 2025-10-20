@@ -16,9 +16,11 @@
 in {
   grub-nixos = callPackage ./grub-nixos {};
 
-  helium = callPackage ./helium {};
+  everforest-cursors = callPackage ./everforest-cursors {};
 
-  tokyo-night-kvantum = callPackage ./tokyo-night-kvantum {};
+  everforest-kvantum = callPackage ./everforest-kvantum {};
+
+  helium = callPackage ./helium {};
 
   nvf = callPackage (mkNvf [
     # add extraModules here
