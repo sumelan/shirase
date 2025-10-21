@@ -21,8 +21,8 @@ in {
     # https://github.com/NotAShelf/nvf/blob/main/modules/plugins/theme/supported-themes.nix
     theme = {
       enable = true;
-      name = "tokyonight";
-      style = "night";
+      name = "everforest";
+      style = "soft";
     };
 
     options = {

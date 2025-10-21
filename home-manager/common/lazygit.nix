@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib) mkForce;
-  accent = "#37f499";
-  muted = "#323449";
+  accent = "#A7C080";
+  muted = "#425047";
 in {
   programs.lazygit = {
     enable = true;
