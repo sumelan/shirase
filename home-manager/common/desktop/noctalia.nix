@@ -51,7 +51,7 @@ in {
         marginHorizontal = 0.25;
         marginVertical = 0.25;
         monitors = [];
-        position = "left";
+        position = "top";
         showCapsule = true;
         widgets = {
           center = [
@@ -69,7 +69,7 @@ in {
               useDistroLogo = false;
             }
             {
-              colorizeIcons = true;
+              colorizeIcons = false;
               hideMode = "hidden";
               id = "ActiveWindow";
               maxWidth = 145;
@@ -80,11 +80,12 @@ in {
             {
               hideMode = "hidden";
               id = "MediaMini";
+              maxWidth = 145;
               scrollingMode = "hover";
-              showAlbumArt = false;
-              showVisualizer = false;
+              showAlbumArt = true;
+              showVisualizer = true;
               useFixedWidth = false;
-              visualizerType = "linear";
+              visualizerType = "mirrored";
             }
             {
               id = "ScreenRecorder";
@@ -127,7 +128,7 @@ in {
             ++ [
               {
                 customFont = "";
-                formatHorizontal = "HH:mm ddd, MMM dd";
+                formatHorizontal = "MMM dd日ddd, HH:mm";
                 formatVertical = "HH mm - MM dd";
                 id = "Clock";
                 useCustomFont = false;
@@ -210,9 +211,9 @@ in {
       dock = {
         backgroundOpacity = 0.85;
         colorizeIcons = true;
-        displayMode = "always_visible";
-        floatingRatio = 1;
-        monitors = [];
+        displayMode = "exclusive";
+        floatingRatio = 0;
+        monitors = [config.lib.monitors.mainMonitorName];
         onlySameOutput = true;
         pinnedApps = [];
         size = 1;

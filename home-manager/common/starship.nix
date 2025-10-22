@@ -79,7 +79,7 @@ in {
           success_symbol = "[╰─](bold statusline1)[  ](bold fg)";
           error_symbol = "[╰─](bold statusline1)[  ](bold red)";
           vimcmd_symbol = "[╰─](bold statusline1)[  ](bold green)";
-          vimcmd_visual_symbol = "[╰─](bold statusline1)[  ](bold aqua)";
+          vimcmd_visual_symbol = "[╰─](bold statusline1)[  ](bold purple)";
           vimcmd_replace_symbol = "[╰─](bold statusline1)[  ](bold yellow)";
           vimcmd_replace_one_symbol = "[╰─](bold statusline1)[  ](bold yellow)";
         };
@@ -125,17 +125,17 @@ in {
         };
         cmd_duration = {
           disabled = false;
-          format = " [](fg:bg-visual)[  $duration ]($style)[](fg:bg-visual)";
-          style = "bg:bg-visual fg:purple";
+          format = " [](fg:bg-yellow)[  $duration ]($style)[](fg:bg-yellow)";
+          style = "bg:bg-yellow fg:purple";
           min_time = 0;
           show_milliseconds = false;
         };
         username = {
           disabled = false;
-          format = "[](fg:bg-visual)[ $user ]($style)[](fg:bg-visual) ";
+          format = "[](fg:bg-blue)[ $user ]($style)[](fg:bg-blue) ";
           show_always = true;
-          style_root = "bg:bg-visual fg:orange";
-          style_user = "bg:bg-visual fg:red";
+          style_root = "bg:bg-blue fg:red";
+          style_user = "bg:bg-blue fg:purple";
         };
         hostname = {
           # only show when conncted to to an SSH session
