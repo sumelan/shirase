@@ -6,13 +6,11 @@
   programs = {
     git = {
       enable = true;
-      userName = user;
-      userEmail = config.profiles.${user}.email;
-      difftastic = {
-        enable = true;
-        options.background = "dark";
-      };
-      extraConfig = {
+      settings = {
+        user = {
+          name = user;
+          inherit (config.profiles.${user}) email;
+        };
         init = {
           defaultBranch = "main";
         };
@@ -53,6 +51,11 @@
           autoUpdate = true;
         };
       };
+    };
+    difftastic = {
+      enable = true;
+      options.background = "dark";
+      git.enable = true;
     };
   };
 }

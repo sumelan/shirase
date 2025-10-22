@@ -5,8 +5,6 @@
     show-hotkey-overlay
     toggle-overview
     quit
-    screenshot
-    screenshot-window
     clear-dynamic-cast-target
     close-window
     toggle-window-floating
@@ -45,8 +43,9 @@ in {
     "Mod+Shift+Escape".action = quit {skip-confirmation = false;};
 
     # screenshot
-    "Mod+Backslash".action = screenshot {show-pointer = false;};
-    "Mod+Shift+Backslash".action = screenshot-window {write-to-disk = true;};
+    # https://github.com/sodiboo/niri-flake/issues/1380
+    "Mod+Backslash".action.screenshot.show-pointer = false;
+    "Mod+Shift+Backslash".action.screenshot-window.write-to-disk = true;
 
     # dynamic screencast target
     "Mod+Alt+Backslash" = {

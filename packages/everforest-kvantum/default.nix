@@ -24,7 +24,7 @@ stdenv.mkDerivation {
   meta = {
     description = "";
     homepage = "https://github.com/binEpilo/materia-everforest-kvantum";
-    license = lib.licenses.unfree; # FIXME: nix-init did not find a license
+    license = lib.licenses.gpl3;
     maintainers = with lib.maintainers; [sumelan];
     mainProgram = "materia-everforest-kvantum";
     platforms = lib.platforms.all;
