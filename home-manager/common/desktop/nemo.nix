@@ -87,7 +87,7 @@ in {
     binds = {
       "Mod+O" = {
         action.spawn = ["nemo"];
-        hotkey-overlay.title = ''<span foreground="#37f499">[Application]</span> Nemo'';
+        hotkey-overlay.title = ''<span foreground="#5E81AC">[Application]</span> Nemo'';
       };
     };
 

@@ -362,7 +362,7 @@ in {
           "call"
         ]
         ++ (splitString " " cmd);
-      hotkeyColor = "#04d1f9";
+      hotkeyColor = "#B1C89D";
     in {
       "Mod+Space" = {
         action.spawn = noctalia "launcher toggle";

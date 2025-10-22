@@ -53,7 +53,7 @@ in {
       binds = {
         "Mod+S" = {
           action.spawn = ["spotify" "--wayland-text-input-version=3"];
-          hotkey-overlay.title = ''<span foreground="#37f499">[Application]</span> Spotify'';
+          hotkey-overlay.title = ''<span foreground="#5E81AC">[Application]</span> Spotify'';
         };
       };
       window-rules = [

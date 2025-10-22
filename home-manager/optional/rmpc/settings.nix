@@ -27,7 +27,7 @@ in {
         binds = {
           "Mod+R" = {
             action.spawn = ["${lib.getExe pkgs.foot}" "--app-id=rmpc" "rmpc"];
-            hotkey-overlay.title = ''<span foreground="#f1fc79">[Terminal]</span> rmpc'';
+            hotkey-overlay.title = ''<span foreground="#EFD49F">[Terminal]</span> rmpc'';
           };
         };
         window-rules = [

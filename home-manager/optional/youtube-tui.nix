@@ -10,15 +10,66 @@
     mkIf
     getExe
     ;
+  # Black
+  black0 = "#191D24";
+  black1 = "#1E222A";
+  black2 = "#222630";
 
-  base01 = "#212337";
-  base05 = "#ebfafa";
-  base08 = "#7081d0";
-  base0A = "#04d1f9";
-  base0B = "#37f499";
-  base0C = "#f7c67f";
-  base0D = "#f265b5";
-  base0E = "#a48cf2";
+  # Gray
+  gray0 = "#242933";
+  # Polar night
+  gray1 = "#2E3440";
+  gray2 = "#3B4252";
+  gray3 = "#434C5E";
+  gray4 = "#4C566A";
+  # a light blue/gray
+  # from @nightfox.nvim
+  gray5 = "#60728A";
+
+  # White
+  # reduce_blue variant
+  white0 = "#C0C8D8";
+  # Snow storm
+  white1 = "#D8DEE9";
+  white2 = "#E5E9F0";
+  white3 = "#ECEFF4";
+
+  # Blue
+  # Frost
+  blue0 = "#5E81AC";
+  blue1 = "#81A1C1";
+  blue2 = "#88C0D0";
+
+  # Cyan:
+  cyan_base = "#8FBCBB";
+  cyan_bright = "#9FC6C5";
+  cyan_dim = "#80B3B2";
+
+  # Aurora (from Nord theme)
+  # Red
+  red_base = "#BF616A";
+  red_bright = "#C5727A";
+  red_dim = "#B74E58";
+
+  # Orange
+  orange_base = "#D08770";
+  orange_bright = "#D79784";
+  orange_dim = "#CB775D";
+
+  # Yellow
+  yellow_base = "#EBCB8B";
+  yellow_bright = "#EFD49F";
+  yellow_dim = "#E7C173";
+
+  # Green
+  green_base = "#A3BE8C";
+  green_bright = "#B1C89D";
+  green_dim = "#97B67C";
+
+  # Magenta
+  magenta_base = "#B48EAD";
+  magenta_bright = "#BE9DB8";
+  magenta_dim = "#A97EA1";
 in {
   options.custom = {
     youtube-tui.enable = mkEnableOption "Aesthetically pleasing YouTube TUI written in Rust";
@@ -209,30 +260,30 @@ in {
       "youtube-tui/appearance.yml".source = (pkgs.formats.yaml {}).generate "appearance" {
         borders = "Rounded";
         colors = {
-          text = base05;
-          text_special = base05;
-          text_secondary = base05;
-          text_error = base08;
-          outline = base05;
-          outline_selected = base0D;
-          outline_hover = base08;
-          outline_secondary = base0A;
+          text = white0;
+          text_special = white3;
+          text_secondary = white2;
+          text_error = red_bright;
+          outline = white1;
+          outline_selected = orange_bright;
+          outline_hover = blue0;
+          outline_secondary = blue2;
           message_outline = "#FF7F00";
-          message_error_outline = base08;
-          message_success_outline = base0B;
+          message_error_outline = red_base;
+          message_success_outline = blue1;
           item_info = {
-            tag = base01;
-            title = base0D;
-            description = base01;
-            author = base0B;
-            viewcount = base0A;
-            length = base0C;
-            published = base0E;
+            tag = gray5;
+            title = orange_base;
+            description = gray5;
+            author = yellow_base;
+            viewcount = green_bright;
+            length = magenta_bright;
+            published = cyan_bright;
             video_count = "#838DFF";
             sub_count = "#65FFBA";
             likes = "#C8FF81";
             genre = "#FF75D7";
-            page_turner = base01;
+            page_turner = gray5;
           };
         };
       };
@@ -263,7 +314,7 @@ in {
       binds = {
         "Mod+Y" = {
           action.spawn = ["${getExe pkgs.foot}" "--app-id=youtube-tui" "youtube-tui"];
-          hotkey-overlay.title = ''<span foreground="#f1fc79">[Terminal]</span> Youtube-tui'';
+          hotkey-overlay.title = ''<span foreground="#EFD49F">[Terminal]</span> Youtube-tui'';
         };
       };
     };

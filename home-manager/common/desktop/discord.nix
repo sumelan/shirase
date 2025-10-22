@@ -5,7 +5,7 @@
     binds = {
       "Mod+W" = {
         action.spawn = ["vesktop"];
-        hotkey-overlay.title = ''<span foreground="#37f499">[Application]</span> Vesktop'';
+        hotkey-overlay.title = ''<span foreground="#5E81AC">[Application]</span> Vesktop'';
       };
     };
   };

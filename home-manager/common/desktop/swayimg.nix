@@ -4,9 +4,66 @@
   ...
 }: let
   inherit (lib) singleton;
-  base00 = "#323449";
-  base01 = "#212337";
-  base05 = "#ebfafa";
+  # Black
+  black0 = "#191D24";
+  black1 = "#1E222A";
+  black2 = "#222630";
+
+  # Gray
+  gray0 = "#242933";
+  # Polar night
+  gray1 = "#2E3440";
+  gray2 = "#3B4252";
+  gray3 = "#434C5E";
+  gray4 = "#4C566A";
+  # a light blue/gray
+  # from @nightfox.nvim
+  gray5 = "#60728A";
+
+  # White
+  # reduce_blue variant
+  white0 = "#C0C8D8";
+  # Snow storm
+  white1 = "#D8DEE9";
+  white2 = "#E5E9F0";
+  white3 = "#ECEFF4";
+
+  # Blue
+  # Frost
+  blue0 = "#5E81AC";
+  blue1 = "#81A1C1";
+  blue2 = "#88C0D0";
+
+  # Cyan:
+  cyan_base = "#8FBCBB";
+  cyan_bright = "#9FC6C5";
+  cyan_dim = "#80B3B2";
+
+  # Aurora (from Nord theme)
+  # Red
+  red_base = "#BF616A";
+  red_bright = "#C5727A";
+  red_dim = "#B74E58";
+
+  # Orange
+  orange_base = "#D08770";
+  orange_bright = "#D79784";
+  orange_dim = "#CB775D";
+
+  # Yellow
+  yellow_base = "#EBCB8B";
+  yellow_bright = "#EFD49F";
+  yellow_dim = "#E7C173";
+
+  # Green
+  green_base = "#A3BE8C";
+  green_bright = "#B1C89D";
+  green_dim = "#97B67C";
+
+  # Magenta
+  magenta_base = "#B48EAD";
+  magenta_bright = "#BE9DB8";
+  magenta_dim = "#A97EA1";
 in {
   programs = {
     swayimg = {
@@ -25,7 +82,7 @@ in {
           app_id = "swayimg";
         };
         viewer = {
-          window = base00 + swayimgOpacity; # Window background color (blur/RGBA)
+          window = gray1 + swayimgOpacity; # Window background color (blur/RGBA)
           transparency = "grid";
           scale = "optimal"; # Default image scale (optimal/width/height/fit/fill/real/keep)
           position = "center";
@@ -55,11 +112,11 @@ in {
           pstore = "no"; # Enable/disable storing thumbnails in persistent storage (yes/no)
           fill = "yes";
           antialiasing = "mks13";
-          window = base00 + swayimgOpacity; # Background color of the window (RGBA)
-          background = base01; # Background color of non-selected tiles (RGBA)
-          select = base05; # Background color of the selected tile (RGBA)
-          border = base00; # Border color of the selected tile (RGBA)
-          shadow = base00; # Shadow color of the selected tile (RGBA)
+          window = gray1 + swayimgOpacity; # Background color of the window (RGBA)
+          background = gray2; # Background color of non-selected tiles (RGBA)
+          select = white0; # Background color of the selected tile (RGBA)
+          border = gray1; # Border color of the selected tile (RGBA)
+          shadow = gray1; # Shadow color of the selected tile (RGBA)
         };
         list = {
           order = "alpha";
@@ -71,9 +128,9 @@ in {
         font = {
           name = config.custom.fonts.monospace;
           size = 14;
-          color = base05;
-          shadow = base00 + swayimgOpacity;
-          background = base00;
+          color = white0;
+          shadow = gray1 + swayimgOpacity;
+          background = gray1;
         };
         info = {
           show = "yes"; # Show on startup (yes/no)
