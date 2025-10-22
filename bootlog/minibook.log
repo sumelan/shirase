@@ -670,3 +670,81 @@ Removed packages:
 [R.]  #107  xkbcomp                                       1.4.7
 [R.]  #108  xrandr                                        1.5.3
 Closure size: 2592 -> 2510 (187 paths added, 269 paths removed, delta -82, disk usage -811.7MiB).
+
+---
+
+2025年10月23日 00時46分50秒
+<<< /nix/var/nix/profiles/system-27-link
+>>> /nix/var/nix/profiles/system-29-link
+Version changes:
+[C*]  #01  bind                    9.20.13-host, 9.20.13-lib, 9.20.13-man -> 9.20.13-dnsutils, 9.20.13-host, 9.20.13-lib, 9.20.13-man
+[U.]  #02  codebook                0.3.13 -> 0.3.14
+[U.]  #03  dotnet-runtime          8.0.20 -> 8.0.21
+[U.]  #04  dotnet-runtime-wrapped  8.0.20 -> 8.0.21
+[U.]  #05  foot                    1.24.0, 1.24.0-fish-completions, 1.24.0-terminfo -> 1.25.0, 1.25.0-fish-completions, 1.25.0-terminfo
+[U.]  #06  gh                      2.81.0, 2.81.0-fish-completions -> 2.82.0, 2.82.0-fish-completions
+[U.]  #07  imagemagick             7.1.2-6 -> 7.1.2-7
+[U.]  #08  initrd-linux-zen        6.17.1 -> 6.17.2
+[U.]  #09  kio                     6.19.0 -> 6.19.1
+[U.]  #10  linux-zen               6.17.1, 6.17.1-modules x2, 6.17.1-modules-shrunk -> 6.17.2, 6.17.2-modules x2, 6.17.2-modules-shrunk
+[U.]  #11  mesa                    25.2.4 -> 25.2.5
+[C.]  #12  nautilus                48.3, 48.3-fish-completions -> 48.3
+[C.]  #13  ngtcp2                  1.15.1 x3 -> 1.15.1 x2, 1.16.0
+[U*]  #14  niri-unstable           2025-10-18-8c84479, 2025-10-18-8c84479-doc -> 2025-10-20-b3245b8, 2025-10-20-b3245b8-doc
+[U.]  #15  nixos-system-minibook   25.11.20251015.544961d.595593a -> 25.11.20251019.5e2a59a.9954c49
+[U.]  #16  phpactor                2025.07.25.0 -> 2025.10.17.0
+[C*]  #17  polkit                  1.pam, 126, 126-bin -> 1.pam, 126, 126-bin, 126-dev
+[C.]  #18  python3                 3.13.7 x2, 3.13.7-env x5, 3.13.7-env-fish-completions -> 3.13.7 x2, 3.13.7-env x7, 3.13.7-env-fish-completions
+[U*]  #19  ripgrep                 14.1.1, 14.1.1-fish-completions -> 15.0.0, 15.0.0-fish-completions
+[U.]  #20  samba                   4.22.3 -> 4.22.5
+[U.]  #21  superhtml               0.6.1 -> 0.6.2
+[U.]  #22  ty                      0.0.1-alpha.22 -> 0.0.1-alpha.23
+[U.]  #23  yt-dlp                  2025.09.26, 2025.09.26-fish-completions -> 2025.10.14, 2025.10.14-fish-completions
+Added packages:
+[A.]  #01  cinnamon-desktop                                                          6.4.2
+[A.]  #02  cinnamon-translations                                                     6.4.2
+[A.]  #03  dconf-editor                                                              45.0.1
+[A.]  #04  everforest                                                                1e625639
+[A.]  #05  everforest-cursors                                                        3212590527, 3212590527-fish-completions
+[A+]  #06  everforest-gtk-theme                                                      0-unstable-2023-03-20, 0-unstable-2023-03-20-fish-completions
+[A.]  #07  folder-color-switcher                                                     1.6.8
+[A.]  #08  gtk-layer-shell                                                           0.9.2
+[A.]  #09  inxi                                                                      3.3.39-1
+[A.]  #10  libXres                                                                   1.2.3
+[A.]  #11  libasyncns                                                                0.8
+[A.]  #12  libgnomekbd                                                               3.28.1
+[A.]  #13  libgtop                                                                   2.41.3
+[A.]  #14  libmatekbd                                                                1.28.0
+[A.]  #15  libmatemixer                                                              1.28.0
+[A.]  #16  libmateweather                                                            1.28.0
+[A.]  #17  libstartup-notification                                                   0.12
+[A.]  #18  libwnck                                                                   43.3
+[A.]  #19  libxklavier                                                               5.4
+[A.]  #20  marco                                                                     1.28.1
+[A.]  #21  mate-desktop                                                              1.28.2
+[A.]  #22  mate-menus                                                                1.28.0
+[A.]  #23  mate-panel                                                                1.28.7
+[A.]  #24  mate-settings-daemon                                                      1.28.0
+[A.]  #25  materia-everforest-kvantum-unstable                                       2024-01-22
+[A.]  #26  nemo                                                                      6.4.5
+[A.]  #27  nemo-emblems                                                              6.4.0
+[A.]  #28  nemo-fileroller                                                           6.4.0, 6.4.0-fish-completions
+[A.]  #29  nemo-python                                                               6.4.0
+[A.]  #30  nemo-with-extensions                                                      6.4.5, 6.4.5-fish-completions
+[A.]  #31  noctalia-shell-c832d7b2dadd7086d4d6a63b29fef778d7954655                   <none>
+[A.]  #32  noctalia-shell-c832d7b2dadd7086d4d6a63b29fef778d7954655-fish-completions  <none>
+[A.]  #33  perl5.40.0-Cpanel-JSON-XS                                                 4.37
+[A.]  #34  ps-procps                                                                 4.0.4
+[A.]  #35  pulseaudio                                                                17.0
+[A.]  #36  python3.13-python-xapp                                                    2.4.2
+[A.]  #37  python3.13-setproctitle                                                   1.3.6
+[A.]  #38  xapp                                                                      3.0.1, 3.0.1-dev
+[A.]  #39  xkbcomp                                                                   1.4.7
+Removed packages:
+[R.]  #1  capitaine-cursors     4, 4-fish-completions
+[R.]  #2  helix-theme-eldritch  <none>
+[R.]  #3  noctalia-shell        8b5f06aec623085790cfb8e4754f0e0f98ce5a89, 8b5f06aec623085790cfb8e4754f0e0f98ce5a89-fish-completions
+[R.]  #4  tokyo-night-kvantum   0-unstable-2024-08-08
+[R.]  #5  tokyonight            4d159616
+[R-]  #6  tokyonight-gtk-theme  0-unstable-2025-10-14, 0-unstable-2025-10-14-fish-completions
+Closure size: 2510 -> 2548 (274 paths added, 236 paths removed, delta +38, disk usage +334.7MiB).
