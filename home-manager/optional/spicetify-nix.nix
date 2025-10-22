@@ -46,7 +46,7 @@ in {
           removeConnectBar
           ;
       };
-      theme = spicePkgs.themes.nightlight;
+      theme = spicePkgs.themes.ziro;
     };
 
     programs.niri.settings = {

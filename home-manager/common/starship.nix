@@ -43,55 +43,89 @@ in {
           "$hostname"
         ];
 
-        palette = "everforest";
+        palette = "nord";
 
-        palettes.everforest = {
-          bg-dim = "#232A2E";
-          bg0 = "#2D353B";
-          bg1 = "#343F44";
-          bg2 = "#3D484D";
-          bg3 = "#475258";
-          bg4 = "#4F585E";
-          bg5 = "#56635f";
-          bg-visual = "#543A48";
-          bg-red = "#514045";
-          bg-green = "#425047";
-          bg-blue = "#3A515D";
-          bg-yellow = "#4D4C43";
-          fg = "#D3C6AA";
-          red = "#E67E80";
-          orange = "#E69875";
-          yellow = "#DBBC7F";
-          green = "#A7C080";
-          aqua = "#83C092";
-          blue = "#7FBBB3";
-          purple = "#D699B6";
-          grey0 = "#7A8478";
-          grey1 = "#859289";
-          grey2 = "#9DA9A0";
-          statusline1 = "#A7C080";
-          statusline2 = "#D3C6AA";
-          statusline3 = "#E67E80";
+        palettes.nord = {
+          # Black
+          black0 = "#191D24";
+          black1 = "#1E222A";
+          black2 = "#222630";
+
+          # Gray
+          gray0 = "#242933";
+          # Polar night
+          gray1 = "#2E3440";
+          gray2 = "#3B4252";
+          gray3 = "#434C5E";
+          gray4 = "#4C566A";
+          # a light blue/gray
+          # from @nightfox.nvim
+          gray5 = "#60728A";
+
+          # White
+          # reduce_blue variant
+          white0 = "#C0C8D8";
+          # Snow storm
+          white1 = "#D8DEE9";
+          white2 = "#E5E9F0";
+          white3 = "#ECEFF4";
+
+          # Blue
+          # Frost
+          blue0 = "#5E81AC";
+          blue1 = "#81A1C1";
+          blue2 = "#88C0D0";
+
+          # Cyan:
+          cyan_base = "#8FBCBB";
+          cyan_bright = "#9FC6C5";
+          cyan_dim = "#80B3B2";
+
+          # Aurora (from Nord theme)
+          # Red
+          red_base = "#BF616A";
+          red_bright = "#C5727A";
+          red_dim = "#B74E58";
+
+          # Orange
+          orange_base = "#D08770";
+          orange_bright = "#D79784";
+          orange_dim = "#CB775D";
+
+          # Yellow
+          yellow_base = "#EBCB8B";
+          yellow_bright = "#EFD49F";
+          yellow_dim = "#E7C173";
+
+          # Green
+          green_base = "#A3BE8C";
+          green_bright = "#B1C89D";
+          green_dim = "#97B67C";
+
+          # Magenta
+          magenta_base = "#B48EAD";
+          magenta_bright = "#BE9DB8";
+          magenta_dim = "#A97EA1";
         };
 
         character = {
           format = "$symbol ";
-          success_symbol = "[╰─](bold statusline1)[  ](bold fg)";
-          error_symbol = "[╰─](bold statusline1)[  ](bold red)";
-          vimcmd_symbol = "[╰─](bold statusline1)[  ](bold green)";
-          vimcmd_visual_symbol = "[╰─](bold statusline1)[  ](bold purple)";
-          vimcmd_replace_symbol = "[╰─](bold statusline1)[  ](bold yellow)";
-          vimcmd_replace_one_symbol = "[╰─](bold statusline1)[  ](bold yellow)";
+          success_symbol = "[╰─](bold white1)[  ](bold blue0)";
+          error_symbol = "[╰─](bold white1)[  ](bold red_base)";
+          vimcmd_symbol = "[╰─](bold white1)[  ](bold green_base)";
+          vimcmd_visual_symbol = "[╰─](bold white1)[  ](bold magenta_base)";
+          vimcmd_replace_symbol = "[╰─](bold white1)[  ](bold yellow_base)";
+          vimcmd_replace_one_symbol = "[╰─](bold white1)[  ](bold yellow_base)";
         };
         container = {
           format = " [$symbol $name]($style) ";
           symbol = " ";
-          style = "orange bold";
+          style = "bold orange_bright";
           disabled = false;
         };
         directory = {
           format = "[╭─ $path ]($style)";
-          style = "bold statusline1";
+          style = "bold white1";
           truncation_length = 18;
           truncation_symbol = "…/";
           substitutions = {
@@ -100,128 +134,127 @@ in {
           };
         };
         fill = {
-          style = "fg:statusline2";
           symbol = " ";
         };
         git_branch = {
-          format = "[](fg:bg-green)[ $symbol $branch ]($style)[](fg:bg-green) ";
-          style = "bg:bg-green fg:fg";
+          format = "[](fg:gray3)[ $symbol $branch ]($style)[](fg:gray3) ";
+          style = "bg:gray3 fg:orange_bright";
           symbol = " ";
         };
         git_status = {
           disabled = false;
-          style = "fg:bg-red";
+          style = "fg:red_dim";
           format = "([$all_status$ahead_behind]($style))";
-          up_to_date = "[  ](fg:purple)";
-          untracked = "[?\($count\)](fg:blue)";
-          stashed = "[\\$\($count\)](fg:aqua)";
-          modified = "[!\($count\)](fg:yellow)";
-          renamed = "[»\($count\)](fg:purple)";
-          deleted = "[✘\($count\)](fg:red)";
-          staged = "[++\($count\)](fg:aqua)";
-          ahead = "[⇡\($count\)](fg:blue)";
-          diverged = "[⇕\[](fg:purple)[⇡\($ahead_count\)](fg:aqua)[⇣\($behind_count\)](fg:yellow)[\]](fg:purple)";
-          behind = "[⇣\($count\)](fg:red)";
+          up_to_date = "[  ](fg:magenta_dim)";
+          untracked = "[?\($count\)](fg:blue2)";
+          stashed = "[\\$\($count\)](fg:green_bright)";
+          modified = "[!\($count\)](fg:yellow_dim)";
+          renamed = "[»\($count\)](fg:# magenta_bright)";
+          deleted = "[✘\($count\)](fg:red_bright)";
+          staged = "[++\($count\)](fg:green_dim)";
+          ahead = "[⇡\($count\)](fg:blue1)";
+          diverged = "[⇕\[](fg:magenta_dim)[⇡\($ahead_count\)](fg:green_dim)[⇣\($behind_count\)](fg:yellow_dim)[\]](fg:magenta_bright)";
+          behind = "[⇣\($count\)](fg:red_bright)";
         };
         cmd_duration = {
           disabled = false;
-          format = " [](fg:bg-yellow)[  $duration ]($style)[](fg:bg-yellow)";
-          style = "bg:bg-yellow fg:purple";
+          format = " [](fg:gray1)[  $duration ]($style)[](fg:gray1)";
+          style = "bg:gray1 fg:magenta_base";
           min_time = 0;
           show_milliseconds = false;
         };
         username = {
           disabled = false;
-          format = "[](fg:bg-blue)[ $user ]($style)[](fg:bg-blue) ";
+          format = "[](fg:blue2)[ $user ]($style)[](fg:blue2) ";
           show_always = true;
-          style_root = "bg:bg-blue fg:red";
-          style_user = "bg:bg-blue fg:purple";
+          style_root = "bg:blue2 fg:black0";
+          style_user = "bg:blue2 fg:black0";
         };
         hostname = {
           # only show when conncted to to an SSH session
           ssh_only = true;
           ssh_symbol = "󰁥 ";
-          format = "[](fg:bg-visual)[ $ssh_symbol$hostname ]($style)[](fg:bg-visual) ";
-          style = "bg:bg-visual fg:orange";
+          format = "[](fg:cyan_dim)[ $ssh_symbol$hostname ]($style)[](fg:cyan_dim) ";
+          style = "bg:cyan_dim fg:orange_base";
         };
 
         # Languages
         c = {
-          style = "bg:bg-visual fg:orange";
-          format = " [](fg:bg-visual)[ $symbol$version ]($style)[](fg:bg-visual)";
+          style = "bg:cyan_dim fg:orange_base";
+          format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
           disabled = false;
           symbol = " ";
         };
         elixir = {
-          style = "bg:bg-visual fg:orange";
-          format = " [](fg:bg-visual)[ $symbol$version ]($style)[](fg:bg-visual)";
+          style = "bg:cyan_dim fg:orange_base";
+          format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
           disabled = false;
           symbol = " ";
         };
         elm = {
-          style = "bg:bg-visual fg:orange";
-          format = " [](fg:bg-visual)[ $symbol$version ]($style)[](fg:bg-visual)";
+          style = "bg:cyan_dim fg:orange_base";
+          format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
           disabled = false;
           symbol = " ";
         };
         golang = {
-          style = "bg:bg-visual fg:orange";
-          format = " [](fg:bg-visual)[ $symbol$version ]($style)[](fg:bg-visual)";
+          style = "bg:cyan_dim fg:orange_base";
+          format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
           disabled = false;
           symbol = " ";
         };
         haskell = {
-          style = "bg:bg-visual fg:orange";
-          format = " [](fg:bg-visual)[ $symbol$version ]($style)[](fg:bg-visual)";
+          style = "bg:cyan_dim fg:orange_base";
+          format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
           disabled = false;
           symbol = " ";
         };
         java = {
-          style = "bg:bg-visual fg:orange";
-          format = " [](fg:bg-visual)[ $symbol$version ]($style)[](fg:bg-visual)";
+          style = "bg:cyan_dim fg:orange_base";
+          format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
           disabled = false;
           symbol = " ";
         };
         julia = {
-          style = "bg:bg-visual fg:orange";
-          format = " [](fg:bg-visual)[ $symbol$version ]($style)[](fg:bg-visual)";
+          style = "bg:cyan_dim fg:orange_base";
+          format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
           disabled = false;
           symbol = " ";
         };
         nodejs = {
-          style = "bg:bg-visual fg:orange";
-          format = " [](fg:bg-visual)[ $symbol$version ]($style)[](fg:bg-visual)";
+          style = "bg:cyan_dim fg:orange_base";
+          format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
           disabled = false;
           symbol = "󰎙 ";
         };
         nim = {
-          style = "bg:bg-visual fg:orange";
-          format = " [](fg:bg-visual)[ $symbol$version ]($style)[](fg:bg-visual)";
+          style = "bg:cyan_dim fg:orange_base";
+          format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
           disabled = false;
           symbol = "󰆥 ";
         };
         rust = {
-          style = "bg:bg-visual fg:orange";
-          format = " [](fg:bg-visual)[ $symbol$version ]($style)[](fg:bg-visual)";
+          style = "bg:cyan_dim fg:orange_base";
+          format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_base)";
           disabled = false;
           symbol = " ";
         };
         scala = {
-          style = "bg:bg-visual fg:orange";
-          format = " [](fg:bg-visual)[ $symbol$version ]($style)[](fg:bg-visual)";
+          style = "bg:cyan_dim fg:orange_base";
+          format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
           disabled = false;
           symbol = " ";
         };
         python = {
-          style = "bg:bg-visual fg:orange";
-          format = " [](fg:bg-visual)[ $symbol$version ]($style)[](fg:bg-visual)";
+          style = "bg:cyan_dim fg:orange_base";
+          format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
           disabled = false;
           symbol = " ";
         };
         nix_shell = {
           format = "via [$symbol$state( \($name\))]($style) ";
           symbol = "󱄅 ";
-          style = "bold blue";
+          style = "bold blue0";
           impure_msg = "impure";
           pure_msg = "pure";
           unknown_msg = "";
@@ -229,8 +262,8 @@ in {
           heuristic = false;
         };
         conda = {
-          style = "bg:bg-visual fg:orange";
-          format = " [](fg:bg-visual)[ $symbol$environment ]($style)[](fg:bg-visual)";
+          style = "bg:cyan_dim fg:orange_base";
+          format = " [](fg:cyan_dim)[ $symbol$environment ]($style)[](fg:cyan_dim)";
           disabled = false;
           symbol = "🅒 ";
         };

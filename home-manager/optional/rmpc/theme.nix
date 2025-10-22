@@ -1,13 +1,64 @@
 _: let
-  base00 = "#323449";
-  base01 = "#212337";
-  base05 = "#ebfafa";
-  base09 = "#f16c75";
-  base0A = "#04d1f9";
-  base0B = "#37f499";
-  base0C = "#f7c67f";
-  base0E = "#a48cf2";
-  base0F = "#f1fc79";
+  # Black
+  black0 = "#191D24";
+  black1 = "#1E222A";
+  black2 = "#222630";
+
+  # Gray
+  gray0 = "#242933";
+  # Polar night
+  gray1 = "#2E3440";
+  gray2 = "#3B4252";
+  gray3 = "#434C5E";
+  gray4 = "#4C566A";
+  # a light blue/gray
+  # from @nightfox.nvim
+  gray5 = "#60728A";
+
+  # White
+  # reduce_blue variant
+  white0 = "#C0C8D8";
+  # Snow storm
+  white1 = "#D8DEE9";
+  white2 = "#E5E9F0";
+  white3 = "#ECEFF4";
+
+  # Blue
+  # Frost
+  blue0 = "#5E81AC";
+  blue1 = "#81A1C1";
+  blue2 = "#88C0D0";
+
+  # Cyan:
+  cyan_base = "#8FBCBB";
+  cyan_bright = "#9FC6C5";
+  cyan_dim = "#80B3B2";
+
+  # Aurora (from Nord theme)
+  # Red
+  red_base = "#BF616A";
+  red_bright = "#C5727A";
+  red_dim = "#B74E58";
+
+  # Orange
+  orange_base = "#D08770";
+  orange_bright = "#D79784";
+  orange_dim = "#CB775D";
+
+  # Yellow
+  yellow_base = "#EBCB8B";
+  yellow_bright = "#EFD49F";
+  yellow_dim = "#E7C173";
+
+  # Green
+  green_base = "#A3BE8C";
+  green_bright = "#B1C89D";
+  green_dim = "#97B67C";
+
+  # Magenta
+  magenta_base = "#B48EAD";
+  magenta_bright = "#BE9DB8";
+  magenta_dim = "#A97EA1";
 in {
   xdg.configFile."rmpc/themes/custom.ron".text =
     # ron
@@ -19,37 +70,37 @@ in {
           default_album_art_path: None,
           draw_borders: true,
           show_song_table_header: false,
-          symbols: (song: "󰝚 ", dir: " ", playlist: "󰲸 ", marker: "󰧂", ellipsis: "..."),
+          symbols: (song: "󰝚 ", dir: " ", playlist: "󰲸 ", marker: "󰧂 ", ellipsis: "..."),
           progress_bar: (
               symbols: ["󰇼", "󰇼", "", " ", " "],
-              track_style: (fg: "${base00}"),
-              elapsed_style: (fg: "${base0B}", bg: "${base01}"),
-              thumb_style: (fg: "${base0B}", bg: "${base01}"),
+              track_style: (fg: "${gray1}"),
+              elapsed_style: (fg: "${white3}", bg: "${gray1}"),
+              thumb_style: (fg: "${white3}", bg: "${gray1}"),
           ),
           scrollbar: (
               symbols: ["│", "█", "▲", "▼"],
               track_style: (),
               ends_style: (),
-              thumb_style: (fg: "${base05}"),
+              thumb_style: (fg: "${gray5}"),
           ),
           browser_column_widths: [20, 38, 42],
-          text_color: "${base05}",
-          background_color: "${base01}",
-          header_background_color: "${base00}",
+          text_color: "${white2}",
+          background_color: "${gray1}",
+          header_background_color: "${gray0}",
           modal_background_color: None,
           tab_bar: (
               enabled: false,
-              active_style: (fg: "black", bg: "${base0E}", modifiers: "Bold"),
+              active_style: (fg: "${black0}", bg: "${green_base}", modifiers: "Bold"),
               inactive_style: (),
           ),
-          borders_style: (fg: "${base05}"),
-          highlighted_item_style: (fg: "${base0A}", modifiers: "Bold"),
-          current_item_style: (fg: "${base01}", bg: "${base0B}", modifiers: "Bold"),
-          highlight_border_style: (fg: "${base0B}"),
+          borders_style: (fg: "${white3}"),
+          highlighted_item_style: (fg: "${yellow_bright}", modifiers: "Bold"),
+          current_item_style: (fg: "${black2}", bg: "${cyan_bright}", modifiers: "Bold"),
+          highlight_border_style: (fg: "${blue0}"),
           song_table_format: [
               (
                   prop: (kind: Property(Artist),
-                      style: (fg: "${base09}"),
+                      style: (fg: "${green_bright}"),
                       default: (kind: Text("Unknown"))
                   ),
                   width: "50%",
@@ -57,7 +108,7 @@ in {
               ),
               (
                   prop: (kind: Text("-"),
-                      style: (fg: "${base05}", modifiers: "Dim"),
+                      style: (fg: "${white3}", modifiers: "Dim"),
                       default: (kind: Text("Unknown"))
                   ),
                   width: "1",
@@ -65,7 +116,7 @@ in {
               ),
               (
                   prop: (kind: Property(Title),
-                      style: (fg: "${base0E}"),
+                      style: (fg: "${orange_bright}"),
                       default: (kind: Text("No Song"))
                   ),
                   width: "50%",
@@ -93,46 +144,46 @@ in {
               rows: [
                   (
                       left: [
-                          (kind: Text("["), style: (fg: "${base0B}", modifiers: "Dim")),
+                          (kind: Text(" ["), style: (fg: "${blue2}", modifiers: "Dim")),
                           (kind: Property(Status(StateV2(
                               playing_label: "Playing",
                               paused_label: "Paused",
                               stopped_label: "Stopped",
-                              playing_style: (fg: "${base0B}", modifiers: "Bold"),
-                              paused_style: (fg: "${base0B}", modifiers: "Bold"),
-                              stopped_style: (fg: "${base0B}", modifiers: "Bold"))))
+                              playing_style: (fg: "${blue2}", modifiers: "Bold"),
+                              paused_style: (fg: "${blue2}", modifiers: "Bold"),
+                              stopped_style: (fg: "${blue2}", modifiers: "Bold"))))
                           ),
-                          (kind: Text("]"), style: (fg: "${base0B}", modifiers: "Dim"))
+                          (kind: Text("]"), style: (fg: "${blue2}", modifiers: "Dim"))
                       ],
                       center: [
-                          (kind: Property(Song(Title)), style: (fg: "${base0E}", modifiers: "Bold"),
-                              default: (kind: Text("No Song"), style: (fg: "${base0E}", modifiers: "Bold"))
+                          (kind: Property(Song(Title)), style: (fg: "${green_base}", modifiers: "Bold"),
+                              default: (kind: Text("No Song"), style: (fg: "${green_base}", modifiers: "Bold"))
                           ),
                       ],
                       right: [
-                          (kind: Text("Vol: "), style: (fg: "${base0B}", modifiers: "Dim")),
-                          (kind: Property(Status(Volume)), style: (fg: "${base0B}", modifiers: "Bold")),
-                          (kind: Text("% "), style: (fg: "${base0B}", modifiers: "Dim"))
+                          (kind: Text("Vol: "), style: (fg: "${blue1}", modifiers: "Dim")),
+                          (kind: Property(Status(Volume)), style: (fg: "${blue2}", modifiers: "Bold")),
+                          (kind: Text("% "), style: (fg: "${blue2}", modifiers: "Dim"))
                       ]
                   ),
                   (
                       left: [
-                          (kind: Text(" 󰚭 "), style: (fg: "${base05}")),
-                          (kind: Property(Status(Elapsed)), style: (fg: "${base0C}")),
-                          (kind: Text(" / "), style: (fg: "${base0F}", modifiers: "Dim")),
-                          (kind: Property(Status(Duration)), style: (fg: "${base0C}")),
+                          (kind: Text(" 󰚭 "), style: (fg: "${white3}")),
+                          (kind: Property(Status(Elapsed)), style: (fg: "${cyan_base}")),
+                          (kind: Text(" / "), style: (fg: "${white3}", modifiers: "Dim")),
+                          (kind: Property(Status(Duration)), style: (fg: "${cyan_base}")),
                       ],
                       center: [
-                          (kind: Text("󰳩 "), style: (fg: "${base09}", modifiers: "Bold")),
-                          (kind: Text("- "), style: (fg: "${base05}", modifiers: "Dim")),
-                          (kind: Property(Song(Artist)), style: (fg: "${base09}", modifiers: "Bold"),
-                              default: (kind: Text("Unknown"), style: (fg: "${base09}", modifiers: "Bold"))
+                          (kind: Text("󰳩 "), style: (fg: "${orange_base}", modifiers: "Bold")),
+                          (kind: Text("- "), style: (fg: "${white3}", modifiers: "Dim")),
+                          (kind: Property(Song(Artist)), style: (fg: "${orange_base}", modifiers: "Bold"),
+                              default: (kind: Text("Unknown"), style: (fg: "${orange_base}", modifiers: "Bold"))
                           ),
                       ],
                       right: [
-                          (kind: Text("󰿈 "), style: (fg: "${base05}")),
-                          (kind: Property(Status(Bitrate)), style: (fg: "${base0C}")),
-                          (kind: Text(" kbps "), style: (fg: "${base0F}", modifiers: "Dim")),
+                          (kind: Text("󰿈 "), style: (fg: "${white3}")),
+                          (kind: Property(Status(Bitrate)), style: (fg: "${cyan_base}")),
+                          (kind: Text(" kbps "), style: (fg: "${white3}", modifiers: "Dim")),
                       ]
                   ),
               ],

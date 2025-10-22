@@ -22,6 +22,7 @@ in {
   config = mkIf config.custom.rmpc.enable {
     programs = {
       rmpc.enable = true;
+
       niri.settings = {
         binds = {
           "Mod+R" = {

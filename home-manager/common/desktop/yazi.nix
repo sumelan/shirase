@@ -36,7 +36,6 @@ in {
           nord
           yatline
           starship
-          time-travel
           ;
 
         # defined in `packages/yazi-plugins`
@@ -114,26 +113,9 @@ in {
             desc = "Chmod on selected files";
           }
           {
-            on = ["g" "i"];
+            on = ["g" "g"];
             run = "plugin lazygit";
             desc = "run lazygit";
-          }
-          # sudo is required to run btrfs commands such as btrfs subvolume list,
-          # the plugin will drop into a terminal to prompt for the password.
-          {
-            on = ["b" "h"];
-            run = "plugin time-travel --args=prev";
-            desc = "Go to previous snapshot";
-          }
-          {
-            on = ["b" "l"];
-            run = "plugin time-travel --args=next";
-            desc = "Go to next snapshot";
-          }
-          {
-            on = ["b" "e"];
-            run = "plugin time-travel --args=exit";
-            desc = "Exit browsing snapshots";
           }
           {
             on = "<C-n>";
