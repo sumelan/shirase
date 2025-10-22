@@ -114,9 +114,11 @@ in {
                 showUnreadBadge = true;
               }
               {
+                displayMode = "onhover";
                 id = "WiFi";
               }
               {
+                displayMode = "onhover";
                 id = "Bluetooth";
               }
             ]
@@ -128,7 +130,7 @@ in {
             ++ [
               {
                 customFont = "";
-                formatHorizontal = "MMM dd日ddd, HH:mm";
+                formatHorizontal = "MMM dd日 ddd, HH:mm";
                 formatVertical = "HH mm - MM dd";
                 id = "Clock";
                 useCustomFont = false;
@@ -149,7 +151,7 @@ in {
         manualSunrise = "06:30";
         manualSunset = "18:30";
         matugenSchemeType = "scheme-fruit-salad";
-        predefinedScheme = "Everforest";
+        predefinedScheme = "Nord";
         schedulingMode = "off";
         useWallpaperColors = false;
       };
@@ -223,7 +225,7 @@ in {
         animationSpeed = 1;
         avatarImage = "${config.home.homeDirectory}/.face";
         compactLockScreen = true;
-        dimDesktop = false;
+        dimDesktop = true;
         forceBlackScreenCorners = false;
         language = "";
         lockOnSuspend = true;
@@ -239,6 +241,7 @@ in {
       };
       location = {
         name = "Otsu";
+        showCalendarEvents = true;
         showWeekNumberInCalendar = false;
         use12hourFormat = false;
         useFahrenheit = false;
@@ -257,22 +260,21 @@ in {
         nightTemp = "4000";
       };
       notifications = {
-        alwaysOnTop = true;
         criticalUrgencyDuration = 15;
         doNotDisturb = false;
-        lastSeenTs = 0;
         location = "top_right";
         lowUrgencyDuration = 3;
         monitors = [];
         normalUrgencyDuration = 8;
+        overlayLayer = true;
         respectExpireTimeout = true;
       };
       osd = {
-        alwaysOnTop = true;
         autoHideMs = 2000;
         enabled = true;
         location = "bottom";
         monitors = [];
+        overlayLayer = true;
       };
       screenRecorder = {
         audioCodec = "opus";
@@ -304,12 +306,14 @@ in {
         kitty = false;
         pywalfox = false;
         qt = false;
+        vicinae = true;
       };
       ui = {
         fontDefault = config.gtk.font.name;
         fontDefaultScale = 1;
         fontFixed = config.custom.fonts.monospace;
         fontFixedScale = 1;
+        panelsOverlayLayer = true;
         tooltipsEnabled = true;
       };
       wallpaper = {

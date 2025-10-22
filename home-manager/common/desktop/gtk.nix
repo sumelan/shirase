@@ -5,9 +5,9 @@
 }: {
   home = {
     pointerCursor = {
-      package = pkgs.custom.everforest-cursors;
-      name = "everforest-cursors";
-      size = 42;
+      package = pkgs.capitaine-cursors-themed;
+      name = "Capitaine Cursors (Nord)";
+      size = 38;
       gtk.enable = true;
       x11.enable = true;
     };
@@ -28,14 +28,15 @@
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.everforest-gtk-theme;
-      name = "Everforest-Dark-BL";
+      package = pkgs.nordic;
+      name = "Nordic";
     };
     iconTheme = {
-      package = pkgs.papirus-icon-theme.override {
-        color = "green";
+      package = pkgs.nordzy-icon-theme.override {
+        # default; purple; pink; red; orange; yellow; green; turquoise; cyan; all)
+        nordzy-themes = ["turquoise"];
       };
-      name = "Papirus-Dark";
+      name = "Nordzy-turquoise-dark";
     };
     font = {
       name = config.custom.fonts.regular;

@@ -35,14 +35,14 @@ in {
     kvantum = {
       target = "Kvantum/kvantum.kvconfig";
       text = toINI {} {
-        General.theme = "MateriaEverforestDark";
+        General.theme = "Nordic";
       };
     };
 
     # Kvantum looks for themes here
     Kvantum-Tokyo-Night = {
-      target = "Kvantum/MateriaEverforestDark";
-      source = "${pkgs.custom.everforest-kvantum}/share/Kvantum/MateriaEverforestDark";
+      target = "Kvantum/Nordic";
+      source = "${pkgs.nordic}/share/Kvantum/Nordic";
       recursive = true;
     };
 
@@ -51,7 +51,7 @@ in {
       text = toINI {} {
         Appearance = {
           custom_palette = false;
-          icon_theme = "Papirus-Dark";
+          icon_theme = config.gtk.iconTheme.name;
           style = "kvantum";
         };
       };
@@ -62,7 +62,7 @@ in {
       text = toINI {} {
         Appearance = {
           custom_palette = false;
-          icon_theme = "Papirus-Dark";
+          icon_theme = config.gtk.iconTheme.name;
           style = "kvantum";
         };
       };
