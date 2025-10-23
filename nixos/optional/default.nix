@@ -8,8 +8,8 @@ _: {
     ./hdds.nix
     ./keyd.nix
     ./logitech.nix
+    ./network.nix
     ./steam.nix
     ./vr.nix
-    ./wireshark.nix
   ];
 }

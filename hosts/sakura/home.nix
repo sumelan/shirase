@@ -22,6 +22,7 @@ in {
     enableList = [
       "cyanrip"
       "helium"
+      "kdeconnect"
       "obs-studio"
       "protonapp"
       "rmpc"

@@ -7,6 +7,7 @@ _: {
     ./foliate.nix
     ./ghostty.nix
     ./helium.nix
+    ./kdeconnect.nix
     ./librewolf.nix
     ./obs-studio.nix
     ./protonapp.nix

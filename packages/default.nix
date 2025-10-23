@@ -16,10 +16,6 @@
 in {
   grub-nixos = callPackage ./grub-nixos {};
 
-  everforest-cursors = callPackage ./everforest-cursors {};
-
-  everforest-kvantum = callPackage ./everforest-kvantum {};
-
   helium = callPackage ./helium {};
 
   nvf = callPackage (mkNvf [

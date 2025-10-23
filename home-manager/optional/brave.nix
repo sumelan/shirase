@@ -15,8 +15,7 @@ in {
       enable = true;
       package = pkgs.brave;
       commandLineArgs = [
-        "--enable-features=UseOzonePlatform"
-        "--enable-features=TouchpadOverscrollHistoryNavigation"
+        "--enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation"
         "--ozone-platform=wayland"
       ];
 

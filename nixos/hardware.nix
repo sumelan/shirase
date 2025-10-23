@@ -17,6 +17,6 @@ in
     (optionalAttrs isLaptop {
       services.libinput.enable = true;
       # It disabled usb after some time of inativity, so not usable on desktop
-      powermanagement.powertop.enable = true;
+      powerManagement.powertop.enable = true;
     })
   ]
