@@ -50,12 +50,6 @@ in {
     };
 
     programs.niri.settings = {
-      binds = {
-        "Mod+S" = {
-          action.spawn = ["spotify" "--wayland-text-input-version=3"];
-          hotkey-overlay.title = ''<span foreground="#5E81AC">[Application]</span> Spotify'';
-        };
-      };
       window-rules = [
         {
           # mini player

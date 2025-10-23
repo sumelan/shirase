@@ -21,12 +21,12 @@ in {
   custom = let
     enableList = [
       "cyanrip"
-      "helix"
       "helium"
       "obs-studio"
       "protonapp"
       "rmpc"
       "spicetify-nix"
+      "spotify-player"
       "youtube-tui"
     ];
 

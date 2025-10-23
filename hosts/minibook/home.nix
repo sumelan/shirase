@@ -31,10 +31,10 @@ in {
 
   custom = let
     enableList = [
-      "helix"
       "protonapp"
       "rmpc"
       "spicetify-nix"
+      "spotify-player"
       "youtube-tui"
     ];
 

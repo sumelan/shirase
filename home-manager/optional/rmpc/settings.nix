@@ -9,6 +9,7 @@
     (lib)
     mkEnableOption
     mkIf
+    getExe
     singleton
     ;
   inherit (lib.custom.tmpfiles) mkCreateAndCleanup mkSymlinks;
@@ -26,7 +27,7 @@ in {
       niri.settings = {
         binds = {
           "Mod+R" = {
-            action.spawn = ["${lib.getExe pkgs.foot}" "--app-id=rmpc" "rmpc"];
+            action.spawn = ["${getExe pkgs.foot}" "--app-id=rmpc" "rmpc"];
             hotkey-overlay.title = ''<span foreground="#EFD49F">[Terminal]</span> rmpc'';
           };
         };
