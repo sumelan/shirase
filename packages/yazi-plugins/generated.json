@@ -19,26 +19,5 @@
             "type": "github"
         },
         "version": "8f1d9711bcd0e48af1fcb4153c16d24da76e732d"
-    },
-    "yazi-starship": {
-        "cargoLocks": null,
-        "date": "2025-07-08",
-        "extract": null,
-        "name": "yazi-starship",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "Rolv-Apneseth",
-            "repo": "starship.yazi",
-            "rev": "a63550b2f91f0553cc545fd8081a03810bc41bc0",
-            "sha256": "sha256-PYeR6fiWDbUMpJbTFSkM57FzmCbsB4W4IXXe25wLncg=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "a63550b2f91f0553cc545fd8081a03810bc41bc0"
     }
 }

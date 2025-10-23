@@ -13,16 +13,4 @@
     };
     date = "2025-10-22";
   };
-  yazi-starship = {
-    pname = "yazi-starship";
-    version = "a63550b2f91f0553cc545fd8081a03810bc41bc0";
-    src = fetchFromGitHub {
-      owner = "Rolv-Apneseth";
-      repo = "starship.yazi";
-      rev = "a63550b2f91f0553cc545fd8081a03810bc41bc0";
-      fetchSubmodules = false;
-      sha256 = "sha256-PYeR6fiWDbUMpJbTFSkM57FzmCbsB4W4IXXe25wLncg=";
-    };
-    date = "2025-07-08";
-  };
 }
