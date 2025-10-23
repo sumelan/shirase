@@ -22,7 +22,7 @@ in {
       {
         event = "before-sleep";
         command = concatStringsSep "; " [
-          "${getExe noctaliaPkgs} ipc call lockScreen toggle"
+          "${getExe noctaliaPkgs} ipc call lockScreen lock"
           "${getExe pkgs.playerctl} pause"
         ];
       }
@@ -32,7 +32,7 @@ in {
       }
       {
         event = "lock";
-        command = "${getExe noctaliaPkgs} lockScreen toggle";
+        command = "${getExe noctaliaPkgs} lockScreen lock";
       }
       {
         event = "unlock";
@@ -44,12 +44,12 @@ in {
       (mkIf config.custom.backlight.enable {
         timeout = 60 * 8;
         # set monitor backlight to minimum, avoid 0 on OLED monitor.
-        command = "${getExe pkgs.brightnessctl} --save set 5%"; # save previous state in a temporary file
+        command = "${getExe pkgs.brightnessctl} --save set 3%"; # save previous state in a temporary file
         resumeCommand = "${getExe pkgs.brightnessctl} -r"; # monitor backlight restore
       })
       {
         timeout = 60 * 12;
-        command = "${getExe noctaliaPkgs} ipc call lockScreen toggle";
+        command = "${getExe noctaliaPkgs} ipc call lockScreen lock";
       }
       {
         timeout = 60 * 15;

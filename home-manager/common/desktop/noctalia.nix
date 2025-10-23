@@ -390,7 +390,7 @@ in {
       };
       "Mod+Alt+L" = {
         allow-when-locked = true;
-        action.spawn = noctalia "lockScreen toggle";
+        action.spawn = noctalia "lockScreen lock";
         hotkey-overlay.title = ''<span foreground="${hotkeyColor}">[Noctalia]</span> Lock Screen'';
       };
       "Mod+I" = {
