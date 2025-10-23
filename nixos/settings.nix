@@ -80,12 +80,24 @@ in {
         buildInputs = [pkgs.makeWrapper];
         postBuild =
           # sh
-          ''wrapProgram $out/bin/yazi --set YAZI_CONFIG_HOME "${config.hm.xdg.configHome}/yazi"'';
+          ''
+            wrapProgram $out/bin/yazi --set YAZI_CONFIG_HOME "${config.hm.xdg.configHome}/yazi"
+          '';
         meta.mainProgram = "yazi";
       };
 
-      # default editor
-      defaultEditor = config.hm.profiles.${user}.defaultEditor.package;
+      # helix editor
+      customHelix = pkgs.symlinkJoin {
+        name = "helix";
+        paths = [pkgs.helix];
+        buildInputs = [pkgs.makeWrapper];
+        postBuild =
+          # sh
+          ''
+            wrapProgram $out/bin/hx --add-flags "--config ${config.hm.xdg.configHome}/helix";
+          '';
+        meta.mainProgram = "hx";
+      };
 
       # use the package configured by nvf
       customNeovim = pkgs.custom.nvf.override {inherit host flakePath;};

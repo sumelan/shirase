@@ -255,10 +255,7 @@ in {
             insert = "bar";
             select = "underline";
           };
-          indent-guides = {
-            render = true;
-            character = "╎";
-          };
+          indent-guides.render = true;
           clipboard-provider = "wayland";
         };
       };

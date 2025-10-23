@@ -23,7 +23,7 @@ in {
       shellAbbrs =
         config.home.shellAliases
         // {
-          ehistory = "nvim ${config.xdg.dataHome}/fish/fish_history";
+          ehistory = "hx ${config.xdg.dataHome}/fish/fish_history";
         };
       shellInit = ''
         set fish_greeting
