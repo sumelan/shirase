@@ -9,6 +9,7 @@
 }: let
   inherit
     (lib)
+    mkIf
     mkForce
     hiPrio
     optionals
@@ -87,7 +88,7 @@ in {
       };
 
       # helix editor
-      customHelix = pkgs.symlinkJoin {
+      customHelix = mkIf config.hm.custom.helix.enable (pkgs.symlinkJoin {
         name = "helix";
         paths = [pkgs.helix];
         buildInputs = [pkgs.makeWrapper];
@@ -97,7 +98,7 @@ in {
             wrapProgram $out/bin/hx --add-flags "--config ${config.hm.xdg.configHome}/helix";
           '';
         meta.mainProgram = "hx";
-      };
+      });
 
       # use the package configured by nvf
       customNeovim = pkgs.custom.nvf.override {inherit host flakePath;};

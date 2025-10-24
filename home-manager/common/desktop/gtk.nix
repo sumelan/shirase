@@ -32,11 +32,14 @@
       name = "Nordic";
     };
     iconTheme = {
-      package = pkgs.nordzy-icon-theme.override {
-        # default; purple; pink; red; orange; yellow; green; turquoise; cyan; all)
-        nordzy-themes = ["turquoise"];
+      package = pkgs.papirus-nord.override {
+        # valid accent:
+        # `auroragreen`, `auroragreenb`, `auroramagenta`, `auroramagentab`, `auroraorange`, `auroraorangeb`,
+        # `aurorared`, `auroraredb`, `aurorayellow`, `aurorayellowb`, `frostblue1`, `frostblue2`, `frostblue3`,
+        # `frostblue4`, `polarnight1`, `polarnight2`, `polarnight3`, `polarnight3`, `snowstorm1`, `snowstorm1b`
+        accent = "polarnight3";
       };
-      name = "Nordzy-turquoise-dark";
+      name = "Papirus-Dark";
     };
     font = {
       name = config.custom.fonts.regular;

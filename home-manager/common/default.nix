@@ -6,7 +6,6 @@ _: {
     ./eza.nix
     ./gh.nix
     ./git.nix
-    ./helix.nix
     ./jujutsu.nix
     ./lazygit.nix
     ./mpd.nix

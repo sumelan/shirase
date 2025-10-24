@@ -2,7 +2,7 @@ _: {
   imports = [
     ./auth.nix
     ./boot.nix
-    ./configuration.nix
+    ./config.nix
     ./filesystem.nix
     ./greetd.nix
     ./impermanence.nix
