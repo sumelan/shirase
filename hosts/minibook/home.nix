@@ -4,7 +4,7 @@ in {
   monitors = {
     "DSI-1" = {
       isMain = true;
-      scale = 1.5;
+      scale = 1.35;
       mode = {
         width = 1200;
         height = 1920;
@@ -31,6 +31,7 @@ in {
 
   custom = let
     enableList = [
+      "kdeconnect"
       "protonapp"
       "rmpc"
       "spicetify-nix"

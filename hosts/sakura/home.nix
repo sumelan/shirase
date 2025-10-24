@@ -21,6 +21,7 @@ in {
   custom = let
     enableList = [
       "cyanrip"
+      "kdeconnect"
       "obs-studio"
       "protonapp"
       "rmpc"
