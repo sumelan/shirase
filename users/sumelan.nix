@@ -52,8 +52,8 @@ in {
       defaultLocale = "ja_JP.UTF-8";
       email = "sumelan@proton.me";
       defaultEditor = {
-        package = pkgs.helix;
-        name = "hx";
+        package = pkgs.neovim;
+        name = "nvim";
       };
     };
     # Japanese settings

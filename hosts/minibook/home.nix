@@ -4,7 +4,7 @@ in {
   monitors = {
     "DSI-1" = {
       isMain = true;
-      scale = 1.0;
+      scale = 1.5;
       mode = {
         width = 1200;
         height = 1920;
@@ -31,7 +31,6 @@ in {
 
   custom = let
     enableList = [
-      "noctalia"
       "protonapp"
       "rmpc"
       "spicetify-nix"

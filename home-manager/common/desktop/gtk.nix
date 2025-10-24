@@ -7,7 +7,7 @@
     pointerCursor = {
       package = pkgs.capitaine-cursors-themed;
       name = "Capitaine Cursors (Nord)";
-      size = 38;
+      size = 32;
       gtk.enable = true;
       x11.enable = true;
     };
@@ -41,7 +41,7 @@
     font = {
       name = config.custom.fonts.regular;
       package = pkgs.geist-font;
-      size = 15;
+      size = 12;
     };
     gtk2 = {
       configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";

@@ -168,7 +168,7 @@ in {
         enable = true;
         color = "#000000dd";
       };
-      zoom = 0.5; # zoom ranges from 0 to 0.75 where lower values make everything smaller.
+      zoom = 0.700; # zoom ranges from 0 to 0.75 where lower values make everything smaller.
     };
 
     switch-events = {

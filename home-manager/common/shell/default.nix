@@ -8,7 +8,7 @@ in {
 
   home = {
     shellAliases = {
-      ":e" = "hx";
+      ":e" = "nvim";
       ":q" = "exit";
       ":wq" = "exit";
       c = "clear";

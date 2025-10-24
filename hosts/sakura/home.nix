@@ -4,7 +4,7 @@ in {
   monitors = {
     "HDMI-A-1" = {
       isMain = true;
-      scale = 1.5;
+      scale = 1.75;
       mode = {
         width = 3840;
         height = 2160;
@@ -22,7 +22,6 @@ in {
     enableList = [
       "cyanrip"
       "helium"
-      "noctalia"
       "obs-studio"
       "protonapp"
       "rmpc"

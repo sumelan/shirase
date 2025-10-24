@@ -456,17 +456,6 @@ in {
     ];
   };
 
-  xdg.mimeApps = {
-    defaultApplications = {
-      "text/plain" = "helix.desktop";
-      "application/x-shellscript" = "helix.desktop";
-      "application/xml" = "helix.desktop";
-    };
-    associations.added = {
-      "text/csv" = "helix.desktop";
-    };
-  };
-
   custom.persist = {
     home.cache.directories = [
       # helix log

@@ -22,9 +22,11 @@ in {
     packages = builtins.attrValues {
       inherit
         (pkgs)
+        brightnessctl
         curl
         gzip
         microfetch
+        playerctl
         trash-cli
         wl-clipboard
         xdg-utils
