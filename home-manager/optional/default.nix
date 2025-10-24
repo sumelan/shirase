@@ -15,6 +15,7 @@ _: {
     ./protonapp.nix
     ./spicetify-nix.nix
     ./spotify-player.nix
+    ./swww.nix
     ./thunderbird.nix
     ./vlc.nix
     ./youtube-tui.nix

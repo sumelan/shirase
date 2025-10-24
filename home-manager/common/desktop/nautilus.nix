@@ -85,8 +85,8 @@ in {
           {app-id = "^(xdg-desktop-portal-gtk)$";}
         ];
         open-floating = true;
-        default-column-width.proportion = 0.4;
-        default-window-height.proportion = 0.4;
+        default-column-width.proportion = 0.5;
+        default-window-height.proportion = 0.5;
       }
     ];
   };

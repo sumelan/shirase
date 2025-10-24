@@ -30,15 +30,19 @@ in {
   };
 
   custom = let
-    enableList = [
-      "kdeconnect"
-      "noctalia"
-      "protonapp"
-      "rmpc"
-      "spicetify-nix"
-      "spotify-player"
-      "youtube-tui"
-    ];
+    enableList =
+      [
+        "kdeconnect"
+        "protonapp"
+        "rmpc"
+        "spicetify-nix"
+        "spotify-player"
+        "youtube-tui"
+      ]
+      ++ [
+        "noctalia"
+        "swayidle"
+      ];
 
     disableList = [
     ];

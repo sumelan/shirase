@@ -9,57 +9,64 @@
   noctaliaPkgs = inputs.noctalia-shell.packages.${pkgs.system}.default;
   inherit
     (lib)
+    mkEnableOption
     mkIf
     concatStringsSep
     getExe
     getExe'
     ;
 in {
-  services.swayidle = {
-    enable = true;
-    extraArgs = ["-w"];
-    events = [
-      {
-        event = "before-sleep";
-        command = concatStringsSep "; " [
-          "${getExe noctaliaPkgs} ipc call lockScreen lock"
-          "${getExe pkgs.playerctl} pause"
-        ];
-      }
-      {
-        event = "after-resume";
-        command = "${getExe config.programs.niri.package} msg action power-on-monitors";
-      }
-      {
-        event = "lock";
-        command = "${getExe noctaliaPkgs} lockScreen lock";
-      }
-      {
-        event = "unlock";
-        command = "";
-      }
-    ];
+  options.custom = {
+    swayidle.enable = mkEnableOption "swayidel";
+  };
 
-    timeouts = [
-      (mkIf config.custom.backlight.enable {
-        timeout = 60 * 8;
-        # set monitor backlight to minimum, avoid 0 on OLED monitor.
-        command = "${getExe pkgs.brightnessctl} --save set 3%"; # save previous state in a temporary file
-        resumeCommand = "${getExe pkgs.brightnessctl} -r"; # monitor backlight restore
-      })
-      {
-        timeout = 60 * 12;
-        command = "${getExe noctaliaPkgs} ipc call lockScreen lock";
-      }
-      {
-        timeout = 60 * 15;
-        command = "${getExe config.programs.niri.package} msg action power-off-monitors";
-        resumeCommand = "${getExe config.programs.niri.package} msg action power-on-monitors";
-      }
-      (mkIf isLaptop {
-        timeout = 60 * 20;
-        command = "${getExe' pkgs.systemd "systemctl"} suspend";
-      })
-    ];
+  config = mkIf config.custom.swayidle.enable {
+    services.swayidle = {
+      enable = true;
+      extraArgs = ["-w"];
+      events = [
+        {
+          event = "before-sleep";
+          command = concatStringsSep "; " [
+            "${getExe noctaliaPkgs} ipc call lockScreen lock"
+            "${getExe pkgs.playerctl} pause"
+          ];
+        }
+        {
+          event = "after-resume";
+          command = "${getExe config.programs.niri.package} msg action power-on-monitors";
+        }
+        {
+          event = "lock";
+          command = "${getExe noctaliaPkgs} lockScreen lock";
+        }
+        {
+          event = "unlock";
+          command = "";
+        }
+      ];
+
+      timeouts = [
+        (mkIf config.custom.backlight.enable {
+          timeout = 60 * 8;
+          # set monitor backlight to minimum, avoid 0 on OLED monitor.
+          command = "${getExe pkgs.brightnessctl} --save set 3%"; # save previous state in a temporary file
+          resumeCommand = "${getExe pkgs.brightnessctl} -r"; # monitor backlight restore
+        })
+        {
+          timeout = 60 * 12;
+          command = "${getExe noctaliaPkgs} ipc call lockScreen lock";
+        }
+        {
+          timeout = 60 * 15;
+          command = "${getExe config.programs.niri.package} msg action power-off-monitors";
+          resumeCommand = "${getExe config.programs.niri.package} msg action power-on-monitors";
+        }
+        (mkIf isLaptop {
+          timeout = 60 * 20;
+          command = "${getExe' pkgs.systemd "systemctl"} suspend";
+        })
+      ];
+    };
   };
 }

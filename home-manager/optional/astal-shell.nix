@@ -21,68 +21,82 @@ in {
         ;
     };
 
-    services.astal-shell = {
-      enable = true;
-      package = inputs.astal-shell.packages.${pkgs.system}.default;
+    services = {
+      astal-shell = {
+        enable = true;
+        package = inputs.astal-shell.packages.${pkgs.system}.default;
 
-      # Configure display margins
-      displays = {
-        "LG HDR 4K" = [390 145];
-        "Unknown" = [200 70];
-      };
+        # Configure display margins
+        displays = {
+          "LG HDR 4K" = [390 145];
+          "Unknown" = [210 85];
+        };
 
-      # Configure theme
-      theme = {
-        colors = {
-          background = {
-            primary = "rgba(0, 0, 0, 0.8)";
-            secondary = "rgba(0, 0, 0, 0.6)";
+        # Configure theme
+        theme = {
+          colors = {
+            background = {
+              primary = "rgba(0, 0, 0, 0.8)";
+              secondary = "rgba(0, 0, 0, 0.6)";
+            };
+            text = {
+              primary = "rgba(255, 255, 255, 1.0)";
+              secondary = "rgba(255, 255, 255, 0.8)";
+              focused = "rgba(255, 255, 255, 1.0)";
+              unfocused = "rgba(255, 255, 255, 0.6)";
+            };
+            accent = {
+              primary = "rgba(100, 149, 237, 0.8)";
+              secondary = "rgba(100, 149, 237, 0.6)";
+              border = "rgba(100, 149, 237, 0.4)";
+              overlay = "rgba(100, 149, 237, 0.2)";
+            };
+            status = {
+              success = "rgba(76, 175, 80, 0.8)";
+              warning = "rgba(255, 193, 7, 0.8)";
+              error = "rgba(244, 67, 54, 0.8)";
+            };
           };
-          text = {
-            primary = "rgba(255, 255, 255, 1.0)";
-            secondary = "rgba(255, 255, 255, 0.8)";
-            focused = "rgba(255, 255, 255, 1.0)";
-            unfocused = "rgba(255, 255, 255, 0.6)";
+          opacity = {
+            high = 1.0;
+            medium = 0.8;
+            low = 0.6;
           };
-          accent = {
-            primary = "rgba(100, 149, 237, 0.8)";
-            secondary = "rgba(100, 149, 237, 0.6)";
-            border = "rgba(100, 149, 237, 0.4)";
-            overlay = "rgba(100, 149, 237, 0.2)";
+          font = {
+            sizes = {
+              small = "0.8em";
+              normal = "1em";
+              large = "1.2em";
+            };
+            weights = {
+              normal = "normal";
+              bold = "bold";
+            };
           };
-          status = {
-            success = "rgba(76, 175, 80, 0.8)";
-            warning = "rgba(255, 193, 7, 0.8)";
-            error = "rgba(244, 67, 54, 0.8)";
+          spacing = {
+            small = "4px";
+            medium = "8px";
+            large = "16px";
           };
-        };
-        opacity = {
-          high = 1.0;
-          medium = 0.8;
-          low = 0.6;
-        };
-        font = {
-          sizes = {
-            small = "0.8em";
-            normal = "1em";
-            large = "1.2em";
+          borderRadius = {
+            small = "2px";
+            medium = "4px";
+            large = "9999px";
           };
-          weights = {
-            normal = "normal";
-            bold = "bold";
-          };
-        };
-        spacing = {
-          small = "4px";
-          medium = "8px";
-          large = "16px";
-        };
-        borderRadius = {
-          small = "2px";
-          medium = "4px";
-          large = "9999px";
         };
       };
+    };
+
+    programs.niri.settings = {
+      window-rules = [
+        {
+          matches = [
+            {app-id = "^(org.gnome.Calendar)$";}
+            {app-id = "^(org.gnome.Weather)$";}
+          ];
+          open-floating = true;
+        }
+      ];
     };
 
     custom.persist = {

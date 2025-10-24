@@ -19,18 +19,22 @@ in {
   };
 
   custom = let
-    enableList = [
-      "astal-shell"
-      "cyanrip"
-      "kdeconnect"
-      "noctalia"
-      "obs-studio"
-      "protonapp"
-      "rmpc"
-      "spicetify-nix"
-      "spotify-player"
-      "youtube-tui"
-    ];
+    enableList =
+      [
+        "astal-shell"
+        "cyanrip"
+        "kdeconnect"
+        "obs-studio"
+        "protonapp"
+        "rmpc"
+        "spicetify-nix"
+        "spotify-player"
+        "youtube-tui"
+      ]
+      ++ [
+        "noctalia"
+        "swayidle"
+      ];
 
     disableList = [
     ];
