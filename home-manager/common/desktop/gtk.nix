@@ -28,8 +28,13 @@
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.nordic;
-      name = "Nordic";
+      package = pkgs.graphite-gtk-theme.override {
+        themeVariants = ["default"]; # default: blue
+        colorVariants = ["dark"]; # default: all
+        sizeVariants = ["compact"]; # default: standard
+        tweaks = ["nord"];
+      };
+      name = "Graphite-Dark-compact-nord";
     };
     iconTheme = {
       package = pkgs.papirus-nord.override {

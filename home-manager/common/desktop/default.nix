@@ -1,11 +1,12 @@
 _: {
   imports = [
     ./niri
+    ./config.nix
     ./discord.nix
     ./foot.nix
     ./gtk.nix
     ./mpv.nix
-    ./nemo.nix
+    ./nautilus.nix
     ./noctalia.nix
     ./pipewire.nix
     ./polkit.nix

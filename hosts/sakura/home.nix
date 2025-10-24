@@ -20,8 +20,10 @@ in {
 
   custom = let
     enableList = [
+      "astal-shell"
       "cyanrip"
       "kdeconnect"
+      "noctalia"
       "obs-studio"
       "protonapp"
       "rmpc"

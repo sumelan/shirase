@@ -4,7 +4,7 @@
   inputs,
   ...
 }: let
-  inherit (lib) getExe mkForce;
+  inherit (lib) getExe;
   zen-browser = inputs.zen-browser.packages.${pkgs.system}.twilight;
 in {
   programs = {
@@ -83,8 +83,6 @@ in {
     associations.added = associations;
     defaultApplications = associations;
   };
-
-  home.file.".mozilla/extensions".enable = mkForce false;
 
   custom.persist = {
     home.directories = [

@@ -15,6 +15,7 @@
   ];
 
   defaultHomeMods = [
+    inputs.astal-shell.homeManagerModules.default
     inputs.nix-index-database.homeModules.nix-index
     inputs.noctalia-shell.homeModules.default
     inputs.spicetify-nix.homeManagerModules.default

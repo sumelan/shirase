@@ -1,6 +1,7 @@
 _: {
   imports = [
     ./rmpc
+    ./astal-shell.nix
     ./brave.nix
     ./cyanrip.nix
     ./euphonica.nix

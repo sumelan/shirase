@@ -15,19 +15,28 @@
   };
 in {
   nixpkgs.overlays = [
+    # include packages defined as `pkgs.custom.foo`
     (_final: prev: {
       custom =
         (prev.custom or {})
-        # include packages defined as pkgs.custom.bar
         // (import ../packages {
           inherit (prev) pkgs;
           inherit inputs;
         })
-        # include yazi-plugins defined and updated through nvfetcher
-        # as pkgs.custom.
         // {
           inherit (yaziSources) yazi-plugins yazi-starship;
         };
+    })
+    # nable the A/V Properties and see details like media length
+    (_final: prev: {
+      nautilus = prev.nautilus.overrideAttrs (nprev: {
+        buildInputs =
+          nprev.buildInputs
+          ++ (with pkgs.gst_all_1; [
+            gst-plugins-good
+            gst-plugins-bad
+          ]);
+      });
     })
   ];
 }
