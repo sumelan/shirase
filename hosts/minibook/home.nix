@@ -40,8 +40,8 @@ in {
         "youtube-tui"
       ]
       ++ [
-        "noctalia"
-        "swayidle"
+        "astal-shell"
+        "swww"
       ];
 
     disableList = [

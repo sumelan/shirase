@@ -11,6 +11,8 @@ profiles-path := "/nix/var/nix/profiles"
 yazi-path := "packages/yazi-plugins"
 helium-path := "packages/helium"
 
+[group('DEFAULT')]
+[doc('List the recipes.')]
 @default:
     just --list --unsorted
 
@@ -35,7 +37,7 @@ helium-path := "packages/helium"
     nh os switch {{ args }}
 
 [group('SYSTEM')]
-[doc('Switch configuration, make boot-default and remain a log, commit on git.')]
+[doc('Switch configuration, make it boot default and write outputs in log, commit on git.')]
 @deploy *args: check
     if [ -f "bootlog/{{ HOSTNAME }}.log" ]; then \
       echo -e "Write in previous log...\n"; \
@@ -58,21 +60,34 @@ helium-path := "packages/helium"
     git commit -m "deployed $(nixos-rebuild list-generations --flake $NH_FLAKE --json | jq '.[0].generation') on $(hostname)"
 
 [group('SYSTEM')]
-[doc('Update flake and fetch git input with nvfetcher.')]
-@get-updates: check
-    echo -e "Updating flake and fetch git inputs...\n"
+[doc('Update a specific input in the flake.')]
+@updateInput input: check
+    nix flake update {{ input }}
+
+alias update := updateInput
+
+[group('SYSTEM')]
+[doc('Update all flake inputs, fetch packages you defined and commit on git.')]
+@updateAll: check
+    echo -e "Updating all flake inputs...\n"
 
     nix flake update
-    # run nvfetcher for yazi-plugins
+
+    echo -e "Fetch packages you defined...\n"
+
     nvfetcher --keep-old --config {{ yazi-path }}/nvfetcher.toml --build-dir {{ yazi-path }}
     nvfetcher --keep-old --config {{ helium-path }}/nvfetcher.toml --build-dir {{ helium-path }}
 
-[group('SYSTEM')]
-[doc('Update flake, fetch input and commit on git.')]
-@update: get-updates
     git add -A
     echo -e "Commit on git..."
-    git commit -m "chore: update inputs"
+    git commit -m "chore: update inputs and fetch packages"
+
+alias updates := updateAll
+
+[group('SYSTEM')]
+[doc('Start an interactive environment for evaluating Nix expressions.')]
+@repl:
+    nh os repl
 
 [group('MAINTENANCE')]
 [doc('Clean all profiles but keep 5 generations.')]
@@ -84,10 +99,27 @@ helium-path := "packages/helium"
 @optimise:
     nix store optimise -v
 
-alias pf := prefetch
+[group('BUILD')]
+[doc('Build a package in nixpkgs.')]
+@build package:
+    nix build nixpkgs#{{ package }}
+
+[group('BUILD')]
+[doc('Build a package in nixpkgs with override.')]
+@buildOverride package override:
+    nix build --impure --expr  '(import <nixpkgs> { }).{{ package }}.override { {{ override }} }'
+
+alias override := buildOverride
+
+[group('BUILD')]
+[doc('Build a package you defined in `./packages`.')]
+@buildCustom package:
+    nix build --expr '(import <nixpkgs> { }).callPackage ./packages/{{ package }}/default.nix {}'
+
+alias callPackage := buildCustom
 
 [group('TOOLS')]
-[doc('Download a file to the Nix store and get the SHA-256 hash.')]
+[doc('Download a file to the nix store and get the SHA-256 hash.')]
 @prefetch url:
     nix store prefetch-file --json --hash-type sha256 {{ url }} | jq -r .hash
 
@@ -98,17 +130,6 @@ alias pf := prefetch
 
 [group('TOOLS')]
 [doc('Look the store path of specific package through yazi.')]
-@explore nixpkg:
-    yazi $(nix eval --raw nixpkgs#{{ nixpkg }})
+@explore package:
+    yazi $(nix eval --raw nixpkgs#{{ package }})
 
-alias cb := customBuild
-
-[group('TOOLS')]
-[doc('Build a custom package you defined in `./packages`.')]
-@customBuild package:
-    nix-build --expr '(import <nixpkgs> { }).callPackage ./packages/{{ package }}/default.nix {}'
-
-[group('TOOLS')]
-[doc('Start an interactive environment for evaluating Nix expressions.')]
-@repl:
-    nh os repl
