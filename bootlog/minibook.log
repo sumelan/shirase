@@ -748,3 +748,331 @@ Removed packages:
 [R.]  #5  tokyonight            4d159616
 [R-]  #6  tokyonight-gtk-theme  0-unstable-2025-10-14, 0-unstable-2025-10-14-fish-completions
 Closure size: 2510 -> 2548 (274 paths added, 236 paths removed, delta +38, disk usage +334.7MiB).
+
+---
+
+2025年10月26日 07時18分34秒
+<<< /nix/var/nix/profiles/system-29-link
+>>> /nix/var/nix/profiles/system-30-link
+Version changes:
+[C.]  #01  at-spi2-core           2.56.2, 2.56.2-dev, 2.56.2-fish-completions -> 2.56.2, 2.56.2-fish-completions
+[C*]  #02  bash-interactive       5.3p3, 5.3p3-dev, 5.3p3-doc, 5.3p3-fish-completions, 5.3p3-info, 5.3p3-man -> 5.3p3, 5.3p3-doc, 5.3p3-fish-completions, 5.3p3-info, 5.3p3-man
+[C*]  #03  bind                   9.20.13-dnsutils, 9.20.13-host, 9.20.13-lib, 9.20.13-man -> 9.20.13-host, 9.20.13-lib, 9.20.13-man
+[C*]  #04  bluez                  5.83 x2, 5.83-dev -> 5.83 x2
+[C.]  #05  boost                  1.87.0 -> 1.87.0, 1.87.0-dev
+[C.]  #06  breeze-icons           6.19.0, 6.19.0-dev -> 6.19.0
+[C.]  #07  brightnessctl          0.5.1 -> 0.5.1, 0.5.1-fish-completions
+[C.]  #08  brotli                 1.1.0, 1.1.0-dev, 1.1.0-lib x2 -> 1.1.0-lib x2
+[C*]  #09  bzip2                  1.0.8 x2, 1.0.8-bin, 1.0.8-dev, 1.0.8-man -> 1.0.8 x2, 1.0.8-bin, 1.0.8-man
+[C.]  #10  cairo                  1.18.4 x2, 1.18.4-dev -> 1.18.4 x2
+[C.]  #11  cups                   2.4.14, 2.4.14-dev, 2.4.14-lib -> 2.4.14, 2.4.14-lib
+[C.]  #12  electron               38.2.2 -> 36.9.4, 38.2.2
+[C.]  #13  electron-unwrapped     38.2.2 -> 36.9.4, 38.2.2
+[C.]  #14  file                   5.45 x2, 5.45-dev -> 5.45 x2
+[C*]  #15  fontconfig             2.17.1 x2, 2.17.1-bin, 2.17.1-dev, 2.17.1-lib x2 -> 2.17.1 x2, 2.17.1-bin, 2.17.1-lib x2
+[C.]  #16  freetype               2.13.3 x2, 2.13.3-dev -> 2.13.3 x2
+[C.]  #17  fribidi                1.0.16 x2, 1.0.16-dev -> 1.0.16 x2
+[C.]  #18  gcc                    14.3.0, 14.3.0-lib x2, 14.3.0-libgcc x2 -> 14.3.0, 14.3.0-lib x2, 14.3.0-libgcc x2, 15.2.0-lib, 15.2.0-libgcc
+[C.]  #19  gdk-pixbuf             2.42.12, 2.42.12-dev -> 2.42.12
+[C.]  #20  graphite2              1.3.14 x2, 1.3.14-dev -> 1.3.14 x2
+[C.]  #21  gtk+3                  3.24.49, 3.24.49-dev -> 3.24.49
+[C.]  #22  harfbuzz               11.2.1 x2, 11.2.1-dev -> 11.2.1 x2
+[C.]  #23  icu4c                  73.2, 76.1 x2, 76.1-dev -> 75.1, 76.1 x2, 76.1-dev
+[C.]  #24  libXcomposite          0.4.6, 0.4.6-dev -> 0.4.6
+[C.]  #25  libXdamage             1.1.6, 1.1.6-dev -> 1.1.6
+[C.]  #26  libXft                 2.3.9 x2, 2.3.9-dev -> 2.3.9 x2
+[C.]  #27  libXi                  1.8.2 x2, 1.8.2-dev -> 1.8.2 x2
+[C.]  #28  libXinerama            1.1.5, 1.1.5-dev -> 1.1.5
+[C.]  #29  libdatrie              2019-12-20, 2019-12-20-bin, 2019-12-20-dev, 2019-12-20-lib x2 -> 2019-12-20-lib x2
+[C.]  #30  libepoxy               1.5.10, 1.5.10-dev -> 1.5.10
+[C.]  #31  libglvnd               1.7.0 x2, 1.7.0-dev -> 1.7.0 x2
+[C.]  #32  libheif                1.20.2 -> 1.20.2, 1.20.2-bin, 1.20.2-fish-completions, 1.20.2-man
+[C.]  #33  libice                 1.1.2, 1.1.2-dev -> 1.1.2
+[C.]  #34  libjpeg-turbo          3.1.2 x2, 3.1.2-bin, 3.1.2-dev -> 3.1.2 x2
+[C.]  #35  libnotify              0.8.6, 0.8.6-dev -> 0.8.6, 0.8.6-fish-completions, 0.8.6-man
+[C.]  #36  libpng-apng            1.6.50 x2, 1.6.50-dev -> 1.6.50 x2
+[C.]  #37  libproxy               0.5.11, 0.5.11-dev -> 0.5.11
+[C.]  #38  libselinux             3.8.1 x2, 3.8.1-bin, 3.8.1-dev -> 3.8.1 x2
+[C.]  #39  libsm                  1.2.6, 1.2.6-dev -> 1.2.6
+[C.]  #40  libthai                0.1.29 x2, 0.1.29-dev -> 0.1.29 x2
+[C.]  #41  libtiff                4.7.1 x2, 4.7.1-bin, 4.7.1-dev -> 4.7.1 x2
+[C.]  #42  liburcu                0.15.3, 0.15.3-dev -> 0.15.3
+[C.]  #43  libx11                 1.8.12 x2, 1.8.12-dev -> 1.8.12 x2
+[C.]  #44  libxau                 1.0.12 x2, 1.0.12-dev -> 1.0.12 x2
+[C.]  #45  libxcb                 1.17.0 x2, 1.17.0-dev -> 1.17.0 x2
+[C.]  #46  libxcb-cursor          0.1.5, 0.1.5-dev -> 0.1.5
+[C.]  #47  libxcb-image           0.4.1, 0.4.1-dev -> 0.4.1
+[C.]  #48  libxcb-keysyms         0.4.1, 0.4.1-dev -> 0.4.1
+[C.]  #49  libxcb-render-util     0.3.10, 0.3.10-dev -> 0.3.10
+[C.]  #50  libxcb-util            0.4.1, 0.4.1-dev -> 0.4.1
+[C.]  #51  libxcb-wm              0.4.2, 0.4.2-dev -> 0.4.2
+[C.]  #52  libxcursor             1.2.3, 1.2.3-dev -> 1.2.3
+[C.]  #53  libxdmcp               1.1.5 x2, 1.1.5-dev -> 1.1.5 x2
+[C.]  #54  libxext                1.3.6 x2, 1.3.6-dev -> 1.3.6 x2
+[C.]  #55  libxkbcommon           1.11.0, 1.11.0-dev -> 1.11.0
+[C.]  #56  libxml2                2.14.6 x2, 2.14.6-bin, 2.14.6-dev -> 2.14.6 x2
+[C.]  #57  libxrandr              1.5.4, 1.5.4-dev -> 1.5.4
+[C.]  #58  libxrender             0.9.12 x2, 0.9.12-dev -> 0.9.12 x2
+[C.]  #59  libxslt                1.1.43, 1.1.43-bin, 1.1.43-dev -> 1.1.43
+[C.]  #60  lttng-ust              2.12.2, 2.14.0 x2, 2.14.0-bin, 2.14.0-dev -> 2.12.2, 2.14.0 x2
+[C.]  #61  md4c                   0.5.2, 0.5.2-dev, 0.5.2-lib -> 0.5.2-lib
+[C.]  #62  nautilus               48.3 -> 48.3, 48.3-fish-completions
+[U*]  #63  niri-unstable          2025-10-20-b3245b8, 2025-10-20-b3245b8-doc -> 2025-10-24-4310c20, 2025-10-24-4310c20-doc
+[D.]  #64  nixos-system-minibook  25.11.20251019.5e2a59a.9954c49 -> 25.11.20251019.5e2a59a.bae0efd
+[C.]  #65  pango                  1.56.3 x2, 1.56.3-bin, 1.56.3-dev -> 1.56.3 x2
+[C.]  #66  pcre2                  10.46 x3, 10.46-bin, 10.46-dev -> 10.46 x2
+[C*]  #67  polkit                 1.pam, 126, 126-bin, 126-dev -> 1.pam, 126, 126-bin
+[C.]  #68  python3                3.13.7 x2, 3.13.7-env x7, 3.13.7-env-fish-completions -> 3.13.7 x2, 3.13.7-env x4, 3.13.7-env-fish-completions
+[C.]  #69  qtbase                 5.15.17, 5.15.17-bin, 6.9.2, 6.9.2-dev, 6.9.2-only-plugins-qml -> 5.15.17, 5.15.17-bin, 6.9.2, 6.9.2-only-plugins-qml
+[C.]  #70  qtsvg                  5.15.17, 5.15.17-bin, 6.9.2, 6.9.2-dev -> 5.15.17, 5.15.17-bin, 6.9.2
+[C*]  #71  systemd                <none>, 257.9 x2, 257.9-dev, 257.9-man -> <none>, 257.9 x2, 257.9-man
+[C.]  #72  systemd-minimal-libs   257.9 x2, 257.9-dev -> 257.9 x2
+[C*]  #73  util-linux             2.41.1, 2.41.1-bin, 2.41.1-dev, 2.41.1-lastlog, 2.41.1-lib, 2.41.1-login, 2.41.1-man, 2.41.1-mount, 2.41.1-swap -> 2.41.1-bin, 2.41.1-lastlog, 2.41.1-lib, 2.41.1-login, 2.41.1-man, 2.41.1-mount, 2.41.1-swap
+[C.]  #74  vulkan-loader          1.4.321.0 x2, 1.4.321.0-dev -> 1.4.321.0 x2
+[C.]  #75  wayland                1.24.0 x2, 1.24.0-dev -> 1.24.0 x2
+[C*]  #76  zstd                   1.5.7 x2, 1.5.7-bin, 1.5.7-dev, 1.5.7-man -> 1.5.7 x2, 1.5.7-bin, 1.5.7-man
+Selection state changes:
+[C+]  #1  hicolor-icon-theme  0.18
+Added packages:
+[A.]  #01  appmenu-glib-translator              25.04
+[A.]  #02  appstream-glib                       0.8.2
+[A.]  #03  astal                                0.1.0
+[A.]  #04  astal-apps                           0.1.0
+[A.]  #05  astal-battery                        0.1.0
+[A.]  #06  astal-mpris                          0.1.0
+[A.]  #07  astal-network                        0.1.0
+[A.]  #08  astal-shell                          <none>
+[A.]  #09  astal-shell-fish-completions         <none>
+[A.]  #10  astal-shell.service                  <none>
+[A.]  #11  astal-tray                           0.1.0
+[A.]  #12  astal-wireplumber                    0.1.0
+[A.]  #13  astal3                               3.0.0
+[A.]  #14  brightness-control                   <none>
+[A.]  #15  brightness-control-fish-completions  <none>
+[A.]  #16  capitaine-cursors-themed             5, 5-fish-completions
+[A.]  #17  chmod.yazi                           25.5.31-unstable-2025-06-26
+[A.]  #18  display-control                      <none>
+[A.]  #19  display-control-fish-completions     <none>
+[A.]  #20  dunst                                1.13.0, 1.13.0-fish-completions, 1.13.0-man
+[A.]  #21  dunst.service                        <none>
+[A.]  #22  evolution-data-server                3.56.2
+[A.]  #23  geocode-glib                         3.26.4
+[A.]  #24  git.yazi                             25.5.31-unstable-2025-07-05
+[A.]  #25  gjs                                  1.84.2
+[A.]  #26  gnome-calendar                       48.1, 48.1-fish-completions
+[A.]  #27  gnome-weather                        48.0, 48.0-fish-completions
+[A+]  #28  graphite-gtk-theme                   2025-07-06, 2025-07-06-fish-completions
+[A.]  #29  harfbuzz-icu                         11.2.1
+[A.]  #30  hidapi                               0.15.0
+[A.]  #31  hm_astalshelldisplays.json           <none>
+[A.]  #32  hm_astalshelltheme.json              <none>
+[A.]  #33  hm_dunstdunstrc                      <none>
+[A.]  #34  hm_hyprhypridle.conf                 <none>
+[A.]  #35  hm_hyprhyprlock.conf                 <none>
+[A.]  #36  hm_nord                              <none>
+[A.]  #37  hm_nordnightaurora.png               <none>
+[A.]  #38  hyphen                               2.8.8
+[A.]  #39  hyprgraphics                         0.2.0
+[A.]  #40  hypridle                             0.1.7
+[A.]  #41  hypridle.service                     <none>
+[A.]  #42  hyprlang                             0.6.4
+[A.]  #43  hyprlock                             0.9.2, 0.9.2-fish-completions
+[A.]  #44  hyprlock.pam                         <none>
+[A.]  #45  hyprutils                            0.10.0
+[A.]  #46  kcontacts                            6.19.0
+[A.]  #47  kdeconnect-indicator.service         <none>
+[A.]  #48  kdeconnect-kde                       25.08.2, 25.08.2-fish-completions
+[A.]  #49  kdeconnect.service                   <none>
+[A.]  #50  kirigami-addons                      1.9.0
+[A.]  #51  kitemmodels                          6.19.0
+[A.]  #52  kpeople                              6.19.0
+[A.]  #53  kstatusnotifieritem                  6.19.0
+[A.]  #54  lazygit.yazi                         0-unstable-2025-08-06
+[A.]  #55  libbacktrace                         0-unstable-2024-03-02
+[A.]  #56  libfakekey                           0.3
+[A.]  #57  libgweather                          4.4.4
+[A.]  #58  libimagequant                        4.4.0
+[A.]  #59  libmanette                           0.2.12
+[A.]  #60  libphonenumber                       9.0.16
+[A.]  #61  media-control                        <none>
+[A.]  #62  media-control-fish-completions       <none>
+[A.]  #63  mission-center                       1.0.2
+[A.]  #64  modemmanager-qt                      6.19.0
+[A.]  #65  nord-c0e33fc6                        <none>
+[A.]  #66  nord.yazi                            0-unstable-2025-05-20
+[A.]  #67  nordic                               2.2.0-unstable-2025-05-05
+[A+]  #68  papirus-nord                         3.2.0, 3.2.0-fish-completions
+[A.]  #69  protobuf                             32.1
+[A.]  #70  pulseaudio-qt                        1.7.0
+[A.]  #71  python3.13-imageio                   2.37.0
+[A.]  #72  python3.13-imageio-ffmpeg            0.6.0
+[A.]  #73  python3.13-pillow                    11.3.0
+[A.]  #74  python3.13-screeninfo                0.8.1
+[A.]  #75  qtconnectivity                       6.9.2
+[A.]  #76  sdbus-cpp                            2.1.0
+[A.]  #77  session-control                      <none>
+[A.]  #78  session-control-fish-completions     <none>
+[A.]  #79  spicetify-Ziro                       <none>
+[A.]  #80  spicetify-Ziro-fish-completions      <none>
+[A.]  #81  spidermonkey                         128.14.0
+[A.]  #82  spotify-player                       0.21.0, 0.21.0-fish-completions
+[A.]  #83  spotify-player-app                   <none>
+[A.]  #84  sshfs-fuse                           3.7.3
+[A.]  #85  starship.yazi                        25.4.8-unstable-2025-07-08
+[A.]  #86  swww                                 0.11.2, 0.11.2-fish-completions
+[A.]  #87  vencord                              1.13.4
+[A.]  #88  volume-control                       <none>
+[A.]  #89  volume-control-fish-completions      <none>
+[A.]  #90  waypaper                             2.7, 2.7-fish-completions
+[A.]  #91  webcord-vencord                      4.11.1, 4.11.1-fish-completions
+[A.]  #92  webkitgtk                            2.50.1+abi=6.0
+[A.]  #93  wf-recorder                          0.5.0, 0.5.0-fish-completions
+[A.]  #94  woff2                                1.0.2-lib
+[A.]  #95  yatline.yazi                         25.5.31-unstable-2025-06-12
+Removed packages:
+[R.]  #001  cava                                                                      0.10.6
+[R.]  #002  cinnamon-desktop                                                          6.4.2
+[R.]  #003  cinnamon-translations                                                     6.4.2
+[R.]  #004  cliphist                                                                  0.6.1
+[R.]  #005  codebook                                                                  0.3.14
+[R.]  #006  dconf-editor                                                              45.0.1
+[R.]  #007  ddcutil                                                                   2.2.1
+[R.]  #008  docker-compose-language-service                                           0.2.0
+[R.]  #009  everforest                                                                1e625639
+[R.]  #010  everforest-cursors                                                        3212590527, 3212590527-fish-completions
+[R-]  #011  everforest-gtk-theme                                                      0-unstable-2023-03-20, 0-unstable-2023-03-20-fish-completions
+[R.]  #012  extra-cmake-modules                                                       6.19.0
+[R.]  #013  fish-lsp                                                                  1.0.10
+[R.]  #014  fix-qt-builtin-paths.sh                                                   <none>
+[R.]  #015  fix-qt-module-paths.sh                                                    <none>
+[R.]  #016  folder-color-switcher                                                     1.6.8
+[R.]  #017  fonts.conf                                                                <none>
+[R.]  #018  golangci-lint-langserver                                                  0.0.11
+[R.]  #019  gopls                                                                     0.20.0
+[R.]  #020  gpu-screen-recorder                                                       5.8.0
+[R.]  #021  helix                                                                     25.07.1, 25.07.1-fish-completions
+[R.]  #022  helix-config.toml                                                         <none>
+[R.]  #023  helix-languages-config                                                    <none>
+[R.]  #024  hm_default.png                                                            <none>
+[R.]  #025  hm_eldritch                                                               <none>
+[R.]  #026  hm_helixignore                                                            <none>
+[R.]  #027  hm_noctaliasettings.json                                                  <none>
+[R.]  #028  inter-nerdfont                                                            4.1
+[R.]  #029  inxi                                                                      3.3.39-1
+[R.]  #030  lemminx                                                                   0.31.0
+[R.]  #031  libXres                                                                   1.2.3
+[R.]  #032  libargon2                                                                 20190702
+[R.]  #033  libgnomekbd                                                               3.28.1
+[R.]  #034  libmatekbd                                                                1.28.0
+[R.]  #035  libmatemixer                                                              1.28.0
+[R.]  #036  libmateweather                                                            1.28.0
+[R.]  #037  libsepol                                                                  3.8.1, 3.8.1-bin, 3.8.1-dev
+[R.]  #038  libstartup-notification                                                   0.12
+[R.]  #039  libwnck                                                                   43.3
+[R.]  #040  libxklavier                                                               5.4
+[R.]  #041  libzip                                                                    1.11.4
+[R.]  #042  lksctp-tools                                                              1.0.21
+[R.]  #043  lndir                                                                     1.0.5
+[R.]  #044  ltex-ls-plus                                                              18.6.0
+[R.]  #045  marco                                                                     1.28.1
+[R.]  #046  mariadb-connector-odbc                                                    3.2.6
+[R.]  #047  mate-desktop                                                              1.28.2
+[R.]  #048  mate-menus                                                                1.28.0
+[R.]  #049  mate-panel                                                                1.28.7
+[R.]  #050  mate-settings-daemon                                                      1.28.0
+[R.]  #051  materia-everforest-kvantum-unstable                                       2024-01-22
+[R.]  #052  matugen                                                                   2.4.1
+[R.]  #053  nemo                                                                      6.4.5
+[R.]  #054  nemo-emblems                                                              6.4.0
+[R.]  #055  nemo-fileroller                                                           6.4.0, 6.4.0-fish-completions
+[R.]  #056  nemo-python                                                               6.4.0
+[R.]  #057  nemo-with-extensions                                                      6.4.5, 6.4.5-fish-completions
+[R-]  #058  neovim                                                                    0.11.4
+[R.]  #059  noctalia-shell-c832d7b2dadd7086d4d6a63b29fef778d7954655                   <none>
+[R.]  #060  noctalia-shell-c832d7b2dadd7086d4d6a63b29fef778d7954655-fish-completions  <none>
+[R.]  #061  noctalia-shell.service                                                    <none>
+[R.]  #062  openjdk-headless                                                          21.0.8+9
+[R.]  #063  openjdk-headless-minimal-jre                                              21.0.8+9
+[R-]  #064  papirus-icon-theme                                                        20250501, 20250501-fish-completions
+[R.]  #065  perl5.40.0-Cpanel-JSON-XS                                                 4.37
+[R.]  #066  php                                                                       8.4.13
+[R.]  #067  php-bcmath                                                                8.4.13
+[R.]  #068  php-calendar                                                              8.4.13
+[R.]  #069  php-ctype                                                                 8.4.13
+[R.]  #070  php-curl                                                                  8.4.13
+[R.]  #071  php-dom                                                                   8.4.13
+[R.]  #072  php-exif                                                                  8.4.13
+[R.]  #073  php-extra-init                                                            8.4.13.ini
+[R.]  #074  php-fileinfo                                                              8.4.13
+[R.]  #075  php-filter                                                                8.4.13
+[R.]  #076  php-ftp                                                                   8.4.13
+[R.]  #077  php-gd                                                                    8.4.13
+[R.]  #078  php-gettext                                                               8.4.13
+[R.]  #079  php-gmp                                                                   8.4.13
+[R.]  #080  php-iconv                                                                 8.4.13
+[R.]  #081  php-intl                                                                  8.4.13
+[R.]  #082  php-ldap                                                                  8.4.13
+[R.]  #083  php-mbstring                                                              8.4.13
+[R.]  #084  php-mysqli                                                                8.4.13
+[R.]  #085  php-mysqlnd                                                               8.4.13
+[R.]  #086  php-opcache                                                               8.4.13
+[R.]  #087  php-openssl                                                               8.4.13
+[R.]  #088  php-pcntl                                                                 8.4.13
+[R.]  #089  php-pdo                                                                   8.4.13
+[R.]  #090  php-pdo_mysql                                                             8.4.13
+[R.]  #091  php-pdo_odbc                                                              8.4.13
+[R.]  #092  php-pdo_pgsql                                                             8.4.13
+[R.]  #093  php-pdo_sqlite                                                            8.4.13
+[R.]  #094  php-pgsql                                                                 8.4.13
+[R.]  #095  php-posix                                                                 8.4.13
+[R.]  #096  php-readline                                                              8.4.13
+[R.]  #097  php-session                                                               8.4.13
+[R.]  #098  php-simplexml                                                             8.4.13
+[R.]  #099  php-soap                                                                  8.4.13
+[R.]  #100  php-sockets                                                               8.4.13
+[R.]  #101  php-sodium                                                                8.4.13
+[R.]  #102  php-sqlite3                                                               8.4.13
+[R.]  #103  php-sysvsem                                                               8.4.13
+[R.]  #104  php-tokenizer                                                             8.4.13
+[R.]  #105  php-with-extensions                                                       8.4.13
+[R.]  #106  php-xmlreader                                                             8.4.13
+[R.]  #107  php-xmlwriter                                                             8.4.13
+[R.]  #108  php-zip                                                                   8.4.13
+[R.]  #109  php-zlib                                                                  8.4.13
+[R.]  #110  phpactor                                                                  2025.10.17.0
+[R.]  #111  playerctld.service                                                        <none>
+[R.]  #112  prettier                                                                  3.6.2
+[R.]  #113  pretty-php                                                                0.4.94
+[R.]  #114  ps-procps                                                                 4.0.4
+[R.]  #115  psqlodbc                                                                  17.00.0006
+[R.]  #116  python3.13-greenlet                                                       3.2.3
+[R.]  #117  python3.13-msgpack                                                        1.1.1
+[R.]  #118  python3.13-pynvim                                                         0.6.0
+[R.]  #119  python3.13-python-xapp                                                    2.4.2
+[R.]  #120  python3.13-setproctitle                                                   1.3.6
+[R.]  #121  quickshell-wrapped                                                        0.2.0
+[R.]  #122  roboto                                                                    3.012
+[R.]  #123  ruff                                                                      0.14.0
+[R.]  #124  set-java-classpath-hook                                                   <none>
+[R.]  #125  spicetify-Nightlight                                                      <none>
+[R.]  #126  spicetify-Nightlight-fish-completions                                     <none>
+[R.]  #127  sqlite-connector-odbc                                                     0.9993
+[R.]  #128  sqls                                                                      0.2.28
+[R.]  #129  superhtml                                                                 0.6.2
+[R.]  #130  swayidle                                                                  1.8.0, 1.8.0-fish-completions
+[R.]  #131  swayidle.service                                                          <none>
+[R.]  #132  swayimg.desktop                                                           <none>
+[R.]  #133  swayimg.desktop-fish-completions                                          <none>
+[R.]  #134  taplo                                                                     0.10.0
+[R.]  #135  terraform-ls                                                              0.38.2
+[R.]  #136  ty                                                                        0.0.1-alpha.23
+[R.]  #137  vesktop                                                                   1.5.8, 1.5.8-fish-completions
+[R.]  #138  vscode-langservers-extracted                                              4.10.0
+[R.]  #139  vulkan-headers                                                            1.4.321.0
+[R.]  #140  wayland-protocols                                                         1.45
+[R.]  #141  wlsunset                                                                  0.4.0
+[R.]  #142  xapp                                                                      3.0.1, 3.0.1-dev
+[R.]  #143  xkbcomp                                                                   1.4.7
+[R.]  #144  xorgproto                                                                 2024.1
+[R.]  #145  yaml-language-server                                                      1.18.0
+Closure size: 2548 -> 2431 (209 paths added, 326 paths removed, delta -117, disk usage -1.1GiB).
