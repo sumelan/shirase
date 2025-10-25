@@ -4,6 +4,7 @@ _: {
     ./astal-shell.nix
     ./brave.nix
     ./cyanrip.nix
+    ./dunst.nix
     ./euphonica.nix
     ./foliate.nix
     ./ghostty.nix

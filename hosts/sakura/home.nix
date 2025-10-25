@@ -21,7 +21,6 @@ in {
   custom = let
     enableList =
       [
-        "astal-shell"
         "cyanrip"
         "kdeconnect"
         "obs-studio"
@@ -32,11 +31,16 @@ in {
         "youtube-tui"
       ]
       ++ [
-        "noctalia"
-        "swayidle"
+        "astal-shell"
+        "dunst"
+        "hypridle"
+        "hyprlock"
+        "swww"
       ];
 
     disableList = [
+      "noctalia"
+      "swayidle"
     ];
   in
     genAttrs enableList (_name: {enable = true;})

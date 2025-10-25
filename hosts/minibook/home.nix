@@ -41,6 +41,7 @@ in {
       ]
       ++ [
         "astal-shell"
+        "dunst"
         "hypridle"
         "hyprlock"
         "swww"
