@@ -41,6 +41,8 @@ in {
       ]
       ++ [
         "astal-shell"
+        "hypridle"
+        "hyprlock"
         "swww"
       ];
 

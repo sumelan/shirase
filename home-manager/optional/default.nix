@@ -9,6 +9,8 @@ _: {
     ./ghostty.nix
     ./helium.nix
     ./helix.nix
+    ./hypridle.nix
+    ./hyprlock.nix
     ./kdeconnect.nix
     ./librewolf.nix
     ./obs-studio.nix
