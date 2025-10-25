@@ -1,9 +1,10 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
-  inherit (lib) singleton;
+  inherit (lib) getExe singleton;
   # Black
   black0 = "#191D24";
   black1 = "#1E222A";
@@ -265,14 +266,13 @@ in {
       }
     ];
   };
-
   xdg = {
     desktopEntries.swayimg = {
       name = "Swayimg";
       genericName = "Image Viewer";
       icon = "swayimg";
       terminal = false;
-      exec = "swayimg %U";
+      exec = "${getExe pkgs.swayimg}";
     };
 
     mimeApps.defaultApplications = {

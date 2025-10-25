@@ -56,6 +56,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -93,16 +98,6 @@
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
-      };
-    };
-
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nixpkgs-stable.follows = "";
-        niri-stable.follows = "";
-        xwayland-satellite-stable.follows = "";
       };
     };
   };

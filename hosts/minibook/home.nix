@@ -40,14 +40,16 @@ in {
         "youtube-tui"
       ]
       ++ [
-        "astal-shell"
-        "dunst"
-        "hypridle"
-        "hyprlock"
-        "swww"
+        "noctalia"
+        "swayidle"
       ];
 
     disableList = [
+      "astal-shell"
+      "dunst"
+      "hypridle"
+      "hyprlock"
+      "swww"
     ];
   in
     genAttrs enableList (_name: {enable = true;})

@@ -90,6 +90,11 @@ in {
 
     prefer-no-csd = true;
 
+    xwayland-satellite = {
+      enable = false;
+      path = getExe pkgs.xwayland-satellite-unstable;
+    };
+
     input = {
       focus-follows-mouse.enable = true;
       touchpad.natural-scroll = true;

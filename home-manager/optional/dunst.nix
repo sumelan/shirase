@@ -130,7 +130,7 @@ in {
           hotkey-overlay.title = "Notification history";
         };
         "Mod+Shift+N" = {
-          ation.spawn = ["dunstctl" "close-all"];
+          action.spawn = ["dunstctl" "close-all"];
           hotkey-overlay.title = "Dismiss notification";
         };
       };

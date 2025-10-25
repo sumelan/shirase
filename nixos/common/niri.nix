@@ -25,12 +25,17 @@
         xdg-desktop-portal-gnome
         ;
     };
-
+    configPackages = builtins.attrValues {
+      inherit
+        (pkgs)
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome
+        ;
+    };
     config = {
-      common.default = ["gnome"];
+      common.default = "gtk";
       niri = {
-        default = "gnome";
-        "org.freedesktop.impl.portal.FileChooser" = "gtk";
+        default = "gtk";
       };
       obs.default = ["gnome"];
     };
