@@ -1,10 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
-  nixpkgs.overlays = [inputs.niri.overlays.niri];
-
+{pkgs, ...}: {
   programs = {
     niri = {
       enable = true;
@@ -19,13 +13,6 @@
     enable = true;
     xdgOpenUsePortal = true;
     extraPortals = builtins.attrValues {
-      inherit
-        (pkgs)
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-gnome
-        ;
-    };
-    configPackages = builtins.attrValues {
       inherit
         (pkgs)
         xdg-desktop-portal-gtk

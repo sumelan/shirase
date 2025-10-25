@@ -108,27 +108,10 @@ in {
     '';
 
   programs.niri.settings.binds = {
-    "XF86AudioPlay" = {
-      action.spawn = ["swayosd-client" "--monitor" "${config.lib.monitors.mainMonitorName}" "--playerctl=play-pause"];
-      allow-when-locked = true;
-    };
-    "XF86AudioPause" = {
-      action.spawn = ["swayosd-client" "--monitor" "${config.lib.monitors.mainMonitorName}" "--playerctl=play-pause"];
-      allow-when-locked = true;
-    };
-    "XF86AudioNext" = {
-      action.spawn = ["swayosd-client" "--monitor" "${config.lib.monitors.mainMonitorName}" "--playerctl=next"];
-      allow-when-locked = true;
-    };
-    "XF86AudioPrev" = {
-      action.spawn = ["swayosd-client" "--monitor" "${config.lib.monitors.mainMonitorName}" "--playerctl=previous"];
-      allow-when-locked = true;
-    };
-
     # fcitx5
     "Ctrl+Space" = {
       action.spawn = ["sh" "-c" "fcitx5-remote -t && swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard"];
-      hotkey-overlay.title = ''<span foreground="${magenta_bright}">[Fcitx5]</span> Switch Active/Inactive'';
+      hotkey-overlay.title = ''<span foreground="#9FC6C5">[  Fcitx5]</span> Switch Active/Inactive'';
     };
   };
 }

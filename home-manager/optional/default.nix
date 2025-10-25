@@ -16,6 +16,7 @@ _: {
     ./librewolf.nix
     ./obs-studio.nix
     ./protonapp.nix
+    ./shell.nix
     ./spicetify-nix.nix
     ./spotify-player.nix
     ./swww.nix

@@ -46,7 +46,7 @@ in {
     niri.settings.binds = {
       "Mod+B" = {
         action.spawn = ["zen"];
-        hotkey-overlay.title = ''<span foreground="#5E81AC">[Application]</span> Zen Browser'';
+        hotkey-overlay.title = ''<span foreground="#B1C89D">[  Zen Browser]</span> Web Browser'';
       };
     };
   };

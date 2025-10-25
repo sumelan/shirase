@@ -83,7 +83,7 @@ in {
         "Mod+Alt+L" = {
           action.spawn = ["hyprlock"];
           allow-when-locked = true;
-          hotkey-overlay.title = ''<span foreground="#B1C89D">[hyprlock]</span> Lock Screen'';
+          hotkey-overlay.title = ''<span foreground="#9FC6C5">[ Hyprlock]</span> Lock Screen'';
         };
       };
     };

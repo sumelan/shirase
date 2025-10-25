@@ -106,19 +106,19 @@ in {
           background = gray1;
           foreground = white3;
           frame_color = green_base;
-          timeout = 6;
+          timeout = 5;
         };
         urgency_critical = {
           background = gray1;
           foreground = white3;
           frame_color = yellow_base;
-          timeout = 0;
+          timeout = 10;
         };
         urgency_low = {
           background = gray1;
           foreground = white3;
           frame_color = red_base;
-          timeout = 4;
+          timeout = 3;
         };
       };
     };
@@ -127,11 +127,11 @@ in {
       binds = {
         "Mod+N" = {
           action.spawn = ["dunstctl" "history-pop"];
-          hotkey-overlay.title = "Notification history";
+          hotkey-overlay.title = ''<span foreground="#9FC6C5">[󰎟 Dunst]</span> Notification History'';
         };
         "Mod+Shift+N" = {
           action.spawn = ["dunstctl" "close-all"];
-          hotkey-overlay.title = "Dismiss notification";
+          hotkey-overlay.title = ''<span foreground="#9FC6C5">[󰎟 Dunst]</span> Close all notifcations'';
         };
       };
       layer-rules = [

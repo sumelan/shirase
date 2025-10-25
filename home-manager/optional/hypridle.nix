@@ -25,28 +25,28 @@ in {
         general = {
           ignore_dbus_inhibit = true;
           # exec hyprlock unless already running
-          lock_cmd = "${getExe' pkgs.procps "pidof"} hyprlock || ${getExe pkgs.hyprlock}";
+          lock_cmd = "${getExe' pkgs.procps "pidof"} hyprlock || session-control lock";
           # kill hyprlock
           unlock_cmd = "${getExe' pkgs.procps "pkill"} -SIGUSR1 hyprlock";
           # stop playing when lock-session
           before_sleep_cmd = concatStringsSep "; " [
-            "loginctl lock-session"
-            "${getExe pkgs.playerctl} pause"
+            "${pkgs.systemd}/bin/loginctl lock-session"
+            "media-control pause"
           ];
           # to avoid having to press a key twice to run on the display.
-          after_sleep_cmd = "${getExe config.programs.niri.package} msg action power-on-monitors";
+          after_sleep_cmd = "display-control power-on-monitors";
         };
 
         listener = [
           {
             timeout = 60 * 5;
-            on-timeout = "${getExe config.programs.niri.package} msg action open-overview";
-            on-resume = "${getExe config.programs.niri.package} msg action close-overview";
+            on-timeout = "${pkgs.niri}/bin/niri msg action open-overview";
+            on-resume = "${pkgs.niri}/bin/niri msg action close-overview";
           }
           {
             timeout = 60 * 8;
             # lock screen when timeout has passed.
-            on-timeout = "loginctl lock-session";
+            on-timeout = "${pkgs.systemd}/bin/loginctl lock-session";
           }
           (mkIf config.custom.backlight.enable {
             timeout = 60 * 10;
@@ -59,14 +59,14 @@ in {
           {
             timeout = 60 * 15;
             # screen off when timeout has passed.
-            on-timeout = "${getExe config.programs.niri.package} msg action power-off-monitors";
+            on-timeout = "display-control power-off-moniors";
             # screen on when activity is detected after timeout has fired.
-            on-resume = "${getExe config.programs.niri.package} msg action power-on-monitors";
+            on-resume = "display-control power-on-monitors";
           }
           (mkIf isLaptop {
             timeout = 60 * 20;
             # suspend pc.
-            on-timeout = "${getExe' pkgs.systemd "systemctl"} suspend";
+            on-timeout = "session-control suspend";
           })
         ];
       };

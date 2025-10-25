@@ -8,7 +8,6 @@
     (lib)
     mkEnableOption
     mkIf
-    getExe'
     singleton
     ;
 in {
@@ -17,60 +16,58 @@ in {
   };
 
   config = mkIf config.custom.swww.enable {
-    home.packages = [pkgs.swww];
-
-    systemd.user.services = {
-      "swww-backgroud" = {
-        Unit = {
-          After = ["graphical-session.target"];
-          ConditionEnvironment = "WAYLAND_DISPLAY";
-          Description = "Run swww-daemon on backgroud";
-          PartOf = ["graphical-session.target"];
-        };
-        Service = {
-          ExecStart = [
-            "${getExe' pkgs.swww "swww-daemon"} --namespace _backgroud"
-          ];
-          Restart = "always";
-          RestartSec = "10";
-        };
-        Install = {
-          WantedBy = ["graphical-session.target"];
-        };
+    home = {
+      packages = builtins.attrValues {
+        inherit
+          (pkgs)
+          swww
+          waypaper
+          ;
       };
-
-      "swww-backdrop" = {
-        Unit = {
-          After = ["graphical-session.target"];
-          ConditionEnvironment = "WAYLAND_DISPLAY";
-          Description = "Run swww-daemon on backdrop";
-          PartOf = ["graphical-session.target"];
-        };
-        Service = {
-          ExecStart = [
-            "${getExe' pkgs.swww "swww-daemon"} --namespace _backdrop"
-          ];
-          Restart = "always";
-          RestartSec = "10";
-        };
-        Install = {
-          WantedBy = ["graphical-session.target"];
-        };
-      };
+      file.".backdrop.png".source = ./nord-night-aurora.png;
     };
 
-    programs.niri.settings.layer-rules = [
-      {
-        matches = singleton {
-          namespace = "backdrop";
-        };
-        place-within-backdrop = true;
-      }
-    ];
+    programs.niri.settings = {
+      spawn-at-startup = [
+        {
+          argv = ["${pkgs.swww}/bin/swww-daemon"];
+        }
+        {
+          argv = ["${pkgs.swww}/bin/swww-daemon" "--namespace" "backdrop"];
+        }
+        {
+          argv = ["${pkgs.swww}/bin/swww" "img" "--namespace" "backdrop" "${config.home.homeDirectory}/.backdrop"];
+        }
+      ];
+      window-rules = [
+        {
+          matches = singleton {
+            app-id = "^(waypaper)$";
+          };
+          open-floating = true;
+        }
+      ];
+      layer-rules = [
+        {
+          matches = singleton {
+            namespace = "^(swww-daemon)$";
+          };
+          opacity = 0.7;
+        }
+        {
+          matches = singleton {
+            namespace = "backdrop";
+          };
+          place-within-backdrop = true;
+          opacity = 1.0;
+        }
+      ];
+    };
 
     custom.persist = {
       home.cache.directories = [
         ".cache/swww"
+        ".cache/waypaper"
       ];
     };
   };

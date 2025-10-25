@@ -50,7 +50,7 @@
     niri.settings.binds = {
       "Mod+Return" = {
         action.spawn = ["foot"];
-        hotkey-overlay.title = ''<span foreground="#5E81AC">[Application]</span> Foot'';
+        hotkey-overlay.title = ''<span foreground="#B1C89D">[  Foot]</span> Terminal Emulator'';
       };
     };
   };

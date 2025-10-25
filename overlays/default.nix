@@ -38,5 +38,7 @@ in {
           ]);
       });
     })
+    # niri-flake
+    inputs.niri.overlays.niri
   ];
 }

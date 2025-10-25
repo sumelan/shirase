@@ -88,6 +88,35 @@ in {
     };
 
     programs.niri.settings = {
+      binds = {
+        "XF86AudioRaiseVolume" = {
+          action.spawn = ["volume-control" "up"];
+        };
+        "XF86AudioLowerVolume" = {
+          action.spawn = ["volume-control" "down"];
+        };
+        "XF86AudioMute" = {
+          action.spawn = ["volume-control" "mute"];
+        };
+        "XF86AudioNext" = {
+          action.spawn = ["media-control" "next"];
+        };
+        "XF86AudioPlay" = {
+          action.spawn = ["media-control" "play-pause"];
+        };
+        "XF86AudioPrev" = {
+          action.spawn = ["media-control" "previous"];
+        };
+        "XF86AudioStop" = {
+          action.spawn = ["media-control" "stop"];
+        };
+        "XF86MonBrightnessUp" = {
+          action.spawn = ["brightness-control" "up"];
+        };
+        "XF86MonBrightnessDown" = {
+          action.spawn = ["brightness-control" "down"];
+        };
+      };
       window-rules = [
         {
           matches = [

@@ -5,7 +5,7 @@
     binds = {
       "Mod+W" = {
         action.spawn = ["webcord"];
-        hotkey-overlay.title = ''<span foreground="#5E81AC">[Application]</span> WebCord'';
+        hotkey-overlay.title = ''<span foreground="#B1C89D">[  WebCord]</span> Discord Client'';
       };
     };
   };

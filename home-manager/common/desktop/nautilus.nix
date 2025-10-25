@@ -74,7 +74,7 @@ in {
     binds = {
       "Mod+O" = {
         action.spawn = ["nautilus"];
-        hotkey-overlay.title = ''<span foreground="#5E81AC">[Application]</span> Nautilus'';
+        hotkey-overlay.title = ''<span foreground="#B1C89D">[  Nautilus]</span> File Manager'';
       };
     };
 

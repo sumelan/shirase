@@ -33,7 +33,7 @@ in {
         binds = {
           "Mod+R" = {
             action.spawn = ["${getExe pkgs.foot}" "--app-id=rmpc" "rmpc"];
-            hotkey-overlay.title = ''<span foreground="#EFD49F">[Terminal]</span> rmpc'';
+            hotkey-overlay.title = ''<span foreground="#EFD49F">[  rmpc]</span> TUI MPD Client'';
           };
         };
         window-rules = [
