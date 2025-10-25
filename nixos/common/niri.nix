@@ -34,10 +34,8 @@
     };
     config = {
       common.default = "gtk";
-      niri = {
-        default = "gtk";
-      };
-      obs.default = ["gnome"];
+      niri.default = "gtk";
+      obs.default = "gnome";
     };
   };
 }
