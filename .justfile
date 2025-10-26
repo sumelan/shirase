@@ -4,9 +4,6 @@ export NH_FLAKE := `echo $PWD`
 export HOSTNAME := `hostname`
 export NIXPKGS_ALLOW_UNFREE := "1"
 
-# nix-profiles
-profiles-path := "/nix/var/nix/profiles"
-
 # package-paths updated through nvfetcher
 yazi-path := "packages/yazi-plugins"
 helium-path := "packages/helium"
@@ -37,31 +34,10 @@ helium-path := "packages/helium"
     nh os switch {{ args }}
 
 [group('SYSTEM')]
-[doc('Switch configuration, make it boot default and write outputs in log, commit on git.')]
-@deploy *args: check
-    if [ -f "bootlog/{{ HOSTNAME }}.log" ]; then \
-      echo -e "Write in previous log...\n"; \
-    else \
-      echo -e "Create new log...\n" && \
-      echo -e "\n[New entry]" >> bootlog/{{ HOSTNAME }}.log && \
-      echo -e "<<< .\n>>> $(command ls -d1v {{ profiles-path }}/system-*-link | tail -n 1)" >> bootlog/{{ HOSTNAME }}.log; \
-    fi
-
-    nh os switch {{ args }}
-
-    echo -e "\n---\n\n$(date '+%x %X')" >> bootlog/{{ HOSTNAME }}.log
-    nvd diff \
-      "$(command rg -N '>>> ({{ profiles-path }}/system-[0-9]+-link)' --only-matching --replace '$1' bootlog/{{ HOSTNAME }}.log | tail -1)" \
-        "$(command ls -d1v {{ profiles-path }}/system-*-link | tail -n 1)" \
-          >> bootlog/{{ HOSTNAME }}.log
-
-    git add -A
-    echo -e "Commit on git...\n"
-    git commit -m "deployed $(nixos-rebuild list-generations --flake $NH_FLAKE --json | jq '.[0].generation') on $(hostname)"
-
-[group('SYSTEM')]
 [doc('Update a specific input in the flake.')]
 @updateInput input: check
+    echo -e "Updating a {{ input }}...\n"
+
     nix flake update {{ input }}
 
 alias update := updateInput
@@ -75,7 +51,12 @@ alias update := updateInput
 
     echo -e "Fetch packages you defined...\n"
 
+    echo -e "Fetching yazi-plugin packages...\n"
+
     nvfetcher --keep-old --config {{ yazi-path }}/nvfetcher.toml --build-dir {{ yazi-path }}
+
+    echo -e "Fetching helium package...\n"
+
     nvfetcher --keep-old --config {{ helium-path }}/nvfetcher.toml --build-dir {{ helium-path }}
 
     git add -A

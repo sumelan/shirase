@@ -90,7 +90,7 @@ in {
           alignment = "center";
           browser = "zen -new-tab";
           corner_radius = 8;
-          dmenu = "fuzzel -d dunst";
+          dmenu = "rofi -dmenu dunst";
           enable_recursive_icon_lookup = true;
           ellipsize = "end";
           follow = "mouse";

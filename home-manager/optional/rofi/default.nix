@@ -90,11 +90,19 @@ in {
         binds = {
           "Mod+Space" = {
             action.spawn = ["rofi" "-show" "drun"];
-            hotkey-overlay.title = ''<span foreground="#B1C89D">[󰌧  Rofi]</span> Launcher'';
+            hotkey-overlay.title = ''<span foreground="#D79784">[󰌧  Rofi]</span> Launcher'';
           };
           "Mod+V" = {
             action.spawn = ["clipboard-history"];
-            hotkey-overlay.title = ''<span foreground="#B1C89D">[󰌧  Rofi]</span> Clipboard History'';
+            hotkey-overlay.title = ''<span foreground="#D79784">[󰌧  Rofi]</span> Clipboard History'';
+          };
+          "Mod+X" = {
+            action.spawn = ["power-selecter"];
+            hotkey-overlay.title = ''<span foreground="#D79784">[󰌧  Rofi]</span> Powerprofile'';
+          };
+          "Mod+Alt+Backslash" = {
+            action.spawn = ["dynamiccast-selecter"];
+            hotkey-overlay.title = ''<span foreground="#D79784">[󰌧  Rofi]</span> Dynamiccast'';
           };
         };
       };
@@ -564,6 +572,163 @@ in {
               background-color:            @background-colour;
               text-color:                  @foreground-colour;
           }
+        '';
+      "rofi/themes/selecter.rasi".text =
+        #rasi
+        ''
+          /*****----- Configuration -----*****/
+          configuration {
+              show-icons:                 false;
+          }
+
+          /*****----- Global Properties -----*****/
+
+          * {
+            background:           ${gray0}E6;
+            background-alt:       ${gray2}E6;
+            foreground:           ${white3}FF;
+            selected:             ${cyan_base}E6;
+            active:               ${blue0}FF;
+            urgent:               ${yellow_base}FF;
+
+            font: "${config.custom.fonts.monospace} 14";
+          }
+
+          /*****----- Main Window -----*****/
+          window {
+              /* properties for window widget */
+              transparency:                "real";
+              location:                    center;
+              anchor:                      center;
+              fullscreen:                  false;
+              width:                       400px;
+              x-offset:                    0px;
+              y-offset:                    0px;
+
+              /* properties for all widgets */
+              enabled:                     true;
+              margin:                      0px;
+              padding:                     0px;
+              border:                      0px solid;
+              border-radius:               12px;
+              border-color:                @selected;
+              cursor:                      "default";
+              background-color:            @background;
+          }
+
+          /*****----- Main Box -----*****/
+          mainbox {
+              enabled:                     true;
+              spacing:                     10px;
+              margin:                      0px;
+              padding:                     20px;
+              border:                      0px solid;
+              border-radius:               0px;
+              border-color:                @selected;
+              background-color:            transparent;
+              children:                    [ "inputbar", "message", "listview" ];
+          }
+
+          /*****----- Inputbar -----*****/
+          inputbar {
+              enabled:                     true;
+              spacing:                     10px;
+              margin:                      0px;
+              padding:                     0px;
+              border:                      0px;
+              border-radius:               0px;
+              border-color:                @selected;
+              background-color:            transparent;
+              text-color:                  @foreground;
+              children:                    ["prompt"];
+          }
+
+          prompt {
+              enabled:                     true;
+              padding:                     10px;
+              border-radius:               10px;
+              background-color:            @active;
+              text-color:                  @background;
+          }
+
+          /*****----- Message -----*****/
+          message {
+              enabled:                     true;
+              margin:                      0px;
+              padding:                     10px;
+              border:                      0px solid;
+              border-radius:               10px;
+              border-color:                @selected;
+              background-color:            @background-alt;
+              text-color:                  @foreground;
+          }
+          textbox {
+              background-color:            inherit;
+              text-color:                  inherit;
+              vertical-align:              0.5;
+              horizontal-align:            0.0;
+              placeholder-color:           @foreground;
+              blink:                       true;
+              markup:                      true;
+          }
+          error-message {
+              padding:                     10px;
+              border:                      0px solid;
+              border-radius:               0px;
+              border-color:                @selected;
+              background-color:            @background;
+              text-color:                  @foreground;
+          }
+
+          /*****----- Listview -----*****/
+          listview {
+              enabled:                     true;
+              columns:                     1;
+              lines:                       5;
+              cycle:                       true;
+              dynamic:                     true;
+              scrollbar:                   false;
+              layout:                      vertical;
+              reverse:                     false;
+              fixed-height:                true;
+              fixed-columns:               true;
+
+              spacing:                     5px;
+              margin:                      0px;
+              padding:                     0px;
+              border:                      0px solid;
+              border-radius:               0px;
+              border-color:                @selected;
+              background-color:            transparent;
+              text-color:                  @foreground;
+              cursor:                      "default";
+          }
+
+          /*****----- Elements -----*****/
+          element {
+              enabled:                     true;
+              spacing:                     0px;
+              margin:                      0px;
+              padding:                     10px;
+              border:                      0px solid;
+              border-radius:               10px;
+              border-color:                @selected;
+              background-color:            transparent;
+              text-color:                  @foreground;
+              cursor:                      pointer;
+          }
+          element-text {
+              background-color:            transparent;
+              text-color:                  inherit;
+              cursor:                      inherit;
+              vertical-align:              0.5;
+              horizontal-align:            0.0;
+          }
+          element selected.normal {
+              background-color:            var(selected);
+              text-color:                  var(background);
+          }
+
         '';
     };
   };

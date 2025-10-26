@@ -14,13 +14,6 @@ _: {
     "Mod+Backslash".action.screenshot.show-pointer = false;
     "Mod+Shift+Backslash".action.screenshot-window.write-to-disk = true;
 
-    # dynamic screencast target
-    "Mod+Alt+Backslash" = {
-      action.spawn = ["sh" "-c" "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"];
-      hotkey-overlay.title = "Interactively pick which window to cast";
-    };
-    "Mod+Ctrl+Backslash".action.clear-dynamic-cast-target = {};
-
     # window and colum management
     "Mod+Backspace".action.close-window = {};
 

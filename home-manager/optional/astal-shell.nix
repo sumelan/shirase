@@ -29,7 +29,7 @@ in {
         # Configure display margins
         displays = {
           "LG HDR 4K" = [400 160];
-          "Unknown" = [215 85];
+          "Unknown" = [300 120];
         };
 
         # Configure theme
@@ -64,9 +64,9 @@ in {
           };
           font = {
             sizes = {
-              small = "0.8em";
-              normal = "1em";
-              large = "1.2em";
+              small = "2.0em";
+              normal = "2.5em";
+              large = "3.0em";
             };
             weights = {
               normal = "normal";

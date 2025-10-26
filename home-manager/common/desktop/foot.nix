@@ -7,7 +7,7 @@ in {
       main = {
         include = "~/.config/foot/themes/nord";
         font = "monospace:size=14";
-        initial-window-size-pixels = "1200x800";
+        initial-window-size-pixels = "1000x800";
       };
       scrollback = {
         lines = 10000;
