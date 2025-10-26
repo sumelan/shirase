@@ -83,7 +83,7 @@ in {
         global = {
           origin = "top-right";
           separator_color = gray2;
-          font = "${config.custom.fonts.regular}  12";
+          font = "${config.custom.fonts.regular}  14";
           icon_theme = config.gtk.iconTheme.name;
           width = "(250, 400)";
           offset = "(30, 30)";

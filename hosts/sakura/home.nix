@@ -4,7 +4,7 @@ in {
   monitors = {
     "HDMI-A-1" = {
       isMain = true;
-      scale = 1.75;
+      scale = 1.5;
       mode = {
         width = 3840;
         height = 2160;

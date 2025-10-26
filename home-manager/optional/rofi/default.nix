@@ -78,7 +78,7 @@ in {
     programs = {
       rofi = {
         enable = true;
-        font = "${config.custom.fonts.regular} 12";
+        font = "${config.custom.fonts.regular} 14";
         terminal = "foot";
         theme = "${config.xdg.configHome}/rofi/themes/launcher.rasi";
       };
@@ -118,7 +118,7 @@ in {
 
           /*****----- Global Properties -----*****/
           * {
-              font:                        "${config.custom.fonts.monospace} 10";
+              font:                        "${config.custom.fonts.monospace} 14";
               background:                  #D0D0D0;
               background-alt:              #E9E9E9;
               foreground:                  #161616;

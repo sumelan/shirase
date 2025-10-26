@@ -64,9 +64,9 @@ in {
         addons = [pkgs.fcitx5-mozc];
         waylandFrontend = true;
         settings.addons.classicui.globalSection = {
-          Font = "${config.hm.custom.fonts.regular} 13";
-          MenuFont = "${config.hm.custom.fonts.regular} 13";
-          TrayFont = "${config.hm.custom.fonts.regular} 13";
+          Font = "${config.hm.custom.fonts.regular} 14";
+          MenuFont = "${config.hm.custom.fonts.regular} 14";
+          TrayFont = "${config.hm.custom.fonts.regular} 14";
           UseDarkTheme = true;
           UseAccentColor = true;
         };
