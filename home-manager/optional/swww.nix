@@ -65,10 +65,15 @@ in {
     };
 
     custom.persist = {
-      home.cache.directories = [
-        ".cache/swww"
-        ".cache/waypaper"
-      ];
+      home = {
+        directories = [
+          ".config/waypaper"
+        ];
+        cache.directories = [
+          ".cache/swww"
+          ".cache/waypaper"
+        ];
+      };
     };
   };
 }

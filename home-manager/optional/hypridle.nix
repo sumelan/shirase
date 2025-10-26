@@ -41,13 +41,8 @@ in {
             on-timeout = "${pkgs.niri}/bin/niri msg action open-overview";
             on-resume = "${pkgs.niri}/bin/niri msg action close-overview";
           }
-          {
-            timeout = 60 * 8;
-            # lock screen when timeout has passed.
-            on-timeout = "${pkgs.systemd}/bin/loginctl lock-session";
-          }
           (mkIf config.custom.backlight.enable {
-            timeout = 60 * 10;
+            timeout = 60 * 8;
             # set monitor backlight to minimum, avoid 0 on OLED monitor.
             # save previous state in a temporary file
             on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl --save set 3%";
@@ -56,6 +51,11 @@ in {
           })
           {
             timeout = 60 * 15;
+            # lock screen when timeout has passed.
+            on-timeout = "${pkgs.systemd}/bin/loginctl lock-session";
+          }
+          {
+            timeout = 60 * 18;
             # screen off when timeout has passed.
             on-timeout = "${pkgs.niri}/bin/niri msg action power-off-monitors";
             # screen on when activity is detected after timeout has fired.

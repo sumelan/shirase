@@ -36,25 +36,25 @@ in {
         theme = {
           colors = {
             background = {
-              primary = "rgba(0, 0, 0, 0.8)";
-              secondary = "rgba(0, 0, 0, 0.6)";
+              primary = "rgba(36, 41, 51, 0.8)"; # gray0
+              secondary = "rgba(67, 76, 94, 0.6)"; # gray3
             };
             text = {
-              primary = "rgba(255, 255, 255, 1.0)";
-              secondary = "rgba(255, 255, 255, 0.8)";
-              focused = "rgba(255, 255, 255, 1.0)";
-              unfocused = "rgba(255, 255, 255, 0.6)";
+              primary = "rgba(235, 239, 244, 1.0)"; # white3
+              secondary = "rgba(192, 200, 216, 0.8)"; # white0
+              focused = "rgba(216, 222, 233, 1.0)"; # white1
+              unfocused = "rgba(229, 233, 240, 0.6)"; # white2
             };
             accent = {
-              primary = "rgba(100, 149, 237, 0.8)";
-              secondary = "rgba(100, 149, 237, 0.6)";
-              border = "rgba(100, 149, 237, 0.4)";
-              overlay = "rgba(100, 149, 237, 0.2)";
+              primary = "rgba(94, 127, 172, 0.8)"; # blue0
+              secondary = "rgba(136, 192, 208, 0.6)"; # blue2
+              border = "rgba(129, 161, 193, 0.4)"; # blue1
+              overlay = "rgba(129, 161, 193, 0.2)";
             };
             status = {
-              success = "rgba(76, 175, 80, 0.8)";
-              warning = "rgba(255, 193, 7, 0.8)";
-              error = "rgba(244, 67, 54, 0.8)";
+              success = "rgba(177, 200, 157, 0.8)"; # green_bright
+              warning = "rgba(239, 212, 159, 0.8)"; # yellow_bright
+              error = "rgba(197, 114, 122, 0.8)"; # red_bright
             };
           };
           opacity = {
