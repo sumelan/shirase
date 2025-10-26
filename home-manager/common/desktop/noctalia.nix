@@ -13,6 +13,7 @@
     getExe
     splitString
     ;
+  inherit (config.lib.monitors) mainMonitorName;
 
   noctaliaPkgs = inputs.noctalia-shell.packages.${pkgs.system}.default;
 in {
@@ -222,7 +223,7 @@ in {
           colorizeIcons = true;
           displayMode = "exclusive";
           floatingRatio = 0;
-          monitors = [config.lib.monitors.mainMonitorName];
+          monitors = [mainMonitorName];
           onlySameOutput = true;
           pinnedApps = [];
           size = 1;
@@ -333,7 +334,7 @@ in {
           monitors = [
             {
               inherit (config.programs.noctalia-shell.settings.wallpaper) directory;
-              name = config.lib.monitors.mainMonitorName;
+              name = mainMonitorName;
               wallpaper = "";
             }
           ];

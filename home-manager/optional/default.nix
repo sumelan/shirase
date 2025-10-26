@@ -1,6 +1,7 @@
 _: {
   imports = [
     ./rmpc
+    ./rofi
     ./astal-shell.nix
     ./brave.nix
     ./cyanrip.nix

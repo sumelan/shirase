@@ -9,6 +9,7 @@ in {
     inherit
       (pkgs)
       brightnessctl
+      cliphist
       libnotify
       playerctl
       wl-clipboard

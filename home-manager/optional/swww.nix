@@ -36,7 +36,7 @@ in {
           argv = ["${pkgs.swww}/bin/swww-daemon" "--namespace" "backdrop"];
         }
         {
-          argv = ["${pkgs.swww}/bin/swww" "img" "--namespace" "backdrop" "${config.home.homeDirectory}/.backdrop"];
+          argv = ["${pkgs.swww}/bin/swww" "img" "--namespace" "backdrop" "${config.home.homeDirectory}/.backdrop.png"];
         }
       ];
       window-rules = [

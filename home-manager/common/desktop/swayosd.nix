@@ -110,7 +110,7 @@ in {
   programs.niri.settings.binds = {
     # fcitx5
     "Ctrl+Space" = {
-      action.spawn = ["sh" "-c" "fcitx5-remote -t && swayosd-client --monitor ${config.lib.monitors.mainMonitorName} --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard"];
+      action.spawn = ["sh" "-c" "fcitx5-remote -t && swayosd-client --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard"];
       hotkey-overlay.title = ''<span foreground="#9FC6C5">[  Fcitx5]</span> Switch Active/Inactive'';
     };
   };

@@ -22,6 +22,7 @@ in {
     enableList =
       [
         "cyanrip"
+        "helium"
         "kdeconnect"
         "obs-studio"
         "protonapp"
@@ -31,16 +32,17 @@ in {
         "youtube-tui"
       ]
       ++ [
-        "noctalia"
-        "swayidle"
+        "astal-shell"
+        "dunst"
+        "hypridle"
+        "hyprlock"
+        "rofi"
+        "swww"
       ];
 
     disableList = [
-      "astal-shell"
-      "dunst"
-      "hypridle"
-      "hyprlock"
-      "swww"
+      "noctalia"
+      "swayidle"
     ];
   in
     genAttrs enableList (_name: {enable = true;})

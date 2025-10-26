@@ -143,5 +143,12 @@ in {
         }
       ];
     };
+    systemd.user.services = {
+      "dunst" = {
+        Install = {
+          WantedBy = ["graphical-session.target"];
+        };
+      };
+    };
   };
 }

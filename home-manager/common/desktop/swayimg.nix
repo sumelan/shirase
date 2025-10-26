@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   inherit (lib) singleton;
@@ -266,10 +267,22 @@ in {
     ];
   };
 
-  xdg.mimeApps.defaultApplications = {
-    "image/jpeg" = "swayimg.desktop";
-    "image/gif" = "swayimg.desktop";
-    "image/webp" = "swayimg.desktop";
-    "image/png" = "swayimg.desktop";
+  xdg = {
+    desktopEntries = {
+      swayimg = {
+        name = "Swayimg";
+        genericName = "Image Viewer";
+        icon = "swayimg";
+        terminal = false;
+        exec = "${pkgs.swayimg}/bin/swayimg";
+      };
+    };
+
+    mimeApps.defaultApplications = {
+      "image/jpeg" = "swayimg.desktop";
+      "image/gif" = "swayimg.desktop";
+      "image/webp" = "swayimg.desktop";
+      "image/png" = "swayimg.desktop";
+    };
   };
 }
