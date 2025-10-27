@@ -118,12 +118,16 @@ in {
           is-window-cast-target = true;
         };
         border = {
-          active.color = red_bright;
-          inactive.color = gray0;
+          active.gradient = {
+            from = red_dim;
+            to = red_bright;
+            relative-to = "window";
+          };
+          inactive.color = gray3;
         };
         tab-indicator = {
           active.color = orange_bright;
-          inactive.color = gray0;
+          inactive.color = gray3;
         };
         shadow = shadowConfig;
       }

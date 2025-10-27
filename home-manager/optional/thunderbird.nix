@@ -11,9 +11,7 @@
     ;
 in {
   options.custom = {
-    thunderbird = {
-      enable = mkEnableOption "thunderbird";
-    };
+    thunderbird.enable = mkEnableOption "thunderbird";
   };
 
   config = mkIf config.custom.thunderbird.enable {

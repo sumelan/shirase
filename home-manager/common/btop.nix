@@ -129,7 +129,7 @@ in {
       '';
 
       settings = {
-        color_theme = "eldritch";
+        color_theme = "nord";
         theme_background = false;
         cpu_single_graph = true;
         show_disks = true;

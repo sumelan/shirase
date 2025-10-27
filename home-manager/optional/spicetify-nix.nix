@@ -1,7 +1,7 @@
 {
   lib,
-  pkgs,
   config,
+  pkgs,
   inputs,
   ...
 }: let
@@ -50,6 +50,12 @@ in {
     };
 
     programs.niri.settings = {
+      binds = {
+        "Mod+S" = {
+          action.spawn = ["spotify" "--wayland-text-input-version=3"];
+          hotkey-overlay.title = ''<span foreground="#B1C89D">[  Spotify]</span> Spotify Client'';
+        };
+      };
       window-rules = [
         {
           # mini player

@@ -127,7 +127,11 @@ in {
       border = {
         enable = true;
         width = 5;
-        active.color = blue0;
+        active.gradient = {
+          from = blue0;
+          to = blue2;
+          relative-to = "window";
+        };
         inactive.color = gray0;
       };
 
@@ -145,7 +149,7 @@ in {
         display = {
           gradient = {
             from = green_dim;
-            to = cyan_dim;
+            to = green_bright;
             angle = 45;
           };
         };

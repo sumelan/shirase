@@ -127,12 +127,12 @@ in {
           /*****----- Global Properties -----*****/
           * {
               font:                        "${config.custom.fonts.monospace} 14";
-              background:                  #D0D0D0;
-              background-alt:              #E9E9E9;
-              foreground:                  #161616;
-              selected:                    #BEBEBE;
-              active:                      #999999;
-              urgent:                      #808080;
+              background:                  ${white3};
+              background-alt:              ${white0};
+              foreground:                  ${gray5};
+              selected:                    ${cyan_bright}E5;
+              active:                      ${gray3};
+              urgent:                      ${gray4};
           }
 
           /*****----- Main Window -----*****/

@@ -46,7 +46,7 @@ in {
         };
       };
       niri.settings.binds = {
-        "Mod+S" = {
+        "Mod+Shift+S" = {
           action.spawn = ["${getExe pkgs.foot}" "--app-id=spotify-player" "spotify_player"];
           hotkey-overlay.title = ''<span foreground="#EFD49F">[  spotify-player]</span> Spotify TUI Client'';
         };
