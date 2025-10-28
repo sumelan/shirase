@@ -76,6 +76,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    dimland = {
+      url = "github:keifufu/dimland";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+
     nix-chuwi-minibook-x = {
       url = "github:knoopx/nix-chuwi-minibook-x";
       inputs = {

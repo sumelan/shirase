@@ -5,6 +5,7 @@ _: {
     ./astal-shell.nix
     ./brave.nix
     ./cyanrip.nix
+    ./dimland.nix
     ./dunst.nix
     ./euphonica.nix
     ./foliate.nix

@@ -65,6 +65,29 @@
         "type": "github"
       }
     },
+    "dimland": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1729115122,
+        "narHash": "sha256-CwCPjrR25R5fkiWGJ5SYSSbTSbdZ6p4McRs+pThagPs=",
+        "owner": "keifufu",
+        "repo": "dimland",
+        "rev": "3934c3278bcaddbe3f6920e059a084466b0a91fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "keifufu",
+        "repo": "dimland",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -368,6 +391,7 @@
     "root": {
       "inputs": {
         "astal-shell": "astal-shell",
+        "dimland": "dimland",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "impermanence": "impermanence",

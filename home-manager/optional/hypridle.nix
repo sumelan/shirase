@@ -9,6 +9,7 @@
     (lib)
     mkEnableOption
     mkIf
+    getExe'
     concatStringsSep
     ;
 in {
@@ -37,18 +38,18 @@ in {
 
         listener = [
           {
-            timeout = 60 * 5;
+            timeout = 60 * 3;
             on-timeout = "${pkgs.niri}/bin/niri msg action open-overview";
             on-resume = "${pkgs.niri}/bin/niri msg action close-overview";
           }
-          (mkIf config.custom.backlight.enable {
-            timeout = 60 * 8;
+          {
+            timeout = 60 * 5;
             # set monitor backlight to minimum, avoid 0 on OLED monitor.
             # save previous state in a temporary file
-            on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl --save set 3%";
+            on-timeout = "${getExe' config.programs.dimland.package "dimland"} -a 0.6";
             # restore monitor light
-            on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -r";
-          })
+            on-resume = "${getExe' config.programs.dimland.package "dimland"} stop";
+          }
           {
             timeout = 60 * 15;
             # lock screen when timeout has passed.
