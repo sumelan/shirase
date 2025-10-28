@@ -19,30 +19,18 @@ in {
   };
 
   custom = let
-    enableList =
-      [
-        "cyanrip"
-        "helium"
-        "kdeconnect"
-        "obs-studio"
-        "protonapp"
-        "rmpc"
-        "spicetify-nix"
-        "spotify-player"
-        "youtube-tui"
-      ]
-      ++ [
-        "astal-shell"
-        "dunst"
-        "hypridle"
-        "hyprlock"
-        "rofi"
-        "swww"
-      ];
+    enableList = [
+      "cyanrip"
+      "kdeconnect"
+      "obs-studio"
+      "protonapp"
+      "rmpc"
+      "spicetify-nix"
+      "spotify-player"
+      "youtube-tui"
+    ];
 
     disableList = [
-      "noctalia"
-      "swayidle"
     ];
   in
     genAttrs enableList (_name: {enable = true;})

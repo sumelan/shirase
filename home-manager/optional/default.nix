@@ -1,27 +1,21 @@
 _: {
   imports = [
     ./rmpc
-    ./rofi
-    ./astal-shell.nix
     ./brave.nix
     ./cyanrip.nix
-    ./dimland.nix
-    ./dunst.nix
     ./euphonica.nix
     ./foliate.nix
     ./ghostty.nix
     ./helium.nix
     ./helix.nix
-    ./hypridle.nix
-    ./hyprlock.nix
     ./kdeconnect.nix
     ./librewolf.nix
+    ./noctalia.nix
     ./obs-studio.nix
     ./protonapp.nix
-    ./shell.nix
     ./spicetify-nix.nix
     ./spotify-player.nix
-    ./swww.nix
+    ./swayidle.nix
     ./thunderbird.nix
     ./vlc.nix
     ./youtube-tui.nix

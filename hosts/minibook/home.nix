@@ -30,27 +30,16 @@ in {
   };
 
   custom = let
-    enableList =
-      [
-        "kdeconnect"
-        "protonapp"
-        "rmpc"
-        "spicetify-nix"
-        "spotify-player"
-        "youtube-tui"
-      ]
-      ++ [
-        "astal-shell"
-        "dunst"
-        "hypridle"
-        "hyprlock"
-        "rofi"
-        "swww"
-      ];
+    enableList = [
+      "kdeconnect"
+      "protonapp"
+      "rmpc"
+      "spicetify-nix"
+      "spotify-player"
+      "youtube-tui"
+    ];
 
     disableList = [
-      "noctalia"
-      "swayidle"
     ];
   in
     genAttrs enableList (_name: {enable = true;})

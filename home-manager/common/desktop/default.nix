@@ -1,20 +1,24 @@
 _: {
   imports = [
     ./niri
+    ./rofi
+    ./astal-shell.nix
     ./config.nix
+    ./dimland.nix
     ./discord.nix
+    ./dunst.nix
     ./foot.nix
     ./gtk.nix
+    ./hypridle.nix
+    ./hyprlock.nix
     ./mpv.nix
     ./nautilus.nix
-    ./noctalia.nix
     ./pipewire.nix
     ./polkit.nix
     ./qt.nix
-    ./swayidle.nix
     ./swayimg.nix
     ./swayosd.nix
-    ./yazi.nix
+    ./swww.nix
     ./zathura.nix
     ./zen-browser.nix
   ];
