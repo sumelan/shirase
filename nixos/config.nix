@@ -14,7 +14,44 @@
     hiPrio
     optionals
     ;
+
+  inherit
+    (config.hm.xdg)
+    configFile
+    configHome
+    mimeApps
+    ;
+
   inherit (lib.custom.tmpfiles) mkSymlinks mkCreateAndRemove;
+
+  # use the package configured by nvf
+  customNeovim = pkgs.custom.nvf.override {inherit host flakePath;};
+
+  # use same helix config as home-manager
+  hmHelix = mkIf config.hm.custom.helix.enable (pkgs.symlinkJoin {
+    name = "helix";
+    paths = [pkgs.helix];
+    buildInputs = [pkgs.makeWrapper];
+    postBuild =
+      # sh
+      ''
+        wrapProgram $out/bin/hx --add-flags "--config ${configHome}/helix";
+      '';
+    meta.mainProgram = "hx";
+  });
+
+  # use same yazi config as home-manager
+  hmYazi = pkgs.symlinkJoin {
+    name = "yazi";
+    paths = [pkgs.yazi];
+    buildInputs = [pkgs.makeWrapper];
+    postBuild =
+      # sh
+      ''
+        wrapProgram $out/bin/yazi --set YAZI_CONFIG_HOME "${configHome}/yazi"
+      '';
+    meta.mainProgram = "yazi";
+  };
 in {
   services.gvfs.enable = true; # automount disks
 
@@ -25,10 +62,10 @@ in {
 
   environment = {
     etc = {
-      "gitconfig".text = config.hm.xdg.configFile."git/config".text; # universal git settings
+      "gitconfig".text = configFile."git/config".text; # universal git settings
       # get gparted to use system theme
-      "xdg/gtk-3.0/settings.ini".text = config.hm.xdg.configFile."gtk-3.0/settings.ini".text;
-      "xdg/gtk-4.0/settings.ini".text = config.hm.xdg.configFile."gtk-4.0/settings.ini".text;
+      "xdg/gtk-3.0/settings.ini".text = configFile."gtk-3.0/settings.ini".text;
+      "xdg/gtk-4.0/settings.ini".text = configFile."gtk-4.0/settings.ini".text;
     };
 
     # install fish completions for fish
@@ -40,7 +77,7 @@ in {
       EDITOR = config.hm.profiles.${user}.defaultEditor.name;
       VISUAL = config.hm.profiles.${user}.defaultEditor.name;
       NIXPKGS_ALLOW_UNFREE = "1";
-      STARSHIP_CONFIG = "${config.hm.xdg.configHome}/starship.toml";
+      STARSHIP_CONFIG = "${configHome}/starship.toml";
     };
 
     # use some shell aliases from home manager
@@ -58,6 +95,7 @@ in {
       // {
         inherit
           (config.hm.home.shellAliases)
+          gg # lazygit
           y # yazi
           ;
       };
@@ -72,36 +110,10 @@ in {
         yazi
         zoxide
         ;
+
       forUptime = hiPrio pkgs.procps; # for uptime
 
-      # use same config as home-manager
-      customYazi = pkgs.symlinkJoin {
-        name = "yazi";
-        paths = [pkgs.yazi];
-        buildInputs = [pkgs.makeWrapper];
-        postBuild =
-          # sh
-          ''
-            wrapProgram $out/bin/yazi --set YAZI_CONFIG_HOME "${config.hm.xdg.configHome}/yazi"
-          '';
-        meta.mainProgram = "yazi";
-      };
-
-      # helix editor
-      customHelix = mkIf config.hm.custom.helix.enable (pkgs.symlinkJoin {
-        name = "helix";
-        paths = [pkgs.helix];
-        buildInputs = [pkgs.makeWrapper];
-        postBuild =
-          # sh
-          ''
-            wrapProgram $out/bin/hx --add-flags "--config ${config.hm.xdg.configHome}/helix";
-          '';
-        meta.mainProgram = "hx";
-      });
-
-      # use the package configured by nvf
-      customNeovim = pkgs.custom.nvf.override {inherit host flakePath;};
+      inherit customNeovim hmHelix hmYazi;
 
       # install gtk theme for root, some apps like gparted only run as root
       gtkTheme = config.hm.gtk.theme.package;
@@ -148,13 +160,11 @@ in {
 
   xdg = {
     # use mimetypes defined from home-manager
-    mime = let
-      hmMime = config.hm.xdg.mimeApps;
-    in {
+    mime = {
       enable = true;
-      inherit (hmMime) defaultApplications;
-      addedAssociations = hmMime.associations.added;
-      removedAssociations = hmMime.associations.removed;
+      inherit (mimeApps) defaultApplications;
+      addedAssociations = mimeApps.associations.added;
+      removedAssociations = mimeApps.associations.removed;
     };
   };
 

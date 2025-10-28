@@ -35,6 +35,8 @@ in {
           app-id = "^(waypaper)$";
         };
         open-floating = true;
+        default-column-width.proportion = 0.5;
+        default-window-height.proportion = 0.5;
       }
     ];
     layer-rules = [

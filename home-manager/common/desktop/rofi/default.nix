@@ -101,7 +101,6 @@ in {
     "rofi/themes/launcher.rasi".text =
       # rasi
       ''
-        /*****----- Configuration -----*****/
         configuration {
         	modi:                       "drun,run,filebrowser,window";
             show-icons:                 true;
@@ -113,18 +112,18 @@ in {
         	window-format:              "{w} · {c}";
         }
 
-        /*****----- Global Properties -----*****/
+        /* Global Properties */
         * {
             font:                        "${config.custom.fonts.monospace} 14";
             background:                  ${white3};
             background-alt:              ${white0};
             foreground:                  ${gray5};
-            selected:                    ${cyan_bright}E5;
+            selected:                    ${orange_bright}E5;
             active:                      ${gray3};
             urgent:                      ${gray4};
         }
 
-        /*****----- Main Window -----*****/
+        /* Main Window */
         window {
             /* properties for window widget */
             transparency:                "real";
@@ -142,68 +141,63 @@ in {
             background-color:            @background;
         }
 
-        /*****----- Main Box -----*****/
+        /* Main Box */
         mainbox {
             enabled:                     true;
             spacing:                     0px;
             background-color:            transparent;
             orientation:                 vertical;
-            children:                    [ "inputbar", "listbox" ];
+            children:                    [ "inputbar", "mode-switcher", "listbox" ];
         }
 
-        listbox {
-            spacing:                     20px;
-            padding:                     20px;
+        /** dummy **/
+        dummy {
+            expand:                      true;
             background-color:            transparent;
-            orientation:                 vertical;
-            children:                    [ "message", "listview" ];
         }
 
-        /*****----- Inputbar -----*****/
+        /* Inputbar */
         inputbar {
             enabled:                     true;
             spacing:                     10px;
-            padding:                     100px 60px;
+            padding:                     30px 60px;
             background-color:            ${gray0}E6;
             text-color:                  @foreground;
             orientation:                 horizontal;
-            children:                    [ "textbox-prompt-colon", "entry", "dummy", "mode-switcher" ];
+            children:                    [ "textbox-prompt-colon", "entry", "dummy" ];
         }
         textbox-prompt-colon {
             enabled:                     true;
             expand:                      false;
-            str:                         "";
+            str:                         " ";
             padding:                     12px 15px;
             border-radius:               100%;
-            background-color:            @background-alt;
+            background-color:            @background;
             text-color:                  inherit;
         }
         entry {
             enabled:                     true;
             expand:                      false;
             width:                       300px;
-            padding:                     12px 16px;
+            padding:                     10px 15px;
             border-radius:               100%;
-            background-color:            @background-alt;
+            background-color:            @background;
             text-color:                  inherit;
             cursor:                      text;
-            placeholder:                 "Search";
+            placeholder:                 "Search...";
             placeholder-color:           inherit;
         }
-        dummy {
-            expand:                      true;
-            background-color:            transparent;
-        }
 
-        /*****----- Mode Switcher -----*****/
+        /* Mode Switcher */
         mode-switcher{
             enabled:                     true;
             spacing:                     10px;
-            background-color:            transparent;
+            padding:                     15px 15px;
+            background-color:            ${green_dim}E6;
             text-color:                  @foreground;
         }
         button {
-            width:                       80px;
+            width:                       30px;
             padding:                     12px;
             border-radius:               100%;
             background-color:            @background-alt;
@@ -215,10 +209,38 @@ in {
             text-color:                  @foreground;
         }
 
-        /*****----- Listview -----*****/
+        /* Listbox */
+        listbox {
+            spacing:                     20px;
+            padding:                     20px;
+            background-color:            transparent;
+            orientation:                 vertical;
+            children:                    [ "message", "listview" ];
+        }
+
+        /** Message **/
+        message {
+            background-color:            transparent;
+        }
+        textbox {
+            padding:                     15px;
+            border-radius:               15px;
+            background-color:            @background-alt;
+            text-color:                  @foreground;
+            vertical-align:              0.5;
+            horizontal-align:            0.0;
+        }
+        error-message {
+            padding:                     15px;
+            border-radius:               15px;
+            background-color:            @background;
+            text-color:                  @foreground;
+        }
+
+        /** Listview **/
         listview {
             enabled:                     true;
-            columns:                     6;
+            columns:                     4;
             lines:                       3;
             cycle:                       true;
             dynamic:                     true;
@@ -233,8 +255,7 @@ in {
             text-color:                  @foreground;
             cursor:                      "default";
         }
-
-        /*****----- Elements -----*****/
+        /*** Elements ***/
         element {
             enabled:                     true;
             spacing:                     10px;
@@ -258,7 +279,7 @@ in {
             text-color:                  @foreground;
         }
         element selected.normal {
-            background-color:            @selected;
+            background-color:            ${cyan_bright}E5;
             text-color:                  @foreground;
         }
         element selected.urgent {
@@ -282,31 +303,11 @@ in {
             vertical-align:              0.5;
             horizontal-align:            0.5;
         }
-
-        /*****----- Message -----*****/
-        message {
-            background-color:            transparent;
-        }
-        textbox {
-            padding:                     15px;
-            border-radius:               15px;
-            background-color:            @background-alt;
-            text-color:                  @foreground;
-            vertical-align:              0.5;
-            horizontal-align:            0.0;
-        }
-        error-message {
-            padding:                     15px;
-            border-radius:               15px;
-            background-color:            @background;
-            text-color:                  @foreground;
-        }
       '';
 
     "rofi/themes/cliphist.rasi".text =
       # rasi
       ''
-        /*****----- Configuration -----*****/
         configuration {
             modi:                       "drun";
             show-icons:                 false;
@@ -314,41 +315,41 @@ in {
             drun-display-format:        "{name}";
         }
 
-        /*****----- Global Properties -----*****/
+        /* Global Properties */
         * {
-          background:           ${gray0}E6;
-          background-alt:       ${gray2}E6;
-          foreground:           ${white3}FF;
-          selected:             ${cyan_base}E6;
-          active:               ${blue0}FF;
-          urgent:               ${yellow_base}FF;
+            background:           ${gray0}E6;
+            background-alt:       ${gray2}E6;
+            foreground:           ${white3}FF;
+            selected:             ${cyan_base}E6;
+            active:               ${blue0}FF;
+            urgent:               ${yellow_base}FF;
 
-          border-colour:               var(selected);
-          handle-colour:               var(selected);
-          background-colour:           var(background);
-          foreground-colour:           var(foreground);
-          alternate-background:        var(background-alt);
-          normal-background:           var(background);
-          normal-foreground:           var(foreground);
-          urgent-background:           var(urgent);
-          urgent-foreground:           var(background);
-          active-background:           var(active);
-          active-foreground:           var(background);
-          selected-normal-background:  var(selected);
-          selected-normal-foreground:  var(background);
-          selected-urgent-background:  var(active);
-          selected-urgent-foreground:  var(background);
-          selected-active-background:  var(urgent);
-          selected-active-foreground:  var(background);
-          alternate-normal-background: var(background);
-          alternate-normal-foreground: var(foreground);
-          alternate-urgent-background: var(urgent);
-          alternate-urgent-foreground: var(background);
-          alternate-active-background: var(active);
-          alternate-active-foreground: var(background);
+            border-colour:               var(selected);
+            handle-colour:               var(selected);
+            background-colour:           var(background);
+            foreground-colour:           var(foreground);
+            alternate-background:        var(background-alt);
+            normal-background:           var(background);
+            normal-foreground:           var(foreground);
+            urgent-background:           var(urgent);
+            urgent-foreground:           var(background);
+            active-background:           var(active);
+            active-foreground:           var(background);
+            selected-normal-background:  var(selected);
+            selected-normal-foreground:  var(background);
+            selected-urgent-background:  var(active);
+            selected-urgent-foreground:  var(background);
+            selected-active-background:  var(urgent);
+            selected-active-foreground:  var(background);
+            alternate-normal-background: var(background);
+            alternate-normal-foreground: var(foreground);
+            alternate-urgent-background: var(urgent);
+            alternate-urgent-foreground: var(background);
+            alternate-active-background: var(active);
+            alternate-active-foreground: var(background);
         }
 
-        /*****----- Main Window -----*****/
+        /* Main Window */
         window {
             /* properties for window widget */
             transparency:                "real";
@@ -370,7 +371,7 @@ in {
             background-color:            @background;
         }
 
-        /*****----- Main Box -----*****/
+        /* Main Box */
         mainbox {
             enabled:                     true;
             spacing:                     10px;
@@ -383,7 +384,7 @@ in {
             children:                    [ "inputbar", "message", "listview" ];
         }
 
-        /*****----- Inputbar -----*****/
+        /* Inputbar */
         inputbar {
             enabled:                     true;
             spacing:                     10px;
@@ -434,7 +435,7 @@ in {
             text-color:                  inherit;
         }
 
-        /*****----- Listview -----*****/
+        /* Listview */
         listview {
             enabled:                     true;
             columns:                     1;
@@ -464,7 +465,7 @@ in {
             background-color:            @alternate-background;
         }
 
-        /*****----- Elements -----*****/
+        /* Elements */
         element {
             enabled:                     true;
             spacing:                     8px;
@@ -528,7 +529,7 @@ in {
             horizontal-align:            0.0;
         }
 
-        /*****----- Message -----*****/
+        /* Message */
         message {
             enabled:                     true;
             margin:                      0px;
@@ -562,28 +563,26 @@ in {
             text-color:                  @foreground-colour;
         }
       '';
+
     "rofi/themes/selecter.rasi".text =
       #rasi
       ''
-        /*****----- Configuration -----*****/
         configuration {
             show-icons:                 false;
         }
 
-        /*****----- Global Properties -----*****/
-
+        /* Global Properties */
         * {
-          background:           ${gray0}E6;
-          background-alt:       ${gray2}E6;
-          foreground:           ${white3}FF;
-          selected:             ${cyan_base}E6;
-          active:               ${blue0}FF;
-          urgent:               ${yellow_base}FF;
-
-          font: "${config.custom.fonts.monospace} 14";
+            background:           ${gray0}E6;
+            background-alt:       ${gray2}E6;
+            foreground:           ${white3}FF;
+            selected:             ${cyan_base}E6;
+            active:               ${blue0}FF;
+            urgent:               ${yellow_base}FF;
+            font: "${config.custom.fonts.monospace} 14";
         }
 
-        /*****----- Main Window -----*****/
+        /* Main Window */
         window {
             /* properties for window widget */
             transparency:                "real";
@@ -605,7 +604,7 @@ in {
             background-color:            @background;
         }
 
-        /*****----- Main Box -----*****/
+        /* Main Box */
         mainbox {
             enabled:                     true;
             spacing:                     10px;
@@ -618,7 +617,7 @@ in {
             children:                    [ "inputbar", "message", "listview" ];
         }
 
-        /*****----- Inputbar -----*****/
+        /* Inputbar */
         inputbar {
             enabled:                     true;
             spacing:                     10px;
@@ -640,7 +639,7 @@ in {
             text-color:                  @background;
         }
 
-        /*****----- Message -----*****/
+        /* Message */
         message {
             enabled:                     true;
             margin:                      0px;
@@ -669,7 +668,7 @@ in {
             text-color:                  @foreground;
         }
 
-        /*****----- Listview -----*****/
+        /* Listview */
         listview {
             enabled:                     true;
             columns:                     1;
@@ -693,7 +692,7 @@ in {
             cursor:                      "default";
         }
 
-        /*****----- Elements -----*****/
+        /* Elements */
         element {
             enabled:                     true;
             spacing:                     0px;
@@ -717,7 +716,6 @@ in {
             background-color:            var(selected);
             text-color:                  var(background);
         }
-
       '';
   };
 }

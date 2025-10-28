@@ -6,10 +6,12 @@
   ...
 }: let
   inherit (lib) getExe;
-  nvfPkgs = pkgs.custom.nvf.override {inherit host flakePath;};
+
+  # use the package configured by nvf
+  customNeovim = pkgs.custom.nvf.override {inherit host flakePath;};
 in {
   home = {
-    packages = [nvfPkgs];
+    packages = [customNeovim];
     shellAliases = {
       nano = "nvim";
       neovim = "nvim";
@@ -24,7 +26,7 @@ in {
         genericName = "Text Editor";
         icon = "nvim";
         terminal = true;
-        exec = getExe nvfPkgs;
+        exec = getExe customNeovim;
       };
     };
 

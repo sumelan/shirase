@@ -10,7 +10,12 @@
   }:
     (inputs.nvf.lib.neovimConfiguration {
       inherit pkgs;
-      modules = [./nvf] ++ extraModules;
+      modules =
+        [
+          ./nvf
+          ./nvf/keymaps.nix
+        ]
+        ++ extraModules;
       extraSpecialArgs = {inherit host flakePath;};
     }).neovim;
 in {
@@ -18,7 +23,10 @@ in {
 
   helium = callPackage ./helium {};
 
+  nvfNix = callPackage (mkNvf []) {};
+
   nvf = callPackage (mkNvf [
     # add extraModules here
+    ./nvf/extraLang.nix
   ]) {};
 }

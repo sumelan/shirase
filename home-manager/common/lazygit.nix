@@ -3,6 +3,10 @@
   accent = "#D08770";
   muted = "#60728A";
 in {
+  home.shellAliases = {
+    gg = "lazygit";
+  };
+
   programs.lazygit = {
     enable = true;
     settings = mkForce {

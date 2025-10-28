@@ -9,19 +9,93 @@
     mkIf
     ;
 in {
-  imports = [
-    ./keymaps.nix
-  ];
-
   # https://notashelf.github.io/nvf/options.html
   vim = {
     viAlias = true;
     vimAlias = true;
+    lineNumberMode = "relNumber";
+    preventJunkFiles = true;
+    searchCase = "smart";
 
     # https://github.com/NotAShelf/nvf/blob/main/modules/plugins/theme/supported-themes.nix
     theme = {
       enable = true;
       name = "nord";
+    };
+
+    clipboard = {
+      enable = true;
+      registers = "unnamedplus";
+      providers = {
+        wl-copy.enable = true;
+        xsel.enable = true;
+      };
+    };
+
+    autopairs.nvim-autopairs.enable = true;
+    autocomplete.nvim-cmp.enable = true;
+
+    filetree.neo-tree.enable = true;
+
+    telescope = {
+      enable = true;
+    };
+
+    dashboard.alpha = {
+      enable = true;
+      theme = "theta";
+    };
+
+    binds = {
+      whichKey.enable = true;
+      cheatsheet.enable = true;
+    };
+
+    comments = {
+      comment-nvim.enable = true;
+    };
+
+    git = {
+      enable = true;
+      gitsigns.enable = true;
+      gitsigns.codeActions.enable = false;
+    };
+
+    notify = {
+      nvim-notify.enable = true;
+      nvim-notify.setupOpts.background_colour = "#181825";
+    };
+
+    notes.todo-comments.enable = true;
+
+    projects.project-nvim.enable = true;
+
+    session = {
+      nvim-session-manager.enable = false;
+    };
+
+    snippets.luasnip.enable = true;
+
+    statusline.lualine.enable = true;
+
+    tabline.nvimBufferline = {
+      enable = true;
+      setupOpts.options = {
+        numbers = "none";
+        show_close_icon = false;
+      };
+    };
+
+    terminal.toggleterm = {
+      enable = true;
+      lazygit = {
+        enable = true;
+      };
+    };
+
+    treesitter = {
+      enable = true;
+      autotagHtml = true;
     };
 
     options = {
@@ -40,22 +114,11 @@ in {
       shiftround = true; # round indent to multiple of 'shiftwidth' for > and < command
     };
 
-    clipboard = {
-      enable = true;
-      registers = "unnamedplus";
-      providers = {
-        wl-copy.enable = true;
-        xsel.enable = true;
-      };
-    };
-    lineNumberMode = "relNumber";
-    preventJunkFiles = true;
-    searchCase = "smart";
-
     languages = {
       enableFormat = true;
       enableTreesitter = true;
       enableExtraDiagnostics = true;
+
       bash.enable = true;
 
       nix = {
@@ -64,30 +127,9 @@ in {
         treesitter.enable = true;
       };
 
-      clang.enable = true;
-      zig.enable = true;
-      python.enable = true;
-
       markdown = {
         enable = true;
         extensions.render-markdown-nvim.enable = true;
-      };
-
-      ts = {
-        enable = true;
-        lsp.enable = true;
-        format.type = "prettierd";
-        extensions.ts-error-translator.enable = true;
-      };
-
-      html.enable = true;
-      lua.enable = true;
-      css.enable = false;
-      typst.enable = true;
-
-      rust = {
-        enable = true;
-        crates.enable = true;
       };
     };
 
@@ -97,6 +139,7 @@ in {
       lspkind.enable = true;
       otter-nvim.enable = true;
       trouble.enable = true;
+
       servers.nixd = {
         init_options = mkIf (flakePath != "") rec {
           nixos.expr = "(builtins.getFlake ''${flakePath}'').nixosConfigurations.${host}.options";
@@ -105,56 +148,6 @@ in {
       };
     };
 
-    autopairs.nvim-autopairs.enable = true;
-    autocomplete.nvim-cmp.enable = true;
-    binds = {
-      whichKey.enable = true;
-      cheatsheet.enable = true;
-    };
-    comments = {
-      comment-nvim.enable = true;
-    };
-    dashboard.alpha = {
-      enable = true;
-      theme = "theta";
-    };
-    filetree.neo-tree.enable = true;
-    git = {
-      enable = true;
-      gitsigns.enable = true;
-      gitsigns.codeActions.enable = false;
-    };
-    notify = {
-      nvim-notify.enable = true;
-      nvim-notify.setupOpts.background_colour = "#181825";
-    };
-    notes.todo-comments.enable = true;
-    projects.project-nvim.enable = true;
-    session = {
-      nvim-session-manager.enable = false;
-    };
-    snippets.luasnip.enable = true;
-    statusline.lualine.enable = true;
-    tabline.nvimBufferline = {
-      enable = true;
-      setupOpts.options = {
-        numbers = "none";
-        show_close_icon = false;
-      };
-    };
-    telescope = {
-      enable = true;
-    };
-    terminal.toggleterm = {
-      enable = true;
-      lazygit = {
-        enable = true;
-      };
-    };
-    treesitter = {
-      enable = true;
-      autotagHtml = true;
-    };
     ui = {
       borders.enable = true;
       noice.enable = true;
@@ -169,6 +162,7 @@ in {
       };
       fastaction.enable = true;
     };
+
     utility = {
       preview.markdownPreview.enable = true;
       ccc.enable = false;
@@ -186,6 +180,7 @@ in {
       };
       yazi-nvim.enable = true;
     };
+
     visuals = {
       fidget-nvim.enable = true;
       indent-blankline.enable = true;
