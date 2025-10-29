@@ -4,7 +4,6 @@ in {
   imports = [
     ./bash.nix
     ./fish.nix
-    ./shell.nix
   ];
 
   home = {

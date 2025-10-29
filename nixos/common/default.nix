@@ -10,5 +10,6 @@ _: {
     ./nix.nix
     ./pipewire.nix
     ./root.nix
+    ./sessionlock.nix
   ];
 }
