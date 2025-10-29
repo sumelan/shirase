@@ -175,7 +175,7 @@ in {
           ssh_only = true;
           ssh_symbol = "󰁥 ";
           format = "[](fg:cyan_dim)[ $ssh_symbol$hostname ]($style)[](fg:cyan_dim) ";
-          style = "bg:cyan_dim fg:orange_base";
+          style = "bg:cyan_dim fg:white3";
         };
 
         # Languages

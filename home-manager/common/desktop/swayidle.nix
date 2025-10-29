@@ -39,7 +39,7 @@ in {
       {
         event = "unlock";
         # kill hyprlock
-        command = "${pkgs.procps}/bin/pkill -SIGUSR1 gtlock";
+        command = "${pkgs.procps}/bin/pkill -SIGUSR1 gtklock";
       }
     ];
 

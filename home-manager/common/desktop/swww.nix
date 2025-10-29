@@ -14,7 +14,9 @@ in {
         waypaper
         ;
     };
-    file.".backdrop.png".source = ./nord-night-aurora.png;
+    file = {
+      ".backdrop.png".source = ./nord-night-aurora.png;
+    };
   };
 
   programs.niri.settings = {

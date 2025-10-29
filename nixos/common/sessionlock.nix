@@ -4,6 +4,10 @@
   pkgs,
   ...
 }: {
+  environment.etc = {
+    "xdg/gtklock/background.png".source = ./nix-nord-aurora.png;
+  };
+
   programs.gtklock = {
     enable = true;
     modules = builtins.attrValues {
@@ -17,7 +21,7 @@
     config = {
       main = {
         gtk-theme = config.hm.gtk.theme.name;
-        background = false;
+        background = true;
         time-format = "%H:%M";
         date-format = "%m月 %d日 %A";
         follow-focus = true;
@@ -52,6 +56,7 @@
         }
 
         window {
+            background-image: url("/etc/xdg/gtklock/background.png");
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -116,5 +121,15 @@
             color: rgba(197, 114, 122, 1.0);
         }
       '';
+  };
+
+  hm = {
+    programs.niri.settings.binds = {
+      "Mod+Alt+L" = {
+        action.spawn = ["gtklock"];
+        allow-when-locked = true;
+        hotkey-overlay.title = ''<span foreground="#9FC6C5">[ Gtklock]</span> Lock Screen'';
+      };
+    };
   };
 }
