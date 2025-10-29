@@ -39,8 +39,12 @@
         show-hidden = false;
       };
       powerbar = {
-        show-labels = true;
-        linked-buttons = true;
+        show-labels = false;
+        linked-buttons = false;
+        reboot-command = "systemctl reboot";
+        poweroff-command = "systemctl poweroff";
+        suspend-command = "systemctl suspend";
+        logout-command = "niri msg action quit --skip-confirmation";
       };
       userinfo = {
         horizontal-layout = false;

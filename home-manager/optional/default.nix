@@ -10,7 +10,6 @@ _: {
     ./helix.nix
     ./kdeconnect.nix
     ./librewolf.nix
-    ./noctalia.nix
     ./obs-studio.nix
     ./protonapp.nix
     ./spicetify-nix.nix
