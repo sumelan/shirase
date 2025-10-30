@@ -1,6 +1,6 @@
 {
-  pkgs,
   inputs,
+  pkgs,
   ...
 }: {
   home.packages = builtins.attrValues {

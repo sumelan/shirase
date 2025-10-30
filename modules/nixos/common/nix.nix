@@ -1,12 +1,12 @@
 {
+  inputs,
   lib,
   config,
   pkgs,
-  inputs,
-  self,
   user,
   ...
 }: let
+  inherit (inputs) self;
   inherit
     (lib)
     mkOverride

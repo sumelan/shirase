@@ -1,7 +1,7 @@
 # passing system etc. to nixosSystem is a useless deprecated pattern
 # that is superseded by nixpkgs.hostPlatform etc. in hardware-configuration.nix
 {inputs, ...}: let
-  inherit (inputs) self nixpkgs;
+  inherit (inputs) nixpkgs;
 
   # Get the extended lib from ./lib
   # https://www.notashelf.dev/posts/extended-nixpkgs-lib
@@ -38,7 +38,7 @@
       };
 
       specialArgs = {
-        inherit inputs self lib host user;
+        inherit inputs lib host user;
         flakePath = "/persist/home/${user}/projects/shirase";
         isLaptop = hardware == "laptop";
         isDesktop = hardware == "desktop";
@@ -60,7 +60,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = {
-                inherit inputs self lib host user;
+                inherit inputs lib host user;
                 flakePath = "/persist/home/${user}/projects/shirase";
                 isLaptop = hardware == "laptop";
                 isDesktop = hardware == "desktop";
