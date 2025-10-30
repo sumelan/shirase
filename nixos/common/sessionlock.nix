@@ -75,10 +75,12 @@
             color: rgba(235, 239, 244, 1.0);
             padding: 14px 50px;
         }
+
         #window-box #clock-label {
             font-size: 6em;
             text-shadow: 2px 2px 2px rgba(67, 76, 94, 0.5);
         }
+
         #window-box #unlock-button {
             border-radius: 7px;
             color: rgba(235, 239, 244, 1.0);
@@ -96,6 +98,7 @@
             background-color: rgba(177, 200, 157, 1.0);
             color: rgba(36, 41, 51, 0.8)
         }
+
         #window-box #input-field {
             border-radius: 7px;
             color: rgba(235, 239, 244, 1.0);
@@ -118,9 +121,11 @@
         #window-box #input-field:focus {
             border-color: rgba(94, 127, 172, 1.0);
         }
+
         #window-box #warning-label {
             color: rgba(239, 212, 159, 1.0);
         }
+
         #window-box #error-label {
             color: rgba(197, 114, 122, 1.0);
         }

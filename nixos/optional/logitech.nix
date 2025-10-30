@@ -17,10 +17,12 @@ in {
       enableGraphical = true;
     };
 
-    hm.programs.niri.settings.spawn-at-startup = [
-      {
-        argv = ["solaar" "-w" "hide"];
-      }
-    ];
+    hm = {
+      programs.niri.settings.spawn-at-startup = [
+        {
+          argv = ["solaar" "-w" "hide" "-b" "symbolic"];
+        }
+      ];
+    };
   };
 }

@@ -4,11 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit
-    (lib)
-    getExe
-    getExe'
-    ;
+  inherit (lib) getExe getExe';
   # Black
   black0 = "#191D24";
   black1 = "#1E222A";

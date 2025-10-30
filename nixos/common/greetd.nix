@@ -80,7 +80,10 @@ in {
           builtins.toString mainMonitor.mode.height
         }@${builtins.toString mainMonitor.mode.refresh}";
         mainScale = builtins.toString mainMonitor.scale;
-        mainRotate = builtins.toString mainMonitor.rotation;
+        mainRotate =
+          if mainMonitor.rotation == 0
+          then "normal"
+          else builtins.toString mainMonitor.rotation;
 
         initialBacklight = optionalString config.hm.custom.backlight.enable ''
           spawn-sh-at-startup "${pkgs.brightnessctl}/bin/brightnessctl set 5%"
@@ -193,7 +196,7 @@ in {
           }
 
           box.horizontal>button.default.suggested-action.text-button {
-            background: ${cyan_dim};
+            background: ${magenta_dim};
             color: ${gray4};
             padding: 12px;
             margin: 0 8px;
@@ -202,7 +205,7 @@ in {
           }
 
           box.horizontal>button.default.suggested-action.text-button:hover {
-            background: shade(${cyan_bright}, 1.2);
+            background: shade(${magenta_bright}, 1.2);
             color: ${black2};
           }
 
@@ -262,7 +265,7 @@ in {
 
           button.image-button.toggle:disabled {
             background: ${gray5};
-            color: alpha(${orange_bright}, .6);
+            color: alpha(${yellow_base}, .6);
             margin-right: 36px;
             padding: 12px;
             border-radius: 12px;
@@ -286,13 +289,13 @@ in {
           }
 
           entry.password {
-            border: 2px solid ${yellow_dim};
+            border: 2px solid ${orange_dim};
             border-radius: 12px;
             padding: 12px;
           }
 
           entry.password:hover {
-            border: 2px solid ${yellow_bright};
+            border: 2px solid ${orange_bright};
           }
       '';
   };

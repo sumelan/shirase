@@ -5,11 +5,7 @@
   user,
   ...
 }: let
-  inherit
-    (lib)
-    mkIf
-    mkMerge
-    ;
+  inherit (lib) mkIf mkMerge;
 in
   mkMerge [
     (mkIf config.hm.custom.wifi.enable {

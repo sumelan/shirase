@@ -2,12 +2,10 @@
   lib,
   config,
   pkgs,
-  isLaptop,
   ...
 }: let
   inherit
     (lib)
-    mkIf
     concatStringsSep
     getExe
     getExe'
@@ -59,14 +57,14 @@ in {
         command = "${pkgs.systemd}/bin/loginctl lock-session";
       }
       {
-        timeout = 60 * 18;
+        timeout = 60 * 20;
         command = "${getExe niriPkg} msg action power-off-monitors";
         resumeCommand = "${getExe niriPkg} msg action power-on-monitors";
       }
-      (mkIf isLaptop {
-        timeout = 60 * 20;
+      {
+        timeout = 60 * 25;
         command = "${pkgs.systemd}/bin/systemctl suspend";
-      })
+      }
     ];
   };
 }
