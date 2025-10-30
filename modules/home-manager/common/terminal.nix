@@ -55,8 +55,6 @@
     };
   };
   custom.persist = {
-    home = {
-      cache.directories = [".local/share/zoxide"];
-    };
+    home.directories = [".local/share/zoxide"];
   };
 }

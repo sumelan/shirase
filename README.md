@@ -4,38 +4,41 @@ This is my personal flake.
 
 ## Features
 
-### BTRFS + Impermanence
+### Full Disk Encrtption + Impermanence
 
-Whole volume has 1 GB for boot and 16 GB for swap, the rest are ZFS datasets.
-Layout is like below.
+My system consists from encrypted btrfs and
+[Impermanence](https://github.com/nix-community/impermanence). System rolls back
+to `/root-blank` volume on each boot, but `/persist` and `/cache` are remained.
+Plus I use [btrbk](https://github.com/digint/btrbk) to take snapshots and backup
+my `/persist` volume (`/cache` are files that should be persisted, but not to
+snapshot).
 
 ```sh
 nvme0n1
-  ├── NIXOS # subvolumes
-  │     ├── /root
-  │     ├── /root-blank
-  │     ├── /nix
-  │     ├── /persist
-  │     └── /cache
   │
-  └──── NIXBOOT -  1 GB
+  ├─ NIXOS # subvolumes
+  │    ├── /root-blank
+  │    ├── /root
+  │    ├── /nix
+  │    ├── /home
+  │    ├── /log
+  │    └── /persist
+  │
+  ├─ Swap (depends by host)
+  │
+  └─ NIXBOOT -  1 GB
 ```
 
-`/root` volume is wiped at each boot, but `/perisit`
-and `/cache` are remained by
-[impermanence module](https://github.com/nix-community/impermanence).
+## Optional Steps
 
-Also, `/persist` volume of my laptop (minibook) is transferred to HDDs connected to
-my desktop (sakura) using
-[btrbk](https://github.com/digint/btrbk).
+After partitioning, there are some processes before install. These are optional
+but I always follow these steps.
 
-## Install
+### Install from another Linux system via SSH
 
-Some process may be needed before. Start from a tty on the NixOS iso (minimal) ...
-
-### (Optional): Install from another Linux system via SSH
-
-Enable SSH on the target device.
+Enable SSH on the target device. Start and complete whole process from target
+device only is good if you have a install script or use disko, but I prefer
+manually partitioning and install.
 
 ```sh
 systemctl start sshd.service
@@ -60,9 +63,12 @@ Now, from the other system, ssh into the target device.
 ssh root@ip_address_of_target-device
 ```
 
-### (Optional) Using niri binary cache
+### Using niri binary cache
 
-Install cachix client.
+I use niri-unstable so it produces building process without the cachix
+[niri-flake](https://github.com/sodiboo/niri-flake) provided. My hosts include
+poor devices so buiding often result to fail. First, istall cachix client in nix
+minimal iso.
 
 ```sh
 nix-env -iA cachix -f https://cachix.org/api/v1/install
@@ -74,28 +80,19 @@ Start using the binary cache.
 cachix use niri
 ```
 
-Add `imports = [ ./cachix.nix ]` in `/etc/nixos/configuration.nix`.
+Add `imports = [ ./cachix.nix ]` in `/etc/nixos/configuration.nix` and run
+`sudo nixos-rebuild switch`.
 
-### Automatically install using a script
+## Resource
 
-Run the following.
-
-```sh
-sh <(curl -L https://raw.githubusercontent.com/Sumelan/shirase/main/install.sh)
-```
-
-## Credits
+- [Full Disk Encryption and Impermanence on NixOS](https://notashelf.dev/posts/impermanence)
+  His site helps me to configure my flake. Also I rely on many programs he
+  involved with (nh, nvf, flint, and more!)
 
 - [iynaix/dotfiles](https://github.com/iynaix/dotfiles)
 
-  Shamelessly copied impermanence, install-scripts, and many configs from his repo.
-
-- [Guekka's blog](https://guekka.github.io/nixos-server-1/)
-
-  His script is used in my btrfs+impermanence setup.
-
-## Reference
+  I shamelessly copied many configs from his repo.
 
 - [Vimjoyer's YouTube](https://www.youtube.com/@vimjoyer)
 
-  If you consider using nixos, check his YouTube channel!
+  If you consider using nixos, check on his YouTube channel!

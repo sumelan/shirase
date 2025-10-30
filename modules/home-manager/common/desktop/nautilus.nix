@@ -92,13 +92,9 @@ in {
   };
 
   custom.persist = {
-    home = {
-      directories = [
-        ".local/share/gvfs-metadata" # folder preferences such as view mode and sort order
-      ];
-      cache.directories = [
-        ".cache/thumbnails" # thumbnail cache
-      ];
-    };
+    home.directories = [
+      ".local/share/gvfs-metadata" # folder preferences such as view mode and sort order
+      ".cache/thumbnails" # thumbnail cache
+    ];
   };
 }

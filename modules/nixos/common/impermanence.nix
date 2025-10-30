@@ -35,20 +35,6 @@ in {
           apply = assertNoHomeDirs;
           description = "Files to persist in root filesystem";
         };
-        cache = {
-          directories = mkOption {
-            type = listOf str;
-            default = [];
-            apply = assertNoHomeDirs;
-            description = "Directories to persist, but not to snapshot";
-          };
-          files = mkOption {
-            type = listOf str;
-            default = [];
-            apply = assertNoHomeDirs;
-            description = "Files to persist, but not to snapshot";
-          };
-        };
       };
       home = {
         directories = mkOption {
@@ -126,19 +112,15 @@ in {
           );
         };
       };
+    };
 
-      # cache are files that should be persisted, but not to snapshot
-      # e.g. npm, cargo cache etc, that could always be redownloaded
-      "/cache" = {
-        hideMounts = true;
-        files = unique cfg.root.cache.files;
-        directories = unique cfg.root.cache.directories;
-
-        users.${user} = {
-          files = unique hmPersistCfg.home.cache.files;
-          directories = unique hmPersistCfg.home.cache.directories;
-        };
-      };
+    # auto-scrubbing
+    services.btrfs.autoScrub = {
+      enable = true;
+      interval = "monthly";
+      fileSystems = [
+        "/persist"
+      ];
     };
   };
 }

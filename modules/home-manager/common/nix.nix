@@ -48,11 +48,9 @@ in {
   };
 
   custom.persist = {
-    home = {
-      cache.directories = [
-        ".cache/nix-index"
-        ".cache/nix-search-tv"
-      ];
-    };
+    home.directories = [
+      ".cache/nix-index"
+      ".cache/nix-search-tv"
+    ];
   };
 }

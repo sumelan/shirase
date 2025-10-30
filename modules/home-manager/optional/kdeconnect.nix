@@ -16,15 +16,11 @@ in {
     };
 
     custom.persist = {
-      home = {
-        directories = [
-          ".config/kdeconnect"
-        ];
-        cache.directories = [
-          ".cache/kdeconnect.app"
-          ".cache/kdeconnect.daemon"
-        ];
-      };
+      home.directories = [
+        ".config/kdeconnect"
+        ".cache/kdeconnect.app"
+        ".cache/kdeconnect.daemon"
+      ];
     };
   };
 }

@@ -30,9 +30,9 @@ in {
 
     # store docker images on /cache
     hm.custom.persist = {
-      home.cache = {
-        directories = [".local/share/containers"];
-      };
+      home.directories = [
+        ".local/share/containers"
+      ];
     };
   };
 }

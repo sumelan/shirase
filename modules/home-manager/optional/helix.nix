@@ -465,7 +465,7 @@ in {
     };
 
     custom.persist = {
-      home.cache.directories = [
+      home.directories = [
         # helix log
         ".cache/helix"
       ];

@@ -145,11 +145,9 @@ in {
   documentation.man.generateCaches = true;
 
   hm.custom.persist = {
-    home = {
-      cache.directories = [
-        ".cache/nix"
-        ".cache/nixpkgs-review"
-      ];
-    };
+    home.directories = [
+      ".cache/nix"
+      ".cache/nixpkgs-review"
+    ];
   };
 }

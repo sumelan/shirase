@@ -38,16 +38,12 @@ in {
     };
 
     custom.persist = {
-      home = {
-        directories = [
-          ".config/Proton"
-          ".config/Proton Mail"
-          ".config/Proton Pass"
-        ];
-        cache.directories = [
-          ".cache/Proton"
-        ];
-      };
+      home.directories = [
+        ".config/Proton"
+        ".config/Proton Mail"
+        ".config/Proton Pass"
+        ".cache/Proton"
+      ];
     };
   };
 }

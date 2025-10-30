@@ -14,7 +14,7 @@ in {
     home.packages = [pkgs.euphonica];
 
     custom.persist = {
-      home.cache.directories = [
+      home.directories = [
         ".cache/euphonica"
       ];
     };

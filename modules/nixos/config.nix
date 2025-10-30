@@ -169,9 +169,10 @@ in {
   };
 
   custom.persist = {
-    root.directories = optionals config.hm.custom.wifi.enable ["/etc/NetworkManager"];
-    root.cache.directories = [
-      "/var/lib/systemd/coredump"
-    ];
+    root.directories =
+      [
+        "/var/lib/systemd/coredump"
+      ]
+      ++ optionals config.hm.custom.wifi.enable ["/etc/NetworkManager"];
   };
 }

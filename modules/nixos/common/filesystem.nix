@@ -57,13 +57,4 @@ _: {
       neededForBoot = true;
     };
   };
-
-  # auto-scrubbing
-  services.btrfs.autoScrub = {
-    enable = true;
-    interval = "monthly";
-    fileSystems = [
-      "/persist"
-    ];
-  };
 }

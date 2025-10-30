@@ -28,14 +28,10 @@ in {
     ];
 
     custom.persist = {
-      home = {
-        directories = [
-          ".local/share/com.github.johnfactotum.Foliate"
-        ];
-        cache.directories = [
-          ".cache/com.github.johnfactotum.Foliate"
-        ];
-      };
+      home.directories = [
+        ".local/share/com.github.johnfactotum.Foliate"
+        ".cache/com.github.johnfactotum.Foliate"
+      ];
     };
   };
 }

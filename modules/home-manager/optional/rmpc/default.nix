@@ -62,7 +62,7 @@ in {
       };
 
     custom.persist = {
-      home.cache.directories = [
+      home.directories = [
         ".cache/rmpc"
       ];
     };

@@ -69,14 +69,10 @@ in {
     };
 
     custom.persist = {
-      home = {
-        directories = [
-          ".config/spotify"
-        ];
-        cache.directories = [
-          ".cache/spotify"
-        ];
-      };
+      home.directories = [
+        ".config/spotify"
+        ".cache/spotify"
+      ];
     };
   };
 }
