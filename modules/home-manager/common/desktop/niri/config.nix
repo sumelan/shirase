@@ -86,6 +86,8 @@ in {
 
     prefer-no-csd = true;
 
+    screenshot-path = "${config.xdg.userDirs.pictures}/Screenshots/%Y-%m-%d %H-%M-%S.png";
+
     xwayland-satellite = {
       enable = false;
       path = getExe pkgs.xwayland-satellite-unstable;

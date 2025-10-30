@@ -273,12 +273,13 @@ in {
         name = "Swayimg";
         genericName = "Image Viewer";
         icon = "swayimg";
+        startupNotify = true;
         terminal = false;
-        exec = "${pkgs.swayimg}/bin/swayimg";
+        exec = "${pkgs.swayimg}/bin/swayimg %U";
       };
     };
 
-    mimeApps.defaultApplications = {
+    mimeApps.associations.added = {
       "image/jpeg" = "swayimg.desktop";
       "image/gif" = "swayimg.desktop";
       "image/webp" = "swayimg.desktop";

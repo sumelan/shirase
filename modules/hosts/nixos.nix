@@ -1,13 +1,14 @@
 # passing system etc. to nixosSystem is a useless deprecated pattern
 # that is superseded by nixpkgs.hostPlatform etc. in hardware-configuration.nix
-{
-  lib,
-  pkgs,
-  inputs,
-  self,
-  nixpkgs,
-  ...
-}: let
+{inputs, ...}: let
+  inherit (inputs) self nixpkgs;
+
+  # Get the extended lib from ./lib
+  # https://www.notashelf.dev/posts/extended-nixpkgs-lib
+  lib = import ../lib {inherit inputs;};
+
+  inherit (lib) mkAliasOptionModule;
+
   defaultNixMods = [
     inputs.impermanence.nixosModules.impermanence
     inputs.niri.nixosModules.niri
@@ -24,13 +25,18 @@
   ];
 
   mkSystem = host: {
+    system ? "x86_64-linux",
     user,
     hardware,
     nixModules ? [],
     homeModules ? [],
   }:
     nixpkgs.lib.nixosSystem {
-      inherit pkgs;
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
       specialArgs = {
         inherit inputs self lib host user;
         flakePath = "/persist/home/${user}/projects/shirase";
@@ -68,42 +74,51 @@
               };
             };
           }
-          (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" user]) # alias for home-manager
+          # alias for home-manager
+          (mkAliasOptionModule ["hm"] ["home-manager" "users" user])
         ];
     };
 in {
-  acer = mkSystem "acer" {
-    user = "sumelan";
-    hardware = "laptop";
-    nixModules = builtins.attrValues {
-      inherit
-        (inputs.nixos-hardware.nixosModules)
-        common-pc-laptop
-        common-pc-laptop-ssd
-        common-cpu-intel
-        ;
+  flake.nixosConfigurations = {
+    acer = mkSystem "acer" {
+      user = "sumelan";
+      hardware = "laptop";
+      nixModules = builtins.attrValues {
+        inherit
+          (inputs.nixos-hardware.nixosModules)
+          common-pc-laptop
+          common-pc-laptop-ssd
+          common-cpu-intel
+          ;
+      };
+    };
+
+    minibook = mkSystem "minibook" {
+      user = "sumelan";
+      hardware = "laptop";
+      nixModules = [
+        inputs.nix-chuwi-minibook-x.nixosModules.default
+      ];
+    };
+
+    sakura = mkSystem "sakura" {
+      user = "sumelan";
+      hardware = "desktop";
+      nixModules = builtins.attrValues {
+        inherit
+          (inputs.nixos-hardware.nixosModules)
+          common-pc
+          common-pc-ssd
+          common-cpu-amd
+          common-gpu-amd
+          ;
+      };
     };
   };
 
-  minibook = mkSystem "minibook" {
-    user = "sumelan";
-    hardware = "laptop";
-    nixModules = [
-      inputs.nix-chuwi-minibook-x.nixosModules.default
-    ];
-  };
-
-  sakura = mkSystem "sakura" {
-    user = "sumelan";
-    hardware = "desktop";
-    nixModules = builtins.attrValues {
-      inherit
-        (inputs.nixos-hardware.nixosModules)
-        common-pc
-        common-pc-ssd
-        common-cpu-amd
-        common-gpu-amd
-        ;
+  perSystem = {pkgs, ...}: {
+    packages = import ../packages {
+      inherit inputs pkgs;
     };
   };
 }

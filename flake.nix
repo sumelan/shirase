@@ -2,41 +2,13 @@
   description = "Shirase: sumelan's nixos configuration";
 
   outputs = {flake-parts, ...} @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} (_: {
-      flake = let
-        inherit (inputs) self nixpkgs;
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
 
-        pkgs = import inputs.nixpkgs {
-          system = "x86_64-linux";
-          config.allowUnfree = true;
-        };
-
-        # Get the extended lib from ./lib/custom.nix
-        # https://www.notashelf.dev/posts/extended-nixpkgs-lib
-        lib = import ./lib {
-          inherit inputs;
-          inherit (inputs) home-manager;
-        };
-      in {
-        nixosConfigurations = import ./hosts {
-          inherit inputs nixpkgs pkgs self lib;
-        };
-        inherit lib;
-      };
-
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
+      imports = [
+        ./modules/hosts/nixos.nix
       ];
-
-      perSystem = {pkgs, ...}: {
-        packages = import ./packages {
-          inherit pkgs inputs;
-        };
-      };
-    });
+    };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
