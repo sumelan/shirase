@@ -58,6 +58,8 @@ in
       custom.persist = {
         root = {
           files = [
+            # Required for SSH. If you have keys with different algorithms, then
+            # you must also persist them here.
             "/etc/machine-id"
             "/etc/ssh/ssh_host_rsa_key"
             "/etc/ssh/ssh_host_rsa_key.pub"
