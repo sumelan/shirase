@@ -2,7 +2,7 @@
 set -euo pipefail
 
 sudo mkdir /mnt
-sudo mount -o subvol=/ /dev/nvme0n1p1 /mnt
+sudo mount -o subvol=/ /dev/mapper/enc /mnt
 
 OLD_TRANSID=$(sudo btrfs subvolume find-new /mnt/root-blank 9999999)
 OLD_TRANSID=${OLD_TRANSID#transid marker was }
