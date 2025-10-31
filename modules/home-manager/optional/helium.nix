@@ -15,12 +15,5 @@ in {
       enable = true;
       package = pkgs.custom.helium;
     };
-
-    custom.persist = {
-      home.directories = [
-        ".cache/net.imput.helium"
-        ".config/net.imput.helium"
-      ];
-    };
   };
 }

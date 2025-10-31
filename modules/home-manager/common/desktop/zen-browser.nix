@@ -83,10 +83,4 @@ in {
     associations.added = associations;
     defaultApplications = associations;
   };
-
-  custom.persist = {
-    home.directories = [
-      ".zen"
-    ];
-  };
 }

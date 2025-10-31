@@ -116,10 +116,4 @@
       }
     ];
   };
-
-  custom.persist = {
-    home.directories = [
-      ".cache/astal"
-    ];
-  };
 }

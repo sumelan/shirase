@@ -5,6 +5,5 @@ _: {
     ./config.nix
     ./fonts.nix
     ./hardware.nix
-    ./impermanence.nix
   ];
 }

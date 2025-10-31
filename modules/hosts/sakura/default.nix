@@ -14,7 +14,7 @@ in {
   in
     {
       btrbk = {
-        enable = true;
+        enable = false;
         usb.enable = false;
       };
     }

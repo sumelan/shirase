@@ -46,11 +46,4 @@ in {
       };
     };
   };
-
-  custom.persist = {
-    home.directories = [
-      ".cache/nix-index"
-      ".cache/nix-search-tv"
-    ];
-  };
 }

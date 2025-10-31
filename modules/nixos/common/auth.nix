@@ -67,14 +67,6 @@ in
             "/etc/ssh/ssh_host_ed25519_key.pub"
           ];
         };
-        home = {
-          directories = [
-            ".pki"
-            ".ssh"
-            ".local/share/.gnupg"
-            ".local/share/keyrings"
-          ];
-        };
       };
     }
   ]

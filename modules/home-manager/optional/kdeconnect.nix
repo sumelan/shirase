@@ -14,13 +14,5 @@ in {
       enable = true;
       indicator = true;
     };
-
-    custom.persist = {
-      home.directories = [
-        ".config/kdeconnect"
-        ".cache/kdeconnect.app"
-        ".cache/kdeconnect.daemon"
-      ];
-    };
   };
 }

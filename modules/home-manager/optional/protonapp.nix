@@ -36,14 +36,5 @@ in {
         }
       ];
     };
-
-    custom.persist = {
-      home.directories = [
-        ".config/Proton"
-        ".config/Proton Mail"
-        ".config/Proton Pass"
-        ".cache/Proton"
-      ];
-    };
   };
 }

@@ -60,11 +60,5 @@ in {
         dest = ytDir;
         src = "${config.xdg.cacheHome}/rmpc/youtube";
       };
-
-    custom.persist = {
-      home.directories = [
-        ".cache/rmpc"
-      ];
-    };
   };
 }

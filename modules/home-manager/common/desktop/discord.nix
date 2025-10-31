@@ -9,10 +9,4 @@
       };
     };
   };
-
-  custom.persist = {
-    home.directories = [
-      ".config/WebCord"
-    ];
-  };
 }

@@ -49,12 +49,5 @@ in {
         opacity = 1.0;
       }
     ];
-
-    custom.persist = {
-      home.directories = [
-        ".cache/BraveSoftware"
-        ".config/BraveSoftware"
-      ];
-    };
   };
 }

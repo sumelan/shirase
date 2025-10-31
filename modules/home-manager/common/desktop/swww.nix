@@ -57,12 +57,4 @@ in {
       }
     ];
   };
-
-  custom.persist = {
-    home.directories = [
-      ".config/waypaper"
-      ".cache/swww"
-      ".cache/waypaper"
-    ];
-  };
 }

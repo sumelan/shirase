@@ -35,10 +35,4 @@ _: {
       };
     };
   };
-
-  custom.persist = {
-    home.directories = [
-      ".local/state/wireplumber"
-    ];
-  };
 }

@@ -52,12 +52,5 @@ in {
         };
       };
     };
-
-    custom.persist = {
-      home.directories = [
-        # credenctials.json
-        ".cache/spotify-player"
-      ];
-    };
   };
 }
