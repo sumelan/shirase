@@ -1,5 +1,5 @@
 {config, ...}: let
-  proj_dir = "/persist${config.home.homeDirectory}/projects";
+  proj_dir = "${config.home.homeDirectory}/Projects";
 in {
   imports = [
     ./bash.nix
