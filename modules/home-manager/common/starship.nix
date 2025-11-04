@@ -167,15 +167,15 @@ in {
           disabled = false;
           format = "[](fg:blue2)[ $user ]($style)[](fg:blue2) ";
           show_always = true;
-          style_root = "bg:blue2 fg:black0";
+          style_root = "bg:blue2 fg:red_bright";
           style_user = "bg:blue2 fg:black0";
         };
         hostname = {
           # only show when conncted to to an SSH session
           ssh_only = true;
           ssh_symbol = "󰁥 ";
-          format = "[](fg:red_dim)[ $ssh_symbol$hostname ]($style)[](fg:red_dim) ";
-          style = "bg:red_dim fg:white3";
+          format = "[](fg:green_dim)[ $ssh_symbol$hostname ]($style)[](fg:green_dim) ";
+          style = "bg:green_dim fg:white3";
         };
 
         # Languages
