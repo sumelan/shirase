@@ -53,7 +53,7 @@ in {
                 subvolume = {
                   "persist" = {
                     group = "local-persist"; # for command line filtering
-                    snapshot_dir = "/cache/snapshots";
+                    snapshot_dir = "/snapshots";
                     snapshot_name = "persist";
                   };
                 };
@@ -74,11 +74,11 @@ in {
                 subvolume = {
                   "persist" = {
                     group = "usb-persist"; # for command line filtering
-                    snapshot_dir = "/cache/snapshots";
+                    snapshot_dir = "/snapshots";
                     snapshot_name = "persist";
                   };
                 };
-                target = "/media/WD4T/${host}-local";
+                target = "/media/WD4T/snapshots/${host}-local";
               };
             };
         };
@@ -95,11 +95,11 @@ in {
                 subvolume = {
                   "persist" = {
                     group = "remote-persist"; # for command line filtering
-                    snapshot_dir = "/cache/snapshots";
+                    snapshot_dir = "/snapshots";
                     snapshot_name = "persist";
                   };
                 };
-                target = "ssh://sakura/cache/snapshots/${host}-remote";
+                target = "ssh://sakura/snapshots/${host}-remote";
               };
             };
         };
