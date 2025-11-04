@@ -4,10 +4,7 @@
   flakePath ? "",
   ...
 }: let
-  inherit
-    (lib)
-    mkIf
-    ;
+  inherit (lib) mkIf;
 in {
   # https://notashelf.github.io/nvf/options.html
   vim = {
@@ -119,17 +116,10 @@ in {
       enableTreesitter = true;
       enableExtraDiagnostics = true;
 
-      bash.enable = true;
-
       nix = {
         enable = true;
         format.type = "alejandra";
         treesitter.enable = true;
-      };
-
-      markdown = {
-        enable = true;
-        extensions.render-markdown-nvim.enable = true;
       };
     };
 
@@ -150,7 +140,6 @@ in {
 
     ui = {
       borders.enable = true;
-      noice.enable = true;
       colorizer.enable = true;
       illuminate.enable = true;
       breadcrumbs = {
@@ -164,7 +153,6 @@ in {
     };
 
     utility = {
-      preview.markdownPreview.enable = true;
       ccc.enable = false;
       vim-wakatime.enable = false;
       icon-picker.enable = true;
@@ -175,10 +163,6 @@ in {
         leap.enable = true;
         precognition.enable = false;
       };
-      images = {
-        image-nvim.enable = false;
-      };
-      yazi-nvim.enable = true;
     };
 
     visuals = {

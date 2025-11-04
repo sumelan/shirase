@@ -463,5 +463,12 @@ in {
         "!.gitattributes"
       ];
     };
+
+    custom.persist = {
+      home.cache.directories = [
+        # helix log
+        ".cache/helix"
+      ];
+    };
   };
 }

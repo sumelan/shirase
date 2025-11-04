@@ -33,4 +33,8 @@ in {
         _set_beam_cursor
       '';
   };
+
+  custom.persist = {
+    home.directories = [".config/bash"];
+  };
 }

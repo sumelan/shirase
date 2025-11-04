@@ -54,4 +54,8 @@
       };
     };
   };
+
+  custom.persist = {
+    home.cache.directories = [".local/share/zoxide"];
+  };
 }

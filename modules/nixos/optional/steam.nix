@@ -23,5 +23,12 @@ in {
     hardware = {
       graphics.enable32Bit = true;
     };
+
+    custom.persist = {
+      home.directories = [
+        ".steam"
+        ".local/share/Steam"
+      ];
+    };
   };
 }

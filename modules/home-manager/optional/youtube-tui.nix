@@ -318,5 +318,11 @@ in {
         };
       };
     };
+
+    custom.persist = {
+      home.directories = [
+        ".local/share/youtube-tui"
+      ];
+    };
   };
 }

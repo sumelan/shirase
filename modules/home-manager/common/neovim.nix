@@ -41,4 +41,13 @@ in {
       };
     };
   };
+
+  custom.persist = {
+    home.directories = [
+      ".local/share/nvim" # data directory
+      ".local/state/nvim" # persistent session info
+      ".supermaven"
+      ".local/share/supermaven"
+    ];
+  };
 }

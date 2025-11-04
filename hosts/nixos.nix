@@ -5,14 +5,14 @@
 
   # Get the extended lib from ./lib
   # https://www.notashelf.dev/posts/extended-nixpkgs-lib
-  lib = import ../lib {inherit inputs;};
+  lib = import ../modules/lib {inherit inputs;};
 
   inherit (lib) mkAliasOptionModule;
 
   defaultNixMods = [
     inputs.impermanence.nixosModules.impermanence
     inputs.niri.nixosModules.niri
-    ../nixos
+    ../modules/nixos
   ];
 
   defaultHomeMods = [
@@ -21,7 +21,7 @@
     inputs.nix-index-database.homeModules.nix-index
     inputs.spicetify-nix.homeManagerModules.default
     inputs.zen-browser.homeModules.twilight
-    ../home-manager
+    ../modules/home-manager
   ];
 
   mkSystem = host: {
@@ -39,7 +39,7 @@
 
       specialArgs = {
         inherit inputs lib host user;
-        flakePath = "/home/${user}/Projects/shirase";
+        flakePath = "/persist//home/${user}/Projects/shirase";
         isLaptop = hardware == "laptop";
         isDesktop = hardware == "desktop";
       };
@@ -52,7 +52,7 @@
           ./${host}/hardware.nix
         ]
         ++ [../users/${user}.nix]
-        ++ [../overlays] # nixpkgs.overlays
+        ++ [../modules/overlays] # nixpkgs.overlays
         ++ [
           inputs.home-manager.nixosModules.home-manager
           {
@@ -61,7 +61,7 @@
               useUserPackages = true;
               extraSpecialArgs = {
                 inherit inputs lib host user;
-                flakePath = "/home/${user}/Projects/shirase";
+                flakePath = "/persist//home/${user}/Projects/shirase";
                 isLaptop = hardware == "laptop";
                 isDesktop = hardware == "desktop";
               };
@@ -117,7 +117,7 @@ in {
   };
 
   perSystem = {pkgs, ...}: {
-    packages = import ../packages {
+    packages = import ../modules/packages {
       inherit inputs pkgs;
     };
   };

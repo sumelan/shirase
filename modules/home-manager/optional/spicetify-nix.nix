@@ -67,5 +67,16 @@ in {
         }
       ];
     };
+
+    custom.persist = {
+      home = {
+        directories = [
+          ".config/spotify"
+        ];
+        cache.directories = [
+          ".cache/spotify"
+        ];
+      };
+    };
   };
 }

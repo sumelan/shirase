@@ -32,5 +32,11 @@ in {
         block-out-from = "screen-capture";
       }
     ];
+
+    custom.persist = {
+      home.directories = [
+        ".thunderbird"
+      ];
+    };
   };
 }

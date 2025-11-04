@@ -30,10 +30,18 @@
 
   xdg = {
     enable = true;
-    userDirs = {
-      enable = true;
-      createDirectories = true;
-    };
+    userDirs.enable = true;
     mimeApps.enable = true;
+  };
+
+  custom.persist = {
+    home.directories = [
+      "Desktop"
+      "Documents"
+      "Downloads"
+      "Music"
+      "Pictures"
+      "Videos"
+    ];
   };
 }

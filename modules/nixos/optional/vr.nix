@@ -60,5 +60,11 @@ in {
 
     programs.adb.enable = true;
     users.users.${user}.extraGroups = ["adbusers"];
+
+    custom.persist = {
+      home.directories = [
+        ".config/wivrn"
+      ];
+    };
   };
 }

@@ -110,5 +110,12 @@ in {
       ".librewolf/native-messaging-hosts".enable = mkForce false;
       ".mozilla/native-messaging-hosts".enable = mkForce false;
     };
+
+    custom.persist = {
+      home.directories = [
+        ".cache/librewolf"
+        configPath
+      ];
+    };
   };
 }

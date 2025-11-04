@@ -12,5 +12,11 @@ in {
 
   config = mkIf config.custom.euphonica.enable {
     home.packages = [pkgs.euphonica];
+
+    custom.persist = {
+      home.directories = [
+        ".cache/euphonica"
+      ];
+    };
   };
 }

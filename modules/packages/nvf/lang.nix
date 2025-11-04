@@ -1,5 +1,12 @@
 _: {
   vim.languages = {
+    bash.enable = true;
+
+    markdown = {
+      enable = true;
+      extensions.render-markdown-nvim.enable = true;
+    };
+
     clang.enable = true;
 
     zig.enable = true;

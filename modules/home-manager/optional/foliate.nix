@@ -26,5 +26,16 @@ in {
         block-out-from = "screen-capture";
       }
     ];
+
+    custom.persist = {
+      home = {
+        directories = [
+          ".local/share/com.github.johnfactotum.Foliate"
+        ];
+        cache.directories = [
+          ".cache/com.github.johnfactotum.Foliate"
+        ];
+      };
+    };
   };
 }

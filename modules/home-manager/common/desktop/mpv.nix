@@ -18,4 +18,9 @@ in {
       opacity = 1.0;
     }
   ];
+  custom.persist = {
+    home.directories = [
+      ".local/state/mpv" # watch later
+    ];
+  };
 }

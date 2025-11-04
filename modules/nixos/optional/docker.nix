@@ -27,5 +27,12 @@ in {
         defaultNetwork.settings.dns_enabled = true;
       };
     };
+
+    # store docker images on /cache
+    hm.custom.persist = {
+      home.cache.directories = [
+        ".local/share/containers"
+      ];
+    };
   };
 }

@@ -57,4 +57,16 @@ in {
       }
     ];
   };
+
+  custom.persist = {
+    home = {
+      directories = [
+        ".config/waypaper"
+      ];
+      cache.directories = [
+        ".cache/swww"
+        ".cache/waypaper"
+      ];
+    };
+  };
 }

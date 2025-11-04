@@ -56,4 +56,11 @@ in {
       default-window-height.proportion = 0.5;
     }
   ];
+
+  custom.persist = {
+    home.directories = [
+      # autoload local preset per devices
+      ".config/easyeffects/autoload"
+    ];
+  };
 }
