@@ -1,16 +1,20 @@
 {
-  lib,
   config,
   user,
   ...
 }: let
-  inherit (lib.custom.tmpfiles) mkCreateAndCleanup;
   socketDir = "/run/user/1000/mpd";
 in {
-  # create mpd directory for local socket on boot
-  systemd.user.tmpfiles.rules = mkCreateAndCleanup socketDir {
-    inherit user;
-    group = "users";
+  systemd.user.tmpfiles.settings = {
+    # create mpd directory for local socket on boot
+    "10-createMpdDirectory".rules = {
+      "%t/mpd" = {
+        "d!" = {
+          group = "users";
+          inherit user;
+        };
+      };
+    };
   };
 
   services = {

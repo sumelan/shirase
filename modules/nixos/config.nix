@@ -22,8 +22,6 @@
     mimeApps
     ;
 
-  inherit (lib.custom.tmpfiles) mkSymlinks mkCreateAndRemove;
-
   # use the package configured by nvf
   customNeovim = pkgs.custom.nvf.override {inherit host flakePath;};
 
@@ -121,18 +119,26 @@ in {
     };
   };
 
-  systemd.tmpfiles.rules =
+  systemd.tmpfiles.settings = {
     # cleanup systemd coredumps once a week
-    mkCreateAndRemove "/var/lib/systemd/coredump" {
-      user = "root";
-      group = "root";
-      age = "7d";
-    }
+    "10-cleanupCoredumps" = {
+      "/var/lib/systemd/coredump" = {
+        "D!" = {
+          group = "root";
+          user = "root";
+          age = "7d";
+        };
+      };
+    };
     # create symlink to dotfiles from default /etc/nixos
-    ++ (mkSymlinks {
-      dest = "/etc/nixos";
-      src = flakePath;
-    });
+    "10-symlinkDotfiles" = {
+      "/etc/nixos" = {
+        "L+" = {
+          argument = flakePath;
+        };
+      };
+    };
+  };
 
   programs = {
     # use same config as home-manager

@@ -5,8 +5,8 @@ export HOSTNAME := `hostname`
 export NIXPKGS_ALLOW_UNFREE := "1"
 
 # package-paths updated through nvfetcher
-yazi-path := "packages/yazi-plugins"
-helium-path := "packages/helium"
+yazi-path := "modules/packages/yazi-plugins"
+helium-path := "modules/packages/helium"
 
 [group('DEFAULT')]
 [doc('List the recipes.')]

@@ -23,7 +23,7 @@ in {
 
   helium = callPackage ./helium {};
 
-  nvfMini = callPackage (mkNvf []) {};
+  nvfNix = callPackage (mkNvf []) {};
 
   nvf = callPackage (mkNvf [
     # add extraModules here

@@ -15,8 +15,6 @@
     sort
     concatStringsSep
     ;
-
-  inherit (lib.custom.tmpfiles) mkCreateAndRemove;
 in {
   services.envfs.enable = true; # execute shebangs that assume hardcoded shell paths
   system = {
@@ -43,21 +41,30 @@ in {
     };
   };
 
-  systemd.tmpfiles.rules =
+  systemd.tmpfiles.settings = {
     # cleanup nixpkgs-review cache on boot
-    mkCreateAndRemove "${config.hm.xdg.cacheHome}/nixpkgs-review" {
-      mode = "1775";
-      inherit user;
-      group = "users";
-      age = "5d";
-    }
-    # cleanup channels so nix stops complaining
-    ++ mkCreateAndRemove "/nix/var/nix/profiles/per-user/root" {
-      mode = "1775";
-      user = "root";
-      group = "root";
-      age = "1d";
+    "10-cleanupReviewCache" = {
+      "${config.hm.xdg.cacheHome}/nixpkgs-review" = {
+        "D!" = {
+          group = "users";
+          mode = "1775";
+          inherit user;
+          age = "5d";
+        };
+      };
     };
+    # cleanup channels so nix stops complaining
+    "10-cleanupChannel" = {
+      "/nix/var/nix/profiles/per-user/root" = {
+        "D!" = {
+          group = "root";
+          mode = "1775";
+          user = "root";
+          age = "1d";
+        };
+      };
+    };
+  };
 
   # never going to read html docs locally
   documentation = {

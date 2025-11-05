@@ -2,7 +2,7 @@
 inputs.nixpkgs.lib.extend (
   _final: libprev:
     {
-      custom = import ./custom.nix {
+      custom = import ./nixpkgs {
         lib = libprev;
       };
     }

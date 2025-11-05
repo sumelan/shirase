@@ -12,8 +12,7 @@
     getExe
     singleton
     ;
-  inherit (lib.custom.tmpfiles) mkCreateAndCleanup mkSymlinks;
-  ytDir = "${config.xdg.userDirs.music}/YouTube";
+  ytDir = "%h/Music/YouTube";
 in {
   imports = [
     ./config.nix
@@ -49,17 +48,25 @@ in {
       };
     };
 
-    systemd.user.tmpfiles.rules =
+    systemd.user.tmpfiles.settings = {
       # create ytDir if not existed
-      mkCreateAndCleanup ytDir {
-        inherit user;
-        group = "users";
-      }
-      # symlink from yt-dlp cache directory
-      ++ mkSymlinks {
-        dest = ytDir;
-        src = "${config.xdg.cacheHome}/rmpc/youtube";
+      "10-createYtDir".rules = {
+        ytDir = {
+          "d!" = {
+            group = "users";
+            inherit user;
+          };
+        };
       };
+      # symlink from yt-dlp cache directory
+      "10-symlinkYtDir".rules = {
+        "%C/rmpc/youtube" = {
+          "L+" = {
+            argument = ytDir;
+          };
+        };
+      };
+    };
 
     custom.persist = {
       home.cache.directories = [

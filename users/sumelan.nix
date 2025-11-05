@@ -1,10 +1,8 @@
 {
-  lib,
-  pkgs,
   config,
+  pkgs,
   ...
 }: let
-  inherit (lib.custom.tmpfiles) mkFiles mkSymlinks;
   username = "sumelan";
 in {
   imports = [./.];
@@ -25,26 +23,34 @@ in {
 
   # setup a file and user icon for accountservice
   # https://discourse.nixos.org/t/setting-the-user-profile-image-under-gnome/36233/10?u=sumelan
-  hm.home.file.".face".source = ./${username}.png;
-
-  systemd.tmpfiles.rules =
-    mkFiles "/var/lib/AccountsService/users/${username}" {
-      mode = "0600";
-      user = "root";
-      group = "root";
-      content = pkgs.writeText "AccountService" ''
-        [User]
-        Session=niri
-        SystemAccount=false
-        Icon=/var/lib/AccountsService/icons/${username}
-      '';
-    }
-    ++ mkSymlinks {
-      src = "${config.hm.home.homeDirectory}/.face";
-      dest = "/var/lib/AccountsService/icons/${username}";
+  systemd.tmpfiles.settings = {
+    "10-createAccountserviceFile" = {
+      "/var/lib/AccountsService/users/${username}" = {
+        "f+" = {
+          group = "root";
+          mode = "0600";
+          user = "root";
+          argument = ''
+            [User]
+            Session=niri
+            SystemAccount=false
+            Icon=/var/lib/AccountsService/icons/${username}
+          '';
+        };
+      };
     };
+    "10-symlinkIcon" = {
+      "/var/lib/AccountsService/icons/${username}" = {
+        "L+" = {
+          argument = "${config.hm.home.homeDirectory}/.face";
+        };
+      };
+    };
+  };
 
   hm = {
+    home.file.".face".source = ./${username}.png;
+
     # define user profile
     profiles.${username} = {
       timeZone = "Asia/Tokyo";
@@ -55,6 +61,7 @@ in {
         name = "nvim";
       };
     };
+
     # Japanese settings
     i18n.inputMethod = {
       enable = true;
