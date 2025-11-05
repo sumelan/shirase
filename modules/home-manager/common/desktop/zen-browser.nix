@@ -85,8 +85,13 @@ in {
   };
 
   custom.persist = {
-    home.directories = [
-      ".zen"
-    ];
+    home = {
+      directories = [
+        ".zen"
+      ];
+      cache.directories = [
+        ".cache/zen"
+      ];
+    };
   };
 }

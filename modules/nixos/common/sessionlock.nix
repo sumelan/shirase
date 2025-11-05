@@ -39,8 +39,8 @@
         show-hidden = false;
       };
       powerbar = {
-        show-labels = false;
-        linked-buttons = false;
+        show-labels = true;
+        linked-buttons = true;
         reboot-command = "systemctl reboot";
         poweroff-command = "systemctl poweroff";
         suspend-command = "systemctl suspend";
