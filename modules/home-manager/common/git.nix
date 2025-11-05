@@ -1,3 +1,6 @@
+# NOTE: when you see a error,
+# `fatal: The current branch master has multiple upstream branches, refusing to push.`
+# run `git config remote.origin.push HEAD`
 {
   config,
   user,
