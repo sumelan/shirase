@@ -100,7 +100,7 @@ in {
           is-focused = false;
           is-floating = false;
         };
-        opacity = 0.98 * 0.85;
+        opacity = 0.98 * 0.9;
       }
       # Picture-in-pictures
       {
