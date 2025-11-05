@@ -15,16 +15,16 @@ in {
   options.custom = {
     hdds = {
       enable = mkEnableOption "Desktop HDDs";
-      wd.enable =
+      westernDigital.enable =
         mkEnableOption "WD Elements 4TB";
-      ironwolf.enable =
+      ironWolf.enable =
         mkEnableOption "Seagate IronWolf 2TB";
     };
   };
 
   config = mkIf cfg.enable {
     fileSystems = {
-      "/media/WD4T" = mkIf cfg.wd.enable {
+      "/media/WD4T" = mkIf cfg.westernDigital.enable {
         device = "/dev/disk/by-uuid/45a19415-adfd-4db2-8acb-52c65a6ab421";
         fsType = "btrfs";
         options = [
@@ -32,8 +32,8 @@ in {
           "nofail"
         ];
       };
-      "/media/IRONWOLF2T" = mkIf cfg.ironwolf.enable {
-        device = "ironwolf2T-1";
+      "/media/IRONWOLF2T" = mkIf cfg.ironWolf.enable {
+        device = "/dev/disk/by-uuid/4f2f9123-984f-4f89-abdc-2fb67623f9d8";
         fsType = "btrfs";
         options = [
           "x-systemd.automount"
@@ -44,14 +44,14 @@ in {
 
     services.btrfs.autoScrub = {
       fileSystems =
-        optional cfg.wd.enable "/media/WD4T"
-        ++ optional cfg.ironwolf.enable "/media/IRONWOLF2";
+        optional cfg.westernDigital.enable "/media/WD4T"
+        ++ optional cfg.ironWolf.enable "/media/IRONWOLF2";
     };
 
     hm = {
       custom.btop.disks =
-        optional cfg.wd.enable "/media/WD4T"
-        ++ optional cfg.ironwolf.enable "/media/IRONWOLF2";
+        optional cfg.westernDigital.enable "/media/WD4T"
+        ++ optional cfg.ironWolf.enable "/media/IRONWOLF2";
     };
   };
 }

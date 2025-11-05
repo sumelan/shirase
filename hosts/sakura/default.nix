@@ -18,9 +18,9 @@ in {
         usb.enable = false;
       };
       hdds = {
-        enable = false;
-        wd.enable = false;
-        ironwolf.enable = false;
+        enable = true;
+        westernDigital.enable = true;
+        ironWolf.enable = true;
       };
     }
     // genAttrs enableList (_name: {enable = true;})

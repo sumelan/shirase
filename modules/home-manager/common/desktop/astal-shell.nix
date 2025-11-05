@@ -18,7 +18,7 @@
 
     # Configure display margins
     displays = {
-      "LG HDR 4K" = [400 160];
+      "LG HDR 4K" = [580 300];
       "Unknown" = [420 250];
     };
 

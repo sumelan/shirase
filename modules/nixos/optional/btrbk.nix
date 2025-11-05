@@ -16,7 +16,6 @@
     mapAttrs'
     nameValuePair
     ;
-  inherit (lib.custom.tmpfiles) mkCreateAndCleanup;
   cfg = config.custom.btrbk;
 in {
   options.custom = {
@@ -99,14 +98,14 @@ in {
                     snapshot_name = "persist";
                   };
                 };
-                target = "ssh://sakura/snapshots/${host}-remote";
+                target = "ssh://sakura/media/WD4T/snapshots/${host}-remote";
               };
             };
         };
       };
       sshAccess = [
         {
-          key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFjto1d8D7GNrnS4mYx/l3qnxAlx04+0q7dceNUIdPxs btrbk";
+          key = "";
           roles = [
             "target"
             "info"
@@ -118,14 +117,7 @@ in {
     };
 
     systemd = {
-      tmpfiles.rules =
-        # create snapshots dir if not existed
-        mkCreateAndCleanup "/cache/snapshots" {
-          user = "btrbk";
-          group = "btrbk";
-        };
-
-      # set remote instances and systemd service that will notify when backup fails
+      # set systemd service that will notify when backup fails
       services =
         {
           "notify-problems@" = {
