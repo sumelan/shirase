@@ -20,7 +20,6 @@
     inputs.dimland.homeManagerModules.dimland
     inputs.nix-index-database.homeModules.nix-index
     inputs.spicetify-nix.homeManagerModules.default
-    inputs.zen-browser.homeModules.twilight
     ../modules/home-manager
   ];
 

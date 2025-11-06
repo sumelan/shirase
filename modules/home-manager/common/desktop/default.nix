@@ -9,6 +9,7 @@ _: {
     ./dunst.nix
     ./foot.nix
     ./gtk.nix
+    ./helium.nix
     ./mpv.nix
     ./nautilus.nix
     ./pipewire.nix
@@ -20,6 +21,5 @@ _: {
     ./swayosd.nix
     ./swww.nix
     ./zathura.nix
-    ./zen-browser.nix
   ];
 }

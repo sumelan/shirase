@@ -5,7 +5,6 @@ _: {
     ./euphonica.nix
     ./foliate.nix
     ./ghostty.nix
-    ./helium.nix
     ./helix.nix
     ./kdeconnect.nix
     ./librewolf.nix
