@@ -1,4 +1,11 @@
-{pkgs, ...}: let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
+  inherit (lib) getExe;
+
   # Volume control script with audio feedback
   volumeScript =
     pkgs.writeShellScriptBin "volume-control"
@@ -75,10 +82,10 @@
     ''
       case "$1" in
           power-off-monitors)
-              ${pkgs.niri}/bin/niri msg action power-off-monitors
+              ${getExe config.programs.niri.package} msg action power-off-monitors
               ;;
           power-on-monitors)
-              ${pkgs.niri}/bin/niri msg action power-on-monitors
+              ${getExe config.programs.niri.package} msg action power-on-monitors
               ;;
           *)
               echo "Usage: $0 power-off-monitors|power-on-monitors"
@@ -94,10 +101,10 @@
     ''
       case "$1" in
           lock)
-              ${pkgs.hyprlock}/bin/hyprlock
+              ${pkgs.gtklock}/bin/gtklock
               ;;
           logout)
-              ${pkgs.niri}/bin/niri msg action quit
+              ${getExe config.programs.niri.package} msg action quit
               ;;
           suspend)
               ${pkgs.systemd}/bin/systemctl suspend

@@ -4,8 +4,8 @@
 # https://discourse.nixos.org/t/struggling-to-configure-gtk-qt-theme-on-laptop/42268/
 {
   lib,
-  pkgs,
   config,
+  pkgs,
   ...
 }: let
   inherit (lib.generators) toINI;
@@ -21,13 +21,13 @@ in {
       XCURSOR_SIZE = builtins.div config.home.pointerCursor.size 2;
     };
 
-    packages = with pkgs; [
-      libsForQt5.qt5ct
-      libsForQt5.qtstyleplugin-kvantum
-      libsForQt5.qtwayland
-      qt6Packages.qt6ct
-      qt6Packages.qtstyleplugin-kvantum
-      qt6Packages.qtwayland
+    packages = [
+      pkgs.libsForQt5.qt5ct
+      pkgs.libsForQt5.qtstyleplugin-kvantum
+      pkgs.libsForQt5.qtwayland
+      pkgs.qt6Packages.qt6ct
+      pkgs.qt6Packages.qtstyleplugin-kvantum
+      pkgs.qt6Packages.qtwayland
     ];
   };
 

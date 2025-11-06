@@ -1,6 +1,4 @@
-# note: this file exists just to define options for home-manager,
-# impermanence is not actually used in standalone home-manager as
-# it doesn't serve much utility on legacy distros
+# NOTE: this file exists just to define options for home-manager,
 {lib, ...}: let
   inherit (lib) mkOption;
   inherit (lib.types) listOf str;

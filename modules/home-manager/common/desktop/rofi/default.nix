@@ -39,19 +39,19 @@ in {
       binds = {
         "Mod+Space" = {
           action.spawn = ["rofi" "-show" "drun"];
-          hotkey-overlay.title = ''<span foreground="#D79784">[󰌧  Rofi]</span> Launcher'';
+          hotkey-overlay.title = ''<span foreground="#D79784">[ Rofi]</span> Launcher'';
         };
         "Mod+V" = {
           action.spawn = ["clipboard-history"];
-          hotkey-overlay.title = ''<span foreground="#D79784">[󰌧  Rofi]</span> Clipboard History'';
+          hotkey-overlay.title = ''<span foreground="#D79784">[ Rofi]</span> Clipboard History'';
         };
         "Mod+X" = {
           action.spawn = ["power-selecter"];
-          hotkey-overlay.title = ''<span foreground="#D79784">[󰌧  Rofi]</span> Powerprofile'';
+          hotkey-overlay.title = ''<span foreground="#D79784">[ Rofi]</span> Powerprofile'';
         };
         "Mod+Alt+Backslash" = {
           action.spawn = ["dynamiccast-selecter"];
-          hotkey-overlay.title = ''<span foreground="#D79784">[󰌧  Rofi]</span> Dynamiccast'';
+          hotkey-overlay.title = ''<span foreground="#D79784">[ Rofi]</span> Dynamiccast'';
         };
       };
     };

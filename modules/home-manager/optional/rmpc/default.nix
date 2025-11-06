@@ -11,7 +11,6 @@
     mkIf
     singleton
     ;
-  ytDir = "%h/Music/YouTube";
 in {
   imports = [
     ./config.nix
@@ -50,7 +49,7 @@ in {
     systemd.user.tmpfiles.settings = {
       # create ytDir if not existed
       "10-createYtDir".rules = {
-        ytDir = {
+        "%h/Music/YouTube" = {
           "d!" = {
             group = "users";
             inherit user;
@@ -61,16 +60,10 @@ in {
       "10-symlinkYtDir".rules = {
         "%C/rmpc/youtube" = {
           "L+" = {
-            argument = ytDir;
+            argument = "%h/Music/YouTube";
           };
         };
       };
-    };
-
-    custom.persist = {
-      home.cache.directories = [
-        ".cache/rmpc"
-      ];
     };
   };
 }

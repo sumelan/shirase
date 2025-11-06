@@ -5,7 +5,9 @@
       package = pkgs.niri-unstable;
     };
   };
+
   niri-flake.cache.enable = true;
+
   # use gnome-polkit instead
   systemd.user.services.niri-flake-polkit.enable = false;
 
