@@ -8,10 +8,8 @@ This is my personal flake.
 
 My system consists from encrypted btrfs and
 [Impermanence](https://github.com/nix-community/impermanence). System rolls back
-to `/root-blank` volume on each boot, but `/persist` and `/cache` are remained.
-Plus I use [btrbk](https://github.com/digint/btrbk) to take snapshots and backup
-my `/persist` volume (`/cache` are files that should be persisted, but not to
-snapshot).
+to `/root-blank` volume on each boot but some volumes remain. As snapshots and
+backup tool, I use [btrbk](https://github.com/digint/btrbk).
 
 ```sh
 nvme0n1
@@ -20,55 +18,34 @@ nvme0n1
   │    ├── /root-blank
   │    ├── /root
   │    ├── /nix
-  │    ├── /home
   │    ├── /log
-  │    └── /persist
-  │
-  ├─ Swap (depends by host)
+  │    ├── /persist
+  │    ├── /cache
+  │    └── /snapshots
   │
   └─ NIXBOOT -  1 GB
 ```
 
-## Optional Steps
+### Custom Neovim
 
-After partitioning, there are some processes before install. These are optional
-but I always follow these steps.
-
-### Install from another Linux system via SSH
-
-Enable SSH on the target device. Start and complete whole process from target
-device only is good if you have a install script or use disko, but I prefer
-manually partitioning and install.
+My flake includes custom neovim packages configured by
+[nvf](https://github.com/NotAShelf/nvf). Those are separated to `nvfNix` and
+`nvf`. Both are portable and you can use my neovim on other nix-installed
+system.
 
 ```sh
-systemctl start sshd.service
+nix run github:sumelan/shirase#nvf
 ```
 
-Set password for root.
+`nvfNix` is minimal and only focus on editting nix files.
 
-```sh
-passwd
-```
-
-Look up IP address.
-
-```sh
-ip a
-```
-
-Now, from the other system, ssh into the target device.
-
-```sh
-# from other system
-ssh root@ip_address_of_target-device
-```
+## Before Install
 
 ### Using niri binary cache
 
-I use niri-unstable so it produces building process without the cachix
-[niri-flake](https://github.com/sodiboo/niri-flake) provided. My hosts include
-poor devices so buiding often result to fail. First, istall cachix client in nix
-minimal iso.
+Before start `nixos-install`, you need to install cachix client in nix minimal
+iso. Since my flake uses `niri-unstable` so it produces a building process
+without the cachix [niri-flake](https://github.com/sodiboo/niri-flake) provided.
 
 ```sh
 nix-env -iA cachix -f https://cachix.org/api/v1/install
