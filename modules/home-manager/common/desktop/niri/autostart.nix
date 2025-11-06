@@ -7,7 +7,6 @@
   inherit
     (lib)
     mkIf
-    getExe
     singleton
     ;
 in {
@@ -18,7 +17,7 @@ in {
     {argv = singleton "blueman-applet";}
     # initial backlight
     (mkIf config.custom.backlight.enable {
-      argv = ["${getExe pkgs.brightnessctl}" "set" "5%"];
+      argv = ["${pkgs.brightnessctl}/bin/brightnessctl" "set" "5%"];
     })
   ];
 }

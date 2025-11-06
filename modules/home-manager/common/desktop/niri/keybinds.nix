@@ -56,7 +56,7 @@ _: {
     "Mod+Shift+2".action.move-column-to-workspace = 2;
     "Mod+Shift+3".action.move-column-to-workspace = 3;
 
-    # mouse scroll
+    # mouse wheel
     "Mod+WheelScrollDown" = {
       action.focus-workspace-down = {};
       cooldown-ms = 150;
@@ -73,7 +73,6 @@ _: {
       action.focus-column-left = {};
       cooldown-ms = 150;
     };
-
     "Mod+Shift+WheelScrollDown" = {
       action.move-column-to-workspace-down = {};
       cooldown-ms = 150;
@@ -83,7 +82,15 @@ _: {
       cooldown-ms = 150;
     };
 
-    # Touchpad gestures
+    # mouse click
+    "MouseMiddle" = {
+      action.toggle-overview = {};
+      cooldown-ms = 150;
+    };
+    "Mod+MouseForward".action.consume-or-expel-window-left = {};
+    "Mod+MouseBack".action.consume-or-expel-window-right = {};
+
+    # touchpad gestures
     "Mod+TouchpadScrollUp" = {
       action.focus-workspace-up = {};
       hotkey-overlay.hidden = true;

@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) getExe;
-  zen-browser = inputs.zen-browser.packages.${pkgs.system}.twilight;
+  zen-browser = inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight;
 in {
   programs = {
     zen-browser = {

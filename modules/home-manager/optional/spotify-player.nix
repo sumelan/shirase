@@ -4,12 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit
-    (lib)
-    mkEnableOption
-    mkIf
-    getExe
-    ;
+  inherit (lib) mkEnableOption mkIf;
 in {
   options.custom = {
     spotify-player.enable = mkEnableOption "A Spotify player in the terminal with full feature parity";
@@ -47,7 +42,7 @@ in {
       };
       niri.settings.binds = {
         "Mod+Shift+S" = {
-          action.spawn = ["${getExe pkgs.foot}" "--app-id=spotify-player" "spotify_player"];
+          action.spawn = ["${pkgs.foot}/bin/foot" "--app-id=spotify-player" "spotify_player"];
           hotkey-overlay.title = ''<span foreground="#EFD49F">[  spotify-player]</span> Spotify TUI Client'';
         };
       };

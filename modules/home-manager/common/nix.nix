@@ -40,7 +40,7 @@ in {
     niri.settings = {
       binds = {
         "Mod+Period" = {
-          action.spawn = ["${getExe pkgs.foot}" "--app-id=nix-search-tv" "ns"];
+          action.spawn = ["${pkgs.foot}/bin/foot" "--app-id=nix-search-tv" "ns"];
           hotkey-overlay.title = ''<span foreground="#EFD49F">[󱄅  nix-search-tv]</span> Fuzzey search for Nix Packages'';
         };
       };

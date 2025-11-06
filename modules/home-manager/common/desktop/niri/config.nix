@@ -7,7 +7,6 @@
   inherit
     (lib)
     getExe
-    getExe'
     mkEnableOption
     ;
 
@@ -141,7 +140,7 @@ in {
 
       switch-events = {
         lid-close = {
-          action.spawn = ["${getExe' pkgs.systemd "systemctl"}" "suspend"];
+          action.spawn = ["${pkgs.systemd}/bin/systemctl" "suspend"];
         };
         lid-open = {
           action.spawn = ["${getExe config.programs.niri.package}" "msg" "action" "power-on-monitors"];

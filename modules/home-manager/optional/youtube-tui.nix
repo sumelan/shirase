@@ -8,7 +8,6 @@
     (lib)
     mkEnableOption
     mkIf
-    getExe
     ;
   inherit
     (lib.custom.colors)
@@ -272,7 +271,7 @@ in {
     programs.niri.settings = {
       binds = {
         "Mod+Y" = {
-          action.spawn = ["${getExe pkgs.foot}" "--app-id=youtube-tui" "youtube-tui"];
+          action.spawn = ["${pkgs.foot}/bin/foot" "--app-id=youtube-tui" "youtube-tui"];
           hotkey-overlay.title = ''<span foreground="#EFD49F">[  youtube-tui]</span> YouTube TUI Client'';
         };
       };

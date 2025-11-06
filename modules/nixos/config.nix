@@ -165,9 +165,9 @@ in {
   };
 
   xdg = {
-    # use mimetypes defined from home-manager
     mime = {
       enable = true;
+      # use mimetypes defined from home-manager
       inherit (mimeApps) defaultApplications;
       addedAssociations = mimeApps.associations.added;
       removedAssociations = mimeApps.associations.removed;

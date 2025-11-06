@@ -14,7 +14,7 @@
 
   services.astal-shell = {
     enable = true;
-    package = inputs.astal-shell.packages.${pkgs.system}.default;
+    package = inputs.astal-shell.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
     # Configure display margins
     displays = {

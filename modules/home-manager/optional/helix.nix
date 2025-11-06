@@ -262,7 +262,7 @@ in {
       languages = {
         language = let
           prettier = lang: {
-            command = getExe pkgs.prettier;
+            command = "${pkgs.prettier}/bin/prettier";
             args = [
               "--parser"
               lang
@@ -273,7 +273,7 @@ in {
             name = "bash";
             auto-format = true;
             formatter = {
-              command = getExe pkgs.shfmt;
+              command = "${pkgs.shfmt}/bin/shfmt";
               args = [
                 "-i"
                 "2"
@@ -345,7 +345,7 @@ in {
           {
             name = "php";
             auto-format = true;
-            formatter.command = getExe pkgs.pretty-php;
+            formatter.command = "${pkgs.pretty-php}/bin/pretty-php";
             language-servers = ["phpactor"];
           }
           {

@@ -226,12 +226,19 @@ in {
         noDisplay = true;
       };
     };
-
-    mimeApps.associations.added = {
-      "image/jpeg" = "swayimg.desktop";
-      "image/gif" = "swayimg.desktop";
-      "image/webp" = "swayimg.desktop";
-      "image/png" = "swayimg.desktop";
+    mimeApps = let
+      value = "swayimg.desktop";
+      associations = builtins.listToAttrs (map (name: {
+          inherit name value;
+        }) [
+          "image/jpeg"
+          "image/gif"
+          "image/webp"
+          "image/png"
+        ]);
+    in {
+      associations.added = associations;
+      defaultApplications = associations;
     };
   };
 }

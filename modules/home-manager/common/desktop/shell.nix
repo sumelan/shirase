@@ -106,7 +106,7 @@
               ${pkgs.systemd}/bin/systemctl hibernate
               ;;
           reboot)
-              ${pkgs.system}/bin/systemctl reboot
+              ${pkgs.systemd}/bin/systemctl reboot
               ;;
           poweroff)
               ${pkgs.systemd}/bin/systemctl poweroff

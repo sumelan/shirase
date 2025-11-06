@@ -16,6 +16,21 @@ in {
       package = pkgs.custom.helium;
     };
 
+    # remove `helium.desktop` from image mimetypes
+    xdg.mimeApps = let
+      value = "helium.desktop";
+      associations = builtins.listToAttrs (map (name: {
+          inherit name value;
+        }) [
+          "image/jpeg"
+          "image/gif"
+          "image/webp"
+          "image/png"
+        ]);
+    in {
+      associations.removed = associations;
+    };
+
     custom.persist = {
       home.directories = [
         ".cache/net.imput.helium"
