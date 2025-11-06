@@ -81,6 +81,9 @@ in {
               };
             };
         };
+        # NOTE: run ssh command as user:btrbk once
+        # before start service for the first time
+        # `ssh -i '/var/lib/btrbk/.ssh/id_ed25519' btrbk@sakura 'cat /proc/self/mountinfo'`
         "remote" = mkIf cfg.remote.enable {
           onCalendar = "daily";
           settings =
