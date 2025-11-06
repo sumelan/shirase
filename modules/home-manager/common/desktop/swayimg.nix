@@ -223,6 +223,7 @@ in {
         startupNotify = true;
         terminal = false;
         exec = "${pkgs.swayimg}/bin/swayimg %U";
+        noDisplay = true;
       };
     };
 

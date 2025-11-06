@@ -15,7 +15,7 @@ in {
     fonts = {
       regular = mkOption {
         type = str;
-        default = "Geist";
+        default = "Montserrat";
         description = "The font to use for regular text";
       };
       monospace = mkOption {

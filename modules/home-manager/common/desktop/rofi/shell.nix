@@ -36,13 +36,13 @@
       run_cmd () {
           if [[ $1 == '--performance' ]]; then
               powerprofilesctl set performance
-              notify-send "Powerprofiledaemon" "Switch to Performance mode"
+              notify-send "Power-profile-daemon" "Switch to Performance mode"
           elif [[ $1 == '--balanced' ]]; then
               powerprofilesctl set balanced
-              notify-send "Powerprofiledaemon" "Switch to Balanced mode"
+              notify-send "Power-profile-daemon" "Switch to Balanced mode"
           elif [[ $1 == '--power-saver' ]]; then
               powerprofilesctl set power-saver
-              notify-send "Powerprofiledaemon" "Switch to Power-saver mode"
+              notify-send "Power-profile-daemon" "Switch to Power-saver mode"
           else
               exit 0
           fi

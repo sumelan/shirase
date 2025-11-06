@@ -27,7 +27,7 @@ in {
           inherit (yaziSources) yazi-plugins yazi-starship;
         };
     })
-    # nable the A/V Properties and see details like media length
+    # enable the A/V Properties and see details like media length
     (_final: prev: {
       nautilus = prev.nautilus.overrideAttrs (nprev: {
         buildInputs =

@@ -48,7 +48,7 @@
     };
     font = {
       name = config.custom.fonts.regular;
-      package = pkgs.geist-font;
+      package = pkgs.montserrat;
       size = 14;
     };
     gtk2 = {

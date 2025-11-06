@@ -23,7 +23,6 @@ in {
         event = "before-sleep";
         command = concatStringsSep "; " [
           "${pkgs.systemd}/bin/loginctl lock-session"
-          # stop playing
           "${pkgs.playerctl}/bin/playerctl pause"
         ];
       }
@@ -38,7 +37,6 @@ in {
       }
       {
         event = "unlock";
-        # kill hyprlock
         command = "${pkgs.procps}/bin/pkill -SIGUSR1 gtklock";
       }
     ];
@@ -51,12 +49,12 @@ in {
       }
       {
         timeout = 60 * 10;
-        command = "${pkgs.systemd}/bin/loginctl lock-session";
+        command = "${getExe' dimlandPkg "dimland"} -a 0.6";
+        resumeCommand = "${getExe' dimlandPkg "dimland"} stop";
       }
       {
         timeout = 60 * 15;
-        command = "${getExe' dimlandPkg "dimland"} -a 0.6";
-        resumeCommand = "${getExe' dimlandPkg "dimland"} stop";
+        command = "${pkgs.systemd}/bin/loginctl lock-session";
       }
       {
         timeout = 60 * 20;
