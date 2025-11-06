@@ -14,8 +14,8 @@ in {
   in
     {
       btrbk = {
-        enable = false;
-        usb.enable = false;
+        enable = true;
+        usb.enable = true;
       };
       hdds = {
         enable = true;

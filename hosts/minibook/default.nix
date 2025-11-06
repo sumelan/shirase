@@ -17,14 +17,14 @@ in {
     i2c.enable = true;
   };
 
-  # programs.ssh = {
-  #   extraConfig = ''
-  #     Host sakura
-  #       HostName 192.168.68.62
-  #       Port 22
-  #       User root
-  #   '';
-  # };
+  programs.ssh = {
+    extraConfig = ''
+      Host sakura
+        HostName 192.168.68.62
+        Port 22
+        User root
+    '';
+  };
 
   custom = let
     enableList = [
@@ -36,8 +36,8 @@ in {
   in
     {
       btrbk = {
-        enable = false;
-        remote.enable = false;
+        enable = true;
+        remote.enable = true;
       };
     }
     // genAttrs enableList (_name: {enable = true;})
