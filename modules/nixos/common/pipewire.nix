@@ -8,19 +8,7 @@ _: {
       alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
-      extraConfig = {
-        pipewire = {
-          # automatically switch to newly connected devices
-          switch-on-connect = {
-            "pulse.cmd" = [
-              {
-                cmd = "load-module";
-                args = ["module-switch-on-connect"];
-              }
-            ];
-          };
-        };
-      };
+
       wireplumber = {
         enable = true;
         # disable camera to save battery

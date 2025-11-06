@@ -1,6 +1,7 @@
 _: {
   imports = [
     ./auth.nix
+    ./bluetooth.nix
     ./boot.nix
     ./config.nix
     ./greetd.nix

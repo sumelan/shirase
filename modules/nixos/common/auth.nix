@@ -12,7 +12,8 @@ in
         enable = true;
         settings = {
           # disable password auth
-          PasswordAuthentication = false; # NOTE: set false for better security
+          # NOTE: set false for better security
+          PasswordAuthentication = false;
           KbdInteractiveAuthentication = false;
         };
       };

@@ -5,11 +5,11 @@ in {
     enableList = [
       "alsa"
       "logitech"
+      "qmk"
     ];
     disableList = [
       "audiobookshelf"
       "distrobox"
-      "steam"
     ];
   in
     {

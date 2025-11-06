@@ -21,6 +21,7 @@ in {
   custom = let
     enableList = [
       "cyanrip"
+      "helium"
       "kdeconnect"
       "obs-studio"
       "protonapp"
@@ -34,7 +35,7 @@ in {
     ];
   in
     {
-      niri.xwayland.enable = false;
+      niri.xwayland.enable = true;
     }
     // genAttrs enableList (_name: {enable = true;})
     // genAttrs disableList (_name: {enable = false;});
