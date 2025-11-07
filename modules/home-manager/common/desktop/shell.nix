@@ -129,7 +129,11 @@
           if [[ "$DUNST_URGENCY" = "LOW" ]]; then
               pw-play ${soundPath}/message.oga
           elif [[ "$DUNST_URGENCY" = "NORMAL" ]]; then
-              pw-play ${soundPath}/message-new-instant.oga
+              if [[ "$DUNST_APP_NAME" = "niri" ]]; then
+                  pw-play ${soundPath}/camera-shutter.oga
+              else
+                  pw-play ${soundPath}/message-new-instant.oga
+              fi
           else
               pw-play ${soundPath}/dialog-warning.oga
           fi

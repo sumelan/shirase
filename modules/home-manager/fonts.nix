@@ -39,7 +39,7 @@ in {
           noto-fonts-cjk-sans
           noto-fonts-color-emoji
           ;
-        monopkgs = pkgs.maple-mono.NF;
+        monopkgs = pkgs.maple-mono.NF-unhinted;
       };
     };
   };

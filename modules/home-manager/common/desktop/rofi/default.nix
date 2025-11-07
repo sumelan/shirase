@@ -5,15 +5,14 @@
 }: let
   inherit
     (lib.custom.colors)
+    black0
     gray0
+    gray1
     gray2
     gray3
     gray4
-    gray5
-    white0
     white3
     blue0
-    green_dim
     cyan_base
     cyan_bright
     yellow_base
@@ -39,19 +38,19 @@ in {
       binds = {
         "Mod+Space" = {
           action.spawn = ["rofi" "-show" "drun"];
-          hotkey-overlay.title = ''<span foreground="#D79784">[ Rofi]</span> Launcher'';
+          hotkey-overlay.title = ''<span foreground="#D79784">[󱓟 Rofi]</span> Launcher'';
         };
         "Mod+V" = {
           action.spawn = ["clipboard-history"];
-          hotkey-overlay.title = ''<span foreground="#D79784">[ Rofi]</span> Clipboard History'';
+          hotkey-overlay.title = ''<span foreground="#D79784">[󱓟 Rofi]</span> Clipboard History'';
         };
         "Mod+X" = {
           action.spawn = ["power-selecter"];
-          hotkey-overlay.title = ''<span foreground="#D79784">[ Rofi]</span> Powerprofile'';
+          hotkey-overlay.title = ''<span foreground="#D79784">[󱓟 Rofi]</span> Power Profile'';
         };
-        "Mod+Alt+Backslash" = {
+        "Mod+Shift+Alt+Backslash" = {
           action.spawn = ["dynamiccast-selecter"];
-          hotkey-overlay.title = ''<span foreground="#D79784">[ Rofi]</span> Dynamiccast'';
+          hotkey-overlay.title = ''<span foreground="#D79784">[󱓟 Rofi]</span> Dynamiccast'';
         };
       };
     };
@@ -64,24 +63,24 @@ in {
         configuration {
         	modi:                       "drun,run,filebrowser,window";
             show-icons:                 true;
-            display-drun:               "APPS";
-            display-run:                "RUN";
-            display-filebrowser:        "FILES";
-            display-window:             "WINDOWS";
-        	drun-display-format:        "{name}";
-        	window-format:              "{w} · {c}";
+            display-drun:               " APPS";
+            display-run:                " RUN";
+            display-filebrowser:        " FILES";
+            display-window:             " WINDOWS";
+            drun-display-format:        "{name}";
+            window-format:              "{c}";
         }
 
         /* Global Properties */
-        * {
+          *{
             font:                        "${config.custom.fonts.monospace} 14";
-            background:                  ${white3};
-            background-alt:              ${white0};
-            foreground:                  ${gray5};
+            background:                  ${gray3};
+            background-alt:              ${white3};
+            foreground:                  ${black0};
             selected:                    ${orange_bright}E5;
             active:                      ${gray3};
             urgent:                      ${gray4};
-        }
+          }
 
         /* Main Window */
         window {
@@ -90,7 +89,7 @@ in {
             location:                    center;
             anchor:                      center;
             fullscreen:                  false;
-            width:                       1000px;
+            width:                       700px;
             x-offset:                    0px;
             y-offset:                    0px;
 
@@ -120,8 +119,8 @@ in {
         inputbar {
             enabled:                     true;
             spacing:                     10px;
-            padding:                     30px 60px;
-            background-color:            ${gray0}E6;
+            padding:                     30px 40px;
+            background-color:            @background;
             text-color:                  @foreground;
             orientation:                 horizontal;
             children:                    [ "textbox-prompt-colon", "entry", "dummy" ];
@@ -130,18 +129,18 @@ in {
             enabled:                     true;
             expand:                      false;
             str:                         " ";
-            padding:                     12px 15px;
+            padding:                     12px 12px;
             border-radius:               100%;
-            background-color:            @background;
+            background-color:            @background-alt;
             text-color:                  inherit;
         }
         entry {
             enabled:                     true;
             expand:                      false;
             width:                       300px;
-            padding:                     10px 15px;
+            padding:                     10px 12px;
             border-radius:               100%;
-            background-color:            @background;
+            background-color:            @background-alt;
             text-color:                  inherit;
             cursor:                      text;
             placeholder:                 "Search...";
@@ -153,7 +152,7 @@ in {
             enabled:                     true;
             spacing:                     10px;
             padding:                     15px 15px;
-            background-color:            ${green_dim}E6;
+            background-color:            ${gray1}E6;
             text-color:                  @foreground;
         }
         button {
@@ -200,8 +199,8 @@ in {
         /** Listview **/
         listview {
             enabled:                     true;
-            columns:                     4;
-            lines:                       3;
+            columns:                     3;
+            lines:                       2;
             cycle:                       true;
             dynamic:                     true;
             scrollbar:                   false;

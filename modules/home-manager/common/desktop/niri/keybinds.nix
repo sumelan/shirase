@@ -12,7 +12,8 @@ _: {
     # screenshot
     # https://github.com/sodiboo/niri-flake/issues/1380
     "Mod+Backslash".action.screenshot.show-pointer = false;
-    "Mod+Shift+Backslash".action.screenshot-window.write-to-disk = true;
+    "Mod+Shift+Backslash".action.screenshot-screen.show-pointer = false;
+    "Mod+Alt+Backslash".action.screenshot-window.write-to-disk = true;
 
     # window and colum management
     "Mod+Backspace".action.close-window = {};

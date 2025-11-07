@@ -18,18 +18,13 @@
     impermanence.url = "github:nix-community/impermanence";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
-    astal-shell = {
-      url = "github:knoopx/astal-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri = {
-      url = "github:sodiboo/niri-flake";
+    astal-shell = {
+      url = "github:knoopx/astal-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -56,6 +51,15 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         nixos-hardware.follows = "nixos-hardware";
+      };
+    };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        niri-stable.follows = "";
+        xwayland-satellite-stable.follows = "";
       };
     };
 

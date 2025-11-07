@@ -4,11 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit
-    (lib)
-    getExe
-    mkEnableOption
-    ;
+  inherit (lib) getExe mkEnableOption;
 
   inherit
     (lib.custom.colors)
