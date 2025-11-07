@@ -1,10 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
-  inherit (lib) getExe;
-in {
+{pkgs, ...}: {
   home = {
     packages = builtins.attrValues {
       inherit
@@ -128,7 +122,7 @@ in {
     niri.settings = {
       binds = {
         "Mod+Shift+O" = {
-          action.spawn = ["${pkgs.foot}/bin/foot" "--app-id=yazi" "yazi"];
+          action.spawn = ["foot" "--app-id=yazi" "yazi"];
           hotkey-overlay.title = ''<span foreground="#EFD49F">[ yazi]</span> Terminal File manager'';
         };
       };

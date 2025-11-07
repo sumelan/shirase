@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -42,7 +41,7 @@ in {
       };
       niri.settings.binds = {
         "Mod+Shift+S" = {
-          action.spawn = ["${pkgs.foot}/bin/foot" "--app-id=spotify-player" "spotify_player"];
+          action.spawn = ["foot" "--app-id=spotify-player" "spotify_player"];
           hotkey-overlay.title = ''<span foreground="#EFD49F">[  spotify-player]</span> Spotify TUI Client'';
         };
       };

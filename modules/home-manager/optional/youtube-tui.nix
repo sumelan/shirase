@@ -4,11 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit
-    (lib)
-    mkEnableOption
-    mkIf
-    ;
+  inherit (lib) mkEnableOption mkIf;
   inherit
     (lib.custom.colors)
     gray5
@@ -271,7 +267,7 @@ in {
     programs.niri.settings = {
       binds = {
         "Mod+Y" = {
-          action.spawn = ["${pkgs.foot}/bin/foot" "--app-id=youtube-tui" "youtube-tui"];
+          action.spawn = ["foot" "--app-id=youtube-tui" "youtube-tui"];
           hotkey-overlay.title = ''<span foreground="#EFD49F">[  youtube-tui]</span> YouTube TUI Client'';
         };
       };

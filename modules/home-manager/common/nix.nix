@@ -1,11 +1,8 @@
 {
-  lib,
   pkgs,
   flakePath,
   ...
-}: let
-  inherit (lib) getExe;
-in {
+}: {
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
@@ -40,7 +37,7 @@ in {
     niri.settings = {
       binds = {
         "Mod+Period" = {
-          action.spawn = ["${pkgs.foot}/bin/foot" "--app-id=nix-search-tv" "ns"];
+          action.spawn = ["foot" "--app-id=nix-search-tv" "ns"];
           hotkey-overlay.title = ''<span foreground="#EFD49F">[󱄅  nix-search-tv]</span> Fuzzey search for Nix Packages'';
         };
       };

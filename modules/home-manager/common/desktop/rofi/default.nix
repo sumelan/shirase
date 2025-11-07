@@ -9,7 +9,6 @@
     gray0
     gray1
     gray2
-    gray3
     gray4
     white3
     blue0
@@ -74,11 +73,11 @@ in {
         /* Global Properties */
           *{
             font:                        "${config.custom.fonts.monospace} 14";
-            background:                  ${gray3};
+            background:                  ${gray2};
             background-alt:              ${white3};
             foreground:                  ${black0};
             selected:                    ${orange_bright}E5;
-            active:                      ${gray3};
+            active:                      ${gray2};
             urgent:                      ${gray4};
           }
 

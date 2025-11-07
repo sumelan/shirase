@@ -13,7 +13,6 @@ _: {
     ./mpv.nix
     ./nautilus.nix
     ./pipewire.nix
-    ./polkit.nix
     ./qt.nix
     ./shell.nix
     ./swayidle.nix

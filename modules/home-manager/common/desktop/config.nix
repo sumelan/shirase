@@ -16,6 +16,9 @@ in {
       ;
   };
 
+  # WM agnostic polkit authentication agent
+  services.polkit-gnome.enable = true;
+
   # hide unnecessary desktopItems
   xdg.desktopEntries = let
     hideList = [
