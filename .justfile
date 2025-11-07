@@ -36,7 +36,7 @@ helium-path := "modules/packages/helium"
 [group('SYSTEM')]
 [doc('Update a specific input in the flake.')]
 @updateInput input: check
-    echo -e "Updating a {{ input }}...\n"
+    echo -e "\n===== Updating a {{ input }}... =====\n"
 
     nix flake update {{ input }}
 
@@ -45,22 +45,20 @@ alias update := updateInput
 [group('SYSTEM')]
 [doc('Update all flake inputs, fetch packages you defined and commit on git.')]
 @updateAll: check
-    echo -e "Updating all flake inputs...\n"
+    echo -e "\n===== Updating all flake inputs... =====\n"
 
     nix flake update
 
-    echo -e "Fetch packages you defined...\n"
-
-    echo -e "Fetching yazi-plugin packages...\n"
+    echo -e "\n===== Fetching yazi-plugin packages... =====\n"
 
     nvfetcher --keep-old --config {{ yazi-path }}/nvfetcher.toml --build-dir {{ yazi-path }}
 
-    echo -e "Fetching helium package...\n"
+    echo -e "\n===== Fetching helium package... =====\n"
 
     nvfetcher --keep-old --config {{ helium-path }}/nvfetcher.toml --build-dir {{ helium-path }}
 
     git add -A
-    echo -e "Commit on git..."
+    echo -e "\n===== Commit on git... =====\n"
     git commit -m "chore: update inputs and fetch packages"
 
 alias updates := updateAll
