@@ -3,7 +3,9 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  soundPath = "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo";
+in {
   environment.etc = {
     "xdg/gtklock/background.png".source = ./nix-nord-aurora.png;
   };
@@ -29,9 +31,9 @@
         idle-timeout = 10;
         start-hidden = true;
         # Command to execute after locking
-        lock-command = "";
+        lock-command = "pw-play ${soundPath}/device-added.oga";
         # Command to execute after unlocking
-        unlock-command = "";
+        unlock-command = "pw-play ${soundPath}/device-removed.oga";
       };
       playerctl = {
         art-size = 64;
@@ -41,10 +43,10 @@
       powerbar = {
         show-labels = true;
         linked-buttons = true;
-        reboot-command = "systemctl reboot";
-        poweroff-command = "systemctl poweroff";
-        suspend-command = "systemctl suspend";
-        logout-command = "niri msg action quit --skip-confirmation";
+        reboot-command = "session-control reboot";
+        poweroff-command = "session-control poweroff";
+        suspend-command = "session-control suspend";
+        logout-command = "session-control logout";
       };
       userinfo = {
         horizontal-layout = false;

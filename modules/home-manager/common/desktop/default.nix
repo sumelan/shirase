@@ -6,7 +6,7 @@ _: {
     ./config.nix
     ./dimland.nix
     ./discord.nix
-    ./fnott.nix
+    ./dunst.nix
     ./foot.nix
     ./gtk.nix
     ./helium.nix

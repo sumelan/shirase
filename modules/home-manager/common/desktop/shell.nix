@@ -1,10 +1,5 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}: let
-  inherit (lib) getExe;
+{pkgs, ...}: let
+  soundPath = "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo";
 
   # Volume control script with audio feedback
   volumeScript =
@@ -13,13 +8,13 @@
     ''
       case "$1" in
           up)
-              ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+              wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
               ;;
           down)
-              ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+              wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
               ;;
           mute)
-              ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+              wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
               ;;
           *)
               echo "Usage: $0 up|down|mute"
@@ -27,7 +22,7 @@
               ;;
       esac
 
-      ${pkgs.pipewire}/bin/pw-play ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/audio-volume-change.oga
+      pw-play ${soundPath}/audio-volume-change.oga
     '';
 
   # Brightness control script
@@ -37,17 +32,17 @@
     ''
       case "$1" in
           up)
-              ${pkgs.brightnessctl}/bin/brightnessctl set 5%+
+              brightnessctl set 5%+
               ;;
           down)
-              ${pkgs.brightnessctl}/bin/brightnessctl set 5%-
+              brightnessctl set 5%-
               ;;
           *)
               echo "Usage: $0 up|down"
               exit 1
               ;;
       esac
-      ${pkgs.pipewire}/bin/pw-play ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/audio-volume-change.oga
+      pw-play ${soundPath}/audio-volume-change.oga
     '';
 
   # Media control script
@@ -57,16 +52,16 @@
     ''
       case "$1" in
           play-pause)
-              ${pkgs.playerctl}/bin/playerctl play-pause
+              playerctl play-pause
               ;;
           next)
-              ${pkgs.playerctl}/bin/playerctl next
+              playerctl next
               ;;
           previous)
-              ${pkgs.playerctl}/bin/playerctl previous
+              playerctl previous
               ;;
           stop)
-              ${pkgs.playerctl}/bin/playerctl pause
+              playerctl pause
               ;;
           *)
               echo "Usage: $0 play-pause|next|previous|stop"
@@ -82,10 +77,10 @@
     ''
       case "$1" in
           power-off-monitors)
-              ${getExe config.programs.niri.package} msg action power-off-monitors
+              niri msg action power-off-monitors
               ;;
           power-on-monitors)
-              ${getExe config.programs.niri.package} msg action power-on-monitors
+              niri msg action power-on-monitors
               ;;
           *)
               echo "Usage: $0 power-off-monitors|power-on-monitors"
@@ -101,28 +96,44 @@
     ''
       case "$1" in
           lock)
-              ${pkgs.gtklock}/bin/gtklock
+              gtklock -d
               ;;
           logout)
-              ${getExe config.programs.niri.package} msg action quit
+              pw-play ${soundPath}/service-logout.oga
+              niri msg action quit --skip-confirmation
               ;;
           suspend)
-              ${pkgs.systemd}/bin/systemctl suspend
+              systemctl suspend
               ;;
           hibernate)
-              ${pkgs.systemd}/bin/systemctl hibernate
+              systemctl hibernate
               ;;
           reboot)
-              ${pkgs.systemd}/bin/systemctl reboot
+              systemctl reboot
               ;;
           poweroff)
-              ${pkgs.systemd}/bin/systemctl poweroff
+              systemctl poweroff
               ;;
           *)
               echo "Usage: $0 lock|logout|suspend|hibernate|reboot|poweroff"
               exit 1
               ;;
       esac
+    '';
+
+  dunstSoundScript =
+    pkgs.writeShellScriptBin "dunst-sound"
+    # sh
+    ''
+      if [[ "$DUNST_APP_NAME" != "Spotify" ]] && [[ "$DUNST_APP_NAME" != "Music Player Daemon" ]]; then
+          if [[ "$DUNST_URGENCY" = "LOW" ]]; then
+              pw-play ${soundPath}/message.oga
+          elif [[ "$DUNST_URGENCY" = "NORMAL" ]]; then
+              pw-play ${soundPath}/message-new-instant.oga
+          else
+              pw-play ${soundPath}/dialog-warning.oga
+          fi
+      fi
     '';
 
   batteryScript =
@@ -156,6 +167,7 @@ in {
     mediaScript
     displayScript
     sessionScript
+    dunstSoundScript
     batteryScript
   ];
 }
