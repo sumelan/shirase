@@ -49,7 +49,7 @@ in {
         };
         "Mod+Shift+Alt+Backslash" = {
           action.spawn = ["dynamiccast-selecter"];
-          hotkey-overlay.title = ''<span foreground="#D79784">[󱓟 Rofi]</span> Dynamiccast'';
+          hotkey-overlay.title = ''<span foreground="#D79784">[󱓟 Rofi]</span> Dynamic Cast'';
         };
       };
     };
@@ -88,7 +88,7 @@ in {
             location:                    center;
             anchor:                      center;
             fullscreen:                  false;
-            width:                       700px;
+            width:                       800px;
             x-offset:                    0px;
             y-offset:                    0px;
 
@@ -184,7 +184,7 @@ in {
             padding:                     15px;
             border-radius:               15px;
             background-color:            @background-alt;
-            text-color:                  @foreground;
+            text-color:                  ${white3};
             vertical-align:              0.5;
             horizontal-align:            0.0;
         }
@@ -198,8 +198,8 @@ in {
         /** Listview **/
         listview {
             enabled:                     true;
-            columns:                     3;
-            lines:                       2;
+            columns:                     4;
+            lines:                       3;
             cycle:                       true;
             dynamic:                     true;
             scrollbar:                   false;
@@ -207,10 +207,9 @@ in {
             reverse:                     false;
             fixed-height:                true;
             fixed-columns:               true;
-
             spacing:                     10px;
             background-color:            transparent;
-            text-color:                  @foreground;
+            text-color:                  ${white3};
             cursor:                      "default";
         }
         /*** Elements ***/
@@ -220,7 +219,7 @@ in {
             padding:                     10px;
             border-radius:               15px;
             background-color:            transparent;
-            text-color:                  @foreground;
+            text-color:                  ${white3};
             cursor:                      pointer;
             orientation:                 vertical;
         }
@@ -278,8 +277,8 @@ in {
             background:           ${gray0}E6;
             background-alt:       ${gray2}E6;
             foreground:           ${white3}FF;
-            selected:             ${cyan_base}E6;
-            active:               ${blue0}FF;
+            selected:             ${cyan_bright}E6;
+            active:               ${gray4}FF;
             urgent:               ${yellow_base}FF;
 
             border-colour:               var(selected);
@@ -314,13 +313,12 @@ in {
             location:                    center;
             anchor:                      center;
             fullscreen:                  false;
-            width:                       800px;
+            width:                       600px;
             x-offset:                    0px;
             y-offset:                    0px;
 
             /* properties for all widgets */
             enabled:                     true;
-            margin:                      0px;
             padding:                     0px;
             border:                      0px solid;
             border-radius:               12px;
@@ -333,10 +331,9 @@ in {
         mainbox {
             enabled:                     true;
             spacing:                     10px;
-            margin:                      0px;
             padding:                     40px;
             border:                      0px solid;
-            border-radius:               0px 0px 0px 0px;
+            border-radius:               0px;
             border-color:                @border-colour;
             background-color:            transparent;
             children:                    [ "inputbar", "message", "listview" ];
@@ -346,26 +343,31 @@ in {
         inputbar {
             enabled:                     true;
             spacing:                     10px;
-            margin:                      0px;
             padding:                     0px;
             border:                      0px solid;
-            border-radius:               0px;
+            border-radius:               10px;
             border-color:                @border-colour;
             background-color:            transparent;
-            text-color:                  @foreground-colour;
-            children:                    [ "prompt", "entry"];
+            text-color:                  ${black0};
+            children:                    [ "prompt", "entry" ];
         }
         prompt {
             enabled:                     true;
-            background-color:            inherit;
+            padding:                     8px;
+            border:                      0px solid;
+            border-radius:               10px;
+            background-color:            ${orange_bright};
             text-color:                  inherit;
         }
         entry {
             enabled:                     true;
-            background-color:            inherit;
+            padding:                     8px;
+            border:                      0px solid;
+            border-radius:               10px;
+            background-color:            ${white3};
             text-color:                  inherit;
             cursor:                      text;
-            placeholder:                 "Search...";
+            placeholder:                 "Search history...";
             placeholder-color:           inherit;
         }
         num-filtered-rows {
@@ -410,7 +412,7 @@ in {
             margin:                      0px;
             padding:                     0px;
             border:                      0px solid;
-            border-radius:               0px;
+            border-radius:               10px;
             border-color:                @border-colour;
             background-color:            transparent;
             text-color:                  @foreground-colour;
@@ -418,7 +420,7 @@ in {
         }
         scrollbar {
             handle-width:                5px ;
-            handle-color:                @handle-colour;
+            handle-color:                ${blue0};
             border-radius:               8px;
             background-color:            @alternate-background;
         }
@@ -430,7 +432,7 @@ in {
             margin:                      0px;
             padding:                     8px;
             border:                      0px solid;
-            border-radius:               4px;
+            border-radius:               10px;
             border-color:                @border-colour;
             background-color:            transparent;
             text-color:                  @foreground-colour;
@@ -449,7 +451,7 @@ in {
             text-color:                  var(active-foreground);
         }
         element selected.normal {
-            background-color:            var(normal-foreground);
+            background-color:            var(selected);
             text-color:                  var(normal-background);
         }
         element selected.urgent {
@@ -493,7 +495,7 @@ in {
             margin:                      0px;
             padding:                     0px;
             border:                      0px solid;
-            border-radius:               0px 0px 0px 0px;
+            border-radius:               0px;
             border-color:                @border-colour;
             background-color:            transparent;
             text-color:                  @foreground-colour;
@@ -501,9 +503,9 @@ in {
         textbox {
             padding:                     8px;
             border:                      0px solid;
-            border-radius:               4px;
+            border-radius:               10px;
             border-color:                @border-colour;
-            background-color:            @alternate-background;
+            background-color:            @active-background;
             text-color:                  @foreground-colour;
             vertical-align:              0.5;
             horizontal-align:            0.0;
@@ -517,7 +519,7 @@ in {
             border:                      0px solid;
             border-radius:               4px;
             border-color:                @border-colour;
-            background-color:            @background-colour;
+            background-color:            @active-background;
             text-color:                  @foreground-colour;
         }
       '';
@@ -531,11 +533,11 @@ in {
 
         /* Global Properties */
         * {
-            background:           ${gray0}E6;
+            background:           ${black0}E6;
             background-alt:       ${gray2}E6;
             foreground:           ${white3}FF;
             selected:             ${cyan_base}E6;
-            active:               ${blue0}FF;
+            active:               ${orange_bright}FF;
             urgent:               ${yellow_base}FF;
             font: "${config.custom.fonts.monospace} 14";
         }
@@ -588,7 +590,6 @@ in {
             text-color:                  @foreground;
             children:                    ["prompt"];
         }
-
         prompt {
             enabled:                     true;
             padding:                     10px;

@@ -75,7 +75,7 @@
       clear=' Clear'
 
       rofi_cmd () {
-          rofi -dmenu -p "Dynamiccast" -mesg "Select cast target" -theme "$themeDir/selecter.rasi"
+          rofi -dmenu -p "Dynamic Cast" -mesg "Select cast target" -theme "$themeDir/selecter.rasi"
       }
 
       run_rofi () {
@@ -85,14 +85,14 @@
       run_cmd () {
           if [[ $1 == '--window' ]]; then
               niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)
-              notify-send -u low "Dynamiccast" "Window picked."
+              notify-send -u low "Dynamic Cast" "Window picked."
 
           elif [[ $1 == '--monitor' ]]; then
               niri msg action set-dynamic-cast-monitor
-              notify-send -u low "Dynamiccast" "Monitor picked."
+              notify-send -u low "Dynamic Cast" "Monitor picked."
           elif [[ $1 == '--clear' ]]; then
               niri msg action clear-dynamic-cast-target
-              notify-send -u low "Dynamiccast" "Clear target."
+              notify-send -u low "Dynamic Cast" "Clear target."
           else
               exit 0
           fi
