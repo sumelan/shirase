@@ -4,20 +4,20 @@
   pkgs,
   ...
 }: let
-  inherit
-    (lib)
-    mkIf
-    singleton
-    ;
+  inherit (lib) mkIf;
 in {
   programs.niri.settings.spawn-at-startup = [
     # network
-    {argv = singleton "nm-applet";}
+    {argv = ["nm-applet"];}
     # bluetooth
-    {argv = singleton "blueman-applet";}
+    {argv = ["blueman-applet"];}
     # initial backlight
     (mkIf config.custom.backlight.enable {
       argv = ["${pkgs.brightnessctl}/bin/brightnessctl" "set" "5%"];
+    })
+    # battery-notify
+    (mkIf config.custom.battery.enable {
+      argv = ["battery-notify"];
     })
   ];
 }

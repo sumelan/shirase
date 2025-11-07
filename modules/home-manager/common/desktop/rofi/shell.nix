@@ -26,7 +26,7 @@
       powersaver='󰌪 Power-Saver'
 
       rofi_cmd () {
-          rofi -dmenu -p "$host" -mesg "Select profiles" -theme "$themeDir/selecter.rasi"
+          rofi -dmenu -p "Power Profiles" -mesg "Select profiles" -theme "$themeDir/selecter.rasi"
       }
 
       run_rofi () {
@@ -36,13 +36,13 @@
       run_cmd () {
           if [[ $1 == '--performance' ]]; then
               powerprofilesctl set performance
-              notify-send "Power-profile-daemon" "Switch to Performance mode"
+              notify-send -u low "Power Profiles" "Switch to Performance mode."
           elif [[ $1 == '--balanced' ]]; then
               powerprofilesctl set balanced
-              notify-send "Power-profile-daemon" "Switch to Balanced mode"
+              notify-send -u low "Power Profiles" "Switch to Balanced mode."
           elif [[ $1 == '--power-saver' ]]; then
               powerprofilesctl set power-saver
-              notify-send "Power-profile-daemon" "Switch to Power-saver mode"
+              notify-send -u low "Power Profiles" "Switch to Power-saver mode."
           else
               exit 0
           fi
@@ -75,7 +75,7 @@
       clear=' Clear'
 
       rofi_cmd () {
-          rofi -dmenu -p "$host" -mesg "Select cast target" -theme "$themeDir/selecter.rasi"
+          rofi -dmenu -p "Dynamiccast" -mesg "Select cast target" -theme "$themeDir/selecter.rasi"
       }
 
       run_rofi () {
@@ -85,10 +85,14 @@
       run_cmd () {
           if [[ $1 == '--window' ]]; then
               niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)
+              notify-send -u low "Dynamiccast" "Window picked."
+
           elif [[ $1 == '--monitor' ]]; then
               niri msg action set-dynamic-cast-monitor
+              notify-send -u low "Dynamiccast" "Monitor picked."
           elif [[ $1 == '--clear' ]]; then
               niri msg action clear-dynamic-cast-target
+              notify-send -u low "Dynamiccast" "Clear target."
           else
               exit 0
           fi
