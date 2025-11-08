@@ -1,7 +1,8 @@
 _: {
   programs.niri.settings.animations = {
     enable = true;
-    # Slow down all animations by this factor. Values below 1 speed them up instead.
+    # Slow down all animations by this factor.
+    # Values below 1 speed them up instead.
     slowdown = 1.0;
     window-open = {
       kind.spring = {

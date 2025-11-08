@@ -1,6 +1,6 @@
 {
-  callPackage,
   lib,
+  callPackage,
   appimageTools,
   makeWrapper,
 }: let

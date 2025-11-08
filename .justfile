@@ -4,7 +4,7 @@ export NH_FLAKE := `echo $PWD`
 export HOSTNAME := `hostname`
 export NIXPKGS_ALLOW_UNFREE := "1"
 
-# package-paths updated through nvfetcher
+# package-paths fetched through nvfetcher
 yazi-path := "modules/packages/yazi-plugins"
 helium-path := "modules/packages/helium"
 
@@ -13,12 +13,17 @@ helium-path := "modules/packages/helium"
 @default:
     just --list --unsorted
 
-[group('SANITY')]
+[group('FLAKE')]
 [doc('Check whether the flake evaluates and run its tests.')]
 @check:
     nix flake check
 
-[group('SANITY')]
+[group('FLAKE')]
+[doc('Create missing lock file entries')]
+@lock *flake-url:
+    nh flake lock {{ flake-url }}
+
+[group('FLAKE')]
 [doc('Analyzing a `flake.lock` for duplicate inputs.')]
 @flint:
     nix run github:NotAShelf/flint
@@ -34,7 +39,7 @@ helium-path := "modules/packages/helium"
     nh os switch {{ args }}
 
 [group('SYSTEM')]
-[doc('Update a specific input in the flake.')]
+[doc('Update a specific input in the `flake.nix`.')]
 @updateInput input: check
     echo -e "\n===== Updating a {{ input }}... =====\n"
 
@@ -43,7 +48,7 @@ helium-path := "modules/packages/helium"
 alias update := updateInput
 
 [group('SYSTEM')]
-[doc('Update all flake inputs, fetch packages you defined and commit on git.')]
+[doc('Update all flake inputs, fetch some packages by `nvfetcher` and commit on git.')]
 @updateAll: check
     echo -e "\n===== Updating all flake inputs... =====\n"
 
@@ -62,11 +67,6 @@ alias update := updateInput
     git commit -m "chore: update inputs and fetch packages"
 
 alias updates := updateAll
-
-[group('SYSTEM')]
-[doc('Start an interactive environment for evaluating Nix expressions.')]
-@repl:
-    nh os repl
 
 [group('MAINTENANCE')]
 [doc('Clean all profiles but keep 5 generations.')]
@@ -91,21 +91,31 @@ alias updates := updateAll
 alias override := buildOverride
 
 [group('BUILD')]
-[doc('Build a package you defined in `./packages`.')]
+[doc('Build a package you defined in `modules/packages/defalut.nix`.')]
 @buildCustom package:
-    nix build --expr '(import <nixpkgs> { }).callPackage ./packages/{{ package }}/default.nix {}'
+    nix build --expr '(import <nixpkgs> { }).callPackage ./modules/packages/{{ package }}/default.nix {}'
 
 alias callPackage := buildCustom
+
+[group('TOOLS')]
+[doc('Start an interactive environment for evaluating Nix expressions.')]
+@repl:
+    nh os repl
+
+[group('TOOLS')]
+[doc('Start an interactive shell and run `cmd` based on a Nix expression.')]
+@shell program cmd:
+    nix-shell -p {{ program }} --run '{{ cmd }}'
+
+[group('TOOLS')]
+[doc('Search for all packages containing a file matching `file` or a file named `file`.')]
+@locate file:
+    nix-locate {{ file }}
 
 [group('TOOLS')]
 [doc('Download a file to the nix store and get the SHA-256 hash.')]
 @prefetch url:
     nix store prefetch-file --json --hash-type sha256 {{ url }} | jq -r .hash
-
-[group('TOOLS')]
-[doc('Nix (package manager) indexing primitives.')]
-@locate program:
-    nix-locate {{ program }}
 
 [group('TOOLS')]
 [doc('Look the store path of specific package through yazi.')]

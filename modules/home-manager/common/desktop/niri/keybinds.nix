@@ -10,7 +10,6 @@ _: {
     "Mod+Shift+Escape".action.quit.skip-confirmation = false;
 
     # screenshot
-    # https://github.com/sodiboo/niri-flake/issues/1380
     "Mod+Backslash".action.screenshot.show-pointer = false;
     "Mod+Shift+Backslash".action.screenshot-screen.show-pointer = false;
     "Mod+Alt+Backslash".action.screenshot-window.write-to-disk = true;
@@ -21,7 +20,6 @@ _: {
     "Mod+F".action.toggle-window-floating = {};
     "Mod+Shift+F".action.fullscreen-window = {};
     "Mod+Alt+F".action.toggle-windowed-fullscreen = {};
-
     "Mod+Ctrl+F".action.maximize-column = {};
     "Mod+Shift+C".action.center-column = {};
     "Mod+Ctrl+C".action.switch-preset-column-width = {};
@@ -84,10 +82,6 @@ _: {
     };
 
     # mouse click
-    "MouseMiddle" = {
-      action.toggle-overview = {};
-      cooldown-ms = 150;
-    };
     "Mod+MouseForward".action.consume-or-expel-window-left = {};
     "Mod+MouseBack".action.consume-or-expel-window-right = {};
 
