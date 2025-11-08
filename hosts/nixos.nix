@@ -39,7 +39,7 @@
 
       specialArgs = {
         inherit inputs lib host user;
-        flakePath = "/persist//home/${user}/Projects/shirase";
+        flakePath = "/persist/home/${user}/Projects/shirase";
         isLaptop = hardware == "laptop";
         isDesktop = hardware == "desktop";
       };
@@ -61,7 +61,7 @@
               useUserPackages = true;
               extraSpecialArgs = {
                 inherit inputs lib host user;
-                flakePath = "/persist//home/${user}/Projects/shirase";
+                flakePath = "/persist/home/${user}/Projects/shirase";
                 isLaptop = hardware == "laptop";
                 isDesktop = hardware == "desktop";
               };

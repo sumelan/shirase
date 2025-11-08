@@ -10,6 +10,7 @@
     (lib)
     mkEnableOption
     mkIf
+    optional
     flip
     mkBefore
     mkForce
@@ -160,9 +161,7 @@ in {
 
     # add the ssh directory to persist
     custom.persist = {
-      root.directories = mkIf cfg.remote.enable [
-        "/var/lib/btrbk"
-      ];
+      root.directories = optional cfg.remote.enable "/var/lib/btrbk";
     };
   };
 }

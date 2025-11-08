@@ -2,18 +2,8 @@
   config,
   pkgs,
   user,
-  host,
   ...
 }: {
-  networking = {
-    # Define your hostname
-    hostName = host;
-    # Enable networking
-    networkmanager.enable = true;
-    firewall.enable = true;
-  };
-  environment.systemPackages = [pkgs.networkmanagerapplet];
-
   # Set your time zone
   time = {
     inherit (config.hm.profiles.${user}) timeZone;

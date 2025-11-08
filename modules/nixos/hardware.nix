@@ -3,7 +3,7 @@
   isLaptop,
   ...
 }: let
-  inherit (lib) mkMerge optionalAttrs;
+  inherit (lib) mkMerge mkIf;
 in
   mkMerge [
     {
@@ -14,7 +14,7 @@ in
         tlp.enable = false;
       };
     }
-    (optionalAttrs isLaptop {
+    (mkIf isLaptop {
       services.libinput.enable = true;
       # It disabled usb after some time of inativity, so not usable on desktop
       powerManagement.powertop.enable = true;

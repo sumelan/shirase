@@ -2,12 +2,26 @@
   lib,
   config,
   pkgs,
+  host,
   user,
   ...
 }: let
   inherit (lib) mkIf mkMerge;
 in
   mkMerge [
+    {
+      networking = {
+        # Define your hostname
+        hostName = host;
+        # Enable networking
+        networkmanager.enable = true;
+        firewall.enable = true;
+      };
+      environment.systemPackages = [
+        # NetworkManager control applet for GNOME
+        pkgs.networkmanagerapplet
+      ];
+    }
     (mkIf config.hm.custom.wifi.enable {
       programs.wireshark = {
         enable = true;

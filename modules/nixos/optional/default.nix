@@ -7,7 +7,6 @@ _: {
     ./hdds.nix
     ./keyd.nix
     ./logitech.nix
-    ./network.nix
     ./qmk.nix
     ./steam.nix
     ./vr.nix

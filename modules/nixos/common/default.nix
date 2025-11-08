@@ -6,6 +6,7 @@ _: {
     ./config.nix
     ./greetd.nix
     ./impermanence.nix
+    ./network.nix
     ./niri.nix
     ./nix.nix
     ./pipewire.nix
