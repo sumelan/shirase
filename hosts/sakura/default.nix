@@ -5,6 +5,7 @@ in {
     enableList = [
       "alsa"
       "logitech"
+      "steam"
       "qmk"
     ];
     disableList = [

@@ -6,11 +6,7 @@
   inherit (lib) mkEnableOption mkIf;
 in {
   options.custom = {
-    steam.enable =
-      mkEnableOption "steam"
-      // {
-        default = config.hm.custom.niri.xwayland.enable;
-      };
+    steam.enable = mkEnableOption "steam";
   };
 
   config = mkIf config.custom.steam.enable {
