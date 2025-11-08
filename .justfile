@@ -41,7 +41,7 @@ helium-path := "modules/packages/helium"
 [group('SYSTEM')]
 [doc('Update a specific input in the `flake.nix`.')]
 @updateInput input: check
-    echo -e "\n===== Updating a {{ input }}... =====\n"
+    echo -e "\n===== Updating {{ input }}... =====\n"
 
     nix flake update {{ input }}
 
