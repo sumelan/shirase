@@ -47,10 +47,8 @@ in {
     };
 
     systemd.user.tmpfiles.rules = [
-      # create `~/Music/YouTube` if not existed
-      "d! %h/Music/YouTube - ${user} users - -"
-      # symlink from YouTube to cache directories
-      "L+ %C/rmpc/youtube - - - - %h/Music/YouTube"
+      # symlink from rmpc cache to YouTube
+      "L+ %h/Music/YouTube - - - - /persist/home/${user}/.cache/rmpc/youtube"
     ];
 
     custom.persist = {

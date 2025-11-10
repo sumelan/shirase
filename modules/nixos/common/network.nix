@@ -6,38 +6,39 @@
   user,
   ...
 }: let
-  inherit (lib) mkIf mkMerge;
-in
-  mkMerge [
-    {
-      networking = {
-        # Define your hostname
-        hostName = host;
-        # Enable networking
-        networkmanager.enable = true;
-        firewall.enable = true;
+  inherit (lib) optional optionalAttrs;
+in {
+  networking = {
+    # Define your hostname
+    hostName = host;
+    # Enable networking
+    networkmanager.enable = true;
+
+    firewall = let
+      portRanges = {
+        from = 1714;
+        to = 1764;
       };
-      environment.systemPackages = [
-        # NetworkManager control applet for GNOME
-        pkgs.networkmanagerapplet
+    in {
+      enable = true;
+      allowedTCPPortRanges = optionalAttrs config.hm.custom.kdeconnect.enable [
+        portRanges
       ];
-    }
-    (mkIf config.hm.custom.wifi.enable {
-      programs.wireshark = {
-        enable = true;
-        package = pkgs.wireshark; # default: wireshark-cli
-      };
-      users.users.${user}.extraGroups = ["wireshark"];
-    })
-    (mkIf config.hm.custom.kdeconnect.enable {
-      networking.firewall = rec {
-        allowedTCPPortRanges = [
-          {
-            from = 1714;
-            to = 1764;
-          }
-        ];
-        allowedUDPPortRanges = allowedTCPPortRanges;
-      };
-    })
-  ]
+      allowedUDPPortRanges = optionalAttrs config.hm.custom.kdeconnect.enable [
+        portRanges
+      ];
+    };
+  };
+
+  environment.systemPackages = [
+    # NetworkManager control applet for GNOME
+    pkgs.networkmanagerapplet
+  ];
+
+  programs.wireshark = {
+    inherit (config.hm.custom.wifi) enable;
+    package = pkgs.wireshark; # default: wireshark-cli
+  };
+
+  users.users.${user}.extraGroups = optional config.hm.custom.wifi.enable "wireshark";
+}

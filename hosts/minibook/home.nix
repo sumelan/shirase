@@ -32,6 +32,7 @@ in {
   custom = let
     enableList = [
       "kdeconnect"
+      "obs-studio"
       "protonapp"
       "rmpc"
       "spicetify-nix"
