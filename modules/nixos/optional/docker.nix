@@ -4,7 +4,12 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    optionals
+    ;
 in {
   options.custom = {
     distrobox.enable = mkEnableOption "Enable distrobox";
@@ -16,7 +21,7 @@ in {
   };
 
   config = mkIf config.custom.docker.enable {
-    environment.systemPackages = mkIf config.custom.distrobox.enable [pkgs.distrobox];
+    environment.systemPackages = optionals config.custom.distrobox.enable [pkgs.distrobox];
 
     virtualisation = {
       podman = {

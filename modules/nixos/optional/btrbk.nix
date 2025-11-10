@@ -11,13 +11,23 @@
     mkEnableOption
     mkIf
     optional
+    optionalAttrs
     flip
     mkBefore
     mkForce
     mapAttrs'
     nameValuePair
     ;
+
   cfg = config.custom.btrbk;
+  retentionPolicy = {
+    stream_compress = "lz4";
+    snapshot_create = "onchange";
+    snapshot_preserve_min = "7d";
+    snapshot_preserve = "7d 4w";
+    target_preserve_min = "no";
+    target_preserve = "7d 4w";
+  };
 in {
   options.custom = {
     btrbk = {
@@ -33,80 +43,77 @@ in {
       # add extra packages on both clinet and server
       extraPackages = [pkgs.lz4];
 
-      instances = let
-        retentionPolicy = {
-          stream_compress = "lz4";
-          snapshot_create = "onchange";
-          snapshot_preserve_min = "7d";
-          snapshot_preserve = "7d 4w";
-          target_preserve_min = "no";
-          target_preserve = "7d 4w";
-        };
-      in {
-        "local" = mkIf cfg.local.enable {
-          onCalendar = "hourly";
-          settings =
-            retentionPolicy
-            // {
-              volume."/" = {
-                group = "local";
-                subvolume = {
-                  "persist" = {
-                    group = "local-persist"; # for command line filtering
-                    snapshot_dir = "/snapshots";
-                    snapshot_name = "persist";
+      instances =
+        {}
+        // optionalAttrs cfg.local.enable {
+          local = {
+            onCalendar = "hourly";
+            settings =
+              retentionPolicy
+              // {
+                volume."/" = {
+                  group = "local";
+                  subvolume = {
+                    "persist" = {
+                      group = "local-persist"; # for command line filtering
+                      snapshot_dir = "/snapshots";
+                      snapshot_name = "persist";
+                    };
                   };
                 };
               };
-            };
-        };
-        "usb" = mkIf cfg.usb.enable {
-          onCalendar = "hourly";
-          settings =
-            {
-              # Create snapshots only if the backup disk is attached
-              snapshot_create = "ondemand";
-            }
-            // retentionPolicy
-            // {
-              volume."/" = {
-                group = "usb";
-                subvolume = {
-                  "persist" = {
-                    group = "usb-persist"; # for command line filtering
-                    snapshot_dir = "/snapshots";
-                    snapshot_name = "persist";
+          };
+        }
+        // optionalAttrs cfg.usb.enable {
+          usb = {
+            onCalendar = "hourly";
+            settings =
+              {
+                # Create snapshots only if the backup disk is attached
+                snapshot_create = "ondemand";
+              }
+              // retentionPolicy
+              // {
+                volume."/" = {
+                  group = "usb";
+                  subvolume = {
+                    "persist" = {
+                      group = "usb-persist"; # for command line filtering
+                      snapshot_dir = "/snapshots";
+                      snapshot_name = "persist";
+                    };
                   };
+                  target = "/media/WD4T/snapshots/${host}-local";
                 };
-                target = "/media/WD4T/snapshots/${host}-local";
               };
-            };
-        };
-        # NOTE: run ssh command as user:btrbk once
-        # before start service for the first time
-        # `ssh -i '/var/lib/btrbk/.ssh/id_ed25519' btrbk@sakura 'cat /proc/self/mountinfo'`
-        "remote" = mkIf cfg.remote.enable {
-          onCalendar = "daily";
-          settings =
-            retentionPolicy
-            // {
-              ssh_user = "btrbk";
-              # must be readable by user/group btrbk
-              ssh_identity = "/var/lib/btrbk/.ssh/id_ed25519";
-              volume."/" = {
-                group = "remote";
-                subvolume = {
-                  "persist" = {
-                    group = "remote-persist"; # for command line filtering
-                    snapshot_dir = "/snapshots";
-                    snapshot_name = "persist";
+          };
+        }
+        // optionalAttrs cfg.remote.enable {
+          remote = {
+            # NOTE: run ssh command as user:btrbk once
+            # before start service for the first time
+            # `ssh -i '/var/lib/btrbk/.ssh/id_ed25519' btrbk@sakura 'cat /proc/self/mountinfo'`
+            onCalendar = "daily";
+            settings =
+              retentionPolicy
+              // {
+                ssh_user = "btrbk";
+                # must be readable by user/group btrbk
+                ssh_identity = "/var/lib/btrbk/.ssh/id_ed25519";
+                volume."/" = {
+                  group = "remote";
+                  subvolume = {
+                    "persist" = {
+                      group = "remote-persist"; # for command line filtering
+                      snapshot_dir = "/snapshots";
+                      snapshot_name = "persist";
+                    };
                   };
+                  target = "ssh://sakura/media/WD4T/snapshots/${host}-remote";
                 };
-                target = "ssh://sakura/media/WD4T/snapshots/${host}-remote";
               };
-            };
+          };
         };
-      };
       sshAccess = [
         {
           key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMy/TE68lwvJBZ2oiWWQeP/6qTYKrphrYYbLdwYXfeIL btrbk";
