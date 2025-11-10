@@ -11,6 +11,7 @@ in {
     disableList = [
       "audiobookshelf"
       "distrobox"
+      "vr"
     ];
   in
     {

@@ -46,24 +46,17 @@ in {
       };
     };
 
-    systemd.user.tmpfiles.settings = {
-      # create ytDir if not existed
-      "10-createYtDir".rules = {
-        "%h/Music/YouTube" = {
-          "d!" = {
-            group = "users";
-            inherit user;
-          };
-        };
-      };
-      # symlink from yt-dlp cache directory
-      "10-symlinkYtDir".rules = {
-        "%C/rmpc/youtube" = {
-          "L+" = {
-            argument = "%h/Music/YouTube";
-          };
-        };
-      };
+    systemd.user.tmpfiles.rules = [
+      # create `~/Music/YouTube` if not existed
+      "d! %h/Music/YouTube - ${user} users - -"
+      # symlink from YouTube to cache directories
+      "L+ %C/rmpc/youtube - - - - %h/Music/YouTube"
+    ];
+
+    custom.persist = {
+      home.directories = [
+        ".cache/rmpc/youtube"
+      ];
     };
   };
 }

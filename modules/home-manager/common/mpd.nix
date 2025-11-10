@@ -2,20 +2,11 @@
   config,
   user,
   ...
-}: let
-  socketDir = "/run/user/1000/mpd";
-in {
-  systemd.user.tmpfiles.settings = {
+}: {
+  systemd.user.tmpfiles.rules = [
     # create mpd directory for local socket on boot
-    "10-createMpdDirectory".rules = {
-      "%t/mpd" = {
-        "d!" = {
-          group = "users";
-          inherit user;
-        };
-      };
-    };
-  };
+    "d! %t/mpd - ${user} users - -"
+  ];
 
   services = {
     mpd = {
@@ -25,7 +16,7 @@ in {
       dbFile = "${config.services.mpd.dataDir}/tag_cache";
       playlistDirectory = "${config.services.mpd.dataDir}/playlists";
       # connect local socket
-      network.listenAddress = "${socketDir}/socket";
+      network.listenAddress = "/run/user/1000/mpd/socket";
       extraConfig = ''
         audio_output {
           type  "pipewire"
