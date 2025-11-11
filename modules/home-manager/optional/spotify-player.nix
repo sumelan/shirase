@@ -19,13 +19,13 @@ in {
             summary = "{track} • {artists}";
             body = "{album}";
           };
-          default_device = "spotify-player";
+          default_device = "spotify_player";
           copy_command = {
             command = "wl-copy";
             args = [];
           };
           device = {
-            name = "spotify-player";
+            name = "spotify_player";
             device_type = "speaker";
             audio_cache = false;
             normalization = false;
@@ -39,9 +39,10 @@ in {
           };
         };
       };
+
       niri.settings.binds = {
         "Mod+Shift+S" = {
-          action.spawn = ["foot" "--app-id=spotify-player" "spotify_player"];
+          action.spawn = ["foot" "--app-id=spotify_player" "spotify_player"];
           hotkey-overlay.title = ''<span foreground="#EFD49F">[  spotify-player]</span> Spotify TUI Client'';
         };
       };
