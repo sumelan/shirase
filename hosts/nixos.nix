@@ -18,7 +18,6 @@
   defaultHomeMods = [
     inputs.astal-shell.homeManagerModules.default
     inputs.dimland.homeManagerModules.dimland
-    inputs.moonlight.homeModules.default
     inputs.nix-index-database.homeModules.nix-index
     inputs.spicetify-nix.homeManagerModules.default
     ../modules/home-manager

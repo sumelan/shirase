@@ -156,26 +156,6 @@
         "type": "github"
       }
     },
-    "moonlight": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1761246178,
-        "narHash": "sha256-lQpl6ecQfQ7KzEIytH3k4hLtvq+KkTL+3IR2ZukdZWM=",
-        "owner": "moonlight-mod",
-        "repo": "moonlight",
-        "rev": "0b927a86a447a145f20bb5ee43fac79a724640f2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "moonlight-mod",
-        "repo": "moonlight",
-        "type": "github"
-      }
-    },
     "niri": {
       "inputs": {
         "niri-stable": [],
@@ -355,7 +335,6 @@
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
-        "moonlight": "moonlight",
         "niri": "niri",
         "nix-chuwi-minibook-x": "nix-chuwi-minibook-x",
         "nix-index-database": "nix-index-database",

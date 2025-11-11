@@ -44,7 +44,7 @@ in {
     ];
   in
     {
-      niri.xwayland.enable = true;
+      niri.xwayland.enable = false;
     }
     // genAttrs enableList (_name: {enable = true;})
     // genAttrs disableList (_name: {enable = false;});
