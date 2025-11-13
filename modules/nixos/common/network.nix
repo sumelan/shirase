@@ -6,7 +6,7 @@
   user,
   ...
 }: let
-  inherit (lib) optional optionalAttrs;
+  inherit (lib) optional;
 in {
   networking = {
     # Define your hostname
@@ -21,12 +21,12 @@ in {
       };
     in {
       enable = true;
-      allowedTCPPortRanges = optionalAttrs config.hm.custom.kdeconnect.enable [
-        portRanges
-      ];
-      allowedUDPPortRanges = optionalAttrs config.hm.custom.kdeconnect.enable [
-        portRanges
-      ];
+      allowedTCPPortRanges =
+        optional config.hm.custom.kdeconnect.enable
+        portRanges;
+      allowedUDPPortRanges =
+        optional config.hm.custom.kdeconnect.enable
+        portRanges;
     };
   };
 
