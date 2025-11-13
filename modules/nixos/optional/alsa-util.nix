@@ -6,10 +6,10 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.custom.alsa;
+  cfg = config.custom.alsa-util;
 in {
   options.custom = {
-    alsa.enable = mkEnableOption "Advanced Linux Sound Architecture";
+    alsa-util.enable = mkEnableOption "Advanced Linux Sound Architecture";
   };
 
   config = mkIf cfg.enable {

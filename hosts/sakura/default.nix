@@ -3,7 +3,7 @@
 in {
   custom = let
     enableList = [
-      "alsa"
+      "alsa-util"
       "logitech"
       "steam"
       "qmk"

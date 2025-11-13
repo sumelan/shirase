@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./alsa.nix
+    ./alsa-util.nix
     ./audiobookshelf.nix
     ./btrbk.nix
     ./docker.nix
