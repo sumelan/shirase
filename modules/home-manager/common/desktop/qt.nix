@@ -40,7 +40,7 @@ in {
     };
 
     # Kvantum looks for themes here
-    Kvantum-Tokyo-Night = {
+    Kvantum-Nordic = {
       target = "Kvantum/Nordic";
       source = "${pkgs.nordic}/share/Kvantum/Nordic";
       recursive = true;
