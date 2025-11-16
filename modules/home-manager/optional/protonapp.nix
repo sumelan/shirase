@@ -19,8 +19,8 @@ in {
         # but after that it worked without them
         # https://github.com/NixOS/nixpkgs/issues/365156#issuecomment-2585203352
         protonmail-desktop
-        proton-pass
-        protonvpn-gui
+        #  proton-pass
+        #  protonvpn-gui
         ;
     };
 
