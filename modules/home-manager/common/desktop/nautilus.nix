@@ -10,6 +10,7 @@ in {
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
+      file-roller
       nautilus
       libheif # HEIC image preview
       p7zip-rar # support for encrypted archives

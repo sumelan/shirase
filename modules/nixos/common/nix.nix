@@ -34,7 +34,7 @@ in
     # make a symlink of flake within the generation
     # (e.g. /run/current-system/src)
     {
-      system.extraSystemBuilderCmds = "ln -s ${self.sourceInfo.outPath} $out/src";
+      system.systemBuilderCommands = "ln -s ${self.sourceInfo.outPath} $out/src";
     }
     # nix lang / nixpkgs
     {

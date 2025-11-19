@@ -141,11 +141,10 @@ in {
   };
 
   programs = {
+    git.enable = true;
+
     # use same config as home-manager
     bash.interactiveShellInit = config.hm.programs.bash.initExtra;
-    # gnome file-roller
-    file-roller.enable = true;
-    git.enable = true;
 
     # remove nano
     nano.enable = mkForce false;
