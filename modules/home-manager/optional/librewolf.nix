@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   config,
   pkgs,
@@ -45,41 +46,77 @@ in {
 
         inherit configPath;
 
-        policies = {
-          Extensions = {
-            Install = [
-              "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/"
-              "https://addons.mozilla.org/firefox/downloads/latest/darkreader/"
-              "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/"
-              "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/"
-            ];
-            # extension IOs can be obtained after installation by going to about:support
-            Locked = [
-              "{446900e4-71c2-419f-a6a7-df9c091e268b}" # bitwarden
-              "addon@darkreader.org"
-              "sponsorBlocker@ajay.app"
-              "uBlock0@raymondhill.net"
-            ];
-            ExtensionSettings = {
-              # bitwarden
-              "{446900e4-71c2-419f-a6a7-df9c091e268b}".private_browsing = true;
-              "addon@darkreader.org".private_browsing = true;
-              "sponsorBlocker@ajay.app".private_browsing = true;
-              "uBlock0@raymondhill.net".private_browsing = true;
+        profiles.${user} = {
+          search = {
+            force = true;
+            default = "kagi";
+            # ddg = DuckDuckGo
+            order = ["kagi" "ddg" "google"];
+            engines = {
+              "Nix Packages" = {
+                urls = [
+                  {
+                    template = "https://search.nixos.org/packages";
+                    params = [
+                      {
+                        name = "type";
+                        value = "packages";
+                      }
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
+                icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                definedAliases = ["@np"];
+              };
+              "NixOS Wiki" = {
+                urls = [{template = "https://nixos.wiki/index.php?search={searchTerms}";}];
+                icon = "https://nixos.wiki/favicon.png";
+                updateInterval = 24 * 60 * 60 * 1000; # every day
+                definedAliases = ["@nw"];
+              };
+              "kagi" = {
+                urls = [{template = "https://kagi.com/search?q={searchTerms}";}];
+                icon = "https://kagi.com/favicon.ico";
+                definedAliases = ["@kagi"];
+              };
+              "bing".metaData.hidden = true;
+              # builtin engines only support specifying one additional alias
+              "google".metaData.alias = "@g";
             };
           };
-        };
-
-        profiles.${user} = {
-          # Whether to override all previous librewolf settings.
-          # This is required when using 'settings'.
-          extensions.force = true;
+          bookmarks = {};
+          extensions.packages = builtins.attrValues {
+            inherit
+              (inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system})
+              bitwarden
+              darkreader
+              sponsorblock
+              ublock-origin
+              ;
+          };
           settings = {
-            "extensions.autoDisableScopes" = 0; # enable extensions immediately upon new install
+            # enable extensions immediately upon new install
+            "extensions.autoDisableScopes" = 0;
             "privacy.clearOnShutdown_v2.cache" = false;
             "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           };
+          userChrome =
+            # css
+            ''
+              /* remove useless urlbar padding */
+              #customizableui-special-spring1 { display:none }
+              #customizableui-special-spring2 { display:none }
+
+              /* remove all tabs button and window controls */
+              #alltabs-button { display:none }
+              .titlebar-spacer { display:none }
+              .titlebar-buttonbox-container { display:none }
+            '';
         };
       };
       niri.settings = {
