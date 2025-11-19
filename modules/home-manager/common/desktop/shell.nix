@@ -125,7 +125,7 @@
     pkgs.writeShellScriptBin "dunst-sound"
     # sh
     ''
-      if [[ "$DUNST_APP_NAME" != "Spotify" ]] && [[ "$DUNST_APP_NAME" != "Music Player Daemon" ]]; then
+      if [[ "$DUNST_APP_NAME" != "Spotify" ]] && [[ "$DUNST_APP_NAME" != "Music Player Daemon" ]] && [[ "$DUNST_APP_NAME" != "spotify_player" ]]; then
           if [[ "$DUNST_URGENCY" = "LOW" ]]; then
               pw-play ${soundPath}/message.oga
           elif [[ "$DUNST_URGENCY" = "NORMAL" ]]; then
