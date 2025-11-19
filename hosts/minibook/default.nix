@@ -7,10 +7,10 @@ in {
       autoDisplayRotation = {
         enable = true;
         commands = {
-          normal = ''niri msg output "DSI-1" transform normal'';
-          bottomUp = ''niri msg output "DSI-1" transform 180'';
-          rightUp = ''niri msg output "DSI-1" transform 270'';
-          leftUp = ''niri msg output "DSI-1" transform 90'';
+          normal = ''niri msg output "DSI-1" transform 90'';
+          rightUp = ''niri msg output "DSI-1" transform normal'';
+          bottomUp = ''niri msg output "DSI-1" transform 270'';
+          leftUp = ''niri msg output "DSI-1" transform 180'';
         };
       };
     };

@@ -118,7 +118,21 @@ in {
 
       nix = {
         enable = true;
-        format.type = "alejandra";
+        extraDiagnostics = {
+          enable = true;
+          types = [
+            "statix"
+            "deadnix"
+          ];
+        };
+        format = {
+          enable = true;
+          type = "alejandra";
+        };
+        lsp = {
+          enable = true;
+          server = "nixd";
+        };
         treesitter.enable = true;
       };
     };

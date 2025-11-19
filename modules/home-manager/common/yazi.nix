@@ -28,8 +28,9 @@
           git
           lazygit
           nord
-          yatline
           starship
+          time-travel
+          yatline
           ;
 
         # defined in `packages/yazi-plugins`
@@ -91,26 +92,47 @@
       };
       keymap = {
         mgr.prepend_keymap = [
+          # chmod
+          {
+            on = ["c" "m"];
+            run = "plugin chmod";
+            desc = "Run chmod on selected files";
+          }
+          # lazygit
+          {
+            on = ["g" "g"];
+            run = "plugin lazygit";
+            desc = "Run lazygit";
+          }
+          # mount
           {
             on = "M";
             run = "plugin mount";
             desc = "Open mount";
           }
+          # time-travel
+          {
+            on = ["b" "h"];
+            run = "plugin time-travel prev";
+            desc = "Go to previous snapshot";
+          }
+          {
+            on = ["b" "l"];
+            run = "plugin time-travel next";
+            desc = "Go to next snapshot";
+          }
+          {
+            on = ["b" "e"];
+            run = "plugin time-travel exit";
+            desc = "Exit browsing snapshots";
+          }
+          # toggle-pane
           {
             on = "T";
             run = "plugin toggle-pane max-preview";
             desc = "Maximize or restore the preview pane";
           }
-          {
-            on = ["c" "m"];
-            run = "plugin chmod";
-            desc = "Chmod on selected files";
-          }
-          {
-            on = ["g" "g"];
-            run = "plugin lazygit";
-            desc = "run lazygit";
-          }
+          # ripdrag
           {
             on = "<C-n>";
             run = "shell --confirm 'ripdrag \"$@\" -x 2>/dev/null &'";

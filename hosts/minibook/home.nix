@@ -14,7 +14,7 @@ in {
         x = 0;
         y = 0;
       };
-      rotation = 270;
+      rotation = 0;
     };
   };
 
