@@ -1,0 +1,3 @@
+[vicinae-extensions]
+src.git = "https://github.com/vicinaehq/extensions"
+fetch.github = "vicinaehq/extensions"

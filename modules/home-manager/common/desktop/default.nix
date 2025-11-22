@@ -1,7 +1,7 @@
 _: {
   imports = [
     ./niri
-    ./rofi
+    ./vicinae
     ./astal-shell.nix
     ./config.nix
     ./dimland.nix

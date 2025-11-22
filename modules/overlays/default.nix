@@ -13,6 +13,15 @@
       dockerTools
       ;
   };
+  vicinaeSources = import ../packages/vicinae-extensions/generated.nix {
+    inherit
+      (pkgs)
+      fetchFromGitHub
+      fetchurl
+      fetchgit
+      dockerTools
+      ;
+  };
 in {
   nixpkgs.overlays = [
     # include packages defined as `pkgs.custom.foo`
@@ -25,6 +34,7 @@ in {
         })
         // {
           inherit (yaziSources) yazi-plugins yazi-starship;
+          inherit (vicinaeSources) vicinae-extensions;
         };
     })
     # enable the A/V Properties and see details like media length

@@ -1,0 +1,23 @@
+{
+    "vicinae-extensions": {
+        "cargoLocks": null,
+        "date": "2025-11-22",
+        "extract": null,
+        "name": "vicinae-extensions",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "vicinaehq",
+            "repo": "extensions",
+            "rev": "ec7334e9bb636f4771580238bd3569b58dbce879",
+            "sha256": "sha256-C2b6upygLE6xUP/cTSKZfVjMXOXOOqpP5Xmgb9r2dhA=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "ec7334e9bb636f4771580238bd3569b58dbce879"
+    }
+}

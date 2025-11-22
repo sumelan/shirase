@@ -5,6 +5,7 @@ export HOSTNAME := `hostname`
 export NIXPKGS_ALLOW_UNFREE := "1"
 
 # package-paths fetched through nvfetcher
+vicinae-path := "modules/packages/vicinae-extensions"
 yazi-path := "modules/packages/yazi-plugins"
 helium-path := "modules/packages/helium"
 
@@ -54,11 +55,15 @@ alias update := updateInput
 
     nix flake update
 
+    echo -e "\n===== Fetching a vicinae-extension package... =====\n"
+
+    nvfetcher --keep-old --config {{ vicinae-path }}/nvfetcher.toml --build-dir {{ vicinae-path }}
+
     echo -e "\n===== Fetching yazi-plugin packages... =====\n"
 
     nvfetcher --keep-old --config {{ yazi-path }}/nvfetcher.toml --build-dir {{ yazi-path }}
 
-    echo -e "\n===== Fetching helium package... =====\n"
+    echo -e "\n===== Fetching a helium package... =====\n"
 
     nvfetcher --keep-old --config {{ helium-path }}/nvfetcher.toml --build-dir {{ helium-path }}
 
