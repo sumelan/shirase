@@ -25,6 +25,7 @@
     magenta_base
     magenta_bright
     ;
+  inherit (lib.custom.niri) spawn hotkey;
 in {
   options.custom = {
     spotify-player.enable = mkEnableOption "A Spotify player in the terminal with full feature parity";
@@ -89,8 +90,12 @@ in {
 
       niri.settings.binds = {
         "Mod+S" = {
-          action.spawn = ["foot" "--app-id=spotify" "spotify_player"];
-          hotkey-overlay.title = ''<span foreground="#EFD49F">[  spotify_player]</span> Spotify TUI Client'';
+          action.spawn = spawn "foot --app-id=spotify spotify_player";
+          hotkey-overlay.title = hotkey {
+            color = green_base;
+            name = "  spotify_player";
+            text = "Terminal Spotify Client";
+          };
         };
       };
     };

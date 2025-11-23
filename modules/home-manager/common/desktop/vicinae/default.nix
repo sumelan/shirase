@@ -6,6 +6,8 @@
   ...
 }: let
   inherit (lib) optional;
+  inherit (lib.custom.colors) yellow_dim;
+  inherit (lib.custom.niri) spawn hotkey;
 in {
   imports = [
     ./shell.nix
@@ -19,7 +21,7 @@ in {
       closeOnFocusLoss = true;
       faviconService = "twenty"; # twenty | google | none
       font = {
-        normal = config.gtk.font.name;
+        normal = config.custom.fonts.monospace;
         size = 14;
       };
       keybinding = "default";
@@ -90,16 +92,36 @@ in {
   programs.niri.settings = {
     binds = {
       "Mod+Space" = {
-        action.spawn = ["vicinae" "toggle"];
-        hotkey-overlay.title = ''<span foreground="#D79784">[󱓟 Vicinae]</span> Launcher'';
+        action.spawn = spawn "vicinae toggle";
+        hotkey-overlay.title = hotkey {
+          color = yellow_dim;
+          name = "󱓟  Vicinae";
+          text = "Launcher";
+        };
       };
       "Mod+V" = {
-        action.spawn = ["vicinae" "vicinae://extensions/vicinae/clipboard/history"];
-        hotkey-overlay.title = ''<span foreground="#D79784">[󱓟 Vicinae]</span> Clipboard History'';
+        action.spawn = spawn "vicinae vicinae://extensions/vicinae/clipboard/history";
+        hotkey-overlay.title = hotkey {
+          color = yellow_dim;
+          name = "󱓟  Vicinae";
+          text = "Clipboard History";
+        };
       };
-      "Mod+Shift+Alt+Backslash" = {
-        action.spawn = ["dynamiccast-selecter"];
-        hotkey-overlay.title = ''<span foreground="#D79784">[󱓟 Vicinae]</span> Dynamic Cast'';
+      "Mod+X" = {
+        action.spawn = spawn "vicinae vicinae://extensions/botkooper/power-profile/power-profile";
+        hotkey-overlay.title = hotkey {
+          color = yellow_dim;
+          name = "󱓟  Vicinae";
+          text = "Power-profile";
+        };
+      };
+      "Mod+Ctrl+Backslash" = {
+        action.spawn = spawn "dynamiccast-selecter";
+        hotkey-overlay.title = hotkey {
+          color = yellow_dim;
+          name = "󱓟  Vicinae";
+          text = "Dynamic Cast";
+        };
       };
     };
   };

@@ -1,9 +1,12 @@
 # NOTE: To test gtklock, run `labwc -s "gtklock"`
 {
+  lib,
   config,
   pkgs,
   ...
 }: let
+  inherit (lib.custom.colors) cyan_bright;
+  inherit (lib.custom.niri) spawn hotkey;
   soundPath = "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo";
 in {
   environment.etc = {
@@ -137,9 +140,13 @@ in {
   hm = {
     programs.niri.settings.binds = {
       "Mod+Alt+L" = {
-        action.spawn = ["gtklock"];
+        action.spawn = spawn "gtklock";
         allow-when-locked = true;
-        hotkey-overlay.title = ''<span foreground="#9FC6C5">[ Gtklock]</span> Lock Screen'';
+        hotkey-overlay.title = hotkey {
+          color = cyan_bright;
+          name = "  Gtklock";
+          text = "Session Lock";
+        };
       };
     };
   };

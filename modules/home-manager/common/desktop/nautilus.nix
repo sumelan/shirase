@@ -6,6 +6,8 @@
   ...
 }: let
   inherit (lib) getExe;
+  inherit (lib.custom.colors) orange_bright;
+  inherit (lib.custom.niri) spawn hotkey;
 in {
   home.packages = builtins.attrValues {
     inherit
@@ -74,8 +76,12 @@ in {
   programs.niri.settings = {
     binds = {
       "Mod+O" = {
-        action.spawn = ["nautilus"];
-        hotkey-overlay.title = ''<span foreground="#B1C89D">[  Nautilus]</span> File Manager'';
+        action.spawn = spawn "nautilus";
+        hotkey-overlay.title = hotkey {
+          color = orange_bright;
+          name = "  Nautilus";
+          text = "File Manager";
+        };
       };
     };
 

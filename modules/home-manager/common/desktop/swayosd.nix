@@ -8,7 +8,9 @@
     gray0
     gray2
     white2
+    cyan_dim
     ;
+  inherit (lib.custom.niri) spawn-sh hotkey;
 in {
   services.swayosd = {
     enable = true;
@@ -60,8 +62,12 @@ in {
   programs.niri.settings.binds = {
     # fcitx5
     "Ctrl+Space" = {
-      action.spawn = ["sh" "-c" "fcitx5-remote -t && swayosd-client --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard"];
-      hotkey-overlay.title = ''<span foreground="#9FC6C5">[  Fcitx5]</span> Switch Active/Inactive'';
+      action.spawn = spawn-sh "fcitx5-remote -t && swayosd-client --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard";
+      hotkey-overlay.title = hotkey {
+        color = cyan_dim;
+        name = "  Fcitx5";
+        text = "Switch Mozc";
+      };
     };
   };
 }

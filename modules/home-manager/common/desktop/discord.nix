@@ -1,4 +1,7 @@
-_: {
+{lib, ...}: let
+  inherit (lib.custom.colors) magenta_base;
+  inherit (lib.custom.niri) spawn hotkey;
+in {
   programs = {
     vesktop = {
       enable = true;
@@ -7,8 +10,12 @@ _: {
     niri.settings = {
       binds = {
         "Mod+D" = {
-          action.spawn = ["vesktop"];
-          hotkey-overlay.title = ''<span foreground="#B1C89D">[  Vesktop]</span> Discord Client'';
+          action.spawn = spawn "vesktop";
+          hotkey-overlay.title = hotkey {
+            color = magenta_base;
+            name = "  Vesktop";
+            text = "Discord Client";
+          };
         };
       };
     };

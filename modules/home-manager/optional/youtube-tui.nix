@@ -24,6 +24,7 @@
     orange_bright
     magenta_bright
     ;
+  inherit (lib.custom.niri) spawn hotkey;
 in {
   options.custom = {
     youtube-tui.enable = mkEnableOption "Aesthetically pleasing YouTube TUI written in Rust";
@@ -267,8 +268,12 @@ in {
     programs.niri.settings = {
       binds = {
         "Mod+Y" = {
-          action.spawn = ["foot" "--app-id=youtube-tui" "youtube-tui"];
-          hotkey-overlay.title = ''<span foreground="#EFD49F">[  youtube-tui]</span> YouTube TUI Client'';
+          action.spawn = spawn "foot --app-id=youtube-tui youtube-tui";
+          hotkey-overlay.title = hotkey {
+            color = red_base;
+            name = "  youtube-tui";
+            text = "Terminal YouTube Client";
+          };
         };
       };
     };

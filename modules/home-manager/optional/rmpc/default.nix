@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   user,
   ...
 }: let
@@ -11,6 +10,8 @@
     mkIf
     singleton
     ;
+  inherit (lib.custom.colors) orange_base;
+  inherit (lib.custom.niri) spawn hotkey;
 in {
   imports = [
     ./config.nix
@@ -29,8 +30,12 @@ in {
       niri.settings = {
         binds = {
           "Mod+R" = {
-            action.spawn = ["${pkgs.foot}/bin/foot" "--app-id=rmpc" "rmpc"];
-            hotkey-overlay.title = ''<span foreground="#EFD49F">[  rmpc]</span> TUI MPD Client'';
+            action.spawn = spawn "foot --app-id=rmpc rmpc";
+            hotkey-overlay.title = hotkey {
+              color = orange_base;
+              name = "  rmpc";
+              text = "Terminal MPD Client";
+            };
           };
         };
         window-rules = [

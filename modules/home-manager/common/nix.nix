@@ -1,8 +1,12 @@
 {
+  lib,
   pkgs,
   flakePath,
   ...
-}: {
+}: let
+  inherit (lib.custom.colors) blue0;
+  inherit (lib.custom.niri) spawn hotkey;
+in {
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
@@ -37,8 +41,12 @@
     niri.settings = {
       binds = {
         "Mod+Period" = {
-          action.spawn = ["foot" "--app-id=nix-search-tv" "ns"];
-          hotkey-overlay.title = ''<span foreground="#EFD49F">[󱄅  nix-search-tv]</span> Fuzzey search for Nix Packages'';
+          action.spawn = spawn "foot --app-id=nix-search-tv ns";
+          hotkey-overlay.title = hotkey {
+            color = blue0;
+            name = "󱄅  nix-search-tv";
+            text = "Nix Fuzzey Search";
+          };
         };
       };
     };

@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: let
+  inherit (lib.custom.colors) yellow_bright;
+  inherit (lib.custom.niri) spawn hotkey;
+in {
   home = {
     packages = builtins.attrValues {
       inherit
@@ -144,8 +151,12 @@
     niri.settings = {
       binds = {
         "Mod+Shift+O" = {
-          action.spawn = ["foot" "--app-id=yazi" "yazi"];
-          hotkey-overlay.title = ''<span foreground="#EFD49F">[ yazi]</span> Terminal File manager'';
+          action.spawn = spawn "foot --app-id=yazi yazi";
+          hotkey-overlay.title = hotkey {
+            color = yellow_bright;
+            name = "  yazi";
+            text = "Terminal File Manager";
+          };
         };
       };
     };

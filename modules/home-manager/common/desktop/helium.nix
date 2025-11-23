@@ -5,6 +5,8 @@
   ...
 }: let
   inherit (lib) getExe;
+  inherit (lib.custom.colors) blue0;
+  inherit (lib.custom.niri) spawn hotkey;
 in {
   programs = {
     chromium = {
@@ -14,8 +16,12 @@ in {
 
     niri.settings.binds = {
       "Mod+B" = {
-        action.spawn = ["helium"];
-        hotkey-overlay.title = ''<span foreground="#B1C89D">[  Helium Browser]</span> Web Browser'';
+        action.spawn = spawn "helium";
+        hotkey-overlay.title = hotkey {
+          color = blue0;
+          name = "  Helium";
+          text = "Web Browser";
+        };
       };
     };
   };

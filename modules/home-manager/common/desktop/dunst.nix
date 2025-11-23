@@ -4,15 +4,16 @@
   ...
 }: let
   inherit (lib) singleton;
-
   inherit
     (lib.custom.colors)
     gray1
     white3
     blue1
+    cyan_base
     cyan_bright
     red_bright
     ;
+  inherit (lib.custom.niri) spawn hotkey;
 in {
   services.dunst = {
     enable = true;
@@ -34,9 +35,7 @@ in {
         # values: [auto/foreground/frame/#RRGGBB]
         separator_color = "auto";
         alignment = "center";
-        dmenu = ''
-          rofi -dmenu -p 'Dunst' -mesg 'Context menu' -theme '${config.xdg.configHome}/rofi/themes/selecter.rasi'
-        '';
+        dmenu = ''vicinae dmenu --placeholder "Dunst"'';
         browser = "helium -new-tab";
         ellipsize = "end";
         follow = "mouse";
@@ -74,12 +73,20 @@ in {
   programs.niri.settings = {
     binds = {
       "Mod+N" = {
-        action.spawn = ["dunstctl" "history-pop"];
-        hotkey-overlay.title = ''<span foreground="#9FC6C5">[󰎟 Dunst]</span> Notification History'';
+        action.spawn = spawn "dunstctl history-pop";
+        hotkey-overlay.title = hotkey {
+          color = cyan_base;
+          name = "󰎟  Dunst";
+          text = "Notifications History";
+        };
       };
       "Mod+Shift+N" = {
-        action.spawn = ["dunstctl" "close-all"];
-        hotkey-overlay.title = ''<span foreground="#9FC6C5">[󰎟 Dunst]</span> Close all notifcations'';
+        action.spawn = spawn "dunstctl close-all";
+        hotkey-overlay.title = hotkey {
+          color = cyan_base;
+          name = "󰎟  Dunst";
+          text = "Close Notifications";
+        };
       };
     };
     layer-rules = [

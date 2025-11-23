@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: let
+  inherit (lib.custom.colors) yellow_base;
+  inherit (lib.custom.niri) spawn hotkey;
+in {
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
@@ -49,8 +56,12 @@
 
     niri.settings.binds = {
       "Mod+Return" = {
-        action.spawn = ["foot"];
-        hotkey-overlay.title = ''<span foreground="#B1C89D">[  Foot]</span> Terminal Emulator'';
+        action.spawn = spawn "foot";
+        hotkey-overlay.title = hotkey {
+          color = yellow_base;
+          name = "  Foot";
+          text = "Terminal Emulator";
+        };
       };
     };
   };
