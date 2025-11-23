@@ -15,7 +15,7 @@ _: {
     ./pipewire.nix
     ./qt.nix
     ./shell.nix
-    ./swayidle.nix
+    ./stasis.nix
     ./swayimg.nix
     ./swayosd.nix
     ./swww.nix

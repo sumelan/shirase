@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  user,
+  ...
+}: {
   programs = {
     niri = {
       enable = true;
@@ -10,6 +14,9 @@
 
   # use gnome-polkit instead
   systemd.user.services.niri-flake-polkit.enable = false;
+
+  # for stasis to work
+  users.users.${user}.extraGroups = ["input"];
 
   xdg.portal = {
     enable = true;
