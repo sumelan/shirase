@@ -6,9 +6,9 @@
   inherit (lib) mkEnableOption mkIf;
   inherit
     (lib.custom.colors)
-    black0
-    black2
     gray1
+    gray2
+    gray5
     white0
     white2
     white3
@@ -40,7 +40,7 @@ in {
             palette = {
               background = gray1;
               foreground = white3;
-              black = black0;
+              black = gray2;
               red = red_base;
               green = green_base;
               yellow = yellow_base;
@@ -48,7 +48,7 @@ in {
               magenta = magenta_base;
               cyan = cyan_base;
               white = white2;
-              bright_black = black2;
+              bright_black = gray5;
               bright_red = red_bright;
               bright_green = green_bright;
               bright_yellow = yellow_bright;
