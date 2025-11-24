@@ -1,3 +1,4 @@
+# niri will already automatically turn the internal laptop monitor on and off in accordance with the laptop lid.
 {
   lib,
   config,
@@ -5,14 +6,13 @@
   ...
 }: let
   inherit (lib) getExe mkEnableOption;
-
   inherit
     (lib.custom.colors)
+    black0
     gray0
     gray2
-    white3
-    blue0
-    blue2
+    orange_dim
+    orange_bright
     green_dim
     green_bright
     ;
@@ -32,7 +32,7 @@ in {
           y = 0;
         };
         draw-behind-window = false;
-        color = white3 + "90";
+        color = black0 + "90";
       };
     in {
       hotkey-overlay = {
@@ -40,6 +40,7 @@ in {
         hide-not-bound = true;
       };
 
+      # omit their client-side decorations.
       prefer-no-csd = true;
 
       screenshot-path = "${config.xdg.userDirs.pictures}/Screenshots/%Y-%m-%d %H-%M-%S.png";
@@ -52,7 +53,8 @@ in {
       input = {
         focus-follows-mouse.enable = true;
         touchpad.natural-scroll = true;
-        power-key-handling.enable = false; # niri handle power button as sleep by default
+        # niri handle power button as sleep by default
+        power-key-handling.enable = false;
       };
 
       cursor = {
@@ -77,24 +79,25 @@ in {
 
       layout = {
         background-color = "transparent";
-        gaps = 12;
-        border = {
+        gaps = 14;
+
+        border.enable = false;
+
+        focus-ring = {
           enable = true;
-          width = 5;
+          width = 4;
           active.gradient = {
-            from = blue0;
-            to = blue2;
+            from = orange_dim;
+            to = orange_bright;
             relative-to = "window";
           };
           inactive.color = gray0;
         };
 
-        focus-ring.enable = false;
-
         struts = {
           left = 2;
           right = 2;
-          top = 0;
+          top = 2;
           bottom = 2;
         };
 
@@ -119,7 +122,7 @@ in {
           active.color = green_bright;
           inactive.color = gray0;
           gap = 5;
-          width = 6;
+          width = 4;
           length.total-proportion = 0.5;
           gaps-between-tabs = 2;
         };
@@ -129,18 +132,10 @@ in {
         backdrop-color = gray2;
         workspace-shadow = {
           enable = true;
-          color = "#000000dd";
+          color = black0 + "90";
         };
-        zoom = 0.500; # zoom ranges from 0 to 0.75 where lower values make everything smaller.
-      };
-
-      switch-events = {
-        lid-close = {
-          action.spawn = ["${pkgs.systemd}/bin/systemctl" "suspend"];
-        };
-        lid-open = {
-          action.spawn = ["${getExe config.programs.niri.package}" "msg" "action" "power-on-monitors"];
-        };
+        # zoom ranges from 0 to 0.75 where lower values make everything smaller.
+        zoom = 0.500;
       };
 
       environment = {

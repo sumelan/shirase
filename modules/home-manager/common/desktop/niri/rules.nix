@@ -7,7 +7,6 @@
     gray3
     red_dim
     red_bright
-    orange_bright
     ;
 
   shadowConfig = {
@@ -27,12 +26,14 @@ in {
       # global rules
       {
         geometry-corner-radius = {
-          bottom-left = 20.0;
-          bottom-right = 20.0;
-          top-left = 20.0;
-          top-right = 20.0;
+          bottom-left = 12.0;
+          bottom-right = 12.0;
+          top-left = 12.0;
+          top-right = 12.0;
         };
+        # cut out any client-side window shadows, and also round window corners according to `geometry-corner-radius`
         clip-to-geometry = true;
+        # Override whether the border and the focus ring draw with a background
         draw-border-with-background = false;
       }
       # focused column/window opacity
@@ -74,7 +75,7 @@ in {
           inactive.color = gray3;
         };
         tab-indicator = {
-          active.color = orange_bright;
+          active.color = red_bright;
           inactive.color = gray3;
         };
         shadow = shadowConfig;
@@ -82,7 +83,7 @@ in {
       # hide gnome seahorse from screencast
       {
         matches = singleton {
-          app-id = "^(org.gnome.seahorse.Application)$";
+          app-id = "^org.gnome.seahorse.Application$";
         };
         block-out-from = "screen-capture";
       }
