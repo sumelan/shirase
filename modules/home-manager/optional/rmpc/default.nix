@@ -41,7 +41,7 @@ in {
         window-rules = [
           {
             matches = singleton {
-              app-id = "^(rmpc)$";
+              app-id = "^rmpc$";
             };
             open-floating = true;
             default-column-width.proportion = 0.35;

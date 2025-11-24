@@ -21,7 +21,7 @@ in {
     programs.niri.settings.window-rules = [
       {
         matches = singleton {
-          app-id = "^(com.github.johnfactotum.Foliate)$";
+          app-id = "^com.github.johnfactotum.Foliate$";
         };
         block-out-from = "screen-capture";
       }

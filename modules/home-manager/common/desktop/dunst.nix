@@ -20,12 +20,12 @@ in {
     settings = {
       global = {
         origin = "top-right";
-        font = "${config.custom.fonts.monospace} 14";
+        font = "${config.custom.fonts.regular} 14";
         icon_theme = config.gtk.iconTheme.name;
         enable_recursive_icon_lookup = true;
         width = "(250, 400)";
         offset = "(30, 30)";
-        frame_width = 4;
+        frame_width = 3;
         corner_radius = 8;
         max_icon_size = 72;
         # If value is greater than 0, separator_height will be ignored
@@ -92,7 +92,7 @@ in {
     layer-rules = [
       {
         matches = singleton {
-          namespace = "^(notifications)";
+          namespace = "^notifications";
         };
         block-out-from = "screen-capture";
       }

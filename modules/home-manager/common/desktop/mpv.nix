@@ -10,7 +10,7 @@ in {
   programs.niri.settings.window-rules = [
     {
       matches = singleton {
-        app-id = "^(mpv)$";
+        app-id = "^mpv$";
       };
       open-floating = true;
       default-column-width.proportion = 0.50;

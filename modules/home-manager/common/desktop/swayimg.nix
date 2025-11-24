@@ -204,7 +204,7 @@ in {
     niri.settings.window-rules = [
       {
         matches = singleton {
-          app-id = "^(swayimg)$";
+          app-id = "^swayimg$";
         };
         open-floating = true;
         default-column-width.proportion = 0.50;

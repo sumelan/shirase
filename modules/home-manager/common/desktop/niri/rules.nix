@@ -1,6 +1,5 @@
 {lib, ...}: let
   inherit (lib) singleton;
-
   inherit
     (lib.custom.colors)
     black0
@@ -8,28 +7,16 @@
     red_dim
     red_bright
     ;
-
-  shadowConfig = {
-    enable = true;
-    softness = 20;
-    spread = 10;
-    offset = {
-      x = 0;
-      y = 0;
-    };
-    draw-behind-window = false;
-    color = black0 + "90";
-  };
 in {
   programs.niri.settings = {
     window-rules = [
       # global rules
       {
         geometry-corner-radius = {
-          bottom-left = 12.0;
-          bottom-right = 12.0;
-          top-left = 12.0;
-          top-right = 12.0;
+          bottom-left = 10.0;
+          bottom-right = 10.0;
+          top-left = 10.0;
+          top-right = 10.0;
         };
         # cut out any client-side window shadows, and also round window corners according to `geometry-corner-radius`
         clip-to-geometry = true;
@@ -54,9 +41,9 @@ in {
       # Picture-in-pictures
       {
         matches = [
-          {title = "^(ピクチャーインピクチャー)$";}
-          {title = "^(ピクチャー イン ピクチャー)$";}
-          {title = "^(Picture-in-Picture)$";}
+          {title = "^ピクチャーインピクチャー$";}
+          {title = "^ピクチャー イン ピクチャー$";}
+          {title = "^Picture-in-Picture$";}
         ];
         open-floating = true;
         opacity = 1.0;
@@ -78,7 +65,17 @@ in {
           active.color = red_bright;
           inactive.color = gray3;
         };
-        shadow = shadowConfig;
+        shadow = {
+          enable = true;
+          softness = 20;
+          spread = 10;
+          offset = {
+            x = 0;
+            y = 0;
+          };
+          draw-behind-window = false;
+          color = black0 + "90";
+        };
       }
       # hide gnome seahorse from screencast
       {

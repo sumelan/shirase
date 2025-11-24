@@ -31,7 +31,7 @@ in {
       window-rules = [
         {
           matches = singleton {
-            app-id = "^(.blueman-manager-wrapped)$";
+            app-id = "^.blueman-manager-wrapped$";
           };
           open-floating = true;
         }

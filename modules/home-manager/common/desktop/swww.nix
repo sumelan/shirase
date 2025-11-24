@@ -34,7 +34,7 @@ in {
     window-rules = [
       {
         matches = singleton {
-          app-id = "^(waypaper)$";
+          app-id = "^waypaper$";
         };
         open-floating = true;
         default-column-width.proportion = 0.5;
@@ -44,7 +44,7 @@ in {
     layer-rules = [
       {
         matches = singleton {
-          namespace = "^(swww-daemon)$";
+          namespace = "^swww-daemon$";
         };
         opacity = 0.7;
       }

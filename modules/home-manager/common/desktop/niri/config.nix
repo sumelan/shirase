@@ -11,8 +11,8 @@
     black0
     gray0
     gray2
-    orange_dim
-    orange_bright
+    blue0
+    cyan_bright
     green_dim
     green_bright
     ;
@@ -22,19 +22,7 @@ in {
   };
 
   config = {
-    programs.niri.settings = let
-      shadowConfig = {
-        enable = true;
-        softness = 20;
-        spread = 10;
-        offset = {
-          x = 0;
-          y = 0;
-        };
-        draw-behind-window = false;
-        color = black0 + "90";
-      };
-    in {
+    programs.niri.settings = {
       hotkey-overlay = {
         skip-at-startup = true;
         hide-not-bound = true;
@@ -87,8 +75,8 @@ in {
           enable = true;
           width = 4;
           active.gradient = {
-            from = orange_dim;
-            to = orange_bright;
+            from = green_bright;
+            to = cyan_bright;
             relative-to = "window";
           };
           inactive.color = gray0;
@@ -112,14 +100,24 @@ in {
           };
         };
 
-        shadow = shadowConfig;
+        shadow = {
+          enable = true;
+          softness = 20;
+          spread = 10;
+          offset = {
+            x = 0;
+            y = 0;
+          };
+          draw-behind-window = false;
+          color = black0 + "90";
+        };
 
         tab-indicator = {
           enable = true;
           position = "left";
           hide-when-single-tab = true;
           place-within-column = true;
-          active.color = green_bright;
+          active.color = blue0;
           inactive.color = gray0;
           gap = 5;
           width = 4;

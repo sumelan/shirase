@@ -14,6 +14,7 @@ _: {
     ./nautilus.nix
     ./pipewire.nix
     ./qt.nix
+    ./satty.nix
     ./shell.nix
     ./stasis.nix
     ./swayimg.nix

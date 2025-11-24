@@ -28,9 +28,9 @@ in {
       window-rules = [
         {
           matches = [
-            {app-id = "^(Proton Mail)$";}
-            {app-id = "^(Proton Pass)$";}
-            {app-id = "^(.protonvpn-app-wrapped)$";}
+            {app-id = "^Proton Mail$";}
+            {app-id = "^Proton Pass$";}
+            {app-id = "^.protonvpn-app-wrapped$";}
           ];
           block-out-from = "screen-capture";
         }

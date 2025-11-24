@@ -27,7 +27,7 @@ in {
     programs.niri.settings.window-rules = [
       {
         matches = singleton {
-          app-id = "^(thunderbird)$";
+          app-id = "^thunderbird$";
         };
         block-out-from = "screen-capture";
       }

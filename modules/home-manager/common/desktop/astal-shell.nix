@@ -110,8 +110,8 @@
     window-rules = [
       {
         matches = [
-          {app-id = "^(org.gnome.Calendar)$";}
-          {app-id = "^(org.gnome.Weather)$";}
+          {app-id = "^org.gnome.Calendar$";}
+          {app-id = "^org.gnome.Weather$";}
         ];
         open-floating = true;
       }

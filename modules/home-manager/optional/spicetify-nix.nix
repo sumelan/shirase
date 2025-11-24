@@ -67,7 +67,7 @@ in {
         {
           # mini player
           matches = singleton {
-            app-id = "^(chromium-browser)$";
+            app-id = "^chromium-browser$";
           };
           open-floating = true;
           opacity = 1.0;

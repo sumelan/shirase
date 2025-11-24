@@ -61,8 +61,8 @@ in {
               definedAliases = ["@np"];
             };
             "NixOS Wiki" = {
-              urls = [{template = "https://nixos.wiki/index.php?search={searchTerms}";}];
-              icon = "https://nixos.wiki/favicon.png";
+              urls = [{template = "https://wiki.nixos.org/w/index.php?search={searchTerms}";}];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               updateInterval = 24 * 60 * 60 * 1000; # every day
               definedAliases = ["@nw"];
             };
@@ -117,38 +117,17 @@ in {
       };
     };
 
-    niri.settings = {
-      binds = {
-        "Mod+B" = {
-          action.spawn = spawn "librewolf";
-          hotkey-overlay.title = hotkey {
-            color = cyan_bright;
-            name = "  Librewolf";
-            text = "Web Browser";
-          };
+    # NOTE: bitwarden window cannot be floated on this method
+    # https://github.com/YaLTeR/niri/discussions/1599
+    niri.settings.binds = {
+      "Mod+B" = {
+        action.spawn = spawn "librewolf";
+        hotkey-overlay.title = hotkey {
+          color = cyan_bright;
+          name = "  Librewolf";
+          text = "Web Browser";
         };
       };
-
-      # NOTE: bitwarden window cannot be floated on this method
-      # https://github.com/YaLTeR/niri/discussions/1599
-      window-rules = [
-        {
-          matches = [
-            {
-              app-id = "^(librewolf)$";
-              title = "^(Save File)$";
-            }
-            {
-              app-id = "^(librewolf)$";
-              title = "^(.*)(wants to save)$";
-            }
-          ];
-          open-floating = true;
-          default-column-width.proportion = 0.4;
-          default-window-height.proportion = 0.4;
-          opacity = 1.0;
-        }
-      ];
     };
   };
 

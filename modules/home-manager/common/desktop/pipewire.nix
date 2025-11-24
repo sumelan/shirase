@@ -44,13 +44,13 @@ in {
   programs.niri.settings.window-rules = [
     {
       matches = singleton {
-        app-id = "^(com.saivert.pwvucontrol)$";
+        app-id = "^com.saivert.pwvucontrol$";
       };
       open-floating = true;
     }
     {
       matches = singleton {
-        app-id = "^(com.github.wwmm.easyeffects)$";
+        app-id = "^com.github.wwmm.easyeffects$";
       };
       open-floating = true;
       default-column-width.proportion = 0.5;

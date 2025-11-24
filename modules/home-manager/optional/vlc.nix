@@ -21,7 +21,7 @@ in {
     programs.niri.settings.window-rules = [
       {
         matches = singleton {
-          app-id = "^(vlc)$";
+          app-id = "^vlc$";
         };
         open-floating = true;
         default-column-width.proportion = 0.50;

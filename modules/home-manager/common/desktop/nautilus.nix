@@ -88,8 +88,8 @@ in {
     window-rules = [
       {
         matches = [
-          {app-id = "^(org.gnome.Nautilus)$";}
-          {app-id = "^(xdg-desktop-portal-gtk)$";}
+          {app-id = "^org.gnome.Nautilus$";}
+          {app-id = "^xdg-desktop-portal-gtk$";}
         ];
         open-floating = true;
         default-column-width.proportion = 0.5;
