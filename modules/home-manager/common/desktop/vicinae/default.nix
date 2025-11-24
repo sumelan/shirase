@@ -21,8 +21,8 @@ in {
       closeOnFocusLoss = true;
       faviconService = "twenty"; # twenty | google | none
       font = {
-        normal = config.custom.fonts.monospace;
-        size = 14;
+        normal = config.custom.fonts.regular;
+        size = 12;
       };
       keybinding = "default";
       keybinds = {

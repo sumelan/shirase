@@ -31,12 +31,12 @@ in {
 
   custom = let
     enableList = [
+      "helium"
       "kdeconnect"
-      "librewolf"
       "obs-studio"
       "protonapp"
       "rmpc"
-      "spotify-player"
+      "spicetify-nix"
       "youtube-tui"
     ];
 

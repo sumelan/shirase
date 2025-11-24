@@ -89,7 +89,7 @@ in {
       };
 
       niri.settings.binds = {
-        "Mod+S" = {
+        "Mod+Shift+S" = {
           action.spawn = spawn "foot --app-id=spotify spotify_player";
           hotkey-overlay.title = hotkey {
             color = green_base;

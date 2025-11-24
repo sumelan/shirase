@@ -9,7 +9,7 @@ _: {
     ./dunst.nix
     ./foot.nix
     ./gtk.nix
-    ./helium.nix
+    ./librewolf.nix
     ./mpv.nix
     ./nautilus.nix
     ./pipewire.nix

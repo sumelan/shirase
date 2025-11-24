@@ -36,7 +36,7 @@ in {
         separator_color = "auto";
         alignment = "center";
         dmenu = ''vicinae dmenu --placeholder "Dunst"'';
-        browser = "helium -new-tab";
+        browser = "librewolf --new-tab";
         ellipsize = "end";
         follow = "mouse";
         mouse_left_click = "do_action";

@@ -50,5 +50,7 @@ in {
     })
     # niri-flake
     inputs.niri.overlays.niri
+    # firefox-addons
+    inputs.firefox-addons.overlays.default
   ];
 }

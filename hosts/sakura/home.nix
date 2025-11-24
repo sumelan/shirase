@@ -34,13 +34,12 @@ in {
   custom = let
     enableList = [
       "cyanrip"
+      "helium"
       "kdeconnect"
-      "librewolf"
       "obs-studio"
       "protonapp"
       "rmpc"
       "spicetify-nix"
-      "spotify-player"
       "youtube-tui"
     ];
 

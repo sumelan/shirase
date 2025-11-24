@@ -11,6 +11,8 @@
     mkIf
     singleton
     ;
+  inherit (lib.custom.colors) green_base;
+  inherit (lib.custom.niri) spawn hotkey;
 in {
   options.custom = {
     spicetify-nix.enable = mkEnableOption "Spotify";
@@ -50,6 +52,17 @@ in {
     };
 
     programs.niri.settings = {
+      binds = {
+        "Mod+S" = {
+          action.spawn = spawn "spotify";
+          hotkey-overlay.title = hotkey {
+            color = green_base;
+            name = "  Spotify";
+            text = "Spotify Client";
+          };
+        };
+      };
+
       window-rules = [
         {
           # mini player
