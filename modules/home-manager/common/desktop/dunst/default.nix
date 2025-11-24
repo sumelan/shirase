@@ -6,6 +6,7 @@
   inherit (lib) singleton;
   inherit
     (lib.custom.colors)
+    black0
     gray1
     white3
     blue1
@@ -15,6 +16,10 @@
     ;
   inherit (lib.custom.niri) spawn hotkey;
 in {
+  imports = [
+    ./shell.nix
+  ];
+
   services.dunst = {
     enable = true;
     settings = {
@@ -25,8 +30,8 @@ in {
         enable_recursive_icon_lookup = true;
         width = "(250, 400)";
         offset = "(30, 30)";
-        frame_width = 3;
-        corner_radius = 8;
+        frame_width = 2;
+        corner_radius = 10;
         max_icon_size = 72;
         # If value is greater than 0, separator_height will be ignored
         # and a border of size frame_width will be drawn around each notification instead.
@@ -94,6 +99,23 @@ in {
         matches = singleton {
           namespace = "^notifications";
         };
+        geometry-corner-radius = {
+          bottom-left = 10.0;
+          bottom-right = 10.0;
+          top-left = 10.0;
+          top-right = 10.0;
+        };
+        shadow = {
+          enable = true;
+          softness = 20;
+          spread = 10;
+          offset = {
+            x = 0;
+            y = 0;
+          };
+          color = black0 + "90";
+        };
+        opacity = 0.95;
         block-out-from = "screen-capture";
       }
     ];

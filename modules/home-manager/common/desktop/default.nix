@@ -1,12 +1,12 @@
 _: {
   imports = [
+    ./dunst
     ./niri
     ./vicinae
     ./astal-shell.nix
     ./config.nix
     ./dimland.nix
     ./discord.nix
-    ./dunst.nix
     ./foot.nix
     ./gtk.nix
     ./librewolf.nix

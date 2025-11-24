@@ -5,8 +5,8 @@
   pkgs,
   ...
 }: let
-  inherit (lib) optional;
-  inherit (lib.custom.colors) yellow_dim;
+  inherit (lib) optional singleton;
+  inherit (lib.custom.colors) black0 yellow_dim;
   inherit (lib.custom.niri) spawn hotkey;
 in {
   imports = [
@@ -124,6 +124,30 @@ in {
         };
       };
     };
+    layer-rules = [
+      {
+        matches = singleton {
+          namespace = "^vicinae";
+        };
+        geometry-corner-radius = {
+          bottom-left = 10.0;
+          bottom-right = 10.0;
+          top-left = 10.0;
+          top-right = 10.0;
+        };
+        shadow = {
+          enable = true;
+          softness = 20;
+          spread = 10;
+          offset = {
+            x = 0;
+            y = 0;
+          };
+          color = black0 + "90";
+        };
+        opacity = 0.95;
+      }
+    ];
   };
 
   custom.persist = {
