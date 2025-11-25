@@ -29,9 +29,12 @@
         ;
     };
     config = {
-      common.default = ["gtk" "gnome"];
-      niri.default = ["gtk" "gnome"];
-      obs.default = ["gnome"];
+      common.default = "gnome";
+      niri = {
+        default = "gnome";
+        "org.freedesktop.impl.portal.FileChooser" = "gtk";
+      };
+      obs.default = "gnome";
     };
   };
 }

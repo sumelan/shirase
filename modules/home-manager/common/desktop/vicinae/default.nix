@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   config,
   pkgs,
@@ -8,15 +7,15 @@
   inherit (lib) optional singleton;
   inherit (lib.custom.colors) black0 yellow_dim;
   inherit (lib.custom.niri) spawn hotkey;
+  inherit (config.lib.vicinae) mkExtension;
 in {
   imports = [
     ./shell.nix
   ];
 
-  services.vicinae = {
+  programs.vicinae = {
     enable = true;
-    autoStart = true;
-    useLayerShell = true;
+    systemd.enable = true;
     settings = {
       closeOnFocusLoss = true;
       faviconService = "twenty"; # twenty | google | none
@@ -57,34 +56,31 @@ in {
         rounding = 10;
       };
     };
-
-    extensions = let
-      ext = fn: inputs.vicinae.packages.${pkgs.stdenv.hostPlatform.system}.mkVicinaeExtension fn;
-    in
+    extensions =
       [
-        (ext {
-          pname = "bluetooth";
+        (mkExtension {
+          name = "bluetooth";
           src = "${pkgs.custom.vicinae-extensions.src}/extensions/bluetooth";
         })
-        # (ext {
-        #   pname = "systemd";
-        #   src = "${pkgs.custom.vicinae-extensions.src}/extensions/systemd";
-        # })
-        (ext {
-          pname = "power-profile-daemon";
-          src = "${pkgs.custom.vicinae-extensions.src}/extensions/power-profile";
+        (mkExtension {
+          name = "firefox";
+          src = "${pkgs.custom.vicinae-extensions.src}/extensions/firefox";
         })
-        (ext {
-          pname = "niri";
+        (mkExtension {
+          name = "niri";
           src = "${pkgs.custom.vicinae-extensions.src}/extensions/niri";
         })
-        (ext {
-          pname = "nix";
+        (mkExtension {
+          name = "nix";
           src = "${pkgs.custom.vicinae-extensions.src}/extensions/nix";
         })
+        (mkExtension {
+          name = "power-profile";
+          src = "${pkgs.custom.vicinae-extensions.src}/extensions/power-profile";
+        })
       ]
-      ++ optional config.custom.wifi.enable (ext {
-        pname = "wifi";
+      ++ optional config.custom.wifi.enable (mkExtension {
+        name = "wifi-commander";
         src = "${pkgs.custom.vicinae-extensions.src}/extensions/wifi-commander";
       });
   };
@@ -115,7 +111,7 @@ in {
           text = "Power-profile";
         };
       };
-      "Mod+Ctrl+Backslash" = {
+      "Mod+Shift+D" = {
         action.spawn = spawn "dynamiccast-selecter";
         hotkey-overlay.title = hotkey {
           color = yellow_dim;

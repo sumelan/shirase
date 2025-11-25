@@ -30,7 +30,7 @@ in {
         enable_recursive_icon_lookup = true;
         width = "(250, 400)";
         offset = "(30, 30)";
-        frame_width = 2;
+        frame_width = 1;
         corner_radius = 10;
         max_icon_size = 72;
         # If value is greater than 0, separator_height will be ignored

@@ -1,11 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
-  inherit (lib.custom.colors) yellow_base;
-  inherit (lib.custom.niri) spawn hotkey;
-in {
+{pkgs, ...}: {
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
@@ -52,17 +45,6 @@ in {
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = true;
-    };
-
-    niri.settings.binds = {
-      "Mod+Return" = {
-        action.spawn = spawn "foot";
-        hotkey-overlay.title = hotkey {
-          color = yellow_base;
-          name = "  Foot";
-          text = "Terminal Emulator";
-        };
-      };
     };
   };
 

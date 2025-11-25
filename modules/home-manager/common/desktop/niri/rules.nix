@@ -2,9 +2,9 @@
   inherit (lib) singleton;
   inherit
     (lib.custom.colors)
-    black0
-    gray3
-    red_dim
+    gray0
+    white3
+    orange_bright
     red_bright
     ;
 in {
@@ -53,17 +53,17 @@ in {
         matches = singleton {
           is-window-cast-target = true;
         };
-        border = {
+        focus-ring = {
           active.gradient = {
-            from = red_dim;
+            from = orange_bright;
             to = red_bright;
             relative-to = "window";
           };
-          inactive.color = gray3;
+          inactive.color = gray0;
         };
         tab-indicator = {
           active.color = red_bright;
-          inactive.color = gray3;
+          inactive.color = gray0;
         };
         shadow = {
           enable = true;
@@ -74,7 +74,7 @@ in {
             y = 0;
           };
           draw-behind-window = false;
-          color = black0 + "90";
+          color = white3 + "90";
         };
       }
       # hide gnome seahorse from screencast
