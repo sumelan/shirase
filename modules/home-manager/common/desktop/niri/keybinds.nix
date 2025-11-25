@@ -16,12 +16,15 @@ _: {
 
     # window and colum management
     "Mod+Backspace".action.close-window = {};
-
     "Mod+F".action.toggle-window-floating = {};
+
+    "Alt+Space".action.switch-focus-between-floating-and-tiling = {};
+
     "Mod+Shift+F".action.fullscreen-window = {};
-    "Mod+Alt+F".action.toggle-windowed-fullscreen = {};
     "Mod+Ctrl+F".action.maximize-column = {};
-    "Mod+Shift+C".action.center-column = {};
+    "Mod+Alt+F".action.toggle-windowed-fullscreen = {};
+
+    "Mod+C".action.center-column = {};
     "Mod+Ctrl+C".action.switch-preset-column-width = {};
 
     # vim-like

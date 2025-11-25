@@ -5,6 +5,8 @@
   ...
 }: let
   inherit (lib) singleton;
+  inherit (lib.custom.colors) cyan_bright;
+  inherit (lib.custom.niri) spawn hotkey;
 in {
   home = {
     packages = builtins.attrValues {
@@ -31,13 +33,23 @@ in {
         argv = ["${pkgs.swww}/bin/swww" "img" "--namespace" "backdrop" "${config.home.homeDirectory}/.backdrop.png"];
       }
     ];
+    binds = {
+      "Mod+W" = {
+        action.spawn = spawn "waypaper";
+        hotkey-overlay.title = hotkey {
+          color = cyan_bright;
+          name = "  Waypaper";
+          text = "Wallpaper Selector";
+        };
+      };
+    };
     window-rules = [
       {
         matches = singleton {
           app-id = "^waypaper$";
         };
         open-floating = true;
-        default-column-width.proportion = 0.5;
+        default-column-width.proportion = 0.45;
         default-window-height.proportion = 0.5;
       }
     ];
