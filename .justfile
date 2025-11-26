@@ -9,6 +9,10 @@ vicinae-path := "modules/packages/vicinae-extensions"
 yazi-path := "modules/packages/yazi-plugins"
 helium-path := "modules/packages/helium"
 
+alias convert := sopsAge
+alias convertPub := sopsAgePublic
+alias convertHost := sopsAgeHost
+
 [group('DEFAULT')]
 [doc('List the recipes.')]
 @default:
@@ -39,7 +43,7 @@ helium-path := "modules/packages/helium"
 @switch *args:
     nh os switch {{ args }}
 
-[group('SYSTEM')]
+[group('UPDATE')]
 [doc('Update a specific input in the `flake.nix`.')]
 @updateInput input: check
     echo -e "\n===== Updating {{ input }}... =====\n"
@@ -48,7 +52,7 @@ helium-path := "modules/packages/helium"
 
 alias update := updateInput
 
-[group('SYSTEM')]
+[group('UPDATE')]
 [doc('Update all flake inputs, fetch packages and commit on git.')]
 @updateAll: check
     echo -e "\n===== Updating all flake inputs... =====\n"
@@ -95,8 +99,28 @@ alias updates := updateAll
 
 [group('SYNCTHING')]
 [doc('Temporarily use Syncthing in a shell environment.')]
-@syncthing:
+@syncthingRun:
     nix-shell -p syncthing --run syncthing
+
+[group('SYNCTHING')]
+[doc('Generate a new key.cert and key.pem for a deployment.')]
+@syncthingGenerate:
+    nix-shell -p syncthing --run "syncthing generate --home ~/syncthing_key/"
+
+[group('SOPS')]
+[doc('Convert an ssh ed25519 key to an age key.')]
+@sopsAge:
+   nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt" 
+
+[group('SOPS')]
+[doc('Convert an existing SSH key into an `age` public key.')]
+@sopsAgePublic:
+   nix-shell -p ssh-to-age --run "ssh-to-age < ~/.ssh/id_ed25519.pub"
+
+[group('SOPS')]
+[doc('Convert an SSH Ed25519 public key targeted to `host`.')]
+@sopsAgeHost host:
+   nix-shell -p ssh-to-age --run 'ssh-keyscan {{ host }} | ssh-to-age' 
 
 [group('SOPS')]
 [doc('Add secrets in `file`.')]
@@ -109,12 +133,12 @@ alias updates := updateAll
     nix-shell -p sops --run "sops updatekeys secrets/{{ file }}"`
 
 [group('TOOLS')]
-[doc('Start an interactive environment for evaluating Nix expressions.')]
+[doc('Start repl.')]
 @repl:
     nh os repl
 
 [group('TOOLS')]
-[doc('Search for all packages containing a file matching `file` or a file named `file`.')]
+[doc('Search for all packages containing `file`.')]
 @locate file:
     nix-locate {{ file }}
 
