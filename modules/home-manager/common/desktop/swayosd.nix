@@ -65,7 +65,7 @@ in {
       action.spawn = spawn-sh "fcitx5-remote -t && swayosd-client --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard";
       hotkey-overlay.title = hotkey {
         color = cyan_dim;
-        name = "  Fcitx5";
+        name = "  Fcitx5";
         text = "Switch Mozc";
       };
     };

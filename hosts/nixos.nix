@@ -1,5 +1,3 @@
-# passing system etc. to nixosSystem is a useless deprecated pattern
-# that is superseded by nixpkgs.hostPlatform etc. in hardware-configuration.nix
 {inputs, ...}: let
   inherit (inputs) nixpkgs;
 
@@ -35,6 +33,8 @@
         config.allowUnfree = true;
       };
 
+      # passing system etc. to nixosSystem is a useless deprecated pattern
+      # that is superseded by `nixpkgs.hostPlatform` etc. in `hardware-configuration.nix`
       specialArgs = {
         inherit inputs lib host user;
         flakePath = "/persist/home/${user}/Projects/shirase";
@@ -81,6 +81,8 @@ in {
     acer = mkSystem "acer" {
       user = "sumelan";
       hardware = "laptop";
+      # using `with` is considered an anti-pattern by nix.dev
+      # https://nix.dev/guides/best-practices#best-practices
       nixModules = builtins.attrValues {
         inherit
           (inputs.nixos-hardware.nixosModules)

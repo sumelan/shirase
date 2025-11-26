@@ -98,7 +98,7 @@ alias override := buildOverride
 [group('BUILD')]
 [doc('Build a package you defined in `modules/packages/defalut.nix`.')]
 @buildCustom package:
-    nix build --expr '(import <nixpkgs> { }).callPackage ./modules/packages/{{ package }}/default.nix {}'
+    nix build --impure --expr '(import <nixpkgs> { }).callPackage ./modules/packages/{{ package }}/default.nix {}'
 
 alias callPackage := buildCustom
 

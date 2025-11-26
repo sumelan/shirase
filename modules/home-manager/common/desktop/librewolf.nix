@@ -7,7 +7,7 @@
   ...
 }: let
   inherit (lib) getExe mkForce concatStringsSep;
-  inherit (lib.custom.colors) cyan_bright;
+  inherit (lib.custom.colors) blue2;
   inherit (lib.custom.niri) spawn hotkey;
   configPath = ".config/.librewolf";
 in {
@@ -123,7 +123,7 @@ in {
       "Mod+B" = {
         action.spawn = spawn "librewolf";
         hotkey-overlay.title = hotkey {
-          color = cyan_bright;
+          color = blue2;
           name = "  Librewolf";
           text = "Web Browser";
         };

@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) optional singleton;
-  inherit (lib.custom.colors) black0 yellow_dim;
+  inherit (lib.custom.colors) black0 magenta_bright;
   inherit (lib.custom.niri) spawn hotkey;
   inherit (config.lib.vicinae) mkExtension;
 in {
@@ -94,7 +94,7 @@ in {
       "Mod+Space" = {
         action.spawn = spawn "vicinae toggle";
         hotkey-overlay.title = hotkey {
-          color = yellow_dim;
+          color = magenta_bright;
           name = "󱓟  Vicinae";
           text = "Launcher";
         };
@@ -102,7 +102,7 @@ in {
       "Mod+V" = {
         action.spawn = spawn "vicinae vicinae://extensions/vicinae/clipboard/history";
         hotkey-overlay.title = hotkey {
-          color = yellow_dim;
+          color = magenta_bright;
           name = "󱓟  Vicinae";
           text = "Clipboard History";
         };
@@ -110,7 +110,7 @@ in {
       "Mod+X" = {
         action.spawn = spawn "vicinae vicinae://extensions/botkooper/power-profile/power-profile";
         hotkey-overlay.title = hotkey {
-          color = yellow_dim;
+          color = magenta_bright;
           name = "󱓟  Vicinae";
           text = "Power-profile";
         };
@@ -118,7 +118,7 @@ in {
       "Mod+Shift+D" = {
         action.spawn = spawn "dynamiccast-selecter";
         hotkey-overlay.title = hotkey {
-          color = yellow_dim;
+          color = magenta_bright;
           name = "󱓟  Vicinae";
           text = "Dynamic Cast";
         };

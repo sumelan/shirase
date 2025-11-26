@@ -28,13 +28,11 @@
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.graphite-gtk-theme.override {
-        themeVariants = ["default"]; # default: blue
-        colorVariants = ["dark"]; # default: all
-        sizeVariants = ["compact"]; # default: standard
-        tweaks = ["nord"];
+      package = pkgs.orchis-theme.override {
+        border-radius = 5; # Suggested: 2 < value < 16
+        tweaks = ["nord"]; # can be "solid" "compact" "black" "primary" "macos" "submenu" "nord|dracula"
       };
-      name = "Graphite-Dark-compact-nord";
+      name = "Orchis-Grey-Dark-Compact-Nord";
     };
     iconTheme = {
       package = pkgs.papirus-nord.override {
