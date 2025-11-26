@@ -3,9 +3,9 @@
 in {
   custom = let
     enableList = [
-      "alsa-util"
       "logitech"
       "steam"
+      "syncthing"
       "qmk"
     ];
     disableList = [

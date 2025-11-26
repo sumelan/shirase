@@ -30,12 +30,12 @@ helium-path := "modules/packages/helium"
     nix run github:NotAShelf/flint
 
 [group('SYSTEM')]
-[doc('Build and activate the new configuration.')]
+[doc('`sudo nixos-rebuild test`.')]
 @test *args:
     nh os test {{ args }}
 
 [group('SYSTEM')]
-[doc('Build and activate the new configuration, and make it the boot default.')]
+[doc('`sudo nixos-rebuild switch`.')]
 @switch *args:
     nh os switch {{ args }}
 
@@ -49,7 +49,7 @@ helium-path := "modules/packages/helium"
 alias update := updateInput
 
 [group('SYSTEM')]
-[doc('Update all flake inputs, fetch some packages by `nvfetcher` and commit on git.')]
+[doc('Update all flake inputs, fetch packages and commit on git.')]
 @updateAll: check
     echo -e "\n===== Updating all flake inputs... =====\n"
 
@@ -84,33 +84,34 @@ alias updates := updateAll
     nix store optimise -v
 
 [group('BUILD')]
-[doc('Build a package in nixpkgs.')]
-@build package:
-    nix build nixpkgs#{{ package }}
-
-[group('BUILD')]
 [doc('Build a package in nixpkgs with override.')]
-@buildOverride package override:
-    nix build --impure --expr  '(import <nixpkgs> { }).{{ package }}.override { {{ override }} }'
-
-alias override := buildOverride
+@override package attrs:
+    nix build --impure --expr  '(import <nixpkgs> { }).{{ package }}.override { {{ attrs }} }'
 
 [group('BUILD')]
-[doc('Build a package you defined in `modules/packages/defalut.nix`.')]
-@buildCustom package:
+[doc('Build a package you defined under `modules/packages`.')]
+@callPackage package:
     nix build --impure --expr '(import <nixpkgs> { }).callPackage ./modules/packages/{{ package }}/default.nix {}'
 
-alias callPackage := buildCustom
+[group('SYNCTHING')]
+[doc('Temporarily use Syncthing in a shell environment.')]
+@syncthing:
+    nix-shell -p syncthing --run syncthing
+
+[group('SOPS')]
+[doc('Add secrets in `file`.')]
+@sopsEdit file:
+    nix-shell -p sops --run "sops secrets/{{ file }}"
+
+[group('SOPS')]
+[doc('Update the keys in `file` for all secret.')]
+@sopsUpdate file:
+    nix-shell -p sops --run "sops updatekeys secrets/{{ file }}"`
 
 [group('TOOLS')]
 [doc('Start an interactive environment for evaluating Nix expressions.')]
 @repl:
     nh os repl
-
-[group('TOOLS')]
-[doc('Start an interactive shell and run `cmd` based on a Nix expression.')]
-@shell program cmd:
-    nix-shell -p {{ program }} --run '{{ cmd }}'
 
 [group('TOOLS')]
 [doc('Search for all packages containing a file matching `file` or a file named `file`.')]

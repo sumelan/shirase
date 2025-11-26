@@ -10,6 +10,7 @@
   defaultNixMods = [
     inputs.impermanence.nixosModules.impermanence
     inputs.niri.nixosModules.niri
+    inputs.sops-nix.nixosModules.sops
     ../modules/nixos
   ];
 

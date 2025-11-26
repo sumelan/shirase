@@ -1,6 +1,5 @@
 _: {
   imports = [
-    ./alsa-util.nix
     ./audiobookshelf.nix
     ./btrbk.nix
     ./docker.nix
@@ -8,7 +7,9 @@ _: {
     ./keyd.nix
     ./logitech.nix
     ./qmk.nix
+    ./sops-nix.nix
     ./steam.nix
+    ./syncthing.nix
     ./vr.nix
   ];
 }

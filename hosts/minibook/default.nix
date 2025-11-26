@@ -28,7 +28,6 @@ in {
 
   custom = let
     enableList = [
-      "alsa-util"
     ];
     disableList = [
       "distrobox"

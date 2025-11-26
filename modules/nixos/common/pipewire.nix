@@ -1,4 +1,8 @@
-_: {
+{
+  pkgs,
+  user,
+  ...
+}: {
   security.rtkit.enable = true;
 
   services = {
@@ -24,7 +28,13 @@ _: {
     };
   };
 
+  environment.systemPackages = [pkgs.alsa-utils];
+  users.users.${user}.extraGroups = ["audio"];
+
   custom.persist = {
+    root.directories = [
+      "/var/lib/alsa"
+    ];
     home.directories = [
       ".local/state/wireplumber"
     ];
