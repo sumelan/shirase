@@ -30,6 +30,23 @@
       enable = true;
       notifications = true; # enable song change notifications
     };
+
+    mpd-discord-rpc = {
+      enable = true;
+      settings = {
+        hosts = [config.services.mpd.network.listenAddress];
+        format = {
+          details = "$title";
+          state = "On $album by $artist";
+          timestamp = "both";
+          large_image = "notes";
+          small_image = "notes";
+          large_text = "";
+          small_text = "";
+          display_type = "name";
+        };
+      };
+    };
   };
 
   custom.persist = {

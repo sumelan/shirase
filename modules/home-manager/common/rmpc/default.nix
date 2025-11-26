@@ -1,8 +1,4 @@
-{
-  lib,
-  user,
-  ...
-}: let
+{lib, ...}: let
   inherit (lib) singleton;
   inherit (lib.custom.colors) orange_base;
   inherit (lib.custom.niri) spawn hotkey;
@@ -21,7 +17,7 @@ in {
           action.spawn = spawn "foot --app-id=rmpc rmpc";
           hotkey-overlay.title = hotkey {
             color = orange_base;
-            name = "  rmpc";
+            name = "  rmpc";
             text = "Terminal MPD Client";
           };
         };
@@ -39,13 +35,8 @@ in {
     };
   };
 
-  systemd.user.tmpfiles.rules = [
-    # symlink from rmpc cache to YouTube
-    "L+ %h/Music/YouTube - - - - /persist/home/${user}/.cache/rmpc/youtube"
-  ];
-
   custom.persist = {
-    home.directories = [
+    home.cache.directories = [
       ".cache/rmpc/youtube"
     ];
   };

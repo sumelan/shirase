@@ -11,8 +11,6 @@ in {
   };
 
   config = mkIf config.custom.cyanrip.enable {
-    home.packages = builtins.attrValues {
-      inherit (pkgs) cyanrip picard;
-    };
+    home.packages = [pkgs.cyanrip];
   };
 }
