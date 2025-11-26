@@ -16,7 +16,6 @@ _: {
     ./qt.nix
     ./satty.nix
     ./shell.nix
-    ./stasis.nix
     ./swayimg.nix
     ./swayosd.nix
     ./swww.nix

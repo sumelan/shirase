@@ -38,11 +38,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     stasis = {
       url = "github:saltnpepper97/stasis";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -19,7 +19,6 @@
     inputs.astal-shell.homeManagerModules.default
     inputs.dimland.homeManagerModules.dimland
     inputs.nix-index-database.homeModules.nix-index
-    inputs.spicetify-nix.homeManagerModules.default
     ../modules/home-manager
   ];
 

@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib.custom.colors) cyan_bright;
+  inherit (lib.custom.colors) green_bright;
   inherit (lib.custom.niri) spawn hotkey;
   soundPath = "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo";
 in {
@@ -143,7 +143,7 @@ in {
         action.spawn = spawn "gtklock";
         allow-when-locked = true;
         hotkey-overlay.title = hotkey {
-          color = cyan_bright;
+          color = green_bright;
           name = "  Gtklock";
           text = "Session Lock";
         };

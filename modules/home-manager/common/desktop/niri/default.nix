@@ -4,6 +4,6 @@ _: {
     ./autostart.nix
     ./config.nix
     ./keybinds.nix
-    ./rules.nix
+    ./layout.nix
   ];
 }

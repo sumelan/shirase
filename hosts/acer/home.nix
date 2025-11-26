@@ -21,7 +21,6 @@ in {
   custom = let
     enableList = [
       "protonapp"
-      "rmpc"
       "youtube-tui"
     ];
 

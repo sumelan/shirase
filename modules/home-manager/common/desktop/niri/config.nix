@@ -6,16 +6,7 @@
   ...
 }: let
   inherit (lib) getExe mkEnableOption;
-  inherit
-    (lib.custom.colors)
-    black0
-    gray0
-    gray2
-    blue0
-    cyan_bright
-    green_dim
-    green_bright
-    ;
+  inherit (lib.custom.colors) black0 gray2;
 in {
   options.custom = {
     niri.xwayland.enable = mkEnableOption "xwayland-satellite";
@@ -62,67 +53,6 @@ in {
           trigger-width = 60;
           delay-ms = 100;
           max-speed = 1500;
-        };
-      };
-
-      layout = {
-        background-color = "transparent";
-        gaps = 14;
-
-        border.enable = false;
-
-        focus-ring = {
-          enable = true;
-          width = 4;
-          active.gradient = {
-            from = green_bright;
-            to = cyan_bright;
-            relative-to = "window";
-          };
-          inactive.color = gray0;
-        };
-
-        struts = {
-          left = 2;
-          right = 2;
-          top = 2;
-          bottom = 2;
-        };
-
-        insert-hint = {
-          enable = true;
-          display = {
-            gradient = {
-              from = green_dim;
-              to = green_bright;
-              angle = 45;
-            };
-          };
-        };
-
-        shadow = {
-          enable = true;
-          softness = 20;
-          spread = 10;
-          offset = {
-            x = 0;
-            y = 0;
-          };
-          draw-behind-window = false;
-          color = black0 + "90";
-        };
-
-        tab-indicator = {
-          enable = true;
-          position = "left";
-          hide-when-single-tab = true;
-          place-within-column = true;
-          active.color = blue0;
-          inactive.color = gray0;
-          gap = 5;
-          width = 4;
-          length.total-proportion = 0.5;
-          gaps-between-tabs = 2;
         };
       };
 

@@ -14,17 +14,17 @@ _: {
     "Mod+Shift+Backslash".action.screenshot-screen.show-pointer = false;
     "Mod+Alt+Backslash".action.screenshot-window.write-to-disk = true;
 
-    # window and colum management
+    # window and column management
     "Mod+Backspace".action.close-window = {};
-    "Mod+F".action.toggle-window-floating = {};
 
-    "Alt+Space".action.switch-focus-between-floating-and-tiling = {};
+    "Mod+F".action.toggle-window-floating = {};
+    "Mod+S".action.switch-focus-between-floating-and-tiling = {};
 
     "Mod+Shift+F".action.fullscreen-window = {};
-    "Mod+Ctrl+F".action.maximize-column = {};
     "Mod+Alt+F".action.toggle-windowed-fullscreen = {};
 
     "Mod+C".action.center-column = {};
+    "Mod+Shift+C".action.maximize-column = {};
     "Mod+Ctrl+C".action.switch-preset-column-width = {};
 
     # vim-like

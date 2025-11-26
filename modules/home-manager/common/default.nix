@@ -1,6 +1,7 @@
 _: {
   imports = [
     ./desktop
+    ./rmpc
     ./shell
     ./btop.nix
     ./eza.nix

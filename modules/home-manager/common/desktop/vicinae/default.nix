@@ -78,6 +78,10 @@ in {
           name = "power-profile";
           src = "${pkgs.custom.vicinae-extensions.src}/extensions/power-profile";
         })
+        # (mkExtension {
+        #   name = "systemd";
+        #   src = "${pkgs.custom.vicinae-extensions.src}/extensions/systemd";
+        # })
       ]
       ++ optional config.custom.wifi.enable (mkExtension {
         name = "wifi-commander";

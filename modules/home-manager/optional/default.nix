@@ -1,6 +1,5 @@
 _: {
   imports = [
-    ./rmpc
     ./cyanrip.nix
     ./euphonica.nix
     ./foliate.nix
@@ -10,8 +9,6 @@ _: {
     ./kdeconnect.nix
     ./obs-studio.nix
     ./protonapp.nix
-    ./spicetify-nix.nix
-    ./spotify-player.nix
     ./thunderbird.nix
     ./vlc.nix
     ./youtube-tui.nix
