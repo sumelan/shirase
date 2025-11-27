@@ -42,7 +42,7 @@ in {
         configDir = "/home/${user}/.config/syncthing";
         dataDir = "/home/${user}/.local/state/syncthing";
 
-        guiPasswordFile = config.sops.secrets.syncthing-gui-password.path;
+        guiPasswordFile = config.sops.secrets."syncthing/gui-password".path;
 
         settings.gui = {
           inherit user;
@@ -51,9 +51,11 @@ in {
       }
       # client only settings
       (optionalAttrs (config.custom.syncthing.device == "client") {
+        key = config.sops.secrets."syncthing/target-key".path;
+        cert = config.sops.secrets."syncthing/target-cert".path;
         settings = {
           devices = {
-            "minibook" = {id = "L3XAMMR-J5BCJFI-XHH5KLA-HCI5EDR-YYN27GF-JSJO6BD-MNP4E3S-45DHKQ6";};
+            "minibook" = {id = "E2CA4RC-H4MMZG5-QX3V7KL-P5DAHHH-KYYLYYO-NRUUVUZ-BT35CBD-QF3KZAB";};
           };
           folders = {
             "Documents" = {
@@ -76,9 +78,13 @@ in {
         };
       })
       (optionalAttrs (config.custom.syncthing.device == "target") {
-        # need to be readable by `user`
-        key = config.sops.secrets.syncthing-key.path;
-        cert = config.sops.secrets.syncthing-cert.path;
+        key = config.sops.secrets."syncthing/client-key".path;
+        cert = config.sops.secrets."syncthing/client-cert".path;
+        settings = {
+          devices = {
+            "sakura" = {id = "7QZ2AFO-AZENC7J-3F6RBUB-WBBJQTC-TWYFQ6I-3WTGHQR-JS62MS3-Z76KHAM";};
+          };
+        };
       })
     ];
 
