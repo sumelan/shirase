@@ -32,26 +32,6 @@ in {
       # This is the actual specification of the secrets.
       secrets = {
         # by default, secrets are owned by `root:root` and `/run/secrets.d` is only owned by root and the `keys` group has read access to it
-        "syncthing/key-1" = {
-          mode = "0440";
-          owner = config.services.syncthing.user;
-          inherit (config.services.syncthing) group;
-        };
-        "syncthing/cert-1" = {
-          mode = "0440";
-          owner = config.services.syncthing.user;
-          inherit (config.services.syncthing) group;
-        };
-        "syncthing/key-2" = {
-          mode = "0440";
-          owner = config.services.syncthing.user;
-          inherit (config.services.syncthing) group;
-        };
-        "syncthing/cert-2" = {
-          mode = "0440";
-          owner = config.services.syncthing.user;
-          inherit (config.services.syncthing) group;
-        };
         "syncthing/gui-password" = {
           mode = "0440";
           owner = config.services.syncthing.user;

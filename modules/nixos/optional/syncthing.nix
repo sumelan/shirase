@@ -51,11 +51,9 @@ in {
       }
       # client only settings
       (optionalAttrs (config.custom.syncthing.device == "client") {
-        key = config.sops.secrets."syncthing/key-1".path;
-        cert = config.sops.secrets."syncthing/cert-1".path;
         settings = {
           devices = {
-            "minibook" = {id = "VRJEHDZ-I5FAPC2-OAJRAZ2-LHTI5JJ-ZEQGFMK-4EH2JCD-LHQVOT4-L32NWQL";};
+            "minibook" = {id = "QW6LFC2-5KQTXWO-MBFOX2V-XHENT2E-CE75Q6I-6V3TCDE-7USV27P-DWWQXAL";};
           };
           folders = {
             "Documents" = {
@@ -78,8 +76,6 @@ in {
         };
       })
       (optionalAttrs (config.custom.syncthing.device == "target") {
-        key = config.sops.secrets."syncthing/key-2".path;
-        cert = config.sops.secrets."syncthing/cert-2".path;
         settings = {
           devices = {
             "sakura" = {id = "2BUKV63-UG6GGS7-22YYLZI-CAGCBXX-CRD46AJ-GFQXMKN-RCISUOJ-XXVBXAE";};
