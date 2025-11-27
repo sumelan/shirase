@@ -55,7 +55,7 @@ in {
         cert = config.sops.secrets."syncthing/cert-1".path;
         settings = {
           devices = {
-            "minibook" = {id = "QYKMY2K-UUUPOX6-BRZK53M-FTPIK35-P4EA5VC-5F6MPBC-ODP377M-S5L3JQH";};
+            "minibook" = {id = "VRJEHDZ-I5FAPC2-OAJRAZ2-LHTI5JJ-ZEQGFMK-4EH2JCD-LHQVOT4-L32NWQL";};
           };
           folders = {
             "Documents" = {
@@ -82,7 +82,7 @@ in {
         cert = config.sops.secrets."syncthing/cert-2".path;
         settings = {
           devices = {
-            "sakura" = {id = "H44OSXY-UWDGMVX-P4H5YZH-6QWII4W-VUWXEAG-3E6IU3P-P443QOD-OXX2YQZ";};
+            "sakura" = {id = "2BUKV63-UG6GGS7-22YYLZI-CAGCBXX-CRD46AJ-GFQXMKN-RCISUOJ-XXVBXAE";};
           };
         };
       })
