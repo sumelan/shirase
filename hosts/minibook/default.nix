@@ -1,5 +1,9 @@
-{lib, ...}: let
-  inherit (lib) genAttrs;
+{
+  lib,
+  config,
+  ...
+}: let
+  inherit (lib) mkIf genAttrs;
 in {
   hardware = {
     chuwi-minibook-x = {
@@ -26,8 +30,34 @@ in {
     '';
   };
 
+  services.syncthing = mkIf config.custom.syncthing.enable {
+    key = config.sops.secrets."syncthing/minibook-key".path;
+    cert = config.sops.secrets."syncthing/minibook-cert".path;
+
+    settings = {
+      devices = {
+        "sakura" = {id = "VCKQ6LU-GNZWWFA-FGADQ44-PEWXCNN-2FT3YPC-C6XGTEY-G3APYSH-GO42PQG";};
+      };
+      folders = {
+        "Documents" = {
+          devices = ["sakura"];
+        };
+        "Music" = {
+          devices = ["sakura"];
+        };
+        "Playlist" = {
+          devices = ["sakura"];
+        };
+        "Wallpapers" = {
+          devices = ["sakura"];
+        };
+      };
+    };
+  };
+
   custom = let
     enableList = [
+      "syncthing"
     ];
     disableList = [
       "distrobox"
@@ -37,10 +67,6 @@ in {
       btrbk = {
         enable = true;
         remote.enable = true;
-      };
-      syncthing = {
-        enable = true;
-        device = "target";
       };
     }
     // genAttrs enableList (_name: {enable = true;})

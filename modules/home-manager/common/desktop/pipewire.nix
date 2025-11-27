@@ -15,7 +15,7 @@
     ".local/share/easyeffects/output/${preset}.json".source = "${outputSrc}/${preset}.json";
   };
 in {
-  services.easyeffects.enable = true;
+  services.easyeffects.enable = false;
 
   home = {
     packages = [pkgs.pwvucontrol];
