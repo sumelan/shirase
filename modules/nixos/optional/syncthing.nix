@@ -51,13 +51,9 @@ in {
       }
       # client only settings
       (optionalAttrs (config.custom.syncthing.device == "client") {
-        # need to be readable by `user`
-        key = config.sops.secrets.syncthing-key.path;
-        cert = config.sops.secrets.syncthing-cert.path;
-
         settings = {
           devices = {
-            "minibook" = {id = "KZZDUA6-JCXJCD7-L5NZPVK-P2XFY72-GZMJX6U-C4KAWRP-HON5V5R-SMAK4QQ";};
+            "minibook" = {id = "L3XAMMR-J5BCJFI-XHH5KLA-HCI5EDR-YYN27GF-JSJO6BD-MNP4E3S-45DHKQ6";};
           };
           folders = {
             "Documents" = {
@@ -78,6 +74,11 @@ in {
             };
           };
         };
+      })
+      (optionalAttrs (config.custom.syncthing.device == "target") {
+        # need to be readable by `user`
+        key = config.sops.secrets.syncthing-key.path;
+        cert = config.sops.secrets.syncthing-cert.path;
       })
     ];
 
