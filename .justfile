@@ -100,12 +100,12 @@ alias updates := updateAll
 [group('SYNCTHING')]
 [doc('Temporarily use Syncthing in a shell environment.')]
 @syncthingRun:
-    nix-shell -p syncthing --run syncthing
+    nix-shell -p syncthing --run "syncthing --home ~/.config/syncthing/"
 
 [group('SYNCTHING')]
 [doc('Generate a new key.cert and key.pem for a deployment.')]
 @syncthingGenerate:
-    nix-shell -p syncthing --run "syncthing generate --home ~/syncthing_key/"
+    nix-shell -p syncthing --run "syncthing generate --home ~/.config/syncthing/"
 
 [group('SOPS')]
 [doc('Convert an ssh ed25519 key to an age key.')]
@@ -130,7 +130,7 @@ alias updates := updateAll
 [group('SOPS')]
 [doc('Update the keys in `file` for all secret.')]
 @sopsUpdate file:
-    nix-shell -p sops --run "sops updatekeys secrets/{{ file }}"`
+    nix-shell -p sops --run "sops updatekeys secrets/{{ file }}"
 
 [group('TOOLS')]
 [doc('Start repl.')]

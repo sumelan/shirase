@@ -5,7 +5,6 @@ in {
     enableList = [
       "logitech"
       "steam"
-      "syncthing"
       "qmk"
     ];
     disableList = [
@@ -23,6 +22,10 @@ in {
         enable = true;
         westernDigital.enable = true;
         ironWolf.enable = true;
+      };
+      syncthing = {
+        enable = true;
+        device = "client";
       };
     }
     // genAttrs enableList (_name: {enable = true;})

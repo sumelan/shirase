@@ -38,6 +38,10 @@ in {
         enable = true;
         remote.enable = true;
       };
+      syncthing = {
+        enable = true;
+        device = "target";
+      };
     }
     // genAttrs enableList (_name: {enable = true;})
     // genAttrs disableList (_name: {enable = false;});
