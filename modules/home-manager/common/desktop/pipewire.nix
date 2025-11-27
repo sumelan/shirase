@@ -1,4 +1,3 @@
-# NOTE: `programs.dconf.enable = true` is necessary for theb daemon to work correctly
 {
   lib,
   pkgs,
@@ -15,10 +14,14 @@
     ".local/share/easyeffects/output/${preset}.json".source = "${outputSrc}/${preset}.json";
   };
 in {
-  services.easyeffects.enable = false;
-
   home = {
-    packages = [pkgs.pwvucontrol];
+    packages = builtins.attrValues {
+      inherit
+        (pkgs)
+        pwvucontrol
+        easyeffects
+        ;
+    };
     file =
       # This preset is targeted for laptop speakers and tries to improve both lower and higher frequencies.
       # It also tries to normalize the volumes in different medias like speech and music. More information can be found in this blog.
@@ -41,22 +44,28 @@ in {
       };
   };
 
-  programs.niri.settings.window-rules = [
-    {
-      matches = singleton {
-        app-id = "^com.saivert.pwvucontrol$";
-      };
-      open-floating = true;
-    }
-    {
-      matches = singleton {
-        app-id = "^com.github.wwmm.easyeffects$";
-      };
-      open-floating = true;
-      default-column-width.proportion = 0.5;
-      default-window-height.proportion = 0.5;
-    }
-  ];
+  programs.niri.settings = {
+    spawn-at-startup = [
+      {argv = ["easyeffects" "--hide-window"];}
+    ];
+
+    window-rules = [
+      {
+        matches = singleton {
+          app-id = "^com.saivert.pwvucontrol$";
+        };
+        open-floating = true;
+      }
+      {
+        matches = singleton {
+          app-id = "^com.github.wwmm.easyeffects$";
+        };
+        open-floating = true;
+        default-column-width.proportion = 0.5;
+        default-window-height.proportion = 0.5;
+      }
+    ];
+  };
 
   custom.persist = {
     home.directories = [
