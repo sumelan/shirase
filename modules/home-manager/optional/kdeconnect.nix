@@ -3,7 +3,12 @@
   config,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    singleton
+    ;
 in {
   options.custom = {
     kdeconnect.enable = mkEnableOption "kdeconnect";
@@ -14,6 +19,15 @@ in {
       enable = true;
       indicator = true;
     };
+
+    programs.niri.settings.window-rules = [
+      {
+        matches = singleton {
+          app-id = "^org.kde.kdeconnect-indicator$";
+        };
+        open-floating = true;
+      }
+    ];
 
     custom.persist = {
       home = {
