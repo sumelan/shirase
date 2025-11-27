@@ -51,11 +51,11 @@ in {
       }
       # client only settings
       (optionalAttrs (config.custom.syncthing.device == "client") {
-        key = config.sops.secrets."syncthing/target-key".path;
-        cert = config.sops.secrets."syncthing/target-cert".path;
+        key = config.sops.secrets."syncthing/key-1".path;
+        cert = config.sops.secrets."syncthing/cert-1".path;
         settings = {
           devices = {
-            "minibook" = {id = "E2CA4RC-H4MMZG5-QX3V7KL-P5DAHHH-KYYLYYO-NRUUVUZ-BT35CBD-QF3KZAB";};
+            "minibook" = {id = "QYKMY2K-UUUPOX6-BRZK53M-FTPIK35-P4EA5VC-5F6MPBC-ODP377M-S5L3JQH";};
           };
           folders = {
             "Documents" = {
@@ -78,11 +78,11 @@ in {
         };
       })
       (optionalAttrs (config.custom.syncthing.device == "target") {
-        key = config.sops.secrets."syncthing/client-key".path;
-        cert = config.sops.secrets."syncthing/client-cert".path;
+        key = config.sops.secrets."syncthing/key-2".path;
+        cert = config.sops.secrets."syncthing/cert-2".path;
         settings = {
           devices = {
-            "sakura" = {id = "7QZ2AFO-AZENC7J-3F6RBUB-WBBJQTC-TWYFQ6I-3WTGHQR-JS62MS3-Z76KHAM";};
+            "sakura" = {id = "H44OSXY-UWDGMVX-P4H5YZH-6QWII4W-VUWXEAG-3E6IU3P-P443QOD-OXX2YQZ";};
           };
         };
       })
