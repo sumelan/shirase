@@ -32,6 +32,7 @@ in {
   custom = let
     enableList = [
       "euphonica"
+      "foliate"
       "helium"
       "kdeconnect"
       "obs-studio"

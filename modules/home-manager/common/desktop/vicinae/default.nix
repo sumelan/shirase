@@ -95,7 +95,7 @@ in {
         action.spawn = spawn "vicinae toggle";
         hotkey-overlay.title = hotkey {
           color = magenta_bright;
-          name = "󱓟  Vicinae";
+          name = "  Vicinae";
           text = "Launcher";
         };
       };
@@ -103,7 +103,7 @@ in {
         action.spawn = spawn "vicinae vicinae://extensions/vicinae/clipboard/history";
         hotkey-overlay.title = hotkey {
           color = magenta_bright;
-          name = "󱓟  Vicinae";
+          name = "  Vicinae";
           text = "Clipboard History";
         };
       };
@@ -111,7 +111,7 @@ in {
         action.spawn = spawn "vicinae vicinae://extensions/botkooper/power-profile/power-profile";
         hotkey-overlay.title = hotkey {
           color = magenta_bright;
-          name = "󱓟  Vicinae";
+          name = "  Vicinae";
           text = "Power-profile";
         };
       };
@@ -119,7 +119,7 @@ in {
         action.spawn = spawn "dynamiccast-selecter";
         hotkey-overlay.title = hotkey {
           color = magenta_bright;
-          name = "󱓟  Vicinae";
+          name = "  Vicinae";
           text = "Dynamic Cast";
         };
       };

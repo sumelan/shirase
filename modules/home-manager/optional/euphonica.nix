@@ -16,6 +16,7 @@ in {
     home.packages = builtins.attrValues {
       inherit
         (pkgs)
+        cyanrip
         euphonica
         picard
         ;
@@ -27,7 +28,7 @@ in {
         hotkey-overlay.title = hotkey {
           color = blue2;
           name = "󱗆  Euphonica";
-          text = "GTK4 MPD Client";
+          text = "GTK4 libadwaita MPD Client";
         };
       };
     };

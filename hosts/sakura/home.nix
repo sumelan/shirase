@@ -33,7 +33,7 @@ in {
 
   custom = let
     enableList = [
-      "cyanrip"
+      "foliate"
       "euphonica"
       "helium"
       "kdeconnect"
