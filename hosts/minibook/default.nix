@@ -45,7 +45,10 @@ in {
         "Music" = {
           devices = ["sakura"];
         };
-        "Playlist" = {
+        "MPD" = {
+          devices = ["sakura"];
+        };
+        "Euphonica" = {
           devices = ["sakura"];
         };
         "Wallpapers" = {

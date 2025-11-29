@@ -20,7 +20,10 @@ in {
         "Music" = {
           devices = ["minibook"];
         };
-        "Playlist" = {
+        "MPD" = {
+          devices = ["minibook"];
+        };
+        "Euphonica" = {
           devices = ["minibook"];
         };
         "Wallpapers" = {

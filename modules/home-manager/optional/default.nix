@@ -1,6 +1,5 @@
 _: {
   imports = [
-    ./euphonica.nix
     ./foliate.nix
     ./ghostty.nix
     ./helium.nix

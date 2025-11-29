@@ -14,7 +14,21 @@ in {
     # port 8384  is the default port to allow access from the network
     networking.firewall.allowedTCPPorts = [8384];
 
-    services.syncthing = {
+    services.syncthing = let
+      inherit
+        (config.hm.xdg)
+        configHome
+        cacheHome
+        dataHome
+        ;
+      inherit
+        (config.hm.xdg.userDirs)
+        documents
+        music
+        pictures
+        ;
+      mpdData = config.hm.services.mpd.dataDir;
+    in {
       enable = true;
       openDefaultPorts = true;
       # Override all settings set from the GUI
@@ -25,8 +39,8 @@ in {
       inherit user;
       inherit (config.users.users.${user}) group;
 
-      configDir = "/home/${user}/.config/syncthing";
-      dataDir = "/home/${user}/.local/state/syncthing";
+      configDir = "${configHome}/syncthing";
+      dataDir = "${dataHome}/syncthing";
 
       guiPasswordFile = config.sops.secrets."syncthing/gui-password".path;
 
@@ -37,16 +51,19 @@ in {
         };
         folders = {
           "Documents" = {
-            path = "/home/${user}/Documents";
+            path = documents;
           };
           "Music" = {
-            path = "/home/${user}/Music";
+            path = music;
           };
-          "Playlist" = {
-            path = "/home/${user}/.local/share/mpd/playlists";
+          "MPD" = {
+            path = mpdData;
+          };
+          "Euphonica" = {
+            path = "${cacheHome}/euphonica";
           };
           "Wallpapers" = {
-            path = "/home/${user}/Pictures/Wallpapers";
+            path = "${pictures}/Wallpapers";
           };
         };
       };
@@ -54,7 +71,7 @@ in {
 
     custom.persist = {
       home.directories = [
-        ".local/state/syncthing"
+        ".local/share/syncthing"
       ];
     };
   };

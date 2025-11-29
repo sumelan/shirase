@@ -9,14 +9,17 @@
   ];
 
   services = {
-    mpd = {
+    mpd = let
+      cfg = config.services.mpd;
+      runtimeDir = "/run/user/1000/mpd";
+    in {
       enable = true;
       musicDirectory = config.xdg.userDirs.music;
       dataDir = "${config.xdg.dataHome}/mpd";
-      dbFile = "${config.services.mpd.dataDir}/tag_cache";
-      playlistDirectory = "${config.services.mpd.dataDir}/playlists";
+      dbFile = "${cfg.dataDir}/database";
+      playlistDirectory = "${cfg.dataDir}/playlists";
       # connect local socket
-      network.listenAddress = "/run/user/1000/mpd/socket";
+      network.listenAddress = "${runtimeDir}/socket";
       extraConfig = ''
         audio_output {
           type  "pipewire"

@@ -52,17 +52,17 @@ in {
     (_final: prev: {
       euphonica = prev.euphonica.overrideAttrs (old: rec {
         pname = "euphonica";
-        version = "0.97.2-beta";
+        version = "0.98.0-beta";
         src = prev.fetchFromGitHub {
           owner = "htkhiem";
           repo = "euphonica";
           tag = "v${version}";
-          hash = "sha256-ovYXtYMzVNiHa4o0O3oTJrBMh6AAQ+kkk+DBLWiRSlM=";
+          hash = "sha256-pLs8aLm2CyT8eVtbB8UQj9xSqnjViRxKjuH3A6RErjA=";
           fetchSubmodules = true;
         };
         cargoDeps = prev.rustPlatform.fetchCargoVendor {
           inherit pname version src;
-          hash = "sha256-0r0s/tymUjEZzFVAQa28gkYhje2NFO8HH+IEIdpNxJ8=";
+          hash = "sha256-w6xZQP8QTTPKQgPCX20IvoWErrgWVisEIJKkxwtQHho=";
         };
         buildInputs = old.buildInputs ++ [prev.libsecret];
       });

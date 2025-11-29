@@ -7,6 +7,7 @@ _: {
     ./config.nix
     ./dimland.nix
     ./discord.nix
+    ./euphonica.nix
     ./foot.nix
     ./gtk.nix
     ./librewolf.nix
