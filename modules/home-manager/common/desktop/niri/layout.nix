@@ -82,20 +82,39 @@ in {
         # Override whether the border and the focus ring draw with a background
         draw-border-with-background = false;
       }
-      # focused column/window opacity
+      # focused and floating windows
       {
         matches = singleton {
           is-focused = true;
+          is-floating = true;
         };
         opacity = 0.98;
+        focus-ring.width = 2;
       }
-      # out-focued and no-floating column/window opacity
+      # focused but no-floating column/windows
+      {
+        matches = singleton {
+          is-focused = true;
+          is-floating = false;
+        };
+        opacity = 0.98;
+        focus-ring.width = 4;
+      }
+      # no-focused but floating window
+      {
+        matches = singleton {
+          is-focused = false;
+          is-floating = true;
+        };
+        opacity = 0.95;
+      }
+      # no-focused and no-floating column/window
       {
         matches = singleton {
           is-focused = false;
           is-floating = false;
         };
-        opacity = 0.98 * 0.9;
+        opacity = 0.90;
       }
       # Picture-in-pictures
       {

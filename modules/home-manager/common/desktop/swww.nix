@@ -24,13 +24,13 @@ in {
   programs.niri.settings = {
     spawn-at-startup = [
       {
-        argv = ["${pkgs.swww}/bin/swww-daemon"];
+        argv = ["swww-daemon"];
       }
       {
-        argv = ["${pkgs.swww}/bin/swww-daemon" "--namespace" "backdrop"];
+        argv = ["swww-daemon" "--namespace" "backdrop"];
       }
       {
-        argv = ["${pkgs.swww}/bin/swww" "img" "--namespace" "backdrop" "${config.home.homeDirectory}/.backdrop.png"];
+        argv = ["swww" "img" "--namespace" "backdrop" "${config.home.homeDirectory}/.backdrop.png"];
       }
     ];
     binds = {

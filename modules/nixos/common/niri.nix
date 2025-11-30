@@ -1,8 +1,4 @@
-{
-  pkgs,
-  user,
-  ...
-}: {
+{pkgs, ...}: {
   programs = {
     niri = {
       enable = true;
@@ -26,12 +22,12 @@
         ;
     };
     config = {
-      common.default = "gnome";
+      common.default = ["gtk"];
       niri = {
-        default = "gnome";
-        "org.freedesktop.impl.portal.FileChooser" = "gtk";
+        default = ["gtk" "gnome"];
+        "org.freedesktop.impl.portal.FileChooser" = ["gtk"];
       };
-      obs.default = "gnome";
+      obs.default = ["gnome"];
     };
   };
 }
