@@ -1,8 +1,6 @@
 {lib, ...}: let
   inherit (lib) genAttrs;
 in {
-  services.logind.settings.Login.HandlePowerKey = "ignore";
-
   custom = let
     enableList = [
     ];
