@@ -72,10 +72,10 @@ in {
       # global rules
       {
         geometry-corner-radius = {
-          bottom-left = 10.0;
-          bottom-right = 10.0;
-          top-left = 10.0;
-          top-right = 10.0;
+          bottom-left = 20.0;
+          bottom-right = 20.0;
+          top-left = 20.0;
+          top-right = 20.0;
         };
         # cut out any client-side window shadows, and also round window corners according to `geometry-corner-radius`
         clip-to-geometry = true;
@@ -161,6 +161,15 @@ in {
           app-id = "^org.gnome.seahorse.Application$";
         };
         block-out-from = "screen-capture";
+      }
+    ];
+
+    layer-rules = [
+      {
+        matches = singleton {
+          namespace = "^noctalia-overview*";
+        };
+        place-within-backdrop = true;
       }
     ];
   };

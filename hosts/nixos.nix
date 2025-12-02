@@ -15,9 +15,8 @@
   ];
 
   defaultHomeMods = [
-    inputs.astal-shell.homeManagerModules.default
-    inputs.dimland.homeManagerModules.dimland
     inputs.nix-index-database.homeModules.nix-index
+    inputs.noctalia.homeModules.default
     ../modules/home-manager
   ];
 

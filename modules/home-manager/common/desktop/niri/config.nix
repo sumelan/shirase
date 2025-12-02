@@ -22,6 +22,11 @@ in {
       # omit their client-side decorations.
       prefer-no-csd = true;
 
+      debug = {
+        # Allows notification actions and window activation from Noctalia.
+        honor-xdg-activation-with-invalid-serial = [];
+      };
+
       screenshot-path = "${config.xdg.userDirs.pictures}/Screenshots/%Y-%m-%d %H-%M-%S.png";
 
       xwayland-satellite = {

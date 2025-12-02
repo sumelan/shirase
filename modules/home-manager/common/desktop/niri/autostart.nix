@@ -14,8 +14,5 @@ in {
     ]
     ++ optional config.custom.backlight.enable
     # initial backlight
-    {argv = ["brightnessctl" "set" "5%"];}
-    ++ optional config.custom.battery.enable
-    # battery-notify
-    {argv = ["battery-notify"];};
+    {argv = ["brightnessctl" "set" "5%"];};
 }

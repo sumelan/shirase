@@ -1,4 +1,17 @@
-_: {
+{lib, ...}: let
+  inherit (lib.custom.niri) spawn-sh;
+  selectWindow =
+    # sh
+    ''
+      niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)
+    '';
+  setMonitor = ''
+    niri msg action set-dynamic-cast-monitor
+  '';
+  clearTarget = ''
+    niri msg action clear-dynamic-cast-target
+  '';
+in {
   programs.niri.settings.binds = {
     # shows a list of important hotkeys
     "Mod+Shift+Slash".action.show-hotkey-overlay = {};
@@ -13,6 +26,20 @@ _: {
     "Mod+Backslash".action.screenshot.show-pointer = false;
     "Mod+Shift+Backslash".action.screenshot-screen.show-pointer = false;
     "Mod+Alt+Backslash".action.screenshot-window.write-to-disk = true;
+
+    # dynamic-cast
+    "Mod+Ctrl+D" = {
+      action.spawn = spawn-sh selectWindow;
+      hotkey-overlay.title = "select window to cast";
+    };
+    "Mod+Shift+D" = {
+      action.spawn = spawn-sh setMonitor;
+      hotkey-overlay.title = "set current monitor to cast";
+    };
+    "Mod+Alt+D" = {
+      action.spawn = spawn-sh clearTarget;
+      hotkey-overlay.title = "clear cast target";
+    };
 
     # window and column management
     "Mod+Backspace".action.close-window = {};

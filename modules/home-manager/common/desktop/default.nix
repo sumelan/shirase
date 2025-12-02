@@ -1,11 +1,7 @@
 _: {
   imports = [
-    ./dunst
     ./niri
-    ./vicinae
-    ./astal-shell.nix
     ./config.nix
-    ./dimland.nix
     ./discord.nix
     ./euphonica.nix
     ./foot.nix
@@ -13,13 +9,13 @@ _: {
     ./librewolf.nix
     ./mpv.nix
     ./nautilus.nix
+    ./noctalia.nix
     ./pipewire.nix
     ./qt.nix
     ./satty.nix
-    ./shell.nix
+    ./swayidle.nix
     ./swayimg.nix
     ./swayosd.nix
-    ./swww.nix
     ./zathura.nix
   ];
 }

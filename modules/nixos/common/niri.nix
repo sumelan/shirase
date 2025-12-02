@@ -2,7 +2,7 @@
   programs = {
     niri = {
       enable = true;
-      package = pkgs.niri-unstable;
+      package = pkgs.niri;
     };
   };
 
@@ -22,10 +22,11 @@
         ;
     };
     config = {
-      common.default = ["gtk"];
+      common.default = ["gnome"];
       niri = {
         default = ["gtk" "gnome"];
         "org.freedesktop.impl.portal.FileChooser" = ["gtk"];
+        "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
       };
       obs.default = ["gnome"];
     };
