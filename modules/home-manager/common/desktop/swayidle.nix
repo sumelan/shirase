@@ -19,27 +19,15 @@ in {
   services.swayidle = {
     enable = true;
     extraArgs = ["-w"];
-    events = [
-      {
-        event = "before-sleep";
-        command = concatStringsSep "; " [
-          lockCmd
-          "${pkgs.playerctl}/bin/playerctl pause"
-        ];
-      }
-      {
-        event = "after-resume";
-        command = "${getExe niriPkg} msg action power-on-monitors";
-      }
-      {
-        event = "lock";
-        command = lockCmd;
-      }
-      {
-        event = "unlock";
-        command = "";
-      }
-    ];
+    events = {
+      before-sleep = concatStringsSep "; " [
+        lockCmd
+        "${pkgs.playerctl}/bin/playerctl pause"
+      ];
+      after-resume = "${getExe niriPkg} msg action power-on-monitors";
+      lock = lockCmd;
+      unlock = "";
+    };
 
     timeouts =
       [

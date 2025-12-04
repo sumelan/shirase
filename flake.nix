@@ -58,7 +58,7 @@
         nixpkgs-stable.follows = "";
         niri-stable.follows = "";
         niri-unstable.follows = "";
-        xwayland-satellite-stable.follows = "";
+        xwayland-satellite-unstable.follows = "";
       };
     };
 

@@ -31,7 +31,7 @@ in {
 
       xwayland-satellite = {
         inherit (config.custom.niri.xwayland) enable;
-        path = getExe pkgs.xwayland-satellite-unstable;
+        path = getExe pkgs.xwayland-satellite-stable;
       };
 
       input = {
