@@ -50,7 +50,7 @@ in {
               }
               {
                 id = "ActiveWindow";
-                colorizeIcons = true;
+                colorizeIcons = false;
                 hideMode = "hidden";
                 maxWidth = 145;
                 scrollingMode = "hover";
@@ -314,7 +314,7 @@ in {
           criticalColor = "#bf616a";
         };
         dock = {
-          enabled = true;
+          enabled = false;
           displayMode = "auto_hide";
           backgroundOpacity = 0.85;
           radiusRatio = 0.70;
