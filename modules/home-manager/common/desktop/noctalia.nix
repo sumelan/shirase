@@ -436,14 +436,14 @@ in {
           foot = false;
           wezterm = false;
           fuzzel = false;
-          discord = true;
+          discord = false;
           pywalfox = false;
           vicinae = false;
           walker = false;
           code = false;
           spicetify = false;
           telegram = false;
-          cava = true;
+          cava = false;
           emacs = false;
           niri = false;
           enableUserTemplates = false;

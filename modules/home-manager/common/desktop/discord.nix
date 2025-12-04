@@ -25,7 +25,8 @@ in {
           themeLinks = [];
           eagerPatches = false;
           enabledThemes = [
-            "noctalia.theme.css"
+            #  "noctalia.theme.css"
+            "system24-nord.theme.css"
           ];
           enableReactDevtools = false;
           frameless = true;
