@@ -40,7 +40,7 @@ in {
 
     niri.settings = {
       binds = {
-        "Mod+Alt+N" = {
+        "Mod+Shift+S" = {
           action.spawn = spawn "foot --app-id=nix-search-tv ns";
           hotkey-overlay.title = hotkey {
             color = blue0;

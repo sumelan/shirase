@@ -267,7 +267,7 @@ in {
 
     programs.niri.settings = {
       binds = {
-        "Mod+Y" = {
+        "Mod+Shift+Y" = {
           action.spawn = spawn "foot --app-id=youtube-tui youtube-tui";
           hotkey-overlay.title = hotkey {
             color = red_base;

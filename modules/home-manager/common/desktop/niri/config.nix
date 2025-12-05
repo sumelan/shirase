@@ -22,11 +22,6 @@ in {
       # omit their client-side decorations.
       prefer-no-csd = true;
 
-      debug = {
-        # Allows notification actions and window activation from Noctalia.
-        honor-xdg-activation-with-invalid-serial = [];
-      };
-
       screenshot-path = "${config.xdg.userDirs.pictures}/Screenshots/%Y-%m-%d %H-%M-%S.png";
 
       xwayland-satellite = {
@@ -68,7 +63,7 @@ in {
           color = black0 + "90";
         };
         # zoom ranges from 0 to 0.75 where lower values make everything smaller.
-        zoom = 0.500;
+        zoom = 0.30;
       };
 
       environment = {

@@ -163,14 +163,5 @@ in {
         block-out-from = "screen-capture";
       }
     ];
-
-    layer-rules = [
-      {
-        matches = singleton {
-          namespace = "^noctalia-overview*";
-        };
-        place-within-backdrop = true;
-      }
-    ];
   };
 }
