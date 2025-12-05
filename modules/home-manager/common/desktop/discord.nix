@@ -620,7 +620,7 @@ in {
 
     niri.settings = {
       binds = {
-        "Mod+D" = {
+        "Mod+V" = {
           action.spawn = spawn "vesktop";
           hotkey-overlay.title = hotkey {
             color = magenta_base;

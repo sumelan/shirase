@@ -22,11 +22,6 @@ in {
     # exit niri
     "Mod+Shift+Escape".action.quit.skip-confirmation = false;
 
-    # screenshot
-    "Mod+Backslash".action.screenshot.show-pointer = false;
-    "Mod+Shift+Backslash".action.screenshot-screen.show-pointer = false;
-    "Mod+Alt+Backslash".action.screenshot-window.write-to-disk = true;
-
     # dynamic-cast
     "Mod+Ctrl+D" = {
       action.spawn = spawn-sh selectWindow;
