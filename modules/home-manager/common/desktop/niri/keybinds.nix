@@ -17,7 +17,7 @@ in {
     "Mod+Shift+Slash".action.show-hotkey-overlay = {};
 
     # overview
-    "Mod+Tab".action.toggle-overview = {};
+    "Mod+O".action.toggle-overview = {};
 
     # exit niri
     "Mod+Shift+Escape".action.quit.skip-confirmation = false;

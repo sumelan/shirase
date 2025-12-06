@@ -33,7 +33,7 @@ in {
 
   niri-flake.cache.enable = true;
 
-  # use dns polkit instead
+  # use dms polkit instead
   systemd.user.services.niri-flake-polkit.enable = false;
 
   xdg.portal = {

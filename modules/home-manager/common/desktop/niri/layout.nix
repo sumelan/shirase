@@ -3,7 +3,7 @@
   inherit
     (lib.custom.colors)
     black0
-    gray0
+    gray3
     white3
     blue0
     cyan_bright
@@ -26,7 +26,7 @@ in {
           to = cyan_bright;
           relative-to = "window";
         };
-        inactive.color = gray0;
+        inactive.color = gray3;
       };
       struts = {
         left = 2;
@@ -57,25 +57,24 @@ in {
       };
       tab-indicator = {
         enable = true;
-        position = "left";
+        position = "bottom";
+        width = 8;
+        gap = -15;
+        length.total-proportion = 0.8;
+        active.color = blue0 + "90";
+        inactive.color = gray3 + "90";
         hide-when-single-tab = true;
         place-within-column = true;
-        active.color = blue0;
-        inactive.color = gray0;
-        gap = 5;
-        width = 4;
-        length.total-proportion = 0.5;
-        gaps-between-tabs = 2;
       };
     };
     window-rules = [
       # global rules
       {
         geometry-corner-radius = {
-          bottom-left = 20.0;
-          bottom-right = 20.0;
-          top-left = 20.0;
-          top-right = 20.0;
+          bottom-left = 10.0;
+          bottom-right = 10.0;
+          top-left = 10.0;
+          top-right = 10.0;
         };
         # cut out any client-side window shadows, and also round window corners according to `geometry-corner-radius`
         clip-to-geometry = true;
@@ -137,11 +136,11 @@ in {
             to = red_bright;
             relative-to = "window";
           };
-          inactive.color = gray0;
+          inactive.color = gray3;
         };
         tab-indicator = {
           active.color = red_bright;
-          inactive.color = gray0;
+          inactive.color = gray3;
         };
         shadow = {
           enable = true;

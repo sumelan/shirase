@@ -74,17 +74,6 @@ in {
   };
 
   programs.niri.settings = {
-    binds = {
-      "Mod+O" = {
-        action.spawn = spawn "nautilus";
-        hotkey-overlay.title = hotkey {
-          color = orange_bright;
-          name = "  Nautilus";
-          text = "File Manager";
-        };
-      };
-    };
-
     window-rules = [
       {
         matches = [
