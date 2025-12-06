@@ -14,7 +14,7 @@ in {
         runUserMatugenTemplates = true;
         matugenTargetMonitor = "";
         popupTransparency = 0.85;
-        dockTransparency = 1;
+        dockTransparency = 0.85;
         widgetBackgroundColor = "sch";
         widgetColorMode = "default";
         cornerRadius = 12;
@@ -84,7 +84,7 @@ in {
             width = 50;
           }
           {
-            id = "idleInhibitor";
+            id = "audioInput";
             enabled = true;
             width = 50;
           }
@@ -181,12 +181,12 @@ in {
         dockAutoHide = false;
         dockGroupByApp = true;
         dockOpenOnOverview = false;
-        dockPosition = 3;
+        dockPosition = 1;
         dockSpacing = 8;
         dockBottomGap = 0;
-        dockMargin = 0;
-        dockIconSize = 40;
-        dockIndicatorStyle = "circle";
+        dockMargin = 100;
+        dockIconSize = 48;
+        dockIndicatorStyle = "line";
         dockBorderEnabled = false;
         dockBorderColor = "surfaceText";
         dockBorderOpacity = 1;
@@ -221,7 +221,6 @@ in {
           "poweroff"
           "lock"
           "suspend"
-          "restart"
         ];
         powerMenuDefaultAction = "logout";
         powerMenuGridLayout = false;
@@ -260,11 +259,20 @@ in {
                 mediaSize = 2;
               }
               {
+                id = "privacyIndicator";
+                enabled = true;
+              }
+              {
+                id = "idleInhibitor";
+                enabled = true;
+              }
+            ];
+            centerWidgets = [
+              {
                 id = "workspaceSwitcher";
                 enabled = true;
               }
             ];
-            centerWidgets = [];
             rightWidgets = [
               {
                 id = "systemTray";

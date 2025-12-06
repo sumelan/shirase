@@ -25,7 +25,7 @@ in {
           themeLinks = [];
           eagerPatches = false;
           enabledThemes = [
-            "system24-nord.theme.css"
+            "dank-discord.css"
           ];
           enableReactDevtools = false;
           frameless = true;

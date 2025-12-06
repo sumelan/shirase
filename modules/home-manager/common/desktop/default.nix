@@ -3,7 +3,6 @@ _: {
     ./dms
     ./niri
     ./config.nix
-    ./discord.nix
     ./euphonica.nix
     ./foot.nix
     ./gtk.nix
@@ -15,6 +14,7 @@ _: {
     ./satty.nix
     ./swayimg.nix
     ./swayosd.nix
+    ./vesktop.nix
     ./zathura.nix
   ];
 }

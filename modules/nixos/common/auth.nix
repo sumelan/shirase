@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  inherit (lib) mkMerge optionalAttrs;
+  inherit (lib) mkMerge;
 in
   mkMerge [
     # ssh settings
@@ -11,35 +11,29 @@ in
       services.openssh = {
         enable = true;
         settings = {
-          # disable password auth
-          # NOTE: set false for better security
+          # disable password auth. NOTE: set false for better security
           PasswordAuthentication = false;
           KbdInteractiveAuthentication = false;
         };
       };
     }
-
     # keyring settings
     {
       services.gnome.gnome-keyring.enable = true;
       security.pam.services.login.enableGnomeKeyring = true;
     }
-
     # security
     {
-      security =
-        {
-          polkit.enable = true;
-          # Use sudo-rs in place of regular sudo
-          sudo-rs = {
-            enable = true;
-            wheelNeedsPassword = false;
-            extraConfig = "Defaults passwd_tries=10";
-          };
-        }
-        // optionalAttrs config.hm.programs.hyprlock.enable {pam.services.hyprlock = {};};
+      security = {
+        polkit.enable = true;
+        # Use sudo-rs in place of regular sudo
+        sudo-rs = {
+          enable = true;
+          wheelNeedsPassword = false;
+          extraConfig = "Defaults passwd_tries=10";
+        };
+      };
     }
-
     # gnuupg
     {
       programs.gnupg.agent = {
@@ -52,7 +46,6 @@ in
         GNUPGHOME = "${config.hm.xdg.dataHome}/.gnupg";
       };
     }
-
     # persist
     {
       # persist keyring and misc other secrets
