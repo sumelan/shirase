@@ -1,8 +1,11 @@
 {
   inputs,
   pkgs,
+  user,
   ...
-}: {
+}: let
+  qsPkgs = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
+in {
   programs = {
     niri = {
       enable = true;
@@ -10,19 +13,27 @@
     };
     dankMaterialShell = {
       enable = true;
-      systemd = {
-        enable = true; # Systemd service for auto-start
-        restartIfChanged = true; # Auto-restart dms.service when dankMaterialShell changes
-      };
-      quickshell = {
-        package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      quickshell.package = qsPkgs;
+
+      greeter = {
+        enable = true;
+        compositor.name = "niri";
+        configHome = "/home/${user}";
+        configFiles = [
+          "/home/${user}/.config/DankMaterialShell/settings.json"
+        ];
+        logs = {
+          save = true;
+          path = "/tmp/dms-greeter.log";
+        };
+        quickshell.package = qsPkgs;
       };
     };
   };
 
   niri-flake.cache.enable = true;
 
-  # use gnome-polkit instead
+  # use dns polkit instead
   systemd.user.services.niri-flake-polkit.enable = false;
 
   xdg.portal = {
@@ -45,4 +56,6 @@
       obs.default = ["gnome"];
     };
   };
+  # tty autologin
+  services.getty.autologinUser = user;
 }

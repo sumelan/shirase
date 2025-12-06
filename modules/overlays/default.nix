@@ -4,6 +4,15 @@
   ...
 }: let
   # include generated sources from nvfetcher
+  dmsSources = import ../packages/dms-plugins/generated.nix {
+    inherit
+      (pkgs)
+      fetchFromGitHub
+      fetchurl
+      fetchgit
+      dockerTools
+      ;
+  };
   yaziSources = import ../packages/yazi-plugins/generated.nix {
     inherit
       (pkgs)
@@ -24,7 +33,8 @@ in {
           inherit inputs;
         })
         // {
-          inherit (yaziSources) yazi-plugins yazi-starship;
+          inherit (dmsSources) dms-plugins;
+          inherit (yaziSources) yazi-plugins;
         };
     })
     # enable the A/V Properties and see details like media length

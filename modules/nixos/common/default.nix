@@ -4,7 +4,6 @@ _: {
     ./bluetooth.nix
     ./boot.nix
     ./config.nix
-    ./greetd.nix
     ./impermanence.nix
     ./network.nix
     ./niri.nix

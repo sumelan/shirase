@@ -9,6 +9,7 @@
 
   defaultNixMods = [
     inputs.dankMaterialShell.nixosModules.dankMaterialShell
+    inputs.dankMaterialShell.nixosModules.greeter
     inputs.impermanence.nixosModules.impermanence
     inputs.niri.nixosModules.niri
     inputs.sops-nix.nixosModules.sops
@@ -17,7 +18,6 @@
 
   defaultHomeMods = [
     inputs.dankMaterialShell.homeModules.dankMaterialShell.default
-    inputs.dankMaterialShell.homeModules.dankMaterialShell.niri
     inputs.nix-index-database.homeModules.nix-index
     ../modules/home-manager
   ];

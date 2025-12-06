@@ -5,6 +5,7 @@ export HOSTNAME := `hostname`
 export NIXPKGS_ALLOW_UNFREE := "1"
 
 # package-paths fetched through nvfetcher
+dms-path := "modules/packages/dms-plugins"
 yazi-path := "modules/packages/yazi-plugins"
 helium-path := "modules/packages/helium"
 
@@ -58,7 +59,11 @@ alias update := updateInput
 
     nix flake update
 
-    echo -e "\n===== Fetching yazi-plugin packages... =====\n"
+    echo -e "\n===== Fetching dms-plugins repo... =====\n"
+
+    nvfetcher --keep-old --config {{ dms-path }}/nvfetcher.toml --build-dir {{ dms-path }}
+
+    echo -e "\n===== Fetching yazi-plugins repo... =====\n"
 
     nvfetcher --keep-old --config {{ yazi-path }}/nvfetcher.toml --build-dir {{ yazi-path }}
 
