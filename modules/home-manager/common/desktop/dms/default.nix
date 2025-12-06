@@ -1,7 +1,13 @@
-{lib, ...}: let
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (lib) singleton splitString;
   inherit (lib.custom.colors) magenta_dim;
   inherit (lib.custom.niri) hotkey;
+  qsPkgs = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   imports = [
     ./plugins.nix
@@ -9,7 +15,10 @@ in {
   ];
 
   programs = {
-    dankMaterialShell.enable = true;
+    dankMaterialShell = {
+      enable = true;
+      quickshell.package = qsPkgs;
+    };
     niri.settings = {
       binds = let
         dms-ipc = cmd:
