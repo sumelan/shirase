@@ -63,7 +63,7 @@ in {
           color = black0 + "90";
         };
         # zoom ranges from 0 to 0.75 where lower values make everything smaller.
-        zoom = 0.30;
+        zoom = 0.50;
       };
 
       environment = {

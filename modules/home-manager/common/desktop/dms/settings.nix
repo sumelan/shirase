@@ -157,8 +157,8 @@ in {
         acSuspendTimeout = 60 * 15;
         acSuspendBehavior = 0;
         acProfileName = "";
-        batteryMonitorTimeout = 60 * 8;
-        batteryLockTimeout = 60 * 5;
+        batteryMonitorTimeout = 60 * 5;
+        batteryLockTimeout = 60 * 3;
         batterySuspendTimeout = 60 * 10;
         batterySuspendBehavior = 0;
         batteryProfileName = "";
