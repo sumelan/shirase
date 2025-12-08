@@ -30,17 +30,6 @@
 
     dankMaterialShell = {
       url = "github:AvengeMedia/DankMaterialShell";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        dgop.follows = "dgop";
-      };
-    };
-    quickshell = {
-      url = "github:quickshell-mirror/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    dgop = {
-      url = "github:AvengeMedia/dgop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

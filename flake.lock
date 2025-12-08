@@ -2,19 +2,18 @@
   "nodes": {
     "dankMaterialShell": {
       "inputs": {
-        "dgop": [
-          "dgop"
-        ],
+        "dgop": "dgop",
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1765001413,
-        "narHash": "sha256-y5u9eN1qB/IWVqYhVm3qsH8FttoU40Ze3DPQLBXMRhg=",
+        "lastModified": 1765159882,
+        "narHash": "sha256-SCky+1XIptN8xqsU5drbj3erahR4pa47Y0OmIVgV4J8=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "8ce78e71343b1769b4c87cac9eae3a45510a4c03",
+        "rev": "f6a776a692c6132506f326b77a4b02c47f5e151b",
         "type": "github"
       },
       "original": {
@@ -26,6 +25,7 @@
     "dgop": {
       "inputs": {
         "nixpkgs": [
+          "dankMaterialShell",
           "nixpkgs"
         ]
       },
@@ -276,27 +276,28 @@
     "quickshell": {
       "inputs": {
         "nixpkgs": [
+          "dankMaterialShell",
           "nixpkgs"
         ]
       },
       "locked": {
         "lastModified": 1764663772,
         "narHash": "sha256-sHqLmm0wAt3PC4vczJeBozI1/f4rv9yp3IjkClHDXDs=",
-        "owner": "quickshell-mirror",
-        "repo": "quickshell",
+        "ref": "refs/heads/master",
         "rev": "26531fc46ef17e9365b03770edd3fb9206fcb460",
-        "type": "github"
+        "revCount": 713,
+        "type": "git",
+        "url": "https://git.outfoxxed.me/quickshell/quickshell"
       },
       "original": {
-        "owner": "quickshell-mirror",
-        "repo": "quickshell",
-        "type": "github"
+        "rev": "26531fc46ef17e9365b03770edd3fb9206fcb460",
+        "type": "git",
+        "url": "https://git.outfoxxed.me/quickshell/quickshell"
       }
     },
     "root": {
       "inputs": {
         "dankMaterialShell": "dankMaterialShell",
-        "dgop": "dgop",
         "firefox-addons": "firefox-addons",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
@@ -307,7 +308,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nvf": "nvf",
-        "quickshell": "quickshell",
         "sops-nix": "sops-nix"
       }
     },

@@ -1,13 +1,7 @@
-{
-  inputs,
-  lib,
-  pkgs,
-  ...
-}: let
+{lib, ...}: let
   inherit (lib) singleton splitString;
   inherit (lib.custom.colors) magenta_dim;
   inherit (lib.custom.niri) hotkey;
-  qsPkgs = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   imports = [
     ./plugins.nix
@@ -17,9 +11,17 @@ in {
   programs = {
     dankMaterialShell = {
       enable = true;
-      quickshell.package = qsPkgs;
+      systemd = {
+        enable = false;
+        restartIfChanged = false;
+      };
     };
+
     niri.settings = {
+      spawn-at-startup = [
+        {argv = ["dms" "run"];}
+        {argv = ["wl-paste" "--watch" "cliphist" "store"];}
+      ];
       binds = let
         dms-ipc = cmd:
           ["dms" "ipc" "call"] ++ (splitString " " cmd);
@@ -181,11 +183,6 @@ in {
           action.spawn = dms-ipc "brightness decrement 5 ";
         };
       };
-
-      spawn-at-startup = [
-        # clipboard
-        {argv = ["wl-paste" "--watch" "cliphist" "store"];}
-      ];
 
       layer-rules = [
         {
