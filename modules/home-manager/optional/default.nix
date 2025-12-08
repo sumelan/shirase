@@ -1,7 +1,7 @@
 _: {
   imports = [
     ./foliate.nix
-    ./ghostty.nix
+    ./foot.nix
     ./helium.nix
     ./helix.nix
     ./kdeconnect.nix

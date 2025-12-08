@@ -60,7 +60,7 @@ in {
         env = {
           video-player = "mpv";
           download-path = "${config.xdg.userDirs.download}/%(title)s-%(id)s.%(ext)s";
-          terminal-emulator = "foot";
+          terminal-emulator = "ghostty";
           youtube-downloader = "yt-dlp";
           save-path = "${config.xdg.dataHome}/youtube-tui/saved/";
           browser = "librewolf";
@@ -268,7 +268,7 @@ in {
     programs.niri.settings = {
       binds = {
         "Mod+Shift+Y" = {
-          action.spawn = spawn "foot --app-id=youtube-tui youtube-tui";
+          action.spawn = spawn "ghostty -e youtube-tui";
           hotkey-overlay.title = hotkey {
             color = red_base;
             name = "  youtube-tui";

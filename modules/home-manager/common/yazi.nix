@@ -151,7 +151,7 @@ in {
     niri.settings = {
       binds = {
         "Mod+Shift+O" = {
-          action.spawn = spawn "foot --app-id=yazi yazi";
+          action.spawn = spawn "ghostty -e yazi";
           hotkey-overlay.title = hotkey {
             color = yellow_bright;
             name = "  yazi";

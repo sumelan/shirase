@@ -22,7 +22,7 @@ in {
       # omit their client-side decorations.
       prefer-no-csd = true;
 
-      screenshot-path = "${config.xdg.userDirs.pictures}/Screenshots/%Y-%m-%d %H-%M-%S.png";
+      screenshot-path = "${config.xdg.userDirs.pictures}/Screenshots/%Y-%m-%d_%H-%M-%S.png";
 
       xwayland-satellite = {
         inherit (config.custom.niri.xwayland) enable;

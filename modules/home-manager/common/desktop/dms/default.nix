@@ -183,8 +183,6 @@ in {
       };
 
       spawn-at-startup = [
-        # dms
-        {argv = ["dms" "run" "--session"];}
         # clipboard
         {argv = ["wl-paste" "--watch" "cliphist" "store"];}
       ];

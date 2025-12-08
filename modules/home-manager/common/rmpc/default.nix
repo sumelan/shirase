@@ -1,5 +1,4 @@
 {lib, ...}: let
-  inherit (lib) singleton;
   inherit (lib.custom.colors) orange_base;
   inherit (lib.custom.niri) spawn hotkey;
 in {
@@ -14,7 +13,7 @@ in {
     niri.settings = {
       binds = {
         "Mod+R" = {
-          action.spawn = spawn "foot --app-id=rmpc rmpc";
+          action.spawn = spawn "ghostty -e rmpc";
           hotkey-overlay.title = hotkey {
             color = orange_base;
             name = "  rmpc";
@@ -22,16 +21,6 @@ in {
           };
         };
       };
-      window-rules = [
-        {
-          matches = singleton {
-            app-id = "^rmpc$";
-          };
-          open-floating = true;
-          default-column-width.proportion = 0.35;
-          default-window-height.proportion = 0.28;
-        }
-      ];
     };
   };
 

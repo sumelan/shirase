@@ -1,16 +1,21 @@
 {lib, ...}: let
-  inherit (lib.custom.niri) spawn-sh;
+  inherit (lib.custom.colors) orange_bright;
+  inherit (lib.custom.niri) spawn-sh hotkey;
   selectWindow =
     # sh
     ''
       niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)
     '';
-  setMonitor = ''
-    niri msg action set-dynamic-cast-monitor
-  '';
-  clearTarget = ''
-    niri msg action clear-dynamic-cast-target
-  '';
+  setMonitor =
+    # sh
+    ''
+      niri msg action set-dynamic-cast-monitor
+    '';
+  clearTarget =
+    # sh
+    ''
+      niri msg action clear-dynamic-cast-target
+    '';
 in {
   programs.niri.settings.binds = {
     # shows a list of important hotkeys
@@ -23,17 +28,29 @@ in {
     "Mod+Shift+Escape".action.quit.skip-confirmation = false;
 
     # dynamic-cast
-    "Mod+Ctrl+D" = {
+    "Mod+Bracketright" = {
       action.spawn = spawn-sh selectWindow;
-      hotkey-overlay.title = "select window to cast";
+      hotkey-overlay.title = hotkey {
+        color = orange_bright;
+        name = "󰗢  Dynamic-cast";
+        text = "select window to cast";
+      };
     };
-    "Mod+Shift+D" = {
+    "Mod+Shift+Bracketright" = {
       action.spawn = spawn-sh setMonitor;
-      hotkey-overlay.title = "set current monitor to cast";
+      hotkey-overlay.title = hotkey {
+        color = orange_bright;
+        name = "󰗢  Dynamic-cast";
+        text = "set current monitor to cast";
+      };
     };
-    "Mod+Alt+D" = {
+    "Mod+Alt+Bracketright" = {
       action.spawn = spawn-sh clearTarget;
-      hotkey-overlay.title = "clear cast target";
+      hotkey-overlay.title = hotkey {
+        color = orange_bright;
+        name = "󰗢  Dynamic-cast";
+        text = "clear cast target";
+      };
     };
 
     # window and column management

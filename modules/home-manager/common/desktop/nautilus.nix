@@ -6,8 +6,6 @@
   ...
 }: let
   inherit (lib) getExe;
-  inherit (lib.custom.colors) orange_bright;
-  inherit (lib.custom.niri) spawn hotkey;
 in {
   home.packages = builtins.attrValues {
     inherit
@@ -25,7 +23,7 @@ in {
     terminal-exec = {
       enable = true;
       settings = {
-        default = ["foot.desktop"];
+        default = ["ghostty.desktop"];
       };
     };
 

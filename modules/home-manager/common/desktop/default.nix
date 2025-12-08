@@ -4,7 +4,7 @@ _: {
     ./niri
     ./config.nix
     ./euphonica.nix
-    ./foot.nix
+    ./ghostty.nix
     ./gtk.nix
     ./librewolf.nix
     ./mpv.nix

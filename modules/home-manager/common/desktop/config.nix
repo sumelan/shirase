@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  user,
   ...
 }: let
   inherit (lib) genAttrs;
@@ -16,8 +17,13 @@ in {
       ;
   };
 
-  # WM agnostic polkit authentication agent
-  # services.polkit-gnome.enable = true;
+  # create directories on boot if not exist
+  systemd.user.tmpfiles.rules = [
+    "d! %h/Pictures/Wallpapers - ${user} users - -"
+    "d! %h/Pictures/Screenshots - ${user} users - -"
+    "d! %h/Pictures/Satty - ${user} users - -"
+    "d! %h/Videos/OBS-Studio - ${user} users - -"
+  ];
 
   # hide unnecessary desktopItems
   xdg.desktopEntries = let

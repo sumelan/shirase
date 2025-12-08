@@ -40,8 +40,8 @@ in {
 
     niri.settings = {
       binds = {
-        "Mod+Shift+S" = {
-          action.spawn = spawn "foot --app-id=nix-search-tv ns";
+        "Mod+Shift+N" = {
+          action.spawn = spawn "ghostty -e ns";
           hotkey-overlay.title = hotkey {
             color = blue0;
             name = "󱄅  nix-search-tv";

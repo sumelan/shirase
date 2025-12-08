@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  isLaptop,
   ...
 }: let
   inherit (lib.custom.colors) black0;
@@ -154,7 +155,10 @@ in {
         soundPluggedIn = true;
         acMonitorTimeout = 60 * 10;
         acLockTimeout = 60 * 5;
-        acSuspendTimeout = 60 * 15;
+        acSuspendTimeout =
+          if isLaptop
+          then (60 * 15)
+          else 0;
         acSuspendBehavior = 0;
         acProfileName = "";
         batteryMonitorTimeout = 60 * 5;
