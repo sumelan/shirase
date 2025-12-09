@@ -5,8 +5,8 @@ export HOSTNAME := `hostname`
 export NIXPKGS_ALLOW_UNFREE := "1"
 
 # package-paths fetched through nvfetcher
-dms-path := "modules/packages/dms-plugins"
-yazi-path := "modules/packages/yazi-plugins"
+dms-path := "modules/overlays/dms-plugins"
+yazi-path := "modules/overlays/yazi-plugins"
 helium-path := "modules/packages/helium"
 
 alias convert := sopsAge

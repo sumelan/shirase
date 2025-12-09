@@ -35,14 +35,8 @@
       name = "Orchis-Grey-Dark-Compact-Nord";
     };
     iconTheme = {
-      package = pkgs.papirus-nord.override {
-        # valid accent:
-        # `auroragreen`, `auroragreenb`, `auroramagenta`, `auroramagentab`, `auroraorange`, `auroraorangeb`,
-        # `aurorared`, `auroraredb`, `aurorayellow`, `aurorayellowb`, `frostblue1`, `frostblue2`, `frostblue3`,
-        # `frostblue4`, `polarnight1`, `polarnight2`, `polarnight3`, `polarnight3`, `snowstorm1`, `snowstorm1b`
-        accent = "polarnight3";
-      };
-      name = "Papirus-Dark";
+      package = pkgs.tela-icon-theme;
+      name = "Tela-nord-dark";
     };
     font = {
       name = config.custom.fonts.regular;

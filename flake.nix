@@ -48,14 +48,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-chuwi-minibook-x = {
-      url = "github:knoopx/nix-chuwi-minibook-x";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nixos-hardware.follows = "nixos-hardware";
-      };
-    };
-
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs = {
@@ -73,6 +65,15 @@
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
+      };
+    };
+
+    # chuwi minibook-x
+    nix-chuwi-minibook-x = {
+      url = "github:knoopx/nix-chuwi-minibook-x";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixos-hardware.follows = "nixos-hardware";
       };
     };
   };

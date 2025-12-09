@@ -4,7 +4,7 @@
   ...
 }: let
   # include generated sources from nvfetcher
-  dmsSources = import ../packages/dms-plugins/generated.nix {
+  dmsSources = import ./dms-plugins/generated.nix {
     inherit
       (pkgs)
       fetchFromGitHub
@@ -13,7 +13,7 @@
       dockerTools
       ;
   };
-  yaziSources = import ../packages/yazi-plugins/generated.nix {
+  yaziSources = import ./yazi-plugins/generated.nix {
     inherit
       (pkgs)
       fetchFromGitHub

@@ -13,13 +13,8 @@ in
           efiSysMountPoint = "/boot"; # ← use the same mount point here.
           canTouchEfiVariables = true;
         };
-        grub = {
+        limine = {
           enable = true;
-          theme = pkgs.custom.grub-nixos;
-          efiSupport = true;
-          # in case canTouchEfiVariables doesn't work for your system
-          #  efiInstallAsRemovable = true;
-          devices = ["nodev"];
         };
       };
 
@@ -28,7 +23,7 @@ in
     }
     {
       # kernel
-      boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+      boot.kernelPackages = pkgs.linuxPackages_zen;
     }
     {
       # reduce journald logs
