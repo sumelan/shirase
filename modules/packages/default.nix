@@ -19,8 +19,6 @@
       extraSpecialArgs = {inherit host flakePath;};
     }).neovim;
 in {
-  grub-nixos = callPackage ./grub-nixos {};
-
   helium = callPackage ./helium {};
 
   nvfMini = callPackage (mkNvf []) {};

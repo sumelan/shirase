@@ -24,7 +24,7 @@
   };
 in {
   nixpkgs.overlays = [
-    # include packages defined as `pkgs.custom.foo`
+    # define as `pkgs.custom.foo`
     (_final: prev: {
       custom =
         (prev.custom or {})
