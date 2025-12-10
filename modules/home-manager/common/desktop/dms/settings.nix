@@ -115,7 +115,7 @@ in {
         runningAppsCurrentWorkspace = true;
         runningAppsGroupByApp = true;
         centeringMode = "index";
-        clockDateFormat = "M/d";
+        clockDateFormat = "MMM d日";
         lockDateFormat = "";
         mediaSize = 1;
         appLauncherViewMode = "grid";
@@ -245,7 +245,7 @@ in {
             id = "default";
             name = "Main Bar";
             enabled = true;
-            position = 2;
+            position = 0;
             screenPreferences = ["all"];
             showOnLastDisplay = true;
             leftWidgets = [
@@ -320,8 +320,8 @@ in {
             fontScale = 1;
             autoHide = false;
             autoHideDelay = 250;
-            openOnOverview = true;
-            visible = false;
+            openOnOverview = false;
+            visible = true;
             popupGapsAuto = true;
             popupGapsManual = 4;
             maximizeDetection = true;
