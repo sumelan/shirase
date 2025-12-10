@@ -27,7 +27,7 @@ in {
         customAnimationDuration = 500;
         wallpaperFillMode = "Fill";
         blurredWallpaperLayer = true;
-        blurWallpaperOnOverview = true;
+        blurWallpaperOnOverview = false;
         showLauncherButton = true;
         showWorkspaceSwitcher = true;
         showFocusedWindow = true;
