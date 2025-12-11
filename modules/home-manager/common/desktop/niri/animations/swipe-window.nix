@@ -19,7 +19,7 @@ _: {
       custom-shader =
         # glsl
         ''
-                 float ease_curve(float x) {
+          float ease_curve(float x) {
               return x < 0.5 ? 4.0*x*x*x : 1.0 - pow(-2.0*x + 2.0, 3.0)/2.0;
           }
 
@@ -60,7 +60,7 @@ _: {
       custom-shader =
         # glsl
         ''
-                // ease-in-out cubic curve helper
+          // ease-in-out cubic curve helper
           float ease_curve(float x) {
               return x < 0.5 ? 4.0*x*x*x : 1.0 - pow(-2.0*x + 2.0, 3.0)/2.0;
           }
@@ -124,10 +124,10 @@ _: {
         # glsl
         ''
           vec4 resize_color(vec3 coords_curr_geo, vec3 size_curr_geo) {
-                vec3 coords_tex_next = niri_geo_to_tex_next * coords_curr_geo;
-                vec4 color = texture2D(niri_tex_next, coords_tex_next.st);
-                return color;
-            }
+              vec3 coords_tex_next = niri_geo_to_tex_next * coords_curr_geo;
+              vec4 color = texture2D(niri_tex_next, coords_tex_next.st);
+              return color;
+          }
         '';
     };
     config-notification-open-close = {

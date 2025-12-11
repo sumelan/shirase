@@ -1,5 +1,5 @@
 {lib, ...}: let
-  inherit (lib.custom.colors) magenta_base;
+  inherit (lib.custom.colors) blue1;
   inherit (lib.custom.niri) spawn hotkey;
 in {
   programs = {
@@ -623,7 +623,7 @@ in {
         "Mod+V" = {
           action.spawn = spawn "vesktop";
           hotkey-overlay.title = hotkey {
-            color = magenta_base;
+            color = blue1;
             name = "  Vesktop";
             text = "Discord Client";
           };

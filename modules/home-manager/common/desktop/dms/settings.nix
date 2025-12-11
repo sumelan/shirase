@@ -100,7 +100,7 @@ in {
         showWorkspaceIndex = false;
         showWorkspacePadding = false;
         workspaceScrolling = false;
-        showWorkspaceApps = true;
+        showWorkspaceApps = false;
         maxWorkspaceIcons = 6;
         workspacesPerMonitor = true;
         showOccupiedWorkspacesOnly = true;
@@ -245,7 +245,7 @@ in {
             id = "default";
             name = "Main Bar";
             enabled = true;
-            position = 0;
+            position = 2;
             screenPreferences = ["all"];
             showOnLastDisplay = true;
             leftWidgets = [
@@ -278,10 +278,6 @@ in {
               }
             ];
             rightWidgets = [
-              {
-                id = "systemTray";
-                enabled = true;
-              }
               {
                 id = "notificationButton";
                 enabled = true;
@@ -320,8 +316,8 @@ in {
             fontScale = 1;
             autoHide = false;
             autoHideDelay = 250;
-            openOnOverview = false;
-            visible = true;
+            openOnOverview = true;
+            visible = false;
             popupGapsAuto = true;
             popupGapsManual = 4;
             maximizeDetection = true;
