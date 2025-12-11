@@ -8,7 +8,7 @@
 in {
   xdg.configFile = {
     # plugins
-    "dankBatteryAlerts" = {
+    "DankMaterialShell/plugins/dankBatteryAlerts" = {
       source = "${pluginsRepo}/DankBatteryAlerts";
       recursive = true;
     };
