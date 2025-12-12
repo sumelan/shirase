@@ -24,7 +24,7 @@ in {
         compositor.name = "niri";
         configHome = "/home/${user}";
         configFiles = [
-          "/home/${user}/.config/DankMaterialShell/settings.json"
+          "/home/${user}/.config/DankMaterialShell/default-settings.json"
         ];
         logs = {
           save = true;
