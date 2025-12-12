@@ -3,20 +3,22 @@
   pkgs,
   ...
 }: let
+  cfg = config.programs.dankMaterialShell.plugins;
   jsonFormat = pkgs.formats.json {};
   pluginsRepo = pkgs.custom.dms-plugins.src;
 in {
-  xdg.configFile = {
-    # plugins
-    "DankMaterialShell/plugins/dankBatteryAlerts" = {
-      source = "${pluginsRepo}/DankBatteryAlerts";
-      recursive = true;
+  programs.dankMaterialShell.plugins = {
+    "dankBatteryAlerts" = {
+      inherit (config.custom.battery) enable;
+      src = "${pluginsRepo}/DankBatteryAlerts";
     };
+  };
 
+  xdg.configFile = {
     "DankMaterialShell/plugin_settings.json" = {
       source = jsonFormat.generate "plugins_settings.json" {
         dankBatteryAlerts = {
-          enabled = config.custom.battery.enable;
+          enabled = cfg."dankBatteryAlerts".enable;
           criticalThreshold = 10;
           enableCriticalAlert = true;
           criticalTitle = "Critical Battery Level";
