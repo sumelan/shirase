@@ -48,7 +48,7 @@ in {
           ]);
       });
     })
-    # user updated package
+    # use latest package
     (_final: prev: {
       euphonica = prev.euphonica.overrideAttrs (old: rec {
         pname = "euphonica";

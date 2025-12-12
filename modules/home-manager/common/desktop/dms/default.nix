@@ -18,10 +18,6 @@ in {
     };
 
     niri.settings = {
-      spawn-at-startup = [
-        {argv = ["dms" "run"];}
-        {argv = ["wl-paste" "--watch" "cliphist" "store"];}
-      ];
       binds = let
         dms-ipc = cmd:
           ["dms" "ipc" "call"] ++ (splitString " " cmd);

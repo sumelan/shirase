@@ -225,6 +225,7 @@ in {
           "poweroff"
           "lock"
           "suspend"
+          "restart"
         ];
         powerMenuDefaultAction = "logout";
         powerMenuGridLayout = false;
