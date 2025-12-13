@@ -127,11 +127,11 @@ in {
         };
         format = {
           enable = true;
-          type = "alejandra";
+          type = ["alejandra"];
         };
         lsp = {
           enable = true;
-          server = "nixd";
+          servers = ["nixd"];
         };
         treesitter.enable = true;
       };
