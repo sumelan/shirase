@@ -66,7 +66,7 @@ in {
     "Mod+Shift+C".action.maximize-column = {};
     "Mod+Ctrl+C".action.switch-preset-column-width = {};
 
-    # vim-like
+    # use h, j, k ,l keys like vim
     "Mod+H".action.focus-column-left = {};
     "Mod+J".action.focus-window-down = {};
     "Mod+K".action.focus-window-up = {};
@@ -82,8 +82,10 @@ in {
     "Mod+Ctrl+K".action.set-window-height = "-10%";
     "Mod+Ctrl+L".action.set-column-width = "+10%";
 
-    # consume or expel
+    # arrow keys
     "Mod+Left".action.consume-or-expel-window-left = {};
+    "Mod+Down".action.focus-workspace-down = {};
+    "Mod+Up".action.focus-workspace-up = {};
     "Mod+Right".action.consume-or-expel-window-right = {};
 
     # tabbed
@@ -98,34 +100,20 @@ in {
     "Mod+Shift+3".action.move-column-to-workspace = 3;
 
     # mouse wheel
-    "Mod+WheelScrollDown" = {
-      action.focus-workspace-down = {};
-      cooldown-ms = 150;
-    };
-    "Mod+WheelScrollUp" = {
-      action.focus-workspace-up = {};
-      cooldown-ms = 150;
-    };
-    "Mod+WheelScrollRight" = {
-      action.focus-column-right = {};
-      cooldown-ms = 150;
-    };
-    "Mod+WheelScrollLeft" = {
-      action.focus-column-left = {};
-      cooldown-ms = 150;
-    };
-    "Mod+Shift+WheelScrollDown" = {
-      action.move-column-to-workspace-down = {};
-      cooldown-ms = 150;
-    };
-    "Mod+Shift+WheelScrollUp" = {
-      action.move-column-to-workspace-up = {};
-      cooldown-ms = 150;
-    };
+    "Mod+WheelScrollDown".action.focus-workspace-down = {};
+    "Mod+WheelScrollUp".action.focus-workspace-up = {};
+    "Mod+Shift+WheelScrollDown".action.move-column-to-workspace-down = {};
+    "Mod+Shift+WheelScrollUp".action.move-column-to-workspace-up = {};
+
+    "Mod+WheelScrollLeft".action.move-column-left = {};
+    "Mod+WheelScrollRight".action.move-column-right = {};
+    "Mod+Shift+WheelScrollLeft".action.consume-or-expel-window-left = {};
+    "Mod+Shift+WheelScrollRight".action.consume-or-expel-window-right = {};
 
     # mouse click
     "Mod+MouseForward".action.consume-or-expel-window-left = {};
     "Mod+MouseBack".action.consume-or-expel-window-right = {};
+    "Mod+MouseMiddle".action.toggle-overview = {};
 
     # touchpad gestures
     "Mod+TouchpadScrollUp" = {

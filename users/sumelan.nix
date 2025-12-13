@@ -5,7 +5,10 @@
 }: let
   username = "sumelan";
 in {
-  imports = [./.];
+  imports = [
+    ./.
+    ./inputMethod/japanese.nix
+  ];
 
   users.users.${username} = {
     isNormalUser = true;
@@ -51,7 +54,6 @@ in {
 
   hm = {
     home.file.".face".source = ./${username}.png;
-
     # define user profile
     profiles.${username} = {
       timeZone = "Asia/Tokyo";
@@ -60,23 +62,6 @@ in {
       defaultEditor = {
         package = pkgs.neovim;
         name = "nvim";
-      };
-    };
-
-    # Japanese settings
-    i18n.inputMethod = {
-      enable = true;
-      type = "fcitx5";
-      fcitx5 = {
-        addons = [pkgs.fcitx5-mozc];
-        waylandFrontend = true;
-        settings.addons.classicui.globalSection = {
-          Font = "${config.hm.custom.fonts.regular} 14";
-          MenuFont = "${config.hm.custom.fonts.regular} 14";
-          TrayFont = "${config.hm.custom.fonts.regular} 14";
-          UseDarkTheme = true;
-          UseAccentColor = true;
-        };
       };
     };
   };
