@@ -1,6 +1,6 @@
 {
   lib,
-  host ? "acer",
+  host ? "minibook",
   flakePath ? "",
   ...
 }: let

@@ -6,8 +6,8 @@
   inherit (lib) mkForce mkMerge;
 in
   mkMerge [
+    # bootloader
     {
-      # bootloader
       boot.loader = {
         efi = {
           efiSysMountPoint = "/boot"; # ← use the same mount point here.
@@ -17,15 +17,15 @@ in
           enable = true;
         };
       };
-
-      # faster boot times
-      systemd.services.NetworkManager-wait-online.wantedBy = mkForce [];
     }
+    # kernel
     {
-      # kernel
       boot.kernelPackages = pkgs.linuxPackages_zen;
     }
+    # misc.
     {
+      # faster boot times
+      systemd.services.NetworkManager-wait-online.wantedBy = mkForce [];
       # reduce journald logs
       services.journald.extraConfig = ''SystemMaxUse=50M'';
     }

@@ -6,7 +6,6 @@
   username = "sumelan";
 in {
   imports = [
-    ./.
     ./inputMethod/japanese.nix
   ];
 

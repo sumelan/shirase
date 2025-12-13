@@ -177,6 +177,7 @@ in
         dev.enable = false;
       };
     }
+    # persist
     {
       hm.custom.persist = {
         home.cache.directories = [

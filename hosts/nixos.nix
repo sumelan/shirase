@@ -1,3 +1,7 @@
+# using `with` is considered an anti-pattern by nix.dev
+# https://nix.dev/guides/best-practices#best-practices
+# passing system etc. to nixosSystem is a useless deprecated pattern
+# that is superseded by `nixpkgs.hostPlatform` etc. in `hardware-configuration.nix`
 {inputs, ...}: let
   inherit (inputs) nixpkgs;
 
@@ -16,7 +20,7 @@
     ../modules/nixos
   ];
 
-  defaultHomeMods = [
+  defaultHmMods = [
     inputs.dankMaterialShell.homeModules.dankMaterialShell.default
     inputs.nix-index-database.homeModules.nix-index
     ../modules/home-manager
@@ -27,7 +31,7 @@
     user,
     hardware,
     nixModules ? [],
-    homeModules ? [],
+    hmModules ? [],
   }:
     nixpkgs.lib.nixosSystem {
       pkgs = import nixpkgs {
@@ -35,8 +39,6 @@
         config.allowUnfree = true;
       };
 
-      # passing system etc. to nixosSystem is a useless deprecated pattern
-      # that is superseded by `nixpkgs.hostPlatform` etc. in `hardware-configuration.nix`
       specialArgs = {
         inherit inputs lib host user;
         flakePath = "/persist/home/${user}/Projects/shirase";
@@ -51,7 +53,10 @@
           ./${host}
           ./${host}/hardware.nix
         ]
-        ++ [../users/${user}.nix]
+        ++ [
+          ../users/profile.nix
+          ../users/${user}.nix
+        ]
         ++ [../modules/overlays] # nixpkgs.overlays
         ++ [
           inputs.home-manager.nixosModules.home-manager
@@ -68,8 +73,8 @@
 
               users.${user} = {
                 imports =
-                  homeModules
-                  ++ defaultHomeMods
+                  hmModules
+                  ++ defaultHmMods
                   ++ [./${host}/home.nix];
               };
             };
@@ -83,8 +88,6 @@ in {
     acer = mkSystem "acer" {
       user = "sumelan";
       hardware = "laptop";
-      # using `with` is considered an anti-pattern by nix.dev
-      # https://nix.dev/guides/best-practices#best-practices
       nixModules = builtins.attrValues {
         inherit
           (inputs.nixos-hardware.nixosModules)
