@@ -105,10 +105,10 @@ in {
     "Mod+Shift+WheelScrollDown".action.move-column-to-workspace-down = {};
     "Mod+Shift+WheelScrollUp".action.move-column-to-workspace-up = {};
 
-    "Mod+WheelScrollLeft".action.move-column-left = {};
-    "Mod+WheelScrollRight".action.move-column-right = {};
-    "Mod+Shift+WheelScrollLeft".action.consume-or-expel-window-left = {};
-    "Mod+Shift+WheelScrollRight".action.consume-or-expel-window-right = {};
+    "Mod+WheelScrollLeft".action.focus-column-left = {};
+    "Mod+WheelScrollRight".action.focus-column-right = {};
+    "Mod+Shift+WheelScrollLeft".action.move-column-left = {};
+    "Mod+Shift+WheelScrollRight".action.move-column-right = {};
 
     # mouse click
     "Mod+MouseForward".action.consume-or-expel-window-left = {};
