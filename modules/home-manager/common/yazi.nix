@@ -1,11 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
-  inherit (lib.custom.colors) yellow_bright;
-  inherit (lib.custom.niri) spawn hotkey;
-in {
+{pkgs, ...}: {
   home = {
     packages = builtins.attrValues {
       inherit
@@ -145,19 +138,6 @@ in {
             run = "shell --confirm 'ripdrag \"$@\" -x 2>/dev/null &'";
           }
         ];
-      };
-    };
-
-    niri.settings = {
-      binds = {
-        "Mod+Shift+O" = {
-          action.spawn = spawn "ghostty -e yazi";
-          hotkey-overlay.title = hotkey {
-            color = yellow_bright;
-            name = "  yazi";
-            text = "Terminal File Manager";
-          };
-        };
       };
     };
   };

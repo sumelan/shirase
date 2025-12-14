@@ -1,6 +1,4 @@
-{lib, ...}: let
-  inherit (lib) singleton;
-in {
+_: {
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -25,17 +23,6 @@ in {
       # mpris user service to control media player over bluetooth
       mpris-proxy.enable = true;
       blueman-applet.enable = true;
-    };
-
-    programs.niri.settings = {
-      window-rules = [
-        {
-          matches = singleton {
-            app-id = "^.blueman-manager-wrapped$";
-          };
-          open-floating = true;
-        }
-      ];
     };
   };
 

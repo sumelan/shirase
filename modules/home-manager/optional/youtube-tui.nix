@@ -24,7 +24,6 @@
     orange_bright
     magenta_bright
     ;
-  inherit (lib.custom.niri) spawn hotkey;
 in {
   options.custom = {
     youtube-tui.enable = mkEnableOption "Aesthetically pleasing YouTube TUI written in Rust";
@@ -263,19 +262,6 @@ in {
       };
 
       "youtube-tui/remap.yml".source = (pkgs.formats.yaml {}).generate "remap" {};
-    };
-
-    programs.niri.settings = {
-      binds = {
-        "Mod+Shift+Y" = {
-          action.spawn = spawn "ghostty -e youtube-tui";
-          hotkey-overlay.title = hotkey {
-            color = red_base;
-            name = "  youtube-tui";
-            text = "Terminal YouTube Client";
-          };
-        };
-      };
     };
 
     custom.persist = {

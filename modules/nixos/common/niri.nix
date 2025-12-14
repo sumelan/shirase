@@ -14,15 +14,14 @@
   dmsPkgs = inputs.dankMaterialShell.packages.${pkgs.stdenv.hostPlatform.system}.dms-shell;
 in
   mkMerge [
-    # niri-flake
+    # niri
     {
       programs.niri = {
         enable = true;
         package = pkgs.niri;
+        # manually set instead
+        useNautilus = false;
       };
-      niri-flake.cache.enable = true;
-      # use dms' built-in polkit
-      systemd.user.services.niri-flake-polkit.enable = false;
     }
     # portal
     {

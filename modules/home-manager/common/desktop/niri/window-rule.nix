@@ -105,6 +105,10 @@ in {
           opacity 1.000000
       }
       window-rule {
+          match app-id="^solaar$"
+          open-floating true
+      }
+      window-rule {
           match app-id="^swayimg$"
           default-column-width { proportion 0.500000; }
           default-window-height { proportion 0.500000; }

@@ -1,9 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
-  inherit (lib) singleton;
+{pkgs, ...}: let
   outputSrc = pkgs.fetchFromGitHub {
     owner = "JackHack96";
     repo = "EasyEffects-Presets";
@@ -42,29 +37,6 @@ in {
           recursive = true;
         };
       };
-  };
-
-  programs.niri.settings = {
-    spawn-at-startup = [
-      {argv = ["easyeffects" "--hide-window"];}
-    ];
-
-    window-rules = [
-      {
-        matches = singleton {
-          app-id = "^com.saivert.pwvucontrol$";
-        };
-        open-floating = true;
-      }
-      {
-        matches = singleton {
-          app-id = "^com.github.wwmm.easyeffects$";
-        };
-        open-floating = true;
-        default-column-width.proportion = 0.5;
-        default-window-height.proportion = 0.5;
-      }
-    ];
   };
 
   custom.persist = {

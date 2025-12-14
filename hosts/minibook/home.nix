@@ -18,17 +18,6 @@ in {
     };
   };
 
-  programs.niri.settings.input = {
-    tablet = {
-      enable = true;
-      map-to-output = "DSI-1";
-    };
-    touch = {
-      enable = true;
-      map-to-output = "DSI-1";
-    };
-  };
-
   custom = let
     enableList = [
       "foliate"

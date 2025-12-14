@@ -3,7 +3,6 @@
   config,
   ...
 }: let
-  inherit (lib) singleton;
   inherit
     (lib.custom.colors)
     black0
@@ -103,20 +102,6 @@ in {
           ];
         };
       };
-    };
-
-    niri.settings = {
-      window-rules = [
-        {
-          matches = singleton {
-            app-id = "^com.gabm.satty$";
-          };
-          open-floating = true;
-          default-column-width.proportion = 0.50;
-          default-window-height.proportion = 0.50;
-          opacity = 1.0;
-        }
-      ];
     };
   };
 }

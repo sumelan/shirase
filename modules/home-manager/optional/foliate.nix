@@ -8,7 +8,6 @@
     (lib)
     mkEnableOption
     mkIf
-    singleton
     ;
 in {
   options.custom = {
@@ -17,15 +16,6 @@ in {
 
   config = mkIf config.custom.foliate.enable {
     home.packages = [pkgs.foliate];
-
-    programs.niri.settings.window-rules = [
-      {
-        matches = singleton {
-          app-id = "^com.github.johnfactotum.Foliate$";
-        };
-        block-out-from = "screen-capture";
-      }
-    ];
 
     custom.persist = {
       home = {

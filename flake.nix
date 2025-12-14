@@ -48,17 +48,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nixpkgs-stable.follows = "";
-        niri-stable.follows = "";
-        niri-unstable.follows = "";
-        xwayland-satellite-unstable.follows = "";
-      };
-    };
-
     nvf = {
       url = "github:notashelf/nvf";
       inputs = {

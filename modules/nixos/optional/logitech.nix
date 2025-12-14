@@ -3,12 +3,7 @@
   config,
   ...
 }: let
-  inherit
-    (lib)
-    mkEnableOption
-    mkIf
-    singleton
-    ;
+  inherit (lib) mkEnableOption mkIf;
 in {
   options.custom = {
     logitech = {
@@ -20,24 +15,6 @@ in {
     hardware.logitech.wireless = {
       enable = true;
       enableGraphical = true;
-    };
-
-    hm = {
-      programs.niri.settings = {
-        spawn-at-startup = [
-          {
-            argv = ["solaar" "-w" "hide" "-b" "symbolic"];
-          }
-        ];
-        window-rules = [
-          {
-            matches = singleton {
-              app-id = "^solaar$";
-            };
-            open-floating = true;
-          }
-        ];
-      };
     };
   };
 }

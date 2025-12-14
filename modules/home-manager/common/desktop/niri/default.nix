@@ -6,7 +6,12 @@
 }: let
   inherit (builtins) toString;
   inherit (lib) mkEnableOption getExe;
-  inherit (lib.custom.colors) gray2;
+  inherit
+    (lib.custom.colors)
+    gray2
+    blue2
+    orange_bright
+    ;
   inherit (config.xdg.userDirs) pictures;
 
   # output
@@ -16,7 +21,7 @@
   mainRefresh = toString mainMonitor.mode.refresh;
   mainScale = toString mainMonitor.scale;
   mainRotate =
-    if mainMonitor == 0
+    if mainMonitor.rotation == 0
     then "normal"
     else toString mainMonitor.rotation;
   mainPositionX = toString mainMonitor.position.x;
@@ -74,11 +79,6 @@ in {
             mode "${mainMode}"
         }
         screenshot-path "${pictures}/Screenshots/%Y-%m-%d_%H-%M-%S.png"
-        overview {
-            zoom 0.500000
-            backdrop-color "#3B4252"
-            workspace-shadow { color "${gray2}90"; }
-        }
         cursor {
             xcursor-theme "${cursorName}"
             xcursor-size ${cursorSize}
@@ -86,6 +86,31 @@ in {
         hotkey-overlay {
             skip-at-startup
             hide-not-bound
+        }
+        overview {
+            zoom 0.500000
+            backdrop-color "#3B4252"
+            workspace-shadow { color "${gray2}90"; }
+        }
+        recent-windows {
+            debounce-ms 750
+            open-delay-ms 150
+            highlight {
+                active-color "${blue2}ff"
+                urgent-color "${orange_bright}ff"
+                padding 30
+                corner-radius 0
+            }
+            previews {
+                max-height 480
+                max-scale 0.5
+            }
+            binds {
+                Mod+Tab { next-window; }
+                Mod+Shift+Tab { previous-window; }
+                Mod+grave { next-window filter="app-id"; }
+                Mod+Shift+grave { previous-window filter="app-id"; }
+            }
         }
         gestures {
             dnd-edge-view-scroll {

@@ -1,12 +1,8 @@
 {
-  lib,
   pkgs,
   flakePath,
   ...
-}: let
-  inherit (lib.custom.colors) blue0;
-  inherit (lib.custom.niri) spawn hotkey;
-in {
+}: {
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
@@ -36,19 +32,6 @@ in {
       enable = true;
       clean.extraArgs = "--keep 5";
       flake = flakePath;
-    };
-
-    niri.settings = {
-      binds = {
-        "Mod+Shift+N" = {
-          action.spawn = spawn "ghostty -e ns";
-          hotkey-overlay.title = hotkey {
-            color = blue0;
-            name = "󱄅  nix-search-tv";
-            text = "Nix Fuzzey Search";
-          };
-        };
-      };
     };
   };
 

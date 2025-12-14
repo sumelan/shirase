@@ -90,27 +90,27 @@ in {
           Mod+Shift+R hotkey-overlay-title="<span foreground=\"${orange_base}\">[  rmpc]</span> Terminal MPD Client" { spawn "ghostty" "-e" "rmpc"; }
           Mod+Shift+Y hotkey-overlay-title="<span foreground=\"${red_base}\">[  youtube-tui]</span> Terminal YouTube Client" { spawn "ghostty" "-e" "youtube-tui"; }
 
-          Ctrl+Space hotkey-overlay-title="<span foreground=\"${cyan_dim}\">[  Fcitx5]</span> Switch Mozc" { spawn "sh" "-c" "fcitx5-remote -t && swayosd-client --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard"; }
-
+          Mod+Bracketright hotkey-overlay-title="<span foreground=\"${orange_bright}\">[󰗢  Dynamic-cast]</span> select window to cast" { spawn "sh" "-c" "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)\n"; }
           Mod+Shift+Bracketright hotkey-overlay-title="<span foreground=\"${orange_bright}\">[󰗢  Dynamic-cast]</span> set current monitor to cast" { spawn "sh" "-c" "niri msg action set-dynamic-cast-monitor\n"; }
           Mod+Alt+Bracketright hotkey-overlay-title="<span foreground=\"${orange_bright}\">[󰗢  Dynamic-cast]</span> clear cast target" { spawn "sh" "-c" "niri msg action clear-dynamic-cast-target\n"; }
-          Mod+Bracketright hotkey-overlay-title="<span foreground=\"${orange_bright}\">[󰗢  Dynamic-cast]</span> select window to cast" { spawn "sh" "-c" "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)\n"; }
 
           Mod+Space hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
-          Mod+W hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Wallpapers" { spawn "dms" "ipc" "call" "dankdash" "wallpaper"; }
           Mod+Y hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Clipboard" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
           Mod+X hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Power Menu" { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
+          Mod+P hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Notepad" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
+          Mod+D hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Dashboard" { spawn "dms" "ipc" "call" "dash" "toggle" "overview"; }
+          Mod+W hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Wallpapers" { spawn "dms" "ipc" "call" "dankdash" "wallpaper"; }
+          Mod+M hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Processlist" { spawn "dms" "ipc" "call" "processlist" "toggle"; }
+          Mod+N hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Notifications" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
+          Mod+I hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Idle Inhibitor" { spawn "dms" "ipc" "call" "inhibit" "toggle"; }
+          Mod+Comma hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Settings" { spawn "dms" "ipc" "call" "settings" "toggle"; }
+          Mod+Backslash hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Interactive Screen-capture" { spawn "dms" "ipc" "call" "niri" "screenshot"; }
           Mod+Shift+Backslash hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Capture entire screen" { spawn "dms" "ipc" "call" "niri" "screenshotScreen"; }
           Mod+Alt+Backslash hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Capture focused window" { spawn "dms" "ipc" "call" "niri" "screenshotWindow"; }
           Mod+Alt+L hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Lock Screen" { spawn "dms" "ipc" "call" "lock" "lock"; }
           Mod+Alt+N hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Night Mode" { spawn "dms" "ipc" "call" "night" "toggle"; }
-          Mod+P hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Notepad" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
-          Mod+D hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Dashboard" { spawn "dms" "ipc" "call" "dash" "toggle" "overview"; }
-          Mod+M hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Processlist" { spawn "dms" "ipc" "call" "processlist" "toggle"; }
-          Mod+N hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Notifications" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
-          Mod+I hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Idle Inhibitor" { spawn "dms" "ipc" "call" "inhibit" "toggle"; }
-          Mod+Backslash hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Interactive Screen-capture" { spawn "dms" "ipc" "call" "niri" "screenshot"; }
-          Mod+Comma hotkey-overlay-title="<span foreground=\"${magenta_dim}\">[󰮤  DankMaterialShell]</span> Settings" { spawn "dms" "ipc" "call" "settings" "toggle"; }
+
+          Ctrl+Space hotkey-overlay-title="<span foreground=\"${cyan_dim}\">[  Fcitx5]</span> Switch Mozc" { spawn "sh" "-c" "fcitx5-remote -t && swayosd-client --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard"; }
 
           XF86AudioLowerVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "decrement" "3"; }
           XF86AudioMicMute allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "micmute"; }
@@ -121,7 +121,6 @@ in {
           XF86AudioRaiseVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "increment" "3"; }
           XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "5" ""; }
           XF86MonBrightnessUp allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "5" ""; }
-
       }
     '';
 }

@@ -24,19 +24,6 @@ in {
         ;
     };
 
-    programs.niri.settings = {
-      window-rules = [
-        {
-          matches = [
-            {app-id = "^Proton Mail$";}
-            {app-id = "^Proton Pass$";}
-            {app-id = "^.protonvpn-app-wrapped$";}
-          ];
-          block-out-from = "screen-capture";
-        }
-      ];
-    };
-
     custom.persist = {
       home = {
         directories = [

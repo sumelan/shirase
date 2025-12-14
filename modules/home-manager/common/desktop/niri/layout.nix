@@ -9,7 +9,7 @@
     green_bright
     ;
 in {
-  xdg.configFile."niri/layout.nix".text =
+  xdg.configFile."niri/layout.kdl".text =
     # kdl``
     ''
       layout {
@@ -23,7 +23,7 @@ in {
           focus-ring {
               width 4
               active-gradient angle=180 from="${green_bright}" relative-to="window" to="${cyan_bright}"
-              inactive-color gray3
+              inactive-color "${gray3}"
           }
           border { off; }
           background-color "transparent"

@@ -74,8 +74,6 @@ in {
     ."${prev.stdenv.hostPlatform.system}" or (throw "Unsupported system: ${prev.stdenv.hostPlatform.system}");
             });
       })
-    # niri-flake
-    inputs.niri.overlays.niri
     # firefox-addons
     inputs.firefox-addons.overlays.default
   ];

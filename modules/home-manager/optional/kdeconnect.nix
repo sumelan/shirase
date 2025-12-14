@@ -7,7 +7,6 @@
     (lib)
     mkEnableOption
     mkIf
-    singleton
     ;
 in {
   options.custom = {
@@ -19,15 +18,6 @@ in {
       enable = true;
       indicator = true;
     };
-
-    programs.niri.settings.window-rules = [
-      {
-        matches = singleton {
-          app-id = "^org.kde.kdeconnect-indicator$";
-        };
-        open-floating = true;
-      }
-    ];
 
     custom.persist = {
       home = {

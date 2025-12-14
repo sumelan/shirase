@@ -7,8 +7,6 @@
   ...
 }: let
   inherit (lib) getExe mkForce concatStringsSep;
-  inherit (lib.custom.colors) blue2;
-  inherit (lib.custom.niri) spawn hotkey;
   configPath = ".config/.librewolf";
 in {
   programs = {
@@ -114,19 +112,6 @@ in {
             .titlebar-spacer { display:none }
             .titlebar-buttonbox-container { display:none }
           '';
-      };
-    };
-
-    # NOTE: bitwarden window cannot be floated on this method
-    # https://github.com/YaLTeR/niri/discussions/1599
-    niri.settings.binds = {
-      "Mod+B" = {
-        action.spawn = spawn "librewolf";
-        hotkey-overlay.title = hotkey {
-          color = blue2;
-          name = "  Librewolf";
-          text = "Web Browser";
-        };
       };
     };
   };

@@ -1,7 +1,4 @@
-{lib, ...}: let
-  inherit (lib.custom.colors) blue1;
-  inherit (lib.custom.niri) spawn hotkey;
-in {
+_: {
   programs = {
     vesktop = {
       enable = true;
@@ -613,19 +610,6 @@ in {
           uiElements = {
             chatBarButtons = {};
             messagePopoverButtons = {};
-          };
-        };
-      };
-    };
-
-    niri.settings = {
-      binds = {
-        "Mod+V" = {
-          action.spawn = spawn "vesktop";
-          hotkey-overlay.title = hotkey {
-            color = blue1;
-            name = "  Vesktop";
-            text = "Discord Client";
           };
         };
       };

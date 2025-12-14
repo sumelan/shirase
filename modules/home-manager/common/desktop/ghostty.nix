@@ -1,7 +1,4 @@
-{lib, ...}: let
-  inherit (lib.custom.colors) blue2;
-  inherit (lib.custom.niri) spawn hotkey;
-in {
+_: {
   programs = {
     ghostty = {
       enable = true;
@@ -19,17 +16,6 @@ in {
         # run `ghostty +list-themes` to see available list
         theme = "Nord";
         window-decoration = false;
-      };
-    };
-
-    niri.settings.binds = {
-      "Mod+Return" = {
-        action.spawn = spawn "ghostty";
-        hotkey-overlay.title = hotkey {
-          color = blue2;
-          name = "󱙝  Ghostty";
-          text = "Terminal Emulator";
-        };
       };
     };
   };

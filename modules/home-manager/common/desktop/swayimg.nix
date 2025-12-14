@@ -4,8 +4,6 @@
   pkgs,
   ...
 }: let
-  inherit (lib) singleton;
-
   inherit
     (lib.custom.colors)
     gray1
@@ -200,18 +198,6 @@ in {
         };
       };
     };
-
-    niri.settings.window-rules = [
-      {
-        matches = singleton {
-          app-id = "^swayimg$";
-        };
-        open-floating = true;
-        default-column-width.proportion = 0.50;
-        default-window-height.proportion = 0.50;
-        opacity = 1.0;
-      }
-    ];
   };
 
   xdg = {
