@@ -28,15 +28,14 @@
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.orchis-theme.override {
-        border-radius = 5; # Suggested: 2 < value < 16
-        tweaks = ["nord"]; # can be "solid" "compact" "black" "primary" "macos" "submenu" "nord|dracula"
-      };
-      name = "Orchis-Grey-Dark-Compact-Nord";
+      package = pkgs.nordic;
+      name = "Nordic";
     };
     iconTheme = {
-      package = pkgs.tela-icon-theme;
-      name = "Tela-nord-dark";
+      package = pkgs.papirus-nord.override {
+        accent = "frostblue1";
+      };
+      name = "Papirus-Dark";
     };
     font = {
       name = config.custom.fonts.regular;
@@ -48,11 +47,9 @@
       force = true; # plasma seems to override this file?
     };
     gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
       gtk-error-bell = 0;
     };
     gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
       gtk-error-bell = 0;
     };
   };

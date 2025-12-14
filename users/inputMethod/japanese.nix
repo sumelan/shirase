@@ -9,16 +9,9 @@
     fcitx5 = {
       addons = [pkgs.fcitx5-mozc];
       waylandFrontend = true;
-      themes.nord = let
-        fcitx5-nord = pkgs.fetchFromGitHub {
-          owner = "tonyfettes";
-          repo = "fcitx5-nord";
-          rev = "bdaa8fb723b8d0b22f237c9a60195c5f9c9d74d1";
-          hash = "sha256-qVo/0ivZ5gfUP17G29CAW0MrRFUO0KN1ADl1I/rvchE=";
-        };
-      in {
-        highlightImage = "${fcitx5-nord}/Nord-Dark/arrow.png";
-        panelImage = "${fcitx5-nord}/Nord-Dark/radio.png";
+      themes.nord = {
+        highlightImage = "${pkgs.fcitx5-nord}/Nord-Dark/arrow.png";
+        panelImage = "${pkgs.fcitx5-nord}/Nord-Dark/radio.png";
         theme = {
           Metadata = {
             Name = "Nord-Dark";
