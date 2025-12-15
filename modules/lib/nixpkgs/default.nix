@@ -1,4 +1,4 @@
-{lib, ...}: {
+_: {
   colors = import ./colors.nix {};
-  niri = import ./niri.nix {inherit lib;};
+  niri = import ./niri.nix {};
 }

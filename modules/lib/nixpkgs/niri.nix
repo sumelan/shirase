@@ -1,12 +1,7 @@
-{lib, ...}: let
-  inherit (lib) splitString;
-in {
-  spawn = cmd: splitString " " cmd;
-  spawn-sh = cmd: ["sh" "-c" cmd];
-
+_: {
   hotkey = {
     color,
     name,
     text,
-  }: ''<span foreground="${color}">[${name}]</span> ${text}'';
+  }: ''<span foreground='${color}'>[${name}]</span> ${text}'';
 }

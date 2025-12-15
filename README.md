@@ -4,7 +4,7 @@ This is my personal flake.
 
 ## Features
 
-### Full Disk Encrtption + Impermanence
+### Full Disk Encryption + Impermanence
 
 My system consists from encrypted btrfs and
 [Impermanence](https://github.com/nix-community/impermanence). System rolls back
@@ -29,7 +29,7 @@ nvme0n1
 ### Custom Neovim
 
 My flake includes custom neovim packages configured by
-[nvf](https://github.com/NotAShelf/nvf). Those are separated to `nvfNix` and
+[nvf](https://github.com/NotAShelf/nvf). Those are separated to `nvfMini` and
 `nvf`. Both are portable and you can use my neovim on other nix-installed
 system.
 
@@ -37,28 +37,7 @@ system.
 nix run github:sumelan/shirase#nvf
 ```
 
-`nvfNix` is minimal and only focus on editting nix files.
-
-## Before Install
-
-### Using niri binary cache
-
-Before start `nixos-install`, you need to install cachix client in nix minimal
-iso. Since my flake uses `niri-unstable` so it produces a building process
-without the cachix [niri-flake](https://github.com/sodiboo/niri-flake) provided.
-
-```sh
-nix-env -iA cachix -f https://cachix.org/api/v1/install
-```
-
-Start using the binary cache.
-
-```sh
-cachix use niri
-```
-
-Add `imports = [ ./cachix.nix ]` in `/etc/nixos/configuration.nix` and run
-`sudo nixos-rebuild switch`.
+`nvfMini` is minimal and focus on only editting nix files.
 
 ## Resource
 

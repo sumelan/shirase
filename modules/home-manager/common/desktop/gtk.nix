@@ -28,14 +28,20 @@
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.nordic;
-      name = "Nordic";
+      package = pkgs.colloid-gtk-theme.override {
+        themeVariants = ["teal"]; # default: blue
+        colorVariants = ["dark"]; # default: all
+        sizeVariants = ["compact"]; # default: standard
+        tweaks = ["nord"];
+      };
+      name = "Colloid-Teal-Dark-Compact-Nord";
     };
     iconTheme = {
-      package = pkgs.papirus-nord.override {
-        accent = "frostblue1";
+      package = pkgs.colloid-icon-theme.override {
+        schemeVariants = ["nord"];
+        colorVariants = ["teal"]; # default is blue
       };
-      name = "Papirus-Dark";
+      name = "Colloid-Teal-Nord-Dark";
     };
     font = {
       name = config.custom.fonts.regular;
@@ -47,9 +53,11 @@
       force = true; # plasma seems to override this file?
     };
     gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
       gtk-error-bell = 0;
     };
     gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
       gtk-error-bell = 0;
     };
   };

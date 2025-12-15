@@ -98,9 +98,9 @@ in {
           open-floating true
       }
       window-rule {
+          match title="^Picture-in-Picture$"
           match title="^ピクチャーインピクチャー$"
           match title="^ピクチャー イン ピクチャー$"
-          match title="^Picture-in-Picture$"
           open-floating true
           opacity 1.000000
       }

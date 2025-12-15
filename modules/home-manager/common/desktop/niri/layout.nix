@@ -14,19 +14,34 @@ in {
     ''
       layout {
           gaps 14
-          struts {
-              left 2
-              right 2
-              top 2
-              bottom 2
+          center-focused-column "never"
+          always-center-single-column
+          empty-workspace-above-first
+          default-column-display "tabbed"
+          background-color "transparent"
+
+          preset-column-widths {
+              proportion 0.33333
+              proportion 0.5
+              proportion 0.66667
           }
+
+          default-column-width { proportion 0.5; }
+
+          preset-window-heights {
+              proportion 0.33333
+              proportion 0.5
+              proportion 0.66667
+          }
+
           focus-ring {
               width 4
               active-gradient angle=180 from="${green_bright}" relative-to="window" to="${cyan_bright}"
               inactive-color "${gray3}"
           }
+
           border { off; }
-          background-color "transparent"
+
           shadow {
               on
               offset x=0 y=0
@@ -35,6 +50,7 @@ in {
               draw-behind-window false
               color "${black0}90"
           }
+
           tab-indicator {
               hide-when-single-tab
               place-within-column
@@ -47,9 +63,15 @@ in {
               active-color "${blue0}90"
               inactive-color "${gray3}90"
           }
+
           insert-hint { gradient angle=45 from="${green_dim}" relative-to="window" to="${green_bright}"; }
-          default-column-width
-          center-focused-column "never"
+
+          struts {
+              left 2
+              right 2
+              top 2
+              bottom 2
+          }
       }
     '';
 }
