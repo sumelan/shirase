@@ -104,4 +104,18 @@ in {
       };
     };
   };
+  xdg.mimeApps = let
+    value = "satty.desktop";
+    imgAssociations = builtins.listToAttrs (map (name: {
+        inherit name value;
+      }) [
+        "image/jpeg"
+        "image/gif"
+        "image/webp"
+        "image/png"
+      ]);
+  in {
+    # remove `satty.desktop` from image mimetypes
+    associations.removed = imgAssociations;
+  };
 }

@@ -27,7 +27,7 @@ in {
       window-rule {
           match is-floating=false is-focused=true
           focus-ring { width 4; }
-          opacity 0.980000
+          opacity 0.950000
       }
       window-rule {
           match is-floating=false is-focused=false

@@ -15,6 +15,5 @@ _: {
     ./swayimg.nix
     ./swayosd.nix
     ./vesktop.nix
-    ./zathura.nix
   ];
 }
