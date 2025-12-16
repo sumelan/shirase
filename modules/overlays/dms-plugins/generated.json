@@ -1,7 +1,7 @@
 {
     "dms-plugins": {
         "cargoLocks": null,
-        "date": "2025-12-04",
+        "date": "2025-12-14",
         "extract": null,
         "name": "dms-plugins",
         "passthru": null,
@@ -13,11 +13,11 @@
             "name": null,
             "owner": "AvengeMedia",
             "repo": "dms-plugins",
-            "rev": "8715ca35b61d7c6275a300fa4992e2b0490f70f7",
-            "sha256": "sha256-6ScuVcvSaXc35Sf1iwtCy8aM/pFID3+0G4NRMw8aBcM=",
+            "rev": "cf0efeb8311bf59f9f4caec06689100ee5f1aa35",
+            "sha256": "sha256-vEoax/uZ3VPe4zw6761dHiPMbYacYlg1hPyORiljWKc=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "8715ca35b61d7c6275a300fa4992e2b0490f70f7"
+        "version": "cf0efeb8311bf59f9f4caec06689100ee5f1aa35"
     }
 }

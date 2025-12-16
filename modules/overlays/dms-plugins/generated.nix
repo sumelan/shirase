@@ -3,14 +3,14 @@
 {
   dms-plugins = {
     pname = "dms-plugins";
-    version = "8715ca35b61d7c6275a300fa4992e2b0490f70f7";
+    version = "cf0efeb8311bf59f9f4caec06689100ee5f1aa35";
     src = fetchFromGitHub {
       owner = "AvengeMedia";
       repo = "dms-plugins";
-      rev = "8715ca35b61d7c6275a300fa4992e2b0490f70f7";
+      rev = "cf0efeb8311bf59f9f4caec06689100ee5f1aa35";
       fetchSubmodules = false;
-      sha256 = "sha256-6ScuVcvSaXc35Sf1iwtCy8aM/pFID3+0G4NRMw8aBcM=";
+      sha256 = "sha256-vEoax/uZ3VPe4zw6761dHiPMbYacYlg1hPyORiljWKc=";
     };
-    date = "2025-12-04";
+    date = "2025-12-14";
   };
 }
