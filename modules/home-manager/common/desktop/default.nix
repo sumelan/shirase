@@ -9,7 +9,6 @@ _: {
     ./librewolf.nix
     ./mpv.nix
     ./nautilus.nix
-    ./pipewire.nix
     ./qt.nix
     ./satty.nix
     ./swayimg.nix

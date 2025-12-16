@@ -123,8 +123,8 @@ in {
           Mod+WheelScrollUp { focus-workspace-up; }
           Mod+TouchpadScrollDown hotkey-overlay-title=null { focus-workspace-down; }
           Mod+TouchpadScrollUp hotkey-overlay-title=null { focus-workspace-up; }
-          Mod+Shift+J { move-column-to-workspace-down; }
-          Mod+Shift+K { move-column-to-workspace-up; }
+          Mod+Shift+J { move-window-down-or-to-workspace-down; }
+          Mod+Shift+K { move-window-up-or-to-workspace-up; }
           Mod+Shift+WheelScrollDown { move-column-to-workspace-down; }
           Mod+Shift+WheelScrollUp { move-column-to-workspace-up; }
           Mod+Shift+TouchpadScrollDown hotkey-overlay-title=null { move-column-to-workspace-down; }
