@@ -46,20 +46,13 @@ in
         nixPath = mapAttrsToList (name: _: "${name}=flake:${name}") inputs;
         registry = mapAttrs (_: flake: {inherit flake;}) inputs;
       in {
+        # disable channel because i use flake's input as source
+        # also make flake registry and nix path match flake input
+        # without doing above, `nix run nixpkgs#fastfetch` would come from the channel and not your flake
         channel.enable = false;
 
         # required for nix-shell -p to work
         inherit nixPath;
-
-        # Automatic garbage collection
-        gc = {
-          automatic = true;
-          dates = "daily";
-          options = "--delete-older-than 7d";
-        };
-
-        # for lix: `pkgs.lixPackageSets.latest.lix`
-        package = pkgs.nixVersions.latest;
 
         # to use shorter IDs instead of lengthy address
         registry =
@@ -80,6 +73,16 @@ in
               };
             };
           };
+
+        # for lix: `pkgs.lixPackageSets.latest.lix`
+        package = pkgs.nixVersions.latest;
+
+        # Automatic garbage collection
+        gc = {
+          automatic = true;
+          dates = "daily";
+          options = "--delete-older-than 7d";
+        };
 
         settings = {
           # Optimise symlinks

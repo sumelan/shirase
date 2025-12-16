@@ -1,18 +1,21 @@
-_: {
+{lib, ...}: let
+  inherit (lib) mkForce;
+in {
   imports = [
     ./plugins.nix
     ./settings.nix
   ];
 
   programs = {
+    # NOTE: edtting screenshot feature need niri-git
     dankMaterialShell = {
       enable = true;
-      systemd = {
-        enable = false;
-        restartIfChanged = false;
-      };
+      systemd.enable = true;
     };
   };
+
+  # override service config flake provide
+  systemd.user.services.dms.Service.Restart = mkForce "always";
 
   custom.persist = {
     home = {

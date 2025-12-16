@@ -135,7 +135,13 @@
           # ripdrag
           {
             on = "<C-n>";
-            run = "shell --confirm 'ripdrag \"$@\" -x 2>/dev/null &'";
+            run = ''shell -- ripdrag "$@" -x 2>/dev/null &'';
+            desc = "Drag and Drop files";
+          }
+          {
+            on = "<C-s>";
+            run = ''shell -- satty -f "$@" 2>/dev/null &'';
+            desc = "Edit image";
           }
         ];
       };

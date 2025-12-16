@@ -2,16 +2,9 @@
   lib,
   pkgs,
   user,
-  inputs,
   ...
 }: let
-  inherit
-    (lib)
-    mkForce
-    getExe
-    mkMerge
-    ;
-  dmsPkgs = inputs.dankMaterialShell.packages.${pkgs.stdenv.hostPlatform.system}.dms-shell;
+  inherit (lib) mkMerge;
 in
   mkMerge [
     # niri
@@ -51,19 +44,6 @@ in
       programs.dankMaterialShell = {
         enable = true;
         systemd.enable = false;
-      };
-      # systemd setup
-      systemd.user.services.dms-shell = {
-        description = "DankMaterialShell";
-        path = mkForce [];
-        partOf = ["graphical-session.target"];
-        after = ["graphical-session.target"];
-        wantedBy = ["graphical-session.target"];
-        restartIfChanged = true;
-        serviceConfig = {
-          ExecStart = getExe dmsPkgs + " run --session";
-          Restart = "always";
-        };
       };
     }
     # greeter
