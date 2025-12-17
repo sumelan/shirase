@@ -10,7 +10,7 @@
     ;
 in {
   xdg.configFile."niri/layout.kdl".text =
-    # kdl``
+    # kdl
     ''
       layout {
           gaps 14

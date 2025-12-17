@@ -261,15 +261,7 @@ in {
               {
                 id = "music";
                 enabled = true;
-                mediaSize = 2;
-              }
-              {
-                id = "privacyIndicator";
-                enabled = true;
-              }
-              {
-                id = "idleInhibitor";
-                enabled = true;
+                mediaSize = 1;
               }
             ];
             centerWidgets = [
@@ -279,6 +271,15 @@ in {
               }
             ];
             rightWidgets = [
+              {
+                id = "idleInhibitor";
+                enabled = true;
+              }
+              {
+                id = "privacyIndicator";
+                enabled = true;
+              }
+
               {
                 id = "systemTray";
                 enabled = true;

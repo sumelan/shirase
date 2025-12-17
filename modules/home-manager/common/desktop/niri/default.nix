@@ -52,10 +52,13 @@ in {
     xdg.configFile."niri/config.kdl".text =
       # kdl
       ''
-        hotkey-overlay {
-            skip-at-startup
-            hide-not-bound
+        output "${mainMonitorName}" {
+            scale ${mainScale}
+            transform "${mainRotate}"
+            position x=${mainPositionX} y=${mainPositionY}
+            mode "${mainMode}"
         }
+
         input {
             keyboard {
                 xkb {
@@ -76,21 +79,58 @@ in {
             touch { map-to-output "DSI-1"; }
             focus-follows-mouse
         }
-        output "${mainMonitorName}" {
-            scale ${mainScale}
-            transform "${mainRotate}"
-            position x=${mainPositionX} y=${mainPositionY}
-            mode "${mainMode}"
+
+        prefer-no-csd
+
+        screenshot-path "${pictures}/Screenshots/%Y-%m-%d_%H-%M-%S.png"
+
+        environment {
+            "DMS_SCREENSHOT_EDITOR" "satty"
+            "ELECTRON_OZONE_PLATFORM_HINT" "auto"
+            "GDK_BACKEND" "wayland"
+            "QT_QPA_PLATFORM" "wayland"
+            "QT_QPA_PLATFORMTHEME" "qt5ct"
+            "QT_QPA_PLATFORMTHEME_QT6" "qt6ct"
+            "QT_STYLE_OVERRIDE" "kvantum"
+            "QT_WAYLAND_DISABLE_WINDOWDECORATION" "1"
+            "XDG_CURRENT_DESKTOP" "niri"
+            "XDG_SESSION_TYPE" "wayland"
         }
+
         cursor {
             xcursor-theme "${cursorName}"
             xcursor-size ${cursorSize}
+            hide-when-typing
+            hide-after-inactive-ms 1000
         }
+
         overview {
             zoom 0.500000
             backdrop-color "#3B4252"
             workspace-shadow { color "${gray2}90"; }
         }
+
+        xwayland-satellite {
+            ${xwayland}
+        }
+
+        clipboard {
+            disable-primary
+        }
+
+        hotkey-overlay {
+            skip-at-startup
+            hide-not-bound
+        }
+
+        gestures {
+            dnd-edge-view-scroll {
+                trigger-width 60
+                delay-ms 100
+                max-speed 1500
+            }
+        }
+
         recent-windows {
             debounce-ms 750
             open-delay-ms 150
@@ -111,30 +151,6 @@ in {
                 Mod+Shift+grave { previous-window filter="app-id"; }
             }
         }
-        gestures {
-            dnd-edge-view-scroll {
-                trigger-width 60
-                delay-ms 100
-                max-speed 1500
-            }
-        }
-        prefer-no-csd
-        screenshot-path "${pictures}/Screenshots/%Y-%m-%d_%H-%M-%S.png"
-        xwayland-satellite {
-            ${xwayland}
-        }
-        environment {
-            "DMS_SCREENSHOT_EDITOR" "satty"
-            "ELECTRON_OZONE_PLATFORM_HINT" "auto"
-            "GDK_BACKEND" "wayland"
-            "QT_QPA_PLATFORM" "wayland"
-            "QT_QPA_PLATFORMTHEME" "qt5ct"
-            "QT_QPA_PLATFORMTHEME_QT6" "qt6ct"
-            "QT_STYLE_OVERRIDE" "kvantum"
-            "QT_WAYLAND_DISABLE_WINDOWDECORATION" "1"
-            "XDG_CURRENT_DESKTOP" "niri"
-            "XDG_SESSION_TYPE" "wayland"
-        }
 
         include "animation.kdl"
         include "binds.kdl"
@@ -147,6 +163,7 @@ in {
         include "dms/binds.kdl"
         include "dms/colors.kdl"
         include "dms/layout.kdl"
+        include "dms/outputs.kdl"
         include "dms/wpblur.kdl"
       '';
   };
