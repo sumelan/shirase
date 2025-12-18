@@ -1,22 +1,10 @@
 {
   lib,
-  pkgs,
   user,
   ...
 }: let
   inherit (lib) genAttrs;
 in {
-  home.packages = builtins.attrValues {
-    inherit
-      (pkgs)
-      brightnessctl
-      cliphist
-      libnotify
-      playerctl
-      wl-clipboard
-      ;
-  };
-
   # create directories on boot if not exist
   systemd.user.tmpfiles.rules = [
     "d! %h/Pictures/Wallpapers - ${user} users - -"
@@ -41,4 +29,14 @@ in {
       inherit name;
       noDisplay = true;
     });
+
+  custom.persist = {
+    home.directories = [
+      "Documents"
+      "Downloads"
+      "Music"
+      "Pictures"
+      "Videos"
+    ];
+  };
 }

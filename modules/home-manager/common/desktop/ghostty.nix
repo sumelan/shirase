@@ -1,22 +1,20 @@
 _: {
-  programs = {
-    ghostty = {
-      enable = true;
-      enableBashIntegration = true;
-      enableFishIntegration = true;
-      settings = {
-        alpha-blending = "linear-corrected";
-        confirm-close-surface = false;
-        copy-on-select = "clipboard";
-        cursor-style = "bar";
-        font-feature = "zero";
-        font-size = 14;
-        font-style = "Medium";
-        minimum-contrast = 1.1;
-        # run `ghostty +list-themes` to see available list
-        theme = "Nord";
-        window-decoration = false;
-      };
+  programs.ghostty = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+    settings = {
+      alpha-blending = "linear-corrected";
+      confirm-close-surface = false;
+      copy-on-select = "clipboard";
+      cursor-style = "bar";
+      font-feature = "zero";
+      font-size = 14;
+      font-style = "Medium";
+      minimum-contrast = 1.1;
+      # run `ghostty +list-themes` to see available list
+      theme = "Nord";
+      window-decoration = false;
     };
   };
 

@@ -273,11 +273,13 @@ in {
     fish = {
       # fix starship prompt to only have newlines after the first command
       # https://github.com/starship/starship/issues/560#issuecomment-1465630645
-      shellInit = ''
-        function prompt_newline --on-event fish_postexec
-          echo ""
-        end
-      '';
+      shellInit =
+        # fish
+        ''
+          function prompt_newline --on-event fish_postexec
+            echo ""
+          end
+        '';
       interactiveShellInit =
         mkAfter
         # fish

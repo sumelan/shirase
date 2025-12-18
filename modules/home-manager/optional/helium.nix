@@ -11,11 +11,9 @@ in {
   };
 
   config = mkIf config.custom.helium.enable {
-    programs = {
-      chromium = {
-        enable = true;
-        package = pkgs.custom.helium;
-      };
+    programs.chromium = {
+      enable = true;
+      package = pkgs.custom.helium;
     };
 
     xdg.mimeApps = let

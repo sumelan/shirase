@@ -13,7 +13,7 @@ in
         enable = true;
         package = pkgs.niri;
         # manually set instead
-        useNautilus = false;
+        useNautilus = true;
       };
     }
     # portal
@@ -32,7 +32,8 @@ in
           common.default = ["gnome"];
           niri = {
             default = ["gtk" "gnome"];
-            "org.freedesktop.impl.portal.FileChooser" = ["gtk"];
+            # use Nautilus
+            "org.freedesktop.impl.portal.FileChooser" = ["gnome"];
             "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
           };
           obs.default = ["gnome"];

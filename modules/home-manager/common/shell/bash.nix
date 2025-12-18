@@ -1,7 +1,7 @@
-{config, ...}: let
-  histFile = "${config.xdg.configHome}/bash/.bash_history";
-in {
-  programs.bash = {
+{config, ...}: {
+  programs.bash = let
+    histFile = "${config.xdg.configHome}/bash/.bash_history";
+  in {
     enable = true;
     enableCompletion = true;
     historyFile = histFile;

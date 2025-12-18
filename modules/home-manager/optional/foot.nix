@@ -11,27 +11,25 @@ in {
   };
 
   config = mkIf config.custom.foot.enable {
-    programs = {
-      foot = {
-        enable = true;
-        settings = {
-          main = {
-            include = "~/.config/foot/themes/nord";
-            font = "monospace:size=14";
-            initial-window-size-pixels = "1000x800";
-          };
-          scrollback = {
-            lines = 10000;
-          };
-          cursor = {
-            style = "beam";
-            blink = "yes";
-            blink-rate = 500;
-            beam-thickness = 2.0;
-          };
-          mouse = {
-            hide-when-typing = "yes";
-          };
+    programs.foot = {
+      enable = true;
+      settings = {
+        main = {
+          include = "~/.config/foot/themes/nord";
+          font = "monospace:size=14";
+          initial-window-size-pixels = "1000x800";
+        };
+        scrollback = {
+          lines = 10000;
+        };
+        cursor = {
+          style = "beam";
+          blink = "yes";
+          blink-rate = 500;
+          beam-thickness = 2.0;
+        };
+        mouse = {
+          hide-when-typing = "yes";
         };
       };
     };

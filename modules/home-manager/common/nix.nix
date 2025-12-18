@@ -6,6 +6,7 @@
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
+      comma # Runs software without installing it. usage: `, cowsay neato`
       nix-output-monitor
       nix-tree
       nix-search-tv
@@ -20,8 +21,7 @@
         pkgs.fzf
         pkgs.nix-search-tv
       ];
-      # ignore checks since i didn't write this
-      checkPhase = "";
+      checkPhase = ""; # ignore checks since i didn't write this
       text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
     };
   };

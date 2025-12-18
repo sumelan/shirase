@@ -23,12 +23,15 @@ in
       services.envfs.enable = true;
       system = {
         # envfs sets usrbinenv activation script to '''' with mkOverride
-        activationScripts.usrbinenv = mkOverride (50 - 1) ''
-          if [ ! -d "/usr/bin" ]; then
-            mkdir -p /usr/bin
-            chmod 0755 /usr/bin
-          fi
-        '';
+        activationScripts.usrbinenv =
+          mkOverride (50 - 1)
+          # sh
+          ''
+            if [ ! -d "/usr/bin" ]; then
+              mkdir -p /usr/bin
+              chmod 0755 /usr/bin
+            fi
+          '';
       };
     }
     # make a symlink of flake within the generation
@@ -60,7 +63,7 @@ in
           // {
             n = registry.nixpkgs;
             master = {
-              # the flake reference: 'nixpkgs-master'
+              # the flake reference: `nixpkgs-master`
               from = {
                 type = "indirect";
                 id = "nixpkgs-master";
@@ -74,7 +77,7 @@ in
             };
           };
 
-        # for lix: `pkgs.lixPackageSets.latest.lix`
+        # lix: `pkgs.lixPackageSets.latest.lix`
         package = pkgs.nixVersions.latest;
 
         # Automatic garbage collection

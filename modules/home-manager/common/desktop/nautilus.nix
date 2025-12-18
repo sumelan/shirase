@@ -10,8 +10,8 @@ in {
   home.packages = builtins.attrValues {
     inherit
       (pkgs)
-      file-roller
       nautilus
+      file-roller
       libheif # HEIC image preview
       p7zip-rar # support for encrypted archives
       webp-pixbuf-loader # for webp thumbnails
@@ -47,11 +47,11 @@ in {
   in
     [
       "file://${homeDir}/Documents"
-      "file://${homeDir}/Music"
-      "file://${homeDir}/Pictures/Wallpapers"
-      "file://${homeDir}/Pictures/Screenshots"
-      "file://${homeDir}/Videos"
       "file://${homeDir}/Downloads"
+      "file://${homeDir}/Music"
+      "file://${homeDir}/Videos"
+      "file://${homeDir}/Pictures/Screenshots"
+      "file://${homeDir}/Pictures/Wallpapers"
     ]
     ++ [
       "file://${flakePath} Shirase"

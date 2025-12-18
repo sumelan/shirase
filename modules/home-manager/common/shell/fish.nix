@@ -5,9 +5,18 @@
   ...
 }: let
   inherit (lib) getExe mkForce;
-  fishPath = getExe config.programs.fish.package;
 in {
-  programs = {
+  # fish plugins, home-manager's programs.fish.plugins has a weird format
+  home.packages = builtins.attrValues {
+    inherit
+      (pkgs.fishPlugins)
+      sponge # do not add failed commands to history
+      ;
+  };
+
+  programs = let
+    fishPath = getExe config.programs.fish.package;
+  in {
     fish = {
       enable = true;
       functions = {
@@ -38,18 +47,8 @@ in {
         fish_vi_key_bindings
       '';
     };
-  };
 
-  # fish plugins, home-manager's programs.fish.plugins has a weird format
-  home.packages = builtins.attrValues {
-    inherit
-      (pkgs.fishPlugins)
-      sponge # do not add failed commands to history
-      ;
-  };
-
-  # set as default interactive shell
-  programs = {
+    # set as default interactive shell
     ghostty.settings = {
       command = mkForce "SHELL=${fishPath} ${fishPath}";
     };
