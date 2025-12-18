@@ -30,15 +30,6 @@ in
         trim.enable = true;
       };
 
-      # 8 GB swap
-      swapDevices = [
-        {
-          # FIXME: Check partlabel: run `blkid -s PARTLABEL -o value /dev/nvme0n1p2`
-          device = "/dev/disk/by-partlabel/SWAP";
-          randomEncryption.enable = true;
-        }
-      ];
-
       # standardized filesystem layout
       fileSystems = {
         "/" = {
