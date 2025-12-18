@@ -73,7 +73,7 @@ in {
       services.rollback = {
         description = "Rollback ZFS root dataset to a pristine state";
         wantedBy = ["initrd.target"];
-        after = ["zfs-import-system.service"];
+        after = ["zfs-import-zroot.service"];
         # Before mounting the system root (/sysroot) during the early boot process
         before = ["sysroot.mount"];
         path = [pkgs.zfs];
