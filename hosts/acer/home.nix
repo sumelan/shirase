@@ -20,8 +20,6 @@ in {
 
   custom = let
     enableList = [
-      "protonapp"
-      "youtube-tui"
     ];
 
     disableList = [

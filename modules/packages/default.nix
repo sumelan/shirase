@@ -5,7 +5,7 @@
 }: let
   inherit (pkgs) callPackage;
   mkNvf = extraModules: {
-    host ? "minibook",
+    host ? "minibookx",
     flakePath ? "",
   }:
     (inputs.nvf.lib.neovimConfiguration {

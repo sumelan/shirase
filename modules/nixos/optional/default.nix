@@ -1,7 +1,6 @@
 _: {
   imports = [
     ./audiobookshelf.nix
-    ./btrbk.nix
     ./docker.nix
     ./hdds.nix
     ./keyd.nix
@@ -9,6 +8,7 @@ _: {
     ./qmk.nix
     ./sops-nix.nix
     ./steam.nix
+    ./syncoid.nix
     ./syncthing.nix
     ./vr.nix
   ];

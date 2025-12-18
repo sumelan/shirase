@@ -54,8 +54,6 @@ in
     {
       # enable opengl
       hardware.graphics.enable = true;
-      # zram
-      zramSwap.enable = true;
     }
     # services
     {

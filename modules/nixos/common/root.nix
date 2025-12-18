@@ -27,8 +27,9 @@ in {
         root = {
           initialPassword = "password";
           hashedPasswordFile = "/persist/etc/shadow/root";
+          # FIXME: add ssh-key
           openssh.authorizedKeys.keys = [
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMy/TE68lwvJBZ2oiWWQeP/6qTYKrphrYYbLdwYXfeIL root"
+            ""
           ];
         };
       };

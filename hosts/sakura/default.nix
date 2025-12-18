@@ -5,29 +5,34 @@
 }: let
   inherit (lib) mkIf genAttrs;
 in {
-  services.syncthing = mkIf config.custom.syncthing.enable {
-    key = config.sops.secrets."syncthing/sakura-key".path;
-    cert = config.sops.secrets."syncthing/sakura-cert".path;
+  # FIXME: add networking.hostID.
+  networking.hostId = "";
 
-    settings = {
-      devices = {
-        "minibook" = {id = "IJOMYYL-OQPSRXW-FCJW6UB-NXBO2NW-ZZL2KFN-XVONDG2-E6KY2T4-LJMXWQ4";};
-      };
-      folders = {
-        "Documents" = {
-          devices = ["minibook"];
+  services = {
+    syncthing = mkIf config.custom.syncthing.enable {
+      key = config.sops.secrets."syncthing/sakura-key".path;
+      cert = config.sops.secrets."syncthing/sakura-cert".path;
+
+      settings = {
+        devices = {
+          "minibookx" = {id = "IJOMYYL-OQPSRXW-FCJW6UB-NXBO2NW-ZZL2KFN-XVONDG2-E6KY2T4-LJMXWQ4";};
         };
-        "Music" = {
-          devices = ["minibook"];
-        };
-        "MPD" = {
-          devices = ["minibook"];
-        };
-        "Euphonica" = {
-          devices = ["minibook"];
-        };
-        "Wallpapers" = {
-          devices = ["minibook"];
+        folders = {
+          "Documents" = {
+            devices = ["minibookx"];
+          };
+          "Music" = {
+            devices = ["minibookx"];
+          };
+          "MPD" = {
+            devices = ["minibookx"];
+          };
+          "Euphonica" = {
+            devices = ["minibookx"];
+          };
+          "Wallpapers" = {
+            devices = ["minibookx"];
+          };
         };
       };
     };
@@ -37,7 +42,8 @@ in {
     enableList = [
       "logitech"
       "steam"
-      "syncthing"
+      #  "syncoid"
+      #  "syncthing"
       "qmk"
     ];
     disableList = [
@@ -47,14 +53,10 @@ in {
     ];
   in
     {
-      btrbk = {
-        enable = true;
-        usb.enable = true;
-      };
       hdds = {
-        enable = true;
-        westernDigital.enable = true;
-        ironWolf.enable = true;
+        enable = false;
+        westernDigital = true;
+        ironWolf = true;
       };
     }
     // genAttrs enableList (_name: {enable = true;})

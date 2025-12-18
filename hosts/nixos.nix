@@ -97,7 +97,7 @@ in {
       };
     };
 
-    minibook = mkSystem "minibook" {
+    minibookx = mkSystem "minibookx" {
       user = "sumelan";
       hardware = "laptop";
       nixModules = [

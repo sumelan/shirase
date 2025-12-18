@@ -111,17 +111,17 @@
         }
         # time-travel
         {
-          on = ["b" "h"];
+          on = ["z" "h"];
           run = "plugin time-travel prev";
           desc = "Go to previous snapshot";
         }
         {
-          on = ["b" "l"];
+          on = ["z" "l"];
           run = "plugin time-travel next";
           desc = "Go to next snapshot";
         }
         {
-          on = ["b" "e"];
+          on = ["z" "e"];
           run = "plugin time-travel exit";
           desc = "Exit browsing snapshots";
         }
