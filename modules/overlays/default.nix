@@ -48,32 +48,6 @@ in {
           ]);
       });
     })
-    # use latest package
-    (_final: prev: {
-        protonmail-desktop = let
-          linuxHash = "sha256-Xr0bcJpiQbWUIDz+zJRK96xQ/q7MUEA9LumAr9th8D4=";
-          darwinHash = "";
-        in
-          prev.protonmail-desktop.overrideAttrs (_old: rec {
-              version = "1.10.1";
-              src =
-                {
-                  "x86_64-linux" = prev.fetchurl {
-                    url = "https://proton.me/download/mail/linux/${version}/ProtonMail-desktop-beta.deb";
-                    hash = linuxHash;
-                  };
-                  "aarch64-darwin" = prev.fetchurl {
-                    url = "https://proton.me/download/mail/macos/${version}/ProtonMail-desktop.dmg";
-                    hash = darwinHash;
-                  };
-                  "x86_64-darwin" = prev.fetchurl {
-                    url = "https://proton.me/download/mail/macos/${version}/ProtonMail-desktop.dmg";
-                    hash = darwinHash;
-                  };
-                }
-    ."${prev.stdenv.hostPlatform.system}" or (throw "Unsupported system: ${prev.stdenv.hostPlatform.system}");
-            });
-      })
     # firefox-addons
     inputs.firefox-addons.overlays.default
   ];
