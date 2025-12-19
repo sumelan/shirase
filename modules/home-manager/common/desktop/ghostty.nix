@@ -1,4 +1,4 @@
-_: {
+{config, ...}: {
   programs.ghostty = {
     enable = true;
     enableBashIntegration = true;
@@ -8,6 +8,7 @@ _: {
       confirm-close-surface = false;
       copy-on-select = "clipboard";
       cursor-style = "bar";
+      font-family = config.custom.fonts.monospace;
       font-feature = "zero";
       font-size = 14;
       font-style = "Medium";

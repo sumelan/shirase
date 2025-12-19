@@ -37,7 +37,7 @@ in {
           owner = config.services.syncthing.user;
           inherit (config.services.syncthing) group;
         };
-        "syncthing/minibook-key" = {
+        "syncthing/minibookx-key" = {
           mode = "0440";
           owner = config.services.syncthing.user;
           inherit (config.services.syncthing) group;
@@ -47,7 +47,7 @@ in {
           owner = config.services.syncthing.user;
           inherit (config.services.syncthing) group;
         };
-        "syncthing/minibook-cert" = {
+        "syncthing/minibookx-cert" = {
           mode = "0440";
           owner = config.services.syncthing.user;
           inherit (config.services.syncthing) group;
