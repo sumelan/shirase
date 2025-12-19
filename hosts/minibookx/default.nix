@@ -5,8 +5,7 @@
 }: let
   inherit (lib) mkIf genAttrs;
 in {
-  # FIXME: add networking.hostID.
-  networking.hostId = "7a2dd725";
+  networking.hostId = "56895d2b";
 
   hardware = {
     chuwi-minibook-x = {

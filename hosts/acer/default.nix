@@ -5,7 +5,6 @@
 }: let
   inherit (lib) mkIf genAttrs;
 in {
-  # FIXME: add networking.hostID.
   networking.hostId = "22fe2870";
 
   services = {
