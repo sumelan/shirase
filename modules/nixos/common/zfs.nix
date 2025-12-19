@@ -31,6 +31,7 @@ in
       };
 
       # standardized filesystem layout
+      # NOTE: swap is written in each host's `hardware.nix`
       fileSystems = {
         "/" = {
           device = "zroot/root";
