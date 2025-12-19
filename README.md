@@ -34,8 +34,13 @@ Before run `nixos-install`, one task required; writing hardware configuration
 about target host. Filesystem mounts are already wrote on this flake but they
 lack of swap mount. This is because I choose to encrypt my swap and need to
 write the partUUID of swap disk after the partitioning. This is optional so you
-can write swap mount in advance to automatically install. To generate hardware
-config without filesystem info you can run below command.
+can write swap mount in advance to automatically install.
+
+```sh
+lsblk -dno PARTUUID /dev/nvme0n1p2
+```
+
+To generate hardware config without filesystem info you can run below command.
 
 ```sh
 nixos-generate-config --no-filesystems --show-hardware-config
