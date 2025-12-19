@@ -5,8 +5,7 @@
 }: let
   inherit (lib) mkIf genAttrs;
 in {
-  # FIXME: add networking.hostID.
-  networking.hostId = "4ca77dfb";
+  networking.hostId = "b5e8f0be";
 
   services = {
     syncthing = mkIf config.custom.syncthing.enable {

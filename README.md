@@ -23,8 +23,8 @@ nix run github:sumelan/shirase#nvf
 
 ## Install
 
-There is a script to create zpool and partition. I know disko exists but I
-prefer this method.
+There is a script to create zpool and partition. I know disko exists but prefer
+this method.
 
 ```sh
 sh <(curl -L https://raw.githubusercontent.com/sumelan/shirase/main/partition.sh)
@@ -32,9 +32,9 @@ sh <(curl -L https://raw.githubusercontent.com/sumelan/shirase/main/partition.sh
 
 Before run `nixos-install`, one task required; writing hardware configuration
 about target host. Filesystem mounts are already wrote on this flake but they
-lack of swap mount. This is because I choose to encrypt my swap and need to
-write the partUUID of swap disk after the partitioning. This is optional so you
-can write swap mount in advance to automatically install.
+lack of info about swap mount. You can choose to encrypt swap disk or not. If
+you will encrypt swap disk, you need to write the partUUID of swap disk after
+the partitioning, not UUID.
 
 ```sh
 lsblk -dno PARTUUID /dev/nvme0n1p2
@@ -46,7 +46,7 @@ To generate hardware config without filesystem info you can run below command.
 nixos-generate-config --no-filesystems --show-hardware-config
 ```
 
-After writing swap mount, finally I can install my flake.
+After writing about swap mount, finally you can install my flake.
 
 ```sh
 sudo nixos-install --no-root-password --flake "github:sumelan/shirase/main#HOST" --option tarball-ttl 0
