@@ -16,7 +16,7 @@ in {
         # services.syncoid automaticall set user "syncoid" as systemuser
         # FIXME: add openssh-key
         openssh.authorizedKeys.keys = [
-          ""
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA0nylmhn7vyEeF1Lec3oAy2DbHOZrPYWZ5JkDefMslq syncoid"
         ];
       };
     };

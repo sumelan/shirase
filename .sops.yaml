@@ -1,6 +1,6 @@
 keys:
-  - &sumelan_sakura age1jfy4xctrua3nttmxdej5537wu3aq24xf2yqpymuvkwe8sds2yqzqx7pcpc
-  - &sumelan_minibookx age159yqdpkhwlnhd94nu5dvtfc5uhv0crufnvwjp2knpacvsm0du5tscdvaz2
+  - &sumelan_sakura age1mxtws994uf4vu38exg9fnqtexxwxvxe5u627h6ymv0maw0nwudssg3rp59
+  - &sumelan_minibookx age165ucl2th5s9nnqcyzyz3alnc2kcd3qcefew9wv5jnx4dyujgj4fsgkzcfd
 # Note: Be sure to not include a - before subsequent key types under key_groups
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
