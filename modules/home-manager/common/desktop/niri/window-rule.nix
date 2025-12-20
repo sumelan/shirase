@@ -115,7 +115,6 @@ in {
           open-floating true
           opacity 1.000000
       }
-
       window-rule {
           match app-id="^org.gnome.seahorse.Application$"
           block-out-from "screen-capture"
@@ -125,6 +124,11 @@ in {
           match app-id="^Proton Pass$"
           match app-id="^.protonvpn-app-wrapped$"
           block-out-from "screen-capture"
+      }
+      window-rule {
+          match app-id="^vlc$"
+          open-floating true
+          opacity 1.000000
       }
     '';
 }

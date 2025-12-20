@@ -18,7 +18,14 @@ in {
     home.packages = [pkgs.vlc];
 
     custom.persist = {
-      home.directories = [".config/vlc"];
+      home = {
+        files = [
+          ".config/aacs/KEYDB.cfg"
+        ];
+        directories = [
+          ".config/vlc"
+        ];
+      };
     };
   };
 }
