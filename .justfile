@@ -132,8 +132,13 @@ helium-path := "modules/packages/helium"
    nix-shell -p ssh-to-age --run 'ssh-keyscan {{ host }} | ssh-to-age' 
 
 [group('SOPS')]
+[doc('Edit `.sops.yaml`.')]
+@sopsAdd:
+  $EDITOR .sops.yaml
+
+[group('SOPS')]
 [doc('Add secrets in `file`.')]
-@sopsAdd file:
+@sopsSecrets file:
     nix-shell -p sops --run "sops secrets/{{ file }}"
 
 [group('SOPS')]

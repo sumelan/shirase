@@ -1,5 +1,5 @@
 keys:
-  - &sumelan_sakura age1mxtws994uf4vu38exg9fnqtexxwxvxe5u627h6ymv0maw0nwudssg3rp59
+  - &sumelan_sakura age109c3c2ktah7dzv7986kk3xdapweazgs683lcttn3adtj4v2wp96std82l4
   - &sumelan_minibookx age165ucl2th5s9nnqcyzyz3alnc2kcd3qcefew9wv5jnx4dyujgj4fsgkzcfd
 # Note: Be sure to not include a - before subsequent key types under key_groups
 creation_rules:
