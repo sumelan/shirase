@@ -29,7 +29,7 @@ in {
     };
 
     # persist syncoid .ssh
-    # For syncoid to be able to create `/var/lib/syncoid/.ssh/` and to use custom ssh_config or known_hosts.
+    # syncoid create `/var/lib/syncoid/.ssh/` and use custom ssh_config or known_hosts.
     custom.persist = {
       root.directories = ["/var/lib/syncoid"];
     };

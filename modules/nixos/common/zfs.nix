@@ -1,4 +1,3 @@
-# NOTE: zfs datasets are created via install.sh
 {
   lib,
   config,
@@ -31,25 +30,11 @@ in
       };
 
       # standardized filesystem layout
-      # NOTE: swap is written in each host's `hardware.nix`
+      # NOTE: zfs datasets are created via install.sh
       fileSystems = {
         "/" = {
           device = "zroot/root";
           fsType = "zfs";
-          neededForBoot = true;
-        };
-
-        # uncomment to use separate home dataset
-        # "/home" = {
-        #   device = "zroot/home";
-        #   fsType = "zfs";
-        #   neededForBoot = true;
-        # };
-
-        # boot partition
-        "/boot" = {
-          device = "/dev/disk/by-label/NIXBOOT";
-          fsType = "vfat";
           neededForBoot = true;
         };
 

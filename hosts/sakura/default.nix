@@ -53,7 +53,7 @@ in {
   in
     {
       hdds = {
-        enable = false;
+        enable = true;
         westernDigital = true;
         ironWolf = true;
       };

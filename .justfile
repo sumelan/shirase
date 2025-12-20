@@ -9,10 +9,6 @@ dms-path := "modules/overlays/dms-plugins"
 yazi-path := "modules/overlays/yazi-plugins"
 helium-path := "modules/packages/helium"
 
-alias convert := sopsAge
-alias convertPub := sopsAgePublic
-alias convertHost := sopsAgeHost
-
 [group('DEFAULT')]
 [doc('List the recipes.')]
 @default:
@@ -33,106 +29,17 @@ alias convertHost := sopsAgeHost
 @flint:
     nix run github:NotAShelf/flint
 
-[group('SYSTEM')]
+[group('REBUILD')]
 [doc('`sudo nixos-rebuild test`.')]
 @test *args:
     nh os test {{ args }}
 
-[group('SYSTEM')]
+[group('REBUILD')]
 [doc('`sudo nixos-rebuild switch`.')]
 @switch *args:
     nh os switch {{ args }}
 
-[group('UPDATE')]
-[doc('Update a specific input in the `flake.nix`.')]
-@updateInput input: check
-    echo -e "\n===== Updating {{ input }}... =====\n"
-
-    nix flake update {{ input }}
-
-alias update := updateInput
-
-[group('UPDATE')]
-[doc('Update all flake inputs, fetch packages and commit on git.')]
-@updateAll: check
-    echo -e "\n===== Updating all flake inputs... =====\n"
-
-    nix flake update
-
-    echo -e "\n===== Fetching dms-plugins repo... =====\n"
-
-    nvfetcher --keep-old --config {{ dms-path }}/nvfetcher.toml --build-dir {{ dms-path }}
-
-    echo -e "\n===== Fetching yazi-plugins repo... =====\n"
-
-    nvfetcher --keep-old --config {{ yazi-path }}/nvfetcher.toml --build-dir {{ yazi-path }}
-
-    echo -e "\n===== Fetching a helium package... =====\n"
-
-    nvfetcher --keep-old --config {{ helium-path }}/nvfetcher.toml --build-dir {{ helium-path }}
-
-    git add -A
-    echo -e "\n===== Commit on git... =====\n"
-    git commit -m "chore: update inputs and fetch packages"
-
-alias updates := updateAll
-
-[group('MAINTENANCE')]
-[doc('Clean all profiles but keep 5 generations.')]
-@gc:
-    nh clean all -k 5
-
-[group('MAINTENANCE')]
-[doc('Replace identical files in the store by hard links.')]
-@optimise:
-    nix store optimise -v
-
-[group('BUILD')]
-[doc('Build a package in nixpkgs with override.')]
-@override package attrs:
-    nix build --impure --expr  '(import <nixpkgs> { }).{{ package }}.override { {{ attrs }} }'
-
-[group('BUILD')]
-[doc('Build a package you defined under `modules/packages`.')]
-@callPackage package:
-    nix build --impure --expr '(import <nixpkgs> { }).callPackage ./modules/packages/{{ package }}/default.nix {}'
-
-[group('SYNCTHING')]
-[doc('Temporarily use Syncthing in a shell environment.')]
-@syncthingRun:
-    nix-shell -p syncthing --run "syncthing --home ~/.config/syncthing/"
-
-[group('SYNCTHING')]
-[doc('Generate a new key.cert and key.pem for a deployment.')]
-@syncthingGenerate:
-    nix-shell -p syncthing --run "syncthing generate --home ~/.config/syncthing/"
-
-[group('SOPS')]
-[doc('Convert an ssh ed25519 key to an age key.')]
-@sopsAge:
-   nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt" 
-
-[group('SOPS')]
-[doc('Convert an existing SSH key into an `age` public key.')]
-@sopsAgePublic:
-   nix-shell -p ssh-to-age --run "ssh-to-age < ~/.ssh/id_ed25519.pub"
-
-[group('SOPS')]
-[doc('Convert an SSH Ed25519 public key targeted to `host`.')]
-@sopsAgeHost host:
-   nix-shell -p ssh-to-age --run 'ssh-keyscan {{ host }} | ssh-to-age' 
-
-[group('SOPS')]
-[doc('Add secrets in `file`.')]
-@sopsEdit file:
-    nix-shell -p sops --run "sops secrets/{{ file }}"
-
-[group('SOPS')]
-[doc('Update the keys in `file` for all secret.')]
-@sopsUpdate file:
-    nix-shell -p sops --run "sops updatekeys secrets/{{ file }}"
-
-[group('TOOLS')]
+[group('REPL')]
 [doc('Start repl.')]
 @repl:
     nh os repl
@@ -152,3 +59,89 @@ alias updates := updateAll
 @explore package:
     yazi $(nix eval --raw nixpkgs#{{ package }})
 
+[group('UPDATE')]
+[doc('Update a specific input in the `flake.nix`.')]
+@update input:
+    echo -e "\n===== Updating {{ input }}... =====\n"
+    nix flake update {{ input }}
+
+[group('UPDATE')]
+[doc('Update all flake inputs, fetch packages and commit on git.')]
+@updates:
+    echo -e "\n===== Updating all flake inputs... =====\n"
+    nix flake update
+
+    echo -e "\n===== Fetching dms-plugins repo... =====\n"
+    nvfetcher --keep-old --config {{ dms-path }}/nvfetcher.toml --build-dir {{ dms-path }}
+
+    echo -e "\n===== Fetching yazi-plugins repo... =====\n"
+    nvfetcher --keep-old --config {{ yazi-path }}/nvfetcher.toml --build-dir {{ yazi-path }}
+
+    echo -e "\n===== Fetching a helium package... =====\n"
+    nvfetcher --keep-old --config {{ helium-path }}/nvfetcher.toml --build-dir {{ helium-path }}
+
+    echo -e "\n===== Commit on git... =====\n"
+    git add -A
+    git commit -m "chore: update inputs and fetch packages"
+
+[group('MAINTENANCE')]
+[doc('Clean all profiles but keep 5 generations.')]
+@gc:
+    nh clean all -k 5
+
+[group('MAINTENANCE')]
+[doc('Replace identical files in the store by hard links.')]
+@optimise:
+    nix store optimise -v
+
+[group('BUILD')]
+[doc('Look the package built with override through yazi.')]
+@override package attrs:
+    nix build --impure --expr  '(import <nixpkgs> { }).{{ package }}.override { {{ attrs }} }'
+    yazi ./result
+
+[group('BUILD')]
+[doc('Look the package you defined under `modules/packages` through yazi.')]
+@custom package:
+    nix build --impure --expr '(import <nixpkgs> { }).callPackage ./modules/packages/{{ package }}/default.nix {}'
+    yazi ./result
+
+[group('SYNCTHING')]
+[doc('Temporarily use Syncthing in a shell environment.')]
+@syncRun:
+    nix-shell -p syncthing --run "syncthing --home ~/.config/syncthing/"
+
+[group('SYNCTHING')]
+[doc('Generate a new key.cert and key.pem for a deployment.')]
+@syncGenerate:
+    nix-shell -p syncthing --run "syncthing generate --home ~/.config/syncthing/"
+
+[group('SOPS')]
+[doc('Convert an ssh ed25519 key to an age key.')]
+@sopsConvert:
+   nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt" 
+
+[group('SOPS')]
+[doc('Convert an existing SSH key into an age public key.')]
+@sopsConvertPub:
+   nix-shell -p ssh-to-age --run "ssh-to-age < ~/.ssh/id_ed25519.pub"
+
+[group('SOPS')]
+[doc('Convert an SSH Ed25519 public key targeted to `target`.')]
+@sopsConvertHost target:
+   nix-shell -p ssh-to-age --run 'ssh-keyscan {{ target }} | ssh-to-age' 
+
+[group('SOPS')]
+[doc('Add secrets in `file`.')]
+@sopsAdd file:
+    nix-shell -p sops --run "sops secrets/{{ file }}"
+
+[group('SOPS')]
+[doc('Update the keys in `file` for all secret.')]
+@sopsUpdate file:
+    nix-shell -p sops --run "sops updatekeys secrets/{{ file }}"
+
+[group('ZFS')]
+[doc('Show compress ratio in zfs list output.')]
+@zlist:
+    zfs list -o name,used,avail,compressratio

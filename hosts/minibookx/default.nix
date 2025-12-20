@@ -36,7 +36,7 @@ in {
     syncoid = {
       commands."remote" = mkIf config.custom.syncoid.enable {
         source = "zroot/persist";
-        target = "root@sakura:zfs-elements4T-1/media/minibookx";
+        target = "root@sakura:zusb-iw2T/backups/minibookx";
         extraArgs = [
           "--no-sync-snap" # restrict itself to existing snapshots
           "--delete-target-snapshots" # snapshots which are missing on the source will be destroyed on the targe

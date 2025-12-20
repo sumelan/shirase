@@ -32,15 +32,15 @@ in {
   config = mkIf cfg.enable {
     fileSystems = {
       "/media/WD4T" = mkIf cfg.westernDigital {
-        device = "zfs-elements4T-1/media";
+        device = "zusb-wd4T/media";
         fsType = "zfs";
         options = [
           "x-systemd.automount"
           "nofail"
         ];
       };
-      "/media/IRONWOLF2T" = mkIf cfg.ironWolf {
-        device = "zfs-ironwolf2T-1/media";
+      "/media/IW2T" = mkIf cfg.ironWolf {
+        device = "zusb-iw2T/backups";
         fsType = "zfs";
         options = [
           "x-systemd.automount"
@@ -50,13 +50,13 @@ in {
     };
     services.sanoid = {
       datasets = {
-        "zfs-elements4T-1/media" = mkIf cfg.westernDigital {
+        "zusb-wd4T/media" = mkIf cfg.westernDigital {
           hourly = 3;
           daily = 10;
           weekly = 2;
           monthly = 0;
         };
-        "zfs-ironwolf2T-1/media" = mkIf cfg.ironWolf {
+        "zusb-iw2T/backups" = mkIf cfg.ironWolf {
           hourly = 3;
           daily = 10;
           weekly = 2;
@@ -68,7 +68,7 @@ in {
     hm = {
       custom.btop.disks =
         optional cfg.westernDigital "/media/WD4T"
-        ++ optional cfg.ironWolf "/media/IRONWOLF2T";
+        ++ optional cfg.ironWolf "/media/IW2T";
     };
   };
 }
