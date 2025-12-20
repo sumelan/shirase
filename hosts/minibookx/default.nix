@@ -52,7 +52,7 @@ in {
 
       settings = {
         devices = {
-          "sakura" = {id = "VCKQ6LU-GNZWWFA-FGADQ44-PEWXCNN-2FT3YPC-C6XGTEY-G3APYSH-GO42PQG";};
+          "sakura" = {id = "G67WD22-6CXHLDR-YABPO34-U3Q7EZD-6CJOW2Y-UQUNKNG-S26BEJM-S6LDYQ2";};
         };
         folders = {
           "Documents" = {
@@ -78,7 +78,7 @@ in {
   custom = let
     enableList = [
       # "syncoid"
-      # "syncthing"
+      "syncthing"
     ];
     disableList = [
       "distrobox"

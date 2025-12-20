@@ -14,7 +14,7 @@ in {
 
       settings = {
         devices = {
-          "minibookx" = {id = "IJOMYYL-OQPSRXW-FCJW6UB-NXBO2NW-ZZL2KFN-XVONDG2-E6KY2T4-LJMXWQ4";};
+          "minibookx" = {id = "LTAE56R-6ARZAXL-JK4KL6B-IHVTITS-AEL3TCQ-JR4ZNQQ-52QHVU2-7UU7SQI";};
         };
         folders = {
           "Documents" = {
@@ -42,7 +42,7 @@ in {
       "logitech"
       "steam"
       #  "syncoid"
-      #  "syncthing"
+      "syncthing"
       "qmk"
     ];
     disableList = [

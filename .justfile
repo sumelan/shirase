@@ -117,19 +117,19 @@ helium-path := "modules/packages/helium"
     nix-shell -p syncthing --run "syncthing generate --home ~/.config/syncthing/"
 
 [group('SOPS')]
-[doc('Convert an ssh ed25519 key to an age key.')]
+[doc('Convert a SSH Ed25519 key to an age key.')]
 @sopsConvert:
    nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt" 
 
 [group('SOPS')]
-[doc('Convert an existing SSH key into an age public key.')]
+[doc('Convert an existing SSH Ed25519 pubkey into an age public key.')]
 @sopsConvertPub:
    nix-shell -p ssh-to-age --run "ssh-to-age < ~/.ssh/id_ed25519.pub"
 
 [group('SOPS')]
-[doc('Convert an SSH Ed25519 public key targeted to `target`.')]
-@sopsConvertHost target:
-   nix-shell -p ssh-to-age --run 'ssh-keyscan {{ target }} | ssh-to-age' 
+[doc('Convert a SSH Ed25519 public key targeted to `host`.')]
+@sopsScan host:
+   nix-shell -p ssh-to-age --run 'ssh-keyscan {{ host }} | ssh-to-age' 
 
 [group('SOPS')]
 [doc('Add secrets in `file`.')]
