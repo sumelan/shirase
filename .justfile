@@ -133,7 +133,7 @@ helium-path := "modules/packages/helium"
 
 [group('SOPS')]
 [doc('Edit `.sops.yaml`.')]
-@sopsAdd:
+@sopsEdit:
   $EDITOR .sops.yaml
 
 [group('SOPS')]
