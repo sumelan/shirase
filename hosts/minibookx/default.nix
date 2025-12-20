@@ -52,7 +52,7 @@ in {
 
       settings = {
         devices = {
-          "sakura" = {id = "G67WD22-6CXHLDR-YABPO34-U3Q7EZD-6CJOW2Y-UQUNKNG-S26BEJM-S6LDYQ2";};
+          "sakura" = {id = "DVKBE2A-EP3TVWL-VMTBIOA-PVGBRML-7JION7K-GVXA6FD-FZ7EAUV-HATEEQS";};
         };
         folders = {
           "Documents" = {
