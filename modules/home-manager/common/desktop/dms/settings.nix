@@ -6,7 +6,7 @@
 }: let
   inherit (lib.custom.colors) black0;
 in {
-  programs.dankMaterialShell = {
+  programs.dank-material-shell = {
     default = {
       settings = {
         currentThemeName = "dynamic";

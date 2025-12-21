@@ -29,9 +29,8 @@ in
             ;
         };
         config = {
-          common.default = ["gnome"];
+          common.default = ["gtk"];
           niri = {
-            default = ["gtk" "gnome"];
             # use Nautilus
             "org.freedesktop.impl.portal.FileChooser" = ["gnome"];
             "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
@@ -42,7 +41,7 @@ in
     }
     # dms
     {
-      programs.dankMaterialShell = {
+      programs.dank-material-shell = {
         enable = true;
         systemd.enable = false;
       };
@@ -52,7 +51,7 @@ in
       # tty autologin
       services.getty.autologinUser = user;
 
-      programs.dankMaterialShell.greeter = {
+      programs.dank-material-shell.greeter = {
         enable = true;
         compositor.name = "niri";
         configHome = "/home/${user}";

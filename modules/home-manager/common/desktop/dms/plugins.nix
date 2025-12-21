@@ -3,11 +3,11 @@
   pkgs,
   ...
 }: let
-  cfg = config.programs.dankMaterialShell.plugins;
+  cfg = config.programs.dank-material-shell.plugins;
   jsonFormat = pkgs.formats.json {};
   pluginsRepo = pkgs.custom.dms-plugins.src;
 in {
-  programs.dankMaterialShell.plugins = {
+  programs.dank-material-shell.plugins = {
     "dankBatteryAlerts" = {
       inherit (config.custom.battery) enable;
       src = "${pluginsRepo}/DankBatteryAlerts";

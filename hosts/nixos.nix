@@ -12,7 +12,7 @@
   inherit (lib) mkAliasOptionModule;
 
   defaultNixMods = [
-    inputs.dankMaterialShell.nixosModules.dankMaterialShell
+    inputs.dankMaterialShell.nixosModules.dank-material-shell
     inputs.dankMaterialShell.nixosModules.greeter
     inputs.impermanence.nixosModules.impermanence
     inputs.sops-nix.nixosModules.sops
@@ -20,7 +20,7 @@
   ];
 
   defaultHmMods = [
-    inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+    inputs.dankMaterialShell.homeModules.dank-material-shell
     inputs.nix-index-database.homeModules.nix-index
     ../modules/home-manager
   ];

@@ -12,12 +12,10 @@ in {
     ./settings.nix
   ];
 
-  programs = {
-    # NOTE: edtting screenshot feature need niri-git
-    dankMaterialShell = {
-      enable = true;
-      systemd.enable = true;
-    };
+  # NOTE: edtting screenshot feature need niri-git
+  programs.dank-material-shell = {
+    enable = true;
+    systemd.enable = true;
   };
 
   systemd.user = {
