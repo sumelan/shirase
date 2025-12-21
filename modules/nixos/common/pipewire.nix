@@ -21,7 +21,6 @@
             main."monitor.libcamera" = "disabled";
           };
         };
-        # FIXME: no sound until volume up on creative_stage_se_mini
         "10-alsa-soft-mixer"."monitor.alsa.rules" = [
           {
             matches = [

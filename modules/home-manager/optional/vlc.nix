@@ -15,7 +15,9 @@ in {
   };
 
   config = mkIf config.custom.vlc.enable {
-    home.packages = [pkgs.vlc];
+    home.packages = builtins.attrValues {
+      inherit (pkgs) vlc handbrake;
+    };
 
     custom.persist = {
       home = {

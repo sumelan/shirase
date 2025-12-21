@@ -20,7 +20,6 @@ in {
         };
       };
     };
-    i2c.enable = true;
   };
 
   programs.ssh = {

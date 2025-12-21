@@ -10,4 +10,5 @@
     tlp.enable = false;
     libinput.enable = isLaptop;
   };
+  hardware.i2c.enable = true;
 }

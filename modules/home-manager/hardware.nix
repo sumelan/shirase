@@ -71,7 +71,7 @@ in {
     };
 
     custom = {
-      backlight.enable = mkEnableOption "Backlight" // {default = isLaptop;};
+      backlight.enable = mkEnableOption "Backlight" // {default = true;};
       battery.enable = mkEnableOption "Battery" // {default = isLaptop;};
       wifi.enable = mkEnableOption "Wifi" // {default = isLaptop;};
     };

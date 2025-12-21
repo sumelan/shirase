@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   username = "sumelan";
 in {
   imports = [
@@ -19,7 +15,6 @@ in {
       "networkmanager"
       "wheel"
     ];
-    # FIXME: add ssh-key
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA0nylmhn7vyEeF1Lec3oAy2DbHOZrPYWZ5JkDefMslq sumelan"
     ];
@@ -46,7 +41,7 @@ in {
     "10-symlinkIcon" = {
       "/var/lib/AccountsService/icons/${username}" = {
         "L+" = {
-          argument = "${config.hm.home.homeDirectory}/.face";
+          argument = "/home/${username}/.face";
         };
       };
     };
