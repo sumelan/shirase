@@ -61,6 +61,8 @@ in {
     customOverlay
     nautilusOverlay
     vlcOverlay
+    # niri-flake
+    inputs.niri-flake.overlays.niri
     # firefox-addons
     inputs.firefox-addons.overlays.default
   ];

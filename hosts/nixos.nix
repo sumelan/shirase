@@ -15,6 +15,7 @@
     inputs.dankMaterialShell.nixosModules.dank-material-shell
     inputs.dankMaterialShell.nixosModules.greeter
     inputs.impermanence.nixosModules.impermanence
+    inputs.niri-flake.nixosModules.niri
     inputs.sops-nix.nixosModules.sops
     ../modules/nixos
   ];

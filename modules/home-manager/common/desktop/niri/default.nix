@@ -33,7 +33,7 @@
   # xwayland
   xwayland =
     if config.custom.niri.xwayland.enable
-    then ''path "${getExe pkgs.xwayland-satellite}"''
+    then ''path "${getExe pkgs.xwayland-satellite-unstable}"''
     else "off";
 in {
   imports = [
@@ -77,7 +77,6 @@ in {
             }
             tablet { map-to-output "DSI-1"; }
             touch { map-to-output "DSI-1"; }
-            focus-follows-mouse
         }
 
         prefer-no-csd

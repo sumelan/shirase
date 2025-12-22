@@ -175,7 +175,6 @@ in {
           // Overview
           Mod+Shift+Slash { show-hotkey-overlay; }
           Mod+O { toggle-overview; }
-          Mod+MouseMiddle { toggle-overview; }
       }
     '';
 }

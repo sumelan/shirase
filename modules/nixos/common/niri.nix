@@ -7,14 +7,14 @@
   inherit (lib) mkMerge;
 in
   mkMerge [
-    # niri
+    # niri-flake
     {
       programs.niri = {
         enable = true;
-        package = pkgs.niri;
-        # manually set instead
-        useNautilus = true;
+        package = pkgs.niri-unstable;
       };
+      # use dms polkit
+      systemd.user.services.niri-flake-polkit.enable = false;
     }
     # portal
     {
@@ -31,8 +31,12 @@ in
         config = {
           common.default = ["gtk"];
           niri = {
+            default = ["gnome" "gtk"];
+            "org.freedesktop.impl.portal.Access" = ["gtk"];
             # use Nautilus
             "org.freedesktop.impl.portal.FileChooser" = ["gnome"];
+            "org.freedesktop.impl.portal.Notification" = ["gtk"];
+            "org.freedesktop.impl.portal.Secret" = ["gnome-keyring"];
             "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
           };
           obs.default = ["gnome"];
