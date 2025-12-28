@@ -60,6 +60,7 @@ in {
         }
 
         input {
+            focus-follows-mouse
             keyboard {
                 xkb {
                     layout "us"
