@@ -3,12 +3,20 @@
 # run `git config remote.origin.push HEAD`
 {
   config,
+  lib,
   user,
   ...
-}: {
+}: let
+  inherit (lib) mkForce;
+in {
+  home.shellAliases = {
+    gg = "lazygit";
+  };
+
   programs = {
     git = {
       enable = true;
+      ignores = [".jj"];
       settings = {
         user = {
           name = user;
@@ -59,6 +67,55 @@
       enable = true;
       options.background = "dark";
       git.enable = true;
+    };
+    gh = {
+      enable = true;
+      settings = {
+        editor = "code --wait";
+        git_protocol = "https";
+      };
+    };
+    jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          name = "sumelan";
+          inherit (config.profiles.${user}) email;
+        };
+        template-aliases = {
+          "format_short_id(id)" = "id.shortest()";
+        };
+      };
+    };
+    lazygit = {
+      enable = true;
+      settings = mkForce {
+        disableStartupPopups = true;
+        notARepository = "skip";
+        promptToReturnFromSubprocess = false;
+        update.method = "never";
+        git = {
+          commit.signOff = true;
+          parseEmoji = true;
+        };
+        gui = let
+          accent = "#D08770";
+          muted = "#60728A";
+        in {
+          theme = {
+            activeBorderColor = [
+              accent
+              "bold"
+            ];
+            inactiveBorderColor = [muted];
+          };
+          showListFooter = false;
+          showRandomTip = false;
+          showCommandLog = false;
+          showBottomLine = false;
+          nerdFontsVersion = "3";
+        };
+      };
     };
   };
 }

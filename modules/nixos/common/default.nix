@@ -1,15 +1,12 @@
 _: {
   imports = [
-    ./auth.nix
+    ./core
+    ./fileSystem
     ./bluetooth.nix
-    ./boot.nix
     ./config.nix
-    ./impermanence.nix
     ./network.nix
     ./niri.nix
-    ./nix.nix
     ./pipewire.nix
     ./root.nix
-    ./zfs.nix
   ];
 }

@@ -6,10 +6,7 @@ _: {
     ./btop.nix
     ./config.nix
     ./eza.nix
-    ./gh.nix
     ./git.nix
-    ./jujutsu.nix
-    ./lazygit.nix
     ./mpd.nix
     ./neovim.nix
     ./nix.nix
@@ -18,6 +15,5 @@ _: {
     ./terminal.nix
     ./yazi.nix
     ./yt-dlp.nix
-    ./zoxide.nix
   ];
 }

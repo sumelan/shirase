@@ -1,17 +1,23 @@
 {pkgs, ...}: {
-  home.packages = builtins.attrValues {
-    inherit
-      (pkgs)
-      dysk # better disk info
-      ets # add timestamp to beginning of each line
-      fd # better find
-      fx # terminal json viewer and processor
-      htop
-      jq
-      just
-      sd # better sed
-      ugrep # grep, with boolean query patterns, e.g. ug --files -e "A" --and "B"
-      ;
+  home = {
+    shellAliases = {
+      z = "zoxide query -i";
+    };
+
+    packages = builtins.attrValues {
+      inherit
+        (pkgs)
+        dysk # better disk info
+        ets # add timestamp to beginning of each line
+        fd # better find
+        fx # terminal json viewer and processor
+        htop
+        jq
+        just
+        sd # better sed
+        ugrep # grep, with boolean query patterns, e.g. ug --files -e "A" --and "B"
+        ;
+    };
   };
 
   programs = {
@@ -45,6 +51,13 @@
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = true;
+    };
+
+    zoxide = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      options = ["--cmd cd"];
     };
   };
 

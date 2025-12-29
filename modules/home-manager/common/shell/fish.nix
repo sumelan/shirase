@@ -1,6 +1,6 @@
 {
-  lib,
   config,
+  lib,
   pkgs,
   ...
 }: let
@@ -8,10 +8,8 @@
 in {
   # fish plugins, home-manager's programs.fish.plugins has a weird format
   home.packages = builtins.attrValues {
-    inherit
-      (pkgs.fishPlugins)
-      sponge # do not add failed commands to history
-      ;
+    # do not add failed commands to history
+    inherit (pkgs.fishPlugins) sponge;
   };
 
   programs = let
@@ -58,5 +56,9 @@ in {
         "SHELL" = fishPath;
       };
     };
+  };
+
+  custom.persist = {
+    home.cache.directories = [".local/share/fish"];
   };
 }
