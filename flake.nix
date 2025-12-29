@@ -21,6 +21,7 @@
     # No Nixpkgs Inputs
     flake-parts.url = "github:hercules-ci/flake-parts";
     impermanence.url = "github:nix-community/impermanence";
+    import-tree.url = "github:vic/import-tree";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     home-manager = {

@@ -23,7 +23,6 @@ in {
       "foliate"
       "helium"
       "kdeconnect"
-      "obs-studio"
       "protonapp"
       "youtube-tui"
     ];
