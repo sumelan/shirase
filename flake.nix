@@ -1,19 +1,13 @@
 {
   description = "Shirase: sumelan's nixos configuration";
 
-  outputs = {flake-parts, ...} @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
-
-      imports = [
-        ./hosts/nixos.nix
-      ];
-    };
+  outputs = {
+    flake-parts,
+    import-tree,
+    ...
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;}
+    (import-tree ./modules);
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

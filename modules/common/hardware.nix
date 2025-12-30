@@ -1,0 +1,50 @@
+_: {
+  flake.modules.nixos = {
+    pkgs,
+    user,
+    ...
+  }: {
+    default = {
+      powerManagement.enable = true;
+      services = {
+        upower.enable = true;
+        power-profiles-daemon.enable = true; # conflict with TLP
+        tlp.enable = false;
+      };
+      hardware.i2c.enable = true;
+    };
+
+    laptop = {
+      # disbale USB after sometime of inactivity
+      powerManagement.powertop.enable = true;
+      services = {
+        libinput.enable = true;
+        keyd = {
+          enable = true;
+          keyboards = {
+            default = {
+              ids = ["*"];
+              settings = {
+                main = {
+                  #  shift = "oneshot(shift)"; # you can now simply tap shift instead of having to hold it.
+                  #  meta = "oneshot(meta)";
+                  #  control = "oneshot(control)";
+                  leftalt = "alt";
+                  rightalt = "altgr";
+                  capslock = "`";
+                  menu = "shift";
+                };
+              };
+            };
+          };
+        };
+      };
+      # wireshark
+      programs.wireshark = {
+        enable = true;
+        package = pkgs.wireshark; # default value: wireshark-cli
+      };
+      users.users.${user}.extraGroups = ["wireshark"];
+    };
+  };
+}
