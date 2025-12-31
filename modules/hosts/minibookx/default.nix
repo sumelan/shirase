@@ -21,28 +21,13 @@ in {
   flake.modules.generic.host_minibookx = {
     imports =
       nixMods
-      ++ [config.flake.modules.nixos.hardware_minibookx]
+      ++ (with config.flake.modules.nixos; [
+        hardware_minibookx
+        chuwi-minibook-x
+      ])
       ++ [
         {
           networking.hostId = "56895d2b";
-
-          hardware.chuwi-minibook-x = {
-            tabletMode.enable = true;
-            autoDisplayRotation = {
-              enable = true;
-              commands = {
-                normal = ''niri msg output "DSI-1" transform 90'';
-                rightUp = ''niri msg output "DSI-1" transform normal'';
-                bottomUp = ''niri msg output "DSI-1" transform 270'';
-                leftUp = ''niri msg output "DSI-1" transform 180'';
-              };
-            };
-          };
-
-          # rotate limine interface
-          boot.loader.limine.extraConfig = ''
-            interface_rotation: 90
-          '';
 
           programs.ssh = {
             extraConfig = ''
@@ -52,33 +37,6 @@ in {
                 User root
             '';
           };
-
-          services.syncthing = {
-            key = "/run/secrets/syncthing/minibookx-key";
-            cert = "/run/secrets/syncthing/minibookx-cert";
-            settings = {
-              devices = {
-                "sakura" = {id = "DVKBE2A-EP3TVWL-VMTBIOA-PVGBRML-7JION7K-GVXA6FD-FZ7EAUV-HATEEQS";};
-              };
-              folders = {
-                "Documents" = {
-                  devices = ["sakura"];
-                };
-                "Music" = {
-                  devices = ["sakura"];
-                };
-                "MPD" = {
-                  devices = ["sakura"];
-                };
-                "Euphonica" = {
-                  devices = ["sakura"];
-                };
-                "Wallpapers" = {
-                  devices = ["sakura"];
-                };
-              };
-            };
-          };
         }
       ]
       ++ (with config.flake.modules.nixos; [
@@ -86,6 +44,7 @@ in {
         laptop
         sops-nix
         syncthing
+        syncthing_minibookx
       ])
       ++ [
         {

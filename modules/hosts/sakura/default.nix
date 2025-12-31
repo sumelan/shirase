@@ -26,41 +26,10 @@ in {
   flake.modules.generic.host_sakura = {
     imports =
       nixMods
-      ++ [config.flake.modules.nixos.hardware_sakura]
+      ++ (with config.flake.modules.nixos; [hardware_sakura])
       ++ [
         {
           networking.hostId = "b5e8f0be";
-
-          services.syncthing = {
-            key = "/run/secrets/syncthing/sakura-key";
-            cert = "/run/secrets/syncthing/sakura-cert";
-            settings = {
-              devices = {
-                "minibookx" = {id = "LTAE56R-6ARZAXL-JK4KL6B-IHVTITS-AEL3TCQ-JR4ZNQQ-52QHVU2-7UU7SQI";};
-              };
-              folders = {
-                "Documents" = {
-                  devices = ["minibookx"];
-                };
-                "Music" = {
-                  devices = ["minibookx"];
-                };
-                "MPD" = {
-                  devices = ["minibookx"];
-                };
-                "Euphonica" = {
-                  devices = ["minibookx"];
-                };
-                "Wallpapers" = {
-                  devices = ["minibookx"];
-                };
-              };
-            };
-          };
-          custom.hdds = {
-            westernDigital = true;
-            ironWolf = true;
-          };
         }
       ]
       ++ (with config.flake.modules.nixos; [
@@ -69,9 +38,20 @@ in {
         logitech
         sops-nix
         steam
+        syncoid
+        syncoid_sakura
         syncthing
+        syncthing_sakura
         qmk
       ])
+      ++ [
+        {
+          custom.hdds = {
+            westernDigital = true;
+            ironWolf = true;
+          };
+        }
+      ]
       ++ [
         {
           hm.imports =
