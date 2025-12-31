@@ -3,12 +3,6 @@
   inputs,
   ...
 }: let
-  flake.nixosConfigurations = {
-    acer = linux "acer" {};
-    minibookx = linux "minibookx" {};
-    sakura = linux "sakura" {};
-  };
-
   linux = mkNixos "x86_64-linux" "nixos";
 
   mkNixos = system: cls: host: {user ? "sumelan"}: let
@@ -16,8 +10,8 @@
       inherit system;
       config.allowUnfree = true;
     };
-    hostModule = config.flake.modules.nixos."hosts_${host}";
-    userModule = config.flake.modules.nixos."user_${user}";
+    hostModule = config.flake.modules.generic."host_${host}";
+    userModule = config.flake.modules.generic."user_${user}";
     specialArgs = {
       inherit inputs host user;
     };
@@ -37,10 +31,13 @@
               extraSpecialArgs = specialArgs;
             };
           }
-          # alias for home-manager
           (inputs.nixpkgs.lib.mkAliasOptionModule ["hm"] ["home-manager" "users" user])
         ];
     };
 in {
-  inherit flake;
+  flake.nixosConfigurations = {
+    acer = linux "acer" {};
+    minibookx = linux "minibookx" {};
+    sakura = linux "sakura" {};
+  };
 }

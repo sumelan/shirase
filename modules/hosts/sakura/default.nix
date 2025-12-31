@@ -23,7 +23,7 @@
     inputs.nix-index-database.homeModules.nix-index
   ];
 in {
-  flake.modules.nixos.host_sakura = {
+  flake.modules.generic.host_sakura = {
     imports =
       nixMods
       ++ [config.flake.modules.nixos.hardware_sakura]
@@ -31,11 +31,9 @@ in {
         {
           networking.hostId = "b5e8f0be";
 
-          flake.modules.xwayland = true;
-
           services.syncthing = {
-            key = config.sops.secrets."syncthing/sakura-key".path;
-            cert = config.sops.secrets."syncthing/sakura-cert".path;
+            key = "/run/secrets/syncthing/sakura-key";
+            cert = "/run/secrets/syncthing/sakura-cert";
             settings = {
               devices = {
                 "minibookx" = {id = "LTAE56R-6ARZAXL-JK4KL6B-IHVTITS-AEL3TCQ-JR4ZNQQ-52QHVU2-7UU7SQI";};
@@ -59,11 +57,17 @@ in {
               };
             };
           };
+          custom.hdds = {
+            westernDigital = true;
+            ironWolf = true;
+          };
         }
       ]
       ++ (with config.flake.modules.nixos; [
         default
+        hdds
         logitech
+        sops-nix
         steam
         syncthing
         qmk
@@ -74,7 +78,7 @@ in {
             hmMods
             ++ [
               {
-                flake.modules.monitors = {
+                monitors = {
                   "HDMI-A-1" = {
                     isMain = true;
                     scale = 1.5;
@@ -90,6 +94,7 @@ in {
                     rotation = 0;
                   };
                 };
+                custom.niri.xwayland = true;
               }
             ]
             ++ (with config.flake.modules.homeManager; [

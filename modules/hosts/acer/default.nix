@@ -22,10 +22,10 @@
     inputs.nix-index-database.homeModules.nix-index
   ];
 in {
-  flake.modules.nixos.host_acer = {
+  flake.modules.generic.host_acer = {
     imports =
       nixMods
-      ++ [config.flake.modules.nixos.hardware_acer]
+      ++ (with config.flake.modules.nixos; [hardware_acer])
       ++ [
         {
           networking.hostId = "22fe2870";
@@ -41,7 +41,7 @@ in {
             hmMods
             ++ [
               {
-                flake.modules.monitors = {
+                monitors = {
                   "eDP-1" = {
                     isMain = true;
                     scale = 1.0;

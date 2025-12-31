@@ -18,7 +18,7 @@
     inputs.nix-index-database.homeModules.nix-index
   ];
 in {
-  flake.modules.nixos.host_minibookx = {
+  flake.modules.generic.host_minibookx = {
     imports =
       nixMods
       ++ [config.flake.modules.nixos.hardware_minibookx]
@@ -54,8 +54,8 @@ in {
           };
 
           services.syncthing = {
-            key = config.sops.secrets."syncthing/minibookx-key".path;
-            cert = config.sops.secrets."syncthing/minibookx-cert".path;
+            key = "/run/secrets/syncthing/minibookx-key";
+            cert = "/run/secrets/syncthing/minibookx-cert";
             settings = {
               devices = {
                 "sakura" = {id = "DVKBE2A-EP3TVWL-VMTBIOA-PVGBRML-7JION7K-GVXA6FD-FZ7EAUV-HATEEQS";};
@@ -84,6 +84,7 @@ in {
       ++ (with config.flake.modules.nixos; [
         default
         laptop
+        sops-nix
         syncthing
       ])
       ++ [
@@ -92,7 +93,7 @@ in {
             hmMods
             ++ [
               {
-                flake.modules.monitors = {
+                monitors = {
                   "DSI-1" = {
                     isMain = true;
                     scale = 1.0;
