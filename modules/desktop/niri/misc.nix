@@ -5,7 +5,7 @@
     ;
   inherit (lib) getExe;
 in {
-  flake.modules.homeManager.misc = {
+  flake.modules.homeManager.default = {
     config,
     pkgs,
     ...

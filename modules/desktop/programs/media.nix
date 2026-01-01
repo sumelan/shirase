@@ -1,11 +1,33 @@
 _: {
   flake.modules.homeManager = {
     default = {pkgs, ...}: {
-      home.packages = [pkgs.mpv];
+      home.packages = builtins.attrValues {
+        inherit
+          (pkgs)
+          cyanrip
+          euphonica
+          mpv
+          picard
+          ;
+      };
 
       custom.persist.home.directories = [
+        ".cache/euphonica"
         ".local/state/mpv" # watch later
       ];
+    };
+
+    foliate = {pkgs, ...}: {
+      home.packages = [pkgs.foliate];
+
+      custom = {
+        persist.home.directories = [
+          ".local/share/com.github.johnfactotum.Foliate"
+        ];
+        cache.home.directories = [
+          ".cache/com.github.johnfactotum.Foliate"
+        ];
+      };
     };
 
     obs-studio = _: {

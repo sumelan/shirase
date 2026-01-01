@@ -1,5 +1,5 @@
 _: {
-  flake.modules.homeManager.plugins = {
+  flake.modules.homeManager.default = {
     config,
     pkgs,
     ...

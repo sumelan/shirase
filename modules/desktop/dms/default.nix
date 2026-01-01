@@ -1,17 +1,13 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{lib, ...}: let
   inherit (lib) mkForce;
 in {
-  flake.modules.homeManager.default = {user, ...}: let
-    dmsConf = "/home/${user}/.config/niri/dms";
+  flake.modules.homeManager.default = {
+    config,
+    user,
+    ...
+  }: let
+    dmsConf = "${config.xdg.configHome}/niri/dms";
   in {
-    imports = with config.flake.modules.homeManager; [
-      plugins
-      settings
-    ];
     programs.dank-material-shell = {
       enable = true;
       systemd.enable = true;

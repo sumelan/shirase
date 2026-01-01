@@ -1,4 +1,4 @@
-{lib, ...}: {
+_: {
   flake.modules.homeManager.default = {pkgs, ...}: {
     home.packages = builtins.attrValues {
       inherit
@@ -10,14 +10,10 @@
         wl-clipboard
         ;
     };
-    custom.fonts.packages = builtins.attrValues {
-      inherit
-        (pkgs)
-        noto-fonts
-        noto-fonts-cjk-sans
-        noto-fonts-color-emoji
-        ;
-      monopkgs = pkgs.maple-mono.NF-unhinted;
-    };
+    custom.fonts.packages = [
+      pkgs.noto-fonts
+      pkgs.noto-fonts-color-emoji
+      pkgs.maple-mono.NF-unhinted
+    ];
   };
 }

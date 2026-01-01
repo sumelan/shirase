@@ -9,7 +9,7 @@
     green_bright
     ;
 in {
-  flake.modules.homeManager.layout = _: {
+  flake.modules.homeManager.default = _: {
     xdg.configFile."niri/layout.kdl".text =
       # kdl
       ''

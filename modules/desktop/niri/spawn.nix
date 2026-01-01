@@ -1,5 +1,5 @@
 _: {
-  flake.modules.homeManager.spawn = {
+  flake.modules.homeManager.default = {
     xdg.configFile."niri/spawn.kdl".text =
       # kdl
       ''

@@ -6,6 +6,10 @@ _: {
   }: let
     regularFont = config.gtk.font.name;
   in {
+    custom.fonts.packages = [
+      pkgs.noto-fonts-cjk-sans
+    ];
+
     i18n.inputMethod = {
       enable = true;
       type = "fcitx5";

@@ -32,6 +32,9 @@
             };
           }
           (inputs.nixpkgs.lib.mkAliasOptionModule ["hm"] ["home-manager" "users" user])
+          {
+            networking.hostName = host;
+          }
         ];
     };
 in {

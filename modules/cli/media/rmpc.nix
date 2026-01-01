@@ -1,13 +1,10 @@
-{config, ...}: {
-  flake.modules.homeManager.default = {user, ...}: {
-    imports = with config.flake.modules.homeManager; [
-      theme
-    ];
-
-    programs.rmpc = let
-      mpdAddress = "/run/user/1000/mpd/socket";
-      cacheHome = "/home/${user}/.cache";
-    in {
+_: {
+  flake.modules.homeManager.default = {config, ...}: let
+    inherit (config.xdg) cacheHome;
+    mpdAddress = config.services.mpd.network.listenAddress;
+    theme = "nord";
+  in {
+    programs.rmpc = {
       enable = true;
       config =
         # ron
@@ -18,7 +15,7 @@
           (
               address: "${mpdAddress}",
               password: None,
-              theme: "custom",
+              theme: "${theme}",
               cache_dir: "${cacheHome}/rmpc",
               on_song_change: None,
               volume_step: 5,

@@ -1,31 +1,11 @@
-{config, ...}: let
-  inherit
-    (config.flake.lib.colors)
-    gray5
-    white0
-    white1
-    white2
-    white3
-    blue0
-    blue1
-    blue2
-    yellow_base
-    cyan_bright
-    red_base
-    red_bright
-    green_bright
-    orange_base
-    orange_bright
-    magenta_bright
-    ;
-in {
+_: {
   flake.modules.homeManager.youtube-tui = {
+    config,
     pkgs,
-    user,
     ...
   }: let
-    download = "/home/${user}/Downloads";
-    dataHome = "/home/${user}/.local/share";
+    inherit (config.xdg.userDirs) download;
+    inherit (config.xdg) dataHome;
   in {
     home.packages = [pkgs.youtube-tui];
 
@@ -205,37 +185,6 @@ in {
           command = "key Esc 0 ;; key Up 0 ;; key Left 0 ;; key Enter 0";
 
           # and much more ...
-        };
-      };
-
-      "youtube-tui/appearance.yml".source = (pkgs.formats.yaml {}).generate "appearance" {
-        borders = "Rounded";
-        colors = {
-          text = white0;
-          text_special = white3;
-          text_secondary = white2;
-          text_error = red_bright;
-          outline = white1;
-          outline_selected = orange_bright;
-          outline_hover = blue0;
-          outline_secondary = blue2;
-          message_outline = "#FF7F00";
-          message_error_outline = red_base;
-          message_success_outline = blue1;
-          item_info = {
-            tag = gray5;
-            title = orange_base;
-            description = gray5;
-            author = yellow_base;
-            viewcount = green_bright;
-            length = magenta_bright;
-            published = cyan_bright;
-            video_count = "#838DFF";
-            sub_count = "#65FFBA";
-            likes = "#C8FF81";
-            genre = "#FF75D7";
-            page_turner = gray5;
-          };
         };
       };
 

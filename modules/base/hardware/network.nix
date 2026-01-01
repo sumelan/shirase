@@ -1,20 +1,11 @@
 _: {
   flake.modules = {
-    nixos.default = {
-      pkgs,
-      host,
-      ...
-    }: {
+    nixos.default = {pkgs, ...}: {
       # system packages
       # NetworkManager control applet for GNOME
       environment.systemPackages = [pkgs.networkmanagerapplet];
       # basic network settings
-      networking = {
-        # Enable networking
-        networkmanager.enable = true;
-        # Define your hostname
-        hostName = host;
-      };
+      networking.networkmanager.enable = true;
       # firewall
       networking.firewall = let
         portRanges = {

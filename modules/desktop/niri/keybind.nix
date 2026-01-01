@@ -72,7 +72,7 @@
     text = "Switch Mozc";
   };
 in {
-  flake.modules.homeManager.keybind = _: {
+  flake.modules.homeManager.default = _: {
     xdg.configFile."niri/binds.kdl".text =
       # kdl
       ''

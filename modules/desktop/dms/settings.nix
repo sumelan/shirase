@@ -1,5 +1,5 @@
 _: {
-  flake.modules.homeManager.settings = {
+  flake.modules.homeManager.default = {
     config,
     user,
     ...

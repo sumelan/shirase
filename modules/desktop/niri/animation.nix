@@ -1,5 +1,5 @@
 _: {
-  flake.modules.homeManager.animation = _: {
+  flake.modules.homeManager.default = _: {
     xdg.configFile."niri/animation.kdl".text =
       # kdl
       ''
