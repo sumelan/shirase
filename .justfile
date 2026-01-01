@@ -5,9 +5,9 @@ export HOSTNAME := `hostname`
 export NIXPKGS_ALLOW_UNFREE := "1"
 
 # package-paths fetched through nvfetcher
-dms-path := "modules/overlays/dms-plugins"
-yazi-path := "modules/overlays/yazi-plugins"
-helium-path := "modules/packages/helium"
+dms-path := "overlays/dms-plugins"
+yazi-path := "overlays/yazi-plugins"
+helium-path := "packages/helium"
 
 [group('DEFAULT')]
 [doc('List the recipes.')]
@@ -25,7 +25,7 @@ helium-path := "modules/packages/helium"
     nh flake lock {{ flake-url }}
 
 [group('FLAKE')]
-[doc('Analyzing a `flake.lock` for duplicate inputs.')]
+[doc('Analyzing a flake.lock for duplicate inputs.')]
 @flint:
     nix run github:NotAShelf/flint
 
@@ -45,9 +45,9 @@ helium-path := "modules/packages/helium"
     nh os repl
 
 [group('TOOLS')]
-[doc('Search for all packages containing `file`.')]
-@locate file:
-    nix-locate {{ file }}
+[doc('Search for all packages containing specific argments.')]
+@locate args:
+    nix-locate {{ args }}
 
 [group('TOOLS')]
 [doc('Download a file to the nix store and get the SHA-256 hash.')]
@@ -60,7 +60,7 @@ helium-path := "modules/packages/helium"
     yazi $(nix eval --raw nixpkgs#{{ package }})
 
 [group('UPDATE')]
-[doc('Update a specific input in the `flake.nix`.')]
+[doc('Update a specific input in the flake.')]
 @update input:
     echo -e "\n===== Updating {{ input }}... =====\n"
     nix flake update {{ input }}
@@ -101,7 +101,7 @@ helium-path := "modules/packages/helium"
     yazi ./result
 
 [group('BUILD')]
-[doc('Look the package you defined under `modules/packages` through yazi.')]
+[doc('Look the package you defined as `pkgs.custom` through yazi.')]
 @custom package:
     nix build --impure --expr '(import <nixpkgs> { }).callPackage ./modules/packages/{{ package }}/default.nix {}'
     yazi ./result
@@ -127,7 +127,7 @@ helium-path := "modules/packages/helium"
    nix-shell -p ssh-to-age --run "ssh-to-age < ~/.ssh/id_ed25519.pub"
 
 [group('SOPS')]
-[doc('Convert a SSH Ed25519 public key targeted to `host`.')]
+[doc('Convert a SSH Ed25519 public key targeted to `HOST`.')]
 @sopsScan host:
    nix-shell -p ssh-to-age --run 'ssh-keyscan {{ host }} | ssh-to-age' 
 
@@ -137,12 +137,12 @@ helium-path := "modules/packages/helium"
   $EDITOR .sops.yaml
 
 [group('SOPS')]
-[doc('Add secrets in `file`.')]
+[doc('Edit a secret file inside `sercrets/`.')]
 @sopsSecrets file:
     nix-shell -p sops --run "sops secrets/{{ file }}"
 
 [group('SOPS')]
-[doc('Update the keys in `file` for all secret.')]
+[doc('Update the keys for all secrets inside `secrets/FILE`.')]
 @sopsUpdate file:
     nix-shell -p sops --run "sops updatekeys secrets/{{ file }}"
 
