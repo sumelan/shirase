@@ -1,34 +1,22 @@
 {config, ...}: let
   inherit
     (config.flake.lib.colors)
-    black0
     black2
     gray0
-    gray1
-    gray5
     white0
-    white1
-    white2
     white3
     blue0
     blue1
     blue2
-    yellow_dim
-    yellow_base
     yellow_bright
-    cyan_base
     cyan_bright
-    red_base
-    red_bright
-    green_base
     green_bright
-    orange_base
     orange_bright
     magenta_bright
     ;
 in {
-  flake.modules.homeManager.zarumet = _: let
-    mpdAddress = "/run/user/1000/mpd/socket";
+  flake.modules.homeManager.zarumet = {config, ...}: let
+    mpdAddress = config.services.mpd.network.listenAddress;
   in {
     programs.zarumet = {
       enable = true;

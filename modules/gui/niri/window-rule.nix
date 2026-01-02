@@ -7,7 +7,7 @@
     red_bright
     ;
 in {
-  flake.modules.homeManager.default = {
+  flake.modules.homeManager.default = _: {
     xdg.configFile."niri/window-rule.kdl".text =
       #kdl
       ''

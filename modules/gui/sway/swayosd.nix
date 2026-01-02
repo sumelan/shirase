@@ -1,10 +1,13 @@
-_: let
+{config, ...}: let
   inherit (builtins) toString;
+  inherit
+    (config.flake.lib.colors)
+    gray0
+    gray2
+    white2
+    ;
 in {
   flake.modules.homeManager.default = {config, ...}: let
-    gray0 = "#242933";
-    gray2 = "#3B4252";
-    white2 = "#E5E9F0";
     inherit (config.xdg) configHome;
   in {
     services.swayosd = {

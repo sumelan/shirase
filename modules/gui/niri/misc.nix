@@ -1,19 +1,22 @@
-{lib, ...}: let
-  inherit
-    (builtins)
-    toString
-    ;
+{
+  config,
+  lib,
+  ...
+}: let
+  inherit (builtins) toString;
   inherit (lib) getExe;
+  inherit
+    (config.flake.lib.colors)
+    gray2
+    blue2
+    orange_bright
+    ;
 in {
   flake.modules.homeManager.default = {
     config,
     pkgs,
     ...
   }: let
-    gray2 = "#3B4252";
-    blue2 = "#88C0D0";
-    orange_bright = "#EFD49F";
-
     # output
     inherit (config.lib.monitors) mainMonitor mainMonitorName;
     mainWidth = toString mainMonitor.mode.width;

@@ -13,12 +13,16 @@
     yellow_base
     ;
 in {
-  flake.modules.homeManager.default = {user, ...}: {
+  flake.modules.homeManager.default = {
+    config,
+    user,
+    ...
+  }: let
+    regularFont = config.gtk.font.name;
+  in {
     programs.satty = {
       enable = true;
-      settings = let
-        regularFont = "Montserrat";
-      in {
+      settings = {
         general = {
           # Start Satty in fullscreen mode
           fullscreen = false;
