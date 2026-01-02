@@ -20,7 +20,6 @@
   hmMods = [
     inputs.dankMaterialShell.homeModules.dank-material-shell
     inputs.nix-index-database.homeModules.nix-index
-    inputs.zarumet.homeModules.default
   ];
 in {
   flake.modules.generic.host_acer = {

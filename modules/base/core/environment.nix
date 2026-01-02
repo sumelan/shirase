@@ -5,7 +5,6 @@ in {
     config,
     pkgs,
     user,
-    host,
     ...
   }: let
     inherit
@@ -16,22 +15,6 @@ in {
       ;
 
     flakePath = "/persist/home/${user}/Projects/shirase";
-    # use the package configured by nvf
-    customNeovim = pkgs.custom.nvf.override {
-      inherit host flakePath;
-    };
-    # use same helix config as home-manager
-    hmHelix = pkgs.symlinkJoin {
-      name = "helix";
-      paths = [pkgs.helix];
-      buildInputs = [pkgs.makeWrapper];
-      postBuild =
-        # sh
-        ''
-          wrapProgram $out/bin/hx --add-flags "--config ${configHome}/helix";
-        '';
-      meta.mainProgram = "hx";
-    };
     # use same yazi config as home-manager
     hmYazi = pkgs.symlinkJoin {
       name = "yazi";
@@ -100,7 +83,7 @@ in {
 
         forUptime = hiPrio pkgs.procps; # for uptime
 
-        inherit customNeovim hmHelix hmYazi;
+        inherit hmYazi;
 
         # install gtk theme for root, some apps like gparted only run as root
         gtkTheme = config.hm.gtk.theme.package;

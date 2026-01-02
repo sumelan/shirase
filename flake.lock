@@ -353,29 +353,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nvf": "nvf",
-        "sops-nix": "sops-nix",
-        "zarumet": "zarumet"
-      }
-    },
-    "rust-overlay": {
-      "inputs": {
-        "nixpkgs": [
-          "zarumet",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1765334520,
-        "narHash": "sha256-jTof2+ir9UPmv4lWksYO6WbaXCC0nsDExrB9KZj7Dz4=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "db61f666aea93b28f644861fbddd37f235cc5983",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
+        "sops-nix": "sops-nix"
       }
     },
     "sops-nix": {
@@ -426,27 +404,6 @@
       "original": {
         "owner": "Supreeeme",
         "repo": "xwayland-satellite",
-        "type": "github"
-      }
-    },
-    "zarumet": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay"
-      },
-      "locked": {
-        "lastModified": 1767055368,
-        "narHash": "sha256-BJSg+1uROfSsuAysoF/sfuwE7VfkNPbtQjfpbGhD4HA=",
-        "owner": "Immelancholy",
-        "repo": "zarumet",
-        "rev": "eb643c0a9eb9e8508c2f78ca730031b4313a5084",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Immelancholy",
-        "repo": "zarumet",
         "type": "github"
       }
     }

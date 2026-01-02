@@ -21,7 +21,6 @@
   hmMods = [
     inputs.dankMaterialShell.homeModules.dank-material-shell
     inputs.nix-index-database.homeModules.nix-index
-    inputs.zarumet.homeModules.default
   ];
 in {
   flake.modules.generic.host_sakura = {
@@ -80,14 +79,13 @@ in {
             ]
             ++ (with config.flake.modules.homeManager; [
               default
-              foliate
               helium
               kdeconnect
               obs-studio
+              rmpc
               protonapp
               vlc
               youtube-tui
-              zarumet
             ]);
         }
       ];
