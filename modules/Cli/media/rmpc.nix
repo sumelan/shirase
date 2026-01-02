@@ -1,5 +1,5 @@
 _: {
-  flake.modules.homeManager.default = {config, ...}: let
+  flake.modules.homeManager.rmpc = {config, ...}: let
     inherit (config.xdg) cacheHome;
     mpdAddress = config.services.mpd.network.listenAddress;
     theme = "nord";

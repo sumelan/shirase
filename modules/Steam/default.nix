@@ -13,10 +13,13 @@ _: {
       hardware = {
         graphics.enable32Bit = true;
       };
-      custom.persist = {
-        home.directories = [
-          ".steam"
+      custom = {
+        persist.home.directories = [".steam"];
+        cache.home.directories = [
           ".local/share/Steam"
+          ".cache/mesa_shader_cache"
+          ".cache/mesa_shader_cache_db"
+          ".cache/radv_builtin_shaders"
         ];
       };
     };

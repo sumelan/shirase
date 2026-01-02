@@ -21,12 +21,12 @@
   hmMods = [
     inputs.dankMaterialShell.homeModules.dank-material-shell
     inputs.nix-index-database.homeModules.nix-index
+    inputs.zarumet.homeModules.default
   ];
 in {
   flake.modules.generic.host_sakura = {
     imports =
       nixMods
-      ++ (with config.flake.modules.nixos; [hardware_sakura])
       ++ [
         {
           networking.hostId = "b5e8f0be";
@@ -34,6 +34,7 @@ in {
       ]
       ++ (with config.flake.modules.nixos; [
         default
+        hardware_sakura
         hdds
         logitech
         sops-nix
@@ -86,6 +87,7 @@ in {
               protonapp
               vlc
               youtube-tui
+              zarumet
             ]);
         }
       ];

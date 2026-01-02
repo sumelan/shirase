@@ -57,6 +57,18 @@ in {
                 description = "Files to persist, but not to snapshot";
               };
             };
+            home = {
+              directories = mkOption {
+                type = listOf str;
+                default = [];
+                description = "Directories to persist, but not to snapshot";
+              };
+              files = mkOption {
+                type = listOf str;
+                default = [];
+                description = "Files to persist, but not to snapshot";
+              };
+            };
           };
         };
       };

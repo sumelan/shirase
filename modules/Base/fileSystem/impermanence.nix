@@ -45,7 +45,9 @@ in {
           );
 
           users.${user} = {
-            files = unique (cfg.persist.home.files ++ hmcfg.persist.home.files);
+            files = unique (
+              cfg.persist.home.files ++ hmcfg.persist.home.files
+            );
             directories = unique (
               [
                 "Projects"
@@ -66,8 +68,12 @@ in {
           directories = unique cfg.cache.root.directories;
 
           users.${user} = {
-            files = unique hmcfg.cache.home.files;
-            directories = unique hmcfg.cache.home.directories;
+            files = unique (
+              cfg.cache.home.files ++ hmcfg.cache.home.files
+            );
+            directories = unique (
+              cfg.cache.home.directories ++ hmcfg.cache.home.directories
+            );
           };
         };
       };

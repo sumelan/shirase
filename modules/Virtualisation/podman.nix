@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.docker = {pkgs, ...}: {
+  flake.modules.nixos.podman = {pkgs, ...}: {
     environment.systemPackages = [pkgs.distrobox];
 
     virtualisation = {

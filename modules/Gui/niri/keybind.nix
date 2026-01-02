@@ -110,8 +110,6 @@ in {
             Mod+V hotkey-overlay-title="${vesktop}" { spawn "vesktop"; }
             Mod+Shift+E hotkey-overlay-title="${yazi}" { spawn "ghostty" "-e" "yazi"; }
             Mod+Shift+N hotkey-overlay-title="${nix-search-tv}" { spawn "ghostty" "-e" "ns"; }
-            Mod+Shift+R hotkey-overlay-title="${rmpc}" { spawn "ghostty" "-e" "rmpc"; }
-            Mod+Shift+Y hotkey-overlay-title="${youtube}" { spawn "ghostty" "-e" "youtube-tui"; }
             Mod+Bracketright hotkey-overlay-title="${dynamicCast "Select window as cast target"}" { spawn "sh" "-c" "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
             Mod+Shift+Bracketright hotkey-overlay-title="${dynamicCast "Set current output as cast target"}" { spawn "sh" "-c" "niri msg action set-dynamic-cast-monitor"; }
             Mod+Alt+Bracketright hotkey-overlay-title="${dynamicCast "Clear cast target"}" { spawn "sh" "-c" "niri msg action clear-dynamic-cast-target"; }

@@ -1,7 +1,7 @@
 {config, ...}: {
   flake = {
     meta.users.sumelan = {
-      name = "Default author of this flake";
+      name = "Default user of this flake";
       timeZone = "Asia/Tokyo";
       defaultLocale = "ja_JP.UTF-8";
       email = "sumelan@proton.me";

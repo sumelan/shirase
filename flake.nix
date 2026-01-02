@@ -43,6 +43,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zarumet = {
+      url = "github:Immelancholy/zarumet";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     niri-flake = {
       url = "github:sodiboo/niri-flake";
       inputs = {

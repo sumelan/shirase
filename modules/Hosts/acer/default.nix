@@ -11,40 +11,30 @@
       inputs.niri-flake.nixosModules.niri
       inputs.sops-nix.nixosModules.sops
     ]
-    ++ [inputs.nix-chuwi-minibook-x.nixosModules.default];
+    ++ [
+      inputs.nixos-hardware.nixosModules.common-pc-laptop
+      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+      inputs.nixos-hardware.nixosModules.common-cpu-intel
+    ];
 
   hmMods = [
     inputs.dankMaterialShell.homeModules.dank-material-shell
     inputs.nix-index-database.homeModules.nix-index
+    inputs.zarumet.homeModules.default
   ];
 in {
-  flake.modules.generic.host_minibookx = {
+  flake.modules.generic.host_acer = {
     imports =
       nixMods
-      ++ (with config.flake.modules.nixos; [
-        hardware_minibookx
-        chuwi-minibook-x
-      ])
       ++ [
         {
-          networking.hostId = "56895d2b";
-
-          programs.ssh = {
-            extraConfig = ''
-              Host sakura
-                HostName 192.168.68.62
-                Port 22
-                User root
-            '';
-          };
+          networking.hostId = "22fe2870";
         }
       ]
       ++ (with config.flake.modules.nixos; [
         default
+        hardware_acer
         laptop
-        sops-nix
-        syncthing
-        syncthing_minibookx
       ])
       ++ [
         {
@@ -53,13 +43,13 @@ in {
             ++ [
               {
                 monitors = {
-                  "DSI-1" = {
+                  "eDP-1" = {
                     isMain = true;
                     scale = 1.0;
                     mode = {
-                      width = 1200;
-                      height = 1920;
-                      refresh = 50.002;
+                      width = 1920;
+                      height = 1200;
+                      refresh = 60.0;
                     };
                     position = {
                       x = 0;
@@ -72,11 +62,6 @@ in {
             ]
             ++ (with config.flake.modules.homeManager; [
               default
-              foliate
-              helium
-              kdeconnect
-              protonapp
-              youtube-tui
             ]);
         }
       ];

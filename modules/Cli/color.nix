@@ -27,8 +27,7 @@
     ;
 in {
   flake.modules.homeManager = {
-    default = {
-      # rmpc
+    rmpc = {
       xdg.configFile."rmpc/themes/nord.ron".text =
         # ron
         ''
