@@ -81,6 +81,10 @@ in {
             open-floating true
         }
         window-rule {
+            match app-id="^krita$"
+            open-on-output "PNP(HAT) Kamvas Pro 16 0xF0000001"
+        }
+        window-rule {
             match app-id="^mpv$"
             default-column-width { proportion 0.500000; }
             default-window-height { proportion 0.480000; }

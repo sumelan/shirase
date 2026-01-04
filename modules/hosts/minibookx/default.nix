@@ -70,6 +70,7 @@ in {
             ]
             ++ (with config.flake.modules.homeManager; [
               default
+              foliate
               helium
               kdeconnect
               protonapp

@@ -36,6 +36,7 @@ in {
         hardware_sakura
         hdds
         logitech
+        opentabletdriver
         sops-nix
         steam
         syncoid
@@ -79,8 +80,10 @@ in {
             ]
             ++ (with config.flake.modules.homeManager; [
               default
+              foliate
               helium
               kdeconnect
+              krita
               obs-studio
               rmpc
               protonapp

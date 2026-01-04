@@ -49,12 +49,24 @@ _: {
         "/etc/NetworkManager"
       ];
     };
+
     logitech = _: {
       hardware.logitech.wireless = {
         enable = true;
         enableGraphical = true;
       };
     };
+
+    opentabletdriver = _: {
+      hardware.opentabletdriver = {
+        enable = true;
+        daemon.enable = true;
+      };
+      custom.persist.home.directories = [
+        ".config/OpenTabletDriver"
+      ];
+    };
+
     qmk = _: {
       hardware.keyboard.qmk = {
         enable = true;
