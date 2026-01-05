@@ -31,7 +31,7 @@
       inherit system;
       config.allowUnfree = true;
     };
-    specialArgs = {inherit inputs user;};
+    specialArgs = {inherit user;};
   in
     nixpkgs.lib.nixosSystem {
       inherit system pkgs specialArgs;
@@ -40,7 +40,7 @@
         ++ defaultNixMods
         ++ [flake.modules.nixos.${host}]
         ++ [flake.modules.nixos.${user}]
-        ++ [../../overlays]
+        ++ [flake.modules.nixos.overlay]
         ++ [
           inputs.home-manager.nixosModules.home-manager
           {

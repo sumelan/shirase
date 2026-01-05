@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  inputs,
+  lib,
+  ...
+}: let
   inherit
     (lib)
     mkOverride
@@ -11,7 +15,6 @@ in {
   flake.modules = {
     nixos.default = {
       config,
-      inputs,
       pkgs,
       user,
       ...
