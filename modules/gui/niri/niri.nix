@@ -1,6 +1,5 @@
 _: {
   flake.modules.nixos.default = {
-    config,
     pkgs,
     user,
     ...
@@ -47,9 +46,9 @@ _: {
       compositor.name = "niri";
       # User home directory to copy configurations for greeter
       # If DMS config files are in non-standard locations then use the configFiles option instead
-      configHome = config.hm.home.homeDirectory;
+      configHome = "/home/${user}";
       configFiles = [
-        "${config.hm.xdg.configHome}/DankMaterialShell/default-settings.json"
+        "/home/${user}/.config/DankMaterialShell/default-settings.json"
       ];
       logs = {
         save = true;

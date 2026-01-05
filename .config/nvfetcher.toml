@@ -1,0 +1,11 @@
+[dms-plugins]
+src.git = "https://github.com/AvengeMedia/dms-plugins"
+fetch.github = "AvengeMedia/dms-plugins"
+
+[yazi-plugins]
+src.git = "https://github.com/yazi-rs/plugins"
+fetch.github = "yazi-rs/plugins"
+
+[helium]
+src.github_tag = "imputnet/helium-linux"
+fetch.url = "https://github.com/imputnet/helium-linux/releases/download/$ver/helium-$ver-x86_64.AppImage"

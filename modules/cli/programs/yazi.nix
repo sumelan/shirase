@@ -1,4 +1,6 @@
-_: {
+{config, ...}: let
+  inherit (config) flake;
+in {
   flake.modules.homeManager.default = {pkgs, ...}: {
     home = {
       packages = builtins.attrValues {
@@ -34,9 +36,9 @@ _: {
           ;
 
         # defined in `packages/yazi-plugins`
-        full-border = "${pkgs.custom.yazi-plugins.src}/full-border.yazi";
-        toggle-pane = "${pkgs.custom.yazi-plugins.src}/toggle-pane.yazi";
-        mount = "${pkgs.custom.yazi-plugins.src}/mount.yazi";
+        full-border = "${flake.packages.${pkgs.stdenv.hostPlatform.system}.yazi-plugins}/full-border.yazi";
+        toggle-pane = "${flake.packages.${pkgs.stdenv.hostPlatform.system}.yazi-plugins}/toggle-pane.yazi";
+        mount = "${flake.packages.${pkgs.stdenv.hostPlatform.system}.yazi-plugins}/mount.yazi";
       };
 
       flavors = {inherit (pkgs.yaziPlugins) nord;};

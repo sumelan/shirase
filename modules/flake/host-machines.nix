@@ -31,9 +31,7 @@
       inherit system;
       config.allowUnfree = true;
     };
-    specialArgs = {
-      inherit inputs host user;
-    };
+    specialArgs = {inherit inputs user;};
   in
     nixpkgs.lib.nixosSystem {
       inherit system pkgs specialArgs;

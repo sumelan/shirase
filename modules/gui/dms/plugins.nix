@@ -1,12 +1,9 @@
-_: {
-  flake.modules.homeManager.default = {
-    config,
-    pkgs,
-    ...
-  }: let
-    cfg = config.programs.dank-material-shell.plugins;
+{config, ...}: let
+  inherit (config) flake;
+in {
+  flake.modules.homeManager.default = {pkgs, ...}: let
     jsonFormat = pkgs.formats.json {};
-    pluginsRepo = pkgs.custom.dms-plugins.src;
+    pluginsRepo = flake.packages.${pkgs.stdenv.hostPlatform.system}.dms-plugins;
   in {
     programs.dank-material-shell.plugins = {
       "dankBatteryAlerts" = {
@@ -19,7 +16,7 @@ _: {
       "DankMaterialShell/plugin_settings.json" = {
         source = jsonFormat.generate "plugins_settings.json" {
           dankBatteryAlerts = {
-            enabled = cfg."dankBatteryAlerts".enable;
+            enabled = true;
             criticalThreshold = 10;
             enableCriticalAlert = true;
             criticalTitle = "Critical Battery Level";

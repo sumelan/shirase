@@ -5,9 +5,8 @@ export HOSTNAME := `hostname`
 export NIXPKGS_ALLOW_UNFREE := "1"
 
 # package-paths fetched through nvfetcher
-dms-path := "overlays/dms-plugins"
-yazi-path := "overlays/yazi-plugins"
-helium-path := "packages/helium"
+config := ".config/nvfetcher.toml"
+sourceDir := "_sources"
 
 [group('DEFAULT')]
 [doc('List the recipes.')]
@@ -71,14 +70,8 @@ helium-path := "packages/helium"
     echo -e "\n===== Updating all flake inputs... =====\n"
     nix flake update
 
-    echo -e "\n===== Fetching dms-plugins repo... =====\n"
-    nvfetcher --keep-old --config {{ dms-path }}/nvfetcher.toml --build-dir {{ dms-path }}
-
-    echo -e "\n===== Fetching yazi-plugins repo... =====\n"
-    nvfetcher --keep-old --config {{ yazi-path }}/nvfetcher.toml --build-dir {{ yazi-path }}
-
-    echo -e "\n===== Fetching a helium package... =====\n"
-    nvfetcher --keep-old --config {{ helium-path }}/nvfetcher.toml --build-dir {{ helium-path }}
+    echo -e "\n===== Fetching packages... =====\n"
+    nvfetcher --keep-old --config {{ config }} --build-dir {{ sourceDir }}
 
     echo -e "\n===== Commit on git... =====\n"
     git add -A

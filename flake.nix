@@ -3,11 +3,19 @@
 
   outputs = {
     flake-parts,
+    home-manager,
     import-tree,
     ...
   } @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;}
-    (import-tree ./modules);
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin"];
+      imports = [
+        flake-parts.flakeModules.modules
+        home-manager.flakeModules.home-manager
+        (import-tree ./packages)
+        (import-tree ./modules)
+      ];
+    };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

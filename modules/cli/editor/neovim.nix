@@ -1,33 +1,22 @@
-{lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib) getExe;
+  inherit (config) flake;
 in {
   flake.modules = {
-    nixos.default = {
-      pkgs,
-      host,
-      user,
-      ...
-    }: let
+    nixos.default = {pkgs, ...}: let
       # use the package configured by nvf
-      customNeovim = pkgs.custom.nvf.override {
-        inherit host;
-        flakePath = "/persist/home/${user}/Projects/shirase";
-      };
+      customNeovim = flake.packages.${pkgs.stdenv.hostPlatform.system}.nvf;
     in {
       environment.systemPackages = [customNeovim];
     };
 
-    homeManager.default = {
-      pkgs,
-      host,
-      user,
-      ...
-    }: let
+    homeManager.default = {pkgs, ...}: let
       # use the package configured by nvf
-      customNeovim = pkgs.custom.nvf.override {
-        inherit host;
-        flakePath = "/persist/home/${user}/Projects/shirase";
-      };
+      customNeovim = flake.packages.${pkgs.stdenv.hostPlatform.system}.nvf;
     in {
       home = {
         packages = [customNeovim];

@@ -1,3 +1,0 @@
-[yazi-plugins]
-src.git = "https://github.com/yazi-rs/plugins"
-fetch.github = "yazi-rs/plugins"

@@ -1,8 +1,10 @@
-_: {
+{config, ...}: let
+  inherit (config) flake;
+in {
   flake.modules.homeManager.helium = {pkgs, ...}: {
     programs.chromium = {
       enable = true;
-      package = pkgs.custom.helium;
+      package = flake.packages.${pkgs.stdenv.hostPlatform.system}.helium;
     };
 
     xdg.mimeApps = let
