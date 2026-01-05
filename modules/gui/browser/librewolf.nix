@@ -1,12 +1,9 @@
-{
-  inputs,
-  lib,
-  ...
-}: let
+{lib, ...}: let
   inherit (lib) getExe mkForce concatStringsSep;
 in {
   flake.modules.homeManager.default = {
     config,
+    inputs,
     pkgs,
     user,
     ...

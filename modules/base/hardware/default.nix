@@ -1,6 +1,6 @@
 _: {
   flake.modules.nixos = {
-    default = _: {
+    default = {user, ...}: {
       powerManagement.enable = true;
       services = {
         upower.enable = true;
@@ -8,6 +8,7 @@ _: {
         tlp.enable = false;
       };
       hardware.i2c.enable = true;
+      users.users.${user}.extraGroups = ["i2c"];
     };
 
     laptop = {

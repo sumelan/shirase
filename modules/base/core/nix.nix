@@ -1,9 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}: let
-  inherit (inputs) self;
+{lib, ...}: let
   inherit
     (lib)
     mkOverride
@@ -16,10 +11,13 @@ in {
   flake.modules = {
     nixos.default = {
       config,
+      inputs,
       pkgs,
       user,
       ...
-    }: {
+    }: let
+      inherit (inputs) self;
+    in {
       # execute shebangs that assume hardcoded shell paths
       services.envfs.enable = true;
       system = {

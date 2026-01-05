@@ -1,26 +1,47 @@
 {
-  config,
   inputs,
+  config,
   ...
 }: let
+  inherit (config) flake;
+  inherit (builtins) attrValues;
+  inherit (inputs) nixpkgs;
+
+  nixMods = [
+    inputs.dankMaterialShell.nixosModules.dank-material-shell
+    inputs.dankMaterialShell.nixosModules.greeter
+    inputs.impermanence.nixosModules.impermanence
+    inputs.niri-flake.nixosModules.niri
+    inputs.sops-nix.nixosModules.sops
+  ];
+
+  hmMods = [
+    inputs.dankMaterialShell.homeModules.dank-material-shell
+    inputs.nix-index-database.homeModules.nix-index
+  ];
+
   linux = mkNixos "x86_64-linux" "nixos";
 
-  mkNixos = system: cls: host: {user ? "sumelan"}: let
-    pkgs = import inputs.nixpkgs {
+  mkNixos = system: cls: host: {
+    user ? "sumelan",
+    defaultNixMods ? [],
+    defaultHmMods ? [],
+  }: let
+    pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
     };
-    hostModule = config.flake.modules.generic."host_${host}";
-    userModule = config.flake.modules.generic."user_${user}";
     specialArgs = {
       inherit inputs host user;
     };
   in
-    inputs.nixpkgs.lib.nixosSystem {
+    nixpkgs.lib.nixosSystem {
       inherit system pkgs specialArgs;
       modules =
-        hostModule.imports
-        ++ userModule.imports
+        nixMods
+        ++ defaultNixMods
+        ++ [flake.modules.nixos.${host}]
+        ++ [flake.modules.nixos.${user}]
         ++ [../../overlays]
         ++ [
           inputs.home-manager.nixosModules.home-manager
@@ -29,9 +50,14 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = specialArgs;
+              users.${user}.imports =
+                hmMods
+                ++ defaultHmMods
+                ++ [flake.modules.homeManager.${host}]
+                ++ [flake.modules.homeManager.${user}];
             };
           }
-          (inputs.nixpkgs.lib.mkAliasOptionModule ["hm"] ["home-manager" "users" user])
+          (nixpkgs.lib.mkAliasOptionModule ["hm"] ["home-manager" "users" user])
           {
             networking.hostName = host;
           }
@@ -39,8 +65,31 @@
     };
 in {
   flake.nixosConfigurations = {
-    acer = linux "acer" {};
-    minibookx = linux "minibookx" {};
-    sakura = linux "sakura" {};
+    acer = linux "acer" {
+      defaultNixMods = attrValues {
+        inherit
+          (inputs.nixos-hardware.nixosModules)
+          common-pc-laptop
+          common-pc-laptop-ssd
+          common-cpu-intel
+          ;
+      };
+    };
+    minibookx = linux "minibookx" {
+      defaultNixMods = [
+        inputs.nix-chuwi-minibook-x.nixosModules.default
+      ];
+    };
+    sakura = linux "sakura" {
+      defaultNixMods = attrValues {
+        inherit
+          (inputs.nixos-hardware.nixosModules)
+          common-pc
+          common-pc-ssd
+          common-cpu-amd
+          common-gpu-amd
+          ;
+      };
+    };
   };
 }
