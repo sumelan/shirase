@@ -2,7 +2,7 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 {lib, ...}: {
-  flake.modules.nixos.hardware_minibookx = {
+  flake.modules.nixos.hardware-minibookx = {
     config,
     pkgs,
     modulesPath,

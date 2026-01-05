@@ -90,6 +90,7 @@ in {
             Mod+Alt+N hotkey-overlay-title="${dms "Nightmode"}" { spawn "dms" "ipc" "call" "night" "toggle"; }
             Mod+Alt+L hotkey-overlay-title="${dms "Screen-lock"}" { spawn "dms" "ipc" "call" "lock" "lock"; }
             Mod+Comma hotkey-overlay-title="${dms "Settings"}" { spawn "dms" "ipc" "call" "settings" "toggle"; }
+            Mod+Slash hotkey-overlay-title="${dms "Show/Hide"}" { spawn "dms" "ipc" "call" "bar" "toggle" "name" "Main Bar"; }
             Mod+Backslash hotkey-overlay-title="${dms "Interactive Screen-capture"}" { spawn "dms" "ipc" "call" "niri" "screenshot"; }
             Mod+Shift+Backslash hotkey-overlay-title="${dms "Capture entire screen"}" { spawn "dms" "ipc" "call" "niri" "screenshotScreen"; }
             Mod+Alt+Backslash hotkey-overlay-title="${dms "Capture focused window"}" { spawn "dms" "ipc" "call" "niri" "screenshotWindow"; }

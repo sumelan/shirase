@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.syncoid_sakura = {config, ...}: {
+  flake.modules.nixos.syncoid-sakura = {config, ...}: {
     services.syncoid = {
       commands."zusb" = {
         source = "zroot/persist";

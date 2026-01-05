@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.syncthing_sakura = {config, ...}: {
+  flake.modules.nixos.syncthing-sakura = {config, ...}: {
     services.syncthing = {
       key = config.sops.secrets."syncthing/sakura-key".path;
       cert = config.sops.secrets."syncthing/sakura-cert".path;

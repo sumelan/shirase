@@ -2,7 +2,7 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 {lib, ...}: {
-  flake.modules.nixos.hardware_sakura = {
+  flake.modules.nixos.hardware-sakura = {
     config,
     pkgs,
     modulesPath,

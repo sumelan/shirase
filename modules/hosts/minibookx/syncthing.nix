@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.syncthing_minibookx = {config, ...}: {
+  flake.modules.nixos.syncthing-minibookx = {config, ...}: {
     services.syncthing = {
       key = config.sops.secrets."syncthing/minibookx-key".path;
       cert = config.sops.secrets."syncthing/minibookx-cert".path;

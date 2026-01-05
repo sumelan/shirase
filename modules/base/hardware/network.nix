@@ -1,34 +1,25 @@
 _: {
-  flake.modules = {
-    nixos.default = {pkgs, ...}: {
+  flake.modules.nixos = {
+    default = {pkgs, ...}: {
       # system packages
       # NetworkManager control applet for GNOME
       environment.systemPackages = [pkgs.networkmanagerapplet];
       # basic network settings
       networking.networkmanager.enable = true;
       # firewall
-      networking.firewall = let
-        portRanges = {
-          from = 1714;
-          to = 1764;
-        };
-      in {
-        enable = true;
-        # kdeconnect port
-        allowedTCPPortRanges = [portRanges];
-        allowedUDPPortRanges = [portRanges];
-      };
+      networking.firewall.enable = true;
     };
-    homeManager.kdeconnect = {
-      services.kdeconnect = {
+
+    valent = {pkgs, ...}: {
+      programs.kdeconnect = {
         enable = true;
-        indicator = true;
+        package = pkgs.valent;
       };
+
       custom = {
-        persist.home.directories = [".config/kdeconnect"];
+        persist.home.directories = [".config/valent"];
         cache.home.directories = [
-          ".cache/kdeconnect.app"
-          ".cache/kdeconnect.daemon"
+          ".cache/valent"
         ];
       };
     };

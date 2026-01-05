@@ -16,17 +16,18 @@ in {
         ]
         ++ (with flake.modules.nixos; [
           default
-          hardware_sakura
+          hardware-sakura
           hdds
           logitech
           opentabletdriver
           sops-nix
           steam
           syncoid
-          syncoid_sakura
+          syncoid-sakura
           syncthing
-          syncthing_sakura
+          syncthing-sakura
           qmk
+          valent
         ]);
     };
 
@@ -57,7 +58,6 @@ in {
           default
           foliate
           helium
-          kdeconnect
           krita
           obs-studio
           rmpc

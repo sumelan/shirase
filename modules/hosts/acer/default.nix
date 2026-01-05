@@ -1,11 +1,13 @@
-{config, ...}: {
+{config, ...}: let
+  inherit (config) flake;
+in {
   flake.modules = {
     nixos.acer = _: {
       imports =
         [{networking.hostId = "22fe2870";}]
-        ++ (with config.flake.modules.nixos; [
+        ++ (with flake.modules.nixos; [
           default
-          hardware_acer
+          hardware-acer
           laptop
         ]);
     };
@@ -32,9 +34,7 @@
             };
           }
         ]
-        ++ (with config.flake.modules.homeManager; [
-          default
-        ]);
+        ++ (with flake.modules.homeManager; [default]);
     };
   };
 }

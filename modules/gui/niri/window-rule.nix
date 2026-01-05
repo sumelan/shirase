@@ -131,6 +131,10 @@ in {
             block-out-from "screen-capture"
         }
         window-rule {
+            match app-id="^valent$"
+            open-floating true
+        }
+        window-rule {
             match app-id="^vlc$"
             open-floating true
             opacity 1.000000

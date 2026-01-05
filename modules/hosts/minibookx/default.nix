@@ -20,12 +20,13 @@ in {
         ]
         ++ (with flake.modules.nixos; [
           default
-          hardware_minibookx
+          hardware-minibookx
           chuwi-minibook-x
           laptop
           sops-nix
           syncthing
-          syncthing_minibookx
+          syncthing-minibookx
+          valent
         ]);
     };
 
@@ -55,7 +56,6 @@ in {
           default
           foliate
           helium
-          kdeconnect
           protonapp
           rmpc
           youtube-tui
