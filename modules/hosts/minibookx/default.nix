@@ -54,6 +54,7 @@ in {
         ]
         ++ (with flake.modules.homeManager; [
           default
+          dissent
           foliate
           helium
           protonapp

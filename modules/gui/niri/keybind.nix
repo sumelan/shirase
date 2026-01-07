@@ -55,11 +55,6 @@
     name = "  rmpc";
     text = "Terminal MPD Client";
   };
-  youtube = hotkey {
-    color = red_base;
-    name = "  youtube-tui";
-    text = "Terminal YouTube Client";
-  };
   dynamicCast = text:
     hotkey {
       color = orange_bright;
@@ -84,16 +79,15 @@ in {
             Mod+P hotkey-overlay-title="${dms "Notepad"}" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
             Mod+D hotkey-overlay-title="${dms "Dashboard"}" { spawn "dms" "ipc" "call" "dash" "toggle" "overview"; }
             Mod+W hotkey-overlay-title="${dms "Wallpaper"}" { spawn "dms" "ipc" "call" "dankdash" "wallpaper"; }
-            Mod+M hotkey-overlay-title="${dms "Processlist"}" { spawn "dms" "ipc" "call" "processlist" "toggle"; }
             Mod+N hotkey-overlay-title="${dms "Notifications"}" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
             Mod+I hotkey-overlay-title="${dms "Idle-inhibitor"}" { spawn "dms" "ipc" "call" "inhibit" "toggle"; }
             Mod+Alt+N hotkey-overlay-title="${dms "Nightmode"}" { spawn "dms" "ipc" "call" "night" "toggle"; }
-            Mod+Alt+L hotkey-overlay-title="${dms "Screen-lock"}" { spawn "dms" "ipc" "call" "lock" "lock"; }
-            Mod+Comma hotkey-overlay-title="${dms "Settings"}" { spawn "dms" "ipc" "call" "settings" "toggle"; }
             Mod+Slash hotkey-overlay-title="${dms "Show/Hide"}" { spawn "dms" "ipc" "call" "bar" "toggle" "name" "Main Bar"; }
             Mod+Backslash hotkey-overlay-title="${dms "Interactive Screen-capture"}" { spawn "dms" "ipc" "call" "niri" "screenshot"; }
             Mod+Shift+Backslash hotkey-overlay-title="${dms "Capture entire screen"}" { spawn "dms" "ipc" "call" "niri" "screenshotScreen"; }
             Mod+Alt+Backslash hotkey-overlay-title="${dms "Capture focused window"}" { spawn "dms" "ipc" "call" "niri" "screenshotWindow"; }
+            Mod+Alt+L allow-when-locked=true hotkey-overlay-title="${dms "Screen-lock"}" { spawn "dms" "ipc" "call" "lock" "lock"; }
+
             XF86AudioLowerVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "decrement" "3"; }
             XF86AudioMicMute allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "micmute"; }
             XF86AudioMute allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "mute"; }

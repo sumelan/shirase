@@ -1,4 +1,6 @@
-_: {
+{lib, ...}: let
+  inherit (lib) getExe;
+in {
   flake.modules.homeManager.youtube-tui = {
     config,
     pkgs,
@@ -8,6 +10,16 @@ _: {
     inherit (config.xdg) dataHome;
   in {
     home.packages = [pkgs.youtube-tui];
+
+    xdg.desktopEntries = {
+      youtube-tui = {
+        name = "YouTube-TUI";
+        genericName = "YouTube";
+        icon = "youtube";
+        terminal = true;
+        exec = getExe pkgs.youtube-tui;
+      };
+    };
 
     xdg.configFile = {
       "youtube-tui/main.yml".source = (pkgs.formats.yaml {}).generate "main" {

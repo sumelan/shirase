@@ -3,7 +3,7 @@
 in {
   flake = {
     meta.users.sumelan = {
-      name = "Default user of this flake";
+      name = "Sumelan";
       timeZone = "Asia/Tokyo";
       defaultLocale = "ja_JP.UTF-8";
       email = "sumelan@proton.me";
