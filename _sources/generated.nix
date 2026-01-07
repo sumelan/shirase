@@ -3,34 +3,34 @@
 {
   dms-plugins = {
     pname = "dms-plugins";
-    version = "d20bd139d1870036370c9971ca72798695edde37";
+    version = "052310bbb5d4d9a90d2630014172f33221ac2c2c";
     src = fetchFromGitHub {
       owner = "AvengeMedia";
       repo = "dms-plugins";
-      rev = "d20bd139d1870036370c9971ca72798695edde37";
+      rev = "052310bbb5d4d9a90d2630014172f33221ac2c2c";
       fetchSubmodules = false;
-      sha256 = "sha256-TJq3xFgCOwSJhyLZh0t3XavF6XczIGghZ0wHPbLDdLo=";
+      sha256 = "sha256-sxsIx3zEZgiYbH7GJ4EMDswtQXWItKiNRiNpW/UQ9jc=";
     };
-    date = "2026-01-05";
+    date = "2026-01-06";
   };
   helium = {
     pname = "helium";
-    version = "0.7.9.1";
+    version = "0.7.10.1";
     src = fetchurl {
-      url = "https://github.com/imputnet/helium-linux/releases/download/0.7.9.1/helium-0.7.9.1-x86_64.AppImage";
-      sha256 = "sha256-69y8dNJPJk+HgnLzkyYLMdps1Med65yeN+77Nk6jbyM=";
+      url = "https://github.com/imputnet/helium-linux/releases/download/0.7.10.1/helium-0.7.10.1-x86_64.AppImage";
+      sha256 = "sha256-11xSlHIqmyyVwjjwt5FmLhp72P3m07PppOo7a9DbTcE=";
     };
   };
   yazi-plugins = {
     pname = "yazi-plugins";
-    version = "03cdd4b5b15341b3c0d0f4c850d633fadd05a45f";
+    version = "4e5590280db0de5f130bf377e9c32a202110f575";
     src = fetchFromGitHub {
       owner = "yazi-rs";
       repo = "plugins";
-      rev = "03cdd4b5b15341b3c0d0f4c850d633fadd05a45f";
+      rev = "4e5590280db0de5f130bf377e9c32a202110f575";
       fetchSubmodules = false;
-      sha256 = "sha256-5dMAJ6W/L66XuH4CCwRRFpKSLy0ZDFIABAYleFX0AsQ=";
+      sha256 = "sha256-/yGS8R1YsYqqX4JTlIJeg+NfFSxGUHvSdKQZGk6KiBU=";
     };
-    date = "2026-01-03";
+    date = "2026-01-06";
   };
 }
