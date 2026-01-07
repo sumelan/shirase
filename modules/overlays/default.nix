@@ -14,7 +14,7 @@
     # play Bluray disk
     vlcOverlay = _final: prev: {
       vlc = prev.vlc.override {
-        libbluray = prev.libbluray.override {
+        libbluray-full = prev.libbluray.override {
           withAACS = true;
           withBDplus = true;
         };
