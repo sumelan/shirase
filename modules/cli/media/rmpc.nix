@@ -1,9 +1,21 @@
-_: {
+{lib, ...}: let
+  inherit (lib) getExe;
+in {
   flake.modules.homeManager.rmpc = {config, ...}: let
     inherit (config.xdg) cacheHome;
     mpdAddress = config.services.mpd.network.listenAddress;
     theme = "nord";
   in {
+    xdg.desktopEntries = {
+      rmpc = {
+        name = "Rmpc";
+        genericName = "MPD Client";
+        icon = "mpd";
+        terminal = true;
+        exec = getExe config.programs.rmpc.package;
+      };
+    };
+
     programs.rmpc = {
       enable = true;
       config =

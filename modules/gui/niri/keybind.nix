@@ -50,11 +50,6 @@
     name = "󰇥  yazi";
     text = "Terminal File Manager";
   };
-  rmpc = hotkey {
-    color = orange_base;
-    name = "  rmpc";
-    text = "Terminal MPD Client";
-  };
   dynamicCast = text:
     hotkey {
       color = orange_bright;

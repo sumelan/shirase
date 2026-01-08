@@ -1,12 +1,11 @@
 {lib, ...}: let
   inherit
     (builtins)
-    toString
     head
     filter
     attrNames
     ;
-  inherit (lib) getExe mkOption;
+  inherit (lib) mkOption;
   inherit
     (lib.types)
     bool

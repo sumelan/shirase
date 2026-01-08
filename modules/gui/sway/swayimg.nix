@@ -1,16 +1,23 @@
-{lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (builtins) floor;
   inherit (lib) toHexString;
+  inherit
+    (config.flake.lib.colors)
+    gray1
+    gray2
+    white0
+    ;
+  swayimgOpacity = toHexString (((floor (0.95 * 100 + 0.5)) * 255) / 100);
 in {
   flake.modules.homeManager.default = {
     config,
     pkgs,
     ...
   }: let
-    gray1 = "#2E3440";
-    gray2 = "#3B4252";
-    white0 = "#C0C8D8";
-    swayimgOpacity = toHexString (((floor (0.95 * 100 + 0.5)) * 255) / 100);
     monoFont = config.custom.fonts.monospace;
   in {
     programs.swayimg = {

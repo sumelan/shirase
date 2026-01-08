@@ -9,17 +9,18 @@ in {
 
     xdg.mimeApps = let
       value = "helium.desktop";
-      imgAssociations = builtins.listToAttrs (map (name: {
+      associations = builtins.listToAttrs (map (name: {
           inherit name value;
         }) [
           "image/jpeg"
           "image/gif"
           "image/webp"
           "image/png"
+          "application/pdf"
         ]);
     in {
-      # remove `helium.desktop` from image mimetypes
-      associations.removed = imgAssociations;
+      # remove `helium.desktop` from mimetypes
+      associations.removed = associations;
     };
 
     custom.persist.home.directories = [

@@ -27,18 +27,16 @@ in {
         inherit
           (pkgs.yaziPlugins)
           chmod
+          full-border
           git
           lazygit
+          mount
           nord
           starship
           time-travel
+          toggle-pane
           yatline
           ;
-
-        # defined in `packages/yazi-plugins`
-        full-border = "${flake.packages.${pkgs.stdenv.hostPlatform.system}.yazi-plugins}/full-border.yazi";
-        toggle-pane = "${flake.packages.${pkgs.stdenv.hostPlatform.system}.yazi-plugins}/toggle-pane.yazi";
-        mount = "${flake.packages.${pkgs.stdenv.hostPlatform.system}.yazi-plugins}/mount.yazi";
       };
 
       flavors = {inherit (pkgs.yaziPlugins) nord;};

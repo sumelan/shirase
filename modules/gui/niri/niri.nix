@@ -48,7 +48,7 @@ _: {
       # If DMS config files are in non-standard locations then use the configFiles option instead
       configHome = "/home/${user}";
       configFiles = [
-        "/home/${user}/.config/DankMaterialShell/default-settings.json"
+        "/home/${user}/.config/DankMaterialShell/settings.json"
       ];
       logs = {
         save = true;

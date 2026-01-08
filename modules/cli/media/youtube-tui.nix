@@ -14,7 +14,7 @@ in {
     xdg.desktopEntries = {
       youtube-tui = {
         name = "YouTube-TUI";
-        genericName = "YouTube";
+        genericName = "YouTube Player";
         icon = "youtube";
         terminal = true;
         exec = getExe pkgs.youtube-tui;
