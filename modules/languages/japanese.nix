@@ -129,5 +129,9 @@
         };
       };
     };
+
+    custom.persist.home.directories = [
+      ".config/fcitx"
+    ];
   };
 }
