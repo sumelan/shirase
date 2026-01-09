@@ -93,12 +93,6 @@ sourceDir := "_sources"
     nix build --impure --expr  '(import <nixpkgs> { }).{{ package }}.override { {{ attrs }} }'
     yazi ./result
 
-[group('BUILD')]
-[doc('Look the package you defined as `pkgs.custom` through yazi.')]
-@custom package:
-    nix build --impure --expr '(import <nixpkgs> { }).callPackage ./modules/packages/{{ package }}/default.nix {}'
-    yazi ./result
-
 [group('SYNCTHING')]
 [doc('Temporarily use Syncthing in a shell environment.')]
 @syncRun:

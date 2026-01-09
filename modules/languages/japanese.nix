@@ -17,8 +17,8 @@ _: {
         addons = [pkgs.fcitx5-mozc];
         waylandFrontend = true;
         themes.nord = {
-          highlightImage = "${pkgs.fcitx5-nord}/Nord-Dark/arrow.png";
-          panelImage = "${pkgs.fcitx5-nord}/Nord-Dark/radio.png";
+          highlightImage = "${pkgs.fcitx5-nord}/share/fcitx5/themes/Nord-Dark/arrow.png";
+          panelImage = "${pkgs.fcitx5-nord}/share/fcitx5/themes/Nord-Dark/radio.png";
           theme = {
             Metadata = {
               Name = "Nord-Dark";
