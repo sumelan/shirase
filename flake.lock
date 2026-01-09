@@ -236,6 +236,29 @@
         "type": "github"
       }
     },
+    "nix-hazkey": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1767858318,
+        "narHash": "sha256-7B8MKvJyX4mV6h8ViZ0yeaDjdogUbHsiJkckQpWnu3Y=",
+        "owner": "aster-void",
+        "repo": "nix-hazkey",
+        "rev": "a5a9b01419410708ce63acbce957b61feab8b98e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aster-void",
+        "repo": "nix-hazkey",
+        "type": "github"
+      }
+    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -377,6 +400,7 @@
         "import-tree": "import-tree",
         "niri-flake": "niri-flake",
         "nix-chuwi-minibook-x": "nix-chuwi-minibook-x",
+        "nix-hazkey": "nix-hazkey",
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",

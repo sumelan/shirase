@@ -51,6 +51,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-hazkey = {
+      url = "github:aster-void/nix-hazkey";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+
     niri-flake = {
       url = "github:sodiboo/niri-flake";
       inputs = {

@@ -1,4 +1,4 @@
-_: {
+{inputs, ...}: {
   flake.modules.homeManager.japanese = {
     config,
     pkgs,
@@ -10,11 +10,24 @@ _: {
       pkgs.noto-fonts-cjk-sans
     ];
 
+    services.hazkey = {
+      enable = true;
+      # llama backend
+      # - libllama-cpu - CPU (default)
+      # - libllama-vulkan - GPU (Vulkan)
+      libllama.package = inputs.nix-hazkey.packages.${pkgs.stdenv.hostPlatform.system}.libllama-cpu;
+      # zenzai model
+      # - zenzai_v3_1-small (default)
+      # - zenzai_v3_1-xsmall
+      # - zenzai_v3-small
+      # - zenzai_v2
+      zenzai.package = inputs.nix-hazkey.packages.${pkgs.stdenv.hostPlatform.system}.zenzai_v3_1-small;
+    };
+
     i18n.inputMethod = {
       enable = true;
       type = "fcitx5";
       fcitx5 = {
-        addons = [pkgs.fcitx5-mozc];
         waylandFrontend = true;
         themes.nord = {
           highlightImage = "${pkgs.fcitx5-nord}/share/fcitx5/themes/Nord-Dark/arrow.png";
