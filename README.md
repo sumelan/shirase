@@ -13,9 +13,9 @@ base zpool is imported but before the root is actually mounted.
 ### Custom Neovim
 
 My flake includes custom Neovim packages configured with
-[nvf](https://github.com/NotAShelf/nvf). Those are separated into `nvfMini` and
+[nvf](https://github.com/NotAShelf/nvf). Those are separated into `nvf-minimal` and
 `nvf`. Both are portable, and you can use my Neovim on other Nix-installed
-systems. `nvfMini` is minimal and focuses on only editing Nix files.
+systems. `nvf-minimal` is self-explanatory: stay as minimal as possible, whereas `nvf` contains extended features.
 
 ```sh
 nix run github:sumelan/shirase#nvf
