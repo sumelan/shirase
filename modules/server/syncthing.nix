@@ -8,12 +8,8 @@ _: {
     networking.firewall.allowedTCPPorts = [8384];
 
     services.syncthing = let
-      configHome = "/home/${user}/.config";
-      cacheHome = "/home/${user}/.cache";
-      dataHome = "/home/${user}/.local/share";
-      documents = "/home/${user}/Documents";
-      music = "/home/${user}/Music";
-      pictures = "/home/${user}/Pictures";
+      inherit (config.hm.xdg) configHome cacheHome dataHome;
+      inherit (config.hm.xdg.userDirs) documents music pictures;
       mpdData = "${dataHome}/mpd";
     in {
       enable = true;

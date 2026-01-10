@@ -40,7 +40,7 @@ in {
               show_song_table_header: false,
               symbols: (song: "󰝚 ", dir: " ", playlist: "󰲸 ", marker: "󰧂 ", ellipsis: "..."),
               progress_bar: (
-                  symbols: ["󰇼", "󰇼", "", " ", " "],
+                  symbols: [" ", "󰇼", "", " ", " "],
                   track_style: (fg: "${gray1}"),
                   elapsed_style: (fg: "${white3}", bg: "${gray1}"),
                   thumb_style: (fg: "${white3}", bg: "${gray1}"),

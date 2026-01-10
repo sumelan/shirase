@@ -34,7 +34,7 @@ in {
               scrolloff: 0,
               wrap_navigation: false,
               enable_mouse: true,
-              status_update_interval_ms: 1000,
+              status_update_interval_ms: 500,
               select_current_song_on_change: false,
               album_art: (
                   method: Auto,

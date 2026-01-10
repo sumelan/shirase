@@ -22,12 +22,7 @@ in {
     in {
       environment.systemPackages = [hmHelix];
     };
-    homeManager.helix = {
-      pkgs,
-      host,
-      user,
-      ...
-    }: {
+    homeManager.helix = {pkgs, ...}: {
       programs.helix = {
         enable = true;
         themes = {
@@ -428,14 +423,8 @@ in {
             marksman.command = getExe pkgs.marksman;
             nixd = {
               command = getExe pkgs.nixd;
-              config.nixd = let
-                flakePath = "/persist/home/${user}/Projects/shirase";
-              in {
+              config.nixd = {
                 formatting.command = ["${getExe pkgs.alejandra}"];
-                options = rec {
-                  nixos.expr = "(builtins.getFlake ''${flakePath}'').nixosConfigurations.${host}.options";
-                  home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
-                };
               };
             };
             phpactor = {

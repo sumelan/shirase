@@ -1,5 +1,5 @@
-{
-  flake.modules.nvf.blink = {
+_: {
+  flake.modules.nvf.blink = _: {
     vim.autocomplete = {
       enableSharedCmpSources = true;
       blink-cmp = {

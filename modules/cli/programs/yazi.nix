@@ -39,10 +39,11 @@ in {
           ;
       };
 
-      flavors = {inherit (pkgs.yaziPlugins) nord;};
+      flavors = {
+        nord = flake.packages.${pkgs.stdenv.hostPlatform.system}.nord-yazi;
+      };
 
       theme.flavor = {
-        light = "nord";
         dark = "nord";
       };
 
@@ -58,9 +59,7 @@ in {
             config_file = "~/.config/starship.toml",
           })
 
-          require("yatline"):setup({
-            theme = require("nord"):setup(),
-          })
+          require("yatline"):setup()
         '';
 
       settings = {

@@ -34,5 +34,26 @@
             "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.10.1/helium-0.7.10.1-x86_64.AppImage"
         },
         "version": "0.7.10.1"
+    },
+    "nord-yazi": {
+        "cargoLocks": null,
+        "date": "2026-01-09",
+        "extract": null,
+        "name": "nord-yazi",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "AdithyanA2005",
+            "repo": "nord.yazi",
+            "rev": "bdf0bd4e5bfb6bfb680d88d3186e68227d038c2c",
+            "sha256": "sha256-a2Fk4nl8bCIpqP8xQulnVdycym1udLBDjUUgRo0isBg=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "bdf0bd4e5bfb6bfb680d88d3186e68227d038c2c"
     }
 }

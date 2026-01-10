@@ -1,11 +1,11 @@
-_: let
-  mkFzfBind = keys: action: {
-    mode = "n";
-    key = "<leader>${keys}";
-    action = ":FzfLua ${action}<CR>";
-  };
-in {
-  flake.modules.nvf.fzflua = _: {
+_: {
+  flake.modules.nvf.fzflua = _: let
+    mkFzfBind = keys: action: {
+      mode = "n";
+      key = "<leader>${keys}";
+      action = ":FzfLua ${action}<CR>";
+    };
+  in {
     vim = {
       fzf-lua.enable = true;
 

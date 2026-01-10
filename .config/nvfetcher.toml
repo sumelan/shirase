@@ -2,6 +2,10 @@
 src.git = "https://github.com/AvengeMedia/dms-plugins"
 fetch.github = "AvengeMedia/dms-plugins"
 
+[nord-yazi]
+src.git = "https://github.com/AdithyanA2005/nord.yazi"
+fetch.github = "AdithyanA2005/nord.yazi"
+
 [helium]
 src.github_tag = "imputnet/helium-linux"
 fetch.url = "https://github.com/imputnet/helium-linux/releases/download/$ver/helium-$ver-x86_64.AppImage"

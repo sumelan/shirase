@@ -1,8 +1,10 @@
 _: {
-  flake.modules.nvf.transparent = {pkgs, ...}: {
+  flake.modules.nvf.transparent = {pkgs, ...}: let
+    inherit (pkgs) vimPlugins;
+  in {
     vim = {
-      startPlugins = with pkgs.vimPlugins; [
-        transparent-nvim
+      startPlugins = [
+        vimPlugins.transparent-nvim
       ];
       keymaps = [
         {

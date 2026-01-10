@@ -1,5 +1,5 @@
-{
-  flake.modules.nvf.dashboard-alpha = {
+_: {
+  flake.modules.nvf.dashboard-alpha = _: {
     vim = {
       dashboard.alpha = {
         enable = true;

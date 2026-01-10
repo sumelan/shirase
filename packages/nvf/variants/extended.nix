@@ -1,7 +1,9 @@
 # Additional language server for development machines
-{config, ...}: {
+{config, ...}: let
+  inherit (config) flake;
+in {
   flake.modules.nvf.full = _: {
-    imports = with config.flake.modules.nvf; [
+    imports = with flake.modules.nvf; [
       default
       blink
       themes

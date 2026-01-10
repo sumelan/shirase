@@ -5,13 +5,11 @@
     magenta_dim
     magenta_bright
     orange_dim
-    orange_base
     orange_bright
     blue0
     blue1
     blue2
     yellow_dim
-    red_base
     ;
   inherit (config.flake.lib) hotkey;
   dms = text:
@@ -59,7 +57,7 @@
   fcitx = hotkey {
     color = orange_dim;
     name = "  Fcitx";
-    text = "Switch Mozc";
+    text = "Switch Hazkey";
   };
 in {
   flake.modules.homeManager.default = _: {
@@ -110,14 +108,14 @@ in {
             Mod+Up { focus-workspace-up; }
             Mod+WheelScrollDown { focus-workspace-down; }
             Mod+WheelScrollUp { focus-workspace-up; }
-            Mod+TouchpadScrollDown hotkey-overlay-title=null { focus-workspace-down; }
-            Mod+TouchpadScrollUp hotkey-overlay-title=null { focus-workspace-up; }
+            Mod+TouchpadScrollDown { focus-workspace-down; }
+            Mod+TouchpadScrollUp { focus-workspace-up; }
             Mod+Shift+J { move-window-down-or-to-workspace-down; }
             Mod+Shift+K { move-window-up-or-to-workspace-up; }
-            Mod+Shift+WheelScrollDown { move-column-to-workspace-down; }
-            Mod+Shift+WheelScrollUp { move-column-to-workspace-up; }
-            Mod+Shift+TouchpadScrollDown hotkey-overlay-title=null { move-column-to-workspace-down; }
-            Mod+Shift+TouchpadScrollUp hotkey-overlay-title=null { move-column-to-workspace-up; }
+            Mod+Shift+WheelScrollDown hotkey-overlay-title=null { move-column-to-workspace-down; }
+            Mod+Shift+WheelScrollUp hotkey-overlay-title=null { move-column-to-workspace-up; }
+            Mod+Shift+TouchpadScrollDown { move-column-to-workspace-down; }
+            Mod+Shift+TouchpadScrollUp { move-column-to-workspace-up; }
             Mod+1 { focus-workspace 1; }
             Mod+2 { focus-workspace 2; }
             Mod+3 { focus-workspace 3; }
@@ -135,26 +133,26 @@ in {
             Mod+Shift+C { maximize-column; }
             Mod+Ctrl+C { switch-preset-column-width; }
             Mod+T { toggle-column-tabbed-display; }
-            Mod+H { focus-column-left; }
-            Mod+J { focus-window-down; }
-            Mod+K { focus-window-up; }
-            Mod+L { focus-column-right; }
-            Mod+WheelScrollLeft { focus-column-left; }
-            Mod+WheelScrollRight { focus-column-right; }
+            Mod+H { focus-column-or-monitor-left; }
+            Mod+J { focus-window-or-workspace-down; }
+            Mod+K { focus-window-or-workspace-up; }
+            Mod+L { focus-column-or-monitor-right; }
+            Mod+WheelScrollLeft hotkey-overlay-title=null { focus-column-left; }
+            Mod+WheelScrollRight hotkey-overlay-title=null { focus-column-right; }
             Mod+TouchpadScrollLeft { focus-column-left; }
             Mod+TouchpadScrollRight { focus-column-right; }
-            Mod+Shift+H { move-column-left; }
-            Mod+Shift+L { move-column-right; }
-            Mod+Shift+TouchpadScrollLeft { move-column-left; }
-            Mod+Shift+TouchpadScrollRight { move-column-right; }
+            Mod+Shift+H { move-column-left-or-to-monitor-left; }
+            Mod+Shift+L { move-column-right-or-to-monitor-right; }
+            Mod+Shift+TouchpadScrollLeft hotkey-overlay-title=null { move-column-left; }
+            Mod+Shift+TouchpadScrollRight hotkey-overlay-title=null { move-column-right; }
             Mod+Ctrl+H { set-column-width "-10%"; }
             Mod+Ctrl+J { set-window-height "+10%"; }
             Mod+Ctrl+K { set-window-height "-10%"; }
             Mod+Ctrl+L { set-column-width "+10%"; }
             Mod+Left { consume-or-expel-window-left; }
             Mod+Right { consume-or-expel-window-right; }
-            Mod+Shift+WheelScrollLeft { consume-or-expel-window-left; }
-            Mod+Shift+WheelScrollRight { consume-or-expel-window-right; }
+            Mod+Shift+WheelScrollLeft hotkey-overlay-title=null { consume-or-expel-window-left; }
+            Mod+Shift+WheelScrollRight hotkey-overlay-title=null { consume-or-expel-window-right; }
             Mod+MouseForward { consume-or-expel-window-left; }
             Mod+MouseBack { consume-or-expel-window-right; }
 

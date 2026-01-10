@@ -21,4 +21,16 @@
       sha256 = "sha256-11xSlHIqmyyVwjjwt5FmLhp72P3m07PppOo7a9DbTcE=";
     };
   };
+  nord-yazi = {
+    pname = "nord-yazi";
+    version = "bdf0bd4e5bfb6bfb680d88d3186e68227d038c2c";
+    src = fetchFromGitHub {
+      owner = "AdithyanA2005";
+      repo = "nord.yazi";
+      rev = "bdf0bd4e5bfb6bfb680d88d3186e68227d038c2c";
+      fetchSubmodules = false;
+      sha256 = "sha256-a2Fk4nl8bCIpqP8xQulnVdycym1udLBDjUUgRo0isBg=";
+    };
+    date = "2026-01-09";
+  };
 }

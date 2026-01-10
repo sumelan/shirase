@@ -11,7 +11,7 @@
           ]);
       });
     };
-    # play Bluray disk
+    # play Blu-ray disk
     vlcOverlay = _final: prev: {
       vlc = prev.vlc.override {
         libbluray-full = prev.libbluray.override {
