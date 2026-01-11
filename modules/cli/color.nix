@@ -13,11 +13,9 @@
     blue0
     blue1
     blue2
-    yellow_base
     yellow_bright
     cyan_base
     cyan_bright
-    red_base
     red_bright
     green_base
     green_bright
@@ -169,20 +167,20 @@ in {
           text_secondary = white2;
           text_error = red_bright;
           outline = white1;
-          outline_selected = magenta_bright;
-          outline_hover = cyan_base;
-          outline_secondary = blue2;
+          outline_selected = blue2;
+          outline_hover = red_bright;
+          outline_secondary = yellow_bright;
           message_outline = "#FF7F00";
-          message_error_outline = red_base;
+          message_error_outline = red_bright;
           message_success_outline = green_bright;
           item_info = {
             tag = gray5;
-            title = orange_base;
+            title = blue2;
             description = gray5;
-            author = yellow_base;
-            viewcount = green_bright;
-            length = magenta_bright;
-            published = cyan_bright;
+            author = green_bright;
+            viewcount = yellow_bright;
+            length = cyan_bright;
+            published = magenta_bright;
             video_count = "#838DFF";
             sub_count = "#65FFBA";
             likes = "#C8FF81";

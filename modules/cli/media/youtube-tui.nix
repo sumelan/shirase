@@ -24,7 +24,7 @@ in {
     xdg.configFile = {
       "youtube-tui/main.yml".source = (pkgs.formats.yaml {}).generate "main" {
         mouse_support = true;
-        invidious_instance = "invidious.f5.si"; # jp server
+        invidious_instance = "https://inv.nadeko.net";
         write_config = "Dont";
         allow_unicode = true;
         message_bar_default = "All good :)";
@@ -41,86 +41,110 @@ in {
           search_history = 75;
           commands_history = 75;
         };
+        textbar_scroll_behaviour = "Word";
         image_index = 4;
         provider = "YouTube";
+        search_provider = "RustyPipe";
         shell = "fish";
         legacy_input_handling = false;
         env = {
           video-player = "mpv";
           download-path = "${download}/%(title)s-%(id)s.%(ext)s";
-          terminal-emulator = "ghostty";
+          terminal-emulator = "ghostty -e";
           youtube-downloader = "yt-dlp";
           save-path = "${dataHome}/youtube-tui/saved/";
-          browser = "librewolf";
+          browser = "xdg-open";
         };
       };
 
       "youtube-tui/commands.yml".source = (pkgs.formats.yaml {}).generate "commands" {
         # the key commands select the searchbar on launch
-        launch_command = "loadpage library ;; flush ;; history clear ;; key Esc 0 ;; key Up 0 ;; key Up 0 ;; key Left 0 ;; key Enter 0";
+        launch_command = "loadpage library ;; flush ;; key Esc 0 ;; key Up 0 ;; key Up 0 ;; key Left 0 ;; key Enter 0";
         video = [
-          # remove the cached info first, then reload the page
-          "Reload updated video: run rm '~/.cache/youtube-tui/info/\${id}.json' ;; video \${id}"
-          "Play video: parrun \${video-player} '\${embed-url}'"
-          "Play audio: mpv stop ;; resume ;; mpv sprop loop-file no ;; mpv loadfile '\${embed-url}' ;; echo mpv Player started"
-          "Play audio (loop): mpv stop ;; resume ;; mpv sprop loop-file inf ;; mpv loadfile '\${embed-url}' ;; echo mpv Player started"
-          "View channel: channel \${channel-id}"
-          "Subscribe to channel: sync \${channel-id}"
-          "Open in browser: parrun \${browser} '\${url}'"
-          "Toggle bookmark: togglemark \${id}"
-          "Save video to library: bookmark \${id} ;; run rm -rf '\${save-path}\${id}.*' ;; parrun \${terminal-emulator} \${youtube-downloader} '\${embed-url}' -o '\${save-path}%(title)s[%(id)s].%(ext)s'"
-          "Save audio to library: bookmark \${id} ;; parrun rm -rf '\${save-path}\${id}.*' ;; parrun \${terminal-emulator} \${youtube-downloader} '\${embed-url}' -x -o '\${save-path}%(title)s[%(id)s].%(ext)s'"
-          "'Mode: \${provider}': switchprovider"
+          {
+            # remove the cached info first, then reload the page
+            "Reload updated video" = "run rm '~/.cache/youtube-tui/info/\${id}.json' ;; video \${id}";
+          }
+          {
+            "Play video" = "parrun \${video-player} '\${embed-url}'";
+          }
+          {
+            "Play audio" = "mpv stop ;; resume ;; mpv sprop loop-file no ;; mpv loadfile '\${embed-url}' ;; echo mpv Player started";
+          }
+          {
+            "Play audio (loop)" = "mpv stop ;; resume ;; mpv sprop loop-file inf ;; mpv loadfile '\${embed-url}' ;; echo mpv Player started";
+          }
+          {
+            "View channel" = "channel \${channel-id}";
+          }
+          {
+            "Subscribe to channel" = "sync \${channel-id}";
+          }
+          {
+            "Open in browser" = "parrun \${browser} '\${url}'";
+          }
+          {
+            "Toggle bookmark" = "togglemark \${id}";
+          }
+          {
+            "Save video to library" = "bookmark \${id} ;; run rm -rf '\${save-path}\${id}.*' ;; parrun \${terminal-emulator} \${youtube-downloader} '\${embed-url}' -o '\${save-path}%(title)s[%(id)s].%(ext)s'";
+          }
+          {
+            "Save audio to library" = "bookmark \${id} ;; parrun rm -rf '\${save-path}\${id}.*' ;; parrun \${terminal-emulator} \${youtube-downloader} '\${embed-url}' -x -o '\${save-path}%(title)s[%(id)s].%(ext)s'";
+          }
+          {
+            "'Mode: \${provider}'" = "switchprovider";
+          }
         ];
       };
 
       "youtube-tui/keybindings.yml".source = (pkgs.formats.yaml {}).generate "keybindings" {
-        "q" = {
+        "'q'" = {
           "0" = "Exit";
         };
-        "Down" = {
+        Down = {
           "0" = "MoveDown";
         };
-        "r" = {
+        "'r'" = {
           "2" = "Reload";
         };
-        "Enter" = {
+        Enter = {
           "0" = "Select";
         };
-        "l" = {
+        "'l'" = {
           "0" = "MoveRight";
         };
-        "Up" = {
+        Up = {
           "0" = "MoveUp";
         };
-        "j" = {
+        "'j'" = {
           "0" = "MoveDown";
         };
-        "End" = {
+        End = {
           "0" = "ClearHistory";
         };
-        "Right" = {
+        Right = {
           "0" = "MoveRight";
         };
-        "Backspace" = {
+        Backspace = {
           "0" = "Back";
         };
-        "h" = {
+        "'h'" = {
           "0" = "MoveLeft";
         };
-        "F5" = {
+        F5 = {
           "0" = "Reload";
         };
-        "k" = {
+        "'k'" = {
           "0" = "MoveUp";
         };
-        "Esc" = {
+        Esc = {
           "0" = "Deselect";
         };
-        "Home" = {
+        Home = {
           "0" = "FirstHistory";
         };
-        "Left" = {
+        Left = {
           "0" = "MoveLeft";
           "4" = "Back";
         };
@@ -128,33 +152,33 @@ in {
 
       "youtube-tui/commandbindings.yml".source = (pkgs.formats.yaml {}).generate "commandbindings" {
         global = {
-          "f" = {
+          "'f'" = {
             "2" = "run \${browser} '\${url}'";
           };
-          "c" = {
+          "'c'" = {
             "2" = "cp \${url}";
           };
         };
         video = "{}";
         search = {
-          "a" = {
+          "'a'" = {
             "2" = "run \${terminal-emulator} mpv '\${hover-url}' --no-video";
           };
-          "A" = {
+          "'A'" = {
             "1" = "run \${terminal-emulator} mpv '\${hover-url}' --no-video --loop-playlist=inf --shuffle";
           };
-          "p" = {
+          "'p'" = {
             "2" = "run mpv '\${hover-url}'";
           };
         };
         watchhistory = {
-          "A" = {
+          "'A'" = {
             "1" = "run \${terminal-emulator} mpv '\${hover-url}' --no-video --loop-playlist=inf --shuffle";
           };
-          "p" = {
+          "'p'" = {
             "2" = "run mpv '\${hover-url}'";
           };
-          "a" = {
+          "'a'" = {
             "2" = "run \${terminal-emulator} mpv '\${hover-url}' --no-video";
           };
           # etc
@@ -218,8 +242,6 @@ in {
         search = "loadpage search";
         rc = "reload configs";
       };
-
-      "youtube-tui/remap.yml".source = (pkgs.formats.yaml {}).generate "remap" {};
     };
 
     custom.persist.home.directories = [

@@ -29,9 +29,9 @@ in {
           chmod
           full-border
           git
-          lazygit
           mount
           nord
+          smart-paste
           starship
           time-travel
           toggle-pane
@@ -55,8 +55,8 @@ in {
           require("git"):setup()
 
           require("starship"):setup({
-            -- Custom starship configuration file to use
-            config_file = "~/.config/starship.toml",
+              -- Custom starship configuration file to use
+              config_file = "~/.config/starship.toml",
           })
 
           require("yatline"):setup()
