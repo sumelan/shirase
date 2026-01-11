@@ -169,12 +169,12 @@ in {
           text_secondary = white2;
           text_error = red_bright;
           outline = white1;
-          outline_selected = orange_bright;
-          outline_hover = blue0;
+          outline_selected = magenta_bright;
+          outline_hover = cyan_base;
           outline_secondary = blue2;
           message_outline = "#FF7F00";
           message_error_outline = red_base;
-          message_success_outline = blue1;
+          message_success_outline = green_bright;
           item_info = {
             tag = gray5;
             title = orange_base;

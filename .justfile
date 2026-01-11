@@ -88,13 +88,13 @@ sourceDir := "_sources"
     nix store optimise -v
 
 [group('BUILD')]
-[doc('Look the package built with override through yazi.')]
+[doc('Look the package built with override attrs through yazi.')]
 @override package attrs:
     nix build --impure --expr  '(import <nixpkgs> { }).{{ package }}.override { {{ attrs }} }'
     yazi ./result
 
 [group('SYNCTHING')]
-[doc('Temporarily use Syncthing in a shell environment.')]
+[doc('Temporarily use syncthing in a shell environment.')]
 @syncRun:
     nix-shell -p syncthing --run "syncthing --home ~/.config/syncthing/"
 
