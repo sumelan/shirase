@@ -3,15 +3,15 @@
 {
   dms-plugins = {
     pname = "dms-plugins";
-    version = "86c1e03fd8aa106728b46fe3fe4cb085c33fd698";
+    version = "da1714820ff2c997092c97d31c72faad5a4e5a01";
     src = fetchFromGitHub {
       owner = "AvengeMedia";
       repo = "dms-plugins";
-      rev = "86c1e03fd8aa106728b46fe3fe4cb085c33fd698";
+      rev = "da1714820ff2c997092c97d31c72faad5a4e5a01";
       fetchSubmodules = false;
-      sha256 = "sha256-smjvOqmxz46MOm3wasJ/GuHgxZzryIQZ6H6t3IGRx70=";
+      sha256 = "sha256-wkvSRLjD5NhSD84MUQEnGkQU0ihWZgBrIXtoCCKWwOE=";
     };
-    date = "2026-01-07";
+    date = "2026-01-10";
   };
   helium = {
     pname = "helium";
@@ -20,18 +20,6 @@
       url = "https://github.com/imputnet/helium-linux/releases/download/0.7.10.1/helium-0.7.10.1-x86_64.AppImage";
       sha256 = "sha256-11xSlHIqmyyVwjjwt5FmLhp72P3m07PppOo7a9DbTcE=";
     };
-  };
-  nord-yazi = {
-    pname = "nord-yazi";
-    version = "bdf0bd4e5bfb6bfb680d88d3186e68227d038c2c";
-    src = fetchFromGitHub {
-      owner = "AdithyanA2005";
-      repo = "nord.yazi";
-      rev = "bdf0bd4e5bfb6bfb680d88d3186e68227d038c2c";
-      fetchSubmodules = false;
-      sha256 = "sha256-a2Fk4nl8bCIpqP8xQulnVdycym1udLBDjUUgRo0isBg=";
-    };
-    date = "2026-01-09";
   };
   nordic-nvim = {
     pname = "nordic-nvim";

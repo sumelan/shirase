@@ -2,10 +2,6 @@
 src.git = "https://github.com/AvengeMedia/dms-plugins"
 fetch.github = "AvengeMedia/dms-plugins"
 
-[nord-yazi]
-src.git = "https://github.com/AdithyanA2005/nord.yazi"
-fetch.github = "AdithyanA2005/nord.yazi"
-
 [nordic-nvim]
 src.git = "https://github.com/AlexvZyl/nordic.nvim"
 fetch.github = "AlexvZyl/nordic.nvim"

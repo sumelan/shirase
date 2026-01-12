@@ -1,6 +1,4 @@
-{config, ...}: let
-  inherit (config) flake;
-in {
+_: {
   flake.modules.homeManager.default = {pkgs, ...}: {
     home = {
       packages = builtins.attrValues {
@@ -28,44 +26,92 @@ in {
           (pkgs.yaziPlugins)
           chmod
           full-border
-          git
           mount
-          nord
           smart-paste
           starship
           time-travel
           toggle-pane
-          yatline
           ;
+        inherit (pkgs) nord yatline;
       };
 
-      flavors = {
-        nord = flake.packages.${pkgs.stdenv.hostPlatform.system}.nord-yazi;
-      };
+      flavors = {inherit (pkgs) nord;};
 
       theme.flavor = {
+        light = "nord";
         dark = "nord";
       };
 
       initLua =
         #lua
         ''
-          require("full-border"):setup({ type = ui.Border.ROUNDED })
-
-          require("git"):setup()
+          require("full-border"):setup {
+              type = ui.Border.ROUNDED
+          }
 
           require("starship"):setup({
               -- Custom starship configuration file to use
               config_file = "~/.config/starship.toml",
           })
 
-          require("yatline"):setup()
+          require("yatline"):setup({
+              theme = require("nord"):setup(),
+              show_background = false,
+              header_line = {
+                  left = {
+                      section_a = {
+                          {type = "line", custom = false, name = "tabs", params = {"left"}},
+                      },
+                      section_b = {
+                      },
+                      section_c = {
+                      }
+                  },
+                  right = {
+                      section_a = {
+                          {type = "string", custom = false, name = "date", params = {"%A, %d %B %Y"}},
+                      },
+                      section_b = {
+                          {type = "string", custom = false, name = "date", params = {"%X"}},
+                      },
+                      section_c = {
+                      }
+                  }
+              },
+
+              status_line = {
+                  left = {
+                      section_a = {
+                          {type = "string", custom = false, name = "tab_mode"},
+                      },
+                      section_b = {
+                          {type = "string", custom = false, name = "hovered_size"},
+                      },
+                      section_c = {
+                          {type = "string", custom = false, name = "hovered_path"},
+                          {type = "coloreds", custom = false, name = "count"},
+                      }
+                  },
+                  right = {
+                      section_a = {
+                          {type = "string", custom = false, name = "cursor_position"},
+                      },
+                      section_b = {
+                          {type = "string", custom = false, name = "cursor_percentage"},
+                      },
+                      section_c = {
+                          {type = "string", custom = false, name = "hovered_file_extension", params = {true}},
+                          {type = "coloreds", custom = false, name = "permissions"},
+                      }
+                  }
+              },
+          })
         '';
 
       settings = {
         log.enabled = true;
         mgr = {
-          ratio = [0 1 1];
+          ratio = [2 4 3];
           sort_by = "alphabetical";
           sort_sensitive = false;
           sort_reverse = false;
@@ -73,21 +119,6 @@ in {
           show_hidden = true;
         };
         opener = {};
-        # settings for plugins
-        plugin = {
-          prepend_fetchers = [
-            {
-              id = "git";
-              name = "*";
-              run = "git";
-            }
-            {
-              id = "git";
-              name = "*/";
-              run = "git";
-            }
-          ];
-        };
       };
       keymap = {
         mgr.prepend_keymap = [

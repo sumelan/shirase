@@ -1,12 +1,12 @@
 {config, ...}: let
   inherit
     (config.flake.lib.colors)
+    green_bright
     cyan_bright
     magenta_dim
     magenta_bright
     orange_dim
     orange_bright
-    blue0
     blue1
     blue2
     yellow_dim
@@ -18,13 +18,13 @@
       name = "󰮤  DankMaterialShell";
       inherit text;
     };
-  ghostty = hotkey {
-    color = blue2;
-    name = "󱙝  Ghostty";
+  foot = hotkey {
+    color = green_bright;
+    name = "  Foot";
     text = "Terminal Emulator";
   };
   librewolf = hotkey {
-    color = blue1;
+    color = blue2;
     name = "  Librewolf";
     text = "Web Browser";
   };
@@ -39,7 +39,7 @@
     text = "Discrod Client";
   };
   nix-search-tv = hotkey {
-    color = blue0;
+    color = blue1;
     name = "󱄅  nix-search-tv";
     text = "Nix Fuzzey Search";
   };
@@ -92,12 +92,12 @@ in {
             XF86MonBrightnessUp allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "5" ""; }
 
             // Execute
-            Mod+Return hotkey-overlay-title="${ghostty}" { spawn "ghostty"; }
+            Mod+Return hotkey-overlay-title="${foot}" { spawn "foot"; }
             Mod+B hotkey-overlay-title="${librewolf}" { spawn "librewolf"; }
             Mod+E hotkey-overlay-title="${nautilus}" { spawn "nautilus"; }
             Mod+V hotkey-overlay-title="${vesktop}" { spawn "vesktop"; }
-            Mod+Shift+E hotkey-overlay-title="${yazi}" { spawn "ghostty" "-e" "yazi"; }
-            Mod+Shift+N hotkey-overlay-title="${nix-search-tv}" { spawn "ghostty" "-e" "ns"; }
+            Mod+Shift+E hotkey-overlay-title="${yazi}" { spawn "foot" "--app-id" "yazi" "yazi"; }
+            Mod+Shift+N hotkey-overlay-title="${nix-search-tv}" { spawn "foot" "--app-id" "nix" "ns"; }
             Mod+Bracketright hotkey-overlay-title="${dynamicCast "Select window as cast target"}" { spawn "sh" "-c" "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
             Mod+Shift+Bracketright hotkey-overlay-title="${dynamicCast "Set current output as cast target"}" { spawn "sh" "-c" "niri msg action set-dynamic-cast-monitor"; }
             Mod+Alt+Bracketright hotkey-overlay-title="${dynamicCast "Clear cast target"}" { spawn "sh" "-c" "niri msg action clear-dynamic-cast-target"; }

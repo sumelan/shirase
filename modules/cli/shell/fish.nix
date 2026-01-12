@@ -1,13 +1,10 @@
-{lib, ...}: let
-  inherit (lib) getExe mkForce;
-in {
+_: {
   flake.modules.homeManager.default = {
     config,
     pkgs,
     ...
   }: let
     proj_dir = "/persist${config.home.homeDirectory}/Projects";
-    fishPath = getExe config.programs.fish.package;
   in {
     # fish plugins, home-manager's programs.fish.plugins has a weird format
     home.packages = builtins.attrValues {
@@ -55,17 +52,6 @@ in {
         interactiveShellInit = ''
           fish_vi_key_bindings
         '';
-      };
-
-      # set as default interactive shell
-      ghostty.settings = {
-        command = mkForce "SHELL=${fishPath} ${fishPath}";
-      };
-      foot.settings = {
-        main.shell = mkForce fishPath;
-        environment = {
-          "SHELL" = fishPath;
-        };
       };
     };
 

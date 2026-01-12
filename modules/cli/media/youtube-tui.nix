@@ -50,7 +50,7 @@ in {
         env = {
           video-player = "mpv";
           download-path = "${download}/%(title)s-%(id)s.%(ext)s";
-          terminal-emulator = "ghostty -e";
+          terminal-emulator = "foot";
           youtube-downloader = "yt-dlp";
           save-path = "${dataHome}/youtube-tui/saved/";
           browser = "xdg-open";

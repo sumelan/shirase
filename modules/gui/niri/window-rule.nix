@@ -139,6 +139,12 @@ in {
             open-floating true
             opacity 1.000000
         }
+        window-rule {
+            match app-id="^yazi$"
+            default-column-width { proportion 0.500000; }
+            default-window-height { proportion 0.500000; }
+            open-floating true
+        }
       '';
   };
 }

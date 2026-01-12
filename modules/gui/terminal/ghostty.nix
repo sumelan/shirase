@@ -1,6 +1,9 @@
-_: {
-  flake.modules.homeManager.default = {config, ...}: let
+{lib, ...}: let
+  inherit (lib) getExe mkForce;
+in {
+  flake.modules.homeManager.ghostty = {config, ...}: let
     monoFont = config.custom.fonts.monospace;
+    fishPath = getExe config.programs.fish.package;
   in {
     programs.ghostty = {
       enable = true;
@@ -19,11 +22,8 @@ _: {
         # run `ghostty +list-themes` to see available list
         theme = "Nord";
         window-decoration = false;
+        command = mkForce "SHELL=${fishPath} ${fishPath}";
       };
-    };
-
-    xdg.mimeApps.defaultApplications = {
-      "x-scheme-handler/terminal" = "ghostty.desktop";
     };
   };
 }
