@@ -27,6 +27,10 @@
             url = "https://patch-diff.githubusercontent.com/raw/imsi32/yatline.yazi/pull/71.diff";
             hash = "sha256-YUFlDzSx8X4XIeYVOX+PRVZxND7588nl0vr3V+h6hus=";
           })
+          (prev.fetchpatch {
+            url = "https://patch-diff.githubusercontent.com/raw/imsi32/yatline.yazi/pull/67.diff";
+            hash = "sha256-omNbc2dSldLZyuoSwx8hjvDR11cb0tozpqp/ooY0sMs=";
+          })
         ];
       };
     };
