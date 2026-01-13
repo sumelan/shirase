@@ -59,10 +59,11 @@ in {
           dissent
           foliate
           helium
+          kitty
           krita
           obs-studio
-          rmpc
           protonapp
+          rmpc
           vlc
           youtube-tui
         ]);

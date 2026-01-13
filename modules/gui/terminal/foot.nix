@@ -8,6 +8,7 @@ in {
     in {
       programs.foot = {
         enable = true;
+        enableBashIntegration = true;
         enableFishIntegration = true;
         theme = "nord";
         settings = {
