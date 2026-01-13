@@ -168,6 +168,12 @@ _: {
             run = ''shell -- ripdrag "$@" -x 2>/dev/null &'';
             desc = "Drag and Drop files";
           }
+          # swayimg
+          {
+            on = "S";
+            run = ''shell -- swayimg "$@">/dev/null &'';
+            desc = "Open with swayimg";
+          }
         ];
       };
     };
