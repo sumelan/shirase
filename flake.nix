@@ -22,7 +22,6 @@
 
     # No Nixpkgs Inputs
     flake-parts.url = "github:hercules-ci/flake-parts";
-    impermanence.url = "github:nix-community/impermanence";
     import-tree.url = "github:vic/import-tree";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
@@ -49,6 +48,14 @@
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    impermanence = {
+      url = "github:nix-community/impermanence";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
 
     nix-hazkey = {

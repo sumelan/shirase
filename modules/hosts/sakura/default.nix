@@ -59,7 +59,6 @@ in {
           dissent
           foliate
           helium
-          kitty
           krita
           obs-studio
           protonapp

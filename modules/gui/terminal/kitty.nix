@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib) getExe mkForce;
 in {
-  flake.modules.homeManager.kitty = {config, ...}: let
+  flake.modules.homeManager.default = {config, ...}: let
     inherit (config.custom.fonts) monospace;
     fishPath = getExe config.programs.fish.package;
   in {
@@ -38,6 +38,10 @@ in {
     home.shellAliases = {
       # change color on ssh
       ssh = "kitten ssh --kitten=color_scheme='Rosé Pine Moon'";
+    };
+
+    xdg.mimeApps.defaultApplications = {
+      "x-scheme-handler/terminal" = "kitty.desktop";
     };
   };
 }

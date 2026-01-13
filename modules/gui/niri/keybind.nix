@@ -18,9 +18,9 @@
       name = "󰮤  DankMaterialShell";
       inherit text;
     };
-  foot = hotkey {
+  kitty = hotkey {
     color = green_bright;
-    name = "  Foot";
+    name = "  Kitty";
     text = "Terminal Emulator";
   };
   librewolf = hotkey {
@@ -92,12 +92,12 @@ in {
             XF86MonBrightnessUp allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "5" ""; }
 
             // Execute
-            Mod+Return hotkey-overlay-title="${foot}" { spawn "foot"; }
+            Mod+Return hotkey-overlay-title="${kitty}" { spawn "kitty"; }
             Mod+B hotkey-overlay-title="${librewolf}" { spawn "librewolf"; }
             Mod+E hotkey-overlay-title="${nautilus}" { spawn "nautilus"; }
             Mod+V hotkey-overlay-title="${vesktop}" { spawn "vesktop"; }
-            Mod+Shift+E hotkey-overlay-title="${yazi}" { spawn "foot" "--app-id" "yazi" "yazi"; }
-            Mod+Shift+N hotkey-overlay-title="${nix-search-tv}" { spawn "foot" "--app-id" "nix" "ns"; }
+            Mod+Shift+E hotkey-overlay-title="${yazi}" { spawn "kitty" "--app-id" "yazi" "yazi"; }
+            Mod+Shift+N hotkey-overlay-title="${nix-search-tv}" { spawn "kitty" "--app-id" "nix" "ns"; }
             Mod+Bracketright hotkey-overlay-title="${dynamicCast "Select window as cast target"}" { spawn "sh" "-c" "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
             Mod+Shift+Bracketright hotkey-overlay-title="${dynamicCast "Set current output as cast target"}" { spawn "sh" "-c" "niri msg action set-dynamic-cast-monitor"; }
             Mod+Alt+Bracketright hotkey-overlay-title="${dynamicCast "Clear cast target"}" { spawn "sh" "-c" "niri msg action clear-dynamic-cast-target"; }

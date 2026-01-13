@@ -44,7 +44,7 @@ in {
       # https://github.com/nix-community/home-manager/pull/2408
       pathsToLink = ["/share/fish"];
       variables = {
-        TERMINAL = "foot";
+        TERMINAL = "kitty";
         EDITOR = "nvim";
         VISUAL = "nvim";
         NIXPKGS_ALLOW_UNFREE = "1";

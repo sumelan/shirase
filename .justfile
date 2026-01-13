@@ -21,7 +21,7 @@ sourceDir := "_sources"
 [group('FLAKE')]
 [doc('Create missing lock file entries')]
 @lock *flake-url:
-    nh flake lock {{ flake-url }}
+    nix flake lock {{ flake-url }}
 
 [group('FLAKE')]
 [doc('Analyzing a flake.lock for duplicate inputs.')]

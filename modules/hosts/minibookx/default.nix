@@ -57,7 +57,6 @@ in {
           dissent
           foliate
           helium
-          kitty
           protonapp
           rmpc
           youtube-tui
