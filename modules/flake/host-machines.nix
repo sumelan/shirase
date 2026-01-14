@@ -39,11 +39,15 @@
       modules =
         nixMods
         ++ defaultNixMods
-        ++ [flake.modules.nixos.${host}]
-        ++ [flake.modules.nixos.${user}]
         ++ [flake.modules.nixos.overlay]
+        ++ [flake.modules.nixos."hosts/${host}"]
+        ++ [flake.modules.nixos."users/${user}"]
         ++ [
+          {
+            networking.hostName = host;
+          }
           inputs.home-manager.nixosModules.home-manager
+          (nixpkgs.lib.mkAliasOptionModule ["hm"] ["home-manager" "users" user])
           {
             home-manager = {
               useGlobalPkgs = true;
@@ -52,13 +56,9 @@
               users.${user}.imports =
                 hmMods
                 ++ defaultHmMods
-                ++ [flake.modules.homeManager.${host}]
-                ++ [flake.modules.homeManager.${user}];
+                ++ [flake.modules.homeManager."hosts/${host}"]
+                ++ [flake.modules.homeManager."users/${user}"];
             };
-          }
-          (nixpkgs.lib.mkAliasOptionModule ["hm"] ["home-manager" "users" user])
-          {
-            networking.hostName = host;
           }
         ];
     };

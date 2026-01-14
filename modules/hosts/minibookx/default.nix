@@ -2,7 +2,7 @@
   inherit (config) flake;
 in {
   flake.modules = {
-    nixos.minibookx = _: {
+    nixos."hosts/minibookx" = _: {
       imports =
         [
           {
@@ -30,7 +30,7 @@ in {
         ]);
     };
 
-    homeManager.minibookx = _: {
+    homeManager."hosts/minibookx" = _: {
       imports =
         [
           {

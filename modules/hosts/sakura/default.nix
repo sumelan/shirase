@@ -2,7 +2,7 @@
   inherit (config) flake;
 in {
   flake.modules = {
-    nixos.sakura = _: {
+    nixos."hosts/sakura" = _: {
       imports =
         [
           {
@@ -31,7 +31,7 @@ in {
         ]);
     };
 
-    homeManager.sakura = _: {
+    homeManager."hosts/sakura" = _: {
       imports =
         [
           {

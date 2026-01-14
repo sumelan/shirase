@@ -9,7 +9,7 @@ in {
       email = "sumelan@proton.me";
     };
 
-    modules.nixos.sumelan = _: {
+    modules.nixos."users/sumelan" = _: {
       imports = [
         {
           users.users.sumelan = {
@@ -58,7 +58,7 @@ in {
       ];
     };
 
-    modules.homeManager.sumelan = _: {
+    modules.homeManager."users/sumelan" = _: {
       imports =
         [{home.file.".face".source = ./sumelan.png;}]
         ++ (with flake.modules.homeManager; [japanese]);

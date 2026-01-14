@@ -2,7 +2,7 @@
   inherit (config) flake;
 in {
   flake.modules = {
-    nixos.acer = _: {
+    nixos."hosts/acer" = _: {
       imports =
         [{networking.hostId = "22fe2870";}]
         ++ (with flake.modules.nixos; [
@@ -12,7 +12,7 @@ in {
         ]);
     };
 
-    homeManager.acer = _: {
+    homeManager."hosts/acer" = _: {
       imports =
         [
           {
