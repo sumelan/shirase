@@ -20,6 +20,7 @@ in {
         "fish"
         "nm-connection-editor"
         "blueman-adapters"
+        "nixos-manual"
       ];
     in
       genAttrs hideList (name: {

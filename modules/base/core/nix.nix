@@ -210,6 +210,16 @@ in {
           flake = "/persist/home/${user}/Projects/shirase";
         };
       };
+      xdg.desktopEntries = {
+        nix-search-tv = {
+          name = "Nix Search TV";
+          genericName = "Fuzzy search for Nix packages";
+          icon = "nix-snowflake";
+          terminal = true;
+          exec = "ns";
+        };
+      };
+
       custom.cache.home.directories = [
         ".cache/nix-index"
         ".cache/nix-search-tv"
