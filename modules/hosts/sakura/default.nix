@@ -31,7 +31,7 @@ in {
         ]);
     };
 
-    homeManager."hosts/sakura" = _: {
+    homeManager."hosts/sakura" = {pkgs, ...}: {
       imports =
         [
           {
@@ -51,7 +51,11 @@ in {
                 rotation = 0;
               };
             };
-            custom.niri.xwayland = true;
+            custom = {
+              niri.xwayland = true;
+              # unhinted font: for high resolution screen
+              fonts.packages = [pkgs.maple-mono.NF-unhinted];
+            };
           }
         ]
         ++ (with flake.modules.homeManager; [

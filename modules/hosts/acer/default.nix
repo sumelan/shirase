@@ -12,7 +12,7 @@ in {
         ]);
     };
 
-    homeManager."hosts/acer" = _: {
+    homeManager."hosts/acer" = {pkgs, ...}: {
       imports =
         [
           {
@@ -32,6 +32,8 @@ in {
                 rotation = 0;
               };
             };
+            # hinted font: for lower or equal than 1080p
+            custom.fonts.packages = [pkgs.maple-mono.NF];
           }
         ]
         ++ (with flake.modules.homeManager; [default]);

@@ -13,7 +13,6 @@ _: {
     custom.fonts.packages = [
       pkgs.noto-fonts
       pkgs.noto-fonts-color-emoji
-      pkgs.maple-mono.NF-unhinted
     ];
   };
 }

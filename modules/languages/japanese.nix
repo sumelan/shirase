@@ -1,11 +1,5 @@
 {inputs, ...}: {
-  flake.modules.homeManager.japanese = {
-    config,
-    pkgs,
-    ...
-  }: let
-    regularFont = config.gtk.font.name;
-  in {
+  flake.modules.homeManager.japanese = {pkgs, ...}: {
     custom.fonts.packages = [
       pkgs.noto-fonts-cjk-sans
     ];
@@ -29,13 +23,33 @@
       type = "fcitx5";
       fcitx5 = {
         waylandFrontend = true;
-        settings.addons.classicui.globalSection = {
-          Theme = "sakura";
-          Font = "${regularFont} 14";
-          MenuFont = "${regularFont} 14";
-          TrayFont = "${regularFont} 14";
-          UseDarkTheme = false;
-          UseAccentColor = false;
+        settings = {
+          inputMethod = {
+            GroupOrder = {
+              "0" = "Default";
+            };
+            "Groups/0" = {
+              Name = "Default";
+              "Default Layout" = "us";
+              DefaultIM = "hazkey";
+            };
+            "Groups/0/Items/0" = {
+              Name = "keyboard-us";
+              Layout = "";
+            };
+            "Groups/0/Items/1" = {
+              Name = "hazkey";
+              Layout = "";
+            };
+          };
+          addons.classicui.globalSection = {
+            Theme = "sakura";
+            Font = "Noto Sans CJK JP 14";
+            MenuFont = "Noto Sans CJK JP 14";
+            TrayFont = "Noto Sans CJK JP 14";
+            UseDarkTheme = false;
+            UseAccentColor = false;
+          };
         };
       };
     };
