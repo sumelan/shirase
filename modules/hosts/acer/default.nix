@@ -32,8 +32,11 @@ in {
                 rotation = 0;
               };
             };
-            # hinted font: for lower or equal than 1080p
-            custom.fonts.packages = [pkgs.maple-mono.NF];
+            custom = {
+              # hinted font: for lower or equal than 1080p
+              fonts.packages = [pkgs.maple-mono.NF];
+              niri.screenshot.host = "acer";
+            };
           }
         ]
         ++ (with flake.modules.homeManager; [default]);

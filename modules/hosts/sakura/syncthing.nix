@@ -14,10 +14,16 @@ _: {
           "Music" = {
             devices = ["minibookx"];
           };
+          "Videos" = {
+            devices = ["minibookx"];
+          };
           "MPD" = {
             devices = ["minibookx"];
           };
           "Euphonica" = {
+            devices = ["minibookx"];
+          };
+          "Screenshots" = {
             devices = ["minibookx"];
           };
           "Wallpapers" = {

@@ -210,6 +210,7 @@ in {
           flake = "/persist/home/${user}/Projects/shirase";
         };
       };
+
       xdg.desktopEntries = {
         nix-search-tv = {
           name = "Nix Search TV";

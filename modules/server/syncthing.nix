@@ -3,15 +3,15 @@ _: {
     config,
     user,
     ...
-  }: {
+  }: let
+    inherit (config.hm.xdg) configHome cacheHome dataHome;
+    inherit (config.hm.xdg.userDirs) documents music pictures videos;
+    mpdData = "${dataHome}/mpd";
+  in {
     # port 8384  is the default port to allow access from the network
     networking.firewall.allowedTCPPorts = [8384];
 
-    services.syncthing = let
-      inherit (config.hm.xdg) configHome cacheHome dataHome;
-      inherit (config.hm.xdg.userDirs) documents music pictures;
-      mpdData = "${dataHome}/mpd";
-    in {
+    services.syncthing = {
       enable = true;
       openDefaultPorts = true;
       # Override all settings set from the GUI
@@ -39,11 +39,17 @@ _: {
           "Music" = {
             path = music;
           };
+          "Videos" = {
+            path = videos;
+          };
           "MPD" = {
             path = mpdData;
           };
           "Euphonica" = {
             path = "${cacheHome}/euphonica";
+          };
+          "Screenshots" = {
+            path = "${pictures}/Screenshots";
           };
           "Wallpapers" = {
             path = "${pictures}/Wallpapers";

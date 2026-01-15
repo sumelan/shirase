@@ -3,20 +3,22 @@ _: {
     config,
     user,
     ...
-  }: {
+  }: let
+    inherit (config.xdg.userDirs) music;
+    inherit (config.xdg) dataHome;
+    cfg = config.services.mpd;
+    runtimeDir = "/run/user/1000/mpd";
+  in {
     systemd.user.tmpfiles.rules = [
       # create mpd directory for local socket on boot
       "d! %t/mpd - ${user} users - -"
     ];
 
-    services = let
-      cfg = config.services.mpd;
-      runtimeDir = "/run/user/1000/mpd";
-    in {
+    services = {
       mpd = {
         enable = true;
-        musicDirectory = config.xdg.userDirs.music;
-        dataDir = "${config.xdg.dataHome}/mpd";
+        musicDirectory = music;
+        dataDir = "${dataHome}/mpd";
         dbFile = "${cfg.dataDir}/database";
         playlistDirectory = "${cfg.dataDir}/playlists";
         # connect local socket

@@ -12,6 +12,7 @@
     attrsOf
     float
     int
+    str
     submodule
     ;
   monitor = submodule {
@@ -71,9 +72,15 @@ in {
         type = attrsOf monitor;
       };
       custom = {
-        niri.xwayland = mkOption {
-          type = bool;
-          default = false;
+        niri = {
+          xwayland = mkOption {
+            type = bool;
+            default = false;
+          };
+          screenshot.host = mkOption {
+            type = str;
+            default = "";
+          };
         };
       };
     };

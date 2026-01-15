@@ -1,4 +1,6 @@
-_: {
+_: let
+  inherit (builtins) attrValues;
+in {
   flake.modules.nixos.default = {
     pkgs,
     user,
@@ -15,19 +17,24 @@ _: {
     xdg.portal = {
       enable = true;
       xdgOpenUsePortal = true;
-      extraPortals = builtins.attrValues {
-        inherit (pkgs) xdg-desktop-portal-gtk xdg-desktop-portal-gnome;
+      extraPortals = attrValues {
+        inherit
+          (pkgs)
+          xdg-desktop-portal-gtk
+          xdg-desktop-portal-gnome
+          xdg-desktop-portal-wlr
+          ;
       };
       config = {
         common.default = ["gtk"];
         niri = {
           default = ["gnome" "gtk"];
           "org.freedesktop.impl.portal.Access" = ["gtk"];
-          # use Nautilus
+          # i use nautilus
           "org.freedesktop.impl.portal.FileChooser" = ["gnome"];
           "org.freedesktop.impl.portal.Notification" = ["gtk"];
           "org.freedesktop.impl.portal.Secret" = ["gnome-keyring"];
-          "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
+          "org.freedesktop.impl.portal.ScreenCast" = ["wlr" "gnome"];
         };
         obs.default = ["gnome"];
       };

@@ -8,6 +8,7 @@ in {
       "d! %h/Pictures/Screenshots - ${user} users - -"
       "d! %h/Pictures/Satty - ${user} users - -"
       "d! %h/Videos/OBS-Studio - ${user} users - -"
+      "d! %h/Videos/Kooha - ${user} users - -"
     ];
 
     # hide unnecessary desktopItems

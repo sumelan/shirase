@@ -14,10 +14,16 @@ _: {
           "Music" = {
             devices = ["sakura"];
           };
+          "Videos" = {
+            devices = ["sakura"];
+          };
           "MPD" = {
             devices = ["sakura"];
           };
           "Euphonica" = {
+            devices = ["sakura"];
+          };
+          "Screenshots" = {
             devices = ["sakura"];
           };
           "Wallpapers" = {

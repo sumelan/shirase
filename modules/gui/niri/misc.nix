@@ -39,6 +39,7 @@ in {
       then ''path "${getExe pkgs.xwayland-satellite-unstable}"''
       else "off";
     inherit (config.xdg.userDirs) pictures;
+    inherit (config.custom.niri.screenshot) host;
   in {
     xdg.configFile."niri/config.kdl".text =
       # kdl
@@ -73,7 +74,7 @@ in {
 
         prefer-no-csd
 
-        screenshot-path "${pictures}/Screenshots/%Y-%m-%d_%H-%M-%S.png"
+        screenshot-path "${pictures}/Screenshots/${host}/%Y-%m-%d_%H-%M-%S.png"
 
         environment {
             "DMS_SCREENSHOT_EDITOR" "satty"

@@ -52,9 +52,12 @@ in {
               };
             };
             custom = {
-              niri.xwayland = true;
               # unhinted font: for high resolution screen
               fonts.packages = [pkgs.maple-mono.NF-unhinted];
+              niri = {
+                xwayland = true;
+                screenshot.host = "sakura";
+              };
             };
           }
         ]
@@ -63,6 +66,7 @@ in {
           dissent
           foliate
           helium
+          kooha
           krita
           obs-studio
           protonapp
