@@ -43,7 +43,7 @@
             };
           };
           addons.classicui.globalSection = {
-            Theme = "sakura";
+            Theme = "youlan";
             Font = "Noto Sans CJK JP 14";
             MenuFont = "Noto Sans CJK JP 14";
             TrayFont = "Noto Sans CJK JP 14";
@@ -55,11 +55,11 @@
     };
 
     xdg.dataFile = let
-      sakura = file: "${pkgs.fcitx5-mellow-themes}/share/fcitx5/themes/mellow-sakura-dark/${file}";
+      youlan = file: "${pkgs.fcitx5-mellow-themes}/share/fcitx5/themes/mellow-youlan-dark/${file}";
     in {
-      "fcitx5/themes/sakura/highlight.svg".source = sakura "highlight.svg";
-      "fcitx5/themes/sakura/panel.svg".source = sakura "panel.svg";
-      "fcitx5/themes/sakura/theme.conf".source = sakura "theme.conf";
+      "fcitx5/themes/youlan/highlight.svg".source = youlan "highlight.svg";
+      "fcitx5/themes/youlan/panel.svg".source = youlan "panel.svg";
+      "fcitx5/themes/youlan/theme.conf".source = youlan "theme.conf";
     };
   };
 }

@@ -29,10 +29,9 @@ _: {
           mount
           smart-paste
           starship
-          time-travel
           toggle-pane
           ;
-        inherit (pkgs) nord yatline;
+        inherit (pkgs) nord yatline time-travel;
       };
 
       flavors = {inherit (pkgs) nord;};

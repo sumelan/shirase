@@ -20,7 +20,7 @@
     };
   kitty = hotkey {
     color = green_bright;
-    name = "  Kitty";
+    name = "  Kitty";
     text = "Terminal Emulator";
   };
   librewolf = hotkey {
@@ -28,10 +28,10 @@
     name = "  Librewolf";
     text = "Web Browser";
   };
-  nautilus = hotkey {
+  euphonica = hotkey {
     color = cyan_bright;
-    name = "  Nautilus";
-    text = "File Manager";
+    name = "󰦚  Euphonica";
+    text = "GTK4 MPD frontend";
   };
   vesktop = hotkey {
     color = magenta_bright;
@@ -56,7 +56,7 @@
     };
   fcitx = hotkey {
     color = orange_dim;
-    name = "  Fcitx";
+    name = "󰗊  Fcitx";
     text = "Switch Hazkey";
   };
 in {
@@ -76,9 +76,6 @@ in {
             Mod+I hotkey-overlay-title="${dms "Idle-inhibitor"}" { spawn "dms" "ipc" "call" "inhibit" "toggle"; }
             Mod+Alt+N hotkey-overlay-title="${dms "Nightmode"}" { spawn "dms" "ipc" "call" "night" "toggle"; }
             Mod+Slash hotkey-overlay-title="${dms "Show/Hide"}" { spawn "dms" "ipc" "call" "bar" "toggle" "name" "Main Bar"; }
-            Mod+Backslash hotkey-overlay-title="${dms "Interactive Screen-capture"}" { spawn "dms" "ipc" "call" "niri" "screenshot"; }
-            Mod+Shift+Backslash hotkey-overlay-title="${dms "Capture entire screen"}" { spawn "dms" "ipc" "call" "niri" "screenshotScreen"; }
-            Mod+Alt+Backslash hotkey-overlay-title="${dms "Capture focused window"}" { spawn "dms" "ipc" "call" "niri" "screenshotWindow"; }
             Mod+Alt+L allow-when-locked=true hotkey-overlay-title="${dms "Screen-lock"}" { spawn "dms" "ipc" "call" "lock" "lock"; }
 
             XF86AudioLowerVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "decrement" "3"; }
@@ -94,10 +91,10 @@ in {
             // Execute
             Mod+Return hotkey-overlay-title="${kitty}" { spawn "kitty"; }
             Mod+B hotkey-overlay-title="${librewolf}" { spawn "librewolf"; }
-            Mod+E hotkey-overlay-title="${nautilus}" { spawn "nautilus"; }
+            Mod+E hotkey-overlay-title="${euphonica}" { spawn "euphonica"; }
             Mod+V hotkey-overlay-title="${vesktop}" { spawn "vesktop"; }
-            Mod+Shift+E hotkey-overlay-title="${yazi}" { spawn "kitty" "--app-id" "yazi" "yazi"; }
             Mod+Shift+N hotkey-overlay-title="${nix-search-tv}" { spawn "kitty" "--app-id" "nix-search-tv" "ns"; }
+            Mod+Shift+Y hotkey-overlay-title="${yazi}" { spawn "kitty" "--app-id" "yazi" "yazi"; }
             Mod+Bracketright hotkey-overlay-title="${dynamicCast "Select window as cast target"}" { spawn "sh" "-c" "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
             Mod+Shift+Bracketright hotkey-overlay-title="${dynamicCast "Set current output as cast target"}" { spawn "sh" "-c" "niri msg action set-dynamic-cast-monitor"; }
             Mod+Alt+Bracketright hotkey-overlay-title="${dynamicCast "Clear cast target"}" { spawn "sh" "-c" "niri msg action clear-dynamic-cast-target"; }
@@ -158,6 +155,9 @@ in {
 
             // System
             Mod+Shift+Escape { quit skip-confirmation=false; }
+            Mod+Backslash { screenshot show-pointer=false; }
+            Mod+Shift+Backslash { screenshot-screen show-pointer=false; }
+            Mod+Alt+Backslash { screenshot-window show-pointer=true; }
 
             // Overview
             Mod+Shift+Slash { show-hotkey-overlay; }

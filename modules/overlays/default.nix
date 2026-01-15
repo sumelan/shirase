@@ -44,12 +44,23 @@
         };
       };
     };
+    time-travel-yazi = _final: prev: {
+      time-travel = prev.yaziPlugins.time-travel.overrideAttrs {
+        src = prev.fetchFromGitHub {
+          owner = "sumelan";
+          repo = "time-travel.yazi";
+          rev = "7aa9394e89ee545a79b56bca8cb66bca502e6764";
+          hash = "sha256-x8CdBePXT9EeP0Ew4M+jnq8jy1GL7pSW9j18/MQeQQI=";
+        };
+      };
+    };
   in {
     nixpkgs.overlays = [
       nautilusOverlay
       vlcOverlay
       yatline
       nordic-yazi
+      time-travel-yazi
       # niri-flake
       inputs.niri-flake.overlays.niri
       # firefox-addons

@@ -30,19 +30,18 @@ in {
       enable = true;
       theme = {
         package = pkgs.colloid-gtk-theme.override {
-          themeVariants = ["pink"]; # default: blue
+          themeVariants = ["grey"]; # default: blue
           colorVariants = ["dark"]; # default: all
           sizeVariants = ["compact"]; # default: standard
           tweaks = ["nord"];
         };
-        name = "Colloid-Pink-Dark-Compact-Nord";
+        name = "Colloid-Grey-Dark-Compact-Nord";
       };
       iconTheme = {
-        package = pkgs.colloid-icon-theme.override {
-          schemeVariants = ["nord"];
-          colorVariants = ["pink"]; # default is blue
+        package = pkgs.papirus-nord.override {
+          accent = "polarnight3";
         };
-        name = "Colloid-Pink-Nord-Dark";
+        name = "Papirus-Dark";
       };
       font = {
         name = config.custom.fonts.regular;
