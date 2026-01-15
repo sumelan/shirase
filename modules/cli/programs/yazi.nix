@@ -128,12 +128,6 @@ _: {
             run = "plugin chmod";
             desc = "Run chmod on selected files";
           }
-          # lazygit
-          {
-            on = ["g" "g"];
-            run = "plugin lazygit";
-            desc = "Run lazygit";
-          }
           # mount
           {
             on = "M";
