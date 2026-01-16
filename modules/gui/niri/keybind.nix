@@ -3,7 +3,6 @@
     (config.flake.lib.colors)
     white3
     green_bright
-    green_dim
     cyan_bright
     magenta_dim
     magenta_bright
@@ -19,9 +18,9 @@
       name = "󰮤  DankMaterialShell";
       inherit text;
     };
-  kitty = hotkey {
-    color = green_dim;
-    name = "  Kitty";
+  foot = hotkey {
+    color = yellow_dim;
+    name = "  Foot";
     text = "Terminal Emulator";
   };
   librewolf = hotkey {
@@ -66,7 +65,9 @@
     text = "Codig Editor";
   };
 in {
-  flake.modules.homeManager.default = _: {
+  flake.modules.homeManager.default = {config, ...}: let
+    proDir = "${config.home.homeDirectory}/Projects";
+  in {
     xdg.configFile."niri/binds.kdl".text =
       # kdl
       ''
@@ -100,15 +101,15 @@ in {
             Mod+Alt+Bracketright hotkey-overlay-title="${dynamicCast "Clear target"}" { spawn "sh" "-c" "niri msg action clear-dynamic-cast-target"; }
 
             // Execute
-            Mod+Return hotkey-overlay-title="${kitty}" { spawn "kitty"; }
+            Mod+Return hotkey-overlay-title="${foot}" { spawn "footclient"; }
 
             Mod+B hotkey-overlay-title="${librewolf}" { spawn "librewolf"; }
             Mod+E hotkey-overlay-title="${euphonica}" { spawn "euphonica"; }
             Mod+V hotkey-overlay-title="${vesktop}" { spawn "vesktop"; }
 
-            Mod+Shift+Return hotkey-overlay-title="${neovim}" {spawn "sh" "-c" "cd Projects/ && kitty --app-id nvim nvim"; }
-            Mod+Shift+N hotkey-overlay-title="${nix-search-tv}" { spawn "kitty" "--app-id" "nix-search-tv" "ns"; }
-            Mod+Shift+Y hotkey-overlay-title="${yazi}" { spawn "kitty" "--app-id" "yazi" "yazi"; }
+            Mod+Shift+Return hotkey-overlay-title="${neovim}" { spawn "footclient" "-D" "${proDir}" "-a" "nvim" "nvim"; }
+            Mod+Shift+N hotkey-overlay-title="${nix-search-tv}" { spawn "footclient" "-a" "nix-search-tv" "ns"; }
+            Mod+Shift+Y hotkey-overlay-title="${yazi}" { spawn "footclient" "-a" "yazi" "yazi"; }
 
             Ctrl+Space hotkey-overlay-title="${fcitx}" { spawn "fcitx5-remote" "-t" ; }
 

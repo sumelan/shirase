@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib) getExe mkForce;
 in {
-  flake.modules.homeManager.default = {config, ...}: let
+  flake.modules.homeManager.kitty = {config, ...}: let
     inherit (config.custom.fonts) monospace;
     fishPath = getExe config.programs.fish.package;
   in {
@@ -26,6 +26,8 @@ in {
         cursor_trail_start_threshold = 10;
         scrollback_lines = 10000;
         update_check_interval = 0;
+        window_padding_width = 1;
+        background_opacity = 1.0;
         tab_bar_edge = "top";
         confirm_os_window_close = 0;
         # for removing kitty padding when in neovim
@@ -38,10 +40,6 @@ in {
     home.shellAliases = {
       # change color on ssh
       ssh = "kitten ssh --kitten=color_scheme='Rosé Pine Moon'";
-    };
-
-    xdg.mimeApps.defaultApplications = {
-      "x-scheme-handler/terminal" = "kitty.desktop";
     };
   };
 }
