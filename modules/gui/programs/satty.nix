@@ -13,12 +13,9 @@
     yellow_base
     ;
 in {
-  flake.modules.homeManager.default = {
-    config,
-    user,
-    ...
-  }: let
-    regularFont = config.gtk.font.name;
+  flake.modules.homeManager.default = {config, ...}: let
+    inherit (config.xdg.userDirs) pictures;
+    font = config.gtk.font.name;
   in {
     programs.satty = {
       enable = true;
@@ -38,7 +35,7 @@ in {
           annotation-size-factor = 2;
           # Filename to use for saving action. Omit to disable saving to file. Might contain format specifiers: https://docs.rs/chrono/latest/chrono/format/strftime/index.html
           # starting with 0.20.0, can contain leading tilde (~) for home directory
-          output-filename = "/home/${user}/Pictures/Satty/%Y-%m-%d_%H-%M-%S.png";
+          output-filename = "${pictures}/Satty/%Y-%m-%d_%H-%M-%S.png";
           # After copying the screenshot, save it to a file as well
           save-after-copy = false;
           # Hide toolbars by default
@@ -85,7 +82,7 @@ in {
           highlight = "g";
         };
         font = {
-          family = regularFont;
+          family = font;
           style = "Regular";
         };
 
@@ -108,7 +105,7 @@ in {
 
     xdg.mimeApps = let
       value = "satty.desktop";
-      imgAssociations = builtins.listToAttrs (map (name: {
+      associations = builtins.listToAttrs (map (name: {
           inherit name value;
         }) [
           "image/jpeg"
@@ -118,7 +115,7 @@ in {
         ]);
     in {
       # remove `satty.desktop` from image mimetypes
-      associations.removed = imgAssociations;
+      associations.removed = associations;
     };
   };
 }
