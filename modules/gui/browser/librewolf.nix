@@ -134,7 +134,7 @@ in {
 
     xdg.mimeApps = let
       value = "librewolf.desktop";
-      htmlAssociations = builtins.listToAttrs (map (name: {
+      associations = builtins.listToAttrs (map (name: {
           inherit name value;
         }) [
           "application/x-extension-shtml"
@@ -154,8 +154,8 @@ in {
           "text/html"
         ]);
     in {
-      associations.added = htmlAssociations;
-      defaultApplications = htmlAssociations;
+      associations.added = associations;
+      defaultApplications = associations;
     };
 
     custom.persist.home.directories = [

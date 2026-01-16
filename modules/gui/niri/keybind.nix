@@ -1,11 +1,12 @@
 {config, ...}: let
   inherit
     (config.flake.lib.colors)
+    white3
     green_bright
+    green_dim
     cyan_bright
     magenta_dim
     magenta_bright
-    orange_dim
     orange_bright
     blue1
     blue2
@@ -19,8 +20,8 @@
       inherit text;
     };
   kitty = hotkey {
-    color = green_bright;
-    name = "  Kitty";
+    color = green_dim;
+    name = "  Kitty";
     text = "Terminal Emulator";
   };
   librewolf = hotkey {
@@ -40,12 +41,12 @@
   };
   nix-search-tv = hotkey {
     color = blue1;
-    name = "󱄅  nix-search-tv";
+    name = "󱄅  Nix-search-tv";
     text = "Nix Fuzzey Search";
   };
   yazi = hotkey {
     color = yellow_dim;
-    name = "󰇥  yazi";
+    name = "󰇥  Yazi";
     text = "Terminal File Manager";
   };
   dynamicCast = text:
@@ -55,9 +56,14 @@
       inherit text;
     };
   fcitx = hotkey {
-    color = orange_dim;
+    color = white3;
     name = "󰗊  Fcitx";
     text = "Switch Hazkey";
+  };
+  neovim = hotkey {
+    color = green_bright;
+    name = "  Neovim";
+    text = "Codig Editor";
   };
 in {
   flake.modules.homeManager.default = _: {
@@ -88,17 +94,23 @@ in {
             XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "5" ""; }
             XF86MonBrightnessUp allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "5" ""; }
 
+            // dynamic-cast
+            Mod+Bracketright hotkey-overlay-title="${dynamicCast "Select window as target"}" { spawn "sh" "-c" "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
+            Mod+Shift+Bracketright hotkey-overlay-title="${dynamicCast "Set current output as target"}" { spawn "sh" "-c" "niri msg action set-dynamic-cast-monitor"; }
+            Mod+Alt+Bracketright hotkey-overlay-title="${dynamicCast "Clear target"}" { spawn "sh" "-c" "niri msg action clear-dynamic-cast-target"; }
+
             // Execute
             Mod+Return hotkey-overlay-title="${kitty}" { spawn "kitty"; }
+
             Mod+B hotkey-overlay-title="${librewolf}" { spawn "librewolf"; }
             Mod+E hotkey-overlay-title="${euphonica}" { spawn "euphonica"; }
             Mod+V hotkey-overlay-title="${vesktop}" { spawn "vesktop"; }
+
+            Mod+Shift+Return hotkey-overlay-title="${neovim}" {spawn "sh" "-c" "cd Projects/ && kitty --app-id nvim nvim"; }
             Mod+Shift+N hotkey-overlay-title="${nix-search-tv}" { spawn "kitty" "--app-id" "nix-search-tv" "ns"; }
             Mod+Shift+Y hotkey-overlay-title="${yazi}" { spawn "kitty" "--app-id" "yazi" "yazi"; }
-            Mod+Bracketright hotkey-overlay-title="${dynamicCast "Select window as cast target"}" { spawn "sh" "-c" "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
-            Mod+Shift+Bracketright hotkey-overlay-title="${dynamicCast "Set current output as cast target"}" { spawn "sh" "-c" "niri msg action set-dynamic-cast-monitor"; }
-            Mod+Alt+Bracketright hotkey-overlay-title="${dynamicCast "Clear cast target"}" { spawn "sh" "-c" "niri msg action clear-dynamic-cast-target"; }
-            Ctrl+Space hotkey-overlay-title="${fcitx}" { spawn "sh" "-c" "fcitx5-remote -t && swayosd-client --custom-message=$(fcitx5-remote -n) --custom-icon=input-keyboard"; }
+
+            Ctrl+Space hotkey-overlay-title="${fcitx}" { spawn "fcitx5-remote" "-t" ; }
 
             // Workspace
             Mod+Down { focus-workspace-down; }
