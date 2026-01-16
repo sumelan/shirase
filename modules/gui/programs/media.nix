@@ -35,10 +35,6 @@ _: {
       custom.persist.home.directories = [".config/obs-studio"];
     };
 
-    kooha = {pkgs, ...}: {
-      home.packages = [pkgs.kooha];
-    };
-
     vlc = {pkgs, ...}: {
       home.packages = builtins.attrValues {
         inherit (pkgs) vlc handbrake;

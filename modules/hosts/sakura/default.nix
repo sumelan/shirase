@@ -66,7 +66,6 @@ in {
           dissent
           foliate
           helium
-          kooha
           krita
           obs-studio
           protonapp

@@ -22,7 +22,6 @@ in {
           (pkgs)
           xdg-desktop-portal-gtk
           xdg-desktop-portal-gnome
-          xdg-desktop-portal-wlr
           ;
       };
       config = {
@@ -34,9 +33,8 @@ in {
           "org.freedesktop.impl.portal.FileChooser" = ["gnome"];
           "org.freedesktop.impl.portal.Notification" = ["gtk"];
           "org.freedesktop.impl.portal.Secret" = ["gnome-keyring"];
-          "org.freedesktop.impl.portal.ScreenCast" = ["wlr" "gnome"];
+          "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
         };
-        obs.default = ["gnome"];
       };
     };
     # dms

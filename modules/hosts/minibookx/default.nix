@@ -62,7 +62,6 @@ in {
           dissent
           foliate
           helium
-          kooha
           protonapp
           rmpc
           youtube-tui
