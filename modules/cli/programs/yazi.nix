@@ -31,6 +31,7 @@ _: {
           starship
           toggle-pane
           ;
+        # patched plugins
         inherit (pkgs) nord yatline time-travel;
       };
 

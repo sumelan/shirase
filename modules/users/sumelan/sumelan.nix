@@ -16,7 +16,7 @@ in {
             description = flake.meta.users.sumelan.name;
             isNormalUser = true;
             # create a password with sumelan with:
-            # mkpasswd -m sha-512 'PASSWORD' | sudo tee -a /persist/etc/shadow/sumelan
+            # mkpasswd -m sha-512 'PASSWORD' | sudo tee /persist/etc/shadow/sumelan
             initialPassword = "password";
             hashedPasswordFile = "/persist/etc/shadow/sumelan";
             extraGroups = [

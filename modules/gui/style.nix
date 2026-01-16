@@ -9,7 +9,7 @@ in {
     home.pointerCursor = {
       package = pkgs.capitaine-cursors-themed;
       name = "Capitaine Cursors (Nord)";
-      size = 38;
+      size = 48;
       gtk.enable = true;
       x11.enable = true;
     };

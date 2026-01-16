@@ -1,7 +1,7 @@
 {inputs, ...}: {
   flake.modules.nixos.overlay = {pkgs, ...}: let
     # enable the A/V Properties and see details like media length
-    nautilusOverlay = _final: prev: {
+    nautilus = _final: prev: {
       nautilus = prev.nautilus.overrideAttrs (nprev: {
         buildInputs =
           nprev.buildInputs
@@ -12,7 +12,7 @@
       });
     };
     # play Blu-ray disk
-    vlcOverlay = _final: prev: {
+    vlc = _final: prev: {
       vlc = prev.vlc.override {
         libbluray-full = prev.libbluray.override {
           withAACS = true;
@@ -20,47 +20,39 @@
         };
       };
     };
-    yatline = _final: prev: {
-      yatline = prev.yaziPlugins.yatline.overrideAttrs {
-        patches = [
-          (prev.fetchpatch {
-            url = "https://patch-diff.githubusercontent.com/raw/imsi32/yatline.yazi/pull/71.diff";
-            hash = "sha256-YUFlDzSx8X4XIeYVOX+PRVZxND7588nl0vr3V+h6hus=";
-          })
-          (prev.fetchpatch {
-            url = "https://patch-diff.githubusercontent.com/raw/imsi32/yatline.yazi/pull/67.diff";
-            hash = "sha256-omNbc2dSldLZyuoSwx8hjvDR11cb0tozpqp/ooY0sMs=";
-          })
-        ];
-      };
+    yatlinePatches = _final: prev: {
+      yatline = prev.yaziPlugins.yatline.overrideAttrs (o: {
+        patches =
+          (o.patches or [])
+          ++ [
+            (prev.fetchpatch {
+              url = "https://patch-diff.githubusercontent.com/raw/imsi32/yatline.yazi/pull/71.diff";
+              hash = "sha256-YUFlDzSx8X4XIeYVOX+PRVZxND7588nl0vr3V+h6hus=";
+            })
+            (prev.fetchpatch {
+              url = "https://patch-diff.githubusercontent.com/raw/imsi32/yatline.yazi/pull/67.diff";
+              hash = "sha256-omNbc2dSldLZyuoSwx8hjvDR11cb0tozpqp/ooY0sMs=";
+            })
+          ];
+      });
     };
-    nordic-yazi = _final: prev: {
-      nord = prev.yaziPlugins.nord.overrideAttrs {
-        src = prev.fetchFromGitHub {
-          owner = "sumelan";
-          repo = "nord.yazi";
-          rev = "c45fde5a57951a7b8f2e1c783fa1392a76a70622";
-          hash = "sha256-MxHux3yKsegqWdVJjTno4547tfMUKRNIWYQ3IK6ucpo=";
-        };
-      };
+    nordPatches = _final: prev: {
+      nord = prev.yaziPlugins.nord.overrideAttrs (o: {
+        patches = (o.patches or []) ++ [./nord.patch];
+      });
     };
-    time-travel-yazi = _final: prev: {
-      time-travel = prev.yaziPlugins.time-travel.overrideAttrs {
-        src = prev.fetchFromGitHub {
-          owner = "sumelan";
-          repo = "time-travel.yazi";
-          rev = "7aa9394e89ee545a79b56bca8cb66bca502e6764";
-          hash = "sha256-x8CdBePXT9EeP0Ew4M+jnq8jy1GL7pSW9j18/MQeQQI=";
-        };
-      };
+    time-travelPatches = _final: prev: {
+      time-travel = prev.yaziPlugins.time-travel.overrideAttrs (o: {
+        patches = (o.patches or []) ++ [./time-travel.patch];
+      });
     };
   in {
     nixpkgs.overlays = [
-      nautilusOverlay
-      vlcOverlay
-      yatline
-      nordic-yazi
-      time-travel-yazi
+      nautilus
+      vlc
+      yatlinePatches
+      nordPatches
+      time-travelPatches
       # niri-flake
       inputs.niri-flake.overlays.niri
     ];
