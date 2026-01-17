@@ -19,7 +19,6 @@ in {
           hardware-sakura
           hdds
           logitech
-          opentabletdriver
           sops-nix
           steam
           syncoid
@@ -66,7 +65,6 @@ in {
           dissent
           foliate
           helium
-          krita
           obs-studio
           protonapp
           rmpc
