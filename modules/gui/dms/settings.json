@@ -6,7 +6,7 @@
   "matugenScheme": "scheme-tonal-spot",
   "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "",
-  "popupTransparency": 0.85,
+  "popupTransparency": 0.9,
   "dockTransparency": 0.85,
   "widgetBackgroundColor": "sch",
   "widgetColorMode": "default",
@@ -239,26 +239,26 @@
   "syncModeWithPortal": true,
   "terminalsAlwaysDark": false,
   "runDmsMatugenTemplates": true,
-  "matugenTemplateGtk": true,
+  "matugenTemplateGtk": false,
   "matugenTemplateNiri": true,
-  "matugenTemplateHyprland": true,
-  "matugenTemplateMangowc": true,
-  "matugenTemplateQt5ct": true,
-  "matugenTemplateQt6ct": true,
-  "matugenTemplateFirefox": true,
-  "matugenTemplatePywalfox": true,
-  "matugenTemplateZenBrowser": true,
+  "matugenTemplateHyprland": false,
+  "matugenTemplateMangowc": false,
+  "matugenTemplateQt5ct": false,
+  "matugenTemplateQt6ct": false,
+  "matugenTemplateFirefox": false,
+  "matugenTemplatePywalfox": false,
+  "matugenTemplateZenBrowser": false,
   "matugenTemplateVesktop": true,
-  "matugenTemplateEquibop": true,
-  "matugenTemplateGhostty": true,
-  "matugenTemplateKitty": true,
-  "matugenTemplateFoot": true,
-  "matugenTemplateAlacritty": true,
-  "matugenTemplateNeovim": true,
-  "matugenTemplateWezterm": true,
+  "matugenTemplateEquibop": false,
+  "matugenTemplateGhostty": false,
+  "matugenTemplateKitty": false,
+  "matugenTemplateFoot": false,
+  "matugenTemplateAlacritty": false,
+  "matugenTemplateNeovim": false,
+  "matugenTemplateWezterm": false,
   "matugenTemplateDgop": true,
-  "matugenTemplateKcolorscheme": true,
-  "matugenTemplateVscode": true,
+  "matugenTemplateKcolorscheme": false,
+  "matugenTemplateVscode": false,
   "showDock": false,
   "dockAutoHide": false,
   "dockGroupByApp": true,
@@ -511,15 +511,15 @@
   "desktopWidgetInstances": [],
   "desktopWidgetGroups": [],
   "builtInPluginSettings": {
-    "dms_settings_search": {
-      "trigger": "?",
+    "dms_notepad": {
       "enabled": false
     },
     "dms_settings": {
       "enabled": false
     },
-    "dms_notepad": {
-      "enabled": false
+    "dms_settings_search": {
+      "enabled": false,
+      "trigger": "?"
     },
     "dms_sysmon": {
       "enabled": false

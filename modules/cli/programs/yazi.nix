@@ -128,12 +128,6 @@ _: {
             run = "plugin chmod";
             desc = "Run chmod on selected files";
           }
-          # mount
-          {
-            on = "M";
-            run = "plugin mount";
-            desc = "Open mount";
-          }
           # time-travel
           {
             on = ["z" "h"];
@@ -150,6 +144,12 @@ _: {
             run = "plugin time-travel exit";
             desc = "Exit browsing snapshots";
           }
+          # mount
+          {
+            on = "M";
+            run = "plugin mount";
+            desc = "Open mount";
+          }
           # toggle-pane
           {
             on = "T";
@@ -164,9 +164,15 @@ _: {
           }
           # swayimg
           {
-            on = "S";
-            run = ''shell -- swayimg "$@">/dev/null &'';
+            on = "<C-s>";
+            run = ''shell -- swayimg "$@" >/dev/null &'';
             desc = "Open with swayimg";
+          }
+          # satty
+          {
+            on = "<C-S>";
+            run = ''shell -- satty -f "$@"'';
+            desc = "Open with satty";
           }
         ];
       };

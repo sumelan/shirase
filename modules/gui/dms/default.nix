@@ -22,6 +22,7 @@ in {
         "f ${dmsConf}/layout.kdl 644 ${user} users - -"
         "f ${dmsConf}/outputs.kdl 644 ${user} users - -"
         "f ${dmsConf}/wpblur.kdl 644 ${user} users - -"
+        "f ${dmsConf}/cursor.kdl 644 ${user} users - -"
       ];
       # override service config flake provide
       services.dms.Service.Restart = mkForce "always";

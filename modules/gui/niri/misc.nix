@@ -154,6 +154,7 @@ in {
         include "dms/alttab.kdl"
         include "dms/binds.kdl"
         include "dms/colors.kdl"
+        include "dms/cursor.kdl"
         include "dms/layout.kdl"
         include "dms/outputs.kdl"
         include "dms/wpblur.kdl"

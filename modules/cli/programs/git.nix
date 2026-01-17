@@ -6,7 +6,7 @@
   lib,
   ...
 }: let
-  inherit (config.flake.lib.colors) blue2 gray5;
+  inherit (config.flake.lib.colors) orange_dim gray4;
   inherit (lib) mkForce;
 in {
   flake.modules.homeManager.default = {user, ...}: {
@@ -17,7 +17,6 @@ in {
     programs = {
       git = {
         enable = true;
-        ignores = [".jj"];
         settings = {
           user = {
             name = user;
@@ -76,18 +75,6 @@ in {
           git_protocol = "https";
         };
       };
-      jujutsu = {
-        enable = true;
-        settings = {
-          user = {
-            name = "sumelan";
-            inherit (config.flake.meta.users.${user}) email;
-          };
-          template-aliases = {
-            "format_short_id(id)" = "id.shortest()";
-          };
-        };
-      };
       lazygit = {
         enable = true;
         settings = mkForce {
@@ -100,8 +87,8 @@ in {
             parseEmoji = true;
           };
           gui = let
-            accent = blue2;
-            muted = gray5;
+            accent = orange_dim;
+            muted = gray4;
           in {
             theme = {
               activeBorderColor = [

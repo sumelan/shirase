@@ -7,7 +7,6 @@ _: {
     inherit (config.xdg.userDirs) music;
     inherit (config.xdg) dataHome;
     cfg = config.services.mpd;
-    runtimeDir = "/run/user/1000/mpd";
   in {
     systemd.user.tmpfiles.rules = [
       # create mpd directory for local socket on boot
@@ -15,7 +14,9 @@ _: {
     ];
 
     services = {
-      mpd = {
+      mpd = let
+        runtimeDir = "/run/user/1000/mpd";
+      in {
         enable = true;
         musicDirectory = music;
         dataDir = "${dataHome}/mpd";
