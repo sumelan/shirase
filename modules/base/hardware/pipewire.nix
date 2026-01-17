@@ -24,23 +24,6 @@ _: {
                 main."monitor.libcamera" = "disabled";
               };
             };
-            "10-alsa-soft-mixer"."monitor.alsa.rules" = [
-              {
-                matches = [
-                  {
-                    device.name = "alsa_output.usb-Creative_Technology_Ltd_Creative_Stage_SE_mini_1120041300020421-01.analog-stereo";
-                  }
-                ];
-                actions = {
-                  update-props = {
-                    # Do not use the hardware mixer for volume control
-                    # It will only use software volume.
-                    # The mixer is still used to mute unused paths based on the selected port.
-                    api.alsa.soft-mixer = true;
-                  };
-                };
-              }
-            ];
           };
         };
       };

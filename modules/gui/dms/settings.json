@@ -70,7 +70,7 @@
       "width": 50
     },
     {
-      "deviceName": "leds:igc-0100-led0",
+      "deviceName": "ddc:i2c-0",
       "enabled": true,
       "id": "brightnessSlider",
       "width": 50
@@ -119,7 +119,7 @@
   "workspaceUrgentColorMode": "default",
   "workspaceFocusedBorderEnabled": true,
   "workspaceFocusedBorderColor": "primary",
-  "workspaceFocusedBorderThickness": 2,
+  "workspaceFocusedBorderThickness": 1,
   "workspaceNameIcons": {},
   "waveProgressEnabled": true,
   "scrollTitleEnabled": true,

@@ -1,11 +1,6 @@
 {lib, ...}: let
   inherit (lib) mkOption;
-  inherit
-    (lib.types)
-    listOf
-    str
-    bool
-    ;
+  inherit (lib.types) bool;
 in {
   flake.modules.nixos.hdds = {
     options = {
