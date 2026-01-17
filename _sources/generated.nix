@@ -15,10 +15,10 @@
   };
   helium = {
     pname = "helium";
-    version = "0.7.10.1";
+    version = "0.8.1.1";
     src = fetchurl {
-      url = "https://github.com/imputnet/helium-linux/releases/download/0.7.10.1/helium-0.7.10.1-x86_64.AppImage";
-      sha256 = "sha256-11xSlHIqmyyVwjjwt5FmLhp72P3m07PppOo7a9DbTcE=";
+      url = "https://github.com/imputnet/helium-linux/releases/download/0.8.1.1/helium-0.8.1.1-x86_64.AppImage";
+      sha256 = "sha256-n1wn80h9O7GpZz4AygNSKMcilX8lr6fJkiQBBPPQXok=";
     };
   };
   nordic-nvim = {
