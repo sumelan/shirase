@@ -334,7 +334,14 @@
   "displayNameMode": "model",
   "screenPreferences": {},
   "showOnLastDisplay": {},
-  "niriOutputSettings": {},
+  "niriOutputSettings": {
+    "Eizo Nanao Corporation EV2450 71147045": {
+      "hotCorners": {
+        "off": true
+      },
+      "layout": null
+    }
+  },
   "hyprlandOutputSettings": {},
   "barConfigs": [
     {
@@ -360,25 +367,30 @@
       "innerPadding": 20,
       "leftWidgets": [
         {
-          "enabled": true,
-          "id": "launcherButton"
+          "id": "launcherButton",
+          "enabled": true
         },
         {
+          "id": "focusedWindow",
           "enabled": true,
-          "id": "focusedWindow"
+          "focusedWindowCompactMode": false
         },
         {
-          "enabled": true,
           "id": "music",
+          "enabled": true,
           "mediaSize": 1
         },
         {
-          "enabled": true,
-          "id": "systemTray"
+          "id": "systemTray",
+          "enabled": true
         },
         {
-          "enabled": true,
-          "id": "privacyIndicator"
+          "id": "idleInhibitor",
+          "enabled": true
+        },
+        {
+          "id": "privacyIndicator",
+          "enabled": true
         }
       ],
       "maximizeDetection": true,
@@ -414,8 +426,9 @@
           "id": "battery"
         },
         {
+          "id": "clock",
           "enabled": true,
-          "id": "clock"
+          "clockCompactMode": false
         }
       ],
       "screenPreferences": [

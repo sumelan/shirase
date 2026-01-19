@@ -10,16 +10,18 @@ _: {
       networking.firewall.enable = true;
     };
 
-    valent = {pkgs, ...}: {
+    kdeconnect = _: {
       programs.kdeconnect = {
         enable = true;
-        package = pkgs.valent;
       };
 
       custom = {
-        persist.home.directories = [".config/valent"];
+        persist.home.directories = [
+          ".config/kdeconnect"
+        ];
         cache.home.directories = [
-          ".cache/valent"
+          ".cache/kdeconnect.app"
+          ".cache/kdeconnect.daemon"
         ];
       };
     };

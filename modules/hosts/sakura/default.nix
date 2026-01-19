@@ -18,6 +18,7 @@ in {
           default
           hardware-sakura
           hdds
+          kdeconnect
           logitech
           sops-nix
           steam
@@ -26,7 +27,6 @@ in {
           syncthing
           syncthing-sakura
           qmk
-          valent
         ]);
     };
 

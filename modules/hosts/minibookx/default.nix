@@ -22,11 +22,11 @@ in {
           default
           hardware-minibookx
           chuwi-minibook-x
+          kdeconnect
           laptop
           sops-nix
           syncthing
           syncthing-minibookx
-          valent
         ]);
     };
 

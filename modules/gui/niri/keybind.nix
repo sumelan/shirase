@@ -76,13 +76,11 @@ in {
             Mod+Space hotkey-overlay-title="${dms "Launcher"}" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
             Mod+Y hotkey-overlay-title="${dms "Clipboard"}" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
             Mod+X hotkey-overlay-title="${dms "Powermenu"}" { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
-            Mod+P hotkey-overlay-title="${dms "Notepad"}" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
-            Mod+D hotkey-overlay-title="${dms "Dashboard"}" { spawn "dms" "ipc" "call" "dash" "toggle" "overview"; }
             Mod+W hotkey-overlay-title="${dms "Wallpaper"}" { spawn "dms" "ipc" "call" "dankdash" "wallpaper"; }
             Mod+N hotkey-overlay-title="${dms "Notifications"}" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
+            Mod+Alt+N hotkey-overlay-title="${dms "Notepad"}" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
             Mod+I hotkey-overlay-title="${dms "Idle-inhibitor"}" { spawn "dms" "ipc" "call" "inhibit" "toggle"; }
-            Mod+Alt+N hotkey-overlay-title="${dms "Nightmode"}" { spawn "dms" "ipc" "call" "night" "toggle"; }
-            Mod+Slash hotkey-overlay-title="${dms "Show/Hide"}" { spawn "dms" "ipc" "call" "bar" "toggle" "name" "Main Bar"; }
+            Mod+Comma hotkey-overlay-title="${dms "Settings"}" { spawn "dms" "ipc" "call" "settings" "focusOrToggle"; }
             Mod+Alt+L allow-when-locked=true hotkey-overlay-title="${dms "Screen-lock"}" { spawn "dms" "ipc" "call" "lock" "lock"; }
 
             XF86AudioLowerVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "decrement" "3"; }
@@ -95,86 +93,118 @@ in {
             XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "5" ""; }
             XF86MonBrightnessUp allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "5" ""; }
 
-            // dynamic-cast
-            Mod+Bracketright hotkey-overlay-title="${dynamicCast "Select window as target"}" { spawn "sh" "-c" "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
-            Mod+Shift+Bracketright hotkey-overlay-title="${dynamicCast "Set current output as target"}" { spawn "sh" "-c" "niri msg action set-dynamic-cast-monitor"; }
-            Mod+Alt+Bracketright hotkey-overlay-title="${dynamicCast "Clear target"}" { spawn "sh" "-c" "niri msg action clear-dynamic-cast-target"; }
+            // Dynamic-cast
+            Mod+Ctrl+Backslash hotkey-overlay-title="${dynamicCast "Select window as target"}" { spawn "sh" "-c" "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
+            Mod+Ctrl+Shift+Backslash hotkey-overlay-title="${dynamicCast "Set current output as target"}" { spawn "niri" "msg" "action" "set-dynamic-cast-monitor"; }
+            Mod+Ctrl+Alt+Backslash hotkey-overlay-title="${dynamicCast "Clear target"}" { spawn "niri" "msg" "action" "clear-dynamic-cast-target"; }
 
             // Execute
             Mod+Return hotkey-overlay-title="${foot}" { spawn "footclient"; }
-
             Mod+B hotkey-overlay-title="${librewolf}" { spawn "librewolf"; }
             Mod+E hotkey-overlay-title="${euphonica}" { spawn "euphonica"; }
             Mod+V hotkey-overlay-title="${vesktop}" { spawn "vesktop"; }
-
             Mod+Shift+Return hotkey-overlay-title="${neovim}" { spawn "footclient" "-D" "${proDir}" "-a" "nvim" "nvim"; }
             Mod+Shift+N hotkey-overlay-title="${nix-search-tv}" { spawn "footclient" "-a" "nix-search-tv" "ns"; }
             Mod+Shift+Y hotkey-overlay-title="${yazi}" { spawn "footclient" "-a" "yazi" "yazi"; }
-
             Ctrl+Space hotkey-overlay-title="${fcitx}" { spawn "fcitx5-remote" "-t" ; }
 
-            // Workspace
+            // Window
+            Mod+Backspace repeat=false { close-window; }
+            Mod+F       { maximize-column; }
+            Mod+Shift+F { fullscreen-window; }
+            Mod+Alt+F   { toggle-windowed-fullscreen; }
+            Mod+T       { toggle-window-floating; }
+            Mod+Shift+T { switch-focus-between-floating-and-tiling; }
+            Mod+Alt+T   { toggle-column-tabbed-display; }
+
+            // Focus
+            Mod+H    { focus-column-or-monitor-left; }
+            Mod+J    { focus-window-or-workspace-down; }
+            Mod+K    { focus-window-or-workspace-up; }
+            Mod+L    { focus-column-or-monitor-right; }
             Mod+Down { focus-workspace-down; }
-            Mod+Up { focus-workspace-up; }
-            Mod+WheelScrollDown { focus-workspace-down; }
-            Mod+WheelScrollUp { focus-workspace-up; }
-            Mod+TouchpadScrollDown { focus-workspace-down; }
-            Mod+TouchpadScrollUp { focus-workspace-up; }
+            Mod+Up   { focus-workspace-up; }
+
+            // Move
+            Mod+Shift+H { move-column-left-or-to-monitor-left; }
             Mod+Shift+J { move-window-down-or-to-workspace-down; }
             Mod+Shift+K { move-window-up-or-to-workspace-up; }
-            Mod+Shift+WheelScrollDown hotkey-overlay-title=null { move-column-to-workspace-down; }
-            Mod+Shift+WheelScrollUp hotkey-overlay-title=null { move-column-to-workspace-up; }
-            Mod+Shift+TouchpadScrollDown { move-column-to-workspace-down; }
-            Mod+Shift+TouchpadScrollUp { move-column-to-workspace-up; }
+            Mod+Shift+L { move-column-right-or-to-monitor-right; }
+
+            // Column
+            Mod+Home         { focus-column-first; }
+            Mod+End          { focus-column-last; }
+            Mod+Shift+Home   { move-column-to-first; }
+            Mod+Shift+End    { move-column-to-last; }
+            Mod+C            { center-column; }
+            Mod+Alt+C        { center-visible-columns; }
+            Mod+BracketLeft  { consume-or-expel-window-left; }
+            Mod+BracketRight { consume-or-expel-window-right; }
+            Mod+Period       { expel-window-from-column; }
+
+            // Sizing & Layout
+            Mod+R       { switch-preset-column-width; }
+            Mod+Shift+R { switch-preset-window-height; }
+
+            // Manual Sizing
+            Mod+Minus { set-column-width "-10%"; }
+            Mod+Equal { set-column-width "+10%"; }
+            Mod+Shift+Minus { set-window-height "-10%"; }
+            Mod+Shift+Equal { set-window-height "+10%"; }
+
+            // Numbered Workspaces
             Mod+1 { focus-workspace 1; }
             Mod+2 { focus-workspace 2; }
             Mod+3 { focus-workspace 3; }
+            Mod+4 { focus-workspace 4; }
+            Mod+5 { focus-workspace 5; }
+            Mod+6 { focus-workspace 6; }
+            Mod+7 { focus-workspace 7; }
+            Mod+8 { focus-workspace 8; }
+            Mod+9 { focus-workspace 9; }
+
             Mod+Shift+1 { move-column-to-workspace 1; }
             Mod+Shift+2 { move-column-to-workspace 2; }
             Mod+Shift+3 { move-column-to-workspace 3; }
+            Mod+Shift+4 { move-column-to-workspace 4; }
+            Mod+Shift+5 { move-column-to-workspace 5; }
+            Mod+Shift+6 { move-column-to-workspace 6; }
+            Mod+Shift+7 { move-column-to-workspace 7; }
+            Mod+Shift+8 { move-column-to-workspace 8; }
+            Mod+Shift+9 { move-column-to-workspace 9; }
 
-            // Window
-            Mod+Backspace { close-window; }
-            Mod+S { switch-focus-between-floating-and-tiling; }
-            Mod+F { toggle-window-floating; }
-            Mod+Shift+F { fullscreen-window; }
-            Mod+Alt+F { toggle-windowed-fullscreen; }
-            Mod+C { center-column; }
-            Mod+Shift+C { maximize-column; }
-            Mod+Ctrl+C { switch-preset-column-width; }
-            Mod+T { toggle-column-tabbed-display; }
-            Mod+H { focus-column-or-monitor-left; }
-            Mod+J { focus-window-or-workspace-down; }
-            Mod+K { focus-window-or-workspace-up; }
-            Mod+L { focus-column-or-monitor-right; }
-            Mod+WheelScrollLeft hotkey-overlay-title=null { focus-column-left; }
-            Mod+WheelScrollRight hotkey-overlay-title=null { focus-column-right; }
-            Mod+TouchpadScrollLeft { focus-column-left; }
-            Mod+TouchpadScrollRight { focus-column-right; }
-            Mod+Shift+H { move-column-left-or-to-monitor-left; }
-            Mod+Shift+L { move-column-right-or-to-monitor-right; }
-            Mod+Shift+TouchpadScrollLeft hotkey-overlay-title=null { move-column-left; }
-            Mod+Shift+TouchpadScrollRight hotkey-overlay-title=null { move-column-right; }
-            Mod+Ctrl+H { set-column-width "-10%"; }
-            Mod+Ctrl+J { set-window-height "+10%"; }
-            Mod+Ctrl+K { set-window-height "-10%"; }
-            Mod+Ctrl+L { set-column-width "+10%"; }
-            Mod+Left { consume-or-expel-window-left; }
-            Mod+Right { consume-or-expel-window-right; }
-            Mod+Shift+WheelScrollLeft hotkey-overlay-title=null { consume-or-expel-window-left; }
-            Mod+Shift+WheelScrollRight hotkey-overlay-title=null { consume-or-expel-window-right; }
-            Mod+MouseForward { consume-or-expel-window-left; }
-            Mod+MouseBack { consume-or-expel-window-right; }
+            // Mouse Wheel
+            Mod+WheelScrollDown  cooldown-ms=150 { focus-workspace-down; }
+            Mod+WheelScrollUp    cooldown-ms=150 { focus-workspace-up; }
+            Mod+WheelScrollRight cooldown-ms=150 { focus-column-right; }
+            Mod+WheelScrollLeft  cooldown-ms=150 { focus-column-left; }
+
+            Mod+Shift+WheelScrollDown   { move-column-to-workspace-down; }
+            Mod+Shift+WheelScrollUp     { move-column-to-workspace-up; }
+            Mod+Shift+WheelScrollRight  { consume-or-expel-window-right; }
+            Mod+Shift+WheelScrollLeft   { consume-or-expel-window-left; }
+
+            // Touchpad
+            Mod+TouchpadScrollDown        { focus-workspace-down; }
+            Mod+TouchpadScrollUp          { focus-workspace-up; }
+            Mod+TouchpadScrollRight       { focus-column-right; }
+            Mod+TouchpadScrollLeft        { focus-column-left; }
+            Mod+Shift+TouchpadScrollDown  { move-column-to-workspace-down; }
+            Mod+Shift+TouchpadScrollUp    { move-column-to-workspace-up; }
+            Mod+Shift+TouchpadScrollRight { move-column-right; }
+            Mod+Shift+TouchpadScrollLeft  { move-column-left; }
+
+            // Screenshot
+            Mod+Backslash       { screenshot show-pointer=false; }
+            Mod+Shift+Backslash { screenshot-screen show-pointer=false; }
+            Mod+Alt+Backslash   { screenshot-window show-pointer=false; }
 
             // System
+            Mod+Shift+Slash  { show-hotkey-overlay; }
+            Mod+O            { toggle-overview; }
             Mod+Shift+Escape { quit skip-confirmation=false; }
-            Mod+Backslash { screenshot show-pointer=false; }
-            Mod+Shift+Backslash { screenshot-screen show-pointer=false; }
-            Mod+Alt+Backslash { screenshot-window show-pointer=true; }
-
-            // Overview
-            Mod+Shift+Slash { show-hotkey-overlay; }
-            Mod+O { toggle-overview; }
+            Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+            Mod+Shift+P      { power-off-monitors; }
         }
       '';
   };

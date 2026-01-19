@@ -1,0 +1,16 @@
+{
+  "dankBatteryAlerts": {
+    "criticalMessage": "Battery at ${level}% - Connect charger immediately!",
+    "criticalThreshold": 10,
+    "criticalTitle": "Critical Battery Level",
+    "enableCriticalAlert": true,
+    "enableWarningAlert": true,
+    "enabled": true,
+    "warningMessage": "Battery at ${level}% - Consider charging soon",
+    "warningThreshold": 20,
+    "warningTitle": "Low Battery"
+  },
+  "dankKDEConnect": {
+    "enabled": true
+  }
+}
