@@ -6,7 +6,6 @@
     cyan_bright
     magenta_dim
     magenta_bright
-    orange_bright
     blue1
     blue2
     yellow_dim
@@ -48,12 +47,6 @@
     name = "󰇥  Yazi";
     text = "Terminal File Manager";
   };
-  dynamicCast = text:
-    hotkey {
-      color = orange_bright;
-      name = "󰗢  Dynamic-cast";
-      inherit text;
-    };
   fcitx = hotkey {
     color = white3;
     name = "󰗊  Fcitx";
@@ -92,11 +85,6 @@ in {
             XF86AudioRaiseVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "increment" "3"; }
             XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "5" ""; }
             XF86MonBrightnessUp allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "5" ""; }
-
-            // Dynamic-cast
-            Mod+Ctrl+Backslash hotkey-overlay-title="${dynamicCast "Select window as target"}" { spawn "sh" "-c" "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
-            Mod+Ctrl+Shift+Backslash hotkey-overlay-title="${dynamicCast "Set current output as target"}" { spawn "niri" "msg" "action" "set-dynamic-cast-monitor"; }
-            Mod+Ctrl+Alt+Backslash hotkey-overlay-title="${dynamicCast "Clear target"}" { spawn "niri" "msg" "action" "clear-dynamic-cast-target"; }
 
             // Execute
             Mod+Return hotkey-overlay-title="${foot}" { spawn "footclient"; }
@@ -204,7 +192,6 @@ in {
             Mod+O            { toggle-overview; }
             Mod+Shift+Escape { quit skip-confirmation=false; }
             Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-            Mod+Shift+P      { power-off-monitors; }
         }
       '';
   };
