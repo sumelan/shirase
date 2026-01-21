@@ -27,8 +27,8 @@ in {
         # Anchor and margin
         anchor = "bottom-right"; # One of center, left, right, top, bottom, bottom-left, top-left, etc.
         # Only relevant when anchor is not center
-        margin_right = 5;
-        margin_bottom = 5;
+        margin_right = 10;
+        margin_bottom = 10;
         margin_left = 0;
         margin_top = 0;
 
@@ -40,58 +40,13 @@ in {
         auto_kbd_layout = true;
       };
     in {
-      "wlr-which-key/application.yaml" = {
-        source = (pkgs.formats.yaml {}).generate "application" (settings
-          // {
-            menu = [
-              {
-                key = "b";
-                desc = "Browser";
-                submenu = [
-                  {
-                    key = "l";
-                    desc = "Librewolf";
-                    cmd = "librewolf";
-                  }
-                  {
-                    key = "h";
-                    desc = "Helium";
-                    cmd = "helium";
-                  }
-                ];
-              }
-              {
-                key = "d";
-                desc = "Discord";
-                submenu = [
-                  {
-                    key = "v";
-                    desc = "Vesktop";
-                    cmd = "vesktop";
-                  }
-                ];
-              }
-              {
-                key = "m";
-                desc = "Music";
-                submenu = [
-                  {
-                    key = "e";
-                    desc = "Euphonica";
-                    cmd = "euphonica";
-                  }
-                ];
-              }
-            ];
-          });
-      };
       "wlr-which-key/niri.yaml" = {
         source = (pkgs.formats.yaml {}).generate "niri" (settings
           // {
             menu = [
               {
                 key = "d";
-                desc = "󰗢 Dynamic-cast";
+                desc = "Dynamic-cast";
                 submenu = [
                   {
                     key = "w";
@@ -107,6 +62,22 @@ in {
                     key = "c";
                     desc = "Clear cast target";
                     cmd = "niri msg action clear-dynamic-cast-target";
+                  }
+                ];
+              }
+              {
+                key = "s";
+                desc = "Capture screenshot with annotation";
+                submenu = [
+                  {
+                    key = "f";
+                    desc = "Focused output";
+                    cmd = "dms screenshot full --stdout | satty -f -";
+                  }
+                  {
+                    key = "r";
+                    desc = "Region select";
+                    cmd = "dms screenshot --stdout | satty -f -";
                   }
                 ];
               }

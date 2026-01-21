@@ -9,6 +9,7 @@
     blue1
     blue2
     yellow_dim
+    orange_bright
     ;
   inherit (config.flake.lib) hotkey;
   dms = text:
@@ -57,6 +58,11 @@
     name = "  Neovim";
     text = "Codig Editor";
   };
+  wlr = hotkey {
+    color = orange_bright;
+    name = "  Wlr-which-key";
+    text = "Tools";
+  };
 in {
   flake.modules.homeManager.default = {config, ...}: let
     proDir = "${config.home.homeDirectory}/Projects";
@@ -94,6 +100,7 @@ in {
             Mod+Shift+Return hotkey-overlay-title="${neovim}" { spawn "footclient" "-D" "${proDir}" "-a" "nvim" "nvim"; }
             Mod+Shift+N hotkey-overlay-title="${nix-search-tv}" { spawn "footclient" "-a" "nix-search-tv" "ns"; }
             Mod+Shift+Y hotkey-overlay-title="${yazi}" { spawn "footclient" "-a" "yazi" "yazi"; }
+            Mod+Slash hotkey-overlay-title="${wlr}" { spawn "wlr-which-key" "niri"; }
             Ctrl+Space hotkey-overlay-title="${fcitx}" { spawn "fcitx5-remote" "-t" ; }
 
             // Window
@@ -192,6 +199,7 @@ in {
             Mod+O            { toggle-overview; }
             Mod+Shift+Escape { quit skip-confirmation=false; }
             Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+            Mod+Shift+P      { power-off-monitors; }
         }
       '';
   };
