@@ -53,8 +53,6 @@
       yatlinePatches
       nordPatches
       time-travelPatches
-      # niri-flake
-      inputs.niri-flake.overlays.niri
     ];
   };
 }

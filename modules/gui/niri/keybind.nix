@@ -192,7 +192,7 @@ in {
             // Screenshot
             Mod+Backslash       { screenshot show-pointer=false; }
             Mod+Shift+Backslash { screenshot-screen show-pointer=false; }
-            Mod+Alt+Backslash   { screenshot-window show-pointer=false; }
+            Mod+Alt+Backslash   { screenshot-window; }
 
             // System
             Mod+Shift+Slash  { show-hotkey-overlay; }

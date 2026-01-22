@@ -6,13 +6,13 @@ in {
     user,
     ...
   }: {
-    # niri-flake
+    # niri-nixpkgs
     programs.niri = {
       enable = true;
-      package = pkgs.niri-unstable;
+      package = pkgs.niri;
+      useNautilus = true;
     };
-    # use dms polkit
-    systemd.user.services.niri-flake-polkit.enable = false;
+
     # portal
     xdg.portal = {
       enable = true;
@@ -37,6 +37,7 @@ in {
         };
       };
     };
+
     # dms
     programs.dank-material-shell = {
       enable = true;
