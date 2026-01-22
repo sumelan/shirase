@@ -16,6 +16,7 @@
 
   hmMods = [
     inputs.dankMaterialShell.homeModules.dank-material-shell
+    inputs.danksearch.homeModules.dsearch
     inputs.nix-hazkey.homeModules.hazkey
     inputs.nix-index-database.homeModules.nix-index
   ];

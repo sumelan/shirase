@@ -115,6 +115,7 @@
   "reverseScrolling": false,
   "dwlShowAllTags": false,
   "workspaceColorMode": "default",
+  "workspaceOccupiedColorMode": "none",
   "workspaceUnfocusedColorMode": "default",
   "workspaceUrgentColorMode": "default",
   "workspaceFocusedBorderEnabled": true,
@@ -167,7 +168,14 @@
   "sortAppsAlphabetically": false,
   "appLauncherGridColumns": 4,
   "spotlightCloseNiriOverview": true,
+  "spotlightSectionViewModes": {},
+  "appDrawerSectionViewModes": {},
   "niriOverviewOverlayEnabled": true,
+  "dankLauncherV2Size": "compact",
+  "dankLauncherV2BorderEnabled": false,
+  "dankLauncherV2BorderThickness": 2,
+  "dankLauncherV2BorderColor": "primary",
+  "dankLauncherV2ShowFooter": true,
   "useAutoLocation": true,
   "weatherEnabled": true,
   "networkPreference": "auto",
@@ -261,6 +269,7 @@
   "matugenTemplateVscode": false,
   "showDock": false,
   "dockAutoHide": false,
+  "dockSmartAutoHide": false,
   "dockGroupByApp": true,
   "dockOpenOnOverview": false,
   "dockPosition": 1,
@@ -282,6 +291,7 @@
   "lockScreenShowDate": true,
   "lockScreenShowProfileImage": true,
   "lockScreenShowPasswordField": true,
+  "lockScreenPowerOffMonitorsOnLock": false,
   "enableFprint": false,
   "maxFprintTries": 3,
   "lockScreenActiveMonitor": "all",
@@ -367,30 +377,30 @@
       "innerPadding": 20,
       "leftWidgets": [
         {
-          "id": "launcherButton",
-          "enabled": true
-        },
-        {
-          "id": "focusedWindow",
           "enabled": true,
-          "focusedWindowCompactMode": false
+          "id": "launcherButton"
         },
         {
+          "enabled": true,
+          "focusedWindowCompactMode": false,
+          "id": "focusedWindow"
+        },
+        {
+          "enabled": true,
           "id": "music",
-          "enabled": true,
           "mediaSize": 1
         },
         {
-          "id": "systemTray",
-          "enabled": true
+          "enabled": true,
+          "id": "systemTray"
         },
         {
-          "id": "idleInhibitor",
-          "enabled": true
+          "enabled": true,
+          "id": "idleInhibitor"
         },
         {
-          "id": "privacyIndicator",
-          "enabled": true
+          "enabled": true,
+          "id": "privacyIndicator"
         }
       ],
       "maximizeDetection": true,
@@ -402,28 +412,32 @@
       "position": 2,
       "rightWidgets": [
         {
-          "enabled": true,
-          "id": "notificationButton"
+          "id": "notificationButton",
+          "enabled": true
         },
         {
-          "enabled": true,
+          "id": "dankKDEConnect",
+          "enabled": true
+        },
+        {
           "id": "controlCenterButton",
+          "enabled": true,
+          "showNetworkIcon": true,
+          "showBluetoothIcon": true,
           "showAudioIcon": true,
           "showAudioPercent": false,
-          "showBatteryIcon": false,
-          "showBluetoothIcon": true,
+          "showVpnIcon": false,
           "showBrightnessIcon": false,
           "showBrightnessPercent": false,
           "showMicIcon": false,
           "showMicPercent": false,
-          "showNetworkIcon": true,
+          "showBatteryIcon": false,
           "showPrinterIcon": false,
-          "showScreenSharingIcon": true,
-          "showVpnIcon": false
+          "showScreenSharingIcon": true
         },
         {
-          "enabled": true,
-          "id": "battery"
+          "id": "battery",
+          "enabled": true
         },
         {
           "id": "clock",
@@ -538,5 +552,7 @@
       "enabled": false
     }
   },
+  "launcherPluginVisibility": {},
+  "launcherPluginOrder": [],
   "configVersion": 5
 }

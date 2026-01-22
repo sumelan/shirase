@@ -252,6 +252,10 @@ in
         open-floating true
     }
     window-rule {
+        match app-id="^chrome-"
+        open-floating true
+    }
+    window-rule {
         match app-id="^com.gabm.satty$"
         default-column-width { proportion 0.500000; }
         default-window-height { proportion 0.500000; }
@@ -321,10 +325,6 @@ in
         match app-id="^Proton Pass$"
         match app-id="^.protonvpn-app-wrapped$"
         block-out-from "screen-capture"
-    }
-    window-rule {
-        match app-id="^valent$"
-        open-floating true
     }
     window-rule {
         match app-id="^vlc$"
