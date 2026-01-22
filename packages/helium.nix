@@ -22,8 +22,15 @@ _: {
         cp -r ${contents}/usr/share/icons $out/share
       '';
 
+    extraBwrapArgs = [
+      # chromium policies
+      "--ro-bind-try /etc/chromium/policies/managed/default.json /etc/chromium/policies/managed/default.json"
+      # xdg scheme-handlers
+      "--ro-bind-try /etc/xdg/ /etc/xdg/"
+    ];
+
     localPkg = pkgs.appimageTools.wrapType2 {
-      inherit pname version src nativeBuildInputs extraInstallCommands;
+      inherit pname version src nativeBuildInputs extraInstallCommands extraBwrapArgs;
     };
   in
     # Helium is only available on linux and bwrap is a linux only utility

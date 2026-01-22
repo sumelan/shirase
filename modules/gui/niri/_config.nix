@@ -66,7 +66,6 @@ in
     screenshot-path "${pictures}/Screenshots/${host}/%Y-%m-%d_%H-%M-%S.png"
 
     environment {
-        "DMS_SCREENSHOT_EDITOR" "satty"
         "ELECTRON_OZONE_PLATFORM_HINT" "auto"
         "GDK_BACKEND" "wayland"
         "QT_QPA_PLATFORM" "wayland"
@@ -342,36 +341,33 @@ in
     // binds
     binds {
         // DMS
-        Mod+Space hotkey-overlay-title="[󰮤  DankMaterialShell] Launcher"    { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
-        Mod+Y hotkey-overlay-title="[󰮤  DankMaterialShell] Clipboard"       { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
-        Mod+X hotkey-overlay-title="[󰮤  DankMaterialShell] Powermenu"       { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
-        Mod+W hotkey-overlay-title="[󰮤  DankMaterialShell] Wallpaper"       { spawn "dms" "ipc" "call" "dankdash" "wallpaper"; }
-        Mod+N hotkey-overlay-title="[󰮤  DankMaterialShell] Notifications"   { spawn "dms" "ipc" "call" "notifications" "toggle"; }
-        Mod+Alt+N hotkey-overlay-title="[󰮤  DankMaterialShell] Notepad"     { spawn "dms" "ipc" "call" "notepad" "toggle"; }
-        Mod+I hotkey-overlay-title="[󰮤  DankMaterialShell] Idle-inhibitor"  { spawn "dms" "ipc" "call" "inhibit" "toggle"; }
-        Mod+Comma hotkey-overlay-title="[󰮤  DankMaterialShell] Settings"    { spawn "dms" "ipc" "call" "settings" "focusOrToggle"; }
-        Mod+Alt+L allow-when-locked=true hotkey-overlay-title="[󰮤  DankMaterialShell] Screen-lock" { spawn "dms" "ipc" "call" "lock" "lock"; }
+        Mod+Space hotkey-overlay-title="[󰮤  DankMaterialShell] Launcher"   { spawn "dms" "ipc" "spotlight" "toggle"; }
+        Mod+Y hotkey-overlay-title="[󰮤  DankMaterialShell] Clipboard"      { spawn "dms" "ipc" "clipboard" "toggle"; }
+        Mod+X hotkey-overlay-title="[󰮤  DankMaterialShell] Powermenu"      { spawn "dms" "ipc" "powermenu" "toggle"; }
+        Mod+N hotkey-overlay-title="[󰮤  DankMaterialShell] Notifications"  { spawn "dms" "ipc" "notifications" "toggle"; }
+        Mod+Comma hotkey-overlay-title="[󰮤  DankMaterialShell] Settings"   { spawn "dms" "ipc" "settings" "focusOrToggle"; }
+        Mod+Alt+L allow-when-locked=true hotkey-overlay-title="[󰮤  DankMaterialShell] Screen-lock" { spawn "dms" "ipc" "lock" "lock"; }
 
-        XF86AudioLowerVolume allow-when-locked=true  { spawn "dms" "ipc" "call" "audio" "decrement" "3"; }
-        XF86AudioMicMute allow-when-locked=true      { spawn "dms" "ipc" "call" "audio" "micmute"; }
-        XF86AudioMute allow-when-locked=true         { spawn "dms" "ipc" "call" "audio" "mute"; }
-        XF86AudioNext allow-when-locked=true         { spawn "dms" "ipc" "call" "mpris" "next"; }
-        XF86AudioPlay allow-when-locked=true         { spawn "dms" "ipc" "call" "mpris" "playPause"; }
-        XF86AudioPrev allow-when-locked=true         { spawn "dms" "ipc" "call" "mpris" "previous"; }
-        XF86AudioRaiseVolume allow-when-locked=true  { spawn "dms" "ipc" "call" "audio" "increment" "3"; }
-        XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "5" ""; }
-        XF86MonBrightnessUp allow-when-locked=true   { spawn "dms" "ipc" "call" "brightness" "increment" "5" ""; }
+        XF86AudioLowerVolume allow-when-locked=true  { spawn "dms" "ipc" "audio" "decrement" "3"; }
+        XF86AudioMicMute allow-when-locked=true      { spawn "dms" "ipc" "audio" "micmute"; }
+        XF86AudioMute allow-when-locked=true         { spawn "dms" "ipc" "audio" "mute"; }
+        XF86AudioNext allow-when-locked=true         { spawn "dms" "ipc" "mpris" "next"; }
+        XF86AudioPlay allow-when-locked=true         { spawn "dms" "ipc" "mpris" "playPause"; }
+        XF86AudioPrev allow-when-locked=true         { spawn "dms" "ipc" "mpris" "previous"; }
+        XF86AudioRaiseVolume allow-when-locked=true  { spawn "dms" "ipc" "audio" "increment" "3"; }
+        XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "brightness" "decrement" "5" ""; }
+        XF86MonBrightnessUp allow-when-locked=true   { spawn "dms" "ipc" "brightness" "increment" "5" ""; }
 
             // Execute
-        Mod+Return hotkey-overlay-title="[  Foot] foot"                    { spawn "footclient"; }
-        Mod+B hotkey-overlay-title="[  Librewolf] librewolf"               { spawn "librewolf"; }
-        Mod+E hotkey-overlay-title="[󰦚  Euphonic] euphonica"                { spawn "euphonica"; }
-        Mod+V hotkey-overlay-title="[  Vesktop] vesktop"                   { spawn "vesktop"; }
-        Mod+Shift+Return hotkey-overlay-title="[  Neovim] neovim"          { spawn "footclient" "-D" "${proDir}" "-a" "nvim" "nvim"; }
-        Mod+Shift+N hotkey-overlay-title="[󱄅  Nix-search-tv] nix-search-tv" { spawn "footclient" "-a" "nix-search-tv" "ns"; }
-        Mod+Shift+Y hotkey-overlay-title="[󰇥  Yazi] yazi"                   { spawn "footclient" "-a" "yazi" "yazi"; }
-        Mod+Slash hotkey-overlay-title="[  Wlr-which-key] command"         { spawn "wlr-which-key" "niri"; }
-        Ctrl+Space hotkey-overlay-title="[󰗊  Fcitx] fcitx"                  { spawn "fcitx5-remote" "-t" ; }
+        Mod+Return hotkey-overlay-title="[  Foot] Terminal"         { spawn "footclient"; }
+        Mod+B hotkey-overlay-title="[  Helium] Browser"             { spawn "helium"; }
+        Mod+E hotkey-overlay-title="[󰦚  Euphonic] MPD"               { spawn "euphonica"; }
+        Mod+V hotkey-overlay-title="[  Vesktop] Discrod"            { spawn "vesktop"; }
+        Mod+W hotkey-overlay-title="[  Wlr-which-key] Command"      { spawn "wlr-which-key" "niri"; }
+        Mod+Shift+Return hotkey-overlay-title="[  Neovim] Editor"   { spawn "footclient" "-D" "${proDir}" "-a" "nvim" "nvim"; }
+        Mod+Shift+N hotkey-overlay-title="[󱄅  Nix-search-tv] Search" { spawn "footclient" "-a" "nix-search-tv" "ns"; }
+        Mod+Shift+Y hotkey-overlay-title="[󰇥  Yazi] File"            { spawn "footclient" "-a" "yazi" "yazi"; }
+        Ctrl+Space hotkey-overlay-title="[󰗊  Fcitx] Input"           { spawn "fcitx5-remote" "-t" ; }
 
         // Window
         Mod+Backspace repeat=false { close-window; }

@@ -17,6 +17,7 @@ in {
         ++ (with flake.modules.nixos; [
           default
           hardware-sakura
+          minisforum
           hdds
           kdeconnect
           logitech
@@ -64,7 +65,6 @@ in {
           default
           dissent
           foliate
-          helium
           obs-studio
           protonapp
           rmpc

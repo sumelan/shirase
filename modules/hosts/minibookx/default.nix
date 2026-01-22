@@ -61,7 +61,6 @@ in {
           default
           dissent
           foliate
-          helium
           protonapp
           rmpc
           youtube-tui

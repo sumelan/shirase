@@ -45,7 +45,7 @@ in {
           // {
             menu = [
               {
-                key = "d";
+                key = "c";
                 desc = "Dynamic-cast";
                 submenu = [
                   {
@@ -67,7 +67,7 @@ in {
               }
               {
                 key = "s";
-                desc = "Capture screenshot with annotation";
+                desc = "Screenshot with annotation";
                 submenu = [
                   {
                     key = "f";
@@ -78,6 +78,47 @@ in {
                     key = "r";
                     desc = "Region select";
                     cmd = "dms screenshot --stdout | satty -f -";
+                  }
+                ];
+              }
+              {
+                key = "d";
+                desc = "DankMaterialShell";
+                submenu = [
+                  {
+                    key = "c";
+                    desc = "Open control center";
+                    cmd = "dms ipc control-center toggle";
+                  }
+                  {
+                    key = "d";
+                    desc = "Open dashboard";
+                    cmd = "dms ipc dash toggle '[tab]'";
+                  }
+                  {
+                    key = "i";
+                    desc = "Toggle idle-inhibitor";
+                    cmd = "dms ipc inhibit toggle";
+                  }
+                  {
+                    key = "l";
+                    desc = "Toggle nightlight";
+                    cmd = "dms ipc night toggle";
+                  }
+                  {
+                    key = "n";
+                    desc = "Open notepad";
+                    cmd = "dms ipc call notepad toggle";
+                  }
+                  {
+                    key = "w";
+                    desc = "Select main wallpaper";
+                    cmd = "dms ipc dash toggle '[wallpaper]'";
+                  }
+                  {
+                    key = "Alt+w";
+                    desc = "Select sub wallpapers";
+                    cmd = "dms ipc dash open '[wallpaper]'";
                   }
                 ];
               }

@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  inherit (lib) getExe mkForce concatStringsSep;
+  inherit (lib) mkForce concatStringsSep;
 in {
-  flake.modules.homeManager.default = {
+  flake.modules.homeManager.librewolf = {
     config,
     pkgs,
     user,
@@ -119,43 +119,10 @@ in {
       };
     };
 
-    home = {
-      file = {
-        # remove the leftover native messaging hosts directory
-        ".librewolf/native-messaging-hosts".enable = mkForce false;
-        ".mozilla/native-messaging-hosts".enable = mkForce false;
-      };
-      sessionVariables = {
-        # set default browser
-        DEFAULT_BROWSER = getExe config.programs.librewolf.package;
-        BROWSER = getExe config.programs.librewolf.package;
-      };
-    };
-
-    xdg.mimeApps = let
-      value = "librewolf.desktop";
-      associations = builtins.listToAttrs (map (name: {
-          inherit name value;
-        }) [
-          "application/x-extension-shtml"
-          "application/x-extension-xhtml"
-          "application/x-extension-html"
-          "application/x-extension-xht"
-          "application/x-extension-htm"
-          "x-scheme-handler/unknown"
-          "x-scheme-handler/mailto"
-          "x-scheme-handler/chrome"
-          "x-scheme-handler/about"
-          "x-scheme-handler/https"
-          "x-scheme-handler/http"
-          "application/xhtml+xml"
-          "application/json"
-          "text/plain"
-          "text/html"
-        ]);
-    in {
-      associations.added = associations;
-      defaultApplications = associations;
+    home.file = {
+      # remove the leftover native messaging hosts directory
+      ".librewolf/native-messaging-hosts".enable = mkForce false;
+      ".mozilla/native-messaging-hosts".enable = mkForce false;
     };
 
     custom.persist.home.directories = [
