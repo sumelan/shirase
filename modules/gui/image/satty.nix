@@ -37,7 +37,7 @@ in {
           # starting with 0.20.0, can contain leading tilde (~) for home directory
           output-filename = "${pictures}/Satty/%Y-%m-%d_%H-%M-%S.png";
           # After copying the screenshot, save it to a file as well
-          save-after-copy = false;
+          save-after-copy = true;
           # Hide toolbars by default
           default-hide-toolbars = false;
           # Experimental (since 0.20.0): whether window focus shows/hides toolbars. This does not affect initial state of toolbars, see default-hide-toolbars.
