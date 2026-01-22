@@ -17,5 +17,41 @@ _: {
     boot.loader.limine.extraConfig = ''
       interface_rotation: 90
     '';
+
+    # rename audio devices
+    services.pipewire.wireplumber.extraConfig = {
+      "10-output-rename" = {
+        "monitor.alsa.rules" = [
+          {
+            matches = [
+              {
+                "node.name" = "alsa_output.pci-0000_00_1f.3.analog-stereo";
+              }
+            ];
+            actions = {
+              update-props = {
+                "node.description" = "Built-in Speakers";
+              };
+            };
+          }
+        ];
+      };
+      "10-input-rename" = {
+        "monitor.alsa.rules" = [
+          {
+            matches = [
+              {
+                "node.name" = "alsa_input.pci-0000_00_1f.3.analog-stereo";
+              }
+            ];
+            actions = {
+              update-props = {
+                "node.description" = "Built-in Mic";
+              };
+            };
+          }
+        ];
+      };
+    };
   };
 }
