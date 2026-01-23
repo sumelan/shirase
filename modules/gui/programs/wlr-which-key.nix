@@ -115,11 +115,6 @@ in {
                     desc = "Select main wallpaper";
                     cmd = "dms ipc dash toggle '[wallpaper]'";
                   }
-                  {
-                    key = "Alt+w";
-                    desc = "Select sub wallpapers";
-                    cmd = "dms ipc dash open '[wallpaper]'";
-                  }
                 ];
               }
             ];
