@@ -20,7 +20,7 @@ _: {
 
     # rename audio devices
     services.pipewire.wireplumber.extraConfig = {
-      "10-output-rename" = {
+      "10-speaker-rename" = {
         "monitor.alsa.rules" = [
           {
             matches = [
@@ -31,6 +31,22 @@ _: {
             actions = {
               update-props = {
                 "node.description" = "Built-in Speakers";
+              };
+            };
+          }
+        ];
+      };
+      "10-dac-rename" = {
+        "monitor.alsa.rules" = [
+          {
+            matches = [
+              {
+                "node.name" = "alsa_output.usb-TTGK_Technology_Co._Ltd_NICEHCK_NK1_MAX-00.analog-stereo";
+              }
+            ];
+            actions = {
+              update-props = {
+                "node.description" = "NICEHCK NK1 MAX";
               };
             };
           }

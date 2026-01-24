@@ -1,5 +1,4 @@
 _: let
-  inherit (builtins) toString;
   mkFormat = height: ''"bestvideo[height<=?${toString height}][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'';
 in {
   flake.modules.homeManager.default = {pkgs, ...}: {

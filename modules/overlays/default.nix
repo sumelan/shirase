@@ -1,4 +1,4 @@
-{inputs, ...}: {
+_: {
   flake.modules.nixos.overlay = {pkgs, ...}: let
     # enable the A/V Properties and see details like media length
     nautilus = _final: prev: {
