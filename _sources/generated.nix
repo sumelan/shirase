@@ -3,15 +3,15 @@
 {
   dms-plugins = {
     pname = "dms-plugins";
-    version = "1c40d7570178285df8f6d0430cf152dfc198218a";
+    version = "b94f9edcbbfb43519b904b37d7fa730b48d90aea";
     src = fetchFromGitHub {
       owner = "AvengeMedia";
       repo = "dms-plugins";
-      rev = "1c40d7570178285df8f6d0430cf152dfc198218a";
+      rev = "b94f9edcbbfb43519b904b37d7fa730b48d90aea";
       fetchSubmodules = false;
-      sha256 = "sha256-COj0XSFgNzXM+30Z01GIcDjqbMIB8IrQ55OgcLh+KFM=";
+      sha256 = "sha256-/5WgaoIZJdERfhBQx2EBGMdzrc4h5jncYT67ESyBZ9U=";
     };
-    date = "2026-01-21";
+    date = "2026-01-23";
   };
   helium = {
     pname = "helium";
