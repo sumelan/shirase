@@ -22,14 +22,6 @@ in {
         postBuild =
           #sh
           ''
-            # Override the system unit to include the config
-            mkdir -p $out/lib/systemd/user/niri.service.d
-            cat > $out/lib/systemd/user/niri.service.d/override.conf <<EOF
-            [Service]
-            ExecStart=
-            ExecStart=$out/bin/niri-session -c ${niriCfg}
-            EOF
-
             $out/bin/niri validate -c ${niriCfg}
           '';
       };
@@ -65,28 +57,27 @@ in {
           };
         };
       };
+      # tty autologin
+      services.getty.autologinUser = user;
 
       # dms
       programs.dank-material-shell = {
         enable = true;
         systemd.enable = false;
-      };
-      # greeter
-      # tty autologin
-      services.getty.autologinUser = user;
-
-      programs.dank-material-shell.greeter = {
-        enable = true;
-        compositor.name = "niri";
-        # User home directory to copy configurations for greeter
-        # If DMS config files are in non-standard locations then use the configFiles option instead
-        configHome = "/home/${user}";
-        configFiles = [
-          "/home/${user}/.config/DankMaterialShell/settings.json"
-        ];
-        logs = {
-          save = true;
-          path = "/tmp/dms-greeter.log";
+        # greeter
+        greeter = {
+          enable = true;
+          compositor.name = "niri";
+          # User home directory to copy configurations for greeter
+          # If DMS config files are in non-standard locations then use the configFiles option instead
+          configHome = "/home/${user}";
+          configFiles = [
+            "/home/${user}/.config/DankMaterialShell/settings.json"
+          ];
+          logs = {
+            save = true;
+            path = "/tmp/dms-greeter.log";
+          };
         };
       };
     };

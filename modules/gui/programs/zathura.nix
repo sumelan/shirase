@@ -1,4 +1,6 @@
-_: {
+_: let
+  inherit (builtins) listToAttrs;
+in {
   flake.modules.homeManager.default = _: {
     programs.zathura = {
       enable = true;
@@ -24,7 +26,7 @@ _: {
 
     xdg.mimeApps = let
       value = "org.pwmt.zathura-pdf-mupdf.desktop";
-      associations = builtins.listToAttrs (map (name: {
+      associations = listToAttrs (map (name: {
           inherit name value;
         }) [
           "image/jpeg"
