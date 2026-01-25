@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  inherit (builtins) floor;
+  inherit (builtins) floor listToAttrs;
   inherit (lib) toHexString;
   inherit
     (config.flake.lib.colors)
@@ -192,7 +192,7 @@ in {
       };
       mimeApps = let
         value = "swayimg.desktop";
-        associations = builtins.listToAttrs (map (name: {
+        associations = listToAttrs (map (name: {
             inherit name value;
           }) [
             "image/jpeg"

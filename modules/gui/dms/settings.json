@@ -3,10 +3,10 @@
   "currentThemeCategory": "dynamic",
   "customThemeFile": "",
   "registryThemeVariants": {},
-  "matugenScheme": "scheme-tonal-spot",
+  "matugenScheme": "scheme-neutral",
   "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "HDMI-A-1",
-  "popupTransparency": 0.9,
+  "popupTransparency": 1,
   "dockTransparency": 0.85,
   "widgetBackgroundColor": "sch",
   "widgetColorMode": "default",
@@ -22,10 +22,12 @@
   "mangoLayoutBorderSize": -1,
   "use24HourClock": true,
   "showSeconds": false,
+  "padHours12Hour": false,
   "useFahrenheit": false,
+  "windSpeedUnit": "kmh",
   "nightModeEnabled": true,
-  "animationSpeed": 1,
-  "customAnimationDuration": 500,
+  "animationSpeed": 4,
+  "customAnimationDuration": 200,
   "wallpaperFillMode": "Fill",
   "blurredWallpaperLayer": true,
   "blurWallpaperOnOverview": false,
@@ -166,7 +168,7 @@
   "appLauncherViewMode": "grid",
   "spotlightModalViewMode": "grid",
   "sortAppsAlphabetically": false,
-  "appLauncherGridColumns": 4,
+  "appLauncherGridColumns": 5,
   "spotlightCloseNiriOverview": true,
   "spotlightSectionViewModes": {},
   "appDrawerSectionViewModes": {},
@@ -267,6 +269,7 @@
   "matugenTemplateDgop": true,
   "matugenTemplateKcolorscheme": false,
   "matugenTemplateVscode": false,
+  "matugenTemplateEmacs": false,
   "showDock": false,
   "dockAutoHide": false,
   "dockSmartAutoHide": false,
@@ -283,6 +286,13 @@
   "dockBorderOpacity": 1,
   "dockBorderThickness": 1,
   "dockIsolateDisplays": false,
+  "dockLauncherEnabled": false,
+  "dockLauncherLogoMode": "apps",
+  "dockLauncherLogoCustomPath": "",
+  "dockLauncherLogoColorOverride": "",
+  "dockLauncherLogoSizeOffset": 0,
+  "dockLauncherLogoBrightness": 0.5,
+  "dockLauncherLogoContrast": 1,
   "notificationOverlayEnabled": true,
   "modalDarkenBackground": true,
   "lockScreenShowPowerActions": true,
@@ -291,12 +301,13 @@
   "lockScreenShowDate": true,
   "lockScreenShowProfileImage": true,
   "lockScreenShowPasswordField": true,
+  "lockScreenShowMediaPlayer": true,
   "lockScreenPowerOffMonitorsOnLock": false,
   "enableFprint": false,
   "maxFprintTries": 3,
   "lockScreenActiveMonitor": "all",
   "lockScreenInactiveColor": "#191D24",
-  "lockScreenNotificationMode": 0,
+  "lockScreenNotificationMode": 1,
   "hideBrightnessSlider": false,
   "notificationTimeoutLow": 3000,
   "notificationTimeoutNormal": 5000,
@@ -412,37 +423,37 @@
       "position": 2,
       "rightWidgets": [
         {
-          "id": "notificationButton",
-          "enabled": true
-        },
-        {
-          "id": "dankKDEConnect",
-          "enabled": true
-        },
-        {
-          "id": "controlCenterButton",
           "enabled": true,
-          "showNetworkIcon": true,
-          "showBluetoothIcon": true,
+          "id": "notificationButton"
+        },
+        {
+          "enabled": true,
+          "id": "dankKDEConnect"
+        },
+        {
+          "enabled": true,
+          "id": "controlCenterButton",
           "showAudioIcon": true,
           "showAudioPercent": false,
-          "showVpnIcon": false,
+          "showBatteryIcon": false,
+          "showBluetoothIcon": true,
           "showBrightnessIcon": false,
           "showBrightnessPercent": false,
           "showMicIcon": false,
           "showMicPercent": false,
-          "showBatteryIcon": false,
+          "showNetworkIcon": true,
           "showPrinterIcon": false,
-          "showScreenSharingIcon": true
+          "showScreenSharingIcon": true,
+          "showVpnIcon": false
         },
         {
-          "id": "battery",
-          "enabled": true
-        },
-        {
-          "id": "clock",
           "enabled": true,
-          "clockCompactMode": false
+          "id": "battery"
+        },
+        {
+          "clockCompactMode": false,
+          "enabled": true,
+          "id": "clock"
         }
       ],
       "screenPreferences": [
@@ -455,7 +466,7 @@
       "shadowIntensity": 0,
       "shadowOpacity": 60,
       "showOnLastDisplay": true,
-      "spacing": 4,
+      "spacing": 10,
       "squareCorners": false,
       "transparency": 0.85,
       "visible": true,

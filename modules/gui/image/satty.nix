@@ -1,4 +1,5 @@
 {config, ...}: let
+  inherit (builtins) listToAttrs;
   inherit
     (config.flake.lib.colors)
     black0
@@ -105,7 +106,7 @@ in {
 
     xdg.mimeApps = let
       value = "satty.desktop";
-      associations = builtins.listToAttrs (map (name: {
+      associations = listToAttrs (map (name: {
           inherit name value;
         }) [
           "image/jpeg"

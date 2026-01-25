@@ -3,8 +3,8 @@
   config,
   ...
 }: let
-  inherit (config) flake;
   inherit (builtins) attrValues;
+  inherit (config) flake;
   inherit (inputs) nixpkgs;
 
   nixMods = [

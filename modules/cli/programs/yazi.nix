@@ -1,7 +1,9 @@
-_: {
+_: let
+  inherit (builtins) attrValues;
+in {
   flake.modules.homeManager.default = {pkgs, ...}: {
     home = {
-      packages = builtins.attrValues {
+      packages = attrValues {
         inherit
           (pkgs)
           ripdrag # Drag and Drop utilty written in Rust and GTK4

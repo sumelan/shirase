@@ -27,12 +27,15 @@
     if config.custom.niri.xwayland
     then ''path "${getExe pkgs.xwayland-satellite}"''
     else "off";
+  # screenshot
   inherit (config.xdg.userDirs) pictures;
   inherit (config.custom.niri.screenshot) host;
   # keybinds
   proDir = "${config.home.homeDirectory}/Projects";
 in
-  pkgs.writeText "niri-wrapped-config.kdl" ''
+  pkgs.writeText "niri-wrapped-config.kdl"
+  # kdl
+  ''
     output "${mainMonitorName}" {
         scale ${mainScale}
         transform "${mainRotate}"
@@ -277,10 +280,6 @@ in
         open-floating true
     }
     window-rule {
-        match app-id="^krita$"
-        open-on-output "PNP(HAT) Kamvas Pro 16 0xF0000001"
-    }
-    window-rule {
         match app-id="^mpv$"
         default-column-width { proportion 0.500000; }
         default-window-height { proportion 0.480000; }
@@ -361,13 +360,13 @@ in
             // Execute
         Mod+Return hotkey-overlay-title="[  Foot] Terminal"         { spawn "footclient"; }
         Mod+B hotkey-overlay-title="[  Helium] Browser"             { spawn "helium"; }
-        Mod+E hotkey-overlay-title="[󰦚  Euphonic] MPD"               { spawn "euphonica"; }
-        Mod+V hotkey-overlay-title="[  Vesktop] Discrod"            { spawn "vesktop"; }
+        Mod+E hotkey-overlay-title="[  Euphonica] MPD"              { spawn "euphonica"; }
+        Mod+V hotkey-overlay-title="[  Vesktop] Discord"            { spawn "vesktop"; }
         Mod+W hotkey-overlay-title="[  Wlr-which-key] Command"      { spawn "wlr-which-key" "niri"; }
         Mod+Shift+Return hotkey-overlay-title="[  Neovim] Editor"   { spawn "footclient" "-D" "${proDir}" "-a" "nvim" "nvim"; }
         Mod+Shift+N hotkey-overlay-title="[󱄅  Nix-search-tv] Search" { spawn "footclient" "-a" "nix-search-tv" "ns"; }
-        Mod+Shift+Y hotkey-overlay-title="[󰇥  Yazi] File"            { spawn "footclient" "-a" "yazi" "yazi"; }
-        Ctrl+Space hotkey-overlay-title="[󰗊  Fcitx] Input"           { spawn "fcitx5-remote" "-t" ; }
+        Mod+Shift+Y hotkey-overlay-title="[󰇥  Yazi] File Manager"    { spawn "footclient" "-a" "yazi" "yazi"; }
+        Ctrl+Space hotkey-overlay-title="[󰗊  Fcitx] Input Switcher"  { spawn "fcitx5-remote" "-t"; }
 
         // Window
         Mod+Backspace repeat=false { close-window; }
@@ -463,6 +462,7 @@ in
         // System
         Mod+Shift+Slash  { show-hotkey-overlay; }
         Mod+O            { toggle-overview; }
+        Mod+Shift+O      { toggle-window-rule-opacity; }
         Mod+Shift+Escape { quit skip-confirmation=false; }
         Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
         Mod+Shift+P      { power-off-monitors; }

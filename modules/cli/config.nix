@@ -1,6 +1,8 @@
-_: {
+_: let
+  inherit (builtins) attrValues;
+in {
   flake.modules.homeManager.default = {pkgs, ...}: {
-    home.packages = builtins.attrValues {
+    home.packages = attrValues {
       inherit
         (pkgs)
         brightnessctl

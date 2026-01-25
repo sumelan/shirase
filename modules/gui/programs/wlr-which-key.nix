@@ -50,17 +50,17 @@ in {
                 submenu = [
                   {
                     key = "w";
-                    desc = "Select a window as cast target";
+                    desc = "Select a window as the dynamic cast target";
                     cmd = "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)";
                   }
                   {
                     key = "o";
-                    desc = "Set current output as cast target";
+                    desc = "Set the dynamic cast target to the focuesd monitor";
                     cmd = "niri msg action set-dynamic-cast-monitor";
                   }
                   {
                     key = "c";
-                    desc = "Clear cast target";
+                    desc = "Clear the dynamic cast target";
                     cmd = "niri msg action clear-dynamic-cast-target";
                   }
                 ];
@@ -76,7 +76,7 @@ in {
                   }
                   {
                     key = "r";
-                    desc = "Region select";
+                    desc = "Selected resion";
                     cmd = "dms screenshot --stdout | satty -f -";
                   }
                 ];
@@ -109,11 +109,6 @@ in {
                     key = "n";
                     desc = "Open notepad";
                     cmd = "dms ipc call notepad toggle";
-                  }
-                  {
-                    key = "w";
-                    desc = "Select main wallpaper";
-                    cmd = "dms ipc dash toggle '[wallpaper]'";
                   }
                 ];
               }
