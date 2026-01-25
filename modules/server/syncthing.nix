@@ -6,7 +6,6 @@ _: {
   }: let
     inherit (config.hm.xdg) configHome cacheHome dataHome;
     inherit (config.hm.xdg.userDirs) documents music pictures videos;
-    mpdData = "${dataHome}/mpd";
   in {
     # port 8384  is the default port to allow access from the network
     networking.firewall.allowedTCPPorts = [8384];
@@ -39,20 +38,23 @@ _: {
           "Music" = {
             path = music;
           };
-          "Videos" = {
-            path = videos;
-          };
-          "MPD" = {
-            path = mpdData;
-          };
-          "Euphonica" = {
-            path = "${cacheHome}/euphonica";
-          };
           "Screenshots" = {
             path = "${pictures}/Screenshots";
           };
           "Wallpapers" = {
             path = "${pictures}/Wallpapers";
+          };
+          "Videos" = {
+            path = videos;
+          };
+          "MPD" = {
+            path = "${dataHome}/mpd";
+          };
+          "Youtube" = {
+            path = "${dataHome}/youtube-tui";
+          };
+          "Euphonica" = {
+            path = "${cacheHome}/euphonica";
           };
         };
       };

@@ -14,19 +14,22 @@ _: {
           "Music" = {
             devices = ["minibookx"];
           };
+          "Screenshots" = {
+            devices = ["minibookx"];
+          };
+          "Wallpapers" = {
+            devices = ["minibookx"];
+          };
           "Videos" = {
             devices = ["minibookx"];
           };
           "MPD" = {
             devices = ["minibookx"];
           };
+          "Youtube" = {
+            devices = ["minibookx"];
+          };
           "Euphonica" = {
-            devices = ["minibookx"];
-          };
-          "Screenshots" = {
-            devices = ["minibookx"];
-          };
-          "Wallpapers" = {
             devices = ["minibookx"];
           };
         };
