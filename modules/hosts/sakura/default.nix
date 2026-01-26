@@ -21,6 +21,7 @@ in {
           hdds
           kdeconnect
           logitech
+          opentabletdriver
           sops-nix
           steam
           syncoid
@@ -65,6 +66,7 @@ in {
           default
           dissent
           foliate
+          krita
           obs-studio
           protonapp
           rmpc

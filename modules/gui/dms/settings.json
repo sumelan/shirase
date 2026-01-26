@@ -457,10 +457,7 @@
         }
       ],
       "screenPreferences": [
-        {
-          "model": "LG HDR 4K",
-          "name": "HDMI-A-1"
-        }
+        "all"
       ],
       "shadowColorMode": "text",
       "shadowIntensity": 0,

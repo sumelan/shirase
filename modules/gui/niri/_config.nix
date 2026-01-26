@@ -345,7 +345,7 @@ in
         Mod+X hotkey-overlay-title="[󰮤  DankMaterialShell] Powermenu"      { spawn "dms" "ipc" "powermenu" "toggle"; }
         Mod+N hotkey-overlay-title="[󰮤  DankMaterialShell] Notifications"  { spawn "dms" "ipc" "notifications" "toggle"; }
         Mod+Comma hotkey-overlay-title="[󰮤  DankMaterialShell] Settings"   { spawn "dms" "ipc" "settings" "focusOrToggle"; }
-        Mod+Alt+L allow-when-locked=true hotkey-overlay-title="[󰮤  DankMaterialShell] Screen-lock" { spawn "dms" "ipc" "lock" "lock"; }
+        Mod+Ctrl+L allow-when-locked=true hotkey-overlay-title="[󰮤  DankMaterialShell] Screen-lock" { spawn "dms" "ipc" "lock" "lock"; }
 
         XF86AudioLowerVolume allow-when-locked=true  { spawn "dms" "ipc" "audio" "decrement" "3"; }
         XF86AudioMicMute allow-when-locked=true      { spawn "dms" "ipc" "audio" "micmute"; }
@@ -382,14 +382,18 @@ in
         Mod+J    { focus-window-or-workspace-down; }
         Mod+K    { focus-window-or-workspace-up; }
         Mod+L    { focus-column-or-monitor-right; }
-        Mod+Down { focus-workspace-down; }
-        Mod+Up   { focus-workspace-up; }
+        Mod+Down { focus-monitor-down; }
+        Mod+Up   { focus-monitor-up; }
 
         // Move
-        Mod+Shift+H { move-column-left-or-to-monitor-left; }
+        Mod+Shift+H { move-column-left; }
         Mod+Shift+J { move-window-down-or-to-workspace-down; }
         Mod+Shift+K { move-window-up-or-to-workspace-up; }
-        Mod+Shift+L { move-column-right-or-to-monitor-right; }
+        Mod+Shift+L { move-column-right; }
+        Mod+Alt+H   { move-column-to-monitor-left; }
+        Mod+Alt+J   { move-column-to-monitor-down; }
+        Mod+Alt+K   { move-column-to-monitor-up; }
+        Mod+Alt+L   { move-column-to-monitor-right; }
 
         // Column
         Mod+Home         { focus-column-first; }
