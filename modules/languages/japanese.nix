@@ -55,11 +55,12 @@
     };
 
     xdg.dataFile = let
+      themeDir = "fcitx5/themes/youlan";
       youlan = file: "${pkgs.fcitx5-mellow-themes}/share/fcitx5/themes/mellow-youlan-dark/${file}";
     in {
-      "fcitx5/themes/youlan/highlight.svg".source = youlan "highlight.svg";
-      "fcitx5/themes/youlan/panel.svg".source = youlan "panel.svg";
-      "fcitx5/themes/youlan/theme.conf".source = youlan "theme.conf";
+      "${themeDir}/highlight.svg".source = youlan "highlight.svg";
+      "${themeDir}/panel.svg".source = youlan "panel.svg";
+      "${themeDir}/theme.conf".source = youlan "theme.conf";
     };
   };
 }

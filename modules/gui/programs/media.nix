@@ -36,9 +36,7 @@ _: {
     };
 
     vlc = {pkgs, ...}: {
-      home.packages = builtins.attrValues {
-        inherit (pkgs) vlc handbrake;
-      };
+      home.packages = [pkgs.vlc];
 
       custom.persist.home = {
         files = [

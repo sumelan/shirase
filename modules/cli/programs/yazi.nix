@@ -31,10 +31,12 @@ in {
           mount
           smart-paste
           starship
+          time-travel
           toggle-pane
+          yatline
           ;
         # patched plugins
-        inherit (pkgs) nord yatline time-travel;
+        inherit (pkgs) nord;
       };
 
       flavors = {inherit (pkgs) nord;};
