@@ -138,7 +138,6 @@ in
     // spawn
     spawn-at-startup "nm-applet"
     spawn-at-startup "blueman-applet"
-    spawn-at-startup "foot" "--server"
     spawn-at-startup "easyeffects" "--hide-window"
     spawn-at-startup "solaar" "-w" "hide" "-b" "symbolic"
 
@@ -358,14 +357,14 @@ in
         XF86MonBrightnessUp allow-when-locked=true   { spawn "dms" "ipc" "brightness" "increment" "5" ""; }
 
             // Execute
-        Mod+Return hotkey-overlay-title="[  Foot] Terminal"         { spawn "footclient"; }
+        Mod+Return hotkey-overlay-title="[  Kitty] Terminal"         { spawn "kitty"; }
         Mod+B hotkey-overlay-title="[  Helium] Browser"             { spawn "helium"; }
         Mod+E hotkey-overlay-title="[  Euphonica] MPD"              { spawn "euphonica"; }
         Mod+V hotkey-overlay-title="[  Vesktop] Discord"            { spawn "vesktop"; }
         Mod+W hotkey-overlay-title="[  Wlr-which-key] Command"      { spawn "wlr-which-key" "niri"; }
-        Mod+Shift+Return hotkey-overlay-title="[  Neovim] Editor"   { spawn "footclient" "-D" "${proDir}" "-a" "nvim" "nvim"; }
-        Mod+Shift+N hotkey-overlay-title="[󱄅  Nix-search-tv] Search" { spawn "footclient" "-a" "nix-search-tv" "ns"; }
-        Mod+Shift+Y hotkey-overlay-title="[󰇥  Yazi] File Manager"    { spawn "footclient" "-a" "yazi" "yazi"; }
+        Mod+Shift+Return hotkey-overlay-title="[  Neovim] Editor"   { spawn "kitty" "-d" "${proDir}" "--app-id" "nvim" "nvim"; }
+        Mod+Shift+N hotkey-overlay-title="[󱄅  Nix-search-tv] Search" { spawn "kitty" "--app-id" "nix-search-tv" "ns"; }
+        Mod+Shift+Y hotkey-overlay-title="[󰇥  Yazi] File Manager"    { spawn "kitty" "--app-id" "yazi" "yazi"; }
         Ctrl+Space hotkey-overlay-title="[󰗊  Fcitx] Input Switcher"  { spawn "fcitx5-remote" "-t"; }
 
         // Window

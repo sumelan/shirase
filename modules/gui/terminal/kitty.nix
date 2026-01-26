@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib) getExe mkForce;
 in {
-  flake.modules.homeManager.kitty = {config, ...}: let
+  flake.modules.homeManager.default = {config, ...}: let
     inherit (config.custom.fonts) monospace;
     fishPath = getExe config.programs.fish.package;
   in {
@@ -31,10 +31,15 @@ in {
         tab_bar_edge = "top";
         confirm_os_window_close = 0;
         # for removing kitty padding when in neovim
+        placement_strategy = "top";
         allow_remote_control = "password";
         remote_control_password = ''"" set-spacing''; # only allow setting of padding
         listen_on = "unix:/tmp/kitty-socket";
       };
+    };
+
+    xdg.mimeApps.defaultApplications = {
+      "x-scheme-handler/terminal" = "kitty.desktop";
     };
 
     home.shellAliases = {
