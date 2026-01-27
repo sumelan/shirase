@@ -3,6 +3,7 @@
   lib,
   ...
 }: let
+  inherit (builtins) attrValues readFile;
   inherit
     (lib)
     mkOverride
@@ -39,7 +40,7 @@ in {
       # (e.g. /run/current-system/src)
       system.systemBuilderCommands = "ln -s ${self.sourceInfo.outPath} $out/src";
       # nix lang / nixpkgs
-      environment.systemPackages = builtins.attrValues {
+      environment.systemPackages = attrValues {
         inherit (pkgs) nix-init nix-update;
       };
 
@@ -179,7 +180,7 @@ in {
       user,
       ...
     }: {
-      home.packages = builtins.attrValues {
+      home.packages = attrValues {
         inherit
           (pkgs)
           comma # Runs software without installing it. usage: `, cowsay neato`
@@ -198,7 +199,7 @@ in {
             pkgs.nix-search-tv
           ];
           checkPhase = ""; # ignore checks since i didn't write this
-          text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
+          text = readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
         };
       };
 

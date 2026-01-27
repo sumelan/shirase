@@ -64,7 +64,6 @@ in {
         ]
         ++ (with flake.modules.homeManager; [
           default
-          dissent
           foliate
           krita
           obs-studio

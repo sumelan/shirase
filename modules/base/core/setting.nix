@@ -1,4 +1,6 @@
-{config, ...}: {
+{config, ...}: let
+  inherit (builtins) attrValues;
+in {
   flake.modules = {
     nixos.default = {
       pkgs,
@@ -79,7 +81,7 @@
         sessionVariables = {
           NIXPKGS_ALLOW_UNFREE = "1";
         };
-        packages = builtins.attrValues {
+        packages = attrValues {
           inherit
             (pkgs)
             curl

@@ -1,4 +1,6 @@
-_: {
+_: let
+  inherit (builtins) attrValues;
+in {
   flake.modules = {
     nixos.default = {
       pkgs,
@@ -41,7 +43,7 @@ _: {
     };
     homeManager.default = {pkgs, ...}: {
       home = {
-        packages = builtins.attrValues {
+        packages = attrValues {
           inherit (pkgs) pwvucontrol easyeffects;
         };
         file = let

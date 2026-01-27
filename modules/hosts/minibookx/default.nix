@@ -60,7 +60,6 @@ in {
         ]
         ++ (with flake.modules.homeManager; [
           default
-          dissent
           foliate
           protonapp
           rmpc

@@ -1,4 +1,5 @@
 {lib, ...}: let
+  inherit (builtins) attrValues;
   inherit (lib) getExe;
 in {
   flake.modules.homeManager.default = {
@@ -6,7 +7,7 @@ in {
     pkgs,
     ...
   }: {
-    home.packages = builtins.attrValues {
+    home.packages = attrValues {
       inherit
         (pkgs)
         nautilus

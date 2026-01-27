@@ -1,24 +1,18 @@
 _: {
-  flake.modules.homeManager = {
-    default = {pkgs, ...}: {
-      home.packages = [pkgs.vesktop];
+  flake.modules.homeManager.default = {pkgs, ...}: {
+    home.packages = [
+      pkgs.vesktop
+      pkgs.dissent
+    ];
 
-      custom.persist.home.directories = [
+    custom = {
+      persist.home.directories = [
         ".config/vesktop"
+        ".config/dissent"
       ];
-    };
-
-    dissent = {pkgs, ...}: {
-      home.packages = [pkgs.dissent];
-
-      custom = {
-        persist.home.directories = [
-          ".config/dissent"
-        ];
-        cache.home.directories = [
-          ".cache/dissent"
-        ];
-      };
+      cache.home.directories = [
+        ".cache/dissent"
+      ];
     };
   };
 }

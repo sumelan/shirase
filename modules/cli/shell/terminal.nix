@@ -1,4 +1,6 @@
-_: {
+_: let
+  inherit (builtins) attrValues;
+in {
   flake.modules.homeManager.default = {
     pkgs,
     user,
@@ -20,7 +22,7 @@ _: {
         z = "zoxide query -i";
       };
 
-      packages = builtins.attrValues {
+      packages = attrValues {
         inherit
           (pkgs)
           dysk # better disk info

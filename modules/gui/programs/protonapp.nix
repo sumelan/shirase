@@ -2,9 +2,11 @@
 # `XDG_SESSION_TYPE=x11 DISPLAY=:0 proton-mail`
 # but after that it worked without them
 # https://github.com/NixOS/nixpkgs/issues/365156#issuecomment-2585203352
-_: {
+_: let
+  inherit (builtins) attrValues;
+in {
   flake.modules.homeManager.protonapp = {pkgs, ...}: {
-    home.packages = builtins.attrValues {
+    home.packages = attrValues {
       inherit
         (pkgs)
         protonmail-desktop

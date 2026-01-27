@@ -1,11 +1,5 @@
 _: {
   flake.lib = {
-    hotkey = {
-      color,
-      name,
-      text,
-    }: ''<span foreground='${color}'>[${name}]</span> ${text}'';
-
     colors = {
       # Black
       black0 = "#191D24";

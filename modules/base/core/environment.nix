@@ -1,4 +1,5 @@
 {lib, ...}: let
+  inherit (builtins) attrValues;
   inherit (lib) mkForce hiPrio;
 in {
   flake.modules.nixos.default = {
@@ -69,7 +70,7 @@ in {
             y # yazi
             ;
         };
-      systemPackages = builtins.attrValues {
+      systemPackages = attrValues {
         inherit
           (pkgs)
           bonk # mkdir and touch in one
