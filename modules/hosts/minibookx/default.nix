@@ -24,6 +24,7 @@ in {
           chuwi-minibook-x
           kdeconnect
           laptop
+          qmk
           sops-nix
           syncthing
           syncthing-minibookx

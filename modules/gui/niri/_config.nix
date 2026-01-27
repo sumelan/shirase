@@ -342,7 +342,7 @@ in
         Mod+Space hotkey-overlay-title="[󰮤  DankMaterialShell] Launcher"   { spawn "dms" "ipc" "spotlight" "toggle"; }
         Mod+Y hotkey-overlay-title="[󰮤  DankMaterialShell] Clipboard"      { spawn "dms" "ipc" "clipboard" "toggle"; }
         Mod+X hotkey-overlay-title="[󰮤  DankMaterialShell] Powermenu"      { spawn "dms" "ipc" "powermenu" "toggle"; }
-        Mod+N hotkey-overlay-title="[󰮤  DankMaterialShell] Notifications"  { spawn "dms" "ipc" "notifications" "toggle"; }
+        Mod+N hotkey-overlay-title="[󰮤  DankMaterialShell] Notepad"        { spawn "dms" "ipc" "notepad" "toggle"; }
         Mod+Comma hotkey-overlay-title="[󰮤  DankMaterialShell] Settings"   { spawn "dms" "ipc" "settings" "focusOrToggle"; }
         Mod+Ctrl+L allow-when-locked=true hotkey-overlay-title="[󰮤  DankMaterialShell] Screen-lock" { spawn "dms" "ipc" "lock" "lock"; }
 
@@ -357,15 +357,15 @@ in
         XF86MonBrightnessUp allow-when-locked=true   { spawn "dms" "ipc" "brightness" "increment" "5" ""; }
 
             // Execute
-        Mod+Return hotkey-overlay-title="[  Kitty] Terminal"         { spawn "kitty"; }
-        Mod+B hotkey-overlay-title="[  Helium] Browser"             { spawn "helium"; }
-        Mod+E hotkey-overlay-title="[  Euphonica] MPD"              { spawn "euphonica"; }
-        Mod+V hotkey-overlay-title="[  Vesktop] Discord"            { spawn "vesktop"; }
-        Mod+W hotkey-overlay-title="[  Wlr-which-key] Command"      { spawn "wlr-which-key" "niri"; }
-        Mod+Shift+Return hotkey-overlay-title="[  Neovim] Editor"   { spawn "kitty" "-d" "${proDir}" "--app-id" "nvim" "nvim"; }
-        Mod+Shift+N hotkey-overlay-title="[󱄅  Nix-search-tv] Search" { spawn "kitty" "--app-id" "nix-search-tv" "ns"; }
-        Mod+Shift+Y hotkey-overlay-title="[󰇥  Yazi] File Manager"    { spawn "kitty" "--app-id" "yazi" "yazi"; }
-        Ctrl+Space hotkey-overlay-title="[󰗊  Fcitx] Input Switcher"  { spawn "fcitx5-remote" "-t"; }
+        Mod+Return hotkey-overlay-title="[  Kitty] Terminal Emulator"  { spawn "kitty"; }
+        Mod+B hotkey-overlay-title="[  Helium] Web Browser"            { spawn "helium"; }
+        Mod+E hotkey-overlay-title="[  Euphonica] MPD Client"          { spawn "euphonica"; }
+        Mod+D hotkey-overlay-title="[  Dissent] Discord Client"        { spawn "dissent"; }
+        Mod+W hotkey-overlay-title="[  Wlr-which-key] Command"         { spawn "wlr-which-key" "niri"; }
+        Mod+Shift+Return hotkey-overlay-title="[  Neovim] Editor"      { spawn "kitty" "-d" "${proDir}" "--app-id" "nvim" "nvim"; }
+        Mod+Shift+N hotkey-overlay-title="[󱄅  Nix Search] Nix Packages" { spawn "kitty" "--app-id" "nix-search-tv" "ns"; }
+        Mod+Shift+Y hotkey-overlay-title="[󰇥  Yazi] File Manager"       { spawn "kitty" "--app-id" "yazi" "yazi"; }
+        Ctrl+Space hotkey-overlay-title="[󰗊  Fcitx] Input Method"       { spawn "fcitx5-remote" "-t"; }
 
         // Window
         Mod+Backspace repeat=false { close-window; }

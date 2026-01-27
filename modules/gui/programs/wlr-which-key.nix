@@ -106,9 +106,9 @@ in {
                     cmd = "dms ipc night toggle";
                   }
                   {
-                    key = "n";
-                    desc = "Open notepad";
-                    cmd = "dms ipc call notepad toggle";
+                    key = "v";
+                    desc = "Toggle bar visibility";
+                    cmd = "dms ipc bar toggle name 'Main Bar'";
                   }
                 ];
               }
