@@ -45,17 +45,17 @@ sourceDir := "_sources"
 
 [group('TOOLS')]
 [doc('Search for all packages containing specific argments.')]
-@locate args:
+@search args:
     nix-locate {{ args }}
 
 [group('TOOLS')]
 [doc('Download a file to the nix store and get the SHA-256 hash.')]
-@prefetch url:
+@pf url:
     nix store prefetch-file --json --hash-type sha256 {{ url }} | jq -r .hash
 
 [group('TOOLS')]
 [doc('Look the store path of specific package through yazi.')]
-@explore package:
+@store package:
     yazi $(nix eval --raw nixpkgs#{{ package }})
 
 [group('UPDATE')]
@@ -135,5 +135,10 @@ sourceDir := "_sources"
 
 [group('ZFS')]
 [doc('Show compress ratio in zfs list output.')]
-@zlist:
-    zfs list -o name,used,avail,compressratio
+@zls:
+    zfs list -o name,used,compressratio,lused,avail
+
+[group('ZFS')]
+[doc('Show snapshots in zfs list output.')]
+@zsls:
+    zfs list -t snapshot -S creation -o name,creation,used,written,refer

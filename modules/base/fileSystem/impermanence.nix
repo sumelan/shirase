@@ -3,7 +3,6 @@
 in {
   flake.modules.nixos.default = {
     config,
-    pkgs,
     user,
     ...
   }: let
@@ -19,7 +18,7 @@ in {
         after = ["zfs-import-zroot.service"];
         # Before mounting the system root (/sysroot) during the early boot process
         before = ["sysroot.mount"];
-        path = [pkgs.zfs];
+        path = [config.boot.zfs.package];
         unitConfig.DefaultDependencies = "no";
         serviceConfig.Type = "oneshot";
         script =
