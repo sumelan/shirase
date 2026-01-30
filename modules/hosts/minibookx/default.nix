@@ -24,7 +24,6 @@ in {
           chuwi-minibook-x
           kdeconnect
           laptop
-          qmk
           sops-nix
           syncthing
           syncthing-minibookx
@@ -61,6 +60,7 @@ in {
         ++ (with flake.modules.homeManager; [
           default
           foliate
+          pear-desktop
           protonapp
           rmpc
           youtube-tui

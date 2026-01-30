@@ -47,5 +47,13 @@ _: {
         ];
       };
     };
+
+    pear-desktop = {pkgs, ...}: {
+      home.packages = [pkgs.pear-desktop];
+
+      custom.persist.home.directories = [
+        ".config/YouTube Music"
+      ];
+    };
   };
 }

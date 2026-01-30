@@ -67,6 +67,7 @@ in {
           foliate
           krita
           obs-studio
+          pear-desktop
           protonapp
           rmpc
           vlc
