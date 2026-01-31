@@ -60,16 +60,24 @@ in {
 
           require("yatline"):setup({
               theme = require("nord"):setup(),
+
+              padding = { inner = 1, outer = 1 },
+              tab_width = 20,
+
               show_background = false,
+
+              display_header_line = true,
+              display_status_line = true,
+
+              component_positions = { "header", "tab", "status" },
+
               header_line = {
                   left = {
                       section_a = {
                           {type = "line", custom = false, name = "tabs", params = {"left"}},
                       },
-                      section_b = {
-                      },
-                      section_c = {
-                      }
+                      section_b = {},
+                      section_c = {},
                   },
                   right = {
                       section_a = {
@@ -78,9 +86,8 @@ in {
                       section_b = {
                           {type = "string", custom = false, name = "date", params = {"%X"}},
                       },
-                      section_c = {
-                      }
-                  }
+                      section_c = {},
+                  },
               },
 
               status_line = {
@@ -94,7 +101,7 @@ in {
                       section_c = {
                           {type = "string", custom = false, name = "hovered_path"},
                           {type = "coloreds", custom = false, name = "count"},
-                      }
+                      },
                   },
                   right = {
                       section_a = {
@@ -106,8 +113,8 @@ in {
                       section_c = {
                           {type = "string", custom = false, name = "hovered_file_extension", params = {true}},
                           {type = "coloreds", custom = false, name = "permissions"},
-                      }
-                  }
+                      },
+                  },
               },
           })
         '';

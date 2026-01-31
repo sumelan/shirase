@@ -154,7 +154,7 @@ in {
             deleted = "[✘\($count\)](fg:red_bright)";
             staged = "[++\($count\)](fg:green_dim)";
             ahead = "[⇡\($count\)](fg:blue1)";
-            diverged = "[⇕\[](fg:magenta_dim)[⇡\($ahead_count\)](fg:green_dim)[⇣\($behind_count\)](fg:yellow_dim)[\]](fg:magenta_bright)";
+            diverged = "[⇕](fg:magenta_dim)[⇡\($ahead_count\)](fg:green_dim)[⇣\($behind_count\)](fg:yellow_dim)";
             behind = "[⇣\($count\)](fg:red_bright)";
           };
           cmd_duration = {
