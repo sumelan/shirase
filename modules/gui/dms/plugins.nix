@@ -28,6 +28,13 @@ in {
             enabled = true;
           };
         };
+        "dankNotepadModule" = {
+          enable = true;
+          src = "${pluginsRepo}/DankNotepadModule";
+          settings = {
+            style = "nordic";
+          };
+        };
       };
     };
   };

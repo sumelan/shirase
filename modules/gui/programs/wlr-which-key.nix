@@ -86,11 +86,6 @@ in {
                 desc = "DankMaterialShell";
                 submenu = [
                   {
-                    key = "c";
-                    desc = "Open control center";
-                    cmd = "dms ipc control-center toggle";
-                  }
-                  {
                     key = "d";
                     desc = "Open dashboard";
                     cmd = "dms ipc dash toggle '[tab]'";
@@ -104,6 +99,11 @@ in {
                     key = "l";
                     desc = "Toggle nightlight";
                     cmd = "dms ipc night toggle";
+                  }
+                  {
+                    key = "p";
+                    desc = "Pick a color, output to clipboard as hex";
+                    cmd = "dms color pick -a";
                   }
                   {
                     key = "v";

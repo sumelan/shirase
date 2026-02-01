@@ -95,6 +95,7 @@ in {
         include "dms/cursor.kdl"
         include "dms/layout.kdl"
         include "dms/outputs.kdl"
+        include "dms/windowrules.kdl"
         include "dms/wpblur.kdl"
       '';
     in {
