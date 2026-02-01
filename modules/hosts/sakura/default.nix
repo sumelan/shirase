@@ -21,7 +21,6 @@ in {
           hdds
           kdeconnect
           logitech
-          opentabletdriver
           sops-nix
           steam
           syncoid
@@ -65,7 +64,6 @@ in {
         ++ (with flake.modules.homeManager; [
           default
           foliate
-          krita
           obs-studio
           pear-desktop
           protonapp

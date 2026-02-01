@@ -10,6 +10,7 @@
   "dockTransparency": 0.85,
   "widgetBackgroundColor": "sch",
   "widgetColorMode": "default",
+  "controlCenterTileColorMode": "primary",
   "cornerRadius": 12,
   "niriLayoutGapsOverride": -1,
   "niriLayoutRadiusOverride": -1,
@@ -111,6 +112,7 @@
   "workspaceScrolling": false,
   "showWorkspaceApps": false,
   "maxWorkspaceIcons": 6,
+  "workspaceAppIconSizeOffset": 0,
   "groupWorkspaceApps": true,
   "workspaceFollowFocus": true,
   "showOccupiedWorkspacesOnly": true,
@@ -131,6 +133,9 @@
   "clockCompactMode": false,
   "focusedWindowCompactMode": false,
   "runningAppsCompactMode": true,
+  "barMaxVisibleApps": 0,
+  "barMaxVisibleRunningApps": 0,
+  "barShowOverflowBadge": true,
   "keyboardLayoutNameCompactMode": false,
   "runningAppsCurrentWorkspace": true,
   "runningAppsGroupByApp": true,
@@ -167,6 +172,10 @@
   "mediaSize": 1,
   "appLauncherViewMode": "grid",
   "spotlightModalViewMode": "grid",
+  "browserPickerViewMode": "grid",
+  "browserUsageHistory": {},
+  "appPickerViewMode": "grid",
+  "filePickerUsageHistory": {},
   "sortAppsAlphabetically": false,
   "appLauncherGridColumns": 5,
   "spotlightCloseNiriOverview": true,
@@ -181,7 +190,6 @@
   "useAutoLocation": true,
   "weatherEnabled": true,
   "networkPreference": "auto",
-  "vpnLastConnected": "",
   "iconTheme": "System Default",
   "cursorSettings": {
     "dwl": {
@@ -293,6 +301,9 @@
   "dockLauncherLogoSizeOffset": 0,
   "dockLauncherLogoBrightness": 0.5,
   "dockLauncherLogoContrast": 1,
+  "dockMaxVisibleApps": 0,
+  "dockMaxVisibleRunningApps": 0,
+  "dockShowOverflowBadge": true,
   "notificationOverlayEnabled": true,
   "modalDarkenBackground": true,
   "lockScreenShowPowerActions": true,
@@ -364,6 +375,25 @@
     }
   },
   "hyprlandOutputSettings": {},
+  "displayProfiles": {
+    "niri": {
+      "profile_1769936059496_043ixm": {
+        "createdAt": 1769936059496,
+        "id": "profile_1769936059496_043ixm",
+        "name": "Default",
+        "outputSet": [
+          "LG Electronics LG HDR 4K 0x000382AB"
+        ],
+        "updatedAt": 1769936059496
+      }
+    }
+  },
+  "activeDisplayProfile": {
+    "niri": "profile_1769936059496_043ixm"
+  },
+  "displayProfileAutoSelect": false,
+  "displayShowDisconnected": false,
+  "displaySnapToEdge": true,
   "barConfigs": [
     {
       "autoHide": false,
@@ -385,7 +415,7 @@
       "gothCornerRadiusValue": 12,
       "gothCornersEnabled": false,
       "id": "default",
-      "innerPadding": 20,
+      "innerPadding": 10,
       "leftWidgets": [
         {
           "enabled": true,
@@ -465,13 +495,14 @@
       "showOnLastDisplay": true,
       "spacing": 10,
       "squareCorners": false,
-      "transparency": 0.85,
+      "transparency": 0.6,
       "visible": true,
       "widgetOutlineColor": "primary",
       "widgetOutlineEnabled": false,
       "widgetOutlineOpacity": 1,
       "widgetOutlineThickness": 1,
-      "widgetTransparency": 0
+      "widgetTransparency": 0,
+      "clickThrough": false
     }
   ],
   "desktopClockEnabled": false,

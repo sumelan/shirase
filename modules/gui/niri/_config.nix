@@ -266,10 +266,6 @@ in
         opacity 1.000000
     }
     window-rule {
-        match app-id="^com.github.johnfactotum.Foliate$"
-        block-out-from "screen-capture"
-    }
-    window-rule {
         match app-id="^com.github.wwmm.easyeffects$"
         default-column-width { proportion 0.500000; }
         default-window-height { proportion 0.500000; }
@@ -281,8 +277,8 @@ in
     }
     window-rule {
         match app-id="^dissent$"
-        default-column-width { proportion 0.500000; }
-        default-window-height { proportion 0.500000; }
+        default-column-width { proportion 0.380000; }
+        default-window-height { proportion 0.380000; }
         open-floating true
         opacity 1.000000
     }

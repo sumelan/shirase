@@ -21,6 +21,7 @@ in {
         "f ${dmsConf}/colors.kdl 644 ${user} users - -"
         "f ${dmsConf}/layout.kdl 644 ${user} users - -"
         "f ${dmsConf}/outputs.kdl 644 ${user} users - -"
+        "f ${dmsConf}/windowrules.kdl 644 ${user} user - -"
         "f ${dmsConf}/wpblur.kdl 644 ${user} users - -"
         "f ${dmsConf}/cursor.kdl 644 ${user} users - -"
       ];
