@@ -122,7 +122,7 @@
   "workspaceOccupiedColorMode": "none",
   "workspaceUnfocusedColorMode": "default",
   "workspaceUrgentColorMode": "default",
-  "workspaceFocusedBorderEnabled": true,
+  "workspaceFocusedBorderEnabled": false,
   "workspaceFocusedBorderColor": "primary",
   "workspaceFocusedBorderThickness": 1,
   "workspaceNameIcons": {},
@@ -376,20 +376,10 @@
   },
   "hyprlandOutputSettings": {},
   "displayProfiles": {
-    "niri": {
-      "profile_1769936059496_043ixm": {
-        "createdAt": 1769936059496,
-        "id": "profile_1769936059496_043ixm",
-        "name": "Default",
-        "outputSet": [
-          "LG Electronics LG HDR 4K 0x000382AB"
-        ],
-        "updatedAt": 1769936059496
-      }
-    }
+    "niri": {}
   },
   "activeDisplayProfile": {
-    "niri": "profile_1769936059496_043ixm"
+    "niri": ""
   },
   "displayProfileAutoSelect": false,
   "displayShowDisconnected": false,
@@ -409,13 +399,14 @@
           "id": "workspaceSwitcher"
         }
       ],
+      "clickThrough": false,
       "enabled": true,
       "fontScale": 1,
       "gothCornerRadiusOverride": false,
       "gothCornerRadiusValue": 12,
       "gothCornersEnabled": false,
       "id": "default",
-      "innerPadding": 10,
+      "innerPadding": 20,
       "leftWidgets": [
         {
           "enabled": true,
@@ -495,14 +486,13 @@
       "showOnLastDisplay": true,
       "spacing": 10,
       "squareCorners": false,
-      "transparency": 0.6,
+      "transparency": 0.75,
       "visible": true,
       "widgetOutlineColor": "primary",
       "widgetOutlineEnabled": false,
       "widgetOutlineOpacity": 1,
       "widgetOutlineThickness": 1,
-      "widgetTransparency": 0,
-      "clickThrough": false
+      "widgetTransparency": 0
     }
   ],
   "desktopClockEnabled": false,

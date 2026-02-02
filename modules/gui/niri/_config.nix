@@ -376,6 +376,7 @@ in
         Mod+F       { maximize-column; }
         Mod+Shift+F { fullscreen-window; }
         Mod+Alt+F   { toggle-windowed-fullscreen; }
+        Mod+M       { maximize-window-to-edges; }
         Mod+T       { toggle-window-floating; }
         Mod+Shift+T { switch-focus-between-floating-and-tiling; }
         Mod+Alt+T   { toggle-column-tabbed-display; }
