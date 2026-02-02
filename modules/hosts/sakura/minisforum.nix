@@ -34,8 +34,39 @@ _: {
           }
         ];
       };
-
-      "10-input-rename" = {
+      "10-fifine-sink-rename" = {
+        "monitor.alsa.rules" = [
+          {
+            matches = [
+              {
+                "node.name" = "alsa_output.usb-FIFINE_683_Microphone_FIFINE_683_Microphone-00.analog-stereo";
+              }
+            ];
+            actions = {
+              update-props = {
+                "node.description" = "FIFINE K683A Monitor";
+              };
+            };
+          }
+        ];
+      };
+      "10-fifine-source-rename" = {
+        "monitor.alsa.rules" = [
+          {
+            matches = [
+              {
+                "node.name" = "alsa_input.usb-FIFINE_683_Microphone_FIFINE_683_Microphone-00.analog-stereo";
+              }
+            ];
+            actions = {
+              update-props = {
+                "node.description" = "FIFINE K683A Mic";
+              };
+            };
+          }
+        ];
+      };
+      "10-mic-rename" = {
         "monitor.alsa.rules" = [
           {
             matches = [
