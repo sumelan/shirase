@@ -8,22 +8,22 @@
 {
   dms-plugins = {
     pname = "dms-plugins";
-    version = "738293e3ef5441dfc928aefea34c1e63cb1180aa";
+    version = "889760cbeefe175dd1a24ab73f11f2560a1fdbd9";
     src = fetchFromGitHub {
       owner = "AvengeMedia";
       repo = "dms-plugins";
-      rev = "738293e3ef5441dfc928aefea34c1e63cb1180aa";
+      rev = "889760cbeefe175dd1a24ab73f11f2560a1fdbd9";
       fetchSubmodules = false;
-      sha256 = "sha256-2YG2lnBDAUpGCEw9RlPjWwa8QDL0BH9S7iXm3Z//EXI=";
+      sha256 = "sha256-VF/6HQmAM4OJ+nHUSrrWW8HQM7Pa1qr9X4vgoL8cyNo=";
     };
-    date = "2026-01-29";
+    date = "2026-02-01";
   };
   helium = {
     pname = "helium";
-    version = "0.8.4.1";
+    version = "0.8.5.1";
     src = fetchurl {
-      url = "https://github.com/imputnet/helium-linux/releases/download/0.8.4.1/helium-0.8.4.1-x86_64.AppImage";
-      sha256 = "sha256-y4KzR+pkBUuyVU+ALrzdY0n2rnTB7lTN2ZmVSzag5vE=";
+      url = "https://github.com/imputnet/helium-linux/releases/download/0.8.5.1/helium-0.8.5.1-x86_64.AppImage";
+      sha256 = "sha256-jFSLLDsHB/NiJqFmn8S+JpdM8iCy3Zgyq+8l4RkBecM=";
     };
   };
   nordic-nvim = {
