@@ -167,23 +167,28 @@ in {
             run = "plugin toggle-pane max-preview";
             desc = "Maximize or restore the preview pane";
           }
+          # satty
+          {
+            on = ["i" "a"];
+            run = ''shell -- satty -f "$@"'';
+            desc = "Annotate image(s) with satty";
+          }
           # ripdrag
           {
-            on = "<C-d>";
-            run = ''shell -- ripdrag "$@" -x 2>/dev/null &'';
-            desc = "Drag and Drop files";
+            on = ["i" "d"];
+            run = ''shell -- ripdrag --no-click --and-exit --icon-size 64 --target --all "$@" | while read filepath; do cp -nR "$filepath" .; done'';
+            desc = "Drag-n-drop files from and to Yazi";
+          }
+          {
+            on = ["i" "D"];
+            run = ''shell -- ripdrag --no-click --and-exit --icon-size 64 --target --all "$@" | while read filepath; do cp -fR "$filepath" .; done'';
+            desc = "Drag-n-drop files to and from Yazi";
           }
           # swayimg
           {
-            on = "<C-s>";
-            run = ''shell -- swayimg "$@" >/dev/null &'';
-            desc = "Open with swayimg";
-          }
-          # satty
-          {
-            on = "<C-S>";
-            run = ''shell -- satty -f "$@"'';
-            desc = "Open with satty";
+            on = ["i" "o"];
+            run = ''shell -- swayimg "$@"'';
+            desc = "Open image(s) with swayimg";
           }
         ];
       };

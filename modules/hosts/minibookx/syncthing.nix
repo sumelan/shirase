@@ -14,10 +14,7 @@ _: {
           "Music" = {
             devices = ["sakura"];
           };
-          "Screenshots" = {
-            devices = ["sakura"];
-          };
-          "Wallpapers" = {
+          "Pictures" = {
             devices = ["sakura"];
           };
           "Videos" = {

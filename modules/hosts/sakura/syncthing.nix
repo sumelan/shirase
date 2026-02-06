@@ -14,10 +14,7 @@ _: {
           "Music" = {
             devices = ["minibookx"];
           };
-          "Screenshots" = {
-            devices = ["minibookx"];
-          };
-          "Wallpapers" = {
+          "Pictures" = {
             devices = ["minibookx"];
           };
           "Videos" = {

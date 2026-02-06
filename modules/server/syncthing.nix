@@ -38,11 +38,8 @@ _: {
           "Music" = {
             path = music;
           };
-          "Screenshots" = {
-            path = "${pictures}/Screenshots";
-          };
-          "Wallpapers" = {
-            path = "${pictures}/Wallpapers";
+          "Pictures" = {
+            path = pictures;
           };
           "Videos" = {
             path = videos;
