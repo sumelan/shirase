@@ -53,7 +53,7 @@ in {
           };
         };
         "youtube-tui/commands.yml".source = generate "youtube-tui/commands.yml" {
-          "launch_command" = "loadpage library ;; flush ;; history clear ;; key Esc 0 ;; key Up 0 ;; key Up 0 ;; key Left 0 ;; key Enter 0";
+          "launch_command" = "loadpage library ;; flush ;; key Esc 0 ;; key Up 0 ;; key Up 0 ;; key Left 0 ;; key Enter 0";
           video = [
             {"Reload updated video" = "run rm '~/.cache/youtube-tui/info/\${id}.json' ;; video \${id}";}
             {"Play video" = "parrun \${video-player} '\${embed-url}'";}

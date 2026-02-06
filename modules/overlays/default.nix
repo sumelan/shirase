@@ -20,16 +20,21 @@ _: {
         };
       };
     };
-    nordPatches = _final: prev: {
-      nord = prev.yaziPlugins.nord.overrideAttrs (o: {
-        patches = (o.patches or []) ++ [./nord.patch];
-      });
+    nordIcon = _final: prev: {
+      nord = prev.yaziPlugins.nord.overrideAttrs {
+        src = prev.fetchFromGitHub {
+          owner = "sumelan";
+          repo = "nord.yazi";
+          rev = "0b97c8464ae073450e8ef10f80c89f8d07c65902";
+          hash = "sha256-W8lcF40GhbdcM1PXL0SodfrOMSnpUV+Lowgzt1lRju4=";
+        };
+      };
     };
   in {
     nixpkgs.overlays = [
       nautilus
       vlc
-      nordPatches
+      nordIcon
     ];
   };
 }

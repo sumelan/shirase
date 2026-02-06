@@ -61,13 +61,10 @@ in {
           cache = 100;
           preload = "no";
           pstore = "no"; # Enable/disable storing thumbnails in persistent storage (yes/no)
-          fill = "yes";
           antialiasing = "mks13";
           window = gray1 + swayimgOpacity; # Background color of the window (RGBA)
           background = gray2; # Background color of non-selected tiles (RGBA)
           select = white0; # Background color of the selected tile (RGBA)
-          border = gray1; # Border color of the selected tile (RGBA)
-          shadow = gray1; # Shadow color of the selected tile (RGBA)
         };
         list = {
           order = "alpha";
