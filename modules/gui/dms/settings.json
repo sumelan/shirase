@@ -11,6 +11,7 @@
   "widgetBackgroundColor": "sch",
   "widgetColorMode": "default",
   "controlCenterTileColorMode": "primary",
+  "buttonColorMode": "primary",
   "cornerRadius": 12,
   "niriLayoutGapsOverride": -1,
   "niriLayoutRadiusOverride": -1,
@@ -111,6 +112,7 @@
   "showWorkspacePadding": false,
   "workspaceScrolling": false,
   "showWorkspaceApps": false,
+  "workspaceDragReorder": true,
   "maxWorkspaceIcons": 6,
   "workspaceAppIconSizeOffset": 0,
   "groupWorkspaceApps": true,
@@ -136,6 +138,12 @@
   "barMaxVisibleApps": 0,
   "barMaxVisibleRunningApps": 0,
   "barShowOverflowBadge": true,
+  "appsDockHideIndicators": false,
+  "appsDockColorizeActive": false,
+  "appsDockActiveColorMode": "primary",
+  "appsDockEnlargeOnHover": false,
+  "appsDockEnlargePercentage": 125,
+  "appsDockIconSizePercentage": 100,
   "keyboardLayoutNameCompactMode": false,
   "runningAppsCurrentWorkspace": true,
   "runningAppsGroupByApp": true,
@@ -278,22 +286,22 @@
   "matugenTemplateKcolorscheme": false,
   "matugenTemplateVscode": false,
   "matugenTemplateEmacs": false,
-  "showDock": false,
+  "showDock": true,
   "dockAutoHide": false,
-  "dockSmartAutoHide": false,
+  "dockSmartAutoHide": true,
   "dockGroupByApp": true,
-  "dockOpenOnOverview": false,
+  "dockOpenOnOverview": true,
   "dockPosition": 1,
   "dockSpacing": 8,
   "dockBottomGap": 0,
-  "dockMargin": 100,
+  "dockMargin": 0,
   "dockIconSize": 48,
   "dockIndicatorStyle": "line",
   "dockBorderEnabled": false,
   "dockBorderColor": "surfaceText",
   "dockBorderOpacity": 1,
   "dockBorderThickness": 1,
-  "dockIsolateDisplays": false,
+  "dockIsolateDisplays": true,
   "dockLauncherEnabled": false,
   "dockLauncherLogoMode": "apps",
   "dockLauncherLogoCustomPath": "",
@@ -409,30 +417,29 @@
       "innerPadding": 20,
       "leftWidgets": [
         {
-          "enabled": true,
-          "id": "launcherButton"
+          "id": "launcherButton",
+          "enabled": true
         },
         {
-          "enabled": true,
-          "focusedWindowCompactMode": false,
-          "id": "focusedWindow"
+          "id": "focusedWindow",
+          "enabled": true
         },
         {
-          "enabled": true,
           "id": "music",
+          "enabled": true,
           "mediaSize": 1
         },
         {
-          "enabled": true,
-          "id": "systemTray"
+          "id": "systemTray",
+          "enabled": true
         },
         {
-          "enabled": true,
-          "id": "idleInhibitor"
+          "id": "idleInhibitor",
+          "enabled": true
         },
         {
-          "enabled": true,
-          "id": "privacyIndicator"
+          "id": "privacyIndicator",
+          "enabled": true
         }
       ],
       "maximizeDetection": true,
