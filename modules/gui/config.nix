@@ -1,15 +1,7 @@
 {lib, ...}: let
   inherit (lib) genAttrs;
 in {
-  flake.modules.homeManager.default = {user, ...}: {
-    # create directories on boot if not exist
-    systemd.user.tmpfiles.rules = [
-      "d! %h/Pictures/Wallpapers - ${user} users - -"
-      "d! %h/Pictures/Screenshots - ${user} users - -"
-      "d! %h/Pictures/Satty - ${user} users - -"
-      "d! %h/Videos/OBS-Studio - ${user} users - -"
-    ];
-
+  flake.modules.homeManager.default = _: {
     # hide unnecessary desktopItems
     xdg.desktopEntries = let
       hideList = [

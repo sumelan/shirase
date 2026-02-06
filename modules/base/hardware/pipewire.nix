@@ -1,6 +1,4 @@
-_: let
-  inherit (builtins) attrValues;
-in {
+_: {
   flake.modules = {
     nixos.default = {
       pkgs,
@@ -42,10 +40,11 @@ in {
       };
     };
     homeManager.default = {pkgs, ...}: {
+      # it is necessary to add `programs.dconf.enable = true;` for the daemon to work correctly
+      services.easyeffects.enable = true;
+
       home = {
-        packages = attrValues {
-          inherit (pkgs) pwvucontrol easyeffects;
-        };
+        # plus see `https://www.autoeq.app/`
         file = let
           src = pkgs.fetchFromGitHub {
             owner = "JackHack96";
@@ -64,11 +63,15 @@ in {
           // outputSet "Loudness+Autogain"
           // outputSet "Perfect EQ"
           // {
+            ".local/share/easyeffects/output/AKG K240 Studio.json".source = ./AKG_K240_Studio.json;
+          }
+          // {
             ".local/share/easyeffects/irs" = {
               source = "${src}/irs";
               recursive = true;
             };
           };
+        packages = [pkgs.pwvucontrol];
       };
       custom.persist = {
         home.directories = [
