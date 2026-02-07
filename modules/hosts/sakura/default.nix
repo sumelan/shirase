@@ -18,6 +18,7 @@ in {
           default
           hardware-sakura
           minisforum
+          audiobookshelf
           hdds
           kdeconnect
           logitech

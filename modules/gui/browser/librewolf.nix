@@ -5,7 +5,7 @@
 }: let
   inherit (lib) mkForce concatStringsSep;
 in {
-  flake.modules.homeManager.librewolf = {
+  flake.modules.homeManager.default = {
     config,
     pkgs,
     user,

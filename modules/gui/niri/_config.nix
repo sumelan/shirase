@@ -332,6 +332,12 @@ in
         open-floating true
         opacity 1.000000
     }
+    window-rule {
+        match app-id="^yazi$"
+        default-column-width { proportion 0.500000; }
+        default-window-height { proportion 0.500000; }
+        open-floating true
+    }
 
     // binds
     binds {
@@ -355,8 +361,8 @@ in
 
             // Execute
         Mod+Return hotkey-overlay-title="${hotkey "#CB775D" "  Kitty" "Terminal Emulator"}" { spawn "kitty"; }
-        Mod+B hotkey-overlay-title="${hotkey "#5E81AC" "  Helium" "Web Browser"}"           { spawn "helium"; }
-        Mod+E hotkey-overlay-title="${hotkey "#88C0D0" "  Euphonica" "MPD Client"}"         { spawn "euphonica"; }
+        Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "  Librewolf" "Web Browser"}"           { spawn "librewolf"; }
+        Mod+E hotkey-overlay-title="${hotkey "#9FC6C5" "  Euphonica" "MPD Client"}"         { spawn "euphonica"; }
         Mod+D hotkey-overlay-title="${hotkey "#5E81AC" "  Dissent" "Discord Client"}"       { spawn "dissent"; }
         Mod+W hotkey-overlay-title="${hotkey "#B1C89D" "  Wlr-which-key" "Command"}"        { spawn "wlr-which-key" "niri"; }
         Mod+Shift+Return hotkey-overlay-title="${hotkey "#97B67C" "  Neovim" "Editor"}"     { spawn "kitty" "-d" "${proDir}" "--app-id" "nvim" "nvim"; }
