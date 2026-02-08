@@ -28,14 +28,14 @@
   };
   nordic-nvim = {
     pname = "nordic-nvim";
-    version = "962c717820a9d7201ef7622cf1e78bd57806bb7c";
+    version = "4ce6bad95fde832f9bd10b991de846047a144628";
     src = fetchFromGitHub {
       owner = "AlexvZyl";
       repo = "nordic.nvim";
-      rev = "962c717820a9d7201ef7622cf1e78bd57806bb7c";
+      rev = "4ce6bad95fde832f9bd10b991de846047a144628";
       fetchSubmodules = false;
-      sha256 = "sha256-DWZqyEyTjqsemQOxhWmg3wSqQ7wihbPCVHM/9FIMJ2A=";
+      sha256 = "sha256-kjr4SsRbKfVgNjAFWybkRQ8/QDOPLm7lbysi6Gblpfg=";
     };
-    date = "2026-01-12";
+    date = "2026-02-07";
   };
 }
