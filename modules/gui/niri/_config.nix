@@ -294,6 +294,7 @@ in
         default-column-width { proportion 0.500000; }
         default-window-height { proportion 0.500000; }
         open-floating true
+        block-out-from "screen-capture"
     }
     window-rule {
         match app-id="^org.kde.kdeconnect-indicator$"
@@ -337,6 +338,7 @@ in
         default-column-width { proportion 0.500000; }
         default-window-height { proportion 0.500000; }
         open-floating true
+        block-out-from "screen-capture"
     }
 
     // binds
@@ -361,9 +363,9 @@ in
 
             // Execute
         Mod+Return hotkey-overlay-title="${hotkey "#CB775D" "  Kitty" "Terminal Emulator"}" { spawn "kitty"; }
-        Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "  Librewolf" "Web Browser"}"           { spawn "librewolf"; }
+        Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "  Helium" "Web Browser"}"           { spawn "helium"; }
         Mod+E hotkey-overlay-title="${hotkey "#9FC6C5" "  Euphonica" "MPD Client"}"         { spawn "euphonica"; }
-        Mod+D hotkey-overlay-title="${hotkey "#5E81AC" "  Dissent" "Discord Client"}"       { spawn "dissent"; }
+        Mod+D hotkey-overlay-title="${hotkey "#BE9DB8" "  Dissent" "Discord Client"}"       { spawn "dissent"; }
         Mod+W hotkey-overlay-title="${hotkey "#B1C89D" "  Wlr-which-key" "Command"}"        { spawn "wlr-which-key" "niri"; }
         Mod+Shift+Return hotkey-overlay-title="${hotkey "#97B67C" "  Neovim" "Editor"}"     { spawn "kitty" "-d" "${proDir}" "--app-id" "nvim" "nvim"; }
         Mod+Shift+N hotkey-overlay-title="${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}" { spawn "kitty" "--app-id" "nix-search-tv" "ns"; }
