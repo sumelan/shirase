@@ -363,7 +363,7 @@ in
 
             // Execute
         Mod+Return hotkey-overlay-title="${hotkey "#CB775D" "  Kitty" "Terminal Emulator"}" { spawn "kitty"; }
-        Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "  Helium" "Web Browser"}"           { spawn "helium"; }
+        Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "  Helium" "Web Browser"}"           { spawn-sh "helium &"; }
         Mod+E hotkey-overlay-title="${hotkey "#9FC6C5" "  Euphonica" "MPD Client"}"         { spawn "euphonica"; }
         Mod+D hotkey-overlay-title="${hotkey "#BE9DB8" "  Dissent" "Discord Client"}"       { spawn "dissent"; }
         Mod+W hotkey-overlay-title="${hotkey "#B1C89D" "  Wlr-which-key" "Command"}"        { spawn "wlr-which-key" "niri"; }
