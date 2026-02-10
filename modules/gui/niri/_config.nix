@@ -6,6 +6,7 @@
   ...
 }: let
   inherit (lib) getExe;
+
   # output
   inherit (config.lib.monitors) mainMonitor mainMonitorName;
   mainWidth = toString mainMonitor.mode.width;
@@ -19,18 +20,111 @@
   mainPositionX = toString mainMonitor.position.x;
   mainPositionY = toString mainMonitor.position.y;
   mainMode = "${mainWidth}x${mainHeight}@${mainRefresh}";
+
   # cursor
   cursorName = config.home.pointerCursor.name;
   cursorSize = toString config.home.pointerCursor.size;
+
   # xwayland
   xwayland =
     if config.custom.niri.xwayland
     then ''path "${getExe pkgs.xwayland-satellite}"''
     else "off";
+
   # screenshot
   inherit (config.xdg.userDirs) pictures;
   inherit (config.custom.niri.screenshot) host;
+
   # keybinds
+  mkMenu = menu: let
+    config = import ./_wlr-which-key.nix {inherit pkgs menu;};
+  in
+    pkgs.writeShellScriptBin "niri-menu" ''
+      exec ${getExe pkgs.wlr-which-key} ${config}
+    '';
+  chatCmd = mkMenu [
+    {
+      key = "d";
+      desc = "Dissent";
+      cmd = "dissent";
+    }
+    {
+      key = "s";
+      desc = "Slack";
+      cmd = "slack";
+    }
+    {
+      key = "v";
+      desc = "Vesktop";
+      cmd = "vesktop";
+    }
+  ];
+  niriCmd = mkMenu [
+    {
+      key = "w";
+      desc = "Select a window as the dynamic cast target";
+      cmd = "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)";
+    }
+    {
+      key = "o";
+      desc = "Set the dynamic cast target to the focused monitor";
+      cmd = "niri msg action set-dynamic-cast-monitor";
+    }
+    {
+      key = "c";
+      desc = "Clear the dynamic cast target";
+      cmd = "niri msg action clear-dynamic-cast-target";
+    }
+  ];
+  dmsCmd = mkMenu [
+    {
+      key = "d";
+      desc = "Open dashboard";
+      cmd = "dms ipc dash toggle '[tab]'";
+    }
+    {
+      key = "i";
+      desc = "Toggle idle-inhibitor";
+      cmd = "dms ipc inhibit toggle";
+    }
+    {
+      key = "l";
+      desc = "Screen-lock";
+      cmd = "dms ipc lock lock";
+    }
+    {
+      key = "n";
+      desc = "Toggle nightlight";
+      cmd = "dms ipc night toggle";
+    }
+    {
+      key = "p";
+      desc = "Pick a color";
+      cmd = "dms color pick -a";
+    }
+    {
+      key = "s";
+      desc = "Screenshot with annotation";
+      submenu = [
+        {
+          key = "f";
+          desc = "Focused output";
+          cmd = "dms screenshot full --stdout | satty -f -";
+        }
+        {
+          key = "r";
+          desc = "Selected resion";
+          cmd = "dms screenshot --stdout | satty -f -";
+        }
+      ];
+    }
+    {
+      key = "v";
+      desc = "Toggle bar visibility";
+      cmd = "dms ipc bar toggle name 'Main Bar'";
+    }
+  ];
+
   hotkey = color: name: text: ''<span foreground='${color}'>[${name}]</span> ${text}'';
   proDir = "${config.home.homeDirectory}/Projects";
 in
@@ -348,8 +442,8 @@ in
         Mod+Y hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Clipboard"}"    { spawn "dms" "ipc" "clipboard" "toggle"; }
         Mod+X hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Powermenu"}"    { spawn "dms" "ipc" "powermenu" "toggle"; }
         Mod+N hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Notepad"}"      { spawn "dms" "ipc" "notepad" "toggle"; }
+        Mod+E hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Command"}"      { spawn "${getExe dmsCmd}"; }
         Mod+Comma hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Settings"}" { spawn "dms" "ipc" "settings" "focusOrToggle"; }
-        Mod+Ctrl+L allow-when-locked=true hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Screen-lock"}" { spawn "dms" "ipc" "lock" "lock"; }
 
         XF86AudioLowerVolume allow-when-locked=true  { spawn "dms" "ipc" "audio" "decrement" "3"; }
         XF86AudioMicMute allow-when-locked=true      { spawn "dms" "ipc" "audio" "micmute"; }
@@ -364,13 +458,12 @@ in
             // Execute
         Mod+Return hotkey-overlay-title="${hotkey "#CB775D" "  Kitty" "Terminal Emulator"}" { spawn "kitty"; }
         Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "  Helium" "Web Browser"}"           { spawn-sh "helium &"; }
-        Mod+E hotkey-overlay-title="${hotkey "#9FC6C5" "  Euphonica" "MPD Client"}"         { spawn "euphonica"; }
-        Mod+D hotkey-overlay-title="${hotkey "#BE9DB8" "  Dissent" "Discord Client"}"       { spawn "dissent"; }
-        Mod+W hotkey-overlay-title="${hotkey "#B1C89D" "  Wlr-which-key" "Command"}"        { spawn "wlr-which-key" "niri"; }
+        Mod+D hotkey-overlay-title="${hotkey "#B1C89D" "󰭹  Chat" "Chat programs"}"       { spawn "${getExe chatCmd}"; }
+        Mod+V hotkey-overlay-title="${hotkey "#D79784" "󰗢  niri" "Command"}"                 { spawn "${getExe niriCmd}"; }
         Mod+Shift+Return hotkey-overlay-title="${hotkey "#97B67C" "  Neovim" "Editor"}"     { spawn "kitty" "-d" "${proDir}" "--app-id" "nvim" "nvim"; }
         Mod+Shift+N hotkey-overlay-title="${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}" { spawn "kitty" "--app-id" "nix-search-tv" "ns"; }
         Mod+Shift+Y hotkey-overlay-title="${hotkey "#EFD49F" "󰇥  Yazi" "File Manager"}"      { spawn "kitty" "--app-id" "yazi" "yazi"; }
-        Ctrl+Space hotkey-overlay-title="${hotkey "#BF616A" "󰗊  Fcitx" "Input Method"}"      { spawn "fcitx5-remote" "-t"; }
+        Ctrl+Space hotkey-overlay-title="${hotkey "#BF616A" "󰗊  Fcitx" "Switch input method"}"      { spawn "fcitx5-remote" "-t"; }
 
         // Window
         Mod+Backspace repeat=false { close-window; }
