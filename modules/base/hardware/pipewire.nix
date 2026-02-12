@@ -49,8 +49,8 @@ _: {
           src = pkgs.fetchFromGitHub {
             owner = "JackHack96";
             repo = "EasyEffects-Presets";
-            rev = "069195c4e73d5ce94a87acb45903d18e05bffdcc";
-            hash = "sha256-nXVtX0ju+Ckauo0o30Y+sfNZ/wrx3HXNCK05z7dLaFc=";
+            rev = "d77a61eb01c36e2c794bddc25423445331e99915";
+            hash = "sha256-or5kH/vTwz7IO0Vz7W4zxK2ZcbL/P3sO9p5+EdcC2DA=";
           };
           outputSet = preset: {
             ".local/share/easyeffects/output/${preset}.json".source = "${src}/${preset}.json";
@@ -62,9 +62,6 @@ _: {
           // outputSet "Boosted"
           // outputSet "Loudness+Autogain"
           // outputSet "Perfect EQ"
-          // {
-            ".local/share/easyeffects/output/AKG K240 Studio.json".source = ./AKG_K240_Studio.json;
-          }
           // {
             ".local/share/easyeffects/irs" = {
               source = "${src}/irs";
