@@ -88,11 +88,6 @@
       cmd = "dms ipc inhibit toggle";
     }
     {
-      key = "l";
-      desc = "Screen-lock";
-      cmd = "dms ipc lock lock";
-    }
-    {
       key = "n";
       desc = "Toggle nightlight";
       cmd = "dms ipc night toggle";
@@ -444,6 +439,7 @@ in
         Mod+N hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Notepad"}"      { spawn "dms" "ipc" "notepad" "toggle"; }
         Mod+E hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Command"}"      { spawn "${getExe dmsCmd}"; }
         Mod+Comma hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Settings"}" { spawn "dms" "ipc" "settings" "focusOrToggle"; }
+        Mod+Ctrl+L hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "screen-lock"}" { spawn "dms" "ipc" "lock" "lock"; }
 
         XF86AudioLowerVolume allow-when-locked=true  { spawn "dms" "ipc" "audio" "decrement" "3"; }
         XF86AudioMicMute allow-when-locked=true      { spawn "dms" "ipc" "audio" "micmute"; }
@@ -557,9 +553,9 @@ in
         Mod+Shift+TouchpadScrollLeft  { move-column-left; }
 
         // Screenshot
-        Mod+Backslash       { screenshot show-pointer=false; }
-        Mod+Shift+Backslash { screenshot-screen show-pointer=false; }
-        Mod+Alt+Backslash   { screenshot-window; }
+        Mod+Print       { screenshot show-pointer=false; }
+        Mod+Shift+Print { screenshot-screen show-pointer=false; }
+        Mod+Alt+Print   { screenshot-window; }
 
         // System
         Mod+Shift+Slash  { show-hotkey-overlay; }

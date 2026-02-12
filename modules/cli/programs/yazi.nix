@@ -7,7 +7,7 @@ in {
         inherit
           (pkgs)
           ripdrag # Drag and Drop utilty written in Rust and GTK4
-          unar
+          unar # archive unpacker program
           exiftool
           ;
       };
@@ -166,6 +166,12 @@ in {
             on = "T";
             run = "plugin toggle-pane max-preview";
             desc = "Maximize or restore the preview pane";
+          }
+          # unar
+          {
+            on = ["u" "u"];
+            run = ''shell -- unar "$@"'';
+            desc = "Command-line unarchiver";
           }
           # satty
           {
