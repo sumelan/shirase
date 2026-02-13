@@ -2,17 +2,17 @@ _: {
   flake.modules.nixos.minisforum = _: {
     # rename audio devices
     services.pipewire.wireplumber.extraConfig = {
-      "10-creative-rename" = {
+      "10-jbl-rename" = {
         "monitor.alsa.rules" = [
           {
             matches = [
               {
-                "node.name" = "alsa_output.usb-Creative_Technology_Ltd_Creative_Stage_SE_mini_1120041300020421-01.analog-stereo";
+                "node.name" = "alsa_output.usb-Harman_International_Industries_JBL_Pebbles_1.0.0-01.analog-stereo";
               }
             ];
             actions = {
               update-props = {
-                "node.description" = "Creative Stage SE mini";
+                "node.description" = "JBL Pebbles";
               };
             };
           }

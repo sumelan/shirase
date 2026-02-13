@@ -42,34 +42,31 @@ _: {
     homeManager.default = {pkgs, ...}: {
       # it is necessary to add `programs.dconf.enable = true;` for the daemon to work correctly
       services.easyeffects.enable = true;
+      home.packages = [pkgs.pwvucontrol];
+      xdg.dataFile = let
+        src = pkgs.fetchFromGitHub {
+          owner = "JackHack96";
+          repo = "EasyEffects-Presets";
+          rev = "d77a61eb01c36e2c794bddc25423445331e99915";
+          hash = "sha256-or5kH/vTwz7IO0Vz7W4zxK2ZcbL/P3sO9p5+EdcC2DA=";
+        };
+        output = preset: {
+          "easyeffects/output/${preset}.json".source = "${src}/${preset}.json";
+        };
+      in
+        output "Advanced Auto Gain"
+        // output "Bass Boosted"
+        // output "Bass Enhancing + Perfect EQ"
+        // output "Boosted"
+        // output "Loudness+Autogain"
+        // output "Perfect EQ"
+        // {
+          "easyeffects/irs" = {
+            source = "${src}/irs";
+            recursive = true;
+          };
+        };
 
-      home = {
-        # plus see `https://www.autoeq.app/`
-        file = let
-          src = pkgs.fetchFromGitHub {
-            owner = "JackHack96";
-            repo = "EasyEffects-Presets";
-            rev = "d77a61eb01c36e2c794bddc25423445331e99915";
-            hash = "sha256-or5kH/vTwz7IO0Vz7W4zxK2ZcbL/P3sO9p5+EdcC2DA=";
-          };
-          outputSet = preset: {
-            ".local/share/easyeffects/output/${preset}.json".source = "${src}/${preset}.json";
-          };
-        in
-          outputSet "Advanced Auto Gain"
-          // outputSet "Bass Boosted"
-          // outputSet "Bass Enhancing + Perfect EQ"
-          // outputSet "Boosted"
-          // outputSet "Loudness+Autogain"
-          // outputSet "Perfect EQ"
-          // {
-            ".local/share/easyeffects/irs" = {
-              source = "${src}/irs";
-              recursive = true;
-            };
-          };
-        packages = [pkgs.pwvucontrol];
-      };
       custom.persist = {
         home.directories = [
           ".config/easyeffects/db"
