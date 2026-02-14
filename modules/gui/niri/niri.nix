@@ -6,7 +6,6 @@ in {
       config,
       lib,
       pkgs,
-      user,
       ...
     }: let
       niriCfg = import ./_config.nix {
@@ -54,29 +53,6 @@ in {
             "org.freedesktop.impl.portal.Notification" = ["gtk"];
             "org.freedesktop.impl.portal.Secret" = ["gnome-keyring"];
             "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
-          };
-        };
-      };
-      # tty autologin
-      services.getty.autologinUser = user;
-
-      # dms
-      programs.dank-material-shell = {
-        enable = true;
-        systemd.enable = false;
-        # greeter
-        greeter = {
-          enable = true;
-          compositor.name = "niri";
-          # User home directory to copy configurations for greeter
-          # If DMS config files are in non-standard locations then use the configFiles option instead
-          configHome = "/home/${user}";
-          configFiles = [
-            "/home/${user}/.config/DankMaterialShell/settings.json"
-          ];
-          logs = {
-            save = true;
-            path = "/tmp/dms-greeter.log";
           };
         };
       };

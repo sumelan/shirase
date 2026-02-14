@@ -11,15 +11,7 @@ _: {
           ]);
       });
     };
-    # play Blu-ray disk
-    vlc = _final: prev: {
-      vlc = prev.vlc.override {
-        libbluray-full = prev.libbluray.override {
-          withAACS = true;
-          withBDplus = true;
-        };
-      };
-    };
+    # use my forked version
     nordIcon = _final: prev: {
       nord = prev.yaziPlugins.nord.overrideAttrs {
         src = prev.fetchFromGitHub {
@@ -30,11 +22,20 @@ _: {
         };
       };
     };
+    # play Blu-ray disk
+    vlc = _final: prev: {
+      vlc = prev.vlc.override {
+        libbluray-full = prev.libbluray.override {
+          withAACS = true;
+          withBDplus = true;
+        };
+      };
+    };
   in {
     nixpkgs.overlays = [
       nautilus
-      vlc
       nordIcon
+      vlc
     ];
   };
 }

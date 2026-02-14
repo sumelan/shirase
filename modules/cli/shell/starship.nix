@@ -181,73 +181,73 @@ in {
 
           # Languages
           c = {
-            style = "bg:cyan_dim fg:orange_base";
+            style = "bg:cyan_dim fg:gray0";
             format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
             disabled = false;
             symbol = " ";
           };
           elixir = {
-            style = "bg:cyan_dim fg:orange_base";
+            style = "bg:cyan_dim fg:gray0";
             format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
             disabled = false;
             symbol = " ";
           };
           elm = {
-            style = "bg:cyan_dim fg:orange_base";
+            style = "bg:cyan_dim fg:gray0";
             format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
             disabled = false;
             symbol = " ";
           };
           golang = {
-            style = "bg:cyan_dim fg:orange_base";
+            style = "bg:cyan_dim fg:gray0";
             format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
             disabled = false;
             symbol = " ";
           };
           haskell = {
-            style = "bg:cyan_dim fg:orange_base";
+            style = "bg:cyan_dim fg:gray0";
             format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
             disabled = false;
             symbol = " ";
           };
           java = {
-            style = "bg:cyan_dim fg:orange_base";
+            style = "bg:cyan_dim fg:gray0";
             format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
             disabled = false;
             symbol = " ";
           };
           julia = {
-            style = "bg:cyan_dim fg:orange_base";
+            style = "bg:cyan_dim fg:gray0";
             format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
             disabled = false;
             symbol = " ";
           };
           nodejs = {
-            style = "bg:cyan_dim fg:orange_base";
+            style = "bg:cyan_dim fg:gray0";
             format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
             disabled = false;
             symbol = "󰎙 ";
           };
           nim = {
-            style = "bg:cyan_dim fg:orange_base";
+            style = "bg:cyan_dim fg:gray0";
             format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
             disabled = false;
             symbol = "󰆥 ";
           };
           rust = {
-            style = "bg:cyan_dim fg:orange_base";
+            style = "bg:cyan_dim fg:gray0";
             format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_base)";
             disabled = false;
             symbol = " ";
           };
           scala = {
-            style = "bg:cyan_dim fg:orange_base";
+            style = "bg:cyan_dim fg:gray0";
             format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
             disabled = false;
             symbol = " ";
           };
           python = {
-            style = "bg:cyan_dim fg:orange_base";
+            style = "bg:cyan_dim fg:gray0";
             format = " [](fg:cyan_dim)[ $symbol$version ]($style)[](fg:cyan_dim)";
             disabled = false;
             symbol = " ";
@@ -263,7 +263,7 @@ in {
             heuristic = false;
           };
           conda = {
-            style = "bg:cyan_dim fg:orange_base";
+            style = "bg:cyan_dim fg:gray0";
             format = " [](fg:cyan_dim)[ $symbol$environment ]($style)[](fg:cyan_dim)";
             disabled = false;
             symbol = "🅒 ";

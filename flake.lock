@@ -41,6 +41,27 @@
         "type": "github"
       }
     },
+    "dgop": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1771066448,
+        "narHash": "sha256-Ihr+GBrQZv98VqkGE92qYE8Pax/z3uB/jzxOf2tkcBE=",
+        "owner": "sumelan",
+        "repo": "dgop",
+        "rev": "09895307a2923e520e0a171170ab71374d2622d3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sumelan",
+        "ref": "version0.2.2",
+        "repo": "dgop",
+        "type": "github"
+      }
+    },
     "firefox-addons": {
       "inputs": {
         "nixpkgs": [
@@ -341,6 +362,7 @@
       "inputs": {
         "dankMaterialShell": "dankMaterialShell",
         "danksearch": "danksearch",
+        "dgop": "dgop",
         "firefox-addons": "firefox-addons",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
