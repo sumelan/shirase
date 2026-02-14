@@ -30,6 +30,12 @@
   "nightModeEnabled": true,
   "animationSpeed": 4,
   "customAnimationDuration": 200,
+  "syncComponentAnimationSpeeds": true,
+  "popoutAnimationSpeed": 1,
+  "popoutCustomAnimationDuration": 150,
+  "modalAnimationSpeed": 1,
+  "modalCustomAnimationDuration": 150,
+  "enableRippleEffects": true,
   "wallpaperFillMode": "Fill",
   "blurredWallpaperLayer": true,
   "blurWallpaperOnOverview": false,
@@ -132,6 +138,7 @@
   "scrollTitleEnabled": true,
   "audioVisualizerEnabled": true,
   "audioScrollMode": "volume",
+  "audioWheelScrollAmount": 5,
   "clockCompactMode": false,
   "focusedWindowCompactMode": false,
   "runningAppsCompactMode": true,
@@ -147,6 +154,7 @@
   "keyboardLayoutNameCompactMode": false,
   "runningAppsCurrentWorkspace": true,
   "runningAppsGroupByApp": true,
+  "runningAppsCurrentMonitor": false,
   "appIdSubstitutions": [
     {
       "pattern": "Spotify",
@@ -237,16 +245,16 @@
   "soundNewNotification": true,
   "soundVolumeChanged": true,
   "soundPluggedIn": true,
-  "acMonitorTimeout": 600,
-  "acLockTimeout": 300,
+  "acMonitorTimeout": 900,
+  "acLockTimeout": 600,
   "acSuspendTimeout": 0,
   "acSuspendBehavior": 0,
-  "acProfileName": "",
+  "acProfileName": "2",
   "batteryMonitorTimeout": 300,
   "batteryLockTimeout": 180,
   "batterySuspendTimeout": 600,
   "batterySuspendBehavior": 0,
-  "batteryProfileName": "",
+  "batteryProfileName": "1",
   "batteryChargeLimit": 100,
   "lockBeforeSuspend": true,
   "loginctlLockIntegration": true,
@@ -322,6 +330,7 @@
   "lockScreenShowPasswordField": true,
   "lockScreenShowMediaPlayer": true,
   "lockScreenPowerOffMonitorsOnLock": false,
+  "lockAtStartup": false,
   "enableFprint": false,
   "maxFprintTries": 3,
   "lockScreenActiveMonitor": "all",
@@ -343,6 +352,7 @@
   "osdPosition": 5,
   "osdVolumeEnabled": true,
   "osdMediaVolumeEnabled": true,
+  "osdMediaPlaybackEnabled": true,
   "osdBrightnessEnabled": true,
   "osdIdleInhibitorEnabled": true,
   "osdMicMuteEnabled": true,
@@ -417,29 +427,29 @@
       "innerPadding": 20,
       "leftWidgets": [
         {
-          "id": "launcherButton",
-          "enabled": true
-        },
-        {
-          "id": "focusedWindow",
-          "enabled": true
-        },
-        {
-          "id": "music",
           "enabled": true,
+          "id": "launcherButton"
+        },
+        {
+          "enabled": true,
+          "id": "focusedWindow"
+        },
+        {
+          "enabled": true,
+          "id": "music",
           "mediaSize": 1
         },
         {
-          "id": "systemTray",
-          "enabled": true
+          "enabled": true,
+          "id": "systemTray"
         },
         {
-          "id": "idleInhibitor",
-          "enabled": true
+          "enabled": true,
+          "id": "idleInhibitor"
         },
         {
-          "id": "privacyIndicator",
-          "enabled": true
+          "enabled": true,
+          "id": "privacyIndicator"
         }
       ],
       "maximizeDetection": true,

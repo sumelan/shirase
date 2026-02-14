@@ -42,23 +42,6 @@
     pkgs.writeShellScriptBin "niri-menu" ''
       exec ${getExe pkgs.wlr-which-key} ${config}
     '';
-  chatCmd = mkMenu [
-    {
-      key = "d";
-      desc = "Dissent";
-      cmd = "dissent";
-    }
-    {
-      key = "s";
-      desc = "Slack";
-      cmd = "slack";
-    }
-    {
-      key = "v";
-      desc = "Vesktop";
-      cmd = "vesktop";
-    }
-  ];
   niriCmd = mkMenu [
     {
       key = "w";
@@ -83,9 +66,9 @@
       cmd = "dms ipc dash toggle '[tab]'";
     }
     {
-      key = "i";
-      desc = "Toggle idle-inhibitor";
-      cmd = "dms ipc inhibit toggle";
+      key = "m";
+      desc = "Open processlist";
+      cmd = "dms ipc processlist focusOrToggle";
     }
     {
       key = "n";
@@ -437,7 +420,7 @@ in
         Mod+Y hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Clipboard"}"    { spawn "dms" "ipc" "clipboard" "toggle"; }
         Mod+X hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Powermenu"}"    { spawn "dms" "ipc" "powermenu" "toggle"; }
         Mod+N hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Notepad"}"      { spawn "dms" "ipc" "notepad" "toggle"; }
-        Mod+E hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Command"}"      { spawn "${getExe dmsCmd}"; }
+        Mod+D hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Command"}"      { spawn "${getExe dmsCmd}"; }
         Mod+Comma hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Settings"}" { spawn "dms" "ipc" "settings" "focusOrToggle"; }
         Mod+Ctrl+L hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "screen-lock"}" { spawn "dms" "ipc" "lock" "lock"; }
 
@@ -454,7 +437,6 @@ in
             // Execute
         Mod+Return hotkey-overlay-title="${hotkey "#CB775D" "  Kitty" "Terminal Emulator"}" { spawn "kitty"; }
         Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "  Helium" "Web Browser"}"           { spawn-sh "helium &"; }
-        Mod+D hotkey-overlay-title="${hotkey "#B1C89D" "󰭹  Chat" "Chat programs"}"       { spawn "${getExe chatCmd}"; }
         Mod+V hotkey-overlay-title="${hotkey "#D79784" "󰗢  niri" "Command"}"                 { spawn "${getExe niriCmd}"; }
         Mod+Shift+Return hotkey-overlay-title="${hotkey "#97B67C" "  Neovim" "Editor"}"     { spawn "kitty" "-d" "${proDir}" "--app-id" "nvim" "nvim"; }
         Mod+Shift+N hotkey-overlay-title="${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}" { spawn "kitty" "--app-id" "nix-search-tv" "ns"; }
