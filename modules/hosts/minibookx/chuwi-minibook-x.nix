@@ -1,4 +1,6 @@
-_: {
+{config, ...}: let
+  inherit (config.flake.lib.wireplumber) rename;
+in {
   flake.modules.nixos.chuwi-minibook-x = _: {
     hardware.chuwi-minibook-x = {
       tabletMode.enable = true;
@@ -20,54 +22,9 @@ _: {
 
     # rename audio devices
     services.pipewire.wireplumber.extraConfig = {
-      "10-speaker-rename" = {
-        "monitor.alsa.rules" = [
-          {
-            matches = [
-              {
-                "node.name" = "alsa_output.pci-0000_00_1f.3.analog-stereo";
-              }
-            ];
-            actions = {
-              update-props = {
-                "node.description" = "Built-in Speakers";
-              };
-            };
-          }
-        ];
-      };
-      "10-dac-rename" = {
-        "monitor.alsa.rules" = [
-          {
-            matches = [
-              {
-                "node.name" = "alsa_output.usb-TTGK_Technology_Co._Ltd_NICEHCK_NK1_MAX-00.analog-stereo";
-              }
-            ];
-            actions = {
-              update-props = {
-                "node.description" = "NICEHCK NK1 MAX";
-              };
-            };
-          }
-        ];
-      };
-      "10-input-rename" = {
-        "monitor.alsa.rules" = [
-          {
-            matches = [
-              {
-                "node.name" = "alsa_input.pci-0000_00_1f.3.analog-stereo";
-              }
-            ];
-            actions = {
-              update-props = {
-                "node.description" = "Built-in Mic";
-              };
-            };
-          }
-        ];
-      };
+      "10-speaker-rename" = rename "alsa_output.pci-0000_00_1f.3.analog-stereo" "Built-in Speakers";
+      "10-dac-rename" = rename "alsa_output.usb-TTGK_Technology_Co._Ltd_NICEHCK_NK1_MAX-00.analog-stereo" "NICEHCK NK1 MAX";
+      "10-input-rename" = rename "alsa_input.pci-0000_00_1f.3.analog-stereo" "Built-in Mic";
     };
   };
 }

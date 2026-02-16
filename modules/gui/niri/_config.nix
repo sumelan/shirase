@@ -416,12 +416,12 @@ in
     // binds
     binds {
         // DMS
-        Mod+Space hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Launcher"}" { spawn "dms" "ipc" "spotlight" "toggle"; }
-        Mod+Y hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Clipboard"}"    { spawn "dms" "ipc" "clipboard" "toggle"; }
-        Mod+X hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Powermenu"}"    { spawn "dms" "ipc" "powermenu" "toggle"; }
-        Mod+N hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Notepad"}"      { spawn "dms" "ipc" "notepad" "toggle"; }
-        Mod+D hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Command"}"      { spawn "${getExe dmsCmd}"; }
-        Mod+Comma hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Settings"}" { spawn "dms" "ipc" "settings" "focusOrToggle"; }
+        Mod+Space hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Launcher"}"     { spawn "dms" "ipc" "spotlight" "toggle"; }
+        Mod+Y hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Clipboard"}"        { spawn "dms" "ipc" "clipboard" "toggle"; }
+        Mod+X hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Powermenu"}"        { spawn "dms" "ipc" "powermenu" "toggle"; }
+        Mod+N hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Notepad"}"          { spawn "dms" "ipc" "notepad" "toggle"; }
+        Mod+D hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Command"}"          { spawn "${getExe dmsCmd}"; }
+        Mod+Comma hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Settings"}"     { spawn "dms" "ipc" "settings" "focusOrToggle"; }
         Mod+Ctrl+L hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "screen-lock"}" { spawn "dms" "ipc" "lock" "lock"; }
 
         XF86AudioLowerVolume allow-when-locked=true  { spawn "dms" "ipc" "audio" "decrement" "3"; }
@@ -435,13 +435,13 @@ in
         XF86MonBrightnessUp allow-when-locked=true   { spawn "dms" "ipc" "brightness" "increment" "5" ""; }
 
             // Execute
-        Mod+Return hotkey-overlay-title="${hotkey "#CB775D" "  Kitty" "Terminal Emulator"}" { spawn "kitty"; }
-        Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "  Helium" "Web Browser"}"           { spawn-sh "helium &"; }
-        Mod+V hotkey-overlay-title="${hotkey "#D79784" "󰗢  niri" "Command"}"                 { spawn "${getExe niriCmd}"; }
-        Mod+Shift+Return hotkey-overlay-title="${hotkey "#97B67C" "  Neovim" "Editor"}"     { spawn "kitty" "-d" "${proDir}" "--app-id" "nvim" "nvim"; }
-        Mod+Shift+N hotkey-overlay-title="${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}" { spawn "kitty" "--app-id" "nix-search-tv" "ns"; }
-        Mod+Shift+Y hotkey-overlay-title="${hotkey "#EFD49F" "󰇥  Yazi" "File Manager"}"      { spawn "kitty" "--app-id" "yazi" "yazi"; }
-        Ctrl+Space hotkey-overlay-title="${hotkey "#BF616A" "󰗊  Fcitx" "Switch input method"}"      { spawn "fcitx5-remote" "-t"; }
+        Mod+Return hotkey-overlay-title="${hotkey "#CB775D" "  Kitty" "Terminal Emulator"}"   { spawn "kitty"; }
+        Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "  Zen" "Web Browser"}"                { spawn "zen"; }
+        Mod+V hotkey-overlay-title="${hotkey "#D79784" "󰗢  niri" "Command"}"                   { spawn "${getExe niriCmd}"; }
+        Mod+Shift+Return hotkey-overlay-title="${hotkey "#97B67C" "  Neovim" "Editor"}"       { spawn "kitty" "-d" "${proDir}" "--app-id" "nvim" "nvim"; }
+        Mod+Shift+N hotkey-overlay-title="${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}"   { spawn "kitty" "--app-id" "nix-search-tv" "ns"; }
+        Mod+Shift+Y hotkey-overlay-title="${hotkey "#EFD49F" "󰇥  Yazi" "File Manager"}"        { spawn "kitty" "--app-id" "yazi" "yazi"; }
+        Ctrl+Space hotkey-overlay-title="${hotkey "#BF616A" "󰗊  Fcitx" "Switch input method"}" { spawn "fcitx5-remote" "-t"; }
 
         // Window
         Mod+Backspace repeat=false { close-window; }

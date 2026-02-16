@@ -1,10 +1,5 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{config, ...}: let
   inherit (config) flake;
-  inherit (lib) getExe;
   inherit (builtins) listToAttrs;
 in {
   flake.modules = {
@@ -39,14 +34,7 @@ in {
         ];
       };
 
-      environment = {
-        systemPackages = [helium];
-        sessionVariables = {
-          # set default browser
-          DEFAULT_BROWSER = getExe helium;
-          BROWSER = getExe helium;
-        };
-      };
+      environment.systemPackages = [helium];
 
       custom.persist.home.directories = [
         ".cache/net.imput.helium"
@@ -57,15 +45,6 @@ in {
     homeManager.default = _: {
       xdg.mimeApps = let
         value = "helium.desktop";
-        associations = listToAttrs (map (name: {
-            inherit name value;
-          }) [
-            "x-scheme-handler/unknown"
-            "x-scheme-handler/about"
-            "x-scheme-handler/https"
-            "x-scheme-handler/http"
-            "text/html"
-          ]);
         imgAssociations = listToAttrs (map (name: {
             inherit name value;
           }) [
@@ -76,8 +55,6 @@ in {
             "application/pdf"
           ]);
       in {
-        associations.added = associations;
-        defaultApplications = associations;
         # remove `helium.desktop` from mimetypes
         associations.removed = imgAssociations;
       };

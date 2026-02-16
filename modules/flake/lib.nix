@@ -62,5 +62,19 @@ _: {
       magenta_bright = "#BE9DB8";
       magenta_dim = "#A97EA1";
     };
+
+    # rename audio device
+    wireplumber.rename = old: update: {
+      "monitor.alsa.rules" = [
+        {
+          matches = [{"node.name" = old;}];
+          actions = {
+            update-props = {
+              "node.description" = update;
+            };
+          };
+        }
+      ];
+    };
   };
 }
