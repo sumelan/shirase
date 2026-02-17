@@ -22,7 +22,7 @@ in {
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = true;
-
+      shellWrapperName = "y";
       plugins = {
         inherit
           (pkgs.yaziPlugins)
