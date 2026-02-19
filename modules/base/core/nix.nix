@@ -79,6 +79,9 @@ in {
         # lix: `pkgs.lixPackageSets.latest.lix`
         package = pkgs.nixVersions.latest;
 
+        # Periodically optimise via hardlinking store files
+        optimise.automatic = true;
+
         # Automatic garbage collection
         gc = {
           automatic = true;
@@ -87,9 +90,6 @@ in {
         };
 
         settings = {
-          # Optimise symlinks
-          auto-optimise-store = true;
-
           # re-evaluate on every rebuild instead of "cached failure of attribute" error
           # eval-cache = false;
 

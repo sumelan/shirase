@@ -58,6 +58,16 @@ sourceDir := "_sources"
 @store package:
     yazi $(nix eval --raw nixpkgs#{{ package }})
 
+[group('TOOLS')]
+[doc('Measure eval time on each host.')]
+@eval:
+    time nix eval ".#nixosConfigurations.$HOSTNAME.config.system.build.toplevel" --no-eval-cache
+
+[group('TOOLS')]
+[doc('Create the flamegraph file of eval time and open in browser.')]
+@graph:
+    nix-shell -p nixVersions.latest inferno --command "nix eval .#nixosConfigurations.$HOSTNAME.config.system.build.toplevel --impure --eval-profiler flamegraph --eval-profiler-frequency 9999 && inferno-flamegraph --width 10000 < nix.profile > wrappers.svg && $BROWSER wrappers.svg"
+
 [group('UPDATE')]
 [doc('Update a specific input in the flake.')]
 @update input:
@@ -85,7 +95,7 @@ sourceDir := "_sources"
 [group('MAINTENANCE')]
 [doc('Replace identical files in the store by hard links.')]
 @optimise:
-    nix store optimise -v
+    nix-store --optimise -v
 
 [group('BUILD')]
 [doc('Look the package built with override attrs through yazi.')]
