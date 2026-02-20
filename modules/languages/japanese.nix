@@ -6,10 +6,6 @@
 
     services.hazkey = {
       enable = true;
-      # llama backend
-      # - libllama-cpu - CPU (default)
-      # - libllama-vulkan - GPU (Vulkan)
-      libllama.package = inputs.nix-hazkey.packages.${pkgs.stdenv.hostPlatform.system}.libllama-cpu;
       # zenzai model
       # - zenzai_v3_1-small (default)
       # - zenzai_v3_1-xsmall
