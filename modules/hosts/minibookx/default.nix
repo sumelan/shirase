@@ -47,7 +47,7 @@ in {
                   x = 0;
                   y = 0;
                 };
-                rotation = 0;
+                rotation = 270;
               };
             };
             custom = {

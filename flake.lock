@@ -173,29 +173,6 @@
         "type": "github"
       }
     },
-    "nix-chuwi-minibook-x": {
-      "inputs": {
-        "nixos-hardware": [
-          "nixos-hardware"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1753224897,
-        "narHash": "sha256-xespbbZr6dWMz6WtctqKGwJ2mKVJoZit+GIB444gy9Q=",
-        "owner": "knoopx",
-        "repo": "nix-chuwi-minibook-x",
-        "rev": "8be96e49aaebdefb456d33fb1a787f2a1da1fa52",
-        "type": "github"
-      },
-      "original": {
-        "owner": "knoopx",
-        "repo": "nix-chuwi-minibook-x",
-        "type": "github"
-      }
-    },
     "nix-hazkey": {
       "inputs": {
         "home-manager": [
@@ -343,7 +320,6 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "import-tree": "import-tree",
-        "nix-chuwi-minibook-x": "nix-chuwi-minibook-x",
         "nix-hazkey": "nix-hazkey",
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",

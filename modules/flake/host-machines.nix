@@ -75,9 +75,12 @@ in {
       };
     };
     minibookx = linux "minibookx" {
-      defaultNixMods = [
-        inputs.nix-chuwi-minibook-x.nixosModules.default
-      ];
+      defaultNixMods = attrValues {
+        inherit
+          (inputs.nixos-hardware.nixosModules)
+          chuwi-minibook-x
+          ;
+      };
     };
     sakura = linux "sakura" {
       defaultNixMods = attrValues {
