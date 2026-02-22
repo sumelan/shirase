@@ -59,8 +59,7 @@ in {
         ]
         ++ (with flake.modules.homeManager; [
           default
-          foliate
-          pear-desktop
+          ebook
           protonapp
           rmpc
           youtube-tui

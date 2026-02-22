@@ -7,8 +7,16 @@ _: {
       openFirewall = true;
     };
 
-    custom.persist.root.directories = [
-      "/var/lib/audiobookshelf"
-    ];
+    custom = {
+      persist.root.directories = [
+        "/var/lib/audiobookshelf/library"
+        # metadata backups
+        "/var/lib/audiobookshelf/backups"
+      ];
+      cache.root.directories = [
+        "/var/lib/audiobookshelf/config"
+        "/var/lib/audiobookshelf/metadata"
+      ];
+    };
   };
 }

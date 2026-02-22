@@ -2,6 +2,9 @@
   inherit (config.flake.lib.wireplumber) rename;
 in {
   flake.modules.nixos.minisforum = _: {
+    # for makemkv to find usb bluray drive
+    # https://discourse.nixos.org/t/makemkv-cant-find-my-usb-blu-ray-drive/23714
+    boot.kernelModules = ["sg"];
     # rename audio devices
     services.pipewire.wireplumber.extraConfig = {
       "10-jbl-rename" = rename "alsa_output.usb-Harman_International_Industries_JBL_Pebbles_1.0.0-01.analog-stereo" "JBL Pebbles";

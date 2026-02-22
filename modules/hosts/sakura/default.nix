@@ -64,12 +64,12 @@ in {
         ]
         ++ (with flake.modules.homeManager; [
           default
-          foliate
+          bluray
+          cd
+          ebook
           obs-studio
-          pear-desktop
           protonapp
           rmpc
-          vlc
           youtube-tui
         ]);
     };
