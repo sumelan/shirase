@@ -45,8 +45,8 @@ sourceDir := "_sources"
 
 [group('TOOLS')]
 [doc('Search for all packages containing specific argments.')]
-@search args:
-    nix-locate {{ args }}
+@locate arg:
+    nix-locate {{ arg }}
 
 [group('TOOLS')]
 [doc('Download a file to the nix store and get the SHA-256 hash.')]
@@ -55,8 +55,8 @@ sourceDir := "_sources"
 
 [group('TOOLS')]
 [doc('Look the store path of specific package through yazi.')]
-@store package:
-    yazi $(nix eval --raw nixpkgs#{{ package }})
+@store pkg:
+    yazi $(nix eval --raw nixpkgs#{{ pkg }})
 
 [group('TOOLS')]
 [doc('Measure eval time on each host.')]
@@ -99,48 +99,33 @@ sourceDir := "_sources"
 
 [group('BUILD')]
 [doc('Look the package built with override attrs through yazi.')]
-@override package attrs:
-    nix build --impure --expr  '(import <nixpkgs> { }).{{ package }}.override { {{ attrs }} }'
+@override pkg attrs:
+    nix build --impure --expr  '(import <nixpkgs> { }).{{ pkg }}.override { {{ attrs }} }'
     yazi ./result
-
-[group('SYNCTHING')]
-[doc('Temporarily use syncthing in a shell environment.')]
-@syncRun:
-    nix-shell -p syncthing --run "syncthing --home ~/.config/syncthing/"
-
-[group('SYNCTHING')]
-[doc('Generate a new key.cert and key.pem for a deployment.')]
-@syncGenerate:
-    nix-shell -p syncthing --run "syncthing generate --home ~/.config/syncthing/"
 
 [group('SOPS')]
 [doc('Convert a SSH Ed25519 key to an age key.')]
-@sopsConvert:
-   nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt" 
+@sopskey:
+    nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt" 
 
 [group('SOPS')]
 [doc('Convert an existing SSH Ed25519 pubkey into an age public key.')]
-@sopsConvertPub:
-   nix-shell -p ssh-to-age --run "ssh-to-age < ~/.ssh/id_ed25519.pub"
+@sopspub:
+    nix-shell -p ssh-to-age --run "ssh-to-age < ~/.ssh/id_ed25519.pub"
 
 [group('SOPS')]
 [doc('Convert a SSH Ed25519 public key targeted to `HOST`.')]
-@sopsScan host:
-   nix-shell -p ssh-to-age --run 'ssh-keyscan {{ host }} | ssh-to-age' 
-
-[group('SOPS')]
-[doc('Edit `.sops.yaml`.')]
-@sopsEdit:
-  $EDITOR .sops.yaml
+@sopsscan host:
+    nix-shell -p ssh-to-age --run 'ssh-keyscan {{ host }} | ssh-to-age' 
 
 [group('SOPS')]
 [doc('Edit a secret file inside `sercrets/`.')]
-@sopsSecrets file:
+@sopsedit file:
     nix-shell -p sops --run "sops secrets/{{ file }}"
 
 [group('SOPS')]
 [doc('Update the keys for all secrets inside `secrets/FILE`.')]
-@sopsUpdate file:
+@sopsupdate file:
     nix-shell -p sops --run "sops updatekeys secrets/{{ file }}"
 
 [group('ZFS')]
