@@ -20,12 +20,16 @@ in {
         noDisplay = true;
       });
 
-    custom.persist.home.directories = [
-      "Documents"
-      "Downloads"
-      "Music"
-      "Pictures"
-      "Videos"
-    ];
+    custom = {
+      persist.home.directories = [
+        "Documents"
+        "Music"
+        "Pictures"
+        "Videos"
+      ];
+      cache.home.directories = [
+        "Downloads"
+      ];
+    };
   };
 }
