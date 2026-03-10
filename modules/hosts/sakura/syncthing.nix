@@ -6,13 +6,17 @@ _: {
       settings = {
         devices = {
           "minibookx" = {id = "LTAE56R-6ARZAXL-JK4KL6B-IHVTITS-AEL3TCQ-JR4ZNQQ-52QHVU2-7UU7SQI";};
+          "motorola razr 50" = {id = "3BSLI47-FLXIECF-S7QZWXG-ZXTMFFV-GLVVSLS-I3MYHPS-74GIRFU-5SVA6AO";};
         };
         folders = {
           "Documents" = {
             devices = ["minibookx"];
           };
           "Music" = {
-            devices = ["minibookx"];
+            devices = [
+              "minibookx"
+              "motorola razr 50"
+            ];
           };
           "Pictures" = {
             devices = ["minibookx"];

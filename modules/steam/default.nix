@@ -24,7 +24,7 @@ _: {
       };
     };
 
-    vr = {user, ...}: {
+    vr = {pkgs, ...}: {
       services.wivrn = {
         enable = true;
         openFirewall = true;
@@ -38,7 +38,8 @@ _: {
         autoStart = true;
 
         # Config for WiVRn (https://github.com/WiVRn/WiVRn/blob/master/docs/configuration.md)
-        config = {
+        /*
+          config = {
           enable = true;
           json = {
             # 1.0x foveation scaling
@@ -65,9 +66,10 @@ _: {
             ];
           };
         };
+        */
       };
-      programs.adb.enable = true;
-      users.users.${user}.extraGroups = ["adbusers"];
+
+      environment.systemPackages = [pkgs.android-tools];
 
       custom.persist = {
         home.directories = [
