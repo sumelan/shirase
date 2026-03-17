@@ -56,13 +56,16 @@ sudo nixos-install --no-root-password --flake "github:sumelan/shirase/main#HOST"
 ## Resource
 
 - [Full Disk Encryption and Impermanence on NixOS](https://notashelf.dev/posts/impermanence)
-  Raf wrote a detailed setup about encryption and impermanence. Also, the
+  A detailed setup about encryption and impermanence. Also, the
   programs he is involved with (nh, nvf, flint, and more) always help me use
   NixOS.
 
 - [iynaix/dotfiles](https://github.com/iynaix/dotfiles)
+- [Michael-C-Buckley/nixos](https://github.com/Michael-C-Buckley/nixos)
+- [Ladas552/Flake-Ocean](https://github.com/Ladas552/Flake-Ocean)
+- [poz/niksos](https://git.poz.pet/poz/niksos)
 
-  I shamelessly copied many configs from his repo.
+  Took inspiration from these dotfiles.
 
 - [Vimjoyer's YouTube](https://www.youtube.com/@vimjoyer)
 
