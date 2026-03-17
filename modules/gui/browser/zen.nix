@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  inherit (lib) concatLines mapAttrsToList getExe;
+  inherit (lib) concatLines mapAttrsToList;
   inherit (lib.strings) toJSON;
   inherit (builtins) listToAttrs;
 in {
@@ -100,27 +100,6 @@ in {
   in {
     home = {
       packages = [zen];
-      sessionVariables = {
-        # set default browser
-        DEFAULT_BROWSER = getExe zen;
-        BROWSER = getExe zen;
-      };
-    };
-
-    xdg.mimeApps = let
-      value = "zen.desktop";
-      associations = listToAttrs (map (name: {
-          inherit name value;
-        }) [
-          "x-scheme-handler/unknown"
-          "x-scheme-handler/about"
-          "x-scheme-handler/https"
-          "x-scheme-handler/http"
-          "text/html"
-        ]);
-    in {
-      associations.added = associations;
-      defaultApplications = associations;
     };
 
     custom = {

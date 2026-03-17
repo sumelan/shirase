@@ -62,7 +62,6 @@ in {
           ebook
           protonapp
           rmpc
-          youtube-tui
         ]);
     };
   };

@@ -1,6 +1,11 @@
-{config, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (config) flake;
   inherit (builtins) listToAttrs;
+  inherit (lib) getExe;
 in {
   flake.modules = {
     nixos.default = {pkgs, ...}: let
@@ -42,9 +47,28 @@ in {
       ];
     };
 
-    homeManager.default = _: {
+    homeManager.default = {pkgs, ...}: let
+      inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) helium;
+    in {
+      home.sessionVariables = {
+        # set default browser
+        DEFAULT_BROWSER = getExe helium;
+        BROWSER = getExe helium;
+      };
+
       xdg.mimeApps = let
         value = "helium.desktop";
+
+        defaultAssociations = listToAttrs (map (name: {
+            inherit name value;
+          }) [
+            "x-scheme-handler/unknown"
+            "x-scheme-handler/about"
+            "x-scheme-handler/https"
+            "x-scheme-handler/http"
+            "text/html"
+          ]);
+
         imgAssociations = listToAttrs (map (name: {
             inherit name value;
           }) [
@@ -55,8 +79,12 @@ in {
             "application/pdf"
           ]);
       in {
-        # remove `helium.desktop` from mimetypes
-        associations.removed = imgAssociations;
+        defaultApplications = defaultAssociations;
+        associations = {
+          added = defaultAssociations;
+          # remove `helium.desktop` from mimetypes
+          removed = imgAssociations;
+        };
       };
     };
   };

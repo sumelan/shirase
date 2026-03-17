@@ -70,7 +70,6 @@ in {
           obs-studio
           protonapp
           rmpc
-          youtube-tui
         ]);
     };
   };

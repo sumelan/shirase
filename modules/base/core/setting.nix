@@ -65,6 +65,7 @@ in {
       # do not change this value
       system.stateVersion = "24.05";
     };
+
     homeManager.default = {
       pkgs,
       user,

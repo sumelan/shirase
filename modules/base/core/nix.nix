@@ -175,6 +175,7 @@ in {
         dev.enable = false;
       };
     };
+
     homeManager.default = {
       pkgs,
       user,

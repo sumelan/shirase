@@ -436,8 +436,8 @@ in
 
             // Execute
         Mod+Return hotkey-overlay-title="${hotkey "#CB775D" "  Kitty" "Terminal Emulator"}"   { spawn "kitty"; }
-        Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "  Zen" "Web Browser"}"                { spawn "zen"; }
-        Mod+Shift+D hotkey-overlay-title="${hotkey "#D79784" "󰗢  niri" "Command"}"                   { spawn "${getExe niriCmd}"; }
+        Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "  Helium" "Web Browser"}"             { spawn-sh "helium &"; }
+        Mod+Shift+D hotkey-overlay-title="${hotkey "#D79784" "󰗢  niri" "Command"}"             { spawn "${getExe niriCmd}"; }
         Mod+Shift+Return hotkey-overlay-title="${hotkey "#97B67C" "  Neovim" "Editor"}"       { spawn "kitty" "-d" "${proDir}" "--app-id" "nvim" "nvim"; }
         Mod+Shift+N hotkey-overlay-title="${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}"   { spawn "kitty" "--app-id" "nix-search-tv" "ns"; }
         Mod+Shift+Y hotkey-overlay-title="${hotkey "#EFD49F" "󰇥  Yazi" "File Manager"}"        { spawn "kitty" "--app-id" "yazi" "yazi"; }

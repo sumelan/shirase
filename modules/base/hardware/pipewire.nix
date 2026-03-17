@@ -1,4 +1,6 @@
-_: {
+{lib, ...}: let
+  inherit (lib) getExe';
+in {
   flake.modules = {
     nixos.default = {
       pkgs,
@@ -39,10 +41,36 @@ _: {
         ];
       };
     };
+
     homeManager.default = {pkgs, ...}: {
-      # it is necessary to add `programs.dconf.enable = true;` for the daemon to work correctly
-      services.easyeffects.enable = true;
-      home.packages = [pkgs.pwvucontrol];
+      home.packages = [
+        pkgs.pwvucontrol
+        pkgs.easyeffects
+      ];
+
+      systemd.user.services = {
+        easyeffects = {
+          Unit = {
+            Description = "Easyeffects daemon";
+            After = ["graphical-session.target"] ++ ["tray.target"];
+            PartOf = ["graphical-session.target"];
+          };
+
+          Install.WantedBy = ["graphical-session.target"];
+
+          Service = {
+            # avoid to race comditions
+            ExecStartPre = getExe' pkgs.coreutils "sleep 3s";
+            ExecStart = getExe' pkgs.easyeffects "easyeffects --hide-window";
+            ExecStop = getExe' pkgs.easyeffects "easyeffects --quit";
+            KillMode = "mixed";
+            Restart = "on-failure";
+            RestartSec = 5;
+            TimeoutStopSec = 10;
+          };
+        };
+      };
+
       xdg.dataFile = let
         src = pkgs.fetchFromGitHub {
           owner = "JackHack96";
