@@ -6,7 +6,6 @@
   lib,
   ...
 }: let
-  inherit (config.flake.lib.colors) orange_dim gray4;
   inherit (lib) mkForce;
 in {
   flake.modules.homeManager.default = {user, ...}: {
@@ -87,8 +86,8 @@ in {
             parseEmoji = true;
           };
           gui = let
-            accent = orange_dim;
-            muted = gray4;
+            accent = "#CB775D";
+            muted = "#4C566A";
           in {
             theme = {
               activeBorderColor = [

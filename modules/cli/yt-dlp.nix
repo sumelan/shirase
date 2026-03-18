@@ -4,7 +4,6 @@ in {
   flake.modules.homeManager.default = {pkgs, ...}: {
     programs.yt-dlp = {
       enable = true;
-      package = pkgs.yt-dlp;
       settings = {
         add-metadata = true;
         format = mkFormat 720;

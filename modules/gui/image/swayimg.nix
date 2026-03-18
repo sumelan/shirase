@@ -1,16 +1,6 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{lib, ...}: let
   inherit (builtins) floor listToAttrs;
   inherit (lib) toHexString;
-  inherit
-    (config.flake.lib.colors)
-    gray1
-    gray2
-    white0
-    ;
   swayimgOpacity = toHexString (((floor (0.95 * 100 + 0.5)) * 255) / 100);
 in {
   flake.modules.homeManager.default = {
@@ -33,7 +23,7 @@ in {
           app_id = "swayimg";
         };
         viewer = {
-          window = gray1 + swayimgOpacity; # Window background color (blur/RGBA)
+          window = "#2E3440" + swayimgOpacity; # Window background color (blur/RGBA)
           transparency = "grid";
           scale = "optimal"; # Default image scale (optimal/width/height/fit/fill/real/keep)
           position = "center";
@@ -62,9 +52,9 @@ in {
           preload = "no";
           pstore = "no"; # Enable/disable storing thumbnails in persistent storage (yes/no)
           antialiasing = "mks13";
-          window = gray1 + swayimgOpacity; # Background color of the window (RGBA)
-          background = gray2; # Background color of non-selected tiles (RGBA)
-          select = white0; # Background color of the selected tile (RGBA)
+          window = "#2E3440" + swayimgOpacity; # Background color of the window (RGBA)
+          background = "#3B4252"; # Background color of non-selected tiles (RGBA)
+          select = "#C0C8D8"; # Background color of the selected tile (RGBA)
         };
         list = {
           order = "alpha";
@@ -76,9 +66,9 @@ in {
         font = {
           name = monoFont;
           size = 14;
-          color = white0;
-          shadow = gray1 + swayimgOpacity;
-          background = gray1;
+          color = "#C0C8D8";
+          shadow = "#2E3440" + swayimgOpacity;
+          background = "#3B4252";
         };
         info = {
           show = "yes"; # Show on startup (yes/no)

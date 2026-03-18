@@ -1,18 +1,5 @@
-{config, ...}: let
+_: let
   inherit (builtins) listToAttrs;
-  inherit
-    (config.flake.lib.colors)
-    black0
-    gray3
-    white3
-    blue0
-    cyan_base
-    green_base
-    red_base
-    orange_base
-    magenta_base
-    yellow_base
-    ;
 in {
   flake.modules.homeManager.default = {config, ...}: let
     inherit (config.xdg.userDirs) pictures;
@@ -89,16 +76,16 @@ in {
 
         color-palette = {
           palette = [
-            black0
-            gray3
-            white3
-            blue0
-            cyan_base
-            green_base
-            red_base
-            orange_base
-            magenta_base
-            yellow_base
+            "#191D24"
+            "#434C5E"
+            "#ECEFF4"
+            "#5E81AC"
+            "#8FBCBB"
+            "#A3BE8C"
+            "#BF616A"
+            "#D08770"
+            "#B48EAD"
+            "#EBCB8B"
           ];
         };
       };
