@@ -1,13 +1,11 @@
-{config, ...}: let
-  inherit (config) flake;
-in {
+_: {
   flake.modules.nvf.themes = {pkgs, ...}: {
     vim = {
       # https://github.com/NotAShelf/nvf/blob/main/modules/plugins/theme/supported-themes.nix
       theme.enable = false;
       extraPlugins = {
         nordic = {
-          package = flake.packages.${pkgs.stdenv.hostPlatform.system}.nordic-nvim;
+          package = pkgs.custom.nordic-nvim;
           setup =
             # lua
             ''

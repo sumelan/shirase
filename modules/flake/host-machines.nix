@@ -39,7 +39,7 @@
       modules =
         nixMods
         ++ defaultNixMods
-        ++ [flake.modules.nixos.overlay]
+        ++ [flake.modules.nixos.overlays]
         ++ [flake.modules.nixos."hosts/${host}"]
         ++ [flake.modules.nixos."users/${user}"]
         ++ [

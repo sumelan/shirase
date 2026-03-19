@@ -36,14 +36,13 @@ in {
           yatline
           ;
         # patched plugins
-        inherit (pkgs) nord;
+        inherit (pkgs) nord-yazi;
       };
 
-      flavors = {inherit (pkgs) nord;};
+      flavors = {inherit (pkgs) nord-yazi;};
 
       theme.flavor = {
-        light = "nord";
-        dark = "nord";
+        dark = "nord-yazi";
       };
 
       initLua =
@@ -59,7 +58,7 @@ in {
           })
 
           require("yatline"):setup({
-              theme = require("nord"):setup(),
+              theme = require("nord-yazi"):setup(),
 
               padding = { inner = 1, outer = 1 },
               tab_width = 20,

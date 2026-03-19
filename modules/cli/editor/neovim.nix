@@ -1,22 +1,17 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{lib, ...}: let
   inherit (lib) getExe;
-  inherit (config) flake;
 in {
   flake.modules = {
     nixos.default = {pkgs, ...}: let
       # use the package configured by nvf
-      customNeovim = flake.packages.${pkgs.stdenv.hostPlatform.system}.nvf;
+      customNeovim = pkgs.custom.nvf;
     in {
       environment.systemPackages = [customNeovim];
     };
 
     homeManager.default = {pkgs, ...}: let
       # use the package configured by nvf
-      customNeovim = flake.packages.${pkgs.stdenv.hostPlatform.system}.nvf;
+      customNeovim = pkgs.custom.nvf;
     in {
       home = {
         packages = [customNeovim];

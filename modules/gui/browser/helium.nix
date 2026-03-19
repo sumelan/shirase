@@ -1,15 +1,10 @@
-{
-  config,
-  lib,
-  ...
-}: let
-  inherit (config) flake;
+{lib, ...}: let
   inherit (builtins) listToAttrs;
   inherit (lib) getExe;
 in {
   flake.modules = {
     nixos.default = {pkgs, ...}: let
-      inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) helium;
+      inherit (pkgs.custom) helium;
     in {
       programs.chromium = {
         enable = true;
@@ -48,7 +43,7 @@ in {
     };
 
     homeManager.default = {pkgs, ...}: let
-      inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) helium;
+      inherit (pkgs.custom) helium;
     in {
       home.sessionVariables = {
         # set default browser

@@ -1,8 +1,6 @@
-{config, ...}: let
-  inherit (config) flake;
-in {
+_: {
   flake.modules.homeManager.default = {pkgs, ...}: let
-    pluginsRepo = flake.packages.${pkgs.stdenv.hostPlatform.system}.dms-plugins;
+    pluginsRepo = pkgs.custom.dms-plugins;
   in {
     programs.dank-material-shell = {
       plugins = {
