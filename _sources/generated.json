@@ -29,11 +29,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-c/ea8C1XjTkBo0/ujGHEbKWyCmRMxyuiuOzAO9AMf1o=",
+            "sha256": "sha256-6xqNRaP3aqitEseexRVEEjKkJClC0j1HHZoRGQanhSk=",
             "type": "url",
-            "url": "https://github.com/imputnet/helium-linux/releases/download/0.10.5.1/helium-0.10.5.1-x86_64.AppImage"
+            "url": "https://github.com/imputnet/helium-linux/releases/download/0.10.6.1/helium-0.10.6.1-x86_64.AppImage"
         },
-        "version": "0.10.5.1"
+        "version": "0.10.6.1"
     },
     "nordic-nvim": {
         "cargoLock": null,
