@@ -48,11 +48,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771066448,
-        "narHash": "sha256-Ihr+GBrQZv98VqkGE92qYE8Pax/z3uB/jzxOf2tkcBE=",
+        "lastModified": 1774168553,
+        "narHash": "sha256-csKfeS7rhxDgP2/ol0/Y/G80hq+ySamnqMP4+wcEPbE=",
         "owner": "sumelan",
         "repo": "dgop",
-        "rev": "09895307a2923e520e0a171170ab71374d2622d3",
+        "rev": "9aa1987da299f505d77d869eedfc1f7e3426ffd5",
         "type": "github"
       },
       "original": {
