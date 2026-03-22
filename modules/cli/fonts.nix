@@ -9,12 +9,6 @@
 in {
   flake.modules.homeManager.default = _: {
     options.custom = {
-      btop.disks = mkOption {
-        type = listOf str;
-        default = [];
-        description = "List of disks to monitor in btop";
-      };
-
       fonts = {
         regular = mkOption {
           type = str;

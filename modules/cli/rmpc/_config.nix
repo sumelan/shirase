@@ -15,7 +15,7 @@ in
     (
         address: "${mpdAddress}",
         password: None,
-        theme: "nord",
+        theme: "custom",
         cache_dir: "${cacheHome}/rmpc",
         on_song_change: None,
         volume_step: 5,

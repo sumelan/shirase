@@ -10,7 +10,7 @@ in {
 
     xdg.configFile = {
       "rmpc/config.ron".source = import ./_config.nix {inherit config pkgs;};
-      "rmpc/themes/nord.ron".source = import ./_nord.nix {inherit pkgs;};
+      "rmpc/themes/custom.ron".source = import ./_theme.nix {inherit pkgs;};
     };
 
     xdg.desktopEntries = {

@@ -59,6 +59,9 @@ in {
                 xwayland = true;
                 screenshot.host = "sakura";
               };
+              programs = {
+                btop. rocmSupport = true;
+              };
             };
           }
         ]

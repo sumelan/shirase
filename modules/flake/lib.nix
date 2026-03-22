@@ -1,6 +1,7 @@
 _: {
   flake.lib = {
     # rename audio device
+    # run`wpctl status` and `wpctl inspect xx`
     wireplumber.rename = old: update: {
       "monitor.alsa.rules" = [
         {

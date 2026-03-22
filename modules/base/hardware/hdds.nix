@@ -39,7 +39,7 @@ in {
       };
     };
     hm = {
-      custom.btop.disks =
+      custom.programs.btop.disks =
         optional cfg.westernDigital "/media/WD4T"
         ++ optional cfg.ironWolf "/media/IW2T";
     };
