@@ -1,26 +1,66 @@
-_: let
-  mkFormat = height: ''"bestvideo[height<=?${toString height}][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'';
+{
+  inputs,
+  lib,
+  ...
+}: let
+  inherit (lib) getExe;
+  mkFormat = height: "bestvideo[height<=?${toString height}][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best";
 in {
-  flake.modules.homeManager.default = {pkgs, ...}: {
-    programs.yt-dlp = {
-      enable = true;
-      settings = {
-        add-metadata = true;
-        format = mkFormat 720;
-        no-mtime = true;
-        output = "%(title)s.%(ext)s";
-        sponsorblock-mark = "all";
-        windows-filenames = true;
+  perSystem = {pkgs, ...}: {
+    packages.yt-dlp = inputs.wrappers.lib.wrapPackage {
+      inherit pkgs;
+      package = pkgs.yt-dlp;
+      flags = {
+        "--add-metadata" = true;
+        "--format" = mkFormat 720;
+        "--no-mtime" = true;
+        "--output" = "%(title)s.%(ext)s";
+        "--sponsorblock-mark" = "all";
+        "--windows-filenames" = true;
+        # youtube causing 403 errors
+        # https://github.com/yt-dlp/yt-dlp/issues/15712#issuecomment-3808702603
+        # PR: https://github.com/yt-dlp/yt-dlp/pull/15726
+        "--extractor-args" = "youtube:player_client=default,-android_sdkless";
       };
     };
+  };
 
-    # yt-dlp’s dependencies
-    home.packages = [
-      # must
-      pkgs.ffmpeg
-      # `--embed-thumbnail` need this in certain formats
-      (pkgs.python313.withPackages
-        (ps: [ps.mutagen]))
-    ];
+  flake.modules = {
+    nixos.default = {pkgs, ...}: {
+      nixpkgs.overlays = [
+        (_: _prev: {
+          inherit (pkgs.custom) yt-dlp;
+        })
+      ];
+    };
+
+    homeManager.default = {pkgs, ...}: {
+      home = {
+        shellAliases = {
+          yt = "yt-dlp";
+          yt1080 = ''yt-dlp --format "${mkFormat 1080}"'';
+          ytaudio = "yt-dlp --audio-format mp3 --extract-audio";
+          ytsubonly = "yt-dlp --skip-download --write-subs";
+          ytplaylist = "yt-dlp --output '%(playlist_index)d - %(title)s.%(ext)s'";
+        };
+        packages =
+          [
+            pkgs.yt-dlp # overlay-ed above
+          ]
+          # yt-dlp’s dependencies
+          ++ [
+            pkgs.ffmpeg # must
+            (pkgs.python313.withPackages # `--embed-thumbnail` need this in certain formats
+              
+              (ps: [ps.mutagen]))
+          ];
+      };
+
+      custom.programs.print-config = {
+        yt-dlp =
+          # sh
+          ''cat "${getExe pkgs.yt-dlp}"'';
+      };
+    };
   };
 }

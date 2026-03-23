@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib) mkForce;
 in {
-  flake.modules.nixos.default = {pkgs, ...}: {
+  flake.modules.nixos.core = {pkgs, ...}: {
     # kernelPackage
     boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
     # boot

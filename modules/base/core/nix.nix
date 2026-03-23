@@ -14,7 +14,7 @@
     ;
 in {
   flake.modules = {
-    nixos.default = {
+    nixos.core = {
       config,
       pkgs,
       user,

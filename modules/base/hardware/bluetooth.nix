@@ -2,7 +2,7 @@
   inherit (lib) getExe';
 in {
   flake.modules = {
-    nixos.default = {
+    nixos.hardware = {
       hardware.bluetooth = {
         enable = true;
         powerOnBoot = true;

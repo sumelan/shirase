@@ -39,6 +39,9 @@
       modules =
         nixMods
         ++ defaultNixMods
+        ++ [flake.modules.nixos.core]
+        ++ [flake.modules.nixos.fileSystem]
+        ++ [flake.modules.nixos.hardware]
         ++ [flake.modules.nixos.overlays]
         ++ [flake.modules.nixos."hosts/${host}"]
         ++ [flake.modules.nixos."users/${user}"]

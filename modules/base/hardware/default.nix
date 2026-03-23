@@ -1,6 +1,6 @@
 _: {
   flake.modules.nixos = {
-    default = {user, ...}: {
+    hardware = {user, ...}: {
       powerManagement.enable = true;
       services = {
         upower.enable = true;

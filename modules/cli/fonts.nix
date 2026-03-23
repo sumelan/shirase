@@ -7,7 +7,7 @@
     package
     ;
 in {
-  flake.modules.homeManager.default = _: {
+  flake.modules.homeManager.default = {pkgs, ...}: {
     options.custom = {
       fonts = {
         regular = mkOption {
@@ -25,6 +25,12 @@ in {
           description = "The packages to install for the fonts";
         };
       };
+    };
+    config = {
+      custom.fonts.packages = [
+        pkgs.noto-fonts
+        pkgs.noto-fonts-color-emoji
+      ];
     };
   };
 }

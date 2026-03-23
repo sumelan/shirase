@@ -12,9 +12,5 @@ in {
         wl-clipboard
         ;
     };
-    custom.fonts.packages = [
-      pkgs.noto-fonts
-      pkgs.noto-fonts-color-emoji
-    ];
   };
 }

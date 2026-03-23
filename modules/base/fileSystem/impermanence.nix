@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib) unique;
 in {
-  flake.modules.nixos.default = {
+  flake.modules.nixos.fileSystem = {
     config,
     user,
     ...

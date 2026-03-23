@@ -2,7 +2,7 @@
   inherit (builtins) attrValues;
   inherit (lib) mkForce hiPrio;
 in {
-  flake.modules.nixos.default = {
+  flake.modules.nixos.core = {
     config,
     pkgs,
     user,

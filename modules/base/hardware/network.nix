@@ -1,6 +1,6 @@
 _: {
   flake.modules.nixos = {
-    default = {pkgs, ...}: {
+    hardware = {pkgs, ...}: {
       # system packages
       # NetworkManager control applet for GNOME
       environment.systemPackages = [pkgs.networkmanagerapplet];

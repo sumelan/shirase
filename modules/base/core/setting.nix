@@ -2,7 +2,7 @@
   inherit (builtins) attrValues;
 in {
   flake.modules = {
-    nixos.default = {
+    nixos.core = {
       pkgs,
       user,
       ...
