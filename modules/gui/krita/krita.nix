@@ -31,8 +31,8 @@ _: {
       };
     };
 
-    custom.persist.home = {
-      directories = [
+    custom.fileSystem = {
+      persist.home.directories = [
         ".local/share/krita"
       ];
     };

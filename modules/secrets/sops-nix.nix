@@ -46,8 +46,10 @@ _: {
         };
       };
     };
-    custom.persist.home.directories = [
-      ".config/sops"
-    ];
+    custom.fileSystem = {
+      persist.home.directories = [
+        ".config/sops"
+      ];
+    };
   };
 }

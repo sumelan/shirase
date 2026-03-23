@@ -8,9 +8,16 @@ in {
           {
             networking.hostId = "b5e8f0be";
 
-            custom.hdds = {
-              westernDigital = true;
-              ironWolf = true;
+            custom = {
+              hardware = {
+                hdds = {
+                  westernDigital = true;
+                  ironWolf = true;
+                };
+              };
+              programs = {
+                btop.rocmSupport = true;
+              };
             };
           }
         ]
@@ -58,9 +65,6 @@ in {
               niri = {
                 xwayland = true;
                 screenshot.host = "sakura";
-              };
-              programs = {
-                btop. rocmSupport = true;
               };
             };
           }

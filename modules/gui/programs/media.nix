@@ -7,12 +7,14 @@ _: {
         pkgs.mpv
         pkgs.pear-desktop
       ];
-      custom.persist.home.directories = [
-        ".cache/euphonica"
-        ".local/share/Grayjay"
-        ".local/state/mpv" # watch later
-        ".config/YouTube Music"
-      ];
+      custom.fileSystem = {
+        persist.home.directories = [
+          ".cache/euphonica"
+          ".local/share/Grayjay"
+          ".local/state/mpv" # watch later
+          ".config/YouTube Music"
+        ];
+      };
     };
 
     cd = {pkgs, ...}: {
@@ -26,23 +28,25 @@ _: {
         pkgs.vlc
       ];
 
-      custom.persist.home = {
-        files = [
-          ".config/aacs/KEYDB.cfg"
-        ];
-        directories = [
-          # handbrake
-          ".config/ghb"
-          ".config/vlc"
-          ".MakeMKV"
-        ];
+      custom.fileSystem = {
+        persist.home = {
+          files = [
+            ".config/aacs/KEYDB.cfg"
+          ];
+          directories = [
+            # handbrake
+            ".config/ghb"
+            ".config/vlc"
+            ".MakeMKV"
+          ];
+        };
       };
     };
 
     ebook = {pkgs, ...}: {
       home.packages = [pkgs.foliate];
 
-      custom = {
+      custom.fileSystem = {
         persist.home.directories = [
           ".local/share/com.github.johnfactotum.Foliate"
         ];
@@ -55,9 +59,11 @@ _: {
     obs-studio = _: {
       programs.obs-studio.enable = true;
 
-      custom.persist.home.directories = [
-        ".config/obs-studio"
-      ];
+      custom.fileSystem = {
+        persist.home.directories = [
+          ".config/obs-studio"
+        ];
+      };
     };
   };
 }

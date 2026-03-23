@@ -15,7 +15,7 @@ _: {
         enable = true;
       };
 
-      custom = {
+      custom.fileSystem = {
         persist.home.directories = [
           ".config/kdeconnect"
         ];

@@ -56,8 +56,10 @@ _: {
         };
       };
     };
-    custom.persist.home.directories = [
-      ".local/share/syncthing"
-    ];
+    custom.fileSystem = {
+      persist.home.directories = [
+        ".local/share/syncthing"
+      ];
+    };
   };
 }

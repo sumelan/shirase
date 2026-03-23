@@ -223,12 +223,14 @@ in {
         };
       };
 
-      custom.cache.home.directories = [
-        ".cache/nix-index"
-        ".cache/nix-search-tv"
-        ".cache/nix"
-        ".cache/nixpkgs-review"
-      ];
+      custom.fileSystem = {
+        cache.home.directories = [
+          ".cache/nix-index"
+          ".cache/nix-search-tv"
+          ".cache/nix"
+          ".cache/nixpkgs-review"
+        ];
+      };
     };
   };
 }

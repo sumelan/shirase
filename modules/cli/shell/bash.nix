@@ -47,6 +47,8 @@ _: {
         '';
     };
 
-    custom.persist.home.directories = [".config/bash"];
+    custom.fileSystem = {
+      persist.home.directories = [".config/bash"];
+    };
   };
 }

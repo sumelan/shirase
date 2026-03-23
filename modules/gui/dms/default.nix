@@ -62,7 +62,7 @@ in {
         services.dms.Service.Restart = mkForce "always";
       };
 
-      custom = {
+      custom.fileSystem = {
         persist.home.directories = [
           ".config/niri/dms"
           ".local/state/DankMaterialShell"

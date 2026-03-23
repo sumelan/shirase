@@ -56,8 +56,10 @@ _: {
         };
       };
     };
-    custom.persist.home.directories = [
-      ".local/share/mpd"
-    ];
+    custom.fileSystem = {
+      persist.home.directories = [
+        ".local/share/mpd"
+      ];
+    };
   };
 }

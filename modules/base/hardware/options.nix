@@ -4,7 +4,7 @@
 in {
   flake.modules.nixos.hdds = {
     options.custom = {
-      hdds = {
+      hardware.hdds = {
         westernDigital = mkOption {
           type = bool;
           description = "WD Elements 4TB";

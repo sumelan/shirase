@@ -7,7 +7,7 @@ _: {
       openFirewall = true;
     };
 
-    custom = {
+    custom.fileSystem = {
       persist.root.directories = [
         "/var/lib/audiobookshelf/library"
         # metadata backups

@@ -136,8 +136,10 @@ in {
       addedAssociations = mimeApps.associations.added;
       removedAssociations = mimeApps.associations.removed;
     };
-    custom.cache.root.directories = [
-      "/var/lib/systemd/coredump"
-    ];
+    custom.fileSystem = {
+      cache.root.directories = [
+        "/var/lib/systemd/coredump"
+      ];
+    };
   };
 }

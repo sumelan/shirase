@@ -15,7 +15,7 @@ in {
         ;
     };
 
-    custom = {
+    custom.fileSystem = {
       persist.home.directories = [
         ".config/Proton"
         ".config/Proton Mail"

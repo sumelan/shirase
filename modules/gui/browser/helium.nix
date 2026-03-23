@@ -36,10 +36,14 @@ in {
 
       environment.systemPackages = [helium];
 
-      custom.persist.home.directories = [
-        ".cache/net.imput.helium"
-        ".config/net.imput.helium"
-      ];
+      custom.fileSystem = {
+        persist.home.directories = [
+          ".config/net.imput.helium"
+        ];
+        cache.home.directories = [
+          ".cache/net.imput.helium"
+        ];
+      };
     };
 
     homeManager.default = {pkgs, ...}: let

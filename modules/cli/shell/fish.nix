@@ -65,6 +65,8 @@ _: {
         complete -c pj -f -a "(_pj)"
       '';
 
-    custom.cache.home.directories = [".local/share/fish"];
+    custom.fileSystem = {
+      cache.home.directories = [".local/share/fish"];
+    };
   };
 }

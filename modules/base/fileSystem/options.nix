@@ -12,8 +12,8 @@
 in {
   flake.modules = {
     nixos.default = _: {
-      options = {
-        custom = {
+      options.custom = {
+        fileSystem = {
           persist = {
             root = {
               directories = mkOption {
@@ -75,28 +75,30 @@ in {
     };
     homeManager.default = _: {
       options.custom = {
-        persist.home = {
-          directories = mkOption {
-            type = listOf str;
-            default = [];
-            description = "Directories to persist in home directory";
+        fileSystem = {
+          persist.home = {
+            directories = mkOption {
+              type = listOf str;
+              default = [];
+              description = "Directories to persist in home directory";
+            };
+            files = mkOption {
+              type = listOf str;
+              default = [];
+              description = "Files to persist in home directory";
+            };
           };
-          files = mkOption {
-            type = listOf str;
-            default = [];
-            description = "Files to persist in home directory";
-          };
-        };
-        cache.home = {
-          directories = mkOption {
-            type = listOf str;
-            default = [];
-            description = "Directories to persist, but not to snapshot";
-          };
-          files = mkOption {
-            type = listOf str;
-            default = [];
-            description = "Files to persist, but not to snapshot";
+          cache.home = {
+            directories = mkOption {
+              type = listOf str;
+              default = [];
+              description = "Directories to persist, but not to snapshot";
+            };
+            files = mkOption {
+              type = listOf str;
+              default = [];
+              description = "Files to persist, but not to snapshot";
+            };
           };
         };
       };

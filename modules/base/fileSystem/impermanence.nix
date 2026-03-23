@@ -6,8 +6,8 @@ in {
     user,
     ...
   }: let
-    cfg = config.custom;
-    hmcfg = config.hm.custom;
+    cfg = config.custom.fileSystem;
+    hmcfg = config.hm.custom.fileSystem;
   in {
     boot.initrd.systemd = {
       # enable stage-1 bootloader

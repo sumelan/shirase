@@ -102,7 +102,7 @@ in {
       packages = [zen];
     };
 
-    custom = {
+    custom.fileSystem = {
       persist.home.directories = [
         ".config/zen"
       ];

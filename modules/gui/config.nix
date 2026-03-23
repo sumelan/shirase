@@ -20,7 +20,7 @@ in {
         noDisplay = true;
       });
 
-    custom = {
+    custom.fileSystem = {
       persist.home.directories = [
         "Documents"
         "Music"

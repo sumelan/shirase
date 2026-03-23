@@ -23,8 +23,10 @@ in {
       };
     };
 
-    custom.cache.home.directories = [
-      ".cache/rmpc/youtube"
-    ];
+    custom.fileSystem = {
+      cache.home.directories = [
+        ".cache/rmpc/youtube"
+      ];
+    };
   };
 }

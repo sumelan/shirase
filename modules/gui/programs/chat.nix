@@ -11,7 +11,7 @@ in {
         ;
     };
 
-    custom = {
+    custom.fileSystem = {
       persist.home.directories = [
         ".config/dissent"
         ".config/Slack"

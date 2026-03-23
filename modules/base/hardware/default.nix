@@ -46,9 +46,11 @@ _: {
         package = pkgs.wireshark; # default value: wireshark-cli
       };
       users.users.${user}.extraGroups = ["wireshark"];
-      custom.persist.root.directories = [
-        "/etc/NetworkManager"
-      ];
+      custom.fileSystem = {
+        persist.root.directories = [
+          "/etc/NetworkManager"
+        ];
+      };
     };
 
     logitech = _: {
@@ -63,9 +65,11 @@ _: {
         enable = true;
         daemon.enable = true;
       };
-      custom.persist.home.directories = [
-        ".config/OpenTabletDriver"
-      ];
+      custom.fileSystem = {
+        persist.home.directories = [
+          ".config/OpenTabletDriver"
+        ];
+      };
     };
 
     qmk = _: {

@@ -13,7 +13,7 @@ _: {
       hardware = {
         graphics.enable32Bit = true;
       };
-      custom = {
+      custom.fileSystem = {
         persist.home.directories = [".steam"];
         cache.home.directories = [
           ".local/share/Steam"
@@ -71,8 +71,8 @@ _: {
 
       environment.systemPackages = [pkgs.android-tools];
 
-      custom.persist = {
-        home.directories = [
+      custom.fileSystem = {
+        persist.home.directories = [
           ".config/wivrn"
         ];
       };

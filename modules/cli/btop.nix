@@ -121,30 +121,6 @@ in {
 
   flake.modules = {
     nixos.default = {config, ...}: {
-      nixpkgs.overlays = [
-        (_: prev: {
-          # overlay so that security wrappers for xps can pick it up
-          btop =
-            (self.wrapperModules.btop.apply {
-              pkgs = prev;
-              extraSettings =
-                {
-                  color_theme = "nord";
-                  disks_filter = concatStringsSep " " (
-                    [
-                      "/"
-                      "/boot"
-                      "/persist"
-                    ]
-                    ++ config.hm.custom.programs.btop.disks
-                  );
-                }
-                // config.hm.custom.programs.btop.extraSettings;
-            }).wrapper;
-        })
-      ];
-    };
-    homeManager.default = {pkgs, ...}: {
       options.custom = {
         programs.btop =
           btopOptions
@@ -158,11 +134,34 @@ in {
           };
       };
       config = {
-        home = {
-          packages = [
-            pkgs.btop # overlay-ed above
-          ];
-        };
+        nixpkgs.overlays = [
+          (_: prev: {
+            btop =
+              (self.wrapperModules.btop.apply {
+                pkgs = prev;
+                extraSettings =
+                  {
+                    color_theme = "nord";
+                    disks_filter = concatStringsSep " " (
+                      [
+                        "/"
+                        "/boot"
+                        "/persist"
+                      ]
+                      ++ config.custom.programs.btop.disks
+                    );
+                  }
+                  // config.custom.programs.btop.extraSettings;
+              }).wrapper;
+          })
+        ];
+      };
+    };
+    homeManager.default = {pkgs, ...}: {
+      home = {
+        packages = [
+          pkgs.btop # overlay-ed above
+        ];
       };
     };
   };

@@ -2,7 +2,7 @@
   inherit (lib) mkIf optional;
 in {
   flake.modules.nixos.hdds = {config, ...}: let
-    cfg = config.custom.hdds;
+    cfg = config.custom.hardware.hdds;
   in {
     fileSystems = {
       "/media/WD4T" = mkIf cfg.westernDigital {
@@ -38,10 +38,8 @@ in {
         };
       };
     };
-    hm = {
-      custom.programs.btop.disks =
-        optional cfg.westernDigital "/media/WD4T"
-        ++ optional cfg.ironWolf "/media/IW2T";
-    };
+    custom.programs.btop.disks =
+      optional cfg.westernDigital "/media/WD4T"
+      ++ optional cfg.ironWolf "/media/IW2T";
   };
 }

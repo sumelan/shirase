@@ -108,6 +108,8 @@ in {
       generated.json
     '';
 
-    custom.cache.home.directories = [".local/share/zoxide"];
+    custom.fileSystem = {
+      cache.home.directories = [".local/share/zoxide"];
+    };
   };
 }

@@ -20,7 +20,9 @@ in {
         };
       };
       services.blueman.enable = true;
-      custom.persist.root.directories = ["/var/lib/bluetooth"];
+      custom.fileSystem = {
+        persist.root.directories = ["/var/lib/bluetooth"];
+      };
     };
 
     homeManager.default = {pkgs, ...}: {

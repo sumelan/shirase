@@ -32,13 +32,15 @@ in {
       #alsa setting
       environment.systemPackages = [pkgs.alsa-utils];
       users.users.${user}.extraGroups = ["audio"];
-      custom.persist = {
-        root.directories = [
-          "/var/lib/alsa"
-        ];
-        home.directories = [
-          ".local/state/wireplumber"
-        ];
+      custom.fileSystem = {
+        persist = {
+          root.directories = [
+            "/var/lib/alsa"
+          ];
+          home.directories = [
+            ".local/state/wireplumber"
+          ];
+        };
       };
     };
 
@@ -95,8 +97,8 @@ in {
           };
         };
 
-      custom.persist = {
-        home.directories = [
+      custom.fileSystem = {
+        persist.home.directories = [
           ".config/easyeffects/db"
           # autoload local preset per devices
           ".local/share/easyeffects/autoload"
