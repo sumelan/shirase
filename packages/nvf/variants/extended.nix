@@ -13,6 +13,7 @@ in {
       go
       python
       nix
+      rust
       telescope
     ];
   };

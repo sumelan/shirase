@@ -1,13 +1,19 @@
-_: {
-  flake.modules.nvf.fzflua = _: let
-    mkFzfBind = keys: action: {
-      mode = "n";
-      key = "<leader>${keys}";
-      action = ":FzfLua ${action}<CR>";
-    };
-  in {
+{lib, ...}: let
+  inherit (lib) getExe;
+  mkFzfBind = keys: action: {
+    mode = "n";
+    key = "<leader>${keys}";
+    action = ":FzfLua ${action}<CR>";
+  };
+in {
+  flake.modules.nvf.fzflua = {pkgs, ...}: {
     vim = {
-      fzf-lua.enable = true;
+      fzf-lua = {
+        enable = true;
+        setupOpts.files = {
+          cmd = "${getExe pkgs.fd} --type f --hidden --follow --exclude .git --exclude .direnv --exclude .arc";
+        };
+      };
 
       keymaps = [
         (mkFzfBind "ff" "files")

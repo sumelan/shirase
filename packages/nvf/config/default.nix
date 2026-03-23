@@ -30,6 +30,12 @@
         motion.leap.enable = true;
       };
 
+      spellcheck = {
+        enable = false;
+        vim-dirtytalk.enable = false; # for programming words
+        ignoredFiletypes = ["toggleterm" "gitcommit"];
+      };
+
       git = {
         enable = true;
         git-conflict.enable = true;
