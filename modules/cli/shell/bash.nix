@@ -1,19 +1,21 @@
 _: {
-  flake.modules.homeManager.default = {config, ...}: let
-    proj_dir = "/persist${config.home.homeDirectory}/Projects";
-    histFile = "${config.xdg.configHome}/bash/.bash_history";
+  flake.modules.nixos.default = {config, ...}: let
+    histFile = "/persist${config.hm.xdg.configHome}/bash/.bash_history";
   in {
+    # NOTE: see shell.nix for shared aliases and initExtra
     programs.bash = {
       enable = true;
-      enableCompletion = true;
-      historyFile = histFile;
+      completion.enable = true;
       shellAliases = {
         ehistory = "nvim ${histFile}";
       };
 
-      initExtra =
-        # bash
+      interactiveShellInit =
+        # sh
         ''
+          HISTFILE=${histFile}
+          mkdir -p "$(dirname "$HISTFILE")"
+
           # Change cursor with support for inside/outside tmux
           function _set_cursor() {
               if [[ $TMUX = "" ]]; then
@@ -29,17 +31,6 @@ _: {
           function _set_beam_cursor() {
               _set_cursor '\e[6 q'
           }
-
-          function pj() {
-            cd ${proj_dir}
-            if [[ $# -eq 1 ]]; then
-              cd "$1";
-              fi
-          }
-          function _pj() {
-            ( cd ${proj_dir}; printf "%s\n" "$2"* )
-          }
-          complete -o nospace -C _pj pj
 
           # set starting cursor to blinking beam
           # echo -e -n "\x1b[\x35 q"

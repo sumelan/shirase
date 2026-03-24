@@ -1,71 +1,70 @@
 _: {
-  flake.modules.homeManager.default = {
+  flake.modules.nixos.default = {
     config,
     pkgs,
     ...
   }: let
-    proj_dir = "/persist${config.home.homeDirectory}/Projects";
-  in {
-    # fish plugins, home-manager's programs.fish.plugins has a weird format
-    home.packages = builtins.attrValues {
-      # do not add failed commands to history
-      inherit (pkgs.fishPlugins) sponge;
+    # reloads fish completions whenever directories are added to $XDG_DATA_DIRS,
+    # e.g. in nix shells or direnv
+    fish-completion-sync = pkgs.fetchFromGitHub {
+      owner = "iynaix";
+      repo = "fish-completion-sync";
+      rev = "4f058ad2986727a5f510e757bc82cbbfca4596f0";
+      hash = "sha256-kHpdCQdYcpvi9EFM/uZXv93mZqlk1zCi2DRhWaDyK5g=";
     };
-
+  in {
     programs = {
       fish = {
         enable = true;
-        functions = {
-          # use vi key bindings with hybrid emacs keybindings
-          fish_user_key_bindings =
-            # fish
-            ''
-              fish_default_key_bindings -M insert
-              fish_vi_key_bindings --no-erase insert
-            '';
-          pj =
-            # fish
-            ''
-              cd ${proj_dir}
-              if test (count $argv) -eq 1
-                cd $argv[1]
-              end
-            '';
-        };
-        # use abbreviations instead of aliases
-        preferAbbrs = true;
         # seems like shell abbreviations take precedence over aliases
         shellAbbrs =
-          config.home.shellAliases
+          config.environment.shellAliases
           // {
-            ehistory = "nvim ${config.xdg.dataHome}/fish/fish_history";
+            ehistory = ''nvim "${config.hm.xdg.dataHome}/fish/fish_history"'';
           };
-        shellInit = ''
-          set fish_greeting
+        shellInit =
+          # fish
+          ''
+            # shut up welcome message
+            set fish_greeting
 
-          # set options for plugins
-          set sponge_regex_patterns 'password|passwd'
+            # use vi key bindings with hybrid emacs keybindings
+            function fish_user_key_bindings
+                fish_default_key_bindings -M insert
+                fish_vi_key_bindings --no-erase insert
+            end
 
-          # bind --mode default \t complete-and-search
-        '';
-        # setup vi mode
-        interactiveShellInit = ''
-          fish_vi_key_bindings
-        '';
+            # setup vi mode
+            fish_vi_key_bindings
+
+            # setup fish-completion-sync
+            source ${fish-completion-sync}/init.fish
+          ''
+          # sponge options
+          + ''
+            # set options for plugins
+            set sponge_regex_patterns 'password|passwd|^kill'
+
+            # bind --mode default \t complete-and-search
+          '';
       };
     };
 
-    # fish completion
-    xdg.configFile."fish/completions/pj.fish".text =
-      # fish
-      ''
-        function _pj
-          find ${proj_dir} -maxdepth 1 -type d -exec basename {} \;
-        end
-        complete -c pj -f -a "(_pj)"
-      '';
+    # fish plugins
+    environment = {
+      # install fish completions for fish
+      # https://github.com/nix-community/home-manager/pull/2408
+      pathsToLink = ["/share/fish"];
+
+      systemPackages = [
+        # do not add failed commands to history
+        pkgs.fishPlugins.sponge
+        fish-completion-sync
+      ];
+    };
 
     custom.fileSystem = {
+      # fish history
       cache.home.directories = [".local/share/fish"];
     };
   };
