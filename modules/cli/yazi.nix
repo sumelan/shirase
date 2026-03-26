@@ -18,7 +18,6 @@ in {
             (pkgs.yaziPlugins)
             full-border
             git
-            starship
             time-travel
             yatline
             ;
@@ -30,10 +29,6 @@ in {
           # lua
           ''
               require("full-border"):setup({ type = ui.Border.ROUNDED })
-              require("starship"):setup({
-                -- Custom starship configuration file to use
-                config_file = "~/.config/starship.toml",
-              })
               require("git"):setup()
               require("yatline"):setup({
                 theme = require("nord-yazi"):setup(),

@@ -1,12 +1,50 @@
-_: {
-  flake.modules.homeManager.default = {config, ...}: let
+{
+  inputs,
+  lib,
+  ...
+}: let
+  inherit (lib) getExe;
+in {
+  flake.modules.homeManager.default = {
+    config,
+    pkgs,
+    ...
+  }: let
+    dsearch = inputs.danksearch.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    tomlFormat = pkgs.formats.toml {};
     inherit (config.xdg) cacheHome;
     inherit (config.xdg.userDirs) documents pictures;
     projDir = "${config.home.homeDirectory}/Projects";
   in {
-    programs.dsearch = {
-      enable = true;
-      config = {
+    home.packages = [dsearch];
+
+    systemd.user.services = {
+      dsearch = {
+        Unit = {
+          Description = "dsearch - Fast filesystem search service";
+          Documentation = "https://github.com/AvengeMedia/dsearch";
+          After = ["network.target"];
+        };
+
+        Service = {
+          Type = "simple";
+          ExecStart = "${getExe dsearch} serve";
+          Restart = "on-failure";
+          RestartSec = "5s";
+
+          StandardOutput = "journal";
+          StandardError = "journal";
+          SyslogIdentifier = "dsearch";
+        };
+
+        Install = {
+          WantedBy = ["default.target"];
+        };
+      };
+    };
+
+    xdg.configFile."danksearch/config.toml" = {
+      source = tomlFormat.generate "dsearch.config.toml" {
         # Server configuration
         listen_addr = ":43654";
 

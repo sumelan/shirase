@@ -37,23 +37,18 @@ in {
                 cursor_trail = 3;
                 cursor_trail_start_threshold = 10;
                 enable_audio_bell = "no";
-                enabled_layouts = "fat:bias=75;full_size=1;mirrored=false";
                 env = "SHELL=${fishPath}";
                 font_family = "Maple Mono NF";
                 font_size = 14;
-                initial_window_height = "768";
-                initial_window_width = "1024";
                 italic_font = "auto";
-                mouse_map = "left click ungrabbed,grabbed mouse_select_command";
-                remember_window_size = "yes";
+                placement_strategy = "top";
                 scrollback_lines = "10000";
                 shell = mkForce fishPath;
                 strip_trailing_spaces = "smart";
-                tab_bar_style = "powerline";
-                tab_powerline_style = "slanted";
+                tab_bar_edge = "top";
                 url_style = "single";
                 visual_bell_duration = "0.1";
-                window_padding_width = "10";
+                window_padding_width = "3";
               };
             }).wrapper;
         })

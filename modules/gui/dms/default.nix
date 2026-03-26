@@ -1,10 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}: let
-  inherit (lib) mkForce;
-in {
+_: {
   flake.modules = {
     nixos.default = {user, ...}: {
       # tty autologin
@@ -13,7 +7,7 @@ in {
       # dms
       programs.dank-material-shell = {
         enable = true;
-        systemd.enable = false;
+        systemd.enable = true;
         # greeter
         greeter = {
           enable = true;
@@ -34,18 +28,11 @@ in {
 
     homeManager.default = {
       config,
-      pkgs,
       user,
       ...
     }: let
       dmsConf = "${config.xdg.configHome}/niri/dms";
     in {
-      programs.dank-material-shell = {
-        enable = true;
-        systemd.enable = true;
-        dgop.package = inputs.dgop.packages.${pkgs.stdenv.hostPlatform.system}.default;
-      };
-
       systemd.user = {
         tmpfiles.rules = [
           # create dms kdl files if not existed
@@ -58,8 +45,6 @@ in {
           "f ${dmsConf}/wpblur.kdl 644 ${user} users - -"
           "f ${dmsConf}/cursor.kdl 644 ${user} users - -"
         ];
-        # override service config flake provide
-        services.dms.Service.Restart = mkForce "always";
       };
 
       custom.fileSystem = {

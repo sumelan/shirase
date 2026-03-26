@@ -1,9 +1,9 @@
 _: let
-  inherit (builtins) fromJSON readFile;
+  inherit (builtins) readFile;
 in {
   flake.modules.homeManager.default = _: {
-    programs.dank-material-shell = {
-      settings = fromJSON (readFile ./settings.json);
+    xdg.configFile = {
+      "DankMaterialShell/settings.json".text = readFile ./settings.json;
     };
   };
 }

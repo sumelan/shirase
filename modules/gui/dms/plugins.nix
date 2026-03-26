@@ -1,13 +1,17 @@
 _: {
   flake.modules.homeManager.default = {pkgs, ...}: let
+    jsonFormat = pkgs.formats.json {};
+    pluginDir = "DankMaterialShell/plugins";
     pluginsRepo = pkgs.custom.dms-plugins;
   in {
-    programs.dank-material-shell = {
-      plugins = {
-        "dankBatteryAlerts" = {
-          enable = true;
-          src = "${pluginsRepo}/DankBatteryAlerts";
-          settings = {
+    xdg.configFile = {
+      "${pluginDir}/dankBatteryAlerts".source = "${pluginsRepo}/DankBatteryAlerts";
+      "${pluginDir}/dankKDEConnect".source = "${pluginsRepo}/DankKDEConnect";
+      "${pluginDir}/dankNotepadModule".source = "${pluginsRepo}/DankNotepadModule";
+
+      "DankMaterialShell/plugin_settings.json" = {
+        source = jsonFormat.generate "plugin_settings.json" {
+          dankBatteryAlerts = {
             enabled = true;
             enableWarningAlert = true;
             warningThreshold = 20;
@@ -18,18 +22,11 @@ _: {
             criticalTitle = "Critical Battery Level";
             criticalMessage = "Battery at \${level}% - Connect charger immediately!";
           };
-        };
-        "dankKDEConnect" = {
-          enable = true;
-          src = "${pluginsRepo}/DankKDEConnect";
-          settings = {
+          dankKDEConnect = {
             enabled = true;
           };
-        };
-        "dankNotepadModule" = {
-          enable = true;
-          src = "${pluginsRepo}/DankNotepadModule";
-          settings = {
+          dankNotepadModule = {
+            enabled = true;
             style = "nordic";
           };
         };

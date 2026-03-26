@@ -6,6 +6,7 @@
   ...
 }: let
   inherit (inputs) nixpkgs;
+  inherit (lib) makeBinPath intersectAttrs functionArgs;
 in {
   perSystem = {system, ...}: let
     pkgs = import nixpkgs {
@@ -33,10 +34,37 @@ in {
 
       # misc patches to packages in pkgs
       pkgsPatches = _: prev: {
+        # use updated dgop
+        dgop = prev.dgop.overrideAttrs (old: rec {
+          version = "0.2.2";
+          src = prev.fetchFromGitHub {
+            owner = "AvengeMedia";
+            repo = "dgop";
+            tag = "v${version}";
+            hash = "sha256-kYEFJvJApcgVgFu6QpSoNk2t0hv7AlmBARc5HPe/n+s=";
+          };
+          vendorHash = "sha256-OxcSnBIDwbPbsXRHDML/Yaxcc5caoKMIDVHLFXaoSsc=";
+          ldflags = [
+            "-w"
+            "-s"
+            "-X main.Version=${version}"
+          ];
+          nativeBuildInputs = old.nativeBuildInputs ++ [prev.makeWrapper];
+          postInstall = ''
+            mkdir -p $out/bin
+            cp $GOPATH/bin/dgop $out/bin/dgop
+            wrapProgram $out/bin/dgop --prefix PATH : "${makeBinPath [prev.pciutils]}"
+
+            installShellCompletion --cmd dgop \
+                --bash <($out/bin/dgop completion bash) \
+                --fish <($out/bin/dgop completion fish) \
+                --zsh <($out/bin/dgop completion zsh)
+          '';
+        });
         # enable the A/V Properties and see details like media length
-        nautilus = prev.nautilus.overrideAttrs (nprev: {
+        nautilus = prev.nautilus.overrideAttrs (old: {
           buildInputs =
-            nprev.buildInputs
+            old.buildInputs
             ++ (with prev.gst_all_1; [
               gst-plugins-good
               gst-plugins-bad
@@ -72,7 +100,7 @@ in {
             } @ shellArgs: let
               inherit (prev) writeShellApplication writeText installShellFiles;
               # get the needed arguments for writeShellApplication
-              app = writeShellApplication (lib.intersectAttrs (lib.functionArgs writeShellApplication) shellArgs);
+              app = writeShellApplication (intersectAttrs (functionArgs writeShellApplication) shellArgs);
               completionsStr =
                 lib.concatMapAttrsStringSep " " (
                   shell: content:
