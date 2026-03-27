@@ -8,7 +8,7 @@ in {
   perSystem = {pkgs, ...}: {
     packages.moor = inputs.wrappers.lib.wrapPackage {
       inherit pkgs;
-      pacakge = pkgs.moor;
+      package = pkgs.moor;
       flags = {
         "--quit-if-one-screen" = true;
         "--no-linenumbers" = true;

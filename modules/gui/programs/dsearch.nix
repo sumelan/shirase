@@ -44,7 +44,7 @@ in {
     };
 
     xdg.configFile."danksearch/config.toml" = {
-      source = tomlFormat.generate "dsearch.config.toml" {
+      source = tomlFormat.generate "dsearch-config.toml" {
         # Server configuration
         listen_addr = ":43654";
 

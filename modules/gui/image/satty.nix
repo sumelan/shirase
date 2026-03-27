@@ -1,13 +1,37 @@
-_: let
+{
+  inputs,
+  lib,
+  self,
+  ...
+}: let
   inherit (builtins) listToAttrs;
+  inherit (lib) mkOption mkDefault;
 in {
-  flake.modules.homeManager.default = {config, ...}: let
-    inherit (config.xdg.userDirs) pictures;
-    font = config.gtk.font.name;
-  in {
-    programs.satty = {
-      enable = true;
-      settings = {
+  flake.wrapperModules.satty = inputs.wrappers.lib.wrapModule (
+    {
+      config,
+      wlib,
+      ...
+    }: let
+      inherit (wlib.types) file;
+      tomlFormat = config.pkgs.formats.toml {};
+      sattyOptions = {
+        extraSettings = mkOption {
+          inherit (tomlFormat) type;
+          default = {};
+          example = {
+            fullscreen = false;
+            early-exit = true;
+          };
+          description = ''
+            Options to add to {file}`satty.toml` file.
+            See <https://github.com/Satty-org/Satty?tab=readme-ov-file#configuration-file>
+            for options.
+          '';
+        };
+      };
+
+      baseSattyConf = {
         general = {
           # Start Satty in fullscreen mode
           fullscreen = false;
@@ -21,9 +45,6 @@ in {
           copy-command = "wl-copy";
           # Increase or decrease the size of the annotations
           annotation-size-factor = 2;
-          # Filename to use for saving action. Omit to disable saving to file. Might contain format specifiers: https://docs.rs/chrono/latest/chrono/format/strftime/index.html
-          # starting with 0.20.0, can contain leading tilde (~) for home directory
-          output-filename = "${pictures}/Satty/%Y-%m-%d_%H-%M-%S.png";
           # After copying the screenshot, save it to a file as well
           save-after-copy = true;
           # Hide toolbars by default
@@ -70,40 +91,115 @@ in {
           highlight = "g";
         };
         font = {
-          family = font;
+          family = "Montserrat";
           style = "Regular";
         };
-
-        color-palette = {
-          palette = [
-            "#191D24"
-            "#434C5E"
-            "#ECEFF4"
-            "#5E81AC"
-            "#8FBCBB"
-            "#A3BE8C"
-            "#BF616A"
-            "#D08770"
-            "#B48EAD"
-            "#EBCB8B"
-          ];
+      };
+    in {
+      options =
+        sattyOptions
+        // {
+          "satty.toml" = mkOption {
+            type = file config.pkgs;
+            default.path = tomlFormat.generate "satty.toml" (baseSattyConf // config.extraSettings);
+            visible = false;
+          };
         };
+
+      config.package = mkDefault config.pkgs.satty;
+      config.flags = {
+        "--config" = toString config."satty.toml".path;
+      };
+    }
+  );
+
+  # expose generic sattyy package without output file and color-palette
+  perSystem = {pkgs, ...}: {
+    packages.satty = (self.wrapperModules.satty.apply {inherit pkgs;}).wrapper;
+  };
+
+  flake.modules = {
+    nixos.default = {
+      config,
+      pkgs,
+      ...
+    }: let
+      tomlFormat = pkgs.formats.toml {};
+      inherit (config.hm.xdg.userDirs) pictures;
+      sattyOptions = {
+        extraSettings = mkOption {
+          inherit (tomlFormat) type;
+          default = {};
+          example = {
+            fullscreen = false;
+            early-exit = true;
+          };
+          description = ''
+            Options to add to {file}`satty.toml` file.
+            See <https://github.com/Satty-org/Satty?tab=readme-ov-file#configuration-file>
+            for options.
+          '';
+        };
+      };
+    in {
+      options.custom = {
+        programs.satty = sattyOptions;
+      };
+
+      config = {
+        nixpkgs.overlays = [
+          (_: prev: {
+            satty =
+              (self.wrapperModules.satty.apply {
+                pkgs = prev;
+                extraSettings =
+                  {
+                    general.output-filename = "${pictures}/Satty/%Y-%m-%d_%H-%M-%S.png";
+                    color-palette.palette = [
+                      "#191D24"
+                      "#434C5E"
+                      "#ECEFF4"
+                      "#5E81AC"
+                      "#8FBCBB"
+                      "#A3BE8C"
+                      "#BF616A"
+                      "#D08770"
+                      "#B48EAD"
+                      "#EBCB8B"
+                    ];
+                  }
+                  // config.custom.programs.satty.extraSettings;
+              }).wrapper;
+          })
+        ];
       };
     };
 
-    xdg.mimeApps = let
-      value = "satty.desktop";
-      associations = listToAttrs (map (name: {
-          inherit name value;
-        }) [
-          "image/jpeg"
-          "image/gif"
-          "image/webp"
-          "image/png"
-        ]);
-    in {
-      # remove `satty.desktop` from image mimetypes
-      associations.removed = associations;
+    homeManager.default = {pkgs, ...}: {
+      home.packages = [
+        pkgs.satty # overlayy-ed above
+      ];
+
+      xdg.mimeApps = let
+        value = "satty.desktop";
+        associations = listToAttrs (map (name: {
+            inherit name value;
+          }) [
+            "image/jpeg"
+            "image/gif"
+            "image/webp"
+            "image/png"
+          ]);
+      in {
+        # remove `satty.desktop` from image mimetypes
+        associations.removed = associations;
+      };
+
+      custom.programs.print-config = {
+        satty =
+          # sh
+          ''moor --lang toml "${pkgs.satty.flags."--config"}"'';
+      };
     };
   };
 }

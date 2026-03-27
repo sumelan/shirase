@@ -142,9 +142,9 @@ in {
               }
               # satty
               {
-                on = ["i" "a"];
+                on = ["i" "s"];
                 run = ''shell -- satty -f "$@"'';
-                desc = "Annotate image(s) with satty";
+                desc = "Open image(s) with satty";
               }
               # ripdrag
               {
@@ -156,12 +156,6 @@ in {
                 on = ["i" "D"];
                 run = ''shell -- ripdrag --no-click --and-exit --icon-size 64 --target --all "$@" | while read filepath; do cp -fR "$filepath" .; done'';
                 desc = "Drag-n-drop files to and from Yazi";
-              }
-              # swayimg
-              {
-                on = ["i" "o"];
-                run = ''shell -- swayimg "$@"'';
-                desc = "Open image(s) with swayimg";
               }
             ];
           };
