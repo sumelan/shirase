@@ -434,7 +434,7 @@ in
         XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "brightness" "decrement" "5" ""; }
         XF86MonBrightnessUp allow-when-locked=true   { spawn "dms" "ipc" "brightness" "increment" "5" ""; }
 
-            // Execute
+        // Execute
         Mod+Return hotkey-overlay-title="${hotkey "#CB775D" "  Kitty" "Terminal Emulator"}"   { spawn "kitty"; }
         Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "  Helium" "Web Browser"}"             { spawn-sh "helium &"; }
         Mod+Shift+D hotkey-overlay-title="${hotkey "#D79784" "󰗢  niri" "Command"}"             { spawn "${getExe niriCmd}"; }

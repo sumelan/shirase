@@ -4,6 +4,7 @@
   "customThemeFile": "",
   "registryThemeVariants": {},
   "matugenScheme": "scheme-neutral",
+  "matugenContrast": 0,
   "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "HDMI-A-1",
   "popupTransparency": 1,
@@ -23,6 +24,7 @@
   "mangoLayoutRadiusOverride": -1,
   "mangoLayoutBorderSize": -1,
   "firstDayOfWeek": -1,
+  "showWeekNumber": false,
   "use24HourClock": true,
   "showSeconds": false,
   "padHours12Hour": false,
@@ -295,6 +297,10 @@
   "qtThemingEnabled": false,
   "syncModeWithPortal": true,
   "terminalsAlwaysDark": false,
+  "muxType": "tmux",
+  "muxUseCustomCommand": false,
+  "muxCustomCommand": "",
+  "muxSessionFilter": "",
   "runDmsMatugenTemplates": true,
   "matugenTemplateGtk": false,
   "matugenTemplateNiri": true,
@@ -541,12 +547,15 @@
         }
       ],
       "screenPreferences": [
-        "all"
+        {
+          "name": "HDMI-A-1",
+          "model": "LG HDR 4K"
+        }
       ],
       "shadowColorMode": "text",
       "shadowIntensity": 0,
       "shadowOpacity": 60,
-      "showOnLastDisplay": true,
+      "showOnLastDisplay": false,
       "spacing": 10,
       "squareCorners": false,
       "transparency": 0.75,
@@ -647,5 +656,5 @@
   "clipboardEnterToPaste": false,
   "launcherPluginVisibility": {},
   "launcherPluginOrder": [],
-  "configVersion": 6
+  "configVersion": 5
 }

@@ -376,7 +376,7 @@ in {
           ''
             YAZI_PATH=$(grep "export YAZI_CONFIG_HOME=" '${getExe pkgs.yazi}' | cut -d"'" -f2)
 
-            cat "$YAZI_PATH/${path}"
+            moor "$YAZI_PATH/${path}"
           '';
         in {
           yazi = catYaziPath "yazi.toml";

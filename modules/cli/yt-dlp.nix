@@ -38,10 +38,10 @@ in {
       home = {
         shellAliases = {
           yt = "yt-dlp";
-          yt1080 = ''yt-dlp --format "${mkFormat 1080}"'';
-          ytaudio = "yt-dlp --audio-format mp3 --extract-audio";
-          ytsubonly = "yt-dlp --skip-download --write-subs";
-          ytplaylist = "yt-dlp --output '%(playlist_index)d - %(title)s.%(ext)s'";
+          yt1080 = ''ytdl --format "${mkFormat 1080}"'';
+          ytaudio = "ytdl --audio-format mp3 --extract-audio";
+          ytsubonly = "ytdl --skip-download --write-subs";
+          ytplaylist = "ytdl --output '%(playlist_index)d - %(title)s.%(ext)s'";
         };
         packages =
           [
@@ -59,7 +59,7 @@ in {
       custom.programs.print-config = {
         yt-dlp =
           # sh
-          ''cat "${getExe pkgs.yt-dlp}"'';
+          ''moor --lang sh "${getExe pkgs.yt-dlp}"'';
       };
     };
   };

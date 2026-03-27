@@ -56,8 +56,8 @@ _: {
       };
     };
 
-    obs-studio = _: {
-      programs.obs-studio.enable = true;
+    obs-studio = {pkgs, ...}: {
+      home.packages = [pkgs.obs-studio];
 
       custom.fileSystem = {
         persist.home.directories = [

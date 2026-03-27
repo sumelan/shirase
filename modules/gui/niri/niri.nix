@@ -37,11 +37,7 @@ in {
         enable = true;
         xdgOpenUsePortal = true;
         extraPortals = attrValues {
-          inherit
-            (pkgs)
-            xdg-desktop-portal-gtk
-            xdg-desktop-portal-gnome
-            ;
+          inherit (pkgs) xdg-desktop-portal-gtk xdg-desktop-portal-gnome;
         };
         config = {
           common.default = ["gtk"];
@@ -64,16 +60,18 @@ in {
       pkgs,
       ...
     }: let
-      dms = ''
-        include "dms/alttab.kdl"
-        include "dms/binds.kdl"
-        include "dms/colors.kdl"
-        include "dms/cursor.kdl"
-        include "dms/layout.kdl"
-        include "dms/outputs.kdl"
-        include "dms/windowrules.kdl"
-        include "dms/wpblur.kdl"
-      '';
+      dms =
+        # kdl
+        ''
+          include "dms/alttab.kdl"
+          include "dms/binds.kdl"
+          include "dms/colors.kdl"
+          include "dms/cursor.kdl"
+          include "dms/layout.kdl"
+          include "dms/outputs.kdl"
+          include "dms/windowrules.kdl"
+          include "dms/wpblur.kdl"
+        '';
     in {
       xdg.configFile."niri/config.kdl" = {
         source = import ./_config.nix {inherit config lib pkgs dms;};

@@ -35,14 +35,7 @@
     };
 
     extraSettings = mkOption {
-      type = attrsOf (
-        oneOf [
-          bool
-          float
-          int
-          str
-        ]
-      );
+      type = attrsOf (oneOf [bool float int str]);
       default = {};
       example = {
         color_theme = "Default";
@@ -167,7 +160,7 @@ in {
       custom.programs.print-config = {
         btop =
           # sh
-          ''cat "${pkgs.btop.flags."--config"}"'';
+          ''moor --lang ini "${pkgs.btop.flags."--config"}"'';
       };
     };
   };

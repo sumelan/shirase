@@ -1,5 +1,5 @@
 {lib, ...}: let
-  inherit (lib) mkOption concatMapAttrsStringSep;
+  inherit (lib) mkOption concatLines attrNames mapAttrsToList;
   inherit (lib.types) attrsOf str;
 in {
   flake.modules.homeManager.default = {
@@ -16,68 +16,29 @@ in {
     };
 
     config = let
-      cmds = config.custom.programs.print-config;
-      ifBlocks =
-        concatMapAttrsStringSep "\n" (prog: cmd: ''
-          "${prog}")
-            ${cmd}
-            ;;
-        '')
-        cmds;
-      bashProgsStr = concatMapAttrsStringSep ", " (prog: _: prog) cmds;
-      bashProgsList = concatMapAttrsStringSep " " (prog: _: ''"${prog}"'') cmds;
-      fishCompletes =
-        concatMapAttrsStringSep "\n" (
-          prog: _: ''complete -c print-config -a "${prog}"''
-        )
-        cmds;
-      print-config = pkgs.custom.writeShellApplicationCompletions {
-        name = "print-config";
+      config-list = pkgs.writeShellApplication {
+        name = "config-list";
         text =
           # sh
           ''
-            if [ -z "''${1-}" ]; then
-                echo "Usage: print-config [PROGRAM]"
-                exit 1
-            fi
-
-            case "$1" in
-                ${ifBlocks}
-                *)
-                    echo "Error: Configuration for '$1' not found or supported."
-                    echo "Supported: ${bashProgsStr}"
-                    exit 1
-                    ;;
-            esac
-          '';
-
-        completions.bash =
-          # sh
-          ''
-            _print_config_completions() {
-                local suggestions=(${bashProgsList})
-
-                # Generate completions based on the current word being typed
-                if [[ ''${COMP_CWORD} -eq 1 ]]; then
-                  read -r -a COMPREPLY < <(compgen -W "''${suggestions[*]}" -- "''${COMP_WORDS[1]}")
-                fi
-            }
-
-            complete -F _print_config_completions print-config
-          '';
-
-        completions.fish =
-          # fish
-          ''
-            # Disable default file completions
-            complete -c print-config -f
-
-            # Add specific program arguments
-            ${fishCompletes}
+            sort -ui <<< "${concatLines (attrNames config.custom.programs.print-config)}"
           '';
       };
     in {
-      home.packages = [print-config];
+      home.packages =
+        [
+          config-list
+        ]
+        # add a `PROGRAM-config` command for each program
+        ++ (mapAttrsToList (
+            prog: cmd:
+              pkgs.writeShellApplication {
+                name = "${prog}-config";
+                runtimeInputs = [pkgs.moor];
+                text = cmd;
+              }
+          )
+          config.custom.programs.print-config);
     };
   };
 }
