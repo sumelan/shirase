@@ -2,13 +2,16 @@
   inherit (config) flake;
 in {
   flake.modules = {
-    nixos."hosts/sakura" = _: {
+    nixos."hosts/sakura" = {pkgs, ...}: {
       imports =
         [
           {
             networking.hostId = "b5e8f0be";
 
             custom = {
+              # unhinted font: for high resolution screen
+              fonts.packages = [pkgs.maple-mono.NF-unhinted];
+
               hardware = {
                 hdds = {
                   westernDigital = true;
@@ -39,7 +42,7 @@ in {
         ]);
     };
 
-    homeManager."hosts/sakura" = {pkgs, ...}: {
+    homeManager."hosts/sakura" = _: {
       imports =
         [
           {
@@ -60,8 +63,6 @@ in {
               };
             };
             custom = {
-              # unhinted font: for high resolution screen
-              fonts.packages = [pkgs.maple-mono.NF-unhinted];
               niri = {
                 xwayland = true;
                 screenshot.host = "sakura";
@@ -73,6 +74,7 @@ in {
           default
           bluray
           cd
+          foot
           ebook
           obs-studio
           protonapp

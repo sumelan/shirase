@@ -2,9 +2,17 @@
   inherit (config) flake;
 in {
   flake.modules = {
-    nixos."hosts/acer" = _: {
+    nixos."hosts/acer" = {pkgs, ...}: {
       imports =
-        [{networking.hostId = "22fe2870";}]
+        [
+          {
+            networking.hostId = "22fe2870";
+            custom = {
+              # hinted font: for lower or equal than 1080p
+              fonts.packages = [pkgs.maple-mono.NF];
+            };
+          }
+        ]
         ++ (with flake.modules.nixos; [
           default
           hardware-acer
@@ -12,7 +20,7 @@ in {
         ]);
     };
 
-    homeManager."hosts/acer" = {pkgs, ...}: {
+    homeManager."hosts/acer" = _: {
       imports =
         [
           {
@@ -33,8 +41,6 @@ in {
               };
             };
             custom = {
-              # hinted font: for lower or equal than 1080p
-              fonts.packages = [pkgs.maple-mono.NF];
               niri.screenshot.host = "acer";
             };
           }

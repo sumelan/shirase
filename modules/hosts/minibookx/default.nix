@@ -2,7 +2,7 @@
   inherit (config) flake;
 in {
   flake.modules = {
-    nixos."hosts/minibookx" = _: {
+    nixos."hosts/minibookx" = {pkgs, ...}: {
       imports =
         [
           {
@@ -15,6 +15,11 @@ in {
                   Port 22
                   User root
               '';
+            };
+
+            custom = {
+              # hinted font: for lower or equal than 1080p
+              fonts.packages = [pkgs.maple-mono.NF];
             };
           }
         ]
@@ -30,7 +35,7 @@ in {
         ]);
     };
 
-    homeManager."hosts/minibookx" = {pkgs, ...}: {
+    homeManager."hosts/minibookx" = _: {
       imports =
         [
           {
@@ -51,8 +56,6 @@ in {
               };
             };
             custom = {
-              # hinted font: for lower or equal than 1080p
-              fonts.packages = [pkgs.maple-mono.NF];
               niri.screenshot.host = "minibookx";
             };
           }

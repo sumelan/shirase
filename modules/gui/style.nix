@@ -44,7 +44,7 @@ in {
         name = "Papirus-Dark";
       };
       font = {
-        name = config.custom.fonts.regular;
+        name = "Montserrat";
         package = pkgs.montserrat;
         size = 14;
       };

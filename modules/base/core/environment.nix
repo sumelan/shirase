@@ -121,7 +121,7 @@ in {
     # setup fonts
     fonts = {
       enableDefaultPackages = true;
-      inherit (config.hm.custom.fonts) packages;
+      inherit (config.custom.fonts) packages;
     };
     # use gtk theme on qt apps
     qt = {

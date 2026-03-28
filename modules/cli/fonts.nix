@@ -7,7 +7,7 @@
     package
     ;
 in {
-  flake.modules.homeManager.default = {pkgs, ...}: {
+  flake.modules.nixos.default = {pkgs, ...}: {
     options.custom = {
       fonts = {
         regular = mkOption {

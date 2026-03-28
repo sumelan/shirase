@@ -10,12 +10,12 @@
   nixMods = [
     inputs.dankMaterialShell.nixosModules.dank-material-shell
     inputs.dankMaterialShell.nixosModules.greeter
+    inputs.nix-hazkey.nixosModules.hazkey
     inputs.impermanence.nixosModules.impermanence
     inputs.sops-nix.nixosModules.sops
   ];
 
   hmMods = [
-    inputs.nix-hazkey.homeModules.hazkey
     inputs.nix-index-database.homeModules.nix-index
   ];
 
