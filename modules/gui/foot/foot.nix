@@ -43,22 +43,7 @@ in {
           '';
         };
       };
-      baseFootConf = {
-        font = "Maple Mono NF:size=14";
-        initial-window-size-pixels = "1000x800";
-        scrollback = {
-          lines = 100000;
-        };
-        cursor = {
-          style = "beam";
-          blink = "yes";
-          blink-rate = 500;
-          beam-thickness = 2.0;
-        };
-        mouse = {
-          hide-when-typing = "yes";
-        };
-      };
+      baseFootConf = import ./_config.nix {};
     in {
       options =
         footOptions
@@ -73,10 +58,12 @@ in {
           };
         };
 
-      config.package = mkDefault config.pkgs.foot;
-      config.filesToPatch = ["share/systemd/user/foot-server.service"];
-      config.flags = {
-        "--config" = toString config."foot.ini".path;
+      config = {
+        package = mkDefault config.pkgs.foot;
+        filesToPatch = ["share/systemd/user/foot-server.service"];
+        flags = {
+          "--config" = toString config."foot.ini".path;
+        };
       };
     }
   );

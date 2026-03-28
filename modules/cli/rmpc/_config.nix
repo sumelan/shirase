@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (config.xdg) cacheHome;
-  mpdAddress = config.services.mpd.network.listenAddress;
+  mpdAddress = "/run/user/1000/mpd/socket";
 in
   pkgs.writeText "config.ron"
   # ron

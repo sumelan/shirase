@@ -41,27 +41,6 @@
         "type": "github"
       }
     },
-    "dgop": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1774168553,
-        "narHash": "sha256-csKfeS7rhxDgP2/ol0/Y/G80hq+ySamnqMP4+wcEPbE=",
-        "owner": "sumelan",
-        "repo": "dgop",
-        "rev": "9aa1987da299f505d77d869eedfc1f7e3426ffd5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sumelan",
-        "ref": "version0.2.2",
-        "repo": "dgop",
-        "type": "github"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -315,7 +294,6 @@
       "inputs": {
         "dankMaterialShell": "dankMaterialShell",
         "danksearch": "danksearch",
-        "dgop": "dgop",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "impermanence": "impermanence",

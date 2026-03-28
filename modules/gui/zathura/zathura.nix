@@ -21,28 +21,7 @@
 in {
   flake.wrapperModules.zathura = inputs.wrappers.lib.wrapModule (
     {config, ...}: let
-      zathuraConf = config.pkgs.writeTextFile {
-        name = "zathurarc";
-        destination = "/zathurarc"; # zathura expects a directory
-        text = ''
-          set adjust-open	"best-fit"
-          set page-padding	"1"
-          set recolor	"true"
-          set statusbar-h-padding	"0"
-          set statusbar-v-padding	"0"
-          map D   toggle_page_mode
-          map J   zoom out
-          map K   zoom in
-          map R   rotate
-          map d   scroll half-down
-          map i   recolor
-          map p   print
-          map r   reload
-          map u   scroll half-up
-
-          ${config.extraSettings}
-        '';
-      };
+      zathuraConf = import ./_config.nix {inherit config;};
     in {
       options = zathuraOptions;
 
@@ -58,7 +37,15 @@ in {
   };
 
   flake.modules = {
-    nixos.default = _: {
+    nixos.default = {pkgs, ...}: let
+      src = pkgs.fetchFromGitHub {
+        owner = "nautilor";
+        repo = "zathura-nord";
+        rev = "a1c80f8ba7c1e7ddd548d38b26458ea8e8b329cd";
+        hash = "sha256-pj9/ZvN+58ZUWyGnY9Yk9EwdvWRH5hY2BZp2TGDpi+g=";
+      };
+      zathura-nord = "${src}/zathurarc";
+    in {
       options.custom = {
         programs.zathura = zathuraOptions;
       };
@@ -70,7 +57,7 @@ in {
               (self.wrapperModules.zathura.apply {
                 pkgs = prev;
                 extraSettings = ''
-
+                  include ${zathura-nord}
                 '';
               }).wrapper;
           })
