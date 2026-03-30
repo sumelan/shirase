@@ -28,7 +28,7 @@ in {
         music_directory = music;
         db_file = "${dataDir}/database";
         playlist_directory = "${dataDir}/playlists";
-        bind_to_address = "/run/user/1000/mpd/socket";
+        bind_to_address = "/run/mpd/socket";
       };
     };
 
@@ -39,7 +39,7 @@ in {
           description = "Music Player Daemon D-Bus Bridge";
           wants = ["mpd.service"];
           after = ["mpd.service"];
-          wantedBy = ["dafault.target"];
+          wantedBy = ["default.target"];
           serviceConfig = {
             Type = "simple";
             BusName = "org.mpris.MediaPlayer2.mpd";
@@ -50,9 +50,9 @@ in {
           };
         };
       };
-      user.tmpfiles.rules = [
+      tmpfiles.rules = [
         # create mpd directory for local socket on boot
-        "d! %t/mpd - ${user} users - -"
+        "d! %t/mpd - root root - -"
       ];
     };
 

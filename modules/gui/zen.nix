@@ -7,11 +7,7 @@
   inherit (lib.strings) toJSON;
   inherit (builtins) listToAttrs;
 in {
-  flake.modules.homeManager.default = {
-    config,
-    pkgs,
-    ...
-  }: let
+  flake.modules.homeManager.default = {pkgs, ...}: let
     extension = shortId: guid: {
       name = guid;
       value = {
@@ -24,7 +20,7 @@ in {
       # Check these out at about:config
       "extensions.autoDisableScopes" = 0;
       "extensions.pocket.enabled" = false;
-      "font.name.serif.x-western" = config.gtk.font.name;
+      "font.name.serif.x-western" = "Montserrat";
       # ...
     };
 

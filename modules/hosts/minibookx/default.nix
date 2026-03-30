@@ -27,6 +27,7 @@ in {
           default
           hardware-minibookx
           chuwi-minibook-x
+          gui
           kdeconnect
           laptop
           sops-nix

@@ -22,8 +22,8 @@
   mainMode = "${mainWidth}x${mainHeight}@${mainRefresh}";
 
   # cursor
-  cursorName = config.home.pointerCursor.name;
-  cursorSize = toString config.home.pointerCursor.size;
+  cursorName = "Capitaine Cursors (Nord)";
+  cursorSize = toString 48;
 
   # xwayland
   xwayland =

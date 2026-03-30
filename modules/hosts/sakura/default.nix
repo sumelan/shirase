@@ -28,6 +28,7 @@ in {
           default
           hardware-sakura
           minisforum
+          gui
           audiobookshelf
           hdds
           kdeconnect
