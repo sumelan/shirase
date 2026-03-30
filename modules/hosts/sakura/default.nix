@@ -75,7 +75,6 @@ in {
           default
           bluray
           cd
-          foot
           ebook
           obs-studio
           protonapp

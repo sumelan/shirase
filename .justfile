@@ -29,12 +29,12 @@ sourceDir := "_sources"
     nix run github:NotAShelf/flint
 
 [group('REBUILD')]
-[doc('`sudo nixos-rebuild test`.')]
+[doc('`nh os test`.')]
 @test *args:
     nh os test {{ args }}
 
 [group('REBUILD')]
-[doc('`sudo nixos-rebuild switch`.')]
+[doc('`nh os switch`.')]
 @switch *args:
     nh os switch {{ args }}
 
@@ -42,31 +42,6 @@ sourceDir := "_sources"
 [doc('Start repl.')]
 @repl:
     nh os repl
-
-[group('TOOLS')]
-[doc('Search for all packages containing specific argments.')]
-@locate arg:
-    nix-locate {{ arg }}
-
-[group('TOOLS')]
-[doc('Download a file to the nix store and get the SHA-256 hash.')]
-@pf url:
-    nix store prefetch-file --json --hash-type sha256 {{ url }} | jq -r .hash
-
-[group('TOOLS')]
-[doc('Look the store path of specific package through yazi.')]
-@store pkg:
-    yazi $(nix eval --raw nixpkgs#{{ pkg }})
-
-[group('TOOLS')]
-[doc('Measure eval time on each host.')]
-@eval:
-    time nix eval ".#nixosConfigurations.$HOSTNAME.config.system.build.toplevel" --no-eval-cache
-
-[group('TOOLS')]
-[doc('Create the flamegraph file of eval time and open in browser.')]
-@graph:
-    nix-shell -p nixVersions.latest inferno --command "nix eval .#nixosConfigurations.$HOSTNAME.config.system.build.toplevel --impure --eval-profiler flamegraph --eval-profiler-frequency 9999 && inferno-flamegraph --width 10000 < nix.profile > wrappers.svg && $BROWSER wrappers.svg"
 
 [group('UPDATE')]
 [doc('Update a specific input in the flake.')]
@@ -97,11 +72,47 @@ sourceDir := "_sources"
 @optimise:
     nix-store --optimise -v
 
-[group('BUILD')]
+[group('LOCATE')]
+[doc('Search for all packages containing specific library.')]
+@liblc lib:
+    nix-locate -- "lib/{{ lib }}" | rg -v '^\('
+
+[group('PACKAGE')]
+[doc('Show the store path of specific package.')]
+@store pkg:
+    nix eval --impure --raw "nixpkgs#{{ pkg }}.outPath"
+
+[group('PACKAGE')]
+[doc('Look the store path through yazi. If path not found, build it.')]
+@ystore pkg:
+    PKG_DIR=$(nix eval --impure --raw "nixpkgs#{{ pkg }}.outPath")
+    if [ ! -e "$PKG_DIR" ]; then \
+        nix build "nixpkgs#$1" --print-out-paths \
+            | awk '{ print length, $0 }' | sort -n -s | cut -d" " -f2- | head -n1; \
+                    fi
+    yazi "$PKG_DIR"
+
+[group('PACKAGE')]
 [doc('Look the package built with override attrs through yazi.')]
-@override pkg attrs:
+@yor pkg attrs:
     nix build --impure --expr  '(import <nixpkgs> { }).{{ pkg }}.override { {{ attrs }} }'
     yazi ./result
+
+[group('EVAL')]
+[doc('Measure eval time on each host.')]
+@eval host:
+    time nix eval .#nixosConfigurations.{{ host }}.config.system.build.toplevel --substituters " " --option eval-cache false --raw --read-only
+
+[group('EVAL')]
+[doc('Create the flamegraph file of eval time and open in browser.')]
+@graph host:
+    nix-shell -p nixVersions.latest inferno --command "nix eval .#nixosConfigurations.{{ host }}.config.system.build.toplevel --impure --eval-profiler flamegraph --eval-profiler-frequency 9999 && inferno-flamegraph --width 10000 < /tmp/nix.profile > /tmp/nix-flamegraph.svg && $BROWSER /tmp/nix-flamegraph.svg"
+
+[group('SHA-256')]
+[doc('Download a file to the nix store and get the SHA-256 hash.')]
+@pf url:
+    nix store prefetch-file --json --hash-type sha256 {{ url }} | jq -r .hash
+
 
 [group('SOPS')]
 [doc('Convert a SSH Ed25519 key to an age key.')]

@@ -104,7 +104,7 @@
   ];
 
   hotkey = color: name: text: ''<span foreground='${color}'>[${name}]</span> ${text}'';
-  proDir = "${config.home.homeDirectory}/Projects";
+  pjDir = "${config.home.homeDirectory}/Projects";
 in
   pkgs.writeText "niri-wrapped-config.kdl"
   # kdl
@@ -435,12 +435,12 @@ in
         XF86MonBrightnessUp allow-when-locked=true   { spawn "dms" "ipc" "brightness" "increment" "5" ""; }
 
         // Execute
-        Mod+Return hotkey-overlay-title="${hotkey "#CB775D" "  Kitty" "Terminal Emulator"}"   { spawn "kitty"; }
+        Mod+Return hotkey-overlay-title="${hotkey "#CB775D" "  Foot" "Terminal Emulator"}"    { spawn "footclient"; }
         Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "  Helium" "Web Browser"}"             { spawn-sh "helium &"; }
         Mod+Shift+D hotkey-overlay-title="${hotkey "#D79784" "󰗢  niri" "Command"}"             { spawn "${getExe niriCmd}"; }
-        Mod+Shift+Return hotkey-overlay-title="${hotkey "#97B67C" "  Neovim" "Editor"}"       { spawn "kitty" "-d" "${proDir}" "--app-id" "nvim" "nvim"; }
-        Mod+Shift+N hotkey-overlay-title="${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}"   { spawn "kitty" "--app-id" "nix-search-tv" "ns"; }
-        Mod+Shift+Y hotkey-overlay-title="${hotkey "#EFD49F" "󰇥  Yazi" "File Manager"}"        { spawn "kitty" "--app-id" "yazi" "yazi"; }
+        Mod+Shift+Return hotkey-overlay-title="${hotkey "#97B67C" "  Neovim" "Editor"}"       { spawn "footclient" "-D" "${pjDir}" "--app-id" "nvim" "nvim"; }
+        Mod+Shift+N hotkey-overlay-title="${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}"   { spawn "footclient" "--app-id" "nix-search-tv" "ntv"; }
+        Mod+Shift+Y hotkey-overlay-title="${hotkey "#EFD49F" "󰇥  Yazi" "File Manager"}"        { spawn "footclient" "--app-id" "yazi" "yazi"; }
         Ctrl+Space hotkey-overlay-title="${hotkey "#BF616A" "󰗊  Fcitx" "Switch input method"}" { spawn "fcitx5-remote" "-t"; }
 
         // Window

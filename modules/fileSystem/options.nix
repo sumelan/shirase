@@ -11,7 +11,7 @@
     assert (assertMsg (!any (hasPrefix "/home") paths) "/home used in a root persist!"); paths;
 in {
   flake.modules = {
-    nixos.fileSystem = _: {
+    nixos.common = _: {
       options.custom = {
         fileSystem = {
           persist = {

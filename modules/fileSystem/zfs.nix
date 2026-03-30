@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.fileSystem = {
+  flake.modules.nixos.common = {
     config,
     pkgs,
     ...

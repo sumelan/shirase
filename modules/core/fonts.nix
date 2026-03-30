@@ -1,13 +1,12 @@
 {lib, ...}: let
   inherit (lib) mkOption;
-  inherit
-    (lib.types)
-    str
-    listOf
-    package
-    ;
+  inherit (lib.types) str listOf package;
 in {
-  flake.modules.nixos.default = {pkgs, ...}: {
+  flake.modules.nixos.default = {
+    config,
+    pkgs,
+    ...
+  }: {
     options.custom = {
       fonts = {
         regular = mkOption {
@@ -27,6 +26,12 @@ in {
       };
     };
     config = {
+      # setup fonts
+      fonts = {
+        enableDefaultPackages = true;
+        inherit (config.custom.fonts) packages;
+      };
+
       custom.fonts.packages = [
         pkgs.noto-fonts
         pkgs.noto-fonts-color-emoji

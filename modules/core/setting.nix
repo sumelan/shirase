@@ -1,12 +1,18 @@
-{config, ...}: let
-  inherit (builtins) attrValues;
+{
+  config,
+  lib,
+  ...
+}: let
+  inherit (lib) mkForce;
 in {
   flake.modules = {
-    nixos.core = {
+    nixos.common = {
       pkgs,
       user,
       ...
-    }: {
+    }: let
+      flakePath = "/persist/home/${user}/Projects/shirase";
+    in {
       # internationalisation properties
       # time zone
       time = {
@@ -33,19 +39,13 @@ in {
       # https://github.com/NixOS/nixpkgs/issues/257904
       # font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
       console.useXkbConfig = true; # use xkb.options in tty.
-      # x11
-      services.xserver = {
-        # Configure keymap in X11
-        xkb = {
-          layout = "us";
-          variant = "";
-        };
-        # remove xterm
-        excludePackages = [pkgs.xterm];
+
+      programs = {
+        dconf.enable = true;
+        seahorse.enable = true;
+        nano.enable = mkForce false;
       };
-      # hardware
-      # enable opengl
-      hardware.graphics.enable = true;
+
       # services
       services = {
         # use dbus broker as default implementation
@@ -60,17 +60,35 @@ in {
             wall.enable = true;
           };
         };
+        gvfs.enable = true; # automount disks
+
+        xserver = {
+          # Configure keymap in X11
+          xkb = {
+            layout = "us";
+            variant = "";
+          };
+          # remove xterm
+          excludePackages = [pkgs.xterm];
+        };
       };
+
+      # enable opengl
+      hardware.graphics.enable = true;
+
+      systemd.tmpfiles.rules = [
+        # cleanup systemd coredumps once a week
+        "D! /var/lib/systemd/coredump root root 7d"
+        # create symlink to dotfiles from default /etc/nixos
+        "L+ /etc/nixos - - - - ${flakePath}"
+      ];
+
       # system.stateVersion
       # do not change this value
       system.stateVersion = "24.05";
     };
 
-    homeManager.default = {
-      pkgs,
-      user,
-      ...
-    }: {
+    homeManager.default = {user, ...}: {
       # Let Home Manager install and manage itself.
       programs.home-manager.enable = true;
       home = {
@@ -81,16 +99,6 @@ in {
 
         sessionVariables = {
           NIXPKGS_ALLOW_UNFREE = "1";
-        };
-        packages = attrValues {
-          inherit
-            (pkgs)
-            curl
-            gzip
-            microfetch
-            trash-cli
-            xdg-utils
-            ;
         };
       };
       xdg = {

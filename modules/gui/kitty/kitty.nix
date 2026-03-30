@@ -104,7 +104,7 @@ in {
       };
     };
 
-    homeManager.default = {pkgs, ...}: {
+    homeManager.kitty = {pkgs, ...}: {
       xdg.mimeApps.defaultApplications = {
         "x-scheme-handler/terminal" = "kitty.desktop";
       };

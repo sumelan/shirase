@@ -23,7 +23,7 @@ in {
       terminal-exec = {
         enable = true;
         settings = {
-          default = ["kitty.desktop"];
+          default = ["foot.desktop"];
         };
       };
 

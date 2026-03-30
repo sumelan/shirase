@@ -2,7 +2,7 @@
   inherit (lib) getExe';
 in {
   flake.modules = {
-    nixos.hardware = {
+    nixos.common = {
       pkgs,
       user,
       ...
@@ -62,7 +62,7 @@ in {
 
           Service = {
             # avoid to race comditions
-            ExecStartPre = getExe' pkgs.coreutils "sleep 3s";
+            ExecStartPre = getExe' pkgs.coreutils "sleep 5s";
             ExecStart = getExe' pkgs.easyeffects "easyeffects --hide-window";
             ExecStop = getExe' pkgs.easyeffects "easyeffects --quit";
             KillMode = "mixed";

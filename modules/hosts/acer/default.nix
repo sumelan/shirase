@@ -16,8 +16,8 @@ in {
         ++ (with flake.modules.nixos; [
           default
           hardware-acer
-          gui
           laptop
+          gui
         ]);
     };
 

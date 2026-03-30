@@ -27,9 +27,9 @@ in {
           default
           hardware-minibookx
           chuwi-minibook-x
+          laptop
           gui
           kdeconnect
-          laptop
           sops-nix
           syncthing
           syncthing-minibookx

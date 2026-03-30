@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib) unique;
 in {
-  flake.modules.nixos.fileSystem = {
+  flake.modules.nixos.common = {
     config,
     user,
     ...
@@ -63,7 +63,7 @@ in {
       "/cache" = {
         hideMounts = true;
         files = unique cfg.cache.root.files;
-        directories = unique cfg.cache.root.directories;
+        directories = ["/var/lib/systemd/coredump"] ++ unique cfg.cache.root.directories;
 
         users.${user} = {
           files = unique (

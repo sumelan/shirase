@@ -131,10 +131,31 @@ in {
       };
     };
 
-    homeManager.foot = {pkgs, ...}: {
+    homeManager.default = {pkgs, ...}: {
       home.packages = [
         pkgs.foot # overlay-ed above
       ];
+
+      systemd.user.services = {
+        foot = {
+          Unit = {
+            Description = "Fast, lightweight and minimalistic Wayland terminal emulator.";
+            Documentation = "man:foot(1)";
+            PartOf = ["graphical-session.target"];
+            After = ["graphical-session.target"];
+          };
+
+          Service = {
+            ExecStart = "${getExe pkgs.foot} --server";
+            Restart = "on-failure";
+            OOMPolicy = "continue";
+          };
+
+          Install = {
+            WantedBy = ["graphical-session.target"];
+          };
+        };
+      };
 
       custom.programs.print-config = {
         foot =

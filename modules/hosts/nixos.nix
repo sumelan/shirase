@@ -11,13 +11,12 @@
     inputs.dankMaterialShell.nixosModules.dank-material-shell
     inputs.dankMaterialShell.nixosModules.greeter
     inputs.nix-hazkey.nixosModules.hazkey
+    inputs.nix-index-database.nixosModules.nix-index
     inputs.impermanence.nixosModules.impermanence
     inputs.sops-nix.nixosModules.sops
   ];
 
-  hmMods = [
-    inputs.nix-index-database.homeModules.nix-index
-  ];
+  hmMods = [];
 
   linux = mkNixos "x86_64-linux" "nixos";
 
@@ -26,21 +25,14 @@
     defaultNixMods ? [],
     defaultHmMods ? [],
   }: let
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
     specialArgs = {inherit user;};
   in
     nixpkgs.lib.nixosSystem {
-      inherit system pkgs specialArgs;
+      inherit system specialArgs;
       modules =
         nixMods
         ++ defaultNixMods
-        ++ [flake.modules.nixos.core]
-        ++ [flake.modules.nixos.fileSystem]
-        ++ [flake.modules.nixos.hardware]
-        ++ [flake.modules.nixos.overlays]
+        ++ [flake.modules.nixos.common]
         ++ [flake.modules.nixos."hosts/${host}"]
         ++ [flake.modules.nixos."users/${user}"]
         ++ [

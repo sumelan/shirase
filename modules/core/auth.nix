@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.core = {config, ...}: {
+  flake.modules.nixos.common = {config, ...}: {
     # ssh settings
     services.openssh = {
       enable = true;
@@ -9,9 +9,11 @@ _: {
         KbdInteractiveAuthentication = false;
       };
     };
+
     # keyring settings
     services.gnome.gnome-keyring.enable = true;
     security.pam.services.login.enableGnomeKeyring = true;
+
     # security
     security = {
       polkit.enable = true;
@@ -27,12 +29,13 @@ _: {
       enable = true;
       enableSSHSupport = true;
     };
+
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
     environment.variables = {
       GNUPGHOME = "${config.hm.xdg.dataHome}/.gnupg";
     };
-    # persist
+
     # persist keyring and misc other secrets
     custom.fileSystem = {
       persist = {

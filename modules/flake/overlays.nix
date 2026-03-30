@@ -129,7 +129,7 @@ in {
       };
     };
 
-    modules.nixos.overlays = _: {
+    modules.nixos.common = _: {
       nixpkgs.overlays = [
         self.overlays.pkgsCustom
         self.overlays.pkgsPatches
