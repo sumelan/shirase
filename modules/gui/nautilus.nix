@@ -56,16 +56,16 @@ in {
         flakePath = "/persist${homeDir}/Projects/shirase";
       in
         [
-          "file://${homeDir}/Documents"
-          "file://${homeDir}/Downloads"
-          "file://${homeDir}/Music"
-          "file://${homeDir}/Videos"
-          "file://${homeDir}/Pictures/Screenshots"
-          "file://${homeDir}/Pictures/Wallpapers"
+          "${homeDir}/Documents"
+          "${homeDir}/Downloads"
+          "${homeDir}/Music"
+          "${homeDir}/Videos"
+          "${homeDir}/Pictures/Screenshots"
+          "${homeDir}/Pictures/Wallpapers"
         ]
         ++ [
-          "file://${flakePath} Shirase"
-          "file:///persist Persist"
+          "${flakePath} Shirase"
+          "/persist Persist"
         ];
     };
 

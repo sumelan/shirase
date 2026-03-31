@@ -20,7 +20,7 @@ in {
 
   flake.modules.nixos.common = {pkgs, ...}: let
     ntv-desktop-entry = pkgs.makeDesktopItem {
-      name = "Nix Search TV";
+      name = "nix-search-tv";
       desktopName = "Nix Search TV";
       genericName = "Fuzzy search for Nix packages";
       icon = "nix-snowflake";
