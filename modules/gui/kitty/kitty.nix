@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   self,
   ...
@@ -31,38 +30,38 @@
     };
   };
 in {
-  flake.wrapperModules.kitty = inputs.wrappers.lib.wrapModule (
-    {
-      config,
-      wlib,
-      ...
-    }: let
-      inherit (wlib.types) file;
-      toKittyConf = toKeyValue {
-        mkKeyValue = mkKeyValueDefault {} " ";
-      };
-      baseKittyConf = import ./_config.nix {};
-    in {
-      options =
-        kittyOptions
-        // {
-          "kitty.conf" = mkOption {
-            type = file config.pkgs;
-            default.content = toKittyConf (baseKittyConf // config.extraSettings);
-            visible = false;
-          };
-        };
+  flake.wrappers.kitty = {
+    config,
+    wlib,
+    ...
+  }: let
+    inherit (wlib.types) file;
+    toKittyConf = toKeyValue {
+      mkKeyValue = mkKeyValueDefault {} " ";
+    };
+    baseKittyConf = import ./_config.nix {};
+  in {
+    imports = [wlib.modules.default];
 
-      config.package = mkDefault config.pkgs.kitty;
-      config.flags = {
-        "--config" = toString config."kitty.conf".path;
+    options =
+      kittyOptions
+      // {
+        "kitty.conf" = mkOption {
+          type = file config.pkgs;
+          default.content = toKittyConf (baseKittyConf // config.extraSettings);
+          visible = false;
+        };
       };
-    }
-  );
+
+    config.package = mkDefault config.pkgs.kitty;
+    config.flags = {
+      "--config" = toString config."kitty.conf".path;
+    };
+  };
 
   # expose generic kitty package without color theme and SHELL
   perSystem = {pkgs, ...}: {
-    packages.kitty = (self.wrapperModules.kitty.apply {inherit pkgs;}).wrapper;
+    packages.kitty = (self.wrappers.kitty.apply {inherit pkgs;}).wrapper;
   };
 
   flake.modules = {
@@ -87,7 +86,7 @@ in {
         nixpkgs.overlays = [
           (_: prev: {
             kitty =
-              (self.wrapperModules.kitty.apply {
+              (self.wrappers.kitty.apply {
                 pkgs = prev;
                 extraSettings =
                   {
@@ -122,7 +121,7 @@ in {
       custom.programs.print-config = {
         kitty =
           # sh
-          ''moor --lang ini "${pkgs.kitty.flags."--config"}"'';
+          ''moor --lang ini "${pkgs.kitty.configurations.flags."--config".data}"'';
       };
     };
   };

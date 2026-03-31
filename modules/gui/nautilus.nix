@@ -1,13 +1,12 @@
-{lib, ...}: let
+_: let
   inherit (builtins) attrValues;
-  inherit (lib) getExe;
 in {
-  flake.modules.homeManager.default = {
+  flake.modules.nixos.gui = {
     config,
     pkgs,
     ...
   }: {
-    home.packages = attrValues {
+    environment.systemPackages = attrValues {
       inherit
         (pkgs)
         nautilus
@@ -28,7 +27,7 @@ in {
       };
 
       # fix mimetype associations
-      mimeApps.defaultApplications = {
+      mime.defaultApplications = {
         "inode/directory" = "org.gnome.Nautilus.desktop";
         "application/zip" = "org.gnome.FileRoller.desktop";
         "application/vnd.rar" = "org.gnome.FileRoller.desktop";
@@ -36,40 +35,38 @@ in {
         "application/x-bzip2-compressed-tar" = "org.gnome.FileRoller.desktop";
         "application/x-tar" = "org.gnome.FileRoller.desktop";
       };
-
-      configFile = {
-        "mimeapps.list".force = true;
-      };
     };
 
-    gtk.gtk3.bookmarks = let
-      homeDir = config.home.homeDirectory;
-      flakePath = "/persist${homeDir}/Projects/shirase";
-    in
-      [
-        "file://${homeDir}/Documents"
-        "file://${homeDir}/Downloads"
-        "file://${homeDir}/Music"
-        "file://${homeDir}/Videos"
-        "file://${homeDir}/Pictures/Screenshots"
-        "file://${homeDir}/Pictures/Wallpapers"
-      ]
-      ++ [
-        "file://${flakePath} Shirase"
-        "file:///persist Persist"
-      ];
+    custom = {
+      # NOTE: to find a setting value, run `dconf watch /` in terminal
+      dconf.settings = {
+        # fix open in terminal
+        "org/gnome/desktop/applications/terminal" = {
+          exec = "xdg-terminal-exec";
+        };
+        "org/gnome/nautilus/preferences" = {
+          default-folder-viewer = "list-view";
+          show-create-link = true;
+          show-delete-permanently = true;
+        };
+      };
 
-    # NOTE: to find a setting value, run `dconf watch /` in terminal
-    dconf.settings = {
-      # fix open in terminal
-      "org/gnome/desktop/applications/terminal" = {
-        exec = getExe config.xdg.terminal-exec.package;
-      };
-      "org/gnome/nautilus/preferences" = {
-        default-folder-viewer = "list-view";
-        show-create-link = true;
-        show-delete-permanently = true;
-      };
+      gtk.bookmarks = let
+        homeDir = config.hm.home.homeDirectory;
+        flakePath = "/persist${homeDir}/Projects/shirase";
+      in
+        [
+          "file://${homeDir}/Documents"
+          "file://${homeDir}/Downloads"
+          "file://${homeDir}/Music"
+          "file://${homeDir}/Videos"
+          "file://${homeDir}/Pictures/Screenshots"
+          "file://${homeDir}/Pictures/Wallpapers"
+        ]
+        ++ [
+          "file://${flakePath} Shirase"
+          "file:///persist Persist"
+        ];
     };
 
     custom.fileSystem = {

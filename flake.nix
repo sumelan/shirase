@@ -3,6 +3,7 @@
 
   outputs = {
     flake-parts,
+    wrappers,
     home-manager,
     import-tree,
     ...
@@ -11,6 +12,7 @@
       systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin"];
       imports = [
         flake-parts.flakeModules.modules
+        wrappers.flakeModules.wrappers
         home-manager.flakeModules.home-manager
         (import-tree ./packages)
         (import-tree ./modules)
@@ -51,7 +53,7 @@
     };
 
     wrappers = {
-      url = "github:lassulus/wrappers";
+      url = "github:BirdeeHub/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

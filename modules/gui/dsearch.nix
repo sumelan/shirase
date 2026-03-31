@@ -14,7 +14,7 @@ in {
     tomlFormat = pkgs.formats.toml {};
     inherit (config.xdg) cacheHome;
     inherit (config.xdg.userDirs) documents pictures;
-    projDir = "${config.home.homeDirectory}/Projects";
+    pjDir = "${config.home.homeDirectory}/Projects";
   in {
     home.packages = [dsearch];
 
@@ -92,7 +92,7 @@ in {
             exclude_dirs = ["node_modules" "venv" "target"];
           }
           {
-            path = projDir;
+            path = pjDir;
             max_depth = 8;
             exclude_hidden = true;
             exclude_dirs = ["node_modules" ".git" "target" "dist"];

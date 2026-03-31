@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   self,
   ...
@@ -48,55 +47,55 @@
     };
   };
 in {
-  flake.wrapperModules.btop = inputs.wrappers.lib.wrapModule (
-    {
-      config,
-      wlib,
-      ...
-    }: let
-      inherit (wlib.types) file;
-      toBtopConf = toKeyValue {
-        mkKeyValue = mkKeyValueDefault {
-          mkValueString = option:
-            if isBool option
-            then
-              (
-                if option
-                then "True"
-                else "False"
-              )
-            else if isString option
-            then ''"${option}"''
-            else toString option;
-        } " = ";
-      };
-      baseBtopConf = import ./_config.nix {};
-    in {
-      options =
-        btopOptions
-        // {
-          "btop.conf" = mkOption {
-            type = file config.pkgs;
-            default.content = toBtopConf (baseBtopConf // config.extraSettings);
-            visible = false;
-          };
-        };
+  flake.wrappers.btop = {
+    config,
+    wlib,
+    ...
+  }: let
+    inherit (wlib.types) file;
+    toBtopConf = toKeyValue {
+      mkKeyValue = mkKeyValueDefault {
+        mkValueString = option:
+          if isBool option
+          then
+            (
+              if option
+              then "True"
+              else "False"
+            )
+          else if isString option
+          then ''"${option}"''
+          else toString option;
+      } " = ";
+    };
+    baseBtopConf = import ./_config.nix {};
+  in {
+    imports = [wlib.modules.default];
 
-      config.package = mkDefault (
-        config.pkgs.btop.override {
-          inherit (config) cudaSupport;
-          inherit (config) rocmSupport;
-        }
-      );
-      config.flags = {
-        "--config" = toString config."btop.conf".path;
+    options =
+      btopOptions
+      // {
+        "btop.conf" = mkOption {
+          type = file config.pkgs;
+          default.content = toBtopConf (baseBtopConf // config.extraSettings);
+          visible = false;
+        };
       };
-    }
-  );
+
+    config.package = mkDefault (
+      config.pkgs.btop.override {
+        inherit (config) cudaSupport;
+        inherit (config) rocmSupport;
+      }
+    );
+    config.flags = {
+      "--config" = toString config."btop.conf".path;
+    };
+  };
 
   # expose generic btop package without disks set
   perSystem = {pkgs, ...}: {
-    packages.btop = (self.wrapperModules.btop.apply {inherit pkgs;}).wrapper;
+    packages.btop = (self.wrappers.btop.apply {inherit pkgs;}).wrapper;
   };
 
   flake.modules = {
@@ -117,7 +116,7 @@ in {
         nixpkgs.overlays = [
           (_: prev: {
             btop =
-              (self.wrapperModules.btop.apply {
+              (self.wrappers.btop.apply {
                 pkgs = prev;
                 extraSettings =
                   {
@@ -147,7 +146,7 @@ in {
       custom.programs.print-config = {
         btop =
           # sh
-          ''moor --lang ini "${pkgs.btop.flags."--config"}"'';
+          ''moor --lang ini "${pkgs.btop.configuration.flags."--config".data}"'';
       };
     };
   };

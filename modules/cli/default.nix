@@ -42,6 +42,7 @@ in {
             gzip
             htop
             jq
+            just
             killall
             microfetch
             procs # better ps

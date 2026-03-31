@@ -10,11 +10,6 @@ in {
         default = {};
         description = "User info";
       };
-      wrapperModules = mkOption {
-        type = attrs;
-        default = {};
-        description = "Wrapper modules";
-      };
     };
   };
 }

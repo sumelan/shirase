@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   self,
   ...
@@ -7,52 +6,52 @@
   inherit (builtins) listToAttrs;
   inherit (lib) mkOption mkDefault;
 in {
-  flake.wrapperModules.satty = inputs.wrappers.lib.wrapModule (
-    {
-      config,
-      wlib,
-      ...
-    }: let
-      inherit (wlib.types) file;
-      tomlFormat = config.pkgs.formats.toml {};
-      sattyOptions = {
-        extraSettings = mkOption {
-          inherit (tomlFormat) type;
-          default = {};
-          example = {
-            fullscreen = false;
-            early-exit = true;
-          };
-          description = ''
-            Options to add to {file}`satty.toml` file.
-            See <https://github.com/Satty-org/Satty?tab=readme-ov-file#configuration-file>
-            for options.
-          '';
+  flake.wrappers.satty = {
+    config,
+    wlib,
+    ...
+  }: let
+    inherit (wlib.types) file;
+    tomlFormat = config.pkgs.formats.toml {};
+    sattyOptions = {
+      extraSettings = mkOption {
+        inherit (tomlFormat) type;
+        default = {};
+        example = {
+          fullscreen = false;
+          early-exit = true;
+        };
+        description = ''
+          Options to add to {file}`satty.toml` file.
+          See <https://github.com/Satty-org/Satty?tab=readme-ov-file#configuration-file>
+          for options.
+        '';
+      };
+    };
+
+    baseSattyConf = import ./_config.nix {};
+  in {
+    imports = [wlib.modules.default];
+
+    options =
+      sattyOptions
+      // {
+        "satty.toml" = mkOption {
+          type = file config.pkgs;
+          default.path = tomlFormat.generate "satty.toml" (baseSattyConf // config.extraSettings);
+          visible = false;
         };
       };
 
-      baseSattyConf = import ./_config.nix {};
-    in {
-      options =
-        sattyOptions
-        // {
-          "satty.toml" = mkOption {
-            type = file config.pkgs;
-            default.path = tomlFormat.generate "satty.toml" (baseSattyConf // config.extraSettings);
-            visible = false;
-          };
-        };
-
-      config.package = mkDefault config.pkgs.satty;
-      config.flags = {
-        "--config" = toString config."satty.toml".path;
-      };
-    }
-  );
+    config.package = mkDefault config.pkgs.satty;
+    config.flags = {
+      "--config" = toString config."satty.toml".path;
+    };
+  };
 
   # expose generic sattyy package without output file and color-palette
   perSystem = {pkgs, ...}: {
-    packages.satty = (self.wrapperModules.satty.apply {inherit pkgs;}).wrapper;
+    packages.satty = (self.wrappers.satty.apply {inherit pkgs;}).wrapper;
   };
 
   flake.modules = {
@@ -87,7 +86,7 @@ in {
         nixpkgs.overlays = [
           (_: prev: {
             satty =
-              (self.wrapperModules.satty.apply {
+              (self.wrappers.satty.apply {
                 pkgs = prev;
                 extraSettings =
                   {
@@ -135,7 +134,7 @@ in {
       custom.programs.print-config = {
         satty =
           # sh
-          ''moor --lang toml "${pkgs.satty.flags."--config"}"'';
+          ''moor --lang toml "${pkgs.satty.configuration.flags."--config".data}"'';
       };
     };
   };
