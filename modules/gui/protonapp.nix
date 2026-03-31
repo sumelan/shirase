@@ -11,7 +11,7 @@ in {
         (pkgs)
         protonmail-desktop
         proton-pass
-        protonvpn-gui
+        proton-vpn
         ;
     };
 
