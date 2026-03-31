@@ -1,24 +1,11 @@
 {lib, ...}: let
   inherit (lib.generators) toINI;
 in {
-  flake.modules.nixos.gui = {
+  flake.modules.nixos.hjem-gui = {
     config,
     pkgs,
     ...
   }: {
-    environment = {
-      sessionVariables = {
-        QT_QPA_PLATFORMTHEME = "qt5ct";
-        QT_STYLE_OVERRIDE = "kvantum";
-      };
-
-      systemPackages = with pkgs; [
-        qt6Packages.qt6ct
-        qt6Packages.qtstyleplugin-kvantum
-        qt6Packages.qtwayland
-      ];
-    };
-
     # use gtk theme on qt apps
     qt = {
       enable = true;
@@ -26,8 +13,19 @@ in {
       style = "kvantum";
     };
 
-    hm = {
-      xdg.configFile = let
+    hj = {
+      environment.sessionVariables = {
+        QT_QPA_PLATFORMTHEME = "qt5ct";
+        QT_STYLE_OVERRIDE = "kvantum";
+      };
+
+      packages = [
+        pkgs.qt6Packages.qt6ct
+        pkgs.qt6Packages.qtstyleplugin-kvantum
+        pkgs.qt6Packages.qtwayland
+      ];
+
+      xdg.config.files = let
         qtConf = {
           Appearance = {
             icon_theme = config.custom.gtk.iconTheme.name;
@@ -35,11 +33,20 @@ in {
           };
         };
       in {
-        "qt5ct/qt5ct.conf".text = toINI {} qtConf;
-        "qt6ct/qt6ct.conf".text = toINI {} qtConf;
         "Kvantum/Nordic".source = "${pkgs.nordic}/share/Kvantum/Nordic";
-        "Kvantum/kvantum.kvconfig".text = toINI {} {
-          General.theme = "Nordic";
+        "Kvantum/kvantum.kvconfig" = {
+          generator = toINI {};
+          value = {
+            General.theme = "Nordic";
+          };
+        };
+        "qt5ct/qt5ct.conf" = {
+          generator = toINI {};
+          value = qtConf;
+        };
+        "qt6ct/qt6ct.conf" = {
+          generator = toINI {};
+          value = qtConf;
         };
       };
     };

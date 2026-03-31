@@ -39,8 +39,8 @@ in {
     packages.zathura = (self.wrappers.zathura.apply {inherit pkgs;}).wrapper;
   };
 
-  flake.modules = {
-    nixos.default = {pkgs, ...}: let
+  flake.modules.nixos = {
+    gui = {pkgs, ...}: let
       src = pkgs.fetchFromGitHub {
         owner = "nautilor";
         repo = "zathura-nord";
@@ -67,7 +67,8 @@ in {
         ];
       };
     };
-    homeManager.default = {pkgs, ...}: let
+
+    hjem-gui = {pkgs, ...}: let
       src = pkgs.fetchFromGitHub {
         owner = "nautilor";
         repo = "zathura-nord";
@@ -76,23 +77,26 @@ in {
       };
       zathura-nord = "${src}/zathurarc";
     in {
-      home.packages = [
-        pkgs.zathura # overlay-ed above
-      ];
+      hj = {
+        packages = [
+          pkgs.zathura # overlay-ed above
+        ];
 
-      xdg.mimeApps = let
-        value = "org.pwmt.zathura-pdf-mupdf.desktop";
-        associations = listToAttrs (map (name: {
-            inherit name value;
-          }) [
-            "image/jpeg"
-            "image/gif"
-            "image/webp"
-            "image/png"
-          ]);
-      in {
-        associations.removed = associations;
+        xdg.mime-apps = let
+          value = "org.pwmt.zathura-pdf-mupdf.desktop";
+          associations = listToAttrs (map (name: {
+              inherit name value;
+            }) [
+              "image/jpeg"
+              "image/gif"
+              "image/webp"
+              "image/png"
+            ]);
+        in {
+          removed-associations = associations;
+        };
       };
+
       custom.programs.print-config = {
         zathura =
           # sh

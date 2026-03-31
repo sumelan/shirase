@@ -6,175 +6,173 @@
   inherit (builtins) attrValues;
   inherit (lib) mapAttrsToList mapAttrs sort concatStringsSep;
 in {
-  flake.modules = {
-    nixos.common = {
-      config,
-      pkgs,
-      user,
-      ...
-    }: let
-      inherit (inputs) self;
+  flake.modules.nixos.common = {
+    config,
+    pkgs,
+    user,
+    ...
+  }: let
+    inherit (inputs) self;
+  in {
+    # nix lang / nixpkgs
+    environment.systemPackages = attrValues {
+      inherit
+        (pkgs)
+        comma # Runs software without installing it. usage: `, cowsay neato`
+        nil
+        nix-init
+        nix-output-monitor
+        nix-tree
+        nix-update
+        nixd
+        nixfmt
+        nixpkgs-review
+        nvfetcher
+        ;
+    };
+
+    programs = {
+      # files database for nixpkgs
+      nix-index.enable = true;
+      # run unpatched binaries on nixos
+      nix-ld.enable = true;
+
+      nh = {
+        enable = true;
+        clean.extraArgs = "--keep 5";
+        flake = "/persist/home/${user}/Projects/shirase";
+      };
+    };
+
+    nixpkgs.config.allowUnfree = true;
+
+    nix = let
+      nixPath = mapAttrsToList (name: _: "${name}=flake:${name}") inputs;
+      registry = mapAttrs (_: flake: {inherit flake;}) inputs;
     in {
-      # nix lang / nixpkgs
-      environment.systemPackages = attrValues {
-        inherit
-          (pkgs)
-          comma # Runs software without installing it. usage: `, cowsay neato`
-          nil
-          nix-init
-          nix-output-monitor
-          nix-tree
-          nix-update
-          nixd
-          nixfmt
-          nixpkgs-review
-          nvfetcher
-          ;
+      # disable channel because i use flake's input as source
+      # also make flake registry and nix path match flake input
+      # without doing above, `nix run nixpkgs#fastfetch` would come from the channel and not your flake
+      channel.enable = false;
+
+      # required for nix-shell -p to work
+      inherit nixPath;
+
+      gc = {
+        # Automatic garbage collection
+        automatic = true;
+        dates = "daily";
+        options = "--delete-older-than 7d";
       };
 
-      programs = {
-        # files database for nixpkgs
-        nix-index.enable = true;
-        # run unpatched binaries on nixos
-        nix-ld.enable = true;
+      # lix: `pkgs.lixPackageSets.latest.lix`
+      package = pkgs.nixVersions.latest;
 
-        nh = {
-          enable = true;
-          clean.extraArgs = "--keep 5";
-          flake = "/persist/home/${user}/Projects/shirase";
-        };
-      };
-
-      nixpkgs.config.allowUnfree = true;
-
-      nix = let
-        nixPath = mapAttrsToList (name: _: "${name}=flake:${name}") inputs;
-        registry = mapAttrs (_: flake: {inherit flake;}) inputs;
-      in {
-        # disable channel because i use flake's input as source
-        # also make flake registry and nix path match flake input
-        # without doing above, `nix run nixpkgs#fastfetch` would come from the channel and not your flake
-        channel.enable = false;
-
-        # required for nix-shell -p to work
-        inherit nixPath;
-
-        gc = {
-          # Automatic garbage collection
-          automatic = true;
-          dates = "daily";
-          options = "--delete-older-than 7d";
-        };
-
-        # lix: `pkgs.lixPackageSets.latest.lix`
-        package = pkgs.nixVersions.latest;
-
-        # to use shorter IDs instead of lengthy address
-        registry =
-          registry
-          // {
-            n = registry.nixpkgs;
-            master = {
-              # the flake reference: `nixpkgs-master`
-              from = {
-                type = "indirect";
-                id = "nixpkgs-master";
-              };
-              # the flake reference from: github:NixOS/nixpkgs
-              to = {
-                type = "github";
-                owner = "NixOS";
-                repo = "nixpkgs";
-              };
+      # to use shorter IDs instead of lengthy address
+      registry =
+        registry
+        // {
+          n = registry.nixpkgs;
+          master = {
+            # the flake reference: `nixpkgs-master`
+            from = {
+              type = "indirect";
+              id = "nixpkgs-master";
             };
-            # for nix flake init
-            templates = {
-              from = {
-                id = "templates";
-                type = "indirect";
-              };
-              to = {
-                type = "github";
-                owner = "NixOS";
-                repo = "templates";
-              };
+            # the flake reference from: github:NixOS/nixpkgs
+            to = {
+              type = "github";
+              owner = "NixOS";
+              repo = "nixpkgs";
             };
           };
-
-        # Periodically optimise via hardlinking store files
-        optimise.automatic = true;
-
-        settings = {
-          # re-evaluate on every rebuild instead of "cached failure of attribute" error
-          # eval-cache = false;
-
-          # don't use the global flake registry, define everything explicitly
-          flake-registry = "";
-
-          # required to be set
-          # for some reason nix.nixPath does not write to nix.conf
-          nix-path = nixPath;
-
-          warn-dirty = false;
-
-          # removes ~/.nix-profile and ~/.nix-defexpr
-          use-xdg-base-directories = true;
-
-          # use flakes
-          experimental-features = [
-            "nix-command"
-            "flakes"
-          ];
-
-          substituters = [
-            "https://nix-community.cachix.org"
-          ];
-          trusted-users = [user];
-          trusted-public-keys = [
-            "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          ];
+          # for nix flake init
+          templates = {
+            from = {
+              id = "templates";
+              type = "indirect";
+            };
+            to = {
+              type = "github";
+              owner = "NixOS";
+              repo = "templates";
+            };
+          };
         };
-      };
 
-      # never going to read html docs locally
-      documentation = {
-        enable = true;
-        doc.enable = true;
-        man = {
-          enable = true;
-          # enable man-db cache for fish to be able to find manpages
-          # https://discourse.nixos.org/t/fish-shell-and-manual-page-completion-nixos-home-manager/15661
-          cache.enable = true;
-        };
-        dev.enable = false;
-      };
+      # Periodically optimise via hardlinking store files
+      optimise.automatic = true;
 
-      system = {
-        # better nixos generation label
-        # https://reddit.com/r/NixOS/comments/16t2njf/small_trick_for_people_using_nixos_with_flakes/k2d0sxx/
-        nixos.label = concatStringsSep "-" (
-          (sort (x: y: x < y) config.system.nixos.tags)
-          ++ ["${config.system.nixos.version}.${self.sourceInfo.shortRev or "dirty"}"]
-        );
+      settings = {
+        # re-evaluate on every rebuild instead of "cached failure of attribute" error
+        # eval-cache = false;
 
-        # make a symlink of flake within the generation
-        # (e.g. /run/current-system/src)
-        systemBuilderCommands = "ln -s ${self.sourceInfo.outPath} $out/src";
-      };
+        # don't use the global flake registry, define everything explicitly
+        flake-registry = "";
 
-      systemd.tmpfiles.rules = [
-        # cleanup nixpkgs-review cache on boot
-        "D! /home/${user}/.cache/nixpkgs-review 1775 ${user} users 5d"
-        # cleanup channels so nix stops complaining
-        "D! /nix/var/nix/profiles/per-user/root 1775 root root 1d"
-      ];
+        # required to be set
+        # for some reason nix.nixPath does not write to nix.conf
+        nix-path = nixPath;
 
-      custom.fileSystem = {
-        cache.home.directories = [
-          ".cache/nix-index"
-          ".cache/nix"
+        warn-dirty = false;
+
+        # removes ~/.nix-profile and ~/.nix-defexpr
+        use-xdg-base-directories = true;
+
+        # use flakes
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+
+        substituters = [
+          "https://nix-community.cachix.org"
+        ];
+        trusted-users = [user];
+        trusted-public-keys = [
+          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         ];
       };
+    };
+
+    # never going to read html docs locally
+    documentation = {
+      enable = true;
+      doc.enable = true;
+      man = {
+        enable = true;
+        # enable man-db cache for fish to be able to find manpages
+        # https://discourse.nixos.org/t/fish-shell-and-manual-page-completion-nixos-home-manager/15661
+        cache.enable = true;
+      };
+      dev.enable = false;
+    };
+
+    system = {
+      # better nixos generation label
+      # https://reddit.com/r/NixOS/comments/16t2njf/small_trick_for_people_using_nixos_with_flakes/k2d0sxx/
+      nixos.label = concatStringsSep "-" (
+        (sort (x: y: x < y) config.system.nixos.tags)
+        ++ ["${config.system.nixos.version}.${self.sourceInfo.shortRev or "dirty"}"]
+      );
+
+      # make a symlink of flake within the generation
+      # (e.g. /run/current-system/src)
+      systemBuilderCommands = "ln -s ${self.sourceInfo.outPath} $out/src";
+    };
+
+    systemd.tmpfiles.rules = [
+      # cleanup nixpkgs-review cache on boot
+      "D! /home/${user}/.cache/nixpkgs-review 1775 ${user} users 5d"
+      # cleanup channels so nix stops complaining
+      "D! /nix/var/nix/profiles/per-user/root 1775 root root 1d"
+    ];
+
+    custom.fileSystem = {
+      cache.home.directories = [
+        ".cache/nix-index"
+        ".cache/nix"
+      ];
     };
   };
 }

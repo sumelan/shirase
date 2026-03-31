@@ -37,33 +37,35 @@ in {
     };
   };
 
-  flake.modules.nixos.default = {pkgs, ...}: {
-    nixpkgs.overlays = [
-      (_: _prev: {
-        inherit (pkgs.custom) bat;
-      })
-    ];
+  flake.modules.nixos = {
+    default = {pkgs, ...}: {
+      nixpkgs.overlays = [
+        (_: _prev: {
+          inherit (pkgs.custom) bat;
+        })
+      ];
 
-    programs = {
-      # manually add the abbr so it doesn't get mangled by nix
-      fish.interactiveShellInit =
-        # fish
-        ''
-          abbr -a --position anywhere -- --help '--help | bat --plain --language=help'
-        '';
+      programs = {
+        # manually add the abbr so it doesn't get mangled by nix
+        fish.interactiveShellInit =
+          # fish
+          ''
+            abbr -a --position anywhere -- --help '--help | bat --plain --language=help'
+          '';
+      };
     };
-  };
 
-  flake.modules.homeManager.default = {pkgs, ...}: {
-    home.packages = [
-      pkgs.bat # overlay-ed above
-      pkgs.custom.batman
-    ];
+    hjem-default = {pkgs, ...}: {
+      hj.packages = [
+        pkgs.bat # overlay-ed above
+        pkgs.custom.batman
+      ];
 
-    custom.programs.print-config = {
-      bat =
-        # sh
-        ''moor --lang sh "${getExe pkgs.bat}"'';
+      custom.programs.print-config = {
+        bat =
+          # sh
+          ''moor --lang sh "${getExe pkgs.bat}"'';
+      };
     };
   };
 }

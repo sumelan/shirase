@@ -125,14 +125,16 @@ in {
           }
         ];
       };
+    };
 
-      hm = {
-        xdg.configFile."gtk-3.0/bookmarks".text =
-          concatMapStringsSep "\n" (
-            b: "file://${b}"
-          )
-          gtkCfg.bookmarks;
-      };
+    hjem-gui = {config, ...}: let
+      gtkCfg = config.custom.gtk;
+    in {
+      hj.xdg.config.files."gtk-3.0/bookmarks".text =
+        concatMapStringsSep "\n" (
+          b: "file://${b}"
+        )
+        gtkCfg.bookmarks;
     };
   };
 }

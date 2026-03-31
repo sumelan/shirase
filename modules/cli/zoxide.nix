@@ -1,16 +1,13 @@
 {lib, ...}: let
   inherit (lib) mkAfter getExe;
 in {
-  flake.modules.nixos.default = {pkgs, ...}: let
+  flake.modules.nixos.hjem-default = {pkgs, ...}: let
     flags = "--cmd cd";
   in {
-    environment = {
-      systemPackages = [pkgs.zoxide];
-
-      shellAliases = {
-        z = "zoxide query -i";
-      };
+    environment.shellAliases = {
+      z = "zoxide query -i";
     };
+    hj.packages = [pkgs.zoxide];
 
     # zoxide is initialized via `zoxide init fish <flags> | source` and is
     # therefore not wrapped with flags

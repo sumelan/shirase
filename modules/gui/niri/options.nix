@@ -66,30 +66,31 @@
     };
   };
 in {
-  flake.modules.homeManager.default = {config, ...}: {
-    options = {
-      monitors = mkOption {
+  flake.modules.nixos.gui = {config, ...}: let
+    cfg = config.custom.hardware.monitors;
+    clib = config.lib.custom.hardware.monitors;
+  in {
+    options.custom = {
+      hardware.monitors = mkOption {
         type = attrsOf monitor;
       };
-      custom = {
-        niri = {
-          xwayland = mkOption {
-            type = bool;
-            default = false;
-          };
-          screenshot.host = mkOption {
-            type = str;
-            default = "";
-          };
+      programs.niri = {
+        xwayland = mkOption {
+          type = bool;
+          default = false;
+        };
+        screenshot.host = mkOption {
+          type = str;
+          default = "";
         };
       };
     };
-    config.lib.monitors = {
+    config.lib.custom.hardware.monitors = {
       mainMonitorName =
-        head (filter (name: config.monitors.${name}.isMain) (attrNames config.monitors));
+        head (filter (name: cfg.${name}.isMain) (attrNames cfg));
       otherMonitorsNames =
-        filter (name: !config.monitors.${name}.isMain) (attrNames config.monitors);
-      mainMonitor = config.monitors.${config.lib.monitors.mainMonitorName};
+        filter (name: !cfg.${name}.isMain) (attrNames cfg);
+      mainMonitor = cfg.${clib.mainMonitorName};
     };
   };
 }

@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  inherit (config.xdg) cacheHome;
+  cache = config.hj.xdg.cache.directory;
   mpdAddress = "/run/mpd/socket";
 in
   pkgs.writeText "config.ron"
@@ -16,7 +16,7 @@ in
         address: "${mpdAddress}",
         password: None,
         theme: "custom",
-        cache_dir: "${cacheHome}/rmpc",
+        cache_dir: "${cache}/rmpc",
         on_song_change: None,
         volume_step: 5,
         scrolloff: 0,

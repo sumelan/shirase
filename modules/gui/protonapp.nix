@@ -5,8 +5,8 @@
 _: let
   inherit (builtins) attrValues;
 in {
-  flake.modules.homeManager.protonapp = {pkgs, ...}: {
-    home.packages = attrValues {
+  flake.modules.nixos.hjem-protonapp = {pkgs, ...}: {
+    hj.packages = attrValues {
       inherit
         (pkgs)
         protonmail-desktop

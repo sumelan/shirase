@@ -7,7 +7,6 @@ in {
     ...
   }: let
     cfg = config.custom.fileSystem;
-    hmcfg = config.hm.custom.fileSystem;
   in {
     boot.initrd.systemd = {
       # enable stage-1 bootloader
@@ -43,17 +42,16 @@ in {
         );
 
         users.${user} = {
-          files = unique (
-            cfg.persist.home.files ++ hmcfg.persist.home.files
-          );
+          files = unique cfg.persist.home.files;
           directories = unique (
             [
+              "Documents"
+              "Music"
+              "Pictures"
+              "Videos"
               "Projects"
-              ".cache/dconf"
-              ".config/dconf"
             ]
             ++ cfg.persist.home.directories
-            ++ hmcfg.persist.home.directories
           );
         };
       };
@@ -66,11 +64,12 @@ in {
         directories = ["/var/lib/systemd/coredump"] ++ unique cfg.cache.root.directories;
 
         users.${user} = {
-          files = unique (
-            cfg.cache.home.files ++ hmcfg.cache.home.files
-          );
+          files = unique cfg.cache.home.files;
           directories = unique (
-            cfg.cache.home.directories ++ hmcfg.cache.home.directories
+            [
+              "Downloads"
+            ]
+            ++ cfg.cache.home.directories
           );
         };
       };

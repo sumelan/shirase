@@ -4,8 +4,13 @@ _: {
     user,
     ...
   }: let
-    inherit (config.hm.xdg) configHome cacheHome dataHome;
-    inherit (config.hm.xdg.userDirs) documents music pictures videos;
+    configDir = config.hj.xdg.config.directory;
+    cacheDir = config.hj.xdg.cache.directory;
+    dataDir = config.hj.xdg.data.directory;
+    documents = "${config.hj.directory}/Documents";
+    music = "${config.hj.directory}/Music";
+    pictures = "${config.hj.directory}/Pictures";
+    videos = "${config.hj.directory}/Videos";
   in {
     # port 8384  is the default port to allow access from the network
     networking.firewall.allowedTCPPorts = [8384];
@@ -21,8 +26,8 @@ _: {
       inherit user;
       inherit (config.users.users.${user}) group;
 
-      configDir = "${configHome}/syncthing";
-      dataDir = "${dataHome}/syncthing";
+      configDir = "${configDir}/syncthing";
+      dataDir = "${dataDir}/syncthing";
 
       guiPasswordFile = config.sops.secrets."syncthing/gui-password".path;
 
@@ -45,13 +50,13 @@ _: {
             path = videos;
           };
           "MPD" = {
-            path = "${dataHome}/mpd";
+            path = "${dataDir}/mpd";
           };
           "Youtube" = {
-            path = "${dataHome}/youtube-tui";
+            path = "${dataDir}/youtube-tui";
           };
           "Euphonica" = {
-            path = "${cacheHome}/euphonica";
+            path = "${cacheDir}/euphonica";
           };
         };
       };

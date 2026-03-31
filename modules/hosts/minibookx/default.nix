@@ -18,55 +18,49 @@ in {
             };
 
             custom = {
+              hardware.monitors = {
+                "DSI-1" = {
+                  isMain = true;
+                  scale = 1.0;
+                  mode = {
+                    width = 1200;
+                    height = 1920;
+                    refresh = 50.002;
+                  };
+                  position = {
+                    x = 0;
+                    y = 0;
+                  };
+                  rotation = 270;
+                };
+              };
+
+              programs.niri.screenshot.host = "minibookx";
+
               # hinted font: for lower or equal than 1080p
               fonts.packages = [pkgs.maple-mono.NF];
             };
           }
         ]
-        ++ (with flake.modules.nixos; [
-          default
-          hardware-minibookx
-          chuwi-minibook-x
-          laptop
-          gui
-          kdeconnect
-          sops-nix
-          syncthing
-          syncthing-minibookx
-        ]);
-    };
-
-    homeManager."hosts/minibookx" = _: {
-      imports =
-        [
-          {
-            monitors = {
-              "DSI-1" = {
-                isMain = true;
-                scale = 1.0;
-                mode = {
-                  width = 1200;
-                  height = 1920;
-                  refresh = 50.002;
-                };
-                position = {
-                  x = 0;
-                  y = 0;
-                };
-                rotation = 270;
-              };
-            };
-            custom = {
-              niri.screenshot.host = "minibookx";
-            };
-          }
-        ]
-        ++ (with flake.modules.homeManager; [
-          default
-          ebook
-          protonapp
-          rmpc
-        ]);
+        ++ (with flake.modules.nixos;
+          [
+            default
+            hardware-minibookx
+            chuwi-minibook-x
+            laptop
+            gui
+            sops-nix
+            syncthing
+            syncthing-minibookx
+          ]
+          ++ [
+            hjem-default
+            hjem-gui
+            hjem-ebook
+            hjem-kdeconnect
+            hjem-protonapp
+            hjem-rmpc
+          ]);
     };
   };
 }

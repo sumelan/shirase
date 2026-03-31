@@ -54,14 +54,14 @@ in {
     packages.satty = (self.wrappers.satty.apply {inherit pkgs;}).wrapper;
   };
 
-  flake.modules = {
-    nixos.default = {
+  flake.modules.nixos = {
+    gui = {
       config,
       pkgs,
       ...
     }: let
       tomlFormat = pkgs.formats.toml {};
-      inherit (config.hm.xdg.userDirs) pictures;
+      pictures = "${config.hj.directory}/Pictures";
       sattyOptions = {
         extraSettings = mkOption {
           inherit (tomlFormat) type;
@@ -111,24 +111,26 @@ in {
       };
     };
 
-    homeManager.default = {pkgs, ...}: {
-      home.packages = [
-        pkgs.satty # overlayy-ed above
-      ];
+    hjem-gui = {pkgs, ...}: {
+      hj = {
+        packages = [
+          pkgs.satty # overlayy-ed above
+        ];
 
-      xdg.mimeApps = let
-        value = "satty.desktop";
-        associations = listToAttrs (map (name: {
-            inherit name value;
-          }) [
-            "image/jpeg"
-            "image/gif"
-            "image/webp"
-            "image/png"
-          ]);
-      in {
-        # remove `satty.desktop` from image mimetypes
-        associations.removed = associations;
+        xdg.mime-apps = let
+          value = "satty.desktop";
+          associations = listToAttrs (map (name: {
+              inherit name value;
+            }) [
+              "image/jpeg"
+              "image/gif"
+              "image/webp"
+              "image/png"
+            ]);
+        in {
+          # remove `satty.desktop` from image mimetypes
+          removed-associations = associations;
+        };
       };
 
       custom.programs.print-config = {

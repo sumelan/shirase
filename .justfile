@@ -105,8 +105,11 @@ sourceDir := "_sources"
 
 [group('EVAL')]
 [doc('Create the flamegraph file of eval time and open in browser.')]
-@graph host:
-    nix-shell -p nixVersions.latest inferno --command "nix eval .#nixosConfigurations.{{ host }}.config.system.build.toplevel --impure --eval-profiler flamegraph --eval-profiler-frequency 9999 && inferno-flamegraph --width 10000 < /tmp/nix.profile > /tmp/nix-flamegraph.svg && $BROWSER /tmp/nix-flamegraph.svg"
+@geval host:
+    nix-shell -p nixVersions.latest inferno --command \
+        "nix eval .#nixosConfigurations.{{ host }}.config.system.build.toplevel --impure --eval-profiler flamegraph --eval-profiler-frequency 9999 \
+            && inferno-flamegraph --width 10000 < nix.profile > wrappers.svg \
+                && helium wrappers.svg"
 
 [group('SHA-256')]
 [doc('Download a file to the nix store and get the SHA-256 hash.')]

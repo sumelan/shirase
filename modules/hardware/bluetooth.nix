@@ -1,8 +1,8 @@
 {lib, ...}: let
   inherit (lib) getExe';
 in {
-  flake.modules = {
-    nixos.common = {
+  flake.modules.nixos = {
+    common = {
       hardware.bluetooth = {
         enable = true;
         powerOnBoot = true;
@@ -20,40 +20,38 @@ in {
         };
       };
       services.blueman.enable = true;
+
       custom.fileSystem = {
         persist.root.directories = ["/var/lib/bluetooth"];
       };
     };
 
-    homeManager.default = {pkgs, ...}: {
-      systemd.user.services = {
-        blueman-applet = {
-          Unit = {
-            Description = "Blueman applet";
-            Requires = ["tray.target"];
-            After = ["graphical-session.target"] ++ ["tray.target"];
-            PartOf = ["graphical-session.target"];
+    hjem-gui = {pkgs, ...}: {
+      hj = {
+        systemd.services = {
+          blueman-applet = {
+            description = "Blueman applet";
+            requires = ["tray.target"];
+            after = ["graphical-session.target"] ++ ["tray.target"];
+            partOf = ["graphical-session.target"];
+            wantedBy = ["graphical-session.target"];
+
+            serviceConfig = {
+              ExecStart = getExe' pkgs.blueman "blueman-applet";
+            };
           };
 
-          Install.WantedBy = ["graphical-session.target"];
+          # mpris user service to control media player over bluetooth
+          mpris-proxy = {
+            description = "Proxy forwarding Bluetooth MIDI controls via MPRIS2 to control media players";
+            bindsTo = ["bluetooth.target"];
+            after = ["bluetooth.target"];
+            wantedBy = ["bluetooth.target"];
 
-          Service = {
-            ExecStart = getExe' pkgs.blueman "blueman-applet";
-          };
-        };
-        # mpris user service to control media player over bluetooth
-        mpris-proxy = {
-          Unit = {
-            Description = "Proxy forwarding Bluetooth MIDI controls via MPRIS2 to control media players";
-            BindsTo = ["bluetooth.target"];
-            After = ["bluetooth.target"];
-          };
-
-          Install.WantedBy = ["bluetooth.target"];
-
-          Service = {
-            Type = "simple";
-            ExecStart = getExe' pkgs.bluez "mpris-proxy";
+            serviceConfig = {
+              Type = "simple";
+              ExecStart = getExe' pkgs.bluez "mpris-proxy";
+            };
           };
         };
       };

@@ -98,8 +98,8 @@ in {
     packages.btop = (self.wrappers.btop.apply {inherit pkgs;}).wrapper;
   };
 
-  flake.modules = {
-    nixos.default = {config, ...}: {
+  flake.modules.nixos = {
+    default = {config, ...}: {
       options.custom = {
         programs.btop =
           btopOptions
@@ -136,12 +136,10 @@ in {
         ];
       };
     };
-    homeManager.default = {pkgs, ...}: {
-      home = {
-        packages = [
-          pkgs.btop # overlay-ed above
-        ];
-      };
+    hjem-default = {pkgs, ...}: {
+      hj.packages = [
+        pkgs.btop # overlay-ed above
+      ];
 
       custom.programs.print-config = {
         btop =

@@ -4,7 +4,6 @@
   outputs = {
     flake-parts,
     wrappers,
-    home-manager,
     import-tree,
     ...
   } @ inputs:
@@ -13,7 +12,6 @@
       imports = [
         flake-parts.flakeModules.modules
         wrappers.flakeModules.wrappers
-        home-manager.flakeModules.home-manager
         (import-tree ./packages)
         (import-tree ./modules)
       ];
@@ -27,11 +25,6 @@
     import-tree.url = "github:vic/import-tree";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     dankMaterialShell = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +32,11 @@
 
     danksearch = {
       url = "github:AvengeMedia/danksearch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hjem = {
+      url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -74,7 +72,7 @@
       url = "github:aster-void/nix-hazkey";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
+        home-manager.follows = "";
       };
     };
 

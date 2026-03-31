@@ -1,6 +1,6 @@
 _: {
   flake.modules.nixos.default = {config, ...}: let
-    histFile = "/persist${config.hm.xdg.configHome}/bash/.bash_history";
+    histFile = "/persist${config.hj.xdg.data.directory}/bash/.bash_history";
   in {
     # NOTE: see shell.nix for shared aliases and initExtra
     programs.bash = {
@@ -39,7 +39,7 @@ _: {
     };
 
     custom.fileSystem = {
-      persist.home.directories = [".config/bash"];
+      persist.home.directories = [".local/share/bash"];
     };
   };
 }

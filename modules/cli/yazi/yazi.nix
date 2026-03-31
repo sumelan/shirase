@@ -28,8 +28,8 @@ in {
       };
   };
 
-  flake.modules = {
-    nixos.default = {pkgs, ...}: {
+  flake.modules.nixos = {
+    default = {pkgs, ...}: {
       # shell integrations
       programs = {
         bash.interactiveShellInit =
@@ -79,16 +79,15 @@ in {
       ];
     };
 
-    homeManager.default = {pkgs, ...}: {
-      home = {
-        shellAliases = {
-          lf = "yazi";
-          y = "yazi";
-        };
-        packages = [
-          pkgs.yazi # overlay-ed above
-        ];
+    hjem-default = {pkgs, ...}: {
+      environment.shellAliases = {
+        lf = "yazi";
+        y = "yazi";
       };
+
+      hj.packages = [
+        pkgs.yazi # overlay-ed above
+      ];
 
       custom.programs.print-config =
         # yazi uses makeWrapper directly, no choice but to parse the wrapper

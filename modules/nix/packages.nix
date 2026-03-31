@@ -18,37 +18,42 @@ in {
     };
   };
 
-  flake.modules.nixos.common = {pkgs, ...}: let
-    ntv-desktop-entry = pkgs.makeDesktopItem {
-      name = "nix-search-tv";
-      desktopName = "Nix Search TV";
-      genericName = "Fuzzy search for Nix packages";
-      icon = "nix-snowflake";
-      terminal = true;
-      exec = getExe pkgs.custom.ntv;
-    };
-  in {
-    nixpkgs.overlays = [
-      (_: prev: {
-        nixpkgs-review = prev.nixpkgs-review.override {withNom = true;};
-      })
-    ];
-
-    environment.systemPackages =
-      [
-        pkgs.nix-init
-        pkgs.nixpkgs-review # overlay-ed above
-      ]
-      ++ [
-        pkgs.custom.ntv
-        # add the new desktop entry
-        (hiPrio ntv-desktop-entry)
+  flake.modules.nixos = {
+    hjem-default = {pkgs, ...}: {
+      nixpkgs.overlays = [
+        (_: prev: {
+          nixpkgs-review = prev.nixpkgs-review.override {withNom = true;};
+        })
       ];
 
-    custom.fileSystem = {
-      cache.home.directories = [
-        ".cache/nix-search-tv"
-        ".cache/nixpkgs-review"
+      environment.systemPackages =
+        [
+          pkgs.nix-init
+          pkgs.nixpkgs-review # overlay-ed above
+        ]
+        ++ [pkgs.custom.ntv];
+
+      custom.fileSystem = {
+        cache.home.directories = [
+          ".cache/nix-search-tv"
+          ".cache/nixpkgs-review"
+        ];
+      };
+    };
+
+    hjem-gui = {pkgs, ...}: let
+      ntv-desktop-entry = pkgs.makeDesktopItem {
+        name = "nix-search-tv";
+        desktopName = "Nix Search TV";
+        genericName = "Fuzzy search for Nix packages";
+        icon = "nix-snowflake";
+        terminal = true;
+        exec = getExe pkgs.custom.ntv;
+      };
+    in {
+      hj.packages = [
+        # add the new desktop entry
+        (hiPrio ntv-desktop-entry)
       ];
     };
   };

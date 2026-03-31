@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.kdeconnect = _: {
+  flake.modules.nixos.hjem-kdeconnect = _: {
     programs.kdeconnect = {
       enable = true;
     };

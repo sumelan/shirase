@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib) getExe;
 in {
-  flake.modules.nixos.default = {pkgs, ...}: let
+  flake.modules.nixos.hjem-default = {pkgs, ...}: let
     starshipConf = import ./_config.nix {inherit lib pkgs;};
     starshipExe = getExe pkgs.starship;
   in {

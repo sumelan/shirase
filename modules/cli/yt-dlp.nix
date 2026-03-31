@@ -17,16 +17,13 @@ in {
         "--output" = "%(title)s.%(ext)s";
         "--sponsorblock-mark" = "all";
         "--windows-filenames" = true;
-        # youtube causing 403 errors
-        # https://github.com/yt-dlp/yt-dlp/issues/15712#issuecomment-3808702603
-        # PR: https://github.com/yt-dlp/yt-dlp/pull/15726
+        # youtube causing 403 errors https://github.com/yt-dlp/yt-dlp/issues/15712#issuecomment-3808702603 PR: https://github.com/yt-dlp/yt-dlp/pull/15726
         "--extractor-args" = "youtube:player_client=default,-android_sdkless";
       };
     };
   };
-
-  flake.modules = {
-    nixos.default = {pkgs, ...}: {
+  flake.modules.nixos = {
+    default = {pkgs, ...}: {
       nixpkgs.overlays = [
         (_: _prev: {
           inherit (pkgs.custom) yt-dlp;
@@ -34,27 +31,23 @@ in {
       ];
     };
 
-    homeManager.default = {pkgs, ...}: {
-      home = {
-        shellAliases = {
-          yt = "yt-dlp";
-          yt1080 = ''ytdl --format "${mkFormat 1080}"'';
-          ytaudio = "ytdl --audio-format mp3 --extract-audio";
-          ytsubonly = "ytdl --skip-download --write-subs";
-          ytplaylist = "ytdl --output '%(playlist_index)d - %(title)s.%(ext)s'";
-        };
-        packages =
-          [
-            pkgs.yt-dlp # overlay-ed above
-          ]
-          # yt-dlp’s dependencies
-          ++ [
-            pkgs.ffmpeg # must
-            (pkgs.python313.withPackages # `--embed-thumbnail` need this in certain formats
-              
-              (ps: [ps.mutagen]))
-          ];
+    hjem-default = {pkgs, ...}: {
+      environment.shellAliases = {
+        yt = "yt-dlp";
+        yt1080 = ''ytdl --format "${mkFormat 1080}"'';
+        ytaudio = "ytdl --audio-format mp3 --extract-audio";
+        ytsubonly = "ytdl --skip-download --write-subs";
+        ytplaylist = "ytdl --output '%(playlist_index)d - %(title)s.%(ext)s'";
       };
+
+      hj.packages = [
+        # yt-dlp’s dependencies
+        pkgs.ffmpeg
+        # `--embed-thumbnail` need this in certain formats
+        (pkgs.python313.withPackages (ps: [ps.mutagen]))
+
+        pkgs.yt-dlp # overlay-ed above
+      ];
 
       custom.programs.print-config = {
         yt-dlp =

@@ -29,23 +29,20 @@ in {
       };
     };
 
-    gui = {config, ...}: let
+    # Add cursor icon link to $XDG_DATA_HOME/icons as well for redundancy.
+    hjem-gui = {config, ...}: let
       gtkCursor = config.custom.gtk.cursor;
     in {
-      environment = {
-        sessionVariables = {
-          XCURSOR_SIZE = gtkCursor.size;
-          XCURSOR_THEME = gtkCursor.name;
-        };
-
-        systemPackages = [
-          gtkCursor.package
-        ];
+      environment.sessionVariables = {
+        XCURSOR_SIZE = gtkCursor.size;
+        XCURSOR_THEME = gtkCursor.name;
       };
 
-      # Add cursor icon link to $XDG_DATA_HOME/icons as well for redundancy.
-      hm = {
-        xdg.dataFile."icons/${gtkCursor.name}" = {
+      hj = {
+        packages = [
+          gtkCursor.package
+        ];
+        xdg.data.files."icons/${gtkCursor.name}" = {
           source = "${gtkCursor.package}/share/icons/${gtkCursor.name}";
         };
       };

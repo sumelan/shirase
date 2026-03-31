@@ -18,8 +18,8 @@ in {
     };
   };
 
-  flake.modules = {
-    nixos.default = {pkgs, ...}: {
+  flake.modules.nixos = {
+    default = {pkgs, ...}: {
       nixpkgs.overlays = [
         (_: _prev: {
           inherit (pkgs.custom) moor;
@@ -27,11 +27,12 @@ in {
       ];
     };
 
-    homeManager.default = {pkgs, ...}: {
-      home = {
-        packages = [
-          pkgs.moor # overlay-ed above
-        ];
+    hjem-default = {pkgs, ...}: {
+      hj.packages = [
+        pkgs.moor # overlay-ed above
+      ];
+
+      environment = {
         shellAliases = {
           less = "moor";
         };

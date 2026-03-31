@@ -57,11 +57,14 @@ in {
             };
           }
         ]
-        ++ (with flake.modules.nixos; [japanese]);
+        ++ (with flake.modules.nixos; [
+          hjem-sumelan
+          japanese
+        ]);
     };
 
-    modules.homeManager."users/sumelan" = _: {
-      imports = [{home.file.".face".source = ./sumelan.png;}];
+    modules.nixos.hjem-sumelan = _: {
+      imports = [{hj.files.".face".source = ./sumelan.png;}];
     };
   };
 }

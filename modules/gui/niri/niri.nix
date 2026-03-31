@@ -1,18 +1,14 @@
 _: let
   inherit (builtins) attrValues;
 in {
-  flake.modules = {
-    nixos.default = {
+  flake.modules.nixos = {
+    gui = {
       config,
       lib,
       pkgs,
       ...
     }: let
-      niriCfg = import ./_config.nix {
-        # use home-manager's config
-        config = config.hm;
-        inherit lib pkgs;
-      };
+      niriCfg = import ./_config.nix {inherit config lib pkgs;};
       niriPkg = pkgs.symlinkJoin {
         name = "niri";
         paths = [pkgs.niri];
@@ -54,7 +50,7 @@ in {
       };
     };
 
-    homeManager.default = {
+    hjem-gui = {
       config,
       lib,
       pkgs,
@@ -73,7 +69,7 @@ in {
           include "dms/wpblur.kdl"
         '';
     in {
-      xdg.configFile."niri/config.kdl" = {
+      hj.xdg.config.files."niri/config.kdl" = {
         source = import ./_config.nix {inherit config lib pkgs dms;};
       };
     };

@@ -1,8 +1,8 @@
 _: let
   inherit (builtins) attrValues;
 in {
-  flake.modules.homeManager.default = {pkgs, ...}: {
-    home.packages = attrValues {
+  flake.modules.nixos.hjem-gui = {pkgs, ...}: {
+    hj.packages = attrValues {
       inherit
         (pkgs)
         dissent

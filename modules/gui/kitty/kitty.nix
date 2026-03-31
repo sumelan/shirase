@@ -64,8 +64,8 @@ in {
     packages.kitty = (self.wrappers.kitty.apply {inherit pkgs;}).wrapper;
   };
 
-  flake.modules = {
-    nixos.default = {
+  flake.modules.nixos = {
+    gui = {
       config,
       pkgs,
       ...
@@ -103,25 +103,28 @@ in {
       };
     };
 
-    homeManager.kitty = {pkgs, ...}: {
-      xdg.mimeApps.defaultApplications = {
-        "x-scheme-handler/terminal" = "kitty.desktop";
+    hjem-gui = {pkgs, ...}: {
+      environment.shellAliases = {
+        # change color on ssh
+        ssh = "kitten ssh --kitten=color_scheme='Rosé Pine Moon'";
       };
 
-      home = {
+      hj = {
         packages = [
           pkgs.kitty # overlay-ed above
         ];
-        shellAliases = {
-          # change color on ssh
-          ssh = "kitten ssh --kitten=color_scheme='Rosé Pine Moon'";
+
+        xdg.mime-apps = {
+          default-applications = {
+            "x-scheme-handler/terminal" = "kitty.desktop";
+          };
         };
       };
 
       custom.programs.print-config = {
         kitty =
           # sh
-          ''moor --lang ini "${pkgs.kitty.configurations.flags."--config".data}"'';
+          ''moor --lang ini "${pkgs.kitty.configuration.flags."--config".data}"'';
       };
     };
   };

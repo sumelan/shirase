@@ -1,12 +1,13 @@
 _: {
-  flake.modules.homeManager = {
-    default = {pkgs, ...}: {
-      home.packages = [
+  flake.modules.nixos = {
+    hjem-gui = {pkgs, ...}: {
+      hj.packages = [
         pkgs.euphonica
         pkgs.grayjay
         pkgs.mpv
         pkgs.pear-desktop
       ];
+
       custom.fileSystem = {
         persist.home.directories = [
           ".cache/euphonica"
@@ -17,12 +18,15 @@ _: {
       };
     };
 
-    cd = {pkgs, ...}: {
-      home.packages = [pkgs.cyanrip pkgs.picard];
+    hjem-cd = {pkgs, ...}: {
+      hj.packages = [
+        pkgs.cyanrip
+        pkgs.picard
+      ];
     };
 
-    bluray = {pkgs, ...}: {
-      home.packages = [
+    hjem-bluray = {pkgs, ...}: {
+      hj.packages = [
         pkgs.handbrake
         pkgs.makemkv
         pkgs.vlc
@@ -43,8 +47,10 @@ _: {
       };
     };
 
-    ebook = {pkgs, ...}: {
-      home.packages = [pkgs.foliate];
+    hjem-ebook = {pkgs, ...}: {
+      hj.packages = [
+        pkgs.foliate
+      ];
 
       custom.fileSystem = {
         persist.home.directories = [
@@ -56,8 +62,10 @@ _: {
       };
     };
 
-    obs-studio = {pkgs, ...}: {
-      home.packages = [pkgs.obs-studio];
+    hjem-obs = {pkgs, ...}: {
+      hj.packages = [
+        pkgs.obs-studio
+      ];
 
       custom.fileSystem = {
         persist.home.directories = [

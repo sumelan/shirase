@@ -1,8 +1,8 @@
 {lib, ...}: let
   inherit (lib) getExe';
 in {
-  flake.modules = {
-    nixos.common = {
+  flake.modules.nixos = {
+    common = {
       pkgs,
       user,
       ...
@@ -44,58 +44,54 @@ in {
       };
     };
 
-    homeManager.default = {pkgs, ...}: {
-      home.packages = [
-        pkgs.pwvucontrol
-        pkgs.easyeffects
-      ];
+    hjem-gui = {pkgs, ...}: {
+      hj = {
+        packages = [
+          pkgs.pwvucontrol
+          pkgs.easyeffects
+        ];
 
-      systemd.user.services = {
-        easyeffects = {
-          Unit = {
-            Description = "Easyeffects daemon";
-            After = ["graphical-session.target"] ++ ["tray.target"];
-            PartOf = ["graphical-session.target"];
-          };
+        systemd.services = {
+          easyeffects = {
+            description = "Easyeffects daemon";
+            after = ["graphical-session.target"] ++ ["tray.target"];
+            partOf = ["graphical-session.target"];
+            wantedBy = ["graphical-session.target"];
 
-          Install.WantedBy = ["graphical-session.target"];
-
-          Service = {
-            # avoid to race comditions
-            ExecStartPre = getExe' pkgs.coreutils "sleep 5s";
-            ExecStart = getExe' pkgs.easyeffects "easyeffects --hide-window";
-            ExecStop = getExe' pkgs.easyeffects "easyeffects --quit";
-            KillMode = "mixed";
-            Restart = "on-failure";
-            RestartSec = 5;
-            TimeoutStopSec = 10;
+            serviceConfig = {
+              # avoid to race comditions
+              ExecStartPre = getExe' pkgs.coreutils "sleep 5s";
+              ExecStart = getExe' pkgs.easyeffects "easyeffects --hide-window";
+              ExecStop = getExe' pkgs.easyeffects "easyeffects --quit";
+              KillMode = "mixed";
+              Restart = "on-failure";
+              RestartSec = 5;
+              TimeoutStopSec = 10;
+            };
           };
         };
+
+        xdg.data.files = let
+          src = pkgs.fetchFromGitHub {
+            owner = "JackHack96";
+            repo = "EasyEffects-Presets";
+            rev = "d77a61eb01c36e2c794bddc25423445331e99915";
+            hash = "sha256-or5kH/vTwz7IO0Vz7W4zxK2ZcbL/P3sO9p5+EdcC2DA=";
+          };
+          output = preset: {
+            "easyeffects/output/${preset}.json".source = "${src}/${preset}.json";
+          };
+        in
+          output "Advanced Auto Gain"
+          // output "Bass Boosted"
+          // output "Bass Enhancing + Perfect EQ"
+          // output "Boosted"
+          // output "Loudness+Autogain"
+          // output "Perfect EQ"
+          // {
+            "easyeffects/irs".source = "${src}/irs";
+          };
       };
-
-      xdg.dataFile = let
-        src = pkgs.fetchFromGitHub {
-          owner = "JackHack96";
-          repo = "EasyEffects-Presets";
-          rev = "d77a61eb01c36e2c794bddc25423445331e99915";
-          hash = "sha256-or5kH/vTwz7IO0Vz7W4zxK2ZcbL/P3sO9p5+EdcC2DA=";
-        };
-        output = preset: {
-          "easyeffects/output/${preset}.json".source = "${src}/${preset}.json";
-        };
-      in
-        output "Advanced Auto Gain"
-        // output "Bass Boosted"
-        // output "Bass Enhancing + Perfect EQ"
-        // output "Boosted"
-        // output "Loudness+Autogain"
-        // output "Perfect EQ"
-        // {
-          "easyeffects/irs" = {
-            source = "${src}/irs";
-            recursive = true;
-          };
-        };
 
       custom.fileSystem = {
         persist.home.directories = [

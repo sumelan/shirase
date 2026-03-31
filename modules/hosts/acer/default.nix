@@ -1,31 +1,14 @@
 {config, ...}: let
   inherit (config) flake;
 in {
-  flake.modules = {
-    nixos."hosts/acer" = {pkgs, ...}: {
-      imports =
-        [
-          {
-            networking.hostId = "22fe2870";
-            custom = {
-              # hinted font: for lower or equal than 1080p
-              fonts.packages = [pkgs.maple-mono.NF];
-            };
-          }
-        ]
-        ++ (with flake.modules.nixos; [
-          default
-          hardware-acer
-          laptop
-          gui
-        ]);
-    };
+  flake.modules.nixos."hosts/acer" = {pkgs, ...}: {
+    imports =
+      [
+        {
+          networking.hostId = "22fe2870";
 
-    homeManager."hosts/acer" = _: {
-      imports =
-        [
-          {
-            monitors = {
+          custom = {
+            hardware.monitors = {
               "eDP-1" = {
                 isMain = true;
                 scale = 1.0;
@@ -41,12 +24,24 @@ in {
                 rotation = 0;
               };
             };
-            custom = {
-              niri.screenshot.host = "acer";
-            };
-          }
+
+            programs.niri.screenshot.host = "acer";
+
+            # hinted font: for lower or equal than 1080p
+            fonts.packages = [pkgs.maple-mono.NF];
+          };
+        }
+      ]
+      ++ (with flake.modules.nixos;
+        [
+          default
+          hardware-acer
+          laptop
+          gui
         ]
-        ++ (with flake.modules.homeManager; [default]);
-    };
+        ++ [
+          hjem-default
+          hjem-gui
+        ]);
   };
 }

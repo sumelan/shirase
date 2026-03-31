@@ -1,16 +1,24 @@
-_: {
-  flake.modules.homeManager.default = {pkgs, ...}: let
-    jsonFormat = pkgs.formats.json {};
+{lib, ...}: let
+  inherit (lib.generators) toJSON;
+in {
+  flake.modules.nixos.hjem-gui = {pkgs, ...}: let
     pluginDir = "DankMaterialShell/plugins";
     pluginsRepo = pkgs.custom.dms-plugins;
   in {
-    xdg.configFile = {
-      "${pluginDir}/dankBatteryAlerts".source = "${pluginsRepo}/DankBatteryAlerts";
-      "${pluginDir}/dankKDEConnect".source = "${pluginsRepo}/DankKDEConnect";
-      "${pluginDir}/dankNotepadModule".source = "${pluginsRepo}/DankNotepadModule";
+    hj.xdg.config.files = {
+      "${pluginDir}/dankBatteryAlerts" = {
+        source = "${pluginsRepo}/DankBatteryAlerts";
+      };
+      "${pluginDir}/dankKDEConnect" = {
+        source = "${pluginsRepo}/DankKDEConnect";
+      };
+      "${pluginDir}/dankNotepadModule" = {
+        source = "${pluginsRepo}/DankNotepadModule";
+      };
 
       "DankMaterialShell/plugin_settings.json" = {
-        source = jsonFormat.generate "plugin_settings.json" {
+        generator = toJSON {};
+        value = {
           dankBatteryAlerts = {
             enabled = true;
             enableWarningAlert = true;

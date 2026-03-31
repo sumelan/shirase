@@ -17,7 +17,7 @@ in {
   };
 
   flake.modules.nixos = {
-    default = {pkgs, ...}: {
+    gui = {pkgs, ...}: {
       options.custom = {
         gtk = {
           theme = {
@@ -51,8 +51,8 @@ in {
       };
     };
 
-    gui = {config, ...}: {
-      environment.systemPackages = [
+    hjem-gui = {config, ...}: {
+      hj.packages = [
         config.custom.gtk.theme.package
         config.custom.gtk.iconTheme.package
       ];

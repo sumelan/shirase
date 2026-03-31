@@ -1,6 +1,6 @@
 _: {
-  flake.modules = {
-    nixos.default = {user, ...}: {
+  flake.modules.nixos = {
+    gui = {user, ...}: {
       # tty autologin
       services.getty.autologinUser = user;
 
@@ -26,12 +26,12 @@ _: {
       };
     };
 
-    homeManager.default = {
+    hjem-gui = {
       config,
       user,
       ...
     }: let
-      dmsConf = "${config.xdg.configHome}/niri/dms";
+      dmsConf = "${config.hj.xdg.config.directory}/niri/dms";
     in {
       systemd.user = {
         tmpfiles.rules = [

@@ -1,46 +1,52 @@
 {lib, ...}: let
-  inherit (lib) getExe;
+  inherit (lib) getExe hiPrio;
 in {
-  flake.modules = {
-    nixos.default = {pkgs, ...}: let
-      # use the package configured by nvf
-      customNeovim = pkgs.custom.nvf;
-    in {
-      environment.systemPackages = [customNeovim];
-    };
-
-    homeManager.default = {pkgs, ...}: let
-      # use the package configured by nvf
-      customNeovim = pkgs.custom.nvf;
-    in {
-      home = {
-        packages = [customNeovim];
+  flake.modules.nixos = {
+    default = {pkgs, ...}: {
+      environment = {
+        systemPackages = [pkgs.custom.nvf];
         shellAliases = {
           nano = "nvim";
           neovim = "nvim";
           v = "nvim";
         };
       };
+    };
 
-      xdg = {
-        desktopEntries = {
-          nvim = {
-            name = "Neovim";
-            genericName = "Text Editor";
-            icon = "nvim";
-            terminal = true;
-            exec = getExe customNeovim;
+    hjem-default = {pkgs, ...}: let
+      nvim-direnv = pkgs.writeShellApplication {
+        name = "nvim-direnv";
+        runtimeInputs = [pkgs.direnv];
+        text =
+          # sh
+          ''
+            if ! direnv exec "$(dirname "$1")" nvim "$@"; then
+                nvim "$@"
+            fi
+          '';
+      };
+      nvim-desktop-entry = pkgs.makeDesktopItem {
+        name = "nvim";
+        desktopName = "Neovim";
+        genericName = "Text Editor";
+        icon = "nvim";
+        terminal = true;
+        exec = ''${getExe nvim-direnv} "%F"'';
+      };
+    in {
+      hj = {
+        packages = [
+          pkgs.custom.nvf
+          (hiPrio nvim-desktop-entry)
+        ];
+        xdg.mime-apps = {
+          default-applications = {
+            "text/plain" = "neovim.desktop";
+            "application/x-shellscript" = "neovim.desktop";
+            "application/xml" = "neovim.desktop";
           };
-        };
-
-        mimeApps = {
-          defaultApplications = {
-            "text/plain" = "nvim.desktop";
-            "application/x-shellscript" = "nvim.desktop";
-            "application/xml" = "nvim.desktop";
-          };
-          associations.added = {
-            "text/csv" = "nvim.desktop";
+          added-associations = {
+            "text/csv" = "neovim.desktop";
           };
         };
       };

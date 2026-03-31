@@ -2,7 +2,9 @@
   inputs,
   lib,
   ...
-}: {
+}: let
+  inherit (lib) getExe;
+in {
   perSystem = {pkgs, ...}: let
     ignoreFile = pkgs.writeText "ripgrep-ignore" ''
       .envrc
@@ -24,26 +26,28 @@
     };
   };
 
-  flake.modules.nixos.default = {pkgs, ...}: {
-    nixpkgs.overlays = [
-      (_: _prev: {
-        inherit (pkgs.custom) ripgrep;
-      })
-    ];
-  };
+  flake.modules.nixos = {
+    default = {pkgs, ...}: {
+      nixpkgs.overlays = [
+        (_: _prev: {
+          inherit (pkgs.custom) ripgrep;
+        })
+      ];
+    };
 
-  flake.modules.homeManager.default = {pkgs, ...}: {
-    home.packages = [
-      pkgs.ripgrep # overlay-ed above
-    ];
+    hjem-default = {pkgs, ...}: {
+      hj.packages = [
+        pkgs.ripgrep # overlay-ed above
+      ];
 
-    custom.programs.print-config = let
-      cmd =
-        # sh
-        ''moor --lang sh "${lib.getExe pkgs.ripgrep}"'';
-    in {
-      rg = cmd;
-      ripgrep = cmd;
+      custom.programs.print-config = let
+        cmd =
+          # sh
+          ''moor --lang sh "${getExe pkgs.ripgrep}"'';
+      in {
+        rg = cmd;
+        ripgrep = cmd;
+      };
     };
   };
 }

@@ -1,23 +1,25 @@
 _: let
   inherit (builtins) listToAttrs;
 in {
-  flake.modules.homeManager.default = {pkgs, ...}: {
-    home.packages = [
-      pkgs.loupe
-    ];
+  flake.modules.nixos.hjem-gui = {pkgs, ...}: {
+    hj = {
+      packages = [
+        pkgs.loupe
+      ];
 
-    xdg.mimeApps = let
-      value = "org.gnome.Loupe.desktop";
-      associations = listToAttrs (map (name: {
-          inherit name value;
-        }) [
-          "image/jpeg"
-          "image/gif"
-          "image/webp"
-          "image/png"
-        ]);
-    in {
-      defaultApplications = associations;
+      xdg.mime-apps = let
+        value = "org.gnome.Loupe.desktop";
+        associations = listToAttrs (map (name: {
+            inherit name value;
+          }) [
+            "image/jpeg"
+            "image/gif"
+            "image/webp"
+            "image/png"
+          ]);
+      in {
+        default-applications = associations;
+      };
     };
   };
 }

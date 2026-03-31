@@ -1,5 +1,5 @@
 {lib, ...}: let
-  inherit (lib) getExe;
+  inherit (lib) getExe getExe';
 in {
   flake.modules.nixos.default = {
     config,
@@ -7,8 +7,8 @@ in {
     user,
     ...
   }: let
-    inherit (config.hm.xdg.userDirs) music;
-    inherit (config.hm.xdg) dataHome;
+    music = "${config.hj.directory}/Music";
+    data = config.hj.xdg.data.directory;
     cfg = config.services.mpd;
   in {
     services.mpd = rec {
@@ -16,7 +16,7 @@ in {
       inherit user;
       group = "users";
       openFirewall = true;
-      dataDir = "${dataHome}/mpd";
+      dataDir = "${data}/mpd";
       startWhenNeeded = true;
       settings = {
         audio_output = [
@@ -40,12 +40,14 @@ in {
           wants = ["mpd.service"];
           after = ["mpd.service"];
           wantedBy = ["default.target"];
+
           serviceConfig = {
             Type = "simple";
             BusName = "org.mpris.MediaPlayer2.mpd";
             User = user;
             Group = "users";
             Restart = "on-failure";
+            ExecStartPre = getExe' pkgs.coreutils "sleep 5s";
             ExecStart = "${getExe pkgs.mpdris2-rs} --host ${cfg.settings.bind_to_address}";
           };
         };

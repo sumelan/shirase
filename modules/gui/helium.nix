@@ -1,61 +1,47 @@
-{lib, ...}: let
+_: let
   inherit (builtins) listToAttrs;
-  inherit (lib) getExe;
 in {
-  flake.modules = {
-    nixos.default = {pkgs, ...}: let
-      inherit (pkgs.custom) helium;
-    in {
-      programs.chromium = {
-        enable = true;
-        extensions = [
-          # Bitwarden
-          "nngceckbapebfimnlniiiahkandclblb"
-          # Dark Reader
-          "eimadpbcbfnmbkopoojfekhnkhdbieeh"
-          # kagi privacy pass
-          "mendokngpagmkejfpmeellpppjgbpdaj"
-          # kagi search
-          "cdglnehniifkbagbbombnjghhcihifij"
-          # kagi summarizer
-          "dpaefegpjhgeplnkomgbcmmlffkijbgp"
-          # kagi translate
-          "alblebhaoakdgapamjdifdfnaicpnklm"
-          # nord
-          "abehfkkfjlplnjadfcjiflnejblfmmpj"
-          # SponsorBlock for YouTube - Skip Sponsorships
-          "mnjggcdmjocbbbhaepdhchncahnbgone"
-          # YouTube Auto HD + FPS
-          "fcphghnknhkimeagdglkljinmpbagone"
-          # youtube no translation
-          "lmkeolibdeeglfglnncmfleojmakecjb"
-          # Youtube-shorts block
-          "jiaopdjbehhjgokpphdfgmapkobbnmjp"
-        ];
-      };
-
-      environment.systemPackages = [helium];
-
-      custom.fileSystem = {
-        persist.home.directories = [
-          ".config/net.imput.helium"
-        ];
-        cache.home.directories = [
-          ".cache/net.imput.helium"
-        ];
-      };
+  flake.modules.nixos.hjem-gui = {pkgs, ...}: {
+    programs.chromium = {
+      enable = true;
+      extensions = [
+        # Bitwarden
+        "nngceckbapebfimnlniiiahkandclblb"
+        # Dark Reader
+        "eimadpbcbfnmbkopoojfekhnkhdbieeh"
+        # kagi privacy pass
+        "mendokngpagmkejfpmeellpppjgbpdaj"
+        # kagi search
+        "cdglnehniifkbagbbombnjghhcihifij"
+        # kagi summarizer
+        "dpaefegpjhgeplnkomgbcmmlffkijbgp"
+        # kagi translate
+        "alblebhaoakdgapamjdifdfnaicpnklm"
+        # nord
+        "abehfkkfjlplnjadfcjiflnejblfmmpj"
+        # SponsorBlock for YouTube - Skip Sponsorships
+        "mnjggcdmjocbbbhaepdhchncahnbgone"
+        # YouTube Auto HD + FPS
+        "fcphghnknhkimeagdglkljinmpbagone"
+        # youtube no translation
+        "lmkeolibdeeglfglnncmfleojmakecjb"
+        # Youtube-shorts block
+        "jiaopdjbehhjgokpphdfgmapkobbnmjp"
+      ];
     };
 
-    homeManager.default = {pkgs, ...}: let
-      inherit (pkgs.custom) helium;
-    in {
-      home.sessionVariables = {
+    hj = {
+      packages = [
+        pkgs.custom.helium
+      ];
+
+      environment.sessionVariables = {
         # set default browser
-        DEFAULT_BROWSER = getExe helium;
-        BROWSER = getExe helium;
+        DEFAULT_BROWSER = "helium";
+        BROWSER = "helium";
       };
 
-      xdg.mimeApps = let
+      xdg.mime-apps = let
         value = "helium.desktop";
 
         defaultAssociations = listToAttrs (map (name: {
@@ -78,13 +64,19 @@ in {
             "application/pdf"
           ]);
       in {
-        defaultApplications = defaultAssociations;
-        associations = {
-          added = defaultAssociations;
-          # remove `helium.desktop` from mimetypes
-          removed = imgAssociations;
-        };
+        default-applications = defaultAssociations;
+        added-associations = defaultAssociations;
+        removed-associations = imgAssociations;
       };
+    };
+
+    custom.fileSystem = {
+      persist.home.directories = [
+        ".config/net.imput.helium"
+      ];
+      cache.home.directories = [
+        ".cache/net.imput.helium"
+      ];
     };
   };
 }

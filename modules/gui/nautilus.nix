@@ -1,39 +1,38 @@
 _: let
   inherit (builtins) attrValues;
 in {
-  flake.modules.nixos.gui = {
+  flake.modules.nixos.hjem-gui = {
     config,
     pkgs,
     ...
   }: {
-    environment.systemPackages = attrValues {
-      inherit
-        (pkgs)
-        nautilus
-        file-roller
-        libheif # HEIC image preview
-        p7zip-rar # support for encrypted archives
-        webp-pixbuf-loader # for webp thumbnails
-        ;
-    };
-
-    xdg = {
-      # fix opening terminal for nautilus by using xdg-terminal-exec spec
-      terminal-exec = {
-        enable = true;
-        settings = {
-          default = ["foot.desktop"];
-        };
+    hj = {
+      packages = attrValues {
+        inherit
+          (pkgs)
+          nautilus
+          file-roller
+          libheif # HEIC image preview
+          p7zip-rar # support for encrypted archives
+          webp-pixbuf-loader # for webp thumbnails
+          ;
       };
-
       # fix mimetype associations
-      mime.defaultApplications = {
+      xdg.mime-apps.default-applications = {
         "inode/directory" = "org.gnome.Nautilus.desktop";
         "application/zip" = "org.gnome.FileRoller.desktop";
         "application/vnd.rar" = "org.gnome.FileRoller.desktop";
         "application/x-7z-compressed" = "org.gnome.FileRoller.desktop";
         "application/x-bzip2-compressed-tar" = "org.gnome.FileRoller.desktop";
         "application/x-tar" = "org.gnome.FileRoller.desktop";
+      };
+    };
+
+    # fix opening terminal for nautilus by using xdg-terminal-exec spec
+    xdg.terminal-exec = {
+      enable = true;
+      settings = {
+        default = ["kitty.desktop"];
       };
     };
 
@@ -52,7 +51,7 @@ in {
       };
 
       gtk.bookmarks = let
-        homeDir = config.hm.home.homeDirectory;
+        homeDir = config.hj.directory;
         flakePath = "/persist${homeDir}/Projects/shirase";
       in
         [

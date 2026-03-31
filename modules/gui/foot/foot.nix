@@ -71,8 +71,8 @@ in {
     packages.foot = (self.wrappers.foot.apply {inherit pkgs;}).wrapper;
   };
 
-  flake.modules = {
-    nixos.default = {
+  flake.modules.nixos = {
+    gui = {
       config,
       pkgs,
       ...
@@ -130,31 +130,10 @@ in {
       };
     };
 
-    homeManager.default = {pkgs, ...}: {
-      home.packages = [
+    hjem-foot = {pkgs, ...}: {
+      hj.packages = [
         pkgs.foot # overlay-ed above
       ];
-
-      systemd.user.services = {
-        foot = {
-          Unit = {
-            Description = "Fast, lightweight and minimalistic Wayland terminal emulator.";
-            Documentation = "man:foot(1)";
-            PartOf = ["graphical-session.target"];
-            After = ["graphical-session.target"];
-          };
-
-          Service = {
-            ExecStart = "${getExe pkgs.foot} --server";
-            Restart = "on-failure";
-            OOMPolicy = "continue";
-          };
-
-          Install = {
-            WantedBy = ["graphical-session.target"];
-          };
-        };
-      };
 
       custom.programs.print-config = {
         foot =
