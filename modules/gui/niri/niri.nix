@@ -9,7 +9,7 @@ in {
       ...
     }: let
       niriCfg = import ./_config.nix {inherit config lib pkgs;};
-      niriPkg = pkgs.symlinkJoin {
+      niriValidate = pkgs.symlinkJoin {
         name = "niri";
         paths = [pkgs.niri];
         buildInputs = [];
@@ -24,7 +24,7 @@ in {
       # niri-nixpkgs
       programs.niri = {
         enable = true;
-        package = niriPkg;
+        package = niriValidate;
         useNautilus = true;
       };
 

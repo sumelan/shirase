@@ -6,7 +6,7 @@
     hasInfix
     ;
 in {
-  flake.modules.nixos.default = {
+  flake.modules.nixos.common = {
     # silence warning about setting multiple user password options
     # https://github.com/NixOS/nixpkgs/pull/287506#issuecomment-1950958990
     options = {

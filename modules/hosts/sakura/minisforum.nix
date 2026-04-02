@@ -2,9 +2,6 @@
   inherit (config.flake.lib.wireplumber) rename;
 in {
   flake.modules.nixos.minisforum = _: {
-    # for makemkv to find usb bluray drive
-    # https://discourse.nixos.org/t/makemkv-cant-find-my-usb-blu-ray-drive/23714
-    boot.kernelModules = ["sg"];
     # rename audio devices
     services.pipewire.wireplumber.extraConfig = {
       "10-creative-rename" = rename "alsa_output.usb-Creative_Technology_Ltd_Creative_Stage_SE_mini_1120041300020421-01.analog-stereo" "Creative Stage SE mini";

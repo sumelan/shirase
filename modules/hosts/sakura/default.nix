@@ -74,6 +74,7 @@ in {
               hjem-obs
               hjem-protonapp
               hjem-rmpc
+              hjem-zen
             ]
         );
     };

@@ -32,6 +32,10 @@ _: {
         pkgs.vlc
       ];
 
+      # find usb bluray drive
+      # https://discourse.nixos.org/t/makemkv-cant-find-my-usb-blu-ray-drive/23714
+      boot.kernelModules = ["sg"];
+
       custom.fileSystem = {
         persist.home = {
           files = [

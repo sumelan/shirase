@@ -31,7 +31,7 @@ in {
         genericName = "Text Editor";
         icon = "nvim";
         terminal = true;
-        exec = ''${getExe nvim-direnv} "%F"'';
+        exec = "${getExe nvim-direnv} %F";
       };
     in {
       hj = {
@@ -41,12 +41,12 @@ in {
         ];
         xdg.mime-apps = {
           default-applications = {
-            "text/plain" = "neovim.desktop";
-            "application/x-shellscript" = "neovim.desktop";
-            "application/xml" = "neovim.desktop";
+            "text/plain" = "nvim.desktop";
+            "application/x-shellscript" = "nvim.desktop";
+            "application/xml" = "nvim.desktop";
           };
           added-associations = {
-            "text/csv" = "neovim.desktop";
+            "text/csv" = "nvim.desktop";
           };
         };
       };
