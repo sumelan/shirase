@@ -16,42 +16,44 @@ in {
     };
   };
 
-  flake.modules.nixos = {
-    gui = {pkgs, ...}: {
-      options.custom = {
-        gtk = {
-          theme = {
-            package = mkOption {
-              type = package;
-              default = pkgs.custom.colloid-gtk-theme;
-              description = "Package providing the theme.";
-            };
-
-            name = mkOption {
-              type = str;
-              default = "Colloid-Grey-Dark-Compact-Nord";
-              description = "The name of the theme within the package.";
-            };
+  flake.modules.nixos.gui = {
+    config,
+    pkgs,
+    ...
+  }: {
+    options.custom = {
+      gtk = {
+        theme = {
+          package = mkOption {
+            type = package;
+            default = pkgs.custom.colloid-gtk-theme;
+            description = "Package providing the theme.";
           };
 
-          iconTheme = {
-            package = mkOption {
-              type = package;
-              default = pkgs.custom.papirus-nord;
-              description = "Package providing the icon theme.";
-            };
+          name = mkOption {
+            type = str;
+            default = "Colloid-Grey-Dark-Compact-Nord";
+            description = "The name of the theme within the package.";
+          };
+        };
 
-            name = mkOption {
-              type = str;
-              default = "Papirus-Dark";
-              description = "The name of the icon theme within the package.";
-            };
+        iconTheme = {
+          package = mkOption {
+            type = package;
+            default = pkgs.custom.papirus-nord;
+            description = "Package providing the icon theme.";
+          };
+
+          name = mkOption {
+            type = str;
+            default = "Papirus-Dark";
+            description = "The name of the icon theme within the package.";
           };
         };
       };
     };
 
-    hjem-gui = {config, ...}: {
+    config = {
       hj.packages = [
         config.custom.gtk.theme.package
         config.custom.gtk.iconTheme.package

@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib.generators) toJSON;
 in {
-  flake.modules.nixos.hjem-gui = {pkgs, ...}: let
+  flake.modules.nixos.gui = {pkgs, ...}: let
     pluginDir = "DankMaterialShell/plugins";
     pluginsRepo = pkgs.custom.dms-plugins;
   in {

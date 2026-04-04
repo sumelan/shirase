@@ -64,46 +64,42 @@ in {
     packages.kitty = (self.wrappers.kitty.apply {inherit pkgs;}).wrapper;
   };
 
-  flake.modules.nixos = {
-    gui = {
-      config,
-      pkgs,
-      ...
-    }: let
-      nord = pkgs.fetchFromGitHub {
-        owner = "connorholyday";
-        repo = "nord-kitty";
-        rev = "3a819c1f207cd2f98a6b7c7f9ebf1c60da91c9e9";
-        hash = "sha256-Zbmrp2sQO0upkQ6Gtt5O4SLzPhovUDQNjvM0x8v2a0g=";
-      };
-      fishPath = getExe config.programs.fish.package;
-    in {
-      options.custom = {
-        programs.kitty = kittyOptions;
-      };
-
-      config = {
-        nixpkgs.overlays = [
-          (_: prev: {
-            kitty =
-              (self.wrappers.kitty.apply {
-                pkgs = prev;
-                extraSettings =
-                  {
-                    # color theme
-                    include = "${nord}/nord.conf";
-                    # SHELL
-                    env = "SHELL=${fishPath}";
-                    shell = mkForce fishPath;
-                  }
-                  // config.custom.programs.kitty.extraSettings;
-              }).wrapper;
-          })
-        ];
-      };
+  flake.modules.nixos.gui = {
+    config,
+    pkgs,
+    ...
+  }: let
+    nord = pkgs.fetchFromGitHub {
+      owner = "connorholyday";
+      repo = "nord-kitty";
+      rev = "3a819c1f207cd2f98a6b7c7f9ebf1c60da91c9e9";
+      hash = "sha256-Zbmrp2sQO0upkQ6Gtt5O4SLzPhovUDQNjvM0x8v2a0g=";
+    };
+    fishPath = getExe config.programs.fish.package;
+  in {
+    options.custom = {
+      programs.kitty = kittyOptions;
     };
 
-    hjem-gui = {pkgs, ...}: {
+    config = {
+      nixpkgs.overlays = [
+        (_: prev: {
+          kitty =
+            (self.wrappers.kitty.apply {
+              pkgs = prev;
+              extraSettings =
+                {
+                  # color theme
+                  include = "${nord}/nord.conf";
+                  # SHELL
+                  env = "SHELL=${fishPath}";
+                  shell = mkForce fishPath;
+                }
+                // config.custom.programs.kitty.extraSettings;
+            }).wrapper;
+        })
+      ];
+
       environment.shellAliases = {
         # change color on ssh
         ssh = "kitten ssh --kitten=color_scheme='Rosé Pine Moon'";

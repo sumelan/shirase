@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib) mkAfter getExe;
 in {
-  flake.modules.nixos.hjem-default = {pkgs, ...}: let
+  flake.modules.nixos.default = {pkgs, ...}: let
     flags = "--cmd cd";
   in {
     environment.shellAliases = {

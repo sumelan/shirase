@@ -5,7 +5,7 @@
 _: let
   inherit (builtins) attrValues;
 in {
-  flake.modules.nixos.hjem-protonapp = {pkgs, ...}: {
+  flake.modules.nixos.protonapp = {pkgs, ...}: {
     hj.packages = attrValues {
       inherit
         (pkgs)

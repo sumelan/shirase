@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib.generators) toINI;
 in {
-  flake.modules.nixos.hjem-gui = {
+  flake.modules.nixos.gui = {
     config,
     pkgs,
     ...

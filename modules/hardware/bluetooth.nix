@@ -26,7 +26,7 @@ in {
       };
     };
 
-    hjem-gui = {pkgs, ...}: {
+    gui = {pkgs, ...}: {
       hj = {
         systemd.services = {
           blueman-applet = {

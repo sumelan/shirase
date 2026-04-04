@@ -44,7 +44,7 @@ in {
       };
     };
 
-    hjem-gui = {pkgs, ...}: {
+    gui = {pkgs, ...}: {
       hj = {
         packages = [
           pkgs.pwvucontrol

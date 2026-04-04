@@ -28,82 +28,78 @@ in {
       };
   };
 
-  flake.modules.nixos = {
-    default = {pkgs, ...}: {
-      # shell integrations
-      programs = {
-        bash.interactiveShellInit =
-          # sh
-          ''
-            function yy() {
-              local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-              yazi "$@" --cwd-file="$tmp"
-              if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-                builtin cd -- "$cwd"
-              fi
-              rm -f -- "$tmp"
-            }
-          '';
+  flake.modules.nixos.default = {pkgs, ...}: {
+    # shell integrations
+    programs = {
+      bash.interactiveShellInit =
+        # sh
+        ''
+          function yy() {
+            local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+            yazi "$@" --cwd-file="$tmp"
+            if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+              builtin cd -- "$cwd"
+            fi
+            rm -f -- "$tmp"
+          }
+        '';
 
-        fish.interactiveShellInit =
-          # fish
-          ''
-            function yy
-              set -l tmp (mktemp -t "yazi-cwd.XXXXX")
-              command yazi $argv --cwd-file="$tmp"
-              if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-                builtin cd -- "$cwd"
-              end
-              rm -f -- "$tmp"
+      fish.interactiveShellInit =
+        # fish
+        ''
+          function yy
+            set -l tmp (mktemp -t "yazi-cwd.XXXXX")
+            command yazi $argv --cwd-file="$tmp"
+            if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+              builtin cd -- "$cwd"
             end
-          '';
-      };
+            rm -f -- "$tmp"
+          end
+        '';
+    };
 
-      nixpkgs.overlays = let
-        inherit (pkgs.custom) yazi;
-      in [
-        (_: _prev: {
-          # set dynamic flavor from noctalia
-          yazi = yazi.override {
-            settings = recursiveUpdate yazi.passthru.settings {
-              theme.flavor = {
-                dark = "nord-yazi";
-              };
-            };
-
-            flavors = {
-              inherit (pkgs) nord-yazi;
+    nixpkgs.overlays = let
+      inherit (pkgs.custom) yazi;
+    in [
+      (_: _prev: {
+        # set dynamic flavor from noctalia
+        yazi = yazi.override {
+          settings = recursiveUpdate yazi.passthru.settings {
+            theme.flavor = {
+              dark = "nord-yazi";
             };
           };
-        })
-      ];
-    };
 
-    hjem-default = {pkgs, ...}: {
-      environment.shellAliases = {
-        lf = "yazi";
-        y = "yazi";
-      };
-
-      hj.packages = [
-        pkgs.yazi # overlay-ed above
-      ];
-
-      custom.programs.print-config =
-        # yazi uses makeWrapper directly, no choice but to parse the wrapper
-        let
-          catYaziPath = path:
-          # sh
-          ''
-            YAZI_PATH=$(grep "export YAZI_CONFIG_HOME=" '${getExe pkgs.yazi}' | cut -d"'" -f2)
-
-            moor "$YAZI_PATH/${path}"
-          '';
-        in {
-          yazi = catYaziPath "yazi.toml";
-          yazi-theme = catYaziPath "theme.toml";
-          yazi-keymap = catYaziPath "keymap.toml";
+          flavors = {
+            inherit (pkgs) nord-yazi;
+          };
         };
+      })
+    ];
+
+    environment.shellAliases = {
+      lf = "yazi";
+      y = "yazi";
     };
+
+    hj.packages = [
+      pkgs.yazi # overlay-ed above
+    ];
+
+    custom.programs.print-config =
+      # yazi uses makeWrapper directly, no choice but to parse the wrapper
+      let
+        catYaziPath = path:
+        # sh
+        ''
+          YAZI_PATH=$(grep "export YAZI_CONFIG_HOME=" '${getExe pkgs.yazi}' | cut -d"'" -f2)
+
+          moor "$YAZI_PATH/${path}"
+        '';
+      in {
+        yazi = catYaziPath "yazi.toml";
+        yazi-theme = catYaziPath "theme.toml";
+        yazi-keymap = catYaziPath "keymap.toml";
+      };
   };
 }

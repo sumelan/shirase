@@ -54,64 +54,60 @@ in {
     packages.satty = (self.wrappers.satty.apply {inherit pkgs;}).wrapper;
   };
 
-  flake.modules.nixos = {
-    gui = {
-      config,
-      pkgs,
-      ...
-    }: let
-      tomlFormat = pkgs.formats.toml {};
-      pictures = "${config.hj.directory}/Pictures";
-      sattyOptions = {
-        extraSettings = mkOption {
-          inherit (tomlFormat) type;
-          default = {};
-          example = {
-            fullscreen = false;
-            early-exit = true;
-          };
-          description = ''
-            Options to add to {file}`satty.toml` file.
-            See <https://github.com/Satty-org/Satty?tab=readme-ov-file#configuration-file>
-            for options.
-          '';
+  flake.modules.nixos.gui = {
+    config,
+    pkgs,
+    ...
+  }: let
+    tomlFormat = pkgs.formats.toml {};
+    pictures = "${config.hj.directory}/Pictures";
+    sattyOptions = {
+      extraSettings = mkOption {
+        inherit (tomlFormat) type;
+        default = {};
+        example = {
+          fullscreen = false;
+          early-exit = true;
         };
-      };
-    in {
-      options.custom = {
-        programs.satty = sattyOptions;
-      };
-
-      config = {
-        nixpkgs.overlays = [
-          (_: prev: {
-            satty =
-              (self.wrappers.satty.apply {
-                pkgs = prev;
-                extraSettings =
-                  {
-                    general.output-filename = "${pictures}/Satty/%Y-%m-%d_%H-%M-%S.png";
-                    color-palette.palette = [
-                      "#191D24"
-                      "#434C5E"
-                      "#ECEFF4"
-                      "#5E81AC"
-                      "#8FBCBB"
-                      "#A3BE8C"
-                      "#BF616A"
-                      "#D08770"
-                      "#B48EAD"
-                      "#EBCB8B"
-                    ];
-                  }
-                  // config.custom.programs.satty.extraSettings;
-              }).wrapper;
-          })
-        ];
+        description = ''
+          Options to add to {file}`satty.toml` file.
+          See <https://github.com/Satty-org/Satty?tab=readme-ov-file#configuration-file>
+          for options.
+        '';
       };
     };
+  in {
+    options.custom = {
+      programs.satty = sattyOptions;
+    };
 
-    hjem-gui = {pkgs, ...}: {
+    config = {
+      nixpkgs.overlays = [
+        (_: prev: {
+          satty =
+            (self.wrappers.satty.apply {
+              pkgs = prev;
+              extraSettings =
+                {
+                  general.output-filename = "${pictures}/Satty/%Y-%m-%d_%H-%M-%S.png";
+                  color-palette.palette = [
+                    "#191D24"
+                    "#434C5E"
+                    "#ECEFF4"
+                    "#5E81AC"
+                    "#8FBCBB"
+                    "#A3BE8C"
+                    "#BF616A"
+                    "#D08770"
+                    "#B48EAD"
+                    "#EBCB8B"
+                  ];
+                }
+                // config.custom.programs.satty.extraSettings;
+            }).wrapper;
+        })
+      ];
+
       hj = {
         packages = [
           pkgs.satty # overlayy-ed above

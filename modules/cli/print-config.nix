@@ -2,7 +2,7 @@
   inherit (lib) mkOption concatLines attrNames mapAttrsToList;
   inherit (lib.types) attrsOf str;
 in {
-  flake.modules.nixos.hjem-default = {
+  flake.modules.nixos.default = {
     config,
     pkgs,
     ...

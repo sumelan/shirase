@@ -19,7 +19,7 @@ in {
   };
 
   flake.modules.nixos = {
-    hjem-default = {pkgs, ...}: {
+    default = {pkgs, ...}: {
       nixpkgs.overlays = [
         (_: prev: {
           nixpkgs-review = prev.nixpkgs-review.override {withNom = true;};
@@ -41,7 +41,7 @@ in {
       };
     };
 
-    hjem-gui = {pkgs, ...}: let
+    gui = {pkgs, ...}: let
       ntv-desktop-entry = pkgs.makeDesktopItem {
         name = "nix-search-tv";
         desktopName = "Nix Search TV";

@@ -5,7 +5,7 @@
 }: let
   inherit (lib) getExe;
 in {
-  flake.modules.nixos.hjem-gui = {
+  flake.modules.nixos.gui = {
     config,
     pkgs,
     ...

@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib) getExe hiPrio;
 in {
-  flake.modules.nixos.hjem-rmpc = {
+  flake.modules.nixos.rmpc = {
     config,
     pkgs,
     ...

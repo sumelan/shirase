@@ -49,38 +49,34 @@ in {
     };
   };
 
-  flake.modules.nixos = {
-    default = {pkgs, ...}: {
-      nixpkgs.overlays = [
-        (_: _prev: {
-          inherit (pkgs.custom) eza;
-        })
-      ];
+  flake.modules.nixos.default = {pkgs, ...}: {
+    nixpkgs.overlays = [
+      (_: _prev: {
+        inherit (pkgs.custom) eza;
+      })
+    ];
 
-      environment = {
-        shellAliases = {
-          t = "tree";
-          cls = "command ls";
-          ls = "eza";
-          ll = "eza -l";
-          la = "eza -a";
-          lt = "eza --tree";
-          lla = "eza -la";
-        };
+    environment = {
+      shellAliases = {
+        t = "tree";
+        cls = "command ls";
+        ls = "eza";
+        ll = "eza -l";
+        la = "eza -a";
+        lt = "eza --tree";
+        lla = "eza -la";
       };
     };
 
-    hjem-default = {pkgs, ...}: {
-      hj.packages = [
-        pkgs.eza # overlay-ed above
-        pkgs.custom.eza-tree
-      ];
+    hj.packages = [
+      pkgs.eza # overlay-ed above
+      pkgs.custom.eza-tree
+    ];
 
-      custom.programs.print-config = {
-        eza =
-          # sh
-          ''moor --lang sh "${getExe pkgs.eza}"'';
-      };
+    custom.programs.print-config = {
+      eza =
+        # sh
+        ''moor --lang sh "${getExe pkgs.eza}"'';
     };
   };
 }

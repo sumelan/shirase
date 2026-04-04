@@ -18,36 +18,32 @@ in {
     };
   };
 
-  flake.modules.nixos = {
-    default = {pkgs, ...}: {
-      nixpkgs.overlays = [
-        (_: _prev: {
-          inherit (pkgs.custom) moor;
-        })
-      ];
+  flake.modules.nixos.default = {pkgs, ...}: {
+    nixpkgs.overlays = [
+      (_: _prev: {
+        inherit (pkgs.custom) moor;
+      })
+    ];
+
+    hj.packages = [
+      pkgs.moor # overlay-ed above
+    ];
+
+    environment = {
+      shellAliases = {
+        less = "moor";
+      };
+      sessionVariables = {
+        PAGER = "moor";
+        SYSTEMD_PAGER = "moor";
+        SYSTEMD_PAGERSECURE = "1";
+      };
     };
 
-    hjem-default = {pkgs, ...}: {
-      hj.packages = [
-        pkgs.moor # overlay-ed above
-      ];
-
-      environment = {
-        shellAliases = {
-          less = "moor";
-        };
-        sessionVariables = {
-          PAGER = "moor";
-          SYSTEMD_PAGER = "moor";
-          SYSTEMD_PAGERSECURE = "1";
-        };
-      };
-
-      custom.programs.print-config = {
-        moor =
-          # sh
-          ''moor --lang sh "${getExe pkgs.moor}"'';
-      };
+    custom.programs.print-config = {
+      moor =
+        # sh
+        ''moor --lang sh "${getExe pkgs.moor}"'';
     };
   };
 }

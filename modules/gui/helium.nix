@@ -1,7 +1,7 @@
 _: let
   inherit (builtins) listToAttrs;
 in {
-  flake.modules.nixos.hjem-gui = {pkgs, ...}: {
+  flake.modules.nixos.gui = {pkgs, ...}: {
     programs.chromium = {
       enable = true;
       extensions = [

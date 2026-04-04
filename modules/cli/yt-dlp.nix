@@ -22,38 +22,34 @@ in {
       };
     };
   };
-  flake.modules.nixos = {
-    default = {pkgs, ...}: {
-      nixpkgs.overlays = [
-        (_: _prev: {
-          inherit (pkgs.custom) yt-dlp;
-        })
-      ];
+  flake.modules.nixos.default = {pkgs, ...}: {
+    nixpkgs.overlays = [
+      (_: _prev: {
+        inherit (pkgs.custom) yt-dlp;
+      })
+    ];
+
+    environment.shellAliases = {
+      yt = "yt-dlp";
+      yt1080 = ''ytdl --format "${mkFormat 1080}"'';
+      ytaudio = "ytdl --audio-format mp3 --extract-audio";
+      ytsubonly = "ytdl --skip-download --write-subs";
+      ytplaylist = "ytdl --output '%(playlist_index)d - %(title)s.%(ext)s'";
     };
 
-    hjem-default = {pkgs, ...}: {
-      environment.shellAliases = {
-        yt = "yt-dlp";
-        yt1080 = ''ytdl --format "${mkFormat 1080}"'';
-        ytaudio = "ytdl --audio-format mp3 --extract-audio";
-        ytsubonly = "ytdl --skip-download --write-subs";
-        ytplaylist = "ytdl --output '%(playlist_index)d - %(title)s.%(ext)s'";
-      };
+    hj.packages = [
+      # yt-dlp’s dependencies
+      pkgs.ffmpeg
+      # `--embed-thumbnail` need this in certain formats
+      (pkgs.python313.withPackages (ps: [ps.mutagen]))
 
-      hj.packages = [
-        # yt-dlp’s dependencies
-        pkgs.ffmpeg
-        # `--embed-thumbnail` need this in certain formats
-        (pkgs.python313.withPackages (ps: [ps.mutagen]))
+      pkgs.yt-dlp # overlay-ed above
+    ];
 
-        pkgs.yt-dlp # overlay-ed above
-      ];
-
-      custom.programs.print-config = {
-        yt-dlp =
-          # sh
-          ''moor --lang sh "${getExe pkgs.yt-dlp}"'';
-      };
+    custom.programs.print-config = {
+      yt-dlp =
+        # sh
+        ''moor --lang sh "${getExe pkgs.yt-dlp}"'';
     };
   };
 }

@@ -71,66 +71,62 @@ in {
     packages.foot = (self.wrappers.foot.apply {inherit pkgs;}).wrapper;
   };
 
-  flake.modules.nixos = {
-    gui = {
-      config,
-      pkgs,
-      ...
-    }: let
-      iniFmt = pkgs.formats.iniWithGlobalSection {
-        # from https://github.com/NixOS/nixpkgs/blob/89f10dc1a8b59ba63f150a08f8cf67b0f6a2583e/nixos/modules/programs/foot/default.nix#L11-L29
-        listsAsDuplicateKeys = true;
-        mkKeyValue = mkKeyValueDefault {
-          mkValueString = v:
-            mkValueStringDefault {} (
-              if v == true
-              then "yes"
-              else if v == false
-              then "no"
-              else if v == null
-              then "none"
-              else v
-            );
-        } "=";
-      };
-      inherit (iniFmt.lib.types) atom;
-      footOptions = {
-        extraSettings = mkOption {
-          type = attrsOf (oneOf [atom (attrsOf atom)]);
-          default = {};
-          description = ''
-            Configuration of foot terminal.
-            See {manpage}`foot.ini(5)`
-          '';
-        };
-      };
-
-      fishPath = getExe config.programs.fish.package;
-    in {
-      options.custom = {
-        programs.foot = footOptions;
-      };
-
-      config = {
-        nixpkgs.overlays = [
-          (_: prev: {
-            foot =
-              (self.wrappers.foot.apply {
-                pkgs = prev;
-                extraSettings =
-                  {
-                    include = "${prev.foot.themes}/share/foot/themes/nord";
-                    main.shell = mkForce fishPath;
-                    environment."SHELL" = fishPath;
-                  }
-                  // config.custom.programs.foot.extraSettings;
-              }).wrapper;
-          })
-        ];
+  flake.modules.nixos.foot = {
+    config,
+    pkgs,
+    ...
+  }: let
+    iniFmt = pkgs.formats.iniWithGlobalSection {
+      # from https://github.com/NixOS/nixpkgs/blob/89f10dc1a8b59ba63f150a08f8cf67b0f6a2583e/nixos/modules/programs/foot/default.nix#L11-L29
+      listsAsDuplicateKeys = true;
+      mkKeyValue = mkKeyValueDefault {
+        mkValueString = v:
+          mkValueStringDefault {} (
+            if v == true
+            then "yes"
+            else if v == false
+            then "no"
+            else if v == null
+            then "none"
+            else v
+          );
+      } "=";
+    };
+    inherit (iniFmt.lib.types) atom;
+    footOptions = {
+      extraSettings = mkOption {
+        type = attrsOf (oneOf [atom (attrsOf atom)]);
+        default = {};
+        description = ''
+          Configuration of foot terminal.
+          See {manpage}`foot.ini(5)`
+        '';
       };
     };
 
-    hjem-foot = {pkgs, ...}: {
+    fishPath = getExe config.programs.fish.package;
+  in {
+    options.custom = {
+      programs.foot = footOptions;
+    };
+
+    config = {
+      nixpkgs.overlays = [
+        (_: prev: {
+          foot =
+            (self.wrappers.foot.apply {
+              pkgs = prev;
+              extraSettings =
+                {
+                  include = "${prev.foot.themes}/share/foot/themes/nord";
+                  main.shell = mkForce fishPath;
+                  environment."SHELL" = fishPath;
+                }
+                // config.custom.programs.foot.extraSettings;
+            }).wrapper;
+        })
+      ];
+
       hj.packages = [
         pkgs.foot # overlay-ed above
       ];

@@ -1,6 +1,6 @@
 _: {
   flake.modules.nixos = {
-    hjem-gui = {pkgs, ...}: {
+    gui = {pkgs, ...}: {
       hj.packages = [
         pkgs.euphonica
         pkgs.grayjay
@@ -18,14 +18,14 @@ _: {
       };
     };
 
-    hjem-cd = {pkgs, ...}: {
+    cd = {pkgs, ...}: {
       hj.packages = [
         pkgs.cyanrip
         pkgs.picard
       ];
     };
 
-    hjem-bluray = {pkgs, ...}: {
+    bluray = {pkgs, ...}: {
       hj.packages = [
         pkgs.handbrake
         pkgs.makemkv
@@ -51,7 +51,7 @@ _: {
       };
     };
 
-    hjem-ebook = {pkgs, ...}: {
+    ebook = {pkgs, ...}: {
       hj.packages = [
         pkgs.foliate
       ];
@@ -66,7 +66,7 @@ _: {
       };
     };
 
-    hjem-obs = {pkgs, ...}: {
+    obs = {pkgs, ...}: {
       hj.packages = [
         pkgs.obs-studio
       ];

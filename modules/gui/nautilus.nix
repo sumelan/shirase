@@ -1,7 +1,7 @@
 _: let
   inherit (builtins) attrValues;
 in {
-  flake.modules.nixos.hjem-gui = {
+  flake.modules.nixos.gui = {
     config,
     pkgs,
     ...

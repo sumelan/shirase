@@ -26,28 +26,24 @@ in {
     };
   };
 
-  flake.modules.nixos = {
-    default = {pkgs, ...}: {
-      nixpkgs.overlays = [
-        (_: _prev: {
-          inherit (pkgs.custom) ripgrep;
-        })
-      ];
-    };
+  flake.modules.nixos.default = {pkgs, ...}: {
+    nixpkgs.overlays = [
+      (_: _prev: {
+        inherit (pkgs.custom) ripgrep;
+      })
+    ];
 
-    hjem-default = {pkgs, ...}: {
-      hj.packages = [
-        pkgs.ripgrep # overlay-ed above
-      ];
+    hj.packages = [
+      pkgs.ripgrep # overlay-ed above
+    ];
 
-      custom.programs.print-config = let
-        cmd =
-          # sh
-          ''moor --lang sh "${getExe pkgs.ripgrep}"'';
-      in {
-        rg = cmd;
-        ripgrep = cmd;
-      };
+    custom.programs.print-config = let
+      cmd =
+        # sh
+        ''moor --lang sh "${getExe pkgs.ripgrep}"'';
+    in {
+      rg = cmd;
+      ripgrep = cmd;
     };
   };
 }

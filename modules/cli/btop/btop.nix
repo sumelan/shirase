@@ -98,45 +98,46 @@ in {
     packages.btop = (self.wrappers.btop.apply {inherit pkgs;}).wrapper;
   };
 
-  flake.modules.nixos = {
-    default = {config, ...}: {
-      options.custom = {
-        programs.btop =
-          btopOptions
-          // {
-            # convenience option to add disks to btop
-            disks = mkOption {
-              type = listOf str;
-              default = [];
-              description = "List of disks to monitor in btop";
-            };
+  flake.modules.nixos.default = {
+    config,
+    pkgs,
+    ...
+  }: {
+    options.custom = {
+      programs.btop =
+        btopOptions
+        // {
+          # convenience option to add disks to btop
+          disks = mkOption {
+            type = listOf str;
+            default = [];
+            description = "List of disks to monitor in btop";
           };
-      };
-      config = {
-        nixpkgs.overlays = [
-          (_: prev: {
-            btop =
-              (self.wrappers.btop.apply {
-                pkgs = prev;
-                extraSettings =
-                  {
-                    color_theme = "nord";
-                    disks_filter = concatStringsSep " " (
-                      [
-                        "/"
-                        "/boot"
-                        "/persist"
-                      ]
-                      ++ config.custom.programs.btop.disks
-                    );
-                  }
-                  // config.custom.programs.btop.extraSettings;
-              }).wrapper;
-          })
-        ];
-      };
+        };
     };
-    hjem-default = {pkgs, ...}: {
+    config = {
+      nixpkgs.overlays = [
+        (_: prev: {
+          btop =
+            (self.wrappers.btop.apply {
+              pkgs = prev;
+              extraSettings =
+                {
+                  color_theme = "nord";
+                  disks_filter = concatStringsSep " " (
+                    [
+                      "/"
+                      "/boot"
+                      "/persist"
+                    ]
+                    ++ config.custom.programs.btop.disks
+                  );
+                }
+                // config.custom.programs.btop.extraSettings;
+            }).wrapper;
+        })
+      ];
+
       hj.packages = [
         pkgs.btop # overlay-ed above
       ];

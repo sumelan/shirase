@@ -39,44 +39,32 @@ in {
     packages.zathura = (self.wrappers.zathura.apply {inherit pkgs;}).wrapper;
   };
 
-  flake.modules.nixos = {
-    gui = {pkgs, ...}: let
-      src = pkgs.fetchFromGitHub {
-        owner = "nautilor";
-        repo = "zathura-nord";
-        rev = "a1c80f8ba7c1e7ddd548d38b26458ea8e8b329cd";
-        hash = "sha256-pj9/ZvN+58ZUWyGnY9Yk9EwdvWRH5hY2BZp2TGDpi+g=";
-      };
-      zathura-nord = "${src}/zathurarc";
-    in {
-      options.custom = {
-        programs.zathura = zathuraOptions;
-      };
-
-      config = {
-        nixpkgs.overlays = [
-          (_: prev: {
-            zathura =
-              (self.wrappers.zathura.apply {
-                pkgs = prev;
-                extraSettings = ''
-                  include ${zathura-nord}
-                '';
-              }).wrapper;
-          })
-        ];
-      };
+  flake.modules.nixos.gui = {pkgs, ...}: let
+    src = pkgs.fetchFromGitHub {
+      owner = "nautilor";
+      repo = "zathura-nord";
+      rev = "a1c80f8ba7c1e7ddd548d38b26458ea8e8b329cd";
+      hash = "sha256-pj9/ZvN+58ZUWyGnY9Yk9EwdvWRH5hY2BZp2TGDpi+g=";
+    };
+    zathura-nord = "${src}/zathurarc";
+  in {
+    options.custom = {
+      programs.zathura = zathuraOptions;
     };
 
-    hjem-gui = {pkgs, ...}: let
-      src = pkgs.fetchFromGitHub {
-        owner = "nautilor";
-        repo = "zathura-nord";
-        rev = "a1c80f8ba7c1e7ddd548d38b26458ea8e8b329cd";
-        hash = "sha256-pj9/ZvN+58ZUWyGnY9Yk9EwdvWRH5hY2BZp2TGDpi+g=";
-      };
-      zathura-nord = "${src}/zathurarc";
-    in {
+    config = {
+      nixpkgs.overlays = [
+        (_: prev: {
+          zathura =
+            (self.wrappers.zathura.apply {
+              pkgs = prev;
+              extraSettings = ''
+                include ${zathura-nord}
+              '';
+            }).wrapper;
+        })
+      ];
+
       hj = {
         packages = [
           pkgs.zathura # overlay-ed above
