@@ -41,7 +41,7 @@ in {
         '';
       };
     };
-    baseFootConf = import ./_config.nix {};
+    baseFootConf = import ./_config.nix {inherit config;};
   in {
     imports = [wlib.modules.default];
 
@@ -118,7 +118,6 @@ in {
               pkgs = prev;
               extraSettings =
                 {
-                  include = "${prev.foot.themes}/share/foot/themes/nord";
                   main.shell = mkForce fishPath;
                   environment."SHELL" = fishPath;
                 }

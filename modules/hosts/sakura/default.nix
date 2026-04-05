@@ -8,7 +8,7 @@ in {
   }: {
     imports = with flake.modules.nixos;
       [minisforum-um773se]
-      ++ [default gui steam]
+      ++ [default gui helix steam]
       ++ [hdds logitech qmk]
       ++ [audiobookshelf sops-nix syncoid syncthing]
       ++ [
@@ -16,7 +16,6 @@ in {
         cd
         ebook
         kdeconnect
-        helix
         obs
         protonapp
         rmpc

@@ -37,7 +37,11 @@
       in {
         helix =
           # sh
-          ''cat "${target}/config.toml" "${target}/languages.toml" | moor --lang toml'';
+          ''moor --lang toml "${target}/config.toml"'';
+
+        helix-languages =
+          # sh
+          ''moor --lang toml "${target}/languages.toml"'';
       };
     };
   };
