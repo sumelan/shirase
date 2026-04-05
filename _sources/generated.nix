@@ -20,22 +20,22 @@
   };
   helium = {
     pname = "helium";
-    version = "0.10.7.1";
+    version = "0.10.8.1";
     src = fetchurl {
-      url = "https://github.com/imputnet/helium-linux/releases/download/0.10.7.1/helium-0.10.7.1-x86_64.AppImage";
-      sha256 = "sha256-+vmxXcg8TkR/GAiHKnjq4b04bGtQzErfJkOb4P4nZUk=";
+      url = "https://github.com/imputnet/helium-linux/releases/download/0.10.8.1/helium-0.10.8.1-x86_64.AppImage";
+      sha256 = "sha256-pN/Iw1ANggDOxxFb2CN436qbcrs8/bDcEqjZC80grQs=";
     };
   };
   nordic-nvim = {
     pname = "nordic-nvim";
-    version = "4ce6bad95fde832f9bd10b991de846047a144628";
+    version = "9f757428264ef1fcd1703e17702d3a28f307a2f7";
     src = fetchFromGitHub {
       owner = "AlexvZyl";
       repo = "nordic.nvim";
-      rev = "4ce6bad95fde832f9bd10b991de846047a144628";
+      rev = "9f757428264ef1fcd1703e17702d3a28f307a2f7";
       fetchSubmodules = false;
-      sha256 = "sha256-kjr4SsRbKfVgNjAFWybkRQ8/QDOPLm7lbysi6Gblpfg=";
+      sha256 = "sha256-Becp5tPJyjgyVH3BVN6XMKdinZ7JjJ2Czj6c73p6AAk=";
     };
-    date = "2026-02-07";
+    date = "2026-04-05";
   };
 }
