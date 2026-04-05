@@ -106,6 +106,7 @@ _: {
     "ui.window" = {fg = "gray4";};
     "ui.help" = {bg = "black1";};
     "ui.text.focus" = {bg = "gray2";};
+    "ui.virtual.indent-guide" = {fg = "gray4";};
     "ui.virtual.ruler" = {bg = "gray1";};
     "ui.menu" = {bg = "black1";};
     "ui.menu.selected" = {bg = "gray4";};

@@ -8,7 +8,7 @@ in {
   }: {
     imports = with flake.modules.nixos;
       [chuwi-minibook-x]
-      ++ [default gui]
+      ++ [default gui helix]
       ++ [sops-nix syncthing]
       ++ [ebook kdeconnect rmpc];
 

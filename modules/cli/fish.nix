@@ -39,9 +39,8 @@ _: {
 
             # setup fish-completion-sync
             source ${fish-completion-sync}/init.fish
-          ''
-          # sponge options
-          + ''
+
+            # sponge options
             # set options for plugins
             set sponge_regex_patterns 'password|passwd|^kill'
 
