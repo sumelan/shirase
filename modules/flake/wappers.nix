@@ -7,6 +7,7 @@ _: {
         btop = true;
         foot = true;
         kitty = true;
+        pqiv = true;
         satty = true;
         zathura = true;
       };

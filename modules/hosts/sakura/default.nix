@@ -16,6 +16,7 @@ in {
         cd
         ebook
         kdeconnect
+        helix
         obs
         protonapp
         rmpc

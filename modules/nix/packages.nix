@@ -46,7 +46,7 @@ in {
         name = "nix-search-tv";
         desktopName = "Nix Search TV";
         genericName = "Fuzzy search for Nix packages";
-        icon = "nix-snowflake";
+        icon = "dev.vlinkz.NixosConfEditor";
         terminal = true;
         exec = getExe pkgs.custom.ntv;
       };

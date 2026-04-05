@@ -201,7 +201,7 @@ in
             gap -15
             width 8
             length total-proportion=0.800000
-            position "left"
+            position "right"
             gaps-between-tabs 0.000000
             corner-radius 0.000000
             active-color "#191D2490"
@@ -326,9 +326,9 @@ in
         open-floating true
     }
     window-rule {
-        match app-id="^swayimg$"
-        default-column-width { proportion 0.500000; }
-        default-window-height { proportion 0.500000; }
+        match app-id="^Pqiv$"
+        default-column-width { proportion 0.400000; }
+        default-window-height { proportion 0.400000; }
         open-floating true
         opacity 1.000000
     }

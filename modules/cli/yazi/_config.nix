@@ -136,11 +136,17 @@ in
               run = ''shell -- unar "$@"'';
               desc = "Command-line unarchiver";
             }
+            # pqiv
+            {
+              on = ["i" "p"];
+              run = ''shell -- pqiv "$@"'';
+              desc = "Open with pqiv";
+            }
             # satty
             {
               on = ["i" "s"];
               run = ''shell -- satty -f "$@"'';
-              desc = "Open image(s) with satty";
+              desc = "Open with satty";
             }
             # ripdrag
             {
