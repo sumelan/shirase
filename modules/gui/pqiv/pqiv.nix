@@ -59,7 +59,7 @@ in {
 
   # expose generic pqiv package without local paths
   perSystem = {pkgs, ...}: {
-    packages.pqiv = (self.wrappers.pqiv.apply {inherit pkgs;}).wrapper;
+    packages.pqiv = self.wrappers.pqiv.wrap {inherit pkgs;};
   };
 
   flake.modules.nixos.gui = {pkgs, ...}: let
@@ -73,11 +73,8 @@ in {
     };
   in {
     nixpkgs.overlays = [
-      (_: prev: {
-        pqiv =
-          (self.wrappers.pqiv.apply {
-            pkgs = prev;
-          }).wrapper;
+      (_: _prev: {
+        inherit (pkgs.custom) pqiv;
       })
     ];
 
@@ -99,6 +96,7 @@ in {
           ]);
       in {
         default-applications = associations;
+        added-associations = associations;
       };
     };
 

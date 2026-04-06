@@ -1,27 +1,12 @@
-{
-  inputs,
-  lib,
-  ...
-}: let
-  inherit (lib) getExe;
+_: let
   mkFormat = height: "bestvideo[height<=?${toString height}][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best";
 in {
-  perSystem = {pkgs, ...}: {
-    packages.yt-dlp = inputs.wrappers.lib.wrapPackage {
-      inherit pkgs;
-      package = pkgs.yt-dlp;
-      flags = {
-        "--add-metadata" = true;
-        "--format" = mkFormat 720;
-        "--no-mtime" = true;
-        "--output" = "%(title)s.%(ext)s";
-        "--sponsorblock-mark" = "all";
-        "--windows-filenames" = true;
-        # youtube causing 403 errors https://github.com/yt-dlp/yt-dlp/issues/15712#issuecomment-3808702603 PR: https://github.com/yt-dlp/yt-dlp/pull/15726
-        "--extractor-args" = "youtube:player_client=default,-android_sdkless";
-      };
-    };
+  flake.wrappers.yt-dlp = {wlib, ...}: {
+    imports = [wlib.wrapperModules.yt-dlp];
+
+    settings = import ./_config.nix {};
   };
+
   flake.modules.nixos.default = {pkgs, ...}: {
     nixpkgs.overlays = [
       (_: _prev: {
@@ -46,10 +31,12 @@ in {
       pkgs.yt-dlp # overlay-ed above
     ];
 
-    custom.programs.print-config = {
+    custom.programs.print-config = let
+      conf = pkgs.yt-dlp.configuration.constructFiles.renderedSettings.outPath;
+    in {
       yt-dlp =
         # sh
-        ''moor --lang sh "${getExe pkgs.yt-dlp}"'';
+        ''moor "${conf}"'';
     };
   };
 }

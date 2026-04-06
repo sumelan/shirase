@@ -1,42 +1,24 @@
-{
-  lib,
-  self,
-  ...
-}: let
+{self, ...}: let
   inherit (builtins) listToAttrs;
-  inherit (lib) mkOption mkDefault;
-  inherit (lib.types) str;
-
-  zathuraOptions = {
-    extraSettings = mkOption {
-      type = str;
-      default = "";
-      description = ''
-        Extra settings to add to {file}`zathurarc` file.
-        See <https://man.archlinux.org/man/zathurarc.5> for options.
-      '';
-    };
-  };
 in {
   flake.wrappers.zathura = {
-    config,
     wlib,
+    pkgs,
     ...
-  }: let
-    zathuraConf = import ./_config.nix {inherit config;};
-  in {
-    imports = [wlib.modules.default];
+  }: {
+    imports = [wlib.wrapperModules.zathura];
 
-    options = zathuraOptions;
-
-    config.package = mkDefault config.pkgs.zathura;
-    config.flags = {
-      "--config-dir" = toString zathuraConf;
+    settings = import ./_config.nix {};
+    mappings = import ./_mappigs.nix {};
+    plugins = builtins.attrValues {
+      inherit
+        (pkgs.zathuraPkgs)
+        zathura_cb
+        zathura_djvu
+        zathura_ps
+        zathura_pdf_mupdf
+        ;
     };
-  };
-
-  perSystem = {pkgs, ...}: {
-    packages.zathura = (self.wrappers.zathura.apply {inherit pkgs;}).wrapper;
   };
 
   flake.modules.nixos.gui = {pkgs, ...}: let
@@ -48,50 +30,43 @@ in {
     };
     zathura-nord = "${src}/zathurarc";
   in {
-    options.custom = {
-      programs.zathura = zathuraOptions;
-    };
+    nixpkgs.overlays = [
+      (_: prev: {
+        zathura = self.wrappers.zathura.wrap {
+          pkgs = prev;
+          extraSettings = ''
+            include ${zathura-nord}
+          '';
+        };
+      })
+    ];
 
-    config = {
-      nixpkgs.overlays = [
-        (_: prev: {
-          zathura =
-            (self.wrappers.zathura.apply {
-              pkgs = prev;
-              extraSettings = ''
-                include ${zathura-nord}
-              '';
-            }).wrapper;
-        })
+    hj = {
+      packages = [
+        pkgs.zathura # overlay-ed above
       ];
 
-      hj = {
-        packages = [
-          pkgs.zathura # overlay-ed above
-        ];
-
-        xdg.mime-apps = let
-          value = "org.pwmt.zathura-pdf-mupdf.desktop";
-          associations = listToAttrs (map (name: {
-              inherit name value;
-            }) [
-              "image/jpeg"
-              "image/gif"
-              "image/webp"
-              "image/png"
-            ]);
-        in {
-          removed-associations = associations;
-        };
+      xdg.mime-apps = let
+        value = "org.pwmt.zathura-pdf-mupdf.desktop";
+        associations = listToAttrs (map (name: {
+            inherit name value;
+          }) [
+            "image/jpeg"
+            "image/gif"
+            "image/webp"
+            "image/png"
+          ]);
+      in {
+        removed-associations = associations;
       };
+    };
 
-      custom.programs.print-config = {
-        zathura =
-          # sh
-          ''cat "${
-              pkgs.zathura.configuration.flags."--config-dir".data
-            }/zathurarc" "${zathura-nord}" | moor'';
-      };
+    custom.programs.print-config = let
+      confPath = pkgs.zathura.configuration.constructFiles.renderedRc.outPath;
+    in {
+      zathura =
+        # sh
+        ''cat "${confPath}" "${zathura-nord}" | moor'';
     };
   };
 }

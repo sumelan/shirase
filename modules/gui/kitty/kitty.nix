@@ -59,9 +59,9 @@ in {
     };
   };
 
-  # expose generic kitty package without color theme and SHELL
+  # expose generic kitty package without font, color-theme and SHELL
   perSystem = {pkgs, ...}: {
-    packages.kitty = (self.wrappers.kitty.apply {inherit pkgs;}).wrapper;
+    packages.kitty = self.wrappers.kitty.wrap {inherit pkgs;};
   };
 
   flake.modules.nixos.gui = {
@@ -84,19 +84,20 @@ in {
     config = {
       nixpkgs.overlays = [
         (_: prev: {
-          kitty =
-            (self.wrappers.kitty.apply {
-              pkgs = prev;
-              extraSettings =
-                {
-                  # color theme
-                  include = "${nord}/nord.conf";
-                  # SHELL
-                  env = "SHELL=${fishPath}";
-                  shell = mkForce fishPath;
-                }
-                // config.custom.programs.kitty.extraSettings;
-            }).wrapper;
+          kitty = self.wrappers.kitty.wrap {
+            pkgs = prev;
+            extraSettings =
+              {
+                # font
+                font_family = config.custom.fonts.monospace;
+                # color theme
+                include = "${nord}/nord.conf";
+                # SHELL
+                env = "SHELL=${fishPath}";
+                shell = mkForce fishPath;
+              }
+              // config.custom.programs.kitty.extraSettings;
+          };
         })
       ];
 

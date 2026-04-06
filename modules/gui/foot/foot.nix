@@ -41,7 +41,7 @@ in {
         '';
       };
     };
-    baseFootConf = import ./_config.nix {inherit config;};
+    baseFootConf = import ./_config.nix {};
   in {
     imports = [wlib.modules.default];
 
@@ -68,7 +68,7 @@ in {
   };
 
   perSystem = {pkgs, ...}: {
-    packages.foot = (self.wrappers.foot.apply {inherit pkgs;}).wrapper;
+    packages.foot = self.wrappers.foot.wrap {inherit pkgs;};
   };
 
   flake.modules.nixos.foot = {
@@ -113,16 +113,17 @@ in {
     config = {
       nixpkgs.overlays = [
         (_: prev: {
-          foot =
-            (self.wrappers.foot.apply {
-              pkgs = prev;
-              extraSettings =
-                {
-                  main.shell = mkForce fishPath;
-                  environment."SHELL" = fishPath;
-                }
-                // config.custom.programs.foot.extraSettings;
-            }).wrapper;
+          foot = self.wrappers.foot.wrap {
+            pkgs = prev;
+            extraSettings =
+              {
+                font = "${config.custom.fonts.monospace}:size=14";
+                include = "${prev.foot.themes}/share/foot/themes/nord";
+                main.shell = mkForce fishPath;
+                environment."SHELL" = fishPath;
+              }
+              // config.custom.programs.foot.extraSettings;
+          };
         })
       ];
 

@@ -9,7 +9,6 @@ _: {
   cursor_trail = 3;
   cursor_trail_start_threshold = 10;
   enable_audio_bell = "no";
-  font_family = "Maple Mono NF";
   font_size = 14;
   italic_font = "auto";
   placement_strategy = "top";

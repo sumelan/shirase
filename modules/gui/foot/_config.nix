@@ -1,5 +1,4 @@
-{config, ...}: {
-  font = "Maple Mono NF:size=14";
+_: {
   initial-window-size-pixels = "1000x800";
   scrollback = {
     lines = 100000;
@@ -13,5 +12,4 @@
   mouse = {
     hide-when-typing = "yes";
   };
-  include = "${config.pkgs.foot.themes}/share/foot/themes/nord";
 }
