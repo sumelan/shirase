@@ -10,7 +10,7 @@ in {
       [chuwi-minibook-x]
       ++ [default gui helix]
       ++ [sops-nix syncthing]
-      ++ [ebook kdeconnect rmpc];
+      ++ [ebook kdeconnect];
 
     networking.hostId = "56895d2b";
 

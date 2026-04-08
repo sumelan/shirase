@@ -1,24 +1,12 @@
-{lib, ...}: let
-  inherit (lib) getExe hiPrio;
-in {
-  flake.modules.nixos.rmpc = {
+_: {
+  flake.modules.nixos.default = {
     config,
     pkgs,
     ...
-  }: let
-    rmpc-desktop-entry = pkgs.makeDesktopItem {
-      name = "rmpc";
-      desktopName = "Rusty Music Player Client";
-      genericName = "Terminal based Music Player Daemon client";
-      icon = "mpd";
-      terminal = true;
-      exec = getExe pkgs.rmpc;
-    };
-  in {
+  }: {
     hj = {
       packages = [
         pkgs.rmpc
-        (hiPrio rmpc-desktop-entry)
       ];
 
       xdg.config.files = {

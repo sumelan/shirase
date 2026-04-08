@@ -17,12 +17,18 @@ in {
       group = "users";
       openFirewall = true;
       dataDir = "${data}/mpd";
-      startWhenNeeded = true;
+      startWhenNeeded = false;
       settings = {
         audio_output = [
           {
             type = "pipewire";
             name = "PipeWire Sound Server";
+          }
+          {
+            type = "fifo";
+            name = "FIFO";
+            path = "/run/mpd/mpd.fifo";
+            format = "44100:16:2";
           }
         ];
         music_directory = music;
@@ -33,8 +39,14 @@ in {
     };
 
     systemd = {
+      # create mpd directory on boot
+      tmpfiles.rules = [
+        "d! %t/mpd - root root - -"
+      ];
+
       services = {
         mpd.environment = {XDG_RUNTIME_DIR = "/run/user/1000";};
+
         mpdris2-rs = {
           description = "Music Player Daemon D-Bus Bridge";
           wants = ["mpd.service"];
@@ -51,11 +63,28 @@ in {
             ExecStart = "${getExe pkgs.mpdris2-rs} --host ${cfg.settings.bind_to_address}";
           };
         };
+
+        mpd-discord-rpc = {
+          description = "Discord Rich Presence for MPD";
+          documentation = ["https://github.com/JakeStanger/mpd-discord-rpc"];
+          environment = {XDG_RUNTIME_DIR = "/run/user/1000";};
+          after = ["graphical-session.target"] ++ ["mpd.service"];
+          partOf = ["graphical-session.target"];
+          wantedBy = ["graphical-session.target"] ++ ["mpd.service"];
+
+          serviceConfig = {
+            User = user;
+            Group = "users";
+            ExecStart = getExe pkgs.mpd-discord-rpc;
+            Restart = "on-failure";
+          };
+        };
       };
-      tmpfiles.rules = [
-        # create mpd directory for local socket on boot
-        "d! %t/mpd - root root - -"
-      ];
+    };
+
+    hj.xdg.config.files."discord-rpc/config.toml" = {
+      generator = (pkgs.formats.toml {}).generate "config.toml";
+      value = import ./discord-rpc/_config.nix {inherit config;};
     };
 
     custom.fileSystem = {

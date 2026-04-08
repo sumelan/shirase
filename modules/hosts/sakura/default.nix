@@ -18,7 +18,6 @@ in {
         kdeconnect
         obs
         protonapp
-        rmpc
         zen
       ];
 

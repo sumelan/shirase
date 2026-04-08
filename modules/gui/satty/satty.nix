@@ -51,7 +51,7 @@ in {
 
   # expose generic sattyy package without output file and color-palette
   perSystem = {pkgs, ...}: {
-    packages.satty = (self.wrappers.satty.apply {inherit pkgs;}).wrapper;
+    packages.satty = self.wrappers.satty.wrap {inherit pkgs;};
   };
 
   flake.modules.nixos.gui = {
@@ -84,27 +84,26 @@ in {
     config = {
       nixpkgs.overlays = [
         (_: prev: {
-          satty =
-            (self.wrappers.satty.apply {
-              pkgs = prev;
-              extraSettings =
-                {
-                  general.output-filename = "${pictures}/Satty/%Y-%m-%d_%H-%M-%S.png";
-                  color-palette.palette = [
-                    "#191D24"
-                    "#434C5E"
-                    "#ECEFF4"
-                    "#5E81AC"
-                    "#8FBCBB"
-                    "#A3BE8C"
-                    "#BF616A"
-                    "#D08770"
-                    "#B48EAD"
-                    "#EBCB8B"
-                  ];
-                }
-                // config.custom.programs.satty.extraSettings;
-            }).wrapper;
+          satty = self.wrappers.satty.wrap {
+            pkgs = prev;
+            extraSettings =
+              {
+                general.output-filename = "${pictures}/Satty/%Y-%m-%d_%H-%M-%S.png";
+                color-palette.palette = [
+                  "#191D24"
+                  "#434C5E"
+                  "#ECEFF4"
+                  "#5E81AC"
+                  "#8FBCBB"
+                  "#A3BE8C"
+                  "#BF616A"
+                  "#D08770"
+                  "#B48EAD"
+                  "#EBCB8B"
+                ];
+              }
+              // config.custom.programs.satty.extraSettings;
+          };
         })
       ];
 
