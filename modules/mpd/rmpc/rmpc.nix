@@ -1,8 +1,4 @@
-{
-  lib,
-  self,
-  ...
-}: let
+{lib, ...}: let
   inherit (lib) mkDefault;
 in {
   flake.wrappers.rmpc = {
@@ -19,7 +15,7 @@ in {
     };
   };
 
-  flake.modules.nixos.default = {
+  flake.modules.nixos.mpd = {
     config,
     pkgs,
     ...

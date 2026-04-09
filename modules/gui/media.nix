@@ -2,7 +2,6 @@ _: {
   flake.modules.nixos = {
     gui = {pkgs, ...}: {
       hj.packages = [
-        pkgs.euphonica
         pkgs.grayjay
         pkgs.mpv
         pkgs.pear-desktop
@@ -10,7 +9,6 @@ _: {
 
       custom.fileSystem = {
         persist.home.directories = [
-          ".cache/euphonica"
           ".local/share/Grayjay"
           ".local/state/mpv" # watch later
           ".config/YouTube Music"
