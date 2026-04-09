@@ -364,7 +364,7 @@ in
         Mod+N hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Notepad"}"          { spawn "dms" "ipc" "notepad" "toggle"; }
         Mod+D hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Command"}"          { spawn "${getExe dmsCmd}"; }
         Mod+Comma hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Settings"}"     { spawn "dms" "ipc" "settings" "focusOrToggle"; }
-        Mod+Ctrl+L hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "screen-lock"}" { spawn "dms" "ipc" "lock" "lock"; }
+        Mod+Ctrl+L allow-when-locked=true hotkey-overlay-title="${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "screen-lock"}" { spawn "dms" "ipc" "lock" "lock"; }
 
         XF86AudioLowerVolume allow-when-locked=true  { spawn "dms" "ipc" "audio" "decrement" "3"; }
         XF86AudioMicMute allow-when-locked=true      { spawn "dms" "ipc" "audio" "micmute"; }

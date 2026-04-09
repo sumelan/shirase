@@ -1,5 +1,5 @@
-{pkgs, ...}:
-pkgs.writeText "theme.ron"
+{config, ...}:
+config.pkgs.writeText "theme.ron"
 # ron
 ''
   #![enable(implicit_some)]

@@ -25,7 +25,7 @@ in
         wrap_navigation: true,
         enable_mouse: true,
         scroll_amount: 1,
-        enable_config_hot_reload: true,
+        enable_config_hot_reload: false,
         enable_lyrics_hot_reload: false,
         status_update_interval_ms: 1000,
         rewind_to_start_sec: 5,
