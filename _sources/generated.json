@@ -1,7 +1,7 @@
 {
     "dms-plugins": {
         "cargoLock": null,
-        "date": "2026-02-24",
+        "date": "2026-04-07",
         "extract": null,
         "name": "dms-plugins",
         "passthru": null,
@@ -13,12 +13,12 @@
             "name": null,
             "owner": "AvengeMedia",
             "repo": "dms-plugins",
-            "rev": "141841fc85e01494df6d217bd5a27c65da87256d",
-            "sha256": "sha256-/155wFIotV9xiZzX9XRGs3ANjBcLJwS4kNDDNO6WkF0=",
+            "rev": "a759ddfccb021ef7e6824685e7a1c3728170977e",
+            "sha256": "sha256-s6zQvPoTaJYMA8A/vUEgQhTE/VhQJZwcGw1ET6bOYKg=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "141841fc85e01494df6d217bd5a27c65da87256d"
+        "version": "a759ddfccb021ef7e6824685e7a1c3728170977e"
     },
     "helium": {
         "cargoLock": null,
@@ -29,11 +29,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-pN/Iw1ANggDOxxFb2CN436qbcrs8/bDcEqjZC80grQs=",
+            "sha256": "sha256-FMO4gB2zOjhgmjfE/T0XdDb0NMDKsQFuzy/Org1iD48=",
             "type": "url",
-            "url": "https://github.com/imputnet/helium-linux/releases/download/0.10.8.1/helium-0.10.8.1-x86_64.AppImage"
+            "url": "https://github.com/imputnet/helium-linux/releases/download/0.10.9.1/helium-0.10.9.1-x86_64.AppImage"
         },
-        "version": "0.10.8.1"
+        "version": "0.10.9.1"
     },
     "nordic-nvim": {
         "cargoLock": null,
