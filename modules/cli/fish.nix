@@ -20,7 +20,7 @@ _: {
         shellAbbrs =
           config.environment.shellAliases
           // {
-            ehistory = ''nvim "${config.hj.xdg.data.directory}/fish/fish_history"'';
+            ehistory = ''hx "${config.hj.xdg.data.directory}/fish/fish_history"'';
           };
         shellInit =
           # fish

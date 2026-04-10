@@ -37,6 +37,7 @@ in {
   }: let
     inherit (wlib.types) file;
     toKittyConf = toKeyValue {
+      listsAsDuplicateKeys = true;
       mkKeyValue = mkKeyValueDefault {} " ";
     };
     baseKittyConf = import ./_config.nix {};
@@ -64,7 +65,7 @@ in {
     packages.kitty = self.wrappers.kitty.wrap {inherit pkgs;};
   };
 
-  flake.modules.nixos.gui = {
+  flake.modules.nixos.kitty = {
     config,
     pkgs,
     ...

@@ -11,7 +11,7 @@ in {
   }: {
     environment = {
       shellAliases = {
-        ":e" = "nvim";
+        ":e" = "hx";
         ":q" = "exit";
         ":wq" = "exit";
         c = "clear";
@@ -56,9 +56,9 @@ in {
       };
 
       variables = {
-        TERMINAL = "kitty";
-        EDITOR = "nvim";
-        VISUAL = "nvim";
+        TERMINAL = "foot";
+        EDITOR = "hx";
+        VISUAL = "hx";
         NIXPKGS_ALLOW_UNFREE = "1";
       };
     };
@@ -126,9 +126,9 @@ in {
 
       environment.sessionVariables =
         {
-          TERMINAL = "kitty";
-          EDITOR = "nvim";
-          VISUAL = "nvim";
+          TERMINAL = "foot";
+          EDITOR = "hx";
+          VISUAL = "hx";
           NIXPKGS_ALLOW_UNFREE = "1";
 
           # xdg

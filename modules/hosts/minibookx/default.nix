@@ -8,7 +8,7 @@ in {
   }: {
     imports = with flake.modules.nixos;
       [chuwi-minibook-x]
-      ++ [default mpd helix gui]
+      ++ [default mpd gui]
       ++ [sops-nix syncthing]
       ++ [ebook euphonica kdeconnect];
 

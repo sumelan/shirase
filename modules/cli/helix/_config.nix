@@ -23,7 +23,7 @@ _: {
     file-picker.hidden = false;
 
     indent-guides = {
-      character = "╎";
+      character = "|";
       render = true;
     };
   };

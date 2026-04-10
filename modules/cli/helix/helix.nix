@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  inputs,
+  lib,
+  ...
+}: {
   flake.wrappers.helix = {
     wlib,
     pkgs,
@@ -6,12 +10,14 @@
   }: {
     imports = [wlib.wrapperModules.helix];
 
+    package = inputs.helix.packages.${pkgs.stdenv.hostPlatform.system}.default;
+
     settings = import ./_config.nix {};
     languages = import ./_languages.nix {inherit lib pkgs;};
     themes = import ./_themes.nix {};
   };
 
-  flake.modules.nixos.helix = {pkgs, ...}: {
+  flake.modules.nixos.default = {pkgs, ...}: {
     nixpkgs.overlays = [
       (_: _prev: {
         inherit (pkgs.custom) helix;

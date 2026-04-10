@@ -71,7 +71,7 @@ in {
     packages.foot = self.wrappers.foot.wrap {inherit pkgs;};
   };
 
-  flake.modules.nixos.foot = {
+  flake.modules.nixos.gui = {
     config,
     pkgs,
     ...
@@ -126,6 +126,11 @@ in {
           };
         })
       ];
+
+      programs.foot = {
+        enable = true;
+        xdg.serverAutostart = true;
+      };
 
       hj.packages = [
         pkgs.foot # overlay-ed above
