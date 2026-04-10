@@ -48,7 +48,6 @@ in {
             settings =
               baseBtopConf
               // {
-                color_theme = "nord";
                 disks_filter = concatStringsSep " " (
                   [
                     "/"

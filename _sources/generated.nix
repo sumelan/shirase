@@ -26,6 +26,18 @@
       sha256 = "sha256-FMO4gB2zOjhgmjfE/T0XdDb0NMDKsQFuzy/Org1iD48=";
     };
   };
+  niri-animation = {
+    pname = "niri-animation";
+    version = "aa26f4e157b818630cb281f6e1968b641c079d69";
+    src = fetchFromGitHub {
+      owner = "jgarza9788";
+      repo = "niri-animation-collection";
+      rev = "aa26f4e157b818630cb281f6e1968b641c079d69";
+      fetchSubmodules = false;
+      sha256 = "sha256-DgoudR6etn+t5eYplPcOISPuWMRAulW6ZOCTsyFHi2w=";
+    };
+    date = "2026-04-07";
+  };
   nordic-nvim = {
     pname = "nordic-nvim";
     version = "9f757428264ef1fcd1703e17702d3a28f307a2f7";

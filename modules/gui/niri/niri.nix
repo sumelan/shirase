@@ -19,6 +19,14 @@ in {
           $out/bin/niri validate -c ${niriCfg}
         '';
     };
+
+    animation-name = "tv_crt";
+
+    animations =
+      # kdl
+      ''
+        include "animations/${animation-name}.kdl";
+      '';
     dms =
       # kdl
       ''
@@ -60,8 +68,13 @@ in {
       };
     };
 
-    hj.xdg.config.files."niri/config.kdl" = {
-      source = import ./_config.nix {inherit config lib pkgs dms;};
+    hj.xdg.config.files = {
+      "niri/config.kdl" = {
+        source = import ./_config.nix {inherit config lib pkgs animations dms;};
+      };
+      "niri/animations/${animation-name}.kdl" = {
+        source = "${pkgs.custom.niri-animation}/animations/${animation-name}.kdl";
+      };
     };
   };
 }

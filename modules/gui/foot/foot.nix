@@ -7,6 +7,8 @@
   inherit (lib) mkOption filterAttrs mkDefault getExe mkForce;
   inherit (lib.generators) mkKeyValueDefault mkValueStringDefault;
   inherit (lib.types) attrsOf oneOf;
+
+  baseFootConf = import ./_config.nix {};
 in {
   flake.wrappers.foot = {
     config,
@@ -41,7 +43,6 @@ in {
         '';
       };
     };
-    baseFootConf = import ./_config.nix {};
   in {
     imports = [wlib.modules.default];
 
@@ -126,11 +127,6 @@ in {
           };
         })
       ];
-
-      programs.foot = {
-        enable = true;
-        xdg.serverAutostart = true;
-      };
 
       hj.packages = [
         pkgs.foot # overlay-ed above
