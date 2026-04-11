@@ -36,6 +36,7 @@ in {
         pkgs.custom.nvf
         (hiPrio nvim-desktop-entry)
       ];
+
       xdg.mime-apps = {
         default-applications = {
           "text/plain" = "nvim.desktop";

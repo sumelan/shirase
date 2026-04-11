@@ -32,7 +32,7 @@ in {
     xdg.terminal-exec = {
       enable = true;
       settings = {
-        default = ["foot.desktop"];
+        default = ["kitty.desktop"];
       };
     };
 

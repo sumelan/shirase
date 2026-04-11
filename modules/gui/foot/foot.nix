@@ -72,7 +72,7 @@ in {
     packages.foot = self.wrappers.foot.wrap {inherit pkgs;};
   };
 
-  flake.modules.nixos.gui = {
+  flake.modules.nixos.foot = {
     config,
     pkgs,
     ...

@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (builtins) listToAttrs;
-  inherit (lib) mkOption mkDefault getExe hiPrio;
+  inherit (lib) mkOption mkDefault hiPrio;
   inherit (lib.types) lines;
 
   pqivOptions = {
@@ -69,7 +69,7 @@ in {
       genericName = "Image Viewer";
       noDisplay = true;
       icon = "image-x-png";
-      exec = "${getExe pkgs.pqiv} %F";
+      exec = "pqiv %F";
     };
   in {
     nixpkgs.overlays = [

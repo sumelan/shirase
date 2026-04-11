@@ -3,25 +3,12 @@
   self,
   ...
 }: let
-  inherit (lib) getExe mkForce mkOption mkDefault;
-  inherit
-    (lib.types)
-    attrsOf
-    oneOf
-    bool
-    float
-    int
-    str
-    ;
+  inherit (lib) getExe mkOption mkDefault;
   inherit (lib.generators) toKeyValue mkKeyValueDefault;
-  kittyOptions = {
+  kittyOptions = pkgs: {
     extraSettings = mkOption {
-      type = attrsOf (oneOf [bool float int str]);
+      inherit (pkgs.formats.keyValue {}) type;
       default = {};
-      example = {
-        allow_remote_control = "yes";
-        bold_font = "auto";
-      };
       description = ''
         Options to add to {file}`kitty.conf` file.
         See <https://sw.kovidgoyal.net/kitty/conf/>
@@ -29,26 +16,26 @@
       '';
     };
   };
+
+  baseKittyConf = import ./_config.nix {};
 in {
   flake.wrappers.kitty = {
     config,
     wlib,
     ...
   }: let
-    inherit (wlib.types) file;
     toKittyConf = toKeyValue {
       listsAsDuplicateKeys = true;
       mkKeyValue = mkKeyValueDefault {} " ";
     };
-    baseKittyConf = import ./_config.nix {};
   in {
     imports = [wlib.modules.default];
 
     options =
-      kittyOptions
+      (kittyOptions config.pkgs)
       // {
         "kitty.conf" = mkOption {
-          type = file config.pkgs;
+          type = wlib.types.file config.pkgs;
           default.content = toKittyConf (baseKittyConf // config.extraSettings);
           visible = false;
         };
@@ -65,7 +52,7 @@ in {
     packages.kitty = self.wrappers.kitty.wrap {inherit pkgs;};
   };
 
-  flake.modules.nixos.kitty = {
+  flake.modules.nixos.gui = {
     config,
     pkgs,
     ...
@@ -79,7 +66,7 @@ in {
     fishPath = getExe config.programs.fish.package;
   in {
     options.custom = {
-      programs.kitty = kittyOptions;
+      programs.kitty = kittyOptions pkgs;
     };
 
     config = {
@@ -89,13 +76,13 @@ in {
             pkgs = prev;
             extraSettings =
               {
+                # SHELL
+                env = "SHELL=${fishPath}";
+                shell = fishPath;
                 # font
                 font_family = config.custom.fonts.monospace;
                 # color theme
                 include = "${nord}/nord.conf";
-                # SHELL
-                env = "SHELL=${fishPath}";
-                shell = mkForce fishPath;
               }
               // config.custom.programs.kitty.extraSettings;
           };

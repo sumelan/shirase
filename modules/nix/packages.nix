@@ -1,5 +1,5 @@
 {lib, ...}: let
-  inherit (lib) getExe hiPrio;
+  inherit (lib) hiPrio;
 in {
   perSystem = {pkgs, ...}: {
     packages = {
@@ -48,7 +48,7 @@ in {
         genericName = "Fuzzy search for Nix packages";
         icon = "dev.vlinkz.NixosConfEditor";
         terminal = true;
-        exec = getExe pkgs.custom.ntv;
+        exec = "ntv";
       };
     in {
       hj.packages = [

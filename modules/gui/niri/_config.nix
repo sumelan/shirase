@@ -23,8 +23,8 @@
   mainMode = "${mainWidth}x${mainHeight}@${mainRefresh}";
 
   # cursor
-  cursorName = "Capitaine Cursors (Nord)";
-  cursorSize = toString 48;
+  cursorName = config.custom.gtk.cursor.name;
+  cursorSize = toString config.custom.gtk.cursor.size;
 
   # xwayland
   xwayland =
@@ -47,6 +47,7 @@
   dmsCmd = mkMenu (import ./wlr-which-key/_dmsMenu.nix);
 
   hotkey = color: name: text: ''<span foreground='${color}'>[${name}]</span> ${text}'';
+  pjDir = "${config.hj.directory}/Projects";
 in
   pkgs.writeText "niri-wrapped-config.kdl"
   # kdl
@@ -303,6 +304,12 @@ in
         opacity 1.000000
     }
     window-rule {
+        match app-id="^nix-search-tv$"
+        default-column-width { proportion 0.500000; }
+        default-window-height { proportion 0.750000; }
+        open-floating true
+    }
+    window-rule {
         match app-id="^org.gnome.Nautilus$"
         match app-id="^xdg-desktop-portal-gtk$"
         default-column-width { proportion 0.500000; }
@@ -377,11 +384,12 @@ in
         XF86MonBrightnessUp allow-when-locked=true   { spawn "dms" "ipc" "brightness" "increment" "5" ""; }
 
         // Execute
-        Mod+Return hotkey-overlay-title="${hotkey "#CB775D" "󰽒  Foot" "Terminal Emulator"}"    { spawn "footclient"; }
-        Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "  Helium" "Web Browser"}"             { spawn-sh "helium &"; }
+        Mod+Return hotkey-overlay-title="${hotkey "#CB775D" "  Kitty" "Terminal Emulator"}"   { spawn "kitty"; }
+        Mod+Shift+Return hotkey-overlay-title="${hotkey "#BE9DB8" "  Helix" "Code Editor"}"   { spawn "kitty" "--directory" "${pjDir}" "--app-id" "helix" "hx"; }
+        Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "󰖟  Helium" "Web Browser"}"             { spawn-sh "helium &"; }
         Mod+Shift+D hotkey-overlay-title="${hotkey "#D79784" "󰗢  niri" "Command"}"             { spawn "${getExe niriCmd}"; }
-        Mod+Shift+N hotkey-overlay-title="${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}"   { spawn "footclient" "--app-id" "nix-search-tv" "ntv"; }
-        Mod+Shift+Y hotkey-overlay-title="${hotkey "#EFD49F" "󰇥  Yazi" "File Manager"}"        { spawn "footclient" "--app-id" "yazi" "yazi"; }
+        Mod+Shift+N hotkey-overlay-title="${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}"   { spawn "kitty" "--app-id" "nix-search-tv" "ntv"; }
+        Mod+Shift+Y hotkey-overlay-title="${hotkey "#EFD49F" "󰇥  Yazi" "File Manager"}"        { spawn "kitty" "--app-id" "yazi" "yazi"; }
         Ctrl+Space hotkey-overlay-title="${hotkey "#BF616A" "󰗊  Fcitx" "Switch input method"}" { spawn "fcitx5-remote" "-t"; }
 
         // Window

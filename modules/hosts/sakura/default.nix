@@ -8,7 +8,7 @@ in {
   }: {
     imports = with flake.modules.nixos;
       [minisforum-um773se]
-      ++ [default mpd gui kitty steam]
+      ++ [default mpd gui steam]
       ++ [hdds logitech qmk]
       ++ [audiobookshelf sops-nix syncoid syncthing]
       ++ [

@@ -1,5 +1,5 @@
 _: let
-  inherit (builtins) attrValues;
+  inherit (builtins) attrValues readFile;
 in {
   flake.modules.nixos.gui = {
     config,
@@ -20,13 +20,7 @@ in {
         '';
     };
 
-    animation-name = "tv_crt";
-
-    animations =
-      # kdl
-      ''
-        include "animations/${animation-name}.kdl";
-      '';
+    animations = readFile "${pkgs.custom.niri-animation}/animations/blur.kdl";
     dms =
       # kdl
       ''
@@ -71,9 +65,6 @@ in {
     hj.xdg.config.files = {
       "niri/config.kdl" = {
         source = import ./_config.nix {inherit config lib pkgs animations dms;};
-      };
-      "niri/animations/${animation-name}.kdl" = {
-        source = "${pkgs.custom.niri-animation}/animations/${animation-name}.kdl";
       };
     };
   };

@@ -1,5 +1,5 @@
 {lib, ...}: let
-  inherit (lib) mkDefault;
+  inherit (lib) mkDefault hiPrio;
 in {
   flake.wrappers.rmpc = {
     config,
@@ -19,7 +19,22 @@ in {
     config,
     pkgs,
     ...
-  }: {
+  }: let
+    # overwrite default desktop-entry
+    rmpc-desktop-entry = pkgs.makeDesktopItem {
+      name = "rmpc";
+      desktopName = "rmpc";
+      genericName = "Rusty Music Player Client";
+      icon = "mpd";
+      comment = "A modern, configurable, terminal based MPD Client with album art support.";
+      terminal = true;
+      tryExec = "rmpc";
+      exec = "rmpc";
+      type = "Application";
+      categories = ["AudioVideo" "Audio" "Player" "Music" "ConsoleOnly"];
+      keywords = ["Music" "Audio" "Player"];
+    };
+  in {
     nixpkgs.overlays = [
       (_: _prev: {
         inherit (pkgs.custom) rmpc;
@@ -29,6 +44,7 @@ in {
     hj = {
       packages = [
         pkgs.rmpc # overlay-ed above
+        (hiPrio rmpc-desktop-entry)
       ];
 
       xdg.config.files."rmpc/config.ron".source = import ./_config.nix {inherit config pkgs;};
