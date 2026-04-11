@@ -4,12 +4,6 @@
 in {
   perSystem = {pkgs, ...}: {
     packages = {
-      colloid-gtk-theme = pkgs.pkgs.colloid-gtk-theme.override {
-        themeVariants = ["grey"]; # default: blue
-        colorVariants = ["dark"]; # default: all
-        sizeVariants = ["compact"]; # default: standard
-        tweaks = ["nord"];
-      };
       papirus-nord = pkgs.papirus-nord.override {
         accent = "polarnight3";
       };
@@ -26,13 +20,13 @@ in {
         theme = {
           package = mkOption {
             type = package;
-            default = pkgs.custom.colloid-gtk-theme;
+            default = pkgs.nordic;
             description = "Package providing the theme.";
           };
 
           name = mkOption {
             type = str;
-            default = "Colloid-Grey-Dark-Compact-Nord";
+            default = "Nordic-darker";
             description = "The name of the theme within the package.";
           };
         };
