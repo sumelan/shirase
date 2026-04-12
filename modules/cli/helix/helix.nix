@@ -25,13 +25,6 @@
     };
 
     custom = {
-      fileSystem = {
-        cache.home.directories = [
-          # helix log
-          ".cache/helix"
-        ];
-      };
-
       programs.print-config = let
         target = pkgs.helix.configuration.passthru.generatedConfig;
       in {
@@ -42,6 +35,13 @@
         helix-languages =
           # sh
           ''moor --lang toml "${target}/languages.toml"'';
+      };
+
+      fileSystem = {
+        cache.home.directories = [
+          # helix log
+          ".cache/helix"
+        ];
       };
     };
   };

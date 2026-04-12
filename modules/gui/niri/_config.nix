@@ -2,11 +2,12 @@
   config,
   lib,
   pkgs,
-  dms ? "",
   animations ? "",
+  dms ? "",
   ...
 }: let
   inherit (lib) getExe;
+  flake = "${config.hj.directory}/Projects/shirase";
 
   # output
   inherit (config.lib.custom.hardware.monitors) mainMonitor mainMonitorName;
@@ -37,6 +38,8 @@
   inherit (config.custom.programs.niri.screenshot) host;
 
   # keybinds
+  hotkey = color: name: text: ''<span foreground='${color}'>[${name}]</span> ${text}'';
+
   mkMenu = menu: let
     config = import ./wlr-which-key/_config.nix {inherit pkgs menu;};
   in
@@ -45,9 +48,6 @@
     '';
   niriCmd = mkMenu (import ./wlr-which-key/_niriMenu.nix);
   dmsCmd = mkMenu (import ./wlr-which-key/_dmsMenu.nix);
-
-  hotkey = color: name: text: ''<span foreground='${color}'>[${name}]</span> ${text}'';
-  pjDir = "${config.hj.directory}/Projects";
 in
   pkgs.writeText "niri-wrapped-config.kdl"
   # kdl
@@ -385,7 +385,7 @@ in
 
         // Execute
         Mod+Return hotkey-overlay-title="${hotkey "#CB775D" "  Kitty" "Terminal Emulator"}"   { spawn "kitty"; }
-        Mod+Shift+Return hotkey-overlay-title="${hotkey "#BE9DB8" "  Helix" "Code Editor"}"   { spawn "kitty" "--directory" "${pjDir}" "--app-id" "helix" "hx"; }
+        Mod+Shift+Return hotkey-overlay-title="${hotkey "#BE9DB8" "  Helix" "Code Editor"}"   { spawn "kitty" "--directory" "${flake}" "--app-id" "helix" "hx" "."; }
         Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "󰖟  Helium" "Web Browser"}"             { spawn-sh "helium &"; }
         Mod+Shift+D hotkey-overlay-title="${hotkey "#D79784" "󰗢  niri" "Command"}"             { spawn "${getExe niriCmd}"; }
         Mod+Shift+N hotkey-overlay-title="${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}"   { spawn "kitty" "--app-id" "nix-search-tv" "ntv"; }

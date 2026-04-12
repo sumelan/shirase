@@ -14,7 +14,7 @@ _: {
       #sh
       ''
         wrapProgram $out/bin/${pname} \
-            --add-flags "--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations,TouchpadOverscrollHistoryNavigation --enable-wayland-ime=true --password-store=basic"
+            --add-flags "--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-features=TouchpadOverscrollHistoryNavigation --enable-wayland-ime=true --password-store=basic"
 
         install -m 444 -D ${contents}/${pname}.desktop -t $out/share/applications
         substituteInPlace $out/share/applications/${pname}.desktop \

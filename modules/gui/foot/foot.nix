@@ -8,15 +8,8 @@
   inherit (lib.generators) mkKeyValueDefault mkValueStringDefault;
   inherit (lib.types) attrsOf oneOf;
 
-  baseFootConf = import ./_config.nix {};
-in {
-  flake.wrappers.foot = {
-    config,
-    wlib,
-    ...
-  }: let
-    inherit (wlib.types) file;
-    iniFmt = config.pkgs.formats.iniWithGlobalSection {
+  iniFmt = pkgs:
+    pkgs.formats.iniWithGlobalSection {
       # from https://github.com/NixOS/nixpkgs/blob/89f10dc1a8b59ba63f150a08f8cf67b0f6a2583e/nixos/modules/programs/foot/default.nix#L11-L29
       listsAsDuplicateKeys = true;
       mkKeyValue = mkKeyValueDefault {
@@ -32,7 +25,16 @@ in {
           );
       } "=";
     };
-    inherit (iniFmt.lib.types) atom;
+
+  baseFootConf = import ./_config.nix {};
+in {
+  flake.wrappers.foot = {
+    config,
+    wlib,
+    ...
+  }: let
+    inherit (wlib.types) file;
+    inherit ((iniFmt (config.pkgs)).lib.types) atom;
     footOptions = {
       extraSettings = mkOption {
         type = attrsOf (oneOf [atom (attrsOf atom)]);
@@ -51,7 +53,7 @@ in {
       // {
         "foot.ini" = mkOption {
           type = file config.pkgs;
-          default.path = iniFmt.generate "foot.ini" {
+          default.path = (iniFmt (config.pkgs)).generate "foot.ini" {
             globalSection = filterAttrs (_name: value: typeOf value != "set") (baseFootConf // config.extraSettings);
             sections = filterAttrs (_name: value: typeOf value == "set") (baseFootConf // config.extraSettings);
           };
@@ -77,23 +79,7 @@ in {
     pkgs,
     ...
   }: let
-    iniFmt = pkgs.formats.iniWithGlobalSection {
-      # from https://github.com/NixOS/nixpkgs/blob/89f10dc1a8b59ba63f150a08f8cf67b0f6a2583e/nixos/modules/programs/foot/default.nix#L11-L29
-      listsAsDuplicateKeys = true;
-      mkKeyValue = mkKeyValueDefault {
-        mkValueString = v:
-          mkValueStringDefault {} (
-            if v == true
-            then "yes"
-            else if v == false
-            then "no"
-            else if v == null
-            then "none"
-            else v
-          );
-      } "=";
-    };
-    inherit (iniFmt.lib.types) atom;
+    inherit ((iniFmt pkgs).lib.types) atom;
     footOptions = {
       extraSettings = mkOption {
         type = attrsOf (oneOf [atom (attrsOf atom)]);

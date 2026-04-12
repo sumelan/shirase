@@ -5,11 +5,11 @@ _: {
   };
   cursor = {
     style = "beam";
-    blink = "yes";
+    blink = true;
     blink-rate = 500;
     beam-thickness = 2.0;
   };
   mouse = {
-    hide-when-typing = "yes";
+    hide-when-typing = true;
   };
 }

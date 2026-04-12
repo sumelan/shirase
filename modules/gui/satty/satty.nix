@@ -5,6 +5,8 @@
 }: let
   inherit (builtins) listToAttrs;
   inherit (lib) mkOption mkDefault;
+
+  baseSattyConf = import ./_config.nix {};
 in {
   flake.wrappers.satty = {
     config,
@@ -28,8 +30,6 @@ in {
         '';
       };
     };
-
-    baseSattyConf = import ./_config.nix {};
   in {
     imports = [wlib.modules.default];
 

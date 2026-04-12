@@ -5,6 +5,7 @@
 }: let
   inherit (lib) getExe mkOption mkDefault;
   inherit (lib.generators) toKeyValue mkKeyValueDefault;
+
   kittyOptions = pkgs: {
     extraSettings = mkOption {
       inherit (pkgs.formats.keyValue {}) type;
