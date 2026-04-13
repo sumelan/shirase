@@ -7,7 +7,6 @@ in {
   flake.modules.nixos.gui = {
     config,
     pkgs,
-    user,
     ...
   }: let
     gtkCfg = config.custom.gtk;
@@ -99,7 +98,7 @@ in {
 
       programs.dconf = {
         enable = true;
-        profiles.${user}.databases = [
+        profiles.user.databases = [
           {
             settings = mkMerge [
               {
