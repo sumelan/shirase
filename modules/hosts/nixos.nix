@@ -4,16 +4,15 @@
   ...
 }: let
   inherit (builtins) attrValues;
-  inherit (config) flake;
   inherit (inputs) nixpkgs;
 
   defaultMods = [
     inputs.dankMaterialShell.nixosModules.dank-material-shell
     inputs.dankMaterialShell.nixosModules.greeter
-    inputs.nix-hazkey.nixosModules.hazkey
-    inputs.nix-index-database.nixosModules.nix-index
     inputs.hjem.nixosModules.default
     inputs.impermanence.nixosModules.impermanence
+    inputs.nix-hazkey.nixosModules.hazkey
+    inputs.nix-index-database.nixosModules.nix-index
     inputs.sops-nix.nixosModules.sops
   ];
 
@@ -21,18 +20,20 @@
 
   mkNixos = system: cls: host: {
     user ? "sumelan",
+    dotfile ? "/persist/home/${user}/Projects/shirase",
     extraMods ? [],
   }: let
-    specialArgs = {inherit user;};
+    specialArgs = {inherit user dotfile;};
   in
     nixpkgs.lib.nixosSystem {
-      inherit system specialArgs;
+      inherit specialArgs;
       modules =
         defaultMods
         ++ extraMods
-        ++ [flake.modules.nixos.common]
-        ++ [flake.modules.nixos."hosts/${host}"]
-        ++ [flake.modules.nixos."users/${user}"]
+        ++ [config.flake.modules.nixos.hjem]
+        ++ [config.flake.modules.nixos.common]
+        ++ [config.flake.modules.nixos."hosts/${host}"]
+        ++ [config.flake.modules.nixos."users/${user}"]
         ++ [
           {
             networking.hostName = host;

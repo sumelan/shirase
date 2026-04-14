@@ -4,6 +4,7 @@ in {
   flake.modules.nixos.gui = {
     config,
     pkgs,
+    dotfile,
     ...
   }: {
     hj = {
@@ -52,18 +53,17 @@ in {
 
       gtk.bookmarks = let
         homeDir = config.hj.directory;
-        flakePath = "/persist${homeDir}/Projects/shirase";
       in
         [
           "${homeDir}/Documents"
-          "${homeDir}/Downloads"
-          "${homeDir}/Music"
-          "${homeDir}/Videos"
           "${homeDir}/Pictures/Screenshots"
           "${homeDir}/Pictures/Wallpapers"
+          "${homeDir}/Music"
+          "${homeDir}/Videos"
+          "${homeDir}/Downloads"
         ]
         ++ [
-          "${flakePath} Shirase"
+          "${dotfile} Shirase"
           "/persist Persist"
         ];
     };

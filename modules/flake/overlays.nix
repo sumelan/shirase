@@ -32,10 +32,9 @@ in {
         custom = withSystem prev.stdenv.hostPlatform.system ({config, ...}: config.packages);
       };
 
-      # misc patches to packages in pkgs
       pkgsPatches = _: prev: {
         # use updated dgop
-        dgop = prev.dgop.overrideAttrs (old: rec {
+        dgop = prev.dgop.overrideAttrs (o: rec {
           version = "0.2.2";
           src = prev.fetchFromGitHub {
             owner = "AvengeMedia";
@@ -49,7 +48,7 @@ in {
             "-s"
             "-X main.Version=${version}"
           ];
-          nativeBuildInputs = old.nativeBuildInputs ++ [prev.makeWrapper];
+          nativeBuildInputs = o.nativeBuildInputs ++ [prev.makeWrapper];
           postInstall = ''
             mkdir -p $out/bin
             cp $GOPATH/bin/dgop $out/bin/dgop
@@ -62,23 +61,14 @@ in {
           '';
         });
         # enable the A/V Properties and see details like media length
-        nautilus = prev.nautilus.overrideAttrs (old: {
+        nautilus = prev.nautilus.overrideAttrs (o: {
           buildInputs =
-            old.buildInputs
+            o.buildInputs
             ++ (with prev.gst_all_1; [
               gst-plugins-good
               gst-plugins-bad
             ]);
         });
-        # use my forked version
-        nord-yazi = prev.yaziPlugins.nord.overrideAttrs {
-          src = prev.fetchFromGitHub {
-            owner = "sumelan";
-            repo = "nord.yazi";
-            rev = "0b97c8464ae073450e8ef10f80c89f8d07c65902";
-            hash = "sha256-W8lcF40GhbdcM1PXL0SodfrOMSnpUV+Lowgzt1lRju4=";
-          };
-        };
         # play Blu-ray disk
         vlc = prev.vlc.override {
           libbluray-full = prev.libbluray.override {
@@ -86,6 +76,10 @@ in {
             withBDplus = true;
           };
         };
+        # use my forked version
+        nord-yazi = prev.yaziPlugins.nord.overrideAttrs (o: {
+          patches = (o.patches or []) ++ [./patches/nord-yazi.patch];
+        });
       };
 
       # writeShellApplication with support for completions

@@ -5,9 +5,10 @@ in {
     config,
     lib,
     pkgs,
+    dotfile,
     ...
   }: let
-    niriCfg = import ./_config.nix {inherit config lib pkgs;};
+    niriCfg = import ./_config.nix {inherit config lib pkgs dotfile;};
     niriValidate = pkgs.symlinkJoin {
       name = "niri";
       paths = [pkgs.niri];
@@ -64,7 +65,7 @@ in {
 
     hj.xdg.config.files = {
       "niri/config.kdl" = {
-        source = import ./_config.nix {inherit config lib pkgs animations dms;};
+        source = import ./_config.nix {inherit config lib pkgs dotfile animations dms;};
       };
     };
   };

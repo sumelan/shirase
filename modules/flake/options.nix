@@ -1,6 +1,6 @@
 {lib, ...}: let
   inherit (lib) mkOption;
-  inherit (lib.types) lazyAttrsOf anything attrs;
+  inherit (lib.types) lazyAttrsOf anything;
 in {
   flake = {
     # expose top level flake options

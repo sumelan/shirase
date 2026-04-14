@@ -56,9 +56,8 @@ in {
       };
     };
     nixd = {
-      config.nixd.nixpkgs = {
-        expr = "import <nixpkgs> {}";
-      };
+      command = getExe pkgs.nixd;
+      args = ["--semantic-tokens=true"];
     };
   };
 }

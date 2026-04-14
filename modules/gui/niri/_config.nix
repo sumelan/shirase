@@ -2,12 +2,12 @@
   config,
   lib,
   pkgs,
+  dotfile,
   animations ? "",
   dms ? "",
   ...
 }: let
   inherit (lib) getExe;
-  flake = "${config.hj.directory}/Projects/shirase";
 
   # output
   inherit (config.lib.custom.hardware.monitors) mainMonitor mainMonitorName;
@@ -385,7 +385,7 @@ in
 
         // Execute
         Mod+Return hotkey-overlay-title="${hotkey "#CB775D" "  Kitty" "Terminal Emulator"}"   { spawn "kitty"; }
-        Mod+Shift+Return hotkey-overlay-title="${hotkey "#BE9DB8" "  Helix" "Code Editor"}"   { spawn "kitty" "--directory" "${flake}" "--app-id" "helix" "hx" "."; }
+        Mod+Shift+Return hotkey-overlay-title="${hotkey "#BE9DB8" "  Helix" "Code Editor"}"   { spawn "kitty" "--directory" "${dotfile}" "--app-id" "helix" "hx" "."; }
         Mod+B hotkey-overlay-title="${hotkey "#88C0D0" "󰖟  Helium" "Web Browser"}"             { spawn-sh "helium &"; }
         Mod+Shift+D hotkey-overlay-title="${hotkey "#D79784" "󰗢  niri" "Command"}"             { spawn "${getExe niriCmd}"; }
         Mod+Shift+N hotkey-overlay-title="${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}"   { spawn "kitty" "--app-id" "nix-search-tv" "ntv"; }

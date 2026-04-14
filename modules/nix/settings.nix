@@ -10,6 +10,7 @@ in {
     config,
     pkgs,
     user,
+    dotfile,
     ...
   }: let
     inherit (inputs) self;
@@ -40,7 +41,7 @@ in {
       nh = {
         enable = true;
         clean.extraArgs = "--keep 5";
-        flake = "/persist/home/${user}/Projects/shirase";
+        flake = dotfile;
       };
     };
 

@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.modules.nixos.common = {
+  flake.modules.nixos.hjem = {
     pkgs,
     user,
     ...

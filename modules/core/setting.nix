@@ -8,10 +8,9 @@ in {
   flake.modules.nixos.common = {
     pkgs,
     user,
+    dotfile,
     ...
-  }: let
-    flakePath = "/persist/home/${user}/Projects/shirase";
-  in {
+  }: {
     # internationalisation properties
     # time zone
     time = {
@@ -79,7 +78,7 @@ in {
       # cleanup systemd coredumps once a week
       "D! /var/lib/systemd/coredump root root 7d"
       # create symlink to dotfiles from default /etc/nixos
-      "L+ /etc/nixos - - - - ${flakePath}"
+      "L+ /etc/nixos - - - - ${dotfile}"
     ];
 
     # system.stateVersion
