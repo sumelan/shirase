@@ -5,7 +5,7 @@
 }: let
   inherit (builtins) attrValues;
   inherit (inputs) nixpkgs;
-
+  inherit (config) flake;
   defaultMods = [
     inputs.dankMaterialShell.nixosModules.dank-material-shell
     inputs.dankMaterialShell.nixosModules.greeter
@@ -30,10 +30,10 @@
       modules =
         defaultMods
         ++ extraMods
-        ++ [config.flake.modules.nixos.hjem]
-        ++ [config.flake.modules.nixos.common]
-        ++ [config.flake.modules.nixos."hosts/${host}"]
-        ++ [config.flake.modules.nixos."users/${user}"]
+        ++ [flake.modules.nixos.hjem]
+        ++ [flake.modules.nixos.common]
+        ++ [flake.modules.nixos."hosts/${host}"]
+        ++ [flake.modules.nixos."users/${user}"]
         ++ [
           {
             networking.hostName = host;

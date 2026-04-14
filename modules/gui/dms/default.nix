@@ -49,9 +49,15 @@ _: {
         ".config/niri/dms"
         ".local/state/DankMaterialShell"
       ];
-      cache.home.directories = [
-        ".cache/DankMaterialShell"
-      ];
+      cache = {
+        root.directories = [
+          "/var/lib/dms-greeter/.cache"
+          "/var/lib/dms-greeter/.local"
+        ];
+        home.directories = [
+          ".cache/DankMaterialShell"
+        ];
+      };
     };
   };
 }
