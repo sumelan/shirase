@@ -29,32 +29,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-Nfi8qjj7YOujsf8nLm3Mu+oh/R642Wy/nnc0ToolpW0=",
+            "sha256": "sha256-tGOgJSCGrGfkG2aE0VcGm2GH8ttiBQ602GftlWEHRHA=",
             "type": "url",
-            "url": "https://github.com/imputnet/helium-linux/releases/download/0.11.1.1/helium-0.11.1.1-x86_64.AppImage"
+            "url": "https://github.com/imputnet/helium-linux/releases/download/0.11.2.1/helium-0.11.2.1-x86_64.AppImage"
         },
-        "version": "0.11.1.1"
-    },
-    "niri-animation": {
-        "cargoLock": null,
-        "date": "2026-04-07",
-        "extract": null,
-        "name": "niri-animation",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "jgarza9788",
-            "repo": "niri-animation-collection",
-            "rev": "aa26f4e157b818630cb281f6e1968b641c079d69",
-            "sha256": "sha256-DgoudR6etn+t5eYplPcOISPuWMRAulW6ZOCTsyFHi2w=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "aa26f4e157b818630cb281f6e1968b641c079d69"
+        "version": "0.11.2.1"
     },
     "nordic-nvim": {
         "cargoLock": null,

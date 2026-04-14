@@ -20,23 +20,11 @@
   };
   helium = {
     pname = "helium";
-    version = "0.11.1.1";
+    version = "0.11.2.1";
     src = fetchurl {
-      url = "https://github.com/imputnet/helium-linux/releases/download/0.11.1.1/helium-0.11.1.1-x86_64.AppImage";
-      sha256 = "sha256-Nfi8qjj7YOujsf8nLm3Mu+oh/R642Wy/nnc0ToolpW0=";
+      url = "https://github.com/imputnet/helium-linux/releases/download/0.11.2.1/helium-0.11.2.1-x86_64.AppImage";
+      sha256 = "sha256-tGOgJSCGrGfkG2aE0VcGm2GH8ttiBQ602GftlWEHRHA=";
     };
-  };
-  niri-animation = {
-    pname = "niri-animation";
-    version = "aa26f4e157b818630cb281f6e1968b641c079d69";
-    src = fetchFromGitHub {
-      owner = "jgarza9788";
-      repo = "niri-animation-collection";
-      rev = "aa26f4e157b818630cb281f6e1968b641c079d69";
-      fetchSubmodules = false;
-      sha256 = "sha256-DgoudR6etn+t5eYplPcOISPuWMRAulW6ZOCTsyFHi2w=";
-    };
-    date = "2026-04-07";
   };
   nordic-nvim = {
     pname = "nordic-nvim";

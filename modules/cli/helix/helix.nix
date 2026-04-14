@@ -5,7 +5,7 @@
 }: let
   baseConfig = import ./_config.nix {};
   nordicTheme = import ./_themes.nix {};
-  baseLangs = lib: pkgs: import ./_languages.nix {inherit lib pkgs;};
+  baseLangs = pkgs: import ./_languages.nix {inherit lib pkgs;};
 in {
   flake.wrappers.helix = {
     wlib,
@@ -16,7 +16,7 @@ in {
 
     settings = baseConfig;
     themes = nordicTheme;
-    languages = baseLangs lib pkgs;
+    languages = baseLangs pkgs;
   };
 
   flake.modules.nixos.default = {
@@ -30,7 +30,7 @@ in {
         helix = self.wrappers.helix.wrap {
           pkgs = prev;
           languages =
-            baseLangs lib prev
+            baseLangs prev
             // {
               language-server.nixd.config.nixd = let
                 myFlake = ''(builtins.getFlake "${dotfile}")'';

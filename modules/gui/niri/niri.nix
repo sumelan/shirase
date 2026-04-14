@@ -21,7 +21,16 @@ in {
         '';
     };
 
-    animations = readFile "${pkgs.custom.niri-animation}/animations/blur.kdl";
+    animations = let
+      src = pkgs.fetchFromGitHub {
+        owner = "ulduh";
+        repo = "nirimation";
+        rev = "493c3f155cec02fcb35e39b9de9c76f371bbd562";
+        hash = "sha256-lVi6IXDdQLelnwXARZ7bJ7KdM0R91GkdYlKQmGyazjA=";
+      };
+    in
+      readFile "${src}/animations/halftone.kdl";
+
     dms =
       # kdl
       ''
