@@ -5,7 +5,6 @@ in {
     hj.packages = attrValues {
       inherit
         (pkgs)
-        dissent
         slack
         vesktop
         ;
@@ -13,12 +12,8 @@ in {
 
     custom.fileSystem = {
       persist.home.directories = [
-        ".config/dissent"
         ".config/Slack"
         ".config/vesktop"
-      ];
-      cache.home.directories = [
-        ".cache/dissent"
       ];
     };
   };

@@ -8,6 +8,7 @@
   ...
 }: let
   inherit (lib) getExe;
+  inherit (config.networking) hostName;
 
   # output
   inherit (config.lib.custom.hardware.monitors) mainMonitor mainMonitorName;
@@ -35,7 +36,6 @@
 
   # screenshot
   pictures = "${config.hj.directory}/Pictures";
-  inherit (config.custom.programs.niri.screenshot) host;
 
   # keybinds
   hotkey = color: name: text: ''<span foreground='${color}'>[${name}]</span> ${text}'';
@@ -82,7 +82,7 @@ in
 
     prefer-no-csd
 
-    screenshot-path "${pictures}/Screenshots/${host}/%Y-%m-%d_%H-%M-%S.png"
+    screenshot-path "${pictures}/Screenshots/%Y-%m-%d_%H-%M-%S_${hostName}.png"
 
     environment {
         "ELECTRON_OZONE_PLATFORM_HINT" "auto"

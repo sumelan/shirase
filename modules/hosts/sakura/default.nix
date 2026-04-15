@@ -106,10 +106,7 @@ in {
 
       programs = {
         btop.rocmSupport = true;
-        niri = {
-          xwayland = true;
-          screenshot.host = "sakura";
-        };
+        niri = {xwayland = true;};
       };
     };
   };

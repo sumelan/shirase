@@ -74,8 +74,6 @@ in {
         };
       };
 
-      programs.niri.screenshot.host = "minibookx";
-
       # hinted font: for lower or equal than 1080p
       fonts.packages = [pkgs.maple-mono.NF];
     };

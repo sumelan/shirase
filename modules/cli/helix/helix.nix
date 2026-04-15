@@ -45,6 +45,9 @@ in {
         };
       })
     ];
+    environment.systemPackages = [
+      pkgs.helix # overlay-ed above
+    ];
 
     hj = {
       packages = [

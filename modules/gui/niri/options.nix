@@ -79,10 +79,6 @@ in {
           type = bool;
           default = false;
         };
-        screenshot.host = mkOption {
-          type = str;
-          default = "";
-        };
       };
     };
     config.lib.custom.hardware.monitors = {
