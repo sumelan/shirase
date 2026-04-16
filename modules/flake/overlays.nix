@@ -124,11 +124,15 @@ in {
     };
 
     modules.nixos.common = _: {
-      nixpkgs.overlays = [
-        self.overlays.pkgsCustom
-        self.overlays.pkgsPatches
-        self.overlays.writeShellApplicationCompletions
-      ];
+      nixpkgs.overlays =
+        [
+          self.overlays.pkgsCustom
+          self.overlays.pkgsPatches
+          self.overlays.writeShellApplicationCompletions
+        ]
+        ++ [
+          inputs.niri-nix.overlays.niri-nix
+        ];
     };
   };
 }

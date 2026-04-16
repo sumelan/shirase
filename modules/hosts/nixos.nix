@@ -11,6 +11,7 @@
     inputs.dankMaterialShell.nixosModules.greeter
     inputs.hjem.nixosModules.default
     inputs.impermanence.nixosModules.impermanence
+    inputs.niri-nix.nixosModules.default
     inputs.nix-hazkey.nixosModules.hazkey
     inputs.nix-index-database.nixosModules.nix-index
     inputs.sops-nix.nixosModules.sops

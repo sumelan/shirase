@@ -1,63 +1,27 @@
-_: let
-  inherit (builtins) attrValues readFile;
+{
+  inputs,
+  lib,
+  ...
+}: let
+  inherit (inputs.niri-nix.lib) validatedConfigFor mkNiriKDL;
 in {
   flake.modules.nixos.gui = {
     config,
-    lib,
     pkgs,
     dotfile,
     ...
   }: let
     niriCfg = import ./_config.nix {inherit config lib pkgs dotfile;};
-    niriValidate = pkgs.symlinkJoin {
-      name = "niri";
-      paths = [pkgs.niri];
-      buildInputs = [];
-      passthru.providedSessions = ["niri"];
-      postBuild =
-        #sh
-        ''
-          $out/bin/niri validate -c ${niriCfg}
-        '';
-    };
-
-    animations = let
-      src = pkgs.fetchFromGitHub {
-        owner = "ulduh";
-        repo = "nirimation";
-        rev = "493c3f155cec02fcb35e39b9de9c76f371bbd562";
-        hash = "sha256-lVi6IXDdQLelnwXARZ7bJ7KdM0R91GkdYlKQmGyazjA=";
-      };
-    in
-      readFile "${src}/animations/halftone.kdl";
-
-    dms =
-      # kdl
-      ''
-        include "dms/alttab.kdl"
-        include "dms/binds.kdl"
-        include "dms/colors.kdl"
-        include "dms/cursor.kdl"
-        include "dms/layout.kdl"
-        include "dms/outputs.kdl"
-        include "dms/windowrules.kdl"
-        include "dms/wpblur.kdl"
-      '';
   in {
-    # niri-nixpkgs
     programs.niri = {
       enable = true;
-      package = niriValidate;
+      package = pkgs.niri;
       useNautilus = true;
+      withUWSM = false;
+      withXDG = true;
     };
 
-    # portal
     xdg.portal = {
-      enable = true;
-      xdgOpenUsePortal = true;
-      extraPortals = attrValues {
-        inherit (pkgs) xdg-desktop-portal-gtk xdg-desktop-portal-gnome;
-      };
       config = {
         common.default = ["gtk"];
         niri = {
@@ -73,9 +37,7 @@ in {
     };
 
     hj.xdg.config.files = {
-      "niri/config.kdl" = {
-        source = import ./_config.nix {inherit config lib pkgs dotfile animations dms;};
-      };
+      "niri/config.kdl".text = validatedConfigFor (pkgs.niri) (mkNiriKDL niriCfg);
     };
   };
 }
