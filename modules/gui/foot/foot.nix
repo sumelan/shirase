@@ -105,7 +105,6 @@ in {
             extraSettings =
               {
                 font = "${config.custom.fonts.monospace}:size=14";
-                include = "${prev.foot.themes}/share/foot/themes/nord";
                 main.shell = mkForce fishPath;
                 environment."SHELL" = fishPath;
               }

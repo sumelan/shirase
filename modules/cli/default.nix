@@ -56,7 +56,7 @@ in {
       };
 
       variables = {
-        TERMINAL = "kitty";
+        TERMINAL = "ghostty";
         EDITOR = "hx";
         VISUAL = "hx";
         NIXPKGS_ALLOW_UNFREE = "1";
@@ -126,7 +126,7 @@ in {
 
       environment.sessionVariables =
         {
-          TERMINAL = "kitty";
+          TERMINAL = "ghostty";
           EDITOR = "hx";
           VISUAL = "hx";
           NIXPKGS_ALLOW_UNFREE = "1";

@@ -15,13 +15,13 @@ in {
         cursor = {
           package = mkOption {
             type = package;
-            default = pkgs.capitaine-cursors-themed;
+            default = pkgs.everforest-cursors;
             description = "Package providing the cursor theme.";
           };
 
           name = mkOption {
             type = str;
-            default = "Capitaine Cursors (Nord)";
+            default = "everforest-cursors";
             description = "The cursor name within the package.";
           };
 

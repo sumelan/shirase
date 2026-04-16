@@ -8,8 +8,8 @@ pkgs.writeText "config.yaml"
   # Theming
   font = "Maple Mono NF 14";
   background = "#2E3440" + "d0";
-  color = "#81A1C1";
-  border = "#80B3B2";
+  color = "#D699B6";
+  border = "#83C092";
   separator = " ➜ ";
   border_width = 2;
   corner_r = 10;

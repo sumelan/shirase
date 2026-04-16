@@ -4,8 +4,15 @@
 in {
   perSystem = {pkgs, ...}: {
     packages = {
-      papirus-nord = pkgs.papirus-nord.override {
-        accent = "polarnight3";
+      colloid-gtk-theme = pkgs.colloid-gtk-theme.override {
+        themeVariants = ["pink"];
+        colorVariants = ["dark"];
+        sizeVariants = ["compact"];
+        tweaks = ["everforest"];
+      };
+      colloid-icon-theme = pkgs.colloid-icon-theme.override {
+        schemeVariants = ["everforest"];
+        colorVariants = ["pink"];
       };
     };
   };
@@ -20,13 +27,13 @@ in {
         theme = {
           package = mkOption {
             type = package;
-            default = pkgs.nordic;
+            default = pkgs.custom.colloid-gtk-theme;
             description = "Package providing the theme.";
           };
 
           name = mkOption {
             type = str;
-            default = "Nordic-darker";
+            default = "Colloid-Pink-Dark-Compact-Everforest";
             description = "The name of the theme within the package.";
           };
         };
@@ -34,13 +41,13 @@ in {
         iconTheme = {
           package = mkOption {
             type = package;
-            default = pkgs.custom.papirus-nord;
+            default = pkgs.custom.colloid-icon-theme;
             description = "Package providing the icon theme.";
           };
 
           name = mkOption {
             type = str;
-            default = "Papirus-Dark";
+            default = "Colloid-Pink-Everforest-Dark";
             description = "The name of the icon theme within the package.";
           };
         };

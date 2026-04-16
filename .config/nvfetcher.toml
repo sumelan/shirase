@@ -6,7 +6,3 @@ fetch.github = "AvengeMedia/dms-plugins"
 src.github_tag = "imputnet/helium-linux"
 fetch.url = "https://github.com/imputnet/helium-linux/releases/download/$ver/helium-$ver-x86_64.AppImage"
 
-[nordic-nvim]
-src.git = "https://github.com/AlexvZyl/nordic.nvim"
-fetch.github = "AlexvZyl/nordic.nvim"
-

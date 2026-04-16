@@ -4,7 +4,6 @@
   ...
 }: let
   baseConfig = import ./_config.nix {};
-  nordicTheme = import ./_themes.nix {};
   baseLangs = pkgs: import ./_languages.nix {inherit lib pkgs;};
 in {
   flake.wrappers.helix = {
@@ -15,7 +14,6 @@ in {
     imports = [wlib.wrapperModules.helix];
 
     settings = baseConfig;
-    themes = nordicTheme;
     languages = baseLangs pkgs;
   };
 

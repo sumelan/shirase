@@ -87,8 +87,8 @@ in {
                 parseEmoji = true;
               };
               gui = let
-                accent = "#CB775D";
-                muted = "#4C566A";
+                accent = "#D699B6";
+                muted = "#463F48";
               in {
                 theme = {
                   activeBorderColor = [

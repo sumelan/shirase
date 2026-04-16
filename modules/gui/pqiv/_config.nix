@@ -4,7 +4,7 @@ config.pkgs.writeTextFile {
   destination = "/pqivrc"; # pqiv expects a directory
   text = ''
     [options]
-    box-colors = #ECEFF4:#5E81AC
+    box-colors = #D3C6AA:#83C092
     disable-backends = archive,archive_cbx,libav,poppler,spectre,wand
     hide-info-box = 1
     max-depth = 1

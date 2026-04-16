@@ -52,7 +52,7 @@ in {
     packages.ghostty = self.wrappers.ghostty.wrap {inherit pkgs;};
   };
 
-  flake.modules.nixos.ghostty = {
+  flake.modules.nixos.gui = {
     config,
     pkgs,
     ...
@@ -75,16 +75,24 @@ in {
                 # font
                 font-family = config.custom.fonts.monospace;
                 # color theme
-                theme = "Onenord";
+                theme = "Everforest Dark Hard";
               }
               // config.custom.programs.ghostty.extraSettings;
           };
         })
       ];
 
-      hj.packages = [
-        pkgs.ghostty # overlay-ed above
-      ];
+      hj = {
+        packages = [
+          pkgs.ghostty # overlay-ed above
+        ];
+
+        xdg.mime-apps = {
+          default-applications = {
+            "x-scheme-handler/terminal" = "com.mitchellh.ghostty.desktop";
+          };
+        };
+      };
 
       custom.programs.print-config = {
         ghostty =

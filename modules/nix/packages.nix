@@ -26,12 +26,10 @@ in {
         })
       ];
 
-      environment.systemPackages =
-        [
-          pkgs.nix-init
-          pkgs.nixpkgs-review # overlay-ed above
-        ]
-        ++ [pkgs.custom.ntv];
+      environment.systemPackages = [
+        pkgs.nix-init
+        pkgs.nixpkgs-review # overlay-ed above
+      ];
 
       custom.fileSystem = {
         cache.home.directories = [
@@ -41,19 +39,9 @@ in {
       };
     };
 
-    gui = {pkgs, ...}: let
-      ntv-desktop-entry = pkgs.makeDesktopItem {
-        name = "nix-search-tv";
-        desktopName = "Nix Search TV";
-        genericName = "Fuzzy search for Nix packages";
-        icon = "dev.vlinkz.NixosConfEditor";
-        terminal = true;
-        exec = "ntv";
-      };
-    in {
+    gui = {pkgs, ...}: {
       hj.packages = [
-        # add the new desktop entry
-        (hiPrio ntv-desktop-entry)
+        pkgs.custom.ntv
       ];
     };
   };

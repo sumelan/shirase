@@ -53,17 +53,11 @@ in {
     packages.kitty = self.wrappers.kitty.wrap {inherit pkgs;};
   };
 
-  flake.modules.nixos.gui = {
+  flake.modules.nixos.kitty = {
     config,
     pkgs,
     ...
   }: let
-    nord = pkgs.fetchFromGitHub {
-      owner = "connorholyday";
-      repo = "nord-kitty";
-      rev = "3a819c1f207cd2f98a6b7c7f9ebf1c60da91c9e9";
-      hash = "sha256-Zbmrp2sQO0upkQ6Gtt5O4SLzPhovUDQNjvM0x8v2a0g=";
-    };
     fishPath = getExe config.programs.fish.package;
   in {
     options.custom = {
@@ -82,8 +76,6 @@ in {
                 shell = fishPath;
                 # font
                 font_family = config.custom.fonts.monospace;
-                # color theme
-                include = "${nord}/nord.conf";
               }
               // config.custom.programs.kitty.extraSettings;
           };
@@ -99,12 +91,6 @@ in {
         packages = [
           pkgs.kitty # overlay-ed above
         ];
-
-        xdg.mime-apps = {
-          default-applications = {
-            "x-scheme-handler/terminal" = "kitty.desktop";
-          };
-        };
       };
 
       custom.programs.print-config = {

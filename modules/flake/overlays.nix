@@ -76,10 +76,6 @@ in {
             withBDplus = true;
           };
         };
-        # use my forked version
-        nord-yazi = prev.yaziPlugins.nord.overrideAttrs (o: {
-          patches = (o.patches or []) ++ [./patches/nord-yazi.patch];
-        });
       };
 
       # writeShellApplication with support for completions

@@ -1,8 +1,10 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/home/sumelan/.config/DankMaterialShell/themes/nord/theme.json",
-  "registryThemeVariants": {},
+  "customThemeFile": "/home/sumelan/.config/DankMaterialShell/themes/everforest/theme.json",
+  "registryThemeVariants": {
+    "everforest": "hard"
+  },
   "matugenScheme": "scheme-tonal-spot",
   "matugenContrast": 0,
   "runUserMatugenTemplates": true,
@@ -310,14 +312,14 @@
   "muxSessionFilter": "",
   "runDmsMatugenTemplates": true,
   "matugenTemplateGtk": false,
-  "matugenTemplateNiri": true,
+  "matugenTemplateNiri": false,
   "matugenTemplateHyprland": false,
   "matugenTemplateMangowc": false,
   "matugenTemplateQt5ct": false,
   "matugenTemplateQt6ct": false,
   "matugenTemplateFirefox": false,
   "matugenTemplatePywalfox": false,
-  "matugenTemplateZenBrowser": true,
+  "matugenTemplateZenBrowser": false,
   "matugenTemplateVesktop": true,
   "matugenTemplateEquibop": false,
   "matugenTemplateGhostty": false,
@@ -656,6 +658,13 @@
     },
     "dms_sysmon": {
       "enabled": false
+    },
+    "dankNotepadModule": {
+      "previewActive": false,
+      "currentFilePath": "notepad-files/untitled-1770358666869.txt",
+      "currentFileExtension": "txt",
+      "sourceContent": "nix",
+      "updatedAt": 1776338768520
     }
   },
   "clipboardEnterToPaste": false,

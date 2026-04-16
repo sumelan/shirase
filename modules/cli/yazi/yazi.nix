@@ -62,16 +62,19 @@ in {
       inherit (pkgs.custom) yazi;
     in [
       (_: _prev: {
-        # set dynamic flavor from noctalia
         yazi = yazi.override {
           settings = recursiveUpdate yazi.passthru.settings {
             theme.flavor = {
-              dark = "nord-yazi";
+              dark = "everforest-medium";
             };
           };
-
           flavors = {
-            inherit (pkgs) nord-yazi;
+            everforest-medium = pkgs.fetchFromGitHub {
+              owner = "Chromium-3-Oxide";
+              repo = "everforest-medium.yazi";
+              rev = "5f9200cc55a51ca7b227d2a8c996e3cc19ae3675";
+              hash = "sha256-q+Qe8CDBvxoOtm1QbHyVNwkS7Z4KYVJ1SIdo+TFuuds=";
+            };
           };
         };
       })

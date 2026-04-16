@@ -35,7 +35,7 @@ in {
           };
           dankNotepadModule = {
             enabled = true;
-            style = "nordic";
+            style = "gruvbox";
           };
         };
       };

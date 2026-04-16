@@ -23,19 +23,19 @@ in {
 
   flake.modules.nixos.gui = {pkgs, ...}: let
     src = pkgs.fetchFromGitHub {
-      owner = "nautilor";
-      repo = "zathura-nord";
-      rev = "a1c80f8ba7c1e7ddd548d38b26458ea8e8b329cd";
-      hash = "sha256-pj9/ZvN+58ZUWyGnY9Yk9EwdvWRH5hY2BZp2TGDpi+g=";
+      owner = "eastack";
+      repo = "zathura-gruvbox";
+      rev = "0fbb6c94b5bcc8250e6edd4981f4f4991d28b94e";
+      hash = "sha256-yxoUPRWDhFqSh93qGPmxPhyKbmsZ3oY7yk4yDVUF5mE=";
     };
-    zathura-nord = "${src}/zathurarc";
+    gruvbox-dark-soft = "${src}/zathura-gruvbox-dark-soft";
   in {
     nixpkgs.overlays = [
       (_: prev: {
         zathura = self.wrappers.zathura.wrap {
           pkgs = prev;
           extraSettings = ''
-            include ${zathura-nord}
+            include ${gruvbox-dark-soft}
           '';
         };
       })
@@ -66,7 +66,7 @@ in {
     in {
       zathura =
         # sh
-        ''cat "${confPath}" "${zathura-nord}" | moor'';
+        ''cat "${confPath}" "${gruvbox-dark-soft}" | moor'';
     };
   };
 }

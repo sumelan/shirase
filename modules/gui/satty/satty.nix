@@ -90,16 +90,16 @@ in {
               {
                 general.output-filename = "${pictures}/Satty/%Y-%m-%d_%H-%M-%S.png";
                 color-palette.palette = [
-                  "#191D24"
-                  "#434C5E"
-                  "#ECEFF4"
-                  "#5E81AC"
-                  "#8FBCBB"
-                  "#A3BE8C"
-                  "#BF616A"
-                  "#D08770"
-                  "#B48EAD"
-                  "#EBCB8B"
+                  "#1E2326"
+                  "#414B50"
+                  "#D3C6AA"
+                  "#7FBBB3"
+                  "#83C092"
+                  "#A7C080"
+                  "#E67E80"
+                  "#E69875"
+                  "#D699B6"
+                  "#DBBC7F"
                 ];
               }
               // config.custom.programs.satty.extraSettings;
