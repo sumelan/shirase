@@ -1,7 +1,7 @@
 {
-  "currentThemeName": "dynamic",
-  "currentThemeCategory": "dynamic",
-  "customThemeFile": "",
+  "currentThemeName": "custom",
+  "currentThemeCategory": "registry",
+  "customThemeFile": "/home/sumelan/.config/DankMaterialShell/themes/nord/theme.json",
   "registryThemeVariants": {},
   "matugenScheme": "scheme-tonal-spot",
   "matugenContrast": 0,

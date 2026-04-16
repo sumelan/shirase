@@ -15,7 +15,7 @@ in {
   in {
     programs.niri = {
       enable = true;
-      package = pkgs.niri;
+      package = pkgs.niri-unstable;
       useNautilus = true;
       withUWSM = false;
       withXDG = true;
@@ -36,8 +36,10 @@ in {
       };
     };
 
-    hj.xdg.config.files = {
-      "niri/config.kdl".text = validatedConfigFor (pkgs.niri) (mkNiriKDL niriCfg);
+    hj.xdg.config.files = let
+      inherit (config.programs.niri) package;
+    in {
+      "niri/config.kdl".text = validatedConfigFor package (mkNiriKDL niriCfg);
     };
   };
 }

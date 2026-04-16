@@ -47,6 +47,7 @@ _: {
     custom.fileSystem = {
       persist.home.directories = [
         ".config/niri/dms"
+        ".config/DankMaterialShell/themes"
         ".local/state/DankMaterialShell"
       ];
       cache = {

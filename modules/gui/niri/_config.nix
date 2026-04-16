@@ -6,77 +6,32 @@
   ...
 }: let
   inherit (lib) getExe;
-  inherit (config.networking) hostName;
-
-  # output
   inherit (config.lib.custom.hardware.monitors) mainMonitor mainMonitorName;
-  mainWidth = mainMonitor.mode.width;
-  mainHeight = mainMonitor.mode.height;
-  mainRefresh = mainMonitor.mode.refresh;
-  mainScale = mainMonitor.scale;
-  mainRotate =
-    if mainMonitor.rotation == 0
-    then "normal"
-    else toString mainMonitor.rotation;
-  mainPositionX = mainMonitor.position.x;
-  mainPositionY = mainMonitor.position.y;
-  mainMode = "${toString mainWidth}x${toString mainHeight}@${toString mainRefresh}";
-
-  # cursor
-  cursorName = config.custom.gtk.cursor.name;
-  cursorSize = config.custom.gtk.cursor.size;
-
-  # xwayland
-  xwayland =
-    if config.custom.programs.niri.xwayland
-    then {
-      path = getExe pkgs.xwayland-satellite;
-    }
-    else {
-      off = [];
-    };
-
-  # screenshot
-  pictures = "${config.hj.directory}/Pictures";
-
-  # keybinds
-  hotkey = color: name: text: ''<span foreground='${color}'>[${name}]</span> ${text}'';
-
-  mkMenu = menu: let
-    config = import ./wlr-which-key/_config.nix {inherit pkgs menu;};
-  in
-    pkgs.writeShellScriptBin "mkMenu" ''
-      exec ${getExe pkgs.wlr-which-key} ${config}
-    '';
-  niriCmd = mkMenu (import ./wlr-which-key/_niriMenu.nix);
-  dmsCmd = mkMenu (import ./wlr-which-key/_dmsMenu.nix);
 in {
-  prefer-no-csd = [];
-  screenshot-path = "${pictures}/Screenshots/%Y-%m-%d_%H-%M-%S_${hostName}.png";
-  xwayland-satellite = xwayland;
-  clipboard = {disable-primary = [];};
   hotkey-overlay = {
     skip-at-startup = [];
     hide-not-bound = [];
   };
-  environment = {
-    ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    GDK_BACKEND = "wayland";
-    QT_QPA_PLATFORM = "wayland";
-    QT_QPA_PLATFORMTHEME = "qt5ct";
-    QT_QPA_PLATFORMTHEME_QT6 = "qt6ct";
-    QT_STYLE_OVERRIDE = "kvantum";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    XDG_CURRENT_DESKTOP = "niri";
-    XDG_SESSION_TYPE = "wayland";
-  };
-  spawn-at-startup = [
-    ["nm-applet"]
-    ["blueman-applet"]
-    ["solaar" "-w" "hide" "-b" "symbolic"]
-  ];
 
-  output = [
+  overview = {
+    zoom = 0.500000;
+    backdrop-color = "#3B4252";
+    workspace-shadow = {color = "#3B425290";};
+  };
+
+  output = let
+    mainWidth = mainMonitor.mode.width;
+    mainHeight = mainMonitor.mode.height;
+    mainRefresh = mainMonitor.mode.refresh;
+    mainScale = mainMonitor.scale;
+    mainRotate =
+      if mainMonitor.rotation == 0
+      then "normal"
+      else toString mainMonitor.rotation;
+    mainPositionX = mainMonitor.position.x;
+    mainPositionY = mainMonitor.position.y;
+    mainMode = "${toString mainWidth}x${toString mainHeight}@${toString mainRefresh}";
+  in [
     {
       _args = [mainMonitorName];
       scale = mainScale;
@@ -105,17 +60,14 @@ in {
     touch = {map-to-output = "DSI-1";};
   };
 
-  cursor = {
+  cursor = let
+    cursorName = config.custom.gtk.cursor.name;
+    cursorSize = config.custom.gtk.cursor.size;
+  in {
     xcursor-theme = cursorName;
     xcursor-size = cursorSize;
     hide-when-typing = [];
     hide-after-inactive-ms = 1000;
-  };
-
-  overview = {
-    zoom = 0.500000;
-    backdrop-color = "#3B4252";
-    workspace-shadow = {color = "#3B425290";};
   };
 
   gestures = {
@@ -123,35 +75,6 @@ in {
       trigger-width = 60;
       delay-ms = 100;
       max-speed = 1500;
-    };
-  };
-
-  recent-windows = {
-    debounce-ms = 750;
-    open-delay-ms = 150;
-    highlight = {
-      active-color = "#88C0D0ff";
-      urgent-color = "#D79784ff";
-      padding = 30;
-      corner-radius = 0;
-    };
-    previews = {
-      max-height = 480;
-      max-scale = 0.5;
-    };
-    binds = {
-      "Mod+Tab" = {next-window = [];};
-      "Mod+Shift+Tab" = {previous-window = [];};
-      "Mod+grave" = {
-        next-window = {
-          _props.filter = "app-id";
-        };
-      };
-      "Mod+Shift+grave" = {
-        previous-window = {
-          _props.filter = "app-id";
-        };
-      };
     };
   };
 
@@ -241,11 +164,14 @@ in {
   };
 
   window-rule = [
+    # all windows
     {
       draw-border-with-background = false;
       geometry-corner-radius = [10.000000 10.000000 10.000000 10.000000];
       clip-to-geometry = true;
+      background-effect = {blur = true;};
     }
+    # floating
     {
       match = {
         _props = {
@@ -265,6 +191,7 @@ in {
       };
       opacity = 0.950000;
     }
+    # focused
     {
       match = {
         _props = {
@@ -275,6 +202,7 @@ in {
       focus-ring = {width = 4;};
       opacity = 0.950000;
     }
+    # not floating nor focused
     {
       match = {
         _props = {
@@ -284,6 +212,7 @@ in {
       };
       opacity = 0.900000;
     }
+    # window-cast-target
     {
       match = {
         _props.is-window-cast-target = true;
@@ -315,78 +244,38 @@ in {
         inactive-color = "#434C5E";
       };
     }
+    # windows wanted to be floating
     {
-      match = {
-        _props.app-id._raw = ''r#"^.blueman-manager-wrapped$"#'';
-      };
-      open-floating = true;
-    }
-    {
-      match = {
-        _props.app-id._raw = ''r#"^chrome-"#'';
-      };
-      open-floating = true;
-    }
-    {
-      match = {
-        _props.app-id._raw = ''r#"^com.gabm.satty$"#'';
-      };
-      default-column-width._children = [
-        {proportion = 0.800000;}
-      ];
-      default-window-height._children = [
-        {proportion = 0.800000;}
-      ];
-      open-floating = true;
-      opacity = 1.000000;
-    }
-    {
-      match = {
-        _props.app-id._raw = ''r#"^com.github.wwmm.easyeffects$"#'';
-      };
-      default-column-width._children = [
-        {proportion = 0.500000;}
-      ];
-      default-window-height._children = [
-        {proportion = 0.500000;}
+      match = [
+        {_props.app-id._raw = ''r#"^.blueman-manager-wrapped$"#'';}
+        {_props.app-id._raw = ''r#"^com.github.wwmm.easyeffects$"#'';}
+        {_props.app-id._raw = ''r#"^chrome-"#'';}
+        {_props.app-id._raw = ''r#"^com.saivert.pwvucontrol$"#'';}
+        {_props.app-id._raw = ''r#"^org.kde.kdeconnect-indicator$"#'';}
+        {_props.app-id._raw = ''r#"^solaar$"#'';}
       ];
       open-floating = true;
     }
+    # windows wanted to be floating and not transparent
     {
-      match = {
-        _props.app-id._raw = ''r#"^com.saivert.pwvucontrol$"#'';
-      };
-      open-floating = true;
-    }
-    {
-      match = {
-        _props.app-id._raw = ''r#"^mpv$"#'';
-      };
-      default-column-width._children = [
-        {proportion = 0.500000;}
-      ];
-      default-window-height._children = [
-        {proportion = 0.480000;}
+      match = [
+        {_props.app-id._raw = ''r#"^com.gabm.satty$"#'';}
+        {_props.app-id._raw = ''r#"^mpv$"#'';}
+        {_props.title._raw = ''r#"^Picture-in-Picture$"#'';}
+        {_props.title._raw = ''r#"^ピクチャーインピクチャー$"#'';}
+        {_props.title._raw = ''r#"^ピクチャー イン ピクチャー$"#'';}
+        {_props.app-id._raw = ''r#"^Pqiv$"#'';}
+        {_props.app-id._raw = ''r#"^vlc$"#'';}
       ];
       open-floating = true;
       opacity = 1.000000;
     }
-    {
-      match = {
-        _props.app-id._raw = ''r#"^nix-search-tv$"#'';
-      };
-      default-column-width._children = [
-        {proportion = 0.500000;}
-      ];
-      default-window-height._children = [
-        {proportion = 0.750000;}
-      ];
-      open-floating = true;
-    }
+    # windows wanted to be floating and not shown on screen-capture
     {
       match = [
         {_props.app-id._raw = ''r#"^org.gnome.Nautilus$"#'';}
         {_props.app-id._raw = ''r#"^xdg-desktop-portal-gtk$"#'';}
+        {_props.app-id._raw = ''r#"^yazi$"#'';}
       ];
       default-column-width._children = [
         {proportion = 0.500000;}
@@ -397,77 +286,37 @@ in {
       open-floating = true;
       block-out-from = "screen-capture";
     }
-    {
-      match = {
-        _props.app-id._raw = ''r#"^org.kde.kdeconnect-indicator$"#'';
-      };
-      open-floating = true;
-    }
+    # windows wanted not to be shown on screen-capture
     {
       match = [
-        {_props.title._raw = ''r#"^Picture-in-Picture$"#'';}
-        {_props.title._raw = ''r#"^ピクチャーインピクチャー$"#'';}
-        {_props.title._raw = ''r#"^ピクチャー イン ピクチャー$"#'';}
-      ];
-      open-floating = true;
-      opacity = 1.000000;
-    }
-    {
-      match = {
-        _props.app-id._raw = ''r#"^solaar$"#'';
-      };
-      open-floating = true;
-    }
-    {
-      match = {
-        _props.app-id._raw = ''r#"^Pqiv$"#'';
-      };
-      default-column-width._children = [
-        {proportion = 0.400000;}
-      ];
-      default-window-height._children = [
-        {proportion = 0.400000;}
-      ];
-      open-floating = true;
-      opacity = 1.000000;
-    }
-    {
-      match = {
-        _props.app-id._raw = ''r#"^org.gnome.seahorse.Application$"#'';
-      };
-      block-out-from = "screen-capture";
-    }
-    {
-      match = [
+        {_props.app-id._raw = ''r#"^org.gnome.seahorse.Application$"#'';}
         {_props.app-id._raw = ''r#"^Proton Mail$"#'';}
         {_props.app-id._raw = ''r#"^Proton Pass$"#'';}
         {_props.app-id._raw = ''r#"^.protonvpn-app-wrapped$"#'';}
       ];
       block-out-from = "screen-capture";
     }
-    {
-      match = {
-        _props.app-id._raw = ''r#"^vlc$"#'';
-      };
-      open-floating = true;
-      opacity = 1.000000;
-    }
-    {
-      match = {
-        _props.app-id._raw = ''r#"^yazi$"#'';
-      };
-      default-column-width._children = [
-        {proportion = 0.500000;}
-      ];
-      default-window-height._children = [
-        {proportion = 0.500000;}
-      ];
-      open-floating = true;
-      block-out-from = "screen-capture";
-    }
   ];
 
-  binds = {
+  spawn-at-startup = [
+    ["nm-applet"]
+    ["blueman-applet"]
+    ["solaar" "-w" "hide" "-b" "symbolic"]
+  ];
+
+  binds = let
+    hotkey = color: name: text: ''<span foreground='${color}'>[${name}]</span> ${text}'';
+
+    mkMenu = menu: let
+      config = import ./wlr-which-key/_config.nix {inherit pkgs menu;};
+    in
+      pkgs.writeShellScriptBin "mkMenu" ''
+        exec ${getExe pkgs.wlr-which-key} ${config}
+      '';
+    niriCmd = mkMenu (import ./wlr-which-key/_niriMenu.nix);
+    dmsCmd = mkMenu (import ./wlr-which-key/_dmsMenu.nix);
+  in {
+    # dms
     "Mod+Space" = {
       _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Launcher"}";
       spawn = ["dms" "ipc" "spotlight" "toggle"];
@@ -499,6 +348,8 @@ in {
       };
       spawn = ["dms" "ipc" "lock" "lock"];
     };
+
+    # media
     "XF86AudioLowerVolume" = {
       _props.allow-when-locked = true;
       spawn = ["dms" "ipc" "audio" "decrement" "3"];
@@ -536,6 +387,7 @@ in {
       spawn = ["dms" "ipc" "brightness" "increment" "5" ""];
     };
 
+    # execute
     "Mod+Return" = {
       _props.hotkey-overlay-title = "${hotkey "#CB775D" "  Kitty" "Terminal Emulator"}";
       spawn = ["kitty"];
@@ -565,180 +417,79 @@ in {
       spawn = ["fcitx5-remote" "-t"];
     };
 
+    # window
     "Mod+Backspace" = {
       _props.repeat = false;
       close-window = [];
     };
-    "Mod+F" = {
-      maximize-column = [];
-    };
-    "Mod+Shift+F" = {
-      fullscreen-window = [];
-    };
-    "Mod+Alt+F" = {
-      toggle-windowed-fullscreen = [];
-    };
-    "Mod+M" = {
-      maximize-window-to-edges = [];
-    };
-    "Mod+T" = {
-      toggle-window-floating = [];
-    };
-    "Mod+Shift+T" = {
-      switch-focus-between-floating-and-tiling = [];
-    };
-    "Mod+Alt+T" = {
-      toggle-column-tabbed-display = [];
-    };
+    "Mod+F" = {maximize-column = [];};
+    "Mod+Shift+F" = {fullscreen-window = [];};
+    "Mod+Alt+F" = {toggle-windowed-fullscreen = [];};
+    "Mod+M" = {maximize-window-to-edges = [];};
+    "Mod+T" = {toggle-window-floating = [];};
+    "Mod+Shift+T" = {switch-focus-between-floating-and-tiling = [];};
+    "Mod+Alt+T" = {toggle-column-tabbed-display = [];};
 
-    "Mod+H" = {
-      focus-column-or-monitor-left = [];
-    };
-    "Mod+J" = {
-      focus-window-or-workspace-down = [];
-    };
-    "Mod+K" = {
-      focus-window-or-workspace-up = [];
-    };
-    "Mod+L" = {
-      focus-column-or-monitor-right = [];
-    };
-    "Mod+Down" = {
-      focus-monitor-down = [];
-    };
-    "Mod+Up" = {
-      focus-monitor-up = [];
-    };
+    # focus
+    "Mod+H" = {focus-column-or-monitor-left = [];};
+    "Mod+J" = {focus-window-or-workspace-down = [];};
+    "Mod+K" = {focus-window-or-workspace-up = [];};
+    "Mod+L" = {focus-column-or-monitor-right = [];};
+    "Mod+Down" = {focus-monitor-down = [];};
+    "Mod+Up" = {focus-monitor-up = [];};
 
-    "Mod+Shift+H" = {
-      move-column-left = [];
-    };
-    "Mod+Shift+J" = {
-      move-window-down-or-to-workspace-down = [];
-    };
-    "Mod+Shift+K" = {
-      move-window-up-or-to-workspace-up = [];
-    };
-    "Mod+Shift+L" = {
-      move-column-right = [];
-    };
-    "Mod+Alt+H" = {
-      move-column-to-monitor-left = [];
-    };
-    "Mod+Alt+J" = {
-      move-column-to-monitor-down = [];
-    };
-    "Mod+Alt+K" = {
-      move-column-to-monitor-up = [];
-    };
-    "Mod+Alt+L" = {
-      move-column-to-monitor-right = [];
-    };
+    # move
+    "Mod+Shift+H" = {move-column-left = [];};
+    "Mod+Shift+J" = {move-window-down-or-to-workspace-down = [];};
+    "Mod+Shift+K" = {move-window-up-or-to-workspace-up = [];};
+    "Mod+Shift+L" = {move-column-right = [];};
+    "Mod+Alt+H" = {move-column-to-monitor-left = [];};
+    "Mod+Alt+J" = {move-column-to-monitor-down = [];};
+    "Mod+Alt+K" = {move-column-to-monitor-up = [];};
+    "Mod+Alt+L" = {move-column-to-monitor-right = [];};
 
-    "Mod+Home" = {
-      focus-column-first = [];
-    };
-    "Mod+End" = {
-      focus-column-last = [];
-    };
-    "Mod+Shift+Home" = {
-      move-column-to-first = [];
-    };
-    "Mod+Shift+End" = {
-      move-column-to-last = [];
-    };
-    "Mod+C" = {
-      center-column = [];
-    };
-    "Mod+Alt+C" = {
-      center-visible-columns = [];
-    };
-    "Mod+BracketLeft" = {
-      consume-or-expel-window-left = [];
-    };
-    "Mod+BracketRight" = {
-      consume-or-expel-window-right = [];
-    };
-    "Mod+Period" = {
-      expel-window-from-column = [];
-    };
+    # column
+    "Mod+Home" = {focus-column-first = [];};
+    "Mod+End" = {focus-column-last = [];};
+    "Mod+Shift+Home" = {move-column-to-first = [];};
+    "Mod+Shift+End" = {move-column-to-last = [];};
+    "Mod+C" = {center-column = [];};
+    "Mod+Alt+C" = {center-visible-columns = [];};
+    "Mod+BracketLeft" = {consume-or-expel-window-left = [];};
+    "Mod+BracketRight" = {consume-or-expel-window-right = [];};
+    "Mod+Period" = {expel-window-from-column = [];};
 
-    "Mod+R" = {
-      switch-preset-column-width = [];
-    };
-    "Mod+Shift+R" = {
-      switch-preset-window-height = [];
-    };
+    # sizing and layout
+    "Mod+R" = {switch-preset-column-width = [];};
+    "Mod+Shift+R" = {switch-preset-window-height = [];};
 
-    "Mod+Minus" = {
-      set-column-width = "-10%";
-    };
-    "Mod+Equal" = {
-      set-column-width = "+10%";
-    };
-    "Mod+Shift+Minus" = {
-      set-window-height = "-10%";
-    };
-    "Mod+Shift+Equal" = {
-      set-window-height = "+10%";
-    };
+    # manual sizing
+    "Mod+Minus" = {set-column-width = "-10%";};
+    "Mod+Equal" = {set-column-width = "+10%";};
+    "Mod+Shift+Minus" = {set-window-height = "-10%";};
+    "Mod+Shift+Equal" = {set-window-height = "+10%";};
 
-    "Mod+1" = {
-      focus-workspace = 1;
-    };
-    "Mod+2" = {
-      focus-workspace = 2;
-    };
-    "Mod+3" = {
-      focus-workspace = 3;
-    };
-    "Mod+4" = {
-      focus-workspace = 4;
-    };
-    "Mod+5" = {
-      focus-workspace = 5;
-    };
-    "Mod+6" = {
-      focus-workspace = 6;
-    };
-    "Mod+7" = {
-      focus-workspace = 7;
-    };
-    "Mod+8" = {
-      focus-workspace = 8;
-    };
-    "Mod+9" = {
-      focus-workspace = 9;
-    };
+    # numberred workspaces
+    "Mod+1" = {focus-workspace = 1;};
+    "Mod+2" = {focus-workspace = 2;};
+    "Mod+3" = {focus-workspace = 3;};
+    "Mod+4" = {focus-workspace = 4;};
+    "Mod+5" = {focus-workspace = 5;};
+    "Mod+6" = {focus-workspace = 6;};
+    "Mod+7" = {focus-workspace = 7;};
+    "Mod+8" = {focus-workspace = 8;};
+    "Mod+9" = {focus-workspace = 9;};
+    "Mod+Shift+1" = {move-column-to-workspace = 1;};
+    "Mod+Shift+2" = {move-column-to-workspace = 2;};
+    "Mod+Shift+3" = {move-column-to-workspace = 3;};
+    "Mod+Shift+4" = {move-column-to-workspace = 4;};
+    "Mod+Shift+5" = {move-column-to-workspace = 5;};
+    "Mod+Shift+6" = {move-column-to-workspace = 6;};
+    "Mod+Shift+7" = {move-column-to-workspace = 7;};
+    "Mod+Shift+8" = {move-column-to-workspace = 8;};
+    "Mod+Shift+9" = {move-column-to-workspace = 9;};
 
-    "Mod+Shift+1" = {
-      move-column-to-workspace = 1;
-    };
-    "Mod+Shift+2" = {
-      move-column-to-workspace = 2;
-    };
-    "Mod+Shift+3" = {
-      move-column-to-workspace = 3;
-    };
-    "Mod+Shift+4" = {
-      move-column-to-workspace = 4;
-    };
-    "Mod+Shift+5" = {
-      move-column-to-workspace = 5;
-    };
-    "Mod+Shift+6" = {
-      move-column-to-workspace = 6;
-    };
-    "Mod+Shift+7" = {
-      move-column-to-workspace = 7;
-    };
-    "Mod+Shift+8" = {
-      move-column-to-workspace = 8;
-    };
-    "Mod+Shift+9" = {
-      move-column-to-workspace = 9;
-    };
-
+    # mouse wheel
     "Mod+WheelScrollDown" = {
       _props.cooldown-ms = 150;
       focus-workspace-down = [];
@@ -755,79 +506,72 @@ in {
       _props.cooldown-ms = 150;
       focus-column-left = [];
     };
+    "Mod+Shift+WheelScrollDown" = {move-column-to-workspace-down = [];};
+    "Mod+Shift+WheelScrollUp" = {move-column-to-workspace-up = [];};
+    "Mod+Shift+WheelScrollRight" = {consume-or-expel-window-right = [];};
+    "Mod+Shift+WheelScrollLeft" = {consume-or-expel-window-left = [];};
 
-    "Mod+Shift+WheelScrollDown" = {
-      move-column-to-workspace-down = [];
-    };
-    "Mod+Shift+WheelScrollUp" = {
-      move-column-to-workspace-up = [];
-    };
-    "Mod+Shift+WheelScrollRight" = {
-      consume-or-expel-window-right = [];
-    };
-    "Mod+Shift+WheelScrollLeft" = {
-      consume-or-expel-window-left = [];
-    };
+    # touchpad
+    "Mod+TouchpadScrollDown" = {focus-workspace-down = [];};
+    "Mod+TouchpadScrollUp" = {focus-workspace-up = [];};
+    "Mod+TouchpadScrollRight" = {focus-column-right = [];};
+    "Mod+TouchpadScrollLeft" = {focus-column-left = [];};
+    "Mod+Shift+TouchpadScrollDown" = {move-column-to-workspace-down = [];};
+    "Mod+Shift+TouchpadScrollUp" = {move-column-to-workspace-up = [];};
+    "Mod+Shift+TouchpadScrollRight" = {move-column-right = [];};
+    "Mod+Shift+TouchpadScrollLeft" = {move-column-left = [];};
 
-    "Mod+TouchpadScrollDown" = {
-      focus-workspace-down = [];
-    };
-    "Mod+TouchpadScrollUp" = {
-      focus-workspace-up = [];
-    };
-    "Mod+TouchpadScrollRight" = {
-      focus-column-right = [];
-    };
-    "Mod+TouchpadScrollLeft" = {
-      focus-column-left = [];
-    };
-    "Mod+Shift+TouchpadScrollDown" = {
-      move-column-to-workspace-down = [];
-    };
-    "Mod+Shift+TouchpadScrollUp" = {
-      move-column-to-workspace-up = [];
-    };
-    "Mod+Shift+TouchpadScrollRight" = {
-      move-column-right = [];
-    };
-    "Mod+Shift+TouchpadScrollLeft" = {
-      move-column-left = [];
-    };
-
+    # screenshot
     "Mod+Print" = {
-      screenshot = {
-        _props.show-pointer = false;
-      };
+      screenshot = {_props.show-pointer = false;};
     };
     "Mod+Shift+Print" = {
-      screenshot-screen = {
-        _props.show-pointer = false;
-      };
+      screenshot-screen = {_props.show-pointer = false;};
     };
     "Mod+Alt+Print" = {
       screenshot-window = [];
     };
 
-    "Mod+Shift+Slash" = {
-      show-hotkey-overlay = [];
-    };
-    "Mod+O" = {
-      toggle-overview = [];
-    };
-    "Mod+Shift+O" = {
-      toggle-window-rule-opacity = [];
-    };
+    # system
+    "Mod+Shift+Slash" = {show-hotkey-overlay = [];};
+    "Mod+O" = {toggle-overview = [];};
+    "Mod+Shift+O" = {toggle-window-rule-opacity = [];};
     "Mod+Shift+Escape" = {
-      quit = {
-        _props.skip-confirmation = false;
-      };
+      quit = {_props.skip-confirmation = false;};
     };
     "Mod+Escape" = {
       _props.allow-inhibiting = false;
       toggle-keyboard-shortcuts-inhibit = [];
     };
-    "Mod+Shift+P" = {
-      power-off-monitors = [];
+    "Mod+Shift+P" = {power-off-monitors = [];};
+  };
+
+  recent-windows = {
+    debounce-ms = 750;
+    open-delay-ms = 150;
+    highlight = {
+      active-color = "#88C0D0ff";
+      urgent-color = "#D79784ff";
+      padding = 30;
+      corner-radius = 0;
+    };
+    previews = {
+      max-height = 480;
+      max-scale = 0.5;
+    };
+    binds = {
+      "Mod+Tab" = {next-window = [];};
+      "Mod+Shift+Tab" = {previous-window = [];};
+      "Mod+grave" = {
+        next-window = {
+          _props.filter = "app-id";
+        };
+      };
+      "Mod+Shift+grave" = {
+        previous-window = {
+          _props.filter = "app-id";
+        };
+      };
     };
   };
 
@@ -895,6 +639,37 @@ in {
         }
         ";
     };
+  };
+
+  prefer-no-csd = [];
+
+  screenshot-path = "${config.hj.directory}/Pictures/Screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png";
+
+  xwayland-satellite = let
+    # xwayland
+    xwayland =
+      if config.custom.programs.niri.xwayland
+      then {
+        path = getExe pkgs.xwayland-satellite-unstable;
+      }
+      else {
+        off = [];
+      };
+  in
+    xwayland;
+
+  clipboard = {disable-primary = [];};
+
+  environment = {
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    GDK_BACKEND = "wayland";
+    QT_QPA_PLATFORM = "wayland";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
+    QT_QPA_PLATFORMTHEME_QT6 = "qt6ct";
+    QT_STYLE_OVERRIDE = "kvantum";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    XDG_CURRENT_DESKTOP = "niri";
+    XDG_SESSION_TYPE = "wayland";
   };
 
   include = [
