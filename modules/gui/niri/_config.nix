@@ -394,7 +394,7 @@ in {
     };
     "Mod+Shift+Return" = {
       _props.hotkey-overlay-title = "${hotkey "#D699B6" "  Helix" "Code Editor"}";
-      spawn = ["ghostty" "--working-directory=${dotfile}" "-e" "hx" "."];
+      spawn = ["ghostty" "--working-directory=${dotfile}" "-e" "hx"];
     };
     "Mod+B" = {
       _props.hotkey-overlay-title = "${hotkey "#7FBBB3" "󰖟  Helium" "Web Browser"}";
