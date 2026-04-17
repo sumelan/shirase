@@ -12,7 +12,6 @@
     attrsOf
     float
     int
-    str
     submodule
     ;
   monitor = submodule {

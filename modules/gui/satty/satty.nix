@@ -49,11 +49,6 @@ in {
     };
   };
 
-  # expose generic sattyy package without output file and color-palette
-  perSystem = {pkgs, ...}: {
-    packages.satty = self.wrappers.satty.wrap {inherit pkgs;};
-  };
-
   flake.modules.nixos.gui = {
     config,
     pkgs,

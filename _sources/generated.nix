@@ -26,16 +26,4 @@
       sha256 = "sha256-tGOgJSCGrGfkG2aE0VcGm2GH8ttiBQ602GftlWEHRHA=";
     };
   };
-  nordic-nvim = {
-    pname = "nordic-nvim";
-    version = "9f757428264ef1fcd1703e17702d3a28f307a2f7";
-    src = fetchFromGitHub {
-      owner = "AlexvZyl";
-      repo = "nordic.nvim";
-      rev = "9f757428264ef1fcd1703e17702d3a28f307a2f7";
-      fetchSubmodules = false;
-      sha256 = "sha256-Becp5tPJyjgyVH3BVN6XMKdinZ7JjJ2Czj6c73p6AAk=";
-    };
-    date = "2026-04-05";
-  };
 }

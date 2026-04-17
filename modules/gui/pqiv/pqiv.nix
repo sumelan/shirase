@@ -57,11 +57,6 @@ in {
     config.env.PQIVRC_PATH = "${config.pqivrc.path}/pqivrc";
   };
 
-  # expose generic pqiv package without local paths
-  perSystem = {pkgs, ...}: {
-    packages.pqiv = self.wrappers.pqiv.wrap {inherit pkgs;};
-  };
-
   flake.modules.nixos.gui = {pkgs, ...}: let
     pqiv-desktop-entry = pkgs.makeDesktopItem {
       name = "pqiv";

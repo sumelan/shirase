@@ -48,10 +48,6 @@ in {
     config.flagSeparator = "=";
   };
 
-  perSystem = {pkgs, ...}: {
-    packages.ghostty = self.wrappers.ghostty.wrap {inherit pkgs;};
-  };
-
   flake.modules.nixos.gui = {
     config,
     pkgs,
@@ -87,9 +83,17 @@ in {
           pkgs.ghostty # overlay-ed above
         ];
 
-        xdg.mime-apps = {
-          default-applications = {
-            "x-scheme-handler/terminal" = "com.mitchellh.ghostty.desktop";
+        xdg = {
+          config.files."ghostty/config" = {
+            permissions = "666";
+            text = "";
+            type = "copy";
+          };
+
+          mime-apps = {
+            default-applications = {
+              "x-scheme-handler/terminal" = "com.mitchellh.ghostty.desktop";
+            };
           };
         };
       };

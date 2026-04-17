@@ -70,10 +70,6 @@ in {
     };
   };
 
-  perSystem = {pkgs, ...}: {
-    packages.foot = self.wrappers.foot.wrap {inherit pkgs;};
-  };
-
   flake.modules.nixos.foot = {
     config,
     pkgs,

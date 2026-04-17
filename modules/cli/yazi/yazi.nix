@@ -70,10 +70,10 @@ in {
           };
           flavors = {
             everforest-medium = pkgs.fetchFromGitHub {
-              owner = "Chromium-3-Oxide";
+              owner = "sumelan";
               repo = "everforest-medium.yazi";
-              rev = "5f9200cc55a51ca7b227d2a8c996e3cc19ae3675";
-              hash = "sha256-q+Qe8CDBvxoOtm1QbHyVNwkS7Z4KYVJ1SIdo+TFuuds=";
+              rev = "45a125e7753558e70423eb80057acf515e56518d";
+              hash = "sha256-VOIo77m1uO2w43xWqucZxAdj8xQZzrMtNH2z7U10+x8=";
             };
           };
         };

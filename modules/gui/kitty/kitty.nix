@@ -48,11 +48,6 @@ in {
     };
   };
 
-  # expose generic kitty package without font, color-theme and SHELL
-  perSystem = {pkgs, ...}: {
-    packages.kitty = self.wrappers.kitty.wrap {inherit pkgs;};
-  };
-
   flake.modules.nixos.kitty = {
     config,
     pkgs,

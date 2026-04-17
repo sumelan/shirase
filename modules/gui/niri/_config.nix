@@ -313,8 +313,8 @@ in {
       pkgs.writeShellScriptBin "mkMenu" ''
         exec ${getExe pkgs.wlr-which-key} ${config}
       '';
-    niriCmd = mkMenu (import ./wlr-which-key/_niriMenu.nix);
-    dmsCmd = mkMenu (import ./wlr-which-key/_dmsMenu.nix);
+    niriKey = mkMenu (import ./wlr-which-key/_niriMenu.nix);
+    dmsKey = mkMenu (import ./wlr-which-key/_dmsMenu.nix);
   in {
     # dms
     "Mod+Space" = {
@@ -335,7 +335,7 @@ in {
     };
     "Mod+D" = {
       _props.hotkey-overlay-title = "${hotkey "#D699B6" "󰮤  DankMaterialShell" "Command"}";
-      spawn = ["${getExe dmsCmd}"];
+      spawn = ["${getExe dmsKey}"];
     };
     "Mod+Comma" = {
       _props.hotkey-overlay-title = "${hotkey "#D699B6" "󰮤  DankMaterialShell" "Settings"}";
@@ -402,7 +402,7 @@ in {
     };
     "Mod+Shift+D" = {
       _props.hotkey-overlay-title = "${hotkey "#E69875" "󰗢  niri" "Command"}";
-      spawn = ["${getExe niriCmd}"];
+      spawn = ["${getExe niriKey}"];
     };
     "Mod+Shift+N" = {
       _props.hotkey-overlay-title = "${hotkey "#7FBBB3" "󱄅  Nix Search" "Nix Package"}";
@@ -550,10 +550,10 @@ in {
     debounce-ms = 750;
     open-delay-ms = 150;
     highlight = {
-      active-color = "#88C0D0ff";
-      urgent-color = "#D79784ff";
+      active-color = "#88C0D0" + "ff";
+      urgent-color = "#D79784" + "ff";
       padding = 30;
-      corner-radius = 0;
+      corner-radius = 10;
     };
     previews = {
       max-height = 480;

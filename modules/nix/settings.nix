@@ -151,6 +151,9 @@ in {
       dev.enable = false;
     };
 
+    # execute shebangs that assume hardcoded shell paths
+    services.envfs.enable = true;
+
     system = {
       # better nixos generation label
       # https://reddit.com/r/NixOS/comments/16t2njf/small_trick_for_people_using_nixos_with_flakes/k2d0sxx/
