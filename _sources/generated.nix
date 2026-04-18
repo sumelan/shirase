@@ -8,22 +8,22 @@
 {
   dms-plugins = {
     pname = "dms-plugins";
-    version = "a759ddfccb021ef7e6824685e7a1c3728170977e";
+    version = "829922a8f11949b1c13ae8bd14d7176f9165b6f5";
     src = fetchFromGitHub {
       owner = "AvengeMedia";
       repo = "dms-plugins";
-      rev = "a759ddfccb021ef7e6824685e7a1c3728170977e";
+      rev = "829922a8f11949b1c13ae8bd14d7176f9165b6f5";
       fetchSubmodules = false;
-      sha256 = "sha256-s6zQvPoTaJYMA8A/vUEgQhTE/VhQJZwcGw1ET6bOYKg=";
+      sha256 = "sha256-KYx+n1stxLT4R9IDVRx3/Cl7TjCcBZjnQchbrXaBT2o=";
     };
-    date = "2026-04-07";
+    date = "2026-04-16";
   };
   helium = {
     pname = "helium";
-    version = "0.11.2.1";
+    version = "0.11.3.2";
     src = fetchurl {
-      url = "https://github.com/imputnet/helium-linux/releases/download/0.11.2.1/helium-0.11.2.1-x86_64.AppImage";
-      sha256 = "sha256-tGOgJSCGrGfkG2aE0VcGm2GH8ttiBQ602GftlWEHRHA=";
+      url = "https://github.com/imputnet/helium-linux/releases/download/0.11.3.2/helium-0.11.3.2-x86_64.AppImage";
+      sha256 = "sha256-5gdyKg12ZV2hpf0RL+eoJnawuW/J8NobiG+zEA0IOHA=";
     };
   };
 }
