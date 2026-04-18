@@ -64,7 +64,7 @@ in {
           mode = {
             width = 1200;
             height = 1920;
-            refresh = 50.002;
+            refresh = 90.000;
           };
           position = {
             x = 0;

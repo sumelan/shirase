@@ -7,6 +7,7 @@
 in {
   flake.modules.nixos.chuwi-minibook-x = {
     config,
+    pkgs,
     modulesPath,
     ...
   }: let
@@ -19,8 +20,10 @@ in {
       ];
 
     boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "usb_storage" "sd_mod" "sdhci_pci"];
-    boot.initrd.kernelModules = [];
+    boot.initrd.kernelModules = ["i915"];
+    boot.initrd.extraFirmwarePaths = ["vbt"];
     boot.kernelModules = ["kvm-intel"];
+    boot.kernelParams = ["quiet" "i915.vbt_firmware=vbt"];
     boot.extraModulePackages = [];
 
     # 8 GB swap
@@ -33,6 +36,12 @@ in {
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    hardware.firmware = let
+      vbtFirmware = pkgs.runCommand "firmware-vbt-patched" {} ''
+        mkdir -p $out/lib/firmware
+        cp "${./vbt_patched.bin}" $out/lib/firmware/vbt
+      '';
+    in [vbtFirmware];
 
     services.iio-niri = {
       enable = true;
