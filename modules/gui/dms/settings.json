@@ -234,7 +234,10 @@
   "appLauncherGridColumns": 5,
   "spotlightCloseNiriOverview": true,
   "rememberLastQuery": false,
-  "spotlightSectionViewModes": {},
+  "spotlightSectionViewModes": {
+    "files": "list",
+    "apps": "list"
+  },
   "appDrawerSectionViewModes": {},
   "niriOverviewOverlayEnabled": true,
   "dankLauncherV2Size": "compact",
@@ -243,6 +246,8 @@
   "dankLauncherV2BorderColor": "primary",
   "dankLauncherV2ShowFooter": true,
   "dankLauncherV2UnloadOnClose": false,
+  "dankLauncherV2IncludeFilesInAll": true,
+  "dankLauncherV2IncludeFoldersInAll": true,
   "useAutoLocation": true,
   "weatherEnabled": true,
   "networkPreference": "auto",
@@ -291,11 +296,13 @@
   "acSuspendTimeout": 0,
   "acSuspendBehavior": 0,
   "acProfileName": "2",
+  "acPostLockMonitorTimeout": 0,
   "batteryMonitorTimeout": 300,
   "batteryLockTimeout": 180,
   "batterySuspendTimeout": 600,
   "batterySuspendBehavior": 0,
   "batteryProfileName": "1",
+  "batteryPostLockMonitorTimeout": 0,
   "batteryChargeLimit": 100,
   "lockBeforeSuspend": true,
   "loginctlLockIntegration": true,
@@ -476,8 +483,8 @@
       "autoHide": false,
       "autoHideDelay": 250,
       "borderColor": "surfaceText",
-      "borderEnabled": false,
-      "borderOpacity": 1,
+      "borderEnabled": true,
+      "borderOpacity": 0.3,
       "borderThickness": 1,
       "bottomGap": 0,
       "centerWidgets": [
@@ -489,11 +496,11 @@
       "clickThrough": false,
       "enabled": true,
       "fontScale": 1,
-      "gothCornerRadiusOverride": false,
-      "gothCornerRadiusValue": 12,
-      "gothCornersEnabled": false,
+      "gothCornerRadiusOverride": true,
+      "gothCornerRadiusValue": 21,
+      "gothCornersEnabled": true,
       "id": "default",
-      "innerPadding": 20,
+      "innerPadding": 18,
       "leftWidgets": [
         {
           "enabled": true,
@@ -566,11 +573,11 @@
       "screenPreferences": [
         "all"
       ],
-      "shadowColorMode": "text",
+      "shadowColorMode": "default",
       "shadowIntensity": 0,
       "shadowOpacity": 60,
       "showOnLastDisplay": false,
-      "spacing": 10,
+      "spacing": 0,
       "squareCorners": false,
       "transparency": 0.75,
       "visible": true,
@@ -578,7 +585,12 @@
       "widgetOutlineEnabled": false,
       "widgetOutlineOpacity": 1,
       "widgetOutlineThickness": 1,
-      "widgetTransparency": 0
+      "widgetTransparency": 0,
+      "widgetPadding": 8,
+      "maximizeWidgetIcons": false,
+      "maximizeWidgetText": true,
+      "iconScale": 1.25,
+      "removeWidgetPadding": false
     }
   ],
   "desktopClockEnabled": false,
@@ -671,7 +683,7 @@
       "currentFilePath": "notepad-files/untitled-1770358666869.txt",
       "currentFileExtension": "txt",
       "sourceContent": "nix",
-      "updatedAt": 1776485306204
+      "updatedAt": 1776513330391
     }
   },
   "clipboardEnterToPaste": false,

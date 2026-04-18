@@ -53,6 +53,12 @@ in {
     pkgs,
     ...
   }: let
+    catppuccin-frappe = pkgs.fetchFromGitHub {
+      owner = "catppuccin";
+      repo = "kitty";
+      rev = "43098316202b84d6a71f71aaf8360f102f4d3f1a";
+      hash = "sha256-akRkdq8l2opGIg3HZd+Y4eky6WaHgKFQ5+iJMC1bhnQ=";
+    };
     fishPath = getExe config.programs.fish.package;
   in {
     options.custom = {
@@ -71,6 +77,8 @@ in {
                 shell = fishPath;
                 # font
                 font_family = config.custom.fonts.monospace;
+                # color theme
+                include = "${catppuccin-frappe}/themes/frappe.conf";
               }
               // config.custom.programs.kitty.extraSettings;
           };

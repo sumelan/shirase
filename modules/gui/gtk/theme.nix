@@ -10,6 +10,10 @@ in {
         sizeVariants = ["compact"];
         tweaks = ["catppuccin"];
       };
+      catppuccin-papirus-folders = pkgs.catppuccin-papirus-folders.override {
+        flavor = "frappe";
+        accent = "maroon";
+      };
     };
   };
 
@@ -37,7 +41,7 @@ in {
         iconTheme = {
           package = mkOption {
             type = package;
-            default = pkgs.catppuccin-papirus-folders;
+            default = pkgs.custom.catppuccin-papirus-folders;
             description = "Package providing the icon theme.";
           };
 

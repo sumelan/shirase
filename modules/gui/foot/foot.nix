@@ -100,9 +100,13 @@ in {
             pkgs = prev;
             extraSettings =
               {
+                # font
                 font = "${config.custom.fonts.monospace}:size=14";
+                # shell
                 main.shell = mkForce fishPath;
                 environment."SHELL" = fishPath;
+                # color theme
+                include = "${prev.foot.themes}/share/foot/themes/catppuccin-frappe";
               }
               // config.custom.programs.foot.extraSettings;
           };

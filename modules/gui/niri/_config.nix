@@ -169,9 +169,12 @@ in {
       draw-border-with-background = false;
       geometry-corner-radius = [10.000000 10.000000 10.000000 10.000000];
       clip-to-geometry = true;
-      #  background-effect = {blur = true;};
+      # background-effect = {
+      #   blur = true;
+      #   xray = true;
+      # };
     }
-    # floating
+    # floating and focused
     {
       match = {
         _props = {
@@ -182,6 +185,7 @@ in {
       focus-ring = {width = 2;};
       opacity = 0.980000;
     }
+    # floating but not focused
     {
       match = {
         _props = {
@@ -191,7 +195,7 @@ in {
       };
       opacity = 0.950000;
     }
-    # focused
+    # not floating but focused
     {
       match = {
         _props = {
@@ -671,6 +675,13 @@ in {
     XDG_CURRENT_DESKTOP = "niri";
     XDG_SESSION_TYPE = "wayland";
   };
+
+  # blur = {
+  #   passes = 3;
+  #   offset = 3.0;
+  #   noise = 0.02;
+  #   saturation = 1.5;
+  # };
 
   include = [
     ["dms/alttab.kdl"]
