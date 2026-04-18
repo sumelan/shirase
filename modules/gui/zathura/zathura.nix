@@ -2,8 +2,8 @@
   inherit (builtins) listToAttrs;
 in {
   flake.wrappers.zathura = {
+    config,
     wlib,
-    pkgs,
     ...
   }: {
     imports = [wlib.wrapperModules.zathura];
@@ -12,7 +12,7 @@ in {
     mappings = import ./_mappigs.nix {};
     plugins = builtins.attrValues {
       inherit
-        (pkgs.zathuraPkgs)
+        (config.pkgs.zathuraPkgs)
         zathura_cb
         zathura_djvu
         zathura_ps
@@ -23,19 +23,19 @@ in {
 
   flake.modules.nixos.gui = {pkgs, ...}: let
     src = pkgs.fetchFromGitHub {
-      owner = "eastack";
-      repo = "zathura-gruvbox";
-      rev = "0fbb6c94b5bcc8250e6edd4981f4f4991d28b94e";
-      hash = "sha256-yxoUPRWDhFqSh93qGPmxPhyKbmsZ3oY7yk4yDVUF5mE=";
+      owner = "catppuccin";
+      repo = "zathura";
+      rev = "9f29c2c1622c70436f0e0b98fea9735863596c1e";
+      hash = "sha256-upyfc4OSx9xKUoM/JdRfuXiw38ffoSB/Utm2jpyXgy8=";
     };
-    gruvbox-dark-soft = "${src}/zathura-gruvbox-dark-soft";
+    catppuccin = "${src}/themes/catppuccin-frappe";
   in {
     nixpkgs.overlays = [
       (_: prev: {
         zathura = self.wrappers.zathura.wrap {
           pkgs = prev;
           extraSettings = ''
-            include ${gruvbox-dark-soft}
+            include ${catppuccin}
           '';
         };
       })
@@ -66,7 +66,7 @@ in {
     in {
       zathura =
         # sh
-        ''cat "${confPath}" "${gruvbox-dark-soft}" | moor'';
+        ''cat "${confPath}" "${catppuccin}" | moor'';
     };
   };
 }

@@ -32,18 +32,12 @@ in {
             style = "kvantum";
           };
         };
-        everforest = pkgs.fetchFromGitHub {
-          owner = "binEpilo";
-          repo = "materia-everforest-kvantum";
-          rev = "391eb1d917dab900dc1ef16ffdff1a4546308ee4";
-          hash = "sha256-5ihKScPJMDU0pbeYtUx/UjC4J08/r40mAK7D+1TK6wA=";
-        };
       in {
-        "Kvantum/MaterialEverforest".source = "${everforest}/MateriaEverforestDark";
+        "Kvantum/catppuccin-frappe-blue".source = "${pkgs.catppuccin-kvantum}/share/Kvantum/catppuccin-frappe-blue";
         "Kvantum/kvantum.kvconfig" = {
           generator = toINI {};
           value = {
-            General.theme = "MaterialEverforest";
+            General.theme = "catppuccin-frappe-blue";
           };
         };
         "qt5ct/qt5ct.conf" = {

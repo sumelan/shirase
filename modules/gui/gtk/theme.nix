@@ -8,11 +8,7 @@ in {
         themeVariants = ["pink"];
         colorVariants = ["dark"];
         sizeVariants = ["compact"];
-        tweaks = ["everforest"];
-      };
-      colloid-icon-theme = pkgs.colloid-icon-theme.override {
-        schemeVariants = ["everforest"];
-        colorVariants = ["pink"];
+        tweaks = ["catppuccin"];
       };
     };
   };
@@ -33,7 +29,7 @@ in {
 
           name = mkOption {
             type = str;
-            default = "Colloid-Pink-Dark-Compact-Everforest";
+            default = "Colloid-Pink-Dark-Compact-Catppuccin";
             description = "The name of the theme within the package.";
           };
         };
@@ -41,13 +37,13 @@ in {
         iconTheme = {
           package = mkOption {
             type = package;
-            default = pkgs.custom.colloid-icon-theme;
+            default = pkgs.catppuccin-papirus-folders;
             description = "Package providing the icon theme.";
           };
 
           name = mkOption {
             type = str;
-            default = "Colloid-Pink-Everforest-Dark";
+            default = "Papirus-Dark";
             description = "The name of the icon theme within the package.";
           };
         };

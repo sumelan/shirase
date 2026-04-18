@@ -71,7 +71,7 @@ in {
                 # font
                 font-family = config.custom.fonts.monospace;
                 # color theme
-                theme = "Everforest Dark Hard";
+                theme = "Catppuccin Frappe";
               }
               // config.custom.programs.ghostty.extraSettings;
           };

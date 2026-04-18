@@ -15,19 +15,19 @@ in {
         cursor = {
           package = mkOption {
             type = package;
-            default = pkgs.everforest-cursors;
+            default = pkgs.capitaine-cursors-themed;
             description = "Package providing the cursor theme.";
           };
 
           name = mkOption {
             type = str;
-            default = "everforest-cursors";
+            default = "Capitaine Cursors (Palenight)";
             description = "The cursor name within the package.";
           };
 
           size = mkOption {
             type = int;
-            default = 48;
+            default = 38;
             description = "The cursor size.";
           };
         };

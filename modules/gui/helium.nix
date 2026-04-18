@@ -17,8 +17,8 @@ in {
         "dpaefegpjhgeplnkomgbcmmlffkijbgp"
         # kagi translate
         "alblebhaoakdgapamjdifdfnaicpnklm"
-        # everforest
-        "dlcadbmcfambdjhecipbnolmjchgnode"
+        # catppuccin-frappe
+        "olhelnoplefjdmncknfphenjclimckaf"
         # SponsorBlock for YouTube - Skip Sponsorships
         "mnjggcdmjocbbbhaepdhchncahnbgone"
         # YouTube Auto HD + FPS

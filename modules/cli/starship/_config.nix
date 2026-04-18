@@ -42,10 +42,36 @@ in
       "$hostname"
     ];
 
-    palette = "everforest";
+    palette = "catppuccin_frappe";
 
-    palettes.everforest = {
-      bg_dim = "#232a2e";
+    palettes.catppuccin_frappe = {
+      rosewater = "#f2d5cf";
+      flamingo = "#eebebe";
+      pink = "#f4b8e4";
+      mauve = "#ca9ee6";
+      red = "#e78284";
+      maroon = "#ea999c";
+      peach = "#ef9f76";
+      yellow = "#e5c890";
+      green = "#a6d189";
+      teal = "#81c8be";
+      sky = "#99d1db";
+      sapphire = "#85c1dc";
+      blue = "#8caaee";
+      lavender = "#babbf1";
+      text = "#c6d0f5";
+      subtext1 = "#b5bfe2";
+      subtext0 = "#a5adce";
+      overlay2 = "#949cbb";
+      overlay1 = "#838ba7";
+      overlay0 = "#737994";
+      surface2 = "#626880";
+      surface1 = "#51576d";
+      surface0 = "#414559";
+      base = "#303446";
+      mantle = "#292c3c";
+      crust = "#232634";
+
       bg0 = "#2d353b";
       bg1 = "#343f44";
       bg2 = "#3d484d";
@@ -59,17 +85,7 @@ in
       bg_yellow = "#4d4c43";
 
       fg = "#d3c6aa";
-      red = "#e67e80";
 
-      orange = "#e69875";
-      yellow = "#dbbc7f";
-      green = "#a7c080";
-      aqua = "#83c092";
-      blue = "#7fbbb3";
-      purple = "#d699b6";
-      grey0 = "#7a8478";
-      grey1 = "#859289";
-      grey2 = "#9da9a0";
       statusline1 = "#a7c080";
       statusline2 = "#d3c6aa";
       statusline3 = "#e67e80";
@@ -77,22 +93,22 @@ in
 
     character = {
       format = "$symbol ";
-      success_symbol = "[╰─](bold aqua)[  ](bold blue)";
-      error_symbol = "[╰─](bold aqua)[  ](bold red)";
-      vimcmd_symbol = "[╰─](bold aqua)[  ](bold green)";
-      vimcmd_visual_symbol = "[╰─](bold aqua)[  ](bold purple)";
-      vimcmd_replace_symbol = "[╰─](bold aqua])[  ](bold yellow)";
-      vimcmd_replace_one_symbol = "[╰─](bold aqua)[  ](bold yellow)";
+      success_symbol = "[╰─](bold sapphire)[  ](bold blue)";
+      error_symbol = "[╰─](bold sapphire)[  ](bold red)";
+      vimcmd_symbol = "[╰─](bold sapphire)[  ](bold green)";
+      vimcmd_visual_symbol = "[╰─](bold sapphire)[  ](bold mauve)";
+      vimcmd_replace_symbol = "[╰─](bold sapphire])[  ](bold yellow)";
+      vimcmd_replace_one_symbol = "[╰─](bold sapphire)[  ](bold yellow)";
     };
     container = {
       format = " [$symbol $name]($style) ";
       symbol = " ";
-      style = "bold orange";
+      style = "bold peach";
       disabled = false;
     };
     directory = {
       format = "[╭─ $path ]($style)";
-      style = "bold aqua";
+      style = "bold sapphire";
       truncation_length = 18;
       truncation_symbol = "…/";
       substitutions = {
@@ -104,29 +120,29 @@ in
       symbol = " ";
     };
     git_branch = {
-      format = "[](fg:statusline2)[ $symbol $branch ]($style)[](fg:statusline2) ";
-      style = "bg:statusline2 fg:bg_dim";
+      format = "[](fg:rosewater)[ $symbol $branch ]($style)[](fg:rosewater) ";
+      style = "bg:rosewater fg:mantle";
       symbol = " ";
     };
     git_status = {
       disabled = false;
       style = "fg:red";
       format = "([$all_status$ahead_behind]($style))";
-      up_to_date = "[  ](fg:purple)";
+      up_to_date = "[  ](fg:mauve)";
       untracked = "[?\($count\)](fg:blue)";
       stashed = "[\\$\($count\)](fg:green_)";
       modified = "[!\($count\)](fg:yellow)";
-      renamed = "[»\($count\)](fg:purple)";
+      renamed = "[»\($count\)](fg:mauve)";
       deleted = "[✘\($count\)](fg:red)";
       staged = "[++\($count\)](fg:green)";
       ahead = "[⇡\($count\)](fg:blue)";
-      diverged = "[⇕](fg:purple)[⇡\($ahead_count\)](fg:green)[⇣\($behind_count\)](fg:yellow)";
+      diverged = "[⇕](fg:mauve)[⇡\($ahead_count\)](fg:green)[⇣\($behind_count\)](fg:yellow)";
       behind = "[⇣\($count\)](fg:red)";
     };
     cmd_duration = {
       disabled = false;
-      format = " [](fg:statusline1)[  $duration ]($style)[](fg:statusline1)";
-      style = "bg:statusline1 fg:bg_visual";
+      format = " [](fg:teal)[  $duration ]($style)[](fg:teal)";
+      style = "bg:teal fg:crust";
       min_time = 0;
       show_milliseconds = false;
     };
@@ -135,86 +151,86 @@ in
       format = "[](fg:blue)[ $user ]($style)[](fg:blue) ";
       show_always = true;
       style_root = "bg:blue fg:red";
-      style_user = "bg:blue fg:bg_dim";
+      style_user = "bg:blue fg:crust";
     };
     hostname = {
       # only show when conncted to to an SSH session
       ssh_only = true;
       ssh_symbol = "󰁥 ";
       format = "[](fg:green)[ $ssh_symbol$hostname ]($style)[](fg:green)";
-      style = "bg:green fg:statusline2";
+      style = "bg:green fg:rosewater";
     };
 
     # Languages
     c = {
-      style = "bg:aqua fg:grey0";
-      format = " [](fg:aqua)[ $symbol$version ]($style)[](fg:aqua)";
+      style = "bg:sapphire fg:surface0";
+      format = " [](fg:sapphire)[ $symbol$version ]($style)[](fg:sapphire)";
       disabled = false;
       symbol = " ";
     };
     elixir = {
-      style = "bg:aqua fg:grey0";
-      format = " [](fg:aqua)[ $symbol$version ]($style)[](fg:aqua)";
+      style = "bg:sapphire fg:surface0";
+      format = " [](fg:sapphire)[ $symbol$version ]($style)[](fg:sapphire)";
       disabled = false;
       symbol = " ";
     };
     elm = {
-      style = "bg:aqua fg:grey0";
-      format = " [](fg:aqua)[ $symbol$version ]($style)[](fg:aqua)";
+      style = "bg:sapphire fg:surface0";
+      format = " [](fg:sapphire)[ $symbol$version ]($style)[](fg:sapphire)";
       disabled = false;
       symbol = " ";
     };
     golang = {
-      style = "bg:aqua fg:grey0";
-      format = " [](fg:aqua)[ $symbol$version ]($style)[](fg:aqua)";
+      style = "bg:sapphire fg:surface0";
+      format = " [](fg:sapphire)[ $symbol$version ]($style)[](fg:sapphire)";
       disabled = false;
       symbol = " ";
     };
     haskell = {
-      style = "bg:aqua fg:grey0";
-      format = " [](fg:aqua)[ $symbol$version ]($style)[](fg:aqua)";
+      style = "bg:sapphire fg:surface0";
+      format = " [](fg:sapphire)[ $symbol$version ]($style)[](fg:sapphire)";
       disabled = false;
       symbol = " ";
     };
     java = {
-      style = "bg:aqua fg:grey0";
-      format = " [](fg:aqua)[ $symbol$version ]($style)[](fg:aqua)";
+      style = "bg:sapphire fg:surface0";
+      format = " [](fg:sapphire)[ $symbol$version ]($style)[](fg:sapphire)";
       disabled = false;
       symbol = " ";
     };
     julia = {
-      style = "bg:aqua fg:grey0";
-      format = " [](fg:aqua)[ $symbol$version ]($style)[](fg:aqua)";
+      style = "bg:sapphire fg:surface0";
+      format = " [](fg:sapphire)[ $symbol$version ]($style)[](fg:sapphire)";
       disabled = false;
       symbol = " ";
     };
     nodejs = {
-      style = "bg:aqua fg:grey0";
-      format = " [](fg:aqua)[ $symbol$version ]($style)[](fg:aqua)";
+      style = "bg:sapphire fg:surface0";
+      format = " [](fg:sapphire)[ $symbol$version ]($style)[](fg:sapphire)";
       disabled = false;
       symbol = "󰎙 ";
     };
     nim = {
-      style = "bg:aqua fg:grey0";
-      format = " [](fg:aqua)[ $symbol$version ]($style)[](fg:aqua)";
+      style = "bg:sapphire fg:surface0";
+      format = " [](fg:sapphire)[ $symbol$version ]($style)[](fg:sapphire)";
       disabled = false;
       symbol = "󰆥 ";
     };
     rust = {
-      style = "bg:aqua fg:grey0";
-      format = " [](fg:aqua)[ $symbol$version ]($style)[](fg:aqua)";
+      style = "bg:sapphire fg:surface0";
+      format = " [](fg:sapphire)[ $symbol$version ]($style)[](fg:sapphire)";
       disabled = false;
       symbol = " ";
     };
     scala = {
-      style = "bg:aqua fg:grey0";
-      format = " [](fg:aqua)[ $symbol$version ]($style)[](fg:aqua)";
+      style = "bg:sapphire fg:surface0";
+      format = " [](fg:sapphire)[ $symbol$version ]($style)[](fg:sapphire)";
       disabled = false;
       symbol = " ";
     };
     python = {
-      style = "bg:aqua fg:grey0";
-      format = " [](fg:aqua)[ $symbol$version ]($style)[](fg:aqua)";
+      style = "bg:sapphire fg:surface0";
+      format = " [](fg:sapphire)[ $symbol$version ]($style)[](fg:sapphire)";
       disabled = false;
       symbol = " ";
     };
@@ -229,8 +245,8 @@ in
       heuristic = false;
     };
     conda = {
-      style = "bg:aqua fg:grey0";
-      format = " [](fg:aqua)[ $symbol$environment ]($style)[](fg:aqua)";
+      style = "bg:sapphire fg:surface0";
+      format = " [](fg:sapphire)[ $symbol$environment ]($style)[](fg:sapphire)";
       disabled = false;
       symbol = "🅒 ";
     };

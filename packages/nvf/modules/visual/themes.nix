@@ -4,8 +4,8 @@ _: {
       # https://github.com/NotAShelf/nvf/blob/main/modules/plugins/theme/supported-themes.nix
       theme = {
         enable = true;
-        name = "everforest";
-        style = "hard";
+        name = "catppuccin";
+        style = "frappe";
       };
     };
   };

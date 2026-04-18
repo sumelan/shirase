@@ -15,8 +15,8 @@ in {
 
   overview = {
     zoom = 0.500000;
-    backdrop-color = "#374145";
-    workspace-shadow = {color = "#414B50" + "90";};
+    backdrop-color = "#414559";
+    workspace-shadow = {color = "#232634" + "90";};
   };
 
   output = let
@@ -103,16 +103,16 @@ in {
     ];
 
     focus-ring = {
-      width = 4;
+      width = 3;
       active-gradient = {
         _props = {
-          from = "#7FBBB3";
-          to = "#E699B6";
+          from = "#81C8BE";
+          to = "#F4B8E4";
           angle = 45;
           "in" = "oklch longer hue";
         };
       };
-      inactive-color = "#414B50";
+      inactive-color = "#51576D";
     };
 
     border = {off = [];};
@@ -126,7 +126,7 @@ in {
       softness = 20;
       spread = 10;
       draw-behind-window = false;
-      color = "#2E382C" + "90";
+      color = "#232634" + "90";
     };
 
     tab-indicator = {
@@ -140,17 +140,17 @@ in {
       position = "right";
       gaps-between-tabs = 0.000000;
       corner-radius = 0.000000;
-      active-color = "#A7C080" + "90";
-      inactive-color = "#4F5B58" + "90";
+      active-color = "#A6D189" + "90";
+      inactive-color = "#414559" + "90";
     };
 
     insert-hint = {
       gradient = {
         _props = {
           angle = 45;
-          from = "#A7C080";
+          from = "#A6D189";
           relative-to = "window";
-          to = "#83C092";
+          to = "#81C8BE";
         };
       };
     };
@@ -179,7 +179,7 @@ in {
           is-focused = true;
         };
       };
-      focus-ring = {width = 3;};
+      focus-ring = {width = 2;};
       opacity = 0.980000;
     }
     {
@@ -199,7 +199,7 @@ in {
           is-focused = true;
         };
       };
-      focus-ring = {width = 5;};
+      focus-ring = {width = 4;};
       opacity = 0.950000;
     }
     # not floating nor focused
@@ -220,13 +220,13 @@ in {
       focus-ring = {
         active-gradient = {
           _props = {
-            from = "#E69875";
-            to = "#E67E80";
+            from = "#EF9F76";
+            to = "#E78284";
             angle = 45;
             "in" = "oklch longer hue";
           };
         };
-        inactive-color = "#495156";
+        inactive-color = "#303446";
       };
       shadow = {
         on = [];
@@ -240,8 +240,8 @@ in {
         color = "#ECEFF490";
       };
       tab-indicator = {
-        active-color = "#E67E80";
-        inactive-color = "#495156";
+        active-color = "#EA999C";
+        inactive-color = "#51576D";
       };
     }
     # windows wanted to be floating
@@ -318,33 +318,33 @@ in {
   in {
     # dms
     "Mod+Space" = {
-      _props.hotkey-overlay-title = "${hotkey "#D699B6" "󰮤  DankMaterialShell" "Launcher"}";
+      _props.hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Launcher"}";
       spawn = ["dms" "ipc" "spotlight" "toggle"];
     };
     "Mod+Y" = {
-      _props.hotkey-overlay-title = "${hotkey "#D699B6" "󰮤  DankMaterialShell" "Clipboard"}";
+      _props.hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Clipboard"}";
       spawn = ["dms" "ipc" "clipboard" "toggle"];
     };
     "Mod+X" = {
-      _props.hotkey-overlay-title = "${hotkey "#D699B6" "󰮤  DankMaterialShell" "Powermenu"}";
+      _props.hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Powermenu"}";
       spawn = ["dms" "ipc" "powermenu" "toggle"];
     };
     "Mod+N" = {
-      _props.hotkey-overlay-title = "${hotkey "#D699B6" "󰮤  DankMaterialShell" "Notepad"}";
+      _props.hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Notepad"}";
       spawn = ["dms" "ipc" "notepad" "toggle"];
     };
     "Mod+D" = {
-      _props.hotkey-overlay-title = "${hotkey "#D699B6" "󰮤  DankMaterialShell" "Command"}";
+      _props.hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Command"}";
       spawn = ["${getExe dmsKey}"];
     };
     "Mod+Comma" = {
-      _props.hotkey-overlay-title = "${hotkey "#D699B6" "󰮤  DankMaterialShell" "Settings"}";
+      _props.hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Settings"}";
       spawn = ["dms" "ipc" "settings" "focusOrToggle"];
     };
     "Mod+Ctrl+L" = {
       _props = {
         allow-when-locked = true;
-        hotkey-overlay-title = "${hotkey "#D699B6" "󰮤  DankMaterialShell" "screen-lock"}";
+        hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "screen-lock"}";
       };
       spawn = ["dms" "ipc" "lock" "lock"];
     };
@@ -389,31 +389,31 @@ in {
 
     # execute
     "Mod+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#D3C6AA" "  Ghostty" "Terminal Emulator"}";
+      _props.hotkey-overlay-title = "${hotkey "#F2D5CF" "  Ghostty" "Terminal Emulator"}";
       spawn = ["ghostty"];
     };
     "Mod+Shift+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#D699B6" "  Helix" "Code Editor"}";
+      _props.hotkey-overlay-title = "${hotkey "#BABBF1" "  Helix" "Code Editor"}";
       spawn = ["ghostty" "--working-directory=${dotfile}" "-e" "hx"];
     };
     "Mod+B" = {
-      _props.hotkey-overlay-title = "${hotkey "#7FBBB3" "󰖟  Helium" "Web Browser"}";
+      _props.hotkey-overlay-title = "${hotkey "#8CAAEE" "󰖟  Helium" "Web Browser"}";
       spawn-sh = ["helium &"];
     };
     "Mod+Shift+D" = {
-      _props.hotkey-overlay-title = "${hotkey "#E69875" "󰗢  niri" "Command"}";
+      _props.hotkey-overlay-title = "${hotkey "#EA999C" "󰗢  niri" "Command"}";
       spawn = ["${getExe niriKey}"];
     };
     "Mod+Shift+N" = {
-      _props.hotkey-overlay-title = "${hotkey "#7FBBB3" "󱄅  Nix Search" "Nix Package"}";
+      _props.hotkey-overlay-title = "${hotkey "#8CAAEE" "󱄅  Nix Search" "Nix Package"}";
       spawn = ["ghostty" "--title=ntv" "-e" "ntv"];
     };
     "Mod+Shift+Y" = {
-      _props.hotkey-overlay-title = "${hotkey "#DBBc7F" "󰇥  Yazi" "File Manager"}";
+      _props.hotkey-overlay-title = "${hotkey "#E5C890" "󰇥  Yazi" "File Manager"}";
       spawn = ["ghostty" "--title=yazi" "-e" "yazi"];
     };
     "Ctrl+Space" = {
-      _props.hotkey-overlay-title = "${hotkey "#83C092" "󰗊  Fcitx" "Switch input method"}";
+      _props.hotkey-overlay-title = "${hotkey "#A6D189" "󰗊  Fcitx" "Switch input method"}";
       spawn = ["fcitx5-remote" "-t"];
     };
 
@@ -550,8 +550,8 @@ in {
     debounce-ms = 750;
     open-delay-ms = 150;
     highlight = {
-      active-color = "#88C0D0" + "ff";
-      urgent-color = "#D79784" + "ff";
+      active-color = "#8CAAEE" + "ff";
+      urgent-color = "#EA999C" + "ff";
       padding = 30;
       corner-radius = 10;
     };

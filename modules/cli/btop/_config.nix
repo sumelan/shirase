@@ -1,5 +1,5 @@
 _: {
-  color_theme = "everforest-dark-hard";
+  color_theme = "catppuccin-frappe";
   theme_background = false;
   cpu_single_graph = true;
   # base_10_sizes = true;

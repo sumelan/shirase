@@ -7,9 +7,9 @@ pkgs.writeText "config.yaml"
 (pkgs.lib.generators.toYAML {} {
   # Theming
   font = "Maple Mono NF 14";
-  background = "#384B55" + "d0";
-  color = "#D699B6";
-  border = "#83C092";
+  background = "#51576D" + "BF";
+  color = "#F2D5CF";
+  border = "#99D1DB";
   separator = " ➜ ";
   border_width = 2;
   corner_r = 10;

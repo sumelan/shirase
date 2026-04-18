@@ -10,21 +10,16 @@ config.flake.lib.recursiveMergeAttrsList [
         (pkgs.yaziPlugins)
         full-border
         yatline
+        yatline-catppuccin
         yatline-githead
         ;
-      yatline-everforest = pkgs.fetchFromGitHub {
-        owner = "shvedes";
-        repo = "yatline-everforest.yazi";
-        rev = "c3b6d4a2d64f68d06b8662f5285da14ff3ce369f";
-        hash = "sha256-bRAx4m6W6ciVYaORLC01A+EnttpDjXkq0Fz62PsSr2A=";
-      };
     };
     initLua =
       pkgs.writeText "init.lua"
       # lua
       ''
         require("full-border"):setup({ type = ui.Border.ROUNDED })
-        require("yatline"):setup({ theme = require("yatline-everforest"):setup("dark") })
+        require("yatline"):setup({ theme = require("yatline-catppuccin"):setup("frappe") })
         require("yatline-githead"):setup()
       '';
 

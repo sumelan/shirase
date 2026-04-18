@@ -39,9 +39,19 @@ in {
       };
     };
 
-    gui = {pkgs, ...}: {
+    gui = {pkgs, ...}: let
+      ntv-desktop-entry = pkgs.makeDesktopItem {
+        name = "nix-search-tv";
+        desktopName = "Nix Search TV";
+        genericName = "Fuzzy search for Nix packages";
+        icon = "dev.vlinkz.NixosConfEditor";
+        terminal = true;
+        exec = "ntv";
+      };
+    in {
       hj.packages = [
         pkgs.custom.ntv
+        (hiPrio ntv-desktop-entry)
       ];
     };
   };

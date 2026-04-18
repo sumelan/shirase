@@ -1,9 +1,16 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/home/sumelan/.config/DankMaterialShell/themes/everforest/theme.json",
+  "customThemeFile": "/home/sumelan/.config/DankMaterialShell/themes/catppuccin/theme.json",
   "registryThemeVariants": {
-    "everforest": "hard"
+    "everforest": "hard",
+    "catppuccin": {
+      "dark": {
+        "flavor": "frappe",
+        "accent": "maroon"
+      }
+    },
+    "rosePine": "dawn"
   },
   "matugenScheme": "scheme-tonal-spot",
   "matugenContrast": 0,
@@ -664,7 +671,7 @@
       "currentFilePath": "notepad-files/untitled-1770358666869.txt",
       "currentFileExtension": "txt",
       "sourceContent": "nix",
-      "updatedAt": 1776338768520
+      "updatedAt": 1776485306204
     }
   },
   "clipboardEnterToPaste": false,

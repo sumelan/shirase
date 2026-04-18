@@ -57,6 +57,7 @@ in {
                   ++ config.custom.programs.btop.disks
                 );
               };
+            themes = import ./_theme.nix {};
           };
         })
       ];

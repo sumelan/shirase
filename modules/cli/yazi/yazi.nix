@@ -65,16 +65,18 @@ in {
         yazi = yazi.override {
           settings = recursiveUpdate yazi.passthru.settings {
             theme.flavor = {
-              dark = "everforest-medium";
+              dark = "catppuccin-frappe";
             };
           };
-          flavors = {
-            everforest-medium = pkgs.fetchFromGitHub {
-              owner = "sumelan";
-              repo = "everforest-medium.yazi";
-              rev = "45a125e7753558e70423eb80057acf515e56518d";
-              hash = "sha256-VOIo77m1uO2w43xWqucZxAdj8xQZzrMtNH2z7U10+x8=";
+          flavors = let
+            src = pkgs.fetchFromGitHub {
+              owner = "yazi-rs";
+              repo = "flavors";
+              rev = "06708015bfb53b169d99bb3907829f9175105d57";
+              hash = "sha256-Gm6ThktOLUR+KDs6f3s1WCgrw2TOKQ4tolVvVdCxnCM=";
             };
+          in {
+            catppuccin-frappe = "${src}/catppuccin-frappe.yazi";
           };
         };
       })
