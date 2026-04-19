@@ -1,5 +1,8 @@
 {self, ...}: let
   inherit (builtins) listToAttrs;
+
+  baseZathuraConf = import ./_config.nix {};
+  baseZathuraMappings = import ./_mappigs.nix {};
 in {
   flake.wrappers.zathura = {
     config,
@@ -8,8 +11,8 @@ in {
   }: {
     imports = [wlib.wrapperModules.zathura];
 
-    settings = import ./_config.nix {};
-    mappings = import ./_mappigs.nix {};
+    settings = baseZathuraConf;
+    mappings = baseZathuraMappings;
     plugins = builtins.attrValues {
       inherit
         (config.pkgs.zathuraPkgs)

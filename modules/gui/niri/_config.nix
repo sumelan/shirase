@@ -169,10 +169,10 @@ in {
       draw-border-with-background = false;
       geometry-corner-radius = [10.000000 10.000000 10.000000 10.000000];
       clip-to-geometry = true;
-      # background-effect = {
-      #   blur = true;
-      #   xray = true;
-      # };
+      background-effect = {
+        blur = true;
+        xray = true;
+      };
     }
     # floating and focused
     {
@@ -183,7 +183,10 @@ in {
         };
       };
       focus-ring = {width = 2;};
-      opacity = 0.980000;
+      opacity = 0.880000;
+      background-effect = {
+        xray = false;
+      };
     }
     # floating but not focused
     {
@@ -193,7 +196,10 @@ in {
           is-focused = false;
         };
       };
-      opacity = 0.950000;
+      opacity = 0.650000;
+      background-effect = {
+        xray = false;
+      };
     }
     # not floating but focused
     {
@@ -204,7 +210,7 @@ in {
         };
       };
       focus-ring = {width = 4;};
-      opacity = 0.950000;
+      opacity = 0.850000;
     }
     # not floating nor focused
     {
@@ -214,7 +220,7 @@ in {
           is-focused = false;
         };
       };
-      opacity = 0.900000;
+      opacity = 0.500000;
     }
     # window-cast-target
     {
@@ -299,6 +305,20 @@ in {
         {_props.app-id._raw = ''r#"^.protonvpn-app-wrapped$"#'';}
       ];
       block-out-from = "screen-capture";
+    }
+  ];
+
+  layer-rule = [
+    # wlr-which-key
+    {
+      match = [
+        {_props.namespace._raw = ''r#"^wlr_which_key$"#'';}
+      ];
+      opacity = 0.880000;
+      background-effect = {
+        blur = true;
+        xray = false;
+      };
     }
   ];
 
@@ -676,12 +696,12 @@ in {
     XDG_SESSION_TYPE = "wayland";
   };
 
-  # blur = {
-  #   passes = 3;
-  #   offset = 3.0;
-  #   noise = 0.02;
-  #   saturation = 1.5;
-  # };
+  blur = {
+    passes = 3;
+    offset = 3.0;
+    noise = 0.02;
+    saturation = 1.5;
+  };
 
   include = [
     ["dms/alttab.kdl"]

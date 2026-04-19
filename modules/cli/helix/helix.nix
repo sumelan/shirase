@@ -7,14 +7,14 @@
   baseLangs = pkgs: import ./_languages.nix {inherit lib pkgs;};
 in {
   flake.wrappers.helix = {
+    config,
     wlib,
-    pkgs,
     ...
   }: {
     imports = [wlib.wrapperModules.helix];
 
     settings = baseConfig;
-    languages = baseLangs pkgs;
+    languages = baseLangs (config.pkgs);
   };
 
   flake.modules.nixos.default = {

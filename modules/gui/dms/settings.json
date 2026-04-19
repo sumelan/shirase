@@ -497,7 +497,7 @@
       "enabled": true,
       "fontScale": 1,
       "gothCornerRadiusOverride": true,
-      "gothCornerRadiusValue": 21,
+      "gothCornerRadiusValue": 12,
       "gothCornersEnabled": true,
       "id": "default",
       "innerPadding": 18,
@@ -578,8 +578,8 @@
       "shadowOpacity": 60,
       "showOnLastDisplay": false,
       "spacing": 0,
-      "squareCorners": false,
-      "transparency": 0.75,
+      "squareCorners": true,
+      "transparency": 0.85,
       "visible": true,
       "widgetOutlineColor": "primary",
       "widgetOutlineEnabled": false,
@@ -683,7 +683,7 @@
       "currentFilePath": "notepad-files/untitled-1770358666869.txt",
       "currentFileExtension": "txt",
       "sourceContent": "nix",
-      "updatedAt": 1776513330391
+      "updatedAt": 1776578073280
     }
   },
   "clipboardEnterToPaste": false,

@@ -32,6 +32,7 @@
       description = "Extra config to add to pqiv config file";
     };
   };
+  basePqivConf = config: import ./_config.nix {inherit config;};
 in {
   flake.wrappers.pqiv = {
     config,
@@ -39,7 +40,6 @@ in {
     ...
   }: let
     inherit (wlib.types) file;
-    pqivConf = import ./_config.nix {inherit config;};
   in {
     imports = [wlib.modules.default];
 
@@ -48,7 +48,7 @@ in {
       // {
         pqivrc = mkOption {
           type = file config.pkgs;
-          default.path = pqivConf;
+          default.path = basePqivConf config;
           visible = false;
         };
       };
