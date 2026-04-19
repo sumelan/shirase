@@ -33,17 +33,9 @@
     };
 
     # niri
-    niri-unstable = {
-      url = "github:niri-wm/niri";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     niri-nix = {
       url = "git+https://codeberg.org/BANanaD3V/niri-nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        niri-unstable.follows = "niri-unstable";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # dms-related
