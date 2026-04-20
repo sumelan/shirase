@@ -80,6 +80,7 @@ in {
         };
       };
     };
+
     config.lib.custom.hardware.monitors = {
       mainMonitorName =
         head (filter (name: cfg.${name}.isMain) (attrNames cfg));

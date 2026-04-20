@@ -24,6 +24,7 @@ _: {
         extraConfig = "Defaults passwd_tries=10";
       };
     };
+
     # gnuupg
     programs.gnupg.agent = {
       enable = true;

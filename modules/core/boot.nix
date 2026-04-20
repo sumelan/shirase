@@ -2,9 +2,9 @@
   inherit (lib) mkForce;
 in {
   flake.modules.nixos.common = {pkgs, ...}: {
-    # kernelPackage
+    # kernel
     boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    # boot
+
     # bootloader
     boot.loader = {
       efi = {
@@ -15,6 +15,7 @@ in {
         enable = true;
       };
     };
+
     # boot partition
     fileSystems = {
       "/boot" = {
@@ -23,6 +24,7 @@ in {
         neededForBoot = true;
       };
     };
+
     # misc.
     boot.loader.timeout = 3;
     # faster boot times

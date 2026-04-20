@@ -13,6 +13,7 @@ _: {
     programs.dank-material-shell = {
       enable = true;
       systemd.enable = true;
+
       # greeter
       greeter = {
         enable = true;

@@ -9,6 +9,7 @@ _: {
       enable = true;
       package = pkgs.wireshark; # default value: wireshark-cli
     };
+
     users.users.${user}.extraGroups = ["wireshark"];
 
     custom.fileSystem = {

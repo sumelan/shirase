@@ -60,12 +60,9 @@ in {
     touch = {map-to-output = "DSI-1";};
   };
 
-  cursor = let
-    cursorName = config.custom.gtk.cursor.name;
-    cursorSize = config.custom.gtk.cursor.size;
-  in {
-    xcursor-theme = cursorName;
-    xcursor-size = cursorSize;
+  cursor = {
+    xcursor-theme = config.custom.gtk.cursor.name;
+    xcursor-size = config.custom.gtk.cursor.size;
     hide-when-typing = [];
     hide-after-inactive-ms = 1000;
   };
@@ -259,6 +256,7 @@ in {
       match = [
         {_props.app-id._raw = ''r#"^.blueman-manager-wrapped$"#'';}
         {_props.app-id._raw = ''r#"^com.github.wwmm.easyeffects$"#'';}
+        # helium extension's windows
         {_props.app-id._raw = ''r#"^chrome-"#'';}
         {_props.app-id._raw = ''r#"^com.saivert.pwvucontrol$"#'';}
         {_props.app-id._raw = ''r#"^org.kde.kdeconnect-indicator$"#'';}
@@ -269,13 +267,13 @@ in {
     # windows wanted to be floating and not transparent
     {
       match = [
-        {_props.app-id._raw = ''r#"^com.gabm.satty$"#'';}
-        {_props.app-id._raw = ''r#"^mpv$"#'';}
         {_props.title._raw = ''r#"^Picture-in-Picture$"#'';}
         {_props.title._raw = ''r#"^ピクチャーインピクチャー$"#'';}
         {_props.title._raw = ''r#"^ピクチャー イン ピクチャー$"#'';}
-        {_props.app-id._raw = ''r#"^Pqiv$"#'';}
+        {_props.app-id._raw = ''r#"^mpv$"#'';}
         {_props.app-id._raw = ''r#"^vlc$"#'';}
+        {_props.app-id._raw = ''r#"^com.gabm.satty$"#'';}
+        {_props.app-id._raw = ''r#"^Pqiv$"#'';}
       ];
       open-floating = true;
       opacity = 1.000000;
@@ -295,6 +293,15 @@ in {
       ];
       open-floating = true;
       block-out-from = "screen-capture";
+
+      popups = {
+        geometry-corner-radius = 15;
+        opacity = 0.800000;
+        background-effect = {
+          blur = true;
+          xray = false;
+        };
+      };
     }
     # windows wanted not to be shown on screen-capture
     {
@@ -608,7 +615,9 @@ in {
     window-open = {
       duration-ms = 500;
       curve = "linear";
-      custom-shader = "
+      custom-shader =
+        # glsl
+        "
         vec4 open_color(vec3 coords_geo, vec3 size_geo) {
             vec3 coords_tex = niri_geo_to_tex * coords_geo;
             vec4 color = texture2D(niri_tex, coords_tex.st);
@@ -637,7 +646,9 @@ in {
     window-close = {
       duration-ms = 500;
       curve = "linear";
-      custom-shader = "
+      custom-shader =
+        # glsl
+        "
         vec4 close_color(vec3 coords_geo, vec3 size_geo) {
             vec3 coords_tex = niri_geo_to_tex * coords_geo;
             vec4 color = texture2D(niri_tex, coords_tex.st);

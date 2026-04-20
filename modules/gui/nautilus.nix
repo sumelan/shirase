@@ -63,7 +63,7 @@ in {
           "${homeDir}/Downloads"
         ]
         ++ [
-          "${dotfile} Shirase"
+          "${dotfile} Flake"
           "/persist Persist"
         ];
     };

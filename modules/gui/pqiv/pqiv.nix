@@ -1,8 +1,4 @@
-{
-  lib,
-  self,
-  ...
-}: let
+{lib, ...}: let
   inherit (builtins) listToAttrs;
   inherit (lib) mkOption mkDefault hiPrio;
   inherit (lib.types) lines;
