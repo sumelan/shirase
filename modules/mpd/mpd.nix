@@ -59,6 +59,7 @@ in {
           User = user;
           Group = "users";
           Restart = "on-failure";
+          # avoid race condition
           ExecStartPre = getExe' pkgs.coreutils "sleep 5s";
           ExecStart = "${getExe pkgs.mpdris2-rs} --host ${cfg.settings.bind_to_address}";
         };

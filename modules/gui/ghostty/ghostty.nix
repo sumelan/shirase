@@ -41,6 +41,10 @@ in {
         };
       };
 
+    config.filesToPatch = [
+      "share/dbus-1/services/com.mitchellh.ghostty.service"
+      "share/systemd/user/app-com.mitchellh.ghostty.service"
+    ];
     config.package = mkDefault config.pkgs.ghostty;
     config.flags = {
       "--config-file" = toString config."ghostty.conf".path;

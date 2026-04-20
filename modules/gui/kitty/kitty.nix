@@ -20,6 +20,8 @@
 
   baseKittyConf = import ./_config.nix {};
 in {
+  # `wlib.wrapperModules.kitty` is just something form home-manager repo
+  # so i rewrite modules derived from Lassulus/wrappers
   flake.wrappers.kitty = {
     config,
     wlib,

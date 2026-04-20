@@ -46,6 +46,8 @@ in {
       };
     };
   in {
+    # `wlib.wrapperModules.foot` is incorrect
+    # so i rewrite something derived from Lassulus/wrappers
     imports = [wlib.modules.default];
 
     options =
