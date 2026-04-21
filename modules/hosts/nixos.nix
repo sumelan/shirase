@@ -7,8 +7,6 @@
   inherit (inputs) nixpkgs;
   inherit (config) flake;
   defaultMods = [
-    inputs.dankMaterialShell.nixosModules.dank-material-shell
-    inputs.dankMaterialShell.nixosModules.greeter
     inputs.hjem.nixosModules.default
     inputs.impermanence.nixosModules.impermanence
     inputs.niri-nix.nixosModules.default

@@ -3,35 +3,29 @@ _: {
     config,
     user,
     ...
-  }: let
-    dmsConf = "${config.hj.xdg.config.directory}/niri/dms";
-  in {
+  }: {
     # tty autologin
     services.getty.autologinUser = user;
 
-    # dms
-    programs.dank-material-shell = {
+    # dms-related
+    programs.dms-shell = {
       enable = true;
       systemd.enable = true;
+    };
 
-      # greeter
-      greeter = {
-        enable = true;
-        compositor.name = "niri";
-        # User home directory to copy configurations for greeter
-        # If DMS config files are in non-standard locations then use the configFiles option instead
-        configHome = "/home/${user}";
-        configFiles = [
-          "/home/${user}/.config/DankMaterialShell/settings.json"
-        ];
-        logs = {
-          save = true;
-          path = "/tmp/dms-greeter.log";
-        };
+    services.displayManager.dms-greeter = {
+      enable = true;
+      compositor.name = "niri";
+      configHome = config.hj.directory;
+      logs = {
+        save = true;
+        path = "/tmp/dms-greeter.log";
       };
     };
 
-    systemd.user = {
+    systemd.user = let
+      dmsConf = "${config.hj.xdg.config.directory}/niri/dms";
+    in {
       tmpfiles.rules = [
         # create dms kdl files if not existed
         "f ${dmsConf}/alttab.kdl 644 ${user} users - -"

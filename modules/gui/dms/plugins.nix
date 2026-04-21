@@ -21,14 +21,6 @@ in {
         value = {
           dankBatteryAlerts = {
             enabled = true;
-            enableWarningAlert = true;
-            warningThreshold = 20;
-            warningTitle = "Low Battery";
-            warningMessage = "Battery at \${level}% - Consider charging soon";
-            enableCriticalAlert = true;
-            criticalThreshold = 10;
-            criticalTitle = "Critical Battery Level";
-            criticalMessage = "Battery at \${level}% - Connect charger immediately!";
           };
           dankKDEConnect = {
             enabled = true;
