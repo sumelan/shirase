@@ -5,6 +5,7 @@
 }: let
   baseConfig = import ./_config.nix {};
   baseLangs = pkgs: import ./_languages.nix {inherit lib pkgs;};
+  baseThemes = import ./_themes.nix {};
 in {
   flake.wrappers.helix = {
     config,
@@ -30,6 +31,8 @@ in {
           settings =
             baseConfig
             // {
+              # custom-theme
+              theme = "catppuccinFrappe";
               # use yazi as file tree picker
               # https://yazi-rs.github.io/docs/tips/#helix
               keys.normal = {
@@ -57,6 +60,7 @@ in {
                 };
               };
             };
+          themes = baseThemes;
         };
       })
     ];

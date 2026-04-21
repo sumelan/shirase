@@ -41,15 +41,17 @@ in {
         };
       };
 
-    config.filesToPatch = [
-      "share/dbus-1/services/com.mitchellh.ghostty.service"
-      "share/systemd/user/app-com.mitchellh.ghostty.service"
-    ];
-    config.package = mkDefault config.pkgs.ghostty;
-    config.flags = {
-      "--config-file" = toString config."ghostty.conf".path;
+    config = {
+      filesToPatch = [
+        "share/dbus-1/services/com.mitchellh.ghostty.service"
+        "share/systemd/user/app-com.mitchellh.ghostty.service"
+      ];
+      package = mkDefault config.pkgs.ghostty;
+      flags = {
+        "--config-file" = toString config."ghostty.conf".path;
+      };
+      flagSeparator = "=";
     };
-    config.flagSeparator = "=";
   };
 
   flake.modules.nixos.gui = {

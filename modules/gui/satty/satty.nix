@@ -13,7 +13,6 @@ in {
     wlib,
     ...
   }: let
-    inherit (wlib.types) file;
     tomlFormat = config.pkgs.formats.toml {};
     sattyOptions = {
       extraSettings = mkOption {
@@ -37,7 +36,7 @@ in {
       sattyOptions
       // {
         "satty.toml" = mkOption {
-          type = file config.pkgs;
+          type = wlib.types.file config.pkgs;
           default.path = tomlFormat.generate "satty.toml" (baseSattyConf // config.extraSettings);
           visible = false;
         };

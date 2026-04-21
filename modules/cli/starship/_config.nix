@@ -158,7 +158,7 @@ in
       ssh_only = true;
       ssh_symbol = "󰁥 ";
       format = "[](fg:green)[ $ssh_symbol$hostname ]($style)[](fg:green)";
-      style = "bg:green fg:rosewater";
+      style = "bg:green fg:crust";
     };
 
     # Languages

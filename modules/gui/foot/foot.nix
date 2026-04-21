@@ -33,8 +33,7 @@ in {
     wlib,
     ...
   }: let
-    inherit (wlib.types) file;
-    inherit ((iniFmt (config.pkgs)).lib.types) atom;
+    inherit ((iniFmt config.pkgs).lib.types) atom;
     footOptions = {
       extraSettings = mkOption {
         type = attrsOf (oneOf [atom (attrsOf atom)]);
@@ -54,8 +53,8 @@ in {
       footOptions
       // {
         "foot.ini" = mkOption {
-          type = file config.pkgs;
-          default.path = (iniFmt (config.pkgs)).generate "foot.ini" {
+          type = wlib.types.file config.pkgs;
+          default.path = (iniFmt config.pkgs).generate "foot.ini" {
             globalSection = filterAttrs (_name: value: typeOf value != "set") (baseFootConf // config.extraSettings);
             sections = filterAttrs (_name: value: typeOf value == "set") (baseFootConf // config.extraSettings);
           };

@@ -34,16 +34,14 @@ in {
     config,
     wlib,
     ...
-  }: let
-    inherit (wlib.types) file;
-  in {
+  }: {
     imports = [wlib.modules.default];
 
     options =
       pqivOptions
       // {
         pqivrc = mkOption {
-          type = file config.pkgs;
+          type = wlib.types.file config.pkgs;
           default.path = basePqivConf config;
           visible = false;
         };
