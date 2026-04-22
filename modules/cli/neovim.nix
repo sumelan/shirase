@@ -36,17 +36,6 @@ in {
         pkgs.custom.nvf
         (hiPrio nvim-desktop-entry)
       ];
-
-      xdg.mime-apps = {
-        default-applications = {
-          "text/plain" = "nvim.desktop";
-          "application/x-shellscript" = "nvim.desktop";
-          "application/xml" = "nvim.desktop";
-        };
-        added-associations = {
-          "text/csv" = "nvim.desktop";
-        };
-      };
     };
 
     custom.fileSystem = {

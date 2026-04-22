@@ -72,6 +72,17 @@ in {
       packages = [
         pkgs.helix # overlay-ed above
       ];
+
+      xdg.mime-apps = {
+        default-applications = {
+          "text/plain" = "helix.desktop";
+          "application/x-shellscript" = "helix.desktop";
+          "application/xml" = "helix.desktop";
+        };
+        added-associations = {
+          "text/csv" = "helix.desktop";
+        };
+      };
     };
 
     custom = {

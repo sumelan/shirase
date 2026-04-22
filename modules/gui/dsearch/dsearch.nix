@@ -1,4 +1,4 @@
-_: {
+{inputs, ...}: {
   flake.modules.nixos.gui = {
     config,
     pkgs,
@@ -6,6 +6,7 @@ _: {
   }: {
     programs.dsearch = {
       enable = true;
+      package = inputs.dsearch.packages.${pkgs.stdenv.hostPlatform.system}.default;
       systemd.enable = true;
     };
 

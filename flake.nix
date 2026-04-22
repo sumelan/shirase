@@ -38,6 +38,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # dms-related
+    dankMaterialShell = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "";
+      };
+    };
+
+    dsearch = {
+      url = "github:AvengeMedia/danksearch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # misc
     impermanence = {
       url = "github:nix-community/impermanence";
