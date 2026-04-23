@@ -76,6 +76,7 @@ in {
                 command = "SHELL=${fishPath} fish";
                 # font
                 font-family = config.custom.fonts.monospace;
+                font-size = 14;
                 # color theme
                 theme = "Catppuccin Frappe";
               }

@@ -1,19 +1,8 @@
 {lib, ...}: let
-  inherit
-    (builtins)
-    head
-    filter
-    attrNames
-    ;
+  inherit (builtins) head filter attrNames;
   inherit (lib) mkOption;
-  inherit
-    (lib.types)
-    bool
-    attrsOf
-    float
-    int
-    submodule
-    ;
+  inherit (lib.types) bool attrsOf float int submodule;
+
   monitor = submodule {
     options = {
       isMain = mkOption {

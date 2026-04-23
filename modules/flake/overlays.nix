@@ -19,7 +19,7 @@ in {
       ];
     };
   in {
-    # initialize the pkgs for perSystem to be the patched nixpkgs
+    # initialize the pkgs for perSystem to be the nixpkgs
     _module.args = {inherit pkgs;};
 
     formatter = pkgs.alejandra;

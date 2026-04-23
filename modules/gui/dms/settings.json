@@ -16,7 +16,7 @@
   "matugenContrast": 0,
   "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "HDMI-A-1",
-  "popupTransparency": 1,
+  "popupTransparency": 0.95,
   "dockTransparency": 0.85,
   "widgetBackgroundColor": "sch",
   "widgetColorMode": "default",
@@ -572,12 +572,15 @@
         }
       ],
       "screenPreferences": [
-        "all"
+        {
+          "name": "HDMI-A-1",
+          "model": "LG HDR 4K"
+        }
       ],
       "shadowColorMode": "default",
       "shadowIntensity": 0,
       "shadowOpacity": 60,
-      "showOnLastDisplay": false,
+      "showOnLastDisplay": true,
       "spacing": 0,
       "squareCorners": true,
       "transparency": 0.85,
@@ -684,7 +687,7 @@
       "currentFilePath": "notepad-files/untitled-1770358666869.txt",
       "currentFileExtension": "txt",
       "sourceContent": "nix",
-      "updatedAt": 1776854141392
+      "updatedAt": 1776930188146
     }
   },
   "clipboardEnterToPaste": false,

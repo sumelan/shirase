@@ -180,7 +180,7 @@ in {
         };
       };
       focus-ring = {width = 2;};
-      opacity = 0.880000;
+      opacity = 0.850000;
       background-effect = {
         xray = false;
       };
@@ -207,7 +207,7 @@ in {
         };
       };
       focus-ring = {width = 4;};
-      opacity = 0.850000;
+      opacity = 0.820000;
     }
     # not floating nor focused
     {
@@ -244,7 +244,7 @@ in {
         softness = 20;
         spread = 10;
         draw-behind-window = false;
-        color = "#ECEFF490";
+        color = "#ECEFF4" + "90";
       };
       tab-indicator = {
         active-color = "#EA999C";
@@ -316,6 +316,13 @@ in {
   ];
 
   layer-rule = [
+    # dms: block out sensitive components from screen-capture
+    {
+      match = [
+        {_props.namespace._raw = ''r#"^dms:clipboard$"#'';}
+      ];
+      block-out-from = "screen-capture";
+    }
     # wlr-which-key
     {
       match = [
@@ -337,15 +344,6 @@ in {
 
   binds = let
     hotkey = color: name: text: ''<span foreground='${color}'>[${name}]</span> ${text}'';
-
-    mkMenu = menu: let
-      config = import ./wlr-which-key/_config.nix {inherit pkgs menu;};
-    in
-      pkgs.writeShellScriptBin "mkMenu" ''
-        exec ${getExe pkgs.wlr-which-key} ${config}
-      '';
-    niriKey = mkMenu (import ./wlr-which-key/_niriMenu.nix);
-    dmsKey = mkMenu (import ./wlr-which-key/_dmsMenu.nix);
   in {
     # dms
     "Mod+Space" = {
@@ -366,7 +364,7 @@ in {
     };
     "Mod+D" = {
       _props.hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Command"}";
-      spawn = ["${getExe dmsKey}"];
+      spawn = ["wlr-which-key" "--initial-keys" "d"];
     };
     "Mod+Comma" = {
       _props.hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Settings"}";
@@ -433,7 +431,7 @@ in {
     };
     "Mod+Shift+D" = {
       _props.hotkey-overlay-title = "${hotkey "#EA999C" "󰗢  niri" "Command"}";
-      spawn = ["${getExe niriKey}"];
+      spawn = ["wlr-which-key" "--initial-keys" "n"];
     };
     "Mod+Shift+N" = {
       _props.hotkey-overlay-title = "${hotkey "#8CAAEE" "󱄅  Nix Search" "Nix Package"}";
@@ -581,8 +579,8 @@ in {
     debounce-ms = 750;
     open-delay-ms = 150;
     highlight = {
-      active-color = "#8CAAEE" + "ff";
-      urgent-color = "#EA999C" + "ff";
+      active-color = "#8CAAEE" + "FF";
+      urgent-color = "#EA999C" + "FF";
       padding = 30;
       corner-radius = 10;
     };
