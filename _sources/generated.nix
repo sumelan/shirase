@@ -6,6 +6,18 @@
   dockerTools,
 }:
 {
+  dms-display-mirror = {
+    pname = "dms-display-mirror";
+    version = "92cd44c4fb67834bf71fdd78f83c29df5e0750b2";
+    src = fetchFromGitHub {
+      owner = "jfchenier";
+      repo = "dms-display-mirror";
+      rev = "92cd44c4fb67834bf71fdd78f83c29df5e0750b2";
+      fetchSubmodules = false;
+      sha256 = "sha256-JX3pDZ1F5Uu/rOdA4KMhcwH8a6gxsTZjwgcZxNV/Ngc=";
+    };
+    date = "2025-11-09";
+  };
   dms-plugins = {
     pname = "dms-plugins";
     version = "829922a8f11949b1c13ae8bd14d7176f9165b6f5";
@@ -17,6 +29,18 @@
       sha256 = "sha256-KYx+n1stxLT4R9IDVRx3/Cl7TjCcBZjnQchbrXaBT2o=";
     };
     date = "2026-04-16";
+  };
+  dms-screen-recorder = {
+    pname = "dms-screen-recorder";
+    version = "7206b590d69a165d30b5bbb66b033f1a15b49aff";
+    src = fetchFromGitHub {
+      owner = "arqueon";
+      repo = "dms-screen-recorder";
+      rev = "7206b590d69a165d30b5bbb66b033f1a15b49aff";
+      fetchSubmodules = false;
+      sha256 = "sha256-ndH8KHH+gzFIXWceqeUmy/w7oGj7ZvCEIacBfV1D+KU=";
+    };
+    date = "2026-04-02";
   };
   helium = {
     pname = "helium";

@@ -1,4 +1,25 @@
 {
+    "dms-display-mirror": {
+        "cargoLock": null,
+        "date": "2025-11-09",
+        "extract": null,
+        "name": "dms-display-mirror",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "jfchenier",
+            "repo": "dms-display-mirror",
+            "rev": "92cd44c4fb67834bf71fdd78f83c29df5e0750b2",
+            "sha256": "sha256-JX3pDZ1F5Uu/rOdA4KMhcwH8a6gxsTZjwgcZxNV/Ngc=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "92cd44c4fb67834bf71fdd78f83c29df5e0750b2"
+    },
     "dms-plugins": {
         "cargoLock": null,
         "date": "2026-04-16",
@@ -19,6 +40,27 @@
             "type": "github"
         },
         "version": "829922a8f11949b1c13ae8bd14d7176f9165b6f5"
+    },
+    "dms-screen-recorder": {
+        "cargoLock": null,
+        "date": "2026-04-02",
+        "extract": null,
+        "name": "dms-screen-recorder",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "arqueon",
+            "repo": "dms-screen-recorder",
+            "rev": "7206b590d69a165d30b5bbb66b033f1a15b49aff",
+            "sha256": "sha256-ndH8KHH+gzFIXWceqeUmy/w7oGj7ZvCEIacBfV1D+KU=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "7206b590d69a165d30b5bbb66b033f1a15b49aff"
     },
     "helium": {
         "cargoLock": null,

@@ -16,8 +16,8 @@
   "matugenContrast": 0,
   "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "HDMI-A-1",
-  "popupTransparency": 0.95,
-  "dockTransparency": 0.85,
+  "popupTransparency": 0.75,
+  "dockTransparency": 0.8,
   "widgetBackgroundColor": "sch",
   "widgetColorMode": "default",
   "controlCenterTileColorMode": "primary",
@@ -57,7 +57,7 @@
   "modalElevationEnabled": true,
   "popoutElevationEnabled": true,
   "barElevationEnabled": false,
-  "blurEnabled": false,
+  "blurEnabled": true,
   "blurBorderColor": "outline",
   "blurBorderCustomColor": "#ffffff",
   "blurBorderOpacity": 1,
@@ -113,12 +113,12 @@
     },
     {
       "enabled": true,
-      "id": "wifi",
+      "id": "bluetooth",
       "width": 50
     },
     {
+      "id": "plugin_displayMirror",
       "enabled": true,
-      "id": "bluetooth",
       "width": 50
     },
     {
@@ -403,7 +403,7 @@
   "maxFprintTries": 3,
   "enableU2f": false,
   "u2fMode": "or",
-  "lockScreenActiveMonitor": "all",
+  "lockScreenActiveMonitor": "HDMI-A-1",
   "lockScreenInactiveColor": "#191D24",
   "lockScreenNotificationMode": 1,
   "lockScreenVideoEnabled": false,
@@ -467,6 +467,16 @@
         "off": true
       },
       "layout": null
+    },
+    "LG Electronics LG HDR 4K 0x000382AB": {
+      "focusAtStartup": true,
+      "hotCorners": null
+    },
+    "PNP(CYS) ASM-101QH 0x01010101": {
+      "disabled": false,
+      "hotCorners": {
+        "off": true
+      }
     }
   },
   "hyprlandOutputSettings": {},
@@ -538,44 +548,45 @@
       "position": 2,
       "rightWidgets": [
         {
-          "enabled": true,
-          "id": "notificationButton"
+          "id": "notificationButton",
+          "enabled": true
         },
         {
-          "enabled": true,
-          "id": "dankKDEConnect"
+          "id": "screenRecorder",
+          "enabled": true
         },
         {
-          "enabled": true,
+          "id": "dankKDEConnect",
+          "enabled": true
+        },
+        {
           "id": "controlCenterButton",
-          "showAudioIcon": true,
-          "showAudioPercent": false,
-          "showBatteryIcon": false,
+          "enabled": true,
+          "showNetworkIcon": false,
           "showBluetoothIcon": true,
+          "showAudioIcon": true,
+          "showAudioPercent": true,
+          "showVpnIcon": false,
           "showBrightnessIcon": false,
           "showBrightnessPercent": false,
           "showMicIcon": false,
           "showMicPercent": false,
-          "showNetworkIcon": true,
+          "showBatteryIcon": false,
           "showPrinterIcon": false,
-          "showScreenSharingIcon": true,
-          "showVpnIcon": false
+          "showScreenSharingIcon": true
         },
         {
-          "enabled": true,
-          "id": "battery"
+          "id": "battery",
+          "enabled": true
         },
         {
-          "clockCompactMode": false,
+          "id": "clock",
           "enabled": true,
-          "id": "clock"
+          "clockCompactMode": false
         }
       ],
       "screenPreferences": [
-        {
-          "name": "HDMI-A-1",
-          "model": "LG HDR 4K"
-        }
+        "all"
       ],
       "shadowColorMode": "default",
       "shadowIntensity": 0,
@@ -583,7 +594,7 @@
       "showOnLastDisplay": true,
       "spacing": 0,
       "squareCorners": true,
-      "transparency": 0.85,
+      "transparency": 0.8,
       "visible": true,
       "widgetOutlineColor": "primary",
       "widgetOutlineEnabled": false,
@@ -687,10 +698,10 @@
       "currentFilePath": "notepad-files/untitled-1770358666869.txt",
       "currentFileExtension": "txt",
       "sourceContent": "nix",
-      "updatedAt": 1776930188146
+      "updatedAt": 1777019972526
     }
   },
-  "clipboardEnterToPaste": false,
+  "clipboardEnterToPaste": true,
   "launcherPluginVisibility": {},
   "launcherPluginOrder": [],
   "configVersion": 5

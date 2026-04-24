@@ -2,6 +2,14 @@
 src.git = "https://github.com/AvengeMedia/dms-plugins"
 fetch.github = "AvengeMedia/dms-plugins"
 
+[dms-screen-recorder]
+src.git = "https://github.com/arqueon/dms-screen-recorder"
+fetch.github = "arqueon/dms-screen-recorder"
+
+[dms-display-mirror]
+src.git = "https://github.com/jfchenier/dms-display-mirror"
+fetch.github = "jfchenier/dms-display-mirror"
+
 [helium]
 src.github_tag = "imputnet/helium-linux"
 fetch.url = "https://github.com/imputnet/helium-linux/releases/download/$ver/helium-$ver-x86_64.AppImage"

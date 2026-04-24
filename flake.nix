@@ -39,11 +39,17 @@
     };
 
     # dms-related
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     dankMaterialShell = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "";
+        quickshell.follows = "quickshell";
       };
     };
 

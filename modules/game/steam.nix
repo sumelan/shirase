@@ -1,5 +1,9 @@
 _: {
-  flake.modules.nixos.steam = _: {
+  flake.modules.nixos.steam = {pkgs, ...}: {
+    environment.systemPackages = [
+      pkgs.adwsteamgtk
+    ];
+
     # To get Steam games working with monado on NixOS,
     # use below as launch options on steam and, if prompted, choose the SteamVR launch option.
     # env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc %command%
@@ -9,9 +13,11 @@ _: {
       dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
       localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
     };
+
     hardware = {
       graphics.enable32Bit = true;
     };
+
     custom.fileSystem = {
       persist.home.directories = [".steam"];
       cache.home.directories = [
