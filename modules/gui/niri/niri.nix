@@ -39,7 +39,7 @@ in {
     hj.xdg.config.files = let
       inherit (config.programs.niri) package;
     in {
-      "niri/config.kdl".text = validatedConfigFor package (mkNiriKDL niriCfg);
+      "niri/config.kdl".source = validatedConfigFor package (mkNiriKDL niriCfg);
     };
   };
 }
