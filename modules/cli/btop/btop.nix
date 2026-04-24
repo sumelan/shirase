@@ -45,18 +45,17 @@ in {
               inherit (config.custom.programs.btop) cudaSupport;
               inherit (config.custom.programs.btop) rocmSupport;
             };
-            settings =
-              baseBtopConf
-              // {
-                disks_filter = concatStringsSep " " (
-                  [
-                    "/"
-                    "/boot"
-                    "/persist"
-                  ]
-                  ++ config.custom.programs.btop.disks
-                );
-              };
+            # add extra settings
+            settings = {
+              disks_filter = concatStringsSep " " (
+                [
+                  "/"
+                  "/boot"
+                  "/persist"
+                ]
+                ++ config.custom.programs.btop.disks
+              );
+            };
             themes = import ./_theme.nix {};
           };
         })

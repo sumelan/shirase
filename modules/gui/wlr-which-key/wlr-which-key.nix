@@ -17,6 +17,7 @@ in {
       (_: prev: {
         wlr-which-key = self.wrappers.wlr-which-key.wrap {
           pkgs = prev;
+          # add extra settings
           settings = {
             font = config.custom.fonts.monospace + " 14";
           };
@@ -28,12 +29,6 @@ in {
       pkgs.wlr-which-key # overlay-ed above
     ];
 
-    custom.programs.print-config = let
-      confPath = pkgs.wlr-which-key.configuration.constructFiles.cfg.outPath;
-    in {
-      wlr-which-key =
-        # sh
-        ''moor --lang yaml ${confPath}'';
-    };
+    # print-config is broken due to yaml format
   };
 }

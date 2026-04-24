@@ -6,38 +6,38 @@
   inherit (builtins) listToAttrs;
   inherit (lib) mkOption mkDefault;
 
+  tomlFmt = pkgs: pkgs.formats.toml {};
+
+  sattyOptions = pkgs: {
+    extraSettings = mkOption {
+      inherit (tomlFmt pkgs) type;
+      default = {};
+      example = {
+        fullscreen = false;
+        early-exit = true;
+      };
+      description = ''
+        Options to add to {file}`satty.toml` file.
+        See <https://github.com/Satty-org/Satty?tab=readme-ov-file#configuration-file>
+        for options.
+      '';
+    };
+  };
   baseSattyConf = import ./_config.nix {};
 in {
   flake.wrappers.satty = {
     config,
     wlib,
     ...
-  }: let
-    tomlFormat = config.pkgs.formats.toml {};
-    sattyOptions = {
-      extraSettings = mkOption {
-        inherit (tomlFormat) type;
-        default = {};
-        example = {
-          fullscreen = false;
-          early-exit = true;
-        };
-        description = ''
-          Options to add to {file}`satty.toml` file.
-          See <https://github.com/Satty-org/Satty?tab=readme-ov-file#configuration-file>
-          for options.
-        '';
-      };
-    };
-  in {
+  }: {
     imports = [wlib.modules.default];
 
     options =
-      sattyOptions
+      sattyOptions config.pkgs
       // {
         "satty.toml" = mkOption {
           type = wlib.types.file config.pkgs;
-          default.path = tomlFormat.generate "satty.toml" (baseSattyConf // config.extraSettings);
+          default.path = (tomlFmt config.pkgs).generate "satty.toml" (baseSattyConf // config.extraSettings);
           visible = false;
         };
       };
@@ -53,26 +53,10 @@ in {
     pkgs,
     ...
   }: let
-    tomlFormat = pkgs.formats.toml {};
     pictures = "${config.hj.directory}/Pictures";
-    sattyOptions = {
-      extraSettings = mkOption {
-        inherit (tomlFormat) type;
-        default = {};
-        example = {
-          fullscreen = false;
-          early-exit = true;
-        };
-        description = ''
-          Options to add to {file}`satty.toml` file.
-          See <https://github.com/Satty-org/Satty?tab=readme-ov-file#configuration-file>
-          for options.
-        '';
-      };
-    };
   in {
     options.custom = {
-      programs.satty = sattyOptions;
+      programs.satty = sattyOptions pkgs;
     };
 
     config = {
