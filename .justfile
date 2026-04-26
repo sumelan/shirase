@@ -31,11 +31,13 @@ sourceDir := "_sources"
 [group('REBUILD')]
 [doc('`nh os test`.')]
 @test *args:
+    git add -A
     nh os test {{ args }}
 
 [group('REBUILD')]
 [doc('`nh os switch`.')]
 @switch *args:
+    git add -A
     nh os switch {{ args }}
 
 [group('REPL')]

@@ -1,4 +1,10 @@
-{self, ...}: let
+{
+  lib,
+  self,
+  ...
+}: let
+  inherit (lib) concatStringsSep;
+
   baseWlrConf = import ./_config.nix {};
 in {
   flake.wrappers.wlr-which-key = {wlib, ...}: {
@@ -19,7 +25,12 @@ in {
           pkgs = prev;
           # add extra settings
           settings = {
-            font = config.custom.fonts.monospace + " 14";
+            font = concatStringsSep " " [
+              config.custom.fonts.monospace
+              "Bold"
+              "Italic"
+              "14"
+            ];
           };
         };
       })

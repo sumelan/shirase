@@ -358,12 +358,11 @@ in {
       _props.hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Powermenu"}";
       spawn = ["dms" "ipc" "powermenu" "toggle"];
     };
-    "Mod+N" = {
-      _props.hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Notepad"}";
-      spawn = ["dms" "ipc" "notepad" "toggle"];
-    };
     "Mod+D" = {
-      _props.hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Command"}";
+      _props = {
+        cooldown-ms = 500;
+        hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Command"}";
+      };
       spawn = ["wlr-which-key" "--initial-keys" "d"];
     };
     "Mod+Comma" = {
@@ -429,13 +428,20 @@ in {
       _props.hotkey-overlay-title = "${hotkey "#8CAAEE" "󰖟  Helium" "Web Browser"}";
       spawn-sh = ["helium &"];
     };
-    "Mod+Shift+D" = {
-      _props.hotkey-overlay-title = "${hotkey "#EA999C" "󰗢  niri" "Command"}";
+    "Mod+N" = {
+      _props = {
+        cooldown-ms = 500;
+        hotkey-overlay-title = "${hotkey "#EA999C" "󰗢  niri" "Command"}";
+      };
       spawn = ["wlr-which-key" "--initial-keys" "n"];
     };
     "Mod+Shift+N" = {
       _props.hotkey-overlay-title = "${hotkey "#8CAAEE" "󱄅  Nix Search" "Nix Package"}";
       spawn = ["ghostty" "--gtk-single-instance=true" "--class=dev.vlinkz.NixosConfEditor" "-e" "ntv"];
+    };
+    "Mod+V" = {
+      _props.hotkey-overlay-title = "${hotkey "#BABBF1" "  Discord" "Discord Client"}";
+      spawn = ["vesktop"];
     };
     "Mod+Shift+Y" = {
       _props.hotkey-overlay-title = "${hotkey "#E5C890" "󰇥  Yazi" "File Manager"}";
