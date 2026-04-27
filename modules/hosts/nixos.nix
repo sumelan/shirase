@@ -65,10 +65,10 @@ in {
       extraMods = attrValues {
         inherit
           (inputs.nixos-hardware.nixosModules)
-          common-pc
-          common-pc-ssd
           common-cpu-amd
+          common-cpu-amd-pstate
           common-gpu-amd
+          common-pc-ssd
           ;
       };
     };

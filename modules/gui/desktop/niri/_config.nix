@@ -182,7 +182,7 @@ in {
       focus-ring = {width = 2;};
       opacity = 0.850000;
       background-effect = {
-        xray = false;
+        xray = true;
       };
     }
     # floating but not focused
@@ -331,7 +331,7 @@ in {
       opacity = 0.880000;
       background-effect = {
         blur = true;
-        xray = false;
+        xray = true;
       };
     }
   ];

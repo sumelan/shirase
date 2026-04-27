@@ -1,4 +1,7 @@
 _: {
+  # custom-theme
+  theme = "catppuccinFrappe";
+
   editor = {
     line-number = "relative";
     bufferline = "multiple";

@@ -9,5 +9,5 @@ _: {
   adjust-cursor-thickness = 4;
   cursor-style-blink = true;
   font-size = 14;
-  window-decoration = false;
+  window-decoration = "none";
 }

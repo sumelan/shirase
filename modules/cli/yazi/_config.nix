@@ -14,14 +14,19 @@ config.flake.lib.recursiveMergeAttrsList [
         yatline-githead
         ;
     };
-    initLua =
-      pkgs.writeText "init.lua"
-      # lua
-      ''
-        require("full-border"):setup({ type = ui.Border.ROUNDED })
-        require("yatline"):setup({ theme = require("yatline-catppuccin"):setup("frappe") })
-        require("yatline-githead"):setup()
-      '';
+
+    constructFiles = {
+      init = {
+        relPath = "yazi-config/init.lua";
+        content =
+          # lua
+          ''
+            require("full-border"):setup({ type = ui.Border.ROUNDED })
+            require("yatline"):setup({ theme = require("yatline-catppuccin"):setup("frappe") })
+            require("yatline-githead"):setup()
+          '';
+      };
+    };
 
     settings = {
       yazi = {

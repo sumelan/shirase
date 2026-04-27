@@ -43,7 +43,7 @@ sourceDir := "_sources"
 [group('REPL')]
 [doc('Start repl.')]
 @repl:
-    nix repl .
+    nh os repl
 
 [group('UPDATE')]
 [doc('Update a specific input in the flake.')]

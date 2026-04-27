@@ -1,31 +1,22 @@
 {
+  inputs,
   config,
-  lib,
   ...
 }: let
   inherit (builtins) attrValues;
-  inherit (lib) recursiveUpdate getExe;
 in {
   perSystem = {pkgs, ...}: let
     baseYaziConf = import ./_config.nix {inherit config pkgs;};
   in {
-    packages.yazi =
-      (pkgs.yazi.override {
-        inherit (baseYaziConf) initLua plugins settings;
+    packages.yazi = inputs.wrappers.wrappers.yazi.wrap (
+      baseYaziConf
+      // {
+        inherit pkgs;
         extraPackages = attrValues {
-          inherit
-            (pkgs)
-            ripdrag # Drag and Drop utilty written in Rust and GTK4
-            unar
-            exiftool
-            ;
+          inherit (pkgs) ripdrag unar exiftool;
         };
-      }).overrideAttrs
-      {
-        passthru = {
-          inherit (baseYaziConf) settings;
-        };
-      };
+      }
+    );
   };
 
   flake.modules.nixos.default = {pkgs, ...}: {
@@ -58,12 +49,10 @@ in {
         '';
     };
 
-    nixpkgs.overlays = let
-      inherit (pkgs.custom) yazi;
-    in [
+    nixpkgs.overlays = [
       (_: _prev: {
-        yazi = yazi.override {
-          settings = recursiveUpdate yazi.passthru.settings {
+        yazi = pkgs.custom.yazi.wrap {
+          settings = {
             theme.flavor = {
               dark = "catppuccin-frappe";
             };
@@ -91,20 +80,12 @@ in {
       pkgs.yazi # overlay-ed above
     ];
 
-    custom.programs.print-config =
-      # yazi uses makeWrapper directly, no choice but to parse the wrapper
-      let
-        catYaziPath = path:
+    custom.programs.print-config = let
+      yaziDir = dirOf pkgs.yazi.configuration.constructFiles.yazi;
+    in {
+      yazi =
         # sh
-        ''
-          YAZI_PATH=$(grep "export YAZI_CONFIG_HOME=" '${getExe pkgs.yazi}' | cut -d"'" -f2)
-
-          moor "$YAZI_PATH/${path}"
-        '';
-      in {
-        yazi = catYaziPath "yazi.toml";
-        yazi-theme = catYaziPath "theme.toml";
-        yazi-keymap = catYaziPath "keymap.toml";
-      };
+        ''cat "${yaziDir}/yazi.toml" "${yaziDir}/theme.toml" "${yaziDir}/keymap.toml" | moor --lang toml'';
+    };
   };
 }

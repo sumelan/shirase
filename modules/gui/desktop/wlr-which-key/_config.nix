@@ -1,15 +1,11 @@
 _: {
   # Theming
-  background =
-    "#51576D"
-    +
-    # 65% opacity
-    "A6";
+  background = "#51576D" + "FF";
   color = "#81C8BE";
   border = "#BABBF1";
   separator = " ➜ ";
-  border_width = 1.5;
-  corner_r = 10;
+  border_width = 2.0;
+  corner_r = 0;
   padding = 15; # Defaults to corner_r
   rows_per_column = 4; # No limit by default
   column_padding = 40; # Defaults to padding

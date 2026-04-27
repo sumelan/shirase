@@ -1,27 +1,14 @@
-{self, ...}: let
+{inputs, ...}: let
   inherit (builtins) listToAttrs;
 
-  baseZathuraConf = import ./_config.nix {};
-  baseZathuraMappings = import ./_mappigs.nix {};
+  baseZathuraConf = {
+    settings = import ./_config.nix {};
+    mappings = import ./_mappigs.nix {};
+  };
 in {
-  flake.wrappers.zathura = {
-    config,
-    wlib,
-    ...
-  }: {
-    imports = [wlib.wrapperModules.zathura];
-
-    settings = baseZathuraConf;
-    mappings = baseZathuraMappings;
-    plugins = builtins.attrValues {
-      inherit
-        (config.pkgs.zathuraPkgs)
-        zathura_cb
-        zathura_djvu
-        zathura_ps
-        zathura_pdf_mupdf
-        ;
-    };
+  perSystem = {pkgs, ...}: {
+    packages.zathura =
+      inputs.wrappers.wrappers.zathura.wrap ({inherit pkgs;} // baseZathuraConf);
   };
 
   flake.modules.nixos.gui = {pkgs, ...}: let
@@ -34,13 +21,15 @@ in {
     catppuccin = "${src}/themes/catppuccin-frappe";
   in {
     nixpkgs.overlays = [
-      (_: prev: {
-        zathura = self.wrappers.zathura.wrap {
-          pkgs = prev;
-          extraSettings = ''
-            include ${catppuccin}
-          '';
-        };
+      (_: _prev: {
+        zathura = pkgs.custom.zathura.wrap (
+          baseZathuraConf
+          // {
+            extraSettings = ''
+              include ${catppuccin}
+            '';
+          }
+        );
       })
     ];
 

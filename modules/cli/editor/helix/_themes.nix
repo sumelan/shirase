@@ -14,7 +14,7 @@ _: {
     "constant.character" = "teal";
     "constant.character.escape" = "pink";
 
-    "string" = "green";
+    "string" = "teal";
     "string.regexp" = "blue";
     "string.special" = "pink";
     "string.special.symbol" = "red";
