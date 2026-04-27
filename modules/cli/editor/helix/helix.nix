@@ -111,15 +111,11 @@ in {
 
       custom = {
         programs.print-config = let
-          target = pkgs.helix.configuration.passthru.generatedConfig;
+          helixDir = pkgs.helix.configuration.passthru.generatedConfig;
         in {
           helix =
             # sh
-            ''moor --lang toml "${target}/config.toml"'';
-
-          helix-languages =
-            # sh
-            ''moor --lang toml "${target}/languages.toml"'';
+            ''cat "${helixDir}/config.toml" "${helixDir}/languages.toml" | moor --lang toml'';
         };
 
         fileSystem = {

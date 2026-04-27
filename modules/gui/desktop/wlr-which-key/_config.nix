@@ -1,6 +1,10 @@
 _: {
   # Theming
-  background = "#51576D" + "FF";
+  background =
+    "#51576D"
+    +
+    # 85% transparency
+    "D9";
   color = "#81C8BE";
   border = "#BABBF1";
   separator = " ➜ ";
