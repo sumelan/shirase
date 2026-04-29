@@ -22,7 +22,7 @@
     },
     "dms-plugins": {
         "cargoLock": null,
-        "date": "2026-04-16",
+        "date": "2026-04-27",
         "extract": null,
         "name": "dms-plugins",
         "passthru": null,
@@ -34,16 +34,16 @@
             "name": null,
             "owner": "AvengeMedia",
             "repo": "dms-plugins",
-            "rev": "829922a8f11949b1c13ae8bd14d7176f9165b6f5",
-            "sha256": "sha256-KYx+n1stxLT4R9IDVRx3/Cl7TjCcBZjnQchbrXaBT2o=",
+            "rev": "9e2752586d79a6509b93c00c6fa4be0334ae4755",
+            "sha256": "sha256-QgeeB6Ix8L5oaqTUCopPvGu6vr0ECsF+jO3mQIxPKIw=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "829922a8f11949b1c13ae8bd14d7176f9165b6f5"
+        "version": "9e2752586d79a6509b93c00c6fa4be0334ae4755"
     },
     "dms-screen-recorder": {
         "cargoLock": null,
-        "date": "2026-04-02",
+        "date": "2026-04-28",
         "extract": null,
         "name": "dms-screen-recorder",
         "passthru": null,
@@ -55,12 +55,12 @@
             "name": null,
             "owner": "arqueon",
             "repo": "dms-screen-recorder",
-            "rev": "7206b590d69a165d30b5bbb66b033f1a15b49aff",
-            "sha256": "sha256-ndH8KHH+gzFIXWceqeUmy/w7oGj7ZvCEIacBfV1D+KU=",
+            "rev": "40364a8530f4364e2fd6b0eb8802d5fe4f241b8f",
+            "sha256": "sha256-/SeQSlPeM0jDHg4yFmR82ODtnVs2bOovVG7TCMjH1vk=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "7206b590d69a165d30b5bbb66b033f1a15b49aff"
+        "version": "40364a8530f4364e2fd6b0eb8802d5fe4f241b8f"
     },
     "helium": {
         "cargoLock": null,
@@ -71,10 +71,10 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-5gdyKg12ZV2hpf0RL+eoJnawuW/J8NobiG+zEA0IOHA=",
+            "sha256": "sha256-NvsSVeKr82ME8oPupU8Oyh9IbYerxAWJ5vRjvj4WyLo=",
             "type": "url",
-            "url": "https://github.com/imputnet/helium-linux/releases/download/0.11.3.2/helium-0.11.3.2-x86_64.AppImage"
+            "url": "https://github.com/imputnet/helium-linux/releases/download/0.11.6.1/helium-0.11.6.1-x86_64.AppImage"
         },
-        "version": "0.11.3.2"
+        "version": "0.11.6.1"
     }
 }

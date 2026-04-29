@@ -20,34 +20,34 @@
   };
   dms-plugins = {
     pname = "dms-plugins";
-    version = "829922a8f11949b1c13ae8bd14d7176f9165b6f5";
+    version = "9e2752586d79a6509b93c00c6fa4be0334ae4755";
     src = fetchFromGitHub {
       owner = "AvengeMedia";
       repo = "dms-plugins";
-      rev = "829922a8f11949b1c13ae8bd14d7176f9165b6f5";
+      rev = "9e2752586d79a6509b93c00c6fa4be0334ae4755";
       fetchSubmodules = false;
-      sha256 = "sha256-KYx+n1stxLT4R9IDVRx3/Cl7TjCcBZjnQchbrXaBT2o=";
+      sha256 = "sha256-QgeeB6Ix8L5oaqTUCopPvGu6vr0ECsF+jO3mQIxPKIw=";
     };
-    date = "2026-04-16";
+    date = "2026-04-27";
   };
   dms-screen-recorder = {
     pname = "dms-screen-recorder";
-    version = "7206b590d69a165d30b5bbb66b033f1a15b49aff";
+    version = "40364a8530f4364e2fd6b0eb8802d5fe4f241b8f";
     src = fetchFromGitHub {
       owner = "arqueon";
       repo = "dms-screen-recorder";
-      rev = "7206b590d69a165d30b5bbb66b033f1a15b49aff";
+      rev = "40364a8530f4364e2fd6b0eb8802d5fe4f241b8f";
       fetchSubmodules = false;
-      sha256 = "sha256-ndH8KHH+gzFIXWceqeUmy/w7oGj7ZvCEIacBfV1D+KU=";
+      sha256 = "sha256-/SeQSlPeM0jDHg4yFmR82ODtnVs2bOovVG7TCMjH1vk=";
     };
-    date = "2026-04-02";
+    date = "2026-04-28";
   };
   helium = {
     pname = "helium";
-    version = "0.11.3.2";
+    version = "0.11.6.1";
     src = fetchurl {
-      url = "https://github.com/imputnet/helium-linux/releases/download/0.11.3.2/helium-0.11.3.2-x86_64.AppImage";
-      sha256 = "sha256-5gdyKg12ZV2hpf0RL+eoJnawuW/J8NobiG+zEA0IOHA=";
+      url = "https://github.com/imputnet/helium-linux/releases/download/0.11.6.1/helium-0.11.6.1-x86_64.AppImage";
+      sha256 = "sha256-NvsSVeKr82ME8oPupU8Oyh9IbYerxAWJ5vRjvj4WyLo=";
     };
   };
 }
