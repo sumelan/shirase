@@ -1,6 +1,8 @@
-{lib, ...}: let
-  inherit (lib) hiPrio;
-in {
+{
+  config,
+  lib,
+  ...
+}: {
   perSystem = {pkgs, ...}: {
     packages = {
       # tui for searching nix packages or options
@@ -40,6 +42,8 @@ in {
     };
 
     gui = {pkgs, ...}: let
+      inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) ntv;
+
       ntv-desktop-entry = pkgs.makeDesktopItem {
         name = "nix-search-tv";
         desktopName = "Nix Search TV";
@@ -49,10 +53,9 @@ in {
         exec = "ntv";
       };
     in {
-      hj.packages = [
-        pkgs.custom.ntv
-        (hiPrio ntv-desktop-entry)
-      ];
+      hj.packages =
+        [ntv]
+        ++ [(lib.hiPrio ntv-desktop-entry)];
     };
   };
 }

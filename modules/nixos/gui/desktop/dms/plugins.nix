@@ -1,11 +1,17 @@
-{lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib.generators) toJSON;
 in {
   flake.modules.nixos.gui = {pkgs, ...}: let
+    inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) dms-plugins dms-screen-recorder dms-display-mirror;
+
     pluginDir = "DankMaterialShell/plugins";
-    official = pkgs.custom.dms-plugins;
-    recorder = pkgs.custom.dms-screen-recorder;
-    mirror = pkgs.custom.dms-display-mirror;
+    official = dms-plugins;
+    recorder = dms-screen-recorder;
+    mirror = dms-display-mirror;
   in {
     hj = {
       packages = [

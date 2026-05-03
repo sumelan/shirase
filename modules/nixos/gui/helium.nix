@@ -1,7 +1,7 @@
-_: let
-  inherit (builtins) listToAttrs;
-in {
-  flake.modules.nixos.gui = {pkgs, ...}: {
+{config, ...}: {
+  flake.modules.nixos.gui = {pkgs, ...}: let
+    inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) helium;
+  in {
     programs.chromium = {
       enable = true;
       extensions = [
@@ -31,9 +31,7 @@ in {
     };
 
     hj = {
-      packages = [
-        pkgs.custom.helium
-      ];
+      packages = [helium];
 
       environment.sessionVariables = {
         # set default browser
@@ -44,7 +42,7 @@ in {
       xdg.mime-apps = let
         value = "helium.desktop";
 
-        defaultAssociations = listToAttrs (map (name: {
+        defaultAssociations = builtins.listToAttrs (map (name: {
             inherit name value;
           }) [
             "x-scheme-handler/unknown"
@@ -54,7 +52,7 @@ in {
             "text/html"
           ]);
 
-        imgAssociations = listToAttrs (map (name: {
+        imgAssociations = builtins.listToAttrs (map (name: {
             inherit name value;
           }) [
             "image/jpeg"

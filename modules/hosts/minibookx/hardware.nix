@@ -11,7 +11,7 @@ in {
     modulesPath,
     ...
   }: let
-    inherit (flake.lib.wireplumber) rename;
+    inherit (flake.custom.functions.wireplumber {}) rename;
   in {
     imports =
       [flake.modules.nixos.laptop]
@@ -55,9 +55,18 @@ in {
 
     # rename audio devices
     services.pipewire.wireplumber.extraConfig = {
-      "10-speaker-rename" = rename "alsa_output.pci-0000_00_1f.3.analog-stereo" "Built-in Speakers";
-      "10-dac-rename" = rename "alsa_output.usb-TTGK_Technology_Co._Ltd_NICEHCK_NK1_MAX-00.analog-stereo" "NICEHCK NK1 MAX";
-      "10-input-rename" = rename "alsa_input.pci-0000_00_1f.3.analog-stereo" "Built-in Mic";
+      "10-speaker-rename" = rename {
+        old = "alsa_output.pci-0000_00_1f.3.analog-stereo";
+        new = "Built-in Speakers";
+      };
+      "10-dac-rename" = rename {
+        old = "alsa_output.usb-TTGK_Technology_Co._Ltd_NICEHCK_NK1_MAX-00.analog-stereo";
+        new = "NICEHCK NK1 MAX";
+      };
+      "10-input-rename" = rename {
+        old = "alsa_input.pci-0000_00_1f.3.analog-stereo";
+        new = "Built-in Mic";
+      };
     };
   };
 }

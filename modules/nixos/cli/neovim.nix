@@ -1,5 +1,11 @@
-{lib, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   flake.modules.nixos.default = {pkgs, ...}: let
+    inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) nvf;
+
     nvim-direnv = pkgs.writeShellApplication {
       name = "nvim-direnv";
       runtimeInputs = [pkgs.direnv];
@@ -21,7 +27,7 @@
     };
   in {
     environment = {
-      systemPackages = [pkgs.custom.nvf];
+      systemPackages = [nvf];
       shellAliases = {
         nano = "nvim";
         neovim = "nvim";
@@ -30,10 +36,9 @@
     };
 
     hj = {
-      packages = [
-        pkgs.custom.nvf
-        (lib.hiPrio nvim-desktop-entry)
-      ];
+      packages =
+        [nvf]
+        ++ [(lib.hiPrio nvim-desktop-entry)];
 
       xdg.mime-apps = {
         default-applications = {

@@ -518,24 +518,26 @@
       "gothCornerRadiusValue": 12,
       "gothCornersEnabled": true,
       "id": "default",
-      "innerPadding": 18,
+      "innerPadding": 10,
       "leftWidgets": [
         {
           "enabled": true,
           "id": "launcherButton"
         },
         {
+          "id": "focusedWindow",
           "enabled": true,
-          "id": "focusedWindow"
+          "focusedWindowCompactMode": false
         },
         {
-          "enabled": true,
           "id": "music",
-          "mediaSize": 1
+          "enabled": true,
+          "mediaSize": 3
         },
         {
+          "id": "systemTray",
           "enabled": true,
-          "id": "systemTray"
+          "trayUseInlineExpansion": true
         },
         {
           "enabled": true,
@@ -552,7 +554,7 @@
       "openOnOverview": true,
       "popupGapsAuto": true,
       "popupGapsManual": 4,
-      "position": 2,
+      "position": 0,
       "rightWidgets": [
         {
           "id": "notificationButton",

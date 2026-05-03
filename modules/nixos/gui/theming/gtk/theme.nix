@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  self,
+  lib,
+  ...
+}: let
   inherit (lib) mkOption;
   inherit (lib.types) package str;
 in {
@@ -21,13 +25,15 @@ in {
     config,
     pkgs,
     ...
-  }: {
+  }: let
+    inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) colloid-gtk-theme catppuccin-papirus-folders;
+  in {
     options.custom = {
       gtk = {
         theme = {
           package = mkOption {
             type = package;
-            default = pkgs.custom.colloid-gtk-theme;
+            default = colloid-gtk-theme;
             description = "Package providing the theme.";
           };
 
@@ -41,7 +47,7 @@ in {
         iconTheme = {
           package = mkOption {
             type = package;
-            default = pkgs.custom.catppuccin-papirus-folders;
+            default = catppuccin-papirus-folders;
             description = "Package providing the icon theme.";
           };
 

@@ -2,7 +2,6 @@
   inputs,
   lib,
   self,
-  withSystem,
   ...
 }: let
   inherit (inputs) nixpkgs;
@@ -13,7 +12,6 @@ in {
       inherit system;
       config.allowUnfree = true;
       overlays = [
-        self.overlays.pkgsCustom
         self.overlays.pkgsPatches
         self.overlays.writeShellApplicationCompletions
       ];
@@ -27,11 +25,6 @@ in {
 
   flake = {
     overlays = {
-      # add flake.packages as pkgs.custom
-      pkgsCustom = _: prev: {
-        custom = withSystem prev.stdenv.hostPlatform.system ({config, ...}: config.packages);
-      };
-
       pkgsPatches = _: prev: {
         # use updated dgop
         dgop = prev.dgop.overrideAttrs (o: rec {
@@ -122,7 +115,6 @@ in {
     modules.nixos.common = _: {
       nixpkgs.overlays =
         [
-          self.overlays.pkgsCustom
           self.overlays.pkgsPatches
           self.overlays.writeShellApplicationCompletions
         ]
