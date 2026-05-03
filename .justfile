@@ -16,6 +16,7 @@ sourceDir := "_sources"
 [group('FLAKE')]
 [doc('Check whether the flake evaluates and run its tests.')]
 @check:
+    git add -A
     nix flake check
 
 [group('FLAKE')]

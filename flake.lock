@@ -440,7 +440,6 @@
         "nvf": "nvf",
         "quickshell": "quickshell",
         "sops-nix": "sops-nix",
-        "wrappers": "wrappers",
         "zen-browser": "zen-browser"
       }
     },
@@ -476,26 +475,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "wrappers": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1777409853,
-        "narHash": "sha256-6isCKWwRaGZ+Y5jdwNGAfNF7v5ZgWm4P9FDEGfZKtsU=",
-        "owner": "BirdeeHub",
-        "repo": "nix-wrapper-modules",
-        "rev": "2a162809e9f74b97086ac923052081625b949e62",
-        "type": "github"
-      },
-      "original": {
-        "owner": "BirdeeHub",
-        "repo": "nix-wrapper-modules",
         "type": "github"
       }
     },

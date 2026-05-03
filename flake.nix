@@ -3,7 +3,6 @@
 
   outputs = {
     flake-parts,
-    wrappers,
     import-tree,
     ...
   } @ inputs:
@@ -12,7 +11,6 @@
       systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin"];
       imports = [
         flake-parts.flakeModules.modules
-        wrappers.flakeModules.wrappers
         (import-tree ./packages)
         (import-tree ./modules)
       ];
@@ -91,11 +89,6 @@
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    wrappers = {
-      url = "github:BirdeeHub/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
