@@ -1,5 +1,5 @@
 {lib, ...}: {
-  flake.custom.functions.recursiveMerge = _: rec {
+  flake.custom.lib.recursiveMerge = _: rec {
     attrs = lhs: rhs:
       lhs
       // rhs

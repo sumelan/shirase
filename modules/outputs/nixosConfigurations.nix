@@ -3,7 +3,6 @@
   config,
   ...
 }: let
-  inherit (builtins) attrValues;
   inherit (inputs) nixpkgs;
   inherit (config) flake;
   defaultMods = [
@@ -24,10 +23,22 @@
     dotfile ? "/persist/home/${user}/Projects/shirase",
     extraMods ? [],
   }: let
-    specialArgs = {inherit user dotfile;};
+    pkgs = import nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+      };
+    };
+    specialArgs = {
+      inherit user dotfile;
+      # This intentionally does not collide with `lib`
+      flakeLib = flake.custom.lib;
+      # These require pkgs to be passed so collect and do once to get the ready functions
+      functions = builtins.mapAttrs (_: v: v {inherit pkgs;}) flake.custom.functions;
+    };
   in
     nixpkgs.lib.nixosSystem {
-      inherit specialArgs;
+      inherit pkgs specialArgs;
       modules =
         defaultMods
         ++ extraMods
@@ -43,34 +54,8 @@
     };
 in {
   flake.nixosConfigurations = {
-    acer = linux "acer" {
-      extraMods = attrValues {
-        inherit
-          (inputs.nixos-hardware.nixosModules)
-          common-pc-laptop
-          common-pc-laptop-ssd
-          common-cpu-intel
-          ;
-      };
-    };
-    minibookx = linux "minibookx" {
-      extraMods = attrValues {
-        inherit
-          (inputs.nixos-hardware.nixosModules)
-          chuwi-minibook-x
-          ;
-      };
-    };
-    sakura = linux "sakura" {
-      extraMods = attrValues {
-        inherit
-          (inputs.nixos-hardware.nixosModules)
-          common-cpu-amd
-          common-cpu-amd-pstate
-          common-gpu-amd
-          common-pc-ssd
-          ;
-      };
-    };
+    acer = linux "acer" {};
+    minibookx = linux "minibookx" {};
+    sakura = linux "sakura" {};
   };
 }

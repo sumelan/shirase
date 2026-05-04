@@ -1,5 +1,5 @@
 _: {
-  flake.custom.functions.wireplumber = _: {
+  flake.custom.lib.wireplumber = _: {
     rename = {
       old,
       new,

@@ -45,8 +45,6 @@ in {
       };
     };
 
-    nixpkgs.config.allowUnfree = true;
-
     nix = let
       nixPath = mapAttrsToList (name: _: "${name}=flake:${name}") inputs;
       registry = mapAttrs (_: flake: {inherit flake;}) inputs;

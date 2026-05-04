@@ -7,14 +7,17 @@
 in {
   flake.modules.nixos.minisforum-um773se = {
     config,
+    flakeLib,
     modulesPath,
     ...
   }: let
-    inherit (flake.custom.functions.wireplumber {}) rename;
+    inherit (flakeLib.wireplumber {}) rename;
   in {
-    imports = [
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+    imports =
+      [
+        (modulesPath + "/installer/scan/not-detected.nix")
+      ]
+      ++ (with flake.modules.nixos; [amd]);
 
     boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sd_mod"];
     boot.initrd.kernelModules = [];

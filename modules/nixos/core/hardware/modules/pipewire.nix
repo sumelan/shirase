@@ -2,7 +2,7 @@
   inherit (lib) getExe';
 in {
   flake.modules.nixos = {
-    common = {
+    pipewire = {
       pkgs,
       user,
       ...

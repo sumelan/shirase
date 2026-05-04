@@ -7,23 +7,30 @@
 in {
   flake.modules.nixos.chuwi-minibook-x = {
     config,
+    flakeLib,
     pkgs,
     modulesPath,
     ...
   }: let
-    inherit (flake.custom.functions.wireplumber {}) rename;
+    inherit (flakeLib.wireplumber {}) rename;
   in {
     imports =
-      [flake.modules.nixos.laptop]
-      ++ [
+      [
         (modulesPath + "/installer/scan/not-detected.nix")
-      ];
+      ]
+      ++ (with flake.modules.nixos; [laptop intel]);
 
     boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "usb_storage" "sd_mod" "sdhci_pci"];
     boot.initrd.kernelModules = ["i915"];
     boot.initrd.extraFirmwarePaths = ["vbt"];
     boot.kernelModules = ["kvm-intel"];
-    boot.kernelParams = ["quiet" "i915.vbt_firmware=vbt"];
+    boot.kernelParams = [
+      "quiet"
+      "i915.vbt_firmware=vbt"
+      # Fixes the display being rotated 90 degrees.
+      "fbcon=rotate:1"
+      "video=DSI-1:panel_orientation=right_side_up"
+    ];
     boot.extraModulePackages = [];
 
     # 8 GB swap

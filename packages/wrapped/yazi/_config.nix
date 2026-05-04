@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  inherit (config.flake.custom.functions.recursiveMerge {}) attrsList;
+  inherit (config.flake.custom.lib.recursiveMerge {}) attrsList;
 in
   attrsList [
     {
