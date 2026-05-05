@@ -7,7 +7,7 @@
     "catppuccin": {
       "dark": {
         "flavor": "frappe",
-        "accent": "maroon"
+        "accent": "sapphire"
       }
     },
     "rosePine": "dawn"
@@ -17,7 +17,7 @@
   "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "HDMI-A-1",
   "popupTransparency": 0.75,
-  "dockTransparency": 0.8,
+  "dockTransparency": 0.9,
   "widgetBackgroundColor": "sch",
   "widgetColorMode": "default",
   "controlCenterTileColorMode": "primary",
@@ -40,14 +40,16 @@
   "useFahrenheit": false,
   "windSpeedUnit": "kmh",
   "nightModeEnabled": true,
-  "animationSpeed": 2,
+  "animationSpeed": 4,
   "customAnimationDuration": 200,
-  "syncComponentAnimationSpeeds": true,
-  "popoutAnimationSpeed": 1,
+  "syncComponentAnimationSpeeds": false,
+  "popoutAnimationSpeed": 4,
   "popoutCustomAnimationDuration": 150,
   "modalAnimationSpeed": 1,
   "modalCustomAnimationDuration": 150,
   "enableRippleEffects": true,
+  "animationVariant": 1,
+  "motionEffect": 2,
   "m3ElevationEnabled": true,
   "m3ElevationIntensity": 12,
   "m3ElevationOpacity": 30,
@@ -340,6 +342,7 @@
   "matugenTemplatePywalfox": false,
   "matugenTemplateZenBrowser": false,
   "matugenTemplateVesktop": true,
+  "matugenTemplateVencord": true,
   "matugenTemplateEquibop": false,
   "matugenTemplateGhostty": false,
   "matugenTemplateKitty": false,
@@ -366,6 +369,7 @@
   "showDock": true,
   "dockAutoHide": false,
   "dockSmartAutoHide": true,
+  "dockHideOnFullscreen": true,
   "dockGroupByApp": true,
   "dockRestoreSpecialWorkspaceOnClick": false,
   "dockOpenOnOverview": true,
@@ -412,7 +416,7 @@
   "u2fMode": "or",
   "lockScreenActiveMonitor": "HDMI-A-1",
   "lockScreenInactiveColor": "#191D24",
-  "lockScreenNotificationMode": 1,
+  "lockScreenNotificationMode": 2,
   "lockScreenVideoEnabled": false,
   "lockScreenVideoPath": "",
   "lockScreenVideoCycling": false,
@@ -465,6 +469,9 @@
   "updaterUseCustomCommand": false,
   "updaterCustomCommand": "",
   "updaterTerminalAdditionalParams": "",
+  "updaterIntervalSeconds": 1800,
+  "updaterIncludeFlatpak": true,
+  "updaterAllowAUR": true,
   "displayNameMode": "model",
   "screenPreferences": {},
   "showOnLastDisplay": {},
@@ -496,6 +503,8 @@
   "displayProfileAutoSelect": false,
   "displayShowDisconnected": false,
   "displaySnapToEdge": true,
+  "connectedFrameBarStyleBackups": {},
+  "connectedFrameModalDarkenBackup": null,
   "barConfigs": [
     {
       "autoHide": false,
@@ -713,5 +722,20 @@
   "clipboardEnterToPaste": true,
   "launcherPluginVisibility": {},
   "launcherPluginOrder": [],
-  "configVersion": 5
+  "frameEnabled": true,
+  "frameThickness": 11,
+  "frameRounding": 10,
+  "frameColor": "",
+  "frameOpacity": 1,
+  "frameScreenPreferences": [
+    "all"
+  ],
+  "frameBarSize": 40,
+  "frameShowOnOverview": true,
+  "frameBlurEnabled": true,
+  "frameCloseGaps": true,
+  "frameLauncherEmergeSide": "bottom",
+  "frameLauncherArcExtender": false,
+  "frameMode": "separate",
+  "configVersion": 11
 }
