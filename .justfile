@@ -103,14 +103,14 @@ sourceDir := "_sources"
 
 [group('EVAL')]
 [doc('Measure eval time on each host.')]
-@eval host:
-    time nix eval .#nixosConfigurations.{{ host }}.config.system.build.toplevel --substituters " " --option eval-cache false --raw --read-only
+@eval:
+    time nix eval .#nixosConfigurations.{{ HOSTNAME }}.config.system.build.toplevel --substituters " " --option eval-cache false --raw --read-only
 
 [group('EVAL')]
 [doc('Create the flamegraph file of eval time and open in browser.')]
-@geval host:
+@geval:
     nix-shell -p nixVersions.latest inferno --command \
-        "nix eval .#nixosConfigurations.{{ host }}.config.system.build.toplevel --impure --eval-profiler flamegraph --eval-profiler-frequency 9999 \
+        "nix eval .#nixosConfigurations.{{ HOSTNAME }}.config.system.build.toplevel --impure --eval-profiler flamegraph --eval-profiler-frequency 9999 \
             && inferno-flamegraph --width 10000 < nix.profile > wrappers.svg \
                 && helium wrappers.svg"
 
