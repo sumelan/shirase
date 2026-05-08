@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.common = {pkgs, ...}: {
+  flake.modules.nixos.core = {pkgs, ...}: {
     # system packages
     # NetworkManager control applet for GNOME
     environment.systemPackages = [pkgs.networkmanagerapplet];

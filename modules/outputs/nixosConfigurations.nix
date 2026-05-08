@@ -42,11 +42,12 @@
       modules =
         defaultMods
         ++ extraMods
-        ++ [flake.modules.nixos.hjem]
-        ++ [flake.modules.nixos.common]
+        ++ [flake.modules.nixos.core]
         ++ [flake.modules.nixos."hosts/${host}"]
         ++ [flake.modules.nixos."users/${user}"]
         ++ [
+          # alias for hjem
+          (inputs.nixpkgs.lib.mkAliasOptionModule ["hj"] ["hjem" "users" user])
           {
             networking.hostName = host;
           }

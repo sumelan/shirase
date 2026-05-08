@@ -7,10 +7,9 @@ in {
     ...
   }: {
     imports = with flake.modules.nixos;
-      [chuwi-minibook-x]
-      ++ [default mpd gui]
+      [default chuwi-minibook-x]
       ++ [sops-nix syncthing]
-      ++ [ebook euphonica kdeconnect];
+      ++ [kdeconnect];
 
     networking.hostId = "56895d2b";
 

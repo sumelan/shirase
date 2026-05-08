@@ -1,6 +1,10 @@
-{config, ...}: {
+{config, ...}: let
+  inherit (config) flake;
+in {
   flake.modules.nixos."users/sumelan" = _: {
-    imports = with config.flake.modules.nixos; [japanese];
+    imports = [
+      flake.modules.nixos.japanese
+    ];
 
     users.users.sumelan = {
       description = "Su melan";

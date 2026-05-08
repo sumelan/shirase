@@ -6,7 +6,7 @@
   inherit (builtins) attrValues;
   inherit (lib) mapAttrsToList mapAttrs sort concatStringsSep;
 in {
-  flake.modules.nixos.common = {
+  flake.modules.nixos.core = {
     config,
     pkgs,
     user,

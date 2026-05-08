@@ -2,9 +2,7 @@
   inherit (config) flake;
 in {
   flake.modules.nixos."hosts/acer" = {pkgs, ...}: {
-    imports = with flake.modules.nixos;
-      [acer-al14]
-      ++ [default gui];
+    imports = with flake.modules.nixos; [default acer-al14];
 
     networking.hostId = "22fe2870";
 

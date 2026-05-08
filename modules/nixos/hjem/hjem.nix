@@ -1,24 +1,26 @@
-{inputs, ...}: {
-  flake.modules.nixos.hjem = {
+{config, ...}: let
+  inherit (config) flake;
+in {
+  flake.modules.nixos.default = {
     pkgs,
     user,
     ...
   }: {
     imports = [
-      # alias for hjem
-      (inputs.nixpkgs.lib.mkAliasOptionModule ["hj"] ["hjem" "users" user])
+      flake.modules.nixos.hjem-root
+      flake.modules.nixos.hjem-common
     ];
 
-    config = {
-      hjem = {
-        clobberByDefault = true;
-        linker = pkgs.smfh;
-      };
+    hjem = {
+      clobberByDefault = true;
+      linker = pkgs.smfh;
+      # Pull in all my modules
+      extraModules = builtins.attrValues flake.custom.hjemModules;
+    };
 
-      hj = {
-        inherit user;
-        directory = "/home/${user}";
-      };
+    hj = {
+      inherit user;
+      directory = "/home/${user}";
     };
   };
 }

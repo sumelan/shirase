@@ -7,19 +7,15 @@ in {
     ...
   }: {
     imports = with flake.modules.nixos;
-      [minisforum-um773se]
-      ++ [default mpd helix gui kitty foot steam]
+      [default minisforum-um773se]
+      ++ [steam]
       ++ [hdds logitech qmk]
-      ++ [audiobookshelf sops-nix syncoid syncthing]
+      ++ [audiobookshelf kdeconnect sops-nix syncoid syncthing]
+      ++ [hjem-extended]
       ++ [
-        bluray
-        cd
-        ebook
-        euphonica
-        kdeconnect
-        obs
-        protonapp
-        zen
+        hjem-bluray
+        hjem-cd
+        hjem-drawing
       ];
 
     networking.hostId = "b5e8f0be";

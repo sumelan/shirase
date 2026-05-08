@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib) mkForce;
 in {
-  flake.modules.nixos.common = {
+  flake.modules.nixos.core = {
     pkgs,
     dotfile,
     ...

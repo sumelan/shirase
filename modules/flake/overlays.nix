@@ -84,7 +84,7 @@ in {
       };
     };
 
-    modules.nixos.common = _: {
+    modules.nixos.core = _: {
       nixpkgs.overlays =
         [
           self.overlays.pkgsPatches

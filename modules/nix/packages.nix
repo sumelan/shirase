@@ -41,7 +41,7 @@
       };
     };
 
-    gui = {pkgs, ...}: let
+    hjem-common = {pkgs, ...}: let
       inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) ntv;
 
       ntv-desktop-entry = pkgs.makeDesktopItem {
