@@ -18,6 +18,7 @@ in {
       eza
       eza-tree
       moor
+      ns
       nvf
       ripgrep
       wlr-which-key
@@ -77,6 +78,15 @@ in {
         terminal = true;
         exec = "${lib.getExe nvim-direnv} %F";
       };
+
+      ns-desktop-entry = pkgs.makeDesktopItem {
+        name = "nix-search-tv";
+        desktopName = "Nix Search TV";
+        genericName = "Fuzzy search for Nix packages";
+        icon = "dev.vlinkz.NixosConfEditor";
+        terminal = true;
+        exec = lib.getExe ns;
+      };
     in {
       packages = builtins.attrValues {
         # tui
@@ -84,6 +94,9 @@ in {
         # editor
         inherit nvf;
         nvim-desktop-entry = lib.hiPrio nvim-desktop-entry;
+        # nix-search-tv
+        inherit ns;
+        ns-desktop-entry = lib.hiPrio ns-desktop-entry;
         # terminal
         inherit ghostty;
         # media

@@ -5,6 +5,7 @@
 }: {
   flake.modules.nixos.default = {pkgs, ...}: let
     inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) nvf;
+    inherit (config.flake.custom.userModules.shellAliases) basic extra fish;
   in {
     environment = {
       systemPackages = builtins.attrValues {
@@ -31,6 +32,7 @@
           ;
         inherit (lib.hiPrio pkgs) procps;
       };
+      shellAliases = basic // extra // fish;
 
       variables = {
         TERMINAL = "ghostty";

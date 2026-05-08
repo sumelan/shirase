@@ -144,13 +144,3 @@ sourceDir := "_sources"
 [doc('Update the keys for all secrets inside `secrets/FILE`.')]
 @sopsupdate file:
     nix-shell -p sops --run "sops updatekeys secrets/{{ file }}"
-
-[group('ZFS')]
-[doc('Show compress ratio in zfs list output.')]
-@zls:
-    zfs list -o name,used,compressratio,lused,avail
-
-[group('ZFS')]
-[doc('Show snapshots in zfs list output.')]
-@zsls:
-    zfs list -t snapshot -S creation -o name,creation,used,written,refer
