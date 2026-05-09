@@ -314,6 +314,29 @@
         "type": "github"
       }
     },
+    "orion-browser": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777869924,
+        "narHash": "sha256-srQtUIoA2QOh0VPVexHv2ixuELnqagTWPlWTERoHW3E=",
+        "owner": "dokokitsune",
+        "repo": "orion-browser-flake",
+        "rev": "9ec46d307151c44d296acaa62633100b1a54a5de",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dokokitsune",
+        "repo": "orion-browser-flake",
+        "type": "github"
+      }
+    },
     "quickshell": {
       "inputs": {
         "nixpkgs": [
@@ -347,6 +370,7 @@
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
         "nvf": "nvf",
+        "orion-browser": "orion-browser",
         "quickshell": "quickshell",
         "sops-nix": "sops-nix",
         "zen-browser": "zen-browser"

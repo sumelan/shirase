@@ -1,6 +1,8 @@
-{self, ...}: {
+{config, ...}: let
+  inherit (config) flake;
+in {
   flake.modules.nixos.zathura = {pkgs, ...}: let
-    inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) zathura;
+    inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) zathura;
   in {
     hj = {
       packages = [zathura];

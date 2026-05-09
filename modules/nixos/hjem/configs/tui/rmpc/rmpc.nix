@@ -1,14 +1,16 @@
 {
-  self,
+  config,
   lib,
   ...
-}: {
+}: let
+  inherit (config) flake;
+in {
   flake.modules.nixos.rmpc = {
     config,
     pkgs,
     ...
   }: let
-    inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) rmpc;
+    inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) rmpc;
 
     # overwrite default desktop-entry
     rmpc-desktop-entry = pkgs.makeDesktopItem {

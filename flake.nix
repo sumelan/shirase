@@ -86,6 +86,15 @@
       };
     };
 
+    # orion-browser
+    orion-browser = {
+      url = "github:dokokitsune/orion-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";

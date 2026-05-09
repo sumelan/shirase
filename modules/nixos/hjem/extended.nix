@@ -1,16 +1,23 @@
-{config, ...}: let
+{
+  inputs,
+  config,
+  ...
+}: let
   inherit (config) flake;
 in {
   flake.modules.nixos = {
     hjem-extended = {pkgs, ...}: {
-      imports = with flake.modules.nixos; [
-        protonApps
-        zen
-      ];
+      imports = builtins.attrValues {
+        inherit (flake.modules.nixos) protonApps zen;
+      };
 
-      hj.packages = [
-        pkgs.obs-studio
-      ];
+      hj.packages =
+        [
+          pkgs.obs-studio
+        ]
+        ++ [
+          inputs.orion-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+        ];
 
       custom.fileSystem = {
         persist.home.directories = [

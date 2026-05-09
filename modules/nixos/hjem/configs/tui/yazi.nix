@@ -1,10 +1,10 @@
 {
-  self,
+  config,
   lib,
   ...
 }: {
   flake.modules.nixos.yazi = {pkgs, ...}: let
-    inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) yazi;
+    inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) yazi;
   in {
     hj.packages =
       [yazi]

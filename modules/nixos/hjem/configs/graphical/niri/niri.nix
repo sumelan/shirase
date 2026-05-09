@@ -15,7 +15,7 @@ in {
   in {
     programs.niri = {
       enable = true;
-      package = pkgs.niri-unstable;
+      package = pkgs.niri;
       useNautilus = true;
       withUWSM = false;
       withXDG = true;

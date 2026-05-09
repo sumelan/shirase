@@ -1,8 +1,9 @@
 {
-  self,
+  config,
   lib,
   ...
 }: let
+  inherit (config) flake;
   inherit (lib) mkOption;
   inherit (lib.types) package str;
 in {
@@ -26,7 +27,7 @@ in {
     pkgs,
     ...
   }: let
-    inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) colloid-gtk-theme catppuccin-papirus-folders;
+    inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) colloid-gtk-theme catppuccin-papirus-folders;
   in {
     options.custom = {
       gtk = {

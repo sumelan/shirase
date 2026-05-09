@@ -1,5 +1,6 @@
-{self, ...}: let
-  inherit (self.custom.wrappers) mkSatty;
+{config, ...}: let
+  inherit (config) flake;
+  inherit (flake.custom.wrappers) mkSatty;
 in {
   flake.modules.nixos.satty = {
     config,

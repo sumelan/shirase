@@ -437,7 +437,7 @@ in {
     };
     "Mod+Shift+N" = {
       _props.hotkey-overlay-title = "${hotkey "#8CAAEE" "󱄅  Nix Search" "Nix Package"}";
-      spawn = ["ghostty" "--gtk-single-instance=true" "--class=dev.vlinkz.NixosConfEditor" "-e" "ntv"];
+      spawn = ["ghostty" "--gtk-single-instance=true" "--class=dev.vlinkz.NixosConfEditor" "-e" "ns"];
     };
     "Mod+V" = {
       _props.hotkey-overlay-title = "${hotkey "#BABBF1" "  Discord" "Discord Client"}";

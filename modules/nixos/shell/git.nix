@@ -1,12 +1,13 @@
 {
-  self,
+  config,
   lib,
   ...
 }: let
+  inherit (config) flake;
   inherit (lib) mkMerge concatStringsSep;
 in {
   flake.modules.nixos.default = {pkgs, ...}: let
-    inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) difftastic;
+    inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) difftastic;
 
     gitignores = [
       ".direnv"

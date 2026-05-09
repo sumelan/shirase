@@ -1,11 +1,12 @@
 {
-  self,
+  config,
   lib,
   ...
 }: let
+  inherit (config) flake;
   inherit (lib) mkEnableOption mkOption;
   inherit (lib.types) listOf str;
-  inherit (self.custom.wrappers) mkBtop;
+  inherit (flake.custom.wrappers) mkBtop;
 in {
   flake.modules.nixos.btop = {
     config,

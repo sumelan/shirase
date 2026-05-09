@@ -85,7 +85,7 @@ in {
         genericName = "Fuzzy search for Nix packages";
         icon = "dev.vlinkz.NixosConfEditor";
         terminal = true;
-        exec = lib.getExe ns;
+        exec = "ns";
       };
     in {
       packages = builtins.attrValues {

@@ -1,5 +1,6 @@
-{self, ...}: let
-  inherit (self.custom.wrappers) mkHelix;
+{config, ...}: let
+  inherit (config) flake;
+  inherit (flake.custom.wrappers) mkHelix;
 in {
   flake.modules.nixos.helix = {
     config,
