@@ -1,0 +1,66 @@
+_: {
+  agent = {
+    default_model = {
+      model = "claude-sonnet-4.6";
+      provider = "copilot_chat";
+    };
+    default_profile = "write";
+    single_file_review = true;
+  };
+  auto_install_extensions = {
+    html = true;
+    nix = true;
+    toml = true;
+    lua = true;
+  };
+  base_keymap = "VSCode";
+  buffer_font_size = 15;
+  buffer_font_weight = 400;
+  diagnostics = {
+    inline = {
+      enabled = true;
+      min_column = 80;
+    };
+  };
+  git.git_gutter = "tracked_files";
+  edit_prediction_provider = "none";
+
+  languages = {
+    Nix = {
+      formatter.external = {
+        arguments = ["--quiet" "--"];
+        command = "alejandra";
+      };
+      language_servers = ["nil" "nixd"];
+    };
+    JSON.formatter.external = {
+      arguments = ["format" "--stdin-file-path" "{buffer_path}"];
+      command = "biome";
+    };
+  };
+
+  load_direnv = "shell_hook";
+  relative_line_numbers = "enabled";
+
+  tabs = {
+    file_icons = true;
+    git_status = true;
+    show_diagnostics = "all";
+  };
+
+  telemetry = {
+    diagnostics = false;
+    metrics = false;
+  };
+
+  theme = {
+    mode = "system";
+    light = "One Light";
+    dark = "Catppuccin Frappé";
+  };
+
+  toolbar.code_actions = true;
+
+  vim_mode = true;
+  helix_mode = true;
+}

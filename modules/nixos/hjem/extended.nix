@@ -6,18 +6,23 @@
   inherit (config) flake;
 in {
   flake.modules.nixos = {
-    hjem-extended = {pkgs, ...}: {
+    hjem-extended = {pkgs, ...}: let
+      inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) zeditor zedConfig;
+      orion-browser = inputs.orion-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    in {
       imports = builtins.attrValues {
         inherit (flake.modules.nixos) protonApps zen;
       };
 
-      hj.packages =
-        [
+      hj = {
+        packages = [
           pkgs.obs-studio
-        ]
-        ++ [
-          inputs.orion-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+          zeditor
+          orion-browser
         ];
+
+        xdg.config.files."zed/settings.json".source = zedConfig;
+      };
 
       custom.fileSystem = {
         persist.home.directories = [

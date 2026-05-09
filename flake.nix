@@ -3,25 +3,29 @@
 
   outputs = {
     flake-parts,
-    import-tree,
+    nixpkgs,
     ...
-  } @ inputs:
+  } @ inputs: let
+    inherit (nixpkgs.lib) hasPrefix lists;
+    inherit (nixpkgs.lib.fileset) toList fileFilter;
+
+    # Replacement for import-tree
+    # This recursively collects all nix files that do not start with `_`
+    mkImport = path: toList (fileFilter (f: f.hasExt "nix" && !(hasPrefix "_" f.name)) path);
+  in
     flake-parts.lib.mkFlake {inherit inputs;} {
-      debug = true;
       systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin"];
-      imports = [
+      imports = lists.flatten [
         flake-parts.flakeModules.modules
-        (import-tree ./packages)
-        (import-tree ./modules)
+        (mkImport ./modules)
+        (mkImport ./packages)
       ];
+      debug = true;
     };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    # no nixpkgs inputs
     flake-parts.url = "github:hercules-ci/flake-parts";
-    import-tree.url = "github:vic/import-tree";
 
     # hjem
     hjem = {

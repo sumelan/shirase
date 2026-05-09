@@ -5,7 +5,7 @@
     submenu = [
       {
         key = "d";
-        desc = "niri dynamic-cast-target keys.";
+        desc = "Open dynamic-cast-target menu.";
         submenu = [
           {
             key = "w";
@@ -34,7 +34,7 @@
         submenu = [
           {
             key = "l";
-            desc = ''Change the configuration of "LG Electronics LG HDR 4K".'';
+            desc = ''Change the configuration of `LG Electronics LG HDR 4K`.'';
             submenu = [
               {
                 key = "1";

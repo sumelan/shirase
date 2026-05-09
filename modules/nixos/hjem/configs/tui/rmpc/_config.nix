@@ -1,10 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
-  cache = config.hj.xdg.cache.directory;
-  address = config.services.mpd.settings.bind_to_address;
+{pkgs, ...}: let
+  address = "/run/mpd/socket";
   fifo = "/run/mpd/mpd.fifo";
 in
   pkgs.writeText "config.ron"
@@ -17,7 +12,6 @@ in
         address: "${address}",
         password: None,
         theme: Some("custom"),
-        cache_dir: "${cache}/rmpc",
         on_song_change: None,
         volume_step: 2,
         max_fps: 120,

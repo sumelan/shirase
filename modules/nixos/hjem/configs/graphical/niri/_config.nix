@@ -361,7 +361,7 @@ in {
     "Mod+D" = {
       _props = {
         cooldown-ms = 500;
-        hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Command"}";
+        hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "DMS-menu"}";
       };
       spawn = ["wlr-which-key" "--initial-keys" "d"];
     };
@@ -431,7 +431,7 @@ in {
     "Mod+N" = {
       _props = {
         cooldown-ms = 500;
-        hotkey-overlay-title = "${hotkey "#EA999C" "󰗢  niri" "Command"}";
+        hotkey-overlay-title = "${hotkey "#EA999C" "󰗢  niri" "niri-menu"}";
       };
       spawn = ["wlr-which-key" "--initial-keys" "n"];
     };
@@ -440,7 +440,7 @@ in {
       spawn = ["ghostty" "--gtk-single-instance=true" "--class=dev.vlinkz.NixosConfEditor" "-e" "ns"];
     };
     "Mod+V" = {
-      _props.hotkey-overlay-title = "${hotkey "#BABBF1" "  Discord" "Discord Client"}";
+      _props.hotkey-overlay-title = "${hotkey "#BABBF1" "  Vesktop" "Discord Client"}";
       spawn = ["vesktop"];
     };
     "Mod+Shift+Y" = {
@@ -448,7 +448,7 @@ in {
       spawn = ["ghostty" "--gtk-single-instance=true" "--class=ghostty.yazi" "-e" "yazi"];
     };
     "Ctrl+Space" = {
-      _props.hotkey-overlay-title = "${hotkey "#A6D189" "󰗊  Fcitx" "Switch input method"}";
+      _props.hotkey-overlay-title = "${hotkey "#A6D189" "󰗊  Hazkey" "Switch input method"}";
       spawn = ["fcitx5-remote" "-t"];
     };
 

@@ -7,7 +7,7 @@ in {
     };
   };
 
-  # TODO: add `--config` flags after v0.12 released
+  # TODO: wrap config after v0.12 released
   flake.custom.wrappers = {
     rmpcTheme = {pkgs}:
       import ./_theme.nix {inherit pkgs;};

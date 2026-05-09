@@ -5,11 +5,7 @@
 }: let
   inherit (config) flake;
 in {
-  flake.modules.nixos.rmpc = {
-    config,
-    pkgs,
-    ...
-  }: let
+  flake.modules.nixos.rmpc = {pkgs, ...}: let
     inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) rmpc;
 
     # overwrite default desktop-entry
@@ -33,7 +29,7 @@ in {
         (lib.hiPrio rmpc-desktop-entry)
       ];
 
-      xdg.config.files."rmpc/config.ron".source = import ./_config.nix {inherit config pkgs;};
+      xdg.config.files."rmpc/config.ron".source = import ./_config.nix {inherit pkgs;};
     };
 
     custom.fileSystem = {
