@@ -7,20 +7,19 @@ in {
   };
 
   flake.custom.wrappers = {
-    # Expose just the config if I ever wanted it
     mkStarshipConfig = {
       pkgs,
       extraConfig ? {},
-      useCharacter ? true,
+      nf-icon ? "",
     }:
-      import ./_config.nix {inherit pkgs extraConfig useCharacter;};
+      import ./_config.nix {inherit pkgs extraConfig nf-icon;};
 
     mkStarship = {
       pkgs,
       extraConfig ? {},
-      useCharacter ? false,
+      nf-icon ? "",
     }: let
-      cfg = mkStarshipConfig {inherit pkgs extraConfig useCharacter;};
+      cfg = mkStarshipConfig {inherit pkgs extraConfig nf-icon;};
 
       printCfg = printConfig {
         inherit cfg pkgs;

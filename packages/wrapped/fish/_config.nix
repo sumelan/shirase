@@ -8,7 +8,10 @@
   inherit (pkgs.lib) getExe;
   inherit (flake.custom.wrappers) mkStarshipConfig;
 
-  starshipConfig = mkStarshipConfig {inherit pkgs;};
+  starshipConfig = mkStarshipConfig {
+    inherit pkgs;
+    nf-icon = " ";
+  };
 
   aliasCommands = pkgs.lib.concatStringsSep "\n" (
     pkgs.lib.mapAttrsToList (name: value: "    alias ${name}='${value}'") aliases
@@ -21,7 +24,9 @@
   # Create unique identifier including env vars to prevent overwrites
   configHash = builtins.substring 0 8 (builtins.hashString "sha256" "${extraConfig}${toString (builtins.attrNames aliases)}${toString (builtins.attrNames env)}${toString (builtins.attrValues env)}");
 in
-  pkgs.writeText "fish-init-${configHash}.fish" ''
+  pkgs.writeText "fish-init-${configHash}.fish"
+  # fish
+  ''
     set -g fish_greeting ""
     # Fallback default prompt
     fish_config prompt choose arrow
