@@ -434,7 +434,16 @@
   "notificationHistorySaveLow": true,
   "notificationHistorySaveNormal": true,
   "notificationHistorySaveCritical": true,
-  "notificationRules": [],
+  "notificationRules": [
+    {
+      "enabled": true,
+      "field": "desktopEntry",
+      "pattern": "org.freedesktop.network-manager-applet",
+      "matchType": "exact",
+      "action": "ignore",
+      "urgency": "default"
+    }
+  ],
   "notificationFocusedMonitor": true,
   "osdAlwaysShowValue": true,
   "osdPosition": 5,
