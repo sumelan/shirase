@@ -15,10 +15,6 @@ in {
       bash.interactiveShellInit = mkAfter ''
         eval "$(${getExe pkgs.zoxide} init bash ${flags} )"
       '';
-
-      fish.interactiveShellInit = mkAfter ''
-        ${getExe pkgs.zoxide} init fish ${flags} | source
-      '';
     };
 
     custom.fileSystem = {

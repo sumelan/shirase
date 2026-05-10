@@ -4,7 +4,8 @@ _: {
     services.openssh = {
       enable = true;
       settings = {
-        # disable password auth. NOTE: set false for better security
+        # disable password auth.
+        # NOTE: set false for better security
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
       };
@@ -14,15 +15,12 @@ _: {
     services.gnome.gnome-keyring.enable = true;
     security.pam.services.login.enableGnomeKeyring = true;
 
-    # security
+    # run0-sudo-shim
     security = {
-      polkit.enable = true;
-      # Use sudo-rs in place of regular sudo
-      sudo-rs = {
-        enable = true;
-        wheelNeedsPassword = false;
-        extraConfig = "Defaults passwd_tries=10";
-      };
+      # patching polkit to allow persistent authentication and adding rules
+      polkit.persistentAuthentication = true;
+      # run0-sudo-shim instead of sudo
+      run0-sudo-shim.enable = true;
     };
 
     # gnuupg

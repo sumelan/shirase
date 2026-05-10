@@ -12,12 +12,6 @@ in {
             eval "$(${getExe pkgs.fzf} --bash)"
           fi
         '';
-
-      fish.interactiveShellInit =
-        # fish
-        ''
-          ${getExe pkgs.fzf} --fish | source
-        '';
     };
   };
 }

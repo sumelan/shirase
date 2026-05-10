@@ -5,10 +5,10 @@
     commonPkgs = builtins.attrValues {
       inherit
         (local)
-        #  nushell
-        #  fish
+        nushell
+        fish
         helix
-        #  ns
+        ns
         ;
     };
   in {

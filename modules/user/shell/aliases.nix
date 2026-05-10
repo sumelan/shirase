@@ -8,24 +8,20 @@ _: {
 
       aa = "echo (whoami)@(hostname)";
       c = "clear";
-      ll = "ls -la";
-      la = "ls -a";
 
       # cd aliases
       ".." = "cd ..";
       "..." = "cd ../..";
 
-      cp = "cp -ri";
-      mkdir = "mkdir -p";
-      mount = "mount --mkdir";
-      mime = "xdg-mime query filetype";
-      open = "xdg-open";
+      # neovim
       nv = "nvim";
     };
     extra = {
+      lt = "eza --tree --level=2 --icons";
+      tree = "eza --tree";
       cat = "bat -p";
-      man = "batman";
 
+      # git
       gst = "git status";
       ga = "git add";
       gaa = "git add *";
@@ -36,6 +32,7 @@ _: {
       grv = "git remote -v";
       lg = "lazygit";
 
+      # zfs
       zls = "zfs list -o name,used,compressratio,lused,avail";
       zsls = "zfs list -t snapshot -S creation -o name,creation,used,written,refer";
     };

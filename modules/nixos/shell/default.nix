@@ -5,11 +5,10 @@
 }: {
   flake.modules.nixos.default = {pkgs, ...}: let
     inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) nvf;
-    inherit (config.flake.custom.userModules.shellAliases) basic extra fish;
+    inherit (config.flake.custom.userModules.shellAliases) basic extra;
   in {
     environment = {
       systemPackages = builtins.attrValues {
-        inherit nvf;
         inherit
           (pkgs)
           bonk # mkdir and touch in one
@@ -31,8 +30,10 @@
           xdg-utils
           ;
         inherit (lib.hiPrio pkgs) procps;
+        # editor
+        inherit nvf;
       };
-      shellAliases = basic // extra // fish;
+      shellAliases = basic // extra;
 
       variables = {
         TERMINAL = "ghostty";

@@ -19,12 +19,16 @@ in {
       eza-tree
       moor
       ns
+      nushell
       nvf
       ripgrep
+      starship
       wlr-which-key
       ;
   in {
     imports = builtins.attrValues {
+      # shell
+      inherit (flake.modules.nixos) fish;
       # tui
       inherit (flake.modules.nixos) btop helix yazi yt-dlp zoxide;
       # mpd
@@ -89,6 +93,8 @@ in {
       };
     in {
       packages = builtins.attrValues {
+        # shell
+        inherit nushell starship;
         # tui
         inherit bat batman eza eza-tree moor ripgrep;
         # editor
