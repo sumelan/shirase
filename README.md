@@ -11,6 +11,7 @@ My system consists of an encrypted disk that restores itself to a pristine state
 ### Wrapping: pre-bundling configuration
 
 I create a number of wrapped packages. Those are portable, and I can use them on other Nix-installed systems without breaking the host's settings. Note that some configuration, like file paths, is excluded from wrapping because it depends on my config.
+
 ```sh
 nix run github:sumelan/shirase#WRAPPED_PACKAGE
 ```

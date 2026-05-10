@@ -94,9 +94,7 @@ in {
         };
       };
   in {
-    hj = {
-      packages = [zen];
-    };
+    hj.packages = [zen];
 
     custom.fileSystem = {
       persist.home.directories = [
