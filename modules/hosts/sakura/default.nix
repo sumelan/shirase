@@ -9,7 +9,7 @@ in {
     imports = with flake.modules.nixos;
       [default minisforum-um773se]
       ++ [steam]
-      ++ [hdds logitech qmk]
+      ++ [hdds qmk]
       ++ [audiobookshelf kdeconnect sops-nix syncoid syncthing]
       ++ [hjem-extended]
       ++ [
