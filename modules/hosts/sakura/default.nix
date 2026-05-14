@@ -15,7 +15,6 @@ in {
       ++ [
         hjem-bluray
         hjem-cd
-        hjem-drawing
       ];
 
     networking.hostId = "b5e8f0be";

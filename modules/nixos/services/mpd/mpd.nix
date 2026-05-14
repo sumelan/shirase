@@ -1,6 +1,4 @@
-{lib, ...}: let
-  inherit (lib) getExe getExe';
-in {
+{lib, ...}: {
   flake.modules.nixos.mpd = {
     config,
     pkgs,
@@ -48,20 +46,15 @@ in {
 
       mpdris2-rs = {
         description = "Music Player Daemon D-Bus Bridge";
-        environment = {XDG_RUNTIME_DIR = "/run/user/1000";};
         wants = ["mpd.service"];
         after = ["mpd.service"];
         wantedBy = ["default.target"];
 
         serviceConfig = {
-          Type = "simple";
+          Type = "dbus";
           BusName = "org.mpris.MediaPlayer2.mpd";
-          User = user;
-          Group = "users";
           Restart = "on-failure";
-          # avoid race condition
-          ExecStartPre = getExe' pkgs.coreutils "sleep 5s";
-          ExecStart = "${getExe pkgs.mpdris2-rs} --host ${cfg.settings.bind_to_address}";
+          ExecStart = "${lib.getExe pkgs.mpdris2-rs} --host ${cfg.settings.bind_to_address}";
         };
       };
 
@@ -69,14 +62,14 @@ in {
         description = "Discord Rich Presence for MPD";
         documentation = ["https://github.com/JakeStanger/mpd-discord-rpc"];
         environment = {XDG_RUNTIME_DIR = "/run/user/1000";};
-        after = ["graphical-session.target"] ++ ["mpd.service"];
+        after = ["graphical-session.target"];
         partOf = ["graphical-session.target"];
-        wantedBy = ["graphical-session.target"] ++ ["mpd.service"];
+        wantedBy = ["graphical-session.target"];
 
         serviceConfig = {
           User = user;
           Group = "users";
-          ExecStart = getExe pkgs.mpd-discord-rpc;
+          ExecStart = lib.getExe pkgs.mpd-discord-rpc;
           Restart = "on-failure";
         };
       };

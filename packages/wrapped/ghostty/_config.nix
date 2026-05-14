@@ -1,4 +1,5 @@
 _: {
+  shell-integration-features = "sudo";
   theme = "Catppuccin Frappe";
   alpha-blending = "linear-corrected";
   app-notifications = "no-clipboard-copy";

@@ -45,6 +45,8 @@ in {
       inherit (flake.modules.nixos) gtk qt cursor;
       # desktop
       inherit (flake.modules.nixos) dms niri;
+      # audioApps
+      inherit (flake.modules.nixos) audio;
     };
 
     # modules standalone

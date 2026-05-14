@@ -1,14 +1,9 @@
-{
-  inputs,
-  config,
-  ...
-}: let
+{config, ...}: let
   inherit (config) flake;
 in {
   flake.modules.nixos = {
     hjem-extended = {pkgs, ...}: let
       inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) zeditor zedConfig;
-      orion-browser = inputs.orion-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
     in {
       imports = builtins.attrValues {
         inherit (flake.modules.nixos) protonApps zen;
@@ -18,7 +13,6 @@ in {
         packages = [
           pkgs.obs-studio
           zeditor
-          orion-browser
         ];
 
         xdg.config.files."zed/settings.json".source = zedConfig;

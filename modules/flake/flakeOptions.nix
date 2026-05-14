@@ -34,9 +34,6 @@ in {
         default = {};
         description = "Library functions which require `pkgs` to be primed and loaded.";
       };
-      packageLists = mkOption {
-        description = "Commonly reused package lists, they are lists of strings found in nixpkgs that will be transformed given `pkgs` reference.";
-      };
       wrappers = mkOption {
         description = "Modules that can be called to created wrapped packages from this flake.";
       };

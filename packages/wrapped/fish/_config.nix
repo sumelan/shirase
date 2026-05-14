@@ -28,6 +28,7 @@ in
   # fish
   ''
     set -g fish_greeting ""
+
     # Fallback default prompt
     fish_config prompt choose arrow
 
