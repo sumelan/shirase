@@ -1,5 +1,5 @@
 {config, ...}: let
-  address = config.services.mpd.settings.bind_to_address;
+  address = config.custom.services.mpd.settings.bind_to_address;
 in {
   id = 677226551607033903;
   hosts = [address];

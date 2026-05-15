@@ -3,8 +3,8 @@
   cache,
   ...
 }: let
-  address = "/run/mpd/socket";
-  fifo = "/run/mpd/mpd.fifo";
+  address = "/run/user/1000/mpd/socket";
+  fifo = "/run/user/1000/mpd/mpd.fifo";
 in
   pkgs.writeText "config.ron"
   # ron

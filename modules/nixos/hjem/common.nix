@@ -27,6 +27,10 @@ in {
       ;
   in {
     imports = builtins.attrValues {
+      # audio
+      inherit (flake.modules.nixos) pipewire;
+      # blueman
+      inherit (flake.modules.nixos) blueman-applet;
       # shell
       inherit (flake.modules.nixos) fish;
       # tui
@@ -45,8 +49,6 @@ in {
       inherit (flake.modules.nixos) gtk qt cursor;
       # desktop
       inherit (flake.modules.nixos) dms niri;
-      # audioApps
-      inherit (flake.modules.nixos) audio;
     };
 
     # modules standalone

@@ -1,5 +1,5 @@
 {lib, ...}: {
-  flake.modules.nixos.audio = {pkgs, ...}: {
+  flake.modules.nixos.pipewire = {pkgs, ...}: {
     hj = {
       packages = [
         pkgs.pwvucontrol
@@ -22,18 +22,6 @@
             Restart = "on-failure";
             RestartSec = 5;
             TimeoutStopSec = 10;
-          };
-        };
-
-        blueman-applet = {
-          description = "Blueman applet";
-          requires = ["tray.target"];
-          after = ["graphical-session.target"] ++ ["tray.target"];
-          partOf = ["graphical-session.target"];
-          wantedBy = ["graphical-session.target"];
-
-          serviceConfig = {
-            ExecStart = lib.getExe' pkgs.blueman "blueman-applet";
           };
         };
 
