@@ -1,5 +1,5 @@
 {lib, ...}: {
-  flake.modules.nixos.pipewire = {
+  flake.custom.hjemConfigs.pipewire = {
     config,
     pkgs,
     ...

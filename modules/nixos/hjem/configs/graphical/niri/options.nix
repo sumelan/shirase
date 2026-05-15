@@ -54,7 +54,7 @@
     };
   };
 in {
-  flake.modules.nixos.niri = {config, ...}: let
+  flake.custom.hjemConfigs.niri = {config, ...}: let
     cfg = config.custom.hardware.monitors;
     clib = config.lib.custom.hardware.monitors;
   in {

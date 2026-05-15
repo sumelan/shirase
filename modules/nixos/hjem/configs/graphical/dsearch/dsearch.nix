@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.dms = {
+  flake.custom.hjemConfigs.dsearch = {
     config,
     pkgs,
     ...

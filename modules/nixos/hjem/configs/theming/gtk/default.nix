@@ -4,7 +4,7 @@
   inherit (lib.generators) toINI;
   inherit (lib.gvariant) mkUint32;
 in {
-  flake.modules.nixos.gtk = {
+  flake.custom.hjemConfigs.gtk = {
     config,
     pkgs,
     ...

@@ -5,7 +5,7 @@
 }: let
   inherit (inputs.niri-nix.lib) validatedConfigFor mkNiriKDL;
 in {
-  flake.modules.nixos.niri = {
+  flake.custom.hjemConfigs.niri = {
     config,
     pkgs,
     dotfile,

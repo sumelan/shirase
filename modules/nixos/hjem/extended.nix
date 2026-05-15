@@ -6,7 +6,7 @@ in {
       inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) zeditor zedConfig;
     in {
       imports = builtins.attrValues {
-        inherit (flake.modules.nixos) protonApps zen;
+        inherit (flake.modules.nixos) zen;
       };
 
       hj = {

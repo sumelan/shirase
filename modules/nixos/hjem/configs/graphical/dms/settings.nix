@@ -5,7 +5,7 @@
 }: let
   inherit (lib.generators) toJSON;
 in {
-  flake.modules.nixos.dms = {pkgs, ...}: let
+  flake.custom.hjemConfigs.dms = {pkgs, ...}: let
     inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) dms-plugins dms-screen-recorder dms-display-mirror;
 
     pluginDir = "DankMaterialShell/plugins";

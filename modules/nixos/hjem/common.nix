@@ -26,28 +26,7 @@ in {
       wlr-which-key
       ;
   in {
-    imports = builtins.attrValues {
-      # audio
-      inherit (flake.modules.nixos) pipewire;
-      # shell
-      inherit (flake.modules.nixos) fish;
-      # tui
-      inherit (flake.modules.nixos) btop helix yazi yt-dlp zoxide;
-      # mpd
-      inherit (flake.modules.nixos) mpd rmpc;
-      # browser
-      inherit (flake.modules.nixos) helium;
-      # image editor
-      inherit (flake.modules.nixos) satty;
-      # pdf viewer
-      inherit (flake.modules.nixos) zathura;
-      # file manager
-      inherit (flake.modules.nixos) nautilus;
-      # theming
-      inherit (flake.modules.nixos) gtk qt cursor;
-      # desktop
-      inherit (flake.modules.nixos) dms niri;
-    };
+    imports = builtins.attrValues flake.custom.hjemConfigs;
 
     # modules standalone
     hj = let
@@ -98,12 +77,12 @@ in {
         # shell
         inherit nushell starship;
         # tui
-        inherit bat batman eza eza-tree moor ripgrep;
+        inherit bat batman eza eza-tree moor ripgrep ns;
         # editor
         inherit nvf;
+        # desktop
+        inherit wlr-which-key;
         nvim-desktop-entry = lib.hiPrio nvim-desktop-entry;
-        # nix-search-tv
-        inherit ns;
         ns-desktop-entry = lib.hiPrio ns-desktop-entry;
         # terminal
         inherit ghostty;
@@ -117,8 +96,6 @@ in {
         inherit (pkgs) vesktop dissent;
         # slack
         inherit (pkgs) slack;
-        # desktop
-        inherit wlr-which-key;
         # tools
         inherit (pkgs) brightnessctl cliphist libnotify playerctl wl-clipboard;
       };

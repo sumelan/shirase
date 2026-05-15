@@ -1,5 +1,5 @@
 {config, ...}: {
-  flake.modules.nixos.yt-dlp = {pkgs, ...}: let
+  flake.custom.hjemConfigs.yt-dlp = {pkgs, ...}: let
     inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) yt-dlp;
     mkFormat = height: "bestvideo[height<=?${toString height}][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best";
   in {

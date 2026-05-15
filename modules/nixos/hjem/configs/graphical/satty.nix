@@ -2,7 +2,7 @@
   inherit (config) flake;
   inherit (flake.custom.wrappers) mkSatty;
 in {
-  flake.modules.nixos.satty = {
+  flake.custom.hjemConfigs.satty = {
     config,
     pkgs,
     ...

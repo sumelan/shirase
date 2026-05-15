@@ -2,7 +2,7 @@
   inherit (lib) mkOption;
   inherit (lib.types) package str int;
 in {
-  flake.modules.nixos.cursor = {
+  flake.custom.hjemConfigs.cursor = {
     config,
     pkgs,
     ...

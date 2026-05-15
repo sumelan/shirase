@@ -1,7 +1,5 @@
-{lib, ...}: let
-  inherit (lib) mkAfter getExe;
-in {
-  flake.modules.nixos.zoxide = {pkgs, ...}: let
+{lib, ...}: {
+  flake.custom.hjemConfigs.zoxide = {pkgs, ...}: let
     flags = "--cmd cd";
   in {
     environment.shellAliases = {
@@ -12,8 +10,8 @@ in {
     # zoxide is initialized via `zoxide init fish <flags> | source` and is
     # therefore not wrapped with flags
     programs = {
-      bash.interactiveShellInit = mkAfter ''
-        eval "$(${getExe pkgs.zoxide} init bash ${flags} )"
+      bash.interactiveShellInit = lib.mkAfter ''
+        eval "$(${lib.getExe pkgs.zoxide} init bash ${flags} )"
       '';
     };
 

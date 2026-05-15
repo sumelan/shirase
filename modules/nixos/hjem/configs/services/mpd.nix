@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.mpd = {
+  flake.custom.hjemConfigs.mpd = {
     config,
     user,
     ...

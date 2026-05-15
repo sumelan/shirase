@@ -1,7 +1,7 @@
 {config, ...}: let
   inherit (config) flake;
 in {
-  flake.modules.nixos.fish = {
+  flake.modules.nixos.default = {
     config,
     pkgs,
     ...

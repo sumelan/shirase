@@ -1,5 +1,5 @@
 {config, ...}: {
-  flake.modules.nixos.helium = {pkgs, ...}: let
+  flake.custom.hjemConfigs.helium = {pkgs, ...}: let
     inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) helium;
   in {
     programs.chromium = {

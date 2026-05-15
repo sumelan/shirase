@@ -2,7 +2,7 @@
   inherit (config) flake;
   inherit (flake.custom.wrappers) mkHelix;
 in {
-  flake.modules.nixos.helix = {
+  flake.custom.hjemConfigs.helix = {
     config,
     pkgs,
     dotfile,

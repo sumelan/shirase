@@ -1,7 +1,7 @@
 {config, ...}: let
   inherit (config) flake;
 in {
-  flake.modules.nixos.rmpc = {
+  flake.custom.hjemConfigs.rmpc = {
     config,
     pkgs,
     ...

@@ -8,7 +8,7 @@
   inherit (lib.types) listOf str;
   inherit (flake.custom.wrappers) mkBtop;
 in {
-  flake.modules.nixos.btop = {
+  flake.custom.hjemConfigs.btop = {
     config,
     pkgs,
     ...

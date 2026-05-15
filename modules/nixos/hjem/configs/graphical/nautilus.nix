@@ -1,14 +1,12 @@
-_: let
-  inherit (builtins) attrValues;
-in {
-  flake.modules.nixos.nautilus = {
+_: {
+  flake.custom.hjemConfigs.nautilus = {
     config,
     pkgs,
     dotfile,
     ...
   }: {
     hj = {
-      packages = attrValues {
+      packages = builtins.attrValues {
         inherit
           (pkgs)
           nautilus

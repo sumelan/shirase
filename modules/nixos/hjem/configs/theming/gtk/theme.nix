@@ -1,40 +1,23 @@
-{
-  config,
-  lib,
-  ...
-}: let
-  inherit (config) flake;
+{lib, ...}: let
   inherit (lib) mkOption;
   inherit (lib.types) package str;
 in {
-  perSystem = {pkgs, ...}: {
-    packages = {
-      colloid-gtk-theme = pkgs.colloid-gtk-theme.override {
-        themeVariants = ["pink"];
-        colorVariants = ["dark"];
-        sizeVariants = ["compact"];
-        tweaks = ["catppuccin"];
-      };
-      catppuccin-papirus-folders = pkgs.catppuccin-papirus-folders.override {
-        flavor = "frappe";
-        accent = "maroon";
-      };
-    };
-  };
-
-  flake.modules.nixos.gtk = {
+  flake.custom.hjemConfigs.gtk = {
     config,
     pkgs,
     ...
-  }: let
-    inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) colloid-gtk-theme catppuccin-papirus-folders;
-  in {
+  }: {
     options.custom = {
       gtk = {
         theme = {
           package = mkOption {
             type = package;
-            default = colloid-gtk-theme;
+            default = pkgs.colloid-gtk-theme.override {
+              themeVariants = ["pink"];
+              colorVariants = ["dark"];
+              sizeVariants = ["compact"];
+              tweaks = ["catppuccin"];
+            };
             description = "Package providing the theme.";
           };
 
@@ -48,7 +31,10 @@ in {
         iconTheme = {
           package = mkOption {
             type = package;
-            default = catppuccin-papirus-folders;
+            default = pkgs.catppuccin-papirus-folders.override {
+              flavor = "frappe";
+              accent = "maroon";
+            };
             description = "Package providing the icon theme.";
           };
 

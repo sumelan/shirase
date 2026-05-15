@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  flake.modules.nixos.yazi = {pkgs, ...}: let
+  flake.custom.hjemConfigs.yazi = {pkgs, ...}: let
     inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) yazi;
   in {
     hj.packages =
