@@ -29,8 +29,6 @@ in {
     imports = builtins.attrValues {
       # audio
       inherit (flake.modules.nixos) pipewire;
-      # blueman
-      inherit (flake.modules.nixos) blueman-applet;
       # shell
       inherit (flake.modules.nixos) fish;
       # tui

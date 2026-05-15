@@ -1,6 +1,7 @@
-_: {
-  flake.modules.nixos.dms = {
+{inputs, ...}: {
+  flake.modules.nixos.default = {
     config,
+    pkgs,
     user,
     ...
   }: {
@@ -8,19 +9,27 @@ _: {
     services.getty.autologinUser = user;
 
     # dms-related
-    programs.dank-material-shell = {
-      enable = true;
-      systemd.enable = true;
-
-      # greeter
-      greeter = {
+    programs = {
+      dank-material-shell = {
         enable = true;
-        compositor.name = "niri";
-        configHome = config.hj.directory;
-        logs = {
-          save = true;
-          path = "/tmp/dms-greeter.log";
+        systemd.enable = true;
+
+        # greeter
+        greeter = {
+          enable = true;
+          compositor.name = "niri";
+          configHome = config.hj.directory;
+          logs = {
+            save = true;
+            path = "/tmp/dms-greeter.log";
+          };
         };
+      };
+
+      dsearch = {
+        enable = true;
+        package = inputs.dsearch.packages.${pkgs.stdenv.hostPlatform.system}.default;
+        systemd.enable = true;
       };
     };
 

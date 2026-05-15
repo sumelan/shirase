@@ -339,7 +339,6 @@ in {
   spawn-at-startup = [
     ["nm-applet"]
     ["blueman-applet"]
-    ["solaar" "-w" "hide" "-b" "symbolic"]
   ];
 
   binds = let
