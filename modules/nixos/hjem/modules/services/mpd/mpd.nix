@@ -63,7 +63,7 @@
 
           db_file = lib.mkOption {
             type = lib.types.path;
-            default = "${cfg.dataDir}/data_base";
+            default = "${cfg.dataDir}/database";
             description = ''
               The path to MPD's database.
             '';
