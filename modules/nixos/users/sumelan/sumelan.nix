@@ -18,7 +18,7 @@ in {
         "wheel"
       ];
       openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA0nylmhn7vyEeF1Lec3oAy2DbHOZrPYWZ5JkDefMslq sumelan"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJHL2ZpvP+MowbQocG6NdBieeICjx4dnaDAbEEsA9P/W sumelan"
       ];
     };
 
