@@ -256,11 +256,9 @@ in {
       match = [
         {_props.app-id._raw = ''r#"^.blueman-manager-wrapped$"#'';}
         {_props.app-id._raw = ''r#"^com.github.wwmm.easyeffects$"#'';}
-        # helium extension's windows
-        {_props.app-id._raw = ''r#"^chrome-"#'';}
+        {_props.app-id._raw = ''r#"^chrome-"#'';} # helium extension's windows
         {_props.app-id._raw = ''r#"^com.saivert.pwvucontrol$"#'';}
         {_props.app-id._raw = ''r#"^org.kde.kdeconnect-indicator$"#'';}
-        {_props.app-id._raw = ''r#"^solaar$"#'';}
       ];
       open-floating = true;
     }
@@ -270,15 +268,23 @@ in {
         {_props.title._raw = ''r#"^Picture-in-Picture$"#'';}
         {_props.title._raw = ''r#"^ピクチャーインピクチャー$"#'';}
         {_props.title._raw = ''r#"^ピクチャー イン ピクチャー$"#'';}
+
         {_props.app-id._raw = ''r#"^mpv$"#'';}
-        {_props.app-id._raw = ''r#"^vlc$"#'';}
         {_props.app-id._raw = ''r#"^com.gabm.satty$"#'';}
+        {_props.app-id._raw = ''r#"^swayimg$"#'';}
+        {_props.app-id._raw = ''r#"^vlc$"#'';}
         {_props.app-id._raw = ''r#"^Pqiv$"#'';}
+      ];
+      default-column-width._children = [
+        {proportion = 0.450000;}
+      ];
+      default-window-height._children = [
+        {proportion = 0.450000;}
       ];
       open-floating = true;
       opacity = 1.000000;
     }
-    # windows wanted to be floating and not shown on screen-capture
+    # windows wanted to be floating and be blocked out from screen-capture
     {
       match = [
         {_props.app-id._raw = ''r#"^org.gnome.Nautilus$"#'';}
@@ -303,7 +309,7 @@ in {
         };
       };
     }
-    # windows wanted not to be shown on screen-capture
+    # windows to be blocked out from screen-capture
     {
       match = [
         {_props.app-id._raw = ''r#"^org.gnome.seahorse.Application$"#'';}
@@ -424,8 +430,8 @@ in {
       spawn = ["ghostty" "--gtk-single-instance=true" "--working-directory=${dotfile}" "--class=ghostty.nvim" "-e" "nvim"];
     };
     "Mod+B" = {
-      _props.hotkey-overlay-title = "${hotkey "#8CAAEE" "󰖟  Helium" "Web Browser"}";
-      spawn-sh = ["helium &"];
+      _props.hotkey-overlay-title = "${hotkey "#8CAAEE" "  Zen" "Web Browser"}";
+      spawn = ["zen"];
     };
     "Mod+N" = {
       _props = {

@@ -7,7 +7,7 @@ _: {
       enable = true;
       completion.enable = true;
       shellAliases = {
-        ehistory = "nvim ${histFile}";
+        ehistory = "hx ${histFile}";
       };
 
       interactiveShellInit =

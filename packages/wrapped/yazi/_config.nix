@@ -11,6 +11,7 @@ in
         inherit
           (pkgs.yaziPlugins)
           full-border
+          git
           yatline
           yatline-catppuccin
           yatline-githead
@@ -21,6 +22,10 @@ in
         # lua
         ''
           require("full-border"):setup({ type = ui.Border.ROUNDED })
+          require("git"):setup {
+            -- Order of status signs showing in the linemode
+           order = 1500,
+          }
           require("yatline"):setup({ theme = require("yatline-catppuccin"):setup("frappe") })
           require("yatline-githead"):setup()
         '';
@@ -65,13 +70,15 @@ in
             prepend_fetchers = [
               {
                 id = "git";
-                name = "*";
+                url = "*";
                 run = "git";
+                group = "git";
               }
               {
                 id = "git";
-                name = "*/";
+                url = "*/";
                 run = "git";
+                group = "git";
               }
             ];
           };
@@ -177,6 +184,21 @@ in
             on = "p";
             run = "plugin smart-paste";
             desc = "Paste into the hovered directory or CWD";
+          }
+        ];
+      };
+    }
+
+    # lazygit: manage git repos with lazygit
+    {
+      plugins.lazygit = pkgs.yaziPlugins.lazygit;
+
+      settings = {
+        keymap.mgr.prepend_keymap = [
+          {
+            on = ["g" "i"];
+            run = "plugin lazygit";
+            desc = "Run lazygit";
           }
         ];
       };

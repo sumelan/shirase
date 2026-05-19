@@ -5,10 +5,6 @@ in {
     hjem-extended = {pkgs, ...}: let
       inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) zeditor zedConfig;
     in {
-      imports = builtins.attrValues {
-        inherit (flake.modules.nixos) zen;
-      };
-
       hj = {
         packages = [
           pkgs.obs-studio
@@ -33,11 +29,28 @@ in {
     };
 
     hjem-bluray = {pkgs, ...}: {
-      hj.packages = [
-        pkgs.handbrake
-        pkgs.makemkv
-        pkgs.vlc
-      ];
+      hj = {
+        packages = [
+          pkgs.handbrake
+          pkgs.makemkv
+          pkgs.vlc
+        ];
+
+        xdg.mime-apps = let
+          handbrake = "fr.handbrake.ghb.desktop";
+          vlc = "vlc.desktop";
+          associations = builtins.listToAttrs (map (name: {
+              inherit name;
+              value = [handbrake vlc];
+            })
+            [
+              "audio/*"
+              "video/*"
+            ]);
+        in {
+          removed-associations = associations;
+        };
+      };
 
       # find usb bluray drive
       # https://discourse.nixos.org/t/makemkv-cant-find-my-usb-blu-ray-drive/23714

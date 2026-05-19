@@ -16,7 +16,7 @@
   "matugenContrast": 0,
   "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "HDMI-A-1",
-  "popupTransparency": 0.75,
+  "popupTransparency": 0.7,
   "dockTransparency": 0.9,
   "widgetBackgroundColor": "sch",
   "widgetColorMode": "default",
@@ -42,7 +42,7 @@
   "nightModeEnabled": true,
   "animationSpeed": 4,
   "customAnimationDuration": 200,
-  "syncComponentAnimationSpeeds": false,
+  "syncComponentAnimationSpeeds": true,
   "popoutAnimationSpeed": 4,
   "popoutCustomAnimationDuration": 150,
   "modalAnimationSpeed": 1,
@@ -286,6 +286,8 @@
   "monoFontFamily": "Maple Mono NF",
   "fontWeight": 400,
   "fontScale": 1,
+  "textRenderType": 0,
+  "textRenderQuality": 0,
   "notepadUseMonospace": true,
   "notepadFontFamily": "",
   "notepadFontSize": 14,
@@ -475,6 +477,7 @@
   "customPowerActionReboot": "",
   "customPowerActionPowerOff": "",
   "updaterHideWidget": false,
+  "updaterCheckOnStart": false,
   "updaterUseCustomCommand": false,
   "updaterCustomCommand": "",
   "updaterTerminalAdditionalParams": "",
@@ -512,14 +515,20 @@
   "displayProfileAutoSelect": false,
   "displayShowDisconnected": false,
   "displaySnapToEdge": true,
-  "connectedFrameBarStyleBackups": {},
-  "connectedFrameModalDarkenBackup": null,
+  "connectedFrameBarStyleBackups": {
+    "default": {
+      "shadowIntensity": 0,
+      "squareCorners": true,
+      "gothCornersEnabled": true,
+      "borderEnabled": true
+    }
+  },
   "barConfigs": [
     {
       "autoHide": false,
       "autoHideDelay": 250,
       "borderColor": "surfaceText",
-      "borderEnabled": true,
+      "borderEnabled": false,
       "borderOpacity": 0.3,
       "borderThickness": 1,
       "bottomGap": 0,
@@ -534,7 +543,7 @@
       "fontScale": 1,
       "gothCornerRadiusOverride": false,
       "gothCornerRadiusValue": 12,
-      "gothCornersEnabled": true,
+      "gothCornersEnabled": false,
       "id": "default",
       "innerPadding": 10,
       "leftWidgets": [
@@ -572,7 +581,7 @@
       "openOnOverview": true,
       "popupGapsAuto": true,
       "popupGapsManual": 4,
-      "position": 0,
+      "position": 2,
       "rightWidgets": [
         {
           "id": "notificationButton",
@@ -620,7 +629,7 @@
       "shadowOpacity": 60,
       "showOnLastDisplay": true,
       "spacing": 0,
-      "squareCorners": true,
+      "squareCorners": false,
       "transparency": 0.8,
       "visible": true,
       "widgetOutlineColor": "primary",
@@ -722,10 +731,10 @@
     },
     "dankNotepadModule": {
       "previewActive": false,
-      "currentFilePath": "notepad-files/untitled-1770358666869.txt",
+      "currentFilePath": "notepad-files/untitled-1777121577212.txt",
       "currentFileExtension": "txt",
-      "sourceContent": "nix",
-      "updatedAt": 1777019972526
+      "sourceContent": "\n",
+      "updatedAt": 1779092764572
     }
   },
   "clipboardEnterToPaste": true,
@@ -742,9 +751,9 @@
   "frameBarSize": 40,
   "frameShowOnOverview": true,
   "frameBlurEnabled": true,
-  "frameCloseGaps": true,
-  "frameLauncherEmergeSide": "bottom",
-  "frameLauncherArcExtender": false,
-  "frameMode": "separate",
+  "frameCloseGaps": false,
+  "frameLauncherEmergeSide": "top",
+  "frameLauncherArcExtender": true,
+  "frameMode": "connected",
   "configVersion": 11
 }

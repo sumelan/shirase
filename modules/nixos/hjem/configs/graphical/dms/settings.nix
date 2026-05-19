@@ -2,9 +2,7 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib.generators) toJSON;
-in {
+}: {
   flake.custom.hjemConfigs.dms = {pkgs, ...}: let
     inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) dms-plugins dms-screen-recorder dms-display-mirror;
 
@@ -38,7 +36,7 @@ in {
         };
 
         "DankMaterialShell/plugin_settings.json" = {
-          generator = toJSON {};
+          generator = lib.generators.toJSON {};
           value = {
             dankBatteryAlerts = {
               enabled = true;

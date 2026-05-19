@@ -24,6 +24,7 @@ in {
       ripgrep
       starship
       wlr-which-key
+      zathura
       ;
   in {
     imports = builtins.attrValues flake.custom.hjemConfigs;
@@ -86,6 +87,14 @@ in {
         ns-desktop-entry = lib.hiPrio ns-desktop-entry;
         # terminal
         inherit ghostty;
+        # pdf viewer
+        inherit zathura;
+        # protonapps
+        # NOTE: `protonmail-desktop` need to be started once through xwayland with
+        # `XDG_SESSION_TYPE=x11 DISPLAY=:0 proton-mail`
+        # but after that it worked without them
+        # https://github.com/NixOS/nixpkgs/issues/365156#issuecomment-2585203352
+        inherit (pkgs) protonmail-desktop proton-pass proton-vpn;
         # media
         inherit (pkgs) mpv pear-desktop euphonica;
         # ebook
@@ -107,12 +116,12 @@ in {
           SYSTEMD_PAGER = "moor";
           SYSTEMD_PAGERSECURE = "1";
 
-          DEFAULT_BROWSER = "helium";
-          BROWSER = "helium";
+          DEFAULT_BROWSER = "zen";
+          BROWSER = "zen";
 
           TERMINAL = "ghostty";
-          EDITOR = "nvim";
-          VISUAL = "nvim";
+          EDITOR = "hx";
+          VISUAL = "hx";
           NIXPKGS_ALLOW_UNFREE = "1";
 
           # xdg
@@ -143,16 +152,38 @@ in {
           };
         };
 
-        mime-apps = {
+        mime-apps = let
+          ghostty = "com.mitchellh.ghostty.desktop";
+          zathura = "org.pwmt.zathura-pdf-mupdf.desktop";
+        in {
           default-applications = {
-            "x-scheme-handler/terminal" = "com.mitchellh.ghostty.desktop";
+            "x-scheme-handler/terminal" = ghostty;
 
-            "text/plain" = "nvim.desktop";
-            "application/x-shellscript" = "nvim.desktop";
-            "application/xml" = "nvim.desktop";
+            "text/plain" = "helix.desktop";
+            "application/x-shellscript" = "helix.desktop";
+            "application/xml" = "helix.desktop";
+
+            "x-scheme-handler/unknown" = "zen.desktop";
+            "x-scheme-handler/about" = "zen.desktop";
+            "x-scheme-handler/https" = "zen.desktop";
+            "x-scheme-handler/http" = "zen.desktop";
+            "text/html" = "zen.desktop";
           };
           added-associations = {
-            "text/csv" = "nvim.desktop";
+            "text/csv" = "helix.desktop";
+
+            "x-scheme-handler/unknown" = "zen.desktop";
+            "x-scheme-handler/about" = "zen.desktop";
+            "x-scheme-handler/https" = "zen.desktop";
+            "x-scheme-handler/http" = "zen.desktop";
+            "text/html" = "zen.desktop";
+          };
+
+          removed-associations = {
+            "audio/*" = "umpv.desktop";
+            "video/*" = "umpv.desktop";
+
+            "image/*" = zathura;
           };
         };
       };
@@ -160,22 +191,26 @@ in {
 
     custom.fileSystem = {
       persist.home.directories = [
+        ".supermaven"
         ".local/share/nvim" # data directory
         ".local/state/nvim" # persistent session info
-        ".supermaven"
         ".local/share/supermaven"
+        ".local/state/mpv" # watch later
+        ".local/share/com.github.johnfactotum.Foliate"
 
         ".config/dissent"
-        ".cache/euphonica"
         ".config/Slack"
         ".config/vesktop"
-        ".local/state/mpv" # watch later
         ".config/YouTube Music"
-        ".local/share/com.github.johnfactotum.Foliate"
+        ".config/Proton"
+        ".config/Proton Mail"
+        ".config/Proton Pass"
       ];
       cache.home.directories = [
         ".cache/dissent"
+        ".cache/euphonica"
         ".cache/com.github.johnfactotum.Foliate"
+        ".cache/Proton"
       ];
     };
   };

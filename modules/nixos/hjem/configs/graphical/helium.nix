@@ -41,17 +41,6 @@
 
       xdg.mime-apps = let
         value = "helium.desktop";
-
-        defaultAssociations = builtins.listToAttrs (map (name: {
-            inherit name value;
-          }) [
-            "x-scheme-handler/unknown"
-            "x-scheme-handler/about"
-            "x-scheme-handler/https"
-            "x-scheme-handler/http"
-            "text/html"
-          ]);
-
         imgAssociations = builtins.listToAttrs (map (name: {
             inherit name value;
           }) [
@@ -62,8 +51,6 @@
             "application/pdf"
           ]);
       in {
-        default-applications = defaultAssociations;
-        added-associations = defaultAssociations;
         removed-associations = imgAssociations;
       };
     };

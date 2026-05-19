@@ -1,21 +1,14 @@
 {config, ...}: let
   inherit (config) flake;
 in {
-  flake.modules.nixos."hosts/sakura" = {
-    config,
-    pkgs,
-    ...
-  }: {
-    imports = with flake.modules.nixos;
-      [default minisforum-um773se]
-      ++ [steam]
-      ++ [hdds qmk]
-      ++ [audiobookshelf kdeconnect sops-nix syncoid syncthing]
-      ++ [hjem-extended]
-      ++ [
-        hjem-bluray
-        hjem-cd
-      ];
+  flake.modules.nixos."hosts/sakura" = {config, ...}: {
+    imports = builtins.attrValues {
+      inherit (flake.modules.nixos) default minisforum-um773se;
+      inherit (flake.modules.nixos) kdeconnect steam;
+      inherit (flake.modules.nixos) hdds qmk;
+      inherit (flake.modules.nixos) audiobookshelf sops-nix syncoid syncthing;
+      inherit (flake.modules.nixos) hjem-extended hjem-bluray hjem-cd;
+    };
 
     networking.hostId = "b5e8f0be";
 
@@ -38,33 +31,13 @@ in {
         cert = config.sops.secrets."syncthing/sakura-cert".path;
         settings = {
           devices = {
-            "minibookx" = {id = "LTAE56R-6ARZAXL-JK4KL6B-IHVTITS-AEL3TCQ-JR4ZNQQ-52QHVU2-7UU7SQI";};
             "motorola razr 50" = {id = "3BSLI47-FLXIECF-S7QZWXG-ZXTMFFV-GLVVSLS-I3MYHPS-74GIRFU-5SVA6AO";};
           };
           folders = {
-            "Documents" = {
-              devices = ["minibookx"];
-            };
             "Music" = {
               devices = [
-                "minibookx"
                 "motorola razr 50"
               ];
-            };
-            "Pictures" = {
-              devices = ["minibookx"];
-            };
-            "Videos" = {
-              devices = ["minibookx"];
-            };
-            "MPD" = {
-              devices = ["minibookx"];
-            };
-            "Youtube" = {
-              devices = ["minibookx"];
-            };
-            "Euphonica" = {
-              devices = ["minibookx"];
             };
           };
         };
@@ -95,9 +68,6 @@ in {
           ironWolf = true;
         };
       };
-
-      # unhinted font: for high resolution screen
-      fonts.packages = [pkgs.maple-mono.NF-unhinted];
 
       programs = {
         btop.rocmSupport = true;
