@@ -11,7 +11,7 @@ pkgs.writeTextFile {
   destination = "/pqivrc"; # pqiv expects a directory
   text = ''
     [options]
-    box-colors = #F2D5CF:#81C8BE
+    box-colors = #ECEFF4:#5E81AC
     disable-backends = archive,archive_cbx,libav,poppler,spectre,wand
     hide-info-box = 1
     max-depth = 1

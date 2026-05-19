@@ -1,7 +1,7 @@
 {config, ...}: let
   inherit (config) flake;
 in {
-  flake.modules.nixos."hosts/minibookx" = _: {
+  flake.modules.nixos."hosts/minibookx" = {pkgs, ...}: {
     imports = builtins.attrValues {
       inherit (flake.modules.nixos) default chuwi-minibook-x;
       inherit (flake.modules.nixos) kdeconnect;
@@ -25,6 +25,9 @@ in {
           rotation = 270;
         };
       };
+
+      # hinted font: for lower or equal than 1080p
+      fonts.packages = [pkgs.maple-mono.NF];
     };
   };
 }

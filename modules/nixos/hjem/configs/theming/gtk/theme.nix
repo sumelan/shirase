@@ -12,18 +12,13 @@ in {
         theme = {
           package = mkOption {
             type = package;
-            default = pkgs.colloid-gtk-theme.override {
-              themeVariants = ["pink"];
-              colorVariants = ["dark"];
-              sizeVariants = ["compact"];
-              tweaks = ["catppuccin"];
-            };
+            default = pkgs.nordic;
             description = "Package providing the theme.";
           };
 
           name = mkOption {
             type = str;
-            default = "Colloid-Pink-Dark-Compact-Catppuccin";
+            default = "Nordic-darker";
             description = "The name of the theme within the package.";
           };
         };
@@ -31,9 +26,8 @@ in {
         iconTheme = {
           package = mkOption {
             type = package;
-            default = pkgs.catppuccin-papirus-folders.override {
-              flavor = "frappe";
-              accent = "maroon";
+            default = pkgs.papirus-nord.override {
+              accent = "polarnight3";
             };
             description = "Package providing the icon theme.";
           };

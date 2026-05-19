@@ -67,8 +67,8 @@ in {
           });
       };
 
-      langs = mkHelixLanguages {inherit pkgs extraLang;};
       cfg = mkHelixConfig {inherit pkgs extraCfg;};
+      langs = mkHelixLanguages {inherit pkgs extraLang;};
 
       printCfg = printConfig {
         inherit cfg pkgs;

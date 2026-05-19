@@ -41,6 +41,9 @@ in {
             withBDplus = true;
           };
         };
+        nord-yazi = prev.yaziPlugins.nord.overrideAttrs (o: {
+          patches = (o.patches or []) ++ [./patches/nord-yazi.patch];
+        });
       };
 
       # writeShellApplication with support for completions

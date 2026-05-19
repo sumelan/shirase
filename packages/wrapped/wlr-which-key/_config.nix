@@ -2,12 +2,12 @@ _: {
   # Theming
   font = "Maple Mono NF Bold Italic 14";
   background =
-    "#51576D"
+    "#4C566A"
     +
     # 85% transparency
     "D9";
-  color = "#81C8BE";
-  border = "#BABBF1";
+  color = "#D79784";
+  border = "#EFD49F";
   separator = " ➜ ";
   border_width = 2.0;
   corner_r = 0;

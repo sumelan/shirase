@@ -15,8 +15,8 @@ in {
 
   overview = {
     zoom = 0.500000;
-    backdrop-color = "#414559";
-    workspace-shadow = {color = "#232634" + "90";};
+    backdrop-color = "#3B4252";
+    workspace-shadow = {color = "#3B4252" + "90";};
   };
 
   output = let
@@ -103,13 +103,13 @@ in {
       width = 3;
       active-gradient = {
         _props = {
-          from = "#81C8BE";
-          to = "#F4B8E4";
+          from = "#B1C89D";
+          to = "#9FC6C5";
           angle = 45;
           "in" = "oklch longer hue";
         };
       };
-      inactive-color = "#51576D";
+      inactive-color = "#434C5E";
     };
 
     border = {off = [];};
@@ -123,7 +123,7 @@ in {
       softness = 20;
       spread = 10;
       draw-behind-window = false;
-      color = "#232634" + "90";
+      color = "#191D24" + "90";
     };
 
     tab-indicator = {
@@ -137,17 +137,17 @@ in {
       position = "right";
       gaps-between-tabs = 0.000000;
       corner-radius = 0.000000;
-      active-color = "#A6D189" + "90";
-      inactive-color = "#414559" + "90";
+      active-color = "#191D24" + "90";
+      inactive-color = "#434C5E" + "90";
     };
 
     insert-hint = {
       gradient = {
         _props = {
           angle = 45;
-          from = "#A6D189";
+          from = "#97B67C";
           relative-to = "window";
-          to = "#81C8BE";
+          to = "#B1C89D";
         };
       };
     };
@@ -227,13 +227,13 @@ in {
       focus-ring = {
         active-gradient = {
           _props = {
-            from = "#EF9F76";
-            to = "#E78284";
+            from = "#D79784";
+            to = "#C5727A";
             angle = 45;
             "in" = "oklch longer hue";
           };
         };
-        inactive-color = "#303446";
+        inactive-color = "#434C5E";
       };
       shadow = {
         on = [];
@@ -247,8 +247,8 @@ in {
         color = "#ECEFF4" + "90";
       };
       tab-indicator = {
-        active-color = "#EA999C";
-        inactive-color = "#51576D";
+        active-color = "#C5727A";
+        inactive-color = "#434C5E";
       };
     }
     # windows wanted to be floating
@@ -352,32 +352,32 @@ in {
   in {
     # dms
     "Mod+Space" = {
-      _props.hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Launcher"}";
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Launcher"}";
       spawn = ["dms" "ipc" "spotlight" "toggle"];
     };
     "Mod+Y" = {
-      _props.hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Clipboard"}";
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Clipboard"}";
       spawn = ["dms" "ipc" "clipboard" "toggle"];
     };
     "Mod+X" = {
-      _props.hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Powermenu"}";
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Powermenu"}";
       spawn = ["dms" "ipc" "powermenu" "toggle"];
     };
     "Mod+D" = {
       _props = {
         cooldown-ms = 500;
-        hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "DMS-menu"}";
+        hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "DMS-menu"}";
       };
       spawn = ["wlr-which-key" "--initial-keys" "d"];
     };
     "Mod+Comma" = {
-      _props.hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "Settings"}";
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Settings"}";
       spawn = ["dms" "ipc" "settings" "focusOrToggle"];
     };
     "Mod+Ctrl+L" = {
       _props = {
         allow-when-locked = true;
-        hotkey-overlay-title = "${hotkey "#CA9EE6" "󰮤  DankMaterialShell" "screen-lock"}";
+        hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "screen-lock"}";
       };
       spawn = ["dms" "ipc" "lock" "lock"];
     };
@@ -422,38 +422,38 @@ in {
 
     # execute
     "Mod+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#F2D5CF" "  Ghostty" "Terminal Emulator"}";
+      _props.hotkey-overlay-title = "${hotkey "#88C0D0" "  Ghostty" "Terminal Emulator"}";
       spawn = ["ghostty" "--gtk-single-instance=true"];
     };
     "Mod+Shift+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#A6D189" "  Neovim" "Code Editor"}";
+      _props.hotkey-overlay-title = "${hotkey "#B1C89D" "  Neovim" "Code Editor"}";
       spawn = ["ghostty" "--gtk-single-instance=true" "--working-directory=${dotfile}" "--class=ghostty.nvim" "-e" "nvim"];
     };
     "Mod+B" = {
-      _props.hotkey-overlay-title = "${hotkey "#8CAAEE" "  Zen" "Web Browser"}";
+      _props.hotkey-overlay-title = "${hotkey "#C0C8D8" "  Zen" "Web Browser"}";
       spawn = ["zen"];
     };
     "Mod+N" = {
       _props = {
         cooldown-ms = 500;
-        hotkey-overlay-title = "${hotkey "#EA999C" "󰗢  niri" "niri-menu"}";
+        hotkey-overlay-title = "${hotkey "#D79784" "󰗢  niri" "niri-menu"}";
       };
       spawn = ["wlr-which-key" "--initial-keys" "n"];
     };
     "Mod+Shift+N" = {
-      _props.hotkey-overlay-title = "${hotkey "#8CAAEE" "󱄅  Nix Search" "Nix Package"}";
+      _props.hotkey-overlay-title = "${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}";
       spawn = ["ghostty" "--gtk-single-instance=true" "--class=dev.vlinkz.NixosConfEditor" "-e" "ns"];
     };
     "Mod+V" = {
-      _props.hotkey-overlay-title = "${hotkey "#BABBF1" "  Vesktop" "Discord Client"}";
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "  Vesktop" "Discord Client"}";
       spawn = ["vesktop"];
     };
     "Mod+Shift+Y" = {
-      _props.hotkey-overlay-title = "${hotkey "#E5C890" "󰇥  Yazi" "File Manager"}";
+      _props.hotkey-overlay-title = "${hotkey "#E7C173" "󰇥  Yazi" "File Manager"}";
       spawn = ["ghostty" "--gtk-single-instance=true" "--class=ghostty.yazi" "-e" "yazi"];
     };
     "Ctrl+Space" = {
-      _props.hotkey-overlay-title = "${hotkey "#A6D189" "󰗊  Hazkey" "Switch input method"}";
+      _props.hotkey-overlay-title = "${hotkey "#A3BE8C" "󰗊  Hazkey" "Switch input method"}";
       spawn = ["fcitx5-remote" "-t"];
     };
 

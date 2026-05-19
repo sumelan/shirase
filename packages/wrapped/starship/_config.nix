@@ -30,73 +30,89 @@
     inherit format;
 
     add_newline = true;
-    palette = "catppuccin_frappe";
+    palette = "nord";
 
-    palettes.catppuccin_frappe = {
-      rosewater = "#f2d5cf";
-      flamingo = "#eebebe";
-      pink = "#f4b8e4";
-      mauve = "#ca9ee6";
-      red = "#e78284";
-      maroon = "#ea999c";
-      peach = "#ef9f76";
-      yellow = "#e5c890";
-      green = "#a6d189";
-      teal = "#81c8be";
-      sky = "#99d1db";
-      sapphire = "#85c1dc";
-      blue = "#8caaee";
-      lavender = "#babbf1";
-      text = "#c6d0f5";
-      subtext1 = "#b5bfe2";
-      subtext0 = "#a5adce";
-      overlay2 = "#949cbb";
-      overlay1 = "#838ba7";
-      overlay0 = "#737994";
-      surface2 = "#626880";
-      surface1 = "#51576d";
-      surface0 = "#414559";
-      base = "#303446";
-      mantle = "#292c3c";
-      crust = "#232634";
+    palettes.nord = {
+      # Black
+      black0 = "#191D24";
+      black1 = "#1E222A";
+      black2 = "#222630";
 
-      bg0 = "#2d353b";
-      bg1 = "#343f44";
-      bg2 = "#3d484d";
-      bg3 = "#475258";
-      bg4 = "#4f585e";
-      bg5 = "#56635f";
-      bg_visual = "#543a48";
-      bg_red = "#514045";
-      bg_green = "#425047";
-      bg_blue = "#3a515d";
-      bg_yellow = "#4d4c43";
+      # Gray
+      gray0 = "#242933";
+      # Polar night
+      gray1 = "#2E3440";
+      gray2 = "#3B4252";
+      gray3 = "#434C5E";
+      gray4 = "#4C566A";
+      # a light blue/gray
+      # from @nightfox.nvim
+      gray5 = "#60728A";
 
-      fg = "#d3c6aa";
+      # White
+      # reduce_blue variant
+      white0 = "#C0C8D8";
+      # Snow storm
+      white1 = "#D8DEE9";
+      white2 = "#E5E9F0";
+      white3 = "#ECEFF4";
 
-      statusline1 = "#a7c080";
-      statusline2 = "#d3c6aa";
-      statusline3 = "#e67e80";
+      # Blue
+      # Frost
+      blue0 = "#5E81AC";
+      blue1 = "#81A1C1";
+      blue2 = "#88C0D0";
+
+      # Cyan:
+      cyan_base = "#8FBCBB";
+      cyan_bright = "#9FC6C5";
+      cyan_dim = "#80B3B2";
+
+      # Aurora (from Nord theme)
+      # Red
+      red_base = "#BF616A";
+      red_bright = "#C5727A";
+      red_dim = "#B74E58";
+
+      # Orange
+      orange_base = "#D08770";
+      orange_bright = "#D79784";
+      orange_dim = "#CB775D";
+
+      # Yellow
+      yellow_base = "#EBCB8B";
+      yellow_bright = "#EFD49F";
+      yellow_dim = "#E7C173";
+
+      # Green
+      green_base = "#A3BE8C";
+      green_bright = "#B1C89D";
+      green_dim = "#97B67C";
+
+      # Magenta
+      magenta_base = "#B48EAD";
+      magenta_bright = "#BE9DB8";
+      magenta_dim = "#A97EA1";
     };
 
     character = {
       format = "$symbol";
-      success_symbol = "[╰─](bold sapphire)[  ${nf-icon}](bold blue)";
-      error_symbol = "[╰─](bold sapphire)[  ${nf-icon}](bold red)";
-      vimcmd_symbol = "[╰─](bold sapphire)[  ${nf-icon}](bold green)";
-      vimcmd_visual_symbol = "[╰─](bold sapphire)[  ${nf-icon}](bold mauve)";
-      vimcmd_replace_symbol = "[╰─](bold sapphire])[  ${nf-icon}](bold yellow)";
-      vimcmd_replace_one_symbol = "[╰─](bold sapphire)[  ${nf-icon}](bold yellow)";
+      success_symbol = "[╰─](bold white1)[  ${nf-icon}](bold blue0)";
+      error_symbol = "[╰─](bold white1)[  ${nf-icon}](bold red_base)";
+      vimcmd_symbol = "[╰─](bold white1)[  ${nf-icon}](bold green_base)";
+      vimcmd_visual_symbol = "[╰─](bold white1)[  ${nf-icon}](bold magenta_base)";
+      vimcmd_replace_symbol = "[╰─](bold white1])[  ${nf-icon}](bold yellow_base)";
+      vimcmd_replace_one_symbol = "[╰─](bold white1)[  ${nf-icon}](bold yellow_base)";
     };
     container = {
       format = " [$symbol $name]($style) ";
       symbol = " ";
-      style = "bold peach";
+      style = "bold orange_bright";
       disabled = false;
     };
     directory = {
       format = "[╭─ $path ]($style)";
-      style = "bold sapphire";
+      style = "bold white1";
       truncation_length = 18;
       truncation_symbol = "…/";
       substitutions = {
@@ -108,29 +124,29 @@
       symbol = " ";
     };
     git_branch = {
-      format = "[](fg:rosewater)[ $symbol $branch ]($style)[](fg:rosewater) ";
-      style = "bg:rosewater fg:mantle";
+      format = "[](fg:gray3)[ $symbol $branch ]($style)[](fg:gray3) ";
+      style = "bg:gray3 fg:orange_bright";
       symbol = " ";
     };
     git_status = {
       disabled = false;
-      style = "fg:red";
+      style = "fg:red_dim";
       format = "([$all_status$ahead_behind]($style))";
-      up_to_date = "[  ](fg:mauve)";
-      untracked = "[?\($count\)](fg:blue)";
-      stashed = "[\\$\($count\)](fg:green_)";
-      modified = "[!\($count\)](fg:yellow)";
-      renamed = "[»\($count\)](fg:mauve)";
-      deleted = "[✘\($count\)](fg:red)";
-      staged = "[++\($count\)](fg:green)";
-      ahead = "[⇡\($count\)](fg:blue)";
-      diverged = "[⇕](fg:mauve)[⇡\($ahead_count\)](fg:green)[⇣\($behind_count\)](fg:yellow)";
-      behind = "[⇣\($count\)](fg:red)";
+      up_to_date = "[  ](fg:magenta_dim)";
+      untracked = "[?\($count\)](fg:blue2)";
+      stashed = "[\\$\($count\)](fg:green_bright)";
+      modified = "[!\($count\)](fg:yellow_dim)";
+      renamed = "[»\($count\)](fg:magenta_bright)";
+      deleted = "[✘\($count\)](fg:red_bright)";
+      staged = "[++\($count\)](fg:green_dim)";
+      ahead = "[⇡\($count\)](fg:blue1)";
+      diverged = "[⇕](fg:magenta_dim)[⇡\($ahead_count\)](fg:green_dim)[⇣\($behind_count\)](fg:yellow_dim)";
+      behind = "[⇣\($count\)](fg:red_bright)";
     };
     cmd_duration = {
       disabled = false;
-      format = " [](fg:teal)[  $duration ]($style)[](fg:teal)";
-      style = "bg:teal fg:crust";
+      format = " [](fg:gray1)[  $duration ]($style)[](fg:gray1)";
+      style = "bg:gray1 fg:magenta_base";
       min_time = 0;
       show_milliseconds = false;
     };
@@ -139,14 +155,14 @@
       ssh_only = true;
       ssh_symbol = "󰁥 ";
       format = "[ $ssh_symbol$hostname ]($style)";
-      style = "bg:green fg:crust";
+      style = "bg:green_dim fg:white3";
     };
 
     # Languages
     nix_shell = {
       format = "via [$symbol$state( \($name\))]($style) ";
       symbol = "󱄅 ";
-      style = "bold blue";
+      style = "bold blue0";
       impure_msg = "impure";
       pure_msg = "pure";
       unknown_msg = "";

@@ -1,6 +1,4 @@
-{lib, ...}: let
-  inherit (lib.generators) toINI;
-in {
+{lib, ...}: {
   flake.custom.hjemConfigs.qt = {
     config,
     pkgs,
@@ -33,19 +31,19 @@ in {
           };
         };
       in {
-        "Kvantum/catppuccin-frappe-blue".source = "${pkgs.catppuccin-kvantum}/share/Kvantum/catppuccin-frappe-blue";
+        "Kvantum/Nordic".source = "${pkgs.nordic}/share/Kvantum/Nordic";
         "Kvantum/kvantum.kvconfig" = {
-          generator = toINI {};
+          generator = lib.generators.toINI {};
           value = {
-            General.theme = "catppuccin-frappe-blue";
+            General.theme = "Nordic";
           };
         };
         "qt5ct/qt5ct.conf" = {
-          generator = toINI {};
+          generator = lib.generators.toINI {};
           value = qtConf;
         };
         "qt6ct/qt6ct.conf" = {
-          generator = toINI {};
+          generator = lib.generators.toINI {};
           value = qtConf;
         };
       };

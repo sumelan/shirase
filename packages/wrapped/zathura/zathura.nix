@@ -6,17 +6,16 @@
   inherit (config.flake.custom.functions) printConfig;
 in {
   perSystem = {pkgs, ...}: let
-    catppuccin = let
+    zathura-nord = let
       src = pkgs.fetchFromGitHub {
-        owner = "catppuccin";
-        repo = "zathura";
-        rev = "9f29c2c1622c70436f0e0b98fea9735863596c1e";
-        hash = "sha256-upyfc4OSx9xKUoM/JdRfuXiw38ffoSB/Utm2jpyXgy8=";
+        owner = "nautilor";
+        repo = "zathura-nord";
+        rev = "a1c80f8ba7c1e7ddd548d38b26458ea8e8b329cd";
+        hash = "sha256-pj9/ZvN+58ZUWyGnY9Yk9EwdvWRH5hY2BZp2TGDpi+g=";
       };
-    in "${src}/themes/catppuccin-frappe";
+    in "${src}/zathurarc";
     extraConfig = ''
-      include ${catppuccin}
-
+      include ${zathura-nord}
     '';
   in {
     packages.zathura = config.flake.custom.wrappers.mkZathura {

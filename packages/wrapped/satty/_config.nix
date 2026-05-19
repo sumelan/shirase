@@ -58,15 +58,15 @@ _: {
     highlight = "g";
   };
   color-palette.palette = [
-    "#303446"
-    "#626880"
-    "#F2D5CF"
-    "#8CAAEE"
-    "#A6D189"
-    "#81C8BE"
-    "#E78284"
-    "#EA999C"
-    "#F4B8E4"
-    "#E5C890"
+    "#191D24"
+    "#434C5E"
+    "#ECEFF4"
+    "#5E81AC"
+    "#8FBCBB"
+    "#A3BE8C"
+    "#BF616A"
+    "#D08770"
+    "#B48EAD"
+    "#EBCB8B"
   ];
 }

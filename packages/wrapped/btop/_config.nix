@@ -1,5 +1,5 @@
 _: {
-  color_theme = "catppuccin-frappe";
+  color_theme = "nord";
   theme_background = false;
   cpu_single_graph = true;
   # base_10_sizes = true;

@@ -1,9 +1,9 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/home/sumelan/.config/DankMaterialShell/themes/catppuccin/theme.json",
+  "customThemeFile": "/home/sumelan/.config/DankMaterialShell/themes/nord/theme.json",
   "registryThemeVariants": {
-    "everforest": "hard",
+    "everforest": "soft",
     "catppuccin": {
       "dark": {
         "flavor": "frappe",
@@ -734,17 +734,17 @@
       "currentFilePath": "notepad-files/untitled-1777121577212.txt",
       "currentFileExtension": "txt",
       "sourceContent": "\n",
-      "updatedAt": 1779092764572
+      "updatedAt": 1779181779307
     }
   },
   "clipboardEnterToPaste": true,
   "launcherPluginVisibility": {},
   "launcherPluginOrder": [],
   "frameEnabled": true,
-  "frameThickness": 10,
-  "frameRounding": 5,
-  "frameColor": "",
-  "frameOpacity": 1,
+  "frameThickness": 16,
+  "frameRounding": 23,
+  "frameColor": "surface",
+  "frameOpacity": 0.65,
   "frameScreenPreferences": [
     "all"
   ],

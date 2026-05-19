@@ -21,7 +21,10 @@ in {
         associations = builtins.listToAttrs (map (name: {
             inherit name value;
           }) [
-            "image/*"
+            "image/jpeg"
+            "image/gif"
+            "image/webp"
+            "image/png"
           ]);
       in {
         # remove `satty.desktop` from image mimetypes

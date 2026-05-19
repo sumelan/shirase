@@ -1,7 +1,7 @@
 {config, ...}: let
   inherit (config) flake;
 in {
-  flake.modules.nixos."hosts/acer" = _: {
+  flake.modules.nixos."hosts/acer" = {pkgs, ...}: {
     imports = builtins.attrValues {
       inherit (flake.modules.nixos) default acer-al14;
       inherit (flake.modules.nixos) kdeconnect;
@@ -27,6 +27,9 @@ in {
           rotation = 0;
         };
       };
+
+      # hinted font: for lower or equal than 1080p
+      fonts.packages = [pkgs.maple-mono.NF];
     };
   };
 }

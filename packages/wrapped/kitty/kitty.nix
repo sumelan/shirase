@@ -2,14 +2,14 @@
   inherit (config.flake.custom.functions) printConfig;
 in {
   perSystem = {pkgs, ...}: let
-    catppuccin-frappe = pkgs.fetchFromGitHub {
-      owner = "catppuccin";
-      repo = "kitty";
-      rev = "43098316202b84d6a71f71aaf8360f102f4d3f1a";
-      hash = "sha256-akRkdq8l2opGIg3HZd+Y4eky6WaHgKFQ5+iJMC1bhnQ=";
+    nord = pkgs.fetchFromGitHub {
+      owner = "connorholyday";
+      repo = "nord-kitty";
+      rev = "3a819c1f207cd2f98a6b7c7f9ebf1c60da91c9e9";
+      hash = "sha256-Zbmrp2sQO0upkQ6Gtt5O4SLzPhovUDQNjvM0x8v2a0g=";
     };
     extraConfig = {
-      include = "${catppuccin-frappe}/themes/frappe.conf";
+      include = "${nord}/nord.conf";
     };
   in {
     packages.kitty = config.flake.custom.wrappers.mkKitty {

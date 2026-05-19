@@ -1,5 +1,5 @@
 _: {
-  theme = "catppuccin_frappe";
+  theme = "nord-night";
 
   editor = {
     line-number = "relative";

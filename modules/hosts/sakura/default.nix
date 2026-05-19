@@ -1,7 +1,11 @@
 {config, ...}: let
   inherit (config) flake;
 in {
-  flake.modules.nixos."hosts/sakura" = {config, ...}: {
+  flake.modules.nixos."hosts/sakura" = {
+    config,
+    pkgs,
+    ...
+  }: {
     imports = builtins.attrValues {
       inherit (flake.modules.nixos) default minisforum-um773se;
       inherit (flake.modules.nixos) kdeconnect steam;
@@ -68,6 +72,9 @@ in {
           ironWolf = true;
         };
       };
+
+      # unhinted font: for high resolution screen
+      fonts.packages = [pkgs.maple-mono.NF-unhinted];
 
       programs = {
         btop.rocmSupport = true;

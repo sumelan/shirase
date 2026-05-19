@@ -47,7 +47,7 @@
             };
             dankNotepadModule = {
               enabled = true;
-              style = "catppuccin-frappe";
+              style = "nordic";
             };
             screenRecorder = {
               enabled = true;

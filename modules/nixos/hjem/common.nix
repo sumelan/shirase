@@ -183,7 +183,10 @@ in {
             "audio/*" = "umpv.desktop";
             "video/*" = "umpv.desktop";
 
-            "image/*" = zathura;
+            "image/jpeg" = zathura;
+            "image/gif" = zathura;
+            "image/webp" = zathura;
+            "image/png" = zathura;
           };
         };
       };

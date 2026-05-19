@@ -37,13 +37,6 @@ in {
         text = toBtopConf (import ./_config.nix {} // extraConfig);
       };
 
-    mkBtopTheme = {pkgs}:
-      pkgs.writeTextFile {
-        name = "themes";
-        destination = "/catppuccin-frappe.theme";
-        text = toBtopConf (import ./_theme.nix {});
-      };
-
     mkBtop = {
       pkgs,
       pkg ? pkgs.btop,
@@ -52,8 +45,6 @@ in {
       cfg = config.flake.custom.wrappers.mkBtopConfig {
         inherit pkgs extraConfig;
       };
-
-      theme = config.flake.custom.wrappers.mkBtopTheme {inherit pkgs;};
 
       printCfg = printConfig {
         inherit cfg pkgs;
@@ -69,8 +60,7 @@ in {
           cp -r ${printCfg}/bin $out
 
           wrapProgram $out/bin/btop \
-            --add-flags "--config ${cfg}" \
-            --add-flags "--themes-dir ${theme}"
+            --add-flags "--config ${cfg}"
         '';
         meta.mainProgram = "btop";
       };

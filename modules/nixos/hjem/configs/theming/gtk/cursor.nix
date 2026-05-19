@@ -21,7 +21,7 @@ in {
 
           name = mkOption {
             type = str;
-            default = "Capitaine Cursors (Palenight)";
+            default = "Capitaine Cursors (Nord)";
             description = "The cursor name within the package.";
           };
 
