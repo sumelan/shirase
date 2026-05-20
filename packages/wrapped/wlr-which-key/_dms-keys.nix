@@ -4,8 +4,15 @@
     desc = "DankMaterialShell ipc keys.";
     submenu = [
       {
+        key = "c";
+        desc = "Popup control-center.";
+        cmd =
+          # sh
+          ''dms ipc control-center toggle'';
+      }
+      {
         key = "d";
-        desc = "Dashboard popup with multiple tabs.";
+        desc = "Popup dashboard with multiple tabs.";
         submenu = [
           {
             key = "o";
@@ -23,10 +30,10 @@
           }
           {
             key = "w";
-            desc = "Toggle Weather tab.";
+            desc = "Toggle Wallpaper tab.";
             cmd =
               # sh
-              ''dms ipc dash toggle weather'';
+              ''dms ipc dash toggle wallpaper'';
           }
         ];
       }
@@ -57,26 +64,6 @@
         cmd =
           # sh
           ''dms color pick -a'';
-      }
-      {
-        key = "s";
-        desc = "Screenshot with annotations.";
-        submenu = [
-          {
-            key = "f";
-            desc = "Focused output.";
-            cmd =
-              # sh
-              ''dms screenshot full --stdout | satty -f -'';
-          }
-          {
-            key = "r";
-            desc = "Selected resion.";
-            cmd =
-              # sh
-              ''dms screenshot --stdout | satty -f -'';
-          }
-        ];
       }
       {
         key = "v";

@@ -334,7 +334,7 @@ in {
       match = [
         {_props.namespace._raw = ''r#"^wlr_which_key$"#'';}
       ];
-      opacity = 0.880000;
+      opacity = 0.850000;
       background-effect = {
         blur = true;
         xray = true;
@@ -380,6 +380,19 @@ in {
         hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "screen-lock"}";
       };
       spawn = ["dms" "ipc" "lock" "lock"];
+    };
+    # screenshot
+    "Mod+Print" = {
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Interactive selection screenshot"}";
+      spawn = ["dms" "ipc" "niri" "screenshot"];
+    };
+    "Mod+Shift+Print" = {
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Capture entire screen"}";
+      spawn = ["dms" "ipc" "niri" "screenshotScreen"];
+    };
+    "Mod+Alt+Print" = {
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Capture focused window"}";
+      spawn = ["dms" "ipc" "niri" "screenshotWindow"];
     };
 
     # media-key
@@ -560,17 +573,6 @@ in {
     "Mod+Shift+TouchpadScrollUp" = {move-column-to-workspace-up = [];};
     "Mod+Shift+TouchpadScrollRight" = {move-column-right = [];};
     "Mod+Shift+TouchpadScrollLeft" = {move-column-left = [];};
-
-    # screenshot
-    "Mod+Print" = {
-      screenshot = {_props.show-pointer = false;};
-    };
-    "Mod+Shift+Print" = {
-      screenshot-screen = {_props.show-pointer = false;};
-    };
-    "Mod+Alt+Print" = {
-      screenshot-window = [];
-    };
 
     # system
     "Mod+Shift+Slash" = {show-hotkey-overlay = [];};

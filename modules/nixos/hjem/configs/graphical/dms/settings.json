@@ -58,10 +58,10 @@
   "m3ElevationCustomColor": "#000000",
   "modalElevationEnabled": true,
   "popoutElevationEnabled": true,
-  "barElevationEnabled": false,
+  "barElevationEnabled": true,
   "blurEnabled": true,
-  "blurForegroundLayers": false,
-  "blurLayerOutlineOpacity": 0.4,
+  "blurForegroundLayers": true,
+  "blurLayerOutlineOpacity": 0.12,
   "blurBorderColor": "outline",
   "blurBorderCustomColor": "#ffffff",
   "blurBorderOpacity": 0.35,
@@ -734,7 +734,7 @@
       "currentFilePath": "notepad-files/untitled-1777121577212.txt",
       "currentFileExtension": "txt",
       "sourceContent": "\n",
-      "updatedAt": 1779181779307
+      "updatedAt": 1779195378577
     }
   },
   "clipboardEnterToPaste": true,

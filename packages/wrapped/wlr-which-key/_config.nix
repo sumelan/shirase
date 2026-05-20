@@ -4,8 +4,8 @@ _: {
   background =
     "#4C566A"
     +
-    # 85% transparency
-    "D9";
+    # 65% opacity
+    "A6";
   color = "#D79784";
   border = "#EFD49F";
   separator = " ➜ ";
