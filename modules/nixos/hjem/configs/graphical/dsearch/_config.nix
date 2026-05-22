@@ -2,7 +2,9 @@
   cache = config.hj.xdg.cache.directory;
   documents = "${config.hj.directory}/Documents";
   pictures = "${config.hj.directory}/Pictures";
-  pjDir = "${config.hj.directory}/Projects";
+  music = "${config.hj.directory}/Music";
+  videos = "${config.hj.directory}/Videos";
+  pj = "${config.hj.directory}/Projects";
 in {
   # Server configuration
   listen_addr = ":43654";
@@ -39,22 +41,39 @@ in {
   # Index paths configuration
   index_paths = [
     {
-      path = documents;
-      max_depth = 6;
+      path = config.hj.directory;
+      max_depth = 0;
       exclude_hidden = true;
-      exclude_dirs = ["node_modules" "venv" "target"];
+      extract_exif = false;
+      exclude_dirs = ["Projects"];
+    }
+    {
+      path = documents;
+      max_depth = 0;
+      exclude_hidden = true;
+      extract_exif = false;
+      exclude_dirs = [];
     }
     {
       path = pictures;
-      max_depth = 6;
+      max_depth = 0;
       exclude_hidden = true;
-      exclude_dirs = ["node_modules" "venv" "target"];
+      extract_exif = true; # Extract EXIF metadata from images
+      exclude_dirs = ["Wallpapers"];
     }
     {
-      path = pjDir;
-      max_depth = 8;
+      path = music;
+      max_depth = 0;
       exclude_hidden = true;
-      exclude_dirs = ["node_modules" ".git" "target" "dist"];
+      extract_exif = false;
+      exclude_dirs = [];
+    }
+    {
+      path = videos;
+      max_depth = 0;
+      exclude_hidden = true;
+      extract_exif = true;
+      exclude_dirs = [];
     }
   ];
 }

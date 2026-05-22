@@ -25,12 +25,6 @@
           };
         };
       };
-
-      dsearch = {
-        enable = true;
-        package = inputs.dsearch.packages.${pkgs.stdenv.hostPlatform.system}.default;
-        systemd.enable = true;
-      };
     };
 
     systemd.user = let

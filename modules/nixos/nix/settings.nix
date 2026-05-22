@@ -64,8 +64,8 @@ in {
         options = "--delete-older-than 7d";
       };
 
-      # lix: `pkgs.lixPackageSets.latest.lix`
-      package = pkgs.nixVersions.latest;
+      # `pkgs.nixVersions.latest` or `pkgs.lixPackageSets.latest.lix`
+      package = pkgs.lixPackageSets.latest.lix;
 
       # to use shorter IDs instead of lengthy address
       registry =

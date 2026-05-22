@@ -5,16 +5,39 @@
 }: let
   inherit (inputs) nixpkgs;
   inherit (config) flake;
-  defaultMods = [
-    inputs.dankMaterialShell.nixosModules.dank-material-shell
-    inputs.dankMaterialShell.nixosModules.greeter
-    inputs.hjem.nixosModules.default
-    inputs.impermanence.nixosModules.impermanence
-    inputs.niri-nix.nixosModules.default
-    inputs.nix-hazkey.nixosModules.hazkey
-    inputs.nix-index-database.nixosModules.nix-index
-    inputs.run0-sudo-shim.nixosModules.default
-    inputs.sops-nix.nixosModules.sops
+
+  defaultMods = let
+    mods = {
+      name,
+      modules ? "nixosModules",
+      output ? "default",
+    }:
+      inputs.${name}.${modules}.${output};
+  in [
+    (mods {name = "hjem";})
+    (mods {name = "niri-nix";})
+    (mods {name = "run0-sudo-shim";})
+    (mods {name = "impermanence";})
+    (mods {
+      name = "dankMaterialShell";
+      output = "dank-material-shell";
+    })
+    (mods {
+      name = "dankMaterialShell";
+      output = "greeter";
+    })
+    (mods {
+      name = "nix-hazkey";
+      output = "hazkey";
+    })
+    (mods {
+      name = "nix-index-database";
+      output = "nix-index";
+    })
+    (mods {
+      name = "sops-nix";
+      output = "sops";
+    })
   ];
 
   linux = mkNixos "x86_64-linux" "nixos";

@@ -133,19 +133,19 @@
       style = "fg:red_dim";
       format = "([$all_status$ahead_behind]($style))";
       up_to_date = "[  ](fg:magenta_dim)";
-      untracked = "[?\($count\)](fg:blue2)";
-      stashed = "[\\$\($count\)](fg:green_bright)";
-      modified = "[!\($count\)](fg:yellow_dim)";
-      renamed = "[»\($count\)](fg:magenta_bright)";
-      deleted = "[✘\($count\)](fg:red_bright)";
-      staged = "[++\($count\)](fg:green_dim)";
-      ahead = "[⇡\($count\)](fg:blue1)";
-      diverged = "[⇕](fg:magenta_dim)[⇡\($ahead_count\)](fg:green_dim)[⇣\($behind_count\)](fg:yellow_dim)";
-      behind = "[⇣\($count\)](fg:red_bright)";
+      untracked = ''[?($count)](fg:blue2)'';
+      stashed = ''[\$($count)](fg:green_bright)'';
+      modified = ''[!($count)](fg:yellow_dim)'';
+      renamed = ''[»($count)](fg:magenta_bright)'';
+      deleted = ''[✘($count)](fg:red_bright)'';
+      staged = ''[++($count)](fg:green_dim)'';
+      ahead = ''[⇡($count)](fg:blue1)'';
+      diverged = ''[⇕](fg:magenta_dim)[⇡($ahead_count)](fg:green_dim)[⇣($behind_count)](fg:yellow_dim)'';
+      behind = ''[⇣($count)](fg:red_bright)'';
     };
     cmd_duration = {
       disabled = false;
-      format = " [](fg:gray1)[  $duration ]($style)[](fg:gray1)";
+      format = "[](fg:gray1)[  $duration ]($style)[](fg:gray1)";
       style = "bg:gray1 fg:magenta_base";
       min_time = 0;
       show_milliseconds = false;
@@ -160,7 +160,7 @@
 
     # Languages
     nix_shell = {
-      format = "via [$symbol$state( \($name\))]($style) ";
+      format = ''via [$symbol$state(($name))]($style)'';
       symbol = "󱄅 ";
       style = "bold blue0";
       impure_msg = "impure";
