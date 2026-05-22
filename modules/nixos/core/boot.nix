@@ -3,7 +3,7 @@
 in {
   flake.modules.nixos.core = {pkgs, ...}: {
     # kernel
-    boot.kernelPackages = pkgs.linuxPackages_xanmod;
+    boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
     # bootloader
     boot.loader = {
