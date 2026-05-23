@@ -47,11 +47,6 @@
       };
     };
 
-    dsearch = {
-      url = "github:AvengeMedia/danksearch";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # misc
     impermanence = {
       url = "github:nix-community/impermanence";
