@@ -20,15 +20,15 @@
   };
   dms-plugins = {
     pname = "dms-plugins";
-    version = "9e2752586d79a6509b93c00c6fa4be0334ae4755";
+    version = "547023b3ba65bcb195c93fd4b111d0f1eebe0432";
     src = fetchFromGitHub {
       owner = "AvengeMedia";
       repo = "dms-plugins";
-      rev = "9e2752586d79a6509b93c00c6fa4be0334ae4755";
+      rev = "547023b3ba65bcb195c93fd4b111d0f1eebe0432";
       fetchSubmodules = false;
-      sha256 = "sha256-QgeeB6Ix8L5oaqTUCopPvGu6vr0ECsF+jO3mQIxPKIw=";
+      sha256 = "sha256-3cZOazX90nAhNZ8Z6lTa8OC6Y+ZmpJ2cYOv46oelIm0=";
     };
-    date = "2026-04-27";
+    date = "2026-05-19";
   };
   dms-screen-recorder = {
     pname = "dms-screen-recorder";
@@ -44,10 +44,10 @@
   };
   helium = {
     pname = "helium";
-    version = "0.12.3.1";
+    version = "0.12.4.1";
     src = fetchurl {
-      url = "https://github.com/imputnet/helium-linux/releases/download/0.12.3.1/helium-0.12.3.1-x86_64.AppImage";
-      sha256 = "sha256-VnOhzhAulvFNBB/0AD1d+K/TzfFL9Zwtk/vcm5vWl+I=";
+      url = "https://github.com/imputnet/helium-linux/releases/download/0.12.4.1/helium-0.12.4.1-x86_64.AppImage";
+      sha256 = "sha256-OgS8HkLBseFrEhNFJxMwp1bg0gzPdfY1VaySAAp7vq0=";
     };
   };
 }
