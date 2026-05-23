@@ -4,6 +4,7 @@ in {
   flake.modules.nixos."hosts/minibookx" = {pkgs, ...}: {
     imports = builtins.attrValues {
       inherit (flake.modules.nixos) default chuwi-minibook-x;
+      inherit (flake.modules.nixos) gui;
       inherit (flake.modules.nixos) kdeconnect;
     };
     networking.hostId = "56895d2b";

@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.default = {pkgs, ...}: {
+  flake.modules.nixos.gui = {pkgs, ...}: {
     programs.niri = {
       enable = true;
       package = pkgs.niri;

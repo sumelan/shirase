@@ -45,13 +45,6 @@
           ''dms ipc night toggle'';
       }
       {
-        key = "m";
-        desc = "Open processlist.";
-        cmd =
-          # sh
-          ''dms ipc processlist focusOrToggle'';
-      }
-      {
         key = "n";
         desc = "Toggle notepad.";
         cmd =

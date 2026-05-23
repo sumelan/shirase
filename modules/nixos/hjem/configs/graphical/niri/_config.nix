@@ -289,7 +289,7 @@ in {
       match = [
         {_props.app-id._raw = ''r#"^org.gnome.Nautilus$"#'';}
         {_props.app-id._raw = ''r#"^xdg-desktop-portal-gtk$"#'';}
-        {_props.app-id._raw = ''r#"^ghostty.yazi$"#'';}
+        {_props.app-id._raw = ''r#"^yazi$"#'';}
       ];
       default-column-width._children = [
         {proportion = 0.500000;}
@@ -345,6 +345,7 @@ in {
   spawn-at-startup = [
     ["nm-applet"]
     ["blueman-applet"]
+    ["foot" "--server"]
   ];
 
   binds = let
@@ -435,12 +436,12 @@ in {
 
     # execute
     "Mod+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#88C0D0" "  Ghostty" "Terminal Emulator"}";
-      spawn = ["ghostty" "--gtk-single-instance=true"];
+      _props.hotkey-overlay-title = "${hotkey "#88C0D0" "  Foot" "Terminal Emulator"}";
+      spawn = ["footclient"];
     };
     "Mod+Shift+Return" = {
       _props.hotkey-overlay-title = "${hotkey "#B1C89D" "  Neovim" "Code Editor"}";
-      spawn = ["ghostty" "--gtk-single-instance=true" "--working-directory=${dotfile}" "--class=ghostty.nvim" "-e" "nvim"];
+      spawn = ["footclient" "--working-directory=${dotfile}" "--app-id=nvim" "nvim"];
     };
     "Mod+B" = {
       _props.hotkey-overlay-title = "${hotkey "#C0C8D8" "  Zen" "Web Browser"}";
@@ -455,7 +456,7 @@ in {
     };
     "Mod+Shift+N" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}";
-      spawn = ["ghostty" "--gtk-single-instance=true" "--class=dev.vlinkz.NixosConfEditor" "-e" "ns"];
+      spawn = ["footclient" "--app-id=dev.vlinkz.NixosConfEditor" "ns"];
     };
     "Mod+V" = {
       _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "  Vesktop" "Discord Client"}";
@@ -463,7 +464,7 @@ in {
     };
     "Mod+Shift+Y" = {
       _props.hotkey-overlay-title = "${hotkey "#E7C173" "󰇥  Yazi" "File Manager"}";
-      spawn = ["ghostty" "--gtk-single-instance=true" "--class=ghostty.yazi" "-e" "yazi"];
+      spawn = ["footclient" "--app-id=yazi" "yazi"];
     };
     "Ctrl+Space" = {
       _props.hotkey-overlay-title = "${hotkey "#A3BE8C" "󰗊  Hazkey" "Switch input method"}";

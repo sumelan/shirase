@@ -14,7 +14,7 @@ in {
       (flake.packages.${pkgs.stdenv.hostPlatform.system})
       bat
       batman
-      ghostty
+      foot
       eza
       eza-tree
       moor
@@ -86,7 +86,7 @@ in {
         nvim-desktop-entry = lib.hiPrio nvim-desktop-entry;
         ns-desktop-entry = lib.hiPrio ns-desktop-entry;
         # terminal
-        inherit ghostty;
+        inherit foot;
         # pdf viewer
         inherit zathura;
         # protonapps
@@ -119,7 +119,7 @@ in {
           DEFAULT_BROWSER = "zen";
           BROWSER = "zen";
 
-          TERMINAL = "ghostty";
+          TERMINAL = "foot";
           EDITOR = "hx";
           VISUAL = "hx";
           NIXPKGS_ALLOW_UNFREE = "1";
@@ -144,20 +144,14 @@ in {
             # For some reason, these need to be wrapped with quotes to be valid.
             value = lib.mapAttrs (_: value: ''"${value}"'') xdg-user-dirs;
           };
-
-          "ghostty/config" = {
-            permissions = "666";
-            text = "";
-            type = "copy";
-          };
         };
 
         mime-apps = let
-          ghostty = "com.mitchellh.ghostty.desktop";
+          foot = "footclient.desktop";
           zathura = "org.pwmt.zathura-pdf-mupdf.desktop";
         in {
           default-applications = {
-            "x-scheme-handler/terminal" = ghostty;
+            "x-scheme-handler/terminal" = foot;
 
             "text/plain" = "helix.desktop";
             "application/x-shellscript" = "helix.desktop";

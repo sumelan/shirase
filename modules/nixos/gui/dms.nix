@@ -1,7 +1,6 @@
-{inputs, ...}: {
-  flake.modules.nixos.default = {
+_: {
+  flake.modules.nixos.gui = {
     config,
-    pkgs,
     user,
     ...
   }: {

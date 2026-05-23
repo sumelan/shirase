@@ -7,7 +7,10 @@
 in {
   perSystem = {pkgs, ...}: let
     extraConfig = {
-      main.include = "${pkgs.foot.themes}/share/foot/themes/nord";
+      main = {
+        shell = "fish";
+        include = "${pkgs.foot.themes}/share/foot/themes/nord";
+      };
     };
   in {
     packages.foot = config.flake.custom.wrappers.mkFoot {

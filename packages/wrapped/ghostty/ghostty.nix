@@ -10,10 +10,7 @@
 in {
   perSystem = {pkgs, ...}: let
     pkg = pkgs.ghostty;
-    extraConfig = {
-      command = "fish";
-      window-decoration = "none";
-    };
+    extraConfig = {command = "fish";};
   in {
     packages = {
       ghostty = config.flake.custom.wrappers.mkGhostty {

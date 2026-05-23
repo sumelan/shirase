@@ -8,6 +8,7 @@ in {
   }: {
     imports = builtins.attrValues {
       inherit (flake.modules.nixos) default minisforum-um773se;
+      inherit (flake.modules.nixos) gui;
       inherit (flake.modules.nixos) kdeconnect steam;
       inherit (flake.modules.nixos) hdds qmk;
       inherit (flake.modules.nixos) audiobookshelf sops-nix syncoid syncthing;
