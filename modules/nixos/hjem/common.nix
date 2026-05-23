@@ -174,8 +174,9 @@ in {
           };
 
           removed-associations = {
-            "audio/*" = "umpv.desktop";
-            "video/*" = "umpv.desktop";
+            "audio/ogg" = "umpv.desktop";
+            "audio/flac" = "umpv.desktop";
+            "video/mp4" = "umpv.desktop";
 
             "image/jpeg" = zathura;
             "image/gif" = zathura;

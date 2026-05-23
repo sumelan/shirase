@@ -44,8 +44,9 @@ in {
               value = [handbrake vlc];
             })
             [
-              "audio/*"
-              "video/*"
+              "audio/ogg"
+              "audio/flac"
+              "video/mp4"
             ]);
         in {
           removed-associations = associations;
