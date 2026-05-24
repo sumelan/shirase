@@ -4,11 +4,11 @@
     pkgs,
     ...
   }: let
-    cfg = config.rum.services.dsearch;
+    cfg = config.rum.programs.dsearch;
     tomlFmt = pkgs.formats.toml {};
   in {
     options.rum = {
-      services.dsearch = {
+      programs.dsearch = {
         enable = lib.mkEnableOption "dsearch, a fast filesystem search service with fuzzy matching";
 
         package = lib.mkPackageOption pkgs "dsearch" {};

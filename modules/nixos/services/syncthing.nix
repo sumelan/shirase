@@ -5,12 +5,8 @@ _: {
     ...
   }: let
     configDir = config.hj.xdg.config.directory;
-    cacheDir = config.hj.xdg.cache.directory;
     dataDir = config.hj.xdg.data.directory;
-    documents = "${config.hj.directory}/Documents";
     music = "${config.hj.directory}/Music";
-    pictures = "${config.hj.directory}/Pictures";
-    videos = "${config.hj.directory}/Videos";
   in {
     # port 8384  is the default port to allow access from the network
     networking.firewall.allowedTCPPorts = [8384];
@@ -37,26 +33,8 @@ _: {
           theme = "dark";
         };
         folders = {
-          "Documents" = {
-            path = documents;
-          };
           "Music" = {
             path = music;
-          };
-          "Pictures" = {
-            path = pictures;
-          };
-          "Videos" = {
-            path = videos;
-          };
-          "MPD" = {
-            path = "${dataDir}/mpd";
-          };
-          "Youtube" = {
-            path = "${dataDir}/youtube-tui";
-          };
-          "Euphonica" = {
-            path = "${cacheDir}/euphonica";
           };
         };
       };

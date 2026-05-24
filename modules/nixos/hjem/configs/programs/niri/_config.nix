@@ -436,7 +436,7 @@ in {
 
     # execute
     "Mod+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#88C0D0" "  Foot" "Terminal Emulator"}";
+      _props.hotkey-overlay-title = "${hotkey "#E7C173" "  Foot" "Terminal Emulator"}";
       spawn = ["footclient"];
     };
     "Mod+Shift+Return" = {
@@ -447,6 +447,10 @@ in {
       _props.hotkey-overlay-title = "${hotkey "#C0C8D8" "  Zen" "Web Browser"}";
       spawn = ["zen"];
     };
+    "Mod+E" = {
+      _props.hotkey-overlay-title = "${hotkey "#88C0D0" "󰥠  Euphonica" "MPD Client"}";
+      spawn = ["euphonica"];
+    };
     "Mod+N" = {
       _props = {
         cooldown-ms = 500;
@@ -454,13 +458,13 @@ in {
       };
       spawn = ["wlr-which-key" "--initial-keys" "n"];
     };
-    "Mod+Shift+N" = {
-      _props.hotkey-overlay-title = "${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}";
-      spawn = ["footclient" "--app-id=dev.vlinkz.NixosConfEditor" "ns"];
-    };
     "Mod+V" = {
       _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "  Vesktop" "Discord Client"}";
       spawn = ["vesktop"];
+    };
+    "Mod+Shift+N" = {
+      _props.hotkey-overlay-title = "${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}";
+      spawn = ["footclient" "--app-id=dev.vlinkz.NixosConfEditor" "ns"];
     };
     "Mod+Shift+Y" = {
       _props.hotkey-overlay-title = "${hotkey "#E7C173" "󰇥  Yazi" "File Manager"}";
