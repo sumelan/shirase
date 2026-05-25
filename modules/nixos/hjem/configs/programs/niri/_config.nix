@@ -5,7 +5,6 @@
   dotfile,
   ...
 }: let
-  inherit (lib) getExe;
   inherit (config.lib.custom.hardware.monitors) mainMonitor mainMonitorName;
 in {
   hotkey-overlay = {
@@ -1079,7 +1078,7 @@ in {
     xwayland =
       if config.custom.programs.niri.xwayland
       then {
-        path = getExe pkgs.xwayland-satellite-unstable;
+        path = lib.getExe pkgs.xwayland-satellite;
       }
       else {
         off = [];
