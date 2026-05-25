@@ -14,7 +14,7 @@ in {
       (flake.packages.${pkgs.stdenv.hostPlatform.system})
       bat
       batman
-      foot
+      ghostty
       eza
       eza-tree
       moor
@@ -86,7 +86,7 @@ in {
         nvim-desktop-entry = lib.hiPrio nvim-desktop-entry;
         ns-desktop-entry = lib.hiPrio ns-desktop-entry;
         # terminal
-        inherit foot;
+        inherit ghostty;
         # pdf viewer
         inherit zathura;
         # protonapps
@@ -119,7 +119,7 @@ in {
           DEFAULT_BROWSER = "zen";
           BROWSER = "zen";
 
-          TERMINAL = "foot";
+          TERMINAL = "ghostty";
           EDITOR = "hx";
           VISUAL = "hx";
           NIXPKGS_ALLOW_UNFREE = "1";
@@ -147,11 +147,11 @@ in {
         };
 
         mime-apps = let
-          foot = "footclient.desktop";
+          ghostty = "com.mitchellh.ghostty.desktop";
           zathura = "org.pwmt.zathura-pdf-mupdf.desktop";
         in {
           default-applications = {
-            "x-scheme-handler/terminal" = foot;
+            "x-scheme-handler/terminal" = ghostty;
 
             "text/plain" = "helix.desktop";
             "application/x-shellscript" = "helix.desktop";

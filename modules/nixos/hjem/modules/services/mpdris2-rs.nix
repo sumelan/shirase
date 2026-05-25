@@ -15,7 +15,6 @@
           default = "";
           description = ''
             hostname + port, or UNIX socket path of MPD server, similar to what `mpc` takes
-
             - if not configured, `MPD_HOST` will be used
             - if `MPD_HOST` is not set either, `localhost:6600` is the default
             - UNIX socket path has to be absolute

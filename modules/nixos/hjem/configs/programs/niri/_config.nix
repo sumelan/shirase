@@ -289,7 +289,6 @@ in {
       match = [
         {_props.app-id._raw = ''r#"^org.gnome.Nautilus$"#'';}
         {_props.app-id._raw = ''r#"^xdg-desktop-portal-gtk$"#'';}
-        {_props.app-id._raw = ''r#"^yazi$"#'';}
       ];
       default-column-width._children = [
         {proportion = 0.500000;}
@@ -345,7 +344,7 @@ in {
   spawn-at-startup = [
     ["nm-applet"]
     ["blueman-applet"]
-    ["foot" "--server"]
+    ["ghostty" "--gtk-single-instance=true" "--initial-window=false" "--quit-after-last-window-closed=false"]
   ];
 
   binds = let
@@ -436,12 +435,12 @@ in {
 
     # execute
     "Mod+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#E7C173" "  Foot" "Terminal Emulator"}";
-      spawn = ["footclient"];
+      _props.hotkey-overlay-title = "${hotkey "#E7C173" "󰊠  Ghostty" "Terminal Emulator"}";
+      spawn = ["ghostty" "+new-window"];
     };
     "Mod+Shift+Return" = {
       _props.hotkey-overlay-title = "${hotkey "#B1C89D" "  Neovim" "Code Editor"}";
-      spawn = ["footclient" "--working-directory=${dotfile}" "--app-id=nvim" "nvim"];
+      spawn = ["ghostty" "+new-window" "--working-directory=${dotfile}" "-e" "nvim"];
     };
     "Mod+B" = {
       _props.hotkey-overlay-title = "${hotkey "#C0C8D8" "  Zen" "Web Browser"}";
@@ -464,11 +463,11 @@ in {
     };
     "Mod+Shift+N" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}";
-      spawn = ["footclient" "--app-id=dev.vlinkz.NixosConfEditor" "ns"];
+      spawn = ["ghostty" "+new-window" "-e" "ns"];
     };
     "Mod+Shift+Y" = {
       _props.hotkey-overlay-title = "${hotkey "#E7C173" "󰇥  Yazi" "File Manager"}";
-      spawn = ["footclient" "--app-id=yazi" "yazi"];
+      spawn = ["ghostty" "+new-window" "-e" "yazi"];
     };
     "Ctrl+Space" = {
       _props.hotkey-overlay-title = "${hotkey "#A3BE8C" "󰗊  Hazkey" "Switch input method"}";
@@ -623,171 +622,450 @@ in {
   };
 
   animations = {
-    workspace-switch = {
-      spring._props = {
-        damping-ratio = 0.80;
-        stiffness = 523;
-        epsilon = 0.0001;
-      };
-    };
+    # Slow down all animations by this factor. Values below 1 speed them up instead.
+    slowdown = 1.0;
 
     window-open = {
-      duration-ms = 1400;
-      curve = "ease-out-expo";
+      duration-ms = 260;
+      # curve "linear"
+      # curve "cubic-bezier" 1.0 0.00 0.795 0.035
+      curve = "linear";
       custom-shader =
         # glsl
         ''
-          float ease_curve(float x) {
-              return x < 0.5 ? 4.0*x*x*x : 1.0 - pow(-2.0*x + 2.0, 3.0)/2.0;
+          // =========================
+          // Exponential
+          // =========================
+          float easeInExpo(float t) {
+              return t == 0.0 ? 0.0 : pow(2.0, 10.0 * (t - 1.0));
+          }
+
+          float easeOutExpo(float t) {
+              return t == 1.0 ? 1.0 : 1.0 - pow(2.0, -10.0 * t);
+          }
+
+          float easeInOutExpo(float t) {
+              if (t == 0.0) return 0.0;
+              if (t == 1.0) return 1.0;
+              return t < 0.5
+                  ? 0.5 * pow(2.0, 20.0 * t - 10.0)
+                  : 1.0 - 0.5 * pow(2.0, -20.0 * t + 10.0);
+          }
+
+          // =========================
+          // Sine
+          // =========================
+          float easeInSine(float t) {
+              return 1.0 - cos((t * 3.141592653589793) / 2.0);
+          }
+
+          float easeOutSine(float t) {
+              return sin((t * 3.141592653589793) / 2.0);
+          }
+
+          float easeInOutSine(float t) {
+              return -0.5 * (cos(3.141592653589793 * t) - 1.0);
+          }
+
+          // =========================
+          // Quadratic
+          // =========================
+          float easeInQuad(float t) {
+              return t * t;
+          }
+
+          float easeOutQuad(float t) {
+              return 1.0 - (1.0 - t) * (1.0 - t);
+          }
+
+          float easeInOutQuad(float t) {
+              return t < 0.5
+                  ? 2.0 * t * t
+                  : 1.0 - pow(-2.0 * t + 2.0, 2.0) / 2.0;
+          }
+
+          // =========================
+          // Cubic
+          // =========================
+          float easeInCubic(float t) {
+              return t * t * t;
+          }
+
+          float easeOutCubic(float t) {
+              float f = t - 1.0;
+              return f * f * f + 1.0;
+          }
+
+          float easeInOutCubic(float t) {
+              return t < 0.5
+                  ? 4.0 * t * t * t
+                  : 1.0 - pow(-2.0 * t + 2.0, 3.0) / 2.0;
+          }
+
+          //---
+
+          float saturate(float x) {
+              return clamp(x, 0.0, 1.0);
+          }
+
+          vec2 scaleUV(vec2 uv, vec2 scale) {
+              return (uv - 0.5) / scale + 0.5;
+          }
+
+          float centerGradient(float x) {
+              x = x * 2.0;
+              return x < 1.0 ? x : 2.0 - x;
           }
 
           vec4 open_color(vec3 coords_geo, vec3 size_geo) {
-              float t = niri_clamped_progress;
-              float prog = ease_curve(t);
 
-              // choose corner: 0=top-left,1=top-right,2=bottom-left,3=bottom-right
+              vec2 uv = (niri_geo_to_tex * coords_geo).xy;
 
-              int corner = 3;
-              vec2 start;
-              vec2 dir;
-              if (corner == 0) {
-                  start = vec2(0.0,0.0);
-                  dir = vec2(1.0,1.0);
-              } else if (corner == 1) {
-                  start = vec2(1.0,0.0);
-                  dir = vec2(-1.0,1.0);
-              } else if (corner == 2) {
-                  start = vec2(0.0,1.0);
-                  dir = vec2(1.0,-1.0);
-              } else {
-                  start = vec2(1.0,1.0);
-                  dir = vec2(-1.0,-1.0);
-              }
-
-              float shadow_fix = 0.02; // otherwise the animation may stop before
-              // it hides the shadow, since it's outside the window bounds
-
-              // compute distance along diagonal from corner
-              vec2 p = coords_geo.xy;
-              float dist = dot(p - start, dir) - shadow_fix;
-
-              // normalize distance to max diagonal (from corner to opposite)
-              float max_diag = 2.0;
-              float norm_dist = dist / max_diag;
-
-              // pixels not yet reached by sweep are invisible
-              if (norm_dist > prog) {
+              if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) {
                   return vec4(0.0);
               }
 
-              // sample normally
-              vec3 coords_tex = niri_geo_to_tex * coords_geo;
-              vec4 col = texture2D(niri_tex, coords_tex.xy);
+              float t = easeOutQuad(niri_clamped_progress);
 
-              return col;
+              float x = mix(0.1,1.0,easeOutCubic(niri_clamped_progress));
+              float y = easeInQuad(niri_clamped_progress);
+
+              vec2 suv = scaleUV(uv, vec2(x, y));
+
+              if (suv.x < 0.0 || suv.x > 1.0 || suv.y < 0.0 || suv.y > 1.0) {
+                  return vec4(0.0);
+              }
+
+              // Soft edge masks inspired by the BMW shader's center gradients.
+              float tb = centerGradient(suv.y);
+              float lr = centerGradient(suv.x);
+
+              float tbMask = smoothstep(0.0, 0.10, tb);
+              float lrMask = smoothstep(0.0, 0.10, lr);
+
+              float mask = tbMask * lrMask;
+
+              // Cool startup tint.
+              vec3 tint = vec3(0.55, 0.82, 1.0);
+              vec3 color = mix(tint, vec3(1.0), t);
+
+              // Stronger tint at the beginning.
+              float tintAmt = smoothstep(0.0, 0.8, t);
+
+              vec3 rgb = mix(tint, color, tintAmt);
+              float alpha = mask * t;
+
+              //gets the window color
+              vec4 wColor = texture2D(niri_tex, suv) ;
+
+              //returns the final color
+              return mix(vec4(rgb, alpha * wColor.a),wColor, easeInExpo( niri_clamped_progress));
+
           }
         '';
     };
+
     window-close = {
-      duration-ms = 1400;
-      curve = "ease-out-expo";
+      duration-ms = 180;
+      # curve "linear"
+      # curve "ease-out-expo"
+      curve = "linear";
       custom-shader =
         # glsl
         ''
-          // ease-in-out cubic curve helper
-          float ease_curve(float x) {
-              return x < 0.5 ? 4.0*x*x*x : 1.0 - pow(-2.0*x + 2.0, 3.0)/2.0;
+          // =========================
+          // Exponential
+          // =========================
+          float easeInExpo(float t) {
+              return t == 0.0 ? 0.0 : pow(2.0, 10.0 * (t - 1.0));
+          }
+
+          float easeOutExpo(float t) {
+              return t == 1.0 ? 1.0 : 1.0 - pow(2.0, -10.0 * t);
+          }
+
+          float easeInOutExpo(float t) {
+              if (t == 0.0) return 0.0;
+              if (t == 1.0) return 1.0;
+              return t < 0.5
+                  ? 0.5 * pow(2.0, 20.0 * t - 10.0)
+                  : 1.0 - 0.5 * pow(2.0, -20.0 * t + 10.0);
+          }
+
+          // =========================
+          // Sine
+          // =========================
+          float easeInSine(float t) {
+              return 1.0 - cos((t * 3.141592653589793) / 2.0);
+          }
+
+          float easeOutSine(float t) {
+              return sin((t * 3.141592653589793) / 2.0);
+          }
+
+          float easeInOutSine(float t) {
+              return -0.5 * (cos(3.141592653589793 * t) - 1.0);
+          }
+
+          // =========================
+          // Quadratic
+          // =========================
+          float easeInQuad(float t) {
+              return t * t;
+          }
+
+          float easeOutQuad(float t) {
+              return 1.0 - (1.0 - t) * (1.0 - t);
+          }
+
+          float easeInOutQuad(float t) {
+              return t < 0.5
+                  ? 2.0 * t * t
+                  : 1.0 - pow(-2.0 * t + 2.0, 2.0) / 2.0;
+          }
+
+          // =========================
+          // Cubic
+          // =========================
+          float easeInCubic(float t) {
+              return t * t * t;
+          }
+
+          float easeOutCubic(float t) {
+              float f = t - 1.0;
+              return f * f * f + 1.0;
+          }
+
+          float easeInOutCubic(float t) {
+              return t < 0.5
+                  ? 4.0 * t * t * t
+                  : 1.0 - pow(-2.0 * t + 2.0, 3.0) / 2.0;
+          }
+
+          //---
+
+          float saturate(float x) {
+              return clamp(x, 0.0, 1.0);
+          }
+
+          vec2 scaleUV(vec2 uv, vec2 scale) {
+              return (uv - 0.5) / scale + 0.5;
+          }
+
+          float centerGradient(float x) {
+              x = x * 2.0;
+              return x < 1.0 ? x : 2.0 - x;
           }
 
           vec4 close_color(vec3 coords_geo, vec3 size_geo) {
-              float t = niri_clamped_progress;
-              float prog = ease_curve(t);
-
-              // choose corner: 0=top-left,1=top-right,2=bottom-left,3=bottom-right
-
-              int corner = 0;
-              vec2 start;
-              vec2 dir;
-              if (corner == 0) {
-                  start = vec2(0.0,0.0);
-                  dir = vec2(1.0,1.0);
-              } else if (corner == 1) {
-                  start = vec2(1.0,0.0);
-                  dir = vec2(-1.0,1.0);
-              } else if (corner == 2) {
-                  start = vec2(0.0,1.0);
-                  dir = vec2(1.0,-1.0);
-              } else {
-                  start = vec2(1.0,1.0);
-                  dir = vec2(-1.0,-1.0);
-              }
-
-              float shadow_fix = 0.02; // otherwise the animation may stop before
-              // it hides the shadow, since it's outside the window bounds
-
-              // compute distance along diagonal from corner
-              vec2 p = coords_geo.xy;
-              float dist = dot(p - start, dir) - shadow_fix;
-
-              // normalize distance to max diagonal
-              float max_diag = 2.0; // max of vec2(1,1)
-              float norm_dist = dist / max_diag;
-
-              // If pixel is behind the sweeping line, make it invisible
-              if (norm_dist <= prog) {
+              if (coords_geo.x < 0.0 || coords_geo.x > 1.0 ||
+                  coords_geo.y < 0.0 || coords_geo.y > 1.0) {
                   return vec4(0.0);
               }
 
-              // sample normally
-              vec3 coords_tex = niri_geo_to_tex * coords_geo;
-              vec4 col = texture2D(niri_tex, coords_tex.xy);
+              vec2 uv = (niri_geo_to_tex * coords_geo).xy;
 
-              return col;
+              if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) {
+                  return vec4(0.0);
+              }
+
+              float t = easeOutQuad(1.0 - niri_clamped_progress);
+
+              float x = mix(0.1,1.0,easeOutCubic(1.0 - niri_clamped_progress));
+              float y = easeInQuad(1.0 - niri_clamped_progress);
+
+              vec2 suv = scaleUV(uv, vec2(x, y));
+
+              if (suv.x < 0.0 || suv.x > 1.0 || suv.y < 0.0 || suv.y > 1.0) {
+                  return vec4(0.0);
+              }
+
+              // Soft edge masks inspired by the BMW shader's center gradients.
+              float tb = centerGradient(suv.y);
+              float lr = centerGradient(suv.x);
+
+              float tbMask = smoothstep(0.0, 0.10, tb);
+              float lrMask = smoothstep(0.0, 0.10, lr);
+
+              float mask = tbMask * lrMask;
+
+              // Cool startup tint.
+              vec3 tint = vec3(0.55, 0.82, 1.0);
+              vec3 color = mix(tint, vec3(1.0), t);
+
+              // Stronger tint at the beginning.
+              float tintAmt = smoothstep(0.0, 0.8, t);
+
+              vec3 rgb = mix(tint, color, tintAmt);
+              float alpha = mask * t;
+
+              //gets the window color
+              vec4 wColor = texture2D(niri_tex, suv) ;
+
+              //returns the final color
+              return mix(vec4(rgb, alpha * wColor.a),wColor, easeInExpo( 1.0 - niri_clamped_progress));
           }
         '';
     };
-    horizontal-view-movement = {
-      spring._props = {
-        damping-ratio = 0.85;
-        stiffness = 423;
-        epsilon = 0.0001;
-      };
-    };
-    window-movement = {
-      spring._props = {
-        damping-ratio = 0.75;
-        stiffness = 323;
-        epsilon = 0.0001;
-      };
-    };
+
     window-resize = {
+      duration-ms = 160;
+      curve = "linear";
+      # curve "cubic-bezier" 0.95 0.05 0.795 0.035
+
       custom-shader =
         # glsl
         ''
-          vec4 resize_color(vec3 coords_curr_geo, vec3 size_curr_geo) {
-              vec3 coords_tex_next = niri_geo_to_tex_next * coords_curr_geo;
-              vec4 color = texture2D(niri_tex_next, coords_tex_next.st);
+          const float PI = 3.141592653589793;
 
-              return color;
+          float hash21(vec2 p) {
+              p = fract(p * vec2(127.1, 311.7));
+              p += dot(p, p + 34.345);
+              return fract(p.x * p.y);
+          }
+
+          float noise2(vec2 uv) {
+              vec2 i = floor(uv);
+              vec2 f = fract(uv);
+
+              float a = hash21(i);
+              float b = hash21(i + vec2(1.0, 0.0));
+              float c = hash21(i + vec2(0.0, 1.0));
+              float d = hash21(i + vec2(1.0, 1.0));
+
+              vec2 u = f * f * (3.0 - 2.0 * f);
+
+              return mix(a, b, u.x)
+                  + (c - a) * u.y * (1.0 - u.x)
+                  + (d - b) * u.x * u.y;
+          }
+
+          vec3 randomRGB(vec2 uv, float t) {
+              // Independent noise per channel → real CRT chaos
+              float r = noise2(uv * 1.3 + vec2(13.0, 71.0) + t * 120.0);
+              float g = noise2(uv * 1.7 + vec2(37.0, 19.0) + t * 90.0);
+              float b = noise2(uv * 1.1 + vec2(91.0, 53.0) + t * 140.0);
+              return vec3(r, g, b);
+          }
+
+          vec4 resize_color(vec3 coords_geo, vec3 size_geo) {
+              if (coords_geo.x < 0.0 || coords_geo.x > 1.0 ||
+                  coords_geo.y < 0.0 || coords_geo.y > 1.0) {
+                  return vec4(0.0);
+              }
+
+              vec2 uv = coords_geo.xy;
+              float t = niri_clamped_progress;
+
+              // Strongest mid-animation
+              float pulse = sin(t * PI);
+
+              // Multi-scale noise layers (coarse + fine)
+              vec2 base = uv * size_geo.xy;
+
+              vec3 coarse = randomRGB(floor(base * 0.12), t);
+              vec3 mid    = randomRGB(base * 0.35, t);
+              vec3 fine   = randomRGB(base * 0.9,  t);
+
+              // Combine for richer randomness
+              vec3 snow = mix(coarse, mid, 0.5);
+              snow = mix(snow, fine, 0.35);
+
+              // Center around 0
+              snow -= 0.5;
+
+              // Add subtle horizontal interference streaks
+              float streak = sin(uv.y * size_geo.y * 0.6 + t * 80.0) * 0.15;
+              snow += vec3(streak);
+
+              // Slight color bias flicker
+              vec3 tint = vec3(
+                  sin(t * 37.0) * 0.2,
+                  sin(t * 53.0) * 0.2,
+                  sin(t * 29.0) * 0.2
+              );
+
+              snow += tint;
+
+              // Final intensity
+              float strength = 0.55;
+              vec4 color = vec4(snow,1.0) * strength * pulse;
+              color.a = 1.0;
+
+              float alpha = length(color) * 1.2;
+
+              vec3 coords_tex_next = niri_geo_to_tex_next * coords_geo;
+              vec4 wColor = texture2D(niri_tex_next, coords_tex_next.st );
+
+              return mix(wColor, color, pulse * 0.5);
           }
         '';
     };
-    config-notification-open-close = {
+
+    workspace-switch = {
+      # Smooth, composed, no bounce.
       spring._props = {
-        damping-ratio = 0.65;
-        stiffness = 923;
+        damping-ratio = 1.0;
+        stiffness = 760;
+        epsilon = 0.0001;
+      };
+    };
+
+    horizontal-view-movement = {
+      # Main "camera glide" for scrollable movement.
+      spring._props = {
+        damping-ratio = 1.0;
+        stiffness = 640;
+        epsilon = 0.0001;
+      };
+    };
+
+    window-movement = {
+      # Individual windows shift with a slightly tighter response
+      # than the camera, so it feels organized.
+      spring._props = {
+        damping-ratio = 1.0;
+        stiffness = 700;
+        epsilon = 0.0001;
+      };
+    };
+
+    config-notification-open-close = {
+      # Less playful, more refined than the default underdamped feel.
+      spring._props = {
+        damping-ratio = 1.0;
+        stiffness = 820;
         epsilon = 0.001;
       };
     };
-    screenshot-ui-open = {
-      duration-ms = 200;
-      curve = "ease-out-quad";
-    };
-    overview-open-close = {
+
+    exit-confirmation-open-close = {
       spring._props = {
-        damping-ratio = 0.85;
-        stiffness = 800;
+        damping-ratio = 1.0;
+        stiffness = 560;
+        epsilon = 0.01;
+      };
+    };
+
+    screenshot-ui-open = {
+      duration-ms = 220;
+      curve = ["cubic-bezier" 0.22 1.0 0.36 1.0];
+    };
+
+    overview-open-close = {
+      # Overview should feel smooth and premium, not springy/bouncy.
+      spring._props = {
+        damping-ratio = 1.0;
+        stiffness = 620;
         epsilon = 0.0001;
+      };
+    };
+
+    recent-windows-close = {
+      spring._props = {
+        damping-ratio = 1.0;
+        stiffness = 680;
+        epsilon = 0.001;
       };
     };
   };
