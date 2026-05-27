@@ -154,8 +154,8 @@
       # only show when conncted to to an SSH session
       ssh_only = true;
       ssh_symbol = "󰁥 ";
-      format = "[ $ssh_symbol$hostname ]($style)";
-      style = "bg:green_dim fg:white3";
+      format = "[](fg:green_dim)[ $ssh_symbol$hostname ]($style)[](fg:green_dim) ";
+      style = "bg:green_dim fg:gray3";
     };
 
     # Languages
