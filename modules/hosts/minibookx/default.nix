@@ -6,6 +6,7 @@ in {
       inherit (flake.modules.nixos) default chuwi-minibook-x;
       inherit (flake.modules.nixos) gui;
       inherit (flake.modules.nixos) kdeconnect;
+      inherit (flake.modules.nixos) sshConfig;
     };
     networking.hostId = "56895d2b";
 
