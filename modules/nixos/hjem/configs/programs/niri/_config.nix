@@ -442,8 +442,8 @@ in {
       spawn = ["ghostty" "+new-window" "--working-directory=${dotfile}" "-e" "nvim"];
     };
     "Mod+B" = {
-      _props.hotkey-overlay-title = "${hotkey "#C0C8D8" "  Zen" "Web Browser"}";
-      spawn = ["zen"];
+      _props.hotkey-overlay-title = "${hotkey "#5E81AC" "  Helium" "Web Browser"}";
+      spawn-sh = "helium &";
     };
     "Mod+E" = {
       _props.hotkey-overlay-title = "${hotkey "#88C0D0" "󰥠  Euphonica" "MPD Client"}";

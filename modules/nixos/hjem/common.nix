@@ -116,8 +116,8 @@ in {
           SYSTEMD_PAGER = "moor";
           SYSTEMD_PAGERSECURE = "1";
 
-          DEFAULT_BROWSER = "zen";
-          BROWSER = "zen";
+          DEFAULT_BROWSER = "helium";
+          BROWSER = "helium";
 
           TERMINAL = "ghostty";
           EDITOR = "hx";
@@ -157,20 +157,20 @@ in {
             "application/x-shellscript" = "helix.desktop";
             "application/xml" = "helix.desktop";
 
-            "x-scheme-handler/unknown" = "zen.desktop";
-            "x-scheme-handler/about" = "zen.desktop";
-            "x-scheme-handler/https" = "zen.desktop";
-            "x-scheme-handler/http" = "zen.desktop";
-            "text/html" = "zen.desktop";
+            "x-scheme-handler/unknown" = "helium.desktop";
+            "x-scheme-handler/about" = "helium.desktop";
+            "x-scheme-handler/https" = "helium.desktop";
+            "x-scheme-handler/http" = "helium.desktop";
+            "text/html" = "helium.desktop";
           };
           added-associations = {
             "text/csv" = "helix.desktop";
 
-            "x-scheme-handler/unknown" = "zen.desktop";
-            "x-scheme-handler/about" = "zen.desktop";
-            "x-scheme-handler/https" = "zen.desktop";
-            "x-scheme-handler/http" = "zen.desktop";
-            "text/html" = "zen.desktop";
+            "x-scheme-handler/unknown" = "helium.desktop";
+            "x-scheme-handler/about" = "helium.desktop";
+            "x-scheme-handler/https" = "helium.desktop";
+            "x-scheme-handler/http" = "helium.desktop";
+            "text/html" = "helium.desktop";
           };
 
           removed-associations = {
