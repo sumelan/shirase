@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  dotfile,
   ...
 }: let
   inherit (config.lib.custom.hardware.monitors) mainMonitor mainMonitorName;
@@ -267,12 +266,11 @@ in {
         {_props.title._raw = ''r#"^Picture-in-Picture$"#'';}
         {_props.title._raw = ''r#"^ピクチャーインピクチャー$"#'';}
         {_props.title._raw = ''r#"^ピクチャー イン ピクチャー$"#'';}
-
         {_props.app-id._raw = ''r#"^mpv$"#'';}
         {_props.app-id._raw = ''r#"^com.gabm.satty$"#'';}
+        {_props.app-id._raw = ''r#"^dissent$"#'';}
         {_props.app-id._raw = ''r#"^swayimg$"#'';}
         {_props.app-id._raw = ''r#"^vlc$"#'';}
-        {_props.app-id._raw = ''r#"^Pqiv$"#'';}
       ];
       default-column-width._children = [
         {proportion = 0.450000;}
@@ -288,6 +286,7 @@ in {
       match = [
         {_props.app-id._raw = ''r#"^org.gnome.Nautilus$"#'';}
         {_props.app-id._raw = ''r#"^xdg-desktop-portal-gtk$"#'';}
+        {_props.app-id._raw = ''r#"^yazi$"#'';}
       ];
       default-column-width._children = [
         {proportion = 0.500000;}
@@ -343,7 +342,7 @@ in {
   spawn-at-startup = [
     ["nm-applet"]
     ["blueman-applet"]
-    ["ghostty" "--gtk-single-instance=true" "--initial-window=false" "--quit-after-last-window-closed=false"]
+    ["foot" "--server"]
   ];
 
   binds = let
@@ -434,12 +433,8 @@ in {
 
     # execute
     "Mod+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#E7C173" "󰊠  Ghostty" "Terminal Emulator"}";
-      spawn = ["ghostty" "+new-window"];
-    };
-    "Mod+Shift+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#B1C89D" "  Neovim" "Code Editor"}";
-      spawn = ["ghostty" "+new-window" "--working-directory=${dotfile}" "-e" "nvim"];
+      _props.hotkey-overlay-title = "${hotkey "#E7C173" "󰽒  Foot" "Terminal Emulator"}";
+      spawn = ["footclient"];
     };
     "Mod+B" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "  Helium" "Web Browser"}";
@@ -462,11 +457,11 @@ in {
     };
     "Mod+Shift+N" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}";
-      spawn = ["ghostty" "+new-window" "-e" "ns"];
+      spawn = ["footclient" "--app-id" "dev.vlinkz.NixosConfEditor" "ns"];
     };
     "Mod+Shift+Y" = {
       _props.hotkey-overlay-title = "${hotkey "#E7C173" "󰇥  Yazi" "File Manager"}";
-      spawn = ["ghostty" "+new-window" "-e" "yazi"];
+      spawn = ["footclient" "--app-id" "yazi" "yazi"];
     };
     "Ctrl+Space" = {
       _props.hotkey-overlay-title = "${hotkey "#A3BE8C" "󰗊  Hazkey" "Switch input method"}";

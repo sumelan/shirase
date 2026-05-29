@@ -14,7 +14,6 @@ in {
       (flake.packages.${pkgs.stdenv.hostPlatform.system})
       bat
       batman
-      ghostty
       eza
       eza-tree
       moor
@@ -85,8 +84,6 @@ in {
         inherit wlr-which-key;
         nvim-desktop-entry = lib.hiPrio nvim-desktop-entry;
         ns-desktop-entry = lib.hiPrio ns-desktop-entry;
-        # terminal
-        inherit ghostty;
         # pdf viewer
         inherit zathura;
         # protonapps
@@ -119,7 +116,7 @@ in {
           DEFAULT_BROWSER = "helium";
           BROWSER = "helium";
 
-          TERMINAL = "ghostty";
+          TERMINAL = "foot";
           EDITOR = "hx";
           VISUAL = "hx";
           NIXPKGS_ALLOW_UNFREE = "1";
@@ -147,11 +144,11 @@ in {
         };
 
         mime-apps = let
-          ghostty = "com.mitchellh.ghostty.desktop";
+          foot = "footclient.desktop";
           zathura = "org.pwmt.zathura-pdf-mupdf.desktop";
         in {
           default-applications = {
-            "x-scheme-handler/terminal" = ghostty;
+            "x-scheme-handler/terminal" = foot;
 
             "text/plain" = "helix.desktop";
             "application/x-shellscript" = "helix.desktop";

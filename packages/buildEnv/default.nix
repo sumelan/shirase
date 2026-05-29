@@ -3,32 +3,31 @@
     local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
 
     commonPkgs = builtins.attrValues {
-      inherit
-        (local)
-        nushell
-        fish
-        helix
-        ns
-        ;
+      inherit (local) bat batman eza eza-tree moor ripgrep difftastic;
+      inherit (local) btop rmpc starship yt-dlp;
+      inherit (local) nushell fish;
+      inherit (local) nvf;
+      inherit (local) ns;
     };
   in {
     packages = {
       termEnv = pkgs.buildEnv {
         # Extra packages for CLI hosts like development servers
-        name = "Sumelan's terminal env";
+        name = "Terminal env";
         paths = commonPkgs;
       };
 
       fullEnv = pkgs.buildEnv {
         # Fully loaded graphical environments
-        name = "Sumelan's full env";
-        paths = with local;
-          [
-            ghostty
-            helium
-            foot
-            kitty
-          ]
+        name = "Full env";
+        paths =
+          builtins.attrValues {
+            inherit
+              (local)
+              foot
+              helium
+              ;
+          }
           ++ commonPkgs;
       };
     };
