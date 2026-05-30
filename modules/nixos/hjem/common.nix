@@ -14,6 +14,7 @@ in {
       (flake.packages.${pkgs.stdenv.hostPlatform.system})
       bat
       batman
+      fish
       eza
       eza-tree
       moor
@@ -75,7 +76,7 @@ in {
     in {
       packages = builtins.attrValues {
         # shell
-        inherit nushell starship;
+        inherit fish nushell starship;
         # tui
         inherit bat batman eza eza-tree moor ripgrep ns;
         # editor

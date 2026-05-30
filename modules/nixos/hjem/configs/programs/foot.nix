@@ -8,8 +8,7 @@ in {
       programs.foot = {
         enable = true;
         package = foot;
-        # add `foot --server` in wm's startup
-        server.enable = false;
+        server.enable = true;
       };
     };
   };

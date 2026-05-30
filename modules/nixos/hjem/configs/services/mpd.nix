@@ -7,24 +7,25 @@ _: {
     cfg = config.hj.rum.services.mpd;
 
     data = cfg.dataDir;
-    host = cfg.settings.bind_to_address;
   in {
     hj.rum = {
       services = {
         mpd = {
           enable = true;
+          startWhenNeeded = true;
+          settings.bind_to_address = "/run/user/1000/mpd/socket"; # local socket
         };
 
         mpdris2-rs = {
           enable = true;
-          inherit host;
+          host = "/run/user/1000/mpd/socket";
         };
 
         mpd-discord-rpc = {
           enable = true;
           settings = {
             id = 677226551607033903;
-            hosts = [host];
+            hosts = ["/run/user/1000/mpd/socket"];
 
             format = {
               details = "$title";

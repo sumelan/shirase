@@ -1,6 +1,5 @@
 {lib, ...}: let
-  inherit (lib) mkOption mkPackageOption mkEnableOption;
-  inherit (lib.types) listOf package;
+  inherit (lib) mkPackageOption mkEnableOption;
 in {
   flake.custom.hjemModules.foot = {
     config,
@@ -17,14 +16,6 @@ in {
 
         server = {
           enable = mkEnableOption "Foot terminal server";
-          path = mkOption {
-            type = listOf package;
-            default = [];
-            description = ''
-              Packages added to the service's PATH environment variable.
-              Both the `bin` and `sbin` subdirectories of each package are added.
-            '';
-          };
         };
       };
     };
@@ -35,7 +26,7 @@ in {
       systemd.services.foot-server = lib.mkIf cfg.server.enable {
         description = "Foot terminal server mode";
         documentation = ["man:foot(1)"];
-        path = cfg.server.path;
+        path = ["/run/current-system/sw" "/etc/profiles/per-user/${config.user}"];
         requires = ["%N.socket"];
         partOf = ["graphical-session.target"];
         after = ["graphical-session.target"];

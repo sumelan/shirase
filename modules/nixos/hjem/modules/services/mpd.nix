@@ -10,9 +10,20 @@
       services.mpd = {
         enable = lib.mkEnableOption "Music Player Daemon";
 
-        startWhenNeeded = lib.mkOption {
+        package = lib.mkPackageOption pkgs "mpd" {};
+
+        enableSessionVariables = lib.mkOption {
           type = lib.types.bool;
           default = true;
+          description = ''
+            Whether to set {env}`MPD_HOST` {env}`MPD_PORT` environment variables
+            according to {option}`services.mpd.network`.
+          '';
+        };
+
+        startWhenNeeded = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
           description = ''
             If set, {command}`mpd` is socket-activated; that is, instead of having it permanently running as a daemon,
             systemd will start it on the first incoming connection.
@@ -22,6 +33,7 @@
         dataDir = lib.mkOption {
           type = lib.types.path;
           default = "${config.xdg.data.directory}/mpd";
+          apply = toString; # Prevent copies to Nix store.
           description = ''
             The directory where MPD stores its state, tag cache, playlists etc.
           '';
@@ -31,6 +43,7 @@
           music_directory = lib.mkOption {
             type = lib.types.path;
             default = "${config.directory}/Music";
+            apply = toString; # Prevent copies to Nix store.
             description = ''
               The directory or URI where MPD reads music from.
             '';
@@ -39,6 +52,7 @@
           playlist_directory = lib.mkOption {
             type = lib.types.path;
             default = "${cfg.dataDir}/playlists";
+            apply = toString; # Prevent copies to Nix store.
             description = ''
               The directory where MPD stores playlists.
             '';
@@ -46,7 +60,7 @@
 
           bind_to_address = lib.mkOption {
             type = lib.types.str;
-            default = "/run/user/1000/mpd/socket"; # local socket
+            default = "127.0.0.1";
             description = ''
               The address for the daemon to listen on.
               Use `any` to listen on all addresses.
@@ -74,20 +88,56 @@
 
     config = lib.mkIf cfg.enable {
       # install mpd units
-      packages = [pkgs.mpd];
+      packages = [cfg.package];
+
+      environment.sessionVariables = lib.mkIf cfg.enableSessionVariables ({
+          MPD_PORT = toString cfg.settings.port;
+        }
+        // lib.optionalAttrs (cfg.settings.bind_to_address != "any") {
+          MPD_HOST = cfg.settings.bind_to_address;
+        });
 
       systemd = {
         services.mpd = let
-          profileDir = "/etc/profiles/per-user/${config.user}";
           data = cfg.dataDir;
           music = cfg.settings.music_directory;
           playlists = cfg.settings.playlist_directory;
           db = cfg.settings.db_file;
 
-          mpdConf = import ./_mpdConf.nix {inherit cfg pkgs data music playlists db;};
+          mpdConf = pkgs.writeText "mpd.conf" (''
+              music_directory    "${music}"
+              playlist_directory "${playlists}"
+            ''
+            + ''
+              db_file            "${db}"
+            ''
+            + ''
+              state_file         "${data}/state"
+              sticker_file       "${data}/sticker.sql"
+            ''
+            + pkgs.lib.optionalString (cfg.settings.bind_to_address != "any") ''
+              bind_to_address    "${cfg.settings.bind_to_address}"
+            ''
+            + pkgs.lib.optionalString (cfg.settings.port != 6600) ''
+              port               "${toString cfg.settings.port}"
+            ''
+            + ''
+              audio_output {
+                name             "PipeWire Sound Server"
+                type             "pipewire"
+              }
+
+              audio_output {
+                format           "48000:16:2"
+                name             "FIFO"
+                path             "/run/user/1000/mpd/mpd.fifo"
+                type             "fifo"
+              }
+            '');
         in
           {
             description = "Music Player Daemon";
+            path = ["/etc/profiles/per-user/${config.user}"];
             after =
               [
                 "network.target"
@@ -97,8 +147,7 @@
             wantedBy = lib.mkIf cfg.startWhenNeeded ["default.target"];
 
             serviceConfig = {
-              Environment = ["PATH=${profileDir}/bin"];
-              ExecStart = "${lib.getExe pkgs.mpd} --no-daemon ${mpdConf}";
+              ExecStart = "${lib.getExe cfg.package} --no-daemon ${mpdConf}";
               RuntimeDirectory = "mpd";
             };
           }

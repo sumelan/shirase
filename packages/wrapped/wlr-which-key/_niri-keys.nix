@@ -5,7 +5,7 @@
     submenu = [
       {
         key = "d";
-        desc = "Open dynamic-cast-target menu.";
+        desc = "Set dynamic-cast-target.";
         submenu = [
           {
             key = "w";

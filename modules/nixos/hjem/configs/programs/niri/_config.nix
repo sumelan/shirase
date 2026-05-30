@@ -342,7 +342,6 @@ in {
   spawn-at-startup = [
     ["nm-applet"]
     ["blueman-applet"]
-    ["foot" "--server"]
   ];
 
   binds = let
@@ -364,7 +363,7 @@ in {
     "Mod+D" = {
       _props = {
         cooldown-ms = 500;
-        hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "DMS-menu"}";
+        hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "DMS Keychord"}";
       };
       spawn = ["wlr-which-key" "--initial-keys" "d"];
     };
@@ -447,7 +446,7 @@ in {
     "Mod+N" = {
       _props = {
         cooldown-ms = 500;
-        hotkey-overlay-title = "${hotkey "#D79784" "󰗢  niri" "niri-menu"}";
+        hotkey-overlay-title = "${hotkey "#D79784" "󰗢  niri" "niri Keychord"}";
       };
       spawn = ["wlr-which-key" "--initial-keys" "n"];
     };
