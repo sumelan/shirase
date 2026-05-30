@@ -3,13 +3,13 @@
   "currentThemeCategory": "registry",
   "customThemeFile": "/home/sumelan/.config/DankMaterialShell/themes/nord/theme.json",
   "registryThemeVariants": {
-    "everforest": "soft",
     "catppuccin": {
       "dark": {
-        "flavor": "frappe",
-        "accent": "sapphire"
+        "accent": "sapphire",
+        "flavor": "frappe"
       }
     },
+    "everforest": "soft",
     "rosePine": "dawn"
   },
   "matugenScheme": "scheme-tonal-spot",
@@ -118,13 +118,13 @@
       "width": 50
     },
     {
+      "id": "wifi",
       "enabled": true,
-      "id": "bluetooth",
       "width": 50
     },
     {
-      "id": "plugin_displayMirror",
       "enabled": true,
+      "id": "bluetooth",
       "width": 50
     },
     {
@@ -139,10 +139,15 @@
     },
     {
       "enabled": true,
+      "id": "plugin_displayMirror",
+      "width": 50
+    },
+    {
+      "enabled": true,
       "id": "diskUsage",
       "instanceId": "mit3bt3ltjiai9vqgkhkekkqc5cc2",
       "mountPath": "/persist",
-      "width": 100
+      "width": 50
     }
   ],
   "showWorkspaceIndex": false,
@@ -175,6 +180,7 @@
   "audioWheelScrollAmount": 5,
   "clockCompactMode": false,
   "focusedWindowCompactMode": false,
+  "focusedWindowSize": 1,
   "runningAppsCompactMode": true,
   "barMaxVisibleApps": 0,
   "barMaxVisibleRunningApps": 0,
@@ -241,9 +247,10 @@
   "appLauncherGridColumns": 5,
   "spotlightCloseNiriOverview": true,
   "rememberLastQuery": false,
+  "rememberLastMode": true,
   "spotlightSectionViewModes": {
-    "files": "list",
-    "apps": "list"
+    "apps": "list",
+    "files": "list"
   },
   "appDrawerSectionViewModes": {},
   "niriOverviewOverlayEnabled": true,
@@ -255,6 +262,9 @@
   "dankLauncherV2UnloadOnClose": false,
   "dankLauncherV2IncludeFilesInAll": true,
   "dankLauncherV2IncludeFoldersInAll": true,
+  "launcherUseOverlayLayer": false,
+  "launcherStyle": "full",
+  "spotlightBarShowModeChips": false,
   "useAutoLocation": true,
   "weatherEnabled": true,
   "networkPreference": "auto",
@@ -371,7 +381,7 @@
   "showDock": true,
   "dockAutoHide": false,
   "dockSmartAutoHide": true,
-  "dockHideOnFullscreen": true,
+  "dockUseOverlayLayer": false,
   "dockGroupByApp": true,
   "dockRestoreSpecialWorkspaceOnClick": false,
   "dockOpenOnOverview": true,
@@ -427,6 +437,7 @@
   "notificationTimeoutNormal": 5000,
   "notificationTimeoutCritical": 0,
   "notificationCompactMode": false,
+  "notificationDedupeEnabled": true,
   "notificationPopupPosition": 0,
   "notificationAnimationSpeed": 2,
   "notificationCustomAnimationDuration": 400,
@@ -438,11 +449,11 @@
   "notificationHistorySaveCritical": true,
   "notificationRules": [
     {
+      "action": "ignore",
       "enabled": true,
       "field": "desktopEntry",
-      "pattern": "org.freedesktop.network-manager-applet",
       "matchType": "exact",
-      "action": "ignore",
+      "pattern": "org.freedesktop.network-manager-applet",
       "urgency": "default"
     }
   ],
@@ -517,10 +528,10 @@
   "displaySnapToEdge": true,
   "connectedFrameBarStyleBackups": {
     "default": {
-      "shadowIntensity": 0,
-      "squareCorners": true,
+      "borderEnabled": true,
       "gothCornersEnabled": true,
-      "borderEnabled": true
+      "shadowIntensity": 0,
+      "squareCorners": true
     }
   },
   "barConfigs": [
@@ -544,6 +555,7 @@
       "gothCornerRadiusOverride": false,
       "gothCornerRadiusValue": 12,
       "gothCornersEnabled": false,
+      "iconScale": 1.25,
       "id": "default",
       "innerPadding": 10,
       "leftWidgets": [
@@ -552,18 +564,18 @@
           "id": "launcherButton"
         },
         {
-          "id": "focusedWindow",
           "enabled": true,
-          "focusedWindowCompactMode": true
+          "focusedWindowCompactMode": true,
+          "id": "focusedWindow"
         },
         {
-          "id": "music",
           "enabled": true,
+          "id": "music",
           "mediaSize": 2
         },
         {
-          "id": "systemTray",
           "enabled": true,
+          "id": "systemTray",
           "trayUseInlineExpansion": true
         },
         {
@@ -576,49 +588,52 @@
         }
       ],
       "maximizeDetection": true,
+      "maximizeWidgetIcons": true,
+      "maximizeWidgetText": true,
       "name": "Main Bar",
       "noBackground": false,
       "openOnOverview": true,
       "popupGapsAuto": true,
       "popupGapsManual": 4,
       "position": 2,
+      "removeWidgetPadding": false,
       "rightWidgets": [
         {
-          "id": "notificationButton",
-          "enabled": true
-        },
-        {
-          "id": "screenRecorder",
-          "enabled": true
-        },
-        {
-          "id": "dankKDEConnect",
-          "enabled": true
-        },
-        {
-          "id": "controlCenterButton",
           "enabled": true,
-          "showNetworkIcon": false,
-          "showBluetoothIcon": true,
+          "id": "notificationButton"
+        },
+        {
+          "enabled": true,
+          "id": "screenRecorder"
+        },
+        {
+          "enabled": true,
+          "id": "dankKDEConnect"
+        },
+        {
+          "enabled": true,
+          "id": "controlCenterButton",
           "showAudioIcon": true,
           "showAudioPercent": true,
-          "showVpnIcon": false,
+          "showBatteryIcon": false,
+          "showBluetoothIcon": true,
           "showBrightnessIcon": false,
           "showBrightnessPercent": false,
           "showMicIcon": false,
           "showMicPercent": false,
-          "showBatteryIcon": false,
+          "showNetworkIcon": false,
           "showPrinterIcon": false,
-          "showScreenSharingIcon": true
+          "showScreenSharingIcon": true,
+          "showVpnIcon": false
         },
         {
-          "id": "battery",
-          "enabled": true
-        },
-        {
-          "id": "clock",
           "enabled": true,
-          "clockCompactMode": false
+          "id": "battery"
+        },
+        {
+          "clockCompactMode": false,
+          "enabled": true,
+          "id": "clock"
         }
       ],
       "screenPreferences": [
@@ -636,12 +651,8 @@
       "widgetOutlineEnabled": false,
       "widgetOutlineOpacity": 1,
       "widgetOutlineThickness": 1,
-      "widgetTransparency": 0,
       "widgetPadding": 8,
-      "maximizeWidgetIcons": true,
-      "maximizeWidgetText": true,
-      "iconScale": 1.25,
-      "removeWidgetPadding": false
+      "widgetTransparency": 0
     }
   ],
   "desktopClockEnabled": false,
@@ -716,6 +727,13 @@
   "desktopWidgetInstances": [],
   "desktopWidgetGroups": [],
   "builtInPluginSettings": {
+    "dankNotepadModule": {
+      "currentFileExtension": "txt",
+      "currentFilePath": "notepad-files/untitled-1777121577212.txt",
+      "previewActive": false,
+      "sourceContent": "\n",
+      "updatedAt": 1779195378577
+    },
     "dms_notepad": {
       "enabled": false
     },
@@ -728,13 +746,6 @@
     },
     "dms_sysmon": {
       "enabled": false
-    },
-    "dankNotepadModule": {
-      "previewActive": false,
-      "currentFilePath": "notepad-files/untitled-1777121577212.txt",
-      "currentFileExtension": "txt",
-      "sourceContent": "\n",
-      "updatedAt": 1779195378577
     }
   },
   "clipboardEnterToPaste": true,
