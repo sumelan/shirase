@@ -18,9 +18,9 @@
       };
 
       packages = [
-        pkgs.qt6Packages.qt6ct
-        pkgs.qt6Packages.qtstyleplugin-kvantum
-        pkgs.qt6Packages.qtwayland
+        pkgs.kdePackages.qt6ct
+        pkgs.kdePackages.qtstyleplugin-kvantum
+        pkgs.kdePackages.qtwayland
       ];
 
       xdg.config.files = let
@@ -38,6 +38,12 @@
             General.theme = "Nordic";
           };
         };
+
+        "kdeglobals".text = ''
+          [UiSettings]
+          ColorScheme=Nordic
+        '';
+
         "qt5ct/qt5ct.conf" = {
           generator = lib.generators.toINI {};
           value = qtConf;
