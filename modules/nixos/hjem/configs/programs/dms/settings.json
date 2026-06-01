@@ -1,6 +1,6 @@
 {
-  "currentThemeName": "custom",
-  "currentThemeCategory": "registry",
+  "currentThemeName": "dynamic",
+  "currentThemeCategory": "dynamic",
   "customThemeFile": "/home/sumelan/.config/DankMaterialShell/themes/nord/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
@@ -166,7 +166,7 @@
   "workspaceOccupiedColorMode": "none",
   "workspaceUnfocusedColorMode": "default",
   "workspaceUrgentColorMode": "default",
-  "workspaceFocusedBorderEnabled": false,
+  "workspaceFocusedBorderEnabled": true,
   "workspaceFocusedBorderColor": "primary",
   "workspaceFocusedBorderThickness": 1,
   "workspaceNameIcons": {},
@@ -522,7 +522,7 @@
     "niri": ""
   },
   "displayProfileAutoSelect": false,
-  "displayShowDisconnected": false,
+  "displayShowDisconnected": true,
   "displaySnapToEdge": true,
   "connectedFrameBarStyleBackups": {
     "default": {
@@ -649,7 +649,8 @@
       "widgetOutlineOpacity": 1,
       "widgetOutlineThickness": 1,
       "widgetPadding": 8,
-      "widgetTransparency": 0
+      "widgetTransparency": 0,
+      "useOverlayLayer": false
     }
   ],
   "desktopClockEnabled": false,
@@ -729,7 +730,7 @@
       "currentFilePath": "notepad-files/untitled-1777121577212.txt",
       "previewActive": false,
       "sourceContent": "\n",
-      "updatedAt": 1780301325844
+      "updatedAt": 1780311288904
     },
     "dms_clipboard_search": {
       "trigger": "cb"
@@ -764,7 +765,7 @@
   "frameThickness": 16,
   "frameRounding": 23,
   "frameColor": "surface",
-  "frameOpacity": 0.65,
+  "frameOpacity": 0.4,
   "frameScreenPreferences": [
     "all"
   ],
