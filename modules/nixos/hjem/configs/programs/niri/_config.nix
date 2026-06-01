@@ -349,8 +349,8 @@ in {
   in {
     # dms
     "Mod+Space" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Launcher"}";
-      spawn = ["dms" "ipc" "spotlight" "toggle"];
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Spotlight Bar"}";
+      spawn = ["dms" "ipc" "spotlight-bar" "toggle"];
     };
     "Mod+Y" = {
       _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Clipboard"}";

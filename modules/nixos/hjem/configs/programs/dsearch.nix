@@ -7,12 +7,13 @@ _: {
     hj.rum = {
       programs.dsearch = {
         enable = true;
+
         package = pkgs.dsearch;
+
         settings = let
           cache = config.hj.xdg.cache.directory;
           documents = "${config.hj.directory}/Documents";
           pictures = "${config.hj.directory}/Pictures";
-          music = "${config.hj.directory}/Music";
           videos = "${config.hj.directory}/Videos";
         in {
           # Server configuration
@@ -54,7 +55,7 @@ _: {
               max_depth = 0;
               exclude_hidden = true;
               extract_exif = false;
-              exclude_dirs = ["Projects"];
+              exclude_dirs = ["Music" "Projects"];
             }
             {
               path = documents;
@@ -67,21 +68,14 @@ _: {
               path = pictures;
               max_depth = 0;
               exclude_hidden = true;
-              extract_exif = true; # Extract EXIF metadata from images
+              extract_exif = false; # Extract EXIF metadata from images
               exclude_dirs = ["Wallpapers"];
-            }
-            {
-              path = music;
-              max_depth = 0;
-              exclude_hidden = true;
-              extract_exif = false;
-              exclude_dirs = [];
             }
             {
               path = videos;
               max_depth = 0;
               exclude_hidden = true;
-              extract_exif = true;
+              extract_exif = false;
               exclude_dirs = [];
             }
           ];

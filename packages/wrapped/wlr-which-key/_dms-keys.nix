@@ -38,13 +38,6 @@
         ];
       }
       {
-        key = "l";
-        desc = "Toggle nightlight.";
-        cmd =
-          # sh
-          ''dms ipc night toggle'';
-      }
-      {
         key = "n";
         desc = "Toggle notepad.";
         cmd =
@@ -57,13 +50,6 @@
         cmd =
           # sh
           ''dms color pick -a'';
-      }
-      {
-        key = "v";
-        desc = "Toggle bar visibility.";
-        cmd =
-          # sh
-          ''dms ipc bar toggle name "Main Bar"'';
       }
     ];
   }

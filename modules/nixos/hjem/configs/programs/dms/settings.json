@@ -15,7 +15,7 @@
   "matugenScheme": "scheme-tonal-spot",
   "matugenContrast": 0,
   "runUserMatugenTemplates": true,
-  "matugenTargetMonitor": "HDMI-A-1",
+  "matugenTargetMonitor": "HDMI-A-2",
   "popupTransparency": 0.7,
   "dockTransparency": 0.9,
   "widgetBackgroundColor": "sch",
@@ -118,8 +118,8 @@
       "width": 50
     },
     {
-      "id": "wifi",
       "enabled": true,
+      "id": "wifi",
       "width": 50
     },
     {
@@ -139,14 +139,12 @@
     },
     {
       "enabled": true,
-      "id": "plugin_displayMirror",
+      "id": "idleInhibitor",
       "width": 50
     },
     {
       "enabled": true,
-      "id": "diskUsage",
-      "instanceId": "mit3bt3ltjiai9vqgkhkekkqc5cc2",
-      "mountPath": "/persist",
+      "id": "nightMode",
       "width": 50
     }
   ],
@@ -267,7 +265,7 @@
   "spotlightBarShowModeChips": false,
   "useAutoLocation": true,
   "weatherEnabled": true,
-  "networkPreference": "auto",
+  "networkPreference": "ethernet",
   "iconTheme": "System Default",
   "cursorSettings": {
     "dwl": {
@@ -565,7 +563,8 @@
         },
         {
           "enabled": true,
-          "focusedWindowCompactMode": true,
+          "focusedWindowCompactMode": false,
+          "focusedWindowSize": 1,
           "id": "focusedWindow"
         },
         {
@@ -575,12 +574,7 @@
         },
         {
           "enabled": true,
-          "id": "systemTray",
-          "trayUseInlineExpansion": true
-        },
-        {
-          "enabled": true,
-          "id": "idleInhibitor"
+          "id": "dankKDEConnect"
         },
         {
           "enabled": true,
@@ -603,25 +597,28 @@
           "id": "notificationButton"
         },
         {
-          "enabled": true,
-          "id": "screenRecorder"
-        },
-        {
-          "enabled": true,
-          "id": "dankKDEConnect"
-        },
-        {
+          "controlCenterGroupOrder": [
+            "network",
+            "vpn",
+            "bluetooth",
+            "audio",
+            "microphone",
+            "brightness",
+            "battery",
+            "printer",
+            "screenSharing"
+          ],
           "enabled": true,
           "id": "controlCenterButton",
           "showAudioIcon": true,
-          "showAudioPercent": true,
+          "showAudioPercent": false,
           "showBatteryIcon": false,
           "showBluetoothIcon": true,
           "showBrightnessIcon": false,
           "showBrightnessPercent": false,
           "showMicIcon": false,
           "showMicPercent": false,
-          "showNetworkIcon": false,
+          "showNetworkIcon": true,
           "showPrinterIcon": false,
           "showScreenSharingIcon": true,
           "showVpnIcon": false
@@ -732,7 +729,10 @@
       "currentFilePath": "notepad-files/untitled-1777121577212.txt",
       "previewActive": false,
       "sourceContent": "\n",
-      "updatedAt": 1779195378577
+      "updatedAt": 1780301325844
+    },
+    "dms_clipboard_search": {
+      "trigger": "cb"
     },
     "dms_notepad": {
       "enabled": false
@@ -749,8 +749,17 @@
     }
   },
   "clipboardEnterToPaste": true,
-  "launcherPluginVisibility": {},
-  "launcherPluginOrder": [],
+  "launcherPluginVisibility": {
+    "screenRecorder": {
+      "allowWithoutTrigger": true
+    }
+  },
+  "launcherPluginOrder": [
+    "__folders",
+    "__files",
+    "dms_clipboard_search",
+    "screenRecorder"
+  ],
   "frameEnabled": true,
   "frameThickness": 16,
   "frameRounding": 23,
