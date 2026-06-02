@@ -22,7 +22,7 @@
     },
     "dms-plugins": {
         "cargoLock": null,
-        "date": "2026-05-19",
+        "date": "2026-06-01",
         "extract": null,
         "name": "dms-plugins",
         "passthru": null,
@@ -34,12 +34,12 @@
             "name": null,
             "owner": "AvengeMedia",
             "repo": "dms-plugins",
-            "rev": "547023b3ba65bcb195c93fd4b111d0f1eebe0432",
-            "sha256": "sha256-3cZOazX90nAhNZ8Z6lTa8OC6Y+ZmpJ2cYOv46oelIm0=",
+            "rev": "f4583449f12920e0a2f16808b00a860c27f0173d",
+            "sha256": "sha256-QkQPqP7Wmo5DLRyKNSY5NuOau4LSaSfz3DYdHDLxluA=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "547023b3ba65bcb195c93fd4b111d0f1eebe0432"
+        "version": "f4583449f12920e0a2f16808b00a860c27f0173d"
     },
     "dms-screen-recorder": {
         "cargoLock": null,

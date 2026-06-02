@@ -20,15 +20,15 @@
   };
   dms-plugins = {
     pname = "dms-plugins";
-    version = "547023b3ba65bcb195c93fd4b111d0f1eebe0432";
+    version = "f4583449f12920e0a2f16808b00a860c27f0173d";
     src = fetchFromGitHub {
       owner = "AvengeMedia";
       repo = "dms-plugins";
-      rev = "547023b3ba65bcb195c93fd4b111d0f1eebe0432";
+      rev = "f4583449f12920e0a2f16808b00a860c27f0173d";
       fetchSubmodules = false;
-      sha256 = "sha256-3cZOazX90nAhNZ8Z6lTa8OC6Y+ZmpJ2cYOv46oelIm0=";
+      sha256 = "sha256-QkQPqP7Wmo5DLRyKNSY5NuOau4LSaSfz3DYdHDLxluA=";
     };
-    date = "2026-05-19";
+    date = "2026-06-01";
   };
   dms-screen-recorder = {
     pname = "dms-screen-recorder";
