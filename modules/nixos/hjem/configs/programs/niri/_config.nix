@@ -253,9 +253,7 @@ in {
     {
       match = [
         {_props.app-id._raw = ''r#"^.blueman-manager-wrapped$"#'';}
-        {_props.app-id._raw = ''r#"^com.github.wwmm.easyeffects$"#'';}
         {_props.app-id._raw = ''r#"^chrome-"#'';} # helium extension's windows
-        {_props.app-id._raw = ''r#"^com.saivert.pwvucontrol$"#'';}
         {_props.app-id._raw = ''r#"^org.kde.kdeconnect-indicator$"#'';}
       ];
       open-floating = true;

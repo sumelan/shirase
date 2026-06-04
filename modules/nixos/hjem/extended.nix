@@ -5,9 +5,10 @@ in {
     hjem-extended = {pkgs, ...}: let
       inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) zeditor zedConfig;
     in {
+      programs.obs-studio.enable = true;
+
       hj = {
         packages = [
-          pkgs.obs-studio
           zeditor
         ];
 

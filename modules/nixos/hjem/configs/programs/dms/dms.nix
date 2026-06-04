@@ -1,12 +1,6 @@
 {lib, ...}: {
   flake.custom.hjemConfigs.dms = {pkgs, ...}: {
     hj = {
-      packages = [
-        # plugin dependencies
-        pkgs.gpu-screen-recorder
-        pkgs.wl-mirror
-      ];
-
       rum.programs.dms = {
         settings = lib.importJSON ./settings.json;
 
@@ -34,5 +28,12 @@
         };
       };
     };
+
+    # plugin dependencies
+    programs.gpu-screen-recorder.enable = true;
+
+    hj.packages = [
+      pkgs.wl-mirror
+    ];
   };
 }
