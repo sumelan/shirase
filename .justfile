@@ -1,6 +1,7 @@
-set shell := ["sh", "-c"]
+set shell := ["nu", "-c"]
 
-export NH_FLAKE := `echo $PWD`
+# env
+export NH_FLAKE := `echo $env.PWD`
 export HOSTNAME := `hostname`
 export NIXPKGS_ALLOW_UNFREE := "1"
 
@@ -41,27 +42,22 @@ sourceDir := "_sources"
     git add -A
     nh os switch {{ args }}
 
-[group('REPL')]
-[doc('Start repl.')]
-@repl:
-    nh os repl
-
 [group('UPDATE')]
 [doc('Update a specific input in the flake.')]
 @update input:
-    echo -e "\n===== Updating {{ input }}... =====\n"
+    $'(ansi g)---- Updating (ansi i){{ input }}(ansi rst_i) ... ----(ansi rst)'
     nix flake update {{ input }}
 
 [group('UPDATE')]
 [doc('Update all flake inputs, fetch packages and commit on git.')]
 @updates:
-    echo -e "\n===== Updating all flake inputs... =====\n"
+    $'(ansi g)---- Updating (ansi i)all inputs(ansi rst_i) ... ----(ansi rst)'
     nix flake update
 
-    echo -e "\n===== Fetching packages... =====\n"
+    $'(ansi g)---- Fetching (ansi i)all packages(ansi rst_i) ... ----(ansi rst)'
     nvfetcher --keep-old --config {{ config }} --build-dir {{ sourceDir }}
 
-    echo -e "\n===== Commit on git... =====\n"
+    $'(ansi g)---- Commit on git ... ----(ansi rst)'
     git add -A
     git commit -m "chore: update inputs and fetch packages"
 
@@ -81,19 +77,14 @@ sourceDir := "_sources"
     nix-locate -- "lib/{{ lib }}" | rg -v '^\('
 
 [group('PACKAGE')]
-[doc('Show the store path of specific package.')]
-@store pkg:
-    nix eval --impure --raw "nixpkgs#{{ pkg }}.outPath"
-
-[group('PACKAGE')]
 [doc('Look the store path through yazi. If path not found, build it.')]
-@ystore pkg:
-    PKG_DIR=$(nix eval --impure --raw "nixpkgs#{{ pkg }}.outPath")
-    if [ ! -e "$PKG_DIR" ]; then \
-        nix build "nixpkgs#$1" --print-out-paths \
-            | awk '{ print length, $0 }' | sort -n -s | cut -d" " -f2- | head -n1; \
-                    fi
-    yazi "$PKG_DIR"
+@yp pkg:
+    #!/usr/bin/env nu
+    let PKG_DIR = (nix eval --impure --raw "nixpkgs#{{ pkg }}.outPath")
+    if not  ( $PKG_DIR | path exists) {
+        nix build "nixpkgs#{{ pkg }}" --print-out-paths | awk '{ print length, $0 }' | cut -d" " -f2- | head -n1;
+    }
+    yazi $PKG_DIR
 
 [group('PACKAGE')]
 [doc('Look the package built with override attrs through yazi.')]
