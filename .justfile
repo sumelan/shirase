@@ -45,19 +45,19 @@ sourceDir := "_sources"
 [group('UPDATE')]
 [doc('Update a specific input in the flake.')]
 @update input:
-    $'(ansi g)---- Updating (ansi i){{ input }}(ansi rst_i) ... ----(ansi rst)'
+    $'(ansi cyan)---- Updating (ansi i){{ input }}(ansi rst_i)... ----(ansi rst)'
     nix flake update {{ input }}
 
 [group('UPDATE')]
 [doc('Update all flake inputs, fetch packages and commit on git.')]
 @updates:
-    $'(ansi g)---- Updating (ansi i)all inputs(ansi rst_i) ... ----(ansi rst)'
+    $'(ansi cyan)---- Updating (ansi i)all inputs(ansi rst_i)... ----(ansi rst)'
     nix flake update
 
-    $'(ansi g)---- Fetching (ansi i)all packages(ansi rst_i) ... ----(ansi rst)'
+    $'(ansi cyan)---- Fetching (ansi i)all packages(ansi rst_i)... ----(ansi rst)'
     nvfetcher --keep-old --config {{ config }} --build-dir {{ sourceDir }}
 
-    $'(ansi g)---- Commit on git ... ----(ansi rst)'
+    $'(ansi cyan)---- Commit on git... ----(ansi rst)'
     git add -A
     git commit -m "chore: update inputs and fetch packages"
 
@@ -104,34 +104,3 @@ sourceDir := "_sources"
         "nix eval .#nixosConfigurations.{{ HOSTNAME }}.config.system.build.toplevel --impure --eval-profiler flamegraph --eval-profiler-frequency 9999 \
             && inferno-flamegraph --width 10000 < nix.profile > wrappers.svg \
                 && helium wrappers.svg"
-
-[group('SHA-256')]
-[doc('Download a file to the nix store and get the SHA-256 hash.')]
-@pf url:
-    nix store prefetch-file --json --hash-type sha256 {{ url }} | jq -r .hash
-
-
-[group('SOPS')]
-[doc('Convert a SSH Ed25519 key to an age key.')]
-@sopskey:
-    nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt" 
-
-[group('SOPS')]
-[doc('Convert an existing SSH Ed25519 pubkey into an age public key.')]
-@sopspub:
-    nix-shell -p ssh-to-age --run "ssh-to-age < ~/.ssh/id_ed25519.pub"
-
-[group('SOPS')]
-[doc('Convert a SSH Ed25519 public key targeted to `HOST`.')]
-@sopsscan host:
-    nix-shell -p ssh-to-age --run 'ssh-keyscan {{ host }} | ssh-to-age' 
-
-[group('SOPS')]
-[doc('Edit a secret file inside `sercrets/`.')]
-@sopsedit file:
-    nix-shell -p sops --run "sops secrets/{{ file }}"
-
-[group('SOPS')]
-[doc('Update the keys for all secrets inside `secrets/FILE`.')]
-@sopsupdate file:
-    nix-shell -p sops --run "sops updatekeys secrets/{{ file }}"
