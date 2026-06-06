@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (config) flake;
 in {
   flake.custom.hjemConfigs.foot = {pkgs, ...}: let
@@ -6,9 +10,9 @@ in {
   in {
     hj.rum = {
       programs.foot = {
-        enable = true;
+        enable = lib.mkDefault false;
         package = foot;
-        server.enable = true;
+        server.enable = lib.mkDefault false;
       };
     };
   };

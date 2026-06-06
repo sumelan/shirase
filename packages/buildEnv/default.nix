@@ -24,7 +24,7 @@
           builtins.attrValues {
             inherit
               (local)
-              foot
+              ghostty
               helium
               ;
           }

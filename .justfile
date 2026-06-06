@@ -45,19 +45,23 @@ sourceDir := "_sources"
 [group('UPDATE')]
 [doc('Update a specific input in the flake.')]
 @update input:
-    $'(ansi cyan)---- Updating (ansi i){{ input }}(ansi rst_i)... ----(ansi rst)'
+    print ''
+    print $'(ansi cyan)---- Updating (ansi i){{ input }}(ansi rst_i)... ----(ansi rst)'
     nix flake update {{ input }}
 
 [group('UPDATE')]
 [doc('Update all flake inputs, fetch packages and commit on git.')]
 @updates:
-    $'(ansi cyan)---- Updating (ansi i)all inputs(ansi rst_i)... ----(ansi rst)'
+    print ''
+    print $'(ansi cyan)---- Updating (ansi i)all inputs(ansi rst_i)... ----(ansi rst)'
     nix flake update
 
-    $'(ansi cyan)---- Fetching (ansi i)all packages(ansi rst_i)... ----(ansi rst)'
+    print ''
+    print $'(ansi cyan)---- Fetching (ansi i)all packages(ansi rst_i)... ----(ansi rst)'
     nvfetcher --keep-old --config {{ config }} --build-dir {{ sourceDir }}
 
-    $'(ansi cyan)---- Commit on git... ----(ansi rst)'
+    print ''
+    print $'(ansi cyan)---- Commit on git... ----(ansi rst)'
     git add -A
     git commit -m "chore: update inputs and fetch packages"
 
@@ -95,7 +99,7 @@ sourceDir := "_sources"
 [group('EVAL')]
 [doc('Measure eval time on each host.')]
 @eval:
-    time nix eval .#nixosConfigurations.{{ HOSTNAME }}.config.system.build.toplevel --substituters " " --option eval-cache false --raw --read-only
+    hyperfine 'nix eval .#nixosConfigurations.{{ HOSTNAME }}.config.system.build.toplevel --substituters " " --option eval-cache false --raw --read-only'
 
 [group('EVAL')]
 [doc('Create the flamegraph file of eval time and open in browser.')]

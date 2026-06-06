@@ -36,7 +36,7 @@
       shellAliases = basic // extra;
 
       variables = {
-        TERMINAL = "foot";
+        TERMINAL = "ghostty";
         EDITOR = "hx";
         VISUAL = "hx";
         NIXPKGS_ALLOW_UNFREE = "1";

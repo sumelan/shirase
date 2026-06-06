@@ -10,22 +10,7 @@ in {
     pkgs,
     ...
   }: let
-    inherit
-      (flake.packages.${pkgs.stdenv.hostPlatform.system})
-      bat
-      batman
-      fish
-      eza
-      eza-tree
-      moor
-      ns
-      nushell
-      nvf
-      ripgrep
-      starship
-      wlr-which-key
-      zathura
-      ;
+    local = flake.packages.${pkgs.stdenv.hostPlatform.system};
   in {
     imports = builtins.attrValues flake.custom.hjemConfigs;
 
@@ -76,17 +61,17 @@ in {
     in {
       packages = builtins.attrValues {
         # shell
-        inherit fish nushell starship;
+        inherit (local) fish nushell starship;
         # tui
-        inherit bat batman eza eza-tree moor ripgrep ns;
+        inherit (local) bat batman eza eza-tree moor ripgrep ns;
         # editor
-        inherit nvf;
+        inherit (local) nvf;
         # desktop
-        inherit wlr-which-key;
+        inherit (local) wlr-which-key;
         nvim-desktop-entry = lib.hiPrio nvim-desktop-entry;
         ns-desktop-entry = lib.hiPrio ns-desktop-entry;
         # pdf viewer
-        inherit zathura;
+        inherit (local) zathura;
         # protonapps
         # NOTE: `protonmail-desktop` need to be started once through xwayland with
         # `XDG_SESSION_TYPE=x11 DISPLAY=:0 proton-mail`
@@ -104,7 +89,7 @@ in {
         # slack
         inherit (pkgs) slack;
         # tools
-        inherit (pkgs) brightnessctl cliphist libnotify playerctl wl-clipboard;
+        inherit (pkgs) brightnessctl cliphist libnotify playerctl wl-clipboard hyperfine;
       };
 
       # misc
@@ -117,7 +102,7 @@ in {
           DEFAULT_BROWSER = "helium";
           BROWSER = "helium";
 
-          TERMINAL = "foot";
+          TERMINAL = "ghostty";
           EDITOR = "hx";
           VISUAL = "hx";
           NIXPKGS_ALLOW_UNFREE = "1";
@@ -145,11 +130,11 @@ in {
         };
 
         mime-apps = let
-          foot = "footclient.desktop";
+          ghostty = "com.mitchellh.ghostty.desktop";
           zathura = "org.pwmt.zathura-pdf-mupdf.desktop";
         in {
           default-applications = {
-            "x-scheme-handler/terminal" = foot;
+            "x-scheme-handler/terminal" = ghostty;
 
             "text/plain" = "helix.desktop";
             "application/x-shellscript" = "helix.desktop";
