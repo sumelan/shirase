@@ -46,18 +46,18 @@ sourceDir := "_sources"
 [doc('Update a specific input in the flake.')]
 @update input:
     print ''
-    print $'(ansi cyan)---- Updating (ansi i){{ input }}(ansi rst_i)... ----(ansi rst)'
+    print $'(ansi cyan)---- Updating (ansi green_italic)(ansi attr_underline){{ input }}(ansi rst)(ansi cyan)... ----(ansi rst)'
     nix flake update {{ input }}
 
 [group('UPDATE')]
 [doc('Update all flake inputs, fetch packages and commit on git.')]
 @updates:
     print ''
-    print $'(ansi cyan)---- Updating (ansi i)all inputs(ansi rst_i)... ----(ansi rst)'
+    print $'(ansi cyan)---- Updating (ansi green_italic)(ansi attr_underline)all inputs(ansi rst)(ansi cyan)... ----(ansi rst)'
     nix flake update
 
     print ''
-    print $'(ansi cyan)---- Fetching (ansi i)all packages(ansi rst_i)... ----(ansi rst)'
+    print $'(ansi cyan)---- Fetching (ansi green_italic)(ansi attr_underline)all packages(ansi rst)(ansi cyan)... ----(ansi rst)'
     nvfetcher --keep-old --config {{ config }} --build-dir {{ sourceDir }}
 
     print ''
