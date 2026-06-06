@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780380182,
-        "narHash": "sha256-cukhSecNvADnLa7dk7GeUB/e1vM6hvRAFt0IDZ8Ox3I=",
+        "lastModified": 1780715834,
+        "narHash": "sha256-DJwIs0RG20sjWR37mF4I7k3P3SQM97BDh9o8V5cUgo8=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "335c5b4ac55382c2077ab2a18129c03dafb9558b",
+        "rev": "e7ccb702a3141bfb62a6597e7863c25afff07d60",
         "type": "github"
       },
       "original": {
@@ -145,11 +145,11 @@
         "xwayland-satellite-unstable": "xwayland-satellite-unstable"
       },
       "locked": {
-        "lastModified": 1780100188,
-        "narHash": "sha256-hymi6vwcrO6cohO8fcK+A3+kx4PkqmApYty/5BTa6Ec=",
+        "lastModified": 1780647854,
+        "narHash": "sha256-UihHR5aXPButsiQUvvnmvKxZWkRe+52nrVLd9BztXrE=",
         "ref": "refs/heads/main",
-        "rev": "5e683782020f3f23e51995235d71ab0b8152272a",
-        "revCount": 126,
+        "rev": "4aaba8693d0fe8cb785f6b0b4497eb63cb2cf590",
+        "revCount": 130,
         "type": "git",
         "url": "https://codeberg.org/BANanaD3V/niri-nix"
       },
@@ -302,11 +302,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1780042000,
-        "narHash": "sha256-RxFOqPMAlbWiWwh7CQ0bIHIdt4D5gAttx3YVifBBWgE=",
+        "lastModified": 1780650009,
+        "narHash": "sha256-zUN3BFopCC9J7g8cQO69s93EKCKApSwRlLWMC2bI+GY=",
         "owner": "notashelf",
         "repo": "nvf",
-        "rev": "07b57ebc6c9e778c536ac0ff1b01fb18dc90239a",
+        "rev": "0b92b1783de48499303fc6e61478da34ee124482",
         "type": "github"
       },
       "original": {
@@ -383,11 +383,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777944972,
-        "narHash": "sha256-VfGRo1qTBKOe3s2gOv8LSoA6Fk19PvBlwQ1ECN0Evn8=",
+        "lastModified": 1780547341,
+        "narHash": "sha256-Gq8KNx5A7hBB3uGJaj6eQfLDIz5YdLu92gqBcvHvoUo=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "c591bf665727040c6cc5cb409079acb22dcce33c",
+        "rev": "9ed65852b6257fbeae4355bc24ecfea307ca759a",
         "type": "github"
       },
       "original": {
@@ -470,11 +470,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1779946062,
-        "narHash": "sha256-M/2bCPYjiBTkDNV29J/00z10RM3yYnL9X74RqAHDme0=",
+        "lastModified": 1780637620,
+        "narHash": "sha256-ngPdHinPyF0AMxRr32qt+TZCv0sagmooBW14u6DfjSU=",
         "owner": "youwen5",
         "repo": "zen-browser-flake",
-        "rev": "2e2c38ba20a3d614d0196e0aa44851547306e861",
+        "rev": "8c62bc6a72ac5a5b8d1b41b2b88dfed9d9932c48",
         "type": "github"
       },
       "original": {
