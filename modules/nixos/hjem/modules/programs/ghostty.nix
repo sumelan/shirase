@@ -34,7 +34,7 @@ in {
           Type = "notify-reload";
           ReloadSignal = "SIGUSR2";
           BusName = "com.mitchellh.ghostty";
-          ExecStart = "${lib.getExe cfg.package} --gtk-single-instance=true --initial-window=false --quit-after-last-window-closed=false";
+          ExecStart = "${lib.getExe cfg.package} --gtk-single-instance=true --initial-window=false";
         };
       };
 

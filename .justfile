@@ -103,7 +103,7 @@ sourceDir := "_sources"
 
 [group('EVAL')]
 [doc('Create the flamegraph file of eval time and open in browser.')]
-@geval:
+@graph:
     nix-shell -p nixVersions.latest inferno --command \
         "nix eval .#nixosConfigurations.{{ HOSTNAME }}.config.system.build.toplevel --impure --eval-profiler flamegraph --eval-profiler-frequency 9999 \
             && inferno-flamegraph --width 10000 < nix.profile > wrappers.svg \
