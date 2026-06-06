@@ -10,6 +10,10 @@ fetch.github = "arqueon/dms-screen-recorder"
 src.git = "https://github.com/jfchenier/dms-display-mirror"
 fetch.github = "jfchenier/dms-display-mirror"
 
+[nordic-nvim]
+src.git = "https://github.com/AlexvZyl/nordic.nvim"
+fetch.github = "AlexvZyl/nordic.nvim"
+
 [helium]
 src.github_tag = "imputnet/helium-linux"
 fetch.url = "https://github.com/imputnet/helium-linux/releases/download/$ver/helium-$ver-x86_64.AppImage"

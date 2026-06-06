@@ -37,8 +37,8 @@
 
       variables = {
         TERMINAL = "ghostty";
-        EDITOR = "hx";
-        VISUAL = "hx";
+        EDITOR = "nvim";
+        VISUAL = "nvim";
         NIXPKGS_ALLOW_UNFREE = "1";
       };
     };

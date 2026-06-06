@@ -433,6 +433,10 @@ in {
       _props.hotkey-overlay-title = "${hotkey "#81A1C1" "󰊠  Ghostty" "Terminal Emulator"}";
       spawn = ["ghostty" "+new-window"];
     };
+    "Mod+Shift+Return" = {
+      _props.hotkey-overlay-title = "${hotkey "#97B67C" "  Neovim" "Editor"}";
+      spawn = ["ghostty" "--working-directory=${config.hj.directory}/Projects" "--class=app.nvim" "-e" "nvim"];
+    };
     "Mod+B" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "  Helium" "Web Browser"}";
       spawn-sh = "helium &";

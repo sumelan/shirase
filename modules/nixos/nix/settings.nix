@@ -65,7 +65,7 @@ in {
       };
 
       # `pkgs.nixVersions.latest` or `pkgs.lixPackageSets.latest.lix`
-      package = pkgs.lixPackageSets.latest.lix;
+      package = pkgs.nixVersions.latest;
 
       # to use shorter IDs instead of lengthy address
       registry =

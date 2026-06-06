@@ -76,5 +76,26 @@
             "url": "https://github.com/imputnet/helium-linux/releases/download/0.12.5.1/helium-0.12.5.1-x86_64.AppImage"
         },
         "version": "0.12.5.1"
+    },
+    "nordic-nvim": {
+        "cargoLock": null,
+        "date": "2026-05-03",
+        "extract": null,
+        "name": "nordic-nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "AlexvZyl",
+            "repo": "nordic.nvim",
+            "rev": "9fb62116b891184049c50ca6ffb0d3bc100a1a6e",
+            "sha256": "sha256-7Wod7nybP/3i3fMBnRdcNEeIWbbzowiyjTlqax8Fn4g=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "9fb62116b891184049c50ca6ffb0d3bc100a1a6e"
     }
 }
