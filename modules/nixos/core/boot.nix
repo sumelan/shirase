@@ -1,18 +1,33 @@
-{lib, ...}: let
-  inherit (lib) mkForce;
-in {
+{lib, ...}: {
   flake.modules.nixos.core = {pkgs, ...}: {
-    # kernel
-    boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    boot = {
+      kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
-    # bootloader
-    boot.loader = {
-      efi = {
-        efiSysMountPoint = "/boot"; # ← use the same mount point here.
-        canTouchEfiVariables = true;
-      };
-      limine = {
+      plymouth = {
         enable = true;
+        theme = "bgrt";
+        themePackages = [pkgs.nixos-bgrt-plymouth];
+      };
+
+      # Enable "Silent boot"
+      consoleLogLevel = 3;
+      initrd.verbose = false;
+      kernelParams = [
+        "quiet"
+        "rd.udev.log_level=3"
+        "rd.systemd.show_status=auto"
+      ];
+
+      loader = {
+        efi = {
+          efiSysMountPoint = "/boot"; # ← use the same mount point here.
+          canTouchEfiVariables = true;
+        };
+        timeout = 3;
+
+        limine = {
+          enable = true;
+        };
       };
     };
 
@@ -25,10 +40,8 @@ in {
       };
     };
 
-    # misc.
-    boot.loader.timeout = 3;
-    # faster boot times
-    systemd.services.NetworkManager-wait-online.wantedBy = mkForce [];
+    systemd.services.NetworkManager-wait-online.wantedBy = lib.mkForce [];
+
     # reduce journald logs
     services.journald.extraConfig = ''
       SystemMaxUse=50M
