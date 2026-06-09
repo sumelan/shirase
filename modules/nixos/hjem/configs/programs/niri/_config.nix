@@ -377,15 +377,15 @@ in {
       spawn = ["dms" "ipc" "lock" "lock"];
     };
     # screenshot
-    "Mod+Print" = {
+    "Mod+Backslash" = {
       _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Interactive selection screenshot"}";
       spawn = ["dms" "ipc" "niri" "screenshot"];
     };
-    "Mod+Shift+Print" = {
+    "Mod+Shift+Backslash" = {
       _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Capture entire screen"}";
       spawn = ["dms" "ipc" "niri" "screenshotScreen"];
     };
-    "Mod+Alt+Print" = {
+    "Mod+Alt+Backslash" = {
       _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Capture focused window"}";
       spawn = ["dms" "ipc" "niri" "screenshotWindow"];
     };
