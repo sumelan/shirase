@@ -39,6 +39,12 @@ in {
       };
 
       rum.dbus.packages = [cfg.package];
+
+      xdg.config.files."ghostty/config" = {
+        permissions = "666";
+        text = "";
+        type = "copy";
+      };
     };
   };
 }
