@@ -5,6 +5,7 @@ in {
   flake.custom.hjemConfigs.cursor = {
     config,
     pkgs,
+    user,
     ...
   }: let
     # Add cursor icon link to $XDG_DATA_HOME/icons as well for redundancy.
@@ -40,7 +41,7 @@ in {
         XCURSOR_THEME = gtkCursor.name;
       };
 
-      hj = {
+      hjem.users.${user} = {
         packages = [
           gtkCursor.package
         ];

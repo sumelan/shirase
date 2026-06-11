@@ -48,6 +48,6 @@
       };
     };
 
-    hj.files.".face".source = ./sumelan.png;
+    hjem.users.sumelan.files.".face".source = ./sumelan.png;
   };
 }

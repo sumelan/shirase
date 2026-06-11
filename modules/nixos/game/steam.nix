@@ -2,6 +2,7 @@ _: {
   flake.modules.nixos.steam = {
     config,
     pkgs,
+    user,
     ...
   }: {
     environment.systemPackages = [
@@ -14,7 +15,7 @@ _: {
         # get rid of ~/.steam directory:
         # https://github.com/ValveSoftware/steam-for-linux/issues/1890#issuecomment-2367103614
         extraBwrapArgs = [
-          "--bind /persist/${config.hj.directory} $HOME"
+          "--bind /persist/${config.hjem.users.${user}.directory} $HOME"
           "--unsetenv XDG_CACHE_HOME"
           "--unsetenv XDG_CONFIG_HOME"
           "--unsetenv XDG_DATA_HOME"

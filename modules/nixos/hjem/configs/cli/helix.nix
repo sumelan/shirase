@@ -5,6 +5,7 @@ in {
   flake.custom.hjemConfigs.helix = {
     config,
     pkgs,
+    user,
     dotfile,
     ...
   }: let
@@ -36,7 +37,7 @@ in {
       };
     };
   in {
-    hj.packages = [
+    hjem.users.${user}.packages = [
       (mkHelix {inherit pkgs extraCfg extraLang;})
     ];
 

@@ -4,6 +4,7 @@ in {
   flake.modules.nixos.default = {
     config,
     pkgs,
+    user,
     ...
   }: let
     wrapped-fish = flake.packages.${pkgs.stdenv.hostPlatform.system}.fish;
@@ -18,7 +19,7 @@ in {
           config.environment.shellAliases
           // fishAliases
           // {
-            ehistory = ''nvim "${config.hj.xdg.data.directory}/fish/fish_history"'';
+            ehistory = ''nvim "${config.hjem.users.${user}.xdg.data.directory}/fish/fish_history"'';
           };
       };
     };

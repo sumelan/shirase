@@ -1,5 +1,9 @@
 _: {
-  flake.modules.nixos.core = {config, ...}: {
+  flake.modules.nixos.core = {
+    config,
+    user,
+    ...
+  }: {
     # ssh settings
     services.openssh = {
       enable = true;
@@ -32,7 +36,7 @@ _: {
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
     environment.variables = {
-      GNUPGHOME = "${config.hj.xdg.data.directory}/.gnupg";
+      GNUPGHOME = "${config.hjem.users.${user}.xdg.data.directory}/.gnupg";
     };
   };
 }

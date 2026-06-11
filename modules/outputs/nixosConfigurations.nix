@@ -6,37 +6,37 @@
   inherit (inputs) nixpkgs;
   inherit (config) flake;
 
-  defaultMods = let
-    mods = {
+  defaultModules = let
+    mkModules = {
       name,
       modules ? "nixosModules",
-      output ? "default",
+      opt ? "default",
     }:
-      inputs.${name}.${modules}.${output};
+      inputs.${name}.${modules}.${opt};
   in [
-    (mods {name = "hjem";})
-    (mods {name = "niri-nix";})
-    (mods {name = "run0-sudo-shim";})
-    (mods {name = "impermanence";})
-    (mods {
+    (mkModules {name = "hjem";})
+    (mkModules {name = "niri-nix";})
+    (mkModules {name = "run0-sudo-shim";})
+    (mkModules {name = "impermanence";})
+    (mkModules {
       name = "dankMaterialShell";
-      output = "dank-material-shell";
+      opt = "dank-material-shell";
     })
-    (mods {
+    (mkModules {
       name = "dankMaterialShell";
-      output = "greeter";
+      opt = "greeter";
     })
-    (mods {
+    (mkModules {
       name = "nix-hazkey";
-      output = "hazkey";
+      opt = "hazkey";
     })
-    (mods {
+    (mkModules {
       name = "nix-index-database";
-      output = "nix-index";
+      opt = "nix-index";
     })
-    (mods {
+    (mkModules {
       name = "sops-nix";
-      output = "sops";
+      opt = "sops";
     })
   ];
 
@@ -45,7 +45,7 @@
   mkNixos = system: cls: host: {
     user ? "sumelan",
     dotfile ? "/persist/home/${user}/Projects/shirase",
-    extraMods ? [],
+    extraModules ? [],
   }: let
     pkgs = import nixpkgs {
       inherit system;
@@ -64,14 +64,12 @@
     nixpkgs.lib.nixosSystem {
       inherit pkgs specialArgs;
       modules =
-        defaultMods
-        ++ extraMods
+        defaultModules
+        ++ extraModules
         ++ [flake.modules.nixos.core]
         ++ [flake.modules.nixos."hosts/${host}"]
         ++ [flake.modules.nixos."users/${user}"]
         ++ [
-          # alias for hjem
-          (inputs.nixpkgs.lib.mkAliasOptionModule ["hj"] ["hjem" "users" user])
           {
             networking.hostName = host;
           }

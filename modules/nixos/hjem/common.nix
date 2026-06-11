@@ -8,6 +8,7 @@ in {
   flake.modules.nixos.hjem-common = {
     config,
     pkgs,
+    user,
     ...
   }: let
     local = flake.packages.${pkgs.stdenv.hostPlatform.system};
@@ -15,8 +16,8 @@ in {
     imports = builtins.attrValues flake.custom.hjemConfigs;
 
     # modules standalone
-    hj = let
-      homeDir = config.hj.directory;
+    hjem.users.${user} = let
+      homeDir = config.hjem.users.${user}.directory;
       xdg-user-dirs = {
         # xdg user dirs
         XDG_DESKTOP_DIR = "${homeDir}/Desktop";
@@ -106,13 +107,13 @@ in {
           NIXPKGS_ALLOW_UNFREE = "1";
 
           # xdg
-          XDG_CACHE_HOME = config.hj.xdg.cache.directory;
-          XDG_CONFIG_HOME = config.hj.xdg.config.directory;
-          XDG_DATA_HOME = config.hj.xdg.data.directory;
-          XDG_STATE_HOME = config.hj.xdg.state.directory;
+          XDG_CACHE_HOME = config.hjem.users.${user}.xdg.cache.directory;
+          XDG_CONFIG_HOME = config.hjem.users.${user}.xdg.config.directory;
+          XDG_DATA_HOME = config.hjem.users.${user}.xdg.data.directory;
+          XDG_STATE_HOME = config.hjem.users.${user}.xdg.state.directory;
 
           # stop libX11 from polluting $HOME with .compose-cache
-          XCOMPOSECACHE = "${config.hj.xdg.cache.directory}/xcompose";
+          XCOMPOSECACHE = "${config.hjem.users.${user}.xdg.cache.directory}/xcompose";
         }
         // xdg-user-dirs;
 

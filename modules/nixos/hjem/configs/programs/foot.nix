@@ -5,10 +5,14 @@
 }: let
   inherit (config) flake;
 in {
-  flake.custom.hjemConfigs.foot = {pkgs, ...}: let
+  flake.custom.hjemConfigs.foot = {
+    pkgs,
+    user,
+    ...
+  }: let
     inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) foot;
   in {
-    hj.rum = {
+    hjem.users.${user}.rum = {
       programs.foot = {
         enable = lib.mkDefault false;
         package = foot;

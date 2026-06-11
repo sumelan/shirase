@@ -4,9 +4,9 @@ _: {
     user,
     ...
   }: let
-    configDir = config.hj.xdg.config.directory;
-    dataDir = config.hj.xdg.data.directory;
-    music = "${config.hj.directory}/Music";
+    configDir = config.hjem.users.${user}.xdg.config.directory;
+    dataDir = config.hjem.users.${user}.xdg.data.directory;
+    music = "${config.hjem.users.${user}.directory}/Music";
   in {
     # port 8384  is the default port to allow access from the network
     networking.firewall.allowedTCPPorts = [8384];

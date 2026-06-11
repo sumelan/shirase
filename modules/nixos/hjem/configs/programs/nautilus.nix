@@ -2,10 +2,11 @@ _: {
   flake.custom.hjemConfigs.nautilus = {
     config,
     pkgs,
+    user,
     dotfile,
     ...
   }: {
-    hj = {
+    hjem.users.${user} = {
       packages = builtins.attrValues {
         inherit
           (pkgs)
@@ -50,7 +51,7 @@ _: {
       };
 
       gtk.bookmarks = let
-        homeDir = config.hj.directory;
+        homeDir = config.hjem.users.${user}.directory;
       in
         [
           "${homeDir}/Documents"

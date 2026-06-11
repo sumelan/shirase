@@ -11,6 +11,7 @@ in {
   flake.custom.hjemConfigs.btop = {
     config,
     pkgs,
+    user,
     ...
   }: let
     pkg = pkgs.btop.override {
@@ -46,7 +47,7 @@ in {
     };
 
     config = {
-      hj.packages = [
+      hjem.users.${user}.packages = [
         (mkBtop {inherit pkgs pkg extraConfig;})
       ];
     };

@@ -2,6 +2,7 @@
   flake.custom.hjemConfigs.qt = {
     config,
     pkgs,
+    user,
     ...
   }: {
     # use gtk theme on qt apps
@@ -11,7 +12,7 @@
       style = "kvantum";
     };
 
-    hj = {
+    hjem.users.${user} = {
       environment.sessionVariables = {
         QT_QPA_PLATFORMTHEME = "qt5ct";
         QT_STYLE_OVERRIDE = "kvantum";

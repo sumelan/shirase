@@ -2,19 +2,20 @@ _: {
   flake.custom.hjemConfigs.dsearch = {
     config,
     pkgs,
+    user,
     ...
   }: {
-    hj.rum = {
+    hjem.users.${user}.rum = {
       programs.dsearch = {
         enable = true;
 
         package = pkgs.dsearch;
 
         settings = let
-          cache = config.hj.xdg.cache.directory;
-          documents = "${config.hj.directory}/Documents";
-          pictures = "${config.hj.directory}/Pictures";
-          videos = "${config.hj.directory}/Videos";
+          cache = config.hjem.users.${user}.xdg.cache.directory;
+          documents = "${config.hjem.users.${user}.directory}/Documents";
+          pictures = "${config.hjem.users.${user}.directory}/Pictures";
+          videos = "${config.hjem.users.${user}.directory}/Videos";
         in {
           # Server configuration
           listen_addr = ":43654";
@@ -51,7 +52,7 @@ _: {
           # Index paths configuration
           index_paths = [
             {
-              path = config.hj.directory;
+              path = config.hjem.users.${user}.directory;
               max_depth = 0;
               exclude_hidden = true;
               extract_exif = false;

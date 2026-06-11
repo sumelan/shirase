@@ -16,11 +16,11 @@ in {
       linker = pkgs.smfh;
       # Pull in all my modules
       extraModules = builtins.attrValues flake.custom.hjemModules;
-    };
 
-    hj = {
-      inherit user;
-      directory = "/home/${user}";
+      users.${user} = {
+        inherit user;
+        directory = "/home/${user}";
+      };
     };
   };
 }

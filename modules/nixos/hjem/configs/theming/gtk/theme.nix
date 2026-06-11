@@ -5,6 +5,7 @@ in {
   flake.custom.hjemConfigs.gtk = {
     config,
     pkgs,
+    user,
     ...
   }: {
     options.custom = {
@@ -42,7 +43,7 @@ in {
     };
 
     config = {
-      hj.packages = [
+      hjem.users.${user}.packages = [
         config.custom.gtk.theme.package
         config.custom.gtk.iconTheme.package
       ];

@@ -1,16 +1,19 @@
 {config, ...}: {
-  flake.custom.hjemConfigs.yt-dlp = {pkgs, ...}: let
-    inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) yt-dlp;
+  flake.custom.hjemConfigs.yt-dlp = {
+    pkgs,
+    user,
+    ...
+  }: let
+    local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
     mkFormat = height: "bestvideo[height<=?${toString height}][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best";
   in {
-    hj.packages =
-      [
-        # yt-dlp’s dependencies
-        pkgs.ffmpeg
-        # `--embed-thumbnail` need this in certain formats
-        (pkgs.python313.withPackages (ps: [ps.mutagen]))
-      ]
-      ++ [yt-dlp];
+    hjem.users.${user}.packages = builtins.attrValues {
+      inherit (pkgs) ffmpeg; # yt-dlp’s dependencies
+
+      forThumbnail = pkgs.python313.withPackages (ps: [ps.mutagen]);
+
+      inherit (local) yt-dlp;
+    };
 
     environment.shellAliases = {
       yt = "yt-dlp";

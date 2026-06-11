@@ -7,6 +7,7 @@ in {
   flake.custom.hjemConfigs.gtk = {
     config,
     pkgs,
+    user,
     ...
   }: let
     gtkCfg = config.custom.gtk;
@@ -124,7 +125,7 @@ in {
         ];
       };
 
-      hj.xdg.config.files."gtk-3.0/bookmarks".text =
+      hjem.users.${user}.xdg.config.files."gtk-3.0/bookmarks".text =
         concatMapStringsSep "\n" (
           b: "file://${b}"
         )

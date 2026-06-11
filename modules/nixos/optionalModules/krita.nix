@@ -1,6 +1,10 @@
 _: {
-  flake.modules.nixos.krita = {pkgs, ...}: {
-    hj = {
+  flake.modules.nixos.krita = {
+    pkgs,
+    user,
+    ...
+  }: {
+    hjem.users.${user} = {
       packages = [pkgs.krita];
 
       xdg.mime-apps = {

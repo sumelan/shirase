@@ -1,6 +1,10 @@
 _: {
-  flake.modules.nixos.zed-editor = {pkgs, ...}: {
-    hj.packages = [
+  flake.modules.nixos.zed-editor = {
+    pkgs,
+    user,
+    ...
+  }: {
+    hjem.users.${user}.packages = [
       pkgs.zed-editor
     ];
 

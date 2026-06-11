@@ -2,9 +2,10 @@
   flake.custom.hjemConfigs.pipewire = {
     config,
     pkgs,
+    user,
     ...
   }: {
-    hj = {
+    hjem.users.${user} = {
       rum = {
         services.easyeffects = {
           enable = true;
@@ -30,7 +31,7 @@
     };
 
     custom.fileSystem = {
-      persist.home.directories = lib.optionals config.hj.rum.services.easyeffects.enable [
+      persist.home.directories = lib.mkIf config.hjem.users.${user}.rum.services.easyeffects.enable [
         ".config/easyeffects/db"
         # autoload local preset per devices
         ".local/share/easyeffects/autoload"

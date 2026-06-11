@@ -14,7 +14,7 @@ _: {
         greeter = {
           enable = true;
           compositor.name = "niri";
-          configHome = config.hj.directory;
+          configHome = config.hjem.users.${user}.directory;
           logs = {
             save = true;
             path = "/tmp/dms-greeter.log";
@@ -24,7 +24,7 @@ _: {
     };
 
     systemd.user = let
-      dmsConf = "${config.hj.xdg.config.directory}/niri/dms";
+      dmsConf = "${config.hjem.users.${user}.xdg.config.directory}/niri/dms";
     in {
       tmpfiles.rules = [
         # create dms kdl files if not existed

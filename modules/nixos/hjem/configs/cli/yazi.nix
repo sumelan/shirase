@@ -3,10 +3,14 @@
   lib,
   ...
 }: {
-  flake.custom.hjemConfigs.yazi = {pkgs, ...}: let
+  flake.custom.hjemConfigs.yazi = {
+    pkgs,
+    user,
+    ...
+  }: let
     inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) yazi;
   in {
-    hj.packages =
+    hjem.users.${user}.packages =
       [yazi]
       ++ (lib.mapAttrsToList (
           name: file:

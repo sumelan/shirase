@@ -1,6 +1,10 @@
 _: {
-  flake.modules.nixos.default = {config, ...}: let
-    histFile = "/persist${config.hj.xdg.data.directory}/bash/.bash_history";
+  flake.modules.nixos.default = {
+    config,
+    user,
+    ...
+  }: let
+    histFile = "/persist${config.hjem.users.${user}.xdg.data.directory}/bash/.bash_history";
   in {
     # NOTE: see shell.nix for shared aliases and initExtra
     programs.bash = {

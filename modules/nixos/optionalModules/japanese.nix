@@ -1,5 +1,9 @@
 {inputs, ...}: {
-  flake.modules.nixos.japanese = {pkgs, ...}: {
+  flake.modules.nixos.japanese = {
+    pkgs,
+    user,
+    ...
+  }: {
     services.hazkey = {
       enable = true;
       # zenzai model
@@ -46,7 +50,7 @@
       };
     };
 
-    hj = {
+    hjem.users.${user} = {
       xdg.data.files = let
         themeDir = "fcitx5/themes/youlan";
         youlan = file: "${pkgs.fcitx5-mellow-themes}/share/fcitx5/themes/mellow-youlan-dark/${file}";

@@ -4,11 +4,11 @@ _: {
     user,
     ...
   }: let
-    cfg = config.hj.rum.services.mpd;
+    cfg = config.hjem.users.${user}.rum.services.mpd;
 
     data = cfg.dataDir;
   in {
-    hj.rum = {
+    hjem.users.${user}.rum = {
       services = {
         mpd = {
           enable = true;

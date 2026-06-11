@@ -7,7 +7,11 @@
   inherit (lib.strings) toJSON;
   inherit (builtins) listToAttrs;
 in {
-  flake.modules.nixos.zen = {pkgs, ...}: let
+  flake.modules.nixos.zen = {
+    pkgs,
+    user,
+    ...
+  }: let
     extension = shortId: guid: {
       name = guid;
       value = {
@@ -94,7 +98,7 @@ in {
         };
       };
   in {
-    hj.packages = [zen];
+    hjem.users.${user}.packages = [zen];
 
     custom.fileSystem = {
       persist.home.directories = [

@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  user,
   ...
 }: let
   inherit (config.lib.custom.hardware.monitors) mainMonitor mainMonitorName;
@@ -358,7 +359,7 @@ in {
       _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Powermenu"}";
       spawn = ["dms" "ipc" "powermenu" "toggle"];
     };
-    "Mod+D" = {
+    "Mod+S" = {
       _props = {
         cooldown-ms = 500;
         hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "DMS Keychord"}";
@@ -433,17 +434,9 @@ in {
       _props.hotkey-overlay-title = "${hotkey "#81A1C1" "󰊠  Ghostty" "Terminal Emulator"}";
       spawn = ["ghostty" "+new-window"];
     };
-    "Mod+Shift+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#97B67C" "  Neovim" "Editor"}";
-      spawn = ["ghostty" "--working-directory=${config.hj.directory}/Projects" "--class=app.nvim" "-e" "nvim"];
-    };
     "Mod+B" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "  Helium" "Web Browser"}";
       spawn-sh = "helium &";
-    };
-    "Mod+E" = {
-      _props.hotkey-overlay-title = "${hotkey "#88C0D0" "󰥠  Euphonica" "MPD Client"}";
-      spawn = ["euphonica"];
     };
     "Mod+N" = {
       _props = {
@@ -452,9 +445,9 @@ in {
       };
       spawn = ["wlr-which-key" "--initial-keys" "n"];
     };
-    "Mod+V" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "  Vesktop" "Discord Client"}";
-      spawn = ["vesktop"];
+    "Mod+D" = {
+      _props.hotkey-overlay-title = "${hotkey "#5E81AC" "  Dissent" "Discord Client"}";
+      spawn = ["dissent"];
     };
     "Mod+Shift+N" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}";
@@ -1067,7 +1060,7 @@ in {
 
   prefer-no-csd = [];
 
-  screenshot-path = "${config.hj.directory}/Pictures/Screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png";
+  screenshot-path = "${config.hjem.users.${user}.directory}/Pictures/Screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png";
 
   xwayland-satellite = let
     # xwayland

@@ -2,13 +2,13 @@
   flake.custom.hjemConfigs.niri = {
     config,
     pkgs,
-    dotfile,
+    user,
     ...
   }: {
-    hj.rum = {
+    hjem.users.${user}.rum = {
       programs.niri = {
         inherit (config.programs.niri) package;
-        settings = import ./_config.nix {inherit config lib pkgs dotfile;};
+        settings = import ./_config.nix {inherit config lib pkgs user;};
       };
     };
   };

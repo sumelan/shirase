@@ -6,15 +6,23 @@
       };
     };
 
-    hjem-cd = {pkgs, ...}: {
-      hj.packages = [
+    hjem-cd = {
+      pkgs,
+      user,
+      ...
+    }: {
+      hjem.users.${user}.packages = [
         pkgs.cyanrip
         pkgs.picard
       ];
     };
 
-    hjem-bluray = {pkgs, ...}: {
-      hj = {
+    hjem-bluray = {
+      pkgs,
+      user,
+      ...
+    }: {
+      hjem.users.${user} = {
         packages = [
           pkgs.handbrake
           pkgs.makemkv

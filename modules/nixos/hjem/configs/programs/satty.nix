@@ -5,13 +5,14 @@ in {
   flake.custom.hjemConfigs.satty = {
     config,
     pkgs,
+    user,
     ...
   }: let
     extraConfig = {
-      general.output-filename = "${config.hj.directory}/Pictures/Satty/%Y-%m-%d_%H-%M-%S.png";
+      general.output-filename = "${config.hjem.users.${user}.directory}/Pictures/Satty/%Y-%m-%d_%H-%M-%S.png";
     };
   in {
-    hj = {
+    hjem.users.${user} = {
       packages = [
         (mkSatty {inherit pkgs extraConfig;})
       ];
