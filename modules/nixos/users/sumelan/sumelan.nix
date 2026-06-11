@@ -1,10 +1,8 @@
-{config, ...}: let
-  inherit (config) flake;
-in {
+{config, ...}: {
   flake.modules.nixos."users/sumelan" = _: {
-    imports = [
-      flake.modules.nixos.japanese
-    ];
+    imports = builtins.attrValues {
+      inherit (config.flake.modules.nixos) japanese;
+    };
 
     users.users.sumelan = {
       description = "Su melan";

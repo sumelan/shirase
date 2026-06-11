@@ -1,9 +1,5 @@
 {inputs, ...}: {
   flake.modules.nixos.japanese = {pkgs, ...}: {
-    custom.fonts.packages = [
-      pkgs.noto-fonts-cjk-sans
-    ];
-
     services.hazkey = {
       enable = true;
       # zenzai model

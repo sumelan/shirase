@@ -1,24 +1,8 @@
-{config, ...}: let
-  inherit (config) flake;
-in {
+{config, ...}: {
   flake.modules.nixos = {
-    hjem-extended = {pkgs, ...}: let
-      inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) zeditor zedConfig;
-    in {
-      programs.obs-studio.enable = true;
-
-      hj = {
-        packages = [
-          zeditor
-        ];
-
-        xdg.config.files."zed/settings.json".source = zedConfig;
-      };
-
-      custom.fileSystem = {
-        persist.home.directories = [
-          ".config/obs-studio"
-        ];
+    hjem-extended = _: {
+      imports = builtins.attrValues {
+        inherit (config.flake.modules.nixos) obs-studio zen zed-editor;
       };
     };
 
@@ -70,13 +54,6 @@ in {
           ];
         };
       };
-    };
-
-    hjem-drawing = _: {
-      imports = with flake.modules.nixos; [
-        pen-tablet
-        krita
-      ];
     };
   };
 }

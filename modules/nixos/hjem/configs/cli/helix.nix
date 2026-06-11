@@ -28,7 +28,7 @@ in {
       language-server.nixd.config.nixd = let
         myFlake = ''(builtins.getFlake "${dotfile}")'';
       in {
-        nixos.expr = "import ${myFlake}.inputs.nixpkgs { }";
+        nixpkgs.expr = "import ${myFlake}.inputs.nixpkgs { }";
         options = {
           nixos.expr = "${myFlake}.nixosConfigurations.${hostName}.options";
           flake-parts.expr = "${myFlake}.debug.options";

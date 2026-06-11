@@ -10,7 +10,7 @@ _: {
         enable = true;
         type = ["alejandra"];
       };
-      lsp.servers = ["nil" "nixd"];
+      lsp.servers = ["nixd" "nil"];
     };
   };
 }

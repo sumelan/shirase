@@ -4,9 +4,6 @@ _: {
     user,
     ...
   }: {
-    # tty autologin
-    services.getty.autologinUser = user;
-
     # dms-related
     programs = {
       dank-material-shell = {

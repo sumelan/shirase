@@ -1,11 +1,14 @@
 {config, ...}: {
   flake.modules.nvf.default = {
-    imports = with config.flake.modules.nvf; [
-      fzflua
-      ui
-      vim
-      dashboard-alpha
-    ];
+    imports = builtins.attrValues {
+      inherit
+        (config.flake.modules.nvf)
+        fzflua
+        ui
+        vim
+        dashboard-alpha
+        ;
+    };
     # https://notashelf.github.io/nvf/options.html
     vim = {
       autopairs.nvim-autopairs.enable = true;

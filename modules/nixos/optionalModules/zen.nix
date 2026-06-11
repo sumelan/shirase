@@ -7,7 +7,7 @@
   inherit (lib.strings) toJSON;
   inherit (builtins) listToAttrs;
 in {
-  flake.custom.hjemConfigs.zen = {pkgs, ...}: let
+  flake.modules.nixos.zen = {pkgs, ...}: let
     extension = shortId: guid: {
       name = guid;
       value = {

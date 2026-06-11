@@ -64,8 +64,6 @@ in {
         inherit (local) fish nushell starship;
         # tui
         inherit (local) bat batman eza eza-tree moor ripgrep ns;
-        # editor
-        inherit (local) nvf;
         # desktop
         inherit (local) wlr-which-key;
         nvim-desktop-entry = lib.hiPrio nvim-desktop-entry;
