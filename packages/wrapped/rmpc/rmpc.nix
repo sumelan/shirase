@@ -19,7 +19,6 @@ in {
         inherit pkgs;
         name = "rmpc-print-theme";
         cfg = theme;
-        lang = "ron";
       };
     in
       pkgs.symlinkJoin {
