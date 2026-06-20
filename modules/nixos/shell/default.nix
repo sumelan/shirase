@@ -36,7 +36,7 @@
       shellAliases = basic // extra;
 
       variables = {
-        TERMINAL = "ghostty";
+        TERMINAL = "foot";
         EDITOR = "nvim";
         VISUAL = "nvim";
         NIXPKGS_ALLOW_UNFREE = "1";

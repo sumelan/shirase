@@ -255,7 +255,7 @@ in {
       match = [
         {_props.app-id._raw = ''r#"^.blueman-manager-wrapped$"#'';}
         {_props.app-id._raw = ''r#"^chrome-"#'';} # helium extension's windows
-        {_props.app-id._raw = ''r#"^org.kde.kdeconnect-indicator$"#'';}
+        {_props.app-id._raw = ''r#"^org\.kde\.kdeconnect-indicator$"#'';}
       ];
       open-floating = true;
     }
@@ -266,7 +266,7 @@ in {
         {_props.title._raw = ''r#"^ピクチャーインピクチャー$"#'';}
         {_props.title._raw = ''r#"^ピクチャー イン ピクチャー$"#'';}
         {_props.app-id._raw = ''r#"^mpv$"#'';}
-        {_props.app-id._raw = ''r#"^com.gabm.satty$"#'';}
+        {_props.app-id._raw = ''r#"^dev\.faetalize\.waytator$"#'';}
         {_props.app-id._raw = ''r#"^dissent$"#'';}
         {_props.app-id._raw = ''r#"^swayimg$"#'';}
         {_props.app-id._raw = ''r#"^vlc$"#'';}
@@ -283,9 +283,9 @@ in {
     # windows wanted to be floating and be blocked out from screen-capture
     {
       match = [
-        {_props.app-id._raw = ''r#"^org.gnome.Nautilus$"#'';}
+        {_props.app-id._raw = ''r#"^org\.gnome\.Nautilus$"#'';}
         {_props.app-id._raw = ''r#"^xdg-desktop-portal-gtk$"#'';}
-        {_props.app-id._raw = ''r#"^app.yazi$"#'';}
+        {_props.app-id._raw = ''r#"^yazi$"#'';}
       ];
       default-column-width._children = [
         {proportion = 0.500000;}
@@ -308,10 +308,10 @@ in {
     # windows to be blocked out from screen-capture
     {
       match = [
-        {_props.app-id._raw = ''r#"^org.gnome.seahorse.Application$"#'';}
+        {_props.app-id._raw = ''r#"^org\.gnome\.seahorse\.Application$"#'';}
         {_props.app-id._raw = ''r#"^Proton Mail$"#'';}
         {_props.app-id._raw = ''r#"^Proton Pass$"#'';}
-        {_props.app-id._raw = ''r#"^.protonvpn-app-wrapped$"#'';}
+        {_props.app-id._raw = ''r#"^\.protonvpn-app-wrapped$"#'';}
       ];
       block-out-from = "screen-capture";
     }
@@ -377,19 +377,6 @@ in {
       };
       spawn = ["dms" "ipc" "lock" "lock"];
     };
-    # screenshot
-    "Mod+Backslash" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Interactive selection screenshot"}";
-      spawn = ["dms" "ipc" "niri" "screenshot"];
-    };
-    "Mod+Shift+Backslash" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Capture entire screen"}";
-      spawn = ["dms" "ipc" "niri" "screenshotScreen"];
-    };
-    "Mod+Alt+Backslash" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Capture focused window"}";
-      spawn = ["dms" "ipc" "niri" "screenshotWindow"];
-    };
 
     # media-key
     "XF86AudioLowerVolume" = {
@@ -431,12 +418,14 @@ in {
 
     # execute
     "Mod+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#81A1C1" "󰊠  Ghostty" "Terminal Emulator"}";
-      spawn = ["ghostty" "+new-window"];
+      _props.hotkey-overlay-title = "${hotkey "#E7C173" "󰽒  Foot" "Terminal Emulator"}";
+      spawn = ["footclient"];
     };
     "Mod+B" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "  Helium" "Web Browser"}";
-      spawn-sh = "helium &";
+      spawn-sh =
+        # sh
+        ''helium &'';
     };
     "Mod+N" = {
       _props = {
@@ -451,15 +440,19 @@ in {
     };
     "Mod+Shift+N" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}";
-      spawn = ["ghostty" "--class=dev.vlinkz.NixosConfEditor" "-e" "ns"];
+      spawn = ["footclient" "--app-id" "dev.vlinkz.NixosConfEditor" "ns"];
     };
     "Mod+Shift+Y" = {
       _props.hotkey-overlay-title = "${hotkey "#E7C173" "󰇥  Yazi" "File Manager"}";
-      spawn = ["ghostty" "--class=app.yazi" "-e" "yazi"];
+      spawn = ["footclient" "--app-id" "yazi" "yazi"];
     };
     "Ctrl+Space" = {
       _props.hotkey-overlay-title = "${hotkey "#A3BE8C" "󰗊  Hazkey" "Switch input method"}";
       spawn = ["fcitx5-remote" "-t"];
+    };
+    "Mod+Backslash" = {
+      _props.hotkey-overlay-title = "${hotkey "#D79784" "󰽉  Waytator" "Interactive selection screenshot"}";
+      spawn = ["niri-waytator"];
     };
 
     # window
@@ -573,6 +566,8 @@ in {
     "Mod+Shift+Escape" = {
       quit = {_props.skip-confirmation = false;};
     };
+    "Mod+Shift+Backslash" = {screenshot-screen = [];};
+    "Mod+Alt+Backslash" = {screenshot-window = [];};
     "Mod+Escape" = {
       _props.allow-inhibiting = false;
       toggle-keyboard-shortcuts-inhibit = [];

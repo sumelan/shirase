@@ -64,13 +64,17 @@ in {
         # shell
         inherit (local) fish nushell starship;
         # tui
-        inherit (local) bat batman eza eza-tree moor ripgrep ns;
+        inherit (local) bat batman eza eza-tree moor ripgrep;
+        # scripts
+        inherit (local) ns niri-waytator;
         # desktop
-        inherit (local) wlr-which-key;
-        nvim-desktop-entry = lib.hiPrio nvim-desktop-entry;
-        ns-desktop-entry = lib.hiPrio ns-desktop-entry;
+        inherit (local) wlr-which-key waytator;
         # pdf viewer
         inherit (local) zathura;
+
+        nvim-desktop-entry = lib.hiPrio nvim-desktop-entry;
+        ns-desktop-entry = lib.hiPrio ns-desktop-entry;
+
         # protonapps
         # NOTE: `protonmail-desktop` need to be started once through xwayland with
         # `XDG_SESSION_TYPE=x11 DISPLAY=:0 proton-mail`
@@ -88,7 +92,7 @@ in {
         # slack
         inherit (pkgs) slack;
         # tools
-        inherit (pkgs) brightnessctl cliphist libnotify playerctl wl-clipboard hyperfine;
+        inherit (pkgs) brightnessctl libnotify playerctl hyperfine;
       };
 
       # misc
@@ -101,7 +105,7 @@ in {
           DEFAULT_BROWSER = "helium";
           BROWSER = "helium";
 
-          TERMINAL = "ghostty";
+          TERMINAL = "foot";
           EDITOR = "nvim";
           VISUAL = "nvim";
           NIXPKGS_ALLOW_UNFREE = "1";
@@ -129,11 +133,11 @@ in {
         };
 
         mime-apps = let
-          ghostty = "com.mitchellh.ghostty.desktop";
+          foot = "footclient.desktop";
           zathura = "org.pwmt.zathura-pdf-mupdf.desktop";
         in {
           default-applications = {
-            "x-scheme-handler/terminal" = ghostty;
+            "x-scheme-handler/terminal" = foot;
 
             "text/plain" = "nvim.desktop";
             "application/x-shellscript" = "nvim.desktop";

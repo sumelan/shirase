@@ -14,9 +14,9 @@ in {
   in {
     hjem.users.${user}.rum = {
       programs.ghostty = {
-        enable = lib.mkDefault true;
+        enable = lib.mkDefault false;
         package = ghostty;
-        systemd.enable = lib.mkDefault true;
+        systemd.enable = lib.mkDefault false;
       };
     };
   };
