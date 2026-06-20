@@ -1,4 +1,4 @@
-{
+_: {
   perSystem = {pkgs, ...}: {
     packages.ns = pkgs.writeShellApplication {
       name = "ns";

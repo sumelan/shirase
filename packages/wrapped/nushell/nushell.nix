@@ -22,7 +22,7 @@ in {
         NIXPKGS_ALLOW_UNFREE = "1";
         STARSHIP_CONFIG = mkStarshipConfig {
           inherit pkgs;
-          nf-icon = "󱏳 ";
+          nf-icon = "󰟆 ";
         };
       };
     };

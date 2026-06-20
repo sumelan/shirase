@@ -92,7 +92,7 @@ in {
         # slack
         inherit (pkgs) slack;
         # tools
-        inherit (pkgs) brightnessctl libnotify playerctl hyperfine;
+        inherit (pkgs) brightnessctl libnotify wl-clipboard-rs playerctl hyperfine;
       };
 
       # misc

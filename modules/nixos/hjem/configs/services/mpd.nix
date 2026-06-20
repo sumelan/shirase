@@ -1,4 +1,4 @@
-_: {
+{lib, ...}: {
   flake.custom.hjemConfigs.mpd = {
     config,
     user,
@@ -11,21 +11,21 @@ _: {
     hjem.users.${user}.rum = {
       services = {
         mpd = {
-          enable = true;
+          enable = lib.mkDefault true;
           startWhenNeeded = true;
-          settings.bind_to_address = "/run/user/1000/mpd/socket"; # local socket
+          settings.bind_to_address = lib.mkDefault "/run/user/1000/mpd/socket"; # local socket
         };
 
         mpdris2-rs = {
           enable = true;
-          host = "/run/user/1000/mpd/socket";
+          host = cfg.settings.bind_to_address;
         };
 
         mpd-discord-rpc = {
           enable = true;
           settings = {
             id = 677226551607033903;
-            hosts = ["/run/user/1000/mpd/socket"];
+            hosts = [cfg.settings.bind_to_address];
 
             format = {
               details = "$title";

@@ -6,7 +6,7 @@
       name = "niri-waytator";
       runtimeInputs = [
         pkgs.niri
-        pkgs.wl-clipboard
+        pkgs.wl-clipboard-rs
         local.waytator
       ];
       checkPhase = "";

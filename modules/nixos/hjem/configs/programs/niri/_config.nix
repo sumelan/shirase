@@ -165,9 +165,19 @@ in {
       draw-border-with-background = false;
       geometry-corner-radius = [10.000000 10.000000 10.000000 10.000000];
       clip-to-geometry = true;
+
       background-effect = {
         blur = true;
         xray = true;
+      };
+
+      popups = {
+        geometry-corner-radius = 15;
+        opacity = 0.750000;
+        background-effect = {
+          blur = true;
+          xray = false;
+        };
       };
     }
     # floating and focused
@@ -295,15 +305,6 @@ in {
       ];
       open-floating = true;
       block-out-from = "screen-capture";
-
-      popups = {
-        geometry-corner-radius = 15;
-        opacity = 0.800000;
-        background-effect = {
-          blur = true;
-          xray = false;
-        };
-      };
     }
     # windows to be blocked out from screen-capture
     {
