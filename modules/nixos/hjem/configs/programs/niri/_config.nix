@@ -50,7 +50,6 @@ in {
       repeat-rate = 25;
       track-layout = "global";
     };
-    focus-follows-mouse = [];
     touchpad = {
       tap = [];
       natural-scroll = [];

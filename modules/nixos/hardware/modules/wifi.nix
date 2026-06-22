@@ -7,7 +7,7 @@ _: {
     # wireshark
     programs.wireshark = {
       enable = true;
-      package = pkgs.wireshark; # default value: wireshark-cli
+      package = pkgs.wireshark-cli; # `wireshark-cli` or `wireshark`
     };
 
     users.users.${user}.extraGroups = ["wireshark"];

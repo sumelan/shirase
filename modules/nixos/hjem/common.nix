@@ -30,27 +30,6 @@ in {
         XDG_VIDEOS_DIR = "${homeDir}/Videos";
       };
 
-      nvim-direnv = pkgs.writeShellApplication {
-        name = "nvim-direnv";
-        runtimeInputs = [pkgs.direnv];
-        text =
-          # sh
-          ''
-            if ! direnv exec "$(dirname "$1")" nvim "$@"; then
-                nvim "$@"
-            fi
-          '';
-      };
-
-      nvim-desktop-entry = pkgs.makeDesktopItem {
-        name = "nvim";
-        desktopName = "Neovim";
-        genericName = "Text Editor";
-        icon = "nvim";
-        terminal = true;
-        exec = "${lib.getExe nvim-direnv} %F";
-      };
-
       ns-desktop-entry = pkgs.makeDesktopItem {
         name = "nix-search-tv";
         desktopName = "Nix Search TV";
@@ -72,7 +51,6 @@ in {
         # pdf viewer
         inherit (local) zathura;
 
-        nvim-desktop-entry = lib.hiPrio nvim-desktop-entry;
         ns-desktop-entry = lib.hiPrio ns-desktop-entry;
 
         # protonapps
@@ -106,8 +84,8 @@ in {
           BROWSER = "helium";
 
           TERMINAL = "foot";
-          EDITOR = "nvim";
-          VISUAL = "nvim";
+          EDITOR = "hx";
+          VISUAL = "hx";
           NIXPKGS_ALLOW_UNFREE = "1";
 
           # xdg
@@ -139,9 +117,9 @@ in {
           default-applications = {
             "x-scheme-handler/terminal" = foot;
 
-            "text/plain" = "nvim.desktop";
-            "application/x-shellscript" = "nvim.desktop";
-            "application/xml" = "nvim.desktop";
+            "text/plain" = "helix.desktop";
+            "application/x-shellscript" = "helix.desktop";
+            "application/xml" = "helix.desktop";
 
             "x-scheme-handler/unknown" = "helium.desktop";
             "x-scheme-handler/about" = "helium.desktop";
@@ -150,7 +128,7 @@ in {
             "text/html" = "helium.desktop";
           };
           added-associations = {
-            "text/csv" = "nvim.desktop";
+            "text/csv" = "helix.desktop";
 
             "x-scheme-handler/unknown" = "helium.desktop";
             "x-scheme-handler/about" = "helium.desktop";

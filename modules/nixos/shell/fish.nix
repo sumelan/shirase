@@ -19,7 +19,7 @@ in {
           config.environment.shellAliases
           // fishAliases
           // {
-            ehistory = ''nvim "${config.hjem.users.${user}.xdg.data.directory}/fish/fish_history"'';
+            ehistory = ''hx "${config.hjem.users.${user}.xdg.data.directory}/fish/fish_history"'';
           };
       };
     };

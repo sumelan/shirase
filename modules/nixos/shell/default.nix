@@ -37,8 +37,8 @@
 
       variables = {
         TERMINAL = "foot";
-        EDITOR = "nvim";
-        VISUAL = "nvim";
+        EDITOR = "hx";
+        VISUAL = "hx";
         NIXPKGS_ALLOW_UNFREE = "1";
       };
     };
