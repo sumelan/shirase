@@ -32,15 +32,15 @@
   };
   dms-screen-recorder = {
     pname = "dms-screen-recorder";
-    version = "40364a8530f4364e2fd6b0eb8802d5fe4f241b8f";
+    version = "c0b49eeea6d1db761993e7948690967072d65f0e";
     src = fetchFromGitHub {
       owner = "arqueon";
       repo = "dms-screen-recorder";
-      rev = "40364a8530f4364e2fd6b0eb8802d5fe4f241b8f";
+      rev = "c0b49eeea6d1db761993e7948690967072d65f0e";
       fetchSubmodules = false;
-      sha256 = "sha256-/SeQSlPeM0jDHg4yFmR82ODtnVs2bOovVG7TCMjH1vk=";
+      sha256 = "sha256-lo4/zxJlNiCWFql/SULWKMLPn2f1BARIMguvYFvZk4I=";
     };
-    date = "2026-04-28";
+    date = "2026-06-20";
   };
   helium = {
     pname = "helium";
