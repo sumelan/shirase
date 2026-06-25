@@ -87,16 +87,6 @@ def ff [pattern: string] {
     | where name =~ $pattern
 }
 
-# Quick HTTP GET and pretty-print JSON
-def jget [url: string] {
-    http get $url | to json | print
-}
-
-# Grep-like search in structured data
-def contains [col: string, val: string] {
-    where ($col | str contains $val)
-}
-
 # Show PATH as a list (much more readable)
 def show-path [] {
     $env.PATH | each { |p| print $p }
@@ -115,19 +105,53 @@ def --env fcd [] {
     }
 }
 
-# Function to wrap the default vim command and use nvim if available
-def vim [...args] {
-  if (which nvim | is-not-empty) {
-    ^nvim ...$args
-  } else if (which hx | is-not-empty) {
-    ^hx ...$args
-  } else if (which vim | is-not-empty) {
-    ^vim ...$args
-  } else {
-    ^vi ...$args
+# upgrade system packages
+# `nix-upgrade` or `nix-upgrade -i`
+def nix-upgrade [
+  --interactive (-i) # select packages to upgrade interactively
+]: nothing -> nothing {
+  let working_path = $env.NH_FLAKE | path expand
+  if not ($working_path | path exists) {
+    echo "path does not exist: $working_path"
+    exit 1
   }
+  let pwd = $env.PWD
+  let conf = $env.NVFETCHER_CONF
+  let src = $env.NVFETCHER_SRC
+  cd $working_path
+  if $interactive {
+    let selections = nix flake metadata . --json
+    | from json
+    | get locks.nodes
+    | columns
+    | str join "\n"
+    | fzf --multi --tmux center,20%
+    | lines
+    # Debug: Print selections to verify
+    print $"Selections: ($selections)"
+    # Check if selections is empty
+    if ($selections | is-empty) {
+      print "No selections made."
+      cd $pwd
+      return
+    }
+    # Use spread operator to pass list items as separate arguments
+    nix flake update ...$selections
+  } else {
+    nix flake update
+  }
+  cd $pwd
+  nh os switch $working_path
 }
 
+# list all installed packages
+def nix-list-system []: nothing -> list<string> {
+  ^nix-store -q --references /run/current-system/sw
+  | lines
+  | where { not ($in | str ends-with 'man') }
+  | each { $in | str replace -r '^[^-]*-' '' }
+  | sort
+}
 
 # ── Direnv ──────────────────────────────────────────────────────────────────────
 
@@ -146,23 +170,6 @@ $env.config.hooks.env_change.PWD ++= [{||
   # If direnv changes the PATH, it will become a string and we need to re-convert it to a list
   $env.PATH = do (env-conversions).path.from_string $env.PATH
 }]
-
-# ── Extra ──────────────────────────────────────────────────────────────────────
-# Sudo shim that is universally compatible across my systems with no dependency on state
-def sudo [...args] {
-  if (which ^sudo | is-not-empty) {
-    ^sudo ...$args
-  } else if  (which ^doas | is-not-empty ) {
-    doas ...$args
-  } else {
-    echo "nushell: sudo and doas not found"
-  }
-}
-# Load any extra components via a host file
-const hostfile = "~/.config/nushell/host.nu"
-if ($hostfile | path exists) {
-    source $hostfile
-}
 
 # ── Completions ────────────────────────────────────────────────────────────────
 
@@ -196,6 +203,3 @@ let multi_completer = {|spans: list<string>|
 
 $env.config.completions.external.completer = $multi_completer
 
-# ── External  -──--──────────────────────────────────────────────────────────────
-
-# This section will be anything merged it when nix handles this file
