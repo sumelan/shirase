@@ -116,8 +116,6 @@ def nix-upgrade [
     exit 1
   }
   let pwd = $env.PWD
-  let conf = $env.NVFETCHER_CONF
-  let src = $env.NVFETCHER_SRC
   cd $working_path
   if $interactive {
     let selections = nix flake metadata . --json

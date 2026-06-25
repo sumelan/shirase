@@ -21,11 +21,6 @@ sourceDir := "_sources"
     nix flake check
 
 [group('FLAKE')]
-[doc('Create missing lock file entries')]
-@lock *flake-url:
-    nix flake lock {{ flake-url }}
-
-[group('FLAKE')]
 [doc('Analyzing a flake.lock for duplicate inputs.')]
 @flint:
     nix run github:NotAShelf/flint
@@ -43,14 +38,7 @@ sourceDir := "_sources"
     nh os switch {{ args }}
 
 [group('UPDATE')]
-[doc('Update a specific input in the flake.')]
-@update input:
-    print ''
-    print $'(ansi cyan)---- Updating (ansi green_italic)(ansi attr_underline){{ input }}(ansi rst)(ansi cyan)... ----(ansi rst)'
-    nix flake update {{ input }}
-
-[group('UPDATE')]
-[doc('Update all flake inputs, fetch packages and commit on git.')]
+[doc('Upgrade after update all flake inputs and fetch packages.')]
 @updates:
     print ''
     print $'(ansi cyan)---- Updating (ansi green_italic)(ansi attr_underline)all inputs(ansi rst)(ansi cyan)... ----(ansi rst)'
@@ -61,9 +49,7 @@ sourceDir := "_sources"
     nvfetcher --keep-old --config {{ config }} --build-dir {{ sourceDir }}
 
     print ''
-    print $'(ansi cyan)---- Commit on git... ----(ansi rst)'
-    git add -A
-    git commit -m "chore: update inputs and fetch packages"
+    nh os switch
 
 [group('MAINTENANCE')]
 [doc('Clean all profiles but keep 5 generations.')]
