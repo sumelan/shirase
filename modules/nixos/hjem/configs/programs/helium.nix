@@ -1,10 +1,10 @@
-{config, ...}: {
+{inputs, ...}: {
   flake.custom.hjemConfigs.helium = {
     pkgs,
     user,
     ...
   }: let
-    local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
+    helium = inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default;
   in {
     programs.chromium = {
       enable = true;
@@ -36,7 +36,7 @@
 
     hjem.users.${user} = {
       packages = builtins.attrValues {
-        inherit (local) helium;
+        inherit helium;
       };
 
       # Add widevine support, inspired from this comment:

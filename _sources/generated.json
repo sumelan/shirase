@@ -62,21 +62,6 @@
         },
         "version": "c0b49eeea6d1db761993e7948690967072d65f0e"
     },
-    "helium": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "helium",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-z23up+T6bj6F+cQslmI92bEksIAw1OQHRIrmQSaaxY8=",
-            "type": "url",
-            "url": "https://github.com/imputnet/helium-linux/releases/download/0.13.4.1/helium-0.13.4.1-x86_64.AppImage"
-        },
-        "version": "0.13.4.1"
-    },
     "nordic-nvim": {
         "cargoLock": null,
         "date": "2026-05-03",

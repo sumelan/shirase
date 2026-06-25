@@ -22,11 +22,7 @@
         name = "Full env";
         paths =
           builtins.attrValues {
-            inherit
-              (local)
-              foot
-              helium
-              ;
+            inherit (local) foot;
           }
           ++ commonPkgs;
       };
