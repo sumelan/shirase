@@ -17,8 +17,6 @@ in {
     environment.systemPackages = attrValues {
       inherit
         (pkgs)
-        comma # Runs software without installing it. usage: `, cowsay neato`
-        nil
         nix-init
         nix-output-monitor
         nix-tree
@@ -30,8 +28,9 @@ in {
     };
 
     programs = {
-      # files database for nixpkgs
-      nix-index.enable = true;
+      # wrapping comma with nix-index-database and put it in the PATH
+      nix-index-database.comma.enable = true;
+
       # run unpatched binaries on nixos
       nix-ld.enable = true;
 
