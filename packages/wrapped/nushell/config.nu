@@ -107,7 +107,7 @@ def --env fcd [] {
 
 # upgrade system packages
 # `nix-upgrade` or `nix-upgrade -i`
-def nix-upgrade [
+def tack-upgrade [
   --interactive (-i) # select packages to upgrade interactively
 ]: nothing -> nothing {
   let working_path = $env.NH_FLAKE | path expand
@@ -116,11 +116,10 @@ def nix-upgrade [
     exit 1
   }
   let pwd = $env.PWD
+  let pins = open ($env.NH_FLAKE)/.tack/pins.toml
   cd $working_path
   if $interactive {
-    let selections = nix flake metadata . --json
-    | from json
-    | get locks.nodes
+    let selections = $pins.inputs
     | columns
     | str join "\n"
     | fzf --multi --tmux center,20%
@@ -134,9 +133,9 @@ def nix-upgrade [
       return
     }
     # Use spread operator to pass list items as separate arguments
-    nix flake update ...$selections
+    tack update ...$selections
   } else {
-    nix flake update
+    tack update
   }
   cd $pwd
   nh os switch $working_path

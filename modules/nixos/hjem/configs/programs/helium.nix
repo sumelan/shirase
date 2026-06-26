@@ -4,7 +4,7 @@
     user,
     ...
   }: let
-    helium = inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    helium = inputs.helium-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
   in {
     programs.chromium = {
       enable = true;

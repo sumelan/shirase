@@ -20,11 +20,6 @@ sourceDir := "_sources"
     git add -A
     nix flake check
 
-[group('FLAKE')]
-[doc('Analyzing a flake.lock for duplicate inputs.')]
-@flint:
-    nix run github:NotAShelf/flint
-
 [group('REBUILD')]
 [doc('`nh os test`.')]
 @test *args:
@@ -36,20 +31,6 @@ sourceDir := "_sources"
 @switch *args:
     git add -A
     nh os switch {{ args }}
-
-[group('UPDATE')]
-[doc('Upgrade after update all flake inputs and fetch packages.')]
-@updates:
-    print ''
-    print $'(ansi cyan)---- Updating (ansi green_italic)(ansi attr_underline)all inputs(ansi rst)(ansi cyan)... ----(ansi rst)'
-    nix flake update
-
-    print ''
-    print $'(ansi cyan)---- Fetching (ansi green_italic)(ansi attr_underline)all packages(ansi rst)(ansi cyan)... ----(ansi rst)'
-    nvfetcher --keep-old --config {{ config }} --build-dir {{ sourceDir }}
-
-    print ''
-    nh os switch
 
 [group('MAINTENANCE')]
 [doc('Clean all profiles but keep 5 generations.')]

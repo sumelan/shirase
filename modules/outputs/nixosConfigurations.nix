@@ -15,6 +15,7 @@
       inputs.${name}.${modules}.${opt};
   in [
     (mkModules {name = "hjem";})
+    (mkModules {name = "tack";})
     (mkModules {name = "niri-nix";})
     (mkModules {name = "run0-sudo-shim";})
     (mkModules {name = "impermanence";})

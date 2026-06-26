@@ -14,9 +14,20 @@
 in {
   perSystem = {pkgs, ...}: let
     dotfile = "/home/sumelan/Projects/shirase";
+    extraConfig =
+      # nu
+      ''
+        source ${
+          pkgs.runCommand "nix-your-shell-nushell-config.nu" {} ''
+            ${lib.getExe pkgs.nix-your-shell} --nom nu >> "$out"
+          ''
+        }
+      '';
+
+    extraRuntimeInputs = [pkgs.nix-your-shell];
   in {
     packages.nushell = mkNushell {
-      inherit pkgs;
+      inherit pkgs extraConfig extraRuntimeInputs;
       env = {
         NH_FLAKE = dotfile;
         NIXPKGS_ALLOW_UNFREE = "1";
@@ -78,27 +89,30 @@ in {
         name = "nushell-runtime-env";
         pathsToLink = ["/bin"];
 
-        paths = with pkgs;
-          [
-            starship
-            # Shell Utilities
-            carapace
-            carapace-bridge
-            direnv
-            nix-direnv
-            # Command Line
-            bat
-            eza
-            fd
-            fzf
-            jq
-            ripgrep
-            # VCS
-            git
-            delta
-            tig
-            lazygit
-          ]
+        paths =
+          builtins.attrValues {
+            inherit
+              (pkgs)
+              starship
+              # Shell Utilities
+              carapace
+              carapace-bridge
+              direnv
+              nix-direnv
+              # Command Line
+              bat
+              eza
+              fd
+              fzf
+              jq
+              ripgrep
+              # VCS
+              git
+              delta
+              tig
+              lazygit
+              ;
+          }
           ++ extraRuntimeInputs;
       };
 

@@ -1,10 +1,10 @@
 {
-  inputs,
   lib,
+  self,
   ...
 }: let
   inherit (builtins) attrValues;
-  inherit (lib) mapAttrsToList mapAttrs sort concatStringsSep;
+  inherit (lib) sort concatStringsSep;
 in {
   flake.modules.nixos.core = {
     config,
@@ -12,9 +12,7 @@ in {
     user,
     dotfile,
     ...
-  }: let
-    inherit (inputs) self;
-  in {
+  }: {
     # nix lang / nixpkgs
     environment.systemPackages = attrValues {
       inherit
@@ -44,17 +42,14 @@ in {
       };
     };
 
-    nix = let
-      nixPath = mapAttrsToList (name: _: "${name}=flake:${name}") inputs;
-      registry = mapAttrs (_: flake: {inherit flake;}) inputs;
-    in {
+    nix = {
       # disable channel because i use flake's input as source
       # also make flake registry and nix path match flake input
       # without doing above, `nix run nixpkgs#fastfetch` would come from the channel and not your flake
       channel.enable = false;
 
-      # required for nix-shell -p to work
-      inherit nixPath;
+      # need for `nix-shell -p` to work
+      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") {nixpkgs = "";};
 
       gc = {
         # Automatic garbage collection
@@ -66,38 +61,6 @@ in {
       # `pkgs.nixVersions.latest` or `pkgs.lixPackageSets.latest.lix`
       package = pkgs.nixVersions.latest;
 
-      # to use shorter IDs instead of lengthy address
-      registry =
-        registry
-        // {
-          n = registry.nixpkgs;
-          master = {
-            # the flake reference: `nixpkgs-master`
-            from = {
-              type = "indirect";
-              id = "nixpkgs-master";
-            };
-            # the flake reference from: github:NixOS/nixpkgs
-            to = {
-              type = "github";
-              owner = "NixOS";
-              repo = "nixpkgs";
-            };
-          };
-          # for nix flake init
-          templates = {
-            from = {
-              id = "templates";
-              type = "indirect";
-            };
-            to = {
-              type = "github";
-              owner = "NixOS";
-              repo = "templates";
-            };
-          };
-        };
-
       # Periodically optimise via hardlinking store files
       optimise.automatic = true;
 
@@ -107,10 +70,6 @@ in {
 
         # don't use the global flake registry, define everything explicitly
         flake-registry = "";
-
-        # required to be set
-        # for some reason nix.nixPath does not write to nix.conf
-        nix-path = nixPath;
 
         warn-dirty = false;
 

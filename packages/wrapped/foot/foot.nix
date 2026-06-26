@@ -8,7 +8,7 @@ in {
   perSystem = {pkgs, ...}: let
     extraConfig = {
       main = {
-        shell = "fish";
+        shell = "nu";
         include = "${pkgs.foot.themes}/share/foot/themes/nord";
       };
     };

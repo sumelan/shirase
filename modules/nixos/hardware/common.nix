@@ -9,7 +9,7 @@ in {
     services = {
       upower.enable = true;
       power-profiles-daemon.enable = true; # conflict with TLP
-      tlp.enable = false;
+
       # ssd
       fstrim.enable = true;
     };
