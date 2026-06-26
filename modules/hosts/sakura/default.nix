@@ -10,7 +10,7 @@ in {
       inherit (flake.modules.nixos) default minisforum-um773se;
       inherit (flake.modules.nixos) gui;
       inherit (flake.modules.nixos) kdeconnect steam;
-      inherit (flake.modules.nixos) hdds qmk;
+      inherit (flake.modules.nixos) hdds qmk usb-trackpad;
       inherit (flake.modules.nixos) audiobookshelf sops-nix syncoid syncthing;
       inherit (flake.modules.nixos) hjem-extended hjem-bluray hjem-cd;
     };

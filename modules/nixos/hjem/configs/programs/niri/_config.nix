@@ -423,9 +423,7 @@ in {
     };
     "Mod+B" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "  Helium" "Web Browser"}";
-      spawn-sh =
-        # sh
-        ''helium &'';
+      spawn = ["helium"];
     };
     "Mod+N" = {
       _props = {
