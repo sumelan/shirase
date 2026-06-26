@@ -97,5 +97,18 @@
       url = "github:schembriaiden/helium-browser-nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    dms-plugins = {
+      url = "github:AvengeMedia/dms-plugins";
+      flake = false;
+    };
+    dms-screen-recorder = {
+      url = "github:arqueon/dms-screen-recorder";
+      flake = false;
+    };
+    dms-display-mirror = {
+      url = "github:jfchenier/dms-display-mirror";
+      flake = false;
+    };
   };
 }

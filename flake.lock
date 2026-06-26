@@ -21,6 +21,54 @@
         "type": "github"
       }
     },
+    "dms-display-mirror": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762746654,
+        "narHash": "sha256-JX3pDZ1F5Uu/rOdA4KMhcwH8a6gxsTZjwgcZxNV/Ngc=",
+        "owner": "jfchenier",
+        "repo": "dms-display-mirror",
+        "rev": "92cd44c4fb67834bf71fdd78f83c29df5e0750b2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jfchenier",
+        "repo": "dms-display-mirror",
+        "type": "github"
+      }
+    },
+    "dms-plugins": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780332225,
+        "narHash": "sha256-QkQPqP7Wmo5DLRyKNSY5NuOau4LSaSfz3DYdHDLxluA=",
+        "owner": "AvengeMedia",
+        "repo": "dms-plugins",
+        "rev": "f4583449f12920e0a2f16808b00a860c27f0173d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AvengeMedia",
+        "repo": "dms-plugins",
+        "type": "github"
+      }
+    },
+    "dms-screen-recorder": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781938460,
+        "narHash": "sha256-lo4/zxJlNiCWFql/SULWKMLPn2f1BARIMguvYFvZk4I=",
+        "owner": "arqueon",
+        "repo": "dms-screen-recorder",
+        "rev": "c0b49eeea6d1db761993e7948690967072d65f0e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arqueon",
+        "repo": "dms-screen-recorder",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -276,6 +324,9 @@
     "root": {
       "inputs": {
         "dankMaterialShell": "dankMaterialShell",
+        "dms-display-mirror": "dms-display-mirror",
+        "dms-plugins": "dms-plugins",
+        "dms-screen-recorder": "dms-screen-recorder",
         "flake-parts": "flake-parts",
         "helium": "helium",
         "hjem": "hjem",

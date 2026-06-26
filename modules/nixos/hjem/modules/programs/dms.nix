@@ -1,17 +1,15 @@
 {
-  config,
+  inputs,
   lib,
   ...
-}: let
-  inherit (config) flake;
-in {
+}: {
   flake.custom.hjemModules.dms = {
     config,
     pkgs,
     ...
   }: let
     inherit
-      (flake.packages.${pkgs.stdenv.hostPlatform.system})
+      (inputs)
       dms-plugins
       dms-screen-recorder
       dms-display-mirror

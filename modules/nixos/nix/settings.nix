@@ -28,7 +28,6 @@ in {
         nixd
         nixfmt
         nixpkgs-review
-        nvfetcher
         ;
     };
 
