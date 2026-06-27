@@ -17,8 +17,10 @@ in {
 
     networking.hostId = "b5e8f0be";
 
+    # need for usb-trackpad to work
+    boot.kernelParams = ["psmouse.synaptics_intertouch=0"];
+
     services = {
-      # need for usb-trackpad to work
       libinput.enable = true;
 
       syncoid = {

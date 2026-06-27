@@ -51,6 +51,7 @@ in {
     in
       pkgs.writeText "nu-config" (
         (builtins.readFile ./config.nu)
+        + (builtins.readFile ./tack.nu)
         + (builtins.readFile ./starship.nu)
         + ''
           source $"($nu.cache-dir)/carapace.nu"

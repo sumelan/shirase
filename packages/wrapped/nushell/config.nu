@@ -97,41 +97,6 @@ def pg [pattern: string] {
     ps | where name =~ $pattern
 }
 
-# Update packages inside pins.toml and rebuild
-def tack-upgrade [
-  --interactive (-i) # Select packages to update interactively
-]: nothing -> nothing {
-  let working_path = $env.NH_FLAKE | path expand
-  if not ($working_path | path exists) {
-    echo "path does not exist: $working_path"
-    exit 1
-  }
-  let pwd = $env.PWD
-  let pins = open ($env.NH_FLAKE)/.tack/pins.toml
-  cd $working_path
-  if $interactive {
-    let selections = $pins.inputs
-    | columns
-    | str join "\n"
-    | fzf --multi --tmux center,20%
-    | lines
-    # Debug: Print selections to verify
-    print $"Selections: ($selections)"
-    # Check if selections is empty
-    if ($selections | is-empty) {
-      print "No selections made."
-      cd $pwd
-      return
-    }
-    # Use spread operator to pass list items as separate arguments
-    tack update ...$selections
-  } else {
-    tack update
-  }
-  cd $pwd
-  nh os switch $working_path
-}
-
 # List all installed packages
 def nix-list-system []: nothing -> list<string> {
   ^nix-store -q --references /run/current-system/sw
