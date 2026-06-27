@@ -3,7 +3,6 @@ _: {
     programs.niri = {
       enable = true;
       package = pkgs.niri;
-
       useNautilus = true;
       withUWSM = false;
       withXDG = true;

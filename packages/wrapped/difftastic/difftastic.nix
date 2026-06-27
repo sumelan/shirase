@@ -13,7 +13,7 @@
         nativeBuildInputs = [pkgs.makeWrapper];
         postBuild = ''
           wrapProgram $out/bin/difft \
-            --add-flags "--backgroun dark"
+            --add-flags "--background dark"
         '';
         meta.mainProgram = "difft";
       };

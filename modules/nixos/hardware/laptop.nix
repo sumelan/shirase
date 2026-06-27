@@ -2,7 +2,9 @@
   inherit (config) flake;
 in {
   flake.modules.nixos.laptop = _: {
-    imports = with flake.modules.nixos; [keyd];
+    imports = builtins.attrValues {
+      inherit (flake.modules.nixos) keyd;
+    };
 
     # disbale USB after sometime of inactivity
     powerManagement.powertop.enable = true;

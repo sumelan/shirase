@@ -85,3 +85,6 @@ type = "fetch"
 
 [inputs.tack]
 url = "gh:manic-systems/tack"
+
+[inputs.helix]
+url = "gh:helix-editor/helix"

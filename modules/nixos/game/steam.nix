@@ -5,10 +5,6 @@ _: {
     user,
     ...
   }: {
-    environment.systemPackages = [
-      pkgs.adwsteamgtk
-    ];
-
     programs.steam = {
       enable = true;
       package = pkgs.steam.override {

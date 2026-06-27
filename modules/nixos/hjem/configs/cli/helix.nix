@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  inputs,
+  config,
+  ...
+}: let
   inherit (config) flake;
   inherit (flake.custom.wrappers) mkHelix;
 in {
@@ -10,6 +14,9 @@ in {
     ...
   }: let
     inherit (config.networking) hostName;
+
+    pkg = inputs.helix.packages.${pkgs.stdenv.hostPlatform.system}.default;
+
     extraCfg = {
       # use yazi as file tree picker
       # https://yazi-rs.github.io/docs/tips/#helix
@@ -38,7 +45,7 @@ in {
     };
   in {
     hjem.users.${user}.packages = [
-      (mkHelix {inherit pkgs extraCfg extraLang;})
+      (mkHelix {inherit pkgs pkg extraCfg extraLang;})
     ];
 
     custom.fileSystem = {
