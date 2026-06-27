@@ -14,20 +14,9 @@
 in {
   perSystem = {pkgs, ...}: let
     dotfile = "/home/sumelan/Projects/shirase";
-    extraConfig =
-      # nu
-      ''
-        source ${
-          pkgs.runCommand "nix-your-shell-nushell-config.nu" {} ''
-            ${lib.getExe pkgs.nix-your-shell} --nom nu >> "$out"
-          ''
-        }
-      '';
-
-    extraRuntimeInputs = [pkgs.nix-your-shell];
   in {
     packages.nushell = mkNushell {
-      inherit pkgs extraConfig extraRuntimeInputs;
+      inherit pkgs;
       env = {
         NH_FLAKE = dotfile;
         NIXPKGS_ALLOW_UNFREE = "1";

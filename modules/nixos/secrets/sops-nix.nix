@@ -5,9 +5,11 @@ _: {
     ...
   }: {
     sops = {
-      # to edit secrets file, run `nix-shell -p sops --run "sops secrets/syncthing.yaml"`
-      # after adding new host in `.sops.ymal`, run `nix-shell -p sops --run "sops updatekeys secrets/syncthing.yaml"`
-      defaultSopsFile = ../../../secrets/syncthing.yaml;
+      # to edit secrets file,
+      # run `nix-shell -p sops --run "sops secrets/syncthing.yaml"`
+      # after adding new host in `.sops.ymal`,
+      # run `nix-shell -p sops --run "sops updatekeys secrets/syncthing.yaml"`
+      defaultSopsFile = ../../../secrets/sops.yaml;
 
       age = {
         # This will automatically import SSH keys as age keys
@@ -16,9 +18,17 @@ _: {
         # This will generate a new key if the key specified above does not exist
         generateKey = false;
       };
+
       # This is the actual specification of the secrets.
       secrets = {
-        # by default, secrets are owned by `root:root` and `/run/secrets.d` is only owned by root and the `keys` group has read access to it
+        # by default, secrets are owned by `root:root` and `/run/secrets.d` is only owned by root
+        # and the `keys` group has read access to it
+        "github/sakura-token" = {
+          mode = "0440";
+          owner = config.services.syncthing.user;
+          inherit (config.services.syncthing) group;
+        };
+
         "syncthing/sakura-key" = {
           mode = "0440";
           owner = config.services.syncthing.user;
@@ -46,6 +56,7 @@ _: {
         };
       };
     };
+
     custom.fileSystem = {
       persist.home.directories = [
         ".config/sops"

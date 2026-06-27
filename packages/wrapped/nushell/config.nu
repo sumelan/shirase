@@ -97,18 +97,9 @@ def pg [pattern: string] {
     ps | where name =~ $pattern
 }
 
-# Find a file or directory and cd to it
-def --env fcd [] {
-    let selection = (fd | fzf --height 40% --reverse)
-    if $selection != "" {
-        cd ($selection | path expand | path dirname)
-    }
-}
-
-# upgrade system packages
-# `nix-upgrade` or `nix-upgrade -i`
+# Update packages inside pins.toml and rebuild
 def tack-upgrade [
-  --interactive (-i) # select packages to upgrade interactively
+  --interactive (-i) # Select packages to update interactively
 ]: nothing -> nothing {
   let working_path = $env.NH_FLAKE | path expand
   if not ($working_path | path exists) {
@@ -141,7 +132,7 @@ def tack-upgrade [
   nh os switch $working_path
 }
 
-# list all installed packages
+# List all installed packages
 def nix-list-system []: nothing -> list<string> {
   ^nix-store -q --references /run/current-system/sw
   | lines

@@ -5,10 +5,6 @@ export NH_FLAKE := `echo $env.PWD`
 export HOSTNAME := `hostname`
 export NIXPKGS_ALLOW_UNFREE := "1"
 
-# package-paths fetched through nvfetcher
-config := ".config/nvfetcher.toml"
-sourceDir := "_sources"
-
 [group('DEFAULT')]
 [doc('List the recipes.')]
 @default:
@@ -22,15 +18,15 @@ sourceDir := "_sources"
 
 [group('REBUILD')]
 [doc('`nh os test`.')]
-@test *args:
+@test *flags:
     git add -A
-    nh os test {{ args }}
+    nh os test {{ flags }}
 
 [group('REBUILD')]
 [doc('`nh os switch`.')]
-@switch *args:
+@switch *flags:
     git add -A
-    nh os switch {{ args }}
+    nh os switch {{ flags }}
 
 [group('MAINTENANCE')]
 [doc('Clean all profiles but keep 5 generations.')]
@@ -44,7 +40,7 @@ sourceDir := "_sources"
 
 [group('LOCATE')]
 [doc('Search for all packages containing specific library.')]
-@liblc lib:
+@lib lib:
     nix-locate -- "lib/{{ lib }}" | rg -v '^\('
 
 [group('PACKAGE')]
