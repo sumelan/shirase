@@ -15,7 +15,7 @@ def tack-update-diff []: nothing -> nothing {
   let selections = $pins.inputs
   | columns
   | str join "\n"
-  | fzf --multi -- style full --layout reverse
+  | fzf --multi --style full --layout reverse
   | lines
 
   print $"Selections: ($selections)"
@@ -63,24 +63,24 @@ def tack-update-diff []: nothing -> nothing {
           print $"Codeberg: ($repo)"
 
           http get $"https://codeberg.org/($repo)/compare/($old)...($new).diff"
-          | save $"/tmp/codeberg-($e).diff"
+          | save $"/tmp/($e).diff"
 
           try {
-            moor $"/tmp/codeberg-($e).diff"
+            moor $"/tmp/($e).diff"
           } catch {|err| $err}
 
-          rm $"/tmp/codeberg-($e).diff"
+          rm $"/tmp/($e).diff"
         } else if ($alias | str contains 'gh') {
           print $"Github: ($repo)"
 
           http get $"https://github.com/($repo)/compare/($old)...($new).diff"
-          | save $"/tmp/github-($e).diff"
+          | save $"/tmp/($e).diff"
 
           try {
-            moor $"/tmp/github-($e).diff"
+            moor $"/tmp/($e).diff"
           } catch {|err| $err}
 
-          rm $"/tmp/github-($e).diff"
+          rm $"/tmp/($e).diff"
         }
 
         print $"(ansi blue)Approve changes? [y/n](ansi reset)"
@@ -88,6 +88,7 @@ def tack-update-diff []: nothing -> nothing {
         let input =  (input --numchar 1 --default "n")
         
         if ($input | str contains 'y' ) {
+          print "Updating..."
           print $"(tack update $e)"
         } else {
           print "Update rejected."
