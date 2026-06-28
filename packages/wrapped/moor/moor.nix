@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{config, ...}: {
   perSystem = {pkgs, ...}: {
     packages.moor = config.flake.custom.wrappers.mkMoor {
       inherit pkgs;

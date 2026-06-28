@@ -28,6 +28,12 @@ export NIXPKGS_ALLOW_UNFREE := "1"
     git add -A
     nh os switch {{ flags }}
 
+[group('UPDATE')]
+[doc('Update inputs interactively.')]
+@update:
+    tack-update-diff
+    git add -A
+
 [group('MAINTENANCE')]
 [doc('Clean all profiles but keep 5 generations.')]
 @gc:

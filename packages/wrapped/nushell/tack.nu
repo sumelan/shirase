@@ -15,7 +15,7 @@ def tack-update-diff []: nothing -> nothing {
   let selections = $pins.inputs
   | columns
   | str join "\n"
-  | fzf --multi --border horizontal --border-label "Select inputs to update."
+  | fzf --multi -- style full --layout reverse
   | lines
 
   print $"Selections: ($selections)"
@@ -28,7 +28,7 @@ def tack-update-diff []: nothing -> nothing {
 
   let name = $selections | each {
     |e|
-      print $"(ansi cyan)Input: (ansi cyan_bold)($e)(ansi reset)"
+      print $"(ansi cyan)==== Input: (ansi cyan_bold)($e)(ansi reset_bold) ====(ansi reset)"
 
       let alias = $pins.inputs
       | get $e
@@ -45,7 +45,7 @@ def tack-update-diff []: nothing -> nothing {
       let change = tack look $e
 
       if ($change | str contains 'unchanged') {
-        print $"No update available at ($repo)."
+        print $"No update available on ($e)."
       } else {
         let old = $change
         | split row ': '
@@ -60,7 +60,7 @@ def tack-update-diff []: nothing -> nothing {
         | get 2
 
         if ($alias | str contains 'cb') {
-          print "Source: Codeberg"
+          print $"Codeberg: ($repo)"
 
           http get $"https://codeberg.org/($repo)/compare/($old)...($new).diff"
           | save $"/tmp/codeberg-($e).diff"
@@ -71,7 +71,7 @@ def tack-update-diff []: nothing -> nothing {
 
           rm $"/tmp/codeberg-($e).diff"
         } else if ($alias | str contains 'gh') {
-          print "Source: Github"
+          print $"Github: ($repo)"
 
           http get $"https://github.com/($repo)/compare/($old)...($new).diff"
           | save $"/tmp/github-($e).diff"
@@ -82,17 +82,17 @@ def tack-update-diff []: nothing -> nothing {
 
           rm $"/tmp/github-($e).diff"
         }
+
+        print $"(ansi blue)Approve changes? [y/n](ansi reset)"
+
+        let input =  (input --numchar 1 --default "n")
+        
+        if ($input | str contains 'y' ) {
+          print $"(tack update $e)"
+        } else {
+          print "Update rejected."
+        }
       }
-  }
-  print $"(ansi cyan_bold)Approve all changes?(ansi reset) [y/n]"
-
-  let input =  (input --default "n")
-
-  if ($input | str contains 'y' ) {
-    # Use spread operator to pass list items as separate arguments
-    tack update ...$selections
-  } else {
-    print "Update rejected."
   }
   cd $pwd
 }

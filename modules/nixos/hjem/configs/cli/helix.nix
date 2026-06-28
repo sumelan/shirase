@@ -1,8 +1,4 @@
-{
-  inputs,
-  config,
-  ...
-}: let
+{config, ...}: let
   inherit (config) flake;
   inherit (flake.custom.wrappers) mkHelix;
 in {
@@ -15,7 +11,7 @@ in {
   }: let
     inherit (config.networking) hostName;
 
-    pkg = inputs.helix.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    pkg = pkgs.helix;
 
     extraCfg = {
       # use yazi as file tree picker

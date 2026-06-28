@@ -55,14 +55,6 @@
     "narHash": "sha256-TUFVwwTofzuxJiHx/xXa7jqVkVIwreOYH47YxhmCHEo=",
     "lastModified": 1782474838
   },
-  "helix": {
-    "type": "github",
-    "owner": "helix-editor",
-    "repo": "helix",
-    "rev": "6b7c7c6e0784d7c34295c24064deb36418c0b4b5",
-    "narHash": "sha256-pr0uoMp72SkUkh6VQtQd+OVTqxAaat+3FN+o5yMJvQE=",
-    "lastModified": 1782281189
-  },
   "hjem": {
     "type": "github",
     "owner": "feel-co",
