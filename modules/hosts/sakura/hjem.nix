@@ -40,6 +40,7 @@ in {
           env = {
             NH_FLAKE = dotfile;
             NIXPKGS_ALLOW_UNFREE = "1";
+            PAGER = "moor";
             STARSHIP_CONFIG = mkStarshipConfig {
               inherit pkgs;
               nf-icon = "󰟆 ";

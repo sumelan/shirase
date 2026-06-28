@@ -32,6 +32,7 @@ in {
       env = {
         NH_FLAKE = dotfile;
         NIXPKGS_ALLOW_UNFREE = "1";
+        PAGER = "moor";
         STARSHIP_CONFIG = mkStarshipConfig {
           inherit pkgs;
           nf-icon = "󰟆 ";
@@ -87,6 +88,8 @@ in {
       extraAliases ? {},
       extraRuntimeInputs ? [],
     }: let
+      local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
+
       runtimeEnv = pkgs.buildEnv {
         name = "nushell-runtime-env";
         pathsToLink = ["/bin"];
@@ -95,15 +98,12 @@ in {
           builtins.attrValues {
             inherit
               (pkgs)
-              starship
               # Shell Utilities
               carapace
               carapace-bridge
               direnv
               nix-direnv
               # Command Line
-              bat
-              eza
               fd
               fzf
               jq
@@ -114,6 +114,7 @@ in {
               tig
               lazygit
               ;
+            inherit (local) bat eza moor starship;
           }
           ++ extraRuntimeInputs;
       };

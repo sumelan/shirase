@@ -34,8 +34,8 @@
         nativeBuildInputs = [pkgs.makeWrapper];
         postBuild = ''
           wrapProgram $out/bin/bat \
-            --add-flags "--theme base16" \
-            --add-flags "--style grid"
+            --add-flags "--theme Nord" \
+            --add-flags "--style numbers"
         '';
         meta.mainProgram = "bat";
       };

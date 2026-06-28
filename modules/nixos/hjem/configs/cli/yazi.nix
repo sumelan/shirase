@@ -8,17 +8,17 @@
     user,
     ...
   }: let
-    inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) yazi;
+    local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
   in {
     hjem.users.${user}.packages =
-      [yazi]
+      [local.yazi]
       ++ (lib.mapAttrsToList (
           name: file:
             pkgs.writeShellApplication {
               name = "yazi-print-${name}";
-              runtimeInputs = [pkgs.bat];
+              runtimeInputs = [local.moor];
               text = ''
-                YAZI_PATH=$(grep "export YAZI_CONFIG_HOME=" '${lib.getExe yazi}' | cut -d"'" -f2)
+                YAZI_PATH=$(grep "export YAZI_CONFIG_HOME=" '${lib.getExe local.yazi}' | cut -d"'" -f2)
                 moor --lang toml "$YAZI_PATH/${file}"
               '';
             }

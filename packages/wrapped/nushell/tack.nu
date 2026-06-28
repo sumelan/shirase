@@ -1,9 +1,9 @@
-# Select packages to update interactively with diff
+# Select inputs to update interactively with diff
 def tack-update-diff []: nothing -> nothing {
   let working_path = $env.NH_FLAKE | path expand
 
   if not ($working_path | path exists) {
-    echo "path does not exist: $working_path"
+    print $"Path does not exist: ($working_path)."
     exit 1
   }
 
@@ -15,7 +15,7 @@ def tack-update-diff []: nothing -> nothing {
   let selections = $pins.inputs
   | columns
   | str join "\n"
-  | fzf --multi --tmux center,20%
+  | fzf --multi --border horizontal --border-label "Select inputs to update."
   | lines
 
   print $"Selections: ($selections)"
@@ -28,7 +28,7 @@ def tack-update-diff []: nothing -> nothing {
 
   let name = $selections | each {
     |e|
-      print $"Pin: ($e)"
+      print $"(ansi cyan)Input: (ansi cyan_bold)($e)(ansi reset)"
 
       let alias = $pins.inputs
       | get $e
@@ -41,8 +41,6 @@ def tack-update-diff []: nothing -> nothing {
       | get url
       | split row ':'
       | get 1
-
-      print $"Repo: ($repo)"
 
       let change = tack look $e
 
@@ -62,31 +60,31 @@ def tack-update-diff []: nothing -> nothing {
         | get 2
 
         if ($alias | str contains 'cb') {
-          print "Git: codeberg"
+          print "Source: Codeberg"
 
           http get $"https://codeberg.org/($repo)/compare/($old)...($new).diff"
           | save $"/tmp/codeberg-($e).diff"
 
           try {
-            bat $"/tmp/codeberg-($e).diff"
+            moor $"/tmp/codeberg-($e).diff"
           } catch {|err| $err}
 
           rm $"/tmp/codeberg-($e).diff"
         } else if ($alias | str contains 'gh') {
-          print "Git: github"
+          print "Source: Github"
 
           http get $"https://github.com/($repo)/compare/($old)...($new).diff"
           | save $"/tmp/github-($e).diff"
 
           try {
-            bat $"/tmp/github-($e).diff"
+            moor $"/tmp/github-($e).diff"
           } catch {|err| $err}
 
           rm $"/tmp/github-($e).diff"
         }
       }
   }
-  print "Approve all changes? [y/n]"
+  print $"(ansi cyan_bold)Approve all changes?(ansi reset) [y/n]"
 
   let input =  (input --default "n")
 

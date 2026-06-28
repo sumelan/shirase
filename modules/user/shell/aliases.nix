@@ -17,7 +17,7 @@ _: {
       nv = "nvim";
     };
     extra = {
-      lt = "eza --tree --level=2 --icons";
+      lt = "eza --tree --level=3 --icons";
       tree = "eza --tree";
       cat = "bat -p";
 
@@ -47,7 +47,6 @@ _: {
     nu = {
       ll = "ls -la";
       la = "ls -a";
-      fg = "job unfreeze";
     };
   };
 }
