@@ -37,13 +37,6 @@ _: {
       zsls = "zfs list -t snapshot -S creation -o name,creation,used,written,refer";
     };
 
-    fish = {
-      ll = "eza -ala -g --icons";
-      la = "eza -A";
-      duz = "du -xh . | sort -hr | fzf";
-      n = "nu -c";
-    };
-
     nu = {
       ll = "ls -la";
       la = "ls -a";

@@ -107,14 +107,13 @@ in {
               fd
               fzf
               jq
-              ripgrep
               # VCS
               git
               delta
               tig
               lazygit
               ;
-            inherit (local) bat eza moor starship;
+            inherit (local) bat eza moor ripgrep starship;
           }
           ++ extraRuntimeInputs;
       };

@@ -41,7 +41,7 @@ in {
     in {
       packages = builtins.attrValues {
         # shell
-        inherit (local) fish starship;
+        inherit (local) starship;
         # tui
         inherit (local) bat batman eza eza-tree moor ripgrep;
         # scripts
