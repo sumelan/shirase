@@ -28,7 +28,7 @@ def tack-update-diff []: nothing -> nothing {
 
   let name = $selections | each {
     |e|
-      print $"(ansi cyan)==== Input: (ansi cyan_bold)($e)(ansi reset_bold) ====(ansi reset)"
+      print $"(ansi pink1)==== Input: (ansi attr_underline)($e)(ansi reset_underline) ====(ansi reset)"
 
       let alias = $pins.inputs
       | get $e
@@ -83,7 +83,7 @@ def tack-update-diff []: nothing -> nothing {
           rm $"/tmp/($e).diff"
         }
 
-        print $"(ansi blue)Approve changes? [y/n](ansi reset)"
+        print $"(ansi pink3)Approve changes? [y/n](ansi reset)"
 
         let input =  (input --numchar 1 --default "n")
         
