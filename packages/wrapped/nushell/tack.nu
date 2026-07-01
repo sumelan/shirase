@@ -28,72 +28,74 @@ def tack-update-diff []: nothing -> nothing {
 
   let name = $selections | each {
     |e|
-      print $"(ansi pink1)==== Input: (ansi attr_underline)($e)(ansi reset_underline) ====(ansi reset)"
-
-      let alias = $pins.inputs
-      | get $e
-      | get url
-      | split row ':'
-      | get 0
-
-      let repo = $pins.inputs
-      | get $e
-      | get url
-      | split row ':'
-      | get 1
-
-      let change = tack look $e
-
-      if ($change | str contains 'unchanged') {
-        print $"No update available on ($e)."
+      if ($e | str contains 'nixpkgs') {
+        print "Updating nixpkgs..."
+        print $"(tack update $e)"
       } else {
-        let old = $change
-        | split row ': '
-        | get 1
-        | split row ' '
+        print $"(ansi pink1)==== Input: (ansi attr_underline)($e)(ansi reset_underline) ====(ansi reset)"
+
+        let alias = $pins.inputs
+        | get $e
+        | get url
+        | split row ':'
         | get 0
 
-        let new = $change
-        | split row ': '
+        let repo = $pins.inputs
+        | get $e
+        | get url
+        | split row ':'
         | get 1
-        | split row ' '
-        | get 2
 
-        if ($alias | str contains 'cb') {
-          print $"Codeberg: ($repo)"
+        let change = tack look $e
 
-          http get $"https://codeberg.org/($repo)/compare/($old)...($new).diff"
-          | save $"/tmp/($e).diff"
+        if ($change | str contains 'unchanged') {
+          print $"No update available on ($e)."
+          print "Skipping..."
+        } else {
+          let old = $change
+          | split row ': '
+          | get 1
+          | split row ' '
+          | get 0
 
-          try {
-            moor $"/tmp/($e).diff"
-          } catch {|err| $err}
+          let new = $change
+          | split row ': '
+          | get 1
+          | split row ' '
+          | get 2
 
-          rm $"/tmp/($e).diff"
-        } else if ($alias | str contains 'gh') {
-          print $"Github: ($repo)"
+          if ($alias | str contains 'cb') {
+            http get $"https://codeberg.org/($repo)/compare/($old)...($new).diff"
+            | save $"/tmp/($e).diff"
 
-          http get $"https://github.com/($repo)/compare/($old)...($new).diff"
-          | save $"/tmp/($e).diff"
+            try {
+              moor $"/tmp/($e).diff"
+            } catch {|err| $err}
 
-          try {
-            moor $"/tmp/($e).diff"
-          } catch {|err| $err}
+            rm $"/tmp/($e).diff"
+          } else if ($alias | str contains 'gh') {
+            http get $"https://github.com/($repo)/compare/($old)...($new).diff"
+            | save $"/tmp/($e).diff"
 
-          rm $"/tmp/($e).diff"
-        }
+            try {
+              moor $"/tmp/($e).diff"
+            } catch {|err| $err}
+
+            rm $"/tmp/($e).diff"
+          }
 
         print $"(ansi pink3)Approve changes? [y/n](ansi reset)"
 
         let input =  (input --numchar 1 --default "n")
         
         if ($input | str contains 'y' ) {
-          print "Updating..."
+          print $"Updating ($e)..."
           print $"(tack update $e)"
         } else {
-          print "Update rejected."
+          print "Skipping..."
         }
       }
+    }
   }
   cd $pwd
 }
