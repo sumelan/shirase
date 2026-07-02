@@ -11,9 +11,9 @@
     "type": "github",
     "owner": "AvengeMedia",
     "repo": "DankMaterialShell",
-    "rev": "6bee1b2c86f2560c0c4e3caa69e78039ac71c015",
-    "narHash": "sha256-jThoCY9Gpi5WpdIlj5LjqDUWkP8KL71mHDJ6y1aoLNY=",
-    "lastModified": 1782614858
+    "rev": "57d08f6b3b033eb0c022f3b601d32b2ee68ad7ad",
+    "narHash": "sha256-XkJMx6T4ym+5XHNB8+QCO9f2kWgelRd52pOzmUTooUE=",
+    "lastModified": 1782956387
   },
   "dms-display-mirror": {
     "type": "github",
@@ -43,9 +43,9 @@
     "type": "github",
     "owner": "hercules-ci",
     "repo": "flake-parts",
-    "rev": "f7c1a2d347e4c52d5fb8d10cb4d94b5884e546fb",
-    "narHash": "sha256-m1Yf0wZ8j1OHjTc2UwHwyQRSnNeSgLJOd7q5Y45hzi4=",
-    "lastModified": 1778716662
+    "rev": "17c9d6cdfc60c64f4ee8d306f9bc0b4ccb51481e",
+    "narHash": "sha256-vp6Y/Grm98ESt6ceOkWiHWyZRDV3J1RID4w+6NWK9yA=",
+    "lastModified": 1782949081
   },
   "helium-browser": {
     "type": "github",
@@ -107,17 +107,17 @@
     "type": "github",
     "owner": "notashelf",
     "repo": "nvf",
-    "rev": "058a41f21ebbc404f3e0356f90dcd172fc7a4e6e",
-    "narHash": "sha256-UcSkRzXs/jJNBpZ0xHFYOybI1yiah4miTUDf5lczjeI=",
-    "lastModified": 1782547999
+    "rev": "6fad9e9a998dd3a7783c839ce2928877d3e5a883",
+    "narHash": "sha256-S1f/S5Vv7wURVUtzPkmAFlKPVciaPLXxoeg7/GCnl28=",
+    "lastModified": 1782841360
   },
   "run0-sudo-shim": {
     "type": "github",
     "owner": "lordgrimmauld",
     "repo": "run0-sudo-shim",
-    "rev": "6e397eebae4c7f3acb8eca080d1c56be5be19e44",
-    "narHash": "sha256-K+nghy9uAIJQ6Ox9hc3U+utiPJMwskwhPorJ7y7ZZow=",
-    "lastModified": 1781524338
+    "rev": "9fa985ddb9dc7f4d66aa7bfc3bc3188e4aa1d727",
+    "narHash": "sha256-J/I7VPXpOwNtEk9H+lbZVT+xJYBsSKgnMlwzlVIJSWk=",
+    "lastModified": 1782890834
   },
   "sops-nix": {
     "type": "github",

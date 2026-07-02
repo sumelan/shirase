@@ -10,14 +10,14 @@ in {
     mkStarshipConfig = {
       pkgs,
       extraConfig ? {},
-      nf-icon ? "󰟆 ",
+      nf-icon ? "",
     }:
       import ./_config.nix {inherit pkgs extraConfig nf-icon;};
 
     mkStarship = {
       pkgs,
       extraConfig ? {},
-      nf-icon ? "󰟆 ",
+      nf-icon ? "",
     }: let
       cfg = mkStarshipConfig {inherit pkgs extraConfig nf-icon;};
 

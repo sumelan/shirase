@@ -276,7 +276,6 @@ in {
         {_props.title._raw = ''r#"^ピクチャー イン ピクチャー$"#'';}
         {_props.app-id._raw = ''r#"^mpv$"#'';}
         {_props.app-id._raw = ''r#"^dev\.faetalize\.waytator$"#'';}
-        {_props.app-id._raw = ''r#"^dissent$"#'';}
         {_props.app-id._raw = ''r#"^swayimg$"#'';}
         {_props.app-id._raw = ''r#"^vlc$"#'';}
       ];
@@ -339,8 +338,8 @@ in {
   ];
 
   spawn-at-startup = [
-    ["nm-applet"]
-    ["blueman-applet"]
+    []
+    []
   ];
 
   binds = let
@@ -348,8 +347,8 @@ in {
   in {
     # dms
     "Mod+Space" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Spotlight Bar"}";
-      spawn = ["dms" "ipc" "spotlight-bar" "toggle"];
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Launcher"}";
+      spawn = ["dms" "ipc" "spotlight" "toggle"];
     };
     "Mod+Y" = {
       _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Clipboard"}";
@@ -433,8 +432,8 @@ in {
       spawn = ["wlr-which-key" "--initial-keys" "n"];
     };
     "Mod+D" = {
-      _props.hotkey-overlay-title = "${hotkey "#5E81AC" "  Dissent" "Discord Client"}";
-      spawn = ["dissent"];
+      _props.hotkey-overlay-title = "${hotkey "#5E81AC" "  WebCord" "Discord Client"}";
+      spawn = ["webcord"];
     };
     "Mod+Shift+N" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}";

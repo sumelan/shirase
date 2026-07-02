@@ -66,7 +66,7 @@ in {
         # image viewer
         inherit (pkgs) swayimg;
         # discord
-        inherit (pkgs) vesktop dissent;
+        inherit (pkgs) webcord-vencord;
         # slack
         inherit (pkgs) slack;
         # tools
@@ -162,7 +162,7 @@ in {
 
         ".config/dissent"
         ".config/Slack"
-        ".config/vesktop"
+        ".config/WebCord"
         ".config/YouTube Music"
         ".config/Proton"
         ".config/Proton Mail"

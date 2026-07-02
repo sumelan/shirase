@@ -12,31 +12,19 @@
     ;
   inherit (config.flake.custom.functions) printConfig;
 in {
-  perSystem = {pkgs, ...}: let
-    dotfile = "/home/sumelan/Projects/shirase";
-    extraConfig =
-      # nu
-      ''
-        # A `nix` and `nix-shell` wrapper for shells other than `bash`
-        source ${
-          pkgs.runCommand "nix-your-shell-nushell-config.nu" {} ''
-            ${lib.getExe pkgs.nix-your-shell} --nom nu >> "$out"
-          ''
-        }
-      '';
-
-    extraRuntimeInputs = [pkgs.nix-your-shell];
-  in {
+  perSystem = {pkgs, ...}: {
     packages.nushell = mkNushell {
-      inherit pkgs extraConfig extraRuntimeInputs;
+      inherit pkgs;
       env = {
-        NH_FLAKE = dotfile;
-        NIXPKGS_ALLOW_UNFREE = "1";
         PAGER = "moor";
-        STARSHIP_CONFIG = mkStarshipConfig {inherit pkgs;};
+        STARSHIP_CONFIG = mkStarshipConfig {
+          inherit pkgs;
+          nf-icon = "󰟆 ";
+        };
       };
     };
   };
+
   flake.custom.wrappers = {
     mkNuConfig = {
       pkgs,
@@ -51,8 +39,19 @@ in {
         (builtins.readFile ./config.nu)
         + (builtins.readFile ./tack.nu)
         + (builtins.readFile ./starship.nu)
-        + ''
+        +
+        # nu
+        ''
           source $"($nu.cache-dir)/carapace.nu"
+        ''
+        +
+        # nu
+        ''
+          source ${
+            pkgs.runCommand "nix-your-shell-nushell-config.nu" {} ''
+              ${lib.getExe pkgs.nix-your-shell} --nom nu >> "$out"
+            ''
+          }
         ''
         + extraConfig
         + aliases
@@ -63,13 +62,15 @@ in {
       env ? {},
       extraConfig ? "",
     }: let
-      completions = ''
-        $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
-        mkdir $"($nu.cache-dir)"
-        carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"
-        mkdir ('~/.config/nushell' | path expand)
-        touch ('~/.config/nushell/host.nu' | path expand)
-      '';
+      completions =
+        # nu
+        ''
+          $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
+          mkdir $"($nu.cache-dir)"
+          carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"
+          mkdir ('~/.config/nushell' | path expand)
+          touch ('~/.config/nushell/host.nu' | path expand)
+        '';
       envAttrs =
         (lib.concatStringsSep "\n" (
           lib.mapAttrsToList (k: v: "$env.${k} = ${builtins.toJSON v}") env
@@ -100,6 +101,8 @@ in {
               carapace-bridge
               direnv
               nix-direnv
+              nix-your-shell
+              starship
               # Command Line
               fd
               fzf
@@ -110,7 +113,7 @@ in {
               tig
               lazygit
               ;
-            inherit (local) bat eza moor ripgrep starship;
+            inherit (local) bat eza moor ripgrep;
           }
           ++ extraRuntimeInputs;
       };
