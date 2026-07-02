@@ -312,24 +312,24 @@
   "weatherEnabled": true,
   "dashTabs": [
     {
-      "id": "overview",
-      "enabled": true
+      "enabled": true,
+      "id": "overview"
     },
     {
-      "id": "media",
-      "enabled": true
+      "enabled": true,
+      "id": "media"
     },
     {
-      "id": "wallpaper",
-      "enabled": true
+      "enabled": true,
+      "id": "wallpaper"
     },
     {
-      "id": "weather",
-      "enabled": true
+      "enabled": true,
+      "id": "weather"
     },
     {
-      "id": "settings",
-      "enabled": true
+      "enabled": true,
+      "id": "settings"
     }
   ],
   "networkPreference": "ethernet",
@@ -639,6 +639,7 @@
       "gothCornerRadiusOverride": false,
       "gothCornerRadiusValue": 12,
       "gothCornersEnabled": false,
+      "hoverPopouts": true,
       "iconScale": 1.25,
       "id": "default",
       "innerPadding": 10,
@@ -710,8 +711,8 @@
           "showVpnIcon": false
         },
         {
-          "id": "battery",
           "enabled": true,
+          "id": "battery",
           "showBatteryPercentOnlyOnBattery": true,
           "showBatteryTime": false
         },
@@ -738,8 +739,7 @@
       "widgetOutlineOpacity": 1,
       "widgetOutlineThickness": 1,
       "widgetPadding": 8,
-      "widgetTransparency": 0,
-      "hoverPopouts": true
+      "widgetTransparency": 0
     }
   ],
   "desktopClockEnabled": false,
@@ -813,41 +813,41 @@
   "desktopWidgetGridSettings": {},
   "desktopWidgetInstances": [
     {
-      "id": "dw_1782994570361_sqilqeh5l",
-      "widgetType": "desktopClock",
-      "name": "デスクトップ時計",
-      "enabled": true,
       "config": {
-        "style": "digital",
-        "transparency": 0,
+        "clickThrough": false,
         "colorMode": "secondary",
         "customColor": "#ffffff",
-        "showDate": true,
-        "showAnalogNumbers": false,
-        "showAnalogSeconds": true,
         "displayPreferences": [
           "all"
         ],
+        "showAnalogNumbers": false,
+        "showAnalogSeconds": true,
+        "showDate": true,
+        "showDigitalSeconds": true,
         "showOnOverlay": false,
         "showOnOverview": true,
-        "clickThrough": false,
+        "style": "digital",
         "syncPositionAcrossScreens": false,
-        "showDigitalSeconds": true
+        "transparency": 0
       },
+      "enabled": true,
+      "id": "dw_1782994570361_sqilqeh5l",
+      "name": "デスクトップ時計",
       "positions": {
         "LG HDR 4K": {
-          "width": 245.96484375,
           "height": 114.7109375,
+          "width": 245.96484375,
           "x": 2298.48828125,
           "y": 1311.31640625
         },
         "_synced": {
-          "x": 0.9084945678710937,
-          "y": 0.9171549479166666,
+          "height": 103.23828125,
           "width": 219.59375,
-          "height": 103.23828125
+          "x": 0.9084945678710937,
+          "y": 0.9171549479166666
         }
-      }
+      },
+      "widgetType": "desktopClock"
     }
   ],
   "desktopWidgetGroups": [],
@@ -857,7 +857,7 @@
       "currentFilePath": "notepad-files/untitled-1777121577212.txt",
       "previewActive": false,
       "sourceContent": "\n",
-      "updatedAt": 1782992875583
+      "updatedAt": 1783002716856
     },
     "dms_clipboard_search": {
       "trigger": "cb"
@@ -910,7 +910,7 @@
   "frameCloseGaps": false,
   "frameLauncherEmergeSide": "top",
   "frameLauncherArcExtender": true,
-  "frameLauncherEdgeHover": false,
+  "frameLauncherEdgeHover": true,
   "frameMode": "connected",
   "barInsetPaddingShared": -1,
   "barInsetPaddingSyncAll": false,
