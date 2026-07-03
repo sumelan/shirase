@@ -312,24 +312,24 @@
   "weatherEnabled": true,
   "dashTabs": [
     {
-      "enabled": true,
-      "id": "overview"
+      "id": "overview",
+      "enabled": true
     },
     {
-      "enabled": true,
-      "id": "media"
+      "id": "media",
+      "enabled": true
     },
     {
-      "enabled": true,
-      "id": "wallpaper"
+      "id": "wallpaper",
+      "enabled": true
     },
     {
-      "enabled": true,
-      "id": "weather"
+      "id": "weather",
+      "enabled": true
     },
     {
-      "enabled": true,
-      "id": "settings"
+      "id": "settings",
+      "enabled": false
     }
   ],
   "networkPreference": "ethernet",
@@ -827,7 +827,7 @@
         "showOnOverlay": false,
         "showOnOverview": true,
         "style": "digital",
-        "syncPositionAcrossScreens": false,
+        "syncPositionAcrossScreens": true,
         "transparency": 0
       },
       "enabled": true,
@@ -841,10 +841,10 @@
           "y": 1311.31640625
         },
         "_synced": {
-          "height": 103.23828125,
-          "width": 219.59375,
-          "x": 0.9084945678710937,
-          "y": 0.9171549479166666
+          "x": 0.8978469848632813,
+          "y": 0.9106363932291667,
+          "width": 245.96484375,
+          "height": 114.7109375
         }
       },
       "widgetType": "desktopClock"
