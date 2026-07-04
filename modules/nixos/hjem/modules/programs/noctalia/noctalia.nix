@@ -1,15 +1,10 @@
-{
-  inputs,
-  lib,
-  ...
-}: {
+{inputs, ...}: {
   flake.custom.hjemModules.noctalia = _: {
     imports = [inputs.noctalia.hjemModules.default];
 
     programs.noctalia = {
       enable = true;
       systemd.enable = true;
-      settings = lib.importTOML ./settings.toml;
     };
 
     xdg.state.files = {
