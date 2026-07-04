@@ -99,15 +99,6 @@ in {
 
     focus-ring = {
       width = 3;
-      active-gradient = {
-        _props = {
-          from = "#B1C89D";
-          to = "#9FC6C5";
-          angle = 45;
-          "in" = "oklch longer hue";
-        };
-      };
-      inactive-color = "#434C5E";
     };
 
     border = {off = [];};
@@ -121,7 +112,6 @@ in {
       softness = 20;
       spread = 10;
       draw-behind-window = false;
-      color = "#191D24" + "90";
     };
 
     tab-indicator = {
@@ -135,19 +125,6 @@ in {
       position = "right";
       gaps-between-tabs = 0.000000;
       corner-radius = 0.000000;
-      active-color = "#191D24" + "90";
-      inactive-color = "#434C5E" + "90";
-    };
-
-    insert-hint = {
-      gradient = {
-        _props = {
-          angle = 45;
-          from = "#97B67C";
-          relative-to = "window";
-          to = "#B1C89D";
-        };
-      };
     };
 
     struts = {
@@ -162,7 +139,9 @@ in {
     # all windows
     {
       draw-border-with-background = false;
+      # Rounded corners for a modern look.
       geometry-corner-radius = [10.000000 10.000000 10.000000 10.000000];
+      # Clips window contents to the rounded corner boundaries.
       clip-to-geometry = true;
 
       background-effect = {
@@ -276,7 +255,8 @@ in {
         {_props.title._raw = ''r#"^ピクチャー イン ピクチャー$"#'';}
         {_props.app-id._raw = ''r#"^mpv$"#'';}
         {_props.app-id._raw = ''r#"^dev\.faetalize\.waytator$"#'';}
-        {_props.app-id._raw = ''r#"^swayimg$"#'';}
+        {_props.app-id._raw = ''r#"^com\.github\.th_ch\.youtube_music$"#'';}
+        {_props.app-id._raw = ''r#"^Pqiv$"#'';}
         {_props.app-id._raw = ''r#"^vlc$"#'';}
       ];
       default-column-width._children = [
@@ -314,15 +294,38 @@ in {
       ];
       block-out-from = "screen-capture";
     }
+    # Floating Noctalia settings window.
+    {
+      match = [
+        {_props.app-id._raw = ''r#"^dev\.noctalia\.Noctalia\.Settings$"#'';}
+      ];
+      open-floating = true;
+      default-column-width._children = [
+        {fixed = 1080;}
+      ];
+      default-window-height._children = [
+        {fixed = 920;}
+      ];
+    }
   ];
 
   layer-rule = [
-    # dms: block out sensitive components from screen-capture
+    # noctalia
+    # blur wallpaper
     {
       match = [
-        {_props.namespace._raw = ''r#"^dms:clipboard$"#'';}
+        {_props.namespace._raw = ''r#"^noctalia-backdrop$"#'';}
       ];
-      block-out-from = "screen-capture";
+      place-within-backdrop = true;
+    }
+    # Disable xray on all our surfaces so it looks more realistic.
+    {
+      match = [
+        {_props.namespace._raw = ''r#"^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"#'';}
+      ];
+      background-effect = {
+        xray = false;
+      };
     }
     # wlr-which-key
     {
@@ -345,74 +348,72 @@ in {
   binds = let
     hotkey = color: name: text: ''<span foreground='${color}'>[${name}]</span> ${text}'';
   in {
-    # dms
+    # Noctalia
     "Mod+Space" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Launcher"}";
-      spawn = ["dms" "ipc" "spotlight" "toggle"];
-    };
-    "Mod+Y" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Clipboard"}";
-      spawn = ["dms" "ipc" "clipboard" "toggle"];
-    };
-    "Mod+X" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Powermenu"}";
-      spawn = ["dms" "ipc" "powermenu" "toggle"];
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Launcher"}";
+      spawn = ["noctalia" "msg" "panel-toggle" "launcher"];
     };
     "Mod+S" = {
-      _props = {
-        cooldown-ms = 500;
-        hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "DMS Keychord"}";
-      };
-      spawn = ["wlr-which-key" "--initial-keys" "d"];
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Control Center"}";
+      spawn = ["noctalia" "msg" "panel-toggle" "control-center"];
+    };
+    "Mod+W" = {
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Wallpaper"}";
+      spawn = ["noctalia" "msg" "panel-toggle" "wallpaper"];
+    };
+    "Mod+X" = {
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Session"}";
+      spawn = ["noctalia" "msg" "panel-toggle" "session"];
+    };
+    "Mod+Y" = {
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Clipboard"}";
+      spawn = ["noctalia" "msg" "panel-toggle" "clipboard"];
     };
     "Mod+Comma" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "Settings"}";
-      spawn = ["dms" "ipc" "settings" "focusOrToggle"];
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Settings"}";
+      spawn = ["noctalia" "msg" "settings-toggle"];
     };
-    "Mod+Ctrl+L" = {
-      _props = {
-        allow-when-locked = true;
-        hotkey-overlay-title = "${hotkey "#BE9DB8" "󰮤  DankMaterialShell" "screen-lock"}";
-      };
-      spawn = ["dms" "ipc" "lock" "lock"];
+    "Print" = {
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Screenshot Region"}";
+      spawn = ["noctalia" "msg" "screenshot-region"];
+    };
+    "Shift+Print" = {
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Screenshot Fullscreen"}";
+      spawn = ["noctalia" "msg" "screenshot-fullscreen pick"];
     };
 
     # media-key
+    "XF86AudioRaiseVolume" = {
+      _props.allow-when-locked = true;
+      spawn = ["noctalia" "msg" "volume-up"];
+    };
     "XF86AudioLowerVolume" = {
       _props.allow-when-locked = true;
-      spawn = ["dms" "ipc" "audio" "decrement" "3"];
-    };
-    "XF86AudioMicMute" = {
-      _props.allow-when-locked = true;
-      spawn = ["dms" "ipc" "audio" "micmute"];
+      spawn = ["noctalia" "msg" "volume-down"];
     };
     "XF86AudioMute" = {
       _props.allow-when-locked = true;
-      spawn = ["dms" "ipc" "audio" "mute"];
-    };
-    "XF86AudioNext" = {
-      _props.allow-when-locked = true;
-      spawn = ["dms" "ipc" "mpris" "next"];
+      spawn = ["noctalia" "msg" "volume-mute"];
     };
     "XF86AudioPlay" = {
       _props.allow-when-locked = true;
-      spawn = ["dms" "ipc" "mpris" "playPause"];
+      spawn = ["noctalia" "msg" "media" "toggle"];
     };
     "XF86AudioPrev" = {
       _props.allow-when-locked = true;
-      spawn = ["dms" "ipc" "mpris" "previous"];
+      spawn = ["noctalia" "msg" "media" "previous"];
     };
-    "XF86AudioRaiseVolume" = {
+    "XF86AudioNext" = {
       _props.allow-when-locked = true;
-      spawn = ["dms" "ipc" "audio" "increment" "3"];
-    };
-    "XF86MonBrightnessDown" = {
-      _props.allow-when-locked = true;
-      spawn = ["dms" "ipc" "brightness" "decrement" "5" ""];
+      spawn = ["noctalia" "msg" "media" "next"];
     };
     "XF86MonBrightnessUp" = {
       _props.allow-when-locked = true;
-      spawn = ["dms" "ipc" "brightness" "increment" "5" ""];
+      spawn = ["noctalia" "msg" "brightness-up"];
+    };
+    "XF86MonBrightnessDown" = {
+      _props.allow-when-locked = true;
+      spawn = ["noctalia" "msg" "brightness-down"];
     };
 
     # execute
@@ -446,10 +447,6 @@ in {
     "Ctrl+Space" = {
       _props.hotkey-overlay-title = "${hotkey "#A3BE8C" "󰗊  Hazkey" "Switch input method"}";
       spawn = ["fcitx5-remote" "-t"];
-    };
-    "Mod+Backslash" = {
-      _props.hotkey-overlay-title = "${hotkey "#D79784" "󰽉  Waytator" "Interactive selection screenshot"}";
-      spawn = ["niri-waytator"];
     };
 
     # window
@@ -563,8 +560,7 @@ in {
     "Mod+Shift+Escape" = {
       quit = {_props.skip-confirmation = false;};
     };
-    "Mod+Shift+Backslash" = {screenshot-screen = [];};
-    "Mod+Alt+Backslash" = {screenshot-window = [];};
+    "Alt+Print" = {screenshot-window = [];};
     "Mod+Escape" = {
       _props.allow-inhibiting = false;
       toggle-keyboard-shortcuts-inhibit = [];
@@ -576,8 +572,6 @@ in {
     debounce-ms = 750;
     open-delay-ms = 150;
     highlight = {
-      active-color = "#8CAAEE" + "FF";
-      urgent-color = "#EA999C" + "FF";
       padding = 30;
       corner-radius = 10;
     };
@@ -707,20 +701,18 @@ in {
   };
 
   blur = {
-    passes = 3;
+    passes = 2;
     offset = 3.0;
-    noise = 0.02;
-    saturation = 1.5;
+    noise = 0.03;
+    saturation = 1.0;
   };
 
   include = [
-    ["dms/alttab.kdl"]
-    ["dms/binds.kdl"]
-    ["dms/colors.kdl"]
-    ["dms/cursor.kdl"]
-    ["dms/layout.kdl"]
-    ["dms/outputs.kdl"]
-    ["dms/windowrules.kdl"]
-    ["dms/wpblur.kdl"]
+    ["noctalia.kdl"]
   ];
+
+  debug = {
+    # Allows notification actions and window activation from Noctalia.
+    honor-xdg-activation-with-invalid-serial = [];
+  };
 }

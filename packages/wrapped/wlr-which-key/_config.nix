@@ -31,8 +31,7 @@ _: {
   auto_kbd_layout = false;
 
   menu = let
-    dms = key: import ./_dms-keys.nix {inherit key;};
-    niri = key: import ./_niri-keys.nix {inherit key;};
+    niri = key: import ./_niri.nix {inherit key;};
   in
-    dms "d" ++ niri "n";
+    niri "n";
 }

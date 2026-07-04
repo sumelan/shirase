@@ -2,10 +2,9 @@
   inherit (lib) mkOption;
   inherit (lib.types) package str;
 in {
-  flake.custom.hjemConfigs.gtk = {
+  flake.modules.nixos.gui = {
     config,
     pkgs,
-    user,
     ...
   }: {
     options.custom = {
@@ -43,7 +42,7 @@ in {
     };
 
     config = {
-      hjem.users.${user}.packages = [
+      environment.systemPackages = [
         config.custom.gtk.theme.package
         config.custom.gtk.iconTheme.package
       ];

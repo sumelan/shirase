@@ -44,9 +44,6 @@ url = "gh:feel-co/hjem"
 [inputs.niri-nix]
 url = "cb:BANanaD3V/niri-nix"
 
-[inputs.dankMaterialShell]
-url = "gh:AvengeMedia/DankMaterialShell"
-
 [inputs.impermanence]
 url = "gh:nix-community/impermanence"
 
@@ -71,17 +68,11 @@ url = "gh:youwen5/zen-browser-flake"
 [inputs.helium-browser]
 url = "gh:schembriaiden/helium-browser-nix-flake"
 
-[inputs.dms-plugins]
-url = "gh:AvengeMedia/dms-plugins"
-type = "fetch"
-
-[inputs.dms-screen-recorder]
-url = "gh:arqueon/dms-screen-recorder"
-type = "fetch"
-
-[inputs.dms-display-mirror]
-url = "gh:jfchenier/dms-display-mirror"
-type = "fetch"
-
 [inputs.tack]
 url = "gh:manic-systems/tack"
+
+[inputs.noctalia]
+url = "gh:noctalia-dev/noctalia"
+
+[inputs.noctalia-greeter]
+url = "gh:noctalia-dev/noctalia-greeter"

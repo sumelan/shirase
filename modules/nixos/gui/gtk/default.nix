@@ -4,7 +4,7 @@
   inherit (lib.generators) toINI;
   inherit (lib.gvariant) mkUint32;
 in {
-  flake.custom.hjemConfigs.gtk = {
+  flake.modules.nixos.gui = {
     config,
     pkgs,
     user,
@@ -125,11 +125,17 @@ in {
         ];
       };
 
-      hjem.users.${user}.xdg.config.files."gtk-3.0/bookmarks".text =
-        concatMapStringsSep "\n" (
-          b: "file://${b}"
-        )
-        gtkCfg.bookmarks;
+      hjem.users.${user} = {
+        xdg.config.files = {
+          "gtk-3.0/bookmarks".text =
+            concatMapStringsSep "\n" (
+              b: "file://${b}"
+            )
+            gtkCfg.bookmarks;
+          "gtk-3.0/settings.ini".text = gtkIni;
+          "gtk-4.0/settings.ini".text = gtkIni;
+        };
+      };
     };
   };
 }

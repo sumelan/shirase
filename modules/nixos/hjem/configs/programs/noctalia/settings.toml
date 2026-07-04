@@ -1,0 +1,187 @@
+[audio]
+enable_sounds = true
+
+[backdrop]
+enabled = true
+
+[bar]
+order = [ "sideBar" ]
+
+    [bar.sideBar]
+    background_opacity = 0.4999999888241291
+    center = [ "workspaces" ]
+    end = [ "notifications", "network", "bluetooth", "volume", "brightness", "battery" ]
+    font_family = "Montserrat"
+    margin_ends = 20
+    position = "left"
+    radius = 20
+    scale = 1.5000000149011612
+    start = [ "control-center", "spacer_1", "media", "audio_visualizer", "screenshot", "wallpaper", "privacy" ]
+    thickness = 50
+
+[brightness]
+sync_all_monitors = true
+
+[calendar]
+enabled = true
+
+[desktop_widgets]
+schema_version = 2
+widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-0000000000000002" ]
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    box_height = 144.0
+    box_width = 320.0
+    cx = 2384.0
+    cy = 1352.0
+    output = "HDMI-A-2"
+    rotation = 0.0
+    type = "label"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
+        background = false
+        background_opacity = 0.59999999999999998
+        description = ""
+        font_family = "Montserrat"
+        opacity = 0.5
+        shadow = true
+        title = " NixOS"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000002]
+    box_height = 208.0
+    box_width = 368.0
+    cx = 368.0
+    cy = 176.0
+    output = "HDMI-A-2"
+    rotation = 0.0
+    type = "clock"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
+        background = false
+        center_text = true
+        color = "on_surface"
+        font_family = "Montserrat"
+        format = "{:%H:%M:%S}"
+
+[dock]
+active_monitor_only = true
+auto_hide = true
+background_opacity = 0.34999999217689037
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = false
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 660.0
+
+[location]
+auto_locate = true
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@HDMI-A-2" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 1280.0
+    cy = 1321.0
+    output = "HDMI-A-2"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
+
+[osd]
+position = "bottom_center"
+position_vertical = "bottom_center"
+
+[shell]
+avatar_path = "/home/sumelan/.face"
+font_family = "Montserrat"
+niri_overview_type_to_launch_enabled = true
+polkit_agent = true
+settings_show_advanced = true
+
+    [shell.panel]
+    transparency_mode = "glass"
+
+    [shell.screen_corners]
+    enabled = true
+    size = 50
+
+    [shell.screenshot]
+    directory = "/home/sumelan/Pictures/Screenshots"
+    pipe_command = "waytator"
+    pipe_to_command = true
+
+[theme]
+builtin = "Nord"
+community_palette = "Oxocarbon"
+mode = "dark"
+source = "builtin"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    community_ids = [ "papirus-icons", "steam" ]
+
+[wallpaper]
+transition_on_startup = true
+
+    [wallpaper.default]
+    path = "/home/sumelan/Pictures/Wallpapers/1128816.png"
+
+    [wallpaper.last]
+    path = "/home/sumelan/Pictures/Wallpapers/1128816.png"
+
+    [wallpaper.monitors.HDMI-A-2]
+    path = "/home/sumelan/Pictures/Wallpapers/1128816.png"
+
+[widget.control-center]
+font_family = "Montserrat"
+glyph = "niri"
+
+[widget.spacer_1]
+type = "spacer"
+
+[widget.spacer_2]
+type = "spacer"
+
+[widget.workspaces]
+display = "none"
+focused_output_only = true
+font_family = "Montserrat"
+hide_when_empty = true
+labels_only_when_occupied = true

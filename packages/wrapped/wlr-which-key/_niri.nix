@@ -24,7 +24,9 @@
           {
             key = "c";
             desc = "Clear the dynamic cast target.";
-            cmd = "niri msg action clear-dynamic-cast-target";
+            cmd =
+              # sh
+              ''niri msg action clear-dynamic-cast-target'';
           }
         ];
       }

@@ -19,14 +19,7 @@
     (mkModules {name = "niri-nix";})
     (mkModules {name = "run0-sudo-shim";})
     (mkModules {name = "impermanence";})
-    (mkModules {
-      name = "dankMaterialShell";
-      opt = "dank-material-shell";
-    })
-    (mkModules {
-      name = "dankMaterialShell";
-      opt = "greeter";
-    })
+    (mkModules {name = "noctalia-greeter";})
     (mkModules {
       name = "nix-hazkey";
       opt = "hazkey";

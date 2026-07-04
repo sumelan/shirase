@@ -1,5 +1,5 @@
 {lib, ...}: {
-  flake.custom.hjemConfigs.qt = {
+  flake.modules.nixos.gui = {
     config,
     pkgs,
     user,
@@ -12,18 +12,20 @@
       style = "kvantum";
     };
 
-    hjem.users.${user} = {
-      environment.sessionVariables = {
+    environment = {
+      sessionVariables = {
         QT_QPA_PLATFORMTHEME = "qt5ct";
         QT_STYLE_OVERRIDE = "kvantum";
       };
 
-      packages = [
+      systemPackages = [
         pkgs.kdePackages.qt6ct
         pkgs.kdePackages.qtstyleplugin-kvantum
         pkgs.kdePackages.qtwayland
       ];
+    };
 
+    hjem.users.${user} = {
       xdg.config.files = let
         qtConf = {
           Appearance = {

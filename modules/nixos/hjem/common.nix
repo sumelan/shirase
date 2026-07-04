@@ -47,7 +47,7 @@ in {
         # scripts
         inherit (local) ns niri-waytator;
         # desktop
-        inherit (local) wlr-which-key waytator;
+        inherit (local) pqiv wlr-which-key waytator;
         # pdf viewer
         inherit (local) zathura;
 
@@ -63,8 +63,6 @@ in {
         inherit (pkgs) mpv pear-desktop euphonica;
         # ebook
         inherit (pkgs) foliate;
-        # image viewer
-        inherit (pkgs) swayimg;
         # discord
         inherit (pkgs) webcord-vencord;
         # slack

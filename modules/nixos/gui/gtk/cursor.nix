@@ -2,7 +2,7 @@
   inherit (lib) mkOption;
   inherit (lib.types) package str int;
 in {
-  flake.custom.hjemConfigs.cursor = {
+  flake.modules.nixos.gui = {
     config,
     pkgs,
     user,
@@ -36,15 +36,18 @@ in {
     };
 
     config = {
-      environment.sessionVariables = {
-        XCURSOR_SIZE = gtkCursor.size;
-        XCURSOR_THEME = gtkCursor.name;
+      environment = {
+        sessionVariables = {
+          XCURSOR_SIZE = gtkCursor.size;
+          XCURSOR_THEME = gtkCursor.name;
+        };
+
+        systemPackages = [
+          gtkCursor.package
+        ];
       };
 
       hjem.users.${user} = {
-        packages = [
-          gtkCursor.package
-        ];
         xdg.data.files."icons/${gtkCursor.name}" = {
           source = "${gtkCursor.package}/share/icons/${gtkCursor.name}";
         };
