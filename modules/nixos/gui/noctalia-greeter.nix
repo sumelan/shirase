@@ -1,8 +1,7 @@
-{inputs, ...}: {
+_: {
   flake.modules.nixos.gui = {pkgs, ...}: {
     programs.noctalia-greeter = {
       enable = true;
-      package = inputs.noctalia-greeter.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
       # Optional configuration
       greeter-args = "";
@@ -14,6 +13,7 @@
         cursor = {
           theme = "Capitaine Cursors (Nord)";
           size = 38;
+          path = "${pkgs.capitaine-cursors-themed}/share/icons/Capitaine Cursors (Nord)";
         };
         keyboard = {
           layout = "us";

@@ -708,7 +708,14 @@ in {
   };
 
   include = [
-    ["noctalia.kdl"]
+    [
+      {
+        _args = ["noctalia.kdl"];
+        _props = {
+          optional = true;
+        };
+      }
+    ]
   ];
 
   debug = {

@@ -18,5 +18,11 @@ in {
         package = lib.mkDefault nushell;
       };
     };
+
+    custom.fileSystem = {
+      cache.home.directories = [
+        ".config/nushell"
+      ];
+    };
   };
 }
