@@ -255,7 +255,6 @@ in {
         {_props.title._raw = ''r#"^ピクチャー イン ピクチャー$"#'';}
         {_props.app-id._raw = ''r#"^mpv$"#'';}
         {_props.app-id._raw = ''r#"^dev\.faetalize\.waytator$"#'';}
-        {_props.app-id._raw = ''r#"^com\.github\.th_ch\.youtube_music$"#'';}
         {_props.app-id._raw = ''r#"^Pqiv$"#'';}
         {_props.app-id._raw = ''r#"^vlc$"#'';}
       ];

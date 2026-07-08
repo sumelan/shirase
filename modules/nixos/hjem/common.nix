@@ -158,7 +158,6 @@ in {
         ".local/state/mpv" # watch later
         ".local/share/com.github.johnfactotum.Foliate"
 
-        ".config/dissent"
         ".config/Slack"
         ".config/WebCord"
         ".config/YouTube Music"
@@ -167,7 +166,6 @@ in {
         ".config/Proton Pass"
       ];
       cache.home.directories = [
-        ".cache/dissent"
         ".cache/euphonica"
         ".cache/com.github.johnfactotum.Foliate"
         ".cache/Proton"
