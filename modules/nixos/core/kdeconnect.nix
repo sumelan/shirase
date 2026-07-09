@@ -1,16 +1,16 @@
 _: {
-  flake.modules.nixos.kdeconnect = _: {
+  flake.modules.nixos.kdeconnect = {pkgs, ...}: {
     programs.kdeconnect = {
       enable = true;
+      package = pkgs.valent;
     };
 
     custom.fileSystem = {
       persist.home.directories = [
-        ".config/kdeconnect"
+        ".config/valent"
       ];
       cache.home.directories = [
-        ".cache/kdeconnect.app"
-        ".cache/kdeconnect.daemon"
+        ".cache/valent"
       ];
     };
   };
