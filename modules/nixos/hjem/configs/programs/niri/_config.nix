@@ -74,12 +74,17 @@ in {
   };
 
   layout = {
-    gaps = 14;
     center-focused-column = "never";
+
     always-center-single-column = [];
+
     empty-workspace-above-first = [];
+
     default-column-display = "tabbed";
+
     background-color = "transparent";
+
+    gaps = 14;
 
     preset-column-widths._children = [
       {proportion = 0.33333;}
@@ -352,6 +357,10 @@ in {
       _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Launcher"}";
       spawn = ["noctalia" "msg" "panel-toggle" "launcher"];
     };
+    "Mod+N" = {
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Notes"}";
+      spawn = ["noctalia" "msg" "panel-toggle" "noctalia/notes:panel"];
+    };
     "Mod+S" = {
       _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Control Center"}";
       spawn = ["noctalia" "msg" "panel-toggle" "control-center"];
@@ -359,6 +368,10 @@ in {
     "Mod+W" = {
       _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Wallpaper"}";
       spawn = ["noctalia" "msg" "panel-toggle" "wallpaper"];
+    };
+    "Mod+Shift+W" = {
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Video Wallpaper"}";
+      spawn = ["noctalia" "msg" "panel-toggle" "noctalia/mpvpaper:picker"];
     };
     "Mod+X" = {
       _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Session"}";
@@ -423,13 +436,6 @@ in {
     "Mod+B" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "  Helium" "Web Browser"}";
       spawn = ["helium"];
-    };
-    "Mod+N" = {
-      _props = {
-        cooldown-ms = 500;
-        hotkey-overlay-title = "${hotkey "#D79784" "󰗢  niri" "niri Keychord"}";
-      };
-      spawn = ["wlr-which-key" "--initial-keys" "n"];
     };
     "Mod+D" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "  WebCord" "Discord Client"}";

@@ -3,6 +3,7 @@ enable_sounds = true
 
 [backdrop]
 enabled = true
+blur_intensity = 0.0
 
 [bar]
 order = [ "sideBar" ]
@@ -12,7 +13,7 @@ order = [ "sideBar" ]
     capsule_opacity = 0.54999998770654202
     capsule_padding = 10.0
     center = [ "media", "audio_visualizer" ]
-    end = [ "network", "bluetooth", "volume", "brightness", "battery", "spacer_2" ]
+    end = [ "recorder", "network", "bluetooth", "volume", "brightness", "battery", "session" ]
     font_family = "Maple Mono NF"
     icon_color = "primary"
     margin_ends = 20
@@ -125,7 +126,7 @@ widget_order = [
 
         [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2".settings]
         background_color = "surface_variant"
-        background_opacity = 0.88
+        background_opacity = 0.65000000000000002
         background_radius = 12.0
         input_opacity = 1.0
         input_radius = 6.0
@@ -146,6 +147,7 @@ widget_order = [
         [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
         background = false
         center_text = true
+        clock_style = "digital"
         font_family = "Maple Mono NF"
         format = "{:%H:%M:%S}"
 
@@ -174,6 +176,8 @@ widget_order = [
 
         [lockscreen_widgets.widget.lockscreen-widget-0000000000000003.settings]
         background = true
+        background_opacity = 0.25
+        color = "tertiary"
         font_family = "Montserrat"
         layout = "horizontal"
 
@@ -181,12 +185,21 @@ widget_order = [
 position = "bottom_center"
 position_vertical = "bottom_center"
 
+[plugin_settings."noctalia/mpvpaper"]
+video_directory = "~/Videos/Wallpapers/blueArchive"
+
+[plugins]
+enabled = [ "noctalia/notes", "noctalia/mpvpaper", "noctalia/screen_recorder" ]
+
 [shell]
 avatar_path = "/home/sumelan/.face"
 font_family = "Montserrat"
 niri_overview_type_to_launch_enabled = true
 polkit_agent = true
 settings_show_advanced = true
+
+    [shell.greeter_sync]
+    auto_sync = true
 
     [shell.launcher]
     session_search = true
@@ -214,13 +227,13 @@ source = "wallpaper"
 transition_on_startup = true
 
     [wallpaper.default]
-    path = "/home/sumelan/Pictures/Wallpapers/1310338.jpg"
+    path = "/home/sumelan/Pictures/Wallpapers/blueArchive/1137852.png"
 
     [wallpaper.last]
-    path = "/home/sumelan/Pictures/Wallpapers/1310338.jpg"
+    path = "/home/sumelan/Pictures/Wallpapers/blueArchive/1137852.png"
 
     [wallpaper.monitors.HDMI-A-2]
-    path = "/home/sumelan/Pictures/Wallpapers/1310338.jpg"
+    path = "/home/sumelan/Pictures/Wallpapers/blueArchive/1137852.png"
 
 [widget.audio_visualizer]
 width = 125
@@ -234,8 +247,14 @@ art_size = 25
 hide_when_no_media = true
 title_scroll = "on_hover"
 
+[widget.notes]
+type = "noctalia/notes:notes"
+
 [widget.network]
 show_label = false
+
+[widget.recorder]
+type = "noctalia/screen_recorder:recorder"
 
 [widget.spacer_1]
 type = "spacer"
