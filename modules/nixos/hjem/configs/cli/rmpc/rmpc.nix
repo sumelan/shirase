@@ -10,7 +10,10 @@ in {
     inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) rmpc;
   in {
     hjem.users.${user} = {
-      packages = [rmpc];
+      packages = [
+        pkgs.cava
+        rmpc
+      ];
 
       xdg.config.files."rmpc/config.ron".source = import ./_config.nix {
         inherit pkgs;

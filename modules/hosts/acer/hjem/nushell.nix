@@ -1,7 +1,7 @@
 {config, ...}: let
   inherit (config) flake;
 in {
-  flake.modules.nixos."hosts/minibookx" = {
+  flake.modules.nixos."hosts/acer" = {
     config,
     pkgs,
     user,

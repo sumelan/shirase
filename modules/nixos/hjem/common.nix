@@ -81,7 +81,7 @@ in {
           DEFAULT_BROWSER = "helium";
           BROWSER = "helium";
 
-          TERMINAL = "foot";
+          TERMINAL = "ghostty";
           EDITOR = "hx";
           VISUAL = "hx";
           NIXPKGS_ALLOW_UNFREE = "1";
@@ -109,11 +109,11 @@ in {
         };
 
         mime-apps = let
-          foot = "footclient.desktop";
+          ghostty = "com.mitchellh.ghostty.desktop";
           zathura = "org.pwmt.zathura-pdf-mupdf.desktop";
         in {
           default-applications = {
-            "x-scheme-handler/terminal" = foot;
+            "x-scheme-handler/terminal" = ghostty;
 
             "text/plain" = "helix.desktop";
             "application/x-shellscript" = "helix.desktop";

@@ -3,15 +3,17 @@ enable_sounds = true
 
 [backdrop]
 enabled = true
+blur_intensity = 0.0
 
 [bar]
 order = [ "sideBar" ]
 
     [bar.sideBar]
     background_opacity = 0.64999998547136784
+    capsule_opacity = 0.54999998770654202
+    capsule_padding = 10.0
     center = [ "media", "audio_visualizer" ]
-    enabled = true
-    end = [ "network", "bluetooth", "volume", "brightness", "battery", "spacer_2" ]
+    end = [ "recorder", "network", "bluetooth", "volume", "brightness", "battery", "session" ]
     font_family = "Maple Mono NF"
     icon_color = "primary"
     margin_ends = 20
@@ -22,17 +24,15 @@ order = [ "sideBar" ]
     thickness = 50
     widget_spacing = 20
 
+[brightness]
+sync_all_monitors = true
+
 [calendar]
 enabled = true
 
 [desktop_widgets]
 schema_version = 2
-widget_order = [
-    "desktop-widget-0000000000000001",
-    "desktop-widget-0000000000000002",
-    "desktop-widget-0000000000000003",
-    "desktop-widget-0000000000000004"
-]
+widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-0000000000000002" ]
 
     [desktop_widgets.grid]
     cell_size = 16
@@ -74,35 +74,10 @@ widget_order = [
         font_family = "Maple Mono NF"
         format = "{:%H:%M:%S}"
 
-    [desktop_widgets.widget.desktop-widget-0000000000000003]
-    box_height = 0.0
-    box_width = 0.0
-    cx = 232.0
-    cy = 82.5
-    output = "DSI-1"
-    rotation = 0.0
-    type = "clock"
-
-        [desktop_widgets.widget.desktop-widget-0000000000000003.settings]
-        background = false
-        center_text = true
-        font_family = "Maple Mono NF"
-        format = "{:%H:%M:%S}"
-
-    [desktop_widgets.widget.desktop-widget-0000000000000004]
-    box_height = 64.0
-    box_width = 128.0
-    cx = 1824.0
-    cy = 1144.0
-    output = "DSI-1"
-    rotation = 0.0
-    type = "label"
-
-        [desktop_widgets.widget.desktop-widget-0000000000000004.settings]
-        background = false
-        font_family = "Maple Mono NF"
-        opacity = 0.55000000000000004
-        title = "󱄅 NixOS"
+[dock]
+active_monitor_only = true
+auto_hide = true
+background_opacity = 0.34999999217689037
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
@@ -114,7 +89,7 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
 
     [idle.behavior.lock-and-suspend]
     action = "lock_and_suspend"
-    enabled = true
+    enabled = false
     timeout = 900.0
 
     [idle.behavior.screen-off]
@@ -129,7 +104,6 @@ auto_locate = true
 enabled = true
 schema_version = 2
 widget_order = [
-    "lockscreen-login-box@DSI-1",
     "lockscreen-login-box@HDMI-A-2",
     "lockscreen-widget-0000000000000001",
     "lockscreen-widget-0000000000000002",
@@ -140,26 +114,6 @@ widget_order = [
     cell_size = 16
     major_interval = 4
     visible = true
-
-    [lockscreen_widgets.widget."lockscreen-login-box@DSI-1"]
-    box_height = 70.0
-    box_width = 400.0
-    cx = 960.0
-    cy = 1081.0
-    output = "DSI-1"
-    rotation = 0.0
-    type = "login_box"
-
-        [lockscreen_widgets.widget."lockscreen-login-box@DSI-1".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        input_opacity = 1.0
-        input_radius = 6.0
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_password_hint = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2"]
     box_height = 70.0
@@ -172,7 +126,7 @@ widget_order = [
 
         [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2".settings]
         background_color = "surface_variant"
-        background_opacity = 0.88
+        background_opacity = 0.65000000000000002
         background_radius = 12.0
         input_opacity = 1.0
         input_radius = 6.0
@@ -193,6 +147,7 @@ widget_order = [
         [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
         background = false
         center_text = true
+        clock_style = "digital"
         font_family = "Maple Mono NF"
         format = "{:%H:%M:%S}"
 
@@ -221,42 +176,70 @@ widget_order = [
 
         [lockscreen_widgets.widget.lockscreen-widget-0000000000000003.settings]
         background = true
+        background_opacity = 0.25
+        color = "tertiary"
         font_family = "Montserrat"
         layout = "horizontal"
 
 [osd]
-background_opacity = 0.69999998435378075
 position = "bottom_center"
 position_vertical = "bottom_center"
+
+[plugin_settings."noctalia/mpvpaper"]
+video_directory = "~/Videos/Wallpapers/blueArchive"
+
+[plugins]
+enabled = [ "noctalia/notes", "noctalia/mpvpaper", "noctalia/screen_recorder" ]
 
 [shell]
 avatar_path = "/home/sumelan/.face"
 font_family = "Montserrat"
 niri_overview_type_to_launch_enabled = true
 polkit_agent = true
+settings_show_advanced = true
+
+    [shell.greeter_sync]
+    auto_sync = true
+
+    [shell.launcher]
+    session_search = true
 
     [shell.screen_corners]
     enabled = true
     size = 50
 
+    [shell.screenshot]
+    directory = "/home/sumelan/Pictures/Screenshots"
+    pipe_command = "waytator"
+    pipe_to_command = true
+
 [theme]
+community_palette = "Oxocarbon"
+custom_palette = "1315573-mc-2"
+mode = "dark"
 source = "wallpaper"
 
-[wallpaper.default]
-path = "/home/sumelan/Pictures/Wallpapers/nix-d-nord-aurora.jpg"
+    [theme.templates]
+    builtin_ids = [ "niri" ]
+    community_ids = []
 
-[wallpaper.last]
-path = "/home/sumelan/Pictures/Wallpapers/nix-d-nord-aurora.jpg"
+[wallpaper]
+transition_on_startup = true
 
-[wallpaper.monitors.DSI-1]
-path = "/home/sumelan/Pictures/Wallpapers/nix-d-nord-aurora.jpg"
+    [wallpaper.default]
+    path = "/home/sumelan/Pictures/Wallpapers/blueArchive/1137852.png"
+
+    [wallpaper.last]
+    path = "/home/sumelan/Pictures/Wallpapers/blueArchive/1137852.png"
+
+    [wallpaper.monitors.HDMI-A-2]
+    path = "/home/sumelan/Pictures/Wallpapers/blueArchive/1137852.png"
 
 [widget.audio_visualizer]
-color_1 = "on_primary"
-color_2 = "tertiary"
 width = 125
 
 [widget.control-center]
+font_family = "Montserrat"
 glyph = "niri"
 
 [widget.media]
@@ -264,11 +247,27 @@ art_size = 25
 hide_when_no_media = true
 title_scroll = "on_hover"
 
+[widget.notes]
+type = "noctalia/notes:notes"
+
+[widget.network]
+show_label = false
+
+[widget.recorder]
+type = "noctalia/screen_recorder:recorder"
+
+[widget.spacer_1]
+type = "spacer"
+
 [widget.spacer_2]
 type = "spacer"
+
+[widget.tray]
+drawer = true
 
 [widget.workspaces]
 display = "none"
 focused_output_only = true
+font_family = "Montserrat"
 hide_when_empty = true
 labels_only_when_occupied = true

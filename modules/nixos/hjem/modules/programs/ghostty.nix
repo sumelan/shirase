@@ -1,4 +1,9 @@
-{lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
+  inherit (config) flake;
   inherit (lib) mkPackageOption mkEnableOption;
 in {
   flake.custom.hjemModules.ghostty = {
@@ -7,6 +12,7 @@ in {
     ...
   }: let
     cfg = config.rum.programs.ghostty;
+    local = flake.packages.${pkgs.stdenv.hostPlatform.system};
   in {
     options.rum = {
       programs.ghostty = {
@@ -25,7 +31,11 @@ in {
 
       systemd.services."app-com.mitchellh.ghostty" = lib.mkIf cfg.systemd.enable {
         description = "Ghostty";
-        path = ["/run/current-system/sw" "/etc/profiles/per-user/${config.user}"];
+        path = [
+          "/run/current-system/sw"
+          "/etc/profiles/per-user/${config.user}"
+        ];
+
         requires = ["dbus.socket"];
         after = ["graphical-session.target" "dbus.socket"];
         wantedBy = ["graphical-session.target"];

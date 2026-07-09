@@ -4,16 +4,14 @@ _: {
     user,
     ...
   }: {
+    # plugin dependencies
     hjem.users.${user} = {
-      # plugin dependencies
       packages = builtins.attrValues {
-        inherit
-          (pkgs)
-          mpvpaper
-          gpu-screen-recorder
-          ;
+        inherit (pkgs) mpvpaper;
       };
     };
+
+    programs.gpu-screen-recorder.enable = true;
 
     custom.fileSystem = {
       cache.home.directories = [

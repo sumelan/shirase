@@ -40,11 +40,11 @@ widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-000000000000
     visible = true
 
     [desktop_widgets.widget.desktop-widget-0000000000000001]
-    box_height = 144.0
-    box_width = 352.0
-    cx = 2352.0
-    cy = 1352.0
-    output = "HDMI-A-2"
+    box_height = 64.0
+    box_width = 240.0
+    cx = 1768.0
+    cy = 1144.0
+    output = "DSI-1"
     rotation = 0.0
     type = "label"
 
@@ -59,11 +59,11 @@ widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-000000000000
         title = " NixOS"
 
     [desktop_widgets.widget.desktop-widget-0000000000000002]
-    box_height = 128.0
-    box_width = 368.0
-    cx = 312.0
-    cy = 120.0
-    output = "HDMI-A-2"
+    box_height = 80.0
+    box_width = 224.0
+    cx = 192.0
+    cy = 88.0
+    output = "DSI-1"
     rotation = 0.0
     type = "clock"
 
@@ -85,35 +85,58 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
     [idle.behavior.lock]
     action = "lock"
     enabled = true
-    timeout = 600.0
+    timeout = 400.0
 
     [idle.behavior.lock-and-suspend]
     action = "lock_and_suspend"
-    enabled = false
-    timeout = 900.0
+    enabled = true
+    timeout = 800.0
 
     [idle.behavior.screen-off]
     action = "screen_off"
     enabled = true
-    timeout = 660.0
+    timeout = 500.0
 
 [location]
 auto_locate = true
-
 [lockscreen_widgets]
 enabled = true
 schema_version = 2
 widget_order = [
+    "lockscreen-login-box@DSI-1",
     "lockscreen-login-box@HDMI-A-2",
     "lockscreen-widget-0000000000000001",
     "lockscreen-widget-0000000000000002",
-    "lockscreen-widget-0000000000000003"
+    "lockscreen-widget-0000000000000003",
+    "lockscreen-widget-0000000000000004",
+    "lockscreen-widget-0000000000000005",
+    "lockscreen-widget-0000000000000006"
 ]
 
     [lockscreen_widgets.grid]
     cell_size = 16
     major_interval = 4
     visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DSI-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 960.0
+    cy = 1081.0
+    output = "DSI-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DSI-1".settings]
+        background_color = "on_tertiary"
+        background_opacity = 0.65000000000000002
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2"]
     box_height = 70.0
@@ -181,6 +204,58 @@ widget_order = [
         font_family = "Montserrat"
         layout = "horizontal"
 
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000004]
+    box_height = 224.0
+    box_width = 480.0
+    cx = 960.0
+    cy = 424.0
+    output = "DSI-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000004.settings]
+        background = false
+        color = "tertiary"
+        font_family = "Maple Mono NF"
+        format = "{:%H:%M:%S}"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000005]
+    box_height = 160.0
+    box_width = 480.0
+    cx = 960.0
+    cy = 744.0
+    output = "DSI-1"
+    rotation = 0.0
+    type = "media_player"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000005.settings]
+        background = true
+        background_color = "surface"
+        background_opacity = 0.29999999999999999
+        background_padding = 10
+        background_radius = 12
+        color = "tertiary"
+        font_family = "Montserrat"
+        hide_when_no_media = false
+        layout = "horizontal"
+        shadow = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000006]
+    box_height = 96.0
+    box_width = 496.0
+    cx = 960.0
+    cy = 936.0
+    output = "DSI-1"
+    rotation = 0.0
+    type = "audio_visualizer"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000006.settings]
+        background = false
+        bands = 32
+        color_1 = "primary"
+        color_2 = "secondary"
+        show_when_idle = true
+
 [osd]
 position = "bottom_center"
 position_vertical = "bottom_center"
@@ -223,17 +298,14 @@ source = "wallpaper"
     builtin_ids = [ "niri" ]
     community_ids = []
 
-[wallpaper]
-transition_on_startup = true
+[wallpaper.default]
+path = "/home/sumelan/Pictures/Wallpapers/1137852.png"
 
-    [wallpaper.default]
-    path = "/home/sumelan/Pictures/Wallpapers/blueArchive/1137852.png"
+[wallpaper.last]
+path = "/home/sumelan/Pictures/Wallpapers/1137852.png"
 
-    [wallpaper.last]
-    path = "/home/sumelan/Pictures/Wallpapers/blueArchive/1137852.png"
-
-    [wallpaper.monitors.HDMI-A-2]
-    path = "/home/sumelan/Pictures/Wallpapers/blueArchive/1137852.png"
+[wallpaper.monitors.DSI-1]
+path = "/home/sumelan/Pictures/Wallpapers/1137852.png"
 
 [widget.audio_visualizer]
 width = 125

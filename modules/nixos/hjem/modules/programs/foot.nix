@@ -26,7 +26,10 @@ in {
       systemd.services.foot-server = lib.mkIf cfg.server.enable {
         description = "Foot terminal server mode";
         documentation = ["man:foot(1)"];
-        path = ["/run/current-system/sw" "/etc/profiles/per-user/${config.user}"];
+        path = [
+          "/run/current-system/sw"
+          "/etc/profiles/per-user/${config.user}"
+        ];
         requires = ["%N.socket"];
         partOf = ["graphical-session.target"];
         after = ["graphical-session.target"];

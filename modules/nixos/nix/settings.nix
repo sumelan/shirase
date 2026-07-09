@@ -41,14 +41,51 @@ in {
       };
     };
 
-    nix = {
+    nix = let
+      flakes = removeAttrs (import "${self}/.tack") ["" "__functor"];
+      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakes;
+      registry = lib.mapAttrs (_: flake: {inherit flake;}) flakes;
+    in {
+      # Make builds run with low priority so my system stays responsive
+      daemonCPUSchedPolicy = "idle";
+      daemonIOSchedClass = "idle";
+
       # disable channel because i use flake's input as source
       # also make flake registry and nix path match flake input
       # without doing above, `nix run nixpkgs#fastfetch` would come from the channel and not your flake
       channel.enable = false;
 
       # need for `nix-shell -p` to work
-      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") {nixpkgs = "";};
+      inherit nixPath;
+
+      registry =
+        registry
+        // {
+          n = registry.nixpkgs;
+          master = {
+            from = {
+              type = "indirect";
+              id = "nixpkgs-master";
+            };
+            to = {
+              type = "github";
+              owner = "NixOS";
+              repo = "nixpkgs";
+            };
+          };
+          # for nix flake init
+          templates = {
+            from = {
+              id = "templates";
+              type = "indirect";
+            };
+            to = {
+              type = "github";
+              owner = "NixOS";
+              repo = "templates";
+            };
+          };
+        };
 
       gc = {
         # Automatic garbage collection
@@ -58,19 +95,22 @@ in {
       };
 
       # `pkgs.nixVersions.latest` or `pkgs.lixPackageSets.latest.lix`
+      # lix has better Error messages
       package = pkgs.nixVersions.latest;
 
       # Periodically optimise via hardlinking store files
       optimise.automatic = true;
 
       settings = {
+        warn-dirty = false;
+
+        nix-path = nixPath;
+
         # re-evaluate on every rebuild instead of "cached failure of attribute" error
         # eval-cache = false;
 
-        # don't use the global flake registry, define everything explicitly
+        # define everything explicitly
         flake-registry = "";
-
-        warn-dirty = false;
 
         # removes ~/.nix-profile and ~/.nix-defexpr
         use-xdg-base-directories = true;
@@ -135,10 +175,17 @@ in {
     ];
 
     custom.fileSystem = {
-      cache.home.directories = [
-        ".cache/nix-index"
-        ".cache/nix"
-      ];
+      cache = {
+        root.directories = [
+          "/var/cache/man/nixos-mandb"
+          "/var/cache/man/nixos-manpages"
+        ];
+
+        home.directories = [
+          ".cache/nix-index"
+          ".cache/nix"
+        ];
+      };
     };
   };
 }
