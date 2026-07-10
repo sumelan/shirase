@@ -43,9 +43,7 @@ in {
         # shell
         inherit (local) starship;
         # tui
-        inherit (local) bat batman eza eza-tree moor ripgrep;
-        # scripts
-        inherit (local) ns niri-waytator;
+        inherit (local) bat batman eza eza-tree moor ripgrep ns;
         # desktop
         inherit (local) pqiv wlr-which-key waytator;
         # pdf viewer

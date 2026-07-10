@@ -4,7 +4,6 @@ _: {
       lsp = {
         enable = true;
         formatOnSave = true;
-        lightbulb.enable = true;
         trouble.enable = true;
         otter-nvim.enable = true;
         presets.harper.enable = false;

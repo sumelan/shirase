@@ -7,13 +7,10 @@
 in {
   flake.modules.nixos.chuwi-minibook-x = {
     config,
-    flakeLib,
     pkgs,
     modulesPath,
     ...
-  }: let
-    inherit (flakeLib.wireplumber {}) rename;
-  in {
+  }: {
     imports =
       [
         (modulesPath + "/installer/scan/not-detected.nix")
@@ -43,6 +40,7 @@ in {
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
     hardware.firmware = let
       vbtFirmware = pkgs.runCommand "firmware-vbt-patched" {} ''
         mkdir -p $out/lib/firmware
@@ -59,21 +57,5 @@ in {
     boot.loader.limine.extraConfig = ''
       interface_rotation: 90
     '';
-
-    # rename audio devices
-    services.pipewire.wireplumber.extraConfig = {
-      "10-speaker-rename" = rename {
-        old = "alsa_output.pci-0000_00_1f.3.analog-stereo";
-        new = "Built-in Speakers";
-      };
-      "10-dac-rename" = rename {
-        old = "alsa_output.usb-TTGK_Technology_Co._Ltd_NICEHCK_NK1_MAX-00.analog-stereo";
-        new = "NICEHCK NK1 MAX";
-      };
-      "10-input-rename" = rename {
-        old = "alsa_input.pci-0000_00_1f.3.analog-stereo";
-        new = "Built-in Mic";
-      };
-    };
   };
 }
