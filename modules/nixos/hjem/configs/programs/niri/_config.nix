@@ -151,7 +151,7 @@ in {
 
       background-effect = {
         blur = true;
-        xray = true;
+        xray = false;
       };
 
       popups = {
@@ -329,6 +329,7 @@ in {
         {_props.namespace._raw = ''r#"^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"#'';}
       ];
       background-effect = {
+        blur = true;
         xray = false;
       };
     }

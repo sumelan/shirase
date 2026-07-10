@@ -3,20 +3,20 @@ enable_sounds = true
 
 [backdrop]
 enabled = true
-blur_intensity = 0.0
+blur_intensity = 0.2
 
 [bar]
 order = [ "sideBar" ]
 
     [bar.sideBar]
-    background_opacity = 0.64999998547136784
+    background_opacity = 0.5
     capsule_opacity = 0.54999998770654202
     capsule_padding = 10.0
     center = [ "media", "audio_visualizer" ]
     end = [ "recorder", "network", "bluetooth", "volume", "brightness", "battery", "session" ]
     font_family = "Maple Mono NF"
     icon_color = "primary"
-    margin_ends = 20
+    margin_ends = 0
     position = "left"
     radius = 20
     scale = 1.5000000149011612
@@ -186,6 +186,8 @@ position = "bottom_center"
 position_vertical = "bottom_center"
 
 [plugin_settings."noctalia/mpvpaper"]
+picker_placement = "floating"
+picker_position = "center"
 video_directory = "~/Videos/Wallpapers/blueArchive"
 
 [plugins]
@@ -202,11 +204,22 @@ settings_show_advanced = true
     auto_sync = true
 
     [shell.launcher]
-    session_search = true
+    categories = false
+    session_search = false
+
+    [shell.panel]
+    control_center_placement = "floating"
+    control_center_position = "center"
+    launcher_placement = "floating"
+    session_placement = "floating"
+    session_position = "center"
+    transparency_mode = "glass"
+    wallpaper_placement = "floating"
+    wallpaper_position = "center"
 
     [shell.screen_corners]
     enabled = true
-    size = 50
+    size = 40
 
     [shell.screenshot]
     directory = "/home/sumelan/Pictures/Screenshots"
