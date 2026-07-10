@@ -6,7 +6,9 @@ _: {
   }: let
     configDir = config.hjem.users.${user}.xdg.config.directory;
     dataDir = config.hjem.users.${user}.xdg.data.directory;
+
     music = "${config.hjem.users.${user}.directory}/Music";
+    notes = "${config.hjem.users.${user}.directory}/Documents/Notes";
   in {
     # port 8384  is the default port to allow access from the network
     networking.firewall.allowedTCPPorts = [8384];
@@ -33,12 +35,16 @@ _: {
           theme = "dark";
         };
         folders = {
+          "Notes" = {
+            path = notes;
+          };
           "Music" = {
             path = music;
           };
         };
       };
     };
+
     custom.fileSystem = {
       persist.home.directories = [
         ".local/share/syncthing"

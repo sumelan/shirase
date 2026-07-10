@@ -16,7 +16,7 @@ order = [ "sideBar" ]
     end = [ "recorder", "network", "bluetooth", "volume", "brightness", "battery", "session" ]
     font_family = "Maple Mono NF"
     icon_color = "primary"
-    margin_ends = 20
+    margin_ends = 0
     position = "left"
     radius = 20
     scale = 1.5000000149011612
@@ -281,7 +281,7 @@ settings_show_advanced = true
 
     [shell.screen_corners]
     enabled = true
-    size = 50
+    size = 40
 
     [shell.screenshot]
     directory = "/home/sumelan/Pictures/Screenshots"
