@@ -3,12 +3,6 @@
     boot = {
       kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
-      plymouth = {
-        enable = true;
-        theme = "bgrt";
-        themePackages = [pkgs.nixos-bgrt-plymouth];
-      };
-
       # Enable "Silent boot"
       consoleLogLevel = 3;
       initrd.verbose = false;

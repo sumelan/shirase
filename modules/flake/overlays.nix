@@ -1,6 +1,5 @@
 {
   inputs,
-  lib,
   self,
   ...
 }: let
@@ -12,7 +11,6 @@ in {
       config.allowUnfree = true;
       overlays = [
         self.overlays.pkgsPatches
-        self.overlays.writeShellApplicationCompletions
       ];
     };
   in {
@@ -26,66 +24,30 @@ in {
     overlays = {
       pkgsPatches = _: prev: {
         # enable the A/V Properties and see details like media length
-        nautilus = prev.nautilus.overrideAttrs (o: {
-          buildInputs =
-            o.buildInputs
-            ++ (with prev.gst_all_1; [
-              gst-plugins-good
-              gst-plugins-bad
-            ]);
-        });
+        # nautilus = prev.nautilus.overrideAttrs (o: {
+        #   buildInputs =
+        #     o.buildInputs
+        #     ++ (with prev.gst_all_1; [
+        #       gst-plugins-good
+        #       gst-plugins-bad
+        #     ]);
+        # });
+
         # Enabling unfree dependencies allow use of Nvidia features, the FDK AAC decoder, and a lot more.
-        ffmpeg-full = prev.ffmpeg-full.override {withUnfree = true;};
+        # ffmpeg-full = prev.ffmpeg-full.override {withUnfree = true;};
+
         # play Blu-ray disk
-        vlc = prev.vlc.override {
-          libbluray-full = prev.libbluray.override {
-            withAACS = true;
-            withBDplus = true;
-          };
-        };
+        # vlc = prev.vlc.override {
+        #   libbluray-full = prev.libbluray.override {
+        #     withAACS = true;
+        #     withBDplus = true;
+        #   };
+        # };
+
+        # add icon color
         nord-yazi = prev.yaziPlugins.nord.overrideAttrs (o: {
           patches = (o.patches or []) ++ [./patches/nord-yazi.patch];
         });
-      };
-
-      # writeShellApplication with support for completions
-      writeShellApplicationCompletions = _: prev: {
-        custom =
-          (prev.custom or {})
-          // {
-            writeShellApplicationCompletions = {
-              name,
-              completions ? {},
-              ...
-            } @ shellArgs: let
-              inherit (prev) writeShellApplication writeText installShellFiles;
-              # get the needed arguments for writeShellApplication
-              app = writeShellApplication (lib.intersectAttrs (lib.functionArgs writeShellApplication) shellArgs);
-              completionsStr =
-                lib.concatMapAttrsStringSep " " (
-                  shell: content:
-                    lib.optionalString (builtins.elem shell [
-                      "bash"
-                      "zsh"
-                      "fish"
-                      "nushell"
-                    ]) "--${shell} ${writeText "${shell}-completion" content}"
-                )
-                completions;
-            in
-              if completions == {}
-              then app
-              else
-                app.overrideAttrs (o: {
-                  nativeBuildInputs = (o.nativeBuildInputs or []) ++ [installShellFiles];
-
-                  buildCommand =
-                    o.buildCommand
-                    + ''
-                      installShellCompletion --cmd ${name} ${completionsStr}
-                    '';
-                });
-          };
       };
     };
 
@@ -93,7 +55,6 @@ in {
       nixpkgs.overlays =
         [
           self.overlays.pkgsPatches
-          self.overlays.writeShellApplicationCompletions
         ]
         ++ [
           inputs.niri-nix.overlays.niri-nix

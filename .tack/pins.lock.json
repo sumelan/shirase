@@ -63,6 +63,14 @@
     "narHash": "sha256-jzisD+3wWZPC4QvAsKtYguiGsmlH2SN3Mjx5LWd68Ok=",
     "lastModified": 1783233851
   },
+  "nixos-plymouth": {
+    "type": "github",
+    "owner": "BeatLink",
+    "repo": "nixos-plymouth",
+    "rev": "33b308bfc0e9411e5c96bc114b9f7e83e7c7fd2c",
+    "narHash": "sha256-kP9fSJxZO4vHn9kL3o9h1yxKxUvON/1yvlNIYSH5yq0=",
+    "lastModified": 1758476321
+  },
   "nixpkgs": {
     "type": "github",
     "owner": "nixos",

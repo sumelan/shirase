@@ -16,19 +16,19 @@ in {
         cursor = {
           package = mkOption {
             type = package;
-            default = pkgs.capitaine-cursors-themed;
+            default = pkgs.bibata-cursors;
             description = "Package providing the cursor theme.";
           };
 
           name = mkOption {
             type = str;
-            default = "Capitaine Cursors (Nord)";
+            default = "Bibata-Modern-Ice";
             description = "The cursor name within the package.";
           };
 
           size = mkOption {
             type = int;
-            default = 38;
+            default = 32;
             description = "The cursor size.";
           };
         };

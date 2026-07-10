@@ -17,6 +17,7 @@
     (mkModules {name = "hjem";})
     (mkModules {name = "tack";})
     (mkModules {name = "niri-nix";})
+    (mkModules {name = "nixos-plymouth";})
     (mkModules {name = "run0-sudo-shim";})
     (mkModules {name = "impermanence";})
     (mkModules {name = "noctalia-greeter";})
