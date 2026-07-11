@@ -283,14 +283,15 @@ settings_show_advanced = true
     session_search = false
 
     [shell.panel]
+    clipboard_position = "bottom_center"
     control_center_placement = "floating"
-    control_center_position = "center"
+    control_center_position = "top_left"
     launcher_placement = "floating"
     session_placement = "floating"
-    session_position = "center"
+    session_position = "bottom_center"
     transparency_mode = "glass"
     wallpaper_placement = "floating"
-    wallpaper_position = "center"
+    wallpaper_position = "top_left"
 
     [shell.screen_corners]
     enabled = true
