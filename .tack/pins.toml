@@ -59,9 +59,6 @@ url = "gh:notashelf/nvf"
 [inputs.sops-nix]
 url = "gh:Mic92/sops-nix"
 
-[inputs.run0-sudo-shim]
-url = "gh:lordgrimmauld/run0-sudo-shim"
-
 [inputs.zen-browser]
 url = "gh:youwen5/zen-browser-flake"
 

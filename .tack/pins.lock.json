@@ -103,14 +103,6 @@
     "narHash": "sha256-kw1sJ6WONc6lin/L81sB90fEtR9kxj/HN6RO++92vSI=",
     "lastModified": 1783282377
   },
-  "run0-sudo-shim": {
-    "type": "github",
-    "owner": "lordgrimmauld",
-    "repo": "run0-sudo-shim",
-    "rev": "9fa985ddb9dc7f4d66aa7bfc3bc3188e4aa1d727",
-    "narHash": "sha256-J/I7VPXpOwNtEk9H+lbZVT+xJYBsSKgnMlwzlVIJSWk=",
-    "lastModified": 1782890834
-  },
   "sops-nix": {
     "type": "github",
     "owner": "Mic92",

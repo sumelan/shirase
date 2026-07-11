@@ -42,7 +42,11 @@ in {
         +
         # nu
         ''
-          source $"($nu.cache-dir)/carapace.nu"
+          source ${
+            pkgs.runCommand "carapace-nushell-config.nu" {} ''
+              ${lib.getExe pkgs.carapace} _carapace nushell | sed 's|"/homeless-shelter|$"($env.HOME)|g' >> "$out"
+            ''
+          }
         ''
         +
         # nu
@@ -62,22 +66,13 @@ in {
       env ? {},
       extraConfig ? "",
     }: let
-      completions =
-        # nu
-        ''
-          $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
-          mkdir $"($nu.cache-dir)"
-          carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"
-          mkdir ('~/.config/nushell' | path expand)
-          touch ('~/.config/nushell/host.nu' | path expand)
-        '';
       envAttrs =
         (lib.concatStringsSep "\n" (
           lib.mapAttrsToList (k: v: "$env.${k} = ${builtins.toJSON v}") env
         ))
         + "\n";
     in
-      pkgs.writeText "nu-env-config" (envAttrs + completions + extraConfig);
+      pkgs.writeText "nu-env-config" (envAttrs + extraConfig);
 
     mkNushell = {
       pkgs,

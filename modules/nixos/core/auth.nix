@@ -19,12 +19,17 @@ _: {
     services.gnome.gnome-keyring.enable = true;
     security.pam.services.login.enableGnomeKeyring = true;
 
-    # run0-sudo-shim
     security = {
-      # patching polkit to allow persistent authentication and adding rules
-      polkit.persistentAuthentication = true;
-      # run0-sudo-shim instead of sudo
-      run0-sudo-shim.enable = true;
+      sudo.enable = false;
+
+      run0 = {
+        enable = true;
+        sudo-shim.enable = true;
+        persistentAuth = {
+          enable = true;
+          enableRemote = true;
+        };
+      };
     };
 
     # gnuupg

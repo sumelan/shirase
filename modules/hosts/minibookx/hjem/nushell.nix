@@ -11,16 +11,11 @@ in {
     inherit (flake.custom.wrappers) mkNushell mkStarshipConfig;
   in {
     hjem.users.${user}.rum = {
-      programs.nushell = let
-        extraConfig =
-          # nu
-          ''
-            export-env { $env.GITHUB_TOKEN = '$(cat ${config.sops.secrets."github/minibookx-token".path})' }
-          '';
-      in {
+      programs.nushell = {
         package = mkNushell {
-          inherit pkgs extraConfig;
+          inherit pkgs;
           env = {
+            GITHUB_TOKEN = config.sops.secrets."github/minibookx-token".path;
             NH_FLAKE = dotfile;
             NIXPKGS_ALLOW_UNFREE = "1";
             PAGER = "moor";
