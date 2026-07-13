@@ -11,9 +11,9 @@ _: {
           scheme = "Synced";
         };
         cursor = {
-          theme = "Capitaine Cursors (Nord)";
+          theme = "Bibata-Modern-Ice";
           size = 38;
-          path = "${pkgs.capitaine-cursors-themed}/share/icons/Capitaine Cursors (Nord)";
+          path = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Ice";
         };
         keyboard = {
           layout = "us";

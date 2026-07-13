@@ -55,7 +55,7 @@ in {
 
           wrapProgram $out/bin/foot \
             --add-flags "--config ${cfg}" \
-            --set FONTCONFIG_FILE ${pkgs.makeFontsConf {fontDirectories = [pkgs.maple-mono.NF-unhinted];}}
+            --set FONTCONFIG_FILE ${pkgs.makeFontsConf {fontDirectories = [pkgs.maple-mono.NF];}}
         '';
         meta.mainProgram = "foot";
       };

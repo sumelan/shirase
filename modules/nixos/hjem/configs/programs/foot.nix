@@ -14,7 +14,7 @@ in {
   in {
     hjem.users.${user}.rum = {
       programs.foot = {
-        enable = lib.mkDefault true;
+        enable = lib.mkDefault false;
         package = foot;
         server.enable = lib.mkDefault true;
       };

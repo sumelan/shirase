@@ -32,7 +32,7 @@ _: {
     xdg.terminal-exec = {
       enable = true;
       settings = {
-        default = ["footclient.desktop"];
+        default = ["kitty.desktop"];
       };
     };
 

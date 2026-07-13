@@ -79,9 +79,9 @@ in {
           DEFAULT_BROWSER = "helium";
           BROWSER = "helium";
 
-          TERMINAL = "foot";
-          EDITOR = "hx";
-          VISUAL = "hx";
+          TERMINAL = "kitty";
+          EDITOR = "nvim";
+          VISUAL = "nvim";
           NIXPKGS_ALLOW_UNFREE = "1";
 
           # xdg
@@ -107,15 +107,15 @@ in {
         };
 
         mime-apps = let
-          terminal = "footclient.desktop";
+          terminal = "kitty.desktop";
           zathura = "org.pwmt.zathura-pdf-mupdf.desktop";
         in {
           default-applications = {
             "x-scheme-handler/terminal" = terminal;
 
-            "text/plain" = "helix.desktop";
-            "application/x-shellscript" = "helix.desktop";
-            "application/xml" = "helix.desktop";
+            "text/plain" = "nvim.desktop";
+            "application/x-shellscript" = "nvim.desktop";
+            "application/xml" = "nvim.desktop";
 
             "x-scheme-handler/unknown" = "helium.desktop";
             "x-scheme-handler/about" = "helium.desktop";
@@ -124,7 +124,7 @@ in {
             "text/html" = "helium.desktop";
           };
           added-associations = {
-            "text/csv" = "helix.desktop";
+            "text/csv" = "nvim.desktop";
 
             "x-scheme-handler/unknown" = "helium.desktop";
             "x-scheme-handler/about" = "helium.desktop";
