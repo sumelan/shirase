@@ -432,8 +432,8 @@ in {
 
     # execute
     "Mod+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#E7C173" "󰊠  Ghostty" "Terminal Emulator"}";
-      spawn = ["ghostty" "+new-window"];
+      _props.hotkey-overlay-title = "${hotkey "#E7C173" "󰽒  Foot" "Terminal Emulator"}";
+      spawn = ["footclient"];
     };
     "Mod+B" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "  Helium" "Web Browser"}";
@@ -445,11 +445,11 @@ in {
     };
     "Mod+Shift+N" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}";
-      spawn = ["ghostty" "--class=app.ns" "-e" "ns"];
+      spawn = ["footclient" "--app-id" "app.ns" "ns"];
     };
     "Mod+Shift+Y" = {
       _props.hotkey-overlay-title = "${hotkey "#E7C173" "󰇥  Yazi" "File Manager"}";
-      spawn = ["ghostty" "--class=app.yazi" "-e" "yazi"];
+      spawn = ["footclient" "--app-id" "app.yazi" "yazi"];
     };
     "Ctrl+Space" = {
       _props.hotkey-overlay-title = "${hotkey "#A3BE8C" "󰗊  Hazkey" "Switch input method"}";

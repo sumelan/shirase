@@ -45,7 +45,7 @@ in {
         # tui
         inherit (local) bat batman eza eza-tree moor ripgrep ns;
         # desktop
-        inherit (local) pqiv wlr-which-key waytator;
+        inherit (local) kitty pqiv wlr-which-key waytator;
         # pdf viewer
         inherit (local) zathura;
 
@@ -79,7 +79,7 @@ in {
           DEFAULT_BROWSER = "helium";
           BROWSER = "helium";
 
-          TERMINAL = "ghostty";
+          TERMINAL = "foot";
           EDITOR = "hx";
           VISUAL = "hx";
           NIXPKGS_ALLOW_UNFREE = "1";
@@ -107,11 +107,11 @@ in {
         };
 
         mime-apps = let
-          ghostty = "com.mitchellh.ghostty.desktop";
+          terminal = "footclient.desktop";
           zathura = "org.pwmt.zathura-pdf-mupdf.desktop";
         in {
           default-applications = {
-            "x-scheme-handler/terminal" = ghostty;
+            "x-scheme-handler/terminal" = terminal;
 
             "text/plain" = "helix.desktop";
             "application/x-shellscript" = "helix.desktop";
