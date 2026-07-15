@@ -12,6 +12,7 @@ _: {
           "Notes" = {
             devices = [
               "minibookx"
+              "motorola razr 50"
             ];
           };
           "Music" = {
