@@ -45,7 +45,7 @@ in {
         # tui
         inherit (local) bat batman eza eza-tree moor ripgrep ns;
         # desktop
-        inherit (local) kitty pqiv wlr-which-key waytator;
+        inherit (local) kitty pqiv wlr-which-key;
         # pdf viewer
         inherit (local) zathura;
 

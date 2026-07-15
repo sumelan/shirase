@@ -119,6 +119,14 @@
     "narHash": "sha256-2oK+QKei8MNpfDBwnSC/pjWtWwWwGNtqChM8XmAhZhs=",
     "lastModified": 1782616671
   },
+  "waytator": {
+    "type": "github",
+    "owner": "ItsLemmy",
+    "repo": "waytator",
+    "rev": "86650a589b1a9d3ee31b35b2af163f2c6db00774",
+    "narHash": "sha256-U3yDiMBi6Lf+WBDMddMctaL9ltBjpobBjjOFLxksguc=",
+    "lastModified": 1781969637
+  },
   "zen-browser": {
     "type": "github",
     "owner": "youwen5",

@@ -187,7 +187,7 @@ position_vertical = "bottom_center"
 
 [plugin_settings."noctalia/mpvpaper"]
 picker_placement = "floating"
-picker_position = "center"
+picker_position = "top_left"
 video_directory = "~/Videos/Wallpapers/blueArchive"
 
 [plugins]
@@ -228,10 +228,9 @@ settings_show_advanced = true
     pipe_to_command = true
 
 [theme]
-community_palette = "Oxocarbon"
-custom_palette = "1315573-mc-2"
+builtin = "Nord"
 mode = "dark"
-source = "wallpaper"
+source = "builtin"
 
     [theme.templates]
     builtin_ids = [ "niri" ]
