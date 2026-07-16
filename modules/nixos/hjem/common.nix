@@ -72,10 +72,6 @@ in {
       # misc
       environment.sessionVariables =
         {
-          PAGER = "moor";
-          SYSTEMD_PAGER = "moor";
-          SYSTEMD_PAGERSECURE = "1";
-
           DEFAULT_BROWSER = "helium";
           BROWSER = "helium";
 

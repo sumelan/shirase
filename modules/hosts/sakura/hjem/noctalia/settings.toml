@@ -20,7 +20,7 @@ order = [ "sideBar" ]
     position = "left"
     radius = 20
     scale = 1.5000000149011612
-    start = [ "control-center", "workspaces", "notifications", "privacy" ]
+    start = [ "control-center", "workspaces", "notifications", "nix-monitor", "privacy" ]
     thickness = 50
     widget_spacing = 20
 
@@ -185,13 +185,19 @@ widget_order = [
 position = "bottom_center"
 position_vertical = "bottom_center"
 
+[plugin_settings."avivbintangaringga/nix-monitor"]
+clean_command = "nh clean all -k 5"
+panel_position = "auto"
+show_update_available_notification = false
+update_command = "tack update && nh os switch"
+
 [plugin_settings."noctalia/mpvpaper"]
 picker_placement = "floating"
 picker_position = "top_left"
 video_directory = "~/Videos/Wallpapers/blueArchive"
 
 [plugins]
-enabled = [ "noctalia/notes", "noctalia/mpvpaper", "noctalia/screen_recorder" ]
+enabled = [ "noctalia/notes", "noctalia/mpvpaper", "noctalia/screen_recorder", "avivbintangaringga/nix-monitor" ]
 
 [shell]
 avatar_path = "/home/sumelan/.face"
@@ -265,6 +271,10 @@ type = "noctalia/notes:notes"
 
 [widget.network]
 show_label = false
+
+[widget.nix-monitor]
+show_text = false
+type = "avivbintangaringga/nix-monitor:nix-monitor"
 
 [widget.recorder]
 type = "noctalia/screen_recorder:recorder"

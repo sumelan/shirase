@@ -16,7 +16,6 @@ in {
     packages.nushell = mkNushell {
       inherit pkgs;
       env = {
-        PAGER = "moor";
         STARSHIP_CONFIG = mkStarshipConfig {
           inherit pkgs;
           nf-icon = "󰟆 ";

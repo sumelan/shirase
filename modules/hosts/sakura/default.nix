@@ -1,15 +1,25 @@
-{config, ...}: {
-  flake.modules.nixos."hosts/sakura" = {pkgs, ...}: {
+{config, ...}: let
+  inherit (config) flake;
+in {
+  flake.modules.nixos."hosts/sakura" = {
+    config,
+    pkgs,
+    ...
+  }: {
     imports = builtins.attrValues {
-      inherit (config.flake.modules.nixos) default minisforum-um773se;
-      inherit (config.flake.modules.nixos) gui;
-      inherit (config.flake.modules.nixos) kdeconnect steam;
-      inherit (config.flake.modules.nixos) hdds qmk trackpad;
-      inherit (config.flake.modules.nixos) audiobookshelf sops-nix syncoid syncthing;
-      inherit (config.flake.modules.nixos) hjem-extended hjem-bluray hjem-cd;
+      inherit (flake.modules.nixos) default minisforum-um773se;
+      inherit (flake.modules.nixos) gui;
+      inherit (flake.modules.nixos) kdeconnect steam;
+      inherit (flake.modules.nixos) hdds qmk trackpad;
+      inherit (flake.modules.nixos) audiobookshelf sops-nix syncoid syncthing;
+      inherit (flake.modules.nixos) hjem-extended hjem-bluray hjem-cd;
     };
 
     networking.hostId = "b5e8f0be";
+
+    environment.variables = {
+      GITHUB_TOKEN = config.sops.secrets."github/sakura-token".path;
+    };
 
     custom = {
       hardware = {

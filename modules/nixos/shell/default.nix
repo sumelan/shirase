@@ -36,6 +36,9 @@
       shellAliases = basic // extra;
 
       variables = {
+        PAGER = "moor";
+        SYSTEMD_PAGER = "moor";
+        SYSTEMD_PAGERSECURE = "1";
         TERMINAL = "foot";
         EDITOR = "hx";
         VISUAL = "hx";

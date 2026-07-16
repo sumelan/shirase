@@ -15,7 +15,7 @@ in {
     hjem.users.${user}.rum = {
       programs.nushell = {
         enable = lib.mkDefault true;
-        package = lib.mkDefault nushell;
+        package = nushell;
       };
     };
 
