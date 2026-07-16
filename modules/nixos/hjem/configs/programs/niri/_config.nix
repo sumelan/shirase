@@ -80,7 +80,7 @@ in {
 
     empty-workspace-above-first = [];
 
-    default-column-display = "tabbed";
+    default-column-display = "normal";
 
     background-color = "transparent";
 
@@ -432,8 +432,8 @@ in {
 
     # execute
     "Mod+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#E7C173" "  Kitty" "Terminal Emulator"}";
-      spawn = ["kitty"];
+      _props.hotkey-overlay-title = "${hotkey "#E7C173" "󰽒  Foot" "Terminal Emulator"}";
+      spawn = ["footclient"];
     };
     "Mod+B" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "  Helium" "Web Browser"}";
@@ -445,11 +445,11 @@ in {
     };
     "Mod+Shift+N" = {
       _props.hotkey-overlay-title = "${hotkey "#5E81AC" "󱄅  Nix Search" "Nix Package"}";
-      spawn = ["kitty" "--app-id" "app.ns" "ns"];
+      spawn = ["footclient" "--app-id" "app.ns" "ns"];
     };
     "Mod+Shift+Y" = {
       _props.hotkey-overlay-title = "${hotkey "#E7C173" "󰇥  Yazi" "File Manager"}";
-      spawn = ["kitty" "--app-id" "app.yazi" "yazi"];
+      spawn = ["footclient" "--app-id" "app.yazi" "yazi"];
     };
     "Ctrl+Space" = {
       _props.hotkey-overlay-title = "${hotkey "#A3BE8C" "󰗊  Hazkey" "Switch input method"}";
@@ -604,7 +604,7 @@ in {
 
   animations = {
     # Slow down all animations by this factor. Values below 1 speed them up instead.
-    slowdown = 1.0;
+    slowdown = 0.7;
 
     window-open = {
       duration-ms = 500;
@@ -613,27 +613,38 @@ in {
         # glsl
         ''
           vec4 open_color(vec3 coords_geo, vec3 size_geo) {
-              vec3 coords_tex = niri_geo_to_tex * coords_geo;
-              vec4 color = texture2D(niri_tex, coords_tex.st);
-              float cellSize = 35.0;
-
-              float p = niri_clamped_progress * (1.0 + cellSize * 0.015);
-              vec2 coords = (coords_geo.xy - vec2(0.5, 0.5)) * size_geo.xy / size_geo.x;
-              coords*= cellSize;
-              coords.x += ceil(coords.y) * .5;
-              vec2 cell = floor(-coords);
-              coords = fract(coords);
-
-              vec2 center = vec2(0.5);
-              float offset = cell.y ;
-              float d = distance(coords, center);
-              float r = p + offset / cellSize;
-              if (r < 0.25) {
-               r = 0.0;
+              float p = niri_clamped_progress;
+              vec2 uv = coords_geo.xy;
+              float settle = 1.0 - p;
+              float settle_curve = pow(settle, 3.0);
+              vec2 fluid_uv = uv * 6.0;
+              float time = p * 12.0;
+              for (int i = 1; i < 4; i++) {
+                  float fi = float(i);
+                  fluid_uv.x += (0.6 / fi) * sin(fi * fluid_uv.y + time);
+                  fluid_uv.y += (0.6 / fi) * cos(fi * fluid_uv.x + time);
               }
-              d = smoothstep(r-0.01, r+0.01, d);
-              vec4 col = mix(color, vec4(0), d);
-              return col;
+              vec2 wobbly_uv = uv;
+              wobbly_uv.x += sin(fluid_uv.y) * 0.06 * settle_curve;
+              wobbly_uv.y += cos(fluid_uv.x) * 0.06 * settle_curve;
+              vec2 pixel_pos = (wobbly_uv - 0.5) * size_geo.xy;
+              vec2 box_size = (size_geo.xy * 0.5) * (p * 1.15);
+              float corner_radius = 16.0;
+              float radius = min(corner_radius, min(box_size.x, box_size.y));
+              vec2 q = abs(pixel_pos) - box_size + vec2(radius);
+              float dist = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - radius;
+              float edge_blur = mix(15.0, 1.0, p);
+              float alpha_mask = 1.0 - smoothstep(-edge_blur, edge_blur, dist);
+              vec2 refraction = vec2(sin(fluid_uv.x), cos(fluid_uv.y)) * 0.03 * settle_curve;
+              vec2 tex_uv = uv + (refraction * alpha_mask);
+              vec3 coords_tex = niri_geo_to_tex * vec3(tex_uv, coords_geo.z);
+              vec4 oColor = texture2D(niri_tex, coords_tex.st);
+              vec4 final_color = oColor * alpha_mask;
+              float caustic = max(0.0, sin(fluid_uv.x - fluid_uv.y));
+              caustic = pow(caustic, 3.0);
+              vec3 water_tint = vec3(0.5, 0.9, 1.0);
+              final_color.rgb += water_tint * caustic * alpha_mask * settle_curve * 1.2;
+              return final_color;
           }
         '';
     };
@@ -645,34 +656,132 @@ in {
         # glsl
         ''
           vec4 close_color(vec3 coords_geo, vec3 size_geo) {
-              vec3 coords_tex = niri_geo_to_tex * coords_geo;
-              vec4 color = texture2D(niri_tex, coords_tex.st);
-              float cellSize = 35.0;
-
-              float p = niri_clamped_progress * (1.0 + cellSize * 0.015);
-              vec2 coords = (coords_geo.xy - vec2(0.0, 0.5)) * size_geo.xy / size_geo.x;
-              coords*= cellSize;
-              coords.x += ceil(coords.y) * .5;
-              vec2 cell = floor(-coords);
-              coords = fract(coords);
-
-              vec2 center = vec2(0.5);
-              float offset = cell.y ;
-              float d = distance(coords, center);
-              float r = 1.0 - p + offset / cellSize;
-              if (r < 0.25) {
-               r = 0.0;
+              float p = 1.0 - niri_clamped_progress;
+              vec2 uv = coords_geo.xy;
+              float settle = 1.0 - p;
+              float settle_curve = pow(settle, 3.0);
+              vec2 fluid_uv = uv * 6.0;
+              float time = p * -12.0; // Reverse flow direction
+              for (int i = 1; i < 4; i++) {
+                  float fi = float(i);
+                  fluid_uv.x += (0.6 / fi) * sin(fi * fluid_uv.y + time);
+                  fluid_uv.y += (0.6 / fi) * cos(fi * fluid_uv.x + time);
               }
-              d = smoothstep(r-0.01, r+0.01, d);
-              vec4 col = mix(color, vec4(0), d);
-              return col;
+              vec2 wobbly_uv = uv;
+              wobbly_uv.x += sin(fluid_uv.y) * 0.06 * settle_curve;
+              wobbly_uv.y += cos(fluid_uv.x) * 0.06 * settle_curve;
+              vec2 pixel_pos = (wobbly_uv - 0.5) * size_geo.xy;
+              vec2 box_size = (size_geo.xy * 0.5) * (p * 1.15);
+              float corner_radius = 16.0;
+              float radius = min(corner_radius, min(box_size.x, box_size.y));
+              vec2 q = abs(pixel_pos) - box_size + vec2(radius);
+              float dist = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - radius;
+              float edge_blur = mix(15.0, 1.0, p);
+              float alpha_mask = 1.0 - smoothstep(-edge_blur, edge_blur, dist);
+              vec2 refraction = vec2(sin(fluid_uv.x), cos(fluid_uv.y)) * 0.03 * settle_curve;
+              vec2 tex_uv = uv + (refraction * alpha_mask);
+              vec3 coords_tex = niri_geo_to_tex * vec3(tex_uv, coords_geo.z);
+              vec4 oColor = texture2D(niri_tex, coords_tex.st);
+              vec4 final_color = oColor * alpha_mask;
+              float caustic = max(0.0, sin(fluid_uv.x - fluid_uv.y));
+              caustic = pow(caustic, 3.0);
+              vec3 water_tint = vec3(0.5, 0.9, 1.0);
+              final_color.rgb += water_tint * caustic * alpha_mask * settle_curve * 1.2;
+              return final_color;
+          }
+        '';
+    };
+
+    window-resize = {
+      duration-ms = 400;
+      curve = "linear";
+      custom-shader =
+        # glsl
+        ''
+          vec4 resize_color(vec3 coords_geo, vec3 size_geo) {
+              float p = niri_clamped_progress;
+              float env = sin(p * 3.14159265);
+              vec2 uv = coords_geo.xy;
+              vec2 fluid_uv = uv * 8.0;
+              float time = p * 15.0;
+              for (int i = 1; i < 4; i++) {
+                  float fi = float(i);
+                  fluid_uv.x += (0.5 / fi) * sin(fi * fluid_uv.y + time);
+                  fluid_uv.y += (0.5 / fi) * cos(fi * fluid_uv.x + time);
+              }
+              vec2 refraction = vec2(sin(fluid_uv.x), cos(fluid_uv.y)) * 0.01 * env;
+              vec2 tex_uv = uv + refraction;
+              vec3 coords_tex_next = niri_geo_to_tex_next * vec3(tex_uv, coords_geo.z);
+              vec4 oColor = texture2D(niri_tex_next, coords_tex_next.st);
+              float caustic = max(0.0, sin(fluid_uv.x - fluid_uv.y));
+              caustic = pow(caustic, 2.0);
+              vec3 water_tint = vec3(0.5, 0.9, 1.0);
+              return oColor + vec4(water_tint * caustic * env * 0.25 * oColor.a, 0.0);
           }
         '';
     };
 
     workspace-switch = {
-      duration-ms = 300;
-      curve = "ease-out-cubic";
+      spring._props = {
+        damping-ratio = 1.0;
+        stiffness = 760;
+        epsilon = 0.0001;
+      };
+    };
+
+    horizontal-view-movement = {
+      spring._props = {
+        damping-ratio = 1.0;
+        stiffness = 640;
+        epsilon = 0.0001;
+      };
+    };
+
+    window-movement = {
+      spring._props = {
+        damping-ratio = 1.0;
+        stiffness = 700;
+        epsilon = 0.0001;
+      };
+    };
+
+    config-notification-open-close = {
+      spring._props = {
+        damping-ratio = 1.0;
+        stiffness = 820;
+        epsilon = 0.001;
+      };
+    };
+
+    screenshot-ui-open = {
+      duration-ms = 220;
+      curve = [
+        {
+          _args = [
+            "cubic-bezier"
+            0.22
+            1.0
+            0.36
+            1.0
+          ];
+        }
+      ];
+    };
+
+    overview-open-close = {
+      spring._props = {
+        damping-ratio = 1.0;
+        stiffness = 620;
+        epsilon = 0.0001;
+      };
+    };
+
+    recent-windows-close = {
+      spring._props = {
+        damping-ratio = 1.0;
+        stiffness = 680;
+        epsilon = 0.001;
+      };
     };
   };
 

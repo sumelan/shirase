@@ -36,9 +36,9 @@
       shellAliases = basic // extra;
 
       variables = {
-        TERMINAL = "kitty";
-        EDITOR = "nvim";
-        VISUAL = "nvim";
+        TERMINAL = "foot";
+        EDITOR = "hx";
+        VISUAL = "hx";
         NIXPKGS_ALLOW_UNFREE = "1";
       };
     };

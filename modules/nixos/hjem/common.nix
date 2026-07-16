@@ -45,7 +45,7 @@ in {
         # tui
         inherit (local) bat batman eza eza-tree moor ripgrep ns;
         # desktop
-        inherit (local) kitty pqiv wlr-which-key;
+        inherit (local) pqiv wlr-which-key;
         # pdf viewer
         inherit (local) zathura;
 
@@ -79,9 +79,9 @@ in {
           DEFAULT_BROWSER = "helium";
           BROWSER = "helium";
 
-          TERMINAL = "kitty";
-          EDITOR = "nvim";
-          VISUAL = "nvim";
+          TERMINAL = "foot";
+          EDITOR = "hx";
+          VISUAL = "hx";
           NIXPKGS_ALLOW_UNFREE = "1";
 
           # xdg
@@ -107,15 +107,15 @@ in {
         };
 
         mime-apps = let
-          terminal = "kitty.desktop";
+          terminal = "footclient.desktop";
           zathura = "org.pwmt.zathura-pdf-mupdf.desktop";
         in {
           default-applications = {
             "x-scheme-handler/terminal" = terminal;
 
-            "text/plain" = "nvim.desktop";
-            "application/x-shellscript" = "nvim.desktop";
-            "application/xml" = "nvim.desktop";
+            "text/plain" = "helix.desktop";
+            "application/x-shellscript" = "helix.desktop";
+            "application/xml" = "helix.desktop";
 
             "x-scheme-handler/unknown" = "helium.desktop";
             "x-scheme-handler/about" = "helium.desktop";
@@ -124,7 +124,7 @@ in {
             "text/html" = "helium.desktop";
           };
           added-associations = {
-            "text/csv" = "nvim.desktop";
+            "text/csv" = "helix.desktop";
 
             "x-scheme-handler/unknown" = "helium.desktop";
             "x-scheme-handler/about" = "helium.desktop";

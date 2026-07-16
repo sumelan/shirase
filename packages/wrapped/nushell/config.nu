@@ -67,18 +67,7 @@ $env.config = {
         pre_execution: [{ null }]
     }
 
-    keybindings: [
-        {
-            # currently kitty sends this for backspace, but h also works and is agreeable
-            name: backspace_kill_word
-            modifier: control
-            keycode: char_h
-            mode: [emacs, vi_insert, vi_normal]
-            event: { edit: backspaceword }
-        }
-    ]
 }
-
 # ── Useful Custom Commands ────────────────────────────────────────────────────
 
 # Find files by name

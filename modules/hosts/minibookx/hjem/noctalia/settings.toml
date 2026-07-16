@@ -312,13 +312,13 @@ source = "builtin"
     community_ids = []
 
 [wallpaper.default]
-path = "/home/sumelan/Pictures/Wallpapers/1137852.png"
+path = "/home/sumelan/Pictures/Wallpapers/blueArchive/1137852.png"
 
 [wallpaper.last]
-path = "/home/sumelan/Pictures/Wallpapers/1137852.png"
+path = "/home/sumelan/Pictures/Wallpapers/blueArchive/1137852.png"
 
 [wallpaper.monitors.DSI-1]
-path = "/home/sumelan/Pictures/Wallpapers/1137852.png"
+path = "/home/sumelan/Pictures/Wallpapers/blueArchive/1137852.png"
 
 [widget.audio_visualizer]
 width = 125
