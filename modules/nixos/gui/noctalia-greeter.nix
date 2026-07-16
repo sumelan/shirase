@@ -7,13 +7,16 @@ _: {
       greeter-args = "";
 
       settings = {
+        output = {
+          transforms = "DSI-1:270";
+        };
         appearance = {
           scheme = "Synced";
         };
         cursor = {
           theme = "Bibata-Modern-Ice";
-          size = 38;
-          path = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Ice";
+          size = 18;
+          package = pkgs.bibata-cursors;
         };
         keyboard = {
           layout = "us";

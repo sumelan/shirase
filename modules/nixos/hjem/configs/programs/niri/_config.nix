@@ -604,90 +604,100 @@ in {
 
   animations = {
     # Slow down all animations by this factor. Values below 1 speed them up instead.
-    slowdown = 0.7;
+    slowdown = 1.0;
 
     window-open = {
-      duration-ms = 500;
+      duration-ms = 150;
       curve = "linear";
       custom-shader =
         # glsl
         ''
           vec4 open_color(vec3 coords_geo, vec3 size_geo) {
-              float p = niri_clamped_progress;
-              vec2 uv = coords_geo.xy;
-              float settle = 1.0 - p;
-              float settle_curve = pow(settle, 3.0);
-              vec2 fluid_uv = uv * 6.0;
-              float time = p * 12.0;
-              for (int i = 1; i < 4; i++) {
-                  float fi = float(i);
-                  fluid_uv.x += (0.6 / fi) * sin(fi * fluid_uv.y + time);
-                  fluid_uv.y += (0.6 / fi) * cos(fi * fluid_uv.x + time);
+              if (coords_geo.x < 0.0 || coords_geo.x > 1.0 ||
+                  coords_geo.y < 0.0 || coords_geo.y > 1.0) {
+                      return vec4(0.0);
+                  }
+
+              const float PI = 3.14;
+              float p = sin(niri_clamped_progress * (PI/2.0) );
+              float radius = mix(0.05,0.0, p);
+              const float samples = 7.0;
+
+              vec4 outColor = vec4(0.0);
+
+              // Define a constant for 2 * PI (tau), which represents a full circle in radians.
+              const float tau = 6.28318530718;
+
+              // Number of directions for sampling around the circle.
+              const float directions = 11.0;
+
+              vec3 coords_tex = niri_geo_to_tex * coords_geo;
+
+              // Outer loop iterates over multiple directions evenly spaced around a circle.
+              for (float d = 0.0; d < tau; d += tau / directions) {
+                  // Inner loop samples along each direction, with decreasing intensity.
+                  for (float s = 0.0; s < 1.0; s += 1.0 / samples) {
+                      // Calculate the offset for this sample based on direction, radius, and step.
+                      // The (1.0 - s) term ensures more sampling occurs closer to the center.
+                      vec2 offset = vec2(cos(d), sin(d)) * radius * (1.0 - s) / coords_geo.xy;
+
+                      // Add the sampled color at the offset position to the accumulator.
+                      outColor += texture2D(niri_tex, coords_tex.st + offset);
+                  }
               }
-              vec2 wobbly_uv = uv;
-              wobbly_uv.x += sin(fluid_uv.y) * 0.06 * settle_curve;
-              wobbly_uv.y += cos(fluid_uv.x) * 0.06 * settle_curve;
-              vec2 pixel_pos = (wobbly_uv - 0.5) * size_geo.xy;
-              vec2 box_size = (size_geo.xy * 0.5) * (p * 1.15);
-              float corner_radius = 16.0;
-              float radius = min(corner_radius, min(box_size.x, box_size.y));
-              vec2 q = abs(pixel_pos) - box_size + vec2(radius);
-              float dist = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - radius;
-              float edge_blur = mix(15.0, 1.0, p);
-              float alpha_mask = 1.0 - smoothstep(-edge_blur, edge_blur, dist);
-              vec2 refraction = vec2(sin(fluid_uv.x), cos(fluid_uv.y)) * 0.03 * settle_curve;
-              vec2 tex_uv = uv + (refraction * alpha_mask);
-              vec3 coords_tex = niri_geo_to_tex * vec3(tex_uv, coords_geo.z);
-              vec4 oColor = texture2D(niri_tex, coords_tex.st);
-              vec4 final_color = oColor * alpha_mask;
-              float caustic = max(0.0, sin(fluid_uv.x - fluid_uv.y));
-              caustic = pow(caustic, 3.0);
-              vec3 water_tint = vec3(0.5, 0.9, 1.0);
-              final_color.rgb += water_tint * caustic * alpha_mask * settle_curve * 1.2;
-              return final_color;
+
+              // Normalize the accumulated color by dividing by the total number of samples
+              // and directions to ensure the result is averaged.
+              return (outColor / samples / directions) * p;
           }
         '';
     };
 
     window-close = {
-      duration-ms = 500;
+      duration-ms = 150;
       curve = "linear";
       custom-shader =
         # glsl
         ''
           vec4 close_color(vec3 coords_geo, vec3 size_geo) {
-              float p = 1.0 - niri_clamped_progress;
-              vec2 uv = coords_geo.xy;
-              float settle = 1.0 - p;
-              float settle_curve = pow(settle, 3.0);
-              vec2 fluid_uv = uv * 6.0;
-              float time = p * -12.0; // Reverse flow direction
-              for (int i = 1; i < 4; i++) {
-                  float fi = float(i);
-                  fluid_uv.x += (0.6 / fi) * sin(fi * fluid_uv.y + time);
-                  fluid_uv.y += (0.6 / fi) * cos(fi * fluid_uv.x + time);
+              if (coords_geo.x < 0.0 || coords_geo.x > 1.0 ||
+                  coords_geo.y < 0.0 || coords_geo.y > 1.0) {
+                      return vec4(0.0);
               }
-              vec2 wobbly_uv = uv;
-              wobbly_uv.x += sin(fluid_uv.y) * 0.06 * settle_curve;
-              wobbly_uv.y += cos(fluid_uv.x) * 0.06 * settle_curve;
-              vec2 pixel_pos = (wobbly_uv - 0.5) * size_geo.xy;
-              vec2 box_size = (size_geo.xy * 0.5) * (p * 1.15);
-              float corner_radius = 16.0;
-              float radius = min(corner_radius, min(box_size.x, box_size.y));
-              vec2 q = abs(pixel_pos) - box_size + vec2(radius);
-              float dist = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - radius;
-              float edge_blur = mix(15.0, 1.0, p);
-              float alpha_mask = 1.0 - smoothstep(-edge_blur, edge_blur, dist);
-              vec2 refraction = vec2(sin(fluid_uv.x), cos(fluid_uv.y)) * 0.03 * settle_curve;
-              vec2 tex_uv = uv + (refraction * alpha_mask);
-              vec3 coords_tex = niri_geo_to_tex * vec3(tex_uv, coords_geo.z);
-              vec4 oColor = texture2D(niri_tex, coords_tex.st);
-              vec4 final_color = oColor * alpha_mask;
-              float caustic = max(0.0, sin(fluid_uv.x - fluid_uv.y));
-              caustic = pow(caustic, 3.0);
-              vec3 water_tint = vec3(0.5, 0.9, 1.0);
-              final_color.rgb += water_tint * caustic * alpha_mask * settle_curve * 1.2;
-              return final_color;
+
+              const float PI = 3.14;
+              float p = sin(niri_clamped_progress * (PI/2.0) );
+
+              float radius = mix(0.0,0.05, p);
+              const float samples = 7.0;
+
+              vec4 outColor = vec4(0.0);
+
+              // Define a constant for 2 * PI (tau), which represents a full circle in radians.
+              const float tau = 6.28318530718;
+
+              // Number of directions for sampling around the circle.
+              const float directions = 11.0;
+
+              vec3 coords_tex = niri_geo_to_tex * coords_geo;
+
+              // Outer loop iterates over multiple directions evenly spaced around a circle.
+              for (float d = 0.0; d < tau; d += tau / directions) {
+                  // Inner loop samples along each direction, with decreasing intensity.
+                  for (float s = 0.0; s < 1.0; s += 1.0 / samples) {
+                      // Calculate the offset for this sample based on direction, radius, and step.
+                      // The (1.0 - s) term ensures more sampling occurs closer to the center.
+                      vec2 offset = vec2(cos(d), sin(d)) * radius * (1.0 - s) / coords_geo.xy;
+
+                      // Add the sampled color at the offset position to the accumulator.
+                      outColor += texture2D(niri_tex, coords_tex.st + offset);
+                  }
+              }
+
+              // Normalize the accumulated color by dividing by the total number of samples
+              // and directions to ensure the result is averaged.
+
+              return (outColor / samples / directions) * (1.0 - p);
           }
         '';
     };
@@ -698,25 +708,47 @@ in {
       custom-shader =
         # glsl
         ''
+          float easeInOutSine(float t) {
+              return -0.5 * (cos(3.141592653589793 * t) - 1.0);
+          }
+
           vec4 resize_color(vec3 coords_geo, vec3 size_geo) {
-              float p = niri_clamped_progress;
-              float env = sin(p * 3.14159265);
-              vec2 uv = coords_geo.xy;
-              vec2 fluid_uv = uv * 8.0;
-              float time = p * 15.0;
-              for (int i = 1; i < 4; i++) {
-                  float fi = float(i);
-                  fluid_uv.x += (0.5 / fi) * sin(fi * fluid_uv.y + time);
-                  fluid_uv.y += (0.5 / fi) * cos(fi * fluid_uv.x + time);
+              if (coords_geo.x < 0.0 || coords_geo.x > 1.0 ||
+                  coords_geo.y < 0.0 || coords_geo.y > 1.0) {
+                  return vec4(0.0);
               }
-              vec2 refraction = vec2(sin(fluid_uv.x), cos(fluid_uv.y)) * 0.01 * env;
-              vec2 tex_uv = uv + refraction;
-              vec3 coords_tex_next = niri_geo_to_tex_next * vec3(tex_uv, coords_geo.z);
-              vec4 oColor = texture2D(niri_tex_next, coords_tex_next.st);
-              float caustic = max(0.0, sin(fluid_uv.x - fluid_uv.y));
-              caustic = pow(caustic, 2.0);
-              vec3 water_tint = vec3(0.5, 0.9, 1.0);
-              return oColor + vec4(water_tint * caustic * env * 0.25 * oColor.a, 0.0);
+
+              const float PI = 3.14;
+              float p = easeInOutSine ( sin(niri_clamped_progress * PI ));
+
+              float radius = mix(0.0,0.0025, p);
+              const float samples = 7.0;
+
+              vec4 outColor = vec4(0.0);
+
+              // Define a constant for 2 * PI (tau), which represents a full circle in radians.
+              const float tau = 6.28318530718;
+
+              // Number of directions for sampling around the circle.
+              const float directions = 11.0;
+
+              // Outer loop iterates over multiple directions evenly spaced around a circle.
+              for (float d = 0.0; d < tau; d += tau / directions) {
+                  // Inner loop samples along each direction, with decreasing intensity.
+                  for (float s = 0.0; s < 1.0; s += 1.0 / samples) {
+                      // Calculate the offset for this sample based on direction, radius, and step.
+                      // The (1.0 - s) term ensures more sampling occurs closer to the center.
+                      vec2 offset = vec2(cos(d), sin(d)) * radius * (1.0 - s) / coords_geo.xy;
+
+                      outColor += texture2D(niri_tex_next, coords_geo.st + offset );
+                  }
+              }
+
+              // Normalize the accumulated color by dividing by the total number of samples
+              // and directions to ensure the result is averaged.
+              outColor = outColor / samples / directions;
+              outColor.a = 1.0;
+              return outColor ;
           }
         '';
     };
