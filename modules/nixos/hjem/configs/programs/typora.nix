@@ -1,5 +1,6 @@
 {lib, ...}: {
   flake.custom.hjemConfigs.typora = {
+    config,
     pkgs,
     user,
     ...
@@ -23,10 +24,10 @@
         package = waylandTypora;
         advancedSettings = {
           defaultFontFamily = {
-            standard = "Montserrat";
-            serif = "Montserrat";
-            sansSerif = "Montserrat";
-            monospace = "Maple Mono NF";
+            standard = config.custom.fonts.regular;
+            serif = config.custom.fonts.regular;
+            sansSerif = config.custom.fonts.regular;
+            monospace = config.custom.fonts.monospace;
           };
           autoHideMenuBar = true; # Boolean - Auto hide the menu bar unless the `Alt` key is pressed. Default is false.
 

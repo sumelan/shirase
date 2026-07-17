@@ -1,4 +1,4 @@
-{inputs, ...}: {
+_: {
   flake.modules.nixos.japanese = {
     pkgs,
     user,
@@ -6,12 +6,6 @@
   }: {
     services.hazkey = {
       enable = true;
-      # zenzai model
-      # - zenzai_v3_1-small (default)
-      # - zenzai_v3_1-xsmall
-      # - zenzai_v3-small
-      # - zenzai_v2
-      zenzai.package = inputs.nix-hazkey.packages.${pkgs.stdenv.hostPlatform.system}.zenzai_v3_1-small;
     };
 
     i18n.inputMethod = {

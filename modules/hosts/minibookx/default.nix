@@ -1,7 +1,11 @@
 {config, ...}: let
   inherit (config) flake;
 in {
-  flake.modules.nixos."hosts/minibookx" = {pkgs, ...}: {
+  flake.modules.nixos."hosts/minibookx" = {
+    config,
+    pkgs,
+    ...
+  }: {
     imports = builtins.attrValues {
       inherit (flake.modules.nixos) default chuwi-minibook-x;
       inherit (flake.modules.nixos) gui;

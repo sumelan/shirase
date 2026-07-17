@@ -8,6 +8,7 @@
   inherit (builtins) listToAttrs;
 in {
   flake.modules.nixos.zen = {
+    config,
     pkgs,
     user,
     ...
@@ -24,7 +25,7 @@ in {
       # Check these out at about:config
       "extensions.autoDisableScopes" = 0;
       "extensions.pocket.enabled" = false;
-      "font.name.serif.x-western" = "Montserrat";
+      "font.name.serif.x-western" = config.custom.fonts.regular;
       # ...
     };
 
