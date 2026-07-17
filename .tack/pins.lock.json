@@ -126,13 +126,5 @@
     "rev": "86650a589b1a9d3ee31b35b2af163f2c6db00774",
     "narHash": "sha256-U3yDiMBi6Lf+WBDMddMctaL9ltBjpobBjjOFLxksguc=",
     "lastModified": 1781969637
-  },
-  "zen-browser": {
-    "type": "github",
-    "owner": "youwen5",
-    "repo": "zen-browser-flake",
-    "rev": "8eacc2dd2a94e4d44af26c31cc8d5728ccd6592f",
-    "narHash": "sha256-6wTeaUyWC/e4V5Kjd7aMy/07jTTBW7r8uZvYQCmR4eA=",
-    "lastModified": 1784182496
   }
 }

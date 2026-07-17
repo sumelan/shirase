@@ -2,7 +2,7 @@
   flake.modules.nixos = {
     hjem-extended = _: {
       imports = builtins.attrValues {
-        inherit (config.flake.modules.nixos) obs-studio zen zed-editor;
+        inherit (config.flake.modules.nixos) obs-studio zed-editor;
       };
     };
 

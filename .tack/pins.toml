@@ -59,9 +59,6 @@ url = "gh:notashelf/nvf"
 [inputs.sops-nix]
 url = "gh:Mic92/sops-nix"
 
-[inputs.zen-browser]
-url = "gh:youwen5/zen-browser-flake"
-
 [inputs.helium-browser]
 url = "gh:schembriaiden/helium-browser-nix-flake"
 
