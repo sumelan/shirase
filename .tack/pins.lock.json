@@ -83,17 +83,17 @@
     "type": "github",
     "owner": "noctalia-dev",
     "repo": "noctalia",
-    "rev": "3f45cb05558605a69ac15d84e5f554a5a25dd3e0",
-    "narHash": "sha256-lST9P75pJwCKDe9sK1xbbsyhpUbx8Nl1YULU4bRNlFw=",
-    "lastModified": 1784166182
+    "rev": "6af80663767e9437aac286ee15edc8bd0893749e",
+    "narHash": "sha256-FKkSdF2NPXL0IYlQLxyb1pir7adhKhHfhPhzZz+iCfo=",
+    "lastModified": 1784292263
   },
   "noctalia-greeter": {
     "type": "github",
     "owner": "noctalia-dev",
     "repo": "noctalia-greeter",
-    "rev": "b07359813e7a0cb85469c79617a25258ddc1497d",
-    "narHash": "sha256-1hZOdPubaYy57amOjOzR5rMA4TZKXYGG2zbzHsS1r+0=",
-    "lastModified": 1783960545
+    "rev": "f46e83f6992c4bade22522f911a6f005e732ce80",
+    "narHash": "sha256-bDwWO3htFoWqDu4T8d7jeGZOeBCNMeX/RyrBus1qcF4=",
+    "lastModified": 1784248874
   },
   "nvf": {
     "type": "github",

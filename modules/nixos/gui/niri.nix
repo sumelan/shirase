@@ -2,7 +2,7 @@ _: {
   flake.modules.nixos.gui = {pkgs, ...}: {
     programs.niri = {
       enable = true;
-      package = pkgs.niri;
+      package = pkgs.niri-unstable;
       useNautilus = true;
       withUWSM = false;
       withXDG = true;

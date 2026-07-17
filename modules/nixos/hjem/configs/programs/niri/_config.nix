@@ -826,7 +826,7 @@ in {
     xwayland =
       if config.custom.programs.niri.xwayland
       then {
-        path = lib.getExe pkgs.xwayland-satellite;
+        path = lib.getExe pkgs.xwayland-satellite-unstable;
       }
       else {
         off = [];
