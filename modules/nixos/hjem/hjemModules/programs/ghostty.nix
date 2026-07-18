@@ -42,12 +42,19 @@ in {
         };
       };
 
-      rum.dbus.packages = [cfg.package];
+      xdg = {
+        data.files."dbus-1/services/com.mitchellh.ghostty.service".text = ''
+          [D-BUS Service]
+          Name=com.mitchellh.ghostty
+          SystemdService=app-com.mitchellh.ghostty.service
+          Exec=${lib.getExe cfg.package} --gtk-single-instance=true --initial-window=false
+        '';
 
-      xdg.config.files."ghostty/config.ghostty" = {
-        permissions = "666";
-        text = "";
-        type = "copy";
+        config.files."ghostty/config.ghostty" = {
+          permissions = "666";
+          text = "";
+          type = "copy";
+        };
       };
     };
   };
