@@ -12,24 +12,45 @@ in {
     ...
   }: let
     local = flake.packages.${pkgs.stdenv.hostPlatform.system};
+
+    homeDir = config.hjem.users.${user}.directory;
+    xdg-user-dirs = {
+      # xdg user dirs
+      XDG_DESKTOP_DIR = "${homeDir}/Desktop";
+      XDG_DOCUMENTS_DIR = "${homeDir}/Documents";
+      XDG_DOWNLOAD_DIR = "${homeDir}/Downloads";
+      XDG_MUSIC_DIR = "${homeDir}/Music";
+      XDG_PICTURES_DIR = "${homeDir}/Pictures";
+      XDG_PUBLICSHARE_DIR = "${homeDir}/Public";
+      XDG_TEMPLATES_DIR = "${homeDir}/Templates";
+      XDG_VIDEOS_DIR = "${homeDir}/Videos";
+    };
   in {
     imports = builtins.attrValues flake.custom.hjemConfigs;
 
+    environment.sessionVariables =
+      {
+        DEFAULT_BROWSER = "helium";
+        BROWSER = "helium";
+
+        TERMINAL = "ghostty";
+        EDITOR = "hx";
+        VISUAL = "hx";
+        NIXPKGS_ALLOW_UNFREE = "1";
+
+        # xdg
+        XDG_CACHE_HOME = config.hjem.users.${user}.xdg.cache.directory;
+        XDG_CONFIG_HOME = config.hjem.users.${user}.xdg.config.directory;
+        XDG_DATA_HOME = config.hjem.users.${user}.xdg.data.directory;
+        XDG_STATE_HOME = config.hjem.users.${user}.xdg.state.directory;
+
+        # stop libX11 from polluting $HOME with .compose-cache
+        XCOMPOSECACHE = "${config.hjem.users.${user}.xdg.cache.directory}/xcompose";
+      }
+      // xdg-user-dirs;
+
     # modules standalone
     hjem.users.${user} = let
-      homeDir = config.hjem.users.${user}.directory;
-      xdg-user-dirs = {
-        # xdg user dirs
-        XDG_DESKTOP_DIR = "${homeDir}/Desktop";
-        XDG_DOCUMENTS_DIR = "${homeDir}/Documents";
-        XDG_DOWNLOAD_DIR = "${homeDir}/Downloads";
-        XDG_MUSIC_DIR = "${homeDir}/Music";
-        XDG_PICTURES_DIR = "${homeDir}/Pictures";
-        XDG_PUBLICSHARE_DIR = "${homeDir}/Public";
-        XDG_TEMPLATES_DIR = "${homeDir}/Templates";
-        XDG_VIDEOS_DIR = "${homeDir}/Videos";
-      };
-
       ns-desktop-entry = pkgs.makeDesktopItem {
         name = "nix-search-tv";
         desktopName = "Nix Search TV";
@@ -70,27 +91,6 @@ in {
       };
 
       # misc
-      environment.sessionVariables =
-        {
-          DEFAULT_BROWSER = "helium";
-          BROWSER = "helium";
-
-          TERMINAL = "foot";
-          EDITOR = "hx";
-          VISUAL = "hx";
-          NIXPKGS_ALLOW_UNFREE = "1";
-
-          # xdg
-          XDG_CACHE_HOME = config.hjem.users.${user}.xdg.cache.directory;
-          XDG_CONFIG_HOME = config.hjem.users.${user}.xdg.config.directory;
-          XDG_DATA_HOME = config.hjem.users.${user}.xdg.data.directory;
-          XDG_STATE_HOME = config.hjem.users.${user}.xdg.state.directory;
-
-          # stop libX11 from polluting $HOME with .compose-cache
-          XCOMPOSECACHE = "${config.hjem.users.${user}.xdg.cache.directory}/xcompose";
-        }
-        // xdg-user-dirs;
-
       xdg = {
         config.files = {
           "user-dirs.conf".text = "enabled=False";
@@ -103,7 +103,7 @@ in {
         };
 
         mime-apps = let
-          terminal = "footclient.desktop";
+          terminal = "com.mitchellh.ghostty.desktop";
           zathura = "org.pwmt.zathura-pdf-mupdf.desktop";
         in {
           default-applications = {

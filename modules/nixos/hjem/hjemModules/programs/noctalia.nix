@@ -4,9 +4,8 @@
   in {
     imports = [inputs.noctalia.hjemModules.default];
 
-    # plugin dependencies
     packages = builtins.attrValues {
-      inherit (pkgs) mpvpaper gpu-screen-recorder;
+      inherit (pkgs) ddcutil mpvpaper gpu-screen-recorder;
       inherit waytator;
     };
 
@@ -46,6 +45,7 @@
           };
         };
         brightness = {
+          enable_ddcutil = true;
           sync_all_monitors = true;
         };
 

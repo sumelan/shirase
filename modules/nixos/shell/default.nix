@@ -39,7 +39,7 @@
         PAGER = "moor";
         SYSTEMD_PAGER = "moor";
         SYSTEMD_PAGERSECURE = "1";
-        TERMINAL = "foot";
+        TERMINAL = "ghostty";
         EDITOR = "hx";
         VISUAL = "hx";
         NIXPKGS_ALLOW_UNFREE = "1";

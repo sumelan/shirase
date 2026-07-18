@@ -2,7 +2,7 @@
   inherit (config) flake;
 in {
   flake.modules.nixos.core = {user, ...}: {
-    imports = with flake.modules.nixos; [wifi bluetooth audio];
+    imports = with flake.modules.nixos; [bluetooth audio];
 
     powerManagement.enable = true;
 

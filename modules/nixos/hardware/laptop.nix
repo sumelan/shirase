@@ -3,7 +3,7 @@
 in {
   flake.modules.nixos.laptop = _: {
     imports = builtins.attrValues {
-      inherit (flake.modules.nixos) keyd;
+      inherit (flake.modules.nixos) wifi keyd;
     };
 
     # disbale USB after sometime of inactivity
