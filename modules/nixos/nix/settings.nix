@@ -14,20 +14,27 @@ in {
     ...
   }: {
     # nix lang / nixpkgs
-    environment.systemPackages = attrValues {
-      inherit
-        (pkgs)
-        nix-init
-        nix-output-monitor
-        nix-tree
-        nix-update
-        nixd
-        nixfmt
-        nixpkgs-review
-        ;
+    environment = {
+      variables = {
+        TACK_DIR = "${dotfile}/.tack";
+      };
+
+      systemPackages = attrValues {
+        inherit
+          (pkgs)
+          nix-init
+          nix-output-monitor
+          nix-tree
+          nix-update
+          nixd
+          nixfmt
+          nixpkgs-review
+          ;
+      };
     };
 
     programs = {
+      tack.enable = true;
       # wrapping comma with nix-index-database and put it in the PATH
       nix-index-database.comma.enable = true;
 

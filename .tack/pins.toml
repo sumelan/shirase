@@ -62,9 +62,6 @@ url = "gh:Mic92/sops-nix"
 [inputs.helium-browser]
 url = "gh:schembriaiden/helium-browser-nix-flake"
 
-[inputs.tack]
-url = "gh:manic-systems/tack"
-
 [inputs.noctalia]
 url = "gh:noctalia-dev/noctalia"
 

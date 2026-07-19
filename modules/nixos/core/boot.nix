@@ -1,7 +1,7 @@
 {lib, ...}: {
   flake.modules.nixos.core = {pkgs, ...}: {
     boot = {
-      kernelPackages = pkgs.linuxPackages_xanmod_latest;
+      kernelPackages = pkgs.linuxPackages_xanmod;
 
       # Enable "Silent boot"
       consoleLogLevel = 3;
