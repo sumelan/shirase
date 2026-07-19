@@ -20,7 +20,7 @@ _: {
       overrideDevices = true;
       overrideFolders = true;
 
-      # NOTE: by default, syncthing creates user `syncthing` so no perm outside `/var/lib/syncthing`
+      # [info]: by default, syncthing creates user `syncthing` so no perm outside `/var/lib/syncthing`
       inherit user;
       inherit (config.users.users.${user}) group;
 

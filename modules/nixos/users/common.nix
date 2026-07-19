@@ -73,7 +73,7 @@ in {
         ns-desktop-entry = lib.hiPrio ns-desktop-entry;
 
         # protonapps
-        # NOTE: `protonmail-desktop` need to be started once through xwayland with
+        # [warn] `protonmail-desktop` need to be started once through xwayland with
         # `XDG_SESSION_TYPE=x11 DISPLAY=:0 proton-mail`
         # but after that it worked without them
         # https://github.com/NixOS/nixpkgs/issues/365156#issuecomment-2585203352

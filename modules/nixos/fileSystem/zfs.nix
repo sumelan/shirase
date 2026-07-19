@@ -29,7 +29,7 @@ _: {
     };
 
     # standardized filesystem layout
-    # NOTE: zfs datasets are created via install.sh
+    # [info] zfs datasets are created via install.sh
     fileSystems = {
       "/" = {
         device = "zroot/root";

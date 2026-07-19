@@ -6,7 +6,6 @@ _: {
   }: let
     histFile = "/persist${config.hjem.users.${user}.xdg.data.directory}/bash/.bash_history";
   in {
-    # NOTE: see shell.nix for shared aliases and initExtra
     programs.bash = {
       enable = true;
       completion.enable = true;

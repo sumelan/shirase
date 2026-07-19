@@ -9,7 +9,7 @@ _: {
       enable = true;
       settings = {
         # disable password auth.
-        # NOTE: set false for better security
+        # [info] set false for better security
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
       };
