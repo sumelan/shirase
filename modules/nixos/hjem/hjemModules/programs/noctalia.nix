@@ -33,7 +33,7 @@
             capsule_padding = 10.0;
             center = ["media" "audio_visualizer"];
             end = ["recorder" "network" "bluetooth" "volume" "brightness" "battery" "session"];
-            font_family = "Montserrat";
+            font_family = "Maple Mono NF";
             icon_color = "primary";
             margin_ends = 0;
             position = "left";
@@ -93,7 +93,7 @@
 
         shell = {
           avatar_path = "/home/sumelan/.face";
-          font_family = "Montserrat";
+          font_family = "Inter Display";
           niri_overview_type_to_launch_enabled = true;
           polkit_agent = true;
           settings_show_advanced = true;
@@ -150,7 +150,7 @@
           };
 
           control-center = {
-            font_family = "Montserrat";
+            font_family = "Maple Mono NF";
             glyph = "niri";
           };
 
@@ -176,7 +176,7 @@
           workspaces = {
             display = "none";
             focused_output_only = true;
-            font_family = "Montserrat";
+            font_family = "Maple Mono NF";
             hide_when_empty = true;
             labels_only_when_occupied = true;
           };

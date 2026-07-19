@@ -1,9 +1,5 @@
 _: {
-  flake.modules.nixos."hosts/sakura" = {
-    config,
-    user,
-    ...
-  }: {
+  flake.modules.nixos."hosts/sakura" = {user, ...}: {
     hjem.users.${user} = {
       programs.noctalia = {
         settings = {
@@ -32,7 +28,7 @@ _: {
                   background_opacity = 0.6;
                   color = "hover";
                   description = "";
-                  font_family = config.custom.fonts.regular;
+                  font_family = "Maple Mono NF";
                   opacity = 0.5;
                   shadow = true;
                   title = " NixOS";
@@ -52,7 +48,7 @@ _: {
                   background = false;
                   center_text = true;
                   color = "tertiary";
-                  font_family = config.custom.fonts.regular;
+                  font_family = "Maple Mono NF";
                   format = "{:%H:%M:%S}";
                 };
               };
@@ -135,7 +131,7 @@ _: {
                   background = false;
                   center_text = true;
                   color = "secondary";
-                  font_family = config.custom.fonts.regular;
+                  font_family = "Maple Mono NF";
                   format = "{:%H:%M:%S}";
                 };
               };
@@ -153,7 +149,7 @@ _: {
                   background = true;
                   background_opacity = 0.25;
                   color = "tertiary";
-                  font_family = config.custom.fonts.regular;
+                  font_family = "Maple Mono NF";
                   hide_when_no_media = false;
                   shadow = true;
                 };

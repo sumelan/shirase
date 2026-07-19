@@ -57,7 +57,7 @@ in {
         font = {
           package = mkOption {
             type = package;
-            default = pkgs.montserrat;
+            default = pkgs.inter;
             description = "Package providing font";
           };
 

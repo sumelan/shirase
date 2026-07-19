@@ -11,7 +11,7 @@ in {
       fonts = {
         regular = mkOption {
           type = str;
-          default = "Montserrat";
+          default = "Inter Display";
           description = "The font to use for regular text";
         };
         monospace = mkOption {
