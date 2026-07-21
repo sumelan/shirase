@@ -22,7 +22,7 @@
         };
 
         mpd-discord-rpc = {
-          enable = false;
+          enable = true;
           settings = {
             id = 677226551607033903;
             hosts = [cfg.settings.bind_to_address];

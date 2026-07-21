@@ -18,6 +18,7 @@ in {
       xdg.config.files."rmpc/config.ron".source = import ./_config.nix {
         inherit pkgs;
         cache = config.hjem.users.${user}.xdg.cache.directory;
+        lyrics = "${config.hjem.users.${user}.directory}/Music";
       };
     };
 

@@ -86,13 +86,12 @@
           enabled = true;
           pinned = [
             "org.gnome.Nautilus"
-            "io.github.htkhiem.Euphonica"
+            "proton-mail"
             "com.github.th-ch.youtube-music"
+            "vesktop"
             "helium"
             "Helix"
             "typora"
-            "proton-mail"
-            "webcord"
             "com.mitchellh.ghostty"
           ];
           position = "bottom";
@@ -108,6 +107,7 @@
         };
 
         osd = {
+          background_opacity = 0.60;
           position = "bottom_center";
           position_vertical = "bottom_center";
         };
@@ -153,9 +153,9 @@
 
           panel = {
             clipboard_position = "bottom_center";
-            control_center_placement = "floating";
-            control_center_position = "top_left";
+            control_center_placement = "attached";
             launcher_placement = "floating";
+            open_near_click_control_center = true;
             session_placement = "floating";
             session_position = "bottom_center";
             transparency_mode = "glass";
@@ -226,7 +226,7 @@
             show_vpn_label = true;
           };
 
-          nix-monitor = {
+          nix_monitor = {
             font_family = "Maple Mono NF";
             show_text = false;
             type = "avivbintangaringga/nix-monitor:nix-monitor";

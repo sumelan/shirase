@@ -83,9 +83,7 @@ in {
         # ebook
         inherit (pkgs) foliate;
         # discord
-        inherit (pkgs) webcord-vencord;
-        # slack
-        inherit (pkgs) slack;
+        inherit (pkgs) vesktop;
         # tools
         inherit (pkgs) brightnessctl libnotify wl-clipboard-rs playerctl hyperfine;
       };
@@ -152,8 +150,7 @@ in {
         ".local/state/mpv" # watch later
         ".local/share/com.github.johnfactotum.Foliate"
 
-        ".config/Slack"
-        ".config/WebCord"
+        ".config/vesktop"
         ".config/YouTube Music"
         ".config/Proton"
         ".config/Proton Mail"

@@ -99,7 +99,7 @@ in {
           ln -s ${wrapped-desktopItem} $out/share/applications/com.mitchellh.ghostty.desktop
 
           wrapProgram $out/bin/ghostty \
-            --add-flags "--config-default-files=false  --config-file=${cfg}" \
+            --add-flags "--config-default-files=false --config-file=${cfg}" \
             --set GHOSTTY_BIN_DIR $out/bin \
             --set GHOSTTY_RESOURCES_DIR $out/share/ghostty \
             --set FONTCONFIG_FILE ${pkgs.makeFontsConf {fontDirectories = [pkgs.maple-mono.NF-unhinted];}}

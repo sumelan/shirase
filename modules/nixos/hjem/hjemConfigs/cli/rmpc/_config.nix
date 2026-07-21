@@ -1,6 +1,7 @@
 {
   pkgs,
   cache,
+  lyrics,
   ...
 }: let
   address = "/run/user/1000/mpd/socket";
@@ -18,69 +19,71 @@ in
         theme: Some("custom"),
         cache_dir: "${cache}/rmpc",
         on_song_change: None,
-        volume_step: 2,
-        max_fps: 120,
+        volume_step: 5,
+        max_fps: 60,
         scrolloff: 0,
         wrap_navigation: true,
         enable_mouse: true,
         scroll_amount: 1,
-        enable_config_hot_reload: false,
-        enable_lyrics_hot_reload: false,
+        lyrics_dir: "${lyrics}",
+        enable_config_hot_reload: true,
+        enable_lyrics_hot_reload: true,
         status_update_interval_ms: 1000,
-        rewind_to_start_sec: 5,
+        rewind_to_start_sec: None,
         keep_state_on_song_change: true,
         reflect_changes_to_playlist: false,
-        select_current_song_on_change: true,
-        ignore_leading_the: false,
+        select_current_song_on_change: false,
+        ignore_leading_the: true,
         browser_song_sort: [Disc, Track, Artist, Title],
         directories_sort: SortFormat(group_by_type: true, reverse: false),
         auto_open_downloads: true,
         album_art: (
             method: Auto,
-            max_size_px: (width: 1200, height: 1200),
+            max_size_px: (width: 800, height: 800),
             disabled_protocols: ["http://", "https://"],
-            vertical_align: Center,
-            horizontal_align: Center,
+            vertical_align: Bottom,
+            horizontal_align: Left,
         ),
+
+
+
         cava: (
-            framerate: 160, // default 60
-            autosens: true, // default true
-            sensitivity: 100, // default 100
-            lower_cutoff_freq: 50, // not passed to cava if not provided
-            higher_cutoff_freq: 16000, // not passed to cava if not provided
-            input: (
-                method: Fifo,
-                source: "${fifo}",
-                sample_rate: 44100,
-                channels: 2,
-                samble_bits: 16,
-            ),
-            smoothing: (
-                noise_reduction: 0, // default 10
-                monstercat: false, // default false
-                waves: false, // default false
-            ),
-            output: (
-                channels: stereo,
-            ),
-            // this is a list of floating point numbers thats directly passed to cava
-            // they are passed in order that they are defined
-            eq: []
+           framerate: 60, // default 60
+           autosens: true, // default true
+           sensitivity: 100, // default 100
+           lower_cutoff_freq: 50, // not passed to cava if not provided
+           higher_cutoff_freq: 10000, // not passed to cava if not provided
+           input: (
+               method: Fifo,
+               source: "${fifo}",
+               sample_rate: 48000,
+               channels: 2,
+               sample_bits: 16,
+           ),
+           smoothing: (
+               noise_reduction: 77, // default 77
+               monstercat: true, // default false
+               waves: false, // default false
+           ),
+           // this is a list of floating point numbers thats directly passed to cava
+           // they are passed in order that they are defined
+           eq: []
         ),
+
         keybinds: (
             global: {
                 "q":          Quit,
-                "~":          ShowHelp,
+                "?":          ShowHelp,
                 ":":          CommandMode,
                 "oI":         ShowCurrentSongInfo,
                 "oo":         ShowOutputs,
                 "op":         ShowDecoders,
                 "od":         ShowDownloads,
                 "oP":         Partition(),
-                "x":          ToggleRepeat,
-                "c":          ToggleRandom,
-                "v":          ToggleConsumeOnOff,
-                "z":          ToggleSingleOnOff,
+                "z":          ToggleRepeat,
+                "x":          ToggleRandom,
+                "c":          ToggleConsume,
+                "v":          ToggleSingle,
                 "p":          TogglePause,
                 "s":          Stop,
                 ">":          NextTrack,
@@ -93,39 +96,37 @@ in
                 "gt":         NextTab,
                 "<S-Tab>":    PreviousTab,
                 "gT":         PreviousTab,
-                "1":          SwitchToTab("Queue"),
-                "2":          SwitchToTab("Albums"),
-                "3":          SwitchToTab("Artists"),
+                "1":          SwitchToTab("Playing"),
+                "2":          SwitchToTab("Queue"),
+                "3":          SwitchToTab("Browser"),
                 "4":          SwitchToTab("Playlists"),
-                "5":          SwitchToTab("Directories"),
-                "6":          SwitchToTab("Search"),
-                "?":          SwitchToTab("Search"),
+                "5":          SwitchToTab("Search"),
                 "<C-u>":      Update,
                 "<C-U>":      Rescan,
-             // "R":          AddRandom,
+                "R":          AddRandom,
             },
             navigation: {
                 "<C-c>":      Close,
                 "<Esc>":      Close,
                 "<CR>":       Confirm,
-                "e":          Up,
+                "k":          Up,
                 "<Up>":       Up,
-                "n":          Down,
+                "j":          Down,
                 "<Down>":     Down,
                 "h":          Left,
                 "<Left>":     Left,
-                "i":          Right,
+                "l":          Right,
                 "<Right>":    Right,
-                "<C-w>i":     PaneUp,
+                "<C-w>k":     PaneUp,
                 "<C-Up>":     PaneUp,
-                "<C-w>n":     PaneDown,
+                "<C-w>j":     PaneDown,
                 "<C-Down>":   PaneDown,
                 "<C-w>h":     PaneLeft,
                 "<C-Left>":   PaneLeft,
-                "<C-w>i":     PaneRight,
+                "<C-w>l":     PaneRight,
                 "<C-Right>":  PaneRight,
-                "E":          MoveUp,
-                "N":          MoveDown,
+                "K":          MoveUp,
+                "J":          MoveDown,
                 "<C-u>":      UpHalf,
                 "<C-d>":      DownHalf,
                 "<C-b>":      PageUp,
@@ -137,33 +138,31 @@ in
                 "<Space>":    Select,
                 "<C-Space>":  InvertSelection,
                 "/":          EnterSearch,
-                "k":          NextResult,
-                "K":          PreviousResult,
+                "n":          NextResult,
+                "N":          PreviousResult,
                 "a":          Add,
                 "A":          AddAll,
-                "r":          AddReplace,
-                "R":          AddAllReplace,
                 "D":          Delete,
                 "<C-r>":      Rename,
-                "l":          FocusInput,
+                "i":          FocusInput,
                 "oi":         ShowInfo,
                 "<C-z>":      ContextMenu(),
                 "<C-s>s":     Save(kind: Modal(all: false, duplicates_strategy: Ask)),
                 "<C-s>a":     Save(kind: Modal(all: true, duplicates_strategy: Ask)),
-             // "r":          Rate(),
+                "r":          Rate(),
             },
             queue: {
                 "d":          Delete,
                 "D":          DeleteAll,
                 "<CR>":       Play,
-                "Z":          JumpToCurrent,
-                "C":          Shuffle,
+                "C":          JumpToCurrent,
+                "X":          Shuffle,
             },
         ),
         search: (
             case_sensitive: false,
-            ignore_diacritics: false,
-            search_button: false,
+            ignore_diacritics: true,
+            search_button: true,
             mode: Contains,
             tags: [
                 (value: "any",         label: "Any Tag"),
@@ -172,87 +171,144 @@ in
                 (value: "albumartist", label: "Album Artist"),
                 (value: "title",       label: "Title"),
                 (value: "filename",    label: "Filename"),
-                // (value: "genre",       label: "Genre"),
+                (value: "genre",       label: "Genre"),
             ],
         ),
         artists: (
+    	case_sensitive: false,
             album_display_mode: SplitByDate,
             album_sort_by: Date,
             album_date_tags: [Date],
         ),
         tabs: [
+
+    	(
+    	    borders: "NONE",
+    	    name: "Playing",
+    	    size: "100%",
+    	    pane: Split(
+    		direction: Horizontal,
+    		panes: [
+    		   (
+    		   	size: "45",
+    			borders: "NONE",
+    			pane: Split(
+    				direction: Vertical,
+    				panes: [
+    				(size: "100%", borders: "NONE", pane: Pane(Empty())),
+    		   		(
+    					size: "22",
+    					borders: "NONE",
+    					pane: Pane(AlbumArt)
+    				),
+
+    			])
+    		   ),
+
+    		   (size: "2", borders: "NONE", pane: Pane(Empty())),
+    		   (
+    			size: "100%",
+    			borders: "NONE",
+    			pane: Split(
+    				direction: Vertical,
+    				panes: [
+    				   (
+    			    	   size: "2",
+    				   borders: "NONE",
+    				   pane: Split(
+    				   	direction: Horizontal,
+    					panes: [
+    				   (size: "100%", borders: "NONE", pane: Pane(Empty())),
+    				   (size: "30", borders: "NONE", pane: Component("header_right")),
+    					]
+    					),
+    				   ),
+    				   (size: "100%", borders: "NONE", pane: Pane(Empty())),
+
+    				   (
+    					size: "4", borders: "NONE", pane: Pane(Lyrics),
+    				   ),
+
+    		                   (size: "1", borders: "NONE", pane: Pane(Empty())),
+    				   (
+    					size: "4", borders: "NONE", pane: Component("header_center"),
+    				   ),
+    				   (
+    					size: "1", borders: "NONE", pane: Pane(Empty()),
+    				   ),
+    				   (
+    					size: "6",
+    					borders: "NONE",
+    					pane: Split(
+    						direction: Horizontal,
+    						panes: [
+    						   (
+    							size: "0", borders: "NONE", pane: Pane(Empty()),
+    				   		   ),
+    						   (
+    							size: "100%",
+    							borders: "NONE",
+    							pane: Pane(Cava),
+    				   		   ),
+    						   (
+    							size: "1", borders: "NONE", pane: Pane(Empty()),
+    				   		   ),
+    						   ])
+    				   ),
+    						   (
+    							size: "0", borders: "NONE", pane: Pane(Empty()),
+    				   		   ),
+    				   				   (
+    				   size: "2",
+    				   borders: "NONE",
+
+    		   		   pane: Component("progress_bar")
+    				   ),
+
+    				]
+
+    				)
+    		   ),
+    		])
+    	),
+
+
+    	(
+    	    name: "Queue",
+    	    size:  "100%",
+    	    pane: Pane(Queue),        ),
+
             (
-                name: "Queue",
-                pane: Split(
-                    direction: Vertical,
-                    // borders: "ALL",
-                    // border_symbols: Rounded, // bugged in current version, adding borders to inside objects as workaround
-                    panes: [
-                    (
-                        pane: Pane(Queue),
-                        size: "20",
-                        borders: "ALL",
-                        border_symbols: Inherited(parent: Thick, bottom_left: "┣", bottom_right: "┫"),
-                    ),
-                    (
-                        pane: Pane(Cava),
-                        size: "100%",
-                        borders: "LEFT | RIGHT | BOTTOM",
-                        border_symbols: Thick,
-                    )
-                        ],
-                )
-            ),
-            (
-                name: "Albums",
-                borders: "ALL",
-                border_symbols: Thick,
+                name: "Browser",
+                borders: "NONE",
+                border_symbols: Rounded,
                 pane: Split(
                     size: "100%",
                     direction: Vertical,
-                    panes: [(pane: Pane(Albums), size: "100%", borders: "ALL", border_symbols: Thick)],
-                )
-            ),
-            (
-                name: "Artists",
-                borders: "ALL",
-                border_symbols: Thick,
-                pane: Split(
-                    size: "100%",
-                    direction: Vertical,
-                    panes: [(pane: Pane(AlbumArtists), size: "100%", borders: "ALL", border_symbols: Thick)],
+                    panes: [(pane: Pane(Browser(root_tag: "AlbumArtist")), size: "100%", borders: "NONE", border_symbols: Rounded)],
                 )
             ),
             (
                 name: "Playlists",
                 borders: "ALL",
-                border_symbols: Thick,
+                border_symbols: Rounded,
                 pane: Split(
                     size: "100%",
                     direction: Vertical,
-                    panes: [(pane: Pane(Playlists), size: "100%", borders: "ALL", border_symbols: Thick)],
-                )
-            ),
-            (
-                name: "Directories",
-                borders: "ALL",
-                border_symbols: Thick,
-                pane: Split(
-                    size: "100%",
-                    direction: Vertical,
-                    panes: [(pane: Pane(Directories), size: "100%", borders: "ALL", border_symbols: Thick)],
+                    panes: [(pane: Pane(Playlists), size: "100%", borders: "NONE", border_symbols: Rounded)],
                 )
             ),
             (
                 name: "Search",
                 borders: "ALL",
-                border_symbols: Thick,
+                border_symbols: Rounded,
                 pane: Split(
                     size: "100%",
                     direction: Vertical,
-                    panes: [(pane: Pane(Search), size: "100%", borders: "ALL", border_symbols: Thick)],
+                    panes: [(pane: Pane(Search), size: "100%", borders: "NONE", border_symbols: Rounded)],
                 )
             ),
         ],
-    )
+
+        )
   ''
