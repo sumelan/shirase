@@ -19,7 +19,7 @@ _: {
                 box_width = 240.0;
                 cx = 2400.0;
                 cy = 1368.0;
-                output = "HDMI-A-2";
+                output = "HDMI-A-1";
                 rotation = 0.0;
                 type = "label";
 
@@ -64,7 +64,7 @@ _: {
             enabled = true;
             schema_version = 2;
             widget_order = [
-              "lockscreen-login-box@HDMI-A-2"
+              "lockscreen-login-box@HDMI-A-1"
               "lockscreen-widget-0000000000000001"
               "lockscreen-widget-0000000000000002"
               "lockscreen-widget-0000000000000003"
@@ -77,12 +77,12 @@ _: {
             };
 
             widget = {
-              "lockscreen-login-box@HDMI-A-2" = {
+              "lockscreen-login-box@HDMI-A-1" = {
                 box_height = 70.0;
                 box_width = 400.0;
                 cx = 1280.0;
                 cy = 1321.0;
-                output = "HDMI-A-2";
+                output = "HDMI-A-1";
                 rotation = 0.0;
                 type = "login_box";
 
@@ -105,7 +105,7 @@ _: {
                 box_width = 704.0;
                 cx = 1280.0;
                 cy = 528.0;
-                output = "HDMI-A-2";
+                output = "HDMI-A-1";
                 rotation = 0.0;
                 type = "clock";
 
@@ -123,7 +123,7 @@ _: {
                 box_width = 480.0;
                 cx = 1280.0;
                 cy = 1032.0;
-                output = "HDMI-A-2";
+                output = "HDMI-A-1";
                 rotation = 0.0;
                 type = "media_player";
 
@@ -142,7 +142,7 @@ _: {
                 box_width = 608.0;
                 cx = 1280.0;
                 cy = 1184.0;
-                output = "HDMI-A-2";
+                output = "HDMI-A-1";
                 rotation = 0.0;
                 type = "audio_visualizer";
 
