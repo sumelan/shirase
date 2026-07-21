@@ -326,7 +326,7 @@ in {
     # Disable xray on all our surfaces so it looks more realistic.
     {
       match = [
-        {_props.namespace._raw = ''r#"^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"#'';}
+        {_props.namespace._raw = ''r#"^noctalia-(bar-[^\"]+|notification|panel|attached-panel|osd)$"#'';}
       ];
       background-effect = {
         blur = true;

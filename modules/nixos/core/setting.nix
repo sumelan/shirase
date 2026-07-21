@@ -6,12 +6,12 @@ in {
     dotfile,
     ...
   }: {
-    # internationalisation properties
     # time zone
     time = {
       timeZone = "Asia/Tokyo";
       hardwareClockInLocalTime = true;
     };
+
     # locale
     i18n = {
       defaultLocale = "ja_JP.UTF-8";
@@ -27,10 +27,11 @@ in {
         LC_TIME = "ja_JP.UTF-8";
       };
     };
-    # console
-    # seems to break virtual-console service because it can't find the font
+
+    # [warn] seems to break virtual-console service because it can't find the font
     # https://github.com/NixOS/nixpkgs/issues/257904
     # font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
+
     console.useXkbConfig = true; # use xkb.options in tty.
 
     programs = {
@@ -39,12 +40,11 @@ in {
       nano.enable = mkForce false;
     };
 
-    # services
     services = {
-      # use dbus broker as default implementation
-      dbus.implementation = "broker";
-      # Enable fwupd (firmware updater)
-      fwupd.enable = true;
+      dbus.implementation = "broker"; # use dbus broker as default implementation
+
+      fwupd.enable = true; # firmware updater
+
       # Enable disk monitoring
       smartd = {
         enable = true;
@@ -53,6 +53,7 @@ in {
           wall.enable = true;
         };
       };
+
       gvfs.enable = true; # automount disks
 
       xserver = {

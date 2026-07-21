@@ -15,7 +15,8 @@ _: {
 
         package = pkgs.zfs_2_4;
 
-        # a mismatched host ID will prevent ZFS from importing the pool, but you can override that with a force import
+        # [warn] a mismatched host ID will prevent ZFS from importing the pool,
+        # but you can override that with a force import
         # forceImportAll = true;
 
         requestEncryptionCredentials = true;
@@ -28,7 +29,6 @@ _: {
       trim.enable = true;
     };
 
-    # standardized filesystem layout
     # [info] zfs datasets are created via install.sh
     fileSystems = {
       "/" = {

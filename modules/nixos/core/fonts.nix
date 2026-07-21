@@ -37,6 +37,7 @@ in {
         pkgs.noto-fonts-cjk-sans
         pkgs.noto-fonts-cjk-serif
         pkgs.noto-fonts-color-emoji
+        pkgs.maple-mono.NF-unhinted # [info] unhinted font: for high resolution screen
       ];
     };
   };

@@ -2,7 +2,7 @@ _: {
   flake.modules.nixos.kdeconnect = {pkgs, ...}: {
     programs.kdeconnect = {
       enable = true;
-      package = pkgs.valent;
+      package = pkgs.valent; # kde-connect, but built with gtk
     };
 
     custom.fileSystem = {

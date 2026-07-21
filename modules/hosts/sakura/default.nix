@@ -52,9 +52,6 @@ in {
         };
       };
 
-      # unhinted font: for high resolution screen
-      fonts.packages = [pkgs.maple-mono.NF-unhinted];
-
       programs = {
         btop.rocmSupport = true;
         niri = {xwayland = true;};

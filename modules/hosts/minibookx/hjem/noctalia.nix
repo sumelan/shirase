@@ -5,7 +5,7 @@ _: {
         settings = {
           desktop_widgets = {
             schema_version = 2;
-            widget_order = ["desktop-widget-0000000000000001" "desktop-widget-0000000000000002"];
+            widget_order = ["desktop-widget-0000000000000001"];
 
             grid = {
               cell_size = 16;
@@ -32,24 +32,6 @@ _: {
                   opacity = 0.5;
                   shadow = true;
                   title = " NixOS";
-                };
-              };
-
-              desktop-widget-0000000000000002 = {
-                box_height = 80.0;
-                box_width = 224.0;
-                cx = 192.0;
-                cy = 88.0;
-                output = "DSI-1";
-                rotation = 0.0;
-                type = "clock";
-
-                settings = {
-                  background = false;
-                  center_text = true;
-                  color = "tertiary";
-                  font_family = "Maple Mono NF";
-                  format = "{:%H:%M:%S}";
                 };
               };
             };

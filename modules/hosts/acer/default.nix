@@ -28,9 +28,6 @@ in {
           rotation = 0;
         };
       };
-
-      # hinted font: for lower or equal than 1080p
-      fonts.packages = [pkgs.maple-mono.NF];
     };
   };
 }

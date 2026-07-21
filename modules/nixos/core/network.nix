@@ -1,8 +1,9 @@
 _: {
   flake.modules.nixos.core = {pkgs, ...}: {
-    # system packages
-    # NetworkManager control applet for GNOME
-    environment.systemPackages = [pkgs.networkmanagerapplet];
+    environment.systemPackages = [
+      # NetworkManager control applet for GNOME
+      pkgs.networkmanagerapplet
+    ];
     # basic network settings
     networking.networkmanager.enable = true;
     # firewall

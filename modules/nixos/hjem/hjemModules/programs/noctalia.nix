@@ -26,22 +26,50 @@
         };
 
         bar = {
-          order = ["sideBar"];
-          sideBar = {
+          order = ["topBar"];
+
+          topBar = {
             background_opacity = 0.5;
             capsule_opacity = 0.50;
             capsule_padding = 10.0;
-            center = ["media" "audio_visualizer"];
-            end = ["recorder" "network" "bluetooth" "volume" "brightness" "battery" "session"];
+            center = ["clock"];
+            end = ["group:g2" "group:g1" "nix_monitor" "battery"];
             font_family = "Maple Mono NF";
             icon_color = "primary";
             margin_ends = 0;
-            position = "left";
+            position = "top";
             radius = 20;
             scale = 1.5;
-            start = ["control-center" "workspaces" "notifications" "nix-monitor" "privacy"];
-            thickness = 50;
+            start = ["control-center" "workspaces" "group:g3"];
+            thickness = 40;
             widget_spacing = 20;
+
+            capsule_group = [
+              {
+                enabled = true;
+                fill = "surface_variant";
+                id = "g1";
+                members = ["volume" "brightness"];
+                opacity = 0.5;
+                padding = 10.0;
+              }
+              {
+                enabled = true;
+                fill = "surface_variant";
+                id = "g2";
+                members = ["notifications" "network" "bluetooth"];
+                opacity = 0.5;
+                padding = 10.0;
+              }
+              {
+                enabled = true;
+                fill = "surface_variant";
+                id = "g3";
+                members = ["media" "audio_visualizer"];
+                opacity = 0.5;
+                padding = 10.0;
+              }
+            ];
           };
         };
         brightness = {
@@ -54,9 +82,25 @@
         };
 
         dock = {
-          active_monitor_only = true;
-          auto_hide = true;
-          background_opacity = 0.35;
+          background_opacity = 0.45;
+          enabled = true;
+          pinned = [
+            "org.gnome.Nautilus"
+            "io.github.htkhiem.Euphonica"
+            "com.github.th-ch.youtube-music"
+            "helium"
+            "Helix"
+            "typora"
+            "proton-mail"
+            "webcord"
+            "com.mitchellh.ghostty"
+          ];
+          position = "bottom";
+          reserve_space = true;
+          show_dots = true;
+          show_instance_count = false;
+          show_running = false;
+          smart_auto_hide = false;
         };
 
         location = {
@@ -135,8 +179,9 @@
 
         theme = {
           builtin = "Nord";
+          community_palette = "Nord Aurora";
           mode = "dark";
-          source = "builtin";
+          source = "community";
 
           templates = {
             builtin_ids = ["niri"];
@@ -146,7 +191,20 @@
 
         widget = {
           audio_visualizer = {
-            width = 125;
+            color_1 = "secondary";
+            color_2 = "tertiary";
+            width = 150;
+          };
+
+          bluetooth = {
+            font_family = "Maple Mono NF";
+            hide_when_no_connected_device = true;
+            show_label = true;
+          };
+
+          clock = {
+            format = " {:%H:%M}";
+            tooltip_format = "{:%c}";
           };
 
           control-center = {
@@ -156,15 +214,20 @@
 
           media = {
             art_size = 25;
+            font_family = "Maple Mono NF";
             hide_when_no_media = true;
+            max_length = 150;
             title_scroll = "on_hover";
           };
 
           network = {
-            show_label = false;
+            font_family = "Maple Mono NF";
+            show_label = true;
+            show_vpn_label = true;
           };
 
           nix-monitor = {
+            font_family = "Maple Mono NF";
             show_text = false;
             type = "avivbintangaringga/nix-monitor:nix-monitor";
           };

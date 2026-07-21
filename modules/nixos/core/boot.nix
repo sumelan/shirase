@@ -1,7 +1,10 @@
 {lib, ...}: {
   flake.modules.nixos.core = {pkgs, ...}: {
     boot = {
+      # FiXME)) change to latest kernel when compatible with zfs
       kernelPackages = pkgs.linuxPackages_xanmod;
+
+      # [warn] plymouth automatically enabled via flake:nixos-plymouth
 
       # Enable "Silent boot"
       consoleLogLevel = 3;
