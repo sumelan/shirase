@@ -432,7 +432,7 @@ in {
 
     # execute
     "Mod+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#E7C173" "󰊠  Ghostty" "Terminal Emulator"}";
+      _props.hotkey-overlay-title = "${hotkey "#5E81AC" "󰊠  Ghostty" "Terminal Emulator"}";
       spawn = ["ghostty" "+new-window"];
     };
     "Mod+B" = {

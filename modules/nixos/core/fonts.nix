@@ -11,7 +11,7 @@ in {
       fonts = {
         regular = mkOption {
           type = str;
-          default = "Inter Display";
+          default = "Noto Sans CJK JP";
           description = "The font to use for regular text";
         };
         monospace = mkOption {
@@ -35,6 +35,7 @@ in {
       custom.fonts.packages = [
         pkgs.noto-fonts
         pkgs.noto-fonts-cjk-sans
+        pkgs.noto-fonts-cjk-serif
         pkgs.noto-fonts-color-emoji
       ];
     };

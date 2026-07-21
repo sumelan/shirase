@@ -43,7 +43,7 @@ in {
 
       nh = {
         enable = true;
-        clean.extraArgs = "--keep 5";
+        clean.extraArgs = "--keep 5 --optimise";
         flake = dotfile;
       };
     };

@@ -57,7 +57,7 @@ in {
         font = {
           package = mkOption {
             type = package;
-            default = pkgs.inter;
+            default = pkgs.noto-fonts-cjk-sans;
             description = "Package providing font";
           };
 

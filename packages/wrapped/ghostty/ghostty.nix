@@ -5,8 +5,6 @@
 }: let
   inherit (config.flake.custom.wrappers) mkGhosttyConfig;
   inherit (config.flake.custom.functions) printConfig;
-  cfg = import ./_config.nix {};
-  binds = import ./_binds.nix {};
 in {
   perSystem = {pkgs, ...}: let
     pkg = pkgs.ghostty;
@@ -25,6 +23,9 @@ in {
       extraConfig ? {},
       extraBinds ? {},
     }: let
+      cfg = import ./_config.nix {};
+      binds = import ./_binds.nix {};
+
       allConfig = cfg // extraConfig;
       allBinds = binds // extraBinds;
       configLines = lib.mapAttrsToList (k: v: "${k} = ${toString v}") allConfig;
@@ -57,6 +58,8 @@ in {
 
           wrapProgram $out/bin/ghostty \
             --add-flags "--config-file=${cfg}" \
+            --set GHOSTTY_BIN_DIR $out/bin \
+            --set GHOSTTY_RESOURCES_DIR $out/share/ghostty \
             --set FONTCONFIG_FILE ${pkgs.makeFontsConf {fontDirectories = [pkgs.maple-mono.NF-unhinted];}}
         '';
         meta.mainProgram = "ghostty";

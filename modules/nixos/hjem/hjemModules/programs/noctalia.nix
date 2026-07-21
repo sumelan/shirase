@@ -72,7 +72,7 @@
           "avivbintangaringga/nix-monitor" = {
             clean_command =
               # sh
-              ''nh clean all -k 5'';
+              ''nh clean all'';
             panel_position = "auto";
             show_update_available_notification = false;
             update_command =
@@ -93,7 +93,7 @@
 
         shell = {
           avatar_path = "/home/sumelan/.face";
-          font_family = "Inter Display";
+          font_family = "Noto Sans CJK JP";
           niri_overview_type_to_launch_enabled = true;
           polkit_agent = true;
           settings_show_advanced = true;

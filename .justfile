@@ -37,7 +37,7 @@ export NIXPKGS_ALLOW_UNFREE := "1"
 [group('MAINTENANCE')]
 [doc('Clean all profiles but keep 5 generations.')]
 @gc:
-    nh clean all -k 5
+    nh clean all
 
 [group('MAINTENANCE')]
 [doc('Replace identical files in the store by hard links.')]
