@@ -57,7 +57,7 @@ in {
         font = {
           package = mkOption {
             type = package;
-            default = pkgs.noto-fonts-cjk-sans;
+            default = pkgs.montserrat;
             description = "Package providing font";
           };
 

@@ -11,7 +11,7 @@ in {
       fonts = {
         regular = mkOption {
           type = str;
-          default = "Noto Sans CJK JP";
+          default = "Montserrat";
           description = "The font to use for regular text";
         };
         monospace = mkOption {
@@ -35,7 +35,6 @@ in {
       custom.fonts.packages = [
         pkgs.noto-fonts
         pkgs.noto-fonts-cjk-sans
-        pkgs.noto-fonts-cjk-serif
         pkgs.noto-fonts-color-emoji
         pkgs.maple-mono.NF-unhinted # [info] unhinted font: for high resolution screen
       ];

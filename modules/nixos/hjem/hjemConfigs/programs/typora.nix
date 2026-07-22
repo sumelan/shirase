@@ -25,7 +25,7 @@
         advancedSettings = {
           defaultFontFamily = {
             standard = config.custom.fonts.regular;
-            serif = "Noto Serif CJK JP";
+            serif = config.custom.fonts.regular;
             sansSerif = config.custom.fonts.regular;
             monospace = config.custom.fonts.monospace;
           };

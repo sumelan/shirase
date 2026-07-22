@@ -72,6 +72,7 @@
             ];
           };
         };
+
         brightness = {
           enable_ddcutil = true;
           sync_all_monitors = true;
@@ -87,8 +88,8 @@
           pinned = [
             "org.gnome.Nautilus"
             "proton-mail"
-            "com.github.th-ch.youtube-music"
-            "vesktop"
+            "QBZ"
+            "webcord"
             "helium"
             "Helix"
             "typora"
@@ -137,7 +138,7 @@
 
         shell = {
           avatar_path = "/home/sumelan/.face";
-          font_family = "Noto Sans CJK JP";
+          font_family = "Montserrat";
           niri_overview_type_to_launch_enabled = true;
           polkit_agent = true;
           settings_show_advanced = true;

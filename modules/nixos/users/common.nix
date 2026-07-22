@@ -79,11 +79,11 @@ in {
         # https://github.com/NixOS/nixpkgs/issues/365156#issuecomment-2585203352
         inherit (pkgs) protonmail-desktop proton-pass proton-vpn;
         # media
-        inherit (pkgs) mpv pear-desktop euphonica;
+        inherit (pkgs) mpv qbz;
         # ebook
         inherit (pkgs) foliate;
         # discord
-        inherit (pkgs) vesktop;
+        inherit (pkgs) webcord-vencord;
         # tools
         inherit (pkgs) brightnessctl libnotify wl-clipboard-rs playerctl hyperfine;
       };
@@ -147,18 +147,24 @@ in {
         ".local/share/nvim" # data directory
         ".local/state/nvim" # persistent session info
         ".local/share/supermaven"
+
         ".local/state/mpv" # watch later
+
         ".local/share/com.github.johnfactotum.Foliate"
 
-        ".config/vesktop"
-        ".config/YouTube Music"
+        ".local/share/qbz"
+
+        ".config/WebCord"
+
         ".config/Proton"
         ".config/Proton Mail"
         ".config/Proton Pass"
       ];
       cache.home.directories = [
-        ".cache/euphonica"
         ".cache/com.github.johnfactotum.Foliate"
+
+        ".cache/qbz"
+
         ".cache/Proton"
       ];
     };

@@ -51,7 +51,7 @@ in {
         [D-BUS Service]
         Name=com.mitchellh.ghostty
         SystemdService=app-com.mitchellh.ghostty.service
-        Exec=${lib.getExe pkg} --config-file=${cfg} --gtk-single-instance=true --initial-window=false
+        Exec=${lib.getExe pkg} --config-default-files=false --config-file=${cfg} --gtk-single-instance=true --initial-window=false
       '';
 
       wrapped-desktopItem = pkgs.writeText "wrapped-ghostty.desktop" ''
@@ -80,7 +80,7 @@ in {
 
         [Desktop Action new-window]
         Name=New Window
-        Exec=${lib.getExe pkg} --config-file=${cfg} --gtk-single-instance=true
+        Exec=${lib.getExe pkg} --config-default-files=false --config-file=${cfg} --gtk-single-instance=true
 
       '';
     in
@@ -99,7 +99,8 @@ in {
           ln -s ${wrapped-desktopItem} $out/share/applications/com.mitchellh.ghostty.desktop
 
           wrapProgram $out/bin/ghostty \
-            --add-flags "--config-default-files=false --config-file=${cfg}" \
+            --add-flags "--config-default-files=false" \
+            --add-flags "--config-file=${cfg}" \
             --set GHOSTTY_BIN_DIR $out/bin \
             --set GHOSTTY_RESOURCES_DIR $out/share/ghostty \
             --set FONTCONFIG_FILE ${pkgs.makeFontsConf {fontDirectories = [pkgs.maple-mono.NF-unhinted];}}

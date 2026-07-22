@@ -20,7 +20,7 @@ in {
     };
 
     custom.fileSystem = {
-      cache.home.directories = [
+      persist.home.directories = [
         ".config/nushell"
       ];
     };
