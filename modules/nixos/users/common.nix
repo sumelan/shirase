@@ -152,6 +152,7 @@ in {
 
         ".local/share/com.github.johnfactotum.Foliate"
 
+        ".config/qbz"
         ".local/share/qbz"
 
         ".config/WebCord"

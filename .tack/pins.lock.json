@@ -111,12 +111,12 @@
     "narHash": "sha256-aCWC8ngycU7OdJrU2+Je3qf+1a2ykuBvpPhZT/9tXMc=",
     "lastModified": 1783174389
   },
-  "waytator": {
+  "swash": {
     "type": "github",
     "owner": "ItsLemmy",
-    "repo": "waytator",
-    "rev": "86650a589b1a9d3ee31b35b2af163f2c6db00774",
-    "narHash": "sha256-U3yDiMBi6Lf+WBDMddMctaL9ltBjpobBjjOFLxksguc=",
-    "lastModified": 1781969637
+    "repo": "swash",
+    "rev": "e5224768ceb4e2d032d0ee271cff8492b4e37849",
+    "narHash": "sha256-FvTkKSd9E5FHFAjFmR64WxSU+wr1X15ROi3/toFnipE=",
+    "lastModified": 1784773346
   }
 }

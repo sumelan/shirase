@@ -71,5 +71,5 @@ url = "gh:noctalia-dev/noctalia-greeter"
 [inputs.nixos-plymouth]
 url = "gh:BeatLink/nixos-plymouth"
 
-[inputs.waytator]
-url = "gh:ItsLemmy/waytator"
+[inputs.swash]
+url = "gh:ItsLemmy/swash"

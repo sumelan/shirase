@@ -1,12 +1,12 @@
 {inputs, ...}: {
   flake.custom.hjemModules.noctalia = {pkgs, ...}: let
-    waytator = inputs.waytator.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    swash = inputs.swash.packages.${pkgs.stdenv.hostPlatform.system}.default;
   in {
     imports = [inputs.noctalia.hjemModules.default];
 
     packages = builtins.attrValues {
       inherit (pkgs) ddcutil mpvpaper gpu-screen-recorder;
-      inherit waytator;
+      inherit swash;
     };
 
     programs.noctalia = {
@@ -35,12 +35,12 @@
             center = ["clock"];
             end = ["group:g2" "group:g1" "nix_monitor" "battery"];
             font_family = "Maple Mono NF";
-            icon_color = "primary";
+            icon_color = "hover";
             margin_ends = 0;
             position = "top";
             radius = 20;
             scale = 1.5;
-            start = ["control-center" "workspaces" "group:g3"];
+            start = ["control-center" "workspaces" "group:g3" "tray"];
             thickness = 40;
             widget_spacing = 20;
 
@@ -173,7 +173,7 @@
             directory = "/home/sumelan/Pictures/Screenshots";
             pipe_command =
               # sh
-              ''waytator'';
+              ''swash'';
             pipe_to_command = true;
           };
         };
@@ -235,6 +235,11 @@
 
           recorder = {
             type = "noctalia/screen_recorder:recorder";
+          };
+
+          tray = {
+            font_family = "Maple Mono NF";
+            hidden = ["blueman" "nm-applet" "fcitx5"];
           };
 
           workspaces = {
