@@ -1,6 +1,6 @@
 _: {
   shell-integration-features = "sudo";
-  theme = "Nord";
+  theme = "Catppuccin Frappe";
   alpha-blending = "linear-corrected";
   app-notifications = "no-clipboard-copy";
   background-opacity = 1.0;

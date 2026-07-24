@@ -16,13 +16,13 @@ in {
         cursor = {
           package = mkOption {
             type = package;
-            default = pkgs.bibata-cursors;
+            default = pkgs.catppuccin-cursors.frappePink;
             description = "Package providing the cursor theme.";
           };
 
           name = mkOption {
             type = str;
-            default = "Bibata-Modern-Ice";
+            default = "catppuccin-frappe-pink-cursors";
             description = "The cursor name within the package.";
           };
 

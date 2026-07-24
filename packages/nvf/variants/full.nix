@@ -15,6 +15,7 @@
         nix
         rust
         telescope
+        toggleterm
         ;
     };
   };

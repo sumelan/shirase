@@ -28,18 +28,11 @@
       packages = [cfg.package];
 
       xdg.config.files = let
-        nord = pkgs.fetchFromGitHub {
-          owner = "ChristosBouronikos";
-          repo = "typora-nord-theme";
-          rev = "v1.2";
-          hash = "sha256-o9lUa6be/sCaNmh/cYYFGHspE0AvR5fCzt1ULUDfc/s=";
-        };
-
-        blue-topaz = pkgs.fetchFromGitHub {
-          owner = "LingJingMaster";
-          repo = "typora-theme-blue-topaz";
-          rev = "4ccf8bca875c4031b9213edcba79b9c057e0123d";
-          hash = "sha256-BXfDfjntkDtnz0YYYfs/PNhbHPvHOe42UO7A/DP31l4=";
+        catppuccin = pkgs.fetchFromGitHub {
+          owner = "xiongxianzhu";
+          repo = "catppuccin-typora";
+          rev = "6101ec29c838f30e179533b1cfef57fb86c9087a";
+          hash = "sha256-IV/+t8mkZCIWyt9eMPddsMyn5KYTaGzJdVNh3Jh+ajo=";
         };
       in {
         "Typora/conf/conf.user.json" = {
@@ -47,8 +40,7 @@
           value = cfg.advancedSettings;
         };
 
-        "Typora/themes/nord.css".source = "${nord}/nord.css";
-        "Typora/themes/blue-topaz.css".source = "${blue-topaz}/blue-topaz.css";
+        "Typora/themes/catppuccin-frappe.css".source = "${catppuccin}/catppuccin-frappe.css";
       };
     };
   };

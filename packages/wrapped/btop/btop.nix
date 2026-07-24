@@ -46,6 +46,8 @@ in {
         inherit pkgs extraConfig;
       };
 
+      customTheme = import ./_theme.nix {inherit pkgs;};
+
       printCfg = printConfig {
         inherit cfg pkgs;
         name = "btop-print-config";
@@ -59,8 +61,11 @@ in {
         postBuild = ''
           cp -r ${printCfg}/bin $out
 
+          ln -s ${customTheme} $out/share/btop/themes/catppuccin-frappe.theme
+
           wrapProgram $out/bin/btop \
-            --add-flags "--config ${cfg}"
+            --add-flags "--config ${cfg}" \
+            --add-flags "--themes-dir $out/share/btop/themes"
         '';
         meta.mainProgram = "btop";
       };

@@ -40,8 +40,8 @@
         SYSTEMD_PAGER = "moor";
         SYSTEMD_PAGERSECURE = "1";
         TERMINAL = "ghostty";
-        EDITOR = "hx";
-        VISUAL = "hx";
+        EDITOR = "nvim";
+        VISUAL = "nvim";
         NIXPKGS_ALLOW_UNFREE = "1";
       };
     };

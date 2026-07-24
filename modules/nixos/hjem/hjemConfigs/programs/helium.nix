@@ -21,8 +21,8 @@
         "dpaefegpjhgeplnkomgbcmmlffkijbgp"
         # kagi translate
         "alblebhaoakdgapamjdifdfnaicpnklm"
-        # nord
-        "abehfkkfjlplnjadfcjiflnejblfmmpj"
+        # catppuccin-frappe
+        "olhelnoplefjdmncknfphenjclimckaf"
         # SponsorBlock for YouTube - Skip Sponsorships
         "mnjggcdmjocbbbhaepdhchncahnbgone"
         # YouTube Auto HD + FPS

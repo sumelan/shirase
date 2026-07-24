@@ -12,13 +12,18 @@ in {
         theme = {
           package = mkOption {
             type = package;
-            default = pkgs.nordic;
+            default = pkgs.fluent-gtk-theme.override {
+              themeVariants = ["pink"]; # default: blue
+              colorVariants = ["dark"]; # default: all
+              sizeVariants = ["compact"]; # default: standard
+              tweaks = ["blur"];
+            };
             description = "Package providing the theme.";
           };
 
           name = mkOption {
             type = str;
-            default = "Nordic-darker";
+            default = "Fluent-pink-Dark-compact";
             description = "The name of the theme within the package.";
           };
         };
@@ -26,15 +31,18 @@ in {
         iconTheme = {
           package = mkOption {
             type = package;
-            default = pkgs.papirus-nord.override {
-              accent = "polarnight3";
+            default = pkgs.fluent-icon-theme.override {
+              roundedIcons = false;
+              blackPanelIcons = false;
+              allColorVariants = false;
+              colorVariants = ["pink"];
             };
             description = "Package providing the icon theme.";
           };
 
           name = mkOption {
             type = str;
-            default = "Papirus-Dark";
+            default = "Fluent-pink-dark";
             description = "The name of the icon theme within the package.";
           };
         };

@@ -13,10 +13,9 @@ in
           full-border
           git
           yatline
+          yatline-catppuccin
           yatline-githead
           ;
-
-        inherit (pkgs) nord-yazi;
       };
       initLua =
         pkgs.writeText "init.lua"
@@ -27,12 +26,19 @@ in
             -- Order of status signs showing in the linemode
            order = 1500,
           }
-          require("yatline"):setup({ theme = require("nord-yazi"):setup() })
+          require("yatline"):setup({ theme = require("yatline-catppuccin"):setup("frappe") })
           require("yatline-githead"):setup()
         '';
 
-      flavors = {
-        inherit (pkgs) nord-yazi;
+      flavors = let
+        theme = pkgs.fetchFromGitHub {
+          owner = "yazi-rs";
+          repo = "flavors";
+          rev = "4770a3467169bfdb0a3b11601921aaf27c100630";
+          hash = "sha256-erZI0H5TxqFu2P917juL5PIB3LC0oJGKPcB1VibJDqo=";
+        };
+      in {
+        catppuccin-frappe = "${theme}/catppuccin-frappe.yazi";
       };
 
       settings = {
@@ -79,7 +85,7 @@ in
         };
 
         theme.flavor = {
-          dark = "nord-yazi";
+          dark = "catppuccin-frappe";
         };
 
         keymap = {

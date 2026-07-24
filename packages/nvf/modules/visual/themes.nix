@@ -4,7 +4,8 @@ _: {
       # https://github.com/NotAShelf/nvf/blob/main/modules/plugins/theme/supported-themes.nix
       theme = {
         enable = true;
-        name = "nord";
+        name = "catppuccin";
+        style = "frappe";
       };
     };
   };

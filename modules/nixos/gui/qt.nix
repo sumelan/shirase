@@ -34,17 +34,17 @@
           };
         };
       in {
-        "Kvantum/Nordic".source = "${pkgs.nordic}/share/Kvantum/Nordic";
+        "Kvantum/catppuccin-frappe-blue".source = "${pkgs.catppuccin-kvantum}/share/Kvantum/catppuccin-frappe-blue";
         "Kvantum/kvantum.kvconfig" = {
           generator = lib.generators.toINI {};
           value = {
-            General.theme = "Nordic";
+            General.theme = "catppuccin-frappe-blue";
           };
         };
 
         "kdeglobals".text = ''
           [UiSettings]
-          ColorScheme=Nordic
+          ColorScheme=catppuccin-frappe-blue
         '';
 
         "qt5ct/qt5ct.conf" = {

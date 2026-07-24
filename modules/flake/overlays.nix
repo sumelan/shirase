@@ -43,11 +43,6 @@ in {
         #     withBDplus = true;
         #   };
         # };
-
-        # add icon color
-        nord-yazi = prev.yaziPlugins.nord.overrideAttrs (o: {
-          patches = (o.patches or []) ++ [./patches/nord-yazi.patch];
-        });
       };
     };
 

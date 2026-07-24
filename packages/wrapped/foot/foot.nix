@@ -9,7 +9,7 @@ in {
     extraConfig = {
       main = {
         shell = "nu";
-        include = "${pkgs.foot.themes}/share/foot/themes/nord";
+        include = "${pkgs.foot.themes}/share/foot/themes/catppuccin-frappe";
       };
     };
   in {

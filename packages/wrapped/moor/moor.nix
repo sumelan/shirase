@@ -13,7 +13,7 @@
         nativeBuildInputs = [pkgs.makeWrapper];
         postBuild = ''
           wrapProgram $out/bin/moor \
-            --set MOOR '--statusbar=bold --style=nordic'
+            --set MOOR '--statusbar=bold --style=catppuccin-frappe'
         '';
         meta.mainProgram = "moor";
       };

@@ -34,8 +34,8 @@ in {
         BROWSER = "helium";
 
         TERMINAL = "ghostty";
-        EDITOR = "hx";
-        VISUAL = "hx";
+        EDITOR = "nvim";
+        VISUAL = "nvim";
         NIXPKGS_ALLOW_UNFREE = "1";
 
         # xdg
@@ -50,16 +50,7 @@ in {
       // xdg-user-dirs;
 
     # modules standalone
-    hjem.users.${user} = let
-      ns-desktop-entry = pkgs.makeDesktopItem {
-        name = "nix-search-tv";
-        desktopName = "Nix Search TV";
-        genericName = "Fuzzy search for Nix packages";
-        icon = "dev.vlinkz.NixosConfEditor";
-        terminal = true;
-        exec = "ns";
-      };
-    in {
+    hjem.users.${user} = {
       packages = builtins.attrValues {
         # shell
         inherit (local) starship;
@@ -69,8 +60,6 @@ in {
         inherit (local) pqiv wlr-which-key;
         # pdf viewer
         inherit (local) zathura;
-
-        ns-desktop-entry = lib.hiPrio ns-desktop-entry;
 
         # protonapps
         # [warn] `protonmail-desktop` need to be started once through xwayland with
@@ -107,9 +96,9 @@ in {
           default-applications = {
             "x-scheme-handler/terminal" = terminal;
 
-            "text/plain" = "helix.desktop";
-            "application/x-shellscript" = "helix.desktop";
-            "application/xml" = "helix.desktop";
+            "text/plain" = "nvim.desktop";
+            "application/x-shellscript" = "nvim.desktop";
+            "application/xml" = "nvim.desktop";
 
             "x-scheme-handler/unknown" = "helium.desktop";
             "x-scheme-handler/about" = "helium.desktop";
@@ -118,7 +107,7 @@ in {
             "text/html" = "helium.desktop";
           };
           added-associations = {
-            "text/csv" = "helix.desktop";
+            "text/csv" = "nvim.desktop";
 
             "x-scheme-handler/unknown" = "helium.desktop";
             "x-scheme-handler/about" = "helium.desktop";

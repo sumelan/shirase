@@ -91,7 +91,7 @@
             "QBZ"
             "webcord"
             "helium"
-            "Helix"
+            "nvim"
             "typora"
             "com.mitchellh.ghostty"
           ];
@@ -180,7 +180,7 @@
 
         theme = {
           builtin = "Nord";
-          community_palette = "Nord Aurora";
+          community_palette = "Catppuccin Frappe Pink";
           mode = "dark";
           source = "community";
 
