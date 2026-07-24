@@ -5,7 +5,7 @@
     imports = [inputs.noctalia.hjemModules.default];
 
     packages = builtins.attrValues {
-      inherit (pkgs) ddcutil mpvpaper gpu-screen-recorder;
+      inherit (pkgs) ddcutil mpvpaper gpu-screen-recorder tesseract;
       inherit swash;
     };
 

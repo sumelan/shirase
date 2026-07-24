@@ -260,7 +260,7 @@ in {
         {_props.title._raw = ''r#"^ピクチャー イン ピクチャー$"#'';}
         {_props.app-id._raw = ''r#"^mpv$"#'';}
         {_props.app-id._raw = ''r#"^dev\.lemmy\.swash$"#'';}
-        {_props.app-id._raw = ''r#"^Pqiv$"#'';}
+        {_props.app-id._raw = ''r#"^pqiv$"#'';}
         {_props.app-id._raw = ''r#"^vlc$"#'';}
       ];
       default-column-width._children = [

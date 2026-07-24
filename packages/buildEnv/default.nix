@@ -4,7 +4,7 @@
 
     commonPkgs = builtins.attrValues {
       inherit (local) bat batman eza eza-tree moor ripgrep difftastic;
-      inherit (local) btop rmpc starship yt-dlp;
+      inherit (local) btop starship yt-dlp;
       inherit (local) nushell;
       inherit (local) nvf;
       inherit (local) ns;
