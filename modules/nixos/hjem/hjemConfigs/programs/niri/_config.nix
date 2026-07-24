@@ -333,17 +333,6 @@ in {
         xray = false;
       };
     }
-    # wlr-which-key
-    {
-      match = [
-        {_props.namespace._raw = ''r#"^wlr_which_key$"#'';}
-      ];
-      opacity = 0.850000;
-      background-effect = {
-        blur = true;
-        xray = true;
-      };
-    }
   ];
 
   spawn-at-startup = [
