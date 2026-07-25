@@ -114,7 +114,7 @@
     cmd_duration = {
       disabled = false;
       format = "[](fg:overlay0)[  $duration ]($style)[](fg:overlay0)";
-      style = "bg:surface1 fg:mauve";
+      style = "bg:overlay0 fg:mauve";
       min_time = 0;
       show_milliseconds = false;
     };

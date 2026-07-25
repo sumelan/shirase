@@ -16,19 +16,19 @@ in {
         cursor = {
           package = mkOption {
             type = package;
-            default = pkgs.catppuccin-cursors.frappePink;
+            default = pkgs.capitaine-cursors-themed;
             description = "Package providing the cursor theme.";
           };
 
           name = mkOption {
             type = str;
-            default = "catppuccin-frappe-pink-cursors";
+            default = "Capitaine Cursors (Palenight)";
             description = "The cursor name within the package.";
           };
 
           size = mkOption {
             type = int;
-            default = 32;
+            default = 38;
             description = "The cursor size.";
           };
         };

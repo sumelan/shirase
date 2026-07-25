@@ -25,7 +25,6 @@ in {
         gtk-icon-theme-name = gtkCfg.iconTheme.name;
         gtk-font-name = "${gtkCfg.font.name} 14";
         gtk-application-prefer-dark-theme = 1;
-        gtk-error-bell = 0;
       };
     };
   in {

@@ -27,6 +27,13 @@
 
     hjem.users.${user} = {
       xdg.config.files = let
+        catppuccin-kvantum = pkgs.fetchFromGitHub {
+          owner = "catppuccin";
+          repo = "Kvantum";
+          rev = "71105d224fef95dd023691303477ce3eea487457";
+          hash = "sha256-gcvCVZjVbj5fRZWaM+mZTwH/g158MH36JmMuMgCBuqQ=";
+        };
+
         qtConf = {
           Appearance = {
             icon_theme = config.custom.gtk.iconTheme.name;
@@ -34,17 +41,17 @@
           };
         };
       in {
-        "Kvantum/catppuccin-frappe-blue".source = "${pkgs.catppuccin-kvantum}/share/Kvantum/catppuccin-frappe-blue";
+        "Kvantum/Catppuccin-Frappe-Pink".source = "${catppuccin-kvantum}/themes/catppuccin-frappe-pink";
         "Kvantum/kvantum.kvconfig" = {
           generator = lib.generators.toINI {};
           value = {
-            General.theme = "catppuccin-frappe-blue";
+            General.theme = "Catppuccin-Frappe-Pink";
           };
         };
 
         "kdeglobals".text = ''
           [UiSettings]
-          ColorScheme=catppuccin-frappe-blue
+          ColorScheme=Catppuccin-Frappe-Pink
         '';
 
         "qt5ct/qt5ct.conf" = {

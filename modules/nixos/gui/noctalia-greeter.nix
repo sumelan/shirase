@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.gui = {pkgs, ...}: {
+  flake.modules.nixos.gui = {config, ...}: {
     programs.noctalia-greeter = {
       enable = true;
 
@@ -14,9 +14,9 @@ _: {
           scheme = "Synced";
         };
         cursor = {
-          theme = "Bibata-Modern-Ice";
-          size = 18;
-          package = pkgs.bibata-cursors;
+          theme = config.custom.gtk.cursor.name;
+          size = 28;
+          inherit (config.custom.gtk.cursor) package;
         };
         keyboard = {
           layout = "us";

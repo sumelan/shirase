@@ -12,18 +12,18 @@ in {
         theme = {
           package = mkOption {
             type = package;
-            default = pkgs.fluent-gtk-theme.override {
+            default = pkgs.colloid-gtk-theme.override {
               themeVariants = ["pink"]; # default: blue
               colorVariants = ["dark"]; # default: all
               sizeVariants = ["compact"]; # default: standard
-              tweaks = ["blur"];
+              tweaks = ["catppuccin"];
             };
             description = "Package providing the theme.";
           };
 
           name = mkOption {
             type = str;
-            default = "Fluent-pink-Dark-compact";
+            default = "Colloid-Pink-Dark-Compact-Catppuccin";
             description = "The name of the theme within the package.";
           };
         };
@@ -31,18 +31,16 @@ in {
         iconTheme = {
           package = mkOption {
             type = package;
-            default = pkgs.fluent-icon-theme.override {
-              roundedIcons = false;
-              blackPanelIcons = false;
-              allColorVariants = false;
-              colorVariants = ["pink"];
+            default = pkgs.catppuccin-papirus-folders.override {
+              flavor = "frappe";
+              accent = "pink";
             };
             description = "Package providing the icon theme.";
           };
 
           name = mkOption {
             type = str;
-            default = "Fluent-pink-dark";
+            default = "Papirus-Dark";
             description = "The name of the icon theme within the package.";
           };
         };
