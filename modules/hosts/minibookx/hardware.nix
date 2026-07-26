@@ -30,14 +30,6 @@ in {
     ];
     boot.extraModulePackages = [];
 
-    # 8 GB swap
-    swapDevices = [
-      {
-        device = "/dev/disk/by-partuuid/bd6f05f3-1b5b-450a-b8d6-b9aa5c8b8135";
-        randomEncryption.enable = true;
-      }
-    ];
-
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
