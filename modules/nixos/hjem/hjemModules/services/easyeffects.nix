@@ -9,15 +9,6 @@
     options.rum = {
       services.easyeffects = {
         enable = lib.mkEnableOption "Easyeffects daemon";
-
-        presets = lib.mkOption {
-          type = lib.types.bool;
-          default = true;
-          description = ''
-            Add easyeffects presets from a repo.
-            See <https://github.com/JackHack96/EasyEffects-Presets>.
-          '';
-        };
       };
     };
 
@@ -44,30 +35,33 @@
         };
       };
 
-      xdg.data =
-        lib.mkIf cfg.presets
-        {
-          files = let
-            src = pkgs.fetchFromGitHub {
-              owner = "JackHack96";
-              repo = "EasyEffects-Presets";
-              rev = "d77a61eb01c36e2c794bddc25423445331e99915";
-              hash = "sha256-or5kH/vTwz7IO0Vz7W4zxK2ZcbL/P3sO9p5+EdcC2DA=";
-            };
-            output = preset: {
-              "easyeffects/output/${preset}.json".source = "${src}/${preset}.json";
-            };
-          in
-            output "Advanced Auto Gain"
-            // output "Bass Boosted"
-            // output "Bass Enhancing + Perfect EQ"
-            // output "Boosted"
-            // output "Loudness+Autogain"
-            // output "Perfect EQ"
-            // {
-              "easyeffects/irs".source = "${src}/irs";
-            };
-        };
+      xdg = {
+        config.files."easyeffectsrc".text = ''
+          [UiSettings]
+          ColorScheme=BreezeDark
+        '';
+
+        data.files = let
+          src = pkgs.fetchFromGitHub {
+            owner = "JackHack96";
+            repo = "EasyEffects-Presets";
+            rev = "d77a61eb01c36e2c794bddc25423445331e99915";
+            hash = "sha256-or5kH/vTwz7IO0Vz7W4zxK2ZcbL/P3sO9p5+EdcC2DA=";
+          };
+          output = preset: {
+            "easyeffects/output/${preset}.json".source = "${src}/${preset}.json";
+          };
+        in
+          output "Advanced Auto Gain"
+          // output "Bass Boosted"
+          // output "Bass Enhancing + Perfect EQ"
+          // output "Boosted"
+          // output "Loudness+Autogain"
+          // output "Perfect EQ"
+          // {
+            "easyeffects/irs".source = "${src}/irs";
+          };
+      };
     };
   };
 }

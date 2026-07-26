@@ -7,9 +7,7 @@
   }: {
     hjem.users.${user} = {
       rum = {
-        services.easyeffects = {
-          enable = true;
-        };
+        services.easyeffects.enable = true;
       };
 
       packages = [pkgs.pwvucontrol];
