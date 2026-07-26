@@ -70,6 +70,9 @@ in {
     # enable opengl
     hardware.graphics.enable = true;
 
+    # zramswap
+    zramSwap.enable = true;
+
     systemd.tmpfiles.rules = [
       # cleanup systemd coredumps once a week
       "D! /var/lib/systemd/coredump root root 7d"
