@@ -1,8 +1,28 @@
 {lib, ...}: {
-  flake.modules.nixos.core = {pkgs, ...}: {
-    boot = {
-      # FiXME)) change to latest kernel when compatible with zfs
-      kernelPackages = pkgs.linuxPackages_xanmod;
+  flake.modules.nixos.core = {
+    config,
+    pkgs,
+    ...
+  }: {
+    boot = let
+      # use the latest ZFS-compatible Kernel
+      # https://wiki.nixos.org/wiki/ZFS
+      zfsCompatibleKernelPackages =
+        lib.filterAttrs (
+          name: kernelPackages:
+            (builtins.match "linux_[0-9]+_[0-9]+" name)
+            != null
+            && (builtins.tryEval kernelPackages).success
+            && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
+        )
+        pkgs.linuxKernel.packages;
+      latestKernelPackage = lib.last (
+        lib.sort (a: b: (lib.versionOlder a.kernel.version b.kernel.version)) (
+          builtins.attrValues zfsCompatibleKernelPackages
+        )
+      );
+    in {
+      kernelPackages = latestKernelPackage;
 
       # [warn] plymouth automatically enabled via flake:nixos-plymouth
 
