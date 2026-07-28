@@ -13,7 +13,7 @@ _: {
           then "/dev/disk/by-id"
           else "/dev/disk/by-partuuid";
 
-        package = pkgs.zfs_2_4;
+        package = pkgs.zfs_unstable;
 
         # [warn] a mismatched host ID will prevent ZFS from importing the pool,
         # but you can override that with a force import
