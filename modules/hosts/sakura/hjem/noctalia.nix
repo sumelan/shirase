@@ -96,7 +96,6 @@ _: {
                   show_caps_lock = true;
                   show_keyboard_layout = true;
                   show_login_button = true;
-                  show_password_hint = true;
                 };
               };
 

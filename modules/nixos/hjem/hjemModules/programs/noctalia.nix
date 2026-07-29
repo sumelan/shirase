@@ -228,7 +228,6 @@
           };
 
           nix_monitor = {
-            font_family = "Maple Mono NF";
             show_text = false;
             type = "avivbintangaringga/nix-monitor:nix-monitor";
           };
