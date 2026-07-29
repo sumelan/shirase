@@ -39,6 +39,14 @@
     "narHash": "sha256-03+JxvzmfwRu+5JafM0DLbxgHttOQZkUtDWBmeUkN8Y=",
     "lastModified": 1769548169
   },
+  "kopuz": {
+    "type": "github",
+    "owner": "temidaradev",
+    "repo": "kopuz",
+    "rev": "38e093a626cb88e8ca89bf31fba5bc6e1cbc3a19",
+    "narHash": "sha256-/q07aa/MXTVCtdIDTUDmheHGItuW817ZvXrdW8KnojE=",
+    "lastModified": 1785320500
+  },
   "niri-nix": {
     "type": "git",
     "url": "https://codeberg.org/BANanaD3V/niri-nix",

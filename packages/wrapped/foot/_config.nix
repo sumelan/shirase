@@ -1,6 +1,6 @@
 _: {
   main = {
-    font = "Maple Mono NF:size=14";
+    font = "Maple Mono NF:size=13";
     initial-window-size-pixels = "1000x800";
   };
   scrollback = {

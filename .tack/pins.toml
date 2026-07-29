@@ -73,3 +73,6 @@ url = "gh:BeatLink/nixos-plymouth"
 
 [inputs.swash]
 url = "gh:ItsLemmy/swash"
+
+[inputs.kopuz]
+url = "gh:temidaradev/kopuz"

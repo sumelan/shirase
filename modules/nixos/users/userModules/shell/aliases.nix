@@ -40,6 +40,13 @@ _: {
     nu = {
       ll = "ls -la";
       la = "ls -a";
+
+      zls = "zls | detect columns";
+      zsls = "zsls | detect columns";
+    };
+
+    kitty = {
+      ssh = "kitten ssh --kitten=color_scheme=Dracula";
     };
   };
 }

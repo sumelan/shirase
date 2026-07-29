@@ -88,12 +88,12 @@
           pinned = [
             "org.gnome.Nautilus"
             "proton-mail"
-            "QBZ"
-            "webcord"
-            "helium"
+            "com.temidaradev.kopuz"
             "nvim"
             "typora"
-            "com.mitchellh.ghostty"
+            "helium"
+            "webcord"
+            "kitty"
           ];
           position = "bottom";
           reserve_space = true;

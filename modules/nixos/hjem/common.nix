@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   ...
@@ -33,7 +34,7 @@ in {
         DEFAULT_BROWSER = "helium";
         BROWSER = "helium";
 
-        TERMINAL = "ghostty";
+        TERMINAL = "foot";
         EDITOR = "nvim";
         VISUAL = "nvim";
         NIXPKGS_ALLOW_UNFREE = "1";
@@ -50,14 +51,16 @@ in {
       // xdg-user-dirs;
 
     # modules standalone
-    hjem.users.${user} = {
+    hjem.users.${user} = let
+      kopuzPkg = inputs.kopuz.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    in {
       packages = builtins.attrValues {
         # shell
         inherit (local) starship;
         # tui
         inherit (local) bat batman eza eza-tree moor ripgrep ns;
         # desktop
-        inherit (local) pqiv;
+        inherit (local) kitty pqiv;
         # pdf viewer
         inherit (local) zathura;
 
@@ -68,13 +71,15 @@ in {
         # https://github.com/NixOS/nixpkgs/issues/365156#issuecomment-2585203352
         inherit (pkgs) protonmail-desktop proton-pass proton-vpn;
         # media
-        inherit (pkgs) mpv qbz;
+        inherit (pkgs) mpv;
         # ebook
         inherit (pkgs) foliate;
         # discord
         inherit (pkgs) webcord-vencord;
         # tools
         inherit (pkgs) brightnessctl libnotify wl-clipboard-rs playerctl hyperfine;
+        # inputs
+        inherit kopuzPkg;
       };
 
       # misc
@@ -90,7 +95,7 @@ in {
         };
 
         mime-apps = let
-          terminal = "com.mitchellh.ghostty.desktop";
+          terminal = "footclient.desktop";
           zathura = "org.pwmt.zathura-pdf-mupdf.desktop";
         in {
           default-applications = {
