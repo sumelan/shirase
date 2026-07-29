@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   ...
@@ -12,8 +11,6 @@ in {
     user,
     ...
   }: let
-    local = flake.packages.${pkgs.stdenv.hostPlatform.system};
-
     homeDir = config.hjem.users.${user}.directory;
     xdg-user-dirs = {
       # xdg user dirs
@@ -31,14 +28,6 @@ in {
 
     environment.sessionVariables =
       {
-        DEFAULT_BROWSER = "helium";
-        BROWSER = "helium";
-
-        TERMINAL = "foot";
-        EDITOR = "nvim";
-        VISUAL = "nvim";
-        NIXPKGS_ALLOW_UNFREE = "1";
-
         # xdg
         XDG_CACHE_HOME = config.hjem.users.${user}.xdg.cache.directory;
         XDG_CONFIG_HOME = config.hjem.users.${user}.xdg.config.directory;
@@ -51,117 +40,21 @@ in {
       // xdg-user-dirs;
 
     # modules standalone
-    hjem.users.${user} = let
-      kopuzPkg = inputs.kopuz.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    in {
+    hjem.users.${user} = {
       packages = builtins.attrValues {
-        # shell
-        inherit (local) starship;
-        # tui
-        inherit (local) bat batman eza eza-tree moor ripgrep ns;
-        # desktop
-        inherit (local) kitty pqiv;
-        # pdf viewer
-        inherit (local) zathura;
-
-        # protonapps
-        # [warn] `protonmail-desktop` need to be started once through xwayland with
-        # `XDG_SESSION_TYPE=x11 DISPLAY=:0 proton-mail`
-        # but after that it worked without them
-        # https://github.com/NixOS/nixpkgs/issues/365156#issuecomment-2585203352
-        inherit (pkgs) protonmail-desktop proton-pass proton-vpn;
-        # media
-        inherit (pkgs) mpv;
-        # ebook
-        inherit (pkgs) foliate;
-        # discord
-        inherit (pkgs) webcord-vencord;
         # tools
         inherit (pkgs) brightnessctl libnotify wl-clipboard-rs playerctl hyperfine;
-        # inputs
-        inherit kopuzPkg;
       };
 
       # misc
-      xdg = {
-        config.files = {
-          "user-dirs.conf".text = "enabled=False";
-
-          "user-dirs.dirs" = {
-            generator = lib.generators.toKeyValue {};
-            # For some reason, these need to be wrapped with quotes to be valid.
-            value = lib.mapAttrs (_: value: ''"${value}"'') xdg-user-dirs;
-          };
-        };
-
-        mime-apps = let
-          terminal = "footclient.desktop";
-          zathura = "org.pwmt.zathura-pdf-mupdf.desktop";
-        in {
-          default-applications = {
-            "x-scheme-handler/terminal" = terminal;
-
-            "text/plain" = "nvim.desktop";
-            "application/x-shellscript" = "nvim.desktop";
-            "application/xml" = "nvim.desktop";
-
-            "x-scheme-handler/unknown" = "helium.desktop";
-            "x-scheme-handler/about" = "helium.desktop";
-            "x-scheme-handler/https" = "helium.desktop";
-            "x-scheme-handler/http" = "helium.desktop";
-            "text/html" = "helium.desktop";
-          };
-          added-associations = {
-            "text/csv" = "nvim.desktop";
-
-            "x-scheme-handler/unknown" = "helium.desktop";
-            "x-scheme-handler/about" = "helium.desktop";
-            "x-scheme-handler/https" = "helium.desktop";
-            "x-scheme-handler/http" = "helium.desktop";
-            "text/html" = "helium.desktop";
-          };
-
-          removed-associations = {
-            "audio/ogg" = "umpv.desktop";
-            "audio/flac" = "umpv.desktop";
-            "video/mp4" = "umpv.desktop";
-
-            "image/jpeg" = zathura;
-            "image/gif" = zathura;
-            "image/webp" = zathura;
-            "image/png" = zathura;
-          };
+      xdg.config.files = {
+        "user-dirs.conf".text = "enabled=False";
+        "user-dirs.dirs" = {
+          generator = lib.generators.toKeyValue {};
+          # For some reason, these need to be wrapped with quotes to be valid.
+          value = lib.mapAttrs (_: value: ''"${value}"'') xdg-user-dirs;
         };
       };
-    };
-
-    custom.fileSystem = {
-      persist.home.directories = [
-        ".supermaven"
-        ".local/share/nvim" # data directory
-        ".local/state/nvim" # persistent session info
-        ".local/share/supermaven"
-
-        ".local/state/mpv" # watch later
-
-        ".local/share/com.github.johnfactotum.Foliate"
-
-        ".config/qbz"
-        ".local/share/qbz"
-
-        ".config/WebCord"
-
-        ".config/Proton"
-        ".config/Proton Mail"
-        ".config/Proton Pass"
-      ];
-      cache.home.directories = [
-        ".cache/com.github.johnfactotum.Foliate"
-
-        ".cache/qbz"
-
-        ".cache/Proton"
-      ];
     };
   };
 }

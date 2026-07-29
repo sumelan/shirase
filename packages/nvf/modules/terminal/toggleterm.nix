@@ -4,6 +4,10 @@ _: {
       toggleterm = {
         enable = true;
         lazygit.enable = true;
+        setupOpts = {
+          direction = "float";
+          winbar.enabled = true;
+        };
       };
     };
   };

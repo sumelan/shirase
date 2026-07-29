@@ -41,30 +41,61 @@
 
       # Add widevine support, inspired from this comment:
       # https://github.com/imputnet/helium/issues/116#issuecomment-3668370766
-      xdg.config.files."net.imput.helium/WidevineCdm/latest-component-updated-widevine-cdm".text = ''
-        {"Path":"${pkgs.widevine-cdm}/share/google/chrome/WidevineCdm"}
-      '';
+      xdg = {
+        config.files."net.imput.helium/WidevineCdm/latest-component-updated-widevine-cdm".text = ''
+          {"Path":"${pkgs.widevine-cdm}/share/google/chrome/WidevineCdm"}
+        '';
 
-      xdg.mime-apps = let
-        value = "helium.desktop";
-        imgAssociations = builtins.listToAttrs (map (name: {
-            inherit name value;
-          }) [
-            "image/jpeg"
-            "image/gif"
-            "image/webp"
-            "image/png"
-            "application/pdf"
-          ]);
-      in {
-        removed-associations = imgAssociations;
+        mime-apps = let
+          value = "helium.desktop";
+          default-applications = builtins.listToAttrs (map (name: {
+              inherit name value;
+            }) [
+              "x-scheme-handler/unknown"
+              "x-scheme-handler/about"
+              "x-scheme-handler/https"
+              "x-scheme-handler/http"
+              "text/html"
+            ]);
+          added-associations = builtins.listToAttrs (map (name: {
+              inherit name value;
+            }) [
+              "x-scheme-handler/unknown"
+              "x-scheme-handler/about"
+              "x-scheme-handler/https"
+              "x-scheme-handler/http"
+              "text/html"
+            ]);
+
+          removed-associations = builtins.listToAttrs (map (name: {
+              inherit name value;
+            }) [
+              "image/jpeg"
+              "image/gif"
+              "image/webp"
+              "image/png"
+              "application/pdf"
+            ]);
+        in {
+          inherit
+            default-applications
+            added-associations
+            removed-associations
+            ;
+        };
       };
+    };
+
+    environment.sessionVariables = {
+      DEFAULT_BROWSER = "helium";
+      BROWSER = "helium";
     };
 
     custom.fileSystem = {
       persist.home.directories = [
         ".config/net.imput.helium"
       ];
+
       cache.home.directories = [
         ".cache/net.imput.helium"
       ];

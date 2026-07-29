@@ -34,15 +34,17 @@ in {
         });
 
         # Enabling unfree dependencies allow use of Nvidia features, the FDK AAC decoder, and a lot more.
-        ffmpeg-full = prev.ffmpeg-full.override {withUnfree = true;};
+        ffmpeg-full = prev.ffmpeg-full.override {
+          withUnfree = true;
+        };
 
         # play Blu-ray disk
-        # vlc = prev.vlc.override {
-        #   libbluray-full = prev.libbluray.override {
-        #     withAACS = true;
-        #     withBDplus = true;
-        #   };
-        # };
+        vlc = prev.vlc.override {
+          libbluray-full = prev.libbluray.override {
+            withAACS = true;
+            withBDplus = true;
+          };
+        };
       };
     };
 

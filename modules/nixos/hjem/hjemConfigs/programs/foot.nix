@@ -2,22 +2,32 @@
   config,
   lib,
   ...
-}: let
-  inherit (config) flake;
-in {
+}: {
   flake.custom.hjemConfigs.foot = {
     pkgs,
     user,
     ...
   }: let
-    inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) foot;
+    local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
   in {
-    hjem.users.${user}.rum = {
-      programs.foot = {
-        enable = lib.mkDefault true;
-        package = foot;
-        server.enable = true;
+    hjem.users.${user} = {
+      rum = {
+        programs.foot = {
+          enable = lib.mkDefault true;
+          package = local.foot;
+          server.enable = true;
+        };
       };
+
+      xdg.mime-apps = {
+        default-applications = {
+          "x-scheme-handler/terminal" = "footclient.desktop";
+        };
+      };
+    };
+
+    environment.sessionVariables = {
+      TERMINAL = "foot";
     };
   };
 }
