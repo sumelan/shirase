@@ -1,11 +1,14 @@
 _: {
-  flake.custom.hjemConfigs.webcord = {
+  flake.custom.hjemConfigs.discord = {
     pkgs,
     user,
     ...
   }: {
     hjem.users.${user} = {
-      packages = [pkgs.webcord-vencord];
+      packages = [
+        pkgs.concord-tui
+        pkgs.webcord-vencord
+      ];
     };
 
     custom.fileSystem = {
