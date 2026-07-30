@@ -3,6 +3,10 @@ _: {
     services.pipewire.wireplumber.extraConfig = let
       inherit (flakeLib.wireplumber {}) rename;
     in {
+      "10-mic-rename" = rename {
+        old = "alsa_input.pci-0000_34_00.6.analog-stereo";
+        new = "Built-in Mic";
+      };
       "10-creative-rename" = rename {
         old = "alsa_output.usb-Creative_Technology_Ltd_Creative_Stage_SE_mini_1120041300020421-01.analog-stereo";
         new = "Creative Stage SE mini";
@@ -22,10 +26,6 @@ _: {
       "10-fifine-source-rename" = rename {
         old = "alsa_input.usb-FIFINE_683_Microphone_FIFINE_683_Microphone-00.analog-stereo";
         new = "FIFINE K683A Mic";
-      };
-      "10-mic-rename" = rename {
-        old = "alsa_input.pci-0000_34_00.6.analog-stereo";
-        new = "Built-in Mic";
       };
     };
   };

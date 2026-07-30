@@ -14,6 +14,7 @@ _: {
       persist.home.directories = [
         ".local/share/direnv"
       ];
+
       cache.home.directories = [
         # python package managers
         ".cache/pip"

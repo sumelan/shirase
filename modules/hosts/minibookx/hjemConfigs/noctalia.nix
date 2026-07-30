@@ -66,8 +66,6 @@ _: {
             widget_order = [
               "lockscreen-login-box@DSI-1"
               "lockscreen-widget-0000000000000001"
-              "lockscreen-widget-0000000000000002"
-              "lockscreen-widget-0000000000000003"
             ];
 
             grid = {
@@ -114,47 +112,6 @@ _: {
                   color = "secondary";
                   font_family = "Maple Mono NF";
                   format = "{:%H:%M:%S}";
-                };
-              };
-
-              lockscreen-widget-0000000000000002 = {
-                box_height = 144.0;
-                box_width = 496.0;
-                cx = 960.0;
-                cy = 792.0;
-                output = "DSI-1";
-                rotation = 0.0;
-                type = "media_player";
-
-                settings = {
-                  background = true;
-                  background_opacity = 0.5;
-                  color = "tertiary";
-                  font_family = "Maple Mono NF";
-                  hide_when_no_media = false;
-                  shadow = true;
-                };
-              };
-
-              lockscreen-widget-0000000000000003 = {
-                box_height = 96.0;
-                box_width = 496.0;
-                cx = 960.0;
-                cy = 952.0;
-                output = "DSI-1";
-                rotation = 0.0;
-                type = "audio_visualizer";
-
-                settings = {
-                  background = false;
-                  background_color = "surface";
-                  background_opacity = 0.3;
-                  background_padding = 10;
-                  background_radius = 12;
-                  bands = 32;
-                  color_1 = "tertiary";
-                  color_2 = "secondary";
-                  show_when_idle = true;
                 };
               };
             };

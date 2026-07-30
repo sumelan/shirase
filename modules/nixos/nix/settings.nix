@@ -3,12 +3,10 @@
   self,
   ...
 }: let
-  inherit (builtins) attrValues;
   inherit (lib) sort concatStringsSep;
 in {
   flake.modules.nixos.core = {
     config,
-    pkgs,
     user,
     dotfile,
     ...
@@ -17,19 +15,6 @@ in {
     environment = {
       variables = {
         TACK_DIR = "${dotfile}/.tack";
-      };
-
-      systemPackages = attrValues {
-        inherit
-          (pkgs)
-          nix-init
-          nix-output-monitor
-          nix-tree
-          nix-update
-          nixd
-          nixfmt
-          nixpkgs-review
-          ;
       };
     };
 
@@ -100,10 +85,6 @@ in {
         dates = "daily";
         options = "--delete-older-than 7d";
       };
-
-      # `pkgs.nixVersions.latest` or `pkgs.lixPackageSets.latest.lix`
-      # lix has better Error messages
-      package = pkgs.nixVersions.latest;
 
       # Periodically optimise via hardlinking store files
       optimise.automatic = true;

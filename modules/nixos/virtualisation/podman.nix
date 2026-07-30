@@ -11,9 +11,12 @@ _: {
         defaultNetwork.settings.dns_enabled = true;
       };
     };
+
     # store docker images on /cache
-    custom.cache.home.directories = [
-      ".local/share/containers"
-    ];
+    custom.fileSystem = {
+      cache.home.directories = [
+        ".local/share/containers"
+      ];
+    };
   };
 }

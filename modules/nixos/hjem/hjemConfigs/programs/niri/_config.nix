@@ -302,7 +302,7 @@ in {
     # Floating Noctalia settings window.
     {
       match = [
-        {_props.app-id._raw = ''r#"^dev\.noctalia\.Noctalia\.Settings$"#'';}
+        {_props.app-id._raw = ''r#"^dev\.noctalia\.Noctalia$"#'';}
       ];
       open-floating = true;
       default-column-width._children = [
@@ -425,8 +425,8 @@ in {
       spawn = ["footclient"];
     };
     "Mod+Shift+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#a6d189" "  Neovim" "Neovim Editor"}";
-      spawn = ["footclient" "--app-id" "app.nvim" "nvim"];
+      _props.hotkey-overlay-title = "${hotkey "#ea999c" "󰄛  Kitty" "Terminal Emulator"}";
+      spawn = ["kitty"];
     };
     "Mod+B" = {
       _props.hotkey-overlay-title = "${hotkey "#8caaee" "  Helium" "Web Browser"}";

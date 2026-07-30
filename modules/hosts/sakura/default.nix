@@ -25,7 +25,11 @@ in {
       GITHUB_TOKEN = config.sops.secrets."github/sakura-token".path;
     };
 
-    services.hazkey.server.package = inputs.nix-hazkey.packages.${pkgs.stdenv.hostPlatform.system}.hazkey-server.override {enableVulkan = true;};
+    services = {
+      hazkey.server.package = inputs.nix-hazkey.packages.${pkgs.stdenv.hostPlatform.system}.hazkey-server.override {
+        enableVulkan = true;
+      };
+    };
 
     custom = {
       hardware = {
