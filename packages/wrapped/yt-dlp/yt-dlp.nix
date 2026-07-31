@@ -71,6 +71,8 @@ in {
         postBuild = ''
           cp -r ${printCfg}/bin $out
 
+          rm $out/bin/.yt-dlp-wrapped
+
           wrapProgram $out/bin/yt-dlp \
             --add-flags "--config-location ${cfg}"
         '';

@@ -6,7 +6,12 @@ _: {
   }: {
     hjem.users.${user} = {
       packages = builtins.attrValues {
-        inherit (pkgs) protonmail-desktop proton-pass proton-vpn;
+        inherit
+          (pkgs)
+          protonmail-desktop
+          proton-pass
+          proton-vpn
+          ;
       };
     };
 

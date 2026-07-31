@@ -143,7 +143,8 @@ in {
           cp -r ${printEnv}/bin $out
 
           wrapProgram $out/bin/nu \
-            --add-flags "--config ${cfg} --env-config ${envCfg}" \
+            --add-flags "--config ${cfg}" \
+            --add-flags "--env-config ${envCfg}" \
             --prefix PATH : ${runtimeEnv}/bin
         '';
         passthru.shellPath = "/bin/nu";

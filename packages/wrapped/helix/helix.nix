@@ -91,9 +91,13 @@ in {
           cp -r ${printCfg}/bin $out
           cp -r ${printLangs}/bin $out
 
-          mkdir -p $out/helix/themes
+          rm $out/bin/.hx-wrapped
+
+          mkdir -p $out/helix
+
           ln -s ${cfg} $out/helix/config.toml
           ln -s ${langs} $out/helix/languages.toml
+
           wrapProgram $out/bin/hx \
             --prefix PATH : ${runtimeEnv}/bin \
             --set XDG_CONFIG_HOME $out
