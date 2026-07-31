@@ -6,7 +6,6 @@ _: {
   }: {
     hjem.users.${user} = {
       packages = [
-        pkgs.concord-tui
         pkgs.webcord-vencord
       ];
     };

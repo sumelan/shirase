@@ -1,22 +1,13 @@
-{
-  config,
-  lib,
-  ...
-}: let
-  inherit (config) flake;
-in {
+{config, ...}: {
   flake.custom.hjemConfigs.nushell = {
     pkgs,
     user,
     ...
   }: let
-    inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) nushell;
+    local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
   in {
-    hjem.users.${user}.rum = {
-      programs.nushell = {
-        enable = lib.mkDefault true;
-        package = nushell;
-      };
+    hjem.users.${user} = {
+      packages = [local.nushell];
     };
 
     custom.fileSystem = {

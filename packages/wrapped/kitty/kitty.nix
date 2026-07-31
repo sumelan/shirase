@@ -76,9 +76,11 @@ in {
         postBuild = ''
           cp -r ${printCfg}/bin $out
 
+          rm $out/bin/.kitty-wrapped
+
           wrapProgram $out/bin/kitty \
             --add-flags "-c ${cfg}" \
-            --set FONTCONFIG_FILE ${pkgs.makeFontsConf {fontDirectories = [pkgs.maple-mono.NF];}}
+            --set FONTCONFIG_FILE ${pkgs.makeFontsConf {fontDirectories = [pkgs.maple-mono.NF-unhinted];}}
         '';
         meta.mainProgram = "kitty";
       };
