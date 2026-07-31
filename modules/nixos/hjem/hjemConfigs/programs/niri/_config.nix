@@ -260,7 +260,7 @@ in {
         {_props.title._raw = ''r#"^ピクチャー イン ピクチャー$"#'';}
         {_props.app-id._raw = ''r#"^mpv$"#'';}
         {_props.app-id._raw = ''r#"^dev\.lemmy\.swash$"#'';}
-        {_props.app-id._raw = ''r#"^pqiv$"#'';}
+        {_props.app-id._raw = ''r#"^Pqiv$"#'';}
         {_props.app-id._raw = ''r#"^vlc$"#'';}
       ];
       default-column-width._children = [
@@ -367,6 +367,10 @@ in {
     "Mod+X" = {
       _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Session"}";
       spawn = ["noctalia" "msg" "panel-toggle" "session"];
+    };
+    "Mod+Ctrl+L" = {
+      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Lock"}";
+      spawn = ["noctalia" "msg" "session" "lock"];
     };
     "Mod+Y" = {
       _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Clipboard"}";
