@@ -43,9 +43,9 @@
     "type": "github",
     "owner": "temidaradev",
     "repo": "kopuz",
-    "rev": "5d4f90ebe267729f70f0a10384f645a8b22df6db",
-    "narHash": "sha256-qXPzoA8qlfesdRu8Izju75zYroxtihDS5h1odFYPXBM=",
-    "lastModified": 1785330959
+    "rev": "1d1eb8f837514bc3472498ec6259786ef4b01c16",
+    "narHash": "sha256-4OzwDyYBktyi4wammsFd92nQf/rW1R0pW7cr/vokwAs=",
+    "lastModified": 1785416418
   },
   "niri-nix": {
     "type": "git",

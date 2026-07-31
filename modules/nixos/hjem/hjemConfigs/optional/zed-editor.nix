@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.zed-editor = {
+  flake.custom.hjemConfigs.zed-editor = {
     pkgs,
     user,
     ...

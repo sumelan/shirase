@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.krita = {
+  flake.custom.hjemConfigs.krita = {
     pkgs,
     user,
     ...

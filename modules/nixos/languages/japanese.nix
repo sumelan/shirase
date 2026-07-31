@@ -1,5 +1,5 @@
 _: {
-  flake.custom.userModules.japanese = {
+  flake.modules.nixos.japanese = {
     pkgs,
     user,
     ...

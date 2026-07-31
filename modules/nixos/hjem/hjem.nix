@@ -1,21 +1,14 @@
-{config, ...}: let
-  inherit (config) flake;
-in {
-  flake.modules.nixos.default = {
+{config, ...}: {
+  flake.modules.nixos.hjem = {
     pkgs,
     user,
     ...
   }: {
-    imports = [
-      flake.modules.nixos.hjem-root
-      flake.modules.nixos.hjem-common
-    ];
-
     hjem = {
       clobberByDefault = true;
       linker = pkgs.smfh;
       # Pull in all my modules
-      extraModules = builtins.attrValues flake.custom.hjemModules;
+      extraModules = builtins.attrValues config.flake.custom.hjemModules;
 
       users.${user} = {
         inherit user;

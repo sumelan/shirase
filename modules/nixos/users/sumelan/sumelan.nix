@@ -1,7 +1,7 @@
 {config, ...}: {
   flake.modules.nixos."users/sumelan" = _: {
     imports = builtins.attrValues {
-      inherit (config.flake.custom.userModules) japanese;
+      inherit (config.flake.modules.nixos) japanese;
     };
 
     users.users.sumelan = {

@@ -60,6 +60,8 @@
         defaultModules
         ++ extraModules
         ++ [flake.modules.nixos.core]
+        ++ [flake.modules.nixos.default]
+        ++ [flake.modules.nixos.hjem]
         ++ [flake.modules.nixos."hosts/${host}"]
         ++ [flake.modules.nixos."users/${user}"]
         ++ [

@@ -5,12 +5,20 @@
 }: let
   inherit (config) flake;
 in {
-  flake.modules.nixos.hjem-common = {
+  flake.modules.nixos.hjem = {
     config,
     pkgs,
     user,
     ...
   }: let
+    optionalConfigs = [
+      "audio-disc"
+      "blu-ray"
+      "krita"
+      "obs-studio"
+      "zed-editor"
+    ];
+
     homeDir = config.hjem.users.${user}.directory;
     xdg-user-dirs = {
       # xdg user dirs
@@ -24,7 +32,8 @@ in {
       XDG_VIDEOS_DIR = "${homeDir}/Videos";
     };
   in {
-    imports = builtins.attrValues flake.custom.hjemConfigs;
+    imports =
+      builtins.attrValues (removeAttrs flake.custom.hjemConfigs optionalConfigs);
 
     environment.sessionVariables =
       {

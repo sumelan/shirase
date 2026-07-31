@@ -1,13 +1,9 @@
 {config, ...}: let
   inherit (config) flake;
 in {
-  flake.modules.nixos."hosts/minibookx" = {
-    config,
-    pkgs,
-    ...
-  }: {
+  flake.modules.nixos."hosts/minibookx" = {config, ...}: {
     imports = builtins.attrValues {
-      inherit (flake.modules.nixos) default chuwi-minibook-x;
+      inherit (flake.modules.nixos) chuwi-minibook-x;
       inherit (flake.modules.nixos) gui;
       inherit (flake.modules.nixos) kdeconnect;
       inherit (flake.modules.nixos) sops-nix syncthing sshConfig;

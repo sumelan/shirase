@@ -11,12 +11,12 @@ in {
     ...
   }: {
     imports = builtins.attrValues {
-      inherit (flake.modules.nixos) default minisforum-um773se;
+      inherit (flake.modules.nixos) minisforum-um773se;
       inherit (flake.modules.nixos) gui;
       inherit (flake.modules.nixos) kdeconnect steam;
       inherit (flake.modules.nixos) hdds qmk trackpad;
       inherit (flake.modules.nixos) audiobookshelf sops-nix syncoid syncthing;
-      inherit (flake.modules.nixos) hjem-extended hjem-bluray hjem-cd;
+      inherit (flake.modules.nixos) hjem-extended;
     };
 
     networking.hostId = "b5e8f0be";
