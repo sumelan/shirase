@@ -28,7 +28,10 @@ in {
 
       nh = {
         enable = true;
-        clean.extraArgs = "--keep 5 --optimise";
+        clean = {
+          enable = true;
+          extraArgs = "--optimise --keep-since 7d";
+        };
         flake = dotfile;
       };
     };
@@ -78,16 +81,6 @@ in {
             };
           };
         };
-
-      gc = {
-        # Automatic garbage collection
-        automatic = true;
-        dates = "daily";
-        options = "--delete-older-than 7d";
-      };
-
-      # Periodically optimise via hardlinking store files
-      optimise.automatic = true;
 
       settings = {
         warn-dirty = false;

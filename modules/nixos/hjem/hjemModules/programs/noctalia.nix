@@ -242,7 +242,7 @@
           };
 
           workspaces = {
-            display = "none";
+            show_labels = false;
             focused_output_only = true;
             font_family = "Maple Mono NF";
             hide_when_empty = true;
