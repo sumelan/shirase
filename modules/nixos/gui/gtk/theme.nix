@@ -12,26 +12,13 @@ in {
         theme = {
           package = mkOption {
             type = package;
-            default = pkgs.whitesur-gtk-theme.override {
-              altVariants = ["normal"]; # default: normal
-              colorVariants = ["dark"]; # default: all
-              opacityVariants = ["solid"]; # default: all
-              themeVariants = ["pink"]; # default: default (BigSur-like theme)
-              schemeVariants = ["standard"]; # default: standard
-              iconVariant = "simple"; # default: standard (Apple logo)
-              nautilusStyle = "stable"; # default: stable (BigSur-like style)
-              panelOpacity = "default"; # default: 15%
-              panelSize = "smaller"; # default: 32px
-              roundedMaxWindow = false; # default: false
-              darkerColor = false; # default = false
-            };
-
+            default = pkgs.adw-gtk3;
             description = "Package providing the theme.";
           };
 
           name = mkOption {
             type = str;
-            default = "Whitesur-Dark-solid-alt-pink";
+            default = "adw-gtk3-dark";
             description = "The name of the theme within the package.";
           };
         };

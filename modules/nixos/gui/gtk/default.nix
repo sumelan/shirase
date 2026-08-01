@@ -76,22 +76,6 @@ in {
     };
 
     config = {
-      environment = {
-        etc = {
-          "xdg/gtk-3.0/settings.ini".text = gtkIni;
-          "xdg/gtk-4.0/settings.ini".text = gtkIni;
-          "xdg/gtk-2.0/gtkrc".text = ''
-            gtk-font-name = "${gtkCfg.font.name} 14";
-            gtk-icon-theme-name = "${gtkCfg.iconTheme.name}";
-            gtk-theme-name = "${gtkCfg.theme.name}";
-          '';
-        };
-
-        sessionVariables = {
-          GTK2_RC_FILES = "/etc/xdg/gtk-2.0/gtkrc";
-        };
-      };
-
       fonts.packages = [
         gtkCfg.font.package
       ];
@@ -125,14 +109,30 @@ in {
       };
 
       hjem.users.${user} = {
-        xdg.config.files = {
+        xdg.config.files = let
+          adw-catppuccin = pkgs.fetchFromGitHub {
+            owner = "LuminarLeaf";
+            repo = "adw-catppuccin";
+            rev = "62b2e64ea6b1ccdca7c5eb566e52130c993f03e9";
+            hash = "sha256-wpB9gEIKaqOBMqHTpOFJdZWo0z+eg5s3gMwTkvcey8g=";
+          };
+          get-adw-css = gtk: "${adw-catppuccin}/themes/frappe/catppuccin-frappe-pink${
+            if gtk == 3
+            then "-gtk3"
+            else ""
+          }.css";
+        in {
           "gtk-3.0/bookmarks".text =
             concatMapStringsSep "\n" (
               b: "file://${b}"
             )
             gtkCfg.bookmarks;
+
           "gtk-3.0/settings.ini".text = gtkIni;
+          "gtk-3.0/gtk.css".source = get-adw-css 3;
+
           "gtk-4.0/settings.ini".text = gtkIni;
+          "gtk-4.0/gtk.css".source = get-adw-css 4;
         };
       };
     };
