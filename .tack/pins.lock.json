@@ -39,14 +39,6 @@
     "narHash": "sha256-03+JxvzmfwRu+5JafM0DLbxgHttOQZkUtDWBmeUkN8Y=",
     "lastModified": 1769548169
   },
-  "kopuz": {
-    "type": "github",
-    "owner": "temidaradev",
-    "repo": "kopuz",
-    "rev": "4bd6f86e6383e6934e8935730493b4b79147891a",
-    "narHash": "sha256-1bLVv2mZt/z4IEIgfnljZFIL/NZeeQJwxsazzvc88PI=",
-    "lastModified": 1785520294
-  },
   "niri-nix": {
     "type": "git",
     "url": "https://codeberg.org/BANanaD3V/niri-nix",
@@ -83,9 +75,9 @@
     "type": "github",
     "owner": "nixos",
     "repo": "nixpkgs",
-    "rev": "0954f7ee2f6bb3dc7d4e3d0d8bcb8fd4bde4cfc5",
-    "narHash": "sha256-dN6Ou5x/+23FZLEpYP3IffO+NyJFzUlGumt1uu3MMaY=",
-    "lastModified": 1785318670
+    "rev": "1559d3daa3ecc813a650b79375ea61b6741b8746",
+    "narHash": "sha256-LQy14TZp77TwbQf40gg1V3jo8FwJG0jGDkAH+zRHqg8=",
+    "lastModified": 1785454630
   },
   "noctalia": {
     "type": "github",

@@ -12,18 +12,26 @@ in {
         theme = {
           package = mkOption {
             type = package;
-            default = pkgs.colloid-gtk-theme.override {
-              themeVariants = ["pink"]; # default: blue
+            default = pkgs.whitesur-gtk-theme.override {
+              altVariants = ["normal"]; # default: normal
               colorVariants = ["dark"]; # default: all
-              sizeVariants = ["compact"]; # default: standard
-              tweaks = ["catppuccin"];
+              opacityVariants = ["solid"]; # default: all
+              themeVariants = ["pink"]; # default: default (BigSur-like theme)
+              schemeVariants = ["standard"]; # default: standard
+              iconVariant = "simple"; # default: standard (Apple logo)
+              nautilusStyle = "stable"; # default: stable (BigSur-like style)
+              panelOpacity = "default"; # default: 15%
+              panelSize = "smaller"; # default: 32px
+              roundedMaxWindow = false; # default: false
+              darkerColor = false; # default = false
             };
+
             description = "Package providing the theme.";
           };
 
           name = mkOption {
             type = str;
-            default = "Colloid-Pink-Dark-Compact-Catppuccin";
+            default = "Whitesur-Dark-solid-alt-pink";
             description = "The name of the theme within the package.";
           };
         };
