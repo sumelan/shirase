@@ -88,7 +88,7 @@
           pinned = [
             "org.gnome.Nautilus"
             "proton-mail"
-            "com.temidaradev.kopuz"
+            "QBZ"
             "nvim"
             "typora"
             "helium"
