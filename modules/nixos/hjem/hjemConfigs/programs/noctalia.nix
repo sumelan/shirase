@@ -3,6 +3,7 @@ _: {
     custom.fileSystem = {
       cache.home.directories = [
         ".cache/noctalia"
+        ".local/state/noctalia"
       ];
     };
   };
