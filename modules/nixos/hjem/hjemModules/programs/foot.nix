@@ -1,5 +1,5 @@
 {lib, ...}: let
-  inherit (lib) mkPackageOption mkEnableOption;
+  inherit (lib) mkIf mkPackageOption mkEnableOption;
 in {
   flake.custom.hjemModules.foot = {
     config,
@@ -20,7 +20,7 @@ in {
       };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = mkIf cfg.enable {
       packages = [cfg.package];
 
       systemd.services.foot-server = lib.mkIf cfg.server.enable {

@@ -103,6 +103,14 @@
     "narHash": "sha256-ILww3rsO4JA9bY2pV56Pg/VrRADQmIw/alhpM4eUIYY=",
     "lastModified": 1785524545
   },
+  "qbz": {
+    "type": "github",
+    "owner": "vicrodh",
+    "repo": "qbz",
+    "rev": "c4cc755fd02d999084883e864c0697139a8b8648",
+    "narHash": "sha256-eQ4xvBKnQp4C5lEVukx/75umFFmWyCjbuO82qyFDw14=",
+    "lastModified": 1784877312
+  },
   "sops-nix": {
     "type": "github",
     "owner": "Mic92",

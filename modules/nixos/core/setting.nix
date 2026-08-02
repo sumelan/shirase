@@ -71,7 +71,11 @@ in {
     hardware.graphics.enable = true;
 
     # zramswap
-    zramSwap.enable = true;
+    zramSwap = {
+      enable = true;
+      algorithm = "zstd";
+      memoryPercent = 30;
+    };
 
     systemd.tmpfiles.rules = [
       # cleanup systemd coredumps once a week

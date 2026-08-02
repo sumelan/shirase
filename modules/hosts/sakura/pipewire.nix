@@ -4,44 +4,45 @@ _: {
       extraConfig = {
         # [info] pipewire locks to 48 kHz as default
         pipewire = {
-          "99-qbz-dac-se" = {
+          "99-qbz-dac-ifi-audio-uno" = {
+            # QDC DAC Setup - Sample Rate Switching
             "context.properties" = {
-              "default.clock.allowed-rates" =
-                # sample rate of ifi audio uno
-                [
-                  44100
-                  48000
-                  88200
-                  96000
-                  176400
-                  192000
-                ];
+              "default.clock.allowed-rates" = [
+                44100
+                48000
+                88200
+                96000
+                176400
+                192000
+              ];
             };
           };
         };
 
         client = {
-          # QBZ DAC Setup - Per-App Bit-Perfect
-          "stream.rules" = [
-            {
-              "matches" = [
-                {"application.process.binary" = "qbz";}
-                {"application.name" = "PipeWire ALSA [qbz]";}
-              ];
-              "actions" = {
-                "update-props" = {
-                  "resample.disable" = true;
-                  "channelmix.disable" = true;
+          "99-qbz-bitperfect-ifi-audio-uno" = {
+            # QBZ DAC Setup - Per-App Bit-Perfect
+            "stream.rules" = [
+              {
+                "matches" = [
+                  {"application.process.binary" = "qbz";}
+                  {"application.name" = "PipeWire ALSA [qbz]";}
+                ];
+                "actions" = {
+                  "update-props" = {
+                    "resample.disable" = true;
+                    "channelmix.disable" = true;
+                  };
                 };
-              };
-            }
-          ];
+              }
+            ];
+          };
         };
       };
 
       wireplumber.extraConfig = {
-        "99-qbz-dac-se" = {
-          # QBZ DAC Setup - se
+        "99-qbz-dac-ifi-audio-uno" = {
+          # QBZ DAC Setup - iFi Audio Uno
           "monitor.alsa.rules" = [
             {
               "matches" = [

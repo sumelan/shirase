@@ -1,11 +1,11 @@
 _: {
-  flake.custom.hjemConfigs.qbz = {
-    pkgs,
-    user,
-    ...
-  }: {
+  flake.custom.hjemConfigs.qbz = {user, ...}: {
     hjem.users.${user} = {
-      packages = [pkgs.qbz];
+      rum = {
+        programs.qbz = {
+          enable = true;
+        };
+      };
     };
 
     custom.fileSystem = {
