@@ -21,10 +21,6 @@ in {
 
     networking.hostId = "b5e8f0be";
 
-    environment.variables = {
-      GITHUB_TOKEN = config.sops.secrets."github/sakura-token".path;
-    };
-
     services = {
       hazkey.server.package = inputs.nix-hazkey.packages.${pkgs.stdenv.hostPlatform.system}.hazkey-server.override {
         enableVulkan = true;

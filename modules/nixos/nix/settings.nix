@@ -19,7 +19,14 @@ in {
     };
 
     programs = {
-      tack.enable = true;
+      # flake-like toml nix pins, lazily fetched and transformed
+      tack = {
+        enable = true;
+        # tack reading `access-tokens` from nix.conf when comparing forge revisions.
+        # off by default: it widens which credentials tack may replay to a forge beyond the ones in the environment
+        nixConfTokens = true;
+      };
+
       # wrapping comma with nix-index-database and put it in the PATH
       nix-index-database.comma.enable = true;
 
@@ -81,6 +88,10 @@ in {
             };
           };
         };
+
+      extraOptions = ''
+        !include ${config.sops.secrets.nixAccessTokens.path}
+      '';
 
       settings = {
         warn-dirty = false;

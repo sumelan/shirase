@@ -24,12 +24,7 @@
         {
           # by default, secrets are owned by `root:root` and `/run/secrets.d` is only owned by root
           # and the `keys` group has read access to it
-          "github/sakura-token" = {
-            mode = "0440";
-            owner = user;
-            group = "users";
-          };
-          "github/minibookx-token" = {
+          "nixAccessTokens" = {
             mode = "0440";
             owner = user;
             group = "users";

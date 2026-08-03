@@ -437,8 +437,8 @@ in {
       spawn = ["helium"];
     };
     "Mod+D" = {
-      _props.hotkey-overlay-title = "${hotkey "#85c1dc" "  WebCord" "Discord Client"}";
-      spawn = ["webcord"];
+      _props.hotkey-overlay-title = "${hotkey "#ef9f76" "  Vesktop" "Discord Client"}";
+      spawn = ["vesktop"];
     };
     "Mod+Shift+N" = {
       _props.hotkey-overlay-title = "${hotkey "#8caaee" "󱄅  Nix Search" "Nix Package"}";

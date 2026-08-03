@@ -84,7 +84,7 @@ _: {
               "nvim"
               "typora"
               "helium"
-              "webcord"
+              "vesktop"
               "kitty"
             ];
             position = "bottom";

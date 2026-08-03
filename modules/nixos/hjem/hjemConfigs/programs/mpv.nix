@@ -1,5 +1,5 @@
 _: {
-  flake.custom.hjemConfigs.webcord = {
+  flake.custom.hjemConfigs.mpv = {
     pkgs,
     user,
     ...
