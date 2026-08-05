@@ -5,7 +5,6 @@
         (config.flake.custom.hjemConfigs)
         audio-disc
         blu-ray
-        zed-editor
         ;
     };
   };
