@@ -48,10 +48,6 @@ in {
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakes;
       registry = lib.mapAttrs (_: flake: {inherit flake;}) flakes;
     in {
-      # Make builds run with low priority so my system stays responsive
-      daemonCPUSchedPolicy = "idle";
-      daemonIOSchedClass = "idle";
-
       # disable channel because i use flake's input as source
       # also make flake registry and nix path match flake input
       # without doing above, `nix run nixpkgs#fastfetch` would come from the channel and not your flake

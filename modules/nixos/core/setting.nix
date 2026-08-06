@@ -74,7 +74,7 @@ in {
     zramSwap = {
       enable = true;
       algorithm = "zstd";
-      memoryPercent = 30;
+      memoryPercent = 100;
     };
 
     systemd.tmpfiles.rules = [
