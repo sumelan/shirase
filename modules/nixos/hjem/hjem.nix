@@ -1,14 +1,10 @@
 {config, ...}: {
-  flake.modules.nixos.hjem = {
-    pkgs,
-    user,
-    ...
-  }: {
+  flake.modules.nixos.hjem = {user, ...}: {
     hjem = {
       clobberByDefault = true;
-      linker = pkgs.smfh;
-      # Pull in all my modules
-      extraModules = builtins.attrValues config.flake.custom.hjemModules;
+      extraModules =
+        # Pull in all my modules
+        builtins.attrValues config.flake.custom.hjemModules;
 
       users.${user} = {
         inherit user;

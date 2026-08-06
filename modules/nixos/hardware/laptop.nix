@@ -1,9 +1,7 @@
-{config, ...}: let
-  inherit (config) flake;
-in {
+{config, ...}: {
   flake.modules.nixos.laptop = _: {
     imports = builtins.attrValues {
-      inherit (flake.modules.nixos) wifi keyd;
+      inherit (config.flake.modules.nixos) wifi keyd;
     };
 
     # disbale USB after sometime of inactivity

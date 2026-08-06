@@ -1,8 +1,12 @@
-{config, ...}: let
-  inherit (config) flake;
-in {
-  flake.modules.nixos.core = {user, ...}: {
-    imports = with flake.modules.nixos; [bluetooth audio];
+{config, ...}: {
+  flake.modules.nixos.core = _: {
+    imports = builtins.attrValues {
+      inherit
+        (config.flake.modules.nixos)
+        audio
+        bluetooth
+        ;
+    };
 
     powerManagement.enable = true;
 
@@ -15,6 +19,5 @@ in {
     };
 
     hardware.i2c.enable = true;
-    users.users.${user}.extraGroups = ["i2c"];
   };
 }
