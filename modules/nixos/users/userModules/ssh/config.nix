@@ -11,5 +11,17 @@ _: {
         IdentitiesOnly yes
         IdentityFile ~/.ssh/sakura
     '';
+
+    minibookx = ''
+      Host minibookx
+        HostName 192.168.68.57
+        Port 22
+        User sumelan
+
+        # Prevent using ssh-agent or another keyfile,
+        # useful for testing
+        IdentitiesOnly yes
+        IdentityFile ~/.ssh/minibookx
+    '';
   };
 }

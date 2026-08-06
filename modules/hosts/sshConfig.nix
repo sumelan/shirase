@@ -1,9 +1,9 @@
 {config, ...}: {
   flake.modules.nixos.sshConfig = _: let
-    inherit (config.flake.custom.userModules.sshConfig) sakura;
+    ssh = config.flake.custom.userModules.sshConfig;
   in {
     programs.ssh = {
-      extraConfig = sakura;
+      extraConfig = ssh.sakura + ssh.minibookx;
     };
   };
 }
