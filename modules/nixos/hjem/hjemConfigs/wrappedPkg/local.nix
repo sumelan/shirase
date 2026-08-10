@@ -19,7 +19,6 @@
           ripgrep
           ns
           kitty
-          pqiv
           ;
       };
     };

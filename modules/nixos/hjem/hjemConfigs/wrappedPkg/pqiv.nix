@@ -1,30 +1,24 @@
-_: {
-  flake.custom.hjemConfigs.mpv = {
+{config, ...}: {
+  flake.custom.hjemConfigs.pqiv = {
     pkgs,
     user,
     ...
-  }: {
+  }: let
+    local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
+  in {
     hjem.users.${user} = {
-      packages = [pkgs.mpv];
+      packages = [local.pqiv];
 
       xdg.mime-apps = let
-        value = "umpv.desktop";
+        value = "pqiv.desktop";
         removed-associations = builtins.listToAttrs (map (name: {
             inherit name value;
           }) [
-            "audio/ogg"
-            "audio/flac"
             "video/mp4"
           ]);
       in {
         inherit removed-associations;
       };
-    };
-
-    custom.fileSystem = {
-      cache.home.directories = [
-        ".local/state/mpv" # watch later
-      ];
     };
   };
 }
