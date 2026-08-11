@@ -19,6 +19,7 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJHL2ZpvP+MowbQocG6NdBieeICjx4dnaDAbEEsA9P/W sumelan"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHN1uLZMMmZ0AzoFhww/9vaACBXwC+3WlI5Em0CwV9RN sumelan"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGlj7/hkNiJkF1jhcgJGAu7Gv1kCV73d3pMNyylOFq8i sumelan"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGrnQWIYUVHiqsz5Eu/2DvBRZxGT23dMoKmnkxlKxZB0 sumelan"
       ];
     };
 

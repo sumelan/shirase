@@ -23,5 +23,17 @@ _: {
         IdentitiesOnly yes
         IdentityFile ~/.ssh/minibookx
     '';
+
+    acer = ''
+      Host acer
+        HostName 192.168.68.55
+        Port 22
+        User sumelan
+
+        # Prevent using ssh-agent or another keyfile,
+        # useful for testing
+        IdentitiesOnly yes
+        IdentityFile ~/.ssh/acer
+    '';
   };
 }

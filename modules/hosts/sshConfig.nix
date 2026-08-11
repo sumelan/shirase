@@ -3,7 +3,7 @@
     ssh = config.flake.custom.userModules.sshConfig;
   in {
     programs.ssh = {
-      extraConfig = ssh.sakura + ssh.minibookx;
+      extraConfig = ssh.sakura + ssh.minibookx + ssh.acer;
     };
   };
 }
