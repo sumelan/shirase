@@ -23,8 +23,10 @@
       ];
     };
 
+    services.accounts-daemon.enable = true;
+
     # setup a file and user icon for accountservice
-    # https://discourse.nixos.org/t/setting-the-user-profile-image-under-gnome/36233/10?u=sumelan
+    # https://discourse.nixos.org/t/setting-the-user-profile-image-under-gnome/36233
     systemd.tmpfiles.settings = {
       "10-createAccountserviceFile" = {
         "/var/lib/AccountsService/users/sumelan" = {
@@ -44,7 +46,7 @@
       "10-symlinkIcon" = {
         "/var/lib/AccountsService/icons/sumelan" = {
           "L+" = {
-            argument = "/home/sumelan/.face";
+            argument = "${./sumelan.png}";
           };
         };
       };
