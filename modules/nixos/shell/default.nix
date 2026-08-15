@@ -39,7 +39,7 @@
         PAGER = "moor";
         SYSTEMD_PAGER = "moor";
         SYSTEMD_PAGERSECURE = "1";
-        TERMINAL = "foot";
+        TERMINAL = "kitty";
         EDITOR = "nvim";
         VISUAL = "nvim";
         NIXPKGS_ALLOW_UNFREE = "1";

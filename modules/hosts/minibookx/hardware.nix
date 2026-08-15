@@ -18,7 +18,6 @@ in {
       ++ (with flake.modules.nixos; [laptop intel]);
 
     boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "usb_storage" "sd_mod" "sdhci_pci"];
-    boot.initrd.kernelModules = ["i915"];
     boot.initrd.extraFirmwarePaths = ["vbt"];
     boot.kernelModules = ["kvm-intel"];
     boot.kernelParams = [

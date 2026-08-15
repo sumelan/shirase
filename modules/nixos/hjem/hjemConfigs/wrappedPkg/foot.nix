@@ -13,21 +13,11 @@
     hjem.users.${user} = {
       rum = {
         programs.foot = {
-          enable = lib.mkDefault true;
+          enable = lib.mkDefault false;
           package = local.foot;
           server.enable = true;
         };
       };
-
-      xdg.mime-apps = {
-        default-applications = {
-          "x-scheme-handler/terminal" = "footclient.desktop";
-        };
-      };
-    };
-
-    environment.sessionVariables = {
-      TERMINAL = "foot";
     };
   };
 }

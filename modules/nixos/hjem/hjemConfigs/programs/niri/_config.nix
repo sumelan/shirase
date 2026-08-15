@@ -425,12 +425,12 @@ in {
 
     # execute
     "Mod+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#e5c890" "󰽒  Foot" "Terminal Emulator"}";
-      spawn = ["footclient"];
-    };
-    "Mod+Shift+Return" = {
       _props.hotkey-overlay-title = "${hotkey "#ea999c" "󰄛  Kitty" "Terminal Emulator"}";
       spawn = ["kitty"];
+    };
+    "Mod+Shift+Return" = {
+      _props.hotkey-overlay-title = "${hotkey "#a6d189" "  Neovim" "Text Editor"}";
+      spawn = ["kitty" "--app-id" "app.nvim" "nvim"];
     };
     "Mod+B" = {
       _props.hotkey-overlay-title = "${hotkey "#8caaee" "  Helium" "Web Browser"}";
@@ -442,11 +442,11 @@ in {
     };
     "Mod+Shift+N" = {
       _props.hotkey-overlay-title = "${hotkey "#8caaee" "󱄅  Nix Search" "Nix Package"}";
-      spawn = ["footclient" "--app-id" "app.ns" "ns"];
+      spawn = ["kitty" "--app-id" "app.ns" "ns"];
     };
     "Mod+Shift+Y" = {
       _props.hotkey-overlay-title = "${hotkey "#e5c890" "󰇥  Yazi" "File Manager"}";
-      spawn = ["footclient" "--app-id" "app.yazi" "yazi"];
+      spawn = ["kitty" "--app-id" "app.yazi" "yazi"];
     };
     "Ctrl+Space" = {
       _props.hotkey-overlay-title = "${hotkey "#ca9ee6" "󰗊  Hazkey" "Switch input method"}";
