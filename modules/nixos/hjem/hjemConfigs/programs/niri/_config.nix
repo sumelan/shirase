@@ -430,7 +430,7 @@ in {
     };
     "Mod+Shift+Return" = {
       _props.hotkey-overlay-title = "${hotkey "#a6d189" "  Neovim" "Text Editor"}";
-      spawn = ["kitty" "--app-id" "app.nvim" "nvim"];
+      spawn = ["kitty" "--app-id" "app.nvim" "--working-directory" "./Projects" "nvim"];
     };
     "Mod+B" = {
       _props.hotkey-overlay-title = "${hotkey "#8caaee" "  Helium" "Web Browser"}";

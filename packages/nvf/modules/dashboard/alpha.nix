@@ -28,10 +28,11 @@
 
     ttfCmd = lib.concatStringsSep " " [
       (lib.getExe inputs.ttf.packages.${pkgs.stdenv.hostPlatform.system}.default)
-      "--no-color"
       "--anchor-canvas s"
-      "slide"
-      "--merge --movement-speed 0.8"
+      "beams"
+      "--beam-delay 5"
+      "--beam-row-speed-range 20-60"
+      "--beam-column-speed-range 8-12"
       "--final-gradient-direction diagonal"
     ];
   in {
@@ -76,7 +77,7 @@
             val = [
               {
                 type = "button";
-                val = " New File";
+                val = "  New File";
                 on_press = press "ene | startinsert";
                 opts = {
                   position = "center";
@@ -90,7 +91,7 @@
               }
               {
                 type = "button";
-                val = " Find File";
+                val = "  Find File";
                 on_press = press "Telescope find_files";
                 opts = {
                   position = "center";
@@ -104,7 +105,7 @@
               }
               {
                 type = "button";
-                val = " Find Text";
+                val = "  Find Text";
                 on_press = press "Telescope live_grep";
                 opts = {
                   position = "center";
@@ -118,7 +119,7 @@
               }
               {
                 type = "button";
-                val = " Recent Files";
+                val = "  Recent Files";
                 on_press = press "Telescope oldfiles";
                 opts = {
                   position = "center";
@@ -132,7 +133,7 @@
               }
               {
                 type = "button";
-                val = " Check Config";
+                val = "  Check Config";
                 on_press = press "checkhealth";
                 opts = {
                   position = "center";
@@ -146,7 +147,7 @@
               }
               {
                 type = "button";
-                val = " Quit";
+                val = "  Quit";
                 on_press = press "qa";
                 opts = {
                   position = "center";
