@@ -76,3 +76,6 @@ url = "gh:ItsLemmy/swash"
 
 [inputs.qbz]
 url = "gh:vicrodh/qbz"
+
+[inputs.ttf]
+url = "gh:ChrisBuilds/terminaltexteffects"

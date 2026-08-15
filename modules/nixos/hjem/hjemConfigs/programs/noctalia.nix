@@ -25,19 +25,21 @@ _: {
               capsule_opacity = 0.50;
               capsule_padding = 10.0;
               center = ["clock"];
-              end = ["group:g2" "group:g1" "nix_monitor" "battery"];
+              end = ["group:g2" "group:g1" "battery"];
               font_family = "Maple Mono NF";
               icon_color = "hover";
               margin_ends = 0;
               position = "top";
               radius = 20;
               scale = 1.5;
-              start = ["control-center" "workspaces" "group:g3" "tray"];
+              start = ["control-center" "workspaces" "group:g3" "group:g4" "tray"];
               thickness = 40;
               widget_spacing = 20;
 
               capsule_group = [
                 {
+                  accordion = false;
+                  accordion_direction = "end";
                   enabled = true;
                   fill = "surface_variant";
                   id = "g1";
@@ -46,6 +48,8 @@ _: {
                   padding = 10.0;
                 }
                 {
+                  accordion = false;
+                  accordion_direction = "end";
                   enabled = true;
                   fill = "surface_variant";
                   id = "g2";
@@ -54,10 +58,22 @@ _: {
                   padding = 10.0;
                 }
                 {
+                  accordion = false;
+                  accordion_direction = "end";
                   enabled = true;
                   fill = "surface_variant";
                   id = "g3";
                   members = ["media" "audio_visualizer"];
+                  opacity = 0.5;
+                  padding = 10.0;
+                }
+                {
+                  accordion = false;
+                  accordion_direction = "end";
+                  enabled = true;
+                  fill = "surface_variant";
+                  id = "g4";
+                  members = ["recorder" "nix_monitor"];
                   opacity = 0.5;
                   padding = 10.0;
                 }

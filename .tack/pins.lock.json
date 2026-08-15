@@ -126,5 +126,13 @@
     "rev": "edc5e0b825ae7c8254d1f885ad13042e75a8d891",
     "narHash": "sha256-AXNUcDW6jrSqgCt61De1q0hlZIitBaZqB3EsHeJaIgc=",
     "lastModified": 1785074280
+  },
+  "ttf": {
+    "type": "github",
+    "owner": "ChrisBuilds",
+    "repo": "terminaltexteffects",
+    "rev": "7a91dd9ca6ee0c4f4b1484efee0ecac1bb84104e",
+    "narHash": "sha256-PNgfeQEauU4ZJxb7zrMqkIaCj1Ex8GdI+SoEHzdr3Ng=",
+    "lastModified": 1781056575
   }
 }

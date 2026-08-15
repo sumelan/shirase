@@ -2,6 +2,16 @@
 _: {
   flake.modules.nvf.vim = _: {
     vim = {
+      autocmds = [
+        {
+          event = ["VimEnter"]; # runs once after startup
+          pattern = ["*"];
+          desc = "Disable [Process exited 0] virtual text";
+          command = "autocmd! nvim.terminal TermClose";
+          once = true;
+        }
+      ];
+
       options = {
         matchtime = 2; # briefly jump to a matching bracket for 0.2s
         exrc = true; # use project specific vimrc
