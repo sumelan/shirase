@@ -92,11 +92,11 @@ _: {
 
           dock = {
             background_opacity = 0.45;
-            enabled = true;
+            enabled = false;
             pinned = [
               "org.gnome.Nautilus"
               "proton-mail"
-              "QBZ"
+              "qbz"
               "nvim"
               "typora"
               "helium"
