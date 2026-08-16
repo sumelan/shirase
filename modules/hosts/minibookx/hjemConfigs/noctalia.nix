@@ -17,8 +17,8 @@ _: {
               desktop-widget-0000000000000001 = {
                 box_height = 64.0;
                 box_width = 240.0;
-                cx = 1768.0;
-                cy = 1144.0;
+                cx = 1784.0;
+                cy = 1112.0;
                 output = "DSI-1";
                 rotation = 0.0;
                 type = "label";

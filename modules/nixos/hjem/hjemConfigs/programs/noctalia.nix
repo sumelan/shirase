@@ -84,27 +84,6 @@ _: {
             enabled = true;
           };
 
-          dock = {
-            background_opacity = 0.45;
-            enabled = false;
-            pinned = [
-              "org.gnome.Nautilus"
-              "proton-mail"
-              "qbz"
-              "nvim"
-              "typora"
-              "helium"
-              "vesktop"
-              "kitty"
-            ];
-            position = "bottom";
-            reserve_space = true;
-            show_dots = true;
-            show_instance_count = false;
-            show_running = false;
-            smart_auto_hide = false;
-          };
-
           location = {
             auto_locate = true;
           };

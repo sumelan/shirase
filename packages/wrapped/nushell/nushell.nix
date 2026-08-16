@@ -35,11 +35,10 @@ in {
         (config.flake.custom.userModules.shellAliases)
         basic
         extra
-        kitty
         nu
         ;
 
-      mergedAliases = basic // extra // kitty // nu // extraAliases;
+      mergedAliases = basic // extra // nu // extraAliases;
       aliases = lib.concatStringsSep "\n" (lib.mapAttrsToList (k: v: "alias ${k} = ${v}") mergedAliases);
     in
       pkgs.writeText "nu-config" (

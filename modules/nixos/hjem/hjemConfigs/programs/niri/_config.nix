@@ -277,8 +277,6 @@ in {
       match = [
         {_props.app-id._raw = ''r#"^org\.gnome\.Nautilus$"#'';}
         {_props.app-id._raw = ''r#"^xdg-desktop-portal-gtk$"#'';}
-        {_props.app-id._raw = ''r#"^app\.ns$"#'';}
-        {_props.app-id._raw = ''r#"^app\.yazi$"#'';}
       ];
       default-column-width._children = [
         {proportion = 0.500000;}
@@ -425,12 +423,12 @@ in {
 
     # execute
     "Mod+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#ea999c" "󰄛  Kitty" "Terminal Emulator"}";
-      spawn = ["kitty"];
+      _props.hotkey-overlay-title = "${hotkey "#8caaee" "󰊠  Ghostty" "Terminal Emulator"}";
+      spawn = ["ghostty" "+new-window"];
     };
     "Mod+Shift+Return" = {
       _props.hotkey-overlay-title = "${hotkey "#a6d189" "  Neovim" "Text Editor"}";
-      spawn = ["kitty" "--app-id" "app.nvim" "--working-directory" "./Projects" "nvim"];
+      spawn = ["ghostty" "--class=app.nvim" "--working-directory=./Projects" "-e" "nvim"];
     };
     "Mod+B" = {
       _props.hotkey-overlay-title = "${hotkey "#8caaee" "  Helium" "Web Browser"}";
@@ -442,11 +440,11 @@ in {
     };
     "Mod+Shift+N" = {
       _props.hotkey-overlay-title = "${hotkey "#8caaee" "󱄅  Nix Search" "Nix Package"}";
-      spawn = ["kitty" "--app-id" "app.ns" "ns"];
+      spawn = ["ghostty" "--class=app.ns" "-e" "ns"];
     };
     "Mod+Shift+Y" = {
       _props.hotkey-overlay-title = "${hotkey "#e5c890" "󰇥  Yazi" "File Manager"}";
-      spawn = ["kitty" "--app-id" "app.yazi" "yazi"];
+      spawn = ["ghostty" "--class=app.yazi" "-e" "yazi"];
     };
     "Ctrl+Space" = {
       _props.hotkey-overlay-title = "${hotkey "#ca9ee6" "󰗊  Hazkey" "Switch input method"}";

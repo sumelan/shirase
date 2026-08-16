@@ -18,19 +18,8 @@
           moor
           ripgrep
           ns
-          kitty
           ;
       };
-
-      xdg.mime-apps = {
-        default-applications = {
-          "x-scheme-handler/terminal" = "kitty.desktop";
-        };
-      };
-    };
-
-    environment.sessionVariables = {
-      TERMINAL = "kitty";
     };
   };
 }
