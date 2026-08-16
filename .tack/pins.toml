@@ -33,7 +33,7 @@ flake-compat = ""
 [inputs]
 
 [inputs.nixpkgs]
-url = "gh:nixos/nixpkgs/nixos-unstable"
+url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz"
 
 [inputs.flake-parts]
 url = "gh:hercules-ci/flake-parts"
@@ -82,3 +82,6 @@ url = "gh:ChrisBuilds/terminaltexteffects"
 
 [inputs.comview]
 url = "gh:sumelan/comview/flake"
+
+[inputs.inshellah]
+url = "gh:manic-systems/inshellah"

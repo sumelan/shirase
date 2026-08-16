@@ -19,6 +19,8 @@
     (mkModules {name = "nixos-plymouth";})
     (mkModules {name = "impermanence";})
     (mkModules {name = "noctalia-greeter";})
+    (mkModules {name = "inshellah";})
+
     (mkModules {
       name = "nix-hazkey";
       opt = "hazkey";

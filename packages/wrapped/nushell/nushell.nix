@@ -50,15 +50,6 @@ in {
         # nu
         ''
           source ${
-            pkgs.runCommand "carapace-nushell-config.nu" {} ''
-              ${lib.getExe pkgs.carapace} _carapace nushell | sed 's|"/homeless-shelter|$"($env.HOME)|g' >> "$out"
-            ''
-          }
-        ''
-        +
-        # nu
-        ''
-          source ${
             pkgs.runCommand "nix-your-shell-nushell-config.nu" {} ''
               ${lib.getExe pkgs.nix-your-shell} --nom nu >> "$out"
             ''
@@ -89,7 +80,9 @@ in {
       extraRuntimeInputs ? [],
     }: let
       local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
+
       comview = inputs.comview.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      inshellah = inputs.inshellah.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
       runtimeEnv = pkgs.buildEnv {
         name = "nushell-runtime-env";
@@ -100,8 +93,6 @@ in {
             inherit
               (pkgs)
               # Shell Utilities
-              carapace
-              carapace-bridge
               direnv
               nix-direnv
               nix-your-shell
@@ -117,7 +108,7 @@ in {
               lazygit
               ;
             inherit (local) bat eza ripgrep;
-            inherit comview;
+            inherit comview inshellah;
           }
           ++ extraRuntimeInputs;
       };

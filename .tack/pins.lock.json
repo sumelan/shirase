@@ -47,6 +47,14 @@
     "narHash": "sha256-03+JxvzmfwRu+5JafM0DLbxgHttOQZkUtDWBmeUkN8Y=",
     "lastModified": 1769548169
   },
+  "inshellah": {
+    "type": "github",
+    "owner": "manic-systems",
+    "repo": "inshellah",
+    "rev": "4e0da58e610f4cc3d1d3ab11b27f61afa8be99c1",
+    "narHash": "sha256-Hl0PLWo6xyhSJaQtOkrNGQFxqBx5AdP1R1veMD22cMc=",
+    "lastModified": 1782548861
+  },
   "niri-nix": {
     "type": "git",
     "url": "https://codeberg.org/BANanaD3V/niri-nix",
