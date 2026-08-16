@@ -18,7 +18,21 @@ _: {
           };
 
           bar = {
-            order = ["topBar"];
+            order = ["topBar" "bottomBar"];
+
+            bottomBar = {
+              background_opacity = 0.5;
+              center = ["privacy"];
+              enabled = true;
+              end = ["audio_visualizer" "media"];
+              font_family = "Maple Mono NF";
+              icon_color = "secondary";
+              margin_ends = 0;
+              position = "bottom";
+              radius = 20;
+              scale = 1.25;
+              start = ["cpu" "ram"];
+            };
 
             topBar = {
               background_opacity = 0.5;
@@ -31,9 +45,9 @@ _: {
               margin_ends = 0;
               position = "top";
               radius = 20;
-              scale = 1.5;
-              start = ["control-center" "workspaces" "group:g3" "group:g4" "tray"];
-              thickness = 40;
+              scale = 1.25;
+              start = ["control-center" "workspaces" "tray"];
+              thickness = 34;
               widget_spacing = 20;
 
               capsule_group = [
@@ -54,26 +68,6 @@ _: {
                   fill = "surface_variant";
                   id = "g2";
                   members = ["notifications" "network" "bluetooth"];
-                  opacity = 0.5;
-                  padding = 10.0;
-                }
-                {
-                  accordion = false;
-                  accordion_direction = "end";
-                  enabled = true;
-                  fill = "surface_variant";
-                  id = "g3";
-                  members = ["media" "audio_visualizer"];
-                  opacity = 0.5;
-                  padding = 10.0;
-                }
-                {
-                  accordion = false;
-                  accordion_direction = "end";
-                  enabled = true;
-                  fill = "surface_variant";
-                  id = "g4";
-                  members = ["recorder" "nix_monitor"];
                   opacity = 0.5;
                   padding = 10.0;
                 }
@@ -200,9 +194,10 @@ _: {
 
           widget = {
             audio_visualizer = {
-              color_1 = "secondary";
-              color_2 = "tertiary";
-              width = 150;
+              color_1 = "tertiary";
+              color_2 = "secondary";
+              bands = 20;
+              width = 200;
             };
 
             bluetooth = {
@@ -225,7 +220,7 @@ _: {
               art_size = 25;
               font_family = "Maple Mono NF";
               hide_when_no_media = true;
-              max_length = 150;
+              max_length = 300;
               title_scroll = "on_hover";
             };
 
@@ -233,15 +228,6 @@ _: {
               font_family = "Maple Mono NF";
               show_label = true;
               show_vpn_label = true;
-            };
-
-            nix_monitor = {
-              show_text = false;
-              type = "avivbintangaringga/nix-monitor:nix-monitor";
-            };
-
-            recorder = {
-              type = "noctalia/screen_recorder:recorder";
             };
 
             tray = {

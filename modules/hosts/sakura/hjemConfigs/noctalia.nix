@@ -17,8 +17,8 @@ _: {
               desktop-widget-0000000000000001 = {
                 box_height = 80.0;
                 box_width = 240.0;
-                cx = 2424.0;
-                cy = 1392.0;
+                cx = 2416.0;
+                cy = 1368.0;
                 output = "HDMI-A-1";
                 rotation = 0.0;
                 type = "label";

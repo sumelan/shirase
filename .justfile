@@ -43,7 +43,7 @@ export NIXPKGS_ALLOW_UNFREE := "1"
 [doc('Show changes between commit and working tree.')]
 @diff:
     git add -A
-    git diff main
+    git diff main | comview
 
 [group('OPTIMISE')]
 [doc('Replace identical files in the store by hard links.')]
