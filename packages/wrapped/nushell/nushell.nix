@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   ...
@@ -88,6 +89,7 @@ in {
       extraRuntimeInputs ? [],
     }: let
       local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
+      comview = inputs.comview.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
       runtimeEnv = pkgs.buildEnv {
         name = "nushell-runtime-env";
@@ -114,7 +116,8 @@ in {
               tig
               lazygit
               ;
-            inherit (local) bat eza moor ripgrep;
+            inherit (local) bat eza ripgrep;
+            inherit comview;
           }
           ++ extraRuntimeInputs;
       };

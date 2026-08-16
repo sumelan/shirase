@@ -7,6 +7,14 @@
     "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
     "lastModified": 1767039857
   },
+  "comview": {
+    "type": "github",
+    "owner": "sumelan",
+    "repo": "comview",
+    "rev": "76a12d5990692c2260ca042d57465ec77386c5f1",
+    "narHash": "sha256-D8uE+/T3Y+jiDIBm1KN11PtShdAAsefhvvl5vcfUCOI=",
+    "lastModified": 1786833829
+  },
   "flake-parts": {
     "type": "github",
     "owner": "hercules-ci",

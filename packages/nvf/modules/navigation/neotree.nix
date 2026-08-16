@@ -7,11 +7,6 @@ _: {
         {
           mode = "n";
           key = "<leader>nt";
-          action = ":Neotree toggle<CR>";
-        }
-        {
-          mode = "n";
-          key = "<leader>nf";
           action = ":Neotree float<CR>";
         }
       ];

@@ -28,42 +28,27 @@ export NIXPKGS_ALLOW_UNFREE := "1"
     git add -A
     nh os switch {{ flags }}
 
+[group('CLEAN')]
+[doc('Clean all profiles but keep 5 generations.')]
+@clean:
+    nh clean all --keep 5
+
 [group('UPDATE')]
 [doc('Update inputs interactively.')]
 @update:
     tack-update-diff
     git add -A
 
-[group('MAINTENANCE')]
-[doc('Clean all profiles but keep 5 generations.')]
-@gc:
-    nh clean all --keep 5
+[group('GIT')]
+[doc('Show changes between commit and working tree.')]
+@diff:
+    git add -A
+    git diff main
 
-[group('MAINTENANCE')]
+[group('OPTIMISE')]
 [doc('Replace identical files in the store by hard links.')]
 @optimise:
     nix-store --optimise -v
-
-[group('LOCATE')]
-[doc('Search for all packages containing specific library.')]
-@lib lib:
-    nix-locate -- "lib/{{ lib }}" | rg -v '^\('
-
-[group('PACKAGE')]
-[doc('Look the store path through yazi. If path not found, build it.')]
-@yp pkg:
-    #!/usr/bin/env nu
-    let PKG_DIR = (nix eval --impure --raw "nixpkgs#{{ pkg }}.outPath")
-    if not  ( $PKG_DIR | path exists) {
-        nix build "nixpkgs#{{ pkg }}" --print-out-paths | awk '{ print length, $0 }' | cut -d" " -f2- | head -n1;
-    }
-    yazi $PKG_DIR
-
-[group('PACKAGE')]
-[doc('Look the package built with override attrs through yazi.')]
-@yor pkg attrs:
-    nix build --impure --expr  '(import <nixpkgs> { }).{{ pkg }}.override { {{ attrs }} }'
-    yazi ./result
 
 [group('EVAL')]
 [doc('Measure eval time on each host.')]

@@ -4,7 +4,7 @@
   ...
 }: {
   flake.modules.nixos.default = {pkgs, ...}: let
-    inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) nvf;
+    local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
     inherit (config.flake.custom.userModules.shellAliases) basic extra;
   in {
     environment = {
@@ -22,7 +22,6 @@
           jq
           just
           killall
-          microfetch
           procs # better ps
           sd # better sed
           trash-cli
@@ -31,7 +30,7 @@
           ;
         inherit (lib.hiPrio pkgs) procps;
         # editor
-        inherit nvf;
+        inherit (local) nvf nushell;
       };
       shellAliases = basic // extra;
 

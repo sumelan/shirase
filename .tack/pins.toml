@@ -63,7 +63,7 @@ url = "gh:Mic92/sops-nix"
 url = "gh:schembriaiden/helium-browser-nix-flake"
 
 [inputs.noctalia]
-url = "gh:noctalia-dev/noctalia/cachix"
+url = "gh:noctalia-dev/noctalia"
 
 [inputs.noctalia-greeter]
 url = "gh:noctalia-dev/noctalia-greeter"
@@ -79,3 +79,6 @@ url = "gh:vicrodh/qbz"
 
 [inputs.ttf]
 url = "gh:ChrisBuilds/terminaltexteffects"
+
+[inputs.comview]
+url = "gh:sumelan/comview/flake"

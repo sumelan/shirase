@@ -29,10 +29,10 @@
     ttfCmd = lib.concatStringsSep " " [
       (lib.getExe inputs.ttf.packages.${pkgs.stdenv.hostPlatform.system}.default)
       "--anchor-canvas c"
-      "--no-color"
-      "slide"
-      "--merge"
-      "--movement-speed 0.8"
+      "beams"
+      "--beam-delay 5"
+      "--beam-row-speed-range 20-60"
+      "--beam-column-speed-range 8-12"
       "--final-gradient-direction diagonal"
     ];
   in {

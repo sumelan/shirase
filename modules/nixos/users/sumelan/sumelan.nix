@@ -1,5 +1,7 @@
 {config, ...}: {
-  flake.modules.nixos."users/sumelan" = _: {
+  flake.modules.nixos."users/sumelan" = {pkgs, ...}: let
+    local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
+  in {
     imports = builtins.attrValues {
       inherit (config.flake.modules.nixos) japanese;
     };
@@ -7,6 +9,7 @@
     users.users.sumelan = {
       description = "Su melan";
       isNormalUser = true;
+      shell = local.nushell;
       # create a password with sumelan with:
       # mkpasswd -m sha-512 'PASSWORD' | sudo tee /persist/etc/shadow/sumelan
       initialPassword = "password";

@@ -32,7 +32,7 @@ def tack-update-diff []: nothing -> nothing {
         print "Updating nixpkgs..."
         print $"(tack update $e)"
       } else {
-        print $"(ansi pink1)==== Input: (ansi attr_underline)($e)(ansi reset_underline) ====(ansi reset)"
+        print $"(ansi yellow)==== Input: (ansi attr_underline)($e)(ansi reset_underline) ====(ansi reset)"
 
         let alias = $pins.inputs
         | get $e
@@ -69,22 +69,19 @@ def tack-update-diff []: nothing -> nothing {
             | save $"/tmp/($e).diff"
 
             try {
-              moor $"/tmp/($e).diff"
+              cat $"/tmp/($e).diff" | comview
             } catch {|err| $err}
 
-            rm $"/tmp/($e).diff"
           } else if ($alias | str contains 'gh') {
             http get $"https://github.com/($repo)/compare/($old)...($new).diff"
             | save $"/tmp/($e).diff"
 
             try {
-              moor $"/tmp/($e).diff"
+              cat $"/tmp/($e).diff" | comview
             } catch {|err| $err}
-
-            rm $"/tmp/($e).diff"
           }
 
-        print $"(ansi pink3)Approve changes? [y/n](ansi reset)"
+        print $"(ansi teal)Approve changes? [y/n](ansi reset)"
 
         let input =  (input --numchar 1 --default "n")
         
@@ -94,6 +91,8 @@ def tack-update-diff []: nothing -> nothing {
         } else {
           print "Skipping..."
         }
+
+        rm $"/tmp/($e).diff"
       }
     }
   }
