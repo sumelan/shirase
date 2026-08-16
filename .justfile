@@ -18,15 +18,15 @@ export NIXPKGS_ALLOW_UNFREE := "1"
 
 [group('REBUILD')]
 [doc('`nh os test`.')]
-@test *flags:
+@test *opts:
     git add -A
-    nh os test {{ flags }}
+    nh os test {{ opts }}
 
 [group('REBUILD')]
 [doc('`nh os switch`.')]
-@switch *flags:
+@switch *opts:
     git add -A
-    nh os switch {{ flags }}
+    nh os switch {{ opts }}
 
 [group('CLEAN')]
 [doc('Clean all profiles but keep 5 generations.')]
