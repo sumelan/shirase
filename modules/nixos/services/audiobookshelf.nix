@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.audiobookshelf = {
+  flake.modules.nixos.audiobookshelf = _: {
     services.audiobookshelf = {
       enable = true;
       host = "0.0.0.0"; # "127.0.0.1" means localhost only

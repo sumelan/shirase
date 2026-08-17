@@ -2,17 +2,15 @@
   inputs,
   config,
   ...
-}: let
-  inherit (config) flake;
-in {
+}: {
   flake.modules.nixos."hosts/sakura" = {pkgs, ...}: {
     imports = builtins.attrValues {
-      inherit (flake.modules.nixos) minisforum-um773se;
-      inherit (flake.modules.nixos) gui;
-      inherit (flake.modules.nixos) kdeconnect steam;
-      inherit (flake.modules.nixos) hdds qmk trackpad;
-      inherit (flake.modules.nixos) audiobookshelf sops-nix syncoid syncthing sshConfig;
-      inherit (flake.modules.nixos) hjem-extended;
+      inherit (config.flake.modules.nixos) minisforum-um773se;
+      inherit (config.flake.modules.nixos) gui;
+      inherit (config.flake.modules.nixos) kdeconnect steam;
+      inherit (config.flake.modules.nixos) hdds qmk trackpad;
+      inherit (config.flake.modules.nixos) audiobookshelf sops-nix syncoid syncthing sshConfig;
+      inherit (config.flake.modules.nixos) hjem-extended;
     };
 
     networking.hostId = "b5e8f0be";
