@@ -63,13 +63,23 @@ in {
       env ? {},
       extraConfig ? "",
     }: let
+      zoxide =
+        # nu
+        ''
+          source ${
+            pkgs.runCommand "zoxide.nu" {} ''
+              ${lib.getExe pkgs.zoxide} init nushell >> "$out"
+            ''
+          }
+        '';
+
       envAttrs =
         (lib.concatStringsSep "\n" (
           lib.mapAttrsToList (k: v: "$env.${k} = ${builtins.toJSON v}") env
         ))
         + "\n";
     in
-      pkgs.writeText "nu-env-config" (envAttrs + extraConfig);
+      pkgs.writeText "nu-env-config" (envAttrs + zoxide + extraConfig);
 
     mkNushell = {
       pkgs,
