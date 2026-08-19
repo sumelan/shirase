@@ -36,9 +36,11 @@ _: {
         };
 
         noice.enable = true;
+      };
+
+      statusline.lualine.integrations = {
         breadcrumbs = {
-          enable = true;
-          lualine.winbar.enable = true;
+          nvim-navic.enable = true;
           navbuddy.enable = true;
         };
       };
