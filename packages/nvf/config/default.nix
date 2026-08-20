@@ -31,6 +31,7 @@
         nix-develop.enable = true;
         oil-nvim.enable = true;
         motion.leap.enable = true;
+        snacks-nvim.enable = true;
       };
 
       spellcheck = {

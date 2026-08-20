@@ -38,7 +38,7 @@ _: {
               background_opacity = 0.5;
               capsule_opacity = 0.50;
               capsule_padding = 10.0;
-              center = ["clock"];
+              center = ["nightlight" "clock" "caffeine"];
               end = ["group:g2" "group:g1" "battery"];
               font_family = "Maple Mono NF";
               icon_color = "hover";

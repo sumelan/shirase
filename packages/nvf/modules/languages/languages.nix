@@ -19,6 +19,7 @@ _: {
         enable = true;
         context.enable = true;
         fold = true;
+        vendorCLI = true;
       };
       keymaps = [
         {
