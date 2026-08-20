@@ -33,7 +33,7 @@ flake-compat = ""
 [inputs]
 
 [inputs.nixpkgs]
-url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz"
+url = "gh:nixos/nixpkgs/nixos-unstable"
 
 [inputs.flake-parts]
 url = "gh:hercules-ci/flake-parts"

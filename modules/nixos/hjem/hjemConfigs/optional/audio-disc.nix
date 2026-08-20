@@ -6,7 +6,6 @@ _: {
   }: {
     hjem.users.${user} = {
       packages = [
-        pkgs.cyanrip
         pkgs.picard
       ];
     };
