@@ -63,6 +63,12 @@ in {
       env ? {},
       extraConfig ? "",
     }: let
+      completions =
+        # nu
+        ''
+          source /etc/nushell/inshellah.nu
+        '';
+
       zoxide =
         # nu
         ''
@@ -79,7 +85,7 @@ in {
         ))
         + "\n";
     in
-      pkgs.writeText "nu-env-config" (envAttrs + zoxide + extraConfig);
+      pkgs.writeText "nu-env-config" (envAttrs + completions + zoxide + extraConfig);
 
     mkNushell = {
       pkgs,

@@ -135,7 +135,7 @@ in {
         enable = true;
         # enable man-db cache for fish to be able to find manpages
         # https://discourse.nixos.org/t/fish-shell-and-manual-page-completion-nixos-home-manager/15661
-        cache.enable = false;
+        cache.enable = true;
       };
       dev.enable = false;
     };
