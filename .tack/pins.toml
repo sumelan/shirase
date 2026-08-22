@@ -59,9 +59,6 @@ url = "gh:notashelf/nvf"
 [inputs.sops-nix]
 url = "gh:Mic92/sops-nix"
 
-[inputs.helium-browser]
-url = "gh:schembriaiden/helium-browser-nix-flake"
-
 [inputs.noctalia]
 url = "gh:noctalia-dev/noctalia"
 

@@ -16,6 +16,7 @@ _: {
       # neovim
       nv = "nvim";
     };
+
     extra = {
       lt = "eza --tree --level=3 --icons";
       tree = "eza --tree";

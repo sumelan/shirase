@@ -23,14 +23,6 @@
     "narHash": "sha256-4dtXQk/NMePegK/nWp5NSeuZKLATItOq61lpEvmXqGw=",
     "lastModified": 1785627969
   },
-  "helium-browser": {
-    "type": "github",
-    "owner": "schembriaiden",
-    "repo": "helium-browser-nix-flake",
-    "rev": "11edc339e075f16b356852096420ecd966462cc1",
-    "narHash": "sha256-legFYpDokCOzwAPmyH7mDi+2jkllaeE+czhJifeQsFU=",
-    "lastModified": 1786886160
-  },
   "hjem": {
     "type": "github",
     "owner": "feel-co",

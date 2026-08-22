@@ -44,17 +44,24 @@ in {
   ];
 
   input = {
+    focus-follows-mouse = [
+      {_props.max-scroll-amount = "0%";}
+    ];
+
     keyboard = {
       xkb = {layout = "us";};
       repeat-delay = 600;
       repeat-rate = 25;
       track-layout = "global";
     };
+
     touchpad = {
       tap = [];
       natural-scroll = [];
     };
+
     tablet = {map-to-output = "DSI-1";};
+
     touch = {map-to-output = "DSI-1";};
   };
 
@@ -247,7 +254,7 @@ in {
     {
       match = [
         {_props.app-id._raw = ''r#"^.blueman-manager-wrapped$"#'';}
-        {_props.app-id._raw = ''r#"^chrome-"#'';} # helium extension's windows
+        {_props.app-id._raw = ''r#"^brave-.*-Default$"#'';} # brave extension's windows
         {_props.app-id._raw = ''r#"^org\.kde\.kdeconnect-indicator$"#'';}
       ];
       open-floating = true;
@@ -431,8 +438,8 @@ in {
       spawn = ["ghostty" "--class=app.nvim" "--working-directory=./Projects" "-e" "nvim"];
     };
     "Mod+B" = {
-      _props.hotkey-overlay-title = "${hotkey "#8caaee" "  Helium" "Web Browser"}";
-      spawn = ["helium"];
+      _props.hotkey-overlay-title = "${hotkey "#e78284" "  Brave Origin" "Web Browser"}";
+      spawn = ["brave-origin"];
     };
     "Mod+D" = {
       _props.hotkey-overlay-title = "${hotkey "#ef9f76" "  Vesktop" "Discord Client"}";

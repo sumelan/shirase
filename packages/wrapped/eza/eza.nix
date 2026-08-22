@@ -4,6 +4,7 @@
       eza = config.flake.custom.wrappers.mkEza {
         inherit pkgs;
       };
+
       eza-tree = pkgs.writeShellApplication {
         name = "tree";
         runtimeInputs = [pkgs.eza];
