@@ -284,6 +284,7 @@ in {
       match = [
         {_props.app-id._raw = ''r#"^org\.gnome\.Nautilus$"#'';}
         {_props.app-id._raw = ''r#"^xdg-desktop-portal-gtk$"#'';}
+        {_props.app-id._raw = ''r#"^app\.yazi$"#'';}
       ];
       default-column-width._children = [
         {proportion = 0.500000;}
