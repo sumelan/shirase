@@ -16,22 +16,22 @@ _: {
             widget = {
               desktop-widget-0000000000000001 = {
                 box_height = 80.0;
-                box_width = 240.0;
+                box_width = 256.0;
                 cx = 2416.0;
-                cy = 1368.0;
-                output = "HDMI-A-1";
+                cy = 1352.0;
+                output = "DP-1";
+                placement_height = 1440.0;
+                placement_width = 2560.0;
                 rotation = 0.0;
                 type = "label";
 
                 settings = {
                   background = false;
-                  background_opacity = 0.6;
-                  color = "hover";
+                  color = "on_surface";
                   description = "";
                   font_family = "Maple Mono NF";
                   opacity = 0.5;
-                  shadow = true;
-                  title = " NixOS";
+                  title = "󱄅 NixOS";
                 };
               };
             };
@@ -60,12 +60,17 @@ _: {
             };
           };
 
+          lockscreen = {
+            blur_intensity = 0.0;
+          };
+
           lockscreen_widgets = {
             enabled = true;
             schema_version = 2;
             widget_order = [
-              "lockscreen-login-box@HDMI-A-1"
+              "lockscreen-login-box@DP-1"
               "lockscreen-widget-0000000000000001"
+              "lockscreen-widget-0000000000000002"
             ];
 
             grid = {
@@ -75,43 +80,71 @@ _: {
             };
 
             widget = {
-              "lockscreen-login-box@HDMI-A-1" = {
-                box_height = 70.0;
-                box_width = 400.0;
-                cx = 1280.0;
-                cy = 1321.0;
-                output = "HDMI-A-1";
+              "lockscreen-login-box@DP-1" = {
+                box_height = 196.0;
+                box_width = 832.0;
+                cx = 1568.0;
+                cy = 1186.0;
+                output = "DP-1";
+                placement_height = 1440.0;
+                placement_width = 2560.0;
                 rotation = 0.0;
                 type = "login_box";
 
                 settings = {
                   background_color = "surface_variant";
-                  background_opacity = 0.65;
-                  background_radius = 12.0;
-                  center_password_text = false;
-                  input_opacity = 1.0;
-                  input_radius = 6.0;
+                  background_opacity = 0.80;
+                  background_radius = 15.0;
+                  center_password_text = true;
+                  input_opacity = 0.31;
+                  input_radius = 15.0;
+                  layout = "regular";
                   show_caps_lock = true;
                   show_keyboard_layout = true;
                   show_login_button = true;
+                  show_media = true;
+                  show_session_buttons = true;
+                  show_unlock_hint = false;
+                  show_weather = true;
                 };
               };
 
-              lockscreen-widget-0000000000000001 = {
-                box_height = 352.0;
-                box_width = 704.0;
-                cx = 1280.0;
-                cy = 528.0;
-                output = "HDMI-A-1";
+              "lockscreen-widget-0000000000000001" = {
+                box_height = 144.0;
+                box_width = 384.0;
+                cx = 928.0;
+                cy = 504.0;
+                output = "DP-1";
+                placement_height = 1440.0;
+                placement_width = 2560.0;
                 rotation = 0.0;
                 type = "clock";
 
                 settings = {
                   background = false;
-                  center_text = true;
-                  color = "secondary";
+                  color = "on_surface";
                   font_family = "Maple Mono NF";
-                  format = "{:%H:%M:%S}";
+                  format = "{:%H:%M}";
+                };
+              };
+
+              "lockscreen-widget-0000000000000002" = {
+                box_height = 144.0;
+                box_width = 832.0;
+                cx = 1560.0;
+                cy = 576.0;
+                output = "DP-1";
+                placement_height = 1440.0;
+                placement_width = 2560.0;
+                rotation = 0.0;
+                type = "audio_visualizer";
+
+                settings = {
+                  background = false;
+                  bands = 32;
+                  color_1 = "secondary";
+                  color_2 = "tertiary";
+                  show_when_idle = true;
                 };
               };
             };
