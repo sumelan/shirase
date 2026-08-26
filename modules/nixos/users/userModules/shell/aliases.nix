@@ -2,7 +2,7 @@ _: {
   flake.custom.userModules.shellAliases = {
     basic = {
       # vim-like
-      ":e" = "nvim";
+      ":e" = "hx";
       ":q" = "exit";
       ":wq" = "exit";
 

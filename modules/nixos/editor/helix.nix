@@ -1,8 +1,12 @@
-{config, ...}: let
+{
+  config,
+  self,
+  ...
+}: let
   inherit (config) flake;
   inherit (flake.custom.wrappers) mkHelix;
 in {
-  flake.custom.hjemConfigs.helix = {
+  flake.modules.nixos.default = {
     config,
     pkgs,
     user,
@@ -30,19 +34,47 @@ in {
     };
     extraLang = {
       language-server.nixd.config.nixd = let
+        inputs = ''(removeAttrs (import "${self}/.tack") ["" "__functor"])'';
+
         myFlake = ''(builtins.getFlake "${dotfile}")'';
       in {
-        nixpkgs.expr = "import ${myFlake}.inputs.nixpkgs { }";
+        nixpkgs.expr =
+          # nix
+          ''import ${inputs}.nixpkgs { }'';
         options = {
-          nixos.expr = "${myFlake}.nixosConfigurations.${hostName}.options";
-          flake-parts.expr = "${myFlake}.debug.options";
+          nixos.expr =
+            # nix
+            ''${myFlake}.nixosConfigurations.${hostName}.options'';
+          flake-parts.expr =
+            # nix
+            ''${myFlake}.debug.options'';
         };
       };
     };
   in {
-    hjem.users.${user}.packages = [
-      (mkHelix {inherit pkgs pkg extraCfg extraLang;})
-    ];
+    environment = {
+      systemPackages = [
+        (mkHelix {inherit pkgs pkg extraCfg extraLang;})
+      ];
+
+      sessionVariables = {
+        EDITOR = "hx";
+        VISUAL = "hx";
+      };
+    };
+
+    hjem.users.${user} = {
+      xdg.mime-apps = {
+        default-applications = {
+          "text/plain" = "helix.desktop";
+          "application/x-shellscript" = "helix.desktop";
+          "application/xml" = "helix.desktop";
+        };
+        added-associations = {
+          "text/csv" = "helix.desktop";
+        };
+      };
+    };
 
     custom.fileSystem = {
       cache.home.directories = [

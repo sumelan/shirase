@@ -1,6 +1,6 @@
 # Basic Vim options common to all instances
 _: {
-  flake.modules.nvf.vim = _: {
+  flake.modules.nvf.default = _: {
     vim = {
       autocmds = [
         {
@@ -21,6 +21,7 @@ _: {
         shiftwidth = 4;
         expandtab = true;
         shiftround = true; # round indent to multiple of 'shiftwidth' for > and < command
+        wrap = true;
       };
 
       lineNumberMode = "relNumber";

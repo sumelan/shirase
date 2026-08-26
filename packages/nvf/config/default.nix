@@ -3,10 +3,12 @@
     imports = builtins.attrValues {
       inherit
         (config.flake.modules.nvf)
-        fzflua
-        ui
-        vim
         dashboard-alpha
+        fzflua
+        neotree
+        telescope
+        toggleterm
+        ui
         ;
     };
     # https://notashelf.github.io/nvf/options.html
@@ -31,7 +33,6 @@
         nix-develop.enable = true;
         oil-nvim.enable = true;
         motion.leap.enable = true;
-        snacks-nvim.enable = true;
       };
 
       spellcheck = {
@@ -43,11 +44,6 @@
         enable = true;
         git-conflict.enable = true;
         gitsigns.enable = true;
-      };
-
-      terminal.toggleterm = {
-        enable = true;
-        lazygit.enable = true;
       };
     };
   };

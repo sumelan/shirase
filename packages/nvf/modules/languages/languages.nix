@@ -3,11 +3,13 @@ _: {
     vim = {
       lsp = {
         enable = true;
+        inlayHints.enable = true;
         formatOnSave = true;
         trouble.enable = true;
         otter-nvim.enable = true;
         presets.harper.enable = false;
       };
+
       languages = {
         enableFormat = true;
         enableTreesitter = true;
@@ -15,12 +17,14 @@ _: {
         bash.enable = true;
         yaml.enable = true;
       };
+
       treesitter = {
         enable = true;
         context.enable = true;
         fold = true;
         vendorCLI = true;
       };
+
       keymaps = [
         {
           mode = "n";

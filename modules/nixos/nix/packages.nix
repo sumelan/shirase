@@ -19,8 +19,6 @@ _: {
         nix-output-monitor
         nix-tree
         nix-update
-        nixd
-        nixfmt
         nixpkgs-review
         ;
     };

@@ -8,14 +8,11 @@
         blink
         themes
         transparent
-        neotree
         languages
         go
         python
         nix
         rust
-        telescope
-        toggleterm
         ;
     };
   };
