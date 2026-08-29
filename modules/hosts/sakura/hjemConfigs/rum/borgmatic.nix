@@ -53,7 +53,9 @@
             keep_monthly = 6;
 
             ssh_command = "ssh -i /home/sumelan/.ssh/borgbase";
-            encryption_passcommand = "${lib.getExe pkgs.bitwarden-cli} get password Borgmatic --session cbv3d7IVNpJVZpQN5+VDIqVvNhpeDiUDBog2mGdtnMz2ZOJY5eg27UPCaUUuaQNenH/L0UudNVI8FM1/uBDodA=";
+            encryption_passcommand =
+              # sh
+              ''${lib.getExe pkgs.bitwarden-cli} get password Borgmatic --session 2bQ7xQ4SpZ1e0084VdX/PCzwqiyZ0Ase6xmg8g/8kFlS6MU/En7qPwNP2DRDsx8m4HBsQ/RiFdy++i0fxmw30g=='';
 
             zfs = {
               zfs_command = lib.getExe config.boot.zfs.package;

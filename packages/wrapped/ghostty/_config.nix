@@ -9,7 +9,7 @@ _: {
   cursor-opacity = "0.6";
   adjust-cursor-thickness = 4;
   cursor-style-blink = true;
-  font-family = "Maple Mono NF";
+  font-family = "FantasqueSansMNerdFont";
   font-size = 13;
   window-decoration = "none";
 }

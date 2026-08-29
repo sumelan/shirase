@@ -1,5 +1,9 @@
 _: {
-  flake.modules.nixos."hosts/minibookx" = {user, ...}: {
+  flake.modules.nixos."hosts/minibookx" = {
+    config,
+    user,
+    ...
+  }: {
     hjem.users.${user} = {
       programs.noctalia = {
         settings = {
@@ -28,7 +32,7 @@ _: {
                   background_opacity = 0.6;
                   color = "hover";
                   description = "";
-                  font_family = "Maple Mono NF";
+                  font_family = config.custom.fonts.monospace;
                   opacity = 0.5;
                   shadow = true;
                   title = " NixOS";
@@ -110,7 +114,7 @@ _: {
                   background = false;
                   center_text = true;
                   color = "secondary";
-                  font_family = "Maple Mono NF";
+                  font_family = config.custom.fonts.monospace;
                   format = "{:%H:%M:%S}";
                 };
               };

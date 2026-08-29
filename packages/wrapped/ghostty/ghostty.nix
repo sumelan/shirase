@@ -11,20 +11,6 @@ in {
     extraConfig = {
       shell-integration = "nushell";
       theme = "Catppuccin Frappe";
-      font-feature = lib.concatStringsSep "," [
-        "+calt" # default ligatures
-        "+zero" # alternate zero
-        "+cv62" # alternative question
-        "+cv63" # alternative left arrow
-        "+cv66" # alternative pipe arrows
-        "+ss03" # arbitary tag
-        "+ss05" # thin escape backslash
-        "+ss07" # relax multi-greaters condition
-        "+ss08" # double / back rows
-        "+ss09" # alternative not equal
-        "+ss10" # aaproximately equal
-        "+ss11" # extra equal ligatures
-      ];
     };
   in {
     packages = {
@@ -124,7 +110,7 @@ in {
             --add-flags "--config-file=${cfg}" \
             --set GHOSTTY_BIN_DIR $out/bin \
             --set GHOSTTY_RESOURCES_DIR $out/share/ghostty \
-            --set FONTCONFIG_FILE ${pkgs.makeFontsConf {fontDirectories = [pkgs.maple-mono.NF-unhinted];}}
+            --set FONTCONFIG_FILE ${pkgs.makeFontsConf {fontDirectories = [pkgs.nerd-fonts.fantasque-sans-mono];}}
         '';
         meta.mainProgram = "ghostty";
       };

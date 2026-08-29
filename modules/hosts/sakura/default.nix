@@ -27,13 +27,13 @@
     custom = {
       hardware = {
         monitors = {
-          "DP-1" = {
+          "HDMI-A-1" = {
             isMain = true;
             scale = 1.0;
             mode = {
-              width = 2560;
-              height = 1440;
-              refresh = 59.951;
+              width = 1920;
+              height = 1080;
+              refresh = 60.000;
             };
             position = {
               x = 0;

@@ -26,13 +26,14 @@
       }
     ];
 
+    # to show the option value,
+    # run `nix run github:ChrisBuilds/terminaltexteffects -- EFFECTS --help`
     ttfCmd = lib.concatStringsSep " " [
       (lib.getExe inputs.ttf.packages.${pkgs.stdenv.hostPlatform.system}.default)
       "--anchor-canvas c"
-      "beams"
-      "--beam-delay 5"
-      "--beam-row-speed-range 20-60"
-      "--beam-column-speed-range 8-12"
+      "laseretch"
+      "--etch-speed 8"
+      "--etch-delay 3"
       "--final-gradient-direction diagonal"
     ];
   in {

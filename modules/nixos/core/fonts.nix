@@ -16,7 +16,7 @@ in {
         };
         monospace = mkOption {
           type = str;
-          default = "Maple Mono NF";
+          default = "FantasqueSansMNerdFont";
           description = "The font to use for monospace text";
         };
         packages = mkOption {
@@ -36,7 +36,7 @@ in {
         pkgs.noto-fonts
         pkgs.noto-fonts-cjk-sans
         pkgs.noto-fonts-color-emoji
-        pkgs.maple-mono.NF-unhinted # INFO: unhinted font: for high resolution screen
+        pkgs.nerd-fonts.fantasque-sans-mono
       ];
     };
   };

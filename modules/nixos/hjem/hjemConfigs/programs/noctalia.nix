@@ -1,12 +1,16 @@
 _: {
-  flake.custom.hjemConfigs.noctalia = {user, ...}: {
+  flake.custom.hjemConfigs.noctalia = {
+    config,
+    user,
+    ...
+  }: {
     hjem.users.${user} = {
       programs.noctalia = {
         enable = true;
         systemd.enable = true;
 
         settings = {
-          config_version = 2;
+          config_version = 13;
 
           audio = {
             enable_sounds = true;
@@ -22,10 +26,10 @@ _: {
 
             bottomBar = {
               background_opacity = 0.5;
-              center = ["privacy"];
+              center = ["nightlight" "privacy" "recorder"];
               enabled = true;
               end = ["audio_visualizer" "media"];
-              font_family = "Maple Mono NF";
+              font_family = config.custom.fonts.monospace;
               icon_color = "secondary";
               margin_ends = 0;
               position = "bottom";
@@ -38,9 +42,9 @@ _: {
               background_opacity = 0.5;
               capsule_opacity = 0.50;
               capsule_padding = 10.0;
-              center = ["nightlight" "clock" "caffeine"];
+              center = ["notifications" "clock" "caffeine"];
               end = ["group:g2" "group:g1" "battery"];
-              font_family = "Maple Mono NF";
+              font_family = config.custom.fonts.monospace;
               icon_color = "hover";
               margin_ends = 0;
               position = "top";
@@ -67,7 +71,7 @@ _: {
                   enabled = true;
                   fill = "surface_variant";
                   id = "g2";
-                  members = ["notifications" "network" "bluetooth"];
+                  members = ["network" "bluetooth"];
                   opacity = 0.5;
                   padding = 10.0;
                 }
@@ -180,44 +184,63 @@ _: {
             };
 
             bluetooth = {
-              font_family = "Maple Mono NF";
+              font_family = config.custom.fonts.monospace;
               hide_when_no_connected_device = true;
               show_label = true;
             };
 
+            caffeine = {
+              font_family = config.custom.fonts.monospace;
+              icon_color = "secondary";
+            };
+
             clock = {
-              format = " {:%H:%M}";
+              format = "  {:%H:%M}";
               tooltip_format = "{:%c}";
             };
 
             control-center = {
-              font_family = "Maple Mono NF";
+              font_family = config.custom.fonts.monospace;
               glyph = "niri";
             };
 
             media = {
               art_size = 25;
-              font_family = "Maple Mono NF";
+              font_family = config.custom.fonts.monospace;
               hide_when_no_media = true;
               max_length = 300;
               title_scroll = "on_hover";
             };
 
             network = {
-              font_family = "Maple Mono NF";
+              font_family = config.custom.fonts.monospace;
               show_label = true;
               show_vpn_label = true;
             };
 
+            nightlight = {
+              icon_color = "primary";
+            };
+
+            notifications = {
+              hide_when_no_unread = true;
+              icon_color = "secondary";
+            };
+
+            recorder = {
+              icon_color = "primary";
+              type = "noctalia/screen_recorder:recorder";
+            };
+
             tray = {
-              font_family = "Maple Mono NF";
+              font_family = config.custom.fonts.monospace;
               hidden = ["blueman" "nm-applet" "fcitx5"];
             };
 
             workspaces = {
               show_labels = false;
               focused_output_only = true;
-              font_family = "Maple Mono NF";
+              font_family = config.custom.fonts.monospace;
               hide_when_empty = true;
               labels_only_when_occupied = true;
             };

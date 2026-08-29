@@ -1,12 +1,5 @@
-{
-  config,
-  lib,
-  ...
-}: {
-  flake.modules.nixos.default = {pkgs, ...}: let
-    local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
-    inherit (config.flake.custom.userModules.shellAliases) basic extra;
-  in {
+{lib, ...}: {
+  flake.modules.nixos.default = {pkgs, ...}: {
     environment = {
       systemPackages = builtins.attrValues {
         inherit
@@ -29,17 +22,14 @@
           xdg-utils
           ;
         inherit (lib.hiPrio pkgs) procps;
-        # editor
-        inherit (local) nvf nushell;
       };
-      shellAliases = basic // extra;
 
       variables = {
         PAGER = "ov -F -H3";
         SYSTEMD_PAGER = "ov";
         MANPAGER = ''ov --section-delimiter '^[^\s]' --section-header --sidebar-mode=sections'';
         SYSTEMD_PAGERSECURE = "1";
-        TERMINAL = "ghostty";
+        TERMINAL = "foot";
         EDITOR = "nvim";
         VISUAL = "nvim";
         NIXPKGS_ALLOW_UNFREE = "1";

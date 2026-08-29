@@ -1,6 +1,4 @@
-{lib, ...}: let
-  inherit (lib) getExe;
-in {
+{lib, ...}: {
   flake.modules.nixos.default = {pkgs, ...}: {
     environment.systemPackages = [pkgs.fzf];
 
@@ -9,7 +7,7 @@ in {
         # sh
         ''
           if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
-            eval "$(${getExe pkgs.fzf} --bash)"
+            eval "$(${lib.getExe pkgs.fzf} --bash)"
           fi
         '';
     };

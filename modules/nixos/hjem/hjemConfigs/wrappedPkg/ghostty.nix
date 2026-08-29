@@ -12,14 +12,10 @@
   in {
     hjem.users.${user}.rum = {
       programs.ghostty = {
-        enable = lib.mkDefault true;
+        enable = lib.mkDefault false;
         package = local.ghostty;
         systemd.enable = true;
       };
-    };
-
-    environment.sessionVariables = {
-      TERMINAL = "ghostty";
     };
   };
 }
