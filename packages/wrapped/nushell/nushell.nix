@@ -97,6 +97,7 @@ in {
       local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
 
       comview = inputs.comview.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      hl = inputs.hl.packages.${pkgs.stdenv.hostPlatform.system}.default;
       inshellah = inputs.inshellah.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
       runtimeEnv = pkgs.buildEnv {
@@ -107,23 +108,21 @@ in {
           builtins.attrValues {
             inherit
               (pkgs)
-              # Shell Utilities
+              # Shell
               direnv
               nix-direnv
-              nix-your-shell
               starship
               # Command Line
               fd
               fzf
-              jq
-              # VCS
+              # Git
               git
-              delta
-              tig
               lazygit
+              # Pager
+              ov
               ;
             inherit (local) bat eza ripgrep;
-            inherit comview inshellah;
+            inherit comview hl inshellah;
           }
           ++ extraRuntimeInputs;
       };
@@ -133,7 +132,6 @@ in {
 
       printCfg = printConfig {
         inherit cfg pkgs;
-        lang = "nu";
         name = "nu-print-config";
       };
 
@@ -150,6 +148,13 @@ in {
         postBuild = ''
           cp -r ${printCfg}/bin $out
           cp -r ${printEnv}/bin $out
+
+          check=$($out/bin/nu -c "nu-check --debug ${cfg}")
+          if ''${check}; then
+            echo "config is valid"
+          else
+            exit 1
+          fi
 
           wrapProgram $out/bin/nu \
             --add-flags "--config ${cfg}" \

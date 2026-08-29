@@ -37,7 +37,7 @@ _: {
     };
 
     custom = {
-      # [info]: to find a setting value, run `dconf watch /` in terminal
+      # INFO: to find a setting value, run `dconf watch /` in terminal
       dconf.settings = {
         # fix open in terminal
         "org/gnome/desktop/applications/terminal" = {

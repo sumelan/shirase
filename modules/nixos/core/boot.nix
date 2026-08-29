@@ -24,7 +24,7 @@
     in {
       kernelPackages = latestKernelPackage;
 
-      # [warn] plymouth automatically enabled via flake:nixos-plymouth
+      # INFO: plymouth automatically enabled via flake:nixos-plymouth
 
       # Enable "Silent boot"
       consoleLogLevel = 3;

@@ -2,7 +2,7 @@ _: {
   flake.custom.userModules.shellAliases = {
     basic = {
       # vim-like
-      ":e" = "hx";
+      ":e" = "nvim";
       ":q" = "exit";
       ":wq" = "exit";
 
@@ -41,6 +41,8 @@ _: {
     nu = {
       ll = "ls -la";
       la = "ls -a";
+
+      bat-help = "bat --plain --language=help";
     };
   };
 }

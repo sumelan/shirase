@@ -15,7 +15,6 @@
           batman
           eza
           eza-tree
-          moor
           ripgrep
           ns
           ;

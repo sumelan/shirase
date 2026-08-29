@@ -28,7 +28,7 @@ in {
       };
     };
 
-    # [warn] seems to break virtual-console service because it can't find the font
+    # WARN: seems to break virtual-console service because it can't find the font
     # https://github.com/NixOS/nixpkgs/issues/257904
     # font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 

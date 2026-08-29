@@ -31,6 +31,14 @@
     "narHash": "sha256-UrAlku7KST0DT+j1bdVGYI8tCz23PWL88uGMer3IZ2U=",
     "lastModified": 1787500880
   },
+  "hl": {
+    "type": "github",
+    "owner": "pamburus",
+    "repo": "hl",
+    "rev": "14043978f7bbd4d6a98895e697862304f1bcf3ca",
+    "narHash": "sha256-D4QUwYIZJbLO7woeWZ77vgHlNf5IhWjhvz4sFf9qGvw=",
+    "lastModified": 1787810802
+  },
   "impermanence": {
     "type": "github",
     "owner": "nix-community",

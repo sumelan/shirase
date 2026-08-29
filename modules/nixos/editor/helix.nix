@@ -9,7 +9,6 @@ in {
   flake.modules.nixos.default = {
     config,
     pkgs,
-    user,
     dotfile,
     ...
   }: let
@@ -34,9 +33,13 @@ in {
     };
     extraLang = {
       language-server.nixd.config.nixd = let
-        inputs = ''(removeAttrs (import "${self}/.tack") ["" "__functor"])'';
+        inputs =
+          # nix
+          ''(removeAttrs (import "${self}/.tack") ["" "__functor"])'';
 
-        myFlake = ''(builtins.getFlake "${dotfile}")'';
+        myFlake =
+          # nix
+          ''(builtins.getFlake "${dotfile}")'';
       in {
         nixpkgs.expr =
           # nix
@@ -45,6 +48,7 @@ in {
           nixos.expr =
             # nix
             ''${myFlake}.nixosConfigurations.${hostName}.options'';
+
           flake-parts.expr =
             # nix
             ''${myFlake}.debug.options'';
@@ -56,24 +60,6 @@ in {
       systemPackages = [
         (mkHelix {inherit pkgs pkg extraCfg extraLang;})
       ];
-
-      sessionVariables = {
-        EDITOR = "hx";
-        VISUAL = "hx";
-      };
-    };
-
-    hjem.users.${user} = {
-      xdg.mime-apps = {
-        default-applications = {
-          "text/plain" = "helix.desktop";
-          "application/x-shellscript" = "helix.desktop";
-          "application/xml" = "helix.desktop";
-        };
-        added-associations = {
-          "text/csv" = "helix.desktop";
-        };
-      };
     };
 
     custom.fileSystem = {

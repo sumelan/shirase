@@ -35,12 +35,13 @@
       shellAliases = basic // extra;
 
       variables = {
-        PAGER = "moor";
-        SYSTEMD_PAGER = "moor";
+        PAGER = "ov -F -H3";
+        SYSTEMD_PAGER = "ov";
+        MANPAGER = ''ov --section-delimiter '^[^\s]' --section-header --sidebar-mode=sections'';
         SYSTEMD_PAGERSECURE = "1";
         TERMINAL = "ghostty";
-        EDITOR = "hx";
-        VISUAL = "hx";
+        EDITOR = "nvim";
+        VISUAL = "nvim";
         NIXPKGS_ALLOW_UNFREE = "1";
       };
     };

@@ -1,35 +1,27 @@
-# tack pins
-# edit by hand or with tack add / rm / alias
-# nix reads pins.lock.json
-# this file drives tack update
+# tack pins edit by hand or with tack add / rm / alias
+# nix reads pins.lock.json; this file drives tack update
 
-# shorturl schemes
-# scheme rest expands rest into {path}
+# shorturl schemes. scheme rest expands rest into {path}
 [shorturls]
 gh = "github:{path}" # github
 cb = "git+https://codeberg.org/{path}" # codeberg
 
-# all_follow maps input names to the top-level pin they follow
+# all_follow: input name -> top-level pin it follows wherever it appears
 # opt out per-input with exclude_follow
 [all_follow]
-nixpkgs = "nixpkgs"
-flake-parts = "flake-parts"
+# no deduplication
+nixpkgs = ["nixpkgs", "nixpkgs-lib"]
 hjem = "hjem"
+flake-parts = "flake-parts"
 
-home-manager = ""
-flake-compat = ""
-
-# nixpkgs = ["nixpkgs-stable", "nixpkgs-unstable"]
-
-# inputs.<name> fields
-#   url             required, shorturl ok, ?rev=<sha> pins an exact commit
-#   type            flake (default), fetch, or fixed
-#   flake           legacy false means type = "fetch"
+# [inputs.<name>] fields
+#   url             required, shorturl ok; ?rev=<sha> pins an exact commit
+#   flake           default true; false exposes the source path
 #   follows         { child = "pin" } override map
 #   exclude_follow  all_follow names to skip
 #   dir             subdir holding flake.nix
 #   submodules      fetch git submodules
-#   unpack          fixed-only tarball or file
+
 [inputs]
 
 [inputs.nixpkgs]
@@ -82,3 +74,6 @@ url = "gh:sumelan/comview/flake"
 
 [inputs.inshellah]
 url = "gh:manic-systems/inshellah"
+
+[inputs.hl]
+url = "gh:pamburus/hl"

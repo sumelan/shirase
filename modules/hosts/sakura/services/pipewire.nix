@@ -2,7 +2,7 @@ _: {
   flake.modules.nixos."hosts/sakura" = {flakeLib, ...}: {
     services.pipewire = {
       extraConfig = {
-        # [info] pipewire locks to 48 kHz as default
+        # WARN: pipewire locks to 48 kHz as default
         "pipewire" = {
           # QDC DAC Setup - Sample Rate Switching
           "99-qbz-dac" = {

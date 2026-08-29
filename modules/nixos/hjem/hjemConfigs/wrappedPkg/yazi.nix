@@ -16,10 +16,10 @@
           name: file:
             pkgs.writeShellApplication {
               name = "yazi-print-${name}";
-              runtimeInputs = [local.moor];
+              runtimeInputs = [local.bat];
               text = ''
                 YAZI_PATH=$(grep "export YAZI_CONFIG_HOME=" '${lib.getExe local.yazi}' | cut -d"'" -f2)
-                moor --lang toml "$YAZI_PATH/${file}"
+                bat --language toml "$YAZI_PATH/${file}"
               '';
             }
         )

@@ -9,16 +9,11 @@
       projects.project-nvim.enable = true;
       navigation.harpoon.enable = true;
 
-      mini = {
-        notify.enable = true;
-        icons.enable = true;
-        cmdline.enable = true;
-      };
-
       ui = {
         borders.enable = true;
         illuminate.enable = true;
         fastaction.enable = true;
+
         smartcolumn = {
           enable = true;
           setupOpts.custom_colorcolumn = {

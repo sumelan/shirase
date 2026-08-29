@@ -434,6 +434,10 @@ in {
       _props.hotkey-overlay-title = "${hotkey "#8caaee" "󰊠  Ghostty" "Terminal Emulator"}";
       spawn = ["ghostty" "+new-window"];
     };
+    "Mod+Shift+Return" = {
+      _props.hotkey-overlay-title = "${hotkey "#a6d189" "  Neovim" "Text Editor"}";
+      spawn = ["ghostty" "--class=app.nvim" "-e" "nvim"];
+    };
     "Mod+B" = {
       _props.hotkey-overlay-title = "${hotkey "#e78284" "  Brave Origin" "Web Browser"}";
       spawn = ["brave-origin"];

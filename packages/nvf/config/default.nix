@@ -27,6 +27,8 @@
         cheatsheet.enable = true;
       };
 
+      mini.icons.enable = true;
+
       utility = {
         outline.aerial-nvim.enable = true;
         mkdir.enable = true;

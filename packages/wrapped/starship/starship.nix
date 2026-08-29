@@ -24,6 +24,7 @@ in {
       printCfg = printConfig {
         inherit cfg pkgs;
         name = "starship-print-config";
+        lang = "toml";
       };
     in
       pkgs.symlinkJoin {

@@ -8,7 +8,7 @@ _: {
     services.openssh = {
       enable = true;
       settings = {
-        # [info] disable password auth for better security
+        # WARN: disable password auth for better security
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
       };
@@ -37,7 +37,7 @@ _: {
       enableSSHSupport = true;
     };
 
-    # [warn] Some programs need SUID wrappers,
+    # WARN: Some programs need SUID wrappers,
     # can be configured further or are started in user sessions.
     environment.variables = {
       GNUPGHOME = "${config.hjem.users.${user}.xdg.data.directory}/.gnupg";

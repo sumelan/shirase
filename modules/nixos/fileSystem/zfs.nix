@@ -15,7 +15,7 @@ _: {
 
         package = pkgs.zfs_unstable;
 
-        # [warn] a mismatched host ID will prevent ZFS from importing the pool,
+        # WARN: a mismatched host ID will prevent ZFS from importing the pool,
         # but you can override that with a force import
         # forceImportAll = true;
 
@@ -29,7 +29,7 @@ _: {
       trim.enable = true;
     };
 
-    # [info] zfs datasets are created via install.sh
+    # INFO: zfs datasets are created via install.sh
     fileSystems = {
       "/" = {
         device = "zroot/root";

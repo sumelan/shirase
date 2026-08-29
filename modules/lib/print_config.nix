@@ -1,20 +1,21 @@
-{
+{config, ...}: {
   flake.custom.functions.printConfig = {
     pkgs,
     name,
     cfg,
     lang ? "",
   }: let
+    local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
     flags =
       if lang == ""
       then ""
-      else "--lang ${lang}";
+      else "--language ${lang}";
   in
     pkgs.writeShellApplication {
       inherit name;
-      runtimeInputs = [pkgs.bat];
+      runtimeInputs = [local.bat];
       text = ''
-        moor ${flags} "$@" ${cfg}
+        bat ${flags} "$@" ${cfg}
       '';
     };
 }

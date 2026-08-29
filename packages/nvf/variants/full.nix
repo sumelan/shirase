@@ -6,6 +6,7 @@
         (config.flake.modules.nvf)
         default
         blink
+        noice
         themes
         transparent
         languages

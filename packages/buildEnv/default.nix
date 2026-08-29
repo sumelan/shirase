@@ -3,7 +3,7 @@
     local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
 
     commonPkgs = builtins.attrValues {
-      inherit (local) bat batman eza eza-tree moor ripgrep difftastic;
+      inherit (local) bat batman eza eza-tree ripgrep difftastic;
       inherit (local) btop starship yt-dlp;
       inherit (local) nushell;
       inherit (local) nvf;

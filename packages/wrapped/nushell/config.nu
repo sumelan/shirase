@@ -3,7 +3,7 @@
 $env.config = {
     show_banner: false
 
-    buffer_editor: "vim"
+    buffer_editor: "nvim"
 
     ls: {
         use_ls_colors: true
