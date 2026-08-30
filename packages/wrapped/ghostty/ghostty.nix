@@ -110,7 +110,7 @@ in {
             --add-flags "--config-file=${cfg}" \
             --set GHOSTTY_BIN_DIR $out/bin \
             --set GHOSTTY_RESOURCES_DIR $out/share/ghostty \
-            --set FONTCONFIG_FILE ${pkgs.makeFontsConf {fontDirectories = [pkgs.nerd-fonts.fantasque-sans-mono];}}
+            --set FONTCONFIG_FILE ${pkgs.makeFontsConf {fontDirectories = [pkgs.nerd-fonts._0xproto];}}
         '';
         meta.mainProgram = "ghostty";
       };

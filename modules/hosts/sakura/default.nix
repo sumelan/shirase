@@ -41,6 +41,20 @@
             };
             rotation = 0;
           };
+
+          "DP-1" = {
+            scale = 1.0;
+            mode = {
+              width = 1920;
+              height = 1080;
+              refresh = 60.000;
+            };
+            position = {
+              x = 0;
+              y = 1080;
+            };
+            rotation = 0;
+          };
         };
 
         hdds = {

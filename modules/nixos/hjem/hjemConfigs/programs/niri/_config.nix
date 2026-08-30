@@ -4,9 +4,7 @@
   pkgs,
   user,
   ...
-}: let
-  inherit (config.lib.custom.hardware.monitors) mainMonitor mainMonitorName;
-in {
+}: {
   hotkey-overlay = {
     skip-at-startup = [];
     hide-not-bound = [];
@@ -19,27 +17,45 @@ in {
   };
 
   output = let
-    mainWidth = mainMonitor.mode.width;
-    mainHeight = mainMonitor.mode.height;
-    mainRefresh = mainMonitor.mode.refresh;
-    mainScale = mainMonitor.scale;
+    inherit
+      (config.lib.custom.hardware.monitors)
+      mainMonitor
+      mainMonitorName
+      subMonitor
+      subMonitorName
+      ;
+
     mainRotate =
       if mainMonitor.rotation == 0
       then "normal"
       else toString mainMonitor.rotation;
-    mainPositionX = mainMonitor.position.x;
-    mainPositionY = mainMonitor.position.y;
-    mainMode = "${toString mainWidth}x${toString mainHeight}@${toString mainRefresh}";
+    subRotate =
+      if subMonitor.rotation == 0
+      then "normal"
+      else toString subMonitor.rotation;
+
+    mainMode = toString mainMonitor.mode.width + "x" + toString mainMonitor.mode.height + "@" + toString mainMonitor.mode.refresh;
+    subMode = toString subMonitor.mode.width + "x" + toString subMonitor.mode.height + "@" + toString subMonitor.mode.refresh;
   in [
     {
       _args = [mainMonitorName];
-      scale = mainScale;
+      mode = mainMode;
+      scale = mainMonitor.scale;
       transform = mainRotate;
       position._props = {
-        x = mainPositionX;
-        y = mainPositionY;
+        x = mainMonitor.position.x;
+        y = mainMonitor.position.y;
       };
-      mode = mainMode;
+    }
+    {
+      _args = [subMonitorName];
+      mode = subMode;
+      scale = subMonitor.scale;
+      transform = subRotate;
+      position._props = {
+        x = subMonitor.position.x;
+        y = subMonitor.position.y;
+      };
     }
   ];
 
@@ -267,7 +283,7 @@ in {
         {_props.title._raw = ''r#"^ピクチャー イン ピクチャー$"#'';}
         {_props.app-id._raw = ''r#"^mpv$"#'';}
         {_props.app-id._raw = ''r#"^dev\.lemmy\.swash$"#'';}
-        {_props.app-id._raw = ''r#"^Pqiv$"#'';}
+        {_props.app-id._raw = ''r#"^pqiv$"#'';}
         {_props.app-id._raw = ''r#"^vlc$"#'';}
       ];
       default-column-width._children = [

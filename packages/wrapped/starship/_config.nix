@@ -65,8 +65,8 @@
 
     character = {
       format = "$symbol";
-      success_symbol = "[╰─](bold text)[  ${nf-icon}](bold blue)";
-      error_symbol = "[╰─](bold text)[  ${nf-icon}](bold red)";
+      success_symbol = "[╰─](bold text)[   ${nf-icon}](bold blue)";
+      error_symbol = "[╰─](bold text)[   ${nf-icon}](bold red)";
       vimcmd_symbol = "[╰─](bold text)[  ${nf-icon}](bold green_)";
       vimcmd_visual_symbol = "[╰─](bold white1)[  ${nf-icon}](bold mauve)";
       vimcmd_replace_symbol = "[╰─](bold white1])[  ${nf-icon}](bold yellow)";

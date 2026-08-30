@@ -151,7 +151,7 @@ in {
 
           check=$($out/bin/nu -c "nu-check --debug ${cfg}")
           if ''${check}; then
-            echo "config is valid"
+            echo "✓ config is valid"
           else
             exit 1
           fi

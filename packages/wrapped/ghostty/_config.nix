@@ -9,7 +9,7 @@ _: {
   cursor-opacity = "0.6";
   adjust-cursor-thickness = 4;
   cursor-style-blink = true;
-  font-family = "FantasqueSansMNerdFont";
-  font-size = 13;
+  font-family = "0xProto Nerd Font";
+  font-size = 12;
   window-decoration = "none";
 }

@@ -20,14 +20,17 @@
           options = {
             width = mkOption {
               type = int;
+              default = 1920;
               description = "The width of the monitor";
             };
             height = mkOption {
               type = int;
+              default = 1080;
               description = "The height of the monitor";
             };
             refresh = mkOption {
               type = float;
+              default = 60.000;
               description = "The refresh rate of the monitor";
             };
           };
@@ -38,10 +41,12 @@
           options = {
             x = mkOption {
               type = int;
+              default = 0;
               description = "The x position of the monitor";
             };
             y = mkOption {
               type = int;
+              default = 0;
               description = "The y position of the monitor";
             };
           };
@@ -49,6 +54,7 @@
       };
       rotation = mkOption {
         type = int;
+        default = 0;
         description = "The rotation of the monitor";
       };
     };
@@ -73,9 +79,10 @@ in {
     config.lib.custom.hardware.monitors = {
       mainMonitorName =
         head (filter (name: cfg.${name}.isMain) (attrNames cfg));
-      otherMonitorsNames =
-        filter (name: !cfg.${name}.isMain) (attrNames cfg);
+      subMonitorName =
+        head (filter (name: !cfg.${name}.isMain) (attrNames cfg));
       mainMonitor = cfg.${clib.mainMonitorName};
+      subMonitor = cfg.${clib.subMonitorName};
     };
   };
 }

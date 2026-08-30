@@ -55,7 +55,7 @@ in {
 
           wrapProgram $out/bin/foot \
             --add-flags "--config ${cfg}" \
-            --set FONTCONFIG_FILE ${pkgs.makeFontsConf {fontDirectories = [pkgs.nerd-fonts.fantasque-sans-mono];}}
+            --set FONTCONFIG_FILE ${pkgs.makeFontsConf {fontDirectories = [pkgs.nerd-fonts._0xproto];}}
         '';
         meta.mainProgram = "foot";
       };

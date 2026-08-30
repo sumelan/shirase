@@ -59,7 +59,9 @@ in
             # https://github.com/sxyazi/yazi/discussions/1083
             edit = [
               {
-                run = "direnv exec . $EDITOR $1";
+                run =
+                  # sh
+                  ''direnv exec . $EDITOR $1'';
                 block = true;
               }
             ];

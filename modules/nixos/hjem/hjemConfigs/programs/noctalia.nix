@@ -195,7 +195,9 @@ _: {
             };
 
             clock = {
-              format = "  {:%H:%M}";
+              format = "{:%H:%M}";
+              font_family = config.custom.fonts.monospace;
+              font_weight = 700;
               tooltip_format = "{:%c}";
             };
 

@@ -42,7 +42,7 @@ _: {
 
       xdg = {
         mime-apps = let
-          value = "brave-origin.desktop";
+          value = ["brave-origin.desktop" "com.brave.Origin.desktop"];
           default-applications = builtins.listToAttrs (map (name: {
               inherit name value;
             }) [
