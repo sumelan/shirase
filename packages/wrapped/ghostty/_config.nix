@@ -10,6 +10,6 @@ _: {
   adjust-cursor-thickness = 4;
   cursor-style-blink = true;
   font-family = "0xProto Nerd Font";
-  font-size = 12;
+  font-size = 14;
   window-decoration = "none";
 }

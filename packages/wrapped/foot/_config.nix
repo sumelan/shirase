@@ -1,6 +1,6 @@
 _: {
   main = {
-    font = "0xProto Nerd Font:size=12";
+    font = "0xProto Nerd Font:size=14";
     initial-window-size-pixels = "1000x800";
   };
   scrollback = {

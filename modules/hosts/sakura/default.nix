@@ -31,8 +31,8 @@
             isMain = true;
             scale = 1.0;
             mode = {
-              width = 1920;
-              height = 1080;
+              width = 3840;
+              height = 2160;
               refresh = 60.000;
             };
             position = {

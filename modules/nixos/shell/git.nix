@@ -2,12 +2,9 @@
   config,
   lib,
   ...
-}: let
-  inherit (config) flake;
-  inherit (lib) mkMerge concatStringsSep;
-in {
+}: {
   flake.modules.nixos.default = {pkgs, ...}: let
-    inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) difftastic;
+    local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
 
     gitignores = [
       ".direnv"
@@ -17,7 +14,7 @@ in {
       "node_modules"
     ];
   in
-    mkMerge [
+    lib.mkMerge [
       {
         programs = {
           git = {
@@ -42,7 +39,7 @@ in {
                 sort = "-committerdate";
               };
               core = {
-                excludesFile = pkgs.writeText ".gitignore" (concatStringsSep "\n" gitignores);
+                excludesFile = pkgs.writeText ".gitignore" (lib.concatStringsSep "\n" gitignores);
               };
               diff = {
                 guitool = "code";
@@ -113,7 +110,7 @@ in {
 
       # difftastic
       {
-        environment.systemPackages = [difftastic];
+        environment.systemPackages = [local.difftastic];
 
         programs.git.config = {
           diff = {

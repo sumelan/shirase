@@ -33,6 +33,9 @@ _: {
       grv = "git remote -v";
       lg = "lazygit";
 
+      # help
+      bat-help = "bat --plain --language=help";
+
       # zfs
       zls = "zfs list -o name,used,compressratio,lused,avail";
       zsls = "zfs list -t snapshot -S creation -o name,creation,used,written,refer";
@@ -41,8 +44,6 @@ _: {
     nu = {
       ll = "ls -la";
       la = "ls -a";
-
-      bat-help = "bat --plain --language=help";
     };
   };
 }

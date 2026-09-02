@@ -25,10 +25,10 @@
       };
 
       variables = {
-        PAGER = "ov -F -H3";
+        PAGER = "ov";
         SYSTEMD_PAGER = "ov";
-        MANPAGER = ''ov --section-delimiter '^[^\s]' --section-header --sidebar-mode=sections'';
         SYSTEMD_PAGERSECURE = "1";
+        MANPAGER = ''ov --section-delimiter '^[^\s]' --section-header --sidebar-mode=sections'';
         TERMINAL = "foot";
         EDITOR = "nvim";
         VISUAL = "nvim";
