@@ -16,13 +16,11 @@ _: {
 
       "SUPER,i,minimized" # Minimize window to scratchpad.
       "ALT,Z,toggle_scratchpad" # Toggle scratchpad
-      # Restore minimized window to its previous state.
-      # 1 means keep previous tags, 0 means restore to current tags.
-      "SUPER+SHIFT,i,restore_minimized,0"
+      "SUPER+SHIFT,i,restore_minimized,0" # Restore minimized window to its previous state. 1 means keep previous tags, 0 means restore to current tags.
 
       "SUPER+SHIFT,R,switch_layout" # Cycle through available layouts
 
-      "SUPER,O,toggleoverview" # Toggle overview mode
+      "SUPER,O,overcircle,next" # Open overview when closed; while it is open, cycle focus to the next/previous window on the current monitor.
 
       "ALT,F4,quit" # exit mango
     ]
@@ -39,10 +37,6 @@ _: {
       "SUPER+SHIFT,J,exchange_client,down"
       "SUPER+SHIFT,K,exchange_client,up"
       "SUPER+SHIFT,L,exchange_client,right"
-
-      # Open or cycle the thumbnail switcher.
-      "SUPER,S,switcher,next"
-      "SUPER+SHIFT,S,switcher,all_tag_next"
     ]
     # Tags & Monitors
     ++ [

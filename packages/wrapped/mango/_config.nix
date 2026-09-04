@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{lib, ...}: let
   inherit
     (lib)
     mapAttrsToList
@@ -45,7 +41,7 @@ in {
       height = 2160;
       refresh = 60.000000;
       scale = 1.5;
-      hdr = 1;
+      hdr = 0;
     };
 
   # Window effects
@@ -60,8 +56,10 @@ in {
     contrast = 0.9;
     saturation = 1.0;
   };
-  border_radius = 6;
-  focused_opacity = 0.85;
+  # Opacity & Corner Radisu
+  border_radius = 10;
+  no_radius_when_single = 1;
+  focused_opacity = 0.88;
   unfocused_opacity = 0.75;
 
   # Animations - use underscores for multi-part keys
@@ -90,11 +88,14 @@ in {
   shadowscolor = "0x000000ff";
   shadow_only_floating = 0;
 
-  # trackpad
+  cursor_theme = "Capitaine Cursors (Palenight)";
+  cursor_size = 38;
+
+  # focus & input
+  drag_tile_to_tile = 1;
   trackpad_natural_scrolling = 1;
 
-  cursor_theme = config.custom.gtk.cursor.name;
-  cursor_size = config.custom.gtk.cursor.size;
+  # system
   xwayland_persistence = 0;
 
   tagrule = [
