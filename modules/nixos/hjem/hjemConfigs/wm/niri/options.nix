@@ -68,7 +68,7 @@ in {
       hardware.monitors = mkOption {
         type = attrsOf monitor;
       };
-      programs.niri = {
+      wayland.windowManager.niri = {
         xwayland = mkOption {
           type = bool;
           default = false;

@@ -77,3 +77,6 @@ url = "gh:manic-systems/inshellah"
 
 [inputs.hl]
 url = "gh:pamburus/hl"
+
+[inputs.mangowm]
+url = "gh:mangowm/mango"

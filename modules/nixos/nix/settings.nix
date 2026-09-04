@@ -107,6 +107,7 @@ in {
         experimental-features = [
           "nix-command"
           "flakes"
+          "pipe-operator" # lix
         ];
 
         substituters = [

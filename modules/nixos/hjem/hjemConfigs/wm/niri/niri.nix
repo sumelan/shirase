@@ -6,7 +6,8 @@
     ...
   }: {
     hjem.users.${user}.rum = {
-      programs.niri = {
+      wayland.windowManager.niri = {
+        enable = true;
         inherit (config.programs.niri) package;
         settings = import ./_config.nix {inherit config lib pkgs user;};
       };

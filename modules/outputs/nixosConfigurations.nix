@@ -30,6 +30,10 @@
       opt = "nix-index";
     })
     (mkModules {
+      name = "mangowm";
+      opt = "mango";
+    })
+    (mkModules {
       name = "sops-nix";
       opt = "sops";
     })

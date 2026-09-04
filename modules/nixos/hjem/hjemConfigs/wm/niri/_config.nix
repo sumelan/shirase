@@ -843,7 +843,7 @@
   xwayland-satellite = let
     # xwayland
     xwayland =
-      if config.custom.programs.niri.xwayland
+      if config.custom.wayland.windowManager.niri.xwayland
       then {
         path = lib.getExe pkgs.xwayland-satellite;
       }
@@ -856,14 +856,7 @@
   clipboard = {disable-primary = [];};
 
   environment = {
-    ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    GDK_BACKEND = "wayland";
-    QT_QPA_PLATFORM = "wayland";
-    QT_QPA_PLATFORMTHEME = "qt5ct";
-    QT_QPA_PLATFORMTHEME_QT6 = "qt6ct";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     XDG_CURRENT_DESKTOP = "niri";
-    XDG_SESSION_TYPE = "wayland";
   };
 
   blur = {

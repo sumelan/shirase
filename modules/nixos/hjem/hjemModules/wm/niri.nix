@@ -10,10 +10,12 @@ in {
     pkgs,
     ...
   }: let
-    cfg = config.rum.programs.niri;
+    cfg = config.rum.wayland.windowManager.niri;
   in {
     options.rum = {
-      programs.niri = {
+      wayland.windowManager.niri = {
+        enable = lib.mkEnableOption "niri";
+
         package = lib.mkPackageOption pkgs "niri" {};
 
         settings = lib.mkOption {
@@ -26,7 +28,7 @@ in {
       };
     };
 
-    config = {
+    config = lib.mkIf cfg.enable {
       xdg.config.files = {
         "niri/config.kdl".source = validatedConfigFor cfg.package (mkNiriKDL cfg.settings);
       };

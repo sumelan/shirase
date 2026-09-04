@@ -63,9 +63,9 @@
         };
       };
 
-      programs = {
-        btop.rocmSupport = true;
-        niri = {xwayland = false;};
+      programs.btop.rocmSupport = true;
+      wayland.windowManager.niri = {
+        xwayland = false;
       };
     };
   };
