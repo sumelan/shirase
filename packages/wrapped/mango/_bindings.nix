@@ -57,7 +57,7 @@ in {
     ++ spawn {mods = "SUPER+SHIFT";} "Y" "kitty --app-id app.yazi yazi"
     ++ spawn {mods = "SUPER";} "B" "brave-origin"
     ++ spawn {mods = "SUPER";} "Space" "noctalia msg panel-toggle launcher"
-    ++ spawn {mods = "SUPER";} "Y" "noctalia masg panel-toggle clipboard"
+    ++ spawn {mods = "SUPER";} "Y" "noctalia msg panel-toggle clipboard"
     ++ spawn {mods = "SUPER";} "Comma" "noctalia msg settings-toggle"
     ++ spawn {mods = "SUPER";} "W" "noctalia msg panel-toggle wallpaper"
     ++ spawn {mods = "SUPER+SHIFT";} "W" "noctalia msg panel-toggle noctalia/mpvpaper:picker"

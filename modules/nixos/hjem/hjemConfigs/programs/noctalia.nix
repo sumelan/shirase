@@ -25,6 +25,8 @@ _: {
             order = ["topBar" "bottomBar"];
 
             bottomBar = {
+              shadow = false;
+              contact_shadow = false;
               background_opacity = 0.5;
               center = ["nightlight" "privacy" "recorder"];
               enabled = true;
@@ -39,6 +41,8 @@ _: {
             };
 
             topBar = {
+              shadow = false;
+              contact_shadow = false;
               background_opacity = 0.5;
               capsule_opacity = 0.50;
               capsule_padding = 10.0;
@@ -138,6 +142,7 @@ _: {
             };
 
             panel = {
+              shadow = false;
               clipboard_position = "bottom_center";
               control_center_placement = "attached";
               launcher_placement = "floating";
@@ -170,7 +175,7 @@ _: {
             source = "community";
 
             templates = {
-              builtin_ids = ["niri"];
+              builtin_ids = ["mango" "niri"];
               community_ids = [];
             };
           };
