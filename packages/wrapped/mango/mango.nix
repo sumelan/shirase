@@ -32,7 +32,7 @@ in {
     }: let
       settings =
         (import ./_config.nix {inherit lib;})
-        // (import ./_keybinds.nix {})
+        // (import ./_keybinds.nix {inherit lib;})
         // (import ./_autostart_sh.nix {inherit lib pkgs;});
 
       finalConfigText =

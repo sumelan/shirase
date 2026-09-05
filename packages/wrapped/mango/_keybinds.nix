@@ -1,118 +1,100 @@
-_: {
+{lib, ...}: let
+  inherit (lib) singleton;
+
+  dispatch = {mods ? "NONE"}: keys: cmds: "${mods},${keys},${cmds}" |> singleton;
+  spawn = {mods ? "NONE"}: keys: cmds: "${mods},${keys},spawn,${cmds}" |> singleton;
+  keymode = {mods ? "NONE"}: keys: cmds: "${mods},${keys},setkeymode,${cmds}" |> singleton;
+in {
   bind =
     # Dispatchers
     # Window Management
-    [
-      "SUPER,Backspace,killclient"
-
-      "SUPER,F,togglemaximizescreen" # Maximize window (keep decoration/bar)
-      "SUPER+SHIFT,F,togglefullscreen" # Toggle fullscreen
-      "SUPER+ALT,F,togglefakefullscreen" # Toggle "fake" fullscreen (remains constrained)
-
-      "SUPER,T,togglefloating" # Toggle floating state
-      "SUPER,C,centerwin" # Center the floating window
-
-      "SUPER,G,toggleglobal" # Pin window to all tags
-
-      "SUPER,i,minimized" # Minimize window to scratchpad.
-      "ALT,Z,toggle_scratchpad" # Toggle scratchpad
-      "SUPER+SHIFT,i,restore_minimized,0" # Restore minimized window to its previous state. 1 means keep previous tags, 0 means restore to current tags.
-
-      "SUPER+SHIFT,R,switch_layout" # Cycle through available layouts
-
-      "SUPER,O,overcircle,next" # Open overview when closed; while it is open, cycle focus to the next/previous window on the current monitor.
-
-      "ALT,F4,quit" # exit mango
-    ]
+    dispatch {mods = "SUPER";} "Backspace" "killclient" # Close the focused window. If force is specified, sends SIGKILL.
+    ++ dispatch {mods = "SUPER";} "F" "togglemaximizescreen" # Maximize window (keep decoration/bar)
+    ++ dispatch {mods = "SUPER+SHIFT";} "F" "togglefullscreen" # Toggle fullscreen
+    ++ dispatch {mods = "SUPER+ALT";} "F" "togglefakefullscreen" # Toggle "fake" fullscreen (remains constrained)
+    ++ dispatch {mods = "SUPER";} "T" "togglefloating" # Toggle floating state
+    ++ dispatch {mods = "SUPER";} "C" "centerwin" # Center the floating window
+    ++ dispatch {mods = "SUPER";} "G" "toggleglobal" # Pin widnow to all tags
+    ++ dispatch {mods = "SUPER";} "I" "minimized" # Minimize window to scratchpad
+    ++ dispatch {mods = "ALT";} "Z" "toggle_scratchpad" # Toggle scratchpad
+    ++ dispatch {mods = "SUPER+SHIFT";} "I" "restore_minimized,0" # Restore minimized window to its previous state. 1 means keep previous tags, 0 means restore to current tags.
+    ++ dispatch {mods = "SUPER";} "O" "overcircle,next" # Open overview when closed; while it is open, cycle focus to the next/previous window on the current monitor.
+    ++ dispatch {mods = "ALT";} "F4" "quit" # Exit mangowm.
     # Focus & Movement
-    ++ [
-      # Focus window in direction
-      "SUPER,H,focusdir,left"
-      "SUPER,J,focusdir,down"
-      "SUPER,K,focusdir,up"
-      "SUPER,L,focusdir,right"
-
-      # Swap window with neighbor in direction
-      "SUPER+SHIFT,H,exchange_client,left"
-      "SUPER+SHIFT,J,exchange_client,down"
-      "SUPER+SHIFT,K,exchange_client,up"
-      "SUPER+SHIFT,L,exchange_client,right"
-    ]
+    # Focus window in direction
+    ++ dispatch {mods = "SUPER";} "H" "focusdir,left"
+    ++ dispatch {mods = "SUPER";} "J" "focusdir,down"
+    ++ dispatch {mods = "SUPER";} "K" "focusdir,up"
+    ++ dispatch {mods = "SUPER";} "L" "focusdir,right"
+    # Swap window with neighbor in direction
+    ++ dispatch {mods = "SUPER+SHIFT";} "H" "exchange_client,left"
+    ++ dispatch {mods = "SUPER+SHIFT";} "J" "exchange_client,down"
+    ++ dispatch {mods = "SUPER+SHIFT";} "K" "exchange_client,up"
+    ++ dispatch {mods = "SUPER+SHIFT";} "L" "exchange_client,right"
     # Tags & Monitors
-    ++ [
-      "SUPER,1,view,1"
-      "SUPER,2,view,2"
-      "SUPER,3,view,3"
-      "SUPER,4,view,4"
-      "SUPER,5,view,5"
-      "SUPER,6,view,6"
-      "SUPER,7,view,7"
-      "SUPER,8,view,8"
-      "SUPER,9,view,9"
-
-      "SUPER+SHIFT,1,tag,1"
-      "SUPER+SHIFT,2,tag,2"
-      "SUPER+SHIFT,3,tag,3"
-      "SUPER+SHIFT,4,tag,4"
-      "SUPER+SHIFT,5,tag,5"
-      "SUPER+SHIFT,6,tag,6"
-      "SUPER+SHIFT,7,tag,7"
-      "SUPER+SHIFT,8,tag,8"
-      "SUPER+SHIFT,9,tag,9"
-    ]
+    ++ dispatch {mods = "SUPER";} "1" "view,1"
+    ++ dispatch {mods = "SUPER";} "2" "view,2"
+    ++ dispatch {mods = "SUPER";} "3" "view,3"
+    ++ dispatch {mods = "SUPER";} "4" "view,4"
+    ++ dispatch {mods = "SUPER";} "5" "view,5"
+    ++ dispatch {mods = "SUPER";} "6" "view,6"
+    ++ dispatch {mods = "SUPER";} "7" "view,7"
+    ++ dispatch {mods = "SUPER";} "8" "view,8"
+    ++ dispatch {mods = "SUPER";} "9" "view,9"
+    ++ dispatch {mods = "SUPER+SHIFT";} "1" "tag,1"
+    ++ dispatch {mods = "SUPER+SHIFT";} "2" "tag,2"
+    ++ dispatch {mods = "SUPER+SHIFT";} "3" "tag,3"
+    ++ dispatch {mods = "SUPER+SHIFT";} "4" "tag,4"
+    ++ dispatch {mods = "SUPER+SHIFT";} "5" "tag,5"
+    ++ dispatch {mods = "SUPER+SHIFT";} "6" "tag,6"
+    ++ dispatch {mods = "SUPER+SHIFT";} "7" "tag,7"
+    ++ dispatch {mods = "SUPER+SHIFT";} "8" "tag,8"
+    ++ dispatch {mods = "SUPER+SHIFT";} "9" "tag,9"
     # Execute
-    ++ [
-      "SUPER,Return,spawn,footclient"
-      "SUPER+SHIFT,Return,spawn,footclient --app-id app.nvim nvim"
-      "SUPER+SHIFT,N,spawn,footclient --app-id app.ns ns"
-      "SUPER+SHIFT,Y,spawn,footclient --app-id app.yazi yazi"
-      "SUPER,B,spawn,brave-origin"
-
-      "SUPER,Space,spawn,noctalia msg panel-toggle launcher"
-      "SUPER,Y,spawn,noctalia msg panel-toggle clipboard"
-      "SUPER,Comma,spawn,noctalia msg settings-toggle"
-      "SUPER,W,spawn,noctalia msg panel-toggle wallpaper"
-      "SUPER+SHIFT,W,spawn,noctalia msg panel-toggle noctalia/mpvpaper:picker"
-      "SUPER,X,spawn,noctalia msg panel-toggle session"
-    ]
+    ++ spawn {mods = "SUPER";} "Return" "kitty"
+    ++ spawn {mods = "SUPER+SHIFT";} "Return" "kitty --app-id app.nvim nvim"
+    ++ spawn {mods = "SUPER+SHIFT";} "N" "kitty --app-id app.ns ns"
+    ++ spawn {mods = "SUPER+SHIFT";} "Y" "kitty --app-id app.yazi yazi"
+    ++ spawn {mods = "SUPER";} "B" "brave-origin"
+    ++ spawn {mods = "SUPER";} "Space" "noctalia msg panel-toggle launcher"
+    ++ spawn {mods = "SUPER";} "Y" "noctalia masg panel-toggle clipboard"
+    ++ spawn {mods = "SUPER";} "Comma" "noctalia msg settings-toggle"
+    ++ spawn {mods = "SUPER";} "W" "noctalia msg panel-toggle wallpaper"
+    ++ spawn {mods = "SUPER+SHIFT";} "W" "noctalia msg panel-toggle noctalia/mpvpaper:picker"
+    ++ spawn {mods = "SUPER";} "X" "noctalia msg panel-toggle session"
     # misc.
-    ++ [
-      "NONE,Print,spawn,noctalia msg screenshot-region"
-      "SHIFT,Print,spawn,noctalia msg screenshot-fullscreen pick"
-
-      "CTRL,Space,spawn,fcitx5-remote -t"
-    ]
+    ++ spawn {} "Print" "noctalia msg screenshot-region"
+    ++ spawn {mods = "SHIFT";} "Print" "noctalia msg screenshot-fullscreen pick"
+    ++ spawn {mods = "CTRL";} "Space" "fcitx5-remote -t"
     # setKeymode
-    ++ [
-      "ALT,R,setkeymode,resize" # Enter resize mode
-    ];
+    ++ keymode {mods = "ALT";} "R" "resize"; # Enter resize mode
 
   # Allow when locked
-  bindl = [
-    "NONE,XF86AudioRaiseVolume,spawn,noctalia msg volume-up"
-    "NONE,XF86AudioLowerVolume,spawn,noctalia msg volume-down"
-    "NONE,XF86AudioMute,spawn,noctalia msg volume-mute"
-    "NONE,XF86AudioPlay,spawn,noctalia msg media toggle"
-    "NONE,XF86AudioPrev,spawn,noctalia msg media previous"
-    "NONE,XF86AudioNext,spawn,noctalia msg media next"
-    "NONE,XF86MonBrightnessUp,spawn,noctalia msg brightness-up"
-    "NONE,XF86MonBrightnessDown,spawn,noctalia msg brightness-down"
-  ];
+  bindl =
+    spawn {} "XF86AudioRaiseVolume" "noctalia msg volume-up"
+    ++ spawn {} "XF86AudioLowerVolume" "noctalia msg volume-down"
+    ++ spawn {} "XF86AudioMute" "noctalia msg volume-mute"
+    ++ spawn {} "XF86AudioPlay" "noctalia msg media toggle"
+    ++ spawn {} "XF86AudioPrev" "noctalia msg media previous"
+    ++ spawn {} "XF86AudioNext" "noctalia msg media next"
+    ++ spawn {} "XF86MonBrightnessUp" "noctalia msg brightness-up"
+    ++ spawn {} "XF86MonBrightnessDown" "noctalia msg brightness-down";
 
-  gesturebind = [
-    "NONE,Left,3,focusdir,right"
-    "NONE,right,3,focusdir,left"
-    "NONE,up,3,focusdir,down"
-    "NONE,down,3,focusdir,up"
-  ];
+  gesturebind =
+    dispatch {} "Left,3" "focusdir,right"
+    ++ dispatch {} "Right,3" "focusdir,left"
+    ++ dispatch {} "Up,3" "focusdir,down"
+    ++ dispatch {} "Down,3" "focusdir,up";
 
   # Keymodes (submaps) for modal keybindings
   keymode = {
     resize = {
-      bind = [
-        "NONE,Left,resizewin,-10,0"
-        "NONE,Escape,setkeymode,default"
-      ];
+      bind =
+        dispatch {} "Left" "resizewin,-10,0"
+        ++ dispatch {} "Right" "resizewin,+10,0"
+        ++ dispatch {} "Up" "resizewin,0,+10"
+        ++ dispatch {} "Down" "resizewin,0,-10"
+        ++ dispatch {} "Escape" "setkeymode,default";
     };
   };
 }

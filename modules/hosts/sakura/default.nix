@@ -29,7 +29,7 @@
         monitors = {
           "HDMI-A-1" = {
             isMain = true;
-            scale = 1.0;
+            scale = 1.5;
             mode = {
               width = 3840;
               height = 2160;

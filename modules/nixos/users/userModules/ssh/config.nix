@@ -14,7 +14,7 @@ _: {
 
     minibookx = ''
       Host minibookx
-        HostName 192.168.68.52
+        HostName 192.168.68.55
         Port 22
         User sumelan
 

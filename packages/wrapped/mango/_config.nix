@@ -19,6 +19,7 @@ in {
       y ? 0,
       scale ? 1.0,
       hdr ? 0, # or 1
+      rr ? 0, # Monitor transform; 0-7
     }:
       {
         inherit name make model;
@@ -29,6 +30,7 @@ in {
         y = toString y;
         scale = toString scale;
         hdr = toString hdr;
+        rr = toString rr;
       }
       |> mapAttrsToList (k: v: k + ":" + v)
       |> concatStringsSep ","
@@ -42,6 +44,13 @@ in {
       refresh = 60.000000;
       scale = 1.5;
       hdr = 0;
+    }
+    ++ monitor {
+      name = "DSI-1";
+      width = 1200;
+      height = 1920;
+      refresh = 90.000000;
+      rr = 3;
     };
 
   # Window effects

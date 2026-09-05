@@ -29,7 +29,7 @@
         SYSTEMD_PAGER = "ov";
         SYSTEMD_PAGERSECURE = "1";
         MANPAGER = ''ov --section-delimiter '^[^\s]' --section-header --sidebar-mode=sections'';
-        TERMINAL = "foot";
+        TERMINAL = "kitty";
         EDITOR = "nvim";
         VISUAL = "nvim";
         NIXPKGS_ALLOW_UNFREE = "1";
