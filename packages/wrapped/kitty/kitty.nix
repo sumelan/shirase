@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (config.flake.custom.functions) printConfig;
 in {
   perSystem = {pkgs, ...}: let
@@ -12,9 +16,31 @@ in {
       include = "${catppuccin}/themes/frappe.conf";
       shell = "nu";
     };
+
+    extraRawConfig = let
+      features = lib.concatStringsSep " " [
+        "+calt" # default ligatures
+        "+zero" # alternate zero
+        "+cv62" # alternative question
+        "+cv63" # alternative left arrow
+        "+cv66" # alternative pipe arrows
+        "+ss03" # arbitary tag
+        "+ss05" # thin escape backslash
+        "+ss07" # relax multi-greaters condition
+        "+ss08" # double / back rows
+        "+ss09" # alternative not equal
+        "+ss10" # aaproximately equal
+        "+ss11" # extra equal ligatures
+      ];
+    in ''
+      font_features MapleMono-NF-Regular ${features}
+      font_features MapleMono-NF-SemiBold ${features}
+      font_features MapleMono-NF-Italic ${features}
+      font_features MapleMono-NF-SemiBoldItalic ${features}
+    '';
   in {
     packages.kitty = config.flake.custom.wrappers.mkKitty {
-      inherit pkgs extraConfig;
+      inherit pkgs extraConfig extraRawConfig;
     };
   };
 
@@ -54,7 +80,7 @@ in {
 
           wrapProgram $out/bin/kitty \
             --add-flags "-c ${cfg}" \
-            --set FONTCONFIG_FILE ${pkgs.makeFontsConf {fontDirectories = [pkgs.nerd-fonts._0xproto];}}
+            --set FONTCONFIG_FILE ${pkgs.makeFontsConf {fontDirectories = [pkgs.maple-mono.NF-unhinted];}}
         '';
         meta.mainProgram = "kitty";
       };

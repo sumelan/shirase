@@ -7,7 +7,7 @@
   configAttrs =
     {
       allow_remote_control = "yes";
-      font_family = "0xProto Nerd Font";
+      font_family = "Maple Mono NF";
       font_size = "13";
       bold_font = "auto";
       bold_italic_font = "auto";

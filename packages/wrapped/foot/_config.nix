@@ -1,6 +1,6 @@
 _: {
   main = {
-    font = "0xProto Nerd Font:size=13";
+    font = "Maple Mono NF:size=13";
     initial-window-size-pixels = "1000x800";
   };
   scrollback = {

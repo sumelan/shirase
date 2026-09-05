@@ -16,7 +16,7 @@ in {
         };
         monospace = mkOption {
           type = str;
-          default = "0xProto Nerd Font";
+          default = "Maple Mono NF";
           description = "The font to use for monospace text";
         };
         packages = mkOption {
@@ -36,7 +36,7 @@ in {
         pkgs.noto-fonts
         pkgs.noto-fonts-cjk-sans
         pkgs.noto-fonts-color-emoji
-        pkgs.nerd-fonts._0xproto
+        pkgs.maple-mono.NF-unhinted
       ];
     };
   };

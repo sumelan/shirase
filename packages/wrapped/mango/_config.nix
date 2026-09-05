@@ -9,9 +9,7 @@ in {
   # monitor
   monitorrule = let
     monitor = {
-      name ? "",
-      make ? "",
-      model ? "",
+      name, # ",make:foo,model:bar"
       width,
       height,
       refresh,
@@ -22,7 +20,7 @@ in {
       rr ? 0, # Monitor transform; 0-7
     }:
       {
-        inherit name make model;
+        inherit name;
         width = toString width;
         height = toString height;
         refresh = toString refresh;
@@ -37,8 +35,7 @@ in {
       |> singleton;
   in
     monitor {
-      make = "LG Electronics";
-      model = "LG HDR 4K";
+      name = ",make:LG Electronics,model:LG HDR 4K";
       width = 3840;
       height = 2160;
       refresh = 60.000000;
@@ -46,7 +43,7 @@ in {
       hdr = 0;
     }
     ++ monitor {
-      name = "DSI-1";
+      name = "^DSI-1$";
       width = 1200;
       height = 1920;
       refresh = 90.000000;
