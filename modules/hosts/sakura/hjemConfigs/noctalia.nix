@@ -4,7 +4,7 @@ _: {
     user,
     ...
   }: {
-    hjem.users.${user} = {
+    hjem.users.${user}.rum = {
       programs.noctalia = {
         settings = {
           lockscreen = {
@@ -107,7 +107,7 @@ _: {
               lock = {
                 action = "lock";
                 enabled = true;
-                timeout = 600.0;
+                timeout = 480.0;
               };
 
               lock-and-suspend = {
@@ -119,7 +119,7 @@ _: {
               screen-off = {
                 action = "screen_off";
                 enabled = true;
-                timeout = 900.0;
+                timeout = 600.0;
               };
             };
           };

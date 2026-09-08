@@ -4,11 +4,10 @@ _: {
     user,
     ...
   }: {
-    hjem.users.${user} = {
+    hjem.users.${user}.rum = {
       programs.noctalia = {
         enable = true;
-        systemd.enable = true;
-
+        package = config.programs.noctalia.package;
         settings = {
           config_version = 13;
 

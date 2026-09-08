@@ -4,7 +4,7 @@ _: {
     user,
     ...
   }: {
-    hjem.users.${user} = {
+    hjem.users.${user}.rum = {
       programs.noctalia = {
         settings = {
           idle = {

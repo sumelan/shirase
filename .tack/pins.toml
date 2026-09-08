@@ -51,12 +51,6 @@ url = "gh:notashelf/nvf"
 [inputs.sops-nix]
 url = "gh:Mic92/sops-nix"
 
-[inputs.noctalia]
-url = "gh:noctalia-dev/noctalia"
-
-[inputs.noctalia-greeter]
-url = "gh:noctalia-dev/noctalia-greeter"
-
 [inputs.nixos-plymouth]
 url = "gh:BeatLink/nixos-plymouth"
 

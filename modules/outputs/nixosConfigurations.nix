@@ -18,7 +18,6 @@
     (mkModules {name = "niri-nix";})
     (mkModules {name = "nixos-plymouth";})
     (mkModules {name = "impermanence";})
-    (mkModules {name = "noctalia-greeter";})
     (mkModules {name = "inshellah";})
 
     (mkModules {

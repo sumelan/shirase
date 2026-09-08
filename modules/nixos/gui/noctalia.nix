@@ -3,14 +3,22 @@ _: {
     config,
     user,
     ...
-  }: {
-    programs.noctalia-greeter = {
+  }: let
+    cfg = config.services.displayManager.noctalia-greeter;
+  in {
+    programs.noctalia = {
+      enable = true;
+      systemd.enable = true;
+    };
+
+    services.displayManager.noctalia-greeter = {
       enable = true;
 
-      # Optional configuration
-      greeter-args = "";
-
       settings = {
+        cursor = {
+          size = 28;
+          theme = cfg.cursorTheme.name;
+        };
         user = {
           default = user;
         };
@@ -22,14 +30,13 @@ _: {
           hide_logo = true;
           font_family = config.custom.fonts.regular;
         };
-        cursor = {
-          theme = config.custom.gtk.cursor.name;
-          size = 28;
-          inherit (config.custom.gtk.cursor) package;
-        };
         keyboard = {
           layout = "us";
         };
+      };
+
+      cursorTheme = {
+        inherit (config.custom.gtk.cursor) name package;
       };
     };
 
