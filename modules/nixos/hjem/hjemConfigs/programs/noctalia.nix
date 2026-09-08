@@ -180,6 +180,10 @@ _: {
             };
           };
 
+          wallpaper = {
+            directory = "${config.hjem.users.${user}.directory}/Pictures/Wallpapers";
+          };
+
           widget = {
             audio_visualizer = {
               color_1 = "tertiary";

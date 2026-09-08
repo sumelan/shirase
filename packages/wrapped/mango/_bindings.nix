@@ -31,6 +31,17 @@ in {
     ++ dispatch {mods = "SUPER+SHIFT";} "J" "exchange_client,down"
     ++ dispatch {mods = "SUPER+SHIFT";} "K" "exchange_client,up"
     ++ dispatch {mods = "SUPER+SHIFT";} "L" "exchange_client,right"
+    # Floating Window Movement
+    # Move floating window by snap distance.
+    ++ dispatch {mods = "CTRL";} "H" "smartmovewin,left"
+    ++ dispatch {mods = "CTRL";} "J" "smartmovewin,down"
+    ++ dispatch {mods = "CTRL";} "K" "smartmovewin,up"
+    ++ dispatch {mods = "CTRL";} "L" "smartmovewin,right"
+    # Resize floating window by snap distance.
+    ++ dispatch {mods = "ALT";} "H" "smartresizewin,left"
+    ++ dispatch {mods = "ALT";} "J" "smartresizewin,down"
+    ++ dispatch {mods = "ALT";} "K" "smartresizewin,up"
+    ++ dispatch {mods = "ALT";} "L" "smartresizewin,right"
     # Tags & Monitors
     ++ dispatch {mods = "SUPER";} "1" "view,1"
     ++ dispatch {mods = "SUPER";} "2" "view,2"
@@ -51,21 +62,27 @@ in {
     ++ dispatch {mods = "SUPER+SHIFT";} "8" "tag,8"
     ++ dispatch {mods = "SUPER+SHIFT";} "9" "tag,9"
     # Execute
+    #  Main programs
     ++ spawn {mods = "SUPER";} "Return" "kitty"
     ++ spawn {mods = "SUPER+SHIFT";} "Return" "kitty --app-id app.nvim nvim"
     ++ spawn {mods = "SUPER+SHIFT";} "N" "kitty --app-id app.ns ns"
     ++ spawn {mods = "SUPER+SHIFT";} "Y" "kitty --app-id app.yazi yazi"
     ++ spawn {mods = "SUPER";} "B" "brave-origin"
+    # Noctalia
     ++ spawn {mods = "SUPER";} "Space" "noctalia msg panel-toggle launcher"
     ++ spawn {mods = "SUPER";} "Y" "noctalia msg panel-toggle clipboard"
     ++ spawn {mods = "SUPER";} "Comma" "noctalia msg settings-toggle"
     ++ spawn {mods = "SUPER";} "W" "noctalia msg panel-toggle wallpaper"
     ++ spawn {mods = "SUPER+SHIFT";} "W" "noctalia msg panel-toggle noctalia/mpvpaper:picker"
     ++ spawn {mods = "SUPER";} "X" "noctalia msg panel-toggle session"
-    # misc.
+    # Misc.
     ++ spawn {} "Print" "noctalia msg screenshot-region"
     ++ spawn {mods = "SHIFT";} "Print" "noctalia msg screenshot-fullscreen pick"
     ++ spawn {mods = "CTRL";} "Space" "fcitx5-remote -t"
+    # Layout
+    ++ dispatch {mods = "SUPER";} "D" "setlayout,dwindle"
+    ++ dispatch {mods = "SUPER";} "S" "setlayout,scroller"
+    ++ dispatch {mods = "SUPER";} "V" "setlayout,vertical_scroller"
     # setKeymode
     ++ keymode {mods = "ALT";} "R" "resize"; # Enter resize mode
 
@@ -79,6 +96,10 @@ in {
     ++ spawn {} "XF86AudioNext" "noctalia msg media next"
     ++ spawn {} "XF86MonBrightnessUp" "noctalia msg brightness-up"
     ++ spawn {} "XF86MonBrightnessDown" "noctalia msg brightness-down";
+
+  mousebind =
+    dispatch {mods = "SUPER";} "btn_left" "moveresize,curmove"
+    ++ dispatch {mods = "SUPER";} "btn_right" "moveresize,curresize";
 
   gesturebind =
     dispatch {} "Left,3" "focusdir,right"

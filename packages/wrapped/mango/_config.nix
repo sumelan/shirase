@@ -50,18 +50,16 @@ in {
       rr = 3;
     };
 
-  cursor_theme = "Capitaine Cursors (Palenight)";
-  cursor_size = 38;
-
-  # focus & input
-  drag_tile_to_tile = 1;
+  # Focus & input
+  drag_tile_to_tile = 1; # Allow dragging a tiled window onto another to swap their positions.
   trackpad_natural_scrolling = 1;
+
+  # Layout
+  scroller = {
+    default_proportion = 0.5;
+    default_proportion_single = 1.0;
+  };
 
   # system
   xwayland_persistence = 0;
-
-  tagrule = [
-    "id:1,layout_name:tile"
-    "id:2,layout_name:scroller"
-  ];
 }

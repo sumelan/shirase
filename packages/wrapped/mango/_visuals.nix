@@ -41,4 +41,7 @@ _: {
   };
   shadowscolor = "0x000000ff";
   shadow_only_floating = 0;
+
+  cursor_theme = "Capitaine Cursors (Palenight)";
+  cursor_size = 38;
 }

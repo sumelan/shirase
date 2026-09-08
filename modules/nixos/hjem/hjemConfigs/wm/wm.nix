@@ -1,5 +1,11 @@
-_: {
-  flake.custom.hjemConfigs.wm = {pkgs, ...}: {
+{config, ...}: {
+  flake.custom.hjemConfigs.wm = {
+    pkgs,
+    user,
+    ...
+  }: let
+    local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
+  in {
     environment.sessionVariables = {
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
       GDK_BACKEND = "wayland";
@@ -14,6 +20,10 @@ _: {
         obs.default = ["gnome"];
       };
       extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    };
+
+    hjem.users.${user} = {
+      packages = [local.kitty];
     };
   };
 }

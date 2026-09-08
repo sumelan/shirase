@@ -23,9 +23,13 @@ _: {
             value = [handbrake vlc];
           })
           [
+            "audio/mp4"
+            "audio/mpeg"
             "audio/ogg"
             "audio/flac"
             "video/mp4"
+            "video/mpeg"
+            "video/webm"
           ]);
       in {
         removed-associations = associations;

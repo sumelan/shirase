@@ -14,7 +14,7 @@
 in {
   perSystem = {pkgs, ...}: let
     extraConfig = ''
-      source = ~/.config/mango/noctalia.conf
+      source-optional = ~/.config/mango/noctalia.conf
     '';
   in {
     packages.mango = mkMango {
@@ -59,10 +59,24 @@ in {
       extraConfig ? "",
       topPrefixes ? [],
       bottomPrefixes ? [],
+      extraRuntimeInputs ? [],
     }: let
-      # mango-config.conf without extraConfig like `source = foo.conf`
+      local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
+
+      # mango-config.conf without extraConfig; like `source = foo.conf`
       checkCfg = mkMangoConfig {inherit pkgs topPrefixes bottomPrefixes;};
       cfg = mkMangoConfig {inherit pkgs topPrefixes bottomPrefixes extraConfig;};
+
+      runtimeEnv = pkgs.buildEnv {
+        name = "mango-runtime-env";
+        pathsToLink = ["/bin"];
+        paths =
+          builtins.attrValues {
+            inherit (pkgs) xdg-desktop-portal-wlr;
+            inherit (local) kitty;
+          }
+          ++ extraRuntimeInputs;
+      };
 
       printCfg = printConfig {
         inherit cfg pkgs;
@@ -73,17 +87,19 @@ in {
         name = "mango";
         paths = [pkg];
         nativeBuildInputs = [pkgs.makeWrapper];
+        passthru.providedSessions = ["mango"];
         postBuild = ''
           cp -r ${printCfg}/bin $out
 
           $out/bin/mango -c ${checkCfg} -p
 
           wrapProgram $out/bin/mango \
-            --add-flags "-c ${cfg}"
+            --add-flags "-c ${cfg}" \
+            --prefix PATH : ${runtimeEnv}/bin \
+            --prefix XCURSOR_PATH : ${pkgs.capitaine-cursors-themed}/share/icons \
+            --set XCURSOR_THEME "Capitaine Cursors (Palenight)" \
+            --set XCURSOR_SIZE "38"
         '';
-        passthru = {
-          providedSessions = ["mango"];
-        };
         meta.mainProgram = "mango";
       };
   };

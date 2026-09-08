@@ -12,9 +12,13 @@ _: {
         removed-associations = builtins.listToAttrs (map (name: {
             inherit name value;
           }) [
+            "audio/mp4"
+            "audio/mpeg"
             "audio/ogg"
             "audio/flac"
             "video/mp4"
+            "video/mpeg"
+            "video/webm"
           ]);
       in {
         inherit removed-associations;
