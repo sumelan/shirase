@@ -23,7 +23,7 @@
     };
 
     hjem.users.${user} = {
-      packages = [local.kitty];
+      packages = [local.foot];
     };
   };
 }

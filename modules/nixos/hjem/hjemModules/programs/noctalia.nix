@@ -16,7 +16,7 @@ in {
   in {
     options.rum = {
       programs.noctalia = {
-        enable = mkEnableOption "Fast, lightweight and minimalistic Wayland terminal emulator";
+        enable = mkEnableOption "Sleek, customizable desktop shell crafted for wayland";
 
         package = mkPackageOption pkgs "noctalia" {};
 

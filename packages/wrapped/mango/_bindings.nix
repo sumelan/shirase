@@ -63,10 +63,10 @@ in {
     ++ dispatch {mods = "SUPER+SHIFT";} "9" "tag,9"
     # Execute
     #  Main programs
-    ++ spawn {mods = "SUPER";} "Return" "kitty"
-    ++ spawn {mods = "SUPER+SHIFT";} "Return" "kitty --app-id app.nvim nvim"
-    ++ spawn {mods = "SUPER+SHIFT";} "N" "kitty --app-id app.ns ns"
-    ++ spawn {mods = "SUPER+SHIFT";} "Y" "kitty --app-id app.yazi yazi"
+    ++ spawn {mods = "SUPER";} "Return" "footclient"
+    ++ spawn {mods = "SUPER+SHIFT";} "Return" "footclient --app-id app.nvim nvim"
+    ++ spawn {mods = "SUPER+SHIFT";} "N" "footclient --app-id app.ns ns"
+    ++ spawn {mods = "SUPER+SHIFT";} "Y" "footclient --app-id app.yazi yazi"
     ++ spawn {mods = "SUPER";} "B" "brave-origin"
     # Noctalia
     ++ spawn {mods = "SUPER";} "Space" "noctalia msg panel-toggle launcher"

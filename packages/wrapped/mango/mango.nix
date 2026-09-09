@@ -39,7 +39,7 @@ in {
         // (import ./_bindings.nix {inherit lib;})
         // (import ./_config.nix {inherit lib;})
         // (import ./_visuals.nix {})
-        // (import ./_window.nix {});
+        // (import ./_window.nix {inherit lib;});
 
       finalConfigText =
         (
@@ -72,8 +72,12 @@ in {
         pathsToLink = ["/bin"];
         paths =
           builtins.attrValues {
-            inherit (pkgs) xdg-desktop-portal-wlr;
-            inherit (local) kitty;
+            inherit
+              (pkgs)
+              xdg-desktop-portal-wlr
+              noctalia
+              ;
+            inherit (local) foot;
           }
           ++ extraRuntimeInputs;
       };

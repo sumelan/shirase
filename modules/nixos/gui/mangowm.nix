@@ -7,6 +7,17 @@
         enable = true;
         package = local.mango;
       };
+
+      uwsm = {
+        enable = true;
+        waylandCompositors = {
+          mango = {
+            prettyName = "MangoWM";
+            comment = "Mango compositor managed by UWSM";
+            binPath = "/run/current-system/sw/bin/mango";
+          };
+        };
+      };
     };
   };
 }

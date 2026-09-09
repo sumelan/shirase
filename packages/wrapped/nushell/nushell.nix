@@ -36,10 +36,9 @@ in {
         basic
         extra
         nu
-        kitty
         ;
 
-      mergedAliases = basic // extra // nu // kitty // extraAliases;
+      mergedAliases = basic // extra // nu // extraAliases;
       aliases = lib.concatStringsSep "\n" (lib.mapAttrsToList (k: v: "alias ${k} = ${v}") mergedAliases);
     in
       pkgs.writeText "nu-config" (

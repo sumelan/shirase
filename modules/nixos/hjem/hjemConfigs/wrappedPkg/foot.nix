@@ -13,7 +13,7 @@
     hjem.users.${user} = {
       rum = {
         programs.foot = {
-          enable = lib.mkDefault false;
+          enable = lib.mkDefault true;
           package = local.foot;
           server.enable = true;
         };
