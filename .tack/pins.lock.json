@@ -11,9 +11,9 @@
     "type": "github",
     "owner": "hercules-ci",
     "repo": "flake-parts",
-    "rev": "9d0d87172c374f89da73c1cfe6d81ae62feac1f1",
-    "narHash": "sha256-onL0VLf9vPllmT0H/OlURIU5r5t5WIEl7t4tVNKT0Nw=",
-    "lastModified": 1787559586
+    "rev": "31729ca8cbdb4fa927b34e5f4353e6a83f39e993",
+    "narHash": "sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU=",
+    "lastModified": 1788450739
   },
   "hjem": {
     "type": "github",
@@ -27,9 +27,9 @@
     "type": "github",
     "owner": "pamburus",
     "repo": "hl",
-    "rev": "e9c1c11d470e50466caaaa115c3a462293333d51",
-    "narHash": "sha256-t99mpZEfYmpUwPCGYAqlLqkeVbU8XDeFJMwB8Lsv6wA=",
-    "lastModified": 1788150271
+    "rev": "90b9a8d8bd22f707323e93ad946c8450dde8f1b8",
+    "narHash": "sha256-cEaA+T0MXt02ta5PQZ5UnGmV1rL51S6tnPRV1Xl8ATg=",
+    "lastModified": 1788755201
   },
   "impermanence": {
     "type": "github",
@@ -75,9 +75,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "nix-index-database",
-    "rev": "dbb978fa87faf13398e90ccbc52c343d21c7dd6d",
-    "narHash": "sha256-n14luQo3F/ZLfCEHk1QieiI1nGnW92ZQZeZ0UIb0UMQ=",
-    "lastModified": 1788080100
+    "rev": "116ad1c2adb642405ef8916f6a94c8626f971344",
+    "narHash": "sha256-amGSoDobwmp4CFvCn841ws2iuitus+HUJdD/gKgsrJA=",
+    "lastModified": 1788680125
   },
   "nixos-plymouth": {
     "type": "github",
@@ -99,17 +99,17 @@
     "type": "github",
     "owner": "notashelf",
     "repo": "nvf",
-    "rev": "f33afa7a878cfac9bebab42d8eccc7680c389cd6",
-    "narHash": "sha256-hpEx9BvlTtnONKZK/GAdVtQriW14x0ec+Ir5uafNPYY=",
-    "lastModified": 1788115442
+    "rev": "4771b6b78c203c090799ca6984d73c54e77228d6",
+    "narHash": "sha256-PEcPDc5QRRlzYYGQuGuh7OMMLZ1TC5hLHt3whFBRSS0=",
+    "lastModified": 1788873411
   },
   "sops-nix": {
     "type": "github",
     "owner": "Mic92",
     "repo": "sops-nix",
-    "rev": "a8627b21b9107c5711c96b84f32a9a4b3d45295f",
-    "narHash": "sha256-gkig4nPi1CWc4Z50GBsjE4ygSE7hMpl/TwID2an2Cck=",
-    "lastModified": 1786629091
+    "rev": "13616fff713a9f94055c66f15687ebdc17a335df",
+    "narHash": "sha256-4GuMPW90JSxXWDPUB9M+1m7fYbe3H0apOd86/zBQ2Kw=",
+    "lastModified": 1788914643
   },
   "swash": {
     "type": "github",
@@ -123,8 +123,8 @@
     "type": "github",
     "owner": "ChrisBuilds",
     "repo": "terminaltexteffects",
-    "rev": "7a91dd9ca6ee0c4f4b1484efee0ecac1bb84104e",
-    "narHash": "sha256-PNgfeQEauU4ZJxb7zrMqkIaCj1Ex8GdI+SoEHzdr3Ng=",
-    "lastModified": 1781056575
+    "rev": "4c9726eaec614faaaef9b4228dd859dfbb1a0414",
+    "narHash": "sha256-pvORekKhujKGEOkX1FbfjoQfIHMSJ+MblnG0pqyOjRk=",
+    "lastModified": 1788918886
   }
 }
