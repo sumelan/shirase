@@ -55,9 +55,23 @@ in {
   trackpad_natural_scrolling = 1;
 
   # Layout
+  circle_layout = ["dwindle" "scroller" "vertical_scroller"] |> concatStringsSep ",";
   scroller = {
-    default_proportion = 0.5;
-    default_proportion_single = 1.0;
+    default = {
+      proportion = 0.5;
+      proportion_single = 1.0;
+    };
+    ignore_proportion_single = 0;
+  };
+
+  # Special workspace (Tag 0)
+  special = {
+    dim = 0.5; # Background dim level when special workspace is active (0.0 to 1.0, default 0.5)
+    # Inner and outer gaps for windows on the special workspace
+    gappih = 10;
+    gappiv = 10;
+    gappoh = 280;
+    gappov = 120;
   };
 
   # system

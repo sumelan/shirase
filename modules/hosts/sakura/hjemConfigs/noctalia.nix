@@ -7,17 +7,12 @@ _: {
     hjem.users.${user}.rum = {
       programs.noctalia = {
         settings = {
-          lockscreen = {
-            blur_intensity = 0.10;
-          };
-
           lockscreen_widgets = {
             enabled = true;
             schema_version = 2;
             widget_order = [
               "lockscreen-login-box@HDMI-A-1"
               "lockscreen-widget-0000000000000001"
-              "lockscreen-widget-0000000000000002"
             ];
 
             grid = {
@@ -28,13 +23,13 @@ _: {
 
             widget = {
               "lockscreen-login-box@HDMI-A-1" = {
-                box_height = 70.0;
-                box_width = 432.0;
-                cx = 1592.0;
-                cy = 895.0;
+                box_height = 196.0;
+                box_width = 720.0;
+                cx = 2080.0;
+                cy = 1232.0;
                 output = "HDMI-A-1";
-                placement_height = 1080.0;
-                placement_width = 1920.0;
+                placement_height = 1440.0;
+                placement_width = 2560.0;
                 rotation = 0.0;
                 type = "login_box";
 
@@ -45,7 +40,7 @@ _: {
                   center_password_text = true;
                   input_opacity = 0.60;
                   input_radius = 6.0;
-                  layout = "compact";
+                  layout = "regular";
                   show_caps_lock = true;
                   show_keyboard_layout = true;
                   show_login_button = true;
@@ -57,13 +52,13 @@ _: {
               };
 
               lockscreen-widget-0000000000000001 = {
-                box_height = 64.0;
-                box_width = 384.0;
-                cx = 1592.0;
-                cy = 572.0;
+                box_height = 270.0;
+                box_width = 688.0;
+                cx = 2056.0;
+                cy = 584.0;
                 output = "HDMI-A-1";
-                placement_height = 1080.0;
-                placement_width = 1920.0;
+                placement_height = 1440.0;
+                placement_width = 2560.0;
                 rotation = 0.0;
                 type = "clock";
 
@@ -74,27 +69,37 @@ _: {
                   format = "{:%H:%M}";
                 };
               };
+            };
+          };
 
-              lockscreen-widget-0000000000000002 = {
-                box_height = 128.0;
-                box_width = 624.0;
-                cx = 1176.0;
-                cy = 364.0;
+          desktop_widgets = {
+            schema_version = 2;
+            widget_order = ["desktop-widget-0000000000000001"];
+
+            grid = {
+              cell_size = 16;
+              major_interval = 4;
+              visible = true;
+            };
+
+            widget = {
+              desktop-widget-0000000000000001 = {
+                box_height = 80.00;
+                box_width = 286.00;
+                cx = 2400.00;
+                cy = 1351.00;
                 output = "HDMI-A-1";
-                placement_height = 1080.0;
-                placement_width = 1920.0;
+                placement_height = 1440.0;
+                placement_width = 2560.0;
                 rotation = 0.0;
-                type = "audio_visualizer";
+                type = "label";
 
                 settings = {
                   background = false;
-                  bands = 32;
-                  centered = false;
-                  color_1 = "hover";
-                  color_2 = "on_surface";
-                  mirrored = true;
-                  reversed = false;
-                  show_when_idle = true;
+                  color = "tertiary";
+                  font_family = config.custom.fonts.monospace;
+                  opacity = 0.45000000000000000;
+                  title = "󱄅 NixOS";
                 };
               };
             };

@@ -51,9 +51,9 @@
     "type": "github",
     "owner": "mangowm",
     "repo": "mango",
-    "rev": "7b4266f1d8df09f83283574ba61dba51656d4791",
-    "narHash": "sha256-tymTjjNKWohVzXycg2mN7cSApQ6NDmn9k4LklNq/WGo=",
-    "lastModified": 1788490924
+    "rev": "33687f490509523afc7f266cf433bb4e1f9efc38",
+    "narHash": "sha256-51+aeByhXKbhlKzp86cVQCqJucA6qfcKN5mFojJ/E3w=",
+    "lastModified": 1788948913
   },
   "niri-nix": {
     "type": "git",

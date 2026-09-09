@@ -7,7 +7,7 @@
 in {
   bind =
     # Dispatchers
-    # Window Management
+    ## Window Management
     dispatch {mods = "SUPER";} "Backspace" "killclient" # Close the focused window. If force is specified, sends SIGKILL.
     ++ dispatch {mods = "SUPER";} "F" "togglemaximizescreen" # Maximize window (keep decoration/bar)
     ++ dispatch {mods = "SUPER+SHIFT";} "F" "togglefullscreen" # Toggle fullscreen
@@ -18,30 +18,30 @@ in {
     ++ dispatch {mods = "SUPER";} "I" "minimized" # Minimize window to scratchpad
     ++ dispatch {mods = "ALT";} "Z" "toggle_scratchpad" # Toggle scratchpad
     ++ dispatch {mods = "SUPER+SHIFT";} "I" "restore_minimized,0" # Restore minimized window to its previous state. 1 means keep previous tags, 0 means restore to current tags.
-    ++ dispatch {mods = "SUPER";} "O" "overcircle,next" # Open overview when closed; while it is open, cycle focus to the next/previous window on the current monitor.
+    ++ dispatch {mods = "SUPER";} "O" "toggleoverview" # Toggle overview mode.
     ++ dispatch {mods = "ALT";} "F4" "quit" # Exit mangowm.
     # Focus & Movement
-    # Focus window in direction
+    ## Focus window in direction
     ++ dispatch {mods = "SUPER";} "H" "focusdir,left"
     ++ dispatch {mods = "SUPER";} "J" "focusdir,down"
     ++ dispatch {mods = "SUPER";} "K" "focusdir,up"
     ++ dispatch {mods = "SUPER";} "L" "focusdir,right"
-    # Swap window with neighbor in direction
+    ## Swap window with neighbor in direction
     ++ dispatch {mods = "SUPER+SHIFT";} "H" "exchange_client,left"
     ++ dispatch {mods = "SUPER+SHIFT";} "J" "exchange_client,down"
     ++ dispatch {mods = "SUPER+SHIFT";} "K" "exchange_client,up"
     ++ dispatch {mods = "SUPER+SHIFT";} "L" "exchange_client,right"
     # Floating Window Movement
-    # Move floating window by snap distance.
-    ++ dispatch {mods = "CTRL";} "H" "smartmovewin,left"
-    ++ dispatch {mods = "CTRL";} "J" "smartmovewin,down"
-    ++ dispatch {mods = "CTRL";} "K" "smartmovewin,up"
-    ++ dispatch {mods = "CTRL";} "L" "smartmovewin,right"
-    # Resize floating window by snap distance.
-    ++ dispatch {mods = "ALT";} "H" "smartresizewin,left"
-    ++ dispatch {mods = "ALT";} "J" "smartresizewin,down"
-    ++ dispatch {mods = "ALT";} "K" "smartresizewin,up"
-    ++ dispatch {mods = "ALT";} "L" "smartresizewin,right"
+    ## Move floating window by snap distance.
+    ++ dispatch {mods = "ALT";} "H" "smartmovewin,left"
+    ++ dispatch {mods = "ALT";} "J" "smartmovewin,down"
+    ++ dispatch {mods = "ALT";} "K" "smartmovewin,up"
+    ++ dispatch {mods = "ALT";} "L" "smartmovewin,right"
+    ## Resize floating window by snap distance.
+    ++ dispatch {mods = "CTRL";} "H" "smartresizewin,left"
+    ++ dispatch {mods = "CTRL";} "J" "smartresizewin,down"
+    ++ dispatch {mods = "CTRL";} "K" "smartresizewin,up"
+    ++ dispatch {mods = "CTRL";} "L" "smartresizewin,right"
     # Tags & Monitors
     ++ dispatch {mods = "SUPER";} "1" "view,1"
     ++ dispatch {mods = "SUPER";} "2" "view,2"
@@ -61,29 +61,31 @@ in {
     ++ dispatch {mods = "SUPER+SHIFT";} "7" "tag,7"
     ++ dispatch {mods = "SUPER+SHIFT";} "8" "tag,8"
     ++ dispatch {mods = "SUPER+SHIFT";} "9" "tag,9"
+    # Special Workspace (Tag 0)
+    ++ dispatch {mods = "SUPER";} "S" "toggle_special_tag" # Toggle the special workspace overlay (Tag 0)
+    ++ dispatch {mods = "SUPER+SHIFT";} "S" "tag_special_tag" # Move focused window to/from the special workspace
+    ++ dispatch {mods = "SUPER+CTRL";} "S" "tag_special_silent" # Silently send active window to the special workspace without switching
     # Execute
-    #  Main programs
+    ## Main programs
     ++ spawn {mods = "SUPER";} "Return" "footclient"
     ++ spawn {mods = "SUPER+SHIFT";} "Return" "footclient --app-id app.nvim nvim"
     ++ spawn {mods = "SUPER+SHIFT";} "N" "footclient --app-id app.ns ns"
     ++ spawn {mods = "SUPER+SHIFT";} "Y" "footclient --app-id app.yazi yazi"
     ++ spawn {mods = "SUPER";} "B" "brave-origin"
-    # Noctalia
+    ## Noctalia
     ++ spawn {mods = "SUPER";} "Space" "noctalia msg panel-toggle launcher"
     ++ spawn {mods = "SUPER";} "Y" "noctalia msg panel-toggle clipboard"
     ++ spawn {mods = "SUPER";} "Comma" "noctalia msg settings-toggle"
     ++ spawn {mods = "SUPER";} "W" "noctalia msg panel-toggle wallpaper"
     ++ spawn {mods = "SUPER+SHIFT";} "W" "noctalia msg panel-toggle noctalia/mpvpaper:picker"
     ++ spawn {mods = "SUPER";} "X" "noctalia msg panel-toggle session"
-    # Misc.
+    ## Misc.
     ++ spawn {} "Print" "noctalia msg screenshot-region"
     ++ spawn {mods = "SHIFT";} "Print" "noctalia msg screenshot-fullscreen pick"
     ++ spawn {mods = "CTRL";} "Space" "fcitx5-remote -t"
     # Layout
-    ++ dispatch {mods = "SUPER";} "D" "setlayout,dwindle"
-    ++ dispatch {mods = "SUPER";} "S" "setlayout,scroller"
-    ++ dispatch {mods = "SUPER";} "V" "setlayout,vertical_scroller"
-    # setKeymode
+    ++ dispatch {mods = "SUPER";} "N" "switch_layout"
+    # SetKeymode
     ++ keymode {mods = "ALT";} "R" "resize"; # Enter resize mode
 
   # Allow when locked
@@ -102,10 +104,16 @@ in {
     ++ dispatch {mods = "SUPER";} "btn_right" "moveresize,curresize";
 
   gesturebind =
+    # 3-finger: Window focus
     dispatch {} "Left,3" "focusdir,right"
     ++ dispatch {} "Right,3" "focusdir,left"
     ++ dispatch {} "Up,3" "focusdir,down"
-    ++ dispatch {} "Down,3" "focusdir,up";
+    ++ dispatch {} "Down,3" "focusdir,up"
+    # 4-finger: Workspace navigation (right drag -> previous tag, left drag -> next)
+    ++ dispatch {} "Left,4" "viewtoright_have_client"
+    ++ dispatch {} "Right,4" "viewtoleft_have_client"
+    ++ dispatch {} "Up,4" "toggleoverview"
+    ++ dispatch {} "Down,4" "toggleoverview";
 
   # Keymodes (submaps) for modal keybindings
   keymode = {

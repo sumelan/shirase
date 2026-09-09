@@ -9,7 +9,7 @@ _: {
         enable = true;
         package = config.programs.noctalia.package;
         settings = {
-          config_version = 13;
+          config_version = 14;
 
           audio = {
             enable_sounds = true;
@@ -27,7 +27,7 @@ _: {
               shadow = false;
               contact_shadow = false;
               background_opacity = 0.5;
-              center = ["nightlight" "privacy" "recorder"];
+              center = ["privacy"];
               enabled = true;
               end = ["audio_visualizer" "media"];
               font_family = config.custom.fonts.monospace;
@@ -45,7 +45,7 @@ _: {
               background_opacity = 0.5;
               capsule_opacity = 0.50;
               capsule_padding = 10.0;
-              center = ["notifications" "clock" "caffeine"];
+              center = ["nightlight" "clock" "caffeine"];
               end = ["group:g2" "group:g1" "battery"];
               font_family = config.custom.fonts.monospace;
               icon_color = "hover";
@@ -53,7 +53,7 @@ _: {
               position = "top";
               radius = 20;
               scale = 1.25;
-              start = ["control-center" "workspaces" "tray"];
+              start = ["text_1" "workspaces" "tray"];
               thickness = 34;
               widget_spacing = 20;
 
@@ -74,7 +74,7 @@ _: {
                   enabled = true;
                   fill = "surface_variant";
                   id = "g2";
-                  members = ["network" "bluetooth"];
+                  members = ["notifications" "network" "bluetooth"];
                   opacity = 0.5;
                   padding = 10.0;
                 }
@@ -102,17 +102,6 @@ _: {
           };
 
           plugin_settings = {
-            "avivbintangaringga/nix-monitor" = {
-              clean_command =
-                # sh
-                ''nh clean all'';
-              panel_position = "auto";
-              show_update_available_notification = false;
-              update_command =
-                # sh
-                ''tack update && nh os switch'';
-            };
-
             "noctalia/mpvpaper" = {
               picker_placement = "floating";
               picker_position = "top_left";
@@ -121,7 +110,7 @@ _: {
           };
 
           plugins = {
-            enabled = ["noctalia/notes" "noctalia/mpvpaper" "noctalia/screen_recorder" "avivbintangaringga/nix-monitor"];
+            enabled = ["noctalia/mpvpaper"];
           };
 
           shell = {
@@ -229,7 +218,8 @@ _: {
             };
 
             nightlight = {
-              icon_color = "primary";
+              font_family = config.custom.fonts.monospace;
+              icon_color = "secondary";
             };
 
             notifications = {
@@ -242,13 +232,20 @@ _: {
               type = "noctalia/screen_recorder:recorder";
             };
 
+            "text_1" = {
+              color = "tertiary";
+              font_family = config.custom.fonts.monospace;
+              text = "MangoWM";
+              type = "text";
+            };
+
             tray = {
               font_family = config.custom.fonts.monospace;
               hidden = ["blueman" "nm-applet" "fcitx5"];
             };
 
             workspaces = {
-              show_labels = false;
+              show_labels = true;
               focused_output_only = true;
               font_family = config.custom.fonts.monospace;
               hide_when_empty = true;
