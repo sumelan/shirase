@@ -43,6 +43,7 @@ in {
     ++ dispatch {mods = "CTRL";} "K" "smartresizewin,up"
     ++ dispatch {mods = "CTRL";} "L" "smartresizewin,right"
     # Tags & Monitors
+    ## View and move
     ++ dispatch {mods = "SUPER";} "1" "view,1"
     ++ dispatch {mods = "SUPER";} "2" "view,2"
     ++ dispatch {mods = "SUPER";} "3" "view,3"
@@ -61,6 +62,13 @@ in {
     ++ dispatch {mods = "SUPER+SHIFT";} "7" "tag,7"
     ++ dispatch {mods = "SUPER+SHIFT";} "8" "tag,8"
     ++ dispatch {mods = "SUPER+SHIFT";} "9" "tag,9"
+    ## Left or right
+    ++ dispatch {mods = "SUPER";} "Left" "viewtoleft"
+    ++ dispatch {mods = "SUPER";} "Right" "viewtoright"
+    ++ dispatch {mods = "SUPER+ALT";} "Left" "viewtoleft_have_client"
+    ++ dispatch {mods = "SUPER+ALT";} "Right" "viewtoright_have_client"
+    ++ dispatch {mods = "SUPER+SHIFT";} "Left" "tagtoleft"
+    ++ dispatch {mods = "SUPER+SHIFT";} "Right" "tagtoright"
     # Special Workspace (Tag 0)
     ++ dispatch {mods = "SUPER";} "S" "toggle_special_tag" # Toggle the special workspace overlay (Tag 0)
     ++ dispatch {mods = "SUPER+SHIFT";} "S" "tag_special_tag" # Move focused window to/from the special workspace
@@ -83,8 +91,6 @@ in {
     ++ spawn {} "Print" "noctalia msg screenshot-region"
     ++ spawn {mods = "SHIFT";} "Print" "noctalia msg screenshot-fullscreen pick"
     ++ spawn {mods = "CTRL";} "Space" "fcitx5-remote -t"
-    # Layout
-    ++ dispatch {mods = "SUPER";} "N" "switch_layout"
     # SetKeymode
     ++ keymode {mods = "ALT";} "R" "resize"; # Enter resize mode
 
@@ -119,10 +125,10 @@ in {
   keymode = {
     resize = {
       bind =
-        dispatch {} "Left" "resizewin,-10,0"
-        ++ dispatch {} "Right" "resizewin,+10,0"
-        ++ dispatch {} "Up" "resizewin,0,+10"
-        ++ dispatch {} "Down" "resizewin,0,-10"
+        dispatch {} "H" "resizewin,-10,0"
+        ++ dispatch {} "J" "resizewin,0,-10"
+        ++ dispatch {} "K" "resizewin,0,+10"
+        ++ dispatch {} "L" "resizewin,+10,0"
         ++ dispatch {} "Escape" "setkeymode,default";
     };
   };
