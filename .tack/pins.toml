@@ -54,9 +54,6 @@ url = "gh:BeatLink/nixos-plymouth"
 [inputs.swash]
 url = "gh:ItsLemmy/swash"
 
-[inputs.ttf]
-url = "gh:ChrisBuilds/terminaltexteffects"
-
 [inputs.comview]
 url = "gh:sumelan/comview/flake"
 

@@ -1,11 +1,5 @@
-{
-  inputs,
-  lib,
-  ...
-}: {
-  flake.modules.nvf.dashboard-alpha = {pkgs, ...}: let
-    logo = import ./_logo.nix {inherit pkgs;};
-
+{lib, ...}: {
+  flake.modules.nvf.dashboard-alpha = _: let
     press = command:
       lib.generators.mkLuaInline
       # lua
@@ -24,17 +18,6 @@
         silent = true;
         nowait = true;
       }
-    ];
-
-    # to show the option value,
-    # run `nix run github:ChrisBuilds/terminaltexteffects -- EFFECTS --help`
-    ttfCmd = lib.concatStringsSep " " [
-      (lib.getExe inputs.ttf.packages.${pkgs.stdenv.hostPlatform.system}.default)
-      "--anchor-canvas c"
-      "laseretch"
-      "--etch-speed 8"
-      "--etch-delay 3"
-      "--final-gradient-direction diagonal"
     ];
   in {
     vim = {
@@ -55,18 +38,11 @@
 
         layout = [
           {
-            type = "padding";
-            val = 2;
-          }
-          {
-            type = "terminal";
-            command =
-              # sh
-              ''cat ${logo} | ${ttfCmd}'';
-            width = 80;
-            height = 10;
+            type = "text";
+            val = import ./_logo.nix {};
             opts = {
-              redraw = true;
+              position = "center";
+              hl = "Type";
             };
           }
           {
