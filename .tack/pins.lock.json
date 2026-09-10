@@ -51,9 +51,9 @@
     "type": "github",
     "owner": "mangowm",
     "repo": "mango",
-    "rev": "33687f490509523afc7f266cf433bb4e1f9efc38",
-    "narHash": "sha256-51+aeByhXKbhlKzp86cVQCqJucA6qfcKN5mFojJ/E3w=",
-    "lastModified": 1788948913
+    "rev": "d731cd89a04123df4fb6cc4df04e4ac85c790ede",
+    "narHash": "sha256-+1xWO0lLy5ceX4cCu6btAmZQDa2TeF6YX9tuKiAyLKU=",
+    "lastModified": 1789025950
   },
   "nix-hazkey": {
     "type": "github",
@@ -83,9 +83,9 @@
     "type": "github",
     "owner": "nixos",
     "repo": "nixpkgs",
-    "rev": "dc5d91f840324650bac8c379428c7037a416959a",
-    "narHash": "sha256-VaWGJ6+cIYN2erfSecbRV+4ljI185Ty2wUrXyvQbgOw=",
-    "lastModified": 1788752844
+    "rev": "d6524aaca2ff07876657ae2b323f24be4874944b",
+    "narHash": "sha256-2V9GZGvPfrNzxFozhI9dcqV+c3QdA8YZrvAAzqEB+dI=",
+    "lastModified": 1788881743
   },
   "nvf": {
     "type": "github",
@@ -115,8 +115,8 @@
     "type": "github",
     "owner": "ChrisBuilds",
     "repo": "terminaltexteffects",
-    "rev": "4c9726eaec614faaaef9b4228dd859dfbb1a0414",
-    "narHash": "sha256-pvORekKhujKGEOkX1FbfjoQfIHMSJ+MblnG0pqyOjRk=",
-    "lastModified": 1788918886
+    "rev": "b6bbcd5ad1e924ce53b0273757d9617a49bc11f8",
+    "narHash": "sha256-xYsHaGj3I8fFHLfB65FuRumIiJ+lVhfTMUBBwjk+674=",
+    "lastModified": 1789003161
   }
 }

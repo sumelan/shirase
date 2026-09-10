@@ -29,7 +29,7 @@ in {
 
     config = mkIf cfg.enable {
       packages = builtins.attrValues {
-        inherit (pkgs) ddcutil mpvpaper gpu-screen-recorder;
+        inherit (pkgs) ddcutil mpvpaper;
         inherit swash;
       };
 
