@@ -26,37 +26,6 @@
 
     custom = {
       hardware = {
-        monitors = {
-          "HDMI-A-1" = {
-            isMain = true;
-            scale = 1.5;
-            mode = {
-              width = 3840;
-              height = 2160;
-              refresh = 60.000;
-            };
-            position = {
-              x = 0;
-              y = 0;
-            };
-            rotation = 0;
-          };
-
-          "DP-1" = {
-            scale = 1.0;
-            mode = {
-              width = 1920;
-              height = 1080;
-              refresh = 60.000;
-            };
-            position = {
-              x = 0;
-              y = 1080;
-            };
-            rotation = 0;
-          };
-        };
-
         hdds = {
           westernDigital = true;
           ironWolf = true;
@@ -64,9 +33,6 @@
       };
 
       programs.btop.rocmSupport = true;
-      wayland.windowManager.niri = {
-        xwayland = false;
-      };
     };
   };
 }

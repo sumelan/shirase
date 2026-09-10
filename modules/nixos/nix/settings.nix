@@ -112,19 +112,17 @@ in {
 
         substituters = [
           "https://nix-community.cachix.org"
-          "https://niri-nix.cachix.org"
         ];
 
         trusted-users = [user];
 
         trusted-public-keys = [
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          "niri-nix.cachix.org-1:SvFtqpDcf7Sm1SMJdby1/+Y+6f3Yt3/3PMcSTKPJNJ0="
         ];
 
-        extra-substituters = ["https://noctalia.cachix.org"];
+        extra-substituters = [];
 
-        extra-trusted-public-keys = ["noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="];
+        extra-trusted-public-keys = [];
       };
     };
 

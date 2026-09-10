@@ -50,13 +50,9 @@ in {
     };
 
     modules.nixos.core = _: {
-      nixpkgs.overlays =
-        [
-          self.overlays.pkgsOverride
-        ]
-        ++ [
-          inputs.niri-nix.overlays.niri-nix
-        ];
+      nixpkgs.overlays = [
+        self.overlays.pkgsOverride
+      ];
     };
   };
 }

@@ -33,9 +33,6 @@ url = "gh:hercules-ci/flake-parts"
 [inputs.hjem]
 url = "gh:feel-co/hjem"
 
-[inputs.niri-nix]
-url = "cb:BANanaD3V/niri-nix"
-
 [inputs.impermanence]
 url = "gh:nix-community/impermanence"
 

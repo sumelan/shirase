@@ -17,8 +17,6 @@ _: {
           "--unsetenv XDG_DATA_HOME"
           "--unsetenv XDG_STATE_HOME"
         ];
-        # Disabling hardware acceleration allows it to work more consistently such as on niri
-        extraArgs = "-cef-disable-gpu -cef-disable-gpu-compositing";
       };
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;

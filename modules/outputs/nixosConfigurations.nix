@@ -15,7 +15,6 @@
       inputs.${name}.${modules}.${opt};
   in [
     (mkModules {name = "hjem";})
-    (mkModules {name = "niri-nix";})
     (mkModules {name = "nixos-plymouth";})
     (mkModules {name = "impermanence";})
     (mkModules {name = "inshellah";})

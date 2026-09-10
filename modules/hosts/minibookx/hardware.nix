@@ -39,11 +39,6 @@ in {
       '';
     in [vbtFirmware];
 
-    services.iio-niri = {
-      enable = true;
-      extraArgs = ["--monitor" "DSI-1" "--transform" "90" "180" "270" "normal"];
-    };
-
     # rotate limine interface
     boot.loader.limine.extraConfig = ''
       interface_rotation: 90

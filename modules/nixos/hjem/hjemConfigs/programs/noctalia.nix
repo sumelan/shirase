@@ -116,7 +116,6 @@ _: {
           shell = {
             avatar_path = "/home/sumelan/.face";
             font_family = "Montserrat";
-            niri_overview_type_to_launch_enabled = true;
             polkit_agent = true;
             settings_show_advanced = true;
             setup_wizard_enabled = false;
@@ -163,7 +162,7 @@ _: {
             source = "community";
 
             templates = {
-              builtin_ids = ["mango" "niri"];
+              builtin_ids = ["mango"];
               community_ids = [];
             };
           };
@@ -200,7 +199,6 @@ _: {
 
             control-center = {
               font_family = config.custom.fonts.monospace;
-              glyph = "niri";
             };
 
             media = {

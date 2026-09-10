@@ -39,7 +39,7 @@
             user = "root";
             argument = ''
               [User]
-              Session=niri
+              Session=MangoWM
               SystemAccount=false
               Icon=/var/lib/AccountsService/icons/sumelan
             '';
