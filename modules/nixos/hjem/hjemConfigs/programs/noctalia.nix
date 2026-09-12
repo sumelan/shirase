@@ -235,6 +235,7 @@ _: {
               font_family = config.custom.fonts.monospace;
               text = "MangoWM";
               type = "text";
+              left = "panel-toggle control-center";
             };
 
             tray = {
