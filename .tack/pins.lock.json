@@ -71,6 +71,14 @@
     "narHash": "sha256-amGSoDobwmp4CFvCn841ws2iuitus+HUJdD/gKgsrJA=",
     "lastModified": 1788680125
   },
+  "nix-secrets": {
+    "type": "github",
+    "owner": "unnamed-systems",
+    "repo": "nix-secrets",
+    "rev": "151f264a22b595802647db8fac09a2dbd6cb202c",
+    "narHash": "sha256-rxClV4z02Ev/bk0/FpdT5h9Oq4/o16RA7e6LRl1/QtU=",
+    "lastModified": 1788356805
+  },
   "nixos-plymouth": {
     "type": "github",
     "owner": "BeatLink",
@@ -94,14 +102,6 @@
     "rev": "4771b6b78c203c090799ca6984d73c54e77228d6",
     "narHash": "sha256-PEcPDc5QRRlzYYGQuGuh7OMMLZ1TC5hLHt3whFBRSS0=",
     "lastModified": 1788873411
-  },
-  "sops-nix": {
-    "type": "github",
-    "owner": "Mic92",
-    "repo": "sops-nix",
-    "rev": "13616fff713a9f94055c66f15687ebdc17a335df",
-    "narHash": "sha256-4GuMPW90JSxXWDPUB9M+1m7fYbe3H0apOd86/zBQ2Kw=",
-    "lastModified": 1788914643
   },
   "swash": {
     "type": "github",

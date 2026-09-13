@@ -45,9 +45,6 @@ url = "gh:nix-community/nix-index-database"
 [inputs.nvf]
 url = "gh:notashelf/nvf"
 
-[inputs.sops-nix]
-url = "gh:Mic92/sops-nix"
-
 [inputs.nixos-plymouth]
 url = "gh:BeatLink/nixos-plymouth"
 
@@ -65,3 +62,6 @@ url = "gh:pamburus/hl"
 
 [inputs.mangowm]
 url = "gh:mangowm/mango"
+
+[inputs.nix-secrets]
+url = "gh:unnamed-systems/nix-secrets"

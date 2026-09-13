@@ -10,7 +10,7 @@
       inherit (config.flake.modules.nixos) kdeconnect;
       # inherit (config.flake.modules.nixos) steam;
       inherit (config.flake.modules.nixos) hdds qmk trackpad;
-      inherit (config.flake.modules.nixos) audiobookshelf sops-nix syncoid syncthing sshConfig;
+      inherit (config.flake.modules.nixos) audiobookshelf nix-secrets syncoid syncthing sshConfig;
       inherit (config.flake.modules.nixos) hjem-extended;
     };
 

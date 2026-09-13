@@ -1,8 +1,19 @@
 _: {
   flake.modules.nixos."hosts/sakura" = {config, ...}: {
+    security.nix-secrets.secrets = let
+      permissions = {
+        mode = "0660";
+        owner = config.services.syncthing.user;
+        inherit (config.services.syncthing) group;
+      };
+    in {
+      "syncthing/sakura-key" = permissions;
+      "syncthing/sakura-cert" = permissions;
+    };
+
     services.syncthing = {
-      key = config.sops.secrets."syncthing/sakura-key".path;
-      cert = config.sops.secrets."syncthing/sakura-cert".path;
+      key = config.security.nix-secrets.secrets."syncthing/sakura-key".path;
+      cert = config.security.nix-secrets.secrets."syncthing/sakura-cert".path;
       settings = {
         devices = {
           "minibookx" = {id = "LTAE56R-6ARZAXL-JK4KL6B-IHVTITS-AEL3TCQ-JR4ZNQQ-52QHVU2-7UU7SQI";};

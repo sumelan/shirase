@@ -16,6 +16,7 @@
   in [
     (mkModules {name = "hjem";})
     (mkModules {name = "nixos-plymouth";})
+    (mkModules {name = "nix-secrets";})
     (mkModules {name = "impermanence";})
     (mkModules {name = "inshellah";})
 
@@ -30,10 +31,6 @@
     (mkModules {
       name = "mangowm";
       opt = "mango";
-    })
-    (mkModules {
-      name = "sops-nix";
-      opt = "sops";
     })
   ];
 

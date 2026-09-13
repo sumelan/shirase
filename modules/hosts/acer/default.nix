@@ -6,7 +6,7 @@ in {
       inherit (flake.modules.nixos) acer-al14;
       inherit (flake.modules.nixos) gui;
       inherit (flake.modules.nixos) kdeconnect;
-      inherit (flake.modules.nixos) sops-nix sshConfig;
+      inherit (flake.modules.nixos) nix-secrets sshConfig;
     };
 
     networking.hostId = "22fe2870";

@@ -27,7 +27,7 @@ _: {
       configDir = "${configDir}/syncthing";
       dataDir = "${dataDir}/syncthing";
 
-      guiPasswordFile = config.sops.secrets."syncthing/gui-password".path;
+      guiPasswordFile = config.security.nix-secrets.secrets."syncthing/gui-password".path;
 
       settings = {
         gui = {
