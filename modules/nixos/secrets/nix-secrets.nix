@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  inputs,
+  lib,
+  ...
+}: {
   flake.modules.nixos.nix-secrets = {
     config,
     user,
@@ -6,7 +10,7 @@
   }: {
     security.nix-secrets = {
       enable = true;
-      storage = ../../../secrets;
+      storage = inputs.my-secrets + "/storage";
       identityPaths = [
         "/persist/home/${user}/.age/nix-secrets"
       ];

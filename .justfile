@@ -10,11 +10,16 @@ export NIXPKGS_ALLOW_UNFREE := "1"
 @default:
     just --list --unsorted
 
-[group('FLAKE')]
+[group('CHECK')]
 [doc('Check whether the flake evaluates and run its tests.')]
 @check:
     git add -A
     nix flake check
+
+[group('OPTIMISE')]
+[doc('Replace identical files in the store by hard links.')]
+@optimise:
+    nix-store --optimise -v
 
 [group('REBUILD')]
 [doc('`nh os test`.')]
@@ -50,11 +55,6 @@ export NIXPKGS_ALLOW_UNFREE := "1"
 @show:
     git add -A
     comview watch -- git show HEAD
-
-[group('OPTIMISE')]
-[doc('Replace identical files in the store by hard links.')]
-@optimise:
-    nix-store --optimise -v
 
 [group('EVAL')]
 [doc('Measure eval time on each host.')]

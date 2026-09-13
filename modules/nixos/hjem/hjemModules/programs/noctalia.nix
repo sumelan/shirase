@@ -1,8 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}: let
+{lib, ...}: let
   inherit (lib) mkIf mkEnableOption mkPackageOption mkOption;
 in {
   flake.custom.hjemModules.noctalia = {
@@ -12,7 +8,6 @@ in {
   }: let
     cfg = config.rum.programs.noctalia;
     tomlFmt = pkgs.formats.toml {};
-    swash = inputs.swash.packages.${pkgs.stdenv.hostPlatform.system}.default;
   in {
     options.rum = {
       programs.noctalia = {
@@ -28,11 +23,6 @@ in {
     };
 
     config = mkIf cfg.enable {
-      packages = builtins.attrValues {
-        inherit (pkgs) ddcutil mpvpaper;
-        inherit swash;
-      };
-
       xdg.config.files = {
         "noctalia/config.toml" = {
           generator = tomlFmt.generate "config.toml";

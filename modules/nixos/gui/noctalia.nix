@@ -1,13 +1,18 @@
-_: {
+{config, ...}: let
+  inherit (config) flake;
+in {
   flake.modules.nixos.gui = {
     config,
+    pkgs,
     user,
     ...
   }: let
     cfg = config.services.displayManager.noctalia-greeter;
+    local = flake.packages.${pkgs.stdenv.hostPlatform.system};
   in {
     programs.noctalia = {
       enable = true;
+      package = local.noctalia;
       systemd.enable = true;
     };
 
@@ -38,12 +43,6 @@ _: {
       cursorTheme = {
         inherit (config.custom.gtk.cursor) name package;
       };
-    };
-
-    custom.fileSystem = {
-      cache.root.directories = [
-        "/var/lib/noctalia-greeter"
-      ];
     };
   };
 }

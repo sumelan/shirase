@@ -19,17 +19,17 @@
     "type": "github",
     "owner": "feel-co",
     "repo": "hjem",
-    "rev": "d248f0e4f7abd6e1f0eb9ace778dd7928481943e",
-    "narHash": "sha256-UrAlku7KST0DT+j1bdVGYI8tCz23PWL88uGMer3IZ2U=",
-    "lastModified": 1787500880
+    "rev": "e5e30b4320a8cbcd6cdfc65f044763669a8f0363",
+    "narHash": "sha256-0nvWuRbgL4GEKpR8Y4wsB3kmsVgyd0cW8kLHc2BqlTc=",
+    "lastModified": 1789234255
   },
   "hl": {
     "type": "github",
     "owner": "pamburus",
     "repo": "hl",
-    "rev": "90b9a8d8bd22f707323e93ad946c8450dde8f1b8",
-    "narHash": "sha256-cEaA+T0MXt02ta5PQZ5UnGmV1rL51S6tnPRV1Xl8ATg=",
-    "lastModified": 1788755201
+    "rev": "9126a0e61eb496650994ab0ae045ad5a6cc9bd41",
+    "narHash": "sha256-YteEHeatsWGap0/NbE/5b4LHBcxTby/RxoLT/E5zlp4=",
+    "lastModified": 1789161533
   },
   "impermanence": {
     "type": "github",
@@ -51,9 +51,17 @@
     "type": "github",
     "owner": "mangowm",
     "repo": "mango",
-    "rev": "d731cd89a04123df4fb6cc4df04e4ac85c790ede",
-    "narHash": "sha256-+1xWO0lLy5ceX4cCu6btAmZQDa2TeF6YX9tuKiAyLKU=",
-    "lastModified": 1789025950
+    "rev": "fb36fb46a9728a62ba08322690baaefd5f8806cd",
+    "narHash": "sha256-zvm/Hb+mmDtC1c+0HbDDCCAH1TBebHDI0h+bP3rMkcw=",
+    "lastModified": 1789299502
+  },
+  "my-secrets": {
+    "type": "git",
+    "url": "ssh://git@github.com/sumelan/my-secrets",
+    "ref": "HEAD",
+    "rev": "0492f79f6676f6197365e682249b6d4679aef21f",
+    "narHash": "sha256-+lImSZz7iXI6ypL1wHyFWwgbwk7uOCYfnXJeTo6Ry0A=",
+    "lastModified": 1789304977
   },
   "nix-hazkey": {
     "type": "github",
@@ -67,9 +75,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "nix-index-database",
-    "rev": "116ad1c2adb642405ef8916f6a94c8626f971344",
-    "narHash": "sha256-amGSoDobwmp4CFvCn841ws2iuitus+HUJdD/gKgsrJA=",
-    "lastModified": 1788680125
+    "rev": "a74e173407559083a412ea89a1cc58ea389c3b65",
+    "narHash": "sha256-xVstyCdg0DpzjyrEacm72VJAIP9DMhfWJdPDzhWxHuo=",
+    "lastModified": 1789286446
   },
   "nix-secrets": {
     "type": "github",
@@ -99,9 +107,9 @@
     "type": "github",
     "owner": "notashelf",
     "repo": "nvf",
-    "rev": "4771b6b78c203c090799ca6984d73c54e77228d6",
-    "narHash": "sha256-PEcPDc5QRRlzYYGQuGuh7OMMLZ1TC5hLHt3whFBRSS0=",
-    "lastModified": 1788873411
+    "rev": "9c1d99771b443055f5cd428f11b5a4b04c7b7e2e",
+    "narHash": "sha256-LV26WEThZ7U+L274lSY1xNOmxTb8Y9yrE3mOR6CAOZg=",
+    "lastModified": 1789172534
   },
   "swash": {
     "type": "github",

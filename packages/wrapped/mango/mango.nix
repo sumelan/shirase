@@ -10,7 +10,7 @@
     mkMangoConfig
     ;
   inherit (config.flake.custom.functions) printConfig;
-  mlib = import "${inputs.mangowm}/nix/lib.nix" lib;
+  mlib = import (inputs.mangowm + "/nix/lib.nix") lib;
 in {
   perSystem = {pkgs, ...}: let
     extraConfig = ''

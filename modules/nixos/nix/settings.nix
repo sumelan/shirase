@@ -44,7 +44,14 @@ in {
     };
 
     nix = let
-      flakes = removeAttrs (import "${self}/.tack") ["" "__functor"];
+      flakes = removeAttrs (import "${self}/.tack") (
+        # remove unknown inputs tack bring to
+        ["" "__functor"]
+        # remove non-flake inputs
+        ++ [
+          "my-secrets"
+        ]
+      );
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakes;
       registry = lib.mapAttrs (_: flake: {inherit flake;}) flakes;
     in {
