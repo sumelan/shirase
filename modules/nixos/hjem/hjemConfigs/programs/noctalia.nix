@@ -235,7 +235,7 @@ _: {
               font_family = config.custom.fonts.monospace;
               text = "MangoWM";
               type = "text";
-              action = {
+              actions = {
                 left = "panel-toggle control-center";
               };
             };

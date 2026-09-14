@@ -1,6 +1,16 @@
-{config, ...}: {
-  flake.modules.nixos.gui = {pkgs, ...}: let
-    local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
+{
+  config,
+  lib,
+  ...
+}: let
+  inherit (config) flake;
+in {
+  flake.modules.nixos.gui = {
+    config,
+    pkgs,
+    ...
+  }: let
+    local = flake.packages.${pkgs.stdenv.hostPlatform.system};
   in {
     programs = {
       mango = {
@@ -14,7 +24,7 @@
           mango = {
             prettyName = "MangoWM";
             comment = "MangoWM managed by UWSM";
-            binPath = "/run/current-system/sw/bin/mango";
+            binPath = lib.getExe config.programs.mango.package;
           };
         };
       };
