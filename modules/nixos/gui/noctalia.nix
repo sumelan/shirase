@@ -44,5 +44,11 @@ in {
         inherit (config.custom.gtk.cursor) name package;
       };
     };
+
+    custom.fileSystem = {
+      cache.root.directories = [
+        "/var/lib/noctalia-greeter"
+      ];
+    };
   };
 }

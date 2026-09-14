@@ -3,10 +3,8 @@
     local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
 
     commonPkgs = builtins.attrValues {
-      inherit (local) bat batman eza eza-tree ripgrep difftastic;
-      inherit (local) btop starship yt-dlp;
       inherit (local) nushell;
-      inherit (local) nvf;
+      inherit (local) helix;
       inherit (local) ns;
     };
   in {
@@ -22,7 +20,11 @@
         name = "Full env";
         paths =
           builtins.attrValues {
-            inherit (local) foot;
+            inherit (pkgs) brave-origin;
+            inherit
+              (local)
+              foot
+              ;
           }
           ++ commonPkgs;
       };

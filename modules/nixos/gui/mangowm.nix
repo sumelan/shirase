@@ -7,7 +7,6 @@
         enable = true;
         package = local.mango;
       };
-      xwayland.enable = false;
 
       uwsm = {
         enable = true;

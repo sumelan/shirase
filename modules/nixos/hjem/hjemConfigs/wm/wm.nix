@@ -23,7 +23,9 @@
     };
 
     hjem.users.${user} = {
-      packages = [local.foot];
+      packages = builtins.attrValues {
+        inherit (local) foot;
+      };
     };
   };
 }

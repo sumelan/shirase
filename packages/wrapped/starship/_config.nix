@@ -113,8 +113,8 @@
     };
     cmd_duration = {
       disabled = false;
-      format = "[](fg:overlay0)[  $duration ]($style)[](fg:overlay0)";
-      style = "bg:overlay0 fg:mauve";
+      format = "[](fg:blue)[  $duration ]($style)[](fg:blue)";
+      style = "bg:blue fg:crust";
       min_time = 0;
       show_milliseconds = false;
     };

@@ -75,9 +75,13 @@ in {
             inherit
               (pkgs)
               xdg-desktop-portal-wlr
-              noctalia
+              capitaine-cursors-themed
               ;
-            inherit (local) foot;
+            inherit
+              (local)
+              noctalia
+              foot
+              ;
           }
           ++ extraRuntimeInputs;
       };
@@ -99,10 +103,7 @@ in {
 
           wrapProgram $out/bin/mango \
             --add-flags "-c ${cfg}" \
-            --prefix PATH : ${runtimeEnv}/bin \
-            --prefix XCURSOR_PATH : ${pkgs.capitaine-cursors-themed}/share/icons \
-            --set XCURSOR_THEME "Capitaine Cursors (Palenight)" \
-            --set XCURSOR_SIZE "38"
+            --prefix PATH : ${runtimeEnv}/bin
         '';
         meta.mainProgram = "mango";
       };
