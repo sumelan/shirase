@@ -80,6 +80,10 @@ in {
     ++ spawn {mods = "SUPER+SHIFT";} "N" "footclient --app-id app.ns ns"
     ++ spawn {mods = "SUPER+SHIFT";} "Y" "footclient --app-id app.yazi yazi"
     ++ spawn {mods = "SUPER";} "B" "brave-origin"
+    ## Named scratchpad
+    ++ dispatch {mods = "ALT";} "V" "toggle_named_scratchpad,vesktop,none,vesktop"
+    ++ dispatch {mods = "ALT";} "T" "toggle_named_scratchpad,dev.geopjr.Tuba,none,dev.geopjr.Tuba"
+    ++ dispatch {mods = "ALT";} "R" "toggle_named_scratchpad,readest,none,readest"
     ## Noctalia
     ++ spawn {mods = "SUPER";} "Space" "noctalia msg panel-toggle launcher"
     ++ spawn {mods = "SUPER";} "Y" "noctalia msg panel-toggle clipboard"
@@ -90,9 +94,7 @@ in {
     ## Misc.
     ++ spawn {} "Print" "noctalia msg screenshot-region"
     ++ spawn {mods = "SHIFT";} "Print" "noctalia msg screenshot-fullscreen pick"
-    ++ spawn {mods = "CTRL";} "Space" "fcitx5-remote -t"
-    # SetKeymode
-    ++ keymode {mods = "ALT";} "R" "resize"; # Enter resize mode
+    ++ spawn {mods = "CTRL";} "Space" "fcitx5-remote -t";
 
   # Allow when locked
   bindl =
@@ -120,16 +122,4 @@ in {
     ++ dispatch {} "Right,4" "viewtoleft_have_client"
     ++ dispatch {} "Up,4" "toggleoverview"
     ++ dispatch {} "Down,4" "toggleoverview";
-
-  # Keymodes (submaps) for modal keybindings
-  keymode = {
-    resize = {
-      bind =
-        dispatch {} "H" "resizewin,-10,0"
-        ++ dispatch {} "J" "resizewin,0,-10"
-        ++ dispatch {} "K" "resizewin,0,+10"
-        ++ dispatch {} "L" "resizewin,+10,0"
-        ++ dispatch {} "Escape" "setkeymode,default";
-    };
-  };
 }

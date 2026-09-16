@@ -7,8 +7,13 @@
     |> singleton;
 in {
   windowrule = let
+    # Floating
     fa = {opt ? ""}: id: rule "isfloating:1${opt}" "appid:${id}";
     ft = {opt ? ""}: title: rule "isfloating:1${opt}" "title:${title}";
+    # Named Scratchpad
+    na = {opt ? ""}: id: rule "isnamedscratchpad:1${opt}" "appid:${id}";
+    nt = {opt ? ""}: title: rule "isnamedscratchpad:1${opt}" "appid:${title}";
+    # Special worksapce
     ta = {opt ? ""}: id: rule "tags:0" "appid:${id}";
     tt = {opt ? ""}: title: rule "tags:0" "title:${title}";
   in
@@ -37,7 +42,7 @@ in {
         ''^dev\.lemmy\.swash$''
         ''^pqiv$''
       ])
-    # floating and fixed window, non=non-transparent
+    # floating, fixed window and non-transparent
     ++ (map (title: ft {opt = ",width:0.45,height:0.45,focused_opacity:1.0";} title |> toString)
       <| [
         ''^Picture-in-Picture$''
@@ -50,8 +55,19 @@ in {
         ''^mpv$''
         ''^vlc$''
       ])
+    # Named Scratchpad
+    ++ (map (id: na {} id |> toString)
+      <| [
+        ''^vesktop$''
+        ''^dev.geopjr.Tuba$''
+        ''^readest$''
+      ])
     # Special workspace
-    ++ ta {} "com.blitzfc.qbz";
+    ++ (map (id: ta {} id |> toString)
+      <| [
+        ''^com.blitzfc.qbz$''
+        ''^footclient$''
+      ]);
 
   tagrule = let
     layout = num: name: rule "id:${toString num}" "layout_name:${name}";
@@ -59,7 +75,7 @@ in {
     (map (tags: layout tags "dwindle" |> toString)
       <| range 1 4)
     ++ (map (tags: layout tags "scroller" |> toString)
-      <| range 6 9)
+      <| [0] ++ range 6 9)
     ++ (map (tags: layout tags "vertical_scroller" |> toString)
       <| [5]);
 }

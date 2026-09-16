@@ -42,6 +42,16 @@ in {
       scale = 1.5;
       hdr = 0;
     }
+    # Huion drawing tablet
+    ++ monitor {
+      name = ",make:HAT,model:Kamvas Pro 16";
+      width = 2560;
+      height = 1440;
+      refresh = 59.951000;
+      x = 0;
+      y = 1440;
+    }
+    # minibookx
     ++ monitor {
       name = "^DSI-1$";
       width = 1200;
