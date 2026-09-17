@@ -10,7 +10,7 @@ _: {
     music = "${config.hjem.users.${user}.directory}/Music";
     notes = "${config.hjem.users.${user}.directory}/Documents/Notes";
   in {
-    # port 8384  is the default port to allow access from the network
+    # port 8384 is the default port to allow access from the network
     networking.firewall.allowedTCPPorts = [8384];
 
     services.syncthing = {
