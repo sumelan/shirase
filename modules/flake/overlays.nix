@@ -10,9 +10,7 @@ in {
       inherit system;
       config.allowUnfree = true;
 
-      overlays = [
-        self.overlays.pkgsOverride
-      ];
+      overlays = [self.overlays.pkgsOverride];
     };
   in {
     # initialize the pkgs for perSystem to be the nixpkgs
@@ -23,7 +21,7 @@ in {
 
   flake = {
     overlays = {
-      pkgsOverride = _: prev: {
+      pkgsOverride = _final: prev: {
         # enable the A/V Properties and see details like media length
         nautilus = prev.nautilus.overrideAttrs (o: {
           buildInputs =
@@ -50,9 +48,7 @@ in {
     };
 
     modules.nixos.core = _: {
-      nixpkgs.overlays = [
-        self.overlays.pkgsOverride
-      ];
+      nixpkgs.overlays = [self.overlays.pkgsOverride];
     };
   };
 }

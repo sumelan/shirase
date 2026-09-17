@@ -1,28 +1,24 @@
-{
-  inputs,
-  config,
-  ...
-}: {
-  flake.modules.nixos."hosts/sakura" = {pkgs, ...}: {
+{config, ...}: {
+  flake.modules.nixos."hosts/sakura" = _: {
     imports = builtins.attrValues {
       inherit (config.flake.modules.nixos) minisforum-um773se;
-      inherit (config.flake.modules.nixos) gui;
-      inherit (config.flake.modules.nixos) kdeconnect;
-      # inherit (config.flake.modules.nixos) steam;
-      inherit (config.flake.modules.nixos) hdds qmk trackpad;
-      inherit (config.flake.modules.nixos) audiobookshelf nix-secrets syncoid syncthing sshConfig;
-      inherit (config.flake.modules.nixos) hjem-extended;
+      inherit
+        (config.flake.modules.nixos)
+        gui
+        kdeconnect
+        hdds
+        qmk
+        trackpad
+        audiobookshelf
+        nix-secrets
+        syncoid
+        syncthing
+        sshConfig
+        hjem-extended
+        ;
     };
 
     networking.hostId = "b5e8f0be";
-
-    services = {
-      hazkey.server = {
-        package = inputs.nix-hazkey.packages.${pkgs.stdenv.hostPlatform.system}.hazkey-server.override {
-          enableVulkan = true;
-        };
-      };
-    };
 
     custom = {
       hardware = {

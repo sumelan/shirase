@@ -36,9 +36,6 @@ url = "gh:feel-co/hjem"
 [inputs.impermanence]
 url = "gh:nix-community/impermanence"
 
-[inputs.nix-hazkey]
-url = "gh:aster-void/nix-hazkey"
-
 [inputs.nix-index-database]
 url = "gh:nix-community/nix-index-database"
 

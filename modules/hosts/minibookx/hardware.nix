@@ -15,7 +15,9 @@ in {
       [
         (modulesPath + "/installer/scan/not-detected.nix")
       ]
-      ++ (with flake.modules.nixos; [laptop intel]);
+      ++ builtins.attrValues {
+        inherit (flake.modules.nixos) laptop intel;
+      };
 
     boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "usb_storage" "sd_mod" "sdhci_pci"];
     boot.initrd.extraFirmwarePaths = ["vbt"];
@@ -38,10 +40,5 @@ in {
         cp "${./vbt_patched.bin}" $out/lib/firmware/vbt
       '';
     in [vbtFirmware];
-
-    # rotate limine interface
-    boot.loader.limine.extraConfig = ''
-      interface_rotation: 90
-    '';
   };
 }

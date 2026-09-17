@@ -4,35 +4,6 @@
   ...
 }: let
   inherit (inputs) nixpkgs;
-  inherit (config) flake;
-
-  defaultModules = let
-    mkModules = {
-      name,
-      modules ? "nixosModules",
-      opt ? "default",
-    }:
-      inputs.${name}.${modules}.${opt};
-  in [
-    (mkModules {name = "hjem";})
-    (mkModules {name = "nixos-plymouth";})
-    (mkModules {name = "nix-secrets";})
-    (mkModules {name = "impermanence";})
-    (mkModules {name = "inshellah";})
-
-    (mkModules {
-      name = "nix-hazkey";
-      opt = "hazkey";
-    })
-    (mkModules {
-      name = "nix-index-database";
-      opt = "nix-index";
-    })
-    (mkModules {
-      name = "mangowm";
-      opt = "mango";
-    })
-  ];
 
   linux = mkNixos "x86_64-linux" "nixos";
 
@@ -50,9 +21,9 @@
     specialArgs = {
       inherit user dotfile;
       # This intentionally does not collide with `lib`
-      flakeLib = flake.custom.lib;
+      flakeLib = config.flake.custom.lib;
       # These require pkgs to be passed so collect and do once to get the ready functions
-      functions = builtins.mapAttrs (_: v: v {inherit pkgs;}) flake.custom.functions;
+      functions = builtins.mapAttrs (_: v: v {inherit pkgs;}) config.flake.custom.functions;
     };
   in
     nixpkgs.lib.nixosSystem {
@@ -60,17 +31,42 @@
       modules =
         defaultModules
         ++ extraModules
-        ++ [flake.modules.nixos.core]
-        ++ [flake.modules.nixos.default]
-        ++ [flake.modules.nixos.hjem]
-        ++ [flake.modules.nixos."hosts/${host}"]
-        ++ [flake.modules.nixos."users/${user}"]
-        ++ [
-          {
-            networking.hostName = host;
-          }
-        ];
+        ++ builtins.attrValues {
+          inherit
+            (config.flake.modules.nixos)
+            core
+            default
+            hjem
+            ;
+          hostModules = config.flake.modules.nixos."hosts/${host}";
+          userModules = config.flake.modules.nixos."users/${user}";
+        }
+        ++ [{networking.hostName = host;}];
     };
+
+  defaultModules = let
+    mkModules = {
+      name,
+      modules ? "nixosModules",
+      opt ? "default",
+    }:
+      inputs.${name}.${modules}.${opt};
+  in [
+    (mkModules {name = "hjem";})
+    (mkModules {name = "nixos-plymouth";})
+    (mkModules {name = "nix-secrets";})
+    (mkModules {name = "impermanence";})
+    (mkModules {name = "inshellah";})
+
+    (mkModules {
+      name = "nix-index-database";
+      opt = "nix-index";
+    })
+    (mkModules {
+      name = "mangowm";
+      opt = "mango";
+    })
+  ];
 in {
   flake.nixosConfigurations = {
     acer = linux "acer" {};

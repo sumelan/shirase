@@ -4,14 +4,11 @@ _: {
     user,
     ...
   }: {
-    services.hazkey = {
-      enable = true;
-    };
-
     i18n.inputMethod = {
       enable = true;
       type = "fcitx5";
       fcitx5 = {
+        addons = [pkgs.fcitx5-mozc];
         waylandFrontend = true;
         settings = {
           inputMethod = {
@@ -21,19 +18,20 @@ _: {
             "Groups/0" = {
               Name = "Default";
               "Default Layout" = "us";
-              DefaultIM = "hazkey";
+              DefaultIM = "Mozc";
             };
             "Groups/0/Items/0" = {
               Name = "keyboard-us";
               Layout = "";
             };
             "Groups/0/Items/1" = {
-              Name = "hazkey";
+              Name = "Mozc";
               Layout = "";
             };
           };
+
           addons.classicui.globalSection = {
-            Theme = "youlan";
+            Theme = "sakura";
             Font = "Noto Sans CJK JP 14";
             MenuFont = "Noto Sans CJK JP 14";
             TrayFont = "Noto Sans CJK JP 14";
@@ -46,12 +44,12 @@ _: {
 
     hjem.users.${user} = {
       xdg.data.files = let
-        themeDir = "fcitx5/themes/youlan";
-        youlan = file: "${pkgs.fcitx5-mellow-themes}/share/fcitx5/themes/mellow-youlan-dark/${file}";
+        themeDir = "fcitx5/themes/sakura";
+        sakura = file: "${pkgs.fcitx5-mellow-themes}/share/fcitx5/themes/mellow-sakura-dark/${file}";
       in {
-        "${themeDir}/highlight.svg".source = youlan "highlight.svg";
-        "${themeDir}/panel.svg".source = youlan "panel.svg";
-        "${themeDir}/theme.conf".source = youlan "theme.conf";
+        "${themeDir}/highlight.svg".source = sakura "highlight.svg";
+        "${themeDir}/panel.svg".source = sakura "panel.svg";
+        "${themeDir}/theme.conf".source = sakura "theme.conf";
       };
     };
   };

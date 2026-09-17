@@ -12,10 +12,8 @@ in {
     ...
   }: {
     # nix lang / nixpkgs
-    environment = {
-      variables = {
-        TACK_DIR = "${dotfile}/.tack";
-      };
+    environment.variables = {
+      TACK_DIR = "${dotfile}/.tack";
     };
 
     programs = {
@@ -139,8 +137,6 @@ in {
       doc.enable = true;
       man = {
         enable = true;
-        # enable man-db cache for fish to be able to find manpages
-        # https://discourse.nixos.org/t/fish-shell-and-manual-page-completion-nixos-home-manager/15661
         cache.enable = true;
       };
       dev.enable = false;

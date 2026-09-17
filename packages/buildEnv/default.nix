@@ -3,9 +3,12 @@
     local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
 
     commonPkgs = builtins.attrValues {
-      inherit (local) nushell;
-      inherit (local) helix;
-      inherit (local) ns;
+      inherit
+        (local)
+        nushell
+        helix
+        ns
+        ;
     };
   in {
     packages = {

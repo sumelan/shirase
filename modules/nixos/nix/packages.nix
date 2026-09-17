@@ -1,7 +1,7 @@
 _: {
   flake.modules.nixos.default = {pkgs, ...}: {
     nixpkgs.overlays = [
-      (_: prev: {
+      (_final: prev: {
         inherit
           (prev.lixPackageSets.latest)
           nix-eval-jobs

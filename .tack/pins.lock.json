@@ -63,14 +63,6 @@
     "narHash": "sha256-+lImSZz7iXI6ypL1wHyFWwgbwk7uOCYfnXJeTo6Ry0A=",
     "lastModified": 1789304977
   },
-  "nix-hazkey": {
-    "type": "github",
-    "owner": "aster-void",
-    "repo": "nix-hazkey",
-    "rev": "24cb2926666836988e78ceebeb67ad6c5a387ac3",
-    "narHash": "sha256-CHa5L3I71NbPUNJp1gmmwbh91tKsZPyuRK50mLHjAVY=",
-    "lastModified": 1779529080
-  },
   "nix-index-database": {
     "type": "github",
     "owner": "nix-community",

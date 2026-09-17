@@ -19,7 +19,9 @@ _: {
     # persist syncoid .ssh
     # syncoid create `/var/lib/syncoid/.ssh/` and use custom ssh_config or known_hosts.
     custom.fileSystem = {
-      persist.root.directories = ["/var/lib/syncoid"];
+      persist.root.directories = [
+        "/var/lib/syncoid"
+      ];
     };
   };
 }
