@@ -51,7 +51,7 @@ in {
           directory = "/var/lib/noctalia-greeter";
           user = "greeter";
           group = "greeter";
-          mode = "0710";
+          mode = "0750";
         }
       ];
     };
