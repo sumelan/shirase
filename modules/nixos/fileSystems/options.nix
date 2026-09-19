@@ -6,7 +6,11 @@
     any
     hasPrefix
     ;
-  inherit (lib.types) listOf str;
+  inherit
+    (lib.types)
+    listOf
+    anything
+    ;
   assertNoHomeDirs = paths:
     assert (assertMsg (!any (hasPrefix "/home") paths) "/home used in a root persist!"); paths;
 in {
@@ -16,13 +20,13 @@ in {
         persist = {
           root = {
             directories = mkOption {
-              type = listOf str;
+              type = listOf anything;
               default = [];
               apply = assertNoHomeDirs;
               description = "Directories to persist in root filesystem";
             };
             files = mkOption {
-              type = listOf str;
+              type = listOf anything;
               default = [];
               apply = assertNoHomeDirs;
               description = "Files to persist in root filesystem";
@@ -30,12 +34,12 @@ in {
           };
           home = {
             directories = mkOption {
-              type = listOf str;
+              type = listOf anything;
               default = [];
               description = "Directories to persist in home directory";
             };
             files = mkOption {
-              type = listOf str;
+              type = listOf anything;
               default = [];
               description = "Files to persist in home directory";
             };
@@ -44,13 +48,13 @@ in {
         cache = {
           root = {
             directories = mkOption {
-              type = listOf str;
+              type = listOf anything;
               default = [];
               apply = assertNoHomeDirs;
               description = "Directories to persist, but not to snapshot";
             };
             files = mkOption {
-              type = listOf str;
+              type = listOf anything;
               default = [];
               apply = assertNoHomeDirs;
               description = "Files to persist, but not to snapshot";
@@ -58,12 +62,12 @@ in {
           };
           home = {
             directories = mkOption {
-              type = listOf str;
+              type = listOf anything;
               default = [];
               description = "Directories to persist, but not to snapshot";
             };
             files = mkOption {
-              type = listOf str;
+              type = listOf anything;
               default = [];
               description = "Files to persist, but not to snapshot";
             };

@@ -16,11 +16,17 @@ _: {
       # 23:50 daily
       interval = "*-*-* 23:50:00";
     };
+
     # persist syncoid .ssh
     # syncoid create `/var/lib/syncoid/.ssh/` and use custom ssh_config or known_hosts.
     custom.fileSystem = {
       persist.root.directories = [
-        "/var/lib/syncoid"
+        {
+          directory = "/var/lib/syncoid";
+          user = "syncoid";
+          group = "syncoid";
+          mode = "0700";
+        }
       ];
     };
   };

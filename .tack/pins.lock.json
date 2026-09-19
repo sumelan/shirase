@@ -31,14 +31,6 @@
     "narHash": "sha256-2k5U49ycJM4wnj8nSTq2P3Gyx6AfbA1IzAON2l25GB0=",
     "lastModified": 1789361247
   },
-  "impermanence": {
-    "type": "github",
-    "owner": "nix-community",
-    "repo": "impermanence",
-    "rev": "7b1d382faf603b6d264f58627330f9faa5cba149",
-    "narHash": "sha256-03+JxvzmfwRu+5JafM0DLbxgHttOQZkUtDWBmeUkN8Y=",
-    "lastModified": 1769548169
-  },
   "inshellah": {
     "type": "github",
     "owner": "manic-systems",
@@ -102,6 +94,14 @@
     "rev": "2d6b480abfa9fcf84841e62c27922bfa3f3d0d2b",
     "narHash": "sha256-C9GsjXostGh50d62SYEXVJOSDTwk7RjAumJmwzkJKEY=",
     "lastModified": 1789333536
+  },
+  "preservation": {
+    "type": "github",
+    "owner": "nix-community",
+    "repo": "preservation",
+    "rev": "93416f4614ad2dfed5b0dcf12f27e57d27a5ab11",
+    "narHash": "sha256-mMI9IanU+Xw+pVogD2oT0I2kTmvz2Un/Apc5+CwUpEY=",
+    "lastModified": 1757436102
   },
   "swash": {
     "type": "github",

@@ -55,7 +55,7 @@
     (mkModules {name = "hjem";})
     (mkModules {name = "nixos-plymouth";})
     (mkModules {name = "nix-secrets";})
-    (mkModules {name = "impermanence";})
+    (mkModules {name = "preservation";})
     (mkModules {name = "inshellah";})
 
     (mkModules {

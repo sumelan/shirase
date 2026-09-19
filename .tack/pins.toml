@@ -33,9 +33,6 @@ url = "gh:hercules-ci/flake-parts"
 [inputs.hjem]
 url = "gh:feel-co/hjem"
 
-[inputs.impermanence]
-url = "gh:nix-community/impermanence"
-
 [inputs.nix-index-database]
 url = "gh:nix-community/nix-index-database"
 
@@ -66,3 +63,6 @@ url = "gh:unnamed-systems/nix-secrets"
 [inputs.my-secrets]
 url = "git+ssh://git@github.com/sumelan/my-secrets"
 type = "fetch"
+
+[inputs.preservation]
+url = "gh:nix-community/preservation"

@@ -47,7 +47,12 @@ in {
 
     custom.fileSystem = {
       cache.root.directories = [
-        "/var/lib/noctalia-greeter"
+        {
+          directory = "/var/lib/noctalia-greeter";
+          user = "greeter";
+          group = "greeter";
+          mode = "0710";
+        }
       ];
     };
   };
