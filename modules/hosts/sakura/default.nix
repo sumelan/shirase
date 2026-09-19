@@ -1,7 +1,6 @@
 {config, ...}: {
   flake.modules.nixos."hosts/sakura" = _: {
     imports = builtins.attrValues {
-      inherit (config.flake.modules.nixos) minisforum-um773se;
       inherit
         (config.flake.modules.nixos)
         gui

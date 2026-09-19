@@ -1,15 +1,12 @@
 {config, ...}: {
-  flake.modules.nixos."hosts/acer" = _: {
+  flake.modules.nixos."hosts/omen" = _: {
     imports = builtins.attrValues {
       inherit
         (config.flake.modules.nixos)
         gui
-        kdeconnect
-        nix-secrets
-        sshConfig
         ;
     };
 
-    networking.hostId = "22fe2870";
+    networking.hostId = "56895d2b"; # FIXME:
   };
 }

@@ -69,8 +69,42 @@
   ];
 in {
   flake.nixosConfigurations = {
-    acer = linux "acer" {};
-    minibookx = linux "minibookx" {};
-    sakura = linux "sakura" {};
+    acer = linux "acer" {
+      extraModules = builtins.attrValues {
+        inherit
+          (config.flake.modules.nixos)
+          acer-al14
+          laptop
+          intel
+          ;
+      };
+    };
+    minibookx = linux "minibookx" {
+      extraModules = builtins.attrValues {
+        inherit
+          (config.flake.modules.nixos)
+          chuwi-minibook-x
+          laptop
+          intel
+          ;
+      };
+    };
+    sakura = linux "sakura" {
+      extraModules = builtins.attrValues {
+        inherit
+          (config.flake.modules.nixos)
+          minisforum-um773se
+          amd
+          ;
+      };
+    };
+    omen = linux "omen" {
+      extraModules = builtins.attrValues {
+        inherit
+          (config.flake.modules.nixos)
+          nvidia
+          ;
+      };
+    };
   };
 }

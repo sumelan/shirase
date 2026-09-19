@@ -1,23 +1,13 @@
-{
-  config,
-  lib,
-  ...
-}: let
-  inherit (config) flake;
-in {
+{lib, ...}: {
   flake.modules.nixos.chuwi-minibook-x = {
     config,
     pkgs,
     modulesPath,
     ...
   }: {
-    imports =
-      [
-        (modulesPath + "/installer/scan/not-detected.nix")
-      ]
-      ++ builtins.attrValues {
-        inherit (flake.modules.nixos) laptop intel;
-      };
+    imports = [
+      (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
     boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "usb_storage" "sd_mod" "sdhci_pci"];
     boot.initrd.extraFirmwarePaths = ["vbt"];

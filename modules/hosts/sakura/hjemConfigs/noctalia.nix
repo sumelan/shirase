@@ -7,17 +7,6 @@ _: {
     hjem.users.${user}.rum = {
       programs.noctalia = {
         settings = {
-          bar = {
-            bottomBar.monitor = {
-              "DP-1" = {};
-              "HDMI-A-1" = {enabled = false;};
-            };
-            topBar.monitor = {
-              "DP-1" = {enabled = false;};
-              "HDMI-A-1" = {};
-            };
-          };
-
           lockscreen_widgets = {
             enabled = true;
             schema_version = 2;

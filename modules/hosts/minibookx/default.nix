@@ -1,7 +1,6 @@
 {config, ...}: {
   flake.modules.nixos."hosts/minibookx" = _: {
     imports = builtins.attrValues {
-      inherit (config.flake.modules.nixos) chuwi-minibook-x;
       inherit
         (config.flake.modules.nixos)
         gui

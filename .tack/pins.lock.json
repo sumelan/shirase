@@ -51,9 +51,9 @@
     "type": "github",
     "owner": "mangowm",
     "repo": "mango",
-    "rev": "3e138dc796fe2ab6b0c03e1e510da778d6d9c8e7",
-    "narHash": "sha256-mrl3rIo/KTXr9EnMkfT4YsI+tWGY4IDnrkEmaPCMHHY=",
-    "lastModified": 1789459085
+    "rev": "8131b36ace6d3cfb860bf7db802e53dcdd84e549",
+    "narHash": "sha256-1xk1uJy5bt6PpJLBX4TKqeoLK/WUwh8WnWresOf6/8w=",
+    "lastModified": 1789801226
   },
   "my-secrets": {
     "type": "git",
