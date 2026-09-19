@@ -5,14 +5,20 @@
     assertMsg
     any
     hasPrefix
+    isString
     ;
   inherit
     (lib.types)
     listOf
     anything
     ;
+  getPath = p:
+    if isString p
+    then p
+    else p.directory or p.file or null;
+
   assertNoHomeDirs = paths:
-    assert (assertMsg (!any (hasPrefix "/home") paths) "/home used in a root persist!"); paths;
+    assert (assertMsg (!(any (p: (getPath p) != null && hasPrefix "/home" (getPath p)) paths)) "/home used in a root persist!"); paths;
 in {
   flake.modules.nixos.core = _: {
     options.custom = {
