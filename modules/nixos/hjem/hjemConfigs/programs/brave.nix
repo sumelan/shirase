@@ -36,9 +36,20 @@ _: {
     };
 
     hjem.users.${user} = {
-      packages = builtins.attrValues {
-        inherit (pkgs) brave-origin;
-      };
+      packages = [
+        (
+          pkgs.symlinkJoin {
+            name = "brave-origin";
+            paths = [pkgs.brave-origin];
+            nativeBuildInputs = [pkgs.makeWrapper];
+            postBuild = ''
+              wrapProgram $out/bin/brave-origin \
+                --add-flags "--password-store=basic"
+            '';
+            meta.mainProgram = "brave-origin";
+          }
+        )
+      ];
 
       xdg = {
         mime-apps = let
