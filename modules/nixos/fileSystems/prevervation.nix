@@ -136,6 +136,12 @@
       };
     };
 
+# systemd-machine-id-commit.service would fail, but it is not relevant
+  # in this specific setup for a persistent machine-id so we disable it
+  #
+  # see the firstboot example below for an alternative approach
+  systemd.suppressedSystemUnits = [ "systemd-machine-id-commit.service" ];
+
     # Create some directories with custom permissions.
     #
     # In this configuration the path `/home/butz/.local` is not an immediate parent
