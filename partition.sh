@@ -25,7 +25,7 @@ function yesno() {
 
 cat <<Introduction
 The *entire* disk will be formatted with a 1GB boot partition
-(labelled NIXBOOT), 8GB of swap, and the rest allocated to ZFS.
+(labelled NIXBOOT) and the rest allocated to ZFS.
 
 The following ZFS datasets will be created:
     - zroot/root (mounted at / with blank snapshot)
@@ -45,10 +45,8 @@ Introduction
 # ZFS "fileSystems" declarations can be referenced from zfs.nix
 # ZFS also requires the following options to be set within host config:
 #   networking.hostId (can be generated using: head -c 8 /etc/machine-id)
-#   zfs.devNodes
-#       "/dev/disk/by-id" for Intel CPUs
-#       "/dev/disk/by-partuuid" for AMD CPUs / within VMs
-# impermanence setup can be referenced from nixos/impermanence.nix
+#   zfs.devNodes = "/dev/disk/by-partuuid"
+# preservation setup can be referenced from modules/nixos/fileSystems/preservation.nix
 
 # It is highly recommended to setup an initialPassword for root and your user(s)
 # as a fallback so you will always be able to login / sudo using that initialPassword, e.g.
@@ -129,6 +127,10 @@ sleep 5
 echo "Creating Boot Disk"
 sudo mkfs.fat -F 32 "$BOOTDISK" -n NIXBOOT
 
+# setup hostid deterministic
+HOSTID="8425e349" # FIXME:
+echo "$HOSTID" | xxd -r -p >/etc/hostid
+
 # setup encryption
 use_encryption=$(yesno "Use encryption? (Encryption must also be enabled within host config with boot.zfs.requestEncryptionCredentials = true)")
 if [[ $use_encryption == "y" ]]; then
@@ -148,6 +150,10 @@ sudo zpool create -f \
     -O mountpoint=none \
     "${encryption_options[@]}" \
     zroot "$ZFSDISK"
+
+# print the value so the user knows what to put in their config:
+echo "ZFS hostid: $(zdb -C "$POOL" | awk '/hostid/{printf "%x", $2}')"
+echo "=> set networking.hostId to this in your flake"
 
 # NOTE: legacy mounts are used so they can be managed by fstab and swapped out via nixos configuration.
 echo "Creating /"
