@@ -17,8 +17,9 @@
       recipientAliases = {
         sakura = "age174vzcjf6vde4sm57cvyrraxmtqs57e5f26useyt9kl46ah5zr3qs3hry66";
         minibookx = "age13fmxvm9r7kvzjwf0u26pnka6jfd8naappkqtzzwnn96dx305sasshefcew";
+        omen = "age18340tvr5745jtys29mycpxpakmmfj0jd6z8tq5t20k5ftqfz6s0qmw9klj";
       };
-      defaultRecipients = ["sakura" "minibookx"];
+      defaultRecipients = ["sakura" "minibookx" "omen"];
       templates = {
         "access-tokens.conf" = {
           mode = "0660";

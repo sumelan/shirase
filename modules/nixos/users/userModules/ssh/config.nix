@@ -35,5 +35,17 @@ _: {
         IdentitiesOnly yes
         IdentityFile ~/.ssh/acer
     '';
+
+    omen = ''
+      Host omen
+        HostName 192.168.68.50
+        Port 22
+        User sumelan
+
+        # Prevent using ssh-agent or another keyfile,
+        # useful for testing
+        IdentitiesOnly yes
+        IdentityFile ~/.ssh/omen
+    '';
   };
 }
