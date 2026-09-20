@@ -119,7 +119,7 @@ echo "Creating partitions"
 sudo blkdiscard -f "$DISK"
 sudo sgdisk --clear "$DISK"
 
-sudo sgdisk -n2:1M:+1G -t3:EF00 "$DISK"
+sudo sgdisk -n2:1M:+1G -t2:EF00 "$DISK"
 sudo sgdisk -n1:0:0 -t1:BF01 "$DISK"
 
 # notify kernel of partition changes
