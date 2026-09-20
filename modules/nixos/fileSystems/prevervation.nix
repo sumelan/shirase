@@ -9,7 +9,7 @@
     boot.initrd.systemd = {
       # enable stage-1 bootloader
       enable = true;
-      services.rollback = lib.mkIf config.preservation.enable {
+      services.rollback = {
         description = "Rollback ZFS root dataset to a pristine state";
         wantedBy = ["initrd.target"];
         after = ["zfs-import-zroot.service"];
@@ -27,7 +27,7 @@
     };
 
     preservation = {
-      enable = false;
+      enable = true;
       preserveAt = {
         "/persist" = {
           commonMountOptions = [

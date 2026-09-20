@@ -9,6 +9,6 @@
         ;
     };
 
-    networking.hostId = "50aafd31"; # FIXME:
+    networking.hostId = "448a3092"; # FIXME:
   };
 }
