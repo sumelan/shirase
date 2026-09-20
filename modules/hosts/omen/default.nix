@@ -4,6 +4,8 @@
       inherit
         (config.flake.modules.nixos)
         gui
+        kdeconnect
+        nix-secrets
         ;
     };
 
