@@ -5,7 +5,7 @@
         (config.flake.modules.nixos)
         gui
         kdeconnect
-        nix-secrets
+        #       nix-secrets
         ;
     };
 

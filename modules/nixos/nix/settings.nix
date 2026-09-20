@@ -90,9 +90,9 @@ in {
           };
         };
 
-      extraOptions = ''
-        !include ${config.security.nix-secrets.templates."access-tokens.conf".path}
-      '';
+      #     extraOptions = ''
+      #       !include ${config.security.nix-secrets.templates."access-tokens.conf".path}
+      #     '';
 
       settings = {
         warn-dirty = false;
