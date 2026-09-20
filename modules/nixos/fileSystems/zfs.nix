@@ -1,26 +1,19 @@
 _: {
-  flake.modules.nixos.core = {
-    config,
-    pkgs,
-    ...
-  }: {
+  flake.modules.nixos.core = {pkgs, ...}: {
     boot = {
       kernelModules = ["zfs"];
       supportedFilesystems = ["zfs"];
       zfs = {
-        devNodes =
-          if config.hardware.cpu.intel.updateMicrocode
-          then "/dev/disk/by-id"
-          else "/dev/disk/by-partuuid";
+        devNodes = "/dev/disk/by-partuuid";
 
-        package = pkgs.zfs_unstable;
+        package = pkgs.zfs_2_4;
 
         # WARN: a mismatched host ID will prevent ZFS from importing the pool,
         # but you can override that with a force import
         # forceImportAll = true;
 
         requestEncryptionCredentials = true;
-        forceImportRoot = false;
+        forceImportRoot = true;
       };
     };
 
