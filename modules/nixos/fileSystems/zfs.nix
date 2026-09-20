@@ -13,7 +13,7 @@ _: {
         # forceImportAll = true;
 
         requestEncryptionCredentials = true;
-        forceImportRoot = true;
+        forceImportRoot = false;
       };
     };
 
