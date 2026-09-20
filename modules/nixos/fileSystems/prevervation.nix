@@ -9,7 +9,7 @@
     boot.initrd.systemd = {
       # enable stage-1 bootloader
       enable = true;
-      services.rollback = {
+      services.rollback = lib.mkIf config.preservation.enable {
         description = "Rollback ZFS root dataset to a pristine state";
         wantedBy = ["initrd.target"];
         after = ["zfs-import-zroot.service"];
@@ -27,7 +27,7 @@
     };
 
     preservation = {
-      enable = true;
+      enable = false;
       preserveAt = {
         "/persist" = {
           commonMountOptions = [
@@ -136,11 +136,11 @@
       };
     };
 
-# systemd-machine-id-commit.service would fail, but it is not relevant
-  # in this specific setup for a persistent machine-id so we disable it
-  #
-  # see the firstboot example below for an alternative approach
-  systemd.suppressedSystemUnits = [ "systemd-machine-id-commit.service" ];
+    # systemd-machine-id-commit.service would fail, but it is not relevant
+    # in this specific setup for a persistent machine-id so we disable it
+    #
+    # see the firstboot example below for an alternative approach
+    systemd.suppressedSystemUnits = ["systemd-machine-id-commit.service"];
 
     # Create some directories with custom permissions.
     #
