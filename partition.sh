@@ -99,17 +99,14 @@ fi
 
 # if disk contains "nvme", append "p" to partitions
 if [[ "$DISK" =~ "nvme" ]]; then
-    BOOTDISK="${DISK}p3"
-    SWAPDISK="${DISK}p2"
+    BOOTDISK="${DISK}p2"
     ZFSDISK="${DISK}p1"
 else
-    BOOTDISK="${DISK}3"
-    SWAPDISK="${DISK}2"
+    BOOTDISK="${DISK}2"
     ZFSDISK="${DISK}1"
 fi
 
 echo "Boot Partiton: $BOOTDISK"
-echo "SWAP Partiton: $SWAPDISK"
 echo "ZFS Partiton: $ZFSDISK"
 
 echo ""
@@ -122,17 +119,12 @@ echo "Creating partitions"
 sudo blkdiscard -f "$DISK"
 sudo sgdisk --clear "$DISK"
 
-sudo sgdisk -n3:1M:+1G -t3:EF00 "$DISK"
-sudo sgdisk -n2:0:+8G -t2:8200 "$DISK"
+sudo sgdisk -n2:1M:+1G -t3:EF00 "$DISK"
 sudo sgdisk -n1:0:0 -t1:BF01 "$DISK"
 
 # notify kernel of partition changes
 sudo sgdisk -p "$DISK" >/dev/null
 sleep 5
-
-echo "Creating Swap"
-sudo mkswap "$SWAPDISK" --label "SWAP"
-sudo swapon "$SWAPDISK"
 
 echo "Creating Boot Disk"
 sudo mkfs.fat -F 32 "$BOOTDISK" -n NIXBOOT
