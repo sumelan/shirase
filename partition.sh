@@ -135,7 +135,6 @@ else
     encryption_options=()
 fi
 echo "Creating base zpool"
-
 sudo zpool create -f \
     -o ashift=12 \
     -o autotrim=on \
@@ -147,6 +146,10 @@ sudo zpool create -f \
     -O mountpoint=none \
     "${encryption_options[@]}" \
     zroot "$ZFSDISK"
+
+# print the value so the user knows what to put in their config.
+echo "ZFS hostid: $(zdb -C zpool | awk '/hostid/{printf "%x", $2}')"
+echo "=> set networking.hostId to this in your flake"
 
 # NOTE: legacy mounts are used so they can be managed by fstab and swapped out via nixos configuration.
 echo "Creating /"
