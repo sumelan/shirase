@@ -128,7 +128,7 @@ echo "Creating Boot Disk"
 sudo mkfs.fat -F 32 "$BOOTDISK" -n NIXBOOT
 
 # setup hostid deterministic
-HOSTID="8425e349" # FIXME:
+HOSTID="56895d2b" # FIXME: Change hostid when installed.
 echo "$HOSTID" | xxd -r -p >/etc/hostid
 
 # setup encryption

@@ -5,8 +5,8 @@
         (config.flake.modules.nixos)
         gui
         kdeconnect
-        nix-secrets
-        syncthing
+        #     nix-secrets
+        #     syncthing
         sshConfig
         ;
     };

@@ -3,7 +3,7 @@
   self,
   ...
 }: let
-  inherit (lib) sort concatStringsSep;
+  inherit (lib) sort concatStringsSep optionalString;
 in {
   flake.modules.nixos.core = {
     config,
@@ -90,7 +90,7 @@ in {
           };
         };
 
-      extraOptions = ''
+      extraOptions = optionalString config.security.nix-secrets.enable ''
         !include ${config.security.nix-secrets.templates."access-tokens.conf".path}
       '';
 
