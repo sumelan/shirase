@@ -95,6 +95,10 @@ _: {
             auto_locate = true;
           };
 
+          lockscreen = {
+            blur_intensity = 0.300;
+          };
+
           osd = {
             background_opacity = 0.60;
             position = "bottom_center";

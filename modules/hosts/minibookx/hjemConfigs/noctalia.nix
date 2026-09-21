@@ -19,14 +19,13 @@ _: {
 
             widget = {
               desktop-widget-0000000000000001 = {
-                box_height = 64.0;
-                box_width = 240.0;
-                cx = 1784.0;
-                cy = 1112.0;
+                box_height = 48.0;
+                box_width = 192.0;
+                cx = 1808.0;
+                cy = 1136.0;
                 output = "DSI-1";
                 placement_height = 1200.0;
                 placement_width = 1920.0;
-
                 rotation = 0.0;
                 type = "label";
 
@@ -85,12 +84,11 @@ _: {
               "lockscreen-login-box@DSI-1" = {
                 box_height = 70.0;
                 box_width = 400.0;
-                cx = 1584.0;
-                cy = 1061.0;
+                cx = 960.0;
+                cy = 1077.0;
                 output = "DSI-1";
                 placement_height = 1200.0;
                 placement_width = 1920.0;
-
                 rotation = 0.0;
                 type = "login_box";
 
@@ -113,10 +111,10 @@ _: {
               };
 
               lockscreen-widget-0000000000000001 = {
-                box_height = 160.0;
-                box_width = 384.0;
-                cx = 1584.0;
-                cy = 680.0;
+                box_height = 192.0;
+                box_width = 416.0;
+                cx = 448.0;
+                cy = 552.0;
                 output = "DSI-1";
                 placement_height = 1200.0;
                 placement_width = 1920.0;

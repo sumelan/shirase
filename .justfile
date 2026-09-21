@@ -48,7 +48,7 @@ export NIXPKGS_ALLOW_UNFREE := "1"
 [doc('Show changes between commit and working tree.')]
 @diff:
     git add -A
-    comview watch -- git diff main
+    comview watch -- git diff HEAD
 
 [group('GIT')]
 [doc('Show HEAD.')]
