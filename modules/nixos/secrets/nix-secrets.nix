@@ -16,7 +16,7 @@
       ];
       recipientAliases = {
         sakura = "age174vzcjf6vde4sm57cvyrraxmtqs57e5f26useyt9kl46ah5zr3qs3hry66";
-        minibookx = "age123zh3geyt0srqqppfwznkry0w5atzhxcx7kkytjak00qs0dcav6std8wy3";
+        minibookx = "age1hswge3466v3f8c42e0jx4337qerd5drcfqkar8f7p89hg04dzuusxh32re";
         omen = "age18340tvr5745jtys29mycpxpakmmfj0jd6z8tq5t20k5ftqfz6s0qmw9klj";
       };
       defaultRecipients = ["sakura" "minibookx" "omen"];
