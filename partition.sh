@@ -148,7 +148,7 @@ sudo zpool create -f \
     zroot "$ZFSDISK"
 
 # print the value so the user knows what to put in their config.
-echo "ZFS hostid: $(zdb -C zpool | awk '/hostid/{printf "%x", $2}')"
+echo "ZFS hostid: $(zdb -C zroot | awk '/hostid/{printf "%x", $2}')"
 echo "=> set networking.hostId to this in your flake"
 
 # NOTE: legacy mounts are used so they can be managed by fstab and swapped out via nixos configuration.
