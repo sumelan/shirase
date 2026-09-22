@@ -46,11 +46,5 @@
           };
         });
     };
-
-    custom.fileSystem = {
-      persist.home.directories = [
-        ".age"
-      ];
-    };
   };
 }

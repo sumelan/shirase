@@ -80,7 +80,7 @@ in {
     # Inner and outer gaps for windows on the special workspace
     gappih = 10;
     gappiv = 10;
-    gappoh = 180;
+    gappoh = 160;
     gappov = 80;
   };
 

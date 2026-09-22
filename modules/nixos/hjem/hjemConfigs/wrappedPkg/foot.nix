@@ -19,5 +19,9 @@
         };
       };
     };
+
+    environment.sessionVariables = {
+      TERMINAL = "foot";
+    };
   };
 }

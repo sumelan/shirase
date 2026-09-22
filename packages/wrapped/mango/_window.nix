@@ -59,7 +59,7 @@ in {
     ++ (map (id: na {} id |> toString)
       <| [
         ''^vesktop$''
-        ''^dev.geopjr.Tuba$''
+        ''^dev\.geopjr\.Tuba$''
         ''^readest$''
       ])
     # Special workspace

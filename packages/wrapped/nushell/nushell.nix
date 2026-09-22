@@ -45,6 +45,7 @@ in {
         (builtins.readFile ./config.nu)
         + (builtins.readFile ./tack.nu)
         + (builtins.readFile ./hl.nu)
+        + (builtins.readFile ./mango.nu)
         + (builtins.readFile ./starship.nu)
         +
         # nu

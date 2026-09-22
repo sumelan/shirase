@@ -39,6 +39,14 @@
     "narHash": "sha256-Hl0PLWo6xyhSJaQtOkrNGQFxqBx5AdP1R1veMD22cMc=",
     "lastModified": 1782548861
   },
+  "kopuz": {
+    "type": "github",
+    "owner": "temidaradev",
+    "repo": "kopuz",
+    "rev": "379d0e540ce8abb76168c3f81a833c3b9035c6b8",
+    "narHash": "sha256-l+gLBveQGGonako0hLi389XcS410dG8bF1OWxlL9Scs=",
+    "lastModified": 1789973182
+  },
   "mangowm": {
     "type": "github",
     "owner": "mangowm",
@@ -80,12 +88,10 @@
     "lastModified": 1758476321
   },
   "nixpkgs": {
-    "type": "github",
-    "owner": "nixos",
-    "repo": "nixpkgs",
+    "type": "tarball",
+    "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1077143.44a91898084f/nixexprs.tar.zst",
     "rev": "44a91898084f46797b5fac650c7e8c9ac38c43d4",
-    "narHash": "sha256-Ft/BRnIqw1MywFoXydKobjjWmDFgDdYtSpJliE8+yUw=",
-    "lastModified": 1789921291
+    "narHash": "sha256-uLLUj+TLUmBc6KrUzx76KZdPi5ZkI1ORR9A6lJUIZlo="
   },
   "nvf": {
     "type": "github",

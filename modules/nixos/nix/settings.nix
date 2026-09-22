@@ -117,12 +117,14 @@ in {
 
         substituters = [
           "https://nix-community.cachix.org"
+          "https://kopuz.cachix.org"
         ];
 
         trusted-users = [user];
 
         trusted-public-keys = [
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+          "kopuz.cachix.org-1:J2X3AnAYhKTJW5S3aCLoA1ckonQXVNZMQvhZA0YAufw="
         ];
 
         extra-substituters = [];
