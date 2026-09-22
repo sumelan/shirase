@@ -21,11 +21,5 @@
       };
       extraPortals = [pkgs.xdg-desktop-portal-gtk];
     };
-
-    hjem.users.${user} = {
-      packages = builtins.attrValues {
-        inherit (local) foot;
-      };
-    };
   };
 }

@@ -36,9 +36,7 @@ _: {
     };
 
     hjem.users.${user} = {
-      packages = builtins.attrValues {
-        inherit (pkgs) brave-origin;
-      };
+      packages = [pkgs.brave-origin];
 
       xdg = {
         mime-apps = let

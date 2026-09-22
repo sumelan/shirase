@@ -43,11 +43,18 @@ in {
       cursorTheme = {
         inherit (config.custom.gtk.cursor) name package;
       };
+
+      passwordlessSyncUsers = [user];
     };
 
     custom.fileSystem = {
       cache.root.directories = [
-        "/var/lib/noctalia-greeter"
+        {
+          directory = "/var/lib/noctalia-greeter";
+          user = "greeter";
+          group = "greeter";
+          mode = "0750";
+        }
       ];
     };
   };

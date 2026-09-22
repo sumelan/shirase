@@ -16,10 +16,16 @@ in {
     inshellah = inputs.inshellah.packages.${pkgs.stdenv.hostPlatform.system}.default;
   in {
     environment = {
-      systemPackages = builtins.attrValues {
-        inherit (local) nushell;
+      systemPackages = [local.nushell];
+      etc = {
+        "nushell/config.nu".source = flake.custom.wrappers.mkNuConfig {inherit pkgs;};
+        "nushell/env.nu".source = flake.custom.wrappers.mkNuEnvConfig {inherit pkgs;};
+        "nushell/inshellah.nu".text = config.programs.inshellah.snippet;
       };
-      etc."nushell/inshellah.nu".text = config.programs.inshellah.snippet;
+      shells = [
+        "/run/current-system/sw/bin/nu"
+        "${local.nushell}/bin/nu"
+      ];
     };
 
     systemd.services = {

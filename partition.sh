@@ -25,7 +25,7 @@ function yesno() {
 
 cat <<Introduction
 The *entire* disk will be formatted with a 1GB boot partition
-(labelled NIXBOOT), 8GB of swap, and the rest allocated to ZFS.
+(labelled NIXBOOT) and the rest allocated to ZFS.
 
 The following ZFS datasets will be created:
     - zroot/root (mounted at / with blank snapshot)
@@ -45,10 +45,8 @@ Introduction
 # ZFS "fileSystems" declarations can be referenced from zfs.nix
 # ZFS also requires the following options to be set within host config:
 #   networking.hostId (can be generated using: head -c 8 /etc/machine-id)
-#   zfs.devNodes
-#       "/dev/disk/by-id" for Intel CPUs
-#       "/dev/disk/by-partuuid" for AMD CPUs / within VMs
-# impermanence setup can be referenced from nixos/impermanence.nix
+#   zfs.devNodes = "/dev/disk/by-partuuid"
+# preservation setup can be referenced from modules/nixos/fileSystems/preservation.nix
 
 # It is highly recommended to setup an initialPassword for root and your user(s)
 # as a fallback so you will always be able to login / sudo using that initialPassword, e.g.
@@ -99,17 +97,14 @@ fi
 
 # if disk contains "nvme", append "p" to partitions
 if [[ "$DISK" =~ "nvme" ]]; then
-    BOOTDISK="${DISK}p3"
-    SWAPDISK="${DISK}p2"
+    BOOTDISK="${DISK}p2"
     ZFSDISK="${DISK}p1"
 else
-    BOOTDISK="${DISK}3"
-    SWAPDISK="${DISK}2"
+    BOOTDISK="${DISK}2"
     ZFSDISK="${DISK}1"
 fi
 
 echo "Boot Partiton: $BOOTDISK"
-echo "SWAP Partiton: $SWAPDISK"
 echo "ZFS Partiton: $ZFSDISK"
 
 echo ""
@@ -122,17 +117,12 @@ echo "Creating partitions"
 sudo blkdiscard -f "$DISK"
 sudo sgdisk --clear "$DISK"
 
-sudo sgdisk -n3:1M:+1G -t3:EF00 "$DISK"
-sudo sgdisk -n2:0:+8G -t2:8200 "$DISK"
+sudo sgdisk -n2:1M:+1G -t2:EF00 "$DISK"
 sudo sgdisk -n1:0:0 -t1:BF01 "$DISK"
 
 # notify kernel of partition changes
 sudo sgdisk -p "$DISK" >/dev/null
 sleep 5
-
-echo "Creating Swap"
-sudo mkswap "$SWAPDISK" --label "SWAP"
-sudo swapon "$SWAPDISK"
 
 echo "Creating Boot Disk"
 sudo mkfs.fat -F 32 "$BOOTDISK" -n NIXBOOT
@@ -156,6 +146,10 @@ sudo zpool create -f \
     -O mountpoint=none \
     "${encryption_options[@]}" \
     zroot "$ZFSDISK"
+
+# print the value so the user knows what to put in their config.
+echo "ZFS hostid: $(zdb -C zpool | awk '/hostid/{printf "%x", $2}')"
+echo "=> set networking.hostId to this in your flake"
 
 # NOTE: legacy mounts are used so they can be managed by fstab and swapped out via nixos configuration.
 echo "Creating /"

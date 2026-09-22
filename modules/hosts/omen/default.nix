@@ -4,9 +4,12 @@
       inherit
         (config.flake.modules.nixos)
         gui
+        kdeconnect
+        nix-secrets
+        sshConfig
         ;
     };
 
-    networking.hostId = "50aafd31"; # FIXME:
+    networking.hostId = "8425e349";
   };
 }

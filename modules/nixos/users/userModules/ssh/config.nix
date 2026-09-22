@@ -14,7 +14,7 @@ _: {
 
     minibookx = ''
       Host minibookx
-        HostName 192.168.68.52
+        HostName 192.168.68.56
         Port 22
         User sumelan
 
@@ -34,6 +34,18 @@ _: {
         # useful for testing
         IdentitiesOnly yes
         IdentityFile ~/.ssh/acer
+    '';
+
+    omen = ''
+      Host omen
+        HostName 192.168.68.50
+        Port 22
+        User sumelan
+
+        # Prevent using ssh-agent or another keyfile,
+        # useful for testing
+        IdentitiesOnly yes
+        IdentityFile ~/.ssh/omen
     '';
   };
 }

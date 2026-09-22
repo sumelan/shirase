@@ -19,25 +19,17 @@
     "type": "github",
     "owner": "feel-co",
     "repo": "hjem",
-    "rev": "e5e30b4320a8cbcd6cdfc65f044763669a8f0363",
-    "narHash": "sha256-0nvWuRbgL4GEKpR8Y4wsB3kmsVgyd0cW8kLHc2BqlTc=",
-    "lastModified": 1789234255
+    "rev": "b7db95216a7160391cdd0a2d49c7332963733311",
+    "narHash": "sha256-J/Rh2uL5gG3g1KU4z4QdyOqJ6d5HIy/fc/94Yn1fBVc=",
+    "lastModified": 1789958605
   },
   "hl": {
     "type": "github",
     "owner": "pamburus",
     "repo": "hl",
-    "rev": "b11c62144aac07b901086c3f43715228e07618c0",
-    "narHash": "sha256-2k5U49ycJM4wnj8nSTq2P3Gyx6AfbA1IzAON2l25GB0=",
-    "lastModified": 1789361247
-  },
-  "impermanence": {
-    "type": "github",
-    "owner": "nix-community",
-    "repo": "impermanence",
-    "rev": "7b1d382faf603b6d264f58627330f9faa5cba149",
-    "narHash": "sha256-03+JxvzmfwRu+5JafM0DLbxgHttOQZkUtDWBmeUkN8Y=",
-    "lastModified": 1769548169
+    "rev": "1410f567862192ec73294f8e90dafab56258823d",
+    "narHash": "sha256-okQcjjV1tw7C3PK81hrynRF00QZ/zM3mNH8Mphh5hto=",
+    "lastModified": 1789966582
   },
   "inshellah": {
     "type": "github",
@@ -47,29 +39,37 @@
     "narHash": "sha256-Hl0PLWo6xyhSJaQtOkrNGQFxqBx5AdP1R1veMD22cMc=",
     "lastModified": 1782548861
   },
+  "kopuz": {
+    "type": "github",
+    "owner": "temidaradev",
+    "repo": "kopuz",
+    "rev": "379d0e540ce8abb76168c3f81a833c3b9035c6b8",
+    "narHash": "sha256-l+gLBveQGGonako0hLi389XcS410dG8bF1OWxlL9Scs=",
+    "lastModified": 1789973182
+  },
   "mangowm": {
     "type": "github",
     "owner": "mangowm",
     "repo": "mango",
-    "rev": "8131b36ace6d3cfb860bf7db802e53dcdd84e549",
-    "narHash": "sha256-1xk1uJy5bt6PpJLBX4TKqeoLK/WUwh8WnWresOf6/8w=",
-    "lastModified": 1789801226
+    "rev": "f5b77adb6240de046b680bf04bb0901a9ed3a7fa",
+    "narHash": "sha256-o7azS0ibaWG4MGGZ+JZDsJe4JpCoPX78lTRuH+jioU4=",
+    "lastModified": 1790059918
   },
   "my-secrets": {
     "type": "git",
     "url": "ssh://git@github.com/sumelan/my-secrets",
     "ref": "HEAD",
-    "rev": "0492f79f6676f6197365e682249b6d4679aef21f",
-    "narHash": "sha256-+lImSZz7iXI6ypL1wHyFWwgbwk7uOCYfnXJeTo6Ry0A=",
-    "lastModified": 1789304977
+    "rev": "db74b5612ac23635ded003c1f9d156d2d3eb3011",
+    "narHash": "sha256-5YOMfo3L5AhxhroSNlM8zO7dmLhyDwdCGbZy7RjGugk=",
+    "lastModified": 1790001056
   },
   "nix-index-database": {
     "type": "github",
     "owner": "nix-community",
     "repo": "nix-index-database",
-    "rev": "a74e173407559083a412ea89a1cc58ea389c3b65",
-    "narHash": "sha256-xVstyCdg0DpzjyrEacm72VJAIP9DMhfWJdPDzhWxHuo=",
-    "lastModified": 1789286446
+    "rev": "9ad722673ab3b3f91f02135e53775825b240b869",
+    "narHash": "sha256-Dkg4VKPmDPqTwaiw2WH5br73tXoL1qrOO0xJnR4TlcA=",
+    "lastModified": 1789892076
   },
   "nix-secrets": {
     "type": "github",
@@ -88,20 +88,26 @@
     "lastModified": 1758476321
   },
   "nixpkgs": {
-    "type": "github",
-    "owner": "nixos",
-    "repo": "nixpkgs",
-    "rev": "b1b875982b17dabde9b4a37f3e229e74913e6db3",
-    "narHash": "sha256-zVxLZiSnmaaPLwnhj7pwmqe3axBg/C6nG5JZsJMh2g4=",
-    "lastModified": 1789546076
+    "type": "tarball",
+    "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1077143.44a91898084f/nixexprs.tar.zst",
+    "rev": "44a91898084f46797b5fac650c7e8c9ac38c43d4",
+    "narHash": "sha256-uLLUj+TLUmBc6KrUzx76KZdPi5ZkI1ORR9A6lJUIZlo="
   },
   "nvf": {
     "type": "github",
     "owner": "notashelf",
     "repo": "nvf",
-    "rev": "2d6b480abfa9fcf84841e62c27922bfa3f3d0d2b",
-    "narHash": "sha256-C9GsjXostGh50d62SYEXVJOSDTwk7RjAumJmwzkJKEY=",
-    "lastModified": 1789333536
+    "rev": "85bf39cd0409ad8a7fa5b3ad0d29e89e9da97a0e",
+    "narHash": "sha256-6GDssza3F+ukpUujSuTL50vW5AHaoG+4vjsDgWqRyeQ=",
+    "lastModified": 1789854559
+  },
+  "preservation": {
+    "type": "github",
+    "owner": "nix-community",
+    "repo": "preservation",
+    "rev": "93416f4614ad2dfed5b0dcf12f27e57d27a5ab11",
+    "narHash": "sha256-mMI9IanU+Xw+pVogD2oT0I2kTmvz2Un/Apc5+CwUpEY=",
+    "lastModified": 1757436102
   },
   "swash": {
     "type": "github",

@@ -21,7 +21,6 @@ in {
     extraConfig = {
       disks_filter = lib.concatStringsSep " " (
         [
-          "/"
           "/boot"
           "/persist"
         ]

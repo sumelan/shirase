@@ -6,12 +6,12 @@
         gui
         kdeconnect
         nix-secrets
-        syncthing
+        #     syncthing
         sshConfig
         ;
     };
 
-    networking.hostId = "56895d2b";
+    networking.hostId = "8425e349";
 
     # Rotate limine interface
     boot.loader.limine.extraConfig = ''

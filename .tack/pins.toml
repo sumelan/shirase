@@ -5,6 +5,8 @@
 [shorturls]
 gh = "github:{path}" # github
 cb = "git+https://codeberg.org/{path}" # codeberg
+nixpkgs = "https://channels.nixos.org/{path}/nixexprs.tar.zst"
+private = "git+ssh://git@github.com/sumelan/{path}"
 
 # all_follow: input name -> top-level pin it follows wherever it appears
 # opt out per-input with exclude_follow
@@ -25,16 +27,17 @@ flake-parts = "flake-parts"
 [inputs]
 
 [inputs.nixpkgs]
-url = "gh:nixos/nixpkgs/nixos-unstable"
+url = "nixpkgs:nixos-unstable"
+
+[inputs.my-secrets]
+url = "private:my-secrets"
+type = "fetch"
 
 [inputs.flake-parts]
 url = "gh:hercules-ci/flake-parts"
 
 [inputs.hjem]
 url = "gh:feel-co/hjem"
-
-[inputs.impermanence]
-url = "gh:nix-community/impermanence"
 
 [inputs.nix-index-database]
 url = "gh:nix-community/nix-index-database"
@@ -63,6 +66,10 @@ url = "gh:mangowm/mango"
 [inputs.nix-secrets]
 url = "gh:unnamed-systems/nix-secrets"
 
-[inputs.my-secrets]
-url = "git+ssh://git@github.com/sumelan/my-secrets"
-type = "fetch"
+[inputs.preservation]
+url = "gh:nix-community/preservation"
+
+[inputs.kopuz]
+url = "gh:temidaradev/kopuz"
+
+

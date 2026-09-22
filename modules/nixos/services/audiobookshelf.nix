@@ -9,14 +9,38 @@ _: {
 
     custom.fileSystem = {
       persist.root.directories = [
-        "/var/lib/audiobookshelf/library"
+        {
+          directory = "/var/lib/audiobookshelf/library";
+          user = "audiobookshelf";
+          group = "audiobookshelf";
+        }
         # metadata backups
-        "/var/lib/audiobookshelf/backups"
+        {
+          directory = "/var/lib/audiobookshelf/backups";
+          user = "audiobookshelf";
+          group = "audiobookshelf";
+        }
       ];
       cache.root.directories = [
-        "/var/lib/audiobookshelf/config"
-        "/var/lib/audiobookshelf/metadata"
+        {
+          directory = "/var/lib/audiobookshelf/config";
+          user = "audiobookshelf";
+          group = "audiobookshelf";
+        }
+        {
+          directory = "/var/lib/audiobookshelf/metadata";
+          user = "audiobookshelf";
+          group = "audiobookshelf";
+        }
       ];
+    };
+
+    systemd.tmpfiles.settings.preservation = {
+      "/var/lib/audiobookshelf".d = {
+        user = "audiobookshelf";
+        group = "audiobookshelf";
+        mode = "0755";
+      };
     };
   };
 }

@@ -1,4 +1,4 @@
-_: {
+{lib, ...}: {
   flake.modules.nixos."hosts/minibookx" = {config, ...}: {
     security.nix-secrets.secrets = let
       permissions = {
@@ -6,10 +6,11 @@ _: {
         owner = config.services.syncthing.user;
         inherit (config.services.syncthing) group;
       };
-    in {
-      "syncthing/minibookx-key" = permissions;
-      "syncthing/minibookx-cert" = permissions;
-    };
+    in
+      lib.mkIf config.services.syncthing.enable {
+        "syncthing/minibookx-key" = permissions;
+        "syncthing/minibookx-cert" = permissions;
+      };
 
     services.syncthing = {
       key = config.security.nix-secrets.secrets."syncthing/minibookx-key".path;
