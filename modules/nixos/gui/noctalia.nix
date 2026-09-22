@@ -43,6 +43,8 @@ in {
       cursorTheme = {
         inherit (config.custom.gtk.cursor) name package;
       };
+
+      passwordlessSyncUsers = [user];
     };
 
     custom.fileSystem = {

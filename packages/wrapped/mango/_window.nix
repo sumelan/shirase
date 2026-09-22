@@ -65,7 +65,6 @@ in {
     # Special workspace
     ++ (map (id: ta {} id |> toString)
       <| [
-        ''^com.blitzfc.qbz$''
         ''^footclient$''
       ]);
 

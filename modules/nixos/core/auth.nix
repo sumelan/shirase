@@ -19,8 +19,8 @@ _: {
     security.pam.services.login.enableGnomeKeyring = true;
 
     security = {
+      # sudo and run0
       sudo.enable = false;
-
       run0 = {
         enable = true;
         sudo-shim.enable = true;
@@ -28,6 +28,12 @@ _: {
           enable = true;
           enableRemote = true;
         };
+      };
+
+      # polkit
+      polkit = {
+        enable = true;
+        enablePkexecWrapper = true;
       };
     };
 

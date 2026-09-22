@@ -60,9 +60,11 @@ url = "gh:mangowm/mango"
 [inputs.nix-secrets]
 url = "gh:unnamed-systems/nix-secrets"
 
+[inputs.preservation]
+url = "gh:nix-community/preservation"
+
 [inputs.my-secrets]
 url = "git+ssh://git@github.com/sumelan/my-secrets"
 type = "fetch"
 
-[inputs.preservation]
-url = "gh:nix-community/preservation"
+
