@@ -17,7 +17,7 @@
         ;
     };
 
-    networking.hostId = "b5e8f0be";
+    networking.hostId = "8425e349";
 
     custom = {
       #   hardware = {
