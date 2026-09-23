@@ -55,7 +55,7 @@
                 rebase = true;
               };
               push = {
-                default = "simple";
+                default = "current";
               };
               # reuse record resolution: git automatically resolves conflicts using the recorded resolution
               rerere = {
