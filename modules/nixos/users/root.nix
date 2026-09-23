@@ -1,5 +1,5 @@
 {lib, ...}: {
-  flake.modules.nixos.hjem = {
+  flake.modules.nixos.core = {
     config,
     user,
     ...
