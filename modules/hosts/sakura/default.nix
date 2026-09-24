@@ -9,7 +9,7 @@
         qmk
         trackpad
         #  audiobookshelf
-        #  nix-secrets
+        nix-secrets
         #  syncoid
         #  syncthing
         sshConfig

@@ -9,7 +9,7 @@ _: {
         # Prevent using ssh-agent or another keyfile,
         # useful for testing
         IdentitiesOnly yes
-        IdentityFile ~/.ssh/id_ed25519.pub
+        IdentityFile ~/.ssh/id_ed25519
     '';
 
     minibookx = ''
@@ -21,7 +21,7 @@ _: {
         # Prevent using ssh-agent or another keyfile,
         # useful for testing
         IdentitiesOnly yes
-        IdentityFile ~/.ssh/id_ed25519.pub
+        IdentityFile ~/.ssh/id_ed25519
     '';
 
     acer = ''
@@ -33,7 +33,7 @@ _: {
         # Prevent using ssh-agent or another keyfile,
         # useful for testing
         IdentitiesOnly yes
-        IdentityFile ~/.ssh/id_ed25519.pub
+        IdentityFile ~/.ssh/id_ed25519
     '';
 
     omen = ''
@@ -45,7 +45,7 @@ _: {
         # Prevent using ssh-agent or another keyfile,
         # useful for testing
         IdentitiesOnly yes
-        IdentityFile ~/.ssh/omen
+        IdentityFile ~/.ssh/id_ed25519
     '';
   };
 }

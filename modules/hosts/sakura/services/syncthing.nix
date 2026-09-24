@@ -1,4 +1,4 @@
-_: {
+{lib, ...}: {
   flake.modules.nixos."hosts/sakura" = {config, ...}: {
     security.nix-secrets.secrets = let
       permissions = {
@@ -6,10 +6,11 @@ _: {
         owner = config.services.syncthing.user;
         inherit (config.services.syncthing) group;
       };
-    in {
-      "syncthing/sakura-key" = permissions;
-      "syncthing/sakura-cert" = permissions;
-    };
+    in
+      lib.mkIf config.services.syncthing.enable {
+        "syncthing/sakura-key" = permissions;
+        "syncthing/sakura-cert" = permissions;
+      };
 
     services.syncthing = {
       key = config.security.nix-secrets.secrets."syncthing/sakura-key".path;
