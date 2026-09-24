@@ -9,10 +9,6 @@ _: {
           old = "alsa_input.pci-0000_34_00.6.analog-stereo";
           new = "Built-in Mic";
         };
-        "10-creative-rename" = rename {
-          old = "alsa_output.usb-Creative_Technology_Ltd_Creative_Stage_SE_mini_1120041300020421-01.analog-stereo";
-          new = "Creative Stage SE mini";
-        };
         "10-ifi-rename" = rename {
           old = "alsa_output.usb-iFi_iFi_USB_Audio_SE_iFi_USB_Audio_SE-00.analog-stereo";
           new = "iFi Audio Uno";

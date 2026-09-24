@@ -14,6 +14,7 @@
           htop
           jq
           just
+          hyperfine
           killall
           procs # better ps
           sd # better sed

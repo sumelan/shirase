@@ -8,9 +8,16 @@
         nix-secrets
         steam
         sshConfig
+        hjem-extended
         ;
     };
 
     networking.hostId = "8425e349";
+
+    custom = {
+      programs.btop = {
+        cudaSupport = true;
+      };
+    };
   };
 }

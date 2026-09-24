@@ -7,7 +7,6 @@
 in {
   flake.modules.nixos.hjem = {
     config,
-    pkgs,
     user,
     ...
   }: let
@@ -50,11 +49,6 @@ in {
 
     # modules standalone
     hjem.users.${user} = {
-      packages = builtins.attrValues {
-        # tools
-        inherit (pkgs) brightnessctl libnotify wl-clipboard-rs playerctl hyperfine;
-      };
-
       # misc
       xdg.config.files = {
         "user-dirs.conf".text = "enabled=False";

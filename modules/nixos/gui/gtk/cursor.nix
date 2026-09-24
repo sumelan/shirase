@@ -5,7 +5,6 @@ in {
   flake.modules.nixos.gui = {
     config,
     pkgs,
-    user,
     ...
   }: let
     # Add cursor icon link to $XDG_DATA_HOME/icons as well for redundancy.
@@ -41,16 +40,9 @@ in {
           XCURSOR_SIZE = gtkCursor.size;
           XCURSOR_THEME = gtkCursor.name;
         };
-
         systemPackages = [
           gtkCursor.package
         ];
-      };
-
-      hjem.users.${user} = {
-        xdg.data.files."icons/${gtkCursor.name}" = {
-          source = "${gtkCursor.package}/share/icons/${gtkCursor.name}";
-        };
       };
     };
   };

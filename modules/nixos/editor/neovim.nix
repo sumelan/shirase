@@ -8,6 +8,7 @@
   in {
     environment = {
       systemPackages = builtins.attrValues {
+        inherit (pkgs) wl-clipboard-rs;
         inherit (local) nvf;
       };
       sessionVariables = {

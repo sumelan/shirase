@@ -5,17 +5,22 @@ _: {
     user,
     ...
   }: {
-    programs.steam = {
+    programs.steam = let
+      home = config.hjem.users.${user}.directory;
+      cacheHome = "/cache" + home;
+      cursorPath = "${pkgs.kdePackages.breeze}/share/icons/breeze_cursors";
+    in {
       enable = true;
       package = pkgs.steam.override {
         # get rid of ~/.steam directory:
         # https://github.com/ValveSoftware/steam-for-linux/issues/1890#issuecomment-2367103614
         extraBwrapArgs = [
-          "--bind /cache${config.hjem.users.${user}.directory} $HOME"
-          "--unsetenv XDG_CACHE_HOME"
+          "--bind ${cacheHome} $HOME"
           "--unsetenv XDG_CONFIG_HOME"
+          "--unsetenv XDG_CACHE_HOME"
           "--unsetenv XDG_DATA_HOME"
           "--unsetenv XDG_STATE_HOME"
+          "--symlink ${cursorPath} ${cacheHome}/.local/share/icons/default"
         ];
       };
       remotePlay.openFirewall = true;

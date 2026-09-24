@@ -76,6 +76,9 @@ in {
               (pkgs)
               xdg-desktop-portal-wlr
               capitaine-cursors-themed
+              brightnessctl
+              libnotify
+              playerctl
               ;
             inherit
               (local)

@@ -1,11 +1,5 @@
-{config, ...}: {
-  flake.custom.hjemConfigs.wm = {
-    pkgs,
-    user,
-    ...
-  }: let
-    local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
-  in {
+_: {
+  flake.custom.hjemConfigs.wm = {pkgs, ...}: {
     environment.sessionVariables = {
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
       GDK_BACKEND = "wayland";

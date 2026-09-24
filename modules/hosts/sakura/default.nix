@@ -13,7 +13,6 @@
         #  syncoid
         #  syncthing
         sshConfig
-        hjem-extended
         ;
     };
 

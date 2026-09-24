@@ -22,6 +22,7 @@ in {
       disks_filter = lib.concatStringsSep " " (
         [
           "/boot"
+          "/cache"
           "/persist"
         ]
         ++ config.custom.programs.btop.disks
