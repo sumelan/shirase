@@ -37,7 +37,7 @@ _: {
                   font_family = config.custom.fonts.monospace;
                   opacity = 0.45;
                   shadow = true;
-                  title = " NixOS";
+                  title = " Minibookx";
                 };
               };
             };

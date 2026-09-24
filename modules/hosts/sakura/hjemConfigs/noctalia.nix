@@ -99,7 +99,7 @@ _: {
                   color = "tertiary";
                   font_family = config.custom.fonts.monospace;
                   opacity = 0.45000000000000000;
-                  title = "󱄅 NixOS";
+                  title = "󱄅 Sakura";
                 };
               };
             };

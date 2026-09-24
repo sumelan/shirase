@@ -6,6 +6,7 @@
         gui
         kdeconnect
         nix-secrets
+        steam
         sshConfig
         ;
     };
