@@ -5,7 +5,6 @@
 [shorturls]
 gh = "github:{path}" # github
 cb = "git+https://codeberg.org/{path}" # codeberg
-nixpkgs = "https://channels.nixos.org/{path}/nixexprs.tar.zst"
 private = "git+ssh://git@github.com/sumelan/{path}"
 
 # all_follow: input name -> top-level pin it follows wherever it appears
@@ -27,7 +26,7 @@ flake-parts = "flake-parts"
 [inputs]
 
 [inputs.nixpkgs]
-url = "nixpkgs:nixos-unstable"
+url = "gh:nixos/nixpkgs/nixos-unstable"
 
 [inputs.my-secrets]
 url = "private:my-secrets"

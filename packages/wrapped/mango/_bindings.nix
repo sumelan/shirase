@@ -69,6 +69,8 @@ in {
     ++ dispatch {mods = "SUPER+ALT";} "Right" "viewtoright_have_client"
     ++ dispatch {mods = "SUPER+SHIFT";} "Left" "tagtoleft"
     ++ dispatch {mods = "SUPER+SHIFT";} "Right" "tagtoright"
+    ## Named scratchpad
+    ++ dispatch {mods = "ALT";} "V" "toggle_named_scratchpad,vesktop,none,vesktop"
     # Special Workspace (Tag 0)
     ++ dispatch {mods = "SUPER";} "S" "toggle_special_tag" # Toggle the special workspace overlay (Tag 0)
     ++ dispatch {mods = "SUPER+SHIFT";} "S" "tag_special_tag" # Move focused window to/from the special workspace
@@ -80,10 +82,6 @@ in {
     ++ spawn {mods = "SUPER+SHIFT";} "N" "footclient --app-id app.ns ns"
     ++ spawn {mods = "SUPER+SHIFT";} "Y" "footclient --app-id app.yazi yazi"
     ++ spawn {mods = "SUPER";} "B" "brave-origin"
-    ## Named scratchpad
-    ++ dispatch {mods = "ALT";} "V" "toggle_named_scratchpad,vesktop,none,vesktop"
-    ++ dispatch {mods = "ALT";} "T" "toggle_named_scratchpad,dev.geopjr.Tuba,none,dev.geopjr.Tuba"
-    ++ dispatch {mods = "ALT";} "R" "toggle_named_scratchpad,readest,none,readest"
     ## Noctalia
     ++ spawn {mods = "SUPER";} "Space" "noctalia msg panel-toggle launcher"
     ++ spawn {mods = "SUPER";} "Y" "noctalia msg panel-toggle clipboard"

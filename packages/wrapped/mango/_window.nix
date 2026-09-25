@@ -59,8 +59,11 @@ in {
     ++ (map (id: na {} id |> toString)
       <| [
         ''^vesktop$''
-        ''^dev\.geopjr\.Tuba$''
-        ''^readest$''
+      ])
+    # Steam game
+    ++ (map (id: na {opt = ",tags:5,focused_opacity:1.0";} id |> toString)
+      <| [
+        ''steam_app_\d{7}$''
       ])
     # Special workspace
     ++ (map (id: ta {} id |> toString)
@@ -75,6 +78,6 @@ in {
       <| range 1 4)
     ++ (map (tags: layout tags "scroller" |> toString)
       <| [0] ++ range 6 9)
-    ++ (map (tags: layout tags "vertical_scroller" |> toString)
+    ++ (map (tags: layout tags "monocle" |> toString)
       <| [5]);
 }
