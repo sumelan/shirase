@@ -70,6 +70,7 @@ in {
     ++ dispatch {mods = "SUPER+SHIFT";} "Left" "tagtoleft"
     ++ dispatch {mods = "SUPER+SHIFT";} "Right" "tagtoright"
     ## Named scratchpad
+    ++ dispatch {mods = "ALT";} "M" "toggle_named_scratchpad,kopuz,none,kopuz"
     ++ dispatch {mods = "ALT";} "V" "toggle_named_scratchpad,vesktop,none,vesktop"
     # Special Workspace (Tag 0)
     ++ dispatch {mods = "SUPER";} "S" "toggle_special_tag" # Toggle the special workspace overlay (Tag 0)
@@ -118,6 +119,6 @@ in {
     # 4-finger: Workspace navigation (right drag -> previous tag, left drag -> next)
     ++ dispatch {} "Left,4" "viewtoright_have_client"
     ++ dispatch {} "Right,4" "viewtoleft_have_client"
-    ++ dispatch {} "Up,4" "toggleoverview"
-    ++ dispatch {} "Down,4" "toggleoverview";
+    ++ dispatch {} "Up,4" "toggle_special_tag"
+    ++ dispatch {} "Down,4" "toggle_scratchpad";
 }
