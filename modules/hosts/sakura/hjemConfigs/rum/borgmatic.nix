@@ -29,13 +29,16 @@
       keep_weekly = 4;
       keep_monthly = 6;
 
-      ssh_command = "ssh -i /home/sumelan/.ssh/borgbase";
+      ssh_command = "ssh -i /home/sumelan/.ssh/id_ed25519";
+
       encryption_passcommand =
         # sh
-        ''${lib.getExe pkgs.bitwarden-cli} get password Borgmatic --session 85iGC/4x6Uaj0BFy2wGOhteaK4uTKLmsC/LD9sAlM3kgKoADtlbHqxftw1Zef9RVgJb3GXYy2GSCSa+BsOGP2w=='';
+        ''${lib.getExe pkgs.bitwarden-cli} get password Borgmatic --session roe1oRRk7db5uZch7nNA8se9Jr+1VkUuRPGGmJmuQrImhX8rr6PM2gACoMl6gLzEtmreVMxlP4LVzBnY0uzo/Q=='';
 
       zfs = {
         zfs_command = lib.getExe config.boot.zfs.package;
+        mount_command = lib.getExe' pkgs.unixtools.util-linux.out "mount";
+        umount_command = lib.getExe' pkgs.unixtools.util-linux.out "umount";
       };
     };
   in {
@@ -61,7 +64,7 @@
               repositories = [
                 {
                   label = "borgbase";
-                  path = "ssh://whcwf2xd@whcwf2xd.repo.borgbase.com/./repo";
+                  path = "ssh://h1sxd472@h1sxd472.repo.borgbase.com/./repo";
                 }
               ];
             };
@@ -75,7 +78,7 @@
               repositories = [
                 {
                   label = "borgbase";
-                  path = "ssh://ynlt03ko@ynlt03ko.repo.borgbase.com/./repo";
+                  path = "ssh://w6lisdrs@w6lisdrs.repo.borgbase.com/./repo";
                 }
               ];
             };

@@ -8,7 +8,7 @@
         #  hdds
         qmk
         trackpad
-        #  audiobookshelf
+        audiobookshelf
         nix-secrets
         #  syncoid
         #  syncthing
