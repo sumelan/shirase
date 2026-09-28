@@ -50,16 +50,13 @@ in {
           "my-secrets"
         ]
       );
-      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakes;
+      nix-path = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakes;
       registry = lib.mapAttrs (_: flake: {inherit flake;}) flakes;
     in {
       # disable channel because i use flake's input as source
       # also make flake registry and nix path match flake input
       # without doing above, `nix run nixpkgs#fastfetch` would come from the channel and not your flake
       channel.enable = false;
-
-      # need for `nix-shell -p` to work
-      inherit nixPath;
 
       registry =
         registry
@@ -96,8 +93,7 @@ in {
 
       settings = {
         warn-dirty = false;
-
-        nix-path = nixPath;
+        inherit nix-path; # need for `nix-shell -p` to work
 
         # re-evaluate on every rebuild instead of "cached failure of attribute" error
         # eval-cache = false;
