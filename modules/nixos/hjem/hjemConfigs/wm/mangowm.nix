@@ -18,7 +18,10 @@ _: {
       };
 
       packages = builtins.attrValues {
-        inherit (pkgs) kooha;
+        inherit
+          (pkgs)
+          kooha
+          ;
       };
     };
   };

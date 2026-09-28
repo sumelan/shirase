@@ -43,5 +43,5 @@ _: {
   shadow_only_floating = 0;
 
   cursor_theme = "Capitaine Cursors (Palenight)";
-  cursor_size = 38;
+  cursor_size = 48;
 }

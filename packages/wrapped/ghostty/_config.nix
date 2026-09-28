@@ -10,6 +10,6 @@ _: {
   adjust-cursor-thickness = 4;
   cursor-style-blink = true;
   font-family = "Maple Mono NF";
-  font-size = 13;
+  font-size = 14;
   window-decoration = "none";
 }

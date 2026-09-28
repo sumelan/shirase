@@ -18,13 +18,14 @@
 
   # Extra commands to run after D-Bus activation.
   extraCommands = [
-    "${lib.getExe' pkgs.systemd "systemctl"} --user reset-failed"
-    "${lib.getExe' pkgs.systemd "systemctl"} --user start mango-session.target"
+    "${lib.getExe pkgs.brightnessctl} set 10%"
   ];
 in {
   exec-once =
     [
       "${lib.getExe' pkgs.dbus "dbus-update-activation-environment"} --systemd ${variables}"
+      "${lib.getExe' pkgs.systemd "systemctl"} --user reset-failed"
+      "${lib.getExe' pkgs.systemd "systemctl"} --user start mango-session.target"
     ]
     ++ extraCommands;
 }
