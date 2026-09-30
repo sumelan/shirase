@@ -1,5 +1,5 @@
 {lib, ...}: {
-  flake.modules.nixos.acer-al14 = {
+  flake.modules.nixos."hosts/acer" = {
     config,
     modulesPath,
     ...

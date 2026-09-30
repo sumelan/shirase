@@ -1,5 +1,5 @@
 {lib, ...}: {
-  flake.modules.nixos.chuwi-minibook-x = {
+  flake.modules.nixos."hosts/minibookx" = {
     config,
     pkgs,
     modulesPath,

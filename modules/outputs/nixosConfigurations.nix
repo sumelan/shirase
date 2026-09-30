@@ -73,7 +73,6 @@ in {
       extraModules = builtins.attrValues {
         inherit
           (config.flake.modules.nixos)
-          acer-al14
           laptop
           intel
           ;
@@ -83,7 +82,6 @@ in {
       extraModules = builtins.attrValues {
         inherit
           (config.flake.modules.nixos)
-          chuwi-minibook-x
           laptop
           intel
           ;
@@ -93,7 +91,6 @@ in {
       extraModules = builtins.attrValues {
         inherit
           (config.flake.modules.nixos)
-          minisforum-um773se
           amd
           ;
       };

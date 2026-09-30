@@ -68,7 +68,7 @@ url = "gh:unnamed-systems/nix-secrets"
 [inputs.preservation]
 url = "gh:nix-community/preservation"
 
-[inputs.kopuz]
-url = "gh:temidaradev/kopuz"
+[inputs.sonora]
+url = "gh:sonorahq/sonora"
 
 

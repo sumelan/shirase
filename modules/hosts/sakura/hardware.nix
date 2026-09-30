@@ -1,5 +1,5 @@
 {lib, ...}: {
-  flake.modules.nixos.minisforum-um773se = {
+  flake.modules.nixos."hosts/sakura" = {
     config,
     modulesPath,
     ...

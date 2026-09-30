@@ -13,9 +13,6 @@ in {
     optionalConfigs = [
       "audio-disc"
       "blu-ray"
-      "krita"
-      "obs-studio"
-      "zed-editor"
     ];
 
     homeDir = config.hjem.users.${user}.directory;

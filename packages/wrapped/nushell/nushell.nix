@@ -123,8 +123,20 @@ in {
               # Pager
               ov
               ;
-            inherit (local) bat eza eza-tree ripgrep difftastic yt-dlp;
-            inherit comview hl inshellah;
+            inherit
+              (local)
+              bat
+              eza
+              eza-tree
+              ripgrep
+              difftastic
+              yt-dlp
+              ;
+            inherit
+              comview
+              hl
+              inshellah
+              ;
           }
           ++ extraRuntimeInputs;
       };

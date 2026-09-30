@@ -39,14 +39,6 @@
     "narHash": "sha256-Hl0PLWo6xyhSJaQtOkrNGQFxqBx5AdP1R1veMD22cMc=",
     "lastModified": 1782548861
   },
-  "kopuz": {
-    "type": "github",
-    "owner": "temidaradev",
-    "repo": "kopuz",
-    "rev": "cf5424273ffefcf61a671aa7e9a6862428f99e1b",
-    "narHash": "sha256-yQGDceLTiPeA8EEpW2TdMgEEqQ4lJHHJvbsZ3JS2m50=",
-    "lastModified": 1790089325
-  },
   "mangowm": {
     "type": "github",
     "owner": "mangowm",
@@ -110,6 +102,14 @@
     "rev": "93416f4614ad2dfed5b0dcf12f27e57d27a5ab11",
     "narHash": "sha256-mMI9IanU+Xw+pVogD2oT0I2kTmvz2Un/Apc5+CwUpEY=",
     "lastModified": 1757436102
+  },
+  "sonora": {
+    "type": "github",
+    "owner": "sonorahq",
+    "repo": "sonora",
+    "rev": "de9b44cc38cd92dafb2ac2ee3c4523b469f97dd7",
+    "narHash": "sha256-S5JBAwQD+7O6EpUfoLKPBG8YX1lMHW8xks3TO6ocb5s=",
+    "lastModified": 1790687361
   },
   "swash": {
     "type": "github",
