@@ -4,6 +4,21 @@ _: {
     user,
     ...
   }: {
+    # https://github.com/fcitx/fcitx5/issues/1668
+    nixpkgs.overlays = [
+      (_final: prev: {
+        fcitx5 = prev.fcitx5.overrideAttrs {
+          version = "5.1.21";
+          src = prev.fetchFromGitHub {
+            owner = "fcitx";
+            repo = "fcitx5";
+            rev = "5.1.21";
+            hash = "sha256-IR5mKOsVJ/GPL2czdztLVXGJTNk1JXnWpzmqC/UIwuw=";
+          };
+        };
+      })
+    ];
+
     i18n.inputMethod = {
       enable = true;
       type = "fcitx5";
