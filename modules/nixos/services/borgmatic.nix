@@ -86,7 +86,7 @@
         # if borgmatic's save path is blocked by ProtectSystem
         # ProtectSystem = lib.mkForce false;
         # or ReadWritePaths = [ "/var/lib/borgmatic" "/root/.config/borg" ];
-        CapabilityBoundingSet = lib.mkForce "";
+        CapabilityBoundingSet = lib.mkForce "~";
       };
       timers.borgmatic = {
         timerConfig = {
