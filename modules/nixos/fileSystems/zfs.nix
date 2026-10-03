@@ -1,12 +1,18 @@
 _: {
-  flake.modules.nixos.core = {pkgs, ...}: {
+  flake.modules.nixos.core = {pkgs, ...}: let
+    mkZfs = device: {
+      inherit device;
+      fsType = "zfs";
+      neededForBoot = true;
+    };
+  in {
     boot = {
       kernelModules = ["zfs"];
       supportedFilesystems = ["zfs"];
       zfs = {
         devNodes = "/dev/disk/by-partuuid";
 
-        package = pkgs.zfs_2_4;
+        package = pkgs.zfs_unstable;
 
         # WARN: a mismatched host ID will prevent ZFS from importing the pool,
         # but you can override that with a force import
@@ -24,31 +30,11 @@ _: {
 
     # INFO: zfs datasets are created via install.sh
     fileSystems = {
-      "/" = {
-        device = "zroot/root";
-        fsType = "zfs";
-        neededForBoot = true;
-      };
-
-      "/nix" = {
-        device = "zroot/nix";
-        fsType = "zfs";
-        neededForBoot = true;
-      };
-
-      "/persist" = {
-        device = "zroot/persist";
-        fsType = "zfs";
-        neededForBoot = true;
-      };
-
+      "/" = mkZfs "zroot/root";
+      "/nix" = mkZfs "zroot/nix";
+      "/persist" = mkZfs "zroot/persist";
       # cache are files that should be persisted, but not to snapshot
-      # e.g. npm, cargo cache etc, that could always be redownloaded
-      "/cache" = {
-        device = "zroot/cache";
-        fsType = "zfs";
-        neededForBoot = true;
-      };
+      "/cache" = mkZfs "zroot/cache";
     };
 
     systemd.services = {

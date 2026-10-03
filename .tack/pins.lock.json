@@ -51,9 +51,9 @@
     "type": "git",
     "url": "ssh://git@github.com/sumelan/my-secrets",
     "ref": "HEAD",
-    "rev": "2819e965892b7d3d062725e105ad66c889e3e5da",
-    "narHash": "sha256-MQRoXhm3b5peYHEen4JuXCfppa67gwcX5OA6QVe6NVc=",
-    "lastModified": 1790986603
+    "rev": "97e7472b6752ff55a714eda37e501afc93ce0d58",
+    "narHash": "sha256-nw7yRkyDbLM2iMdev9bd1arC2wUWcZSbNnjq79sJJLM=",
+    "lastModified": 1791028546
   },
   "nix-index-database": {
     "type": "github",

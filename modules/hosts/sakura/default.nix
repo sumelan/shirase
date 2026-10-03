@@ -5,12 +5,11 @@
         (config.flake.modules.nixos)
         gui
         kdeconnect
-        #  hdds
-        qmk
-        trackpad
+        hdds
         audiobookshelf
         nix-secrets
-        #  syncoid
+        syncoid
+        borgmatic
         #  syncthing
         sshConfig
         ;
@@ -19,12 +18,12 @@
     networking.hostId = "8425e349";
 
     custom = {
-      #   hardware = {
-      #     hdds = {
-      #       westernDigital = true;
-      #       ironWolf = true;
-      #     };
-      #   };
+      hardware = {
+        hdds = {
+          westernDigital = true;
+          ironWolf = true;
+        };
+      };
 
       programs.btop.rocmSupport = true;
     };

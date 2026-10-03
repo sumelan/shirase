@@ -5,7 +5,6 @@ _: {
       "syncoid" = {
         # services.syncoid automaticall set user "syncoid" as systemuser
         openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA0nylmhn7vyEeF1Lec3oAy2DbHOZrPYWZ5JkDefMslq syncoid"
         ];
       };
     };
@@ -22,12 +21,20 @@ _: {
     custom.fileSystem = {
       persist.root.directories = [
         {
-          directory = "/var/lib/syncoid";
+          directory = "/var/lib/syncoid/.ssh";
           user = "syncoid";
           group = "syncoid";
           mode = "0700";
         }
       ];
+    };
+
+    systemd.tmpfiles.settings.preservation = {
+      "/var/lib/syncoid".d = {
+        user = "syncoid";
+        group = "syncoid";
+        mode = "0700";
+      };
     };
   };
 }

@@ -74,6 +74,8 @@
 
               "/var/log" # systemd journal is stored in /var/log/journal
               "/var/lib/nixos" # for persisting user uids and gids
+
+              "/root/.ssh"
             ]
             ++ cfg.persist.root.directories);
 

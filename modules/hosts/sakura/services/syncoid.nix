@@ -1,9 +1,9 @@
-_: {
+{lib, ...}: {
   flake.modules.nixos."hosts/sakura" = {config, ...}: {
     services.syncoid = {
-      commands."zusb" = {
+      commands."local" = lib.mkIf config.custom.hardware.hdds.ironWolf {
         source = "zroot/persist";
-        target = "zusb-iw2T/backups/sakura";
+        target = "IW2T/sakura";
         extraArgs = [
           "--no-sync-snap" # restrict itself to existing snapshots
           "--delete-target-snapshots" # snapshots which are missing on the source will be destroyed on the targe
