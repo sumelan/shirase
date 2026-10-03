@@ -5,7 +5,7 @@
     user,
     ...
   }: let
-    sonoraPkg = inputs.sonora.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    sonoraPkg = inputs.sonora.packages.${pkgs.stdenv.hostPlatform.system}.sonora;
   in {
     hjem.users.${user} = {
       packages = [sonoraPkg];
