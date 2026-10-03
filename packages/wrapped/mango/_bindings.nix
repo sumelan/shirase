@@ -70,7 +70,7 @@ in {
     ++ dispatch {mods = "SUPER+SHIFT";} "Left" "tagtoleft"
     ++ dispatch {mods = "SUPER+SHIFT";} "Right" "tagtoright"
     ## Named scratchpad
-    ++ dispatch {mods = "ALT";} "M" "toggle_named_scratchpad,kopuz,none,kopuz"
+    ++ dispatch {mods = "ALT";} "M" "toggle_named_scratchpad,sonora,none,sonora"
     ++ dispatch {mods = "ALT";} "V" "toggle_named_scratchpad,vesktop,none,vesktop"
     # Special Workspace (Tag 0)
     ++ dispatch {mods = "SUPER";} "S" "toggle_special_tag" # Toggle the special workspace overlay (Tag 0)

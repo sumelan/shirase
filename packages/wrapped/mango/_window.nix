@@ -59,7 +59,7 @@ in {
     ++ (map (id: na {} id |> toString)
       <| [
         ''^vesktop$''
-        ''^kopuz$''
+        ''^sonora$''
       ])
     # Steam game
     ++ (map (id: na {opt = ",tags:5,focused_opacity:1.0";} id |> toString)

@@ -78,7 +78,7 @@
             artwork_for_local_files = true;
             blur_lyrics = true;
             check_updates = false;
-            close_to_tray = true;
+            close_to_tray = false;
             discord_badge = true;
             discord_name = "sonora";
             discord_presence = true;

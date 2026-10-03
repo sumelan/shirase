@@ -4,7 +4,7 @@ This is my personal flake.
 
 ## Features
 
-### Filesystem: zfs + impermanence
+### Filesystem: zfs + preservation
 
 My system consists of an encrypted disk that restores itself to a pristine state on each boot. To return the root, I use a systemd service that runs after the base zpool is imported but before the root is actually mounted.
 
@@ -27,13 +27,7 @@ sh <(curl -L https://raw.githubusercontent.com/sumelan/shirase/main/partition.sh
 
 Before running `nixos-install`, one task is required: writing the hardware
 configuration for the target host. Filesystem mounts are already written in this
-flake, but they lack info about the swap mount. You can choose to encrypt the
-swap disk or not. If you encrypt the swap disk, you need to write the
-PARTUUID of the swap partition after partitioning, not the UUID.
-
-```sh
-lsblk -dno PARTUUID /dev/nvme0n1p2
-```
+flake, but they lack info about hardware configs. 
 
 To generate a hardware config without filesystem info, run the command
 below.
@@ -42,7 +36,7 @@ below.
 nixos-generate-config --no-filesystems --show-hardware-config
 ```
 
-After writing the swap mount, you finally reach the install phase.
+After writing the hardware config, you finally reach the install phase.
 
 ```sh
 sudo nixos-install --no-root-password --flake "github:sumelan/shirase/main#HOST" --option tarball-ttl 0
