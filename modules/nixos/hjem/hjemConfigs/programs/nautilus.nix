@@ -6,6 +6,19 @@ _: {
     dotfile,
     ...
   }: {
+    nixpkgs.overlays = [
+      (_final: prev: {
+        # enable the A/V Properties and see details like media length
+        nautilus = prev.nautilus.overrideAttrs (o: {
+          buildInputs =
+            o.buildInputs
+            ++ (with prev.gst_all_1; [
+              gst-plugins-good
+              gst-plugins-bad
+            ]);
+        });
+      })
+    ];
     hjem.users.${user} = {
       packages = builtins.attrValues {
         inherit

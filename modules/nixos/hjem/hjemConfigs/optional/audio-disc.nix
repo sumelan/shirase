@@ -7,6 +7,7 @@ _: {
     hjem.users.${user} = {
       packages = [
         pkgs.picard
+        pkgs.asunder
       ];
     };
   };

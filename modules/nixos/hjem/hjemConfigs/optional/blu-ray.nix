@@ -8,6 +8,18 @@ _: {
     # https://discourse.nixos.org/t/makemkv-cant-find-my-usb-blu-ray-drive/23714
     boot.kernelModules = ["sg"];
 
+    nixpkgs.overlays = [
+      (_final: prev: {
+        # play Blu-ray disk
+        vlc = prev.vlc.override {
+          libbluray-full = prev.libbluray.override {
+            withAACS = true;
+            withBDplus = true;
+          };
+        };
+      })
+    ];
+
     hjem.users.${user} = {
       packages = [
         pkgs.handbrake

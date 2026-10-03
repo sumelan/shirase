@@ -33,7 +33,7 @@
 
       encryption_passcommand =
         # sh
-        ''${lib.getExe pkgs.bitwarden-cli} get password Borgmatic --session roe1oRRk7db5uZch7nNA8se9Jr+1VkUuRPGGmJmuQrImhX8rr6PM2gACoMl6gLzEtmreVMxlP4LVzBnY0uzo/Q=='';
+        ''${lib.getExe pkgs.bitwarden-cli} get password Borgmatic --session K67vnWDA1NsdsP93SmXylrLBPzqa0DcIBNChNcX2FJAe/yx7DKyiY4MDCDhBvgGMwvsyym3wJGny/Ern8/Y/PQ='';
 
       zfs = {
         zfs_command = lib.getExe config.boot.zfs.package;
