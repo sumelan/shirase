@@ -1,10 +1,14 @@
 _: {
-  flake.modules.nixos.syncoid = {
+  flake.modules.nixos.syncoid = {pkgs, ...}: {
     # allow syncoid to ssh into HDDs
     users.users = {
-      "syncoid" = {
+      syncoid = {
+        isNormalUser = false; # keep it a service account...
+        group = "syncoid";
+        shell = pkgs.bashInteractive; # ...but with a real shell
         # services.syncoid automaticall set user "syncoid" as systemuser
         openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGU8XyODM1wUPrd98dItryAHIXSHKUAM2RT42UtIKhBF syncoid@omen"
         ];
       };
     };
@@ -12,8 +16,8 @@ _: {
     # sync zfs to HDDs on desktop
     services.syncoid = {
       enable = true;
-      # 23:50 daily
-      interval = "*-*-* 23:50:00";
+      # 23:14 daily
+      interval = "*-*-* 23:14:00";
     };
 
     # persist syncoid .ssh

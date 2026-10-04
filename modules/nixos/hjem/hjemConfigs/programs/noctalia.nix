@@ -181,8 +181,8 @@ _: {
             audio_visualizer = {
               color_1 = "tertiary";
               color_2 = "secondary";
-              bands = 20;
-              width = 200;
+              bands = 15;
+              width = 120;
             };
 
             bluetooth = {

@@ -10,6 +10,7 @@
         nix-secrets
         steam
         sshConfig
+        syncoid
         hjem-extended
         ;
     };

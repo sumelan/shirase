@@ -1,16 +1,9 @@
-{lib, ...}: {
-  flake.modules.nixos."hosts/sakura" = {
-    config,
-    pkgs,
-    ...
-  }: {
-    # noticeably improves throughput on slow/unstable links
-    environment.systemPackages = [pkgs.mbuffer];
-
+_: {
+  flake.modules.nixos."hosts/omen" = {config, ...}: {
     services.syncoid = {
-      commands."local-hdd" = lib.mkIf config.custom.hardware.hdds.ironWolf {
+      commands."remote" = {
         source = "zroot/persist";
-        target = "IW2T/sakura";
+        target = "syncoid@192.168.68.62:IW2T/omen";
         extraArgs = [
           "--no-sync-snap" # restrict itself to existing snapshots
           "--delete-target-snapshots" # snapshots which are missing on the source will be destroyed on the targe

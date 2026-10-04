@@ -1,5 +1,5 @@
 {lib, ...}: let
-  inherit (lib) mkOption mkIf optional;
+  inherit (lib) mkOption mkIf optional optionals;
   inherit (lib.types) bool;
 in {
   flake.modules.nixos.hdds = {config, ...}: let
@@ -36,6 +36,7 @@ in {
           };
           # mountpoint=/backups
           "IW2T" = mkIf cfg.ironWolf {
+            recursive = true;
             hourly = 3;
             daily = 10;
             weekly = 2;
@@ -46,7 +47,10 @@ in {
 
       custom.programs.btop.disks =
         optional cfg.westernDigital "/media/WD4T"
-        ++ optional cfg.ironWolf "/backups";
+        ++ optionals cfg.ironWolf [
+          "/backups/sakura"
+          "/backups/omen"
+        ];
     };
   };
 }
