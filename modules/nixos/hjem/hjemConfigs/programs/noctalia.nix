@@ -128,6 +128,8 @@ _: {
               auto_sync = true;
             };
 
+            lang = "en";
+
             launcher = {
               categories = false;
             };

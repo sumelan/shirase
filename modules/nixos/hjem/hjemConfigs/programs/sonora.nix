@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  inputs,
+  lib,
+  ...
+}: {
   flake.custom.hjemConfigs.sonora = {
     config,
     pkgs,
@@ -7,11 +11,12 @@
   }: let
     sonoraPkg = inputs.sonora.packages.${pkgs.stdenv.hostPlatform.system}.sonora;
   in {
-    hjem.users.${user} = {
-      packages = [sonoraPkg];
-
-      xdg.config.files."sonora/settings.json" = {
-        text = builtins.toJSON ({
+    hjem.users.${user}.rum = {
+      programs.sonora = {
+        enable = true;
+        package = lib.mkDefault sonoraPkg;
+        settings =
+          {
             version = 1.0;
           }
           // {
@@ -132,7 +137,7 @@
             startup = "home";
             stay_awake = true;
             tray_icon = true;
-          });
+          };
       };
     };
 

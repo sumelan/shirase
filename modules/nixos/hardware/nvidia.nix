@@ -1,8 +1,12 @@
 _: {
-  flake.modules.nixos.nvidia = _: {
+  flake.modules.nixos.nvidia = {config, ...}: {
     # set videodrivers to nvidia
     services.xserver.videoDrivers = ["nvidia"];
-    # use official drivers
-    hardware.nvidia.open = false;
+    hardware.nvidia = {
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      modesetting.enable = true; # required for Wayland
+      # use official drivers
+      open = false;
+    };
   };
 }

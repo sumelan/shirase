@@ -12,9 +12,7 @@ in {
     options.rum = {
       programs.noctalia = {
         enable = mkEnableOption "Sleek, customizable desktop shell crafted for wayland";
-
         package = mkPackageOption pkgs "noctalia" {};
-
         settings = mkOption {
           inherit (tomlFmt) type;
           default = {};

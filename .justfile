@@ -47,14 +47,14 @@ export NIXPKGS_ALLOW_UNFREE := "1"
 [group('GIT')]
 [doc('Show changes between commit and working tree.')]
 @diff:
-    git add -A
     comview watch -- git diff HEAD
+    git add -A
 
 [group('GIT')]
 [doc('Show HEAD.')]
 @show:
-    git add -A
     comview watch -- git show HEAD
+    git add -A
 
 [group('EVAL')]
 [doc('Measure eval time on each host.')]
