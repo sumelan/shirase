@@ -9,9 +9,7 @@
     options.rum = {
       programs.ghostty = {
         enable = lib.mkEnableOption "Ghostty";
-
         package = lib.mkPackageOption pkgs "ghostty" {};
-
         systemd = {
           enable = lib.mkEnableOption "The ghostty systemd user service";
         };

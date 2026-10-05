@@ -18,7 +18,7 @@
       imports = lists.flatten [
         inputs.flake-parts.flakeModules.modules
         (mkImport ./modules)
-        (mkImport ./packages)
+        (mkImport ./outputs)
       ];
       debug = true;
     };

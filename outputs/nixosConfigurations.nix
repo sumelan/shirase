@@ -36,7 +36,6 @@
             (config.flake.modules.nixos)
             core
             default
-            hjem
             ;
           hostModules = config.flake.modules.nixos."hosts/${host}";
           userModules = config.flake.modules.nixos."users/${user}";
@@ -75,6 +74,7 @@ in {
           (config.flake.modules.nixos)
           laptop
           intel
+          hjemCommon
           ;
       };
     };
@@ -84,6 +84,7 @@ in {
           (config.flake.modules.nixos)
           laptop
           intel
+          hjemCommon
           ;
       };
     };
@@ -92,6 +93,7 @@ in {
         inherit
           (config.flake.modules.nixos)
           amd
+          hjemCommon # FIXME: replace with hjemMini
           ;
       };
     };
@@ -100,6 +102,7 @@ in {
         inherit
           (config.flake.modules.nixos)
           nvidia
+          hjemCommon
           ;
       };
     };

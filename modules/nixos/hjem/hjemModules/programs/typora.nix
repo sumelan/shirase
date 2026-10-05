@@ -10,9 +10,7 @@
     options.rum = {
       programs.typora = {
         enable = lib.mkEnableOption "A minimal Markdown editor and reader.";
-
         package = lib.mkPackageOption pkgs "typora" {};
-
         advancedSettings = lib.mkOption {
           inherit (jsonFmt) type;
           default = {};

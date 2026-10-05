@@ -11,7 +11,6 @@
         steam
         sshConfig
         syncoid
-        hjem-extended
         ;
     };
 

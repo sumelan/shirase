@@ -16,9 +16,7 @@ in {
     options.rum = {
       wayland.windowManager.mango = {
         enable = mkEnableOption "Whether to enable mangowm, a Wayland compositor based on dwl.";
-
         package = mkPackageOption pkgs "mango" {};
-
         systemd = {
           enable = mkEnableOption ''
             Whether to enable {file}`mango-session.target` on mango startup.
@@ -32,7 +30,6 @@ in {
                 * {env}`NIXOS_OZONE_WL`
             You can extend this list using the `systemd.variables` option.
           '';
-
           xdgAutostart = mkEnableOption ''
             autostart of applications using {manpage}`systemd-xdg-autostart-generator(8)`
           '';

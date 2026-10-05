@@ -4,7 +4,6 @@
       inherit
         (config.flake.modules.nixos)
         gui
-        kdeconnect
         hdds
         audiobookshelf
         nix-secrets

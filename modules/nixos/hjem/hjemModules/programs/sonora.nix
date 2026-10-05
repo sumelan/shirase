@@ -17,7 +17,7 @@ in {
   in {
     options.rum = {
       programs.sonora = {
-        enable = mkEnableOption "Sonora: A native music streaming client, built with Rust and GPUI";
+        enable = mkEnableOption "A native music streaming client, built with Rust and GPUI";
         package = mkPackageOption pkgs "sonora" {};
         settings = mkOption {
           inherit (jsonFmt) type;

@@ -1,10 +1,12 @@
 {config, ...}: {
-  flake.modules.nixos.hjem-extended = _: {
+  flake.modules.nixos.hjemMini = _: {
     imports = builtins.attrValues {
       inherit
         (config.flake.custom.hjemConfigs)
-        audio-disc
-        blu-ray
+        btop
+        local
+        yazi
+        nushell
         ;
     };
   };

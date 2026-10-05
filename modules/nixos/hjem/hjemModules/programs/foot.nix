@@ -11,9 +11,7 @@ in {
     options.rum = {
       programs.foot = {
         enable = mkEnableOption "Fast, lightweight and minimalistic Wayland terminal emulator";
-
         package = mkPackageOption pkgs "foot" {};
-
         server = {
           enable = mkEnableOption "Foot terminal server";
         };

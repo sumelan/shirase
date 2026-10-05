@@ -1,5 +1,10 @@
 {lib, ...}: let
-  inherit (lib) mkOption mkIf optional optionals;
+  inherit
+    (lib)
+    mkOption
+    mkIf
+    optional
+    ;
   inherit (lib.types) bool;
 in {
   flake.modules.nixos.hdds = {config, ...}: let
@@ -47,10 +52,7 @@ in {
 
       custom.programs.btop.disks =
         optional cfg.westernDigital "/media/WD4T"
-        ++ optionals cfg.ironWolf [
-          "/backups/sakura"
-          "/backups/omen"
-        ];
+        ++ optional cfg.ironWolf "/backups";
     };
   };
 }
