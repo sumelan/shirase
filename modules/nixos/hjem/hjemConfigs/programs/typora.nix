@@ -1,33 +1,14 @@
 {lib, ...}: {
-  flake.custom.hjemConfigs.typora = {
-    config,
-    pkgs,
-    user,
-    ...
-  }: let
-    waylandTypora = pkgs.symlinkJoin {
-      name = "typora";
-      paths = [pkgs.typora];
-      nativeBuildInputs = [pkgs.makeWrapper];
-      postBuild = ''
-        wrapProgram $out/bin/typora \
-          --add-flags "--enable-features=UseOzonePlatform" \
-          --add-flags "--ozone-platform=wayland" \
-          --add-flags "--enable-wayland-ime" \
-          --add-flags "--wayland-text-input-version=3"
-      '';
-    };
-  in {
+  flake.custom.hjemConfigs.typora = {user, ...}: {
     hjem.users.${user}.rum = {
       programs.typora = {
         enable = lib.mkDefault true;
-        package = waylandTypora;
         advancedSettings = {
           defaultFontFamily = {
-            standard = config.custom.fonts.regular;
-            serif = config.custom.fonts.regular;
-            sansSerif = config.custom.fonts.regular;
-            monospace = config.custom.fonts.monospace;
+            standard = "Noto Sans CJK JP";
+            serif = "Noto Serif CJK JP";
+            sansSerif = "Noto Sans CJK JP";
+            monospace = "Noto Sans Mono CJK JP";
           };
           autoHideMenuBar = true; # Boolean - Auto hide the menu bar unless the `Alt` key is pressed. Default is false.
 
@@ -46,7 +27,12 @@
 
           monocolorEmoji = false; # default false. Only work for Windows
           maxFetchCountOnFileList = 500;
-          flags = []; # default [], append Chrome launch flags, e.g: [["disable-gpu"], ["host-rules", "MAP * 127.0.0.1"]]
+          flags = [
+            "--enable-features=UseOzonePlatform"
+            "--ozone-platform=wayland"
+            "--enable-wayland-ime"
+            "--wayland-text-input-version=3"
+          ]; # default [], append Chrome launch flags, e.g: [["disable-gpu"], ["host-rules", "MAP * 127.0.0.1"]]
         };
       };
     };

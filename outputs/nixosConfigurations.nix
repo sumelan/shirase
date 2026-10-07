@@ -65,6 +65,10 @@
       name = "mangowm";
       opt = "mango";
     })
+    (mkModules {
+      name = "nix-hazkey";
+      opt = "hazkey";
+    })
   ];
 in {
   flake.nixosConfigurations = {

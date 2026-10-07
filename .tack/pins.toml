@@ -71,4 +71,7 @@ url = "gh:nix-community/preservation"
 [inputs.sonora]
 url = "gh:sonorahq/sonora"
 
+[inputs.nix-hazkey]
+url = "gh:aster-void/nix-hazkey"
+
 

@@ -1,5 +1,13 @@
-{lib, ...}: {
-  flake.modules.nixos.amd = {config, ...}: let
+{
+  inputs,
+  lib,
+  ...
+}: {
+  flake.modules.nixos.amd = {
+    config,
+    pkgs,
+    ...
+  }: let
     kver = config.boot.kernelPackages.kernel.version;
   in {
     # cpu
@@ -20,7 +28,12 @@
     ];
 
     # gpu
-    services.xserver.videoDrivers = ["modesetting"];
+    services = {
+      xserver.videoDrivers = ["modesetting"];
+      hazkey.server.package = inputs.nix-hazkey.packages.${pkgs.stdenv.hostPlatform.system}.hazkey-server.override {
+        enableVulkan = true;
+      };
+    };
     hardware = {
       graphics = {
         enable = true;
