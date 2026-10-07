@@ -3,10 +3,7 @@
   config,
   ...
 }: let
-  inherit
-    (config.flake.custom.wrappers)
-    mkNoctalia
-    ;
+  inherit (config.flake.custom.wrappers) mkNoctalia;
 in {
   perSystem = {pkgs, ...}: {
     packages.noctalia = mkNoctalia {

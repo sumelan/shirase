@@ -43,9 +43,7 @@ in {
     in
       pkgs.writeText "nu-config" (
         (builtins.readFile ./config.nu)
-        + (builtins.readFile ./tack.nu)
-        + (builtins.readFile ./hl.nu)
-        + (builtins.readFile ./mango.nu)
+        + (builtins.readFile ./def.nu)
         + (builtins.readFile ./starship.nu)
         +
         # nu

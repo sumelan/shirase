@@ -1,3 +1,57 @@
+# ── Useful Custom Commands ────────────────────────────────────────────────────
+# Find files by name
+def ff [pattern: string] {
+    ls **/*
+    | where name =~ $pattern
+}
+
+# Show PATH as a list (much more readable)
+def show-path [] {
+    $env.PATH | each { |p| print $p }
+}
+
+# Process search shorthand
+def pg [pattern: string] {
+    ps | where name =~ $pattern
+}
+
+# List all installed packages
+def nix-list-system []: nothing -> list<string> {
+  ^nix-store -q --references /run/current-system/sw
+  | lines
+  | where { not ($in | str ends-with 'man') }
+  | each { $in | str replace -r '^[^-]*-' '' }
+  | sort
+}
+
+# ── Journalctl Commands ────────────────────────────────────────────────────
+# View journal with hl and hide all fields except MESSAGE
+def jhl [] {
+  journalctl -o json -a | hl -L --hide '*' --hide '!MESSAGE'
+}
+
+# Follow Live Logs (Streaming)
+def jhlf [] {
+  journalctl -o json -a -f | hl -P -L --hide '*' --hide '!MESSAGE'
+}
+
+# Show only error-level messages and above.
+def jhle [] {
+  journalctl -o json -a -p err | hl -L --hide '*' --hide '!MESSAGE'
+}
+
+# ── MangoWM Commands ────────────────────────────────────────────────────
+# List all clients appid
+def mlsa [] {
+  mmsg get all-clients | from json | get clients.appid
+}
+
+# List all clients title
+def mlst [] {
+  mmsg get all-clients | from json | get clients.title
+}
+
+# ── Tack Commands ────────────────────────────────────────────────────
 # Select inputs to update interactively with diff
 def tack-update-diff []: nothing -> nothing {
   let working_path = $env.NH_FLAKE | path expand

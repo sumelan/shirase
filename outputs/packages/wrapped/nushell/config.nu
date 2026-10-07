@@ -68,32 +68,6 @@ $env.config = {
     }
 
 }
-# ── Useful Custom Commands ────────────────────────────────────────────────────
-
-# Find files by name
-def ff [pattern: string] {
-    ls **/*
-    | where name =~ $pattern
-}
-
-# Show PATH as a list (much more readable)
-def show-path [] {
-    $env.PATH | each { |p| print $p }
-}
-
-# Process search shorthand
-def pg [pattern: string] {
-    ps | where name =~ $pattern
-}
-
-# List all installed packages
-def nix-list-system []: nothing -> list<string> {
-  ^nix-store -q --references /run/current-system/sw
-  | lines
-  | where { not ($in | str ends-with 'man') }
-  | each { $in | str replace -r '^[^-]*-' '' }
-  | sort
-}
 
 # ── Direnv ──────────────────────────────────────────────────────────────────────
 

@@ -1,6 +1,11 @@
 _: {
   flake.modules.nixos.syncoid = {pkgs, ...}: {
+    environment.systemPackages = [
+      pkgs.lzop # fast file compressor
+    ];
+
     # allow syncoid to ssh into HDDs
+    # NOTE: You need to allow user `syncoid` to create,destroy,mount,recieve via zfs command.
     users.users = {
       syncoid = {
         isNormalUser = false; # keep it a service account...

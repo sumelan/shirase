@@ -4,6 +4,7 @@
     mkOption
     mkIf
     optional
+    optionals
     ;
   inherit (lib.types) bool;
 in {
@@ -52,7 +53,10 @@ in {
 
       custom.programs.btop.disks =
         optional cfg.westernDigital "/media/WD4T"
-        ++ optional cfg.ironWolf "/backups";
+        ++ optionals cfg.ironWolf [
+          "/backups/sakura"
+          "/backups/omen"
+        ];
     };
   };
 }
