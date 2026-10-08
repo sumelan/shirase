@@ -39,7 +39,7 @@ _: {
     x = 2;
     y = 2;
   };
-  shadowscolor = "0x000000ff";
+  shadows_color = "0x000000ff";
   shadow_only_floating = 0;
 
   cursor_theme = "Capitaine Cursors (Palenight)";

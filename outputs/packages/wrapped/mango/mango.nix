@@ -12,13 +12,9 @@
   inherit (config.flake.custom.functions) printConfig;
   mlib = import (inputs.mangowm + "/nix/lib.nix") lib;
 in {
-  perSystem = {pkgs, ...}: let
-    extraConfig = ''
-      source-optional = ~/.config/mango/noctalia.conf
-    '';
-  in {
+  perSystem = {pkgs, ...}: {
     packages.mango = mkMango {
-      inherit pkgs extraConfig;
+      inherit pkgs;
       pkg = inputs.mangowm.packages.${pkgs.stdenv.hostPlatform.system}.default;
     };
   };
@@ -39,7 +35,8 @@ in {
         // (import ./_bindings.nix {inherit lib;})
         // (import ./_config.nix {inherit lib;})
         // (import ./_visuals.nix {})
-        // (import ./_window.nix {inherit lib;});
+        // (import ./_window.nix {inherit lib;})
+        // (import ./_theming.nix {});
 
       finalConfigText =
         (

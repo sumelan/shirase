@@ -6,15 +6,15 @@
     |> concatStringsSep ","
     |> singleton;
 in {
-  windowrule = let
+  window_rule = let
     # Floating
-    fa = {opt ? ""}: id: rule "isfloating:1${opt}" "appid:${id}";
-    ft = {opt ? ""}: title: rule "isfloating:1${opt}" "title:${title}";
+    fa = {opt ? ""}: id: rule "is_floating:1${opt}" "app_id:${id}";
+    ft = {opt ? ""}: title: rule "is_floating:1${opt}" "title:${title}";
     # Named Scratchpad
-    na = {opt ? ""}: id: rule "isnamedscratchpad:1${opt}" "appid:${id}";
-    nt = {opt ? ""}: title: rule "isnamedscratchpad:1${opt}" "appid:${title}";
+    na = {opt ? ""}: id: rule "is_named_scratchpad:1${opt}" "app_id:${id}";
+    nt = {opt ? ""}: title: rule "is_named_scratchpad:1${opt}" "app_id:${title}";
     # Special worksapce
-    ta = {opt ? ""}: id: rule "tags:0" "appid:${id}";
+    ta = {opt ? ""}: id: rule "tags:0" "app_id:${id}";
     tt = {opt ? ""}: title: rule "tags:0" "title:${title}";
   in
     # just floating
@@ -72,7 +72,7 @@ in {
         ''^footclient$''
       ]);
 
-  tagrule = let
+  tag_rule = let
     layout = num: name: rule "id:${toString num}" "layout_name:${name}";
   in
     (map (tags: layout tags "dwindle" |> toString)

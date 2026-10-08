@@ -19,9 +19,9 @@
     "type": "github",
     "owner": "feel-co",
     "repo": "hjem",
-    "rev": "cef02450f2c18a7e2b9297ea8d366f9a597254f7",
-    "narHash": "sha256-tycoVCB2KSVdy9ERT1lJGHdP9Hf4FHanaEY25hUxylw=",
-    "lastModified": 1790081753
+    "rev": "2b155694ce412300f240de06735c93779f9e19a4",
+    "narHash": "sha256-JdmZVrzGDRRcOAwsYujnE7f/d1YZ9Xtk4z/1MWmQXxM=",
+    "lastModified": 1791289048
   },
   "hl": {
     "type": "github",
@@ -43,9 +43,9 @@
     "type": "github",
     "owner": "mangowm",
     "repo": "mango",
-    "rev": "8e6cd05854ecc82a163c9215efa3ee718242f239",
-    "narHash": "sha256-WH2lJG4of+d2sbn7i+ybQwZys4F9VMItuBn5MQ6btXU=",
-    "lastModified": 1791016816
+    "rev": "b7a40b6c32530598e38423c96474125acc779f8a",
+    "narHash": "sha256-epLwp8wAVfZ9KN3QGtrum4vD5161GkyQklH6BYYvwuo=",
+    "lastModified": 1791438675
   },
   "my-secrets": {
     "type": "git",
@@ -67,9 +67,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "nix-index-database",
-    "rev": "161d7c91accd93034bb3c295224d9d895a778573",
-    "narHash": "sha256-Gbf/U9ptJhQh0qnDnJ/+a8MAcq1HXunbArUTHR2wNYk=",
-    "lastModified": 1790499302
+    "rev": "e740bc4e9d8918d7819a51486d5099930c65c72e",
+    "narHash": "sha256-oTM7QFgRQ+vxBpMBMc7hEYpqBtpXAzXu2xuB/tru84U=",
+    "lastModified": 1791105314
   },
   "nix-secrets": {
     "type": "github",
@@ -99,9 +99,9 @@
     "type": "github",
     "owner": "notashelf",
     "repo": "nvf",
-    "rev": "2477cb0a5f394df36ddc72867c2657225d93d157",
-    "narHash": "sha256-H2vA5yUaS58Wtdp46piMbRqSQe3Qn716i/oZPYoyhp8=",
-    "lastModified": 1790797021
+    "rev": "b5a8011df7e743d5bd992d25983d548f99e9ff83",
+    "narHash": "sha256-GBC/HfZM1Bh5dM/B0csBr8YoVGk3DTmCF/Qx646kThE=",
+    "lastModified": 1791215772
   },
   "preservation": {
     "type": "github",
@@ -115,9 +115,9 @@
     "type": "github",
     "owner": "sonorahq",
     "repo": "sonora",
-    "rev": "9f6567874582749b675a59ee705a8447191da6b6",
-    "narHash": "sha256-RDh/GgVwYk1C10ZlalX0GwYHxlb4Jrab5Wob3sNyNWk=",
-    "lastModified": 1790968365
+    "rev": "8c382f175308021d85e0c25ef74bb2c174ec396e",
+    "narHash": "sha256-yiunj91zUkRhxF7esHRzSrygPGp18kRpZfGBaqCcc7U=",
+    "lastModified": 1791402440
   },
   "swash": {
     "type": "github",

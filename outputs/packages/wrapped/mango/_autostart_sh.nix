@@ -21,7 +21,7 @@
     "${lib.getExe pkgs.brightnessctl} set 10%"
   ];
 in {
-  exec-once =
+  exec_once =
     [
       "${lib.getExe' pkgs.dbus "dbus-update-activation-environment"} --systemd ${variables}"
       "${lib.getExe' pkgs.systemd "systemctl"} --user reset-failed"

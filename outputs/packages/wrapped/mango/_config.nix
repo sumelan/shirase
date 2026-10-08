@@ -7,7 +7,7 @@
     ;
 in {
   # monitor
-  monitorrule = let
+  monitor_rule = let
     monitor = {
       name, # ",make:foo,model:bar"
       width,
@@ -78,10 +78,10 @@ in {
   special = {
     dim = 0.5; # Background dim level when special workspace is active (0.0 to 1.0, default 0.5)
     # Inner and outer gaps for windows on the special workspace
-    gappih = 10;
-    gappiv = 10;
-    gappoh = 160;
-    gappov = 80;
+    gap_inner_horizontal = 10;
+    gap_inner_vertical = 10;
+    gap_outer_horizontal = 160;
+    gap_outer_vertical = 80;
   };
 
   # system
