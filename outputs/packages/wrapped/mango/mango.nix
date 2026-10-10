@@ -1,7 +1,6 @@
 {
   inputs,
   config,
-  lib,
   ...
 }: let
   inherit
@@ -10,7 +9,7 @@
     mkMangoConfig
     ;
   inherit (config.flake.custom.functions) printConfig;
-  mlib = import (inputs.mangowm + "/nix/lib.nix") lib;
+  inherit (config.flake.custom.lib.recursiveMerge {}) attrsList;
 in {
   perSystem = {pkgs, ...}: {
     packages.mango = mkMango {
@@ -30,15 +29,18 @@ in {
       bottomPrefixes ? [],
       extraConfig ? "",
     }: let
-      settings =
+      inherit (pkgs) lib;
+      settings = attrsList [
         (import ./_autostart_sh.nix {inherit lib pkgs;})
-        // (import ./_bindings.nix {inherit lib;})
-        // (import ./_config.nix {inherit lib;})
-        // (import ./_visuals.nix {})
-        // (import ./_window.nix {inherit lib;})
-        // (import ./_theming.nix {});
-
-      finalConfigText =
+        (import ./_bindings.nix {inherit lib;})
+        (import ./_config.nix {inherit lib;})
+        (import ./_visuals.nix {})
+        (import ./_window.nix {inherit lib;})
+        (import ./_theming.nix {})
+      ];
+      finalConfigText = let
+        mlib = import (inputs.mangowm + "/nix/lib.nix") lib;
+      in
         (
           mlib.toMango {
             topCommandsPrefixes = topPrefixes;

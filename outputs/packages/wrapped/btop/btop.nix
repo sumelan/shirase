@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{config, ...}: let
   inherit (config.flake.custom.functions) printConfig;
 in {
   perSystem = {pkgs, ...}: {
@@ -11,27 +7,28 @@ in {
     };
   };
 
-  flake.custom.wrappers = let
-    toBtopConf = lib.generators.toKeyValue {
-      mkKeyValue = lib.generators.mkKeyValueDefault {
-        mkValueString = v:
-          if builtins.isBool v
-          then
-            (
-              if v
-              then "True"
-              else "False"
-            )
-          else if builtins.isString v
-          then ''"${v}"''
-          else toString v;
-      } " = ";
-    };
-  in {
+  flake.custom.wrappers = {
     mkBtopConfig = {
       pkgs,
       extraConfig ? {},
-    }:
+    }: let
+      inherit (pkgs) lib;
+      toBtopConf = lib.generators.toKeyValue {
+        mkKeyValue = lib.generators.mkKeyValueDefault {
+          mkValueString = v:
+            if builtins.isBool v
+            then
+              (
+                if v
+                then "True"
+                else "False"
+              )
+            else if builtins.isString v
+            then ''"${v}"''
+            else toString v;
+        } " = ";
+      };
+    in
       pkgs.writeTextFile {
         name = "wrapped-btop.conf";
         text = toBtopConf (import ./_config.nix {} // extraConfig);

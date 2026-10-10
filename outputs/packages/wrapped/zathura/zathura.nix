@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{config, ...}: let
   inherit (config.flake.custom.functions) printConfig;
 in {
   perSystem = {pkgs, ...}: let
@@ -23,25 +19,26 @@ in {
     };
   };
 
-  flake.custom.wrappers = let
-    formatLine = n: v: let
-      formatValue = v:
-        if lib.isBool v
-        then
-          (
-            if v
-            then "true"
-            else "false"
-          )
-        else toString v;
-    in ''set ${n}	"${formatValue v}"'';
-
-    formatMapLine = n: v: "map ${n}   ${toString v}";
-  in {
+  flake.custom.wrappers = {
     mkZathuraConfig = {
       pkgs,
       extraConfig ? "",
-    }:
+    }: let
+      inherit (pkgs) lib;
+      formatLine = n: v: let
+        formatValue = v:
+          if lib.isBool v
+          then
+            (
+              if v
+              then "true"
+              else "false"
+            )
+          else toString v;
+      in ''set ${n}	"${formatValue v}"'';
+
+      formatMapLine = n: v: "map ${n}   ${toString v}";
+    in
       pkgs.writeTextFile {
         name = "zathura";
         destination = "/zathurarc";

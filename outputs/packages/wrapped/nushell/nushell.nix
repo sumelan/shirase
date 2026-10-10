@@ -1,7 +1,6 @@
 {
   inputs,
   config,
-  lib,
   ...
 }: let
   inherit
@@ -31,6 +30,7 @@ in {
       extraAliases ? {},
       extraConfig ? "",
     }: let
+      inherit (pkgs) lib;
       inherit
         (config.flake.custom.userModules.shellAliases)
         basic
@@ -63,6 +63,7 @@ in {
       env ? {},
       extraConfig ? "",
     }: let
+      inherit (pkgs) lib;
       completions =
         # nu
         ''

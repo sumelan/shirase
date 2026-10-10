@@ -1,5 +1,5 @@
 {lib, ...}: let
-  inherit (lib) concatStringsSep singleton range;
+  inherit (lib) concatStringsSep singleton;
 
   rule = param: values:
     [param values]
@@ -75,10 +75,8 @@ in {
   tag_rule = let
     layout = num: name: rule "id:${toString num}" "layout_name:${name}";
   in
-    (map (tags: layout tags "dwindle" |> toString)
-      <| range 1 4)
-    ++ (map (tags: layout tags "scroller" |> toString)
-      <| [0] ++ range 6 9)
+    (map (tags: layout tags "scroller" |> toString)
+      <| [0 1 2 3 4 6 7 8 9])
     ++ (map (tags: layout tags "monocle" |> toString)
       <| [5]);
 }

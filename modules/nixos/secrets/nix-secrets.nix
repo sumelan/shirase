@@ -1,8 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}: {
+{inputs, ...}: {
   flake.modules.nixos.nix-secrets = {
     config,
     user,
@@ -30,21 +26,13 @@
           '';
         };
       };
-      secrets =
-        {
-          "access-tokens/github" = {
-            mode = "0660";
-            owner = user;
-            group = "users";
-          };
-        }
-        // (lib.optionalAttrs config.services.syncthing.enable {
-          "syncthing/gui-password" = {
-            mode = "0440";
-            owner = config.services.syncthing.user;
-            inherit (config.services.syncthing) group;
-          };
-        });
+      secrets = {
+        "access-tokens/github" = {
+          mode = "0660";
+          owner = user;
+          group = "users";
+        };
+      };
     };
   };
 }

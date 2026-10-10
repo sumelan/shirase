@@ -46,7 +46,7 @@ _: {
               capsule_opacity = 0.50;
               capsule_padding = 10.0;
               center = ["nightlight" "clock" "caffeine"];
-              end = ["group:g2" "group:g1" "battery"];
+              end = ["group:g2" "group:g1"];
               font_family = config.custom.fonts.monospace;
               icon_color = "hover";
               margin_ends = 0;
@@ -61,16 +61,18 @@ _: {
                 {
                   accordion = false;
                   accordion_direction = "end";
+                  border_width = 1.0;
                   enabled = true;
                   fill = "surface_variant";
                   id = "g1";
-                  members = ["volume" "brightness"];
+                  members = ["volume" "brightness" "battery"];
                   opacity = 0.5;
                   padding = 10.0;
                 }
                 {
                   accordion = false;
                   accordion_direction = "end";
+                  border_width = 1.0;
                   enabled = true;
                   fill = "surface_variant";
                   id = "g2";
@@ -185,10 +187,19 @@ _: {
               width = 120;
             };
 
+            battery = {
+              icon_color = "primary";
+            };
+
             bluetooth = {
               font_family = config.custom.fonts.monospace;
+              icon_color = "tertiary";
               hide_when_no_connected_device = true;
               show_label = true;
+            };
+
+            brightness = {
+              icon_color = "primary";
             };
 
             caffeine = {
@@ -217,6 +228,7 @@ _: {
 
             network = {
               font_family = config.custom.fonts.monospace;
+              icon_color = "tertiary";
               show_label = true;
               show_vpn_label = true;
             };
@@ -248,7 +260,12 @@ _: {
 
             tray = {
               font_family = config.custom.fonts.monospace;
+              icon_color = "tertiary";
               hidden = ["blueman" "nm-applet" "fcitx5"];
+            };
+
+            volume = {
+              icon_color = "primary";
             };
 
             workspaces = {

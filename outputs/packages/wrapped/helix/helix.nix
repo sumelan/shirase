@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{config, ...}: let
   inherit (config.flake.custom.wrappers) mkHelixConfig mkHelixLanguages;
   inherit (config.flake.custom.functions) printConfig;
 in {
@@ -16,7 +12,9 @@ in {
     mkHelixLanguages = {
       pkgs,
       extraLang,
-    }:
+    }: let
+      inherit (pkgs) lib;
+    in
       pkgs.writers.writeTOML "helix-languages" (
         lib.recursiveUpdate
         (import ./_languages.nix {inherit pkgs lib;})
@@ -26,7 +24,9 @@ in {
     mkHelixConfig = {
       pkgs,
       extraCfg,
-    }:
+    }: let
+      inherit (pkgs) lib;
+    in
       pkgs.writers.writeTOML "helix-config" (
         lib.recursiveUpdate
         (import ./_config.nix {})

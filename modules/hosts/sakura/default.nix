@@ -9,7 +9,6 @@
         nix-secrets
         syncoid
         borgmatic
-        #  syncthing
         sshConfig
         ;
     };

@@ -6,7 +6,6 @@
         gui
         kdeconnect
         nix-secrets
-        #     syncthing
         sshConfig
         ;
     };

@@ -1,12 +1,9 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{config, ...}: let
   inherit (config.flake.custom.wrappers) mkGhosttyConfig;
   inherit (config.flake.custom.functions) printConfig;
 in {
   perSystem = {pkgs, ...}: let
+    inherit (pkgs) lib;
     pkg = pkgs.ghostty;
     extraConfig = {
       shell-integration = "nushell";
@@ -40,6 +37,7 @@ in {
       extraConfig ? {},
       extraBinds ? {},
     }: let
+      inherit (pkgs) lib;
       cfg = import ./_config.nix {};
       binds = import ./_binds.nix {};
 
@@ -56,6 +54,7 @@ in {
       extraConfig ? {},
       extraBinds ? {},
     }: let
+      inherit (pkgs) lib;
       cfg = mkGhosttyConfig {inherit pkgs extraConfig extraBinds;};
 
       printCfg = printConfig {

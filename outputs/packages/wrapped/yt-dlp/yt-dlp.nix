@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{config, ...}: let
   inherit (config.flake.custom.functions) printConfig;
 in {
   perSystem = {pkgs, ...}: {
@@ -11,40 +7,41 @@ in {
     };
   };
 
-  flake.custom.wrappers = let
-    singleOption = name: value: let
-      isShort = builtins.stringLength name == 1;
-      prefix =
-        if isShort
-        then "-"
-        else "--";
-    in
-      if lib.isBool value
-      then
-        if value
-        then "${prefix}${name}"
-        else if isShort
-        then ""
-        else "--no-${name}"
-      else "${prefix}${name} ${toString value}";
-
-    toYtdlpConf = settings:
-      lib.pipe settings [
-        (lib.mapAttrsToList (
-          name: value:
-            if lib.isList value
-            then (map (singleOption name) value)
-            else [(singleOption name value)]
-        ))
-        builtins.concatLists
-        (lib.remove "")
-        (lib.concatStringsSep "\n")
-      ];
-  in {
+  flake.custom.wrappers = {
     mkYtdlpConfig = {
       pkgs,
       extraConfig ? {},
-    }:
+    }: let
+      inherit (pkgs) lib;
+      singleOption = name: value: let
+        isShort = builtins.stringLength name == 1;
+        prefix =
+          if isShort
+          then "-"
+          else "--";
+      in
+        if lib.isBool value
+        then
+          if value
+          then "${prefix}${name}"
+          else if isShort
+          then ""
+          else "--no-${name}"
+        else "${prefix}${name} ${toString value}";
+
+      toYtdlpConf = settings:
+        lib.pipe settings [
+          (lib.mapAttrsToList (
+            name: value:
+              if lib.isList value
+              then (map (singleOption name) value)
+              else [(singleOption name value)]
+          ))
+          builtins.concatLists
+          (lib.remove "")
+          (lib.concatStringsSep "\n")
+        ];
+    in
       pkgs.writeTextFile {
         name = "yt-dlp.conf";
         text = toYtdlpConf (import ./_config.nix {} // extraConfig);

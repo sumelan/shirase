@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{config, ...}: let
   inherit (config.flake.custom.functions) printConfig;
 in {
   perSystem = {pkgs, ...}: let
@@ -23,6 +19,7 @@ in {
       pkgs,
       extraConfig ? {},
     }: let
+      inherit (pkgs) lib;
       iniFmt = pkgs.formats.ini {listsAsDuplicateKeys = true;};
       cfg = import ./_config.nix {};
     in
