@@ -1,12 +1,5 @@
 {lib, ...}: {
-  flake.modules.nixos."hosts/sakura" = {
-    config,
-    pkgs,
-    ...
-  }: {
-    # noticeably improves throughput on slow/unstable links
-    environment.systemPackages = [pkgs.mbuffer];
-
+  flake.modules.nixos."hosts/sakura" = {config, ...}: {
     services.syncoid = {
       commands."local-hdd" = lib.mkIf config.custom.hardware.hdds.ironWolf {
         source = "zroot/persist";

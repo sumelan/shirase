@@ -1,8 +1,12 @@
 _: {
   flake.modules.nixos.syncoid = {pkgs, ...}: {
-    environment.systemPackages = [
-      pkgs.lzop # fast file compressor
-    ];
+    environment.systemPackages = builtins.attrValues {
+      inherit
+        (pkgs)
+        lzop # fast file compressor
+        mbuffer # noticeably improves throughput on slow/unstable links
+        ;
+    };
 
     # allow syncoid to ssh into HDDs
     # NOTE: You need to allow user `syncoid` to create,destroy,mount,recieve via zfs command.
