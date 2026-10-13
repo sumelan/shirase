@@ -1,4 +1,4 @@
-_: {
+{lib, ...}: {
   flake.modules.nixos.syncoid = {pkgs, ...}: {
     environment.systemPackages = builtins.attrValues {
       inherit
@@ -26,7 +26,7 @@ _: {
     services.syncoid = {
       enable = true;
       # 23:14 daily
-      interval = "*-*-* 23:14:00";
+      interval = lib.mkDefault "*-*-* 23:14:00";
     };
 
     # persist syncoid .ssh
