@@ -63,8 +63,8 @@ in {
     in
       pkgs.symlinkJoin {
         name = "yt-dlp";
-        paths = [pkgs.yt-dlp];
-        nativeBuildInputs = [pkgs.makeWrapper];
+        paths = with pkgs; [yt-dlp];
+        nativeBuildInputs = with pkgs; [makeWrapper];
         postBuild = ''
           cp -r ${printCfg}/bin $out
 

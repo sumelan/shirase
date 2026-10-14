@@ -16,7 +16,7 @@ in {
         };
         monospace = mkOption {
           type = str;
-          default = "0xProto Nerd Font";
+          default = "Maple Mono NF";
           description = "The font to use for monospace text";
         };
         packages = mkOption {
@@ -32,12 +32,15 @@ in {
         inherit (config.custom.fonts) packages;
       };
 
-      custom.fonts.packages = [
-        pkgs.noto-fonts
-        pkgs.noto-fonts-cjk-sans
-        pkgs.noto-fonts-color-emoji
-        pkgs.nerd-fonts._0xproto
-      ];
+      custom.fonts.packages = builtins.attrValues {
+        inherit
+          (pkgs)
+          noto-fonts
+          noto-fonts-cjk-sans
+          noto-fonts-color-emoji
+          ;
+        monospace = pkgs.maple-mono.NF-unhinted;
+      };
     };
   };
 }

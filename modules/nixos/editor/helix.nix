@@ -14,23 +14,6 @@ in {
   }: let
     inherit (config.networking) hostName;
 
-    pkg = pkgs.helix;
-
-    extraCfg = {
-      # use yazi as file tree picker
-      # https://yazi-rs.github.io/docs/tips/#helix
-      keys.normal = {
-        "C-y" = [
-          '':sh rm -f /tmp/unique-ca1ea106''
-          '':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-ca1ea106''
-          '':sh printf "\x1b[?1049h\x1b[?2004h" > /dev/tty''
-          '':open %sh{cat /tmp/unique-ca1ea106}''
-          '':redraw''
-          '':set mouse false''
-          '':set mouse true''
-        ];
-      };
-    };
     extraLang = {
       language-server.nixd.config.nixd = let
         inputs =
@@ -58,7 +41,7 @@ in {
   in {
     environment = {
       systemPackages = [
-        (mkHelix {inherit pkgs pkg extraCfg extraLang;})
+        (mkHelix {inherit pkgs extraLang;})
       ];
     };
 

@@ -33,8 +33,8 @@ in {
     in
       pkgs.symlinkJoin {
         name = "pqiv";
-        paths = [pkgs.pqiv];
-        nativeBuildInputs = [pkgs.makeWrapper];
+        paths = with pkgs; [pqiv];
+        nativeBuildInputs = with pkgs; [makeWrapper];
         postBuild = ''
           cp -r ${printCfg}/bin $out
 

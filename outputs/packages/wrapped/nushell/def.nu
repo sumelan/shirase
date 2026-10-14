@@ -1,4 +1,5 @@
 # ── Useful Custom Commands ────────────────────────────────────────────────────
+
 # Find files by name
 def ff [pattern: string] {
     ls **/*
@@ -25,6 +26,7 @@ def nix-list-system []: nothing -> list<string> {
 }
 
 # ── Journalctl Commands ────────────────────────────────────────────────────
+
 # View journal with hl and hide all fields except MESSAGE
 def jhl [] {
   journalctl -o json -a | hl -L --hide '*' --hide '!MESSAGE'
@@ -41,6 +43,7 @@ def jhle [] {
 }
 
 # ── MangoWM Commands ────────────────────────────────────────────────────
+
 # List all clients appid
 def mlsa [] {
   mmsg get all-clients | from json | get clients.appid

@@ -54,7 +54,7 @@ in {
       pkgs.symlinkJoin {
         name = "btop";
         paths = [pkg];
-        nativeBuildInputs = [pkgs.makeWrapper];
+        nativeBuildInputs = with pkgs; [makeWrapper];
         postBuild = ''
           cp -r ${printCfg}/bin $out
 

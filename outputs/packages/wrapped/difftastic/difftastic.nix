@@ -9,8 +9,8 @@
     mkDifftastic = {pkgs}:
       pkgs.symlinkJoin {
         name = "difft";
-        paths = [pkgs.difftastic];
-        nativeBuildInputs = [pkgs.makeWrapper];
+        paths = with pkgs; [difftastic];
+        nativeBuildInputs = with pkgs; [makeWrapper];
         postBuild = ''
           wrapProgram $out/bin/difft \
             --add-flags "--background dark"

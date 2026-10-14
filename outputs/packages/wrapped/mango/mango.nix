@@ -69,22 +69,19 @@ in {
       runtimeEnv = pkgs.buildEnv {
         name = "mango-runtime-env";
         pathsToLink = ["/bin"];
-        paths =
-          builtins.attrValues {
-            inherit
-              (pkgs)
-              xdg-desktop-portal-wlr
-              capitaine-cursors-themed
-              brightnessctl
-              libnotify
-              playerctl
-              ;
-            inherit
-              (local)
-              noctalia
-              foot
-              ;
-          }
+        paths = with pkgs;
+          [
+            xdg-desktop-portal-wlr
+            capitaine-cursors-themed
+            brightnessctl
+            libnotify
+            playerctl
+          ]
+          ++ (with local; [
+            ns
+            noctalia
+            ghostty
+          ])
           ++ extraRuntimeInputs;
       };
 

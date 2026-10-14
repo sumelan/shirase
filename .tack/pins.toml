@@ -47,9 +47,6 @@ url = "gh:notashelf/nvf"
 [inputs.nixos-plymouth]
 url = "gh:BeatLink/nixos-plymouth"
 
-[inputs.swash]
-url = "gh:ItsLemmy/swash"
-
 [inputs.comview]
 url = "gh:sumelan/comview/flake"
 

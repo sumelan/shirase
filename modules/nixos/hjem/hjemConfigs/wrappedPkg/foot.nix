@@ -13,15 +13,11 @@
     hjem.users.${user} = {
       rum = {
         programs.foot = {
-          enable = lib.mkDefault true;
+          enable = lib.mkDefault false;
           package = local.foot;
           server.enable = true;
         };
       };
-    };
-
-    environment.sessionVariables = {
-      TERMINAL = "foot";
     };
   };
 }

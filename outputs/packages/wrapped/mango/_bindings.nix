@@ -78,10 +78,9 @@ in {
     ++ dispatch {mods = "SUPER+CTRL";} "S" "tag_special_silent" # Silently send active window to the special workspace without switching
     # Execute
     ## Main programs
-    ++ spawn {mods = "SUPER";} "Return" "footclient"
-    ++ spawn {mods = "SUPER+SHIFT";} "Return" "footclient --app-id app.nvim nvim"
-    ++ spawn {mods = "SUPER+SHIFT";} "N" "footclient --app-id app.ns ns"
-    ++ spawn {mods = "SUPER+SHIFT";} "Y" "footclient --app-id app.yazi yazi"
+    ++ spawn {mods = "SUPER";} "Return" "ghostty +new-window"
+    ++ spawn {mods = "SUPER+SHIFT";} "Return" "ghostty --class=app.nvim -e nvim"
+    ++ spawn {mods = "SUPER+SHIFT";} "N" "ghostty --class=app.ns -e ns"
     ++ spawn {mods = "SUPER";} "B" "brave-origin"
     ## Noctalia
     ++ spawn {mods = "SUPER";} "Space" "noctalia msg panel-toggle launcher"

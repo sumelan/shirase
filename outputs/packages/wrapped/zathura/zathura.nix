@@ -68,8 +68,8 @@ in {
     in
       pkgs.symlinkJoin {
         name = "zathura";
-        paths = [pkgs.zathura];
-        nativeBuildInputs = [pkgs.makeWrapper];
+        paths = with pkgs; [zathura];
+        nativeBuildInputs = with pkgs; [makeWrapper];
         postBuild = ''
           cp -r ${printCfg}/bin $out
 

@@ -29,8 +29,8 @@ in {
     in
       pkgs.symlinkJoin {
         name = "starship";
-        paths = [pkgs.starship];
-        nativeBuildInputs = [pkgs.makeWrapper];
+        paths = with pkgs; [starship];
+        nativeBuildInputs = with pkgs; [makeWrapper];
         postBuild = ''
           cp -r ${printCfg}/bin $out
 

@@ -29,8 +29,8 @@ in {
     in
       pkgs.symlinkJoin {
         name = "rg";
-        paths = [pkgs.ripgrep];
-        nativeBuildInputs = [pkgs.makeWrapper];
+        paths = with pkgs; [ripgrep];
+        nativeBuildInputs = with pkgs; [makeWrapper];
         postBuild = ''
           cp -r ${printCfg}/bin $out
 

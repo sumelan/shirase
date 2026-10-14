@@ -42,10 +42,6 @@ in {
           OOMPolicy = "continue";
         };
       };
-
-      xdg.mime-apps.default-applications = {
-        "x-scheme-handler/terminal" = "footclient.desktop";
-      };
     };
   };
 }

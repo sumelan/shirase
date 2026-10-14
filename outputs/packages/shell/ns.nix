@@ -2,9 +2,9 @@ _: {
   perSystem = {pkgs, ...}: {
     packages.ns = pkgs.writeShellApplication {
       name = "ns";
-      runtimeInputs = [
-        pkgs.fzf
-        pkgs.nix-search-tv
+      runtimeInputs = with pkgs; [
+        fzf
+        nix-search-tv
       ];
       checkPhase = "";
       text = ''

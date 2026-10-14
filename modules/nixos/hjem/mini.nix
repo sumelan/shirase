@@ -5,7 +5,6 @@
         (config.flake.custom.hjemConfigs)
         btop
         local
-        yazi
         nushell
         ;
     };

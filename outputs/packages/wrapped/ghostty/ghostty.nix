@@ -4,7 +4,6 @@
 in {
   perSystem = {pkgs, ...}: let
     inherit (pkgs) lib;
-    pkg = pkgs.ghostty;
     extraConfig = {
       shell-integration = "nushell";
       theme = "Catppuccin Frappe";
@@ -26,7 +25,7 @@ in {
   in {
     packages = {
       ghostty = config.flake.custom.wrappers.mkGhostty {
-        inherit pkg pkgs extraConfig;
+        inherit pkgs extraConfig;
       };
     };
   };
@@ -103,7 +102,7 @@ in {
       pkgs.symlinkJoin {
         name = "ghostty";
         paths = [pkg];
-        nativeBuildInputs = [pkgs.makeWrapper];
+        nativeBuildInputs = with pkgs; [makeWrapper];
         postBuild = ''
           cp -r ${printCfg}/bin $out
 

@@ -35,7 +35,6 @@ in {
 
     mkHelix = {
       pkgs,
-      pkg ? pkgs.helix,
       extraRuntimeInputs ? [],
       extraCfg ? {},
       extraLang ? {},
@@ -43,28 +42,23 @@ in {
       runtimeEnv = pkgs.buildEnv {
         name = "helix-runtime-env";
         pathsToLink = ["/bin"];
-
-        paths = builtins.attrValues ({
-            inherit
-              (pkgs)
-              # Nix
-              alejandra
-              nixd
-              # Rust
-              rust-analyzer
-              rustfmt
-              # Python
-              ruff
-              basedpyright
-              # Yaml/json
-              biome
-              yaml-language-server
-              vscode-json-languageserver
-              ;
-          }
-          // {
-            inherit extraRuntimeInputs;
-          });
+        paths = with pkgs;
+          [
+            # Nix
+            alejandra
+            nixd
+            # Rust
+            rust-analyzer
+            rustfmt
+            # Python
+            ruff
+            basedpyright
+            # Yaml/json
+            biome
+            yaml-language-server
+            vscode-json-languageserver
+          ]
+          ++ extraRuntimeInputs;
       };
 
       cfg = mkHelixConfig {inherit pkgs extraCfg;};
@@ -85,7 +79,7 @@ in {
     in
       pkgs.symlinkJoin {
         name = "hx";
-        paths = [pkg];
+        paths = with pkgs; [helix];
         nativeBuildInputs = [pkgs.makeWrapper];
         postBuild = ''
           cp -r ${printCfg}/bin $out

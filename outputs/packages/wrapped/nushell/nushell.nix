@@ -64,6 +64,7 @@ in {
       extraConfig ? "",
     }: let
       inherit (pkgs) lib;
+      local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
       completions =
         # nu
         ''
@@ -80,13 +81,25 @@ in {
           }
         '';
 
+      broot =
+        # nu
+        ''
+          source ${
+            pkgs.runCommand "br.nu" {} ''
+              # broot >= 1.51 exports `main` instead of `br`.
+              # Rename back to `br` to keep `source` working.
+              ${lib.getExe local.broot} --print-shell-function nushell | sed 's/export def --env main/export def --env br/' > $out
+            ''
+          }
+        '';
+
       envAttrs =
         (lib.concatStringsSep "\n" (
           lib.mapAttrsToList (k: v: "$env.${k} = ${builtins.toJSON v}") env
         ))
         + "\n";
     in
-      pkgs.writeText "nu-env-config" (envAttrs + completions + zoxide + extraConfig);
+      pkgs.writeText "nu-env-config" (envAttrs + completions + zoxide + broot + extraConfig);
 
     mkNushell = {
       pkgs,
@@ -104,39 +117,36 @@ in {
       runtimeEnv = pkgs.buildEnv {
         name = "nushell-runtime-env";
         pathsToLink = ["/bin"];
-
-        paths =
-          builtins.attrValues {
-            inherit
-              (pkgs)
-              # Shell
-              direnv
-              nix-direnv
-              starship
-              # Command Line
-              fd
-              fzf
-              # Git
-              git
-              lazygit
-              # Pager
-              ov
-              ;
-            inherit
-              (local)
-              bat
-              eza
-              eza-tree
-              ripgrep
-              difftastic
-              yt-dlp
-              ;
-            inherit
-              comview
-              hl
-              inshellah
-              ;
-          }
+        paths = with pkgs;
+          [
+            # Shell
+            direnv
+            nix-direnv
+            starship
+            # Command Line
+            fd
+            fzf
+            # Git
+            git
+            lazygit
+            # Pager
+            ov
+          ]
+          ++ (with local; [
+            bat
+            broot
+            eza
+            eza-tree
+            ns
+            ripgrep
+            difftastic
+            yt-dlp
+          ])
+          ++ [
+            comview
+            hl
+            inshellah
+          ]
           ++ extraRuntimeInputs;
       };
 
@@ -156,8 +166,8 @@ in {
     in
       pkgs.symlinkJoin {
         name = "nu";
-        paths = [pkgs.nushell];
-        nativeBuildInputs = [pkgs.makeWrapper];
+        paths = with pkgs; [nushell];
+        nativeBuildInputs = with pkgs; [makeWrapper];
         postBuild = ''
           cp -r ${printCfg}/bin $out
           cp -r ${printEnv}/bin $out

@@ -29,7 +29,6 @@ in {
       <| [
         ''^org\.gnome\.Nautilus$''
         ''^xdg-desktop-portal-gtk$''
-        ''^app\.yazi$''
       ])
     # floating and fixed window
     ++ (map (id: fa {opt = ",width:1080,height:920";} id |> toString)
@@ -39,7 +38,7 @@ in {
     # floating and non-transparent
     ++ (map (id: fa {opt = ",focused_opacity:1.0";} id |> toString)
       <| [
-        ''^dev\.lemmy\.swash$''
+        ''^dev\.faetalize\.waytator$''
         ''^pqiv$''
       ])
     # floating, fixed window and non-transparent
@@ -69,7 +68,7 @@ in {
     # Special workspace
     ++ (map (id: ta {} id |> toString)
       <| [
-        ''^footclient$''
+        ''^com\.mitchellh\.ghostty$''
       ]);
 
   tag_rule = let

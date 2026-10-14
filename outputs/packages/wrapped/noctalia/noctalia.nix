@@ -1,8 +1,4 @@
-{
-  inputs,
-  config,
-  ...
-}: let
+{config, ...}: let
   inherit (config.flake.custom.wrappers) mkNoctalia;
 in {
   perSystem = {pkgs, ...}: {
@@ -17,23 +13,25 @@ in {
       pkgs,
       extraRuntimeInputs ? [],
     }: let
-      swash = inputs.swash.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
       runtimeEnv = pkgs.buildEnv {
         name = "noctalia-runtime-env";
         pathsToLink = ["/bin"];
         paths =
           builtins.attrValues {
-            inherit (pkgs) ddcutil mpvpaper;
-            inherit swash;
+            inherit
+              (pkgs)
+              ddcutil
+              mpvpaper
+              waytator
+              ;
           }
           ++ extraRuntimeInputs;
       };
 
-      fontDirectories = builtins.attrValues {
-        inherit (pkgs) montserrat;
-        monospace = pkgs.nerd-fonts._0xproto;
-      };
+      fontDirectories = with pkgs; [
+        montserrat
+        maple-mono.NF-unhinted
+      ];
 
       noctalia-wrapper = pkgs.writeShellScript "noctalia-wrapper" ''
         exec $(cat ~/.local/share/noctalia_path) "$@"
@@ -47,7 +45,7 @@ in {
       pkgs.symlinkJoin {
         name = "noctalia";
         paths = [pkg];
-        nativeBuildInputs = [pkgs.makeWrapper];
+        nativeBuildInputs = with pkgs; [makeWrapper];
         postBuild = ''
           cp -r ${noctalia-wrapper} $out/bin/noctalia-wrapper
           cp -r ${noctalia-path} $out/bin/noctalia-path

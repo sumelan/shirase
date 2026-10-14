@@ -25,11 +25,9 @@
           "/run/current-system/sw"
           "/etc/profiles/per-user/${config.user}"
         ];
-
         requires = ["dbus.socket"];
         after = ["graphical-session.target" "dbus.socket"];
         wantedBy = ["graphical-session.target"];
-
         serviceConfig = {
           Type = "notify-reload";
           ReloadSignal = "SIGUSR2";
@@ -41,6 +39,9 @@
       rum.dbus.packages = [cfg.package];
 
       xdg = {
+        mime-apps.default-applications = {
+          "x-scheme-handler/terminal" = "ghostty.desktop";
+        };
         config.files."ghostty/config.ghostty" = {
           permissions = "666";
           text = "";

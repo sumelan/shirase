@@ -158,7 +158,7 @@ _: {
               directory = "/home/sumelan/Pictures/Screenshots";
               pipe_command =
                 # sh
-                ''swash'';
+                ''waytator'';
               pipe_to_command = true;
             };
           };

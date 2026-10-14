@@ -7,7 +7,7 @@
 
       eza-tree = pkgs.writeShellApplication {
         name = "tree";
-        runtimeInputs = [pkgs.eza];
+        runtimeInputs = with pkgs; [eza];
         text =
           # sh
           ''
@@ -40,8 +40,8 @@
     mkEza = {pkgs}:
       pkgs.symlinkJoin {
         name = "eza";
-        paths = [pkgs.eza];
-        nativeBuildInputs = [pkgs.makeWrapper];
+        paths = with pkgs; [eza];
+        nativeBuildInputs = with pkgs; [makeWrapper];
         postBuild = ''
           wrapProgram $out/bin/eza \
             --add-flags "--icons" \

@@ -41,8 +41,8 @@ in {
     in
       pkgs.symlinkJoin {
         name = "foot";
-        paths = [pkgs.foot];
-        nativeBuildInputs = [pkgs.makeWrapper];
+        paths = with pkgs; [foot];
+        nativeBuildInputs = with pkgs; [makeWrapper];
         postBuild = ''
           cp -r ${printCfg}/bin $out
 
