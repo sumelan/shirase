@@ -71,4 +71,7 @@ url = "gh:sonorahq/sonora"
 [inputs.nix-hazkey]
 url = "gh:aster-void/nix-hazkey"
 
+[inputs.snapshot-explorer]
+url = "gh:sumelan/snapshot-explorer/flake"
+
 

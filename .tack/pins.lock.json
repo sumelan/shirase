@@ -111,6 +111,14 @@
     "narHash": "sha256-mMI9IanU+Xw+pVogD2oT0I2kTmvz2Un/Apc5+CwUpEY=",
     "lastModified": 1757436102
   },
+  "snapshot-explorer": {
+    "type": "github",
+    "owner": "sumelan",
+    "repo": "snapshot-explorer",
+    "rev": "2bd5c2f1ccc9ebb826671d742ea760340482683d",
+    "narHash": "sha256-fkL1UI02lont1aj8q/SHP4I25cV1XCmYuBkb5q7Ghho=",
+    "lastModified": 1791983531
+  },
   "sonora": {
     "type": "github",
     "owner": "sonorahq",

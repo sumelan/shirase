@@ -4,7 +4,7 @@
       inherit
         (config.flake.custom.hjemConfigs)
         btop
-        local
+        yt-dlp
         nushell
         ;
     };
