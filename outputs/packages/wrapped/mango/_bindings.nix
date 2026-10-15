@@ -1,4 +1,5 @@
-{lib, ...}: let
+{pkgs, ...}: let
+  inherit (pkgs) lib;
   inherit (lib) singleton;
 
   dispatch = {mods ? "NONE"}: keys: cmds: "${mods},${keys},${cmds}" |> singleton;
@@ -79,9 +80,10 @@ in {
     # Execute
     ## Main programs
     ++ spawn {mods = "SUPER";} "Return" "ghostty +new-window"
+    ++ spawn {mods = "SUPER";} "B" "brave-origin"
     ++ spawn {mods = "SUPER+SHIFT";} "Return" "ghostty --class=app.nvim -e nvim"
     ++ spawn {mods = "SUPER+SHIFT";} "N" "ghostty --class=app.ns -e ns"
-    ++ spawn {mods = "SUPER";} "B" "brave-origin"
+    ++ spawn {mods = "SUPER+SHIFT";} "B" "ghostty --class=app.broot -e broot"
     ## Noctalia
     ++ spawn {mods = "SUPER";} "Space" "noctalia msg panel-toggle launcher"
     ++ spawn {mods = "SUPER";} "Y" "noctalia msg panel-toggle clipboard"

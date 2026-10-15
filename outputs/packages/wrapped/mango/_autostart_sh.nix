@@ -1,8 +1,5 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
+  inherit (pkgs) lib;
   # Environment variables imported into the systemd and D-Bus user environment.
   variables =
     [
@@ -18,14 +15,14 @@
 
   # Extra commands to run after D-Bus activation.
   extraCommands = [
-    "${lib.getExe pkgs.brightnessctl} set 10%"
+    "brightnessctl set 10%"
   ];
 in {
   exec_once =
     [
-      "${lib.getExe' pkgs.dbus "dbus-update-activation-environment"} --systemd ${variables}"
-      "${lib.getExe' pkgs.systemd "systemctl"} --user reset-failed"
-      "${lib.getExe' pkgs.systemd "systemctl"} --user start mango-session.target"
+      "dbus-update-activation-environment --systemd ${variables}"
+      "systemctl --user reset-failed"
+      "systemctl --user start mango-session.target"
     ]
     ++ extraCommands;
 }

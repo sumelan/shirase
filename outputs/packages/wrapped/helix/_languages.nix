@@ -1,21 +1,15 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
-  inherit (lib) getExe;
-in {
+_: {
   language = [
     {
       name = "nix";
       auto-format = true;
-      formatter = {command = getExe pkgs.alejandra;};
+      formatter = {command = "alejandra";};
     }
     {
       name = "json";
       auto-format = true;
       formatter = {
-        command = getExe pkgs.biome;
+        command = "biome";
         args = [
           "format"
           "--stdin-file-path"
@@ -28,7 +22,7 @@ in {
       name = "python";
       auto-format = false;
       formatter = {
-        command = getExe pkgs.ruff;
+        command = "ruff";
         args = [
           "format"
           "--quiet"
@@ -41,22 +35,22 @@ in {
 
   language-server = {
     ruff = {
-      command = getExe pkgs.ruff;
+      command = "ruff";
       args = ["server"];
     };
     json = {
-      command = getExe pkgs.vscode-json-languageserver;
+      command = "vscode-json-languageserver";
       args = ["--stdio"];
     };
     basedpyright = {
-      command = getExe pkgs.basedpyright;
+      command = "basedpyright";
       args = ["--stdio"];
       config.basedpyright.analysis = {
         typeCheckingMode = "standard";
       };
     };
     nixd = {
-      command = getExe pkgs.nixd;
+      command = "nixd";
       args = ["--semantic-tokens=true"];
     };
   };

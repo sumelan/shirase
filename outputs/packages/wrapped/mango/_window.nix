@@ -1,4 +1,5 @@
-{lib, ...}: let
+{pkgs, ...}: let
+  inherit (pkgs) lib;
   inherit (lib) concatStringsSep singleton;
 
   rule = param: values:
@@ -28,6 +29,7 @@ in {
     ++ (map (id: fa {opt = ",width:0.50,height:0.50";} id |> toString)
       <| [
         ''^org\.gnome\.Nautilus$''
+        ''^app\.broot$''
         ''^xdg-desktop-portal-gtk$''
       ])
     # floating and fixed window

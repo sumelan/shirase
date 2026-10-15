@@ -1,5 +1,6 @@
 {config, ...}: let
   inherit (config.flake.custom.functions) printConfig;
+  inherit (config.flake.custom.lib.recursiveMerge {}) attrsList;
 in {
   perSystem = {pkgs, ...}: {
     packages.broot = config.flake.custom.wrappers.mkBroot {
@@ -14,7 +15,11 @@ in {
     }: let
       inherit (pkgs) lib;
       jsonFmt = pkgs.formats.json {};
-      cfg = import ./_config.nix {};
+      cfg = attrsList [
+        (import ./_config.nix {})
+        (import ./_skin.nix {})
+        (import ./_verbs.nix {})
+      ];
 
       toBrootConfig = pkgs.symlinkJoin {
         name = "toBrootConfig";
@@ -26,17 +31,31 @@ in {
         ];
         postBuild = ''
           rm $out/conf.hjson
-          ${lib.getExe pkgs.jq} --slurp add > $out/conf.hjson \
-            <(${lib.getExe pkgs.hjson-go} -c ${pkgs.broot.src}/resources/default-conf/conf.hjson) \
-            ${jsonFmt.generate "broot-config.json" (cfg // extraConfig)}
+
+          ${lib.getExe pkgs.hjson-go} \
+            ${jsonFmt.generate "broot-config.json" (cfg // extraConfig)} \
+              > $out/conf.hjson
         '';
       };
     in "${toBrootConfig}/conf.hjson";
 
     mkBroot = {
       pkgs,
+      extraRuntimeInputs ? [],
       extraConfig ? {},
     }: let
+      runtimeEnv = pkgs.buildEnv {
+        name = "broot-runtime-env";
+        pathsToLink = ["/bin"];
+        paths = with pkgs;
+          [
+            direnv
+            unar
+            ripdrag
+          ]
+          ++ extraRuntimeInputs;
+      };
+
       cfg = config.flake.custom.wrappers.mkBrootConfig {
         inherit pkgs extraConfig;
       };
@@ -44,7 +63,6 @@ in {
       printCfg = printConfig {
         inherit cfg pkgs;
         name = "broot-print-config";
-        lang = "json";
       };
     in
       pkgs.symlinkJoin {
@@ -55,6 +73,7 @@ in {
           cp -r ${printCfg}/bin $out
 
           wrapProgram $out/bin/broot \
+            --prefix PATH : ${runtimeEnv}/bin \
             --add-flags "--conf ${cfg}"
         '';
         meta.mainProgram = "broot";

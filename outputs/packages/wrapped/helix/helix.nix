@@ -17,7 +17,7 @@ in {
     in
       pkgs.writers.writeTOML "helix-languages" (
         lib.recursiveUpdate
-        (import ./_languages.nix {inherit pkgs lib;})
+        (import ./_languages.nix {})
         extraLang
       );
 

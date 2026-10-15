@@ -31,11 +31,11 @@ in {
     }: let
       inherit (pkgs) lib;
       settings = attrsList [
-        (import ./_autostart_sh.nix {inherit lib pkgs;})
-        (import ./_bindings.nix {inherit lib;})
-        (import ./_config.nix {inherit lib;})
+        (import ./_autostart_sh.nix {inherit pkgs;})
+        (import ./_bindings.nix {inherit pkgs;})
+        (import ./_config.nix {inherit pkgs;})
         (import ./_visuals.nix {})
-        (import ./_window.nix {inherit lib;})
+        (import ./_window.nix {inherit pkgs;})
         (import ./_theming.nix {})
       ];
       finalConfigText = let
@@ -71,6 +71,8 @@ in {
         pathsToLink = ["/bin"];
         paths = with pkgs;
           [
+            dbus
+            systemd
             xdg-desktop-portal-wlr
             capitaine-cursors-themed
             brightnessctl
@@ -78,6 +80,7 @@ in {
             playerctl
           ]
           ++ (with local; [
+            broot
             ns
             noctalia
             ghostty

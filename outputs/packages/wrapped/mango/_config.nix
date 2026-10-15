@@ -1,4 +1,5 @@
-{lib, ...}: let
+{pkgs, ...}: let
+  inherit (pkgs) lib;
   inherit
     (lib)
     mapAttrsToList
