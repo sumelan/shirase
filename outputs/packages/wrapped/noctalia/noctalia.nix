@@ -22,7 +22,6 @@ in {
               (pkgs)
               ddcutil
               mpvpaper
-              waytator
               ;
           }
           ++ extraRuntimeInputs;

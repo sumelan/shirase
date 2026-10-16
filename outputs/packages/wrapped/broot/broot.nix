@@ -37,7 +37,8 @@ in {
               > $out/conf.hjson
         '';
       };
-    in "${toBrootConfig}/conf.hjson";
+    in
+      toBrootConfig + "/conf.hjson";
 
     mkBroot = {
       pkgs,

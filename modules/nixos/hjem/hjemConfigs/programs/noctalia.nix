@@ -155,11 +155,10 @@ _: {
             };
 
             screenshot = {
+              confirm_region = true;
               directory = "/home/sumelan/Pictures/Screenshots";
-              pipe_command =
-                # sh
-                ''waytator'';
-              pipe_to_command = true;
+              pipe_command = "";
+              pipe_to_command = false;
             };
           };
 

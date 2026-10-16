@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos.default = {pkgs, ...}: {
+  flake.modules.nixos.core = {pkgs, ...}: {
     nixpkgs.overlays = [
       (_final: prev: {
         inherit

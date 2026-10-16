@@ -23,20 +23,20 @@ in {
 
     mkHelixConfig = {
       pkgs,
-      extraCfg,
+      extraConfig,
     }: let
       inherit (pkgs) lib;
     in
       pkgs.writers.writeTOML "helix-config" (
         lib.recursiveUpdate
         (import ./_config.nix {})
-        extraCfg
+        extraConfig
       );
 
     mkHelix = {
       pkgs,
       extraRuntimeInputs ? [],
-      extraCfg ? {},
+      extraConfig ? {},
       extraLang ? {},
     }: let
       runtimeEnv = pkgs.buildEnv {
@@ -61,7 +61,7 @@ in {
           ++ extraRuntimeInputs;
       };
 
-      cfg = mkHelixConfig {inherit pkgs extraCfg;};
+      cfg = mkHelixConfig {inherit pkgs extraConfig;};
       langs = mkHelixLanguages {inherit pkgs extraLang;};
 
       printCfg = printConfig {
@@ -80,7 +80,7 @@ in {
       pkgs.symlinkJoin {
         name = "hx";
         paths = with pkgs; [helix];
-        nativeBuildInputs = [pkgs.makeWrapper];
+        nativeBuildInputs = with pkgs; [makeWrapper];
         postBuild = ''
           cp -r ${printCfg}/bin $out
           cp -r ${printLangs}/bin $out

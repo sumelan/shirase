@@ -74,4 +74,7 @@ url = "gh:aster-void/nix-hazkey"
 [inputs.snapshot-explorer]
 url = "gh:sumelan/snapshot-explorer/flake"
 
+[inputs.vellum]
+url = "gh:greyxp1/vellum"
+
 
