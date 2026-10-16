@@ -55,14 +55,6 @@
     "narHash": "sha256-nw7yRkyDbLM2iMdev9bd1arC2wUWcZSbNnjq79sJJLM=",
     "lastModified": 1791028546
   },
-  "nix-hazkey": {
-    "type": "github",
-    "owner": "aster-void",
-    "repo": "nix-hazkey",
-    "rev": "9524686e361eb1ce9c054f0218e7a4b82091b847",
-    "narHash": "sha256-HYfn+tCtyY4Xl2l0InOGoaYgZMLbFw3LB11ZETjMxp0=",
-    "lastModified": 1790329191
-  },
   "nix-index-database": {
     "type": "github",
     "owner": "nix-community",
@@ -70,6 +62,14 @@
     "rev": "9a2dd40780eeab8543aa97c59c26f11267025616",
     "narHash": "sha256-LpIhxnuO0tYeZ4k7BbNMxsPs2zJpB4hWXO1jdhUuE7Q=",
     "lastModified": 1791711434
+  },
+  "nix-meltype": {
+    "type": "github",
+    "owner": "aster-void",
+    "repo": "nix-meltype",
+    "rev": "ef084fedfefa8788d3278d2d51c375daf8efacf6",
+    "narHash": "sha256-t4GBOJ1HfkwIAZ/CzhDfgUCOePwJ7NPh2s/Ika6CHQQ=",
+    "lastModified": 1792057694
   },
   "nix-secrets": {
     "type": "github",

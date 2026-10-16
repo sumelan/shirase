@@ -7,10 +7,6 @@
     services = {
       # set videodrivers to nvidia
       xserver.videoDrivers = ["nvidia"];
-      # use vulkan backend on hazkey-server
-      hazkey.server.package = inputs.nix-hazkey.packages.${pkgs.stdenv.hostPlatform.system}.hazkey-server.override {
-        enableVulkan = true;
-      };
     };
 
     hardware = {

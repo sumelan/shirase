@@ -30,10 +30,8 @@
     # gpu
     services = {
       xserver.videoDrivers = ["modesetting"];
-      hazkey.server.package = inputs.nix-hazkey.packages.${pkgs.stdenv.hostPlatform.system}.hazkey-server.override {
-        enableVulkan = true;
-      };
     };
+
     hardware = {
       graphics = {
         enable = true;

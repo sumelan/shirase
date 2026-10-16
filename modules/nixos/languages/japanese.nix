@@ -1,36 +1,25 @@
-_: {
+{inputs, ...}: {
   flake.modules.nixos.japanese = {
     pkgs,
     user,
     ...
   }: {
-    services.hazkey = {
-      enable = true;
-    };
-
     i18n.inputMethod = {
       enable = true;
       type = "fcitx5";
       fcitx5 = {
+        addons = [inputs.nix-meltype.packages.${pkgs.stdenv.hostPlatform.system}.default];
         waylandFrontend = true;
         settings = {
           inputMethod = {
-            GroupOrder = {
-              "0" = "Default";
-            };
+            GroupOrder."0" = "Default";
             "Groups/0" = {
               Name = "Default";
               "Default Layout" = "us";
-              DefaultIM = "hazkey";
+              DefaultIM = "meltype";
             };
-            "Groups/0/Items/0" = {
-              Name = "keyboard-us";
-              Layout = "";
-            };
-            "Groups/0/Items/1" = {
-              Name = "hazkey";
-              Layout = "";
-            };
+            "Groups/0/Items/0".Name = "keyboard-us";
+            "Groups/0/Items/1".Name = "meltype";
           };
 
           addons.classicui.globalSection = {
@@ -54,6 +43,13 @@ _: {
         "${themeDir}/panel.svg".source = sakura "panel.svg";
         "${themeDir}/theme.conf".source = sakura "theme.conf";
       };
+    };
+
+    custom.fileSystem = {
+      cache.home.directories = [
+        # meltype settings and metadata
+        ".local/share/Meltype"
+      ];
     };
   };
 }
