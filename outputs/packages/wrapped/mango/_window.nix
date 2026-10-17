@@ -22,7 +22,7 @@ in {
     (map (id: fa {} id |> toString)
       <| [
         ''^blueman-manager$''
-        ''^brave-.*-Default$''
+        ''^chrome-.{32}-Default$'' # helium extension's windows
         ''^valent$''
       ])
     # floating and 50% window

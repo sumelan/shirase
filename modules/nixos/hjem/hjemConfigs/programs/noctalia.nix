@@ -91,6 +91,13 @@ _: {
 
           calendar = {
             enabled = true;
+            account = {
+              "sumelan_google" = {
+                color = "primary";
+                name = "Google";
+                type = "google";
+              };
+            };
           };
 
           location = {

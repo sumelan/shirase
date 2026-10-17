@@ -80,7 +80,7 @@ in {
     # Execute
     ## Main programs
     ++ spawn {mods = "SUPER";} "Return" "ghostty +new-window"
-    ++ spawn {mods = "SUPER";} "B" "brave-origin"
+    ++ spawn {mods = "SUPER";} "B" "helium"
     ++ spawn {mods = "SUPER";} "V" "vellum toggle"
     ++ spawn {mods = "SUPER+SHIFT";} "Return" "ghostty --class=app.nvim -e nvim"
     ++ spawn {mods = "SUPER+SHIFT";} "N" "ghostty --class=app.ns -e ns"

@@ -15,9 +15,9 @@
       };
 
       lsp.servers.nixd = {
-        settings = let
+        settings.nixd = let
           dotfile = "/persist/home/sumelan/Projects/shirase";
-          hostName = "sakura";
+          hostName = "omen";
 
           inputs =
             # nix

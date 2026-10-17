@@ -1,5 +1,5 @@
-_: {
-  flake.custom.hjemConfigs.brave = {
+{inputs, ...}: {
+  flake.custom.hjemConfigs.helium = {
     pkgs,
     user,
     ...
@@ -30,17 +30,22 @@ _: {
         # Youtube-shorts block
         "jiaopdjbehhjgokpphdfgmapkobbnmjp"
       ];
-      defaultSearchProviderEnabled = true;
-      defaultSearchProviderSearchURL = "https://kagi.com/search?q=%s";
-      defaultSearchProviderSuggestURL = "https://kagi.com/api/autosuggest?q=%s";
     };
 
     hjem.users.${user} = {
-      packages = [pkgs.brave-origin];
+      packages = [
+        inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
+      ];
 
       xdg = {
+        # Add widevine support, inspired from this comment:
+        # https://github.com/imputnet/helium/issues/116#issuecomment-3668370766
+        config.files."net.imput.helium/WidevineCdm/latest-component-updated-widevine-cdm".text = ''
+          {"Path":"${pkgs.widevine-cdm}/share/google/chrome/WidevineCdm"}
+        '';
+
         mime-apps = let
-          value = ["brave-origin.desktop" "com.brave.Origin.desktop"];
+          value = ["helium.desktop"];
           default-applications = builtins.listToAttrs (map (name: {
               inherit name value;
             }) [
@@ -80,17 +85,17 @@ _: {
     };
 
     environment.sessionVariables = {
-      DEFAULT_BROWSER = "brave-origin";
-      BROWSER = "brave-origin";
+      DEFAULT_BROWSER = "helium";
+      BROWSER = "helium";
     };
 
     custom.fileSystem = {
       persist.home.directories = [
-        ".config/BraveSoftware"
+        ".config/net.imput.helium"
       ];
 
       cache.home.directories = [
-        ".cache/BraveSoftware"
+        ".cache/net.imput.helium"
       ];
     };
   };

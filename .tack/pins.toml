@@ -77,4 +77,7 @@ url = "gh:greyxp1/vellum"
 [inputs.nix-meltype]
 url = "gh:aster-void/nix-meltype"
 
+[inputs.helium]
+url = "gh:amaanq/helium-flake"
+
 

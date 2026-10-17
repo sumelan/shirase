@@ -6,6 +6,20 @@ _: {
   }: {
     hjem.users.${user} = {
       packages = [pkgs.readest];
+
+      xdg.mime-apps = let
+        value = ["readest.desktop"];
+
+        removed-associations = builtins.listToAttrs (map (name: {
+            inherit name value;
+          }) [
+            "application/pdf"
+            "text/plain"
+            "text/markdown"
+          ]);
+      in {
+        inherit removed-associations;
+      };
     };
 
     custom.fileSystem = {
