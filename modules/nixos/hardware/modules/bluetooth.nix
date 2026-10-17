@@ -3,6 +3,13 @@ _: {
     hardware.bluetooth = {
       enable = true;
       powerOnBoot = true;
+      # Bluetooth trackpad
+      input = {
+        General = {
+          UserspaceHID = true;
+        };
+      };
+
       settings = {
         General = {
           Name = "Hello";

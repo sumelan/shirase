@@ -122,5 +122,5 @@ in {
     ++ dispatch {} "Left,4" "viewtoright_have_client"
     ++ dispatch {} "Right,4" "viewtoleft_have_client"
     ++ dispatch {} "Up,4" "toggle_special_tag"
-    ++ dispatch {} "Down,4" "toggle_scratchpad";
+    ++ dispatch {} "Down,4" "toggle_special_tag";
 }
