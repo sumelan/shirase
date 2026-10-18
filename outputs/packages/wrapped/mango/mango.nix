@@ -61,7 +61,6 @@ in {
       extraRuntimeInputs ? [],
     }: let
       local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
-      vellum = inputs.vellum.packages.${pkgs.stdenv.hostPlatform.system}.default;
       helium = inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
       # mango-config.conf without extraConfig; like `source = foo.conf`
@@ -80,6 +79,7 @@ in {
             brightnessctl
             libnotify
             playerctl
+            vellum
           ]
           ++ (with local; [
             broot
@@ -89,7 +89,6 @@ in {
           ])
           ++ [
             helium
-            vellum
           ]
           ++ extraRuntimeInputs;
       };

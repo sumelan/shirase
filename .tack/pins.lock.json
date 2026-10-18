@@ -134,13 +134,5 @@
     "rev": "716341a227e84ef1e99ea8d1cf387127b93353a8",
     "narHash": "sha256-2g/meBI/VLCyowXWw7NUafsNdT3t/4yNN+KfDC7sdeM=",
     "lastModified": 1792262325
-  },
-  "vellum": {
-    "type": "github",
-    "owner": "greyxp1",
-    "repo": "vellum",
-    "rev": "62ea7dddb0f3a3f6b9e766debe71dc8f34da590c",
-    "narHash": "sha256-PC01T8dd/pZ9jp/YKsHkSBab31AoSNes2kvYfjp8jlM=",
-    "lastModified": 1792169350
   }
 }

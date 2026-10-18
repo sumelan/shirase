@@ -1,14 +1,9 @@
-{inputs, ...}: {
-  flake.custom.hjemConfigs.vellum = {
-    pkgs,
-    user,
-    ...
-  }: {
+_: {
+  flake.custom.hjemConfigs.vellum = {user, ...}: {
     hjem.users.${user} = {
       rum = {
         programs.vellum = {
           enable = true;
-          package = inputs.vellum.packages.${pkgs.stdenv.hostPlatform.system}.default;
           systemd.enable = true;
           settings = {
             draw_on = "all";

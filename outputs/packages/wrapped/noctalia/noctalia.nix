@@ -16,14 +16,11 @@ in {
       runtimeEnv = pkgs.buildEnv {
         name = "noctalia-runtime-env";
         pathsToLink = ["/bin"];
-        paths =
-          builtins.attrValues {
-            inherit
-              (pkgs)
-              ddcutil
-              mpvpaper
-              ;
-          }
+        paths = with pkgs;
+          [
+            ddcutil
+            mpvpaper
+          ]
           ++ extraRuntimeInputs;
       };
 

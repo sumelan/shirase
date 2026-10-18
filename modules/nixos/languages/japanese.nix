@@ -7,8 +7,10 @@
     i18n.inputMethod = {
       enable = true;
       type = "fcitx5";
-      fcitx5 = {
-        addons = [inputs.nix-meltype.packages.${pkgs.stdenv.hostPlatform.system}.default];
+      fcitx5 = let
+        meltype = inputs.nix-meltype.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      in {
+        addons = [meltype];
         waylandFrontend = true;
         settings = {
           inputMethod = {

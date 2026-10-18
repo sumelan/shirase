@@ -71,9 +71,6 @@ url = "gh:sonorahq/sonora"
 [inputs.snapshot-explorer]
 url = "gh:sumelan/snapshot-explorer/flake"
 
-[inputs.vellum]
-url = "gh:greyxp1/vellum"
-
 [inputs.nix-meltype]
 url = "gh:aster-void/nix-meltype"
 
