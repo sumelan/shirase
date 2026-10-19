@@ -6,7 +6,7 @@ _: {
 
       commands."remote" = {
         source = "zroot/persist";
-        target = "sakura-remote:IW2T/omen";
+        target = "sakura-syncoid:IW2T/omen";
         extraArgs = [
           "--no-sync-snap" # restrict itself to existing snapshots
           "--delete-target-snapshots" # snapshots which are missing on the source will be destroyed on the target

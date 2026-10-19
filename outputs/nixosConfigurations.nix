@@ -74,6 +74,7 @@ in {
           (config.flake.modules.nixos)
           laptop
           intel
+          gui
           hjemCommon
           ;
       };
@@ -84,6 +85,7 @@ in {
           (config.flake.modules.nixos)
           laptop
           intel
+          gui
           hjemCommon
           ;
       };
@@ -93,7 +95,7 @@ in {
         inherit
           (config.flake.modules.nixos)
           amd
-          hjemCommon # FIXME: replace with hjemMini
+          hjemMini
           ;
       };
     };
@@ -102,6 +104,7 @@ in {
         inherit
           (config.flake.modules.nixos)
           nvidia
+          gui
           hjemCommon
           ;
       };

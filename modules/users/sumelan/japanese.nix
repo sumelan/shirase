@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.modules.nixos.japanese = {
+  flake.modules.nixos."users/sumelan" = {
     pkgs,
     user,
     ...

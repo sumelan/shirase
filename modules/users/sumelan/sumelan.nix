@@ -2,10 +2,6 @@
   flake.modules.nixos."users/sumelan" = {pkgs, ...}: let
     local = config.flake.packages.${pkgs.stdenv.hostPlatform.system};
   in {
-    imports = builtins.attrValues {
-      inherit (config.flake.modules.nixos) japanese;
-    };
-
     users.users.sumelan = {
       description = "Su melan";
       isNormalUser = true;
