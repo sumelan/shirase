@@ -140,6 +140,7 @@ _: {
             lang = "en";
 
             launcher = {
+              layout = "simple";
               categories = false;
             };
 
