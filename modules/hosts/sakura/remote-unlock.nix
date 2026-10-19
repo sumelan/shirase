@@ -1,6 +1,12 @@
-{lib, ...}: {
+_: {
   flake.modules.nixos."hosts/sakura" = _: {
-    networking.useDHCP = lib.mkForce true;
+    # In order to use DHCP in the initrd,
+    # network manager must not be enabled and `networking.useDHCP = true;` must be set.
+    networking = {
+      networkmanager.enable = false;
+      useDHCP = true;
+    };
+
     boot.initrd = {
       availableKernelModules = [
         "igc" # Ethernet controller: Intel Corporation Ethernet Controller I225-V (rev 03
@@ -21,6 +27,7 @@
           ];
           authorizedKeys = [
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwzwh8wrgqbmq0KhxoQvxEdc9Aii36QZrdR3Op5XELF root@omen"
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJn7N/yLqZHDo9pNRjszgwA94lYk8ZYnHpTXx660MFSR root@minibookx"
           ];
         };
       };

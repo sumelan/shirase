@@ -25,6 +25,7 @@ in {
         };
       };
     };
+
     config = {
       # setup fonts
       fonts = {
