@@ -59,7 +59,7 @@ in {
     # Named Scratchpad
     ++ (map (id: na {} id |> toString)
       <| [
-        ''^vesktop$''
+        ''^dissent$''
         ''^sonora$''
       ])
     # Steam game
