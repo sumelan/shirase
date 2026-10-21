@@ -91,6 +91,9 @@ _: {
 
           calendar = {
             enabled = true;
+            reminders = {
+              enabled = false;
+            };
             account = {
               "sumelan_google" = {
                 color = "primary";
