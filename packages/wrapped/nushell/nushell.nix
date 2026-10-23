@@ -179,8 +179,8 @@ in
     paths = with pkgs; [nushell];
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
-      cp -r ${printPkg}/bin $out
-      cp -r ${printEnvPkg}/bin $out
+      ln -s ${printPkg}/bin/nu-print-config $out/bin/nu-print-config
+      ln -s ${printEnvPkg}/bin/nu-print-env $out/bin/nu-print-env
 
       check=$($out/bin/nu -c "nu-check --debug ${nuConfig}")
       if ''${check}; then

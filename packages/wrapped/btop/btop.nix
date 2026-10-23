@@ -48,7 +48,7 @@ in
     paths = [pkg];
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
-      cp -r ${printPkg}/bin $out
+      ln -s ${printPkg}/bin/btop-print-config $out/bin/btop-print-config
 
       ln -s ${theme} $out/share/btop/themes/catppuccin-frappe.theme
 

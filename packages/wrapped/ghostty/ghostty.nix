@@ -2,7 +2,6 @@
   pkgs,
   functions,
   pkg ? pkgs.ghostty,
-  extraConfig ? {},
   ...
 }: let
   inherit
@@ -13,6 +12,25 @@
     getExe
     ;
   inherit (functions.print) wrappedConfig;
+
+  extraConfig = {
+    shell-integration = "nushell";
+    theme = "Catppuccin Frappe";
+    font-feature = concatStringsSep "," [
+      "+calt" # default ligatures
+      "+zero" # alternate zero
+      "+cv62" # alternative question
+      "+cv63" # alternative left arrow
+      "+cv66" # alternative pipe arrows
+      "+ss03" # arbitary tag
+      "+ss05" # thin escape backslash
+      "+ss07" # relax multi-greaters condition
+      "+ss08" # double / back rows
+      "+ss09" # alternative not equal
+      "+ss10" # aaproximately equal
+      "+ss11" # extra equal ligatures
+    ];
+  };
 
   ghosttyConfig = let
     cfg = import ./_config.nix {};
@@ -70,18 +88,16 @@ in
     paths = [pkg];
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
-      cp -r ${printPkg}/bin $out
+      ln -s ${printPkg}/bin/ghostty-print-config $out/bin/ghostty-print-config
 
-      $out/bin/ghostty \
-        --config-file=${ghosttyConfig} \
-        +validate-config
+      ${getExe pkg} --config-file=${ghosttyConfig} +validate-config
 
-      rm $out/bin/.ghostty-wrapped
-      rm $out/share/applications/com.mitchellh.ghostty.desktop
-      rm $out/share/dbus-1/services/com.mitchellh.ghostty.service
+      rm -f $out/bin/.ghostty-wrapped
+      rm -f $out/share/applications/com.mitchellh.ghostty.desktop
+      rm -f $out/share/dbus-1/services/com.mitchellh.ghostty.service
 
-      ln -s ${wrapped-service} $out/share/dbus-1/services/com.mitchellh.ghostty.service
-      ln -s ${wrapped-desktopItem} $out/share/applications/com.mitchellh.ghostty.desktop
+      ln -sf ${wrapped-service} $out/share/dbus-1/services/com.mitchellh.ghostty.service
+      ln -sf ${wrapped-desktopItem} $out/share/applications/com.mitchellh.ghostty.desktop
 
       wrapProgram $out/bin/ghostty \
         --add-flags "--config-default-files=false" \

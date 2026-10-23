@@ -56,15 +56,15 @@ in
     paths = with pkgs; [helix];
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
-      cp -r ${printPkg}/bin $out
-      cp -r ${printLangPkg}/bin $out
+      ln -s ${printPkg}/bin/hx-print-config $out/bin/hx-print-config
+      ln -s ${printLangPkg}/bin/hx-print-languages $out/bin/hx-print-languages
 
-      rm $out/bin/.hx-wrapped
+      rm -f $out/bin/.hx-wrapped
 
       mkdir -p $out/helix
 
-      ln -s ${helixConfig} $out/helix/config.toml
-      ln -s ${helixLanguage} $out/helix/languages.toml
+      ln -sf ${helixConfig} $out/helix/config.toml
+      ln -sf ${helixLanguage} $out/helix/languages.toml
 
       wrapProgram $out/bin/hx \
         --prefix PATH : ${runtimeEnv}/bin \

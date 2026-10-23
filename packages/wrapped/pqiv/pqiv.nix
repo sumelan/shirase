@@ -28,7 +28,7 @@ in
     paths = with pkgs; [pqiv];
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
-      cp -r ${printPkg}/bin $out
+      ln -s ${printPkg}/bin/pqiv-print-config $out/bin/pqiv-print-config
 
       wrapProgram $out/bin/pqiv \
         --set PQIVRC_PATH ${pqivConfig}

@@ -23,11 +23,9 @@ in
     paths = with pkgs; [foot];
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
-      cp -r ${printPkg}/bin $out
+      ln -s ${printPkg}/bin/foot-print-config $out/bin/foot-print-config
 
-      $out/bin/foot \
-        --config=${footConfig} \
-        --check-config
+      $out/bin/foot --config=${footConfig} --check-config
 
       wrapProgram $out/bin/foot \
         --add-flags "--config ${footConfig}" \

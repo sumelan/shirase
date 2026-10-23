@@ -19,7 +19,7 @@ in
     nativeBuildInputs = with pkgs; [makeWrapper];
     passthru.starshipConfig = starshipConfig;
     postBuild = ''
-      cp -r ${printCfg}/bin $out
+      ln -s ${printCfg}/bin/starship-print-config $out/bin/starship-print-config
 
       wrapProgram $out/bin/starship \
         --set STARSHIP_CONFIG ${starshipConfig}

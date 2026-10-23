@@ -58,7 +58,7 @@ in
     paths = with pkgs; [broot];
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
-      cp -r ${printPkg}/bin $out
+      ln -s ${printPkg}/bin/broot-print-config $out/bin/broot-print-config
 
       wrapProgram $out/bin/broot \
         --prefix PATH : ${runtimeEnv}/bin \

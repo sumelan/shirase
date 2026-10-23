@@ -18,7 +18,7 @@ in
     paths = with pkgs; [ripgrep];
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
-      cp -r ${printPkg}/bin $out
+      ln -s ${printPkg}/bin/ripgrep-print-ignorefiles $out/bin/ripgrep-print-ignorefiles
 
       wrapProgram $out/bin/rg \
         --add-flags "--smart-case" \

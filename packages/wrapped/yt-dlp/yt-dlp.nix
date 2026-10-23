@@ -66,7 +66,7 @@
   };
 
   printPkg = wrappedConfig ytdlpConfig {
-    name = "yt-dlp-print-config";
+    name = "ytdlp-print-config";
     lang = "ini";
   };
 in
@@ -75,9 +75,9 @@ in
     paths = with pkgs; [yt-dlp];
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
-      cp -r ${printPkg}/bin $out
+      ln -s ${printPkg}/bin/ytdlp-print-config $out/bin/ytdlp-print-config
 
-      rm $out/bin/.yt-dlp-wrapped
+      rm -f $out/bin/.yt-dlp-wrapped
 
       wrapProgram $out/bin/yt-dlp \
         --add-flags "--config-location ${ytdlpConfig}" \

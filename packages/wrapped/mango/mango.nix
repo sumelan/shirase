@@ -67,7 +67,7 @@ in
     nativeBuildInputs = [pkgs.makeWrapper];
     passthru.providedSessions = ["mango"];
     postBuild = ''
-      cp -r ${printPkg}/bin $out
+      ln -s ${printPkg}/bin/mango-print-config $out/bin/mango-print-config
 
       $out/bin/mango -c ${checkConfig} -p
 

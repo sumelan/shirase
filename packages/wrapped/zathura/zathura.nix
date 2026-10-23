@@ -52,7 +52,7 @@ in
     paths = with pkgs; [zathura];
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
-      cp -r ${printPkg}/bin $out
+      ln -s ${printPkg}/bin/zathura-print-config $out/bin/zathura-print-config
 
       wrapProgram $out/bin/zathura \
         --add-flags "--config-dir ${zathuraConfig}"
