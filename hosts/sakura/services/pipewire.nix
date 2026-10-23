@@ -1,7 +1,7 @@
 {customLib, ...}: {
   services.pipewire = {
     wireplumber.extraConfig = let
-      inherit (customLib.wireplumber {}) rename;
+      inherit (customLib.wireplumber) rename;
     in {
       # Rename ALSA devices
       "10-mic-rename" = rename {

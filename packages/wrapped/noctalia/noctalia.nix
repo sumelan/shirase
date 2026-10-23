@@ -4,6 +4,14 @@
   extraRuntimeInputs ? [],
   ...
 }: let
+  noctalia-wrapper = pkgs.writeShellScript "noctalia-wrapper" ''
+    exec $(cat ~/.local/share/noctalia_path) "$@"
+  '';
+
+  noctalia-path = pkgs.writeShellScript "noctalia-path" ''
+    mkdir -p ~/.local/share
+    echo $(whereis noctalia | awk '{print $2}') > ~/.local/share/noctalia_path
+  '';
   runtimeEnv = pkgs.buildEnv {
     name = "noctalia-runtime-env";
     pathsToLink = ["/bin"];
@@ -25,6 +33,9 @@ in
     paths = [pkg];
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
+      cp -r ${noctalia-wrapper} $out/bin/noctalia-wrapper
+      cp -r ${noctalia-path} $out/bin/noctalia-path
+
       rm $out/bin/.noctalia-wrapped
 
       wrapProgram $out/bin/noctalia \

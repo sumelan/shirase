@@ -17,6 +17,7 @@ in
     name = "starship";
     paths = with pkgs; [starship];
     nativeBuildInputs = with pkgs; [makeWrapper];
+    passthru.starshipConfig = starshipConfig;
     postBuild = ''
       cp -r ${printCfg}/bin $out
 

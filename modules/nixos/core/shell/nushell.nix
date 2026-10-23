@@ -6,7 +6,7 @@
 }: let
   wrappedNushell = self.packages.${pkgs.stdenv.hostPlatform.system}.nushell.override {
     env = {
-      STARSHIP_CONFIG = import (self + "/packages/wrapped/starship/_config.nix") {inherit pkgs;};
+      STARSHIP_CONFIG = self.packages.${pkgs.stdenv.hostPlatform.system}.starship.starshipConfig;
     };
   };
 in {

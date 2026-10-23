@@ -15,7 +15,7 @@
     wireplumber = {
       enable = true;
       extraConfig = let
-        inherit (customLib.wireplumber {}) rename;
+        inherit (customLib.wireplumber) rename;
       in {
         # disable camera to save battery
         # https://reddit.com/r/linux/comments/1em8biv/psa_pipewire_has_been_halving_your_battery_life/
