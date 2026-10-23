@@ -1,61 +1,56 @@
-{config, ...}: let
-  inherit (config) flake;
+{
+  self,
+  config,
+  pkgs,
+  ...
+}: let
+  cfg = config.services.displayManager.noctalia-greeter;
 in {
-  flake.modules.nixos.gui = {
-    config,
-    pkgs,
-    user,
-    ...
-  }: let
-    cfg = config.services.displayManager.noctalia-greeter;
-    local = flake.packages.${pkgs.stdenv.hostPlatform.system};
-  in {
-    programs.noctalia = {
-      enable = true;
-      package = local.noctalia;
-      systemd.enable = true;
-    };
+  programs.noctalia = {
+    enable = true;
+    package = self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia;
+    systemd.enable = true;
+  };
 
-    services.displayManager.noctalia-greeter = {
-      enable = true;
+  services.displayManager.noctalia-greeter = {
+    enable = true;
 
-      settings = {
-        cursor = {
-          size = 28;
-          theme = cfg.cursorTheme.name;
-        };
-        user = {
-          default = user;
-        };
-        output = {
-          transforms = "DSI-1:270";
-        };
-        appearance = {
-          scheme = "Synced";
-          hide_logo = true;
-          font_family = config.custom.fonts.regular;
-        };
-        keyboard = {
-          layout = "us";
-        };
+    settings = {
+      cursor = {
+        size = 28;
+        theme = cfg.cursorTheme.name;
       };
-
-      cursorTheme = {
-        inherit (config.custom.gtk.cursor) name package;
+      user = {
+        default = "sumelan";
       };
-
-      passwordlessSyncUsers = [user];
+      output = {
+        transforms = "DSI-1:270";
+      };
+      appearance = {
+        scheme = "Synced";
+        hide_logo = true;
+        font_family = config.custom.fonts.regular;
+      };
+      keyboard = {
+        layout = "us";
+      };
     };
 
-    custom.fileSystem = {
-      cache.root.directories = [
-        {
-          directory = "/var/lib/noctalia-greeter";
-          user = "greeter";
-          group = "greeter";
-          mode = "0750";
-        }
-      ];
+    cursorTheme = {
+      inherit (config.custom.gtk.cursor) name package;
     };
+
+    passwordlessSyncUsers = ["sumelan"];
+  };
+
+  custom.fileSystem = {
+    cache.root.directories = [
+      {
+        directory = "/var/lib/noctalia-greeter";
+        user = "greeter";
+        group = "greeter";
+        mode = "0750";
+      }
+    ];
   };
 }

@@ -1,31 +1,27 @@
 {
+  self,
+  inputs,
   config,
-  lib,
+  pkgs,
   ...
 }: let
-  inherit (config) flake;
+  inherit (pkgs.lib) getExe;
 in {
-  flake.modules.nixos.gui = {
-    config,
-    pkgs,
-    ...
-  }: let
-    local = flake.packages.${pkgs.stdenv.hostPlatform.system};
-  in {
-    programs = {
-      mango = {
-        enable = true;
-        package = local.mango;
+  programs = {
+    mango = {
+      enable = true;
+      package = self.packages.${pkgs.stdenv.hostPlatform.system}.mango.override {
+        pkg = inputs.mangowm.packages.${pkgs.stdenv.hostPlatform.system}.default;
       };
+    };
 
-      uwsm = {
-        enable = true;
-        waylandCompositors = {
-          mango = {
-            prettyName = "MangoWM";
-            comment = "MangoWM managed by UWSM";
-            binPath = lib.getExe config.programs.mango.package;
-          };
+    uwsm = {
+      enable = true;
+      waylandCompositors = {
+        mango = {
+          prettyName = "MangoWM";
+          comment = "MangoWM managed by UWSM";
+          binPath = getExe config.programs.mango.package;
         };
       };
     };

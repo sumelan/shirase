@@ -13,7 +13,6 @@ private = "git+ssh://git@github.com/sumelan/{path}"
 # no deduplication
 nixpkgs = ["nixpkgs", "nixpkgs-lib"]
 hjem = "hjem"
-flake-parts = "flake-parts"
 
 # [inputs.<name>] fields
 #   url             required, shorturl ok; ?rev=<sha> pins an exact commit
@@ -31,9 +30,6 @@ url = "gh:nixos/nixpkgs/nixos-unstable"
 [inputs.my-secrets]
 url = "private:my-secrets"
 type = "fetch"
-
-[inputs.flake-parts]
-url = "gh:hercules-ci/flake-parts"
 
 [inputs.hjem]
 url = "gh:feel-co/hjem"
@@ -76,5 +72,8 @@ url = "gh:aster-void/nix-meltype"
 
 [inputs.helium]
 url = "gh:amaanq/helium-flake"
+
+[inputs.import-tree]
+url = "gh:denful/import-tree"
 
 

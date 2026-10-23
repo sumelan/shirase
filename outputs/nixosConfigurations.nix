@@ -1,113 +1,86 @@
 {
+  self,
   inputs,
-  config,
   ...
 }: let
-  inherit (inputs) nixpkgs;
-
   linux = mkNixos "x86_64-linux" "nixos";
 
-  mkNixos = system: cls: host: {
-    user ? "sumelan",
-    dotfile ? "/persist/home/${user}/Projects/shirase",
-    extraModules ? [],
-  }: let
-    pkgs = import nixpkgs {
+  mkNixos = system: cls: hostname: {modules ? []}: let
+    customLib = import ../lib/lib.nix {};
+    functions = import ../functions/functions.nix {inherit pkgs;};
+
+    pkgs = import inputs.nixpkgs {
       inherit system;
-      config = {
-        allowUnfree = true;
-      };
+      config.allowUnfree = true;
     };
+
     specialArgs = {
-      inherit user dotfile;
-      # This intentionally does not collide with `lib`
-      flakeLib = config.flake.custom.lib;
-      # These require pkgs to be passed so collect and do once to get the ready functions
-      functions = builtins.mapAttrs (_: v: v {inherit pkgs;}) config.flake.custom.functions;
+      inherit self inputs customLib functions;
     };
+
+    inputModules = let
+      mkModules = {
+        name,
+        modules ? "nixosModules",
+        opt ? "default",
+      }:
+        inputs.${name}.${modules}.${opt};
+    in [
+      (mkModules {name = "hjem";})
+      (mkModules {name = "nixos-plymouth";})
+      (mkModules {name = "nix-secrets";})
+      (mkModules {name = "preservation";})
+      (mkModules {name = "inshellah";})
+
+      (mkModules {
+        name = "nix-index-database";
+        opt = "nix-index";
+      })
+      (mkModules {
+        name = "mangowm";
+        opt = "mango";
+      })
+    ];
   in
-    nixpkgs.lib.nixosSystem {
+    inputs.nixpkgs.lib.nixosSystem {
       inherit pkgs specialArgs;
       modules =
-        defaultModules
-        ++ extraModules
-        ++ builtins.attrValues {
-          inherit
-            (config.flake.modules.nixos)
-            core
-            default
-            ;
-          hostModules = config.flake.modules.nixos."hosts/${host}";
-          userModules = config.flake.modules.nixos."users/${user}";
-        }
-        ++ [{networking.hostName = host;}];
+        inputModules
+        ++ [
+          (inputs.import-tree ../hosts/${hostname})
+          (inputs.import-tree ../users/root)
+          (inputs.import-tree ../users/sumelan)
+          ../modules/nixos/base.nix
+          {networking.hostName = hostname;}
+        ]
+        ++ modules;
     };
-
-  defaultModules = let
-    mkModules = {
-      name,
-      modules ? "nixosModules",
-      opt ? "default",
-    }:
-      inputs.${name}.${modules}.${opt};
-  in [
-    (mkModules {name = "hjem";})
-    (mkModules {name = "nixos-plymouth";})
-    (mkModules {name = "nix-secrets";})
-    (mkModules {name = "preservation";})
-    (mkModules {name = "inshellah";})
-
-    (mkModules {
-      name = "nix-index-database";
-      opt = "nix-index";
-    })
-    (mkModules {
-      name = "mangowm";
-      opt = "mango";
-    })
-  ];
 in {
-  flake.nixosConfigurations = {
-    acer = linux "acer" {
-      extraModules = builtins.attrValues {
-        inherit
-          (config.flake.modules.nixos)
-          laptop
-          intel
-          gui
-          hjemCommon
-          ;
-      };
-    };
-    minibookx = linux "minibookx" {
-      extraModules = builtins.attrValues {
-        inherit
-          (config.flake.modules.nixos)
-          laptop
-          intel
-          gui
-          hjemCommon
-          ;
-      };
-    };
-    sakura = linux "sakura" {
-      extraModules = builtins.attrValues {
-        inherit
-          (config.flake.modules.nixos)
-          amd
-          hjemMini
-          ;
-      };
-    };
-    omen = linux "omen" {
-      extraModules = builtins.attrValues {
-        inherit
-          (config.flake.modules.nixos)
-          nvidia
-          gui
-          hjemCommon
-          ;
-      };
-    };
+  acer = linux "acer" {
+    modules = [
+      ../modules/nixos/laptop.nix
+      ../modules/nixos/intel.nix
+    ];
+  };
+
+  minibookx = linux "minibookx" {
+    modules = [
+      ../modules/nixos/laptop.nix
+      ../modules/nixos/intel.nix
+    ];
+  };
+
+  sakura = linux "sakura" {
+    modules = [
+      ../modules/nixos/amd.nix
+      ../modules/nixos/server.nix
+    ];
+  };
+
+  omen = linux "omen" {
+    modules = [
+      ../modules/nixos/desktop.nix
+      ../modules/nixos/nvidia.nix
+    ];
   };
 }
