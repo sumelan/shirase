@@ -1,52 +1,46 @@
 _: {
-  flake.modules.nixos.core = {
-    config,
-    user,
-    ...
-  }: {
-    # ssh settings
-    services.openssh = {
+  # ssh settings
+  services.openssh = {
+    enable = true;
+    settings = {
+      # WARN: disable password auth for better security
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+    };
+  };
+
+  # keyring settings
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
+
+  security = {
+    # sudo and run0
+    sudo.enable = false;
+    run0 = {
       enable = true;
-      settings = {
-        # WARN: disable password auth for better security
-        PasswordAuthentication = false;
-        KbdInteractiveAuthentication = false;
+      sudo-shim.enable = true;
+      persistentAuth = {
+        enable = true;
+        enableRemote = true;
       };
     };
 
-    # keyring settings
-    services.gnome.gnome-keyring.enable = true;
-    security.pam.services.login.enableGnomeKeyring = true;
-
-    security = {
-      # sudo and run0
-      sudo.enable = false;
-      run0 = {
-        enable = true;
-        sudo-shim.enable = true;
-        persistentAuth = {
-          enable = true;
-          enableRemote = true;
-        };
-      };
-
-      # polkit
-      polkit = {
-        enable = true;
-        enablePkexecWrapper = true;
-      };
-    };
-
-    # gnuupg
-    programs.gnupg.agent = {
+    # polkit
+    polkit = {
       enable = true;
-      enableSSHSupport = true;
+      enablePkexecWrapper = true;
     };
+  };
 
-    # WARN: Some programs need SUID wrappers,
-    # can be configured further or are started in user sessions.
-    environment.variables = {
-      GNUPGHOME = "${config.hjem.users.${user}.xdg.data.directory}/.gnupg";
-    };
+  # gnuupg
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
+  # WARN: Some programs need SUID wrappers,
+  # can be configured further or are started in user sessions.
+  environment.variables = {
+    GNUPGHOME = "/home/sumelan/.local/share/.gnupg";
   };
 }

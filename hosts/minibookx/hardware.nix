@@ -1,0 +1,32 @@
+{
+  config,
+  pkgs,
+  modulesPath,
+  ...
+}: {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
+
+  boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "usb_storage" "sd_mod" "sdhci_pci"];
+  boot.initrd.extraFirmwarePaths = ["vbt"];
+  boot.kernelModules = ["kvm-intel"];
+  boot.kernelParams = [
+    "quiet"
+    "i915.vbt_firmware=vbt"
+    # Fixes the display being rotated 90 degrees.
+    "fbcon=rotate:1"
+    "video=DSI-1:panel_orientation=right_side_up"
+  ];
+  boot.extraModulePackages = [];
+
+  nixpkgs.hostPlatform = pkgs.lib.mkDefault "x86_64-linux";
+  hardware.cpu.intel.updateMicrocode = pkgs.lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  hardware.firmware = let
+    vbtFirmware = pkgs.runCommand "firmware-vbt-patched" {} ''
+      mkdir -p $out/lib/firmware
+      cp "${./vbt_patched.bin}" $out/lib/firmware/vbt
+    '';
+  in [vbtFirmware];
+}

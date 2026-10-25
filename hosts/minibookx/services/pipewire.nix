@@ -1,0 +1,17 @@
+{customLib, ...}: {
+  services.pipewire = {
+    wireplumber.extraConfig = let
+      inherit (customLib.wireplumber) rename;
+    in {
+      # Rename ALSA devices
+      "10-speaker-rename" = rename {
+        old = "alsa_output.pci-0000_00_1f.3.analog-stereo";
+        new = "Built-in Speakers";
+      };
+      "10-input-rename" = rename {
+        old = "alsa_input.pci-0000_00_1f.3.analog-stereo";
+        new = "Built-in Mic";
+      };
+    };
+  };
+}

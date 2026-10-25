@@ -1,0 +1,83 @@
+{pkgs, ...}: let
+  inherit
+    (pkgs.lib)
+    mkOption
+    assertMsg
+    any
+    hasPrefix
+    isString
+    ;
+  inherit
+    (pkgs.lib.types)
+    listOf
+    anything
+    ;
+  getPath = p:
+    if isString p
+    then p
+    else p.directory or p.file or null;
+
+  assertNoHomeDirs = paths:
+    assert (assertMsg (!(any (p: (getPath p) != null && hasPrefix "/home" (getPath p)) paths)) "/home used in a root persist!"); paths;
+in {
+  options.custom = {
+    fileSystem = {
+      persist = {
+        root = {
+          directories = mkOption {
+            type = listOf anything;
+            default = [];
+            apply = assertNoHomeDirs;
+            description = "Directories to persist in root filesystem";
+          };
+          files = mkOption {
+            type = listOf anything;
+            default = [];
+            apply = assertNoHomeDirs;
+            description = "Files to persist in root filesystem";
+          };
+        };
+        home = {
+          directories = mkOption {
+            type = listOf anything;
+            default = [];
+            description = "Directories to persist in home directory";
+          };
+          files = mkOption {
+            type = listOf anything;
+            default = [];
+            description = "Files to persist in home directory";
+          };
+        };
+      };
+      cache = {
+        root = {
+          directories = mkOption {
+            type = listOf anything;
+            default = [];
+            apply = assertNoHomeDirs;
+            description = "Directories to persist, but not to snapshot";
+          };
+          files = mkOption {
+            type = listOf anything;
+            default = [];
+            apply = assertNoHomeDirs;
+            description = "Files to persist, but not to snapshot";
+          };
+        };
+        home = {
+          directories = mkOption {
+            type = listOf anything;
+            default = [];
+            description = "Directories to persist, but not to snapshot";
+          };
+          files = mkOption {
+            type = listOf anything;
+            default = [];
+            description = "Files to persist, but not to snapshot";
+          };
+        };
+      };
+    };
+  };
+}

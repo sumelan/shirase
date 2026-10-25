@@ -1,47 +1,45 @@
-{lib, ...}: let
-  inherit (lib) mkOption;
-  inherit (lib.types) str listOf package;
+{
+  config,
+  pkgs,
+  ...
+}: let
+  inherit (pkgs.lib) mkOption;
+  inherit (pkgs.lib.types) str listOf package;
 in {
-  flake.modules.nixos.default = {
-    config,
-    pkgs,
-    ...
-  }: {
-    options.custom = {
-      fonts = {
-        regular = mkOption {
-          type = str;
-          default = "Montserrat";
-          description = "The font to use for regular text";
-        };
-        monospace = mkOption {
-          type = str;
-          default = "Maple Mono NF";
-          description = "The font to use for monospace text";
-        };
-        packages = mkOption {
-          type = listOf package;
-          description = "The packages to install for the fonts";
-        };
+  options.custom = {
+    fonts = {
+      regular = mkOption {
+        type = str;
+        default = "Montserrat";
+        description = "The font to use for regular text";
+      };
+      monospace = mkOption {
+        type = str;
+        default = "Maple Mono NF";
+        description = "The font to use for monospace text";
+      };
+      packages = mkOption {
+        type = listOf package;
+        description = "The packages to install for the fonts";
       };
     };
+  };
 
-    config = {
-      # setup fonts
-      fonts = {
-        enableDefaultPackages = true;
-        inherit (config.custom.fonts) packages;
-      };
+  config = {
+    # setup fonts
+    fonts = {
+      enableDefaultPackages = true;
+      inherit (config.custom.fonts) packages;
+    };
 
-      custom.fonts.packages = builtins.attrValues {
-        inherit
-          (pkgs)
-          noto-fonts
-          noto-fonts-cjk-sans
-          noto-fonts-color-emoji
-          ;
-        monospace = pkgs.maple-mono.NF-unhinted;
-      };
+    custom.fonts.packages = builtins.attrValues {
+      inherit
+        (pkgs)
+        noto-fonts
+        noto-fonts-cjk-sans
+        noto-fonts-color-emoji
+        ;
+      monospace = pkgs.maple-mono.NF-unhinted;
     };
   };
 }

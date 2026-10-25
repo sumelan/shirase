@@ -1,49 +1,46 @@
-{lib, ...}: let
-  inherit (lib) mkOption;
-  inherit (lib.types) package str int;
+{
+  config,
+  pkgs,
+  ...
+}: let
+  inherit (pkgs.lib) mkOption;
+  inherit (pkgs.lib.types) package str int;
+  # Add cursor icon link to $XDG_DATA_HOME/icons as well for redundancy.
+  gtkCursor = config.custom.gtk.cursor;
 in {
-  flake.modules.nixos.gui = {
-    config,
-    pkgs,
-    ...
-  }: let
-    # Add cursor icon link to $XDG_DATA_HOME/icons as well for redundancy.
-    gtkCursor = config.custom.gtk.cursor;
-  in {
-    options.custom = {
-      gtk = {
-        cursor = {
-          package = mkOption {
-            type = package;
-            default = pkgs.capitaine-cursors-themed;
-            description = "Package providing the cursor theme.";
-          };
+  options.custom = {
+    gtk = {
+      cursor = {
+        package = mkOption {
+          type = package;
+          default = pkgs.capitaine-cursors-themed;
+          description = "Package providing the cursor theme.";
+        };
 
-          name = mkOption {
-            type = str;
-            default = "Capitaine Cursors (Palenight)";
-            description = "The cursor name within the package.";
-          };
+        name = mkOption {
+          type = str;
+          default = "Capitaine Cursors (Palenight)";
+          description = "The cursor name within the package.";
+        };
 
-          size = mkOption {
-            type = int;
-            default = 48;
-            description = "The cursor size.";
-          };
+        size = mkOption {
+          type = int;
+          default = 48;
+          description = "The cursor size.";
         };
       };
     };
+  };
 
-    config = {
-      environment = {
-        sessionVariables = {
-          XCURSOR_SIZE = gtkCursor.size;
-          XCURSOR_THEME = gtkCursor.name;
-        };
-        systemPackages = [
-          gtkCursor.package
-        ];
+  config = {
+    environment = {
+      sessionVariables = {
+        XCURSOR_SIZE = gtkCursor.size;
+        XCURSOR_THEME = gtkCursor.name;
       };
+      systemPackages = [
+        gtkCursor.package
+      ];
     };
   };
 }

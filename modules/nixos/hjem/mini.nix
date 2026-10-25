@@ -1,12 +1,7 @@
-{config, ...}: {
-  flake.modules.nixos.hjemMini = _: {
-    imports = builtins.attrValues {
-      inherit
-        (config.flake.custom.hjemConfigs)
-        btop
-        yt-dlp
-        nushell
-        ;
-    };
-  };
+_: {
+  imports = [
+    ./configs/wrappedPkg/btop.nix
+    ./configs/wrappedPkg/nushell.nix
+    ./configs/wrappedPkg/yt-dlp.nix
+  ];
 }

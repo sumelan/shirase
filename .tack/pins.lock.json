@@ -7,14 +7,6 @@
     "narHash": "sha256-7cr/EIloAkMm9UtdV8ucZ05oPy/qoXkbCd80L8EBPnE=",
     "lastModified": 1790516983
   },
-  "flake-parts": {
-    "type": "github",
-    "owner": "hercules-ci",
-    "repo": "flake-parts",
-    "rev": "024633cd702b10285db5cb19b40ad48d2399ba60",
-    "narHash": "sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8=",
-    "lastModified": 1790898470
-  },
   "helium": {
     "type": "github",
     "owner": "amaanq",
@@ -38,6 +30,14 @@
     "rev": "9c39cd22d617b4c4bdadee4d20ecfcf06fce0f8f",
     "narHash": "sha256-ykQKarZ/uTUhXa54vYp0yF6ENEONsE/8Ngmh1JJDZxA=",
     "lastModified": 1792170994
+  },
+  "import-tree": {
+    "type": "github",
+    "owner": "denful",
+    "repo": "import-tree",
+    "rev": "eb1b52eaecc57f7c136d07ae8a93e724dfecac46",
+    "narHash": "sha256-ljEMTXP/rH0tOvDzc9gzwww6KcHRPRnEHzd9lK48V7s=",
+    "lastModified": 1788467110
   },
   "inshellah": {
     "type": "github",
