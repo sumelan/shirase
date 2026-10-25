@@ -1,4 +1,9 @@
 _: {
+  imports = [
+    ../../modules/nixos/game/steam.nix
+    ../../modules/nixos/services/syncoid.nix
+  ];
+
   networking.hostId = "8425e349";
 
   custom = {

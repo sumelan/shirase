@@ -28,8 +28,7 @@
       };
     };
   in [
-    self.packages.${pkgs.stdenv.hostPlatform.system}.helix.override
-    {inherit extraLang;}
+    (self.packages.${pkgs.stdenv.hostPlatform.system}.helix.override {inherit extraLang;})
   ];
 
   custom.fileSystem = {

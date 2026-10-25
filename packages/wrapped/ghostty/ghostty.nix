@@ -1,7 +1,7 @@
 {
   pkgs,
   functions,
-  pkg ? pkgs.ghostty,
+  extraConfig ? {},
   ...
 }: let
   inherit
@@ -12,25 +12,6 @@
     getExe
     ;
   inherit (functions.print) wrappedConfig;
-
-  extraConfig = {
-    shell-integration = "nushell";
-    theme = "Catppuccin Frappe";
-    font-feature = concatStringsSep "," [
-      "+calt" # default ligatures
-      "+zero" # alternate zero
-      "+cv62" # alternative question
-      "+cv63" # alternative left arrow
-      "+cv66" # alternative pipe arrows
-      "+ss03" # arbitary tag
-      "+ss05" # thin escape backslash
-      "+ss07" # relax multi-greaters condition
-      "+ss08" # double / back rows
-      "+ss09" # alternative not equal
-      "+ss10" # aaproximately equal
-      "+ss11" # extra equal ligatures
-    ];
-  };
 
   ghosttyConfig = let
     cfg = import ./_config.nix {};
@@ -50,7 +31,7 @@
     [D-BUS Service]
     Name=com.mitchellh.ghostty
     SystemdService=app-com.mitchellh.ghostty.service
-    Exec=${getExe pkg} --config-default-files=false --config-file=${ghosttyConfig} --gtk-single-instance=true --initial-window=false
+    Exec=${getExe pkgs.ghostty} --config-default-files=false --config-file=${ghosttyConfig} --gtk-single-instance=true --initial-window=false
   '';
 
   wrapped-desktopItem = pkgs.writeText "wrapped-ghostty.desktop" ''
@@ -59,8 +40,8 @@
     Name=Ghostty
     Type=Application
     Comment=A terminal emulator
-    TryExec=${getExe pkg} --config-file=${ghosttyConfig}
-    Exec=${getExe pkg} --config-file=${ghosttyConfig} --gtk-single-instance=true
+    TryExec=${getExe pkgs.ghostty} --config-file=${ghosttyConfig}
+    Exec=${getExe pkgs.ghostty} --config-file=${ghosttyConfig} --gtk-single-instance=true
     Icon=com.mitchellh.ghostty
     Categories=System;TerminalEmulator;
     Keywords=terminal;tty;pty;
@@ -79,18 +60,18 @@
 
     [Desktop Action new-window]
     Name=New Window
-    Exec=${getExe pkg} --config-default-files=false --config-file=${ghosttyConfig} --gtk-single-instance=true
+    Exec=${getExe pkgs.ghostty} --config-default-files=false --config-file=${ghosttyConfig} --gtk-single-instance=true
 
   '';
 in
   pkgs.symlinkJoin {
     name = "ghostty";
-    paths = [pkg];
+    paths = with pkgs; [ghostty];
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
       ln -s ${printPkg}/bin/ghostty-print-config $out/bin/ghostty-print-config
 
-      ${getExe pkg} --config-file=${ghosttyConfig} +validate-config
+      $out/bin/ghostty --config-file=${ghosttyConfig} +validate-config
 
       rm -f $out/bin/.ghostty-wrapped
       rm -f $out/share/applications/com.mitchellh.ghostty.desktop

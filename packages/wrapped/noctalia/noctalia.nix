@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkg ? pkgs.noctalia,
   extraRuntimeInputs ? [],
   ...
 }: let
@@ -22,7 +21,7 @@
 in
   pkgs.symlinkJoin {
     name = "noctalia";
-    paths = [pkg];
+    paths = with pkgs; [noctalia];
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
       rm -f $out/bin/.noctalia-wrapped

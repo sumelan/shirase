@@ -31,6 +31,9 @@ url = "gh:nixos/nixpkgs/nixos-unstable"
 url = "private:my-secrets"
 type = "fetch"
 
+[inputs.snapshot-explorer]
+url = "gh:sumelan/snapshot-explorer/flake"
+
 [inputs.hjem]
 url = "gh:feel-co/hjem"
 
@@ -64,9 +67,6 @@ url = "gh:nix-community/preservation"
 [inputs.sonora]
 url = "gh:sonorahq/sonora"
 
-[inputs.snapshot-explorer]
-url = "gh:sumelan/snapshot-explorer/flake"
-
 [inputs.nix-meltype]
 url = "gh:aster-void/nix-meltype"
 
@@ -75,5 +75,3 @@ url = "gh:amaanq/helium-flake"
 
 [inputs.import-tree]
 url = "gh:denful/import-tree"
-
-

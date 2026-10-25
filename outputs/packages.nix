@@ -24,9 +24,10 @@ in
   forLinux (
     system: let
       pkgs = nixpkgsFor.${system};
-      functions = import ../functions/functions.nix {inherit pkgs;};
+      functions = import ../lib/functions/functions.nix {inherit pkgs;};
 
-      nvfPkg = pkg: (import ../packages/nvim/${pkg}.nix {inherit inputs pkgs;});
+      nvfPkg = pkg:
+        import ../packages/nvim/${pkg}.nix {inherit inputs pkgs;};
       shellPkg = pkg:
         pkgs.callPackage ../packages/shell/${pkg}.nix {inherit pkgs;};
       wrappedPkg = pkg:
