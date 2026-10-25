@@ -18,7 +18,7 @@ in {
         // {
           adaptive_menu = false;
           appearance = {
-            adaptive_theme = true;
+            adaptive_theme = false;
             ambient = true;
             ambient_motion = true;
             battery_saver = "off";
@@ -27,12 +27,15 @@ in {
             controls_on_left = false;
             font_size = 14;
             fullscreen_controls_autohide = "automatic";
-            icons = "lucide";
+            icons = "solar";
             motion_pace = "base";
+            os_fullscreen = false;
+            player_bar_layout = "centered";
+            player_bar_transparent = true;
             reduce_motion = "system";
             rounding = "rounded";
             server_side_decorations = true;
-            theme = "dark";
+            theme = "catppuccin/frappe";
             theme_overrides = {
               background = null;
               border = null;
@@ -78,36 +81,121 @@ in {
           };
           artwork_for_local_files = true;
           blur_lyrics = true;
+          cache_gb = 2;
           check_updates = false;
           close_to_tray = false;
           discord_badge = true;
+          discord_hide_on_connect = false;
           discord_name = "sonora";
           discord_presence = true;
-          discord_provider_button = true;
+          discord_provider_button = false;
           discord_show_paused = true;
-          discord_sonora_button = true;
+          discord_sonora_button = false;
           discord_without_details = false;
           equalizer = false;
-          equalizer_bands = [
-            0
-            0
-            0
-            0
-            0
-            0
-            0
-            0
-            0
-            0
+          equalizer_advanced = false;
+          equalizer_bass = 0;
+          equalizer_profile = 0;
+          equalizer_profiles = [
+            {
+              filters = [
+                {
+                  enabled = true;
+                  frequency = 31.25;
+                  gain = 0;
+                  kind = "peak";
+                  q = 1.41421;
+                }
+                {
+                  enabled = true;
+                  frequency = 62.5;
+                  gain = 0;
+                  kind = "peak";
+                  q = 1.41421;
+                }
+                {
+                  enabled = true;
+                  frequency = 125;
+                  gain = 0;
+                  kind = "peak";
+                  q = 1.41421;
+                }
+                {
+                  enabled = true;
+                  frequency = 250;
+                  gain = 0;
+                  kind = "peak";
+                  q = 1.41421;
+                }
+                {
+                  enabled = true;
+                  frequency = 500;
+                  gain = 0;
+                  kind = "peak";
+                  q = 1.41421;
+                }
+                {
+                  enabled = true;
+                  frequency = 1000;
+                  gain = 0;
+                  kind = "peak";
+                  q = 1.41421;
+                }
+                {
+                  enabled = true;
+                  frequency = 2000;
+                  gain = 0;
+                  kind = "peak";
+                  q = 1.41421;
+                }
+                {
+                  enabled = true;
+                  frequency = 4000;
+                  gain = 0;
+                  kind = "peak";
+                  q = 1.41421;
+                }
+                {
+                  enabled = true;
+                  frequency = 8000;
+                  gain = 0;
+                  kind = "peak";
+                  q = 1.41421;
+                }
+                {
+                  enabled = true;
+                  frequency = 16000;
+                  gain = 0;
+                  kind = "peak";
+                  q = 1.41421;
+                }
+              ];
+              name = "";
+              preamp = "auto";
+            }
           ];
+          equalizer_rules = [];
+          equalizer_treble = 0;
           font = config.custom.fonts.regular;
           fullscreen_lyrics_scale = 1;
           gapless = true;
           karaoke_lyrics = true;
+          keep_tracks = true;
           language = "auto";
           local_folders = ["${config.hjem.users.sumelan.directory}/Music"];
           local_lyrics_offered = false;
           lyrics_for_local_files = true;
+          lyrics_provider_priority = [
+            "Local"
+            "Subsonic"
+            "Spotify"
+            "YouTube Music"
+            "Apple Music"
+            "Musixmatch"
+            "LrcLib"
+            "Kugou"
+            "NetEase"
+          ];
           lyrics_providers = [
             "Local"
             "Spotify"
@@ -115,8 +203,13 @@ in {
             "Apple Music"
             "Musixmatch"
             "LrcLib"
+            "Subsonic"
           ];
           normalisation = true;
+          offline_mode = false;
+          output_buffer = null;
+          output_device = null;
+          output_rate = null;
           panel_lyrics_scale = 1;
           prefer_local_lyrics = false;
           romanization_scripts = {
@@ -129,9 +222,15 @@ in {
             other = false;
           };
           romanized_lyrics = true;
-          sleep_timer = false;
+          spotify_connect = true;
+          spotify_connect_custom_name = "";
+          spotify_connect_name = "both";
           startup = "home";
           stay_awake = true;
+          stream_quality = "hi-res";
+          subsonic_bitrate = null;
+          subsonic_format = null;
+          subsonic_lyrics_offered = true;
           tray_icon = true;
         };
     };
