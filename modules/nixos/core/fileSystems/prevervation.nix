@@ -3,27 +3,21 @@
   pkgs,
   ...
 }: let
-  inherit (pkgs.lib) unique;
+  inherit (pkgs.lib) mkForce unique;
   cfg = config.custom.fileSystem;
 in {
-  boot.initrd.systemd = {
-    # enable stage-1 bootloader
-    enable = true;
-    services.rollback = {
-      description = "Rollback ZFS root dataset to a pristine state";
-      wantedBy = ["initrd.target"];
-      after = ["zfs-import-zroot.service"];
-      # Before mounting the system root (/sysroot) during the early boot process
-      before = ["sysroot.mount"];
-      path = [config.boot.zfs.package];
-      unitConfig.DefaultDependencies = "no";
-      serviceConfig.Type = "oneshot";
-      script =
-        # sh
-        ''
-          zfs rollback -r zroot/root@blank
-        '';
+  fileSystems = let
+    mkTmpfs = {options}: {
+      device = "none";
+      fsType = "tmpfs";
+      inherit options;
     };
+  in {
+    "/" =
+      mkForce
+      (mkTmpfs {
+        options = ["defaults" "size=25%" "mode=755"];
+      });
   };
 
   preservation = {

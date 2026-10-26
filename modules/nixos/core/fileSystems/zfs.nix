@@ -29,6 +29,8 @@ in {
 
   # INFO: zfs datasets are created via install.sh
   fileSystems = {
+    # NOTE: root and home are on tmpfs
+    # root partition, exists only as a fallback, actual root is a tmpfs
     "/" = mkZfs "zroot/root";
     "/nix" = mkZfs "zroot/nix";
     "/persist" = mkZfs "zroot/persist";
