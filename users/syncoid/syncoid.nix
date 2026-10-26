@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   # allow syncoid to ssh into HDDs
-  # NOTE: You need to allow user `syncoid` to create,destroy,mount,recieve via zfs command.
+  # NOTE: You need to allow user `syncoid` to some zfs commands
+  # `sudo zfs allow -u syncoid clone,create,destroy,mount,mountpoint,receive,send,rollback,compression,snapshot,hold,release,keylocation,bookmark DATASET_or_POOL`
   users.users = {
     syncoid = {
       isNormalUser = false; # keep it a service account...

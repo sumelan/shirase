@@ -3,7 +3,6 @@
   inputs,
   pkgs,
   functions,
-  env ? {},
   extraRawConfig ? "",
   extraRuntimeInputs ? [],
   ...
@@ -117,6 +116,10 @@
           ''
         }
       '';
+
+    env = {
+      STARSHIP_CONFIG = self.packages.${pkgs.stdenv.hostPlatform.system}.starship.starshipConfig;
+    };
 
     envAttrs =
       (concatStringsSep "\n" (

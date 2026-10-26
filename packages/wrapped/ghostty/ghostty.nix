@@ -1,7 +1,6 @@
 {
   pkgs,
   functions,
-  extraConfig ? {},
   ...
 }: let
   inherit
@@ -16,6 +15,25 @@
   ghosttyConfig = let
     cfg = import ./_config.nix {};
     binds = import ./_binds.nix {};
+
+    extraConfig = {
+      shell-integration = "nushell";
+      theme = "Catppuccin Frappe";
+      font-feature = concatStringsSep "," [
+        "+calt" # default ligatures
+        "+zero" # alternate zero
+        "+cv62" # alternative question
+        "+cv63" # alternative left arrow
+        "+cv66" # alternative pipe arrows
+        "+ss03" # arbitary tag
+        "+ss05" # thin escape backslash
+        "+ss07" # relax multi-greaters condition
+        "+ss08" # double / back rows
+        "+ss09" # alternative not equal
+        "+ss10" # aaproximately equal
+        "+ss11" # extra equal ligatures
+      ];
+    };
 
     configLines = mapAttrsToList (k: v: "${k} = ${toString v}") (recursiveUpdate cfg extraConfig);
     bindsLines = mapAttrsToList (k: v: "keybind = ${k}=${v}") binds;

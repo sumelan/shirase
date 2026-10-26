@@ -4,11 +4,7 @@
   pkgs,
   ...
 }: let
-  wrappedNushell = self.packages.${pkgs.stdenv.hostPlatform.system}.nushell.override {
-    env = {
-      STARSHIP_CONFIG = self.packages.${pkgs.stdenv.hostPlatform.system}.starship.starshipConfig;
-    };
-  };
+  wrappedNushell = self.packages.${pkgs.stdenv.hostPlatform.system}.nushell;
 in {
   environment = {
     systemPackages = [wrappedNushell];

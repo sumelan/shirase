@@ -36,6 +36,14 @@ in {
     };
   };
 
+  systemd.tmpfiles.settings.preservation = {
+    "/var/lib/borgmatic".d = {
+      user = "root";
+      group = "root";
+      mode = "0700";
+    };
+  };
+
   custom.fileSystem = {
     persist.root.directories = [
       "/var/lib/borgmatic/borgmatic"

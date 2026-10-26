@@ -1,7 +1,6 @@
 {
   pkgs,
   functions,
-  extraConfig ? {},
   ...
 }: let
   inherit (pkgs.lib) recursiveUpdate;
@@ -10,6 +9,13 @@
   footConfig = let
     iniFmt = pkgs.formats.ini {listsAsDuplicateKeys = true;};
     cfg = import ./_config.nix {};
+
+    extraConfig = {
+      main = {
+        shell = "nu";
+        include = pkgs.foot.themes + "/share/foot/themes/catppuccin-frappe";
+      };
+    };
   in
     iniFmt.generate "wrapped-foot.ini" (recursiveUpdate cfg extraConfig);
 
