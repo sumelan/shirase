@@ -1,6 +1,8 @@
 _: {
   imports = [
     ../../modules/nixos/game/steam.nix
+    ../../modules/nixos/hardware/trackpad.nix
+    ../../modules/nixos/hardware/qmk.nix
     ../../modules/nixos/services/syncoid.nix
   ];
 

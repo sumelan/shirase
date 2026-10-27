@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (pkgs.lib) mkDefault;
-  sonoraPkg = inputs.sonora.packages.${pkgs.stdenv.hostPlatform.system}.sonora;
+  sonoraPkg = inputs.sonora.packages.${pkgs.stdenv.hostPlatform.system}.sonora-src;
 in {
   hjem.users.sumelan.rum = {
     programs.sonora = {

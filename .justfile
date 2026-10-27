@@ -4,6 +4,7 @@ set shell := ["nu", "-c"]
 export NH_FLAKE := `echo $env.PWD`
 export HOSTNAME := `hostname`
 export NIXPKGS_ALLOW_UNFREE := "1"
+export NIX_SHOW_STATS := "1"
 
 [group('DEFAULT')]
 [doc('List the recipes.')]
@@ -62,9 +63,8 @@ export NIXPKGS_ALLOW_UNFREE := "1"
     hyperfine 'nix eval .#nixosConfigurations.{{ HOSTNAME }}.config.system.build.toplevel --substituters " " --option eval-cache false --raw --read-only'
 
 [group('EVAL')]
-[doc('Create the flamegraph file of eval time and open in browser.')]
-@graph:
-    nix-shell -p nixVersions.latest inferno --command \
-        "nix eval .#nixosConfigurations.{{ HOSTNAME }}.config.system.build.toplevel --impure --eval-profiler flamegraph --eval-profiler-frequency 9999 \
-            && inferno-flamegraph --width 10000 < nix.profile > wrappers.svg \
-                && helium wrappers.svg"
+[doc('Write a JSON file that contains nix evaluator stats.')]
+@stats:
+    nix eval .#nixosConfigurations.{{ HOSTNAME }}.config.system.build.toplevel --substituters " " --option eval-cache false --raw --read-only
+
+

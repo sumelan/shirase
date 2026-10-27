@@ -131,8 +131,8 @@
     "type": "github",
     "owner": "sonorahq",
     "repo": "sonora",
-    "rev": "8bac90bbd41de8dc9c7f93c9ff3c99818932f09b",
-    "narHash": "sha256-S1hgmQJUQLRfqGzpt2okMh2zYpnlowT07mDOULMatgY=",
-    "lastModified": 1792889559
+    "rev": "0e9624ee48e274508c615d7f40a83a8afeac2566",
+    "narHash": "sha256-CDOKMwJgDHfepT4u6lnaN8m5F3XzKNXeAMUVeUcn3MQ=",
+    "lastModified": 1793093631
   }
 }
