@@ -1,4 +1,9 @@
-_: {
+{
+  self,
+  pkgs,
+  hostName,
+  flake,
+}: {
   language = [
     {
       name = "nix";
@@ -52,6 +57,26 @@ _: {
     nixd = {
       command = "nixd";
       args = ["--semantic-tokens=true"];
+      config = pkgs.lib.mkIf (flake != null) {
+        nixd = let
+          inputs =
+            # nix
+            ''(removeAttrs (import "${self}/.tack") ["" "__functor"])'';
+
+          myFlake =
+            # nix
+            ''(builtins.getFlake "${flake}")'';
+        in {
+          nixpkgs.expr =
+            # nix
+            ''import ${inputs}.nixpkgs { }'';
+          options = {
+            nixos.expr =
+              # nix
+              ''${myFlake}.nixosConfigurations.${hostName}.options'';
+          };
+        };
+      };
     };
   };
 }

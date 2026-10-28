@@ -1,16 +1,18 @@
 {
   self,
+  config,
   pkgs,
   ...
-}: {
+}: let
+  inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) nvim;
+in {
   environment = {
     systemPackages = builtins.attrValues {
       inherit (pkgs) wl-clipboard-rs;
 
-      nvf = self.packages.${pkgs.stdenv.hostPlatform.system}.nvf.overrideAttrs {
-        extraModules = [
-          ./_nixd.nix
-        ];
+      nvim = nvim.override {
+        flake = "/persist/home/sumelan/Projects/shirase";
+        inherit (config.networking) hostName;
       };
     };
 

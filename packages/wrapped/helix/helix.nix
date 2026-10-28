@@ -1,9 +1,11 @@
 {
+  self,
   pkgs,
   functions,
   extraConfig ? {},
-  extraLang ? {},
   extraRuntimeInputs ? [],
+  hostName ? "omen",
+  flake ? null,
   ...
 }: let
   inherit (pkgs.lib) recursiveUpdate;
@@ -15,9 +17,9 @@
     pkgs.writers.writeTOML "helix-config" (recursiveUpdate cfg extraConfig);
 
   helixLanguage = let
-    lang = import ./_languages.nix {};
+    lang = import ./_languages.nix {inherit self pkgs hostName flake;};
   in
-    pkgs.writers.writeTOML "helix-languages" (recursiveUpdate lang extraLang);
+    pkgs.writers.writeTOML "helix-languages" lang;
 
   runtimeEnv = pkgs.buildEnv {
     name = "helix-runtime-env";

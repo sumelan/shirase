@@ -1,6 +1,9 @@
 {
+  self,
   pkgs,
   functions,
+  extraConfig ? {},
+  extraRuntimeInputs ? [],
   ...
 }: let
   inherit (pkgs.lib) recursiveUpdate;
@@ -8,16 +11,23 @@
 
   footConfig = let
     iniFmt = pkgs.formats.ini {listsAsDuplicateKeys = true;};
-    cfg = import ./_config.nix {};
-
-    extraConfig = {
-      main = {
-        shell = "nu";
-        include = pkgs.foot.themes + "/share/foot/themes/catppuccin-frappe";
-      };
-    };
+    cfg = import ./_config.nix {inherit pkgs;};
   in
     iniFmt.generate "wrapped-foot.ini" (recursiveUpdate cfg extraConfig);
+
+  fontDirectories = with pkgs; [
+    nerd-fonts._0xproto
+  ];
+
+  runtimeEnv = pkgs.buildEnv {
+    name = "foot-runtime-env";
+    pathsToLink = ["/bin"];
+    paths = with self.packages.${pkgs.stdenv.hostPlatform.system};
+      [
+        nushell
+      ]
+      ++ extraRuntimeInputs;
+  };
 
   printPkg = wrappedConfig footConfig {
     name = "foot-print-config";
@@ -35,7 +45,8 @@ in
 
       wrapProgram $out/bin/foot \
         --add-flags "--config ${footConfig}" \
-        --set FONTCONFIG_FILE ${pkgs.makeFontsConf {fontDirectories = [pkgs.nerd-fonts._0xproto];}}
+        --prefix PATH : ${runtimeEnv}/bin \
+        --set FONTCONFIG_FILE ${pkgs.makeFontsConf {inherit fontDirectories;}}
     '';
     meta.mainProgram = "foot";
   }

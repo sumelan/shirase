@@ -26,15 +26,14 @@ in
       pkgs = nixpkgsFor.${system};
       functions = import ../lib/functions/functions.nix {inherit pkgs;};
 
-      nvfPkg = pkg:
-        import ../packages/nvim/${pkg}.nix {inherit inputs pkgs;};
+      nvimPkg = pkg:
+        pkgs.callPackage ../packages/nvim/${pkg}.nix {inherit self inputs pkgs;};
       shellPkg = pkg:
         pkgs.callPackage ../packages/shell/${pkg}.nix {inherit pkgs;};
       wrappedPkg = pkg:
         pkgs.callPackage ../packages/wrapped/${pkg}/${pkg}.nix {inherit self inputs pkgs functions;};
     in {
-      nvf = nvfPkg "nvf";
-      nvfMini = nvfPkg "nvfMini";
+      nvim = nvimPkg "nvf";
 
       ns = shellPkg "ns";
 

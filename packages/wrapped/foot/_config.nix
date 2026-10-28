@@ -1,7 +1,9 @@
-_: {
+{pkgs}: {
   main = {
     font = "0xProto Nerd Font:size=14";
     initial-window-size-pixels = "1000x800";
+    shell = "nu";
+    include = pkgs.foot.themes + "/share/foot/themes/catppuccin-frappe";
   };
 
   scrollback = {

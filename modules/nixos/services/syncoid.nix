@@ -22,6 +22,14 @@
     interval = pkgs.lib.mkDefault "*-*-* 23:14:00";
   };
 
+  systemd.tmpfiles.settings.preservation = {
+    "/var/lib/syncoid".d = {
+      user = "syncoid";
+      group = "syncoid";
+      mode = "0700";
+    };
+  };
+
   # persist syncoid .ssh
   # syncoid create `/var/lib/syncoid/.ssh/` and use custom ssh_config or known_hosts.
   custom.fileSystem = {
@@ -33,13 +41,5 @@
         mode = "0700";
       }
     ];
-  };
-
-  systemd.tmpfiles.settings.preservation = {
-    "/var/lib/syncoid".d = {
-      user = "syncoid";
-      group = "syncoid";
-      mode = "0700";
-    };
   };
 }
