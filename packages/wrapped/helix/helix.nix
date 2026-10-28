@@ -5,7 +5,7 @@
   extraConfig ? {},
   extraRuntimeInputs ? [],
   hostName ? "omen",
-  flake ? null,
+  flake ? "",
   ...
 }: let
   inherit (pkgs.lib) recursiveUpdate;
@@ -47,11 +47,6 @@
     name = "hx-print-config";
     lang = "toml";
   };
-
-  printLangPkg = wrappedConfig helixLanguage {
-    name = "hx-print-languages";
-    lang = "toml";
-  };
 in
   pkgs.symlinkJoin {
     name = "hx";
@@ -59,7 +54,6 @@ in
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
       ln -s ${printPkg}/bin/hx-print-config $out/bin/hx-print-config
-      ln -s ${printLangPkg}/bin/hx-print-languages $out/bin/hx-print-languages
 
       rm -f $out/bin/.hx-wrapped
 

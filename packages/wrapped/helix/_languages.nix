@@ -57,7 +57,7 @@
     nixd = {
       command = "nixd";
       args = ["--semantic-tokens=true"];
-      config = pkgs.lib.mkIf (flake != null) {
+      config = pkgs.lib.mkIf (flake != "") {
         nixd = let
           inputs =
             # nix
