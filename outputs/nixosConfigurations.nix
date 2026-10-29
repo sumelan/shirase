@@ -31,7 +31,7 @@
       (mkModules {name = "nix-secrets";})
       (mkModules {name = "preservation";})
       (mkModules {name = "inshellah";})
-
+      (mkModules {name = "niri-nix";})
       (mkModules {
         name = "nix-index-database";
         opt = "nix-index";

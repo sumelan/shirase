@@ -63,6 +63,14 @@
     "narHash": "sha256-nw7yRkyDbLM2iMdev9bd1arC2wUWcZSbNnjq79sJJLM=",
     "lastModified": 1791028546
   },
+  "niri-nix": {
+    "type": "git",
+    "url": "https://codeberg.org/BANanaD3V/niri-nix",
+    "ref": "HEAD",
+    "rev": "6df4095fc26cfc1c6fece042f9aecf2e040e753f",
+    "narHash": "sha256-trZmQOyB//FP88t92Frxp6jyGmyeWrB0WVInzmvfeHA=",
+    "lastModified": 1793232249
+  },
   "nix-index-database": {
     "type": "github",
     "owner": "nix-community",

@@ -9,7 +9,7 @@
 in {
   programs = {
     mango = {
-      enable = true;
+      enable = false;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.mango.override {
         pkg = inputs.mangowm.packages.${pkgs.stdenv.hostPlatform.system}.default;
       };

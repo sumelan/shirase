@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
   hjem.users.sumelan = {
     rum = {
       wayland.windowManager.mango = {
@@ -14,7 +10,5 @@
         };
       };
     };
-
-    packages = [pkgs.kooha];
   };
 }

@@ -9,6 +9,10 @@ _: {
   networking.hostId = "8425e349";
 
   custom = {
+    wayland.windowManager.niri = {
+      xwayland = true;
+    };
+
     programs = {
       ssh.extraConfig = ''
         Host sakura-syncoid
@@ -31,6 +35,7 @@ _: {
           IdentitiesOnly yes
           IdentityFile /root/.ssh/id_ed25519
       '';
+
       btop.cudaSupport = true;
     };
   };

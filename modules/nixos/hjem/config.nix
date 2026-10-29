@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  functions,
   ...
 }: let
   homeDir = config.hjem.users.sumelan.directory;
@@ -32,6 +33,7 @@ in {
 
   hjem = {
     clobberByDefault = true;
+    specialArgs = {inherit inputs functions;};
     extraModules = [
       (inputs.import-tree ./extraModules)
     ];

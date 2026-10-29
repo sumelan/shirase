@@ -40,7 +40,6 @@ in {
     # floating and non-transparent
     ++ (map (id: fa {opt = ",focused_opacity:1.0";} id |> toString)
       <| [
-        ''^dev\.faetalize\.waytator$''
         ''^pqiv$''
       ])
     # floating, fixed window and non-transparent
@@ -48,7 +47,6 @@ in {
       <| [
         ''^Picture-in-Picture$''
         ''^ピクチャーインピクチャー$''
-        ''^ピクチャー イン ピクチャー$''
         ''^ピクチャー イン ピクチャー$''
       ])
     ++ (map (id: fa {opt = ",width:0.45,height:0.45,focused_opacity:1.0";} id |> toString)

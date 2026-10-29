@@ -83,7 +83,7 @@ in {
           blur_lyrics = true;
           cache_gb = 2;
           check_updates = false;
-          close_to_tray = false;
+          close_to_tray = true;
           discord_badge = true;
           discord_hide_on_connect = false;
           discord_name = "sonora";
