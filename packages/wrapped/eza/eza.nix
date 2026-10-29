@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs}:
 pkgs.symlinkJoin {
   name = "eza";
   paths = with pkgs; [eza];

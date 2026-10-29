@@ -2,42 +2,6 @@
   hjem.users.sumelan.rum = {
     programs.noctalia = {
       settings = {
-        desktop_widgets = {
-          schema_version = 2;
-          widget_order = ["desktop-widget-0000000000000001"];
-
-          grid = {
-            cell_size = 16;
-            major_interval = 4;
-            visible = true;
-          };
-
-          widget = {
-            desktop-widget-0000000000000001 = {
-              box_height = 48.0;
-              box_width = 192.0;
-              cx = 1808.0;
-              cy = 1136.0;
-              output = "DSI-1";
-              placement_height = 1200.0;
-              placement_width = 1920.0;
-              rotation = 0.0;
-              type = "label";
-
-              settings = {
-                background = false;
-                background_opacity = 0.6;
-                color = "hover";
-                description = "";
-                font_family = config.custom.fonts.monospace;
-                opacity = 0.45;
-                shadow = true;
-                title = " Minibookx";
-              };
-            };
-          };
-        };
-
         idle = {
           behavior_order = ["lock" "screen-off" "lock-and-suspend"];
 

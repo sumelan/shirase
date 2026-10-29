@@ -47,14 +47,6 @@
     "narHash": "sha256-zCcxIa3JGDKFwaDhTnc1YO1+/Rpl1rZ3YJLqIhmg9YM=",
     "lastModified": 1792996869
   },
-  "mangowm": {
-    "type": "github",
-    "owner": "mangowm",
-    "repo": "mango",
-    "rev": "b7551beb9ac123e7071c68776e20f7803ae2dab5",
-    "narHash": "sha256-waQv55bja6qIpoO+pwrgIWKlnLg73N3fXEXf4hrnQTc=",
-    "lastModified": 1793184258
-  },
   "my-secrets": {
     "type": "git",
     "url": "ssh://git@github.com/sumelan/my-secrets",

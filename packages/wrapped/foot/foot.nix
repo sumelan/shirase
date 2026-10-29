@@ -4,7 +4,6 @@
   functions,
   extraConfig ? {},
   extraRuntimeInputs ? [],
-  ...
 }: let
   inherit (pkgs.lib) recursiveUpdate;
   inherit (functions.print) wrappedConfig;

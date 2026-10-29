@@ -27,31 +27,30 @@ in
       functions = import ../lib/functions/functions.nix {inherit pkgs;};
 
       nvimPkg = pkg:
-        pkgs.callPackage ../packages/nvim/${pkg}.nix {inherit self inputs pkgs;};
+        pkgs.callPackage ../packages/nvim/${pkg}.nix;
       shellPkg = pkg:
-        pkgs.callPackage ../packages/shell/${pkg}.nix {inherit pkgs;};
+        pkgs.callPackage ../packages/shell/${pkg}.nix;
       wrappedPkg = pkg:
-        pkgs.callPackage ../packages/wrapped/${pkg}/${pkg}.nix {inherit self inputs pkgs functions;};
+        pkgs.callPackage ../packages/wrapped/${pkg}/${pkg}.nix;
     in {
-      nvim = nvimPkg "nvf";
+      nvim = nvimPkg "nvf" {inherit self inputs pkgs;};
 
-      ns = shellPkg "ns";
+      ns = shellPkg "ns" {inherit pkgs;};
 
-      bat = wrappedPkg "bat";
-      broot = wrappedPkg "broot";
-      btop = wrappedPkg "btop";
-      difftastic = wrappedPkg "difftastic";
-      eza = wrappedPkg "eza";
-      foot = wrappedPkg "foot";
-      ghostty = wrappedPkg "ghostty";
-      helix = wrappedPkg "helix";
-      mango = wrappedPkg "mango";
-      noctalia = wrappedPkg "noctalia";
-      nushell = wrappedPkg "nushell";
-      pqiv = wrappedPkg "pqiv";
-      ripgrep = wrappedPkg "ripgrep";
-      starship = wrappedPkg "starship";
-      yt-dlp = wrappedPkg "yt-dlp";
-      zathura = wrappedPkg "zathura";
+      bat = wrappedPkg "bat" {inherit pkgs;};
+      broot = wrappedPkg "broot" {inherit pkgs functions;};
+      btop = wrappedPkg "btop" {inherit pkgs functions;};
+      difftastic = wrappedPkg "difftastic" {inherit pkgs;};
+      eza = wrappedPkg "eza" {inherit pkgs;};
+      foot = wrappedPkg "foot" {inherit self pkgs functions;};
+      ghostty = wrappedPkg "ghostty" {inherit self pkgs functions;};
+      helix = wrappedPkg "helix" {inherit self pkgs functions;};
+      noctalia = wrappedPkg "noctalia" {inherit pkgs;};
+      nushell = wrappedPkg "nushell" {inherit self inputs pkgs functions;};
+      pqiv = wrappedPkg "pqiv" {inherit pkgs functions;};
+      ripgrep = wrappedPkg "ripgrep" {inherit pkgs functions;};
+      starship = wrappedPkg "starship" {inherit pkgs functions;};
+      yt-dlp = wrappedPkg "yt-dlp" {inherit pkgs functions;};
+      zathura = wrappedPkg "zathura" {inherit pkgs functions;};
     }
   )

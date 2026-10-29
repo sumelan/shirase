@@ -5,7 +5,6 @@
   functions,
   extraRawConfig ? "",
   extraRuntimeInputs ? [],
-  ...
 }: let
   inherit
     (pkgs.lib)

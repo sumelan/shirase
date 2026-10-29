@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs}:
 pkgs.symlinkJoin {
   name = "bat";
   paths = with pkgs; [bat];

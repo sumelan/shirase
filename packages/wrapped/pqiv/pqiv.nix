@@ -5,7 +5,6 @@
   extraActions ? "",
   extraKeybindings ? "",
   extraRawConfig ? "",
-  ...
 }: let
   inherit (functions.print) wrappedConfig;
 

@@ -6,7 +6,6 @@
   extraRuntimeInputs ? [],
   hostName ? "omen",
   flake ? "",
-  ...
 }: let
   inherit (pkgs.lib) recursiveUpdate;
   inherit (functions.print) wrappedConfig;

@@ -3,7 +3,6 @@
   functions,
   pkg ? pkgs.btop,
   extraConfig ? {},
-  ...
 }: let
   inherit (pkgs.lib) recursiveUpdate;
   inherit

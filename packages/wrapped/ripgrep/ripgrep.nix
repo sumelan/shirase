@@ -2,7 +2,6 @@
   pkgs,
   functions,
   extraFiles ? "",
-  ...
 }: let
   inherit (functions.print) wrappedConfig;
 

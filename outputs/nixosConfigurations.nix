@@ -6,7 +6,7 @@
   linux = mkNixos "x86_64-linux" "nixos";
 
   mkNixos = system: cls: hostname: {modules ? []}: let
-    customLib = import ../lib/lib.nix {};
+    customLib = import ../lib/custom/custom.nix {};
     functions = import ../lib/functions/functions.nix {inherit pkgs;};
 
     pkgs = import inputs.nixpkgs {
@@ -35,10 +35,6 @@
       (mkModules {
         name = "nix-index-database";
         opt = "nix-index";
-      })
-      (mkModules {
-        name = "mangowm";
-        opt = "mango";
       })
     ];
   in

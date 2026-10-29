@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs}:
 pkgs.symlinkJoin {
   name = "difft";
   paths = with pkgs; [difftastic];

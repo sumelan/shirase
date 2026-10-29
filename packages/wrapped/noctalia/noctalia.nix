@@ -1,7 +1,6 @@
 {
   pkgs,
   extraRuntimeInputs ? [],
-  ...
 }: let
   runtimeEnv = pkgs.buildEnv {
     name = "noctalia-runtime-env";

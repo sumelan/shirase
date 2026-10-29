@@ -2,7 +2,6 @@
   pkgs,
   functions,
   extraRawConfig ? "",
-  ...
 }: let
   inherit
     (pkgs.lib)

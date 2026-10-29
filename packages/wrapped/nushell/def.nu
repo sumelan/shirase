@@ -42,19 +42,8 @@ def jhle [] {
   journalctl -o json -a -p err | hl -L --hide '*' --hide '!MESSAGE'
 }
 
-# ── MangoWM Commands ────────────────────────────────────────────────────
-
-# List all clients appid
-def mlsa [] {
-  mmsg get all-clients | from json | get clients.appid
-}
-
-# List all clients title
-def mlst [] {
-  mmsg get all-clients | from json | get clients.title
-}
-
 # ── Tack Commands ────────────────────────────────────────────────────
+
 # Select inputs to update interactively with diff
 def tack-update-diff []: nothing -> nothing {
   let working_path = $env.NH_FLAKE | path expand

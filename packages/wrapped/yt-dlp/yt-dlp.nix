@@ -3,7 +3,6 @@
   functions,
   extraConfig ? {},
   extraRuntimeInputs ? [],
-  ...
 }: let
   inherit
     (pkgs.lib)
