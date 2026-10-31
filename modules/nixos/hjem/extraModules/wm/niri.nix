@@ -12,9 +12,7 @@ in {
   options.rum = {
     wayland.windowManager.niri = {
       enable = mkEnableOption "niri";
-
       package = mkPackageOption pkgs "niri" {};
-
       settings = mkOption {
         type = attrs;
         default = {};

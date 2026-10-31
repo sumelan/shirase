@@ -75,3 +75,6 @@ url = "gh:denful/import-tree"
 
 [inputs.niri-nix]
 url = "cb:BANanaD3V/niri-nix"
+
+[inputs.dux-plugin-registry]
+url = "gh:duxlabs-dev/dux-plugin-registry"

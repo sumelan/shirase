@@ -7,13 +7,21 @@
     "narHash": "sha256-7cr/EIloAkMm9UtdV8ucZ05oPy/qoXkbCd80L8EBPnE=",
     "lastModified": 1790516983
   },
+  "dux-plugin-registry": {
+    "type": "github",
+    "owner": "duxlabs-dev",
+    "repo": "dux-plugin-registry",
+    "rev": "e19e7bb80b6f70a7187ad9c59c474408ada32d00",
+    "narHash": "sha256-5YV0dDVAukvTE7NqpAS/aHdht85MsExLkTpf5pPs4cw=",
+    "lastModified": 1793355756
+  },
   "helium": {
     "type": "github",
     "owner": "amaanq",
     "repo": "helium-flake",
-    "rev": "cd495e8607666e5bb4381be5aef2db0b171b4aa1",
-    "narHash": "sha256-wMCQcg9MIDnYVLpfxrGq3972BXNHrGGaufeEKL/c/Xo=",
-    "lastModified": 1793010284
+    "rev": "09df8bc7ef6954ba7049a3abe77f286dd0f5cd92",
+    "narHash": "sha256-yEuj4OvPpuZQZfmWHLEEk+LQIQlOOTjtvuqcCOVCtA8=",
+    "lastModified": 1793341034
   },
   "hjem": {
     "type": "github",

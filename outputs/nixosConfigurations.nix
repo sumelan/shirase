@@ -32,6 +32,7 @@
       (mkModules {name = "preservation";})
       (mkModules {name = "inshellah";})
       (mkModules {name = "niri-nix";})
+      (mkModules {name = "dux-plugin-registry";})
       (mkModules {
         name = "nix-index-database";
         opt = "nix-index";

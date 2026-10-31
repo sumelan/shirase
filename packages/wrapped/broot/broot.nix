@@ -4,7 +4,7 @@
   extraConfig ? {},
   extraRuntimeInputs ? [],
 }: let
-  inherit (pkgs.lib) getExe;
+  inherit (pkgs.lib) getExe recursiveUpdate;
   inherit (functions.recursive) attrsList;
   inherit (functions.print) wrappedConfig;
 
@@ -29,7 +29,7 @@
         rm $out/conf.hjson
 
         ${getExe pkgs.hjson-go} \
-          ${jsonFmt.generate "broot-config.json" (cfg // extraConfig)} \
+          ${jsonFmt.generate "broot-config.json" (recursiveUpdate cfg extraConfig)} \
             > $out/conf.hjson
       '';
     };

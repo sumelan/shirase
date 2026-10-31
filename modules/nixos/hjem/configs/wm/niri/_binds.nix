@@ -2,97 +2,91 @@ _: {
   binds = let
     hotkey = color: name: text: ''<span foreground='${color}'>[${name}]</span> ${text}'';
   in {
-    # Noctalia
     "Mod+Space" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Launcher"}";
-      spawn = ["noctalia" "msg" "panel-toggle" "launcher"];
-    };
-    "Mod+S" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Control Center"}";
-      spawn = ["noctalia" "msg" "panel-toggle" "control-center"];
-    };
-    "Mod+W" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Wallpaper"}";
-      spawn = ["noctalia" "msg" "panel-toggle" "wallpaper"];
-    };
-    "Mod+Shift+W" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Video Wallpaper"}";
-      spawn = ["noctalia" "msg" "panel-toggle" "noctalia/mpvpaper:picker"];
-    };
-    "Mod+X" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Session"}";
-      spawn = ["noctalia" "msg" "panel-toggle" "session"];
+      _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Spotlight";
+      spawn = ["dms" "ipc" "call" "spotlight-bar" "toggle"];
     };
     "Mod+Y" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Clipboard"}";
-      spawn = ["noctalia" "msg" "panel-toggle" "clipboard"];
+      _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Clipboard";
+      spawn = ["dms" "ipc" "call" "clipboard" "toggle"];
+    };
+    "Mod+W" = {
+      _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Wallpaper Carousel";
+      spawn = ["dms" "ipc" "wallpaperCarousel" "toggle"];
+    };
+    "Mod+X" = {
+      _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Powermenu";
+      spawn = ["dms" "ipc" "call" "powermenu" "toggle"];
     };
     "Mod+Comma" = {
-      _props.hotkey-overlay-title = "${hotkey "#BE9DB8" "󰖔  Noctalia" "Settings"}";
-      spawn = ["noctalia" "msg" "settings-toggle"];
+      _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Settings";
+      spawn = ["dms" "ipc" "call" "settings" "toggle"];
     };
+    "Print" = {spawn = ["dms" "ipc" "call" "niri" "screenshot"];};
+    "Shift+Print" = {spawn = ["dms" "ipc" "call" "niri" "screenshotScreen"];};
+    "Alt+Print" = {spawn = ["dms" "ipc" "call" "niri" "screenshotWindow"];};
 
     # media-key
     "XF86AudioRaiseVolume" = {
       _props.allow-when-locked = true;
-      spawn = ["noctalia" "msg" "volume-up"];
+      spawn = ["dms" "ipc" "call" "audio" "increment" "5%"];
     };
     "XF86AudioLowerVolume" = {
       _props.allow-when-locked = true;
-      spawn = ["noctalia" "msg" "volume-down"];
+      spawn = ["dms" "ipc" "call" "audio" "decrement" "5%"];
     };
     "XF86AudioMute" = {
       _props.allow-when-locked = true;
-      spawn = ["noctalia" "msg" "volume-mute"];
+      spawn = ["dms" "ipc" "call" "audio" "mute"];
     };
     "XF86AudioPlay" = {
       _props.allow-when-locked = true;
-      spawn = ["noctalia" "msg" "media" "toggle"];
+      spawn = ["dms" "ipc" "call" "mpris" "playPause"];
     };
     "XF86AudioPrev" = {
       _props.allow-when-locked = true;
-      spawn = ["noctalia" "msg" "media" "previous"];
+      spawn = ["dms" "ipc" "call" "mpris" "previous"];
     };
     "XF86AudioNext" = {
       _props.allow-when-locked = true;
-      spawn = ["noctalia" "msg" "media" "next"];
+      spawn = ["dms" "ipc" "call" "mpris" "next"];
     };
     "XF86MonBrightnessUp" = {
       _props.allow-when-locked = true;
-      spawn = ["noctalia" "msg" "brightness-up"];
+      spawn = ["dms" "ipc" "call" "brightness" "increment" "5%" "software:DP-1"];
     };
     "XF86MonBrightnessDown" = {
       _props.allow-when-locked = true;
-      spawn = ["noctalia" "msg" "brightness-down"];
+      spawn = ["dms" "ipc" "call" "brightness" "decrement" "5%" "software:DP-1"];
     };
 
     # execute
     "Mod+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#8caaee" "󰊠  Ghostty" "Terminal Emulator"}";
+      _props.hotkey-overlay-title = hotkey "#8caaee" "󰊠  Ghostty" "Terminal Emulator";
       spawn = ["ghostty" "+new-window"];
     };
     "Mod+Shift+Return" = {
-      _props.hotkey-overlay-title = "${hotkey "#a6d189" "  Neovim" "Text Editor"}";
+      _props.hotkey-overlay-title = hotkey "#a6d189" "  Neovim" "Text Editor";
       spawn = ["ghostty" "--class=app.nvim" "-e" "nvim"];
     };
     "Mod+B" = {
-      _props.hotkey-overlay-title = "${hotkey "#e78284" "  Helium" "Web Browser"}";
+      _props.hotkey-overlay-title = hotkey "#e78284" "  Helium" "Web Browser";
       spawn = ["helium"];
     };
     "Mod+D" = {
-      _props.hotkey-overlay-title = "${hotkey "#ef9f76" "  Dissent" "Discord Client"}";
+      _props.hotkey-overlay-title = hotkey "#ef9f76" "  Dissent" "Discord Client";
       spawn = ["dissent"];
     };
     "Mod+Shift+N" = {
-      _props.hotkey-overlay-title = "${hotkey "#8caaee" "󱄅  Nix Search" "Nix Package"}";
+      _props.hotkey-overlay-title = hotkey "#8caaee" "󱄅  Nix Search" "Nix Package";
       spawn = ["ghostty" "--class=app.ns" "-e" "ns"];
     };
     "Mod+Shift+B" = {
-      _props.hotkey-overlay-title = "${hotkey "#e5c890" "󰆚  Broot" "TUI File Manager"}";
+      _props.hotkey-overlay-title = hotkey "#e5c890" "󰆚  Broot" "TUI File Manager";
       spawn = ["ghostty" "--class=app.broot" "-e" "broot"];
     };
     "Ctrl+Space" = {
-      _props.hotkey-overlay-title = "${hotkey "#ca9ee6" "󰗊  Meltype" "Switch input method"}";
+      _props.hotkey-overlay-title = hotkey "#ca9ee6" "󰗊  Meltype" "Switch input method";
       spawn = ["fcitx5-remote" "-t"];
     };
 
@@ -207,9 +201,6 @@ _: {
     "Mod+Shift+Escape" = {
       quit = {_props.skip-confirmation = false;};
     };
-    "Print" = {screenshot = [];};
-    "Shift+Print" = {screenshot-screen = [];};
-    "Alt+Print" = {screenshot-window = [];};
     "Mod+Escape" = {
       _props.allow-inhibiting = false;
       toggle-keyboard-shortcuts-inhibit = [];

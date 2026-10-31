@@ -10,7 +10,6 @@ _: {
 
       background-effect = {
         blur = true;
-        xray = false;
       };
 
       popups = {
@@ -18,7 +17,6 @@ _: {
         opacity = 0.750000;
         background-effect = {
           blur = true;
-          xray = false;
         };
       };
     }
@@ -32,9 +30,6 @@ _: {
       };
       focus-ring = {width = 2;};
       opacity = 0.850000;
-      background-effect = {
-        xray = true;
-      };
     }
     # floating but not focused
     {
@@ -45,9 +40,6 @@ _: {
         };
       };
       opacity = 0.650000;
-      background-effect = {
-        xray = false;
-      };
     }
     # not floating but focused
     {
@@ -157,39 +149,8 @@ _: {
       ];
       block-out-from = "screen-capture";
     }
-    # Floating Noctalia settings window.
-    {
-      match = [
-        {_props.app-id._raw = ''r#"^dev.noctalia.Noctalia$"#'';}
-      ];
-      open-floating = true;
-      default-column-width._children = [
-        {fixed = 1080;}
-      ];
-      default-window-height._children = [
-        {fixed = 920;}
-      ];
-    }
   ];
 
   layer-rule = [
-    # noctalia
-    # blur wallpaper
-    {
-      match = [
-        {_props.namespace._raw = ''r#"^noctalia-backdrop$"#'';}
-      ];
-      place-within-backdrop = true;
-    }
-    # Disable xray on all our surfaces so it looks more realistic.
-    {
-      match = [
-        {_props.namespace._raw = ''r#"^noctalia-(bar-[^\"]+|notification|panel|attached-panel|osd)$"#'';}
-      ];
-      background-effect = {
-        blur = true;
-        xray = false;
-      };
-    }
   ];
 }

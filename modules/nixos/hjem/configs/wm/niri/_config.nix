@@ -183,16 +183,59 @@ in {
   include = [
     [
       {
-        _args = ["noctalia.kdl"];
+        _args = ["dms/alttab.kdl"];
+        _props = {
+          optional = true;
+        };
+      }
+      {
+        _args = ["dms/binds.kdl"];
+        _props = {
+          optional = true;
+        };
+      }
+      {
+        _args = ["dms/colors.kdl"];
+        _props = {
+          optional = true;
+        };
+      }
+      {
+        _args = ["dms/cursor.kdl"];
+        _props = {
+          optional = true;
+        };
+      }
+      {
+        _args = ["dms/input.kdl"];
+        _props = {
+          optional = true;
+        };
+      }
+      {
+        _args = ["dms/layout.kdl"];
+        _props = {
+          optional = true;
+        };
+      }
+      {
+        _args = ["dms/outputs.kdl"];
+        _props = {
+          optional = true;
+        };
+      }
+      {
+        _args = ["dms/windowrules.kdl"];
+        _props = {
+          optional = true;
+        };
+      }
+      {
+        _args = ["dms/wpblur.kdl"];
         _props = {
           optional = true;
         };
       }
     ]
   ];
-
-  debug = {
-    # Allows notification actions and window activation from Noctalia.
-    honor-xdg-activation-with-invalid-serial = [];
-  };
 }
