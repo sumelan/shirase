@@ -4,6 +4,10 @@ _: {
     interface_rotation: 90
   '';
 
+  services.iio-niri = {
+    enable = true;
+  };
+
   networking.hostId = "8425e349";
 
   custom = {

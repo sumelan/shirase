@@ -58,4 +58,12 @@
     compositor.name = "niri";
     configHome = config.hjem.users.sumelan.directory;
   };
+
+  custom.fileSystem = {
+    cache.home.directories = [
+      ".cache/dank-calendar"
+      ".local/share/dankcal"
+      ".local/state/dankcal"
+    ];
+  };
 }

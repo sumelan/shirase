@@ -5,6 +5,13 @@
 }: let
   inherit (pkgs.lib) getExe;
 in {
+  output = [
+    {
+      _args = ["DSI-1"];
+      mode = "1200x1920@90.000";
+      scale = 1.0;
+    }
+  ];
   hotkey-overlay = {
     skip-at-startup = [];
     hide-not-bound = [];
