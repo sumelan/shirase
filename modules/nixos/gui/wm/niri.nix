@@ -11,7 +11,7 @@
     enable = true;
     package = pkgs.niri;
 
-    useNautilus = true;
+    useNautilus = false;
     withUWSM = false;
     withXDG = true;
   };

@@ -125,7 +125,7 @@ _: {
     # windows wanted to be floating and be blocked out from screen-capture
     {
       match = [
-        {_props.app-id._raw = ''r#"^org.gnome.Nautilus$"#'';}
+        {_props.app-id._raw = ''r#"^dev.duxlabs.files$"#'';}
         {_props.app-id._raw = ''r#"^xdg-desktop-portal-gtk$"#'';}
         {_props.app-id._raw = ''r#"^org.github.atheriel.snapshot-explorer$"#'';}
         {_props.app-id._raw = ''r#"^app.broot$"#'';}

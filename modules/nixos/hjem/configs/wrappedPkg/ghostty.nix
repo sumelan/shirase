@@ -16,4 +16,12 @@ in {
   environment.sessionVariables = {
     TERMINAL = "ghostty";
   };
+
+  # fix opening terminal for nautilus by using xdg-terminal-exec spec
+  xdg.terminal-exec = {
+    enable = true;
+    settings = {
+      default = ["com.mitchellh.ghostty.desktop"];
+    };
+  };
 }
