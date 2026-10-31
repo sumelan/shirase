@@ -32,11 +32,11 @@ in {
 
     xdg = {
       config.files = {
-        "bookmarks.json" = {
+        "dfiles/bookmarks.json" = {
           generator = toJSON {};
           value = import ./_bookmarks.nix {};
         };
-        "ui-settings.json" = {
+        "dfiles/ui-settings.json" = {
           generator = toJSON {};
           value = import ./_files.nix {};
         };

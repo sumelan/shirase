@@ -126,6 +126,7 @@ _: {
     {
       match = [
         {_props.app-id._raw = ''r#"^dev.duxlabs.files$"#'';}
+        {_props.app-id._raw = ''r#"^dev.duxlabs.calendar$"#'';}
         {_props.app-id._raw = ''r#"^xdg-desktop-portal-gtk$"#'';}
         {_props.app-id._raw = ''r#"^org.github.atheriel.snapshot-explorer$"#'';}
         {_props.app-id._raw = ''r#"^app.broot$"#'';}
@@ -149,8 +150,5 @@ _: {
       ];
       block-out-from = "screen-capture";
     }
-  ];
-
-  layer-rule = [
   ];
 }
