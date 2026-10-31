@@ -2,7 +2,7 @@
   lockBeforeSuspend = true;
   lockPamExternallyManaged = true;
   lockScreenFontFamily = config.custom.fonts.regular;
-  lockScreenPowerOffMonitorsOnLock = true;
+  lockScreenPowerOffMonitorsOnLock = false;
 
   lockScreenWidgetInstances = [
     {

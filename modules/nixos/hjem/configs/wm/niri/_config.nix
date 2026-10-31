@@ -166,7 +166,7 @@ in {
     xwayland =
       if config.custom.wayland.windowManager.niri.xwayland
       then {
-        path = getExe pkgs.xwayland-satellite;
+        path = getExe pkgs.xwayland-satellite-unstable;
       }
       else {
         off = [];
