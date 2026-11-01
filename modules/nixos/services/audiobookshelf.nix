@@ -6,6 +6,14 @@ _: {
     openFirewall = true;
   };
 
+  systemd.tmpfiles.settings.preservation = {
+    "/var/lib/audiobookshelf".d = {
+      user = "audiobookshelf";
+      group = "audiobookshelf";
+      mode = "0755";
+    };
+  };
+
   custom.fileSystem = {
     persist.root.directories = [
       {
@@ -32,13 +40,5 @@ _: {
         group = "audiobookshelf";
       }
     ];
-  };
-
-  systemd.tmpfiles.settings.preservation = {
-    "/var/lib/audiobookshelf".d = {
-      user = "audiobookshelf";
-      group = "audiobookshelf";
-      mode = "0755";
-    };
   };
 }
