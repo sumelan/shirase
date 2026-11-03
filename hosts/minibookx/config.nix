@@ -11,6 +11,19 @@ _: {
   networking.hostId = "8425e349";
 
   custom = {
+    wayland.windowManager.niri = {
+      extraBinds = {
+        "XF86MonBrightnessUp" = {
+          _props.allow-when-locked = true;
+          spawn = ["dms" "ipc" "call" "brightness" "increment" "5%" "backlight:intel_backlight"];
+        };
+        "XF86MonBrightnessDown" = {
+          _props.allow-when-locked = true;
+          spawn = ["dms" "ipc" "call" "brightness" "decrement" "5%" "backlight:intel_backlight"];
+        };
+      };
+    };
+
     programs.ssh.extraConfig = ''
       Host sakura-initrd
         HostName 192.168.68.62

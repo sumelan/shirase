@@ -30,7 +30,11 @@ in {
 
   config = mkIf cfg.enable {
     xdg.config.files = {
-      "dms/.firstlaunch".text = "";
+      "dms/.firstlaunch" = {
+        permissions = "666";
+        text = "";
+        type = "copy";
+      };
       "dms/settings.json" = {
         generator = jsonFmt.generate "settings.json";
         value = cfg.settings;

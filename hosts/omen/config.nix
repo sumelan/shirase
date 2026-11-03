@@ -10,6 +10,17 @@ _: {
 
   custom = {
     wayland.windowManager.niri = {
+      extraBinds = {
+        "XF86MonBrightnessUp" = {
+          _props.allow-when-locked = true;
+          spawn = ["dms" "ipc" "call" "brightness" "increment" "5%" "software:DP-1"];
+        };
+        "XF86MonBrightnessDown" = {
+          _props.allow-when-locked = true;
+          spawn = ["dms" "ipc" "call" "brightness" "decrement" "5%" "software:DP-1"];
+        };
+      };
+
       xwayland = true;
     };
 
