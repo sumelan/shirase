@@ -6,211 +6,179 @@ _: {
         slowdown = 1.0;
 
         window-open = {
-          duration-ms = 150;
-          curve = "linear";
+          duration-ms = 1400;
+          curve = "ease-out-expo";
           custom-shader =
             # glsl
             ''
+              float ease_curve(float x) {
+                return x < 0.5 ? 4.0*x*x*x : 1.0 - pow(-2.0*x + 2.0, 3.0)/2.0;
+              }
+
               vec4 open_color(vec3 coords_geo, vec3 size_geo) {
-                  if (coords_geo.x < 0.0 || coords_geo.x > 1.0 ||
-                      coords_geo.y < 0.0 || coords_geo.y > 1.0) {
-                          return vec4(0.0);
-                      }
+                float t = niri_clamped_progress;
+                float prog = ease_curve(t);
 
-                  const float PI = 3.14;
-                  float p = sin(niri_clamped_progress * (PI/2.0) );
-                  float radius = mix(0.05,0.0, p);
-                  const float samples = 7.0;
+                // choose corner: 0=top-left,1=top-right,2=bottom-left,3=bottom-right
 
-                  vec4 outColor = vec4(0.0);
+                int corner = 2; 
+                vec2 start;
+                vec2 dir;
+                if (corner == 0) {
+                    start = vec2(0.0,0.0);
+                    dir = vec2(1.0,1.0);
+                } else if (corner == 1) {
+                    start = vec2(1.0,0.0);
+                    dir = vec2(-1.0,1.0);
+                } else if (corner == 2) {
+                    start = vec2(0.0,1.0);
+                    dir = vec2(1.0,-1.0);
+                } else {
+                    start = vec2(1.0,1.0);
+                    dir = vec2(-1.0,-1.0);
+                }
 
-                  // Define a constant for 2 * PI (tau), which represents a full circle in radians.
-                  const float tau = 6.28318530718;
+                // compute distance along diagonal from corner
+                vec2 p = coords_geo.xy;
+                float dist = dot(p - start, dir);
 
-                  // Number of directions for sampling around the circle.
-                  const float directions = 11.0;
+                // normalize distance to max diagonal (from corner to opposite)
+                float max_diag = 2.0;
+                float norm_dist = dist / max_diag;
 
-                  vec3 coords_tex = niri_geo_to_tex * coords_geo;
+                // pixels not yet reached by sweep are invisible
+                if (norm_dist > prog) {
+                    return vec4(0.0);
+                }
 
-                  // Outer loop iterates over multiple directions evenly spaced around a circle.
-                  for (float d = 0.0; d < tau; d += tau / directions) {
-                      // Inner loop samples along each direction, with decreasing intensity.
-                      for (float s = 0.0; s < 1.0; s += 1.0 / samples) {
-                          // Calculate the offset for this sample based on direction, radius, and step.
-                          // The (1.0 - s) term ensures more sampling occurs closer to the center.
-                          vec2 offset = vec2(cos(d), sin(d)) * radius * (1.0 - s) / coords_geo.xy;
+                // sample normally
+                vec3 coords_tex = niri_geo_to_tex * coords_geo;
+                vec4 col = texture2D(niri_tex, coords_tex.xy);
 
-                          // Add the sampled color at the offset position to the accumulator.
-                          outColor += texture2D(niri_tex, coords_tex.st + offset);
-                      }
-                  }
-
-                  // Normalize the accumulated color by dividing by the total number of samples
-                  // and directions to ensure the result is averaged.
-                  return (outColor / samples / directions) * p;
+                return col;
               }
             '';
         };
 
         window-close = {
-          duration-ms = 150;
-          curve = "linear";
+          duration-ms = 1400;
+          curve = "ease-out-expo";
           custom-shader =
             # glsl
             ''
+              // ease-in-out cubic curve helper
+              float ease_curve(float x) {
+                return x < 0.5 ? 4.0*x*x*x : 1.0 - pow(-2.0*x + 2.0, 3.0)/2.0;
+              }
+
               vec4 close_color(vec3 coords_geo, vec3 size_geo) {
-                  if (coords_geo.x < 0.0 || coords_geo.x > 1.0 ||
-                      coords_geo.y < 0.0 || coords_geo.y > 1.0) {
-                          return vec4(0.0);
-                  }
+                float t = niri_clamped_progress;
+                float prog = ease_curve(t);
+                
+                // choose corner: 0=top-left,1=top-right,2=bottom-left,3=bottom-right
+                int corner = 1; 
+                vec2 start;
+                vec2 dir;
+                if (corner == 0) {
+                  start = vec2(0.0,0.0);
+                  dir = vec2(1.0,1.0);
+                } else if (corner == 1) {
+                  start = vec2(1.0,0.0);
+                  dir = vec2(-1.0,1.0);
+                } else if (corner == 2) {
+                  start = vec2(0.0,1.0);
+                  dir = vec2(1.0,-1.0);
+                } else {
+                  start = vec2(1.0,1.0);
+                  dir = vec2(-1.0,-1.0);
+                }
 
-                  const float PI = 3.14;
-                  float p = sin(niri_clamped_progress * (PI/2.0) );
+                float shadow_fix = 0.01; // otherwise the animation may stop before 
+                // it hides the shadow, since it's outside the window bounds
+                // compute distance along diagonal from corner
 
-                  float radius = mix(0.0,0.05, p);
-                  const float samples = 7.0;
+                vec2 p = coords_geo.xy;
+                float dist = dot(p - start, dir) - shadow_fix;
 
-                  vec4 outColor = vec4(0.0);
+                // normalize distance to max diagonal
+                float max_diag = 2.0; // max of vec2(1,1)
+                float norm_dist = dist / max_diag;
+                
+                // If pixel is behind the sweeping line, make it invisible
+                if (norm_dist <= prog) {
+                  return vec4(0.0);
+                }
 
-                  // Define a constant for 2 * PI (tau), which represents a full circle in radians.
-                  const float tau = 6.28318530718;
+                // sample normally
+                vec3 coords_tex = niri_geo_to_tex * coords_geo;
+                vec4 col = texture2D(niri_tex, coords_tex.xy);
 
-                  // Number of directions for sampling around the circle.
-                  const float directions = 11.0;
-
-                  vec3 coords_tex = niri_geo_to_tex * coords_geo;
-
-                  // Outer loop iterates over multiple directions evenly spaced around a circle.
-                  for (float d = 0.0; d < tau; d += tau / directions) {
-                      // Inner loop samples along each direction, with decreasing intensity.
-                      for (float s = 0.0; s < 1.0; s += 1.0 / samples) {
-                          // Calculate the offset for this sample based on direction, radius, and step.
-                          // The (1.0 - s) term ensures more sampling occurs closer to the center.
-                          vec2 offset = vec2(cos(d), sin(d)) * radius * (1.0 - s) / coords_geo.xy;
-
-                          // Add the sampled color at the offset position to the accumulator.
-                          outColor += texture2D(niri_tex, coords_tex.st + offset);
-                      }
-                  }
-
-                  // Normalize the accumulated color by dividing by the total number of samples
-                  // and directions to ensure the result is averaged.
-
-                  return (outColor / samples / directions) * (1.0 - p);
+                return col;
               }
             '';
         };
 
         window-resize = {
-          duration-ms = 400;
-          curve = "linear";
           custom-shader =
             # glsl
             ''
-              float easeInOutSine(float t) {
-                  return -0.5 * (cos(3.141592653589793 * t) - 1.0);
-              }
-
-              vec4 resize_color(vec3 coords_geo, vec3 size_geo) {
-                  if (coords_geo.x < 0.0 || coords_geo.x > 1.0 ||
-                      coords_geo.y < 0.0 || coords_geo.y > 1.0) {
-                      return vec4(0.0);
-                  }
-
-                  const float PI = 3.14;
-                  float p = easeInOutSine ( sin(niri_clamped_progress * PI ));
-
-                  float radius = mix(0.0,0.0025, p);
-                  const float samples = 7.0;
-
-                  vec4 outColor = vec4(0.0);
-
-                  // Define a constant for 2 * PI (tau), which represents a full circle in radians.
-                  const float tau = 6.28318530718;
-
-                  // Number of directions for sampling around the circle.
-                  const float directions = 11.0;
-
-                  // Outer loop iterates over multiple directions evenly spaced around a circle.
-                  for (float d = 0.0; d < tau; d += tau / directions) {
-                      // Inner loop samples along each direction, with decreasing intensity.
-                      for (float s = 0.0; s < 1.0; s += 1.0 / samples) {
-                          // Calculate the offset for this sample based on direction, radius, and step.
-                          // The (1.0 - s) term ensures more sampling occurs closer to the center.
-                          vec2 offset = vec2(cos(d), sin(d)) * radius * (1.0 - s) / coords_geo.xy;
-
-                          outColor += texture2D(niri_tex_next, coords_geo.st + offset );
-                      }
-                  }
-
-                  // Normalize the accumulated color by dividing by the total number of samples
-                  // and directions to ensure the result is averaged.
-                  outColor = outColor / samples / directions;
-                  outColor.a = 1.0;
-                  return outColor ;
+              vec4 resize_color(vec3 coords_curr_geo, vec3 size_curr_geo) {
+                vec3 coords_tex_next = niri_geo_to_tex_next * coords_curr_geo;
+                vec4 color = texture2D(niri_tex_next, coords_tex_next.st);
+                return color;
               }
             '';
         };
 
         workspace-switch = {
           spring._props = {
-            damping-ratio = 1.0;
-            stiffness = 760;
+            damping-ratio = 0.80;
+            stiffness = 523;
             epsilon = 0.0001;
           };
         };
 
         horizontal-view-movement = {
           spring._props = {
-            damping-ratio = 1.0;
-            stiffness = 640;
+            damping-ratio = 0.85;
+            stiffness = 423;
             epsilon = 0.0001;
           };
         };
 
         window-movement = {
           spring._props = {
-            damping-ratio = 1.0;
-            stiffness = 700;
+            damping-ratio = 0.75;
+            stiffness = 323;
             epsilon = 0.0001;
           };
         };
 
         config-notification-open-close = {
           spring._props = {
-            damping-ratio = 1.0;
-            stiffness = 820;
+            damping-ratio = 0.65;
+            stiffness = 923;
             epsilon = 0.001;
           };
         };
 
         screenshot-ui-open = {
-          duration-ms = 220;
-          curve = [
-            {
-              _args = [
-                "cubic-bezier"
-                0.22
-                1.0
-                0.36
-                1.0
-              ];
-            }
-          ];
+          duration-ms = 200;
+          curve = "ease-out-quad";
         };
 
         overview-open-close = {
           spring._props = {
-            damping-ratio = 1.0;
-            stiffness = 620;
+            damping-ratio = 0.85;
+            stiffness = 800;
             epsilon = 0.0001;
           };
         };
 
         recent-windows-close = {
           spring._props = {
-            damping-ratio = 1.0;
-            stiffness = 680;
+            damping-ratio = 0.65;
+            stiffness = 923;
             epsilon = 0.001;
           };
         };

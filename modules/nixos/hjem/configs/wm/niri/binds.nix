@@ -7,11 +7,11 @@
       in
         {
           "Mod+Space" = {
-            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Spotlight";
-            spawn = ["dms" "ipc" "call" "spotlight-bar" "toggle"];
+            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Application Launcher";
+            spawn = ["dms" "ipc" "call" "spotlight" "toggle"];
           };
           "Mod+Y" = {
-            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Clipboard";
+            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Clipboard Manager";
             spawn = ["dms" "ipc" "call" "clipboard" "toggle"];
           };
           "Mod+W" = {

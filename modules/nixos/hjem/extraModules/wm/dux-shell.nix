@@ -30,6 +30,11 @@ in {
 
   config = mkIf cfg.enable {
     xdg.config.files = {
+      "dms/.changelog-2.0" = {
+        permissions = "666";
+        text = "2.0";
+        type = "copy";
+      };
       "dms/.firstlaunch" = {
         permissions = "666";
         text = "";

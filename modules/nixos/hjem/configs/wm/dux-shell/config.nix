@@ -265,7 +265,7 @@
       ];
       monoFontFamily = config.custom.fonts.monospace;
       niriLayoutBorderSize = -1;
-      niriLayoutGapsOverride = -1;
+      niriLayoutGapsOverride = -2;
       niriOverviewLauncherStyle = "spotlight";
       notificationFocusedMonitor = false;
       notificationOverlayEnabled = false;

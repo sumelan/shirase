@@ -9,7 +9,7 @@
           {
             draw-border-with-background = false;
             # Rounded corners for a modern look.
-            geometry-corner-radius = [10.000000 10.000000 10.000000 10.000000];
+            geometry-corner-radius = 12;
             # Clips window contents to the rounded corner boundaries.
             clip-to-geometry = true;
 
@@ -34,7 +34,7 @@
               };
             };
             focus-ring = {width = 2;};
-            opacity = 0.850000;
+            opacity = 0.830000;
           }
           # floating but not focused
           {
@@ -44,7 +44,7 @@
                 is-focused = false;
               };
             };
-            opacity = 0.650000;
+            opacity = 0.630000;
           }
           # not floating but focused
           {
@@ -54,8 +54,8 @@
                 is-focused = true;
               };
             };
-            focus-ring = {width = 4;};
-            opacity = 0.820000;
+            focus-ring = {width = 3.5;};
+            opacity = 0.800000;
           }
           # not floating nor focused
           {
@@ -65,7 +65,7 @@
                 is-focused = false;
               };
             };
-            opacity = 0.500000;
+            opacity = 0.480000;
           }
           # window-cast-target
           {
@@ -105,6 +105,7 @@
               {_props.app-id._raw = ''r#"^.blueman-manager-wrapped$"#'';}
               {_props.app-id._raw = ''r#"^chrome-.{32}-Default$"#'';} # helium extension's windows
               {_props.app-id._raw = ''r#"^valent$"#'';}
+              {_props.app-id._raw = ''r#"^dev.duxlabs.shell$"#'';}
             ];
             open-floating = true;
           }
@@ -157,7 +158,9 @@
           }
         ]
         ++ cfg.extraWindow-rule;
-      layer-rule = [] ++ cfg.extraLayer-rule;
+      layer-rule =
+        []
+        ++ cfg.extraLayer-rule;
     };
   };
 }

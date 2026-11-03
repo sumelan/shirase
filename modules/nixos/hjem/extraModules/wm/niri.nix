@@ -24,8 +24,24 @@ in {
   };
 
   config = mkIf cfg.enable {
-    xdg.config.files = {
-      "niri/config.kdl".source = validatedConfigFor cfg.package (mkNiriKDL cfg.settings);
+    xdg.config.files = let
+      finalKDL =
+        mkNiriKDL cfg.settings
+        +
+        # kdl
+        ''
+          include "dms/alttab.kdl" optional=true
+          include "dms/binds.kdl" optional=true
+          include "dms/colors.kdl" optional=true
+          include "dms/cursor.kdl" optional=true
+          include "dms/input.kdl" optional=true
+          include "dms/layout.kdl" optional=true
+          include "dms/outputs.kdl" optional=true
+          include "dms/windowrules.kdl" optional=true
+          include "dms/wpblur.kdl" optional=true
+        '';
+    in {
+      "niri/config.kdl".source = validatedConfigFor cfg.package finalKDL;
     };
   };
 }

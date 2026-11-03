@@ -133,6 +133,7 @@ _: {
               launcherLogoColorOverride = "surface";
               launcherLogoMode = "compositor";
               launcherLogoSizeOffset = 12;
+              background = false;
             }
             {
               enabled = true;
@@ -246,13 +247,14 @@ _: {
           borderEnabled = false;
           borderOpacity = 1;
           borderThickness = 1;
-          bottomGap = 0;
+          bottomGap = -35;
           centerWidgets = [
             {
               enabled = true;
               id = "quickCapture";
             }
             {
+              background = false;
               enabled = true;
               id = "workspaceSwitcher";
               showOccupiedWorkspacesOnly = true;
@@ -263,7 +265,7 @@ _: {
               workspaceFollowFocus = false;
               workspaceIndicatorCompact = false;
               workspaceIndicatorRoundness = -1;
-              workspaceIndicatorStyle = "cards";
+              workspaceIndicatorStyle = "lines";
             }
             {
               enabled = true;
@@ -299,6 +301,9 @@ _: {
           widgetFollowInterfaceStyle = true;
           widgetStyle = "pills";
           widgetTransparency = 1;
+          useOverlayLayer = false;
+          maximizeDetection = true;
+          centerOverflowMode = "auto";
         }
       ];
     };

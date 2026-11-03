@@ -96,16 +96,7 @@ in {
 
         border = {off = [];};
 
-        shadow = {
-          on = [];
-          offset._props = {
-            x = 0;
-            y = 0;
-          };
-          softness = 20;
-          spread = 10;
-          draw-behind-window = false;
-        };
+        shadow = {off = [];};
 
         tab-indicator = {
           hide-when-single-tab = true;
@@ -162,10 +153,11 @@ in {
 
       prefer-no-csd = [];
 
-      screenshot-path = "${config.hjem.users.sumelan.directory}/Pictures/Screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png";
+      screenshot-path =
+        config.hjem.users.sumelan.directory
+        + "/Pictures/Screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png";
 
       xwayland-satellite = let
-        # xwayland
         xwayland =
           if cfg.xwayland
           then {
@@ -184,70 +176,11 @@ in {
       };
 
       blur = {
-        passes = 2;
-        offset = 3.0;
-        noise = 0.03;
-        saturation = 1.0;
+        passes = 3;
+        offset = 3;
+        noise = 0.02;
+        saturation = 1.5;
       };
-
-      include = [
-        [
-          {
-            _args = ["dms/alttab.kdl"];
-            _props = {
-              optional = true;
-            };
-          }
-          {
-            _args = ["dms/binds.kdl"];
-            _props = {
-              optional = true;
-            };
-          }
-          {
-            _args = ["dms/colors.kdl"];
-            _props = {
-              optional = true;
-            };
-          }
-          {
-            _args = ["dms/cursor.kdl"];
-            _props = {
-              optional = true;
-            };
-          }
-          {
-            _args = ["dms/input.kdl"];
-            _props = {
-              optional = true;
-            };
-          }
-          {
-            _args = ["dms/layout.kdl"];
-            _props = {
-              optional = true;
-            };
-          }
-          {
-            _args = ["dms/outputs.kdl"];
-            _props = {
-              optional = true;
-            };
-          }
-          {
-            _args = ["dms/windowrules.kdl"];
-            _props = {
-              optional = true;
-            };
-          }
-          {
-            _args = ["dms/wpblur.kdl"];
-            _props = {
-              optional = true;
-            };
-          }
-        ]
-      ];
     };
   };
 }
