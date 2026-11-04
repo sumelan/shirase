@@ -1,8 +1,20 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: let
+  inherit (pkgs.lib) concatStringsSep;
+in {
   hjem.users.sumelan.rum = {
     programs.dux-shell = {
       inherit (config.programs.dux-shell) enable package;
     };
+  };
+
+  environment.sessionVariables = {
+    DMS_HIDE_TRAYIDS = concatStringsSep "," [
+      "Fcitx"
+    ];
   };
 
   custom.fileSystem = {
