@@ -211,7 +211,7 @@
           maxVisibleRunningApps = 0;
           mode = "compact";
           name = "Dock";
-          openOnOverview = false;
+          openOnOverview = true;
           order = [];
           position = 1;
           restoreSpecialWorkspaceOnClick = false;
@@ -249,9 +249,10 @@
         }
       ];
       floatingWindowSyncGlobal = true;
+      floatingWindowTitleBars = false;
       focusRingEnabled = true;
       fontFamily = config.custom.fonts.regular;
-      foregroundLayerTransparency = 0.9;
+      foregroundLayerTransparency = 0.60;
       frameCloseGaps = true;
       frameEnabled = false;
       frameLauncherArcExtender = false;
@@ -269,7 +270,7 @@
       niriOverviewLauncherStyle = "spotlight";
       notificationFocusedMonitor = false;
       notificationOverlayEnabled = false;
-      popupTransparency = 0.65;
+      popupTransparency = 0.50;
       powerMenuGridLayout = false;
       radiusMode = "scale";
       radiusStrength = 50;

@@ -6,6 +6,7 @@
         cfg = config.custom.wayland.windowManager.niri;
       in
         {
+          # dux shell
           "Mod+Space" = {
             _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Application Launcher";
             spawn = ["dms" "ipc" "call" "spotlight" "toggle"];
@@ -16,7 +17,7 @@
           };
           "Mod+W" = {
             _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Wallpaper Carousel";
-            spawn = ["dms" "ipc" "wallpaperCarousel" "toggle"];
+            spawn = ["dms" "ipc" "call" "wallpaperCarousel" "toggle"];
           };
           "Mod+X" = {
             _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Powermenu";
@@ -25,6 +26,10 @@
           "Mod+Comma" = {
             _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Settings";
             spawn = ["dms" "ipc" "call" "settings" "toggle"];
+          };
+          "Mod+Ctrl+L" = {
+            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Lock Screen";
+            spawn = ["dms" "ipc" "call" "lock" "lock"];
           };
           "Print" = {spawn = ["dms" "ipc" "call" "niri" "screenshot"];};
           "Shift+Print" = {spawn = ["dms" "ipc" "call" "niri" "screenshotScreen"];};

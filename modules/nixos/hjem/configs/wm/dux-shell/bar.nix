@@ -142,7 +142,7 @@ _: {
           ];
           name = "Main Bar";
           noBackground = false;
-          openOnOverview = false;
+          openOnOverview = true;
           popupGapsAuto = true;
           popupGapsManual = 4;
           position = 0;
@@ -216,7 +216,7 @@ _: {
           ];
           name = "Dot";
           noBackground = false;
-          openOnOverview = false;
+          openOnOverview = true;
           popupGapsAuto = true;
           popupGapsManual = 4;
           position = 0;
@@ -269,7 +269,7 @@ _: {
             }
             {
               enabled = true;
-              id = "dankKDEConnect";
+              id = "fcitx5Indicator";
             }
           ];
           clickActionFollowMouse = false;
@@ -287,7 +287,7 @@ _: {
           leftWidgets = [];
           name = "Side Bar";
           noBackground = false;
-          openOnOverview = false;
+          openOnOverview = true;
           popupGapsAuto = true;
           popupGapsManual = 4;
           position = 2;

@@ -11,6 +11,7 @@
       dankKDEConnect.enable = true;
       wallpaperCarousel.enable = true;
       modernClock.enable = true;
+      fcitx5Indicator.enable = true;
     };
   };
 

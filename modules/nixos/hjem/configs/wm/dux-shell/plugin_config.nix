@@ -10,6 +10,7 @@
         enabled = true;
         wallpaperDirectory = config.hjem.users.sumelan.directory + "/Pictures/Wallpapers/Touhou";
       };
+      fcitx5Indicator = {enabled = true;};
     };
   };
 }

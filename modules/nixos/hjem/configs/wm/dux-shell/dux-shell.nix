@@ -6,8 +6,17 @@
   };
 
   custom.fileSystem = {
+    persist.home = {
+      files = [
+        ".config/dms/icc.json"
+      ];
+
+      directories = [
+        ".config/dms/themes"
+      ];
+    };
+
     cache.home.directories = [
-      ".config/dms/themes"
       ".cache/dms"
       ".local/state/dms"
     ];

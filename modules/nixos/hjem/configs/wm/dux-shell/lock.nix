@@ -83,17 +83,6 @@
           id = "lock_power";
           widgetType = "lockPower";
         }
-        {
-          config = {
-            displayPreferences = ["all"];
-            shape = "round";
-            syncPositionAcrossScreens = true;
-          };
-          enabled = true;
-          id = "lw_1793362440673_g0b8w719j";
-          name = "Power";
-          widgetType = "lockPower";
-        }
       ];
     };
   };
