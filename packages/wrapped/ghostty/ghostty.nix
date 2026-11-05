@@ -14,7 +14,7 @@
   inherit (functions.print) wrappedConfig;
 
   ghosttyConfig = let
-    cfg = import ./_config.nix {inherit pkgs;};
+    cfg = import ./_config.nix {};
     binds = import ./_binds.nix {};
 
     configLines = mapAttrsToList (k: v: "${k} = ${toString v}") (recursiveUpdate cfg extraConfig);
@@ -23,7 +23,7 @@
     pkgs.writeText "ghostty-wrapped-config" (concatStringsSep "\n" (configLines ++ bindsLines));
 
   fontDirectories = with pkgs; [
-    maple-mono.NF-unhinted
+    nerd-fonts._0xproto
   ];
 
   runtimeEnv = pkgs.buildEnv {

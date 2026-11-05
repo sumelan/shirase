@@ -27,7 +27,7 @@
             _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Settings";
             spawn = ["dms" "ipc" "call" "settings" "toggle"];
           };
-          "Mod+Ctrl+L" = {
+          "Mod+Shift+Ctrl+L" = {
             _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Lock Screen";
             spawn = ["dms" "ipc" "call" "lock" "lock"];
           };
@@ -73,10 +73,6 @@
           "Mod+B" = {
             _props.hotkey-overlay-title = hotkey "#e78284" "  Helium" "Web Browser";
             spawn = ["helium"];
-          };
-          "Mod+D" = {
-            _props.hotkey-overlay-title = hotkey "#ef9f76" "  Dissent" "Discord Client";
-            spawn = ["dissent"];
           };
           "Mod+Shift+N" = {
             _props.hotkey-overlay-title = hotkey "#8caaee" "󱄅  Nix Search" "Nix Package";
@@ -138,10 +134,10 @@
           "Mod+Shift+R" = {switch-preset-window-height = [];};
 
           # manual sizing
-          "Mod+Minus" = {set-column-width = "-10%";};
-          "Mod+Equal" = {set-column-width = "+10%";};
-          "Mod+Shift+Minus" = {set-window-height = "-10%";};
-          "Mod+Shift+Equal" = {set-window-height = "+10%";};
+          "Mod+Ctrl+H" = {set-column-width = "-10%";};
+          "Mod+Ctrl+J" = {set-window-height = "+10%";};
+          "Mod+Ctrl+K" = {set-window-height = "-10%";};
+          "Mod+Ctrl+L" = {set-column-width = "+10%";};
 
           # numberred workspaces
           "Mod+1" = {focus-workspace = 1;};

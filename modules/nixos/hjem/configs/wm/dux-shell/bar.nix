@@ -247,7 +247,7 @@ _: {
           borderEnabled = false;
           borderOpacity = 1;
           borderThickness = 1;
-          bottomGap = -35;
+          bottomGap = -50;
           centerWidgets = [
             {
               enabled = true;

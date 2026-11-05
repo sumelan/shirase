@@ -1,11 +1,9 @@
 {
-  self,
   pkgs,
   functions,
   extraConfig ? {},
+  extraLang ? {},
   extraRuntimeInputs ? [],
-  hostName ? "omen",
-  flake ? "",
 }: let
   inherit (pkgs.lib) recursiveUpdate;
   inherit (functions.print) wrappedConfig;
@@ -16,9 +14,9 @@
     pkgs.writers.writeTOML "helix-config" (recursiveUpdate cfg extraConfig);
 
   helixLanguage = let
-    lang = import ./_languages.nix {inherit self pkgs hostName flake;};
+    lang = import ./_languages.nix {};
   in
-    pkgs.writers.writeTOML "helix-languages" lang;
+    pkgs.writers.writeTOML "helix-languages" (recursiveUpdate lang extraLang);
 
   runtimeEnv = pkgs.buildEnv {
     name = "helix-runtime-env";
@@ -46,6 +44,10 @@
     name = "hx-print-config";
     lang = "toml";
   };
+  printLangPkg = wrappedConfig helixLanguage {
+    name = "hx-print-language";
+    lang = "toml";
+  };
 in
   pkgs.symlinkJoin {
     name = "hx";
@@ -53,6 +55,7 @@ in
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
       ln -s ${printPkg}/bin/hx-print-config $out/bin/hx-print-config
+      ln -s ${printLangPkg}/bin/hx-print-language $out/bin/hx-print-language
 
       rm -f $out/bin/.hx-wrapped
 

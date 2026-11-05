@@ -14,7 +14,13 @@ in {
           mode = "1200x1920@90.000";
           scale = 1.0;
         }
+        {
+          _args = ["LG Electronics LG HDR 4K 0x000382AB"];
+          mode = "3840x2160@59.997";
+          scale = 1.0;
+        }
       ];
+
       hotkey-overlay = {
         skip-at-startup = [];
         hide-not-bound = [];
@@ -28,21 +34,17 @@ in {
 
       input = {
         focus-follows-mouse = [];
-
         keyboard = {
           xkb = {layout = "us";};
           repeat-delay = 600;
           repeat-rate = 25;
           track-layout = "global";
         };
-
         touchpad = {
           tap = [];
           natural-scroll = [];
         };
-
         tablet = {map-to-output = "DSI-1";};
-
         touch = {map-to-output = "DSI-1";};
       };
 
@@ -63,41 +65,29 @@ in {
 
       layout = {
         center-focused-column = "never";
-
         always-center-single-column = [];
-
         empty-workspace-above-first = [];
-
         default-column-display = "normal";
-
         background-color = "transparent";
 
-        gaps = 14;
+        gaps = 18;
+        focus-ring = {width = 3;};
+        border = {off = [];};
+        shadow = {off = [];};
 
         preset-column-widths._children = [
           {proportion = 0.33333;}
           {proportion = 0.5;}
           {proportion = 0.66667;}
         ];
-
         default-column-width._children = [
           {proportion = 0.5;}
         ];
-
         preset-window-heights._children = [
           {proportion = 0.33333;}
           {proportion = 0.5;}
           {proportion = 0.66667;}
         ];
-
-        focus-ring = {
-          width = 3;
-        };
-
-        border = {off = [];};
-
-        shadow = {off = [];};
-
         tab-indicator = {
           hide-when-single-tab = true;
           place-within-column = true;
