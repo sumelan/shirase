@@ -151,7 +151,7 @@
           # Pager
           ov
         ]
-        ++ (with self.packages.${pkgs.stdenv.hostPlatform.system}; [
+        ++ (with self.packages.${stdenv.hostPlatform.system}; [
           bat
           broot
           eza

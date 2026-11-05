@@ -29,9 +29,9 @@
   runtimeEnv = pkgs.buildEnv {
     name = "ghostty-runtime-env";
     pathsToLink = ["/bin"];
-    paths = with self.packages.${pkgs.stdenv.hostPlatform.system};
+    paths = with pkgs;
       [
-        nushell
+        self.packages.${stdenv.hostPlatform.system}.nushell
       ]
       ++ extraRuntimeInputs;
   };
