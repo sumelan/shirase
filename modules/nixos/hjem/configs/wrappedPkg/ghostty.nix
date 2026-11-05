@@ -7,21 +7,9 @@
 in {
   hjem.users.sumelan.rum = {
     programs.ghostty = {
-      enable = mkDefault true;
+      enable = mkDefault false;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty;
       systemd.enable = true;
-    };
-  };
-
-  environment.sessionVariables = {
-    TERMINAL = "ghostty";
-  };
-
-  # fix opening terminal for nautilus by using xdg-terminal-exec spec
-  xdg.terminal-exec = {
-    enable = true;
-    settings = {
-      default = ["com.mitchellh.ghostty.desktop"];
     };
   };
 }

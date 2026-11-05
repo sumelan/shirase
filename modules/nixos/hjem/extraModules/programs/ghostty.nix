@@ -44,15 +44,10 @@ in {
 
     rum.dbus.packages = [cfg.package];
 
-    xdg = {
-      mime-apps.default-applications = {
-        "x-scheme-handler/terminal" = "ghostty.desktop";
-      };
-      config.files."ghostty/config.ghostty" = {
-        permissions = "666";
-        text = "";
-        type = "copy";
-      };
+    xdg.config.files."ghostty/config.ghostty" = {
+      permissions = "666";
+      text = "";
+      type = "copy";
     };
   };
 }

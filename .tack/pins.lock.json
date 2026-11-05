@@ -55,6 +55,14 @@
     "narHash": "sha256-U07lw/CuarX7Rk5OqyB77JP2L/pKqVHnWKyyT+D9P+c=",
     "lastModified": 1793361961
   },
+  "monstar": {
+    "type": "github",
+    "owner": "rockorager",
+    "repo": "monstar",
+    "rev": "406c48eb938a065997bf5378457d7ca24fbfcea5",
+    "narHash": "sha256-0jwFBt628UtowdxSEttysivzl/LoWsC97dKmmKftpKc=",
+    "lastModified": 1793469515
+  },
   "my-secrets": {
     "type": "git",
     "url": "ssh://git@github.com/sumelan/my-secrets",

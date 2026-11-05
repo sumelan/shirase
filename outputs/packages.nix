@@ -45,6 +45,7 @@ in
       foot = wrappedPkg "foot" {inherit self pkgs functions;};
       ghostty = wrappedPkg "ghostty" {inherit self pkgs functions;};
       helix = wrappedPkg "helix" {inherit pkgs functions;};
+      monstar = wrappedPkg "monstar" {inherit self inputs pkgs functions;};
       nushell = wrappedPkg "nushell" {inherit self inputs pkgs functions;};
       pqiv = wrappedPkg "pqiv" {inherit pkgs functions;};
       ripgrep = wrappedPkg "ripgrep" {inherit pkgs functions;};

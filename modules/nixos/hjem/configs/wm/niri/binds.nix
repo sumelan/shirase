@@ -63,24 +63,24 @@
 
           # execute
           "Mod+Return" = {
-            _props.hotkey-overlay-title = hotkey "#8caaee" "󰊠  Ghostty" "Terminal Emulator";
-            spawn = ["ghostty" "+new-window"];
+            _props.hotkey-overlay-title = hotkey "#c6d0f5" "  Monstar" "Terminal Emulator";
+            spawn = ["monstar"];
           };
           "Mod+Shift+Return" = {
             _props.hotkey-overlay-title = hotkey "#a6d189" "  Neovim" "Text Editor";
-            spawn = ["ghostty" "--class=app.nvim" "-e" "nvim"];
+            spawn = ["monstar" "--app-id" "nvim" "-e" "nvim"];
           };
           "Mod+B" = {
-            _props.hotkey-overlay-title = hotkey "#e78284" "  Helium" "Web Browser";
+            _props.hotkey-overlay-title = hotkey "#ef9f76" "  Helium" "Web Browser";
             spawn = ["helium"];
           };
           "Mod+Shift+N" = {
             _props.hotkey-overlay-title = hotkey "#8caaee" "󱄅  Nix Search" "Nix Package";
-            spawn = ["ghostty" "--class=app.ns" "-e" "ns"];
+            spawn = ["monstar" "--app-id" "ns" "-e" "ns"];
           };
           "Mod+Shift+B" = {
             _props.hotkey-overlay-title = hotkey "#e5c890" "󰆚  Broot" "TUI File Manager";
-            spawn = ["ghostty" "--class=app.broot" "-e" "broot"];
+            spawn = ["monstar" "--app-id" "broot" "-e" "broot"];
           };
           "Ctrl+Space" = {
             _props.hotkey-overlay-title = hotkey "#ca9ee6" "󰗊  Meltype" "Switch input method";
