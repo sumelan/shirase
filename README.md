@@ -20,7 +20,7 @@ nix run --impure --expr '
  in
   repo.packages.${system}.WRAPPED_PACKAGE.override {
     extraConfig = {...};
-  };
+  }
 '
 ```
 

@@ -11,17 +11,17 @@
     "type": "github",
     "owner": "duxlabs-dev",
     "repo": "dux-plugin-registry",
-    "rev": "4b13bc33a62df4ea39700291a598cba33c77f4b6",
-    "narHash": "sha256-bYwrNDDSPtbrqnok/bzRN2+V/9r9r4FJJYs7EmE+zgQ=",
-    "lastModified": 1793680775
+    "rev": "de6b9620f8fe46fb54816a66596775898c0affff",
+    "narHash": "sha256-uPOQdUuSZw5nsJXo+UD7dEE/+QFtXEsSDDUHJATqpuo=",
+    "lastModified": 1793960587
   },
   "helium": {
     "type": "github",
     "owner": "amaanq",
     "repo": "helium-flake",
-    "rev": "a371b8d10579a66ae67d8b132c6bbb7c8b20126f",
-    "narHash": "sha256-1uEypOIoirefc7eJt/M7VJRqSjHzRPcC3khUalQFZkE=",
-    "lastModified": 1793623677
+    "rev": "a7a4fc5016d1f33abfa534fa494dae540a7b7ef8",
+    "narHash": "sha256-Mt7SC8lr9XisvIsPGSIqHWLeM2x5sVB+Qtx5SYcWxlI=",
+    "lastModified": 1793905744
   },
   "hjem": {
     "type": "github",
@@ -75,9 +75,9 @@
     "type": "git",
     "url": "https://codeberg.org/BANanaD3V/niri-nix",
     "ref": "HEAD",
-    "rev": "d40de3c0d012aacab563f88b6e87cef674501d8f",
-    "narHash": "sha256-3Ie7ZCYSuew70a78yzMfO1prrDu0I81xGIXbn7QL0wI=",
-    "lastModified": 1793664179
+    "rev": "301c783a4f7b1179240a13538d210644fc74832f",
+    "narHash": "sha256-Oh9SkvumcqKWiRds5PuA43vJLPjUxf2SV3UKsTF1Fvg=",
+    "lastModified": 1793923823
   },
   "nix-index-database": {
     "type": "github",
@@ -91,17 +91,17 @@
     "type": "github",
     "owner": "aster-void",
     "repo": "nix-meltype",
-    "rev": "f1bacf1d78d5d70e5c8f82a9d554f13573907505",
-    "narHash": "sha256-qMMrWgPGPaoC4SY3CIcPTACcSXG/vQjFCoi10shrQsY=",
-    "lastModified": 1793167721
+    "rev": "74332e32c178bc80a74a649e94fa76e26e989930",
+    "narHash": "sha256-DthRheTY0LO8ezeMwFbWVlw+NWVy8W2aEJm5Gu8HL/U=",
+    "lastModified": 1793707132
   },
   "nix-secrets": {
     "type": "github",
     "owner": "unnamed-systems",
     "repo": "nix-secrets",
-    "rev": "13d6e0c9a664406537b9564a69ee1ea20489cd61",
-    "narHash": "sha256-AsKdqaKhZ5qkadJ6Uq7hBTPIoYeBVp92WSx3m21GecU=",
-    "lastModified": 1793628915
+    "rev": "857a7594bc4cd65533bc9fcdd056dc843e10e441",
+    "narHash": "sha256-WCcx6veQ5yrOUYA9MTXXbMb4ZpwpbV9EIV0zRIZw+u0=",
+    "lastModified": 1793717226
   },
   "nixos-plymouth": {
     "type": "github",
@@ -115,9 +115,9 @@
     "type": "github",
     "owner": "nixos",
     "repo": "nixpkgs",
-    "rev": "0bb2eedc20e4739f29e8045034f2828ad7054f8f",
-    "narHash": "sha256-fiPJ88izTVucjeo2EQ3jk4aWmLg03I1D4vxnX2QjEgE=",
-    "lastModified": 1793540411
+    "rev": "1d060086d60cb76a40cf37109f979d88a5bd6396",
+    "narHash": "sha256-jQp1wKvbwWdLBASTXkSi/VYmDJ5AbBi1WvcMt9HWJC8=",
+    "lastModified": 1793726008
   },
   "nvf": {
     "type": "github",
@@ -147,8 +147,8 @@
     "type": "github",
     "owner": "sonorahq",
     "repo": "sonora",
-    "rev": "265f4c95b73fbe6a33dbb84e6d68fc1892670e3b",
-    "narHash": "sha256-POl9O4Qw+ngcVAOnQ9qcabzsUPtHWwztldNZOWA3qP8=",
-    "lastModified": 1793701123
+    "rev": "7137a5b4cee28de85f87497c8a5f3511a2c9a776",
+    "narHash": "sha256-9OhhyogxvdnDosrD7fWUsukDkCPA0RDER6U6oLhlzgc=",
+    "lastModified": 1793925180
   }
 }
