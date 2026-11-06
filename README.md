@@ -1,64 +1,84 @@
 # Shirase
 
-This is my personal flake.
+My personal NixOS flake: an encrypted ZFS root that resets on every boot, plus a set of portable wrapped packages.
+
+This is *my* configuration — fork it and replace the hosts rather than using it verbatim.
 
 ## Features
 
-### Filesystem: zfs + preservation
+### Filesystem: ZFS + preservation
 
-My system consists of an encrypted disk that restores itself to a pristine state on each boot. To return the root, I use a systemd service that runs after the base zpool is imported but before the root is actually mounted.
+The system lives on an encrypted disk and returns to a pristine state on every boot. To roll the root dataset back, a systemd service runs after the base zpool is imported but before the root filesystem is mounted.
 
-### Wrapping: pre-bundling configuration
+### Wrapping: pre-bundled: configuration
 
-I create a number of wrapped packages. Those are portable, and you can use them on other Nix-installed systems without breaking the host's settings. Note that some packages contains `extraConfig` as an attribute set and you can run programs with override like below.
+Several packages here are wrapped with a configuration baked in. They are portable: you can run them on any NixOS system without touching that host's own settings.
+
+Some wrapped packages accept an `extraConfig` attribute set, so you can run them with your own settings merged in. `.override` needs `--impure`, because the expression calls `builtins.getFlake` and `builtins.currentSystem`:
 
 ```sh
 nix run --impure --expr '
- let
-  repo = builtins.getFlake "github:sumelan/shirase";
-  system = builtins.currentSystem;
- in
-  repo.packages.${system}.WRAPPED_PACKAGE.override {
-    extraConfig = {...};
+  let
+    repo = builtins.getFlake "github:sumelan/shirase";
+    system = builtins.currentSystem;
+  in
+  repo.packages.${system}.helix.override {
+    extraConfig = {
+      editor.line-number = "absolute";
+    };
   }
 '
 ```
 
-Also, wrapped package contains one or two excutables that print the configuration. You can invoke form the command:
+`helix` additionally accepts extraLang and extraRuntimeInputs; check the package's `.nix` file under `packages/wrapped/` for what it takes.
+
+Each wrapped package also ships one or more executables that print the configuration baked into it. The names follow the wrapped program, not the attribute name (helix → hx-print-config):
 
 ```sh
-nix shell github:sumelan/shirase#WRAPPED_PACKAGE -c WRAPPED_PROGRAM-print-config
+nix shell github:sumelan/shirase#helix -c hx-print-config
+nix shell github:sumelan/shirase#helix -c hx-print-language
 ```
+
+To see every program a package provides:
+
+```sh
+ls "$(nix build github:sumelan/shirase#helix --no-link --print-out-paths)/bin"
+```
+
+Note that `nix run` only ever starts the package's `meta.mainProgram`, so use `nix shell … -c` when you want a secondary executable.
 
 ## Install
 
-There is a script to create the zpool and partition. I know disko exists but
-prefer this method.
+A script sets up the partition table and the zpool:
 
 ```sh
-sh <(curl -L https://raw.githubusercontent.com/sumelan/shirase/main/partition.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/sumelan/shirase/main/partition.sh)
 ```
 
-Before running `nixos-install`, one task is required: writing the hardware
-configuration for the target host. Filesystem mounts are already written in this
-flake, but they lack info about hardware configs. 
+I know disko exists, but I prefer this approach.
 
-To generate a hardware config without filesystem info, run the command
-below.
+Before nixos-install, one step is still required: writing a hardware configuration for the target host. The filesystem mounts are already defined in this flake, but hardware-specific settings are not. Generate one with:
 
 ```sh
-nixos-generate-config --no-filesystems --show-hardware-config
+nixos-generate-config --no-filesystems --show-hardware-config \
+  > /tmp/hardware-configuration.nix
 ```
 
-After writing the hardware config, you finally reach the install phase.
+Commit it for the host you are installing, then run the install:
 
 ```sh
-sudo nixos-install --no-root-password --flake "github:sumelan/shirase/main#HOST" --option tarball-ttl 0
+sudo nixos-install \
+  --no-root-password \
+  --flake "github:sumelan/shirase/main#HOST" \
+  --option tarball-ttl 0
 ```
+
+`HOST` is one of the names under `hosts/`. `--option tarball-ttl 0` avoids installing a cached, stale copy of this flake.
 
 ## Resources
-- Took inspiration from these dotfiles:
-  [iynaix/dotfiles](https://github.com/iynaix/dotfiles), [Michael-C-Buckley/nixos](https://github.com/Michael-C-Buckley/nixos), [poz/niksos](https://git.poz.pet/poz/niksos)
+- Inspired by these dotfiles:
+[iynaix/dotfiles](https://github.com/iynaix/dotfiles),
+[Michael-C-Buckley/nixos](https://github.com/Michael-C-Buckley/nixos),
+[poz/niksos](https://git.poz.pet/poz/niksos)
 
-- [Vimjoyer's YouTube](https://www.youtube.com/@vimjoyer)  
-  If you consider using NixOS, check out his YouTube channel!
+- [Vimjoyer's YouTube](https://www.youtube.com/@vimjoyer) -- a good starting point if you are considering NixOS.
