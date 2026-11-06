@@ -1,5 +1,4 @@
 {
-  self,
   pkgs,
   hostName,
   flake,
@@ -23,7 +22,7 @@
       settings.nixd = let
         inputs =
           # nix
-          ''(removeAttrs (import "${self}/.tack") ["" "__functor"])'';
+          ''(removeAttrs (import "${flake}/.tack") ["" "__functor"])'';
 
         myFlake =
           # nix

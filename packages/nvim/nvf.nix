@@ -1,5 +1,4 @@
 {
-  self,
   inputs,
   pkgs,
   hostName ? "omen",
@@ -8,7 +7,7 @@
   mkNvf = modules:
     (inputs.nvf.lib.neovimConfiguration {
       inherit pkgs modules;
-      extraSpecialArgs = {inherit self flake hostName;};
+      extraSpecialArgs = {inherit flake hostName;};
     }).neovim;
 
   full = [

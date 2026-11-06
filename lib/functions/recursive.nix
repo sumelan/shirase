@@ -1,4 +1,4 @@
-{pkgs, ...}: rec {
+{pkgs}: rec {
   attrs = lhs: rhs:
     lhs
     // rhs

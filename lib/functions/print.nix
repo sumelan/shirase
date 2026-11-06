@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs}: {
   wrappedConfig = cfg: {
     name,
     lang ? "",

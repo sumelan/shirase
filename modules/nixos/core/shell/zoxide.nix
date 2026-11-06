@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   environment.systemPackages = [pkgs.zoxide];
-
   # zoxide is initialized via `zoxide init fish <flags> | source` and is
   # therefore not wrapped with flags
   programs = {

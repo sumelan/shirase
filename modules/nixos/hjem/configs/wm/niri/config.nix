@@ -17,7 +17,7 @@ in {
         {
           _args = ["LG Electronics LG HDR 4K 0x000382AB"];
           mode = "3840x2160@59.997";
-          scale = 1.0;
+          scale = 1.5;
         }
       ];
 

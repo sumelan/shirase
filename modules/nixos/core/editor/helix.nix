@@ -14,7 +14,7 @@
 
             inputs =
               # nix
-              ''(removeAttrs (import "${self}/.tack") ["" "__functor"])'';
+              ''(removeAttrs (import "${flake}/.tack") ["" "__functor"])'';
 
             myFlake =
               # nix
