@@ -24,6 +24,12 @@ nix run --impure --expr '
 '
 ```
 
+Also, wrapped package contains one or two excutables that print the configuration. You can invoke form the command:
+
+```sh
+nix shell github:sumelan/shirase#WRAPPED_PACKAGE -c WRAPPED_PROGRAM-print-config
+```
+
 ## Install
 
 There is a script to create the zpool and partition. I know disko exists but
