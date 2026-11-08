@@ -11,9 +11,9 @@
     "type": "github",
     "owner": "duxlabs-dev",
     "repo": "dux-plugin-registry",
-    "rev": "de6b9620f8fe46fb54816a66596775898c0affff",
-    "narHash": "sha256-uPOQdUuSZw5nsJXo+UD7dEE/+QFtXEsSDDUHJATqpuo=",
-    "lastModified": 1793960587
+    "rev": "55456e1a6653d72c69ca99738f67238ab93c7603",
+    "narHash": "sha256-zHSk1+CtFVRPgBY9RuWNr4mwynIgxxiaByb8t+EorOY=",
+    "lastModified": 1794034268
   },
   "helium": {
     "type": "github",
@@ -59,9 +59,9 @@
     "type": "github",
     "owner": "rockorager",
     "repo": "monstar",
-    "rev": "406c48eb938a065997bf5378457d7ca24fbfcea5",
-    "narHash": "sha256-0jwFBt628UtowdxSEttysivzl/LoWsC97dKmmKftpKc=",
-    "lastModified": 1793469515
+    "rev": "b2c82d2f7f5bafc031fa49b08e52372afb23b095",
+    "narHash": "sha256-ld3CFH34uESksbCtOReV3rUuFG4iDwwFH/ojzEC4Vys=",
+    "lastModified": 1794049731
   },
   "my-secrets": {
     "type": "git",
@@ -75,9 +75,9 @@
     "type": "git",
     "url": "https://codeberg.org/BANanaD3V/niri-nix",
     "ref": "HEAD",
-    "rev": "301c783a4f7b1179240a13538d210644fc74832f",
-    "narHash": "sha256-Oh9SkvumcqKWiRds5PuA43vJLPjUxf2SV3UKsTF1Fvg=",
-    "lastModified": 1793923823
+    "rev": "2bf797ee5a2fa16b5699b9dc582350654d342b72",
+    "narHash": "sha256-tp8aArbo2blNkTbKw27/fWFO2gLtgRqJT+2lXyXAkxw=",
+    "lastModified": 1794096592
   },
   "nix-index-database": {
     "type": "github",
@@ -115,17 +115,17 @@
     "type": "github",
     "owner": "nixos",
     "repo": "nixpkgs",
-    "rev": "1d060086d60cb76a40cf37109f979d88a5bd6396",
-    "narHash": "sha256-jQp1wKvbwWdLBASTXkSi/VYmDJ5AbBi1WvcMt9HWJC8=",
-    "lastModified": 1793726008
+    "rev": "f9a75f41be3a74eab55d3a7679d34ad6cc0da977",
+    "narHash": "sha256-Wojg9lIH/hDH91iDVH2/EPw8oDSpxjxhXONbU1yf4Zg=",
+    "lastModified": 1793876309
   },
   "nvf": {
     "type": "github",
     "owner": "notashelf",
     "repo": "nvf",
-    "rev": "ab3159aea7707333e689289a74545b26c1c9d37c",
-    "narHash": "sha256-N5ulCQwTIcd3Il7uE491pbkRTWL2BtZKf/B5jfavmCo=",
-    "lastModified": 1793550142
+    "rev": "d36cd373c5636f9a97c228ffaaec857383d88cbc",
+    "narHash": "sha256-K1rzAlksFZWJ0JQfB9kIEFIp9N+pzZs9881Va5LmytY=",
+    "lastModified": 1794049908
   },
   "preservation": {
     "type": "github",
@@ -147,8 +147,8 @@
     "type": "github",
     "owner": "sonorahq",
     "repo": "sonora",
-    "rev": "7137a5b4cee28de85f87497c8a5f3511a2c9a776",
-    "narHash": "sha256-9OhhyogxvdnDosrD7fWUsukDkCPA0RDER6U6oLhlzgc=",
-    "lastModified": 1793925180
+    "rev": "f6557c23be6254b26e65caf15bc3024129107560",
+    "narHash": "sha256-BAdyfrwF4S8p3whTOFCLwbA1DLQcNOao5fUDBKPYxX4=",
+    "lastModified": 1794022004
   }
 }
