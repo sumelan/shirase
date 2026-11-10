@@ -28,10 +28,14 @@
     )
   );
 in {
+  # plymouth
+  x-plymouth = {
+    variant = "dark"; # "light" (default), "dark" or "classic"
+    statusLines = 5; # boot statuses listed under the progress bar; 0 hides them
+  };
+
   boot = {
     kernelPackages = latestKernelPackage;
-
-    # INFO: plymouth automatically enabled via flake:nixos-plymouth
 
     # Enable "Silent boot"
     consoleLogLevel = 3;

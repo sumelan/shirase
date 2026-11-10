@@ -43,9 +43,6 @@ url = "gh:nix-community/nix-index-database"
 [inputs.nvf]
 url = "gh:notashelf/nvf"
 
-[inputs.nixos-plymouth]
-url = "gh:BeatLink/nixos-plymouth"
-
 [inputs.comview]
 url = "gh:sumelan/comview/flake"
 
@@ -81,3 +78,6 @@ url = "gh:duxlabs-dev/dux-plugin-registry"
 
 [inputs.monstar]
 url = "gh:rockorager/monstar"
+
+[inputs.x-plymouth]
+url = "gh:x-tech-laboratories/X-Plymouth"

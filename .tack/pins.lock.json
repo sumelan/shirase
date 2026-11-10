@@ -103,14 +103,6 @@
     "narHash": "sha256-WCcx6veQ5yrOUYA9MTXXbMb4ZpwpbV9EIV0zRIZw+u0=",
     "lastModified": 1793717226
   },
-  "nixos-plymouth": {
-    "type": "github",
-    "owner": "BeatLink",
-    "repo": "nixos-plymouth",
-    "rev": "33b308bfc0e9411e5c96bc114b9f7e83e7c7fd2c",
-    "narHash": "sha256-kP9fSJxZO4vHn9kL3o9h1yxKxUvON/1yvlNIYSH5yq0=",
-    "lastModified": 1758476321
-  },
   "nixpkgs": {
     "type": "github",
     "owner": "nixos",
@@ -150,5 +142,13 @@
     "rev": "f6557c23be6254b26e65caf15bc3024129107560",
     "narHash": "sha256-BAdyfrwF4S8p3whTOFCLwbA1DLQcNOao5fUDBKPYxX4=",
     "lastModified": 1794022004
+  },
+  "x-plymouth": {
+    "type": "github",
+    "owner": "x-tech-laboratories",
+    "repo": "X-Plymouth",
+    "rev": "0b9122db046a4f8b2228f2ac0dc33a8f698fba4b",
+    "narHash": "sha256-QpdewfuQppejsfXotUlV1EOcfZaFmrE2JORXZSLICAI=",
+    "lastModified": 1794180571
   }
 }
