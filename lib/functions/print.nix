@@ -1,4 +1,7 @@
-{pkgs}: {
+{
+  self,
+  pkgs,
+}: {
   wrappedConfig = cfg: {
     name,
     lang ? "",
@@ -10,7 +13,7 @@
   in
     pkgs.writeShellApplication {
       inherit name;
-      runtimeInputs = with pkgs; [bat];
+      runtimeInputs = [self.packages.${pkgs.stdenv.hostPlatform.system}.bat];
       text = ''
         bat ${flags} "$@" ${cfg}
       '';

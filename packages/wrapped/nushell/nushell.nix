@@ -19,6 +19,10 @@
     def = builtins.readFile ./def.nu;
     starship = builtins.readFile ./starship.nu;
 
+    shellAliases = import ./_aliases.nix {};
+    mergedAliases = shellAliases.basic // shellAliases.extra // shellAliases.nu;
+    aliases = concatStringsSep "\n" (mapAttrsToList (k: v: "alias ${k} = ${v}") mergedAliases);
+
     nix-your-shell =
       # nu
       ''
@@ -28,55 +32,6 @@
           ''
         }
       '';
-
-    shellAliases = {
-      basic = {
-        # vim-like
-        ":e" = "nvim";
-        ":q" = "exit";
-        ":wq" = "exit";
-
-        aa = "echo (whoami)@(hostname)";
-        c = "clear";
-
-        # cd aliases
-        ".." = "cd ..";
-        "..." = "cd ../..";
-
-        # neovim
-        nv = "nvim";
-      };
-      extra = {
-        lt = "eza --tree --level=3 --icons";
-        tree = "eza --tree";
-        cat = "bat -p";
-
-        # git
-        gst = "git status";
-        ga = "git add";
-        gaa = "git add *";
-        gc = "git commit";
-        gcm = "git commit -m";
-        gp = "git push";
-        gf = "git fetch";
-        grv = "git remote -v";
-        lg = "lazygit";
-
-        # help
-        bat-help = "bat --plain --language=help";
-
-        # zfs
-        zls = "zfs list -o name,used,compressratio,lused,avail";
-        zsls = "zfs list -t snapshot -S creation -o name,creation,used,written,refer";
-      };
-      nu = {
-        ll = "ls -la";
-        la = "ls -a";
-      };
-    };
-
-    mergedAliases = shellAliases.basic // shellAliases.extra // shellAliases.nu;
-    aliases = concatStringsSep "\n" (mapAttrsToList (k: v: "alias ${k} = ${v}") mergedAliases);
   in
     pkgs.writeText "nu-config" (
       cfg
@@ -157,7 +112,6 @@
           eza
           ns
           ripgrep
-          difftastic
           yt-dlp
         ])
         ++ [

@@ -1,8 +1,4 @@
-{
-  self,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   gitignores = [
     ".direnv"
     ".devenv"
@@ -11,8 +7,7 @@
     "node_modules"
   ];
 in {
-  # difftastic
-  environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.difftastic];
+  environment.systemPackages = [pkgs.difftastic];
 
   programs = {
     git = {

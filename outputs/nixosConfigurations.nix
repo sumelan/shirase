@@ -7,7 +7,7 @@
 
   mkNixos = system: cls: hostname: {modules ? []}: let
     customLib = import ../lib/custom/custom.nix {};
-    functions = import ../lib/functions/functions.nix {inherit pkgs;};
+    functions = import ../lib/functions/functions.nix {inherit self pkgs;};
 
     pkgs = import inputs.nixpkgs {
       inherit system;

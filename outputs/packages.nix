@@ -24,7 +24,7 @@ in
   forLinux (
     system: let
       pkgs = nixpkgsFor.${system};
-      functions = import ../lib/functions/functions.nix {inherit pkgs;};
+      functions = import ../lib/functions/functions.nix {inherit self pkgs;};
 
       nvimPkg = pkg:
         pkgs.callPackage ../packages/nvim/${pkg}.nix;
@@ -40,11 +40,11 @@ in
       bat = wrappedPkg "bat" {inherit pkgs;};
       broot = wrappedPkg "broot" {inherit pkgs functions;};
       btop = wrappedPkg "btop" {inherit pkgs functions;};
-      difftastic = wrappedPkg "difftastic" {inherit pkgs;};
       eza = wrappedPkg "eza" {inherit pkgs;};
       foot = wrappedPkg "foot" {inherit self pkgs functions;};
       ghostty = wrappedPkg "ghostty" {inherit self pkgs functions;};
       helix = wrappedPkg "helix" {inherit pkgs functions;};
+      just = wrappedPkg "just" {inherit self pkgs;};
       monstar = wrappedPkg "monstar" {inherit self inputs pkgs functions;};
       nushell = wrappedPkg "nushell" {inherit self inputs pkgs functions;};
       pqiv = wrappedPkg "pqiv" {inherit pkgs functions;};

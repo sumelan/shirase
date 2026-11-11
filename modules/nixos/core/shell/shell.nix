@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  self,
+  pkgs,
+  ...
+}: {
   environment = {
     systemPackages = builtins.attrValues {
       inherit
@@ -12,8 +16,6 @@
         gzip
         htop
         jq
-        just
-        hyperfine
         killall
         procs # better ps
         sd # better sed
@@ -22,6 +24,10 @@
         xdg-utils
         ;
       inherit (pkgs.lib.hiPrio pkgs) procps;
+      inherit
+        (self.packages.${pkgs.stdenv.hostPlatform.system})
+        just
+        ;
     };
 
     variables = {
