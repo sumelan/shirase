@@ -13,7 +13,6 @@
 
     cfg = attrsList [
       (import ./_config.nix {})
-      (import ./_skin.nix {})
       (import ./_verbs.nix {})
     ];
 
@@ -58,6 +57,8 @@ in
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
       ln -s ${printPkg}/bin/broot-print-config $out/bin/broot-print-config
+
+      rm -f $out/bin/.broot-wrapped
 
       wrapProgram $out/bin/broot \
         --prefix PATH : ${runtimeEnv}/bin \

@@ -38,9 +38,18 @@ _: {
     }
     {
       invocation = "drag";
+      key = "ctrl-d";
       shell_command =
         # sh
         ''ripdrag --no-click --and-exit --icon-size 128 --target --all {file:space-separated} | while read filepath; do cp -nR $filepath .; done'';
+      leave_broot = false;
+    }
+    {
+      invocation = "drop";
+      key = "ctrl-D";
+      shell_command =
+        # sh
+        ''ripdrag --no-click --and-exit --icon-size 128 --target --all {file:space-separated} | while read filepath; do cp -fR $filepath .; done'';
       leave_broot = false;
     }
   ];

@@ -25,11 +25,16 @@ def nix-list-system []: nothing -> list<string> {
   | sort
 }
 
+# Amend `--help` with bat
+def --wrapped ph [program: string, ...rest] {
+  ^$program ...$rest --help | bat --plain --language=help
+}
+
 # ── Journalctl Commands ────────────────────────────────────────────────────
 
 # View journal with hl and hide all fields except MESSAGE
-def jhl [] {
-  journalctl -o json -a | hl -L --hide '*' --hide '!MESSAGE'
+def jhl [service] {
+  journalctl -xeu $service -o json -a | hl -L --hide '*' --hide '!MESSAGE'
 }
 
 # Follow Live Logs (Streaming)
@@ -38,8 +43,8 @@ def jhlf [] {
 }
 
 # Show only error-level messages and above.
-def jhle [] {
-  journalctl -o json -a -p err | hl -L --hide '*' --hide '!MESSAGE'
+def jhle [service] {
+  journalctl $service -o json -a -p err | hl -L --hide '*' --hide '!MESSAGE'
 }
 
 # ── Tack Commands ────────────────────────────────────────────────────

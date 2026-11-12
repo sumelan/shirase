@@ -103,13 +103,12 @@
           # Git
           git
           lazygit
-          # Pager
-          ov
         ]
         ++ (with self.packages.${stdenv.hostPlatform.system}; [
           bat
           broot
           eza
+          moor
           ns
           ripgrep
           yt-dlp
