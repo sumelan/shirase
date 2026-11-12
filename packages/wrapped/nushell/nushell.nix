@@ -85,7 +85,6 @@
 
   runtimeEnv = let
     comview = inputs.comview.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    hl = inputs.hl.packages.${pkgs.stdenv.hostPlatform.system}.default;
     inshellah = inputs.inshellah.packages.${pkgs.stdenv.hostPlatform.system}.default;
   in
     pkgs.buildEnv {
@@ -102,6 +101,7 @@
           fzf
           # Git
           git
+          hl-log-viewer
           lazygit
         ]
         ++ (with self.packages.${stdenv.hostPlatform.system}; [
@@ -115,7 +115,6 @@
         ])
         ++ [
           comview
-          hl
           inshellah
         ]
         ++ extraRuntimeInputs;

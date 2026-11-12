@@ -31,14 +31,6 @@
     "narHash": "sha256-tttNqwFIXsClznNv3uEltACsfBm8xIDo9bPl+BHqYZc=",
     "lastModified": 1794190356
   },
-  "hl": {
-    "type": "github",
-    "owner": "pamburus",
-    "repo": "hl",
-    "rev": "3aae7bc70c6519110cd579ac70479fbc2989c88b",
-    "narHash": "sha256-SpTwxw0Ky/qHoNWdVckoU7JtsKsrrLC2UErYh4bN5ds=",
-    "lastModified": 1792620030
-  },
   "import-tree": {
     "type": "github",
     "owner": "denful",

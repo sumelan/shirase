@@ -49,9 +49,6 @@ url = "gh:sumelan/comview/flake"
 [inputs.inshellah]
 url = "gh:manic-systems/inshellah"
 
-[inputs.hl]
-url = "gh:pamburus/hl"
-
 [inputs.nix-secrets]
 url = "gh:unnamed-systems/nix-secrets"
 
