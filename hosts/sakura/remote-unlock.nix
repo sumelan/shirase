@@ -1,4 +1,4 @@
-_: {
+{config, ...}: {
   boot = {
     kernelModules = [
       "igc" # Ethernet controller: Intel Corporation Ethernet Controller I225-V (rev 03
@@ -21,12 +21,9 @@ _: {
           # A host key that lives in persistent storage, separate from
           # your regular SSH host key. You don't want to share host keys
           # between the initrd and the booted system.
-          # hostKeys paths must be unquoted strings, otherwise you'll run into issues with boot.initrd.secrets
-          /root/.ssh/initrd_ssh_ed25519_key
+          "/root/.ssh/initrd_ssh_ed25519_key"
         ];
-        authorizedKeys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINROlQPXpPry3pue6Wg0W3hhKVap5PoirEr5E7BiR2OJ root@omen"
-        ];
+        authorizedKeyFiles = config.users.users.root.openssh.authorizedKeys.keyFiles;
       };
 
       systemd = {

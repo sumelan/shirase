@@ -1,6 +1,7 @@
 _: {
   networking.hostId = "8425e349";
   services.openssh.settings.PermitRootLogin = "prohibit-password";
+
   custom = {
     programs = {
       btop.rocmSupport = true;

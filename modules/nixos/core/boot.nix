@@ -54,6 +54,7 @@ in {
 
       limine = {
         enable = true;
+        maxGenerations = 10;
       };
     };
   };
