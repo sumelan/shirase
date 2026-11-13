@@ -5,8 +5,8 @@
 }: let
   inherit (pkgs.lib) mkIf;
 in {
-  services.syncoid = {
-    commands."local-hdd" = mkIf config.custom.hardware.hdds.ironWolf {
+  services.syncoid = mkIf config.custom.hardware.hdds.ironWolf {
+    commands."local-sakura" = {
       source = "zroot/persist";
       target = "IW2T/sakura";
       extraArgs = [

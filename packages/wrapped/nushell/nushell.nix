@@ -103,12 +103,12 @@
           git
           hl-log-viewer
           lazygit
+          ov
         ]
         ++ (with self.packages.${stdenv.hostPlatform.system}; [
           bat
           broot
           eza
-          moor
           ns
           ripgrep
           yt-dlp

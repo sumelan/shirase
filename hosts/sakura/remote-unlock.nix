@@ -21,11 +21,11 @@ _: {
           # A host key that lives in persistent storage, separate from
           # your regular SSH host key. You don't want to share host keys
           # between the initrd and the booted system.
-          "/root/.ssh/id_ed25519"
+          # hostKeys paths must be unquoted strings, otherwise you'll run into issues with boot.initrd.secrets
+          /root/.ssh/initrd_ssh_ed25519_key
         ];
         authorizedKeys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwzwh8wrgqbmq0KhxoQvxEdc9Aii36QZrdR3Op5XELF root@omen"
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJn7N/yLqZHDo9pNRjszgwA94lYk8ZYnHpTXx660MFSR root@minibookx"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINROlQPXpPry3pue6Wg0W3hhKVap5PoirEr5E7BiR2OJ root@omen"
         ];
       };
 

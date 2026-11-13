@@ -31,10 +31,10 @@
     };
 
     variables = {
-      PAGER = "moor";
-      SYSTEMD_PAGER = "moor";
+      PAGER = "ov";
+      SYSTEMD_PAGER = "ov";
       SYSTEMD_PAGERSECURE = "1";
-      MANPAGER = ''moor'';
+      MANPAGER = ''ov --section-delimiter '^[^\s]' --section-header --sidebar-mode=sections'';
       EDITOR = "nvim";
       VISUAL = "nvim";
       NIXPKGS_ALLOW_UNFREE = "1";

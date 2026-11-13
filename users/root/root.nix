@@ -9,6 +9,7 @@
     filter
     hasInfix
     ;
+  inherit (pkgs.lib.types) listOf str;
 in {
   # silence warning about setting multiple user password options
   # https://github.com/NixOS/nixpkgs/pull/287506#issuecomment-1950958990
@@ -17,6 +18,10 @@ in {
       apply = filter (
         w: !(hasInfix "If multiple of these password options are set at the same time" w)
       );
+    };
+    custom.openssh.authorizedKeys.extraKeys = mkOption {
+      type = listOf str;
+      default = [];
     };
   };
 
@@ -31,7 +36,9 @@ in {
         root = {
           initialPassword = "password";
           hashedPasswordFile = "/persist/etc/shadow/root";
-          openssh.authorizedKeys.keys = config.users.users.sumelan.openssh.authorizedKeys.keys;
+          openssh.authorizedKeys.keys =
+            config.users.users.sumelan.openssh.authorizedKeys.keys
+            ++ config.custom.openssh.authorizedKeys.extraKeys;
         };
       };
     };

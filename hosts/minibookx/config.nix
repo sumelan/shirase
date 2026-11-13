@@ -29,11 +29,8 @@ _: {
         HostName 192.168.68.62
         Port 2222
         User root
-
-        # Prevent using ssh-agent or another keyfile,
-        # useful for testing
         IdentitiesOnly yes
-        IdentityFile /root/.ssh/id_ed25519
+        IdentityFile /root/.ssh/initrd_ssh_ed25519_key
     '';
   };
 }

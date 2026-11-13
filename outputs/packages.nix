@@ -46,7 +46,6 @@ in
       helix = wrappedPkg "helix" {inherit pkgs functions;};
       just = wrappedPkg "just" {inherit self inputs pkgs;};
       monstar = wrappedPkg "monstar" {inherit self inputs pkgs functions;};
-      moor = wrappedPkg "moor" {inherit pkgs;};
       nushell = wrappedPkg "nushell" {inherit self inputs pkgs functions;};
       pqiv = wrappedPkg "pqiv" {inherit pkgs functions;};
       ripgrep = wrappedPkg "ripgrep" {inherit pkgs functions;};

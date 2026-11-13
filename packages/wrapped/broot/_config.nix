@@ -13,10 +13,20 @@ _: {
   initial_mode = "command";
 
   special_paths = {
+    "/boot" = {
+      list = "never";
+      sum = "never";
+    };
+
+    "/backups" = {
+      list = "never";
+      sum = "never";
+    };
     "/media" = {
       list = "never";
       sum = "never";
     };
+
     "~/.config" = {show = "always";};
   };
 }
