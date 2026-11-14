@@ -40,7 +40,7 @@ in {
         keep_weekly = 4;
         keep_monthly = 6;
 
-        ssh_command = "ssh -i /root/.ssh/id_ed25519";
+        ssh_command = "ssh -i /root/.ssh/borgbase_ssh_ed25519_key";
 
         encryption_passcommand =
           # sh
