@@ -3,7 +3,7 @@
 $env.config = {
     show_banner: false
 
-    buffer_editor: "nvim"
+    buffer_editor: "vim"
 
     ls: {
         use_ls_colors: true
@@ -62,12 +62,19 @@ $env.config = {
 
     render_right_prompt_on_last_line: false
 
-    hooks: {
-        pre_prompt: [{ null }]
+    hooks :{
+        pre_prompt: [
+            # Fish's sponge-like
+            {
+                open ($nu.history-path | path expand)
+                | query db "delete from history where exit_status != 0"
+            }
+        ]
+
         pre_execution: [{ null }]
     }
-
 }
+
 
 # ── Direnv ──────────────────────────────────────────────────────────────────────
 

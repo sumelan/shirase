@@ -68,7 +68,7 @@
           };
           "Mod+Shift+Return" = {
             _props.hotkey-overlay-title = hotkey "#a6d189" "  Neovim" "Text Editor";
-            spawn = ["monstar" "--app-id" "nvim" "-e" "nvim"];
+            spawn = ["monstar" "--working-directory" "/persist/home/sumelan/Projects" "--app-id" "nvim" "-e" "nvim"];
           };
           "Mod+B" = {
             _props.hotkey-overlay-title = hotkey "#ef9f76" "  Helium" "Web Browser";

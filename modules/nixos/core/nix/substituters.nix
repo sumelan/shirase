@@ -12,8 +12,12 @@ _: {
       "niri-nix.cachix.org-1:SvFtqpDcf7Sm1SMJdby1/+Y+6f3Yt3/3PMcSTKPJNJ0="
     ];
 
-    extra-substituters = [];
+    extra-substituters = [
+      "https://sonora.cachix.org"
+    ];
 
-    extra-trusted-public-keys = [];
+    extra-trusted-public-keys = [
+      "sonora.cachix.org-1:qbPeDsvZPbwUWHpQS5Oe0bjz5oHAVscHem+MCzwrc9Q="
+    ];
   };
 }

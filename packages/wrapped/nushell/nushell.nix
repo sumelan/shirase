@@ -17,11 +17,20 @@
   nuConfig = let
     cfg = builtins.readFile ./config.nu;
     def = builtins.readFile ./def.nu;
-    starship = builtins.readFile ./starship.nu;
 
     shellAliases = import ./_aliases.nix {};
     mergedAliases = shellAliases.basic // shellAliases.extra // shellAliases.nu;
     aliases = concatStringsSep "\n" (mapAttrsToList (k: v: "alias ${k} = ${v}") mergedAliases);
+
+    starship =
+      # nu
+      ''
+        source ${
+          pkgs.runCommand "starship-nushell-config.nu" {} ''
+            ${getExe pkgs.starship} init nu > "$out"
+          ''
+        }
+      '';
 
     nix-your-shell =
       # nu
@@ -95,7 +104,6 @@
           # Shell
           direnv
           nix-direnv
-          starship
           # Command Line
           fd
           fzf
@@ -111,6 +119,7 @@
           eza
           ns
           ripgrep
+          starship
           yt-dlp
         ])
         ++ [

@@ -64,12 +64,12 @@
 
     character = {
       format = "$symbol";
-      success_symbol = "[╰─](bold text)[   󰟆](bold blue)";
-      error_symbol = "[╰─](bold text)[   󰟆](bold red)";
-      vimcmd_symbol = "[╰─](bold text)[   󰟆](bold green_)";
-      vimcmd_visual_symbol = "[╰─](bold white1)[   󰟆](bold mauve)";
-      vimcmd_replace_symbol = "[╰─](bold white1])[   󰟆](bold yellow)";
-      vimcmd_replace_one_symbol = "[╰─](bold white1)[   󰟆](bold yellow)";
+      success_symbol = "[╰─](bold text)[ 󰟆 󰋑](bold blue)";
+      error_symbol = "[╰─](bold text)[ 󰟆 󰋔](bold red)";
+      vimcmd_symbol = "[╰─](bold text)[ 󰟆 ](bold green_)";
+      vimcmd_visual_symbol = "[╰─](bold white1)[ 󰟆 ](bold mauve)";
+      vimcmd_replace_symbol = "[╰─](bold white1])[ 󰟆 ](bold yellow)";
+      vimcmd_replace_one_symbol = "[╰─](bold white1)[ 󰟆 ](bold yellow)";
     };
     container = {
       format = " [$symbol $name]($style) ";

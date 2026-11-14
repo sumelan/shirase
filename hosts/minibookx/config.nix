@@ -23,14 +23,5 @@ _: {
         };
       };
     };
-
-    programs.ssh.extraConfig = ''
-      Host sakura-initrd
-        HostName 192.168.68.62
-        Port 2222
-        User root
-        IdentitiesOnly yes
-        IdentityFile /root/.ssh/initrd_ssh_ed25519_key
-    '';
   };
 }

@@ -131,9 +131,9 @@
     "type": "github",
     "owner": "sonorahq",
     "repo": "sonora",
-    "rev": "bf15dbdc7257c38cb6ba3280e6f3e934d7d9812d",
-    "narHash": "sha256-wrZHTvBJaEkCmHNkbNTnBMcL/OzhQ9IjXz0Goyb0qao=",
-    "lastModified": 1794439616
+    "rev": "5ee03cb01d25c9d48c398e4c89303e2632b28bde",
+    "narHash": "sha256-fZvoJKUbh0+wHHodA2cIfoxbzxYpEmLKVpFH5K2wylo=",
+    "lastModified": 1794586168
   },
   "x-plymouth": {
     "type": "github",

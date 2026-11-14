@@ -1,7 +1,6 @@
 _: {
   hjem.users.sumelan.rum = {
     programs.dux-shell.settings = {
-      barElevationEnabled = false;
       barConfigs = [
         {
           autoHide = false;
@@ -24,6 +23,8 @@ _: {
           id = "default";
           innerPadding = 4;
           island = true;
+          islandDashTabs = false;
+          islandFloating = false;
           islandHighContrast = false;
           islandHomeLayout = [
             {
@@ -67,9 +68,13 @@ _: {
               id = "tray";
             }
           ];
+          islandMediaAutoSwitch = true;
           islandNotch = true;
+          islandNotificationPopups = false;
           islandPalette = "default";
+          islandPlacement = "edge";
           islandRouteLauncher = "follow";
+          islandSystemOsd = true;
           islandWidgetStash = {
             entry = {
               enabled = true;
@@ -128,12 +133,12 @@ _: {
           };
           leftWidgets = [
             {
+              background = false;
               enabled = true;
               id = "launcherButton";
               launcherLogoColorOverride = "surface";
               launcherLogoMode = "compositor";
               launcherLogoSizeOffset = 12;
-              background = false;
             }
             {
               enabled = true;
@@ -161,11 +166,6 @@ _: {
               enabled = true;
               id = "diskUsage";
               mountPath = "/persist";
-            }
-            {
-              enabled = true;
-              id = "music";
-              mediaStyle = "activity";
             }
             {
               batteryStyle = "icon";
@@ -248,6 +248,7 @@ _: {
           borderOpacity = 1;
           borderThickness = 1;
           bottomGap = -50;
+          centerOverflowMode = "auto";
           centerWidgets = [
             {
               enabled = true;
@@ -285,6 +286,7 @@ _: {
           id = "bar1793415316606";
           innerPadding = 4;
           leftWidgets = [];
+          maximizeDetection = true;
           name = "Side Bar";
           noBackground = false;
           openOnOverview = true;
@@ -297,15 +299,14 @@ _: {
           spacing = 4;
           squareCorners = false;
           transparency = 1;
+          useOverlayLayer = false;
           visible = true;
           widgetFollowInterfaceStyle = true;
           widgetStyle = "pills";
           widgetTransparency = 1;
-          useOverlayLayer = false;
-          maximizeDetection = true;
-          centerOverflowMode = "auto";
         }
       ];
+      barElevationEnabled = false;
     };
   };
 }

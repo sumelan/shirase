@@ -7,6 +7,7 @@
       acSuspendTimeout = 1200;
       appDrawerSectionViewModes = {apps = "list";};
       avatarRing = "secondary";
+      # bar configuration here
       batteryNotifyLow = true;
       blurBorderEnabled = true;
       blurBorderOpacity = 0.35;
@@ -145,6 +146,12 @@
       currentThemeCategory = "registry";
       currentThemeName = "custom";
       customThemeFile = "/home/sumelan/.config/dms/themes/catppuccin/theme.json";
+      dankLauncherV2Size = "compact";
+      dashOptions = {
+        media = {
+          animatedArt = true;
+        };
+      };
       dashTabs = [
         {
           enabled = true;
@@ -171,11 +178,6 @@
           id = "notifications";
         }
       ];
-      dashOptions = {
-        media = {
-          animatedArt = true;
-        };
-      };
       displayFontFamily = config.custom.fonts.regular;
       dmsWindowsFloatingSeeded = ["niri"];
       dockConfigs = [
@@ -209,6 +211,7 @@
           margin = 0;
           maxVisibleApps = 0;
           maxVisibleRunningApps = 0;
+          middleClickAction = "close";
           mode = "compact";
           name = "Dock";
           openOnOverview = true;
@@ -259,8 +262,10 @@
       frameLauncherEdgeHover = false;
       frameMode = "connected";
       frameShowOnOverview = true;
+      # gteeter configuration here
       hostSurfaceColor = "default";
       launcherStyle = "spotlight";
+      # lock configuration here
       mediaExcludePlayers = [
         "helium"
       ];

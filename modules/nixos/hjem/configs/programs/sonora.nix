@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (pkgs.lib) mkDefault;
-  sonoraPkg = inputs.sonora.packages.${pkgs.stdenv.hostPlatform.system}.sonora-src;
+  sonoraPkg = inputs.sonora.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   hjem.users.sumelan.rum = {
     programs.sonora = {
@@ -13,7 +13,7 @@ in {
       package = mkDefault sonoraPkg;
       settings =
         {
-          version = 1.0;
+          version = "0.49.1";
         }
         // {
           adaptive_menu = false;
@@ -75,6 +75,11 @@ in {
             transparent = false;
             visualizer = true;
             visualizer_absolute = false;
+            visualizer_screens = {
+              cover = true;
+              lyrics = false;
+              queue = false;
+            };
             visualizer_style = "both";
             window_controls = true;
             window_rounding = "square";
@@ -91,6 +96,7 @@ in {
           discord_provider_button = false;
           discord_show_paused = true;
           discord_sonora_button = false;
+          discord_upload_covers = true;
           discord_without_details = false;
           equalizer = false;
           equalizer_advanced = false;
@@ -182,8 +188,9 @@ in {
           karaoke_lyrics = true;
           keep_tracks = true;
           language = "auto";
-          local_folders = ["${config.hjem.users.sumelan.directory}/Music"];
+          local_folders = [(config.hjem.users.sumelan.directory + "/Music")];
           local_lyrics_offered = false;
+          lyrics_enabled = true;
           lyrics_for_local_files = true;
           lyrics_provider_priority = [
             "Local"
@@ -205,13 +212,14 @@ in {
             "LrcLib"
             "Subsonic"
           ];
+          lyrics_word_synced_first = false;
           normalisation = true;
           offline_mode = false;
           output_buffer = null;
           output_device = null;
+          output_match_rate = false;
           output_rate = null;
           panel_lyrics_scale = 1;
-          prefer_local_lyrics = false;
           romanization_scripts = {
             arabic = false;
             chinese = true;
@@ -222,6 +230,9 @@ in {
             other = false;
           };
           romanized_lyrics = true;
+          sessions_button = true;
+          sessions_official = true;
+          sessions_server = "";
           spotify_connect = true;
           spotify_connect_custom_name = "";
           spotify_connect_name = "both";
@@ -232,6 +243,7 @@ in {
           subsonic_format = null;
           subsonic_lyrics_offered = true;
           tray_icon = true;
+          update_channel = "";
         };
     };
   };
