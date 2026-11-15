@@ -135,7 +135,6 @@
               {_props.app-id._raw = ''r#"^dev.duxlabs.calendar$"#'';}
               {_props.app-id._raw = ''r#"^xdg-desktop-portal-gtk$"#'';}
               {_props.app-id._raw = ''r#"^org.github.atheriel.snapshot-explorer$"#'';}
-              {_props.app-id._raw = ''r#"^broot$"#'';}
             ];
             default-column-width._children = [
               {proportion = 0.500000;}
@@ -149,6 +148,7 @@
           # windows to be blocked out from screen-capture
           {
             match = [
+              {_props.app-id._raw = ''r#"^broot$"#'';}
               {_props.app-id._raw = ''r#"^org.gnome.seahorse.Application$"#'';}
               {_props.app-id._raw = ''r#"^Proton Mail$"#'';}
               {_props.app-id._raw = ''r#"^Proton Pass$"#'';}

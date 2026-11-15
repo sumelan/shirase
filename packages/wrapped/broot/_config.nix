@@ -12,21 +12,41 @@ _: {
   modal = true;
   initial_mode = "command";
 
-  special_paths = {
-    "/boot" = {
-      list = "never";
-      sum = "never";
+  special_paths = let
+    noListSumAttrs = list:
+      builtins.listToAttrs (map (name: {
+          inherit name;
+          value = {
+            list = "never";
+            sum = "never";
+          };
+        })
+        list);
+  in
+    noListSumAttrs
+    ([
+        "/bin"
+        "/boot"
+        "/dev"
+        "/etc"
+        "/home"
+        "/lib64"
+        "/nix"
+        "/proc"
+        "/root"
+        "/run"
+        "/srv"
+        "/sys"
+        "/tmp"
+        "/usr"
+        "/var"
+      ]
+      ++ ["/backups" "/media"])
+    // {
+      "~/.config" = {
+        list = "never";
+        sum = "never";
+        show = "always";
+      };
     };
-
-    "/backups" = {
-      list = "never";
-      sum = "never";
-    };
-    "/media" = {
-      list = "never";
-      sum = "never";
-    };
-
-    "~/.config" = {show = "always";};
-  };
 }
