@@ -264,7 +264,7 @@
       frameShowOnOverview = true;
       # gteeter configuration here
       hostSurfaceColor = "default";
-      launcherStyle = "spotlight";
+      launcherStyle = "island";
       # lock configuration here
       mediaExcludePlayers = [
         "helium"
