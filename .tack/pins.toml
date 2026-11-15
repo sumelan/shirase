@@ -31,6 +31,9 @@ url = "gh:nixos/nixpkgs/nixos-unstable"
 url = "private:my-secrets"
 type = "fetch"
 
+[inputs.comview]
+url = "gh:sumelan/comview/flake"
+
 [inputs.snapshot-explorer]
 url = "gh:sumelan/snapshot-explorer/flake"
 
@@ -42,9 +45,6 @@ url = "gh:nix-community/nix-index-database"
 
 [inputs.nvf]
 url = "gh:notashelf/nvf"
-
-[inputs.comview]
-url = "gh:sumelan/comview/flake"
 
 [inputs.inshellah]
 url = "gh:manic-systems/inshellah"

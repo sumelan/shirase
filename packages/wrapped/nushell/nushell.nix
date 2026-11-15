@@ -16,7 +16,7 @@
 
   nuConfig = let
     cfg = builtins.readFile ./config.nu;
-    def = builtins.readFile ./def.nu;
+    def = (builtins.readFile ./def.nu) + (builtins.readFile ./tack.nu);
     starship = builtins.readFile ./starship.nu;
 
     shellAliases = import ./_aliases.nix {};

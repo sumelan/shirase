@@ -42,7 +42,7 @@ export NIX_SHOW_STATS := "1"
 [group('UPDATE')]
 [doc('Update inputs interactively.')]
 @update:
-    tack-update-diff
+    tack-diff
     git add -A
 
 [group('GIT')]
