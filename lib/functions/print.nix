@@ -6,6 +6,7 @@
     name,
     lang ? "",
   }: let
+    inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) bat;
     flags =
       if lang == ""
       then ""
@@ -13,7 +14,7 @@
   in
     pkgs.writeShellApplication {
       inherit name;
-      runtimeInputs = [self.packages.${pkgs.stdenv.hostPlatform.system}.bat];
+      runtimeInputs = [bat];
       text = ''
         bat ${flags} "$@" ${cfg}
       '';

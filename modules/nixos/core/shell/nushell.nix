@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  wrappedNushell = self.packages.${pkgs.stdenv.hostPlatform.system}.nushell;
+  inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) nushell;
 in {
   environment = {
-    systemPackages = [wrappedNushell];
+    systemPackages = [nushell];
 
     etc = {
       "nushell/inshellah.nu".text = config.programs.inshellah.snippet;
@@ -15,12 +15,12 @@ in {
 
     shells = [
       "/run/current-system/sw/bin/nu"
-      "${wrappedNushell}/bin/nu"
+      "${nushell}/bin/nu"
     ];
   };
 
   programs.inshellah = {
     enable = true;
-    nushellPackage = wrappedNushell;
+    nushellPackage = nushell;
   };
 }

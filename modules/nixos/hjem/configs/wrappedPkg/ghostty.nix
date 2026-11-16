@@ -4,11 +4,12 @@
   ...
 }: let
   inherit (pkgs.lib) mkDefault;
+  inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) ghostty;
 in {
   hjem.users.sumelan.rum = {
     programs.ghostty = {
       enable = mkDefault false;
-      package = self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty;
+      package = ghostty;
       systemd.enable = true;
     };
   };

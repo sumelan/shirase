@@ -2,11 +2,13 @@
   self,
   pkgs,
   ...
-}: {
+}: let
+  inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) nushell;
+in {
   users.users.sumelan = {
     description = "Su melan";
     isNormalUser = true;
-    shell = self.packages.${pkgs.stdenv.hostPlatform.system}.nushell;
+    shell = nushell;
     # create a password with sumelan with:
     # mkpasswd -m sha-512 'PASSWORD' | sudo tee /persist/etc/shadow/sumelan
     initialPassword = "password";

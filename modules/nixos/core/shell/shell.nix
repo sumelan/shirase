@@ -24,10 +24,6 @@
         xdg-utils
         ;
       inherit (pkgs.lib.hiPrio pkgs) procps;
-      inherit
-        (self.packages.${pkgs.stdenv.hostPlatform.system})
-        just
-        ;
     };
 
     variables = {

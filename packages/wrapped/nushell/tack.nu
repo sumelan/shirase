@@ -1,3 +1,6 @@
+# ── Tack-related Commands ──────────────────────────────────────────────
+
+# Map tack's inputs
 def pins-map [inputs: record] {
     let rows = ($inputs | transpose name spec)
     let direct = ($rows | where {|r| 'url' in ($r.spec | columns) })
@@ -8,6 +11,7 @@ def pins-map [inputs: record] {
     $direct | append $nested | reduce -f {} {|r, acc| $acc | upsert $r.name $r.spec }
 }
 
+# Update with showing inputs' diff
 def --env tack-diff [] {
     let root = (($env.NH_FLAKE? | default $env.PWD) | path expand)
     if not ($root | path exists) { error make { msg: $"not a directory: ($root)" } }

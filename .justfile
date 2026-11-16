@@ -23,13 +23,13 @@ export NIX_SHOW_STATS := "1"
     nix-store --optimise -v
 
 [group('REBUILD')]
-[doc('`nh os test`.')]
+[doc('Build and activate the new configuration.')]
 @test *opts:
     git add -A
     nh os test {{ opts }}
 
 [group('REBUILD')]
-[doc('`nh os switch`.')]
+[doc('Build and activate the new configuration, and make it the boot default.')]
 @switch *opts:
     git add -A
     nh os switch {{ opts }}
@@ -40,7 +40,7 @@ export NIX_SHOW_STATS := "1"
     nh clean all --keep 5
 
 [group('UPDATE')]
-[doc('Update inputs interactively.')]
+[doc('Interactively update inputs witn diff.')]
 @update:
     tack-diff
     git add -A

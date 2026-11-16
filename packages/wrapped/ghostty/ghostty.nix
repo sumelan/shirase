@@ -12,6 +12,7 @@
     concatStringsSep
     ;
   inherit (functions.print) wrappedConfig;
+  inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) nushell;
 
   ghosttyConfig = let
     cfg = import ./_config.nix {};
@@ -29,9 +30,9 @@
   runtimeEnv = pkgs.buildEnv {
     name = "ghostty-runtime-env";
     pathsToLink = ["/bin"];
-    paths = with pkgs;
+    paths =
       [
-        self.packages.${stdenv.hostPlatform.system}.nushell
+        nushell
       ]
       ++ extraRuntimeInputs;
   };

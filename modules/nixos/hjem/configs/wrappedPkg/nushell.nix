@@ -1,20 +1,22 @@
 {
+  self,
   inputs,
   pkgs,
   ...
 }: let
-  inherit (pkgs.lib) getExe;
+  inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) nushell;
   inshellah = inputs.inshellah.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
-  systemd.services.inshellah-index = {
-    description = "Indexes packages installed per-user";
-    after = ["graphical-session.target"];
-    wantedBy = ["graphical-session.target"];
-
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${getExe inshellah} index /etc/profiles/per-user/sumelan";
-    };
+  system.userActivationScripts = {
+    inshellah-index.text =
+      # sh
+      ''
+        profile=/etc/profiles/per-user/sumelan
+        if [ -e "$profile" ]; then
+          PATH="${nushell}/bin:$PATH" \
+            ${inshellah}/bin/inshellah index "$profile"
+        fi
+      '';
   };
 
   custom.fileSystem = {

@@ -1,3 +1,5 @@
+# ── Starship Implement ──────────────────────────────────────────────
+
 $env.STARSHIP_SHELL = "nu"
 
 def create_left_prompt [] {

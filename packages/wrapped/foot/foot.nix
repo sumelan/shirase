@@ -7,6 +7,7 @@
 }: let
   inherit (pkgs.lib) recursiveUpdate;
   inherit (functions.print) wrappedConfig;
+  inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) nushell;
 
   footConfig = let
     iniFmt = pkgs.formats.ini {listsAsDuplicateKeys = true;};
@@ -21,9 +22,9 @@
   runtimeEnv = pkgs.buildEnv {
     name = "foot-runtime-env";
     pathsToLink = ["/bin"];
-    paths = with pkgs;
+    paths =
       [
-        self.packages.${stdenv.hostPlatform.system}.nushell
+        nushell
       ]
       ++ extraRuntimeInputs;
   };

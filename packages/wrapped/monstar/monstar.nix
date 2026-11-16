@@ -13,6 +13,7 @@
     concatStringsSep
     ;
   inherit (functions.print) wrappedConfig;
+  inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) nushell;
 
   pkg = inputs.monstar.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
@@ -32,9 +33,9 @@
   runtimeEnv = pkgs.buildEnv {
     name = "monstar-runtime-env";
     pathsToLink = ["/bin"];
-    paths = with pkgs;
+    paths =
       [
-        self.packages.${stdenv.hostPlatform.system}.nushell
+        nushell
       ]
       ++ extraRuntimeInputs;
   };

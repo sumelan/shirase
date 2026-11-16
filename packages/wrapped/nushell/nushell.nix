@@ -13,7 +13,7 @@
     getExe
     ;
   inherit (functions.print) wrappedConfig;
-
+  inherit (self.packages.${pkgs.stdenv.hostPlatform.system}.starship) starshipConfig;
   nuConfig = let
     cfg = builtins.readFile ./config.nu;
     def = (builtins.readFile ./def.nu) + (builtins.readFile ./tack.nu);
@@ -72,7 +72,7 @@
       '';
 
     env = {
-      STARSHIP_CONFIG = self.packages.${pkgs.stdenv.hostPlatform.system}.starship.starshipConfig;
+      STARSHIP_CONFIG = starshipConfig;
     };
 
     envAttrs =
@@ -84,14 +84,25 @@
     pkgs.writeText "nu-env-config" (envAttrs + completions + zoxide + broot);
 
   runtimeEnv = let
+    inherit
+      (self.packages.${pkgs.stdenv.hostPlatform.system})
+      bat
+      broot
+      eza
+      just
+      ns
+      ripgrep
+      starship
+      yt-dlp
+      ;
     comview = inputs.comview.packages.${pkgs.stdenv.hostPlatform.system}.default;
     inshellah = inputs.inshellah.packages.${pkgs.stdenv.hostPlatform.system}.default;
   in
     pkgs.buildEnv {
       name = "nushell-runtime-env";
       pathsToLink = ["/bin"];
-      paths = with pkgs;
-        [
+      paths =
+        (with pkgs; [
           # Shell
           direnv
           nix-direnv
@@ -103,17 +114,16 @@
           hl-log-viewer
           lazygit
           ov
-        ]
-        ++ (with self.packages.${stdenv.hostPlatform.system}; [
+        ])
+        ++ [
           bat
           broot
           eza
+          just
           ns
           ripgrep
           starship
           yt-dlp
-        ])
-        ++ [
           comview
           inshellah
         ]

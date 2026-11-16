@@ -2,10 +2,12 @@
   self,
   pkgs,
   ...
-}: {
+}: let
+  inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) monstar;
+in {
   hjem.users.sumelan = {
     packages = [
-      self.packages.${pkgs.stdenv.hostPlatform.system}.monstar
+      monstar
     ];
 
     xdg.mime-apps.default-applications = {

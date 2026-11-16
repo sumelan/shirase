@@ -1,16 +1,19 @@
 {
-  self,
   inputs,
   pkgs,
 }: let
+  comview = inputs.comview.packages.${pkgs.stdenv.hostPlatform.system}.default;
+
   runtimeEnv = pkgs.buildEnv {
     name = "just-runtime-env";
     pathsToLink = ["/bin"];
-    paths = with pkgs; [
-      hyperfine
-      self.packages.${stdenv.hostPlatform.system}.nushell
-      inputs.comview.packages.${stdenv.hostPlatform.system}.default
-    ];
+    paths =
+      (with pkgs; [
+        hyperfine
+      ])
+      ++ [
+        comview
+      ];
   };
 in
   pkgs.symlinkJoin {

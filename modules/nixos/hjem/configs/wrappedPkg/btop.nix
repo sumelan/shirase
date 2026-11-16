@@ -11,6 +11,7 @@
     concatStringsSep
     ;
   inherit (pkgs.lib.types) listOf str;
+  inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) btop;
 in {
   options.custom = {
     programs.btop = {
@@ -47,7 +48,7 @@ in {
         );
       };
     in [
-      (self.packages.${pkgs.stdenv.hostPlatform.system}.btop.override {inherit pkg extraConfig;})
+      (btop.override {inherit pkg extraConfig;})
     ];
   };
 }

@@ -1,4 +1,4 @@
-# ── Useful Custom Commands ────────────────────────────────────────────────────
+# ── Useful Custom Commands ──────────────────────────────────────────────
 
 # Find files by name
 def ff [pattern: string] {
@@ -30,7 +30,7 @@ def --wrapped ph [program: string, ...rest] {
     ^$program ...$rest --help | bat --plain --language=help
 }
 
-# ── Journalctl Commands ────────────────────────────────────────────────────
+# ── Journalctl Commands ──────────────────────────────────────────────
 
 # View journal with hl and hide all fields except MESSAGE
 def jhl [service] {

@@ -3,10 +3,12 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) helix;
+in {
   environment.systemPackages = [
     (
-      self.packages.${pkgs.stdenv.hostPlatform.system}.helix.override {
+      helix.override {
         extraLang = {
           language-server.nixd.config.nixd = let
             inherit (config.networking) hostName;

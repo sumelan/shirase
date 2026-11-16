@@ -2,10 +2,12 @@
   self,
   pkgs,
   ...
-}: {
+}: let
+  inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) zathura;
+in {
   hjem.users.sumelan = {
     packages = [
-      self.packages.${pkgs.stdenv.hostPlatform.system}.zathura
+      zathura
     ];
 
     xdg.mime-apps = let
