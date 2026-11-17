@@ -14,7 +14,7 @@
           rm -f $out/bin/.sonora-wrapped
 
           wrapProgram $out/bin/sonora \
-              --set VK_DRIVER_FILES ${pkgs.mesa}/share/vulkan/icd.d/lvp_icd.x86_64.json
+            --set VK_DRIVER_FILES ${pkgs.mesa}/share/vulkan/icd.d/lvp_icd.x86_64.json
         '';
       };
     in {

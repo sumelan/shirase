@@ -55,5 +55,8 @@ in
         --add-flags "--config ${btopConfig}" \
         --add-flags "--themes-dir $out/share/btop/themes"
     '';
-    meta.mainProgram = "btop";
+    meta = {
+      mainProgram = "btop";
+      description = "Wrapped btop package with helper scripts to print the config";
+    };
   }

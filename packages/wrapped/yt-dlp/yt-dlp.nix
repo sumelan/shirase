@@ -82,5 +82,8 @@ in
         --add-flags "--config-location ${ytdlpConfig}" \
         --prefix PATH : ${runtimeEnv}/bin
     '';
-    meta.mainProgram = "yt-dlp";
+    meta = {
+      mainProgram = "yt-dlp";
+      description = "Wrapped yt-dlp package with helper scripts to print the config";
+    };
   }

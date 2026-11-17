@@ -159,5 +159,8 @@ in
         --prefix PATH : ${runtimeEnv}/bin
     '';
     passthru.shellPath = "/bin/nu";
-    meta.mainProgram = "nu";
+    meta = {
+      mainProgram = "nu";
+      description = "Wrapped nushell package with helper scripts to print the config and env";
+    };
   }

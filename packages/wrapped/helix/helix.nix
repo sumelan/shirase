@@ -68,5 +68,8 @@ in
         --prefix PATH : ${runtimeEnv}/bin \
         --set XDG_CONFIG_HOME $out
     '';
-    meta.mainProgram = "hx";
+    meta = {
+      mainProgram = "hx";
+      description = "Wrapped Helix package with helper scripts to print the config and languages";
+    };
   }

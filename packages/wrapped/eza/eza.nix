@@ -11,5 +11,8 @@ pkgs.symlinkJoin {
       --add-flags "--octal-permissions" \
       --add-flags "--hyperlink"
   '';
-  meta.mainProgram = "eza";
+  meta = {
+    mainProgram = "eza";
+    description = "Wrapped eza package";
+  };
 }

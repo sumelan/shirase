@@ -33,7 +33,7 @@ def --wrapped ph [program: string, ...rest] {
 # ── Journalctl Commands ──────────────────────────────────────────────
 
 # View journal with hl and hide all fields except MESSAGE
-def jhl [service] {
+def jhl [service: string] {
     journalctl -xeu $service -o json -a | hl -L --hide '*' --hide '!MESSAGE'
 }
 
@@ -43,6 +43,6 @@ def jhlf [] {
 }
 
 # Show only error-level messages and above.
-def jhle [service] {
+def jhle [service: string] {
     journalctl $service -o json -a -p err | hl -L --hide '*' --hide '!MESSAGE'
 }

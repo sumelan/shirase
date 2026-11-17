@@ -59,5 +59,8 @@ in
         --prefix PATH : ${runtimeEnv}/bin \
         --set FONTCONFIG_FILE ${pkgs.makeFontsConf {inherit fontDirectories;}}
     '';
-    meta.mainProgram = "monstar";
+    meta = {
+      mainProgram = "monstar";
+      description = "Wrapped Monstar package with helper scripts to print the config";
+    };
   }

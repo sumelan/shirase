@@ -24,4 +24,8 @@ in
       wrapProgram $out/bin/just \
         --prefix PATH : ${runtimeEnv}/bin
     '';
+    meta = {
+      mainProgram = "just";
+      description = "Wrapped just package";
+    };
   }

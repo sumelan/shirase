@@ -64,5 +64,8 @@ in
         --prefix PATH : ${runtimeEnv}/bin \
         --add-flags "--conf ${brootConfig}"
     '';
-    meta.mainProgram = "broot";
+    meta = {
+      mainProgram = "broot";
+      description = "Wrapped broot package with helper scripts to print the config";
+    };
   }

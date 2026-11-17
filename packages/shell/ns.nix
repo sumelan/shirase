@@ -10,4 +10,7 @@ pkgs.writeShellApplication {
     # Execute the script from the store path at runtime prevents IFD
     exec "${pkgs.nix-search-tv.src}/nixpkgs.sh" "$@"
   '';
+  meta = {
+    description = "Fuzzy search for Nix packages";
+  };
 }

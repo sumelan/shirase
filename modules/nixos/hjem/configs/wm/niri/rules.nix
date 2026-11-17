@@ -149,7 +149,7 @@
           {
             match = [
               {_props.title._raw = ''r#"^認証$"#'';} # polkit
-              {_props.app-id._raw = ''r#"^broot$"#'';}
+              {_props.title._raw = ''r#"^broot$"#'';}
               {_props.app-id._raw = ''r#"^org.gnome.seahorse.Application$"#'';}
               {_props.app-id._raw = ''r#"^Proton Mail$"#'';}
               {_props.app-id._raw = ''r#"^Proton Pass$"#'';}

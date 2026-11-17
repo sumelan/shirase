@@ -32,5 +32,8 @@ in
       wrapProgram $out/bin/pqiv \
         --set PQIVRC_PATH ${pqivConfig}
     '';
-    meta.mainProgram = "pqiv";
+    meta = {
+      mainProgram = "pqiv";
+      description = "Wrapped pqiv package with helper scripts to print the config";
+    };
   }

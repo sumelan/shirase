@@ -19,5 +19,8 @@ in
         --add-flags "--theme='Catppuccin Frappe'" \
         --add-flags "--style='header,grid,snip'"
     '';
-    meta.mainProgram = "bat";
+    meta = {
+      mainProgram = "bat";
+      description = "Wrapped bat package";
+    };
   }

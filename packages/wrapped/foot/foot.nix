@@ -48,5 +48,8 @@ in
         --prefix PATH : ${runtimeEnv}/bin \
         --set FONTCONFIG_FILE ${pkgs.makeFontsConf {inherit fontDirectories;}}
     '';
-    meta.mainProgram = "foot";
+    meta = {
+      mainProgram = "foot";
+      description = "Wrapped foot package with helper scripts to print the config";
+    };
   }

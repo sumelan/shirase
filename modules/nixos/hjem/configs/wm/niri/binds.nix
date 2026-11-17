@@ -75,12 +75,12 @@
             spawn = ["helium"];
           };
           "Mod+Shift+N" = {
-            _props.hotkey-overlay-title = hotkey "#8caaee" "󱄅  Nix Search" "Nix Package";
-            spawn = ["monstar" "--app-id" "ns" "-e" "ns"];
+            _props.hotkey-overlay-title = hotkey "#8caaee" "󱄅  Nix Search TV" "Fuzzy search for Nix packages";
+            spawn = ["monstar" "--title" "nix-search-tv" "-e" "ns"];
           };
           "Mod+Shift+B" = {
             _props.hotkey-overlay-title = hotkey "#e5c890" "󰆚  Broot" "TUI File Manager";
-            spawn = ["monstar" "--app-id" "broot" "-e" "broot"];
+            spawn = ["monstar" "--title" "broot" "-e" "broot"];
           };
           "Ctrl+Space" = {
             _props.hotkey-overlay-title = hotkey "#ca9ee6" "󰗊  Meltype" "Switch input method";

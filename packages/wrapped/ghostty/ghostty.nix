@@ -70,5 +70,8 @@ in
         --prefix PATH : ${runtimeEnv}/bin \
         --set FONTCONFIG_FILE ${pkgs.makeFontsConf {inherit fontDirectories;}}
     '';
-    meta.mainProgram = "ghostty";
+    meta = {
+      mainProgram = "ghostty";
+      description = "Wrapped Ghostty package with helper scripts to print the config";
+    };
   }

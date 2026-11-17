@@ -9,7 +9,7 @@
     import ./_ignoreFile.nix {inherit pkgs extraFiles;};
 
   printPkg = wrappedConfig ignoreFiles {
-    name = "ripgrep-print-ignorefiles";
+    name = "rg-print-ignorefiles";
   };
 in
   pkgs.symlinkJoin {
@@ -17,11 +17,14 @@ in
     paths = with pkgs; [ripgrep];
     nativeBuildInputs = with pkgs; [makeWrapper];
     postBuild = ''
-      ln -s ${printPkg}/bin/ripgrep-print-ignorefiles $out/bin/ripgrep-print-ignorefiles
+      ln -s ${printPkg}/bin/rg-print-ignorefiles $out/bin/rg-print-ignorefiles
 
       wrapProgram $out/bin/rg \
         --add-flags "--smart-case" \
         --add-flags "--ignore-file ${ignoreFiles}"
     '';
-    meta.mainProgram = "rg";
+    meta = {
+      mainProgram = "rg";
+      description = "Wrapped ripgrep package with helper scripts to print the ignore files";
+    };
   }

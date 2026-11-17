@@ -23,4 +23,8 @@ in
       wrapProgram $out/bin/starship \
         --set STARSHIP_CONFIG ${starshipConfig}
     '';
+    meta = {
+      mainProgram = "starship";
+      description = "Wrapped starship package with helper scripts to print the config";
+    };
   }

@@ -56,5 +56,8 @@ in
       wrapProgram $out/bin/zathura \
         --add-flags "--config-dir ${zathuraConfig}"
     '';
-    meta.mainProgram = "zathura";
+    meta = {
+      mainProgram = "zathura";
+      description = "Wrapped zathura package with helper scripts to print the config";
+    };
   }
