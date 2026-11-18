@@ -19,9 +19,9 @@
     "type": "github",
     "owner": "amaanq",
     "repo": "helium-flake",
-    "rev": "77d203f33ad11f9a4ce20ca4d453128e9b7fe67a",
-    "narHash": "sha256-FvvgdimPdhG5xUOX6LFlQ1cK7EOvqBV4TxTH8ZMyypU=",
-    "lastModified": 1794699865
+    "rev": "e043ae9c2685fb6799535c2e84c0ab72e0bae0c1",
+    "narHash": "sha256-lBogPqME3iTOahGSsxiu2BZn0bkGTDTry/khh4322Hs=",
+    "lastModified": 1794834261
   },
   "hjem": {
     "type": "github",
@@ -43,9 +43,9 @@
     "type": "github",
     "owner": "manic-systems",
     "repo": "inshellah",
-    "rev": "bf53bf962eb2dcad359d8732231dc87d85328d5d",
-    "narHash": "sha256-XSzSI3VLGCaKWBPouOuQkAxjqoayX3pJYsy9b9e1BNY=",
-    "lastModified": 1794072350
+    "rev": "f78539f7516c860f14d75995d1a110e8738f4838",
+    "narHash": "sha256-IdUU/fItF5/eXCnO/EgnU10uQRhVrEyDgZRr5+PRPQA=",
+    "lastModified": 1794808966
   },
   "monstar": {
     "type": "github",
@@ -99,9 +99,9 @@
     "type": "github",
     "owner": "nixos",
     "repo": "nixpkgs",
-    "rev": "d5cc6833999746cffdfe0598f7bc801a57b887a9",
-    "narHash": "sha256-Wpz/7x/YWnDIBu7yj6ixe8j6fIMsidd9Y+o1PqPF3iM=",
-    "lastModified": 1794537146
+    "rev": "04906337b6d53e8bb0eaf0470ae9f070a4d4eb55",
+    "narHash": "sha256-lME2lHoDHAaSHP3/okgiVoJ0icVEvsQH8LeU3We7tcc=",
+    "lastModified": 1794890597
   },
   "nvf": {
     "type": "github",
