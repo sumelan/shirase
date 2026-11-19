@@ -1,5 +1,7 @@
-{inputs, ...}: {
+{functions, ...}: let
+  inherit (functions.import) tree;
+in {
   imports = [
-    (inputs.import-tree ./configs)
+    (tree ./configs)
   ];
 }

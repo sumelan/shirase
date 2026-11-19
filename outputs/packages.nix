@@ -33,7 +33,7 @@ in
       wrappedPkg = pkg:
         pkgs.callPackage ../packages/wrapped/${pkg}/${pkg}.nix;
     in {
-      nvim = nvimPkg "nvf" {inherit inputs pkgs;};
+      nvim = nvimPkg "nvf" {inherit inputs pkgs functions;};
 
       ns = shellPkg "ns" {inherit pkgs;};
 

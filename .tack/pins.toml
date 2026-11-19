@@ -64,9 +64,6 @@ url = "gh:aster-void/nix-meltype"
 [inputs.helium]
 url = "gh:amaanq/helium-flake"
 
-[inputs.import-tree]
-url = "gh:denful/import-tree"
-
 [inputs.niri-nix]
 url = "cb:BANanaD3V/niri-nix"
 

@@ -1,10 +1,12 @@
-{inputs, ...}: {
+{functions, ...}: let
+  inherit (functions.import) tree;
+in {
   imports = [
     ./hardware/audio.nix
     ./hardware/bluetooth.nix
     ./hardware/kdeconnect.nix
 
-    (inputs.import-tree ./gui)
+    (tree ./gui)
     ./hjem/gui.nix
   ];
 }

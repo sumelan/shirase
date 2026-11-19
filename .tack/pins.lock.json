@@ -31,14 +31,6 @@
     "narHash": "sha256-N6aGkpxbDeisIUygDapIVX2aXZuGEK4kRmUPMhtu1zc=",
     "lastModified": 1794572558
   },
-  "import-tree": {
-    "type": "github",
-    "owner": "denful",
-    "repo": "import-tree",
-    "rev": "eb1b52eaecc57f7c136d07ae8a93e724dfecac46",
-    "narHash": "sha256-ljEMTXP/rH0tOvDzc9gzwww6KcHRPRnEHzd9lK48V7s=",
-    "lastModified": 1788467110
-  },
   "inshellah": {
     "type": "github",
     "owner": "manic-systems",

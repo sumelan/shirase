@@ -8,6 +8,7 @@
   mkNixos = system: cls: hostname: {modules ? []}: let
     customLib = import ../lib/custom/custom.nix {};
     functions = import ../lib/functions/functions.nix {inherit self pkgs;};
+    inherit (functions.import) tree;
 
     pkgs = import inputs.nixpkgs {
       inherit system;
@@ -44,9 +45,9 @@
       modules =
         inputModules
         ++ [
-          (inputs.import-tree ../hosts/${hostname})
-          (inputs.import-tree ../users/root)
-          (inputs.import-tree ../users/sumelan)
+          (tree ../hosts/${hostname})
+          (tree ../users/root)
+          (tree ../users/sumelan)
           ../modules/nixos/base.nix
           {networking.hostName = hostname;}
         ]

@@ -2,8 +2,11 @@
   inputs,
   config,
   pkgs,
+  functions,
   ...
 }: let
+  inherit (functions.import) tree;
+
   homeDir = config.hjem.users.sumelan.directory;
   xdg-user-dirs = {
     # xdg user dirs
@@ -34,7 +37,7 @@ in {
     clobberByDefault = true;
     specialArgs = {inherit inputs;};
     extraModules = [
-      (inputs.import-tree ./extraModules)
+      (tree ./extraModules)
     ];
 
     users.sumelan = {

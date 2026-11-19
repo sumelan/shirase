@@ -1,6 +1,8 @@
-{inputs, ...}: {
+{functions, ...}: let
+  inherit (functions.import) tree;
+in {
   imports = [
-    (inputs.import-tree ./core)
+    (tree ./core)
 
     ./hardware/common.nix
     ./hjem/config.nix

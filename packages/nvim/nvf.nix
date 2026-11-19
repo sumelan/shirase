@@ -1,9 +1,11 @@
 {
   inputs,
   pkgs,
+  functions,
   hostName ? "omen",
   flake ? null,
 }: let
+  inherit (functions.import) tree;
   mkNvf = modules:
     (inputs.nvf.lib.neovimConfiguration {
       inherit pkgs modules;
@@ -11,8 +13,8 @@
     }).neovim;
 
   full = [
-    (inputs.import-tree ./config)
-    (inputs.import-tree ./modules)
+    (tree ./config)
+    (tree ./modules)
   ];
 in
   mkNvf full

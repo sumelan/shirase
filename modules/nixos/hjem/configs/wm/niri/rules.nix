@@ -157,6 +157,15 @@
             ];
             block-out-from = "screen-capture";
           }
+          # open-maximized and not transparent
+          {
+            match = [
+              {_props.app-id._raw = ''r#"steam_app_\d{7}$"#'';}
+              {_props.app-id._raw = ''r#"^org.jellyfin.JellyfinDesktop$"#'';}
+            ];
+            open-maximized = true;
+            opacity = 1.000000;
+          }
         ]
         ++ cfg.extraWindow-rule;
       layer-rule =

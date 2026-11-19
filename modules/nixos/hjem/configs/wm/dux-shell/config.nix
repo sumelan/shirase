@@ -268,6 +268,7 @@
       # lock configuration here
       mediaExcludePlayers = [
         "helium"
+        "jellyfin-desktop"
       ];
       monoFontFamily = config.custom.fonts.monospace;
       niriLayoutBorderSize = -1;
