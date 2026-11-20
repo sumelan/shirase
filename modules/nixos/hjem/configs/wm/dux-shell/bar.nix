@@ -74,7 +74,7 @@ _: {
           islandPalette = "default";
           islandPlacement = "edge";
           islandRouteLauncher = "follow";
-          islandSystemOsd = true;
+          islandSystemOsd = false;
           islandWidgetStash = {
             entry = {
               enabled = true;

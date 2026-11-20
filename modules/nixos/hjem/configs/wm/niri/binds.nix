@@ -71,7 +71,7 @@
 
           # execute
           "Mod+Return" = {
-            _props.hotkey-overlay-title = hotkey "#c6d0f5" "  Monstar" "Terminal Emulator";
+            _props.hotkey-overlay-title = hotkey "#f4b8e4" "  Monstar" "Terminal Emulator";
             spawn = ["monstar"];
           };
           "Mod+Shift+Return" = {
@@ -79,7 +79,7 @@
             spawn = ["monstar" "--working-directory" "/persist/home/sumelan/Projects" "--app-id" "nvim" "-e" "nvim"];
           };
           "Mod+B" = {
-            _props.hotkey-overlay-title = hotkey "#ef9f76" "  Helium" "Web Browser";
+            _props.hotkey-overlay-title = hotkey "#c6d0f5" "  Helium" "Web Browser";
             spawn = ["helium"];
           };
           "Mod+Shift+N" = {
