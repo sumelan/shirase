@@ -102,7 +102,7 @@
           # windows wanted to be floating
           {
             match = [
-              {_props.app-id._raw = ''r#"^.blueman-manager-wrapped$"#'';}
+              {_props.app-id._raw = ''r#"^blueman-manager$"#'';}
               {_props.app-id._raw = ''r#"^chrome-.{32}-Default$"#'';} # helium extension's windows
               {_props.app-id._raw = ''r#"^valent$"#'';}
               {_props.app-id._raw = ''r#"^dev.duxlabs.shell$"#'';}

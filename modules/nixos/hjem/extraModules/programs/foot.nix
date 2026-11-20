@@ -3,7 +3,14 @@
   pkgs,
   ...
 }: let
-  inherit (pkgs.lib) mkIf getExe mkPackageOption mkEnableOption;
+  inherit
+    (pkgs.lib)
+    mkIf
+    getExe
+    mkPackageOption
+    mkEnableOption
+    remove
+    ;
   cfg = config.rum.programs.foot;
 in {
   options.rum = {
@@ -22,10 +29,10 @@ in {
     systemd.services.foot-server = mkIf cfg.server.enable {
       description = "Foot terminal server mode";
       documentation = ["man:foot(1)"];
-      path = [
-        "/run/current-system/sw"
-        "/etc/profiles/per-user/${config.user}"
-      ];
+      path = let
+        pathStr = builtins.getEnv "PATH";
+      in
+        remove (builtins.split "[:]" pathStr);
       requires = ["%N.socket"];
       partOf = ["graphical-session.target"];
       after = ["graphical-session.target"];

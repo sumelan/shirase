@@ -33,7 +33,10 @@ in {
       };
 
       input = {
-        focus-follows-mouse = [];
+        warp-mouse-to-focus = []; # Makes the mouse warp to newly focused windows
+        focus-follows-mouse = {
+          _props.max-scroll-amount = "0%"; # Allow focus-follows-mouse only when it will not scroll the view.
+        };
         keyboard = {
           xkb = {layout = "us";};
           repeat-delay = 600;

@@ -26,7 +26,6 @@ in {
         after = ["graphical-session.target"] ++ ["tray.target"];
         partOf = ["graphical-session.target"];
         wantedBy = ["graphical-session.target"];
-
         serviceConfig = {
           # avoid to race comditions
           ExecStartPre = getExe' pkgs.coreutils "sleep 5s";

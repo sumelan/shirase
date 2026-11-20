@@ -9,6 +9,7 @@
     mkPackageOption
     mkIf
     getExe
+    remove
     ;
   cfg = config.rum.programs.ghostty;
 in {
@@ -27,10 +28,10 @@ in {
 
     systemd.services."app-com.mitchellh.ghostty" = mkIf cfg.systemd.enable {
       description = "Ghostty";
-      path = [
-        "/run/current-system/sw"
-        "/etc/profiles/per-user/${config.user}"
-      ];
+      path = let
+        pathStr = builtins.getEnv "PATH";
+      in
+        remove (builtins.split "[:]" pathStr);
       requires = ["dbus.socket"];
       after = ["graphical-session.target" "dbus.socket"];
       wantedBy = ["graphical-session.target"];
