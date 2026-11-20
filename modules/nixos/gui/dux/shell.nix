@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+_: {
   programs.dux-shell = {
     enable = true;
     systemd = {
@@ -9,13 +9,8 @@
     plugins = {
       quickCapture.enable = true;
       dankKDEConnect.enable = true;
-      wallpaperCarousel.enable = true;
       modernClock.enable = true;
       fcitx5Indicator.enable = true;
     };
-  };
-
-  environment.systemPackages = builtins.attrValues {
-    inherit (pkgs) wf-recorder;
   };
 }

@@ -16,8 +16,16 @@
             spawn = ["dms" "ipc" "call" "clipboard" "toggle"];
           };
           "Mod+W" = {
-            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Wallpaper Carousel";
-            spawn = ["dms" "ipc" "call" "wallpaperCarousel" "toggle"];
+            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Toggle Wallpapers";
+            spawn = ["dms" "ipc" "call" "dash" "toggle" "wallpaper"];
+          };
+          "Mod+Shift+Right" = {
+            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Wallpaper Cycle to Next";
+            spawn = ["dms" "ipc" "call" "wallpaper" "next"];
+          };
+          "Mod+Shift+Left" = {
+            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Wallpaper Cycle to Previous";
+            spawn = ["dms" "ipc" "call" "wallpaper" "prev"];
           };
           "Mod+X" = {
             _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Powermenu";

@@ -29,6 +29,10 @@ in {
   };
 
   config = mkIf cfg.enable {
+    packages = [
+      pkgs.wf-recorder
+      pkgs.ffmpeg
+    ];
     xdg.config.files = {
       "dms/.changelog-2.1" = {
         permissions = "666";

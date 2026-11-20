@@ -1,15 +1,8 @@
-{config, ...}: {
+_: {
   hjem.users.sumelan.rum = {
     programs.dux-shell.plugin_settings = {
-      dankKDEConnect = {
-        enabled = true;
-        selectedDeviceId = "6343c64e7760410ba0e7750fe8a99633";
-      };
+      dankKDEConnect = {enabled = true;};
       quickCapture = {enabled = true;};
-      wallpaperCarousel = {
-        enabled = true;
-        wallpaperDirectory = config.hjem.users.sumelan.directory + "/Pictures/Wallpapers/Touhou";
-      };
       fcitx5Indicator = {enabled = true;};
     };
   };
