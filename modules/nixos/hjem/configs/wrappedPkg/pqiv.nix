@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: let
+  inherit (pkgs.lib) genAttrs;
   inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) pqiv;
 in {
   hjem.users.sumelan = {
@@ -10,16 +11,9 @@ in {
       pqiv
     ];
 
-    xdg.mime-apps = let
-      value = "pqiv.desktop";
-      removed-associations = builtins.listToAttrs (map (name: {
-          inherit name value;
-        }) [
-          "video/mp4"
-        ]);
-    in {
-      inherit removed-associations;
-    };
+    xdg.mime-apps.removed-associations = genAttrs [
+      "video/mp4"
+    ] (_: "pqiv.desktop");
   };
 
   custom.wayland.windowManager.niri.extraWindow-rule = [

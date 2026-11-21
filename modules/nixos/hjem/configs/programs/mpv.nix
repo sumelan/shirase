@@ -1,23 +1,18 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  inherit (pkgs.lib) genAttrs;
+in {
   hjem.users.sumelan = {
     packages = [pkgs.mpv];
 
-    xdg.mime-apps = let
-      value = "umpv.desktop";
-      removed-associations = builtins.listToAttrs (map (name: {
-          inherit name value;
-        }) [
-          "audio/mp4"
-          "audio/mpeg"
-          "audio/ogg"
-          "audio/flac"
-          "video/mp4"
-          "video/mpeg"
-          "video/webm"
-        ]);
-    in {
-      inherit removed-associations;
-    };
+    xdg.mime-apps.removed-associations = genAttrs [
+      "audio/mp4"
+      "audio/mpeg"
+      "audio/ogg"
+      "audio/flac"
+      "video/mp4"
+      "video/mpeg"
+      "video/webm"
+    ] (_: "umpv.desktop");
   };
 
   custom = {

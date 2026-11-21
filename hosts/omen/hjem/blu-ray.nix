@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  inherit (pkgs.lib) genAttrs;
+in {
   # find usb bluray drive
   # https://discourse.nixos.org/t/makemkv-cant-find-my-usb-blu-ray-drive/23714
   boot.kernelModules = ["sg"];
@@ -25,19 +27,15 @@
     xdg.mime-apps = let
       handbrake = "fr.handbrake.ghb.desktop";
       vlc = "vlc.desktop";
-      associations = builtins.listToAttrs (map (name: {
-          inherit name;
-          value = [handbrake vlc];
-        })
-        [
-          "audio/mp4"
-          "audio/mpeg"
-          "audio/ogg"
-          "audio/flac"
-          "video/mp4"
-          "video/mpeg"
-          "video/webm"
-        ]);
+      associations = genAttrs [
+        "audio/mp4"
+        "audio/mpeg"
+        "audio/ogg"
+        "audio/flac"
+        "video/mp4"
+        "video/mpeg"
+        "video/webm"
+      ] (_: [handbrake vlc]);
     in {
       removed-associations = associations;
     };

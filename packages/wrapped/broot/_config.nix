@@ -1,4 +1,6 @@
-_: {
+{pkgs}: let
+  inherit (pkgs.lib) genAttrs;
+in {
   imports = [
     {
       luma = ["dark" "unknown"];
@@ -12,19 +14,9 @@ _: {
   modal = true;
   initial_mode = "command";
 
-  special_paths = let
-    noListSumAttrs = list:
-      builtins.listToAttrs (map (name: {
-          inherit name;
-          value = {
-            list = "never";
-            sum = "never";
-          };
-        })
-        list);
-  in
-    noListSumAttrs
-    ([
+  special_paths =
+    genAttrs (
+      [
         "/bin"
         "/boot"
         "/dev"
@@ -41,7 +33,11 @@ _: {
         "/usr"
         "/var"
       ]
-      ++ ["/backups" "/media"])
+      ++ ["/backups" "/media"]
+    ) (_: {
+      list = "never";
+      sum = "never";
+    })
     // {
       "~/.config" = {
         list = "never";

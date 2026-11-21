@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: let
+  inherit (pkgs.lib) genAttrs;
   inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) zathura;
 in {
   hjem.users.sumelan = {
@@ -10,18 +11,11 @@ in {
       zathura
     ];
 
-    xdg.mime-apps = let
-      value = "org.pwmt.zathura-pdf-mupdf.desktop";
-      removed-associations = builtins.listToAttrs (map (name: {
-          inherit name value;
-        }) [
-          "image/jpeg"
-          "image/gif"
-          "image/webp"
-          "image/png"
-        ]);
-    in {
-      inherit removed-associations;
-    };
+    xdg.mime-apps.removed-associations = genAttrs [
+      "image/jpeg"
+      "image/gif"
+      "image/webp"
+      "image/png"
+    ] (_: "org.pwmt.zathura-pdf-mupdf.desktop");
   };
 }

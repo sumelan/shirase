@@ -4,6 +4,7 @@
   customLib,
   ...
 }: let
+  inherit (pkgs.lib) genAttrs;
   inherit (customLib.niri) hotkey;
 in {
   programs.chromium = {
@@ -47,41 +48,25 @@ in {
       #   '';
 
       mime-apps = let
-        value = ["helium.desktop"];
-        default-applications = builtins.listToAttrs (map (name: {
-            inherit name value;
-          }) [
-            "x-scheme-handler/unknown"
-            "x-scheme-handler/about"
-            "x-scheme-handler/https"
-            "x-scheme-handler/http"
-            "text/html"
-          ]);
-        added-associations = builtins.listToAttrs (map (name: {
-            inherit name value;
-          }) [
-            "x-scheme-handler/unknown"
-            "x-scheme-handler/about"
-            "x-scheme-handler/https"
-            "x-scheme-handler/http"
-            "text/html"
-          ]);
-
-        removed-associations = builtins.listToAttrs (map (name: {
-            inherit name value;
-          }) [
-            "image/jpeg"
-            "image/gif"
-            "image/webp"
-            "image/png"
-            "application/pdf"
-          ]);
+        handlers = [
+          "x-scheme-handler/unknown"
+          "x-scheme-handler/about"
+          "x-scheme-handler/https"
+          "x-scheme-handler/http"
+          "text/html"
+        ];
+        images = [
+          "image/jpeg"
+          "image/gif"
+          "image/webp"
+          "image/png"
+          "application/pdf"
+        ];
+        genHelium = list: genAttrs list (_: "helium.desktop");
       in {
-        inherit
-          default-applications
-          added-associations
-          removed-associations
-          ;
+        default-applications = genHelium handlers;
+        added-associations = genHelium handlers;
+        removed-associations = genHelium images;
       };
     };
   };

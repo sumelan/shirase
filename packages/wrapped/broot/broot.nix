@@ -12,7 +12,7 @@
     jsonFmt = pkgs.formats.json {};
 
     cfg = attrsList [
-      (import ./_config.nix {})
+      (import ./_config.nix {inherit pkgs;})
       (import ./_verbs.nix {})
     ];
 

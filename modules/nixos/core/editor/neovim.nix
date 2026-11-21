@@ -5,6 +5,7 @@
   customLib,
   ...
 }: let
+  inherit (pkgs.lib) genAttrs;
   inherit (customLib.niri) hotkey;
   inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) nvim;
 in {
@@ -26,14 +27,14 @@ in {
 
   hjem.users.sumelan = {
     xdg.mime-apps = {
-      default-applications = {
-        "text/plain" = "nvim.desktop";
-        "application/x-shellscript" = "nvim.desktop";
-        "application/xml" = "nvim.desktop";
-      };
-      added-associations = {
-        "text/csv" = "nvim.desktop";
-      };
+      default-applications = genAttrs [
+        "text/plain"
+        "application/x-shellscript"
+        "application/xml"
+      ] (_: "nvim.desktop");
+      added-associations = genAttrs [
+        "text/csv"
+      ] (_: "nvim.desktop");
     };
   };
 
