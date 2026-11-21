@@ -4,12 +4,23 @@
     package = pkgs.valent; # kde-connect, but built with gtk
   };
 
-  custom.fileSystem = {
-    persist.home.directories = [
-      ".config/valent"
+  custom = {
+    wayland.windowManager.niri.extraWindow-rule = [
+      {
+        match = [
+          {_props.app-id._raw = ''r#"^valent$"#'';}
+        ];
+        open-floating = true;
+      }
     ];
-    cache.home.directories = [
-      ".cache/valent"
-    ];
+
+    fileSystem = {
+      persist.home.directories = [
+        ".config/valent"
+      ];
+      cache.home.directories = [
+        ".cache/valent"
+      ];
+    };
   };
 }

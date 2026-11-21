@@ -10,15 +10,28 @@
     };
   };
 
-  custom.fileSystem = {
-    persist.home.directories = [
-      ".config/Proton"
-      ".config/Proton Mail"
-      ".config/Proton Pass"
+  custom = {
+    wayland.windowManager.niri.extraWindow-rule = [
+      {
+        match = [
+          {_props.app-id._raw = ''r#"^Proton Mail$"#'';}
+          {_props.app-id._raw = ''r#"^Proton Pass$"#'';}
+          {_props.app-id._raw = ''r#"^.protonvpn-app-wrapped$"#'';}
+        ];
+        block-out-from = "screen-capture";
+      }
     ];
 
-    cache.home.directories = [
-      ".cache/Proton"
-    ];
+    fileSystem = {
+      persist.home.directories = [
+        ".config/Proton"
+        ".config/Proton Mail"
+        ".config/Proton Pass"
+      ];
+
+      cache.home.directories = [
+        ".cache/Proton"
+      ];
+    };
   };
 }

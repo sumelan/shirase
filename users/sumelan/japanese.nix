@@ -1,8 +1,11 @@
 {
   inputs,
   pkgs,
+  customLib,
   ...
-}: {
+}: let
+  inherit (customLib.niri) hotkey;
+in {
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
@@ -46,10 +49,23 @@
     };
   };
 
-  custom.fileSystem = {
-    cache.home.directories = [
-      # meltype settings and metadata
-      ".local/share/Meltype"
-    ];
+  custom = {
+    wayland.windowManager.niri.extraBinds = {
+      "Ctrl+Space" = {
+        _props.hotkey-overlay-title = hotkey {
+          color = "#ca9ee6";
+          name = "󰗊  Meltype";
+          desc = "Switch input method";
+        };
+        spawn = ["fcitx5-remote" "-t"];
+      };
+    };
+
+    fileSystem = {
+      cache.home.directories = [
+        # meltype settings and metadata
+        ".local/share/Meltype"
+      ];
+    };
   };
 }

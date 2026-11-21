@@ -34,9 +34,6 @@ type = "fetch"
 [inputs.comview]
 url = "gh:sumelan/comview/flake"
 
-[inputs.snapshot-explorer]
-url = "gh:sumelan/snapshot-explorer/flake"
-
 [inputs.hjem]
 url = "gh:feel-co/hjem"
 

@@ -99,42 +99,9 @@
               inactive-color = "#434C5E";
             };
           }
-          # windows wanted to be floating
           {
             match = [
-              {_props.app-id._raw = ''r#"^blueman-manager$"#'';}
-              {_props.app-id._raw = ''r#"^chrome-.{32}-Default$"#'';} # helium extension's windows
-              {_props.app-id._raw = ''r#"^valent$"#'';}
-              {_props.app-id._raw = ''r#"^dev.duxlabs.shell$"#'';}
-            ];
-            open-floating = true;
-          }
-          # windows wanted to be floating and not transparent
-          {
-            match = [
-              {_props.title._raw = ''r#"^Picture-in-Picture$"#'';}
-              {_props.title._raw = ''r#"^ピクチャーインピクチャー$"#'';}
-              {_props.title._raw = ''r#"^ピクチャー イン ピクチャー$"#'';}
-              {_props.app-id._raw = ''r#"^mpv$"#'';}
-              {_props.app-id._raw = ''r#"^pqiv$"#'';}
-              {_props.app-id._raw = ''r#"^vlc$"#'';}
-            ];
-            default-column-width._children = [
-              {proportion = 0.450000;}
-            ];
-            default-window-height._children = [
-              {proportion = 0.450000;}
-            ];
-            open-floating = true;
-            opacity = 1.000000;
-          }
-          # windows wanted to be floating and be blocked out from screen-capture
-          {
-            match = [
-              {_props.app-id._raw = ''r#"^dev.duxlabs.files$"#'';}
-              {_props.app-id._raw = ''r#"^dev.duxlabs.calendar$"#'';}
               {_props.app-id._raw = ''r#"^xdg-desktop-portal-gtk$"#'';}
-              {_props.app-id._raw = ''r#"^org.github.atheriel.snapshot-explorer$"#'';}
             ];
             default-column-width._children = [
               {proportion = 0.500000;}
@@ -148,23 +115,9 @@
           # windows to be blocked out from screen-capture
           {
             match = [
-              {_props.title._raw = ''r#"^認証$"#'';} # polkit
-              {_props.title._raw = ''r#"^broot$"#'';}
               {_props.app-id._raw = ''r#"^org.gnome.seahorse.Application$"#'';}
-              {_props.app-id._raw = ''r#"^Proton Mail$"#'';}
-              {_props.app-id._raw = ''r#"^Proton Pass$"#'';}
-              {_props.app-id._raw = ''r#"^.protonvpn-app-wrapped$"#'';}
             ];
             block-out-from = "screen-capture";
-          }
-          # open-maximized and not transparent
-          {
-            match = [
-              {_props.app-id._raw = ''r#"steam_app_\d{7}$"#'';}
-              {_props.app-id._raw = ''r#"^org.jellyfin.JellyfinDesktop$"#'';}
-            ];
-            open-maximized = true;
-            opacity = 1.000000;
           }
         ]
         ++ cfg.extraWindow-rule;

@@ -1,4 +1,6 @@
-_: {
+{customLib, ...}: let
+  inherit (customLib.niri) hotkey;
+in {
   # Rotate limine interface
   boot.loader.limine.extraConfig = ''
     interface_rotation: 90
@@ -13,9 +15,7 @@ _: {
 
   custom = {
     wayland.windowManager.niri = {
-      extraBinds = let
-        hotkey = color: name: text: ''<span foreground='${color}'>[${name}]</span> ${text}'';
-      in {
+      extraBinds = {
         "XF86MonBrightnessUp" = {
           _props.allow-when-locked = true;
           spawn = ["dms" "ipc" "call" "brightness" "increment" "5%" "backlight:intel_backlight"];
@@ -26,7 +26,11 @@ _: {
         };
         "Mod+Escape" = {
           _props = {
-            hotkey-overlay-title = hotkey "#ef9f76" "󰗢  niri" "Toggle Touchpad";
+            hotkey-overlay-title = hotkey {
+              color = "#ef9f76";
+              name = "󰗢  niri";
+              desc = "Toggle Touchpad";
+            };
             allow-when-locked = true;
             repeat = false;
           };

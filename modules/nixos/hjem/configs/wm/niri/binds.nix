@@ -1,100 +1,10 @@
-{config, ...}: {
+{config, ...}: let
+  cfg = config.custom.wayland.windowManager.niri;
+in {
   hjem.users.sumelan.rum = {
     wayland.windowManager.niri.settings = {
-      binds = let
-        hotkey = color: name: text: ''<span foreground='${color}'>[${name}]</span> ${text}'';
-        cfg = config.custom.wayland.windowManager.niri;
-      in
+      binds =
         {
-          # dux shell
-          "Mod+Space" = {
-            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Application Launcher";
-            spawn = ["dms" "ipc" "call" "spotlight" "toggle"];
-          };
-          "Mod+Y" = {
-            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Clipboard Manager";
-            spawn = ["dms" "ipc" "call" "clipboard" "toggle"];
-          };
-          "Mod+W" = {
-            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Toggle Wallpapers";
-            spawn = ["dms" "ipc" "call" "dash" "toggle" "wallpaper"];
-          };
-          "Mod+Shift+Right" = {
-            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Wallpaper Cycle to Next";
-            spawn = ["dms" "ipc" "call" "wallpaper" "next"];
-          };
-          "Mod+Shift+Left" = {
-            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Wallpaper Cycle to Previous";
-            spawn = ["dms" "ipc" "call" "wallpaper" "prev"];
-          };
-          "Mod+X" = {
-            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Powermenu";
-            spawn = ["dms" "ipc" "call" "powermenu" "toggle"];
-          };
-          "Mod+Comma" = {
-            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Settings";
-            spawn = ["dms" "ipc" "call" "settings" "toggle"];
-          };
-          "Mod+Shift+Ctrl+L" = {
-            _props.hotkey-overlay-title = hotkey "#babbf1" "󰮤  Dux Shell" "Lock Screen";
-            spawn = ["dms" "ipc" "call" "lock" "lock"];
-          };
-          "Print" = {spawn = ["dms" "ipc" "call" "niri" "screenshot"];};
-          "Shift+Print" = {spawn = ["dms" "ipc" "call" "niri" "screenshotScreen"];};
-          "Alt+Print" = {spawn = ["dms" "ipc" "call" "niri" "screenshotWindow"];};
-
-          # media-key
-          "XF86AudioRaiseVolume" = {
-            _props.allow-when-locked = true;
-            spawn = ["dms" "ipc" "call" "audio" "increment" "5%"];
-          };
-          "XF86AudioLowerVolume" = {
-            _props.allow-when-locked = true;
-            spawn = ["dms" "ipc" "call" "audio" "decrement" "5%"];
-          };
-          "XF86AudioMute" = {
-            _props.allow-when-locked = true;
-            spawn = ["dms" "ipc" "call" "audio" "mute"];
-          };
-          "XF86AudioPlay" = {
-            _props.allow-when-locked = true;
-            spawn = ["dms" "ipc" "call" "mpris" "playPause"];
-          };
-          "XF86AudioPrev" = {
-            _props.allow-when-locked = true;
-            spawn = ["dms" "ipc" "call" "mpris" "previous"];
-          };
-          "XF86AudioNext" = {
-            _props.allow-when-locked = true;
-            spawn = ["dms" "ipc" "call" "mpris" "next"];
-          };
-
-          # execute
-          "Mod+Return" = {
-            _props.hotkey-overlay-title = hotkey "#f4b8e4" "  Monstar" "Terminal Emulator";
-            spawn = ["monstar"];
-          };
-          "Mod+Shift+Return" = {
-            _props.hotkey-overlay-title = hotkey "#a6d189" "  Neovim" "Text Editor";
-            spawn = ["monstar" "--working-directory" "/persist/home/sumelan/Projects" "--app-id" "nvim" "-e" "nvim"];
-          };
-          "Mod+B" = {
-            _props.hotkey-overlay-title = hotkey "#c6d0f5" "  Helium" "Web Browser";
-            spawn = ["helium"];
-          };
-          "Mod+Shift+N" = {
-            _props.hotkey-overlay-title = hotkey "#8caaee" "󱄅  Nix Search TV" "Fuzzy search for Nix packages";
-            spawn = ["monstar" "--title" "nix-search-tv" "-e" "ns"];
-          };
-          "Mod+Shift+B" = {
-            _props.hotkey-overlay-title = hotkey "#e5c890" "󰆚  Broot" "TUI File Manager";
-            spawn = ["monstar" "--title" "broot" "-e" "broot"];
-          };
-          "Ctrl+Space" = {
-            _props.hotkey-overlay-title = hotkey "#ca9ee6" "󰗊  Meltype" "Switch input method";
-            spawn = ["fcitx5-remote" "-t"];
-          };
-
           # window
           "Mod+Backspace" = {
             _props.repeat = false;

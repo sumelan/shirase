@@ -1,20 +1,8 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: let
-  snapshot-explorer = inputs.snapshot-explorer.packages.${pkgs.stdenv.hostPlatform.system}.default;
-in {
-  environment = {
-    systemPackages = [
-      snapshot-explorer
-    ];
-
-    sessionVariables = {
-      ELECTRON_OZONE_PLATFORM_HINT = "auto";
-      GDK_BACKEND = "wayland";
-      XDG_SESSION_TYPE = "wayland";
-    };
+{pkgs, ...}: {
+  environment.sessionVariables = {
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    GDK_BACKEND = "wayland";
+    XDG_SESSION_TYPE = "wayland";
   };
 
   xdg.portal = {

@@ -30,14 +30,26 @@
     graphics.enable32Bit = true;
   };
 
-  custom.fileSystem = {
-    cache.home.directories = [
-      ".local/share/applications" # desktop files from steam
-      ".local/share/icons/hicolor" # icons from steam
-      ".local/share/Steam"
-      ".cache/mesa_shader_cache"
-      ".cache/mesa_shader_cache_db"
-      ".cache/radv_builtin_shaders"
+  custom = {
+    wayland.windowManager.niri.extraWindow-rule = [
+      {
+        match = [
+          {_props.app-id._raw = ''r#"steam_app_\d{7}$"#'';}
+        ];
+        open-maximized = true;
+        opacity = 1.000000;
+      }
     ];
+
+    fileSystem = {
+      cache.home.directories = [
+        ".local/share/applications" # desktop files from steam
+        ".local/share/icons/hicolor" # icons from steam
+        ".local/share/Steam"
+        ".cache/mesa_shader_cache"
+        ".cache/mesa_shader_cache_db"
+        ".cache/radv_builtin_shaders"
+      ];
+    };
   };
 }

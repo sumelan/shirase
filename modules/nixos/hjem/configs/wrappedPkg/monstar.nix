@@ -1,8 +1,10 @@
 {
   self,
   pkgs,
+  customLib,
   ...
 }: let
+  inherit (customLib.niri) hotkey;
   inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) monstar;
 in {
   hjem.users.sumelan = {
@@ -24,6 +26,17 @@ in {
     enable = true;
     settings = {
       default = ["dev.rockorager.monstar.desktop"];
+    };
+  };
+
+  custom.wayland.windowManager.niri.extraBinds = {
+    "Mod+Return" = {
+      _props.hotkey-overlay-title = hotkey {
+        color = "#f4b8e4";
+        name = "  Monstar";
+        desc = "Terminal Emulator";
+      };
+      spawn = ["monstar"];
     };
   };
 }

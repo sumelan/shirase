@@ -2,8 +2,10 @@
   self,
   config,
   pkgs,
+  customLib,
   ...
 }: let
+  inherit (customLib.niri) hotkey;
   inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) nvim;
 in {
   environment = {
@@ -35,12 +37,25 @@ in {
     };
   };
 
-  custom.fileSystem = {
-    persist.home.directories = [
-      ".supermaven"
-      ".local/share/nvim" # data directory
-      ".local/state/nvim" # persistent session info
-      ".local/share/supermaven"
-    ];
+  custom = {
+    wayland.windowManager.niri.extraBinds = {
+      "Mod+Shift+Return" = {
+        _props.hotkey-overlay-title = hotkey {
+          color = "#a6d189";
+          name = "  Neovim";
+          desc = "Text Editor";
+        };
+        spawn = ["monstar" "--working-directory" "/persist/home/sumelan/Projects" "--app-id" "nvim" "-e" "nvim"];
+      };
+    };
+
+    fileSystem = {
+      persist.home.directories = [
+        ".supermaven"
+        ".local/share/nvim" # data directory
+        ".local/state/nvim" # persistent session info
+        ".local/share/supermaven"
+      ];
+    };
   };
 }

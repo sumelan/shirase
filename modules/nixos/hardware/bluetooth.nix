@@ -18,12 +18,23 @@ _: {
 
   services.blueman.enable = true;
 
-  custom.fileSystem = {
-    persist.root.directories = [
+  custom = {
+    wayland.windowManager.niri.extraWindow-rule = [
       {
-        directory = "/var/lib/bluetooth";
-        mode = "0700";
+        match = [
+          {_props.app-id._raw = ''r#"^blueman-manager$"#'';}
+        ];
+        open-floating = true;
       }
     ];
+
+    fileSystem = {
+      persist.root.directories = [
+        {
+          directory = "/var/lib/bluetooth";
+          mode = "0700";
+        }
+      ];
+    };
   };
 }
