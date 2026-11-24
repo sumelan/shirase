@@ -1,6 +1,4 @@
-{customLib, ...}: let
-  inherit (customLib.niri) hotkey;
-in {
+_: {
   # Rotate limine interface
   boot.loader.limine.extraConfig = ''
     interface_rotation: 90
@@ -23,18 +21,6 @@ in {
         "XF86MonBrightnessDown" = {
           _props.allow-when-locked = true;
           spawn = ["dms" "ipc" "call" "brightness" "decrement" "5%" "backlight:intel_backlight"];
-        };
-        "Mod+Escape" = {
-          _props = {
-            hotkey-overlay-title = hotkey {
-              color = "#ef9f76";
-              name = "󰗢  niri";
-              desc = "Toggle Touchpad";
-            };
-            allow-when-locked = true;
-            repeat = false;
-          };
-          spawn = ["niri" "msg" "action" "toggle-touchpad"];
         };
       };
     };

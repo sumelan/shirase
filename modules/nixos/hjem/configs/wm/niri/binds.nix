@@ -1,10 +1,35 @@
-{config, ...}: let
+{
+  config,
+  customLib,
+  ...
+}: let
   cfg = config.custom.wayland.windowManager.niri;
+  inherit (customLib.niri) hotkey;
 in {
   hjem.users.sumelan.rum = {
     wayland.windowManager.niri.settings = {
       binds =
         {
+          "Mod+Shift+Return" = {
+            _props.hotkey-overlay-title = hotkey {
+              color = "#a6d189";
+              name = "  Neovim";
+              desc = "Text Editor";
+            };
+            spawn = ["monstar" "--working-directory" "/persist/home/sumelan/Projects" "--app-id" "nvim" "-e" "nvim"];
+          };
+          "Mod+Escape" = {
+            _props = {
+              hotkey-overlay-title = hotkey {
+                color = "#ef9f76";
+                name = "󰗢  niri";
+                desc = "Toggle Touchpad";
+              };
+              allow-when-locked = true;
+              repeat = false;
+            };
+            spawn = ["niri" "msg" "action" "toggle-touchpad"];
+          };
           # window
           "Mod+Backspace" = {
             _props.repeat = false;
@@ -115,10 +140,6 @@ in {
           "Mod+Shift+O" = {toggle-window-rule-opacity = [];};
           "Mod+Shift+Escape" = {
             quit = {_props.skip-confirmation = false;};
-          };
-          "Mod+Escape" = {
-            _props.allow-inhibiting = false;
-            toggle-keyboard-shortcuts-inhibit = [];
           };
           "Mod+Shift+P" = {power-off-monitors = [];};
         }
