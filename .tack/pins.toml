@@ -72,3 +72,6 @@ url = "gh:rockorager/monstar"
 
 [inputs.x-plymouth]
 url = "gh:x-tech-laboratories/X-Plymouth"
+
+[inputs.hylki]
+url = "gh:clementpoiret/hylki-flake"

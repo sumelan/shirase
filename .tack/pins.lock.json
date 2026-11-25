@@ -31,6 +31,14 @@
     "narHash": "sha256-m0Dmp18AtrsD+X4HXRQ/jfEU7jg89P+7kjUf+Raz0t0=",
     "lastModified": 1795415752
   },
+  "hylki": {
+    "type": "github",
+    "owner": "clementpoiret",
+    "repo": "hylki-flake",
+    "rev": "36e6b80bef7a531825dc186af216075dea35bf59",
+    "narHash": "sha256-4l0Yqee2vL55vt2KIbv/CIwm/TU6cbUqYgEOlIoO8HI=",
+    "lastModified": 1795537381
+  },
   "inshellah": {
     "type": "github",
     "owner": "manic-systems",

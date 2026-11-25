@@ -13,7 +13,7 @@ in {
       package = mkDefault sonoraPkg;
       settings =
         {
-          version = "0.49.1";
+          version = "0.50.3";
         }
         // {
           adaptive_menu = false;
@@ -30,7 +30,9 @@ in {
             icons = "solar";
             motion_pace = "base";
             os_fullscreen = false;
+            page_width = "wide";
             player_bar_layout = "centered";
+            player_bar_time_left = false;
             player_bar_transparent = true;
             reduce_motion = "system";
             rounding = "rounded";
@@ -62,6 +64,10 @@ in {
               sidebar = null;
               sidebar_accent = null;
               sidebar_border = null;
+              status_error = null;
+              status_info = null;
+              status_success = null;
+              status_warning = null;
               table_active = null;
               table_active_border = null;
               table_head = null;
@@ -85,6 +91,7 @@ in {
             window_rounding = "square";
           };
           artwork_for_local_files = true;
+          auto_update = true;
           blur_lyrics = true;
           cache_gb = 2;
           check_updates = false;
@@ -93,12 +100,12 @@ in {
           discord_hide_on_connect = false;
           discord_name = "sonora";
           discord_presence = true;
-          discord_provider_button = false;
+          discord_provider_button = true;
           discord_show_paused = true;
           discord_sonora_button = false;
           discord_upload_covers = true;
           discord_without_details = false;
-          equalizer = false;
+          equalizer = true;
           equalizer_advanced = false;
           equalizer_bass = 0;
           equalizer_profile = 0;
@@ -185,13 +192,15 @@ in {
           font = config.custom.fonts.regular;
           fullscreen_lyrics_scale = 1;
           gapless = true;
+          jellyfin_lyrics_offered = true;
           karaoke_lyrics = true;
           keep_tracks = true;
           language = "auto";
-          local_folders = [(config.hjem.users.sumelan.directory + "/Music")];
+          local_folders = ["/home/sumelan/Music"];
           local_lyrics_offered = false;
           lyrics_enabled = true;
           lyrics_for_local_files = true;
+          lyrics_prefer_word_synced = true;
           lyrics_provider_priority = [
             "Local"
             "Subsonic"
@@ -211,9 +220,10 @@ in {
             "Musixmatch"
             "LrcLib"
             "Subsonic"
+            "Jellyfin"
           ];
-          lyrics_word_synced_first = false;
           normalisation = true;
+          now_playing_on_file_open = true;
           offline_mode = false;
           output_buffer = null;
           output_device = null;
@@ -233,6 +243,7 @@ in {
           sessions_button = true;
           sessions_official = true;
           sessions_server = "";
+          sponsorblock = false;
           spotify_connect = true;
           spotify_connect_custom_name = "";
           spotify_connect_name = "both";
@@ -242,6 +253,7 @@ in {
           subsonic_bitrate = null;
           subsonic_format = null;
           subsonic_lyrics_offered = true;
+          taskbar_progress = true;
           tray_icon = true;
           update_channel = "";
         };
