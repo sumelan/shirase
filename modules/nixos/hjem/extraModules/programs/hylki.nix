@@ -28,10 +28,6 @@ in {
       enable = mkEnableOption "A GNOME-native email client built with Rust and libadwaita";
       package = mkPackageOption pkgs "hylki" {};
       settings = {
-        accounts = mkOption {
-          inherit (tomlFmt) type;
-          default = {};
-        };
         privacy = mkOption {
           inherit (tomlFmt) type;
           default = {};
@@ -63,10 +59,6 @@ in {
     ];
 
     xdg.config.files = {
-      "hylki/accounts.toml" = {
-        generator = tomlFmt.generate "accounts.toml";
-        value = cfg.settings.accounts;
-      };
       "hylki/privacy.toml" = {
         generator = tomlFmt.generate "privacy.toml";
         value = cfg.settings.privacy;

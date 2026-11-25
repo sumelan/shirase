@@ -1,5 +1,4 @@
 {
-  self,
   inputs,
   pkgs,
   ...
@@ -14,41 +13,6 @@
       enable = true;
       package = inputs.hylki.packages.${pkgs.stdenv.hostPlatform.system}.default;
       settings = {
-        accounts = {
-          accounts = [
-            {
-              aliases = [];
-              avatar = self + "/users/sumelan/sumelan.png";
-              color = "#f4b8e4";
-              email = "sumelan@kagimail.com";
-              enabled = true;
-              folders_seeded = true;
-              goa_enabled_before_mail_disabled = true;
-              goa_id = "account_1795611391_0";
-              goa_mail_disabled = false;
-              gravatar = false;
-              imap_host = "mail.kagimail.com";
-              imap_port = 993;
-              name = "sumelan";
-              oauth = false;
-              protocol = "imap";
-              security = {
-                imap_accept_invalid_certs = false;
-                imap_starttls = false;
-                smtp_accept_invalid_certs = false;
-                smtp_no_auth = false;
-                smtp_starttls = false;
-              };
-              signature_html = false;
-              smtp_host = "mail.kagimail.com";
-              smtp_port = 465;
-              smtp_separate = false;
-              smtp_username = "sumelan@kagimail.com";
-              tls_accept_hostname_mismatch = false;
-              username = "sumelan@kagimail.com";
-            }
-          ];
-        };
         privacy = {
           account_chip = true;
           account_click_folds = false;
@@ -84,7 +48,7 @@
           contacts_search_open = false;
           date_groups_default_applied = true;
           date_style = "system";
-          desktop_icons = true;
+          desktop_icons = false;
           discard_notice = false;
           favorites_placement = "above_accounts";
           fetch_interval_secs = 300;
@@ -317,6 +281,7 @@
 
   custom.fileSystem = {
     persist.home.directories = [
+      ".config/hylki"
       ".local/share/co.hyprlab.Hylki"
     ];
 
