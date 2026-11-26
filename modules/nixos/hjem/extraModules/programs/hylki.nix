@@ -28,6 +28,10 @@ in {
       enable = mkEnableOption "A GNOME-native email client built with Rust and libadwaita";
       package = mkPackageOption pkgs "hylki" {};
       settings = {
+        focus = mkOption {
+          inherit (tomlFmt) type;
+          default = {};
+        };
         privacy = mkOption {
           inherit (tomlFmt) type;
           default = {};
@@ -59,6 +63,10 @@ in {
     ];
 
     xdg.config.files = {
+      "hylki/focus.toml" = {
+        generator = tomlFmt.generate "focus.toml";
+        value = cfg.settings.focus;
+      };
       "hylki/privacy.toml" = {
         generator = tomlFmt.generate "privacy.toml";
         value = cfg.settings.privacy;

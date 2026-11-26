@@ -95,6 +95,11 @@ in {
                 directory = ".local/share/.gnupg";
                 mode = "0700";
               }
+              # The whole dconf database (user) — GNOME Settings, shell prefs, per-app gsettings
+              ".config/dconf"
+              # the account list (login name, host, services)
+              ".config/goa-1.0"
+              # GOA tokens + all libsecret secrets;
               {
                 directory = ".local/share/keyrings";
                 mode = "0700";
@@ -105,8 +110,6 @@ in {
               "Pictures"
               "Videos"
               "Projects"
-
-              ".config/dconf"
             ]
             ++ cfg.persist.home.directories);
         };

@@ -13,6 +13,44 @@
       enable = true;
       package = inputs.hylki.packages.${pkgs.stdenv.hostPlatform.system}.default;
       settings = {
+        focus = {
+          click_folds = false;
+          column_headings = false;
+          enabled = false;
+          fold_accounts = true;
+          fold_unified = true;
+          hide_accounts = true;
+          hide_attachment_icons = true;
+          hide_avatars = true;
+          hide_stars = true;
+          hide_subject = true;
+          hover_expand = false;
+          layout = "automatic";
+          list_header = true;
+          preview_lines = 0;
+          rail_dots = true;
+          rail_sidebar = true;
+          reader_toolbar = true;
+          reader_view = true;
+          show_attachments = true;
+          show_contacts = true;
+          show_favorites = true;
+          show_filters = true;
+          show_inboxes = true;
+          show_tags = true;
+          start_focused = false;
+          tags_below = false;
+          unified = {
+            archive = true;
+            drafts = true;
+            junk = false;
+            sent = true;
+            snoozed = true;
+            starred = true;
+            trash = false;
+          };
+          unread_counts = true;
+        };
         privacy = {
           account_chip = true;
           account_click_folds = false;
@@ -290,13 +328,15 @@
     ];
 
     fileSystem = {
-      persist.home.directories = [
-        ".config/hylki"
-        ".local/share/co.hyprlab.Hylki"
+      persist.home.files = [
+        ".config/hylki/accounts.toml"
       ];
 
       cache.home.directories = [
         ".cache/co.hyprlab.Hylki"
+        ".local/share/co.hyprlab.Hylki"
+        ".local/share/hylki"
+        ".local/share/avatars"
       ];
     };
   };
