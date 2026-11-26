@@ -279,14 +279,25 @@
     };
   };
 
-  custom.fileSystem = {
-    persist.home.directories = [
-      ".config/hylki"
-      ".local/share/co.hyprlab.Hylki"
+  custom = {
+    wayland.windowManager.niri.extraWindow-rule = [
+      {
+        match = [
+          {_props.app-id._raw = ''r#"^co.hyprlab.Hylki$"#'';}
+        ];
+        block-out-from = "screen-capture";
+      }
     ];
 
-    cache.home.directories = [
-      ".cache/co.hyprlab.Hylki"
-    ];
+    fileSystem = {
+      persist.home.directories = [
+        ".config/hylki"
+        ".local/share/co.hyprlab.Hylki"
+      ];
+
+      cache.home.directories = [
+        ".cache/co.hyprlab.Hylki"
+      ];
+    };
   };
 }
