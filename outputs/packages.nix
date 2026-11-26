@@ -41,8 +41,6 @@ in
       broot = wrappedPkg "broot" {inherit pkgs functions;};
       btop = wrappedPkg "btop" {inherit pkgs functions;};
       eza = wrappedPkg "eza" {inherit pkgs;};
-      foot = wrappedPkg "foot" {inherit self pkgs functions;};
-      ghostty = wrappedPkg "ghostty" {inherit self pkgs functions;};
       helix = wrappedPkg "helix" {inherit pkgs functions;};
       just = wrappedPkg "just" {inherit inputs pkgs;};
       monstar = wrappedPkg "monstar" {inherit self inputs pkgs functions;};

@@ -288,6 +288,8 @@
           };
         };
       };
+      soundLogin = false;
+      soundNewNotification = false;
       springBounce = 1;
       systemTrayIconTintMode = "none";
       textRenderQuality = 0;
