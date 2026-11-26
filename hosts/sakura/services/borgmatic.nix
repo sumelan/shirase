@@ -57,6 +57,7 @@ in {
         mkIf config.custom.hardware.hdds.ironWolf
         ({
             patterns = [
+              # root patterns
               "R /backups"
             ];
             repositories = [
@@ -72,7 +73,11 @@ in {
         mkIf config.custom.hardware.hdds.westernDigital
         ({
             patterns = [
-              "R /media"
+              # root patterns
+              "R /media/WD4T"
+              # exclude patterns
+              "- /media/WD4T/Music"
+              "- /media/WD4T/Videos"
             ];
             repositories = [
               {
