@@ -61,8 +61,9 @@ in
       rm -f $out/bin/.broot-wrapped
 
       wrapProgram $out/bin/broot \
+        --add-flags "--conf ${brootConfig}" \
         --prefix PATH : ${runtimeEnv}/bin \
-        --add-flags "--conf ${brootConfig}"
+        --set TERM_PROGRAM ghostty
     '';
     meta = {
       mainProgram = "broot";

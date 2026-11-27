@@ -10,7 +10,8 @@ in {
 
   default_flags = "-gs";
   icon_theme = "nerdfont";
-
+  graphics_display = "kitty";
+  kitty_graphics_transmission = "chunks";
   modal = true;
   initial_mode = "command";
 

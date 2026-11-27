@@ -52,10 +52,8 @@ in
     postBuild = ''
       ln -s ${printPkg}/bin/monstar-print-config $out/bin/monstar-print-config
 
-      # broot use `TERM_PROGRAM` to detect kittyGraphicsDisplay
       wrapProgram $out/bin/monstar \
         --add-flags "--config ${monstarConfig}" \
-        --set TERM_PROGRAM ghostty \
         --prefix PATH : ${runtimeEnv}/bin \
         --set FONTCONFIG_FILE ${pkgs.makeFontsConf {inherit fontDirectories;}}
     '';
