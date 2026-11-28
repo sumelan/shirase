@@ -25,16 +25,13 @@ in {
       iconTheme = {
         package = mkOption {
           type = package;
-          default = pkgs.catppuccin-papirus-folders.override {
-            flavor = "frappe";
-            accent = "pink";
-          };
+          default = pkgs.fairywren.override {colorVariants = ["FairyWren_Dark"];};
           description = "Package providing the icon theme.";
         };
 
         name = mkOption {
           type = str;
-          default = "Papirus-Dark";
+          default = "FairyWren_Dark";
           description = "The name of the icon theme within the package.";
         };
       };
