@@ -12,11 +12,6 @@ _: {
     }
     {
       icon = "";
-      label = "Downloads";
-      path = "/home/sumelan/Downloads";
-    }
-    {
-      icon = "";
       label = "Music";
       path = "/home/sumelan/Music";
     }
@@ -27,18 +22,23 @@ _: {
     }
     {
       icon = "";
+      label = "Screenshots";
+      path = "/home/sumelan/Pictures/Screenshots";
+    }
+    {
+      icon = "";
       label = "Videos";
       path = "/home/sumelan/Videos";
     }
     {
       icon = "";
-      label = "trash";
-      path = "trash:///";
+      label = "Downloads";
+      path = "/home/sumelan/Downloads";
     }
     {
       icon = "";
-      label = "sumelan";
-      path = "/home/sumelan";
+      label = "trash";
+      path = "trash:///";
     }
   ];
   version = 2;
